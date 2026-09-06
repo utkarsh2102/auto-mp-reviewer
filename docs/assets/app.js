@@ -21,6 +21,8 @@ const DATA_URL = "data/dashboard.json";
 // least this often, so it picks up a new refresh within the hour.
 const MAX_POLL_MINUTES = 60;
 
+const SEARCH_LIMIT = 12;
+
 const state = {
   doc: null,
   teams: [],              // [{ id, name, description, error, repos: [...] }]
@@ -31,6 +33,7 @@ const state = {
   sort: {},               // repoId -> { key, dir }
   teamView: {},           // teamId -> { q, onlyOpen, sort: { key, dir } }
   overviewShowAll: false,
+  search: { index: [], results: [], active: -1 },
   timer: null,
   clockTimer: null,
 };
@@ -115,7 +118,7 @@ const allMps = (doc) => doc.repositories.flatMap((r) =>
 
 const openCount = (repos) => repos.reduce((n, r) => n + r.merge_requests.length, 0);
 
-// Filter text: case-insensitive, with - _ / . + ~ : read as spaces,
+// Search and filter text: case-insensitive, with - _ / . + ~ : read as spaces,
 // so "archive tools" finds ubuntu-archive-tools.
 const norm = (s) => String(s ?? "").toLowerCase()
   .replace(/[-_/.+~:]+/g, " ").replace(/\s+/g, " ").trim();
@@ -757,6 +760,180 @@ function wireRepoPanel(panel, repo, doc) {
   wireSort(panel, state.sort[repo.id], new Set(["age_days", "inactive_days"]), rerender);
 }
 
+/* ---------------------------------------------------------------- search -- */
+
+function buildSearchIndex() {
+  state.search.index = [
+    ...state.teams.map((t) => ({
+      kind: "team", id: t.id, label: t.name, team: null,
+      sub: t.description || plural(t.repos.length, "repository", "repositories"),
+      open: openCount(t.repos), error: t.repos.some((r) => r.status === "error"),
+      name: norm(t.name), hay: norm(`${t.name} ${t.id}`),
+    })),
+    // A repository matches on its own name and path, not its team's name: the
+    // team is its own result, and matching members would list all 220 of them.
+    ...state.doc.repositories.map((r) => {
+      const path = urlPath(r.url);
+      return {
+        kind: "repo", id: r.id, label: r.name || r.id, team: state.teamOfRepo.get(r.id)?.name,
+        sub: path, open: r.merge_requests.length, error: r.status === "error",
+        name: norm(r.name || r.id), hay: norm(`${r.name || r.id} ${path}`),
+      };
+    }),
+  ];
+  if (!document.getElementById("search-results").hidden) runSearch();
+}
+
+// Higher is better, 0 is no match. Matches on the name outrank matches on the
+// path or team; the fuzzy fallback only runs when nothing else matched.
+function searchScore(e, q, tokens) {
+  if (e.name === q) return 100;
+  if (e.name.startsWith(q)) return 90;
+  if (` ${e.name}`.includes(` ${q}`)) return 80;
+  if (e.name.includes(q)) return 70;
+  if (tokens.every((t) => e.name.includes(t))) return 60;
+  if (tokens.every((t) => e.hay.includes(t))) return 40;
+  return 0;
+}
+
+// Every query character appears in order: "ubarctools" -> ubuntu-archive-tools.
+function isSubsequence(q, s) {
+  let i = 0;
+  for (const c of s) if (c === q[i] && ++i === q.length) return true;
+  return false;
+}
+
+function search(raw) {
+  const q = norm(raw);
+  if (!q) return [];
+  const tokens = q.split(" ");
+  let hits = state.search.index
+    .map((e) => ({ e, s: searchScore(e, q, tokens) }))
+    .filter((h) => h.s > 0);
+  if (!hits.length && q.length >= 2) {
+    const compact = q.replace(/ /g, "");
+    hits = state.search.index
+      .filter((e) => isSubsequence(compact, e.name.replace(/ /g, "")))
+      .map((e) => ({ e, s: 10 }));
+  }
+  return hits.sort((a, b) => b.s - a.s
+      || (a.e.kind === b.e.kind ? 0 : a.e.kind === "team" ? -1 : 1)
+      || a.e.label.length - b.e.label.length
+      || a.e.label.localeCompare(b.e.label))
+    .map((h) => h.e);
+}
+
+// Marks the first occurrence of each query token in the label.
+function highlight(label, tokens) {
+  const lower = label.toLowerCase();
+  const ranges = tokens.map((t) => [lower.indexOf(t), t.length])
+    .filter(([i]) => i >= 0)
+    .map(([i, n]) => [i, i + n])
+    .sort((a, b) => a[0] - b[0]);
+  let out = "", pos = 0;
+  for (const [a, b] of ranges) {
+    if (a < pos) continue;
+    out += esc(label.slice(pos, a)) + `<mark>${esc(label.slice(a, b))}</mark>`;
+    pos = b;
+  }
+  return out + esc(label.slice(pos));
+}
+
+function runSearch() {
+  const s = state.search;
+  s.results = search(document.getElementById("global-search").value);
+  s.active = s.results.length ? 0 : -1;
+  renderSearch();
+}
+
+function renderSearch() {
+  const input = document.getElementById("global-search");
+  const list = document.getElementById("search-results");
+  const status = document.getElementById("search-status");
+  const { results, active } = state.search;
+  const query = input.value.trim();
+  if (!query) { closeSearch(); return; }
+
+  const tokens = norm(query).split(" ").filter(Boolean);
+  const shown = results.slice(0, SEARCH_LIMIT);
+  list.innerHTML = shown.length ? shown.map((e, i) => `
+      <li role="option" id="search-opt-${i}" class="search-result" data-index="${i}"
+          aria-selected="${i === active}">
+        <span class="search-result__line">
+          <span class="search-result__name">${highlight(e.label, tokens)}</span>
+          ${e.kind === "team" ? `<span class="team-pill team-pill--kind">Team</span>`
+            : e.team ? `<span class="team-pill">${esc(e.team)}</span>` : ""}
+          <span class="search-result__count">${plural(e.open, "open MP")}${e.error
+            ? ` <span class="tab__warn" aria-label="refresh failed">✕</span>` : ""}</span>
+        </span>
+        <span class="search-result__sub${e.kind === "repo" ? " search-result__sub--mono" : ""}">${esc(e.sub)}</span>
+      </li>`).join("") +
+      (results.length > shown.length ? `<li class="search-note" role="presentation">
+        ${results.length - shown.length} more — keep typing to narrow the list</li>` : "")
+    : `<li class="search-note" role="presentation">No repository or team matches “${esc(query)}”</li>`;
+
+  list.hidden = false;
+  input.setAttribute("aria-expanded", "true");
+  if (active >= 0) input.setAttribute("aria-activedescendant", `search-opt-${active}`);
+  else input.removeAttribute("aria-activedescendant");
+  status.textContent = results.length ? plural(results.length, "result") : "No results";
+  list.querySelector('[aria-selected="true"]')?.scrollIntoView({ block: "nearest" });
+}
+
+function closeSearch() {
+  const input = document.getElementById("global-search");
+  document.getElementById("search-results").hidden = true;
+  input.setAttribute("aria-expanded", "false");
+  input.removeAttribute("aria-activedescendant");
+}
+
+function initSearch() {
+  const input = document.getElementById("global-search");
+  const list = document.getElementById("search-results");
+  const s = state.search;
+
+  const go = (i) => {
+    const e = s.results[i];
+    if (!e) return;
+    input.value = "";
+    closeSearch();
+    input.blur();
+    location.hash = routeHash({ view: e.kind, id: e.id });
+  };
+
+  input.addEventListener("input", runSearch);
+  input.addEventListener("focus", () => { if (input.value.trim()) runSearch(); });
+  input.addEventListener("blur", closeSearch);
+  input.addEventListener("keydown", (e) => {
+    const n = Math.min(s.results.length, SEARCH_LIMIT);
+    if (e.key === "ArrowDown" || e.key === "ArrowUp") {
+      e.preventDefault();
+      if (list.hidden) { runSearch(); return; }
+      if (!n) return;
+      s.active = (s.active + (e.key === "ArrowDown" ? 1 : -1) + n) % n;
+      renderSearch();
+    } else if (e.key === "Enter") {
+      if (!list.hidden && s.active >= 0) { e.preventDefault(); go(s.active); }
+    } else if (e.key === "Escape") {
+      if (!list.hidden) { e.preventDefault(); closeSearch(); }
+    }
+  });
+  // Keep focus in the input while a result is being clicked.
+  list.addEventListener("mousedown", (e) => e.preventDefault());
+  list.addEventListener("click", (e) => {
+    const opt = e.target.closest("[data-index]");
+    if (opt) go(Number(opt.dataset.index));
+  });
+
+  // "/" jumps to search from anywhere except another text field.
+  document.addEventListener("keydown", (e) => {
+    if (e.key !== "/" || e.ctrlKey || e.metaKey || e.altKey || input.disabled) return;
+    if (e.target.closest?.("input, textarea, select, [contenteditable]")) return;
+    e.preventDefault();
+    input.focus();
+  });
+}
+
 /* ---------------------------------------------------------------- render -- */
 
 function render(doc) {
@@ -776,6 +953,8 @@ function render(doc) {
 
   renderBanners(doc);
   applyRoute();
+  buildSearchIndex();
+  document.getElementById("global-search").disabled = false;
   updateClocks();
 
   document.getElementById("footer-meta").textContent =
@@ -835,6 +1014,7 @@ function initTheme() {
 /* ------------------------------------------------------------------- boot -- */
 
 initTheme();
+initSearch();
 document.getElementById("refresh-btn").addEventListener("click", () => load({ manual: true }));
 window.addEventListener("hashchange", () => { if (state.doc) applyRoute({ scroll: true }); });
 await load();
