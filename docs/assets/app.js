@@ -12,6 +12,10 @@
 
 const DATA_URL = "data/dashboard.json";
 
+// However rarely the fetcher runs, an open tab re-reads the published file at
+// least this often, so it picks up a new refresh within the hour.
+const MAX_POLL_MINUTES = 60;
+
 const state = {
   doc: null,
   activeTab: "overview",
@@ -82,6 +86,14 @@ const absolute = (iso) => {
     : d.toISOString().slice(0, 16).replace("T", " ") + " UTC";
 };
 
+// The refresh cadence in words: "daily", "every 2 hours", "every 2 days".
+function every(mins) {
+  if (!mins) return "regularly";
+  if (mins % 1440 === 0) return mins === 1440 ? "daily" : `every ${mins / 1440} days`;
+  if (mins % 60 === 0) return mins === 60 ? "hourly" : `every ${mins / 60} hours`;
+  return `every ${mins} minutes`;
+}
+
 const median = (xs) => {
   if (!xs.length) return 0;
   const s = [...xs].sort((a, b) => a - b), m = s.length >> 1;
@@ -132,15 +144,14 @@ function renderBanners(doc) {
   }
 
   // Our cached file being old is a different problem from an MP being stale.
-  const intervalMs = (doc.config.refresh_interval_minutes || 120) * 60000;
+  const mins = doc.config.refresh_interval_minutes || 120;
   const ageMs = Date.now() - new Date(doc.generated_at).getTime();
-  if (ageMs > intervalMs * 2) {
+  if (ageMs > mins * 60000 * 2) {
     out.push(`<div class="banner banner--warning">
       <span class="banner__icon" aria-hidden="true">⚠</span>
       <div><strong>This data is out of date.</strong>
-      Last collected ${esc(relative(doc.generated_at))}, but it should refresh every
-      ${doc.config.refresh_interval_minutes} minutes. The scheduled GitHub Action
-      may have failed or been disabled.</div></div>`);
+      Last collected ${esc(relative(doc.generated_at))}, but it should refresh
+      ${every(mins)}. The scheduled GitHub Action may have failed or been disabled.</div></div>`);
   }
   el.innerHTML = out.join("");
 }
@@ -482,7 +493,7 @@ function render(doc) {
   document.getElementById("footer-meta").textContent =
     `Schema v${doc.schema_version} · stale after ${doc.config.stale_after_days} days · ` +
     `silent after ${doc.config.silent_after_days} days · ` +
-    `refreshes every ${doc.config.refresh_interval_minutes} minutes`;
+    `refreshes ${every(doc.config.refresh_interval_minutes)}`;
 }
 
 function updateClocks() {
@@ -515,7 +526,7 @@ async function load({ manual = false } = {}) {
 
 function scheduleRefresh() {
   clearInterval(state.timer);
-  const mins = state.doc?.config?.refresh_interval_minutes || 120;
+  const mins = Math.min(state.doc?.config?.refresh_interval_minutes || 120, MAX_POLL_MINUTES);
   state.timer = setInterval(() => load(), mins * 60000);
 }
 
