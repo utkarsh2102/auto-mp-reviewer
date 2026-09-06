@@ -111,6 +111,11 @@ class MergeRequest:
     # Reserved for Phase 2 (LLM/code-review harness). Always None in Phase 1.
     review: dict | None = None
 
+    # The repository the MR targets. Set only when the MR is listed outside
+    # its repository's own entry, e.g. among one person's merge proposals.
+    target_repository: str | None = None
+    target_repository_url: str | None = None
+
     # Derived by apply_rules().
     age_days: int = 0
     inactive_days: int = 0
@@ -254,6 +259,16 @@ class Provider(ABC):
         return a partial list, so a truncated list never silently drops repos.
         """
         raise ProviderError(f"provider {self.name!r} cannot discover repositories")
+
+    def members(self, spec: dict) -> list[Author]:
+        """The people in a team's `people` block in config/repos.yaml."""
+        raise ProviderError(f"provider {self.name!r} cannot list team members")
+
+    def merge_requests_by(self, person: str, skip: frozenset[str] = frozenset()) -> list[MergeRequest]:
+        """Every open merge request `person` proposed, anywhere on the provider,
+        with `target_repository` set. MRs whose url is in `skip` are left out
+        before any per-MR lookups, since the caller already has them."""
+        raise ProviderError(f"provider {self.name!r} cannot list a person's merge requests")
 
 
 def slugify(value: str) -> str:

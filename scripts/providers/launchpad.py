@@ -225,7 +225,7 @@ class LaunchpadGitProvider(Provider):
     def _collection(self, url: str, params, what: str, attempts: int = MAX_ATTEMPTS) -> list[dict]:
         """Every entry of a collection, or ProviderError. Unlike the MP listing
         above, a failed or short page is never tolerated: a truncated list would
-        silently drop packages from the dashboard."""
+        silently drop packages or people from the dashboard."""
         entries: list[dict] = []
         total = None
         for _ in range(50):  # hard stop against a pagination loop
@@ -274,6 +274,28 @@ class LaunchpadGitProvider(Provider):
             }
             for name in sorted(names)
         ]
+
+    # -- people ----------------------------------------------------------
+
+    def members(self, spec: dict) -> list[Author]:
+        """A team's people, including those in it through a sub-team."""
+        team = self._team(spec, "members_of")
+        entries = self._collection(f"{API_ROOT}/{quote(team, safe='~')}/participants", None,
+                                   f"{team} members")
+        people = [
+            Author(name=e["name"], display_name=e.get("display_name") or e["name"],
+                   url=e.get("web_link") or f"https://launchpad.net/~{e['name']}")
+            for e in entries
+            if e.get("name") and not e.get("is_team")
+        ]
+        return sorted(people, key=lambda a: a.display_name.lower())
+
+    def merge_requests_by(self, person: str, skip: frozenset[str] = frozenset()) -> list[MergeRequest]:
+        """Every open MP proposed from a person's own branches, anywhere."""
+        params = [("ws.op", "getMergeProposals")] + [("status", s) for s in OPEN_STATUSES]
+        entries = self._collection(f"{API_ROOT}/~{quote(person)}", params, f"~{person}'s merge proposals")
+        entries = [e for e in entries if (e.get("web_link") or e.get("self_link")) not in skip]
+        return self._enrich(entries, with_target=True)
 
     # -- enrichment ------------------------------------------------------
 
@@ -380,24 +402,40 @@ class LaunchpadGitProvider(Provider):
     # -- entrypoint ------------------------------------------------------
 
     def fetch(self, repo_cfg: dict) -> list[MergeRequest]:
-        entries = self._open_merge_proposals(repo_cfg)
+        return self._enrich(self._open_merge_proposals(repo_cfg))
+
+    def _enrich(self, entries: list[dict], with_target: bool = False) -> list[MergeRequest]:
         if not entries:
             return []
-
         workers = max(1, int(self.thresholds.max_workers))
-        results: list[MergeRequest] = []
         with ThreadPoolExecutor(max_workers=workers) as pool:
-            for mr in pool.map(self._build_safe, entries):
-                if mr is not None:
-                    results.append(mr)
-        return results
+            built = pool.map(lambda e: self._build_safe(e, with_target), entries)
+            return [mr for mr in built if mr is not None]
 
-    def _build_safe(self, entry: dict) -> MergeRequest | None:
+    def _build_safe(self, entry: dict, with_target: bool = False) -> MergeRequest | None:
         try:
-            return self._build(entry)
+            mr = self._build(entry)
         except Exception as exc:  # noqa: BLE001
             log.warning("skipping merge proposal %s: %s", entry.get("self_link"), exc)
             return None
+        if with_target:
+            mr.target_repository, mr.target_repository_url = _target(entry)
+        return mr
+
+
+def _target(entry: dict) -> tuple[str | None, str | None]:
+    """(display name, web URL) of the repository or branch an MP targets.
+
+    '~git-ubuntu-import/ubuntu/+source/apport/+git/apport' -> 'apport';
+    a bzr branch '~owner/project/series' -> 'project/series'.
+    """
+    link = entry.get("target_git_repository_link") or entry.get("target_branch_link") or ""
+    path = link[len(API_ROOT) + 1:] if link.startswith(API_ROOT + "/") else ""
+    if not path:
+        return None, None
+    parts = path.split("/")
+    name = parts[parts.index("+git") + 1] if "+git" in parts else "/".join(parts[1:])
+    return name, f"{WEB_ROOT}/{path}"
 
 
 def _short_ref(ref: str | None) -> str | None:
