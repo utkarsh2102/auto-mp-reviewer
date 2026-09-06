@@ -13,6 +13,8 @@ repository going down never blanks the others.
 Teams can discover their repositories at fetch time (see `teams` in
 config/repos.yaml). If discovery fails, the repositories found by the last
 successful run are fetched instead, so only the membership list goes stale.
+A team can also list its people's open MPs wherever they are; those are fetched
+after the repositories, so an MP a tracked repository shows is not fetched twice.
 
 Usage:
     python scripts/fetch.py
@@ -28,6 +30,7 @@ import json
 import logging
 import sys
 import time
+from dataclasses import asdict
 from datetime import datetime, timezone
 from pathlib import Path
 
@@ -140,6 +143,63 @@ def resolve_repositories(
     if dupes:
         raise ConfigError(f"duplicate repository id(s): {', '.join(dupes)}")
     return repos, errors
+
+
+def fetch_people(
+    spec: dict, thresholds: Thresholds, now: datetime, tracked: frozenset[str], previous: dict | None
+) -> dict:
+    """A team's `people` block: its members, plus every open MP they proposed
+    that no tracked repository already shows (the UI merges the two).
+
+    Failures degrade like repositories do: a member whose MPs cannot be listed
+    keeps the ones from the last run, and the block records the error.
+    """
+    previous = previous or {}
+    block = {
+        "source": spec.get("members_of"),
+        "members": previous.get("members", []),
+        "merge_requests": previous.get("merge_requests", []),
+        "error": None,
+        "last_successful_refresh": previous.get("last_successful_refresh"),
+    }
+    try:
+        provider = get_provider(spec.get("provider", ""), thresholds)
+        members = provider.members(spec)
+    except Exception as exc:  # noqa: BLE001
+        log.error("people %s: %s", spec.get("members_of"), exc)
+        block["error"] = f"Could not refresh the member list ({exc}). Showing the previous data."
+        return block
+
+    started = time.monotonic()
+    earlier: dict[str, list[dict]] = {}
+    for mp in previous.get("merge_requests", []):
+        if mp.get("url") not in tracked:
+            earlier.setdefault(mp.get("author", {}).get("name"), []).append(mp)
+    mrs: list[dict] = []
+    failed: list[str] = []
+    for person in members:
+        try:
+            found = provider.merge_requests_by(person.name, skip=tracked)
+        except Exception as exc:  # noqa: BLE001
+            log.error("people: ~%s: %s", person.name, exc)
+            failed.append(person.name)
+            mrs.extend(earlier.get(person.name, []))
+            continue
+        for mr in found:
+            apply_rules(mr, thresholds, now)
+        mrs.extend(mr.to_dict() for mr in found)
+    mrs.sort(key=lambda m: m.get("inactive_days", 0), reverse=True)
+    log.info("people %s: %d members, %d MPs outside tracked repos in %.1fs",
+             spec.get("members_of"), len(members), len(mrs), time.monotonic() - started)
+
+    block.update(
+        members=[asdict(m) for m in members],
+        merge_requests=mrs,
+        last_successful_refresh=now.isoformat(),
+        error=(f"Could not refresh the merge proposals of {', '.join('~' + n for n in failed)}. "
+               "Showing their previous data.") if failed else None,
+    )
+    return block
 
 
 def fetch_repo(repo_cfg: dict, thresholds: Thresholds, now: datetime) -> RepoResult:
@@ -289,6 +349,16 @@ def main() -> int:
         for t in teams
     ]
 
+    tracked = frozenset(m["url"] for p in payloads for m in p["merge_requests"])
+    for entry, t in zip(team_entries, teams):
+        if not t.get("people"):
+            continue
+        earlier = (previous_teams.get(t["id"]) or {}).get("people")
+        if args.repo or (args.team and t["id"] not in args.team):
+            entry["people"] = earlier  # not part of this run
+        else:
+            entry["people"] = fetch_people(t["people"], thresholds, now, tracked, earlier)
+
     document = {
         "schema_version": SCHEMA_VERSION,
         "generated_at": now.isoformat(),
@@ -314,6 +384,12 @@ def main() -> int:
               f" {sum(len(p['merge_requests']) for p in members)} MPs")
         if t["error"]:
             print(f"    DISCOVERY FAILED: {t['error']}")
+        if t.get("people"):
+            pp = t["people"]
+            print(f"    people {pp['source']}: {len(pp['members'])} members,"
+                  f" {len(pp['merge_requests'])} MPs outside tracked repos")
+            if pp["error"]:
+                print(f"    PEOPLE FAILED: {pp['error']}")
         quiet = 0
         for p in members:
             if p["status"] == "ok" and not p["merge_requests"]:
