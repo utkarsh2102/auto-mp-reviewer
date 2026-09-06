@@ -359,9 +359,42 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 }
 .section-title:first-child { margin-top: 0; }
 
-.team-head { margin: 0 0 14px; }
+.team-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 10px 16px;
+  margin: 0 0 14px;
+}
 .team-head__title { margin: 0; font-size: 1.25rem; font-weight: 500; letter-spacing: -.01em; }
 .team-head__desc { margin: 2px 0 0; font-size: .85rem; color: var(--ink-muted); }
+
+/* Repositories | People, for teams with people. */
+.view-switch {
+  display: inline-flex;
+  border: 1px solid var(--rule-strong);
+  border-radius: var(--radius);
+  background: var(--card);
+  overflow: hidden;
+}
+.view-switch a {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 5px 12px;
+  font-size: .85rem;
+  color: var(--ink-secondary);
+  text-decoration: none;
+}
+.view-switch a + a { border-left: 1px solid var(--rule-strong); }
+.view-switch a:hover { color: var(--ink); background: var(--card-sunken); }
+.view-switch a[aria-current] { background: var(--aubergine-mid); color: #fff; font-weight: 500; }
+.view-switch a[aria-current] .tab__count { background: transparent; border-color: rgba(255, 255, 255, .45); }
+:root[data-theme="dark"] .view-switch a[aria-current] { background: var(--ubuntu-orange); }
+@media (prefers-color-scheme: dark) {
+  :root:where(:not([data-theme="light"])) .view-switch a[aria-current] { background: var(--ubuntu-orange); }
+}
 
 .crumbs {
   display: flex;

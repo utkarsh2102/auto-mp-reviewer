@@ -32,6 +32,8 @@ const state = {
   filters: {},            // repoId -> { q, statuses:Set, flags:Set }
   sort: {},               // repoId -> { key, dir }
   teamView: {},           // teamId -> { q, onlyOpen, sort: { key, dir } }
+  people: new Map(),      // teamId -> [{ name, display_name, url, mps }] for teams with people
+  peopleView: {},         // teamId -> { q, onlyOpen, sort: { key, dir } }
   overviewShowAll: false,
   search: { index: [], results: [], active: -1 },
   timer: null,
@@ -220,29 +222,63 @@ function teamsOf(doc) {
   return teams;
 }
 
-/* -------------------------------------------------------------- routing -- */
+/* --------------------------------------------------------------- people -- */
 
-const routeHash = (r) => r.view === "overview" ? "#overview"
-  : `#${r.view}/${encodeURIComponent(r.id)}`;
-
-function parseRoute(hash) {
-  let h = hash.replace(/^#/, "");
-  try { h = decodeURIComponent(h); } catch { /* keep it raw */ }
-  if (!h || h === "overview") return { view: "overview" };
-  const slash = h.indexOf("/");
-  const kind = h.slice(0, Math.max(slash, 0));
-  const id = h.slice(slash + 1);
-  if (slash > 0 && (kind === "team" || kind === "repo") && id) return { view: kind, id };
-  return { view: "legacy", id: h };  // #<repoId> links from before teams existed
+// A team's members, each with every open MP they proposed: those in tracked
+// repositories (matched by author) plus those the fetcher found elsewhere.
+function peopleOf(team, doc) {
+  if (!team.people) return null;
+  const byName = new Map(team.people.members.map((m) => [m.name, { ...m, mps: [], seen: new Set() }]));
+  const add = (mp, extra) => {
+    const p = byName.get(mp.author?.name);
+    if (!p || p.seen.has(mp.url)) return;
+    p.seen.add(mp.url);
+    p.mps.push({ ...mp, ...extra });
+  };
+  for (const r of doc.repositories) {
+    const team = state.teamOfRepo.get(r.id);
+    const href = routeHash({ view: "repo", id: r.id });
+    for (const mp of r.merge_requests) add(mp, { _repoName: r.name || r.id, _repoHref: href, _repoTeam: team });
+  }
+  for (const mp of team.people.merge_requests) {
+    add(mp, { _repoName: mp.target_repository || "—", _repoHref: mp.target_repository_url, _external: true });
+  }
+  return [...byName.values()];
 }
 
-// Unknown ids fall back to the Overview, as unknown tabs always have.
+/* -------------------------------------------------------------- routing -- */
+
+// #overview, #repo/<id>, #team/<id>, #team/<id>/people, #team/<id>/people/<person>
+function routeHash(r) {
+  if (r.view === "overview") return "#overview";
+  const base = `#${r.view}/${encodeURIComponent(r.id)}`;
+  if (r.tab !== "people") return base;
+  return `${base}/people${r.person ? `/${encodeURIComponent(r.person)}` : ""}`;
+}
+
+function parseRoute(hash) {
+  const h = hash.replace(/^#/, "");
+  const dec = (s) => { try { return decodeURIComponent(s); } catch { return s; } };
+  if (!h || h === "overview") return { view: "overview" };
+  const [kind, id, tab, person] = h.split("/").map(dec);
+  if (kind === "repo" && id) return { view: "repo", id: dec(h.slice("repo/".length)) };
+  if (kind === "team" && id) return tab === "people" ? { view: "team", id, tab, person } : { view: "team", id };
+  return { view: "legacy", id: dec(h) };  // #<repoId> links from before teams existed
+}
+
+// Unknown ids fall back to the nearest view that exists: an unknown person to
+// the People list, a team without people to the team, anything else to the
+// Overview, as unknown tabs always have.
 function resolveRoute(r) {
   if ((r.view === "repo" || r.view === "legacy") && state.repoById.has(r.id)) {
     return { view: "repo", id: r.id };
   }
-  if ((r.view === "team" || r.view === "legacy") && state.teams.some((t) => t.id === r.id)) {
-    return { view: "team", id: r.id };
+  const team = state.teams.find((t) => t.id === r.id);
+  if (team && (r.view === "team" || r.view === "legacy")) {
+    const people = state.people.get(team.id);
+    if (r.tab !== "people" || !people) return { view: "team", id: team.id };
+    const person = people.find((p) => p.name === r.person);
+    return { view: "team", id: team.id, tab: "people", person: person?.name };
   }
   return { view: "overview" };
 }
@@ -295,6 +331,12 @@ function renderBanners(doc) {
     out.push(`<div class="banner banner--warning">
       <span class="banner__icon" aria-hidden="true">⚠</span>
       <div><strong>${esc(t.name)}: repository list not refreshed.</strong> ${esc(t.error)}</div></div>`);
+  }
+  for (const t of state.teams.filter((x) => x.people?.error)) {
+    out.push(`<div class="banner banner--warning">
+      <span class="banner__icon" aria-hidden="true">⚠</span>
+      <div><strong>${esc(t.name)}: people's merge proposals not fully refreshed.</strong>
+      ${esc(t.people.error)}</div></div>`);
   }
 
   // Our cached file being old is a different problem from an MP being stale.
@@ -349,9 +391,19 @@ function renderView() {
   let label = "Overview";
   if (view === "team") {
     const team = state.teams.find((t) => t.id === id);
-    label = team.name;
-    panel.innerHTML = teamPanel(team, doc);
-    wireTeamPanel(panel, team, doc);
+    const person = state.route.person && state.people.get(id).find((p) => p.name === state.route.person);
+    if (person) {
+      label = person.display_name;
+      personView(panel, team, person, doc);
+    } else if (state.route.tab === "people") {
+      label = `${team.name} people`;
+      panel.innerHTML = peoplePanel(team, doc);
+      wirePeoplePanel(panel, team, doc);
+    } else {
+      label = team.name;
+      panel.innerHTML = teamPanel(team, doc);
+      wireTeamPanel(panel, team, doc);
+    }
   } else if (view === "repo") {
     const repo = state.repoById.get(id);
     label = repo.name || repo.id;
@@ -520,12 +572,28 @@ const TEAM_SORTS = {
   refreshed: (r) => new Date(r.last_successful_refresh || 0).getTime() || 0,
 };
 
-function teamPanel(team, doc) {
-  const head = `
+// The team's title, plus a Repositories | People switch for teams with people.
+function teamHead(team, tab) {
+  const people = state.people.get(team.id);
+  const desc = tab === "people"
+    ? `Members of ${team.people.source}, with every merge proposal they have open`
+    : team.description;
+  const link = (t, label, count) => `
+      <a href="${esc(routeHash({ view: "team", id: team.id, tab: t }))}"${tab === t ? ` aria-current="page"` : ""}>
+        ${label}<span class="tab__count">${count}</span></a>`;
+  return `
     <div class="team-head">
-      <h2 class="team-head__title">${esc(team.name)}</h2>
-      ${team.description ? `<p class="team-head__desc">${esc(team.description)}</p>` : ""}
+      <div>
+        <h2 class="team-head__title">${esc(team.name)}</h2>
+        ${desc ? `<p class="team-head__desc">${esc(desc)}</p>` : ""}
+      </div>
+      ${people ? `<nav class="view-switch" aria-label="${esc(team.name)} views">${
+        link("repos", "Repositories", team.repos.length)}${link("people", "People", people.length)}</nav>` : ""}
     </div>`;
+}
+
+function teamPanel(team, doc) {
+  const head = teamHead(team, "repos");
 
   if (!team.repos.length) {
     return `${head}
@@ -607,16 +675,141 @@ function wireTeamPanel(panel, team, doc) {
   wireSort(panel, v.sort, new Set(["open", "stale", "attention", "refreshed"]), rerender);
 }
 
+/* -- a team's people -- */
+
+const PEOPLE_SORTS = {
+  name: (p) => p.display_name.toLowerCase(),
+  open: (p) => p.mps.length,
+  stale: (p) => p.mps.filter((m) => m.is_stale).length,
+  attention: (p) => p.mps.filter((m) => m.attention?.length).length,
+  oldest: (p) => Math.max(0, ...p.mps.map((m) => m.age_days)),
+};
+
+function peoplePanel(team, doc) {
+  const people = state.people.get(team.id);
+  const v = state.peopleView[team.id];
+  const staleDays = doc.config.stale_after_days;
+  const mps = people.flatMap((p) => p.mps);
+  const stale = mps.filter((m) => m.is_stale).length;
+  const attention = mps.filter((m) => m.attention?.length).length;
+  const active = people.filter((p) => p.mps.length).length;
+  const elsewhere = mps.filter((m) => m._external).length;
+  const oldest = mps.reduce((a, b) => (!a || b.age_days > a.age_days ? b : a), null);
+
+  const q = norm(v.q);
+  const get = PEOPLE_SORTS[v.sort.key] || PEOPLE_SORTS.open;
+  const rows = people
+    .filter((p) => !v.onlyOpen || p.mps.length)
+    .filter((p) => matchesAll(norm(`${p.display_name} ${p.name}`), q))
+    .sort((a, b) => {
+      const [x, y] = [get(a), get(b)];
+      const cmp = typeof x === "number" ? x - y : String(x).localeCompare(String(y));
+      return (v.sort.dir === "asc" ? cmp : -cmp) || a.display_name.localeCompare(b.display_name);
+    });
+
+  const row = (p) => {
+    const host = urlHost(p.url);
+    return `<tr>
+      <td><a class="mp-title" href="${esc(routeHash({ view: "team", id: team.id, tab: "people", person: p.name }))}">${esc(p.display_name)}</a>
+          <div class="mp-meta">~${esc(p.name)}${host ? ` · <a href="${esc(p.url)}" rel="noopener"
+             title="${esc(p.display_name)} on ${esc(host)}">${esc(host)}&nbsp;↗</a>` : ""}</div></td>
+      <td class="num">${p.mps.length}</td>
+      <td class="num">${staleCell(p.mps.filter((m) => m.is_stale).length, p.mps.length)}</td>
+      <td class="num">${p.mps.filter((m) => m.attention?.length).length}</td>
+      <td class="num">${p.mps.length ? days(PEOPLE_SORTS.oldest(p)) : "—"}</td>
+    </tr>`;
+  };
+
+  return `${teamHead(team, "people")}
+    <div class="stats" style="margin-bottom:16px">
+      ${stat("Open", mps.length, `${elsewhere} outside the repositories tracked here`)}
+      ${stat(`<span class="badge__glyph" aria-hidden="true">◷</span> Stale`,
+             stale, `No activity for ${staleDays}+ days`, stale ? "critical" : null)}
+      ${stat(`<span class="badge__glyph" aria-hidden="true">⚑</span> Needs attention`,
+             attention, `${mps.length ? Math.round((attention / mps.length) * 100) : 0}% of open MPs`,
+             attention ? "warning" : null)}
+      ${stat("People", people.length, `${active} with open MPs`)}
+      ${stat("Oldest open MP",
+             oldest ? days(oldest.age_days) : "—",
+             oldest ? `<a href="${esc(oldest.url)}" rel="noopener">${esc(oldest._repoName)} #${esc(oldest.id)}</a>` : "")}
+      ${stat("Median time idle", days(median(mps.map((m) => m.inactive_days))), "Since last comment or review")}
+    </div>
+
+    <div class="filters">
+      <input type="search" data-filter="q" value="${esc(v.q)}"
+             placeholder="Filter people…"
+             aria-label="Filter people in ${esc(team.name)}">
+      <div class="chips">${chip("open", "With open MPs", active, v.onlyOpen)}</div>
+      <span class="filter-summary">${rows.length} of ${plural(people.length, "person", "people")} shown</span>
+    </div>
+
+    <div class="card table-wrap">
+      <table>
+        <thead><tr>
+          ${sortHead(v.sort, "name", "Person")}
+          ${sortHead(v.sort, "open", "Open")}
+          ${sortHead(v.sort, "stale", "Stale")}
+          ${sortHead(v.sort, "attention", "Attention")}
+          ${sortHead(v.sort, "oldest", "Oldest")}
+        </tr></thead>
+        <tbody>${rows.map(row).join("")
+          || `<tr><td colspan="5" class="empty">No people match these filters.</td></tr>`}</tbody>
+      </table>
+    </div>`;
+}
+
+function wirePeoplePanel(panel, team, doc) {
+  const v = state.peopleView[team.id];
+  const rerender = () => {
+    panel.innerHTML = peoplePanel(team, doc);
+    wirePeoplePanel(panel, team, doc);
+  };
+  wireFilterInput(panel, (value) => { v.q = value; }, rerender);
+  panel.querySelector('[data-chip="open"]')?.addEventListener("click", () => {
+    v.onlyOpen = !v.onlyOpen;
+    rerender();
+  });
+  wireSort(panel, v.sort, new Set(["open", "stale", "attention", "oldest"]), rerender);
+}
+
+// One person's MPs, in the repository table with a Repository column.
+function personView(panel, team, person, doc) {
+  const list = {
+    id: `person:${team.id}:${person.name}`, name: person.display_name, url: person.url,
+    status: "ok", merge_requests: person.mps,
+  };
+  listState(list.id);
+  panel.innerHTML = `
+    <nav class="crumbs" aria-label="Breadcrumb">
+      <a href="${esc(routeHash({ view: "team", id: team.id }))}">${esc(team.name)}</a>
+      <span class="crumbs__sep" aria-hidden="true">›</span>
+      <a href="${esc(routeHash({ view: "team", id: team.id, tab: "people" }))}">People</a>
+      <span class="crumbs__sep" aria-hidden="true">›</span>
+      <span aria-current="page">${esc(person.display_name)}</span>
+    </nav>
+    <div data-repo-body></div>`;
+  const body = panel.querySelector("[data-repo-body]");
+  const opts = { column: "repository" };
+  body.innerHTML = repoPanel(list, doc, opts);
+  wireRepoPanel(body, list, doc, opts);
+}
+
 /* -- per repository -- */
 
 const SORTS = {
   title: (m) => m.title.toLowerCase(),
   author: (m) => (m.author?.display_name || "").toLowerCase(),
+  repository: (m) => (m._repoName || "").toLowerCase(),
   status: (m) => m.status,
   age_days: (m) => m.age_days,
   inactive_days: (m) => m.inactive_days,
 };
 
+// Filter and sort state for one MP list (a repository, or a person's MPs).
+function listState(id) {
+  state.filters[id] ??= { q: "", statuses: new Set(), flags: new Set() };
+  state.sort[id] ??= { key: "inactive_days", dir: "desc" };
+}
 
 function repoView(panel, repo, doc) {
   const team = state.teamOfRepo.get(repo.id);
@@ -643,13 +836,15 @@ function visibleMps(repo, doc) {
       if (code !== "stale" && code !== "attention" && !(m.attention || []).includes(code)) return false;
     }
     if (!q) return true;
-    return [m.title, m.author?.display_name, m.author?.name, m.id, m.source_branch, m.status,
+    return [m.title, m.author?.display_name, m.author?.name, m.id, m.source_branch, m.status, m._repoName,
             ...(m.linked_bugs || []).map((b) => `${b.id} ${b.title}`)]
       .filter(Boolean).join(" ").toLowerCase().includes(q);
   });
 }
 
-function repoPanel(repo, doc) {
+// `column: "repository"` swaps the Author column for the MP's repository,
+// for lists where every MP has the same author (one person's MPs).
+function repoPanel(repo, doc, { column = "author" } = {}) {
   const staleDays = doc.config.stale_after_days;
   const sort = state.sort[repo.id];
   const rows = visibleMps(repo, doc).sort((a, b) => {
@@ -675,10 +870,15 @@ function repoPanel(repo, doc) {
              title="${esc(b.title)} — ${esc(b.status || "")}, ${esc(b.importance || "")}">#${esc(b.id)}</a>`).join("")
         }</div>` : ""}
       </td>
-      <td>${m.author?.url ? `<a href="${esc(m.author.url)}" rel="noopener">${esc(m.author.display_name)}</a>`
+      ${column === "repository" ? `<td>${m._external
+          ? `<a href="${esc(m._repoHref || "")}" rel="noopener">${esc(m._repoName)}&nbsp;↗</a>
+             <div class="mp-meta mp-meta--sans">Not tracked here</div>`
+          : `<a href="${esc(m._repoHref)}">${esc(m._repoName)}</a>
+             ${m._repoTeam ? `<div class="badge-row" style="margin-top:3px">${teamPill(m._repoTeam)}</div>` : ""}`}
+      </td>` : `<td>${m.author?.url ? `<a href="${esc(m.author.url)}" rel="noopener">${esc(m.author.display_name)}</a>`
                           : esc(m.author?.display_name || "Unknown")}
           ${(m.reviewers || []).length ? `<div class="mp-meta">${plural(m.reviewers.length, "reviewer")}</div>` : ""}
-      </td>
+      </td>`}
       <td>${statusBadge(m)}</td>
       <td class="num" title="Opened ${esc(absolute(m.created_at))}">${days(m.age_days)}</td>
       <td class="num" title="${m.updated_at ? `Last activity ${esc(absolute(m.updated_at))}` : "No activity recorded"}">${days(m.inactive_days)}</td>
@@ -712,7 +912,7 @@ function repoPanel(repo, doc) {
 
     <div class="filters">
       <input type="search" data-filter="q" value="${esc(f.q)}"
-             placeholder="Filter by title, author, branch or bug…"
+             placeholder="Filter by title, ${column === "repository" ? "repository" : "author"}, branch or bug…"
              aria-label="Filter merge proposals in ${esc(repo.name || repo.id)}">
       <div class="chips">
         ${chip("stale", "Stale", all.filter((m) => m.is_stale).length, f.flags.has("stale"))}
@@ -726,7 +926,7 @@ function repoPanel(repo, doc) {
       <table>
         <thead><tr>
           ${head("title", "Merge proposal")}
-          ${head("author", "Author")}
+          ${column === "repository" ? head("repository", "Repository") : head("author", "Author")}
           ${head("status", "Status")}
           ${head("age_days", "Age")}
           ${head("inactive_days", "Idle")}
@@ -737,10 +937,10 @@ function repoPanel(repo, doc) {
     </div>`;
 }
 
-function wireRepoPanel(panel, repo, doc) {
+function wireRepoPanel(panel, repo, doc, opts = {}) {
   const rerender = () => {
-    panel.innerHTML = repoPanel(repo, doc);
-    wireRepoPanel(panel, repo, doc);
+    panel.innerHTML = repoPanel(repo, doc, opts);
+    wireRepoPanel(panel, repo, doc, opts);
   };
 
   wireFilterInput(panel, (value) => { state.filters[repo.id].q = value; }, rerender);
@@ -765,18 +965,26 @@ function wireRepoPanel(panel, repo, doc) {
 function buildSearchIndex() {
   state.search.index = [
     ...state.teams.map((t) => ({
-      kind: "team", id: t.id, label: t.name, team: null,
+      kind: "team", id: t.id, label: t.name, team: null, route: { view: "team", id: t.id },
       sub: t.description || plural(t.repos.length, "repository", "repositories"),
       open: openCount(t.repos), error: t.repos.some((r) => r.status === "error"),
       name: norm(t.name), hay: norm(`${t.name} ${t.id}`),
     })),
+    // People match on their display name or Launchpad name.
+    ...[...state.people].flatMap(([teamId, people]) => people.map((p) => ({
+      kind: "person", id: `${teamId}/${p.name}`, label: p.display_name,
+      team: state.teams.find((t) => t.id === teamId).name,
+      route: { view: "team", id: teamId, tab: "people", person: p.name },
+      sub: `~${p.name}`, open: p.mps.length, error: false,
+      name: norm(p.display_name), alt: [norm(p.name)], hay: norm(`${p.display_name} ${p.name}`),
+    }))),
     // A repository matches on its own name and path, not its team's name: the
     // team is its own result, and matching members would list all 220 of them.
     ...state.doc.repositories.map((r) => {
       const path = urlPath(r.url);
       return {
         kind: "repo", id: r.id, label: r.name || r.id, team: state.teamOfRepo.get(r.id)?.name,
-        sub: path, open: r.merge_requests.length, error: r.status === "error",
+        route: { view: "repo", id: r.id }, sub: path, open: r.merge_requests.length, error: r.status === "error",
         name: norm(r.name || r.id), hay: norm(`${r.name || r.id} ${path}`),
       };
     }),
@@ -787,13 +995,12 @@ function buildSearchIndex() {
 // Higher is better, 0 is no match. Matches on the name outrank matches on the
 // path or team; the fuzzy fallback only runs when nothing else matched.
 function searchScore(e, q, tokens) {
-  if (e.name === q) return 100;
-  if (e.name.startsWith(q)) return 90;
-  if (` ${e.name}`.includes(` ${q}`)) return 80;
-  if (e.name.includes(q)) return 70;
-  if (tokens.every((t) => e.name.includes(t))) return 60;
-  if (tokens.every((t) => e.hay.includes(t))) return 40;
-  return 0;
+  let best = 0;
+  for (const n of [e.name, ...(e.alt || [])]) {
+    best = Math.max(best, n === q ? 100 : n.startsWith(q) ? 90 : ` ${n}`.includes(` ${q}`) ? 80
+      : n.includes(q) ? 70 : tokens.every((t) => n.includes(t)) ? 60 : 0);
+  }
+  return best || (tokens.every((t) => e.hay.includes(t)) ? 40 : 0);
 }
 
 // Every query character appears in order: "ubarctools" -> ubuntu-archive-tools.
@@ -863,6 +1070,7 @@ function renderSearch() {
           <span class="search-result__name">${highlight(e.label, tokens)}</span>
           ${e.kind === "team" ? `<span class="team-pill team-pill--kind">Team</span>`
             : e.team ? `<span class="team-pill">${esc(e.team)}</span>` : ""}
+          ${e.kind === "person" ? `<span class="team-pill team-pill--kind">Person</span>` : ""}
           <span class="search-result__count">${plural(e.open, "open MP")}${e.error
             ? ` <span class="tab__warn" aria-label="refresh failed">✕</span>` : ""}</span>
         </span>
@@ -870,7 +1078,7 @@ function renderSearch() {
       </li>`).join("") +
       (results.length > shown.length ? `<li class="search-note" role="presentation">
         ${results.length - shown.length} more — keep typing to narrow the list</li>` : "")
-    : `<li class="search-note" role="presentation">No repository or team matches “${esc(query)}”</li>`;
+    : `<li class="search-note" role="presentation">Nothing matches “${esc(query)}”</li>`;
 
   list.hidden = false;
   input.setAttribute("aria-expanded", "true");
@@ -898,7 +1106,7 @@ function initSearch() {
     input.value = "";
     closeSearch();
     input.blur();
-    location.hash = routeHash({ view: e.kind, id: e.id });
+    location.hash = routeHash(e.route);
   };
 
   input.addEventListener("input", runSearch);
@@ -943,12 +1151,11 @@ function render(doc) {
   state.teams = teamsOf(doc);
   state.repoById = new Map(doc.repositories.map((r) => [r.id, r]));
   state.teamOfRepo = new Map(state.teams.flatMap((t) => t.repos.map((r) => [r.id, t])));
-  for (const r of doc.repositories) {
-    state.filters[r.id] ??= { q: "", statuses: new Set(), flags: new Set() };
-    state.sort[r.id] ??= { key: "inactive_days", dir: "desc" };
-  }
+  state.people = new Map(state.teams.filter((t) => t.people).map((t) => [t.id, peopleOf(t, doc)]));
+  for (const r of doc.repositories) listState(r.id);
   for (const t of state.teams) {
     state.teamView[t.id] ??= { q: "", onlyOpen: false, sort: { key: "open", dir: "desc" } };
+    state.peopleView[t.id] ??= { q: "", onlyOpen: false, sort: { key: "open", dir: "desc" } };
   }
 
   renderBanners(doc);
