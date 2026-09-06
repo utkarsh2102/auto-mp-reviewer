@@ -129,6 +129,7 @@ class RepoResult:
     name: str
     provider: str
     url: str
+    team: str | None = None  # id of the team the repository is listed under
     status: str = "ok"  # "ok" | "error"
     error: str | None = None
     last_successful_refresh: str | None = None

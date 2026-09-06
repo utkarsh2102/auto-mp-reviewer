@@ -10,9 +10,14 @@ fetched, its previously cached merge proposals are carried forward, marked with
 status "error" and the timestamp of the last refresh that did succeed. One
 repository going down never blanks the others.
 
+Teams can discover their repositories at fetch time (see `teams` in
+config/repos.yaml). If discovery fails, the repositories found by the last
+successful run are fetched instead, so only the membership list goes stale.
+
 Usage:
     python scripts/fetch.py
     python scripts/fetch.py --repo ubuntu-cdimage --dry-run
+    python scripts/fetch.py --team foundations --dry-run
     python scripts/fetch.py --no-bugs
 """
 
@@ -31,26 +36,110 @@ import yaml
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 
 from providers import Thresholds, apply_rules, get_provider  # noqa: E402
-from providers.base import RepoResult  # noqa: E402
+from providers.base import RepoResult, slugify  # noqa: E402
 
 ROOT = Path(__file__).resolve().parent.parent
 DEFAULT_CONFIG = ROOT / "config" / "repos.yaml"
 DEFAULT_OUT = ROOT / "docs" / "data" / "dashboard.json"
-SCHEMA_VERSION = 1
+SCHEMA_VERSION = 2
+
+# Used when config/repos.yaml defines no teams, so older configs still run.
+DEFAULT_TEAM = {"id": "repositories", "name": "Repositories"}
 
 log = logging.getLogger("fetch")
 
 
-def load_previous(path: Path) -> dict[str, dict]:
-    """Previously cached repo entries, keyed by id. Missing/corrupt -> empty."""
+class ConfigError(ValueError):
+    """config/repos.yaml is inconsistent; the run stops before fetching."""
+
+
+def load_previous(path: Path) -> tuple[dict[str, dict], dict[str, dict]]:
+    """Previously cached (repo entries, team entries), each keyed by id.
+    Missing/corrupt -> empty."""
     if not path.exists():
-        return {}
+        return {}, {}
     try:
         data = json.loads(path.read_text())
     except (json.JSONDecodeError, OSError) as exc:
         log.warning("could not read previous data (%s); starting fresh", exc)
-        return {}
-    return {r["id"]: r for r in data.get("repositories", []) if "id" in r}
+        return {}, {}
+    repos = {r["id"]: r for r in data.get("repositories", []) if "id" in r}
+    teams = {t["id"]: t for t in data.get("teams", []) if "id" in t}
+    return repos, teams
+
+
+def load_teams(config: dict) -> list[dict]:
+    teams = config.get("teams") or [dict(DEFAULT_TEAM)]
+    ids = [t.get("id") for t in teams]
+    if not all(ids):
+        raise ConfigError("every team needs an id")
+    dupes = sorted({i for i in ids if ids.count(i) > 1})
+    if dupes:
+        raise ConfigError(f"duplicate team id(s): {', '.join(dupes)}")
+    return teams
+
+
+def resolve_repositories(
+    config: dict,
+    teams: list[dict],
+    thresholds: Thresholds,
+    previous: dict[str, dict],
+    discover_teams: set[str] | None = None,
+) -> tuple[list[dict], dict[str, str]]:
+    """Every repository to fetch: the listed ones plus each team's discovered
+    ones, all stamped with their team. Returns (repo configs, {team id: error}).
+
+    `discover_teams` limits discovery to those teams (None = all of them).
+    """
+    team_ids = [t["id"] for t in teams]
+    repos: list[dict] = []
+    for cfg in config.get("repositories") or []:
+        cfg = dict(cfg)
+        if not config.get("teams"):
+            cfg.setdefault("team", DEFAULT_TEAM["id"])
+        if cfg.get("team") not in team_ids:
+            raise ConfigError(
+                f"repository {cfg.get('id')!r} has unknown team {cfg.get('team')!r}"
+                f" (known: {', '.join(team_ids)})"
+            )
+        repos.append(cfg)
+
+    errors: dict[str, str] = {}
+    for team in teams:
+        spec = team.get("discover")
+        if not spec or (discover_teams is not None and team["id"] not in discover_teams):
+            continue
+        try:
+            found = get_provider(spec.get("provider", ""), thresholds).discover(spec)
+            log.info("%s: discovered %d repositories", team["id"], len(found))
+        except Exception as exc:  # noqa: BLE001
+            # Keep refreshing what the last good run found; only membership goes stale.
+            found = [
+                p["discovered_config"]
+                for p in previous.values()
+                if p.get("team") == team["id"] and p.get("discovered_config")
+            ]
+            errors[team["id"]] = (
+                f"Could not refresh the repository list ({exc}). "
+                f"Tracking the {len(found)} repositories found by the last successful refresh."
+            )
+            log.error("%s: discovery failed, reusing %d known repositories: %s", team["id"], len(found), exc)
+        for found_cfg in found:
+            repos.append({
+                **found_cfg,
+                "id": f"{team['id']}-{slugify(found_cfg['name'])}",
+                "team": team["id"],
+                "provider": spec.get("provider", ""),
+                "_discovered": found_cfg,
+            })
+
+    ids = [r.get("id") for r in repos]
+    if not all(ids):
+        raise ConfigError("every repository needs an id")
+    dupes = sorted({i for i in ids if ids.count(i) > 1})
+    if dupes:
+        raise ConfigError(f"duplicate repository id(s): {', '.join(dupes)}")
+    return repos, errors
 
 
 def fetch_repo(repo_cfg: dict, thresholds: Thresholds, now: datetime) -> RepoResult:
@@ -58,20 +147,23 @@ def fetch_repo(repo_cfg: dict, thresholds: Thresholds, now: datetime) -> RepoRes
     repo_id = repo_cfg.get("id") or repo_cfg.get("repository") or "unknown"
     name = repo_cfg.get("name") or repo_id
     provider_name = repo_cfg.get("provider", "")
+    team = repo_cfg.get("team")
 
     try:
         provider = get_provider(provider_name, thresholds)
         url = provider.repo_url(repo_cfg)
     except Exception as exc:  # noqa: BLE001
         log.error("%s: %s", repo_id, exc)
-        return RepoResult(id=repo_id, name=name, provider=provider_name, url="", status="error", error=str(exc))
+        return RepoResult(id=repo_id, name=name, provider=provider_name, url="", team=team,
+                          status="error", error=str(exc))
 
     started = time.monotonic()
     try:
         mrs = provider.fetch(repo_cfg)
     except Exception as exc:  # noqa: BLE001
         log.error("%s: fetch failed: %s", repo_id, exc)
-        return RepoResult(id=repo_id, name=name, provider=provider_name, url=url, status="error", error=str(exc))
+        return RepoResult(id=repo_id, name=name, provider=provider_name, url=url, team=team,
+                          status="error", error=str(exc))
 
     for mr in mrs:
         apply_rules(mr, thresholds, now)
@@ -83,6 +175,7 @@ def fetch_repo(repo_cfg: dict, thresholds: Thresholds, now: datetime) -> RepoRes
         name=name,
         provider=provider_name,
         url=url,
+        team=team,
         status="ok",
         last_successful_refresh=now.isoformat(),
         merge_requests=mrs,
@@ -111,6 +204,7 @@ def main() -> int:
     ap.add_argument("--config", type=Path, default=DEFAULT_CONFIG)
     ap.add_argument("--out", type=Path, default=DEFAULT_OUT)
     ap.add_argument("--repo", action="append", help="only this repo id (repeatable)")
+    ap.add_argument("--team", action="append", help="only this team's repos (repeatable)")
     ap.add_argument("--no-bugs", action="store_true", help="skip the slow linked-bug lookups")
     ap.add_argument("--dry-run", action="store_true", help="print a summary, write nothing")
     ap.add_argument("-v", "--verbose", action="store_true")
@@ -131,7 +225,24 @@ def main() -> int:
     if args.no_bugs:
         thresholds.fetch_linked_bugs = False
 
-    repos = config.get("repositories") or []
+    now = datetime.now(timezone.utc)
+    previous, previous_teams = load_previous(args.out)
+
+    try:
+        teams = load_teams(config)
+        team_ids = [t["id"] for t in teams]
+        if args.team and set(args.team) - set(team_ids):
+            raise ConfigError(f"no such team(s) in config: {', '.join(sorted(set(args.team) - set(team_ids)))}")
+        repos, discovery_errors = resolve_repositories(
+            config, teams, thresholds, previous, set(args.team) if args.team else None
+        )
+    except ConfigError as exc:
+        log.error("%s", exc)
+        return 2
+
+    team_of = {r["id"]: r["team"] for r in repos}
+    if args.team:
+        repos = [r for r in repos if r["team"] in set(args.team)]
     if args.repo:
         wanted = set(args.repo)
         repos = [r for r in repos if r.get("id") in wanted]
@@ -143,19 +254,40 @@ def main() -> int:
         log.error("no repositories configured")
         return 2
 
-    now = datetime.now(timezone.utc)
-    previous = load_previous(args.out)
-
     payloads = []
     for repo_cfg in repos:
         result = fetch_repo(repo_cfg, thresholds, now)
-        payloads.append(carry_forward(result, previous.get(result.id)))
+        payload = carry_forward(result, previous.get(result.id))
+        if repo_cfg.get("_discovered"):
+            # Lets a later run whose discovery fails keep refreshing this repo.
+            payload["discovered_config"] = repo_cfg["_discovered"]
+        payloads.append(payload)
 
-    # A --repo run must not delete the repos it did not look at.
+    # A --repo/--team run must not delete the repos it did not look at.
     kept = [p for p in previous.values() if p["id"] not in {p2["id"] for p2 in payloads}]
-    if kept and args.repo:
+    if kept and (args.repo or args.team):
         log.info("keeping cached data for %d untouched repo(s)", len(kept))
+        for p in kept:
+            p["team"] = team_of.get(p["id"], p.get("team"))
         payloads.extend(kept)
+
+    # Group by team in config order, so the data file reads like the dashboard.
+    order = {t: i for i, t in enumerate(team_ids)}
+    payloads.sort(key=lambda p: order.get(p.get("team"), len(order)))
+
+    discovered_now = {t["id"] for t in teams if t.get("discover")
+                      and (not args.team or t["id"] in args.team)}
+    team_entries = [
+        {
+            "id": t["id"],
+            "name": t.get("name") or t["id"],
+            "description": t.get("description"),
+            # A team whose discovery was skipped this run keeps its last known error.
+            "error": discovery_errors.get(t["id"]) if t["id"] in discovered_now
+            else (previous_teams.get(t["id"]) or {}).get("error"),
+        }
+        for t in teams
+    ]
 
     document = {
         "schema_version": SCHEMA_VERSION,
@@ -165,6 +297,7 @@ def main() -> int:
             "silent_after_days": thresholds.silent_after_days,
             "refresh_interval_minutes": thresholds.refresh_interval_minutes,
         },
+        "teams": team_entries,
         "repositories": payloads,
     }
 
@@ -173,12 +306,25 @@ def main() -> int:
     attn = sum(1 for p in payloads for m in p["merge_requests"] if m.get("attention"))
     failed = [p["id"] for p in payloads if p["status"] == "error"]
 
-    print(f"\n{total} open MPs across {len(payloads)} repos - {stale} stale, {attn} needing attention")
-    for p in payloads:
-        flag = "ERROR" if p["status"] == "error" else "ok"
-        print(f"  {p['id']:<20} {len(p['merge_requests']):>3} MPs  [{flag}]")
+    print(f"\n{total} open MPs across {len(payloads)} repos in {len(teams)} team{'s' * (len(teams) != 1)}"
+          f" - {stale} stale, {attn} needing attention")
+    for t in team_entries:
+        members = [p for p in payloads if p.get("team") == t["id"]]
+        print(f"\n  {t['name']}: {len(members)} repos,"
+              f" {sum(len(p['merge_requests']) for p in members)} MPs")
+        if t["error"]:
+            print(f"    DISCOVERY FAILED: {t['error']}")
+        quiet = 0
+        for p in members:
+            if p["status"] == "ok" and not p["merge_requests"]:
+                quiet += 1
+                continue
+            flag = "ERROR" if p["status"] == "error" else "ok"
+            print(f"    {p['id']:<32} {len(p['merge_requests']):>3} MPs  [{flag}]")
+        if quiet:
+            print(f"    + {quiet} repo(s) with no open MPs")
     if failed:
-        print(f"  failed: {', '.join(failed)} (serving cached data)")
+        print(f"\n  failed: {', '.join(failed)} (serving cached data)")
 
     if args.dry_run:
         print("\n--dry-run: nothing written")
