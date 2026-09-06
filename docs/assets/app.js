@@ -8,6 +8,11 @@
  * Two different kinds of "old" are deliberately never called the same thing:
  *   - an MP is STALE when it has had no activity for stale_after_days;
  *   - our data file is OUT OF DATE when the Action has not refreshed recently.
+ *
+ * Navigation is Overview, then one tab per team, then a team's repositories.
+ * Teams come from the data file (config/repos.yaml), never from this file.
+ * Every view lives in the URL hash (#overview, #team/<id>, #repo/<id>), so each
+ * has a shareable link and the page works under any sub-path.
  */
 
 const DATA_URL = "data/dashboard.json";
@@ -18,9 +23,14 @@ const MAX_POLL_MINUTES = 60;
 
 const state = {
   doc: null,
-  activeTab: "overview",
-  filters: {},          // repoId -> { q, statuses:Set, flags:Set }
-  sort: {},             // repoId -> { key, dir }
+  teams: [],              // [{ id, name, description, error, repos: [...] }]
+  repoById: new Map(),
+  teamOfRepo: new Map(),  // repoId -> team
+  route: { view: "overview" },
+  filters: {},            // repoId -> { q, statuses:Set, flags:Set }
+  sort: {},               // repoId -> { key, dir }
+  teamView: {},           // teamId -> { q, onlyOpen, sort: { key, dir } }
+  overviewShowAll: false,
   timer: null,
   clockTimer: null,
 };
@@ -103,6 +113,18 @@ const median = (xs) => {
 const allMps = (doc) => doc.repositories.flatMap((r) =>
   r.merge_requests.map((m) => ({ ...m, _repo: r.name || r.id, _repoId: r.id })));
 
+const openCount = (repos) => repos.reduce((n, r) => n + r.merge_requests.length, 0);
+
+// Filter text: case-insensitive, with - _ / . + ~ : read as spaces,
+// so "archive tools" finds ubuntu-archive-tools.
+const norm = (s) => String(s ?? "").toLowerCase()
+  .replace(/[-_/.+~:]+/g, " ").replace(/\s+/g, " ").trim();
+const matchesAll = (hay, q) => !q || q.split(" ").every((t) => hay.includes(t));
+
+// "https://host/~a/b/+git/c" -> "~a/b/+git/c"
+const urlPath = (u) => String(u || "").replace(/^[a-z][a-z0-9+.-]*:\/\/[^/]+\/?/i, "");
+const urlHost = (u) => { try { return new URL(u).host; } catch { return ""; } };
+
 function badge(role, glyph, label, title) {
   return `<span class="badge badge--${role}"${title ? ` title="${esc(title)}"` : ""}>` +
     `<span class="badge__glyph" aria-hidden="true">${glyph}</span>${esc(label)}</span>`;
@@ -126,6 +148,117 @@ function flagBadges(mp, staleDays) {
   return out.join("");
 }
 
+const stat = (label, value, note, mod) => `
+    <div class="stat ${mod ? `stat--${mod}` : ""}">
+      <div class="stat__label">${label}</div>
+      <div class="stat__value num">${value}</div>
+      <div class="stat__note">${note}</div>
+    </div>`;
+
+const chip = (key, label, count, pressed) =>
+  `<button type="button" class="chip" data-chip="${esc(key)}" aria-pressed="${pressed}">
+     ${esc(label)}<span class="chip__count">${count}</span></button>`;
+
+function sortHead(sort, key, label, extra = "") {
+  const active = sort.key === key;
+  const arrow = active ? (sort.dir === "asc" ? "▲" : "▼") : "⇅";
+  return `<th scope="col" role="button" tabindex="0" data-sort="${key}" ${extra}
+     ${active ? `aria-sort="${sort.dir === "asc" ? "ascending" : "descending"}"` : ""}>
+     ${esc(label)}<span class="sort-arrow" aria-hidden="true">${arrow}</span></th>`;
+}
+
+function wireSort(panel, sort, descFirst, rerender) {
+  panel.querySelectorAll("[data-sort]").forEach((th) => {
+    const go = () => {
+      const key = th.dataset.sort;
+      // Text sorts read best ascending first; numeric ones descending first.
+      if (sort.key === key) sort.dir = sort.dir === "asc" ? "desc" : "asc";
+      else { sort.key = key; sort.dir = descFirst.has(key) ? "desc" : "asc"; }
+      rerender();
+    };
+    th.addEventListener("click", go);
+    th.addEventListener("keydown", (e) => {
+      if (e.key === "Enter" || e.key === " ") { e.preventDefault(); go(); }
+    });
+  });
+}
+
+// Re-rendering replaces the input, so put the caret back where it was.
+function wireFilterInput(panel, set, rerender) {
+  const input = panel.querySelector('[data-filter="q"]');
+  if (!input) return;
+  input.addEventListener("input", (e) => {
+    set(e.target.value);
+    const pos = e.target.selectionStart;
+    rerender();
+    const next = panel.querySelector('[data-filter="q"]');
+    next.focus();
+    next.setSelectionRange(pos, pos);
+  });
+}
+
+/* ---------------------------------------------------------------- teams -- */
+
+// Teams in config order, each holding its repositories. Data written before
+// teams existed (schema v1) becomes one implicit team.
+function teamsOf(doc) {
+  const declared = doc.teams?.length ? doc.teams : [{ id: "repositories", name: "Repositories" }];
+  const teams = declared.map((t) => ({ ...t, name: t.name || t.id, repos: [] }));
+  const byId = new Map(teams.map((t) => [t.id, t]));
+  for (const r of doc.repositories) {
+    let team = byId.get(r.team) ?? (doc.teams?.length ? null : teams[0]);
+    if (!team) {
+      // A repository naming an unknown team stays visible rather than vanish.
+      team = byId.get("other") ?? { id: "other", name: "Other", repos: [] };
+      if (!byId.has("other")) { teams.push(team); byId.set("other", team); }
+    }
+    team.repos.push(r);
+  }
+  return teams;
+}
+
+/* -------------------------------------------------------------- routing -- */
+
+const routeHash = (r) => r.view === "overview" ? "#overview"
+  : `#${r.view}/${encodeURIComponent(r.id)}`;
+
+function parseRoute(hash) {
+  let h = hash.replace(/^#/, "");
+  try { h = decodeURIComponent(h); } catch { /* keep it raw */ }
+  if (!h || h === "overview") return { view: "overview" };
+  const slash = h.indexOf("/");
+  const kind = h.slice(0, Math.max(slash, 0));
+  const id = h.slice(slash + 1);
+  if (slash > 0 && (kind === "team" || kind === "repo") && id) return { view: kind, id };
+  return { view: "legacy", id: h };  // #<repoId> links from before teams existed
+}
+
+// Unknown ids fall back to the Overview, as unknown tabs always have.
+function resolveRoute(r) {
+  if ((r.view === "repo" || r.view === "legacy") && state.repoById.has(r.id)) {
+    return { view: "repo", id: r.id };
+  }
+  if ((r.view === "team" || r.view === "legacy") && state.teams.some((t) => t.id === r.id)) {
+    return { view: "team", id: r.id };
+  }
+  return { view: "overview" };
+}
+
+const activeTabId = () => state.route.view === "team" ? state.route.id
+  : state.route.view === "repo" ? state.teamOfRepo.get(state.route.id)?.id
+  : "overview";
+
+function applyRoute({ scroll = false } = {}) {
+  state.route = resolveRoute(parseRoute(location.hash));
+  const canonical = routeHash(state.route);
+  if (location.hash !== canonical) {
+    try { history.replaceState(null, "", canonical); } catch { /* file:// */ }
+  }
+  renderTabs();
+  renderView();
+  if (scroll) window.scrollTo(0, 0);
+}
+
 /* ------------------------------------------------------------- rendering -- */
 
 function renderBanners(doc) {
@@ -133,14 +266,32 @@ function renderBanners(doc) {
   const out = [];
 
   const failed = doc.repositories.filter((r) => r.status === "error");
-  for (const r of failed) {
+  if (failed.length > 3) {
+    // One outage must not stack a banner per repository.
     out.push(`<div class="banner banner--critical">
       <span class="banner__icon" aria-hidden="true">✕</span>
-      <div><strong>${esc(r.name || r.id)} could not be refreshed.</strong>
-      ${esc(r.error || "Unknown error")}.
-      Showing ${plural(r.merge_requests.length, "cached merge proposal")} from
-      ${esc(relative(r.last_successful_refresh))}
-      (${esc(absolute(r.last_successful_refresh))}).</div></div>`);
+      <div><strong>${plural(failed.length, "repository", "repositories")} could not be refreshed.</strong>
+      Their cached merge proposals are shown instead.
+      <details class="banner__details"><summary>Show which</summary><ul>${failed.map((r) => `
+        <li><a href="${esc(routeHash({ view: "repo", id: r.id }))}">${esc(r.name || r.id)}</a>:
+        ${esc(r.error || "Unknown error")}; data from ${esc(relative(r.last_successful_refresh))}</li>`).join("")}
+      </ul></details></div></div>`);
+  } else {
+    for (const r of failed) {
+      out.push(`<div class="banner banner--critical">
+        <span class="banner__icon" aria-hidden="true">✕</span>
+        <div><strong>${esc(r.name || r.id)} could not be refreshed.</strong>
+        ${esc(r.error || "Unknown error")}.
+        Showing ${plural(r.merge_requests.length, "cached merge proposal")} from
+        ${esc(relative(r.last_successful_refresh))}
+        (${esc(absolute(r.last_successful_refresh))}).</div></div>`);
+    }
+  }
+
+  for (const t of state.teams.filter((x) => x.error)) {
+    out.push(`<div class="banner banner--warning">
+      <span class="banner__icon" aria-hidden="true">⚠</span>
+      <div><strong>${esc(t.name)}: repository list not refreshed.</strong> ${esc(t.error)}</div></div>`);
   }
 
   // Our cached file being old is a different problem from an MP being stale.
@@ -156,38 +307,93 @@ function renderBanners(doc) {
   el.innerHTML = out.join("");
 }
 
-function renderTabs(doc) {
+function renderTabs() {
   const tabs = document.getElementById("tabs");
-  const items = [{ id: "overview", label: "Overview", count: null, error: false }];
-  for (const r of doc.repositories) {
+  const current = activeTabId();
+  const items = [{ id: "overview", href: "#overview", label: "Overview", count: null, error: false }];
+  for (const t of state.teams) {
     items.push({
-      id: r.id,
-      label: r.name || r.id,
-      count: r.merge_requests.length,
-      error: r.status === "error",
+      id: t.id,
+      href: routeHash({ view: "team", id: t.id }),
+      label: t.name,
+      count: openCount(t.repos),
+      error: t.repos.some((r) => r.status === "error"),
     });
   }
   tabs.innerHTML = items.map((t) => `
-    <button type="button" class="tab" role="tab" data-tab="${esc(t.id)}"
-            id="tab-${esc(t.id)}" aria-controls="panel-${esc(t.id)}"
-            aria-selected="${t.id === state.activeTab}">
+    <a class="tab" href="${esc(t.href)}" id="tab-${esc(t.id)}"
+       ${t.id === current ? `aria-current="page"` : ""}>
       ${esc(t.label)}
       ${t.count !== null ? `<span class="tab__count">${t.count}</span>` : ""}
       ${t.error ? `<span class="tab__warn" aria-label="refresh failed">✕</span>` : ""}
-    </button>`).join("");
+    </a>`).join("");
 
-  tabs.querySelectorAll(".tab").forEach((b) =>
-    b.addEventListener("click", () => selectTab(b.dataset.tab)));
+  // On narrow screens the strip scrolls sideways; keep the current tab in view.
+  const cur = tabs.querySelector("[aria-current]");
+  if (cur) {
+    const strip = tabs.getBoundingClientRect(), tab = cur.getBoundingClientRect();
+    if (tab.right > strip.right || tab.left < strip.left) tabs.scrollLeft += tab.left - strip.left - 16;
+  }
 }
 
-function selectTab(id) {
-  state.activeTab = id;
-  document.querySelectorAll(".tab").forEach((b) =>
-    b.setAttribute("aria-selected", String(b.dataset.tab === id)));
-  document.querySelectorAll(".panel").forEach((p) => {
-    p.hidden = p.dataset.panel !== id;
-  });
-  try { history.replaceState(null, "", `#${id}`); } catch { /* file:// */ }
+function renderView() {
+  const doc = state.doc;
+  const { view, id } = state.route;
+  const main = document.getElementById("panels");
+  main.innerHTML = `<section class="panel" id="view"></section>`;
+  const panel = main.firstElementChild;
+
+  let label = "Overview";
+  if (view === "team") {
+    const team = state.teams.find((t) => t.id === id);
+    label = team.name;
+    panel.innerHTML = teamPanel(team, doc);
+    wireTeamPanel(panel, team, doc);
+  } else if (view === "repo") {
+    const repo = state.repoById.get(id);
+    label = repo.name || repo.id;
+    repoView(panel, repo, doc);
+  } else {
+    panel.innerHTML = overviewPanel(doc);
+    panel.querySelector("[data-toggle-all]")?.addEventListener("click", () => {
+      state.overviewShowAll = !state.overviewShowAll;
+      renderView();
+    });
+  }
+  panel.setAttribute("aria-label", label);
+  document.title = view === "overview" ? "Ubuntu MP Review Dashboard"
+    : `${label} · Ubuntu MP Review Dashboard`;
+}
+
+/* -- repository rows, shared by the Overview and team views -- */
+
+function staleCell(stale, total) {
+  const pct = total ? Math.round((stale / total) * 100) : 0;
+  return `${stale}
+        <div class="meter" role="img" aria-label="${pct}% stale">
+          <div class="meter__fill ${pct >= 50 ? "meter__fill--critical" : ""}" style="width:${pct}%"></div>
+        </div>`;
+}
+
+const teamPill = (team) => team
+  ? `<a class="team-pill" href="${esc(routeHash({ view: "team", id: team.id }))}">${esc(team.name)}</a>` : "";
+
+function repoRow(r, { showTeam = false } = {}) {
+  const m = r.merge_requests;
+  const host = urlHost(r.url);
+  return `<tr>
+      <td><a class="mp-title" href="${esc(routeHash({ view: "repo", id: r.id }))}">${esc(r.name || r.id)}</a>
+          <div class="mp-meta">${esc(r.provider)}${host ? ` · <a href="${esc(r.url)}" rel="noopener"
+             title="Open ${esc(r.name || r.id)} on ${esc(host)}">${esc(host)}&nbsp;↗</a>` : ""}</div></td>
+      ${showTeam ? `<td>${teamPill(state.teamOfRepo.get(r.id))}</td>` : ""}
+      <td class="num">${m.length}</td>
+      <td class="num">${staleCell(m.filter((x) => x.is_stale).length, m.length)}</td>
+      <td class="num">${m.filter((x) => x.attention?.length).length}</td>
+      <td>${r.status === "error"
+            ? badge("critical", "✕", "Refresh failed", r.error || "")
+            : badge("good", "✓", "OK")}
+          <div class="mp-meta mp-meta--sans">${esc(relative(r.last_successful_refresh))}</div></td>
+    </tr>`;
 }
 
 /* -- overview -- */
@@ -203,34 +409,31 @@ function overviewPanel(doc) {
   const attnCounts = {};
   for (const m of mps) for (const c of m.attention || []) attnCounts[c] = (attnCounts[c] || 0) + 1;
 
-  const stat = (label, value, note, mod) => `
-    <div class="stat ${mod ? `stat--${mod}` : ""}">
-      <div class="stat__label">${label}</div>
-      <div class="stat__value num">${value}</div>
-      <div class="stat__note">${note}</div>
-    </div>`;
-
-  const repoRows = doc.repositories.map((r) => {
-    const m = r.merge_requests;
-    const s = m.filter((x) => x.is_stale).length;
-    const a = m.filter((x) => x.attention?.length).length;
-    const pct = m.length ? Math.round((s / m.length) * 100) : 0;
+  const teamRows = state.teams.map((t) => {
+    const m = t.repos.flatMap((r) => r.merge_requests);
+    const failed = t.repos.filter((r) => r.status === "error").length;
+    const active = t.repos.filter((r) => r.merge_requests.length).length;
+    const status = !t.repos.length ? badge("neutral", "•", "No repositories")
+      : failed ? badge("critical", "✕", `${failed} failed`, "Repositories whose last refresh failed")
+      : t.error ? badge("warning", "⚠", "List not refreshed", t.error)
+      : badge("good", "✓", "OK");
     return `<tr>
-      <td><a class="mp-title" href="${esc(r.url)}" rel="noopener">${esc(r.name || r.id)}</a>
-          <div class="mp-meta">${esc(r.provider)}</div></td>
+      <td><a class="mp-title" href="${esc(routeHash({ view: "team", id: t.id }))}">${esc(t.name)}</a>
+          ${t.description ? `<div class="mp-meta mp-meta--sans">${esc(t.description)}</div>` : ""}</td>
+      <td class="num">${t.repos.length}
+          <div class="mp-meta mp-meta--sans">${active} with open MPs</div></td>
       <td class="num">${m.length}</td>
-      <td class="num">${s}
-        <div class="meter" role="img" aria-label="${pct}% stale">
-          <div class="meter__fill ${pct >= 50 ? "meter__fill--critical" : ""}" style="width:${pct}%"></div>
-        </div>
-      </td>
-      <td class="num">${a}</td>
-      <td>${r.status === "error"
-            ? badge("critical", "✕", "Refresh failed", r.error || "")
-            : badge("good", "✓", "OK")}
-          <div class="mp-meta mp-meta--sans">${esc(relative(r.last_successful_refresh))}</div></td>
+      <td class="num">${staleCell(m.filter((x) => x.is_stale).length, m.length)}</td>
+      <td class="num">${m.filter((x) => x.attention?.length).length}</td>
+      <td>${status}</td>
     </tr>`;
   }).join("");
+
+  // Repositories with nothing open stay one click away, so the table scales.
+  const quiet = doc.repositories.filter((r) => !r.merge_requests.length && r.status !== "error");
+  const listed = state.overviewShowAll ? doc.repositories
+    : doc.repositories.filter((r) => !quiet.includes(r));
+  const repoRows = listed.map((r) => repoRow(r, { showTeam: true })).join("");
 
   const attnRows = Object.entries(ATTENTION)
     .map(([code, a]) => ({ code, a, n: attnCounts[code] || 0 }))
@@ -244,7 +447,8 @@ function overviewPanel(doc) {
   return `
     <div class="hero">
       <span class="hero__value">${mps.length}</span>
-      <span class="hero__label">open merge proposals<br>across ${plural(doc.repositories.length, "repository", "repositories")}</span>
+      <span class="hero__label">open merge proposals<br>across ${plural(doc.repositories.length, "repository", "repositories")}
+        in ${plural(state.teams.length, "team")}</span>
       <span class="hero__sub">
         Last refresh ${esc(relative(doc.generated_at))}<br>${esc(absolute(doc.generated_at))}
       </span>
@@ -268,16 +472,31 @@ function overviewPanel(doc) {
       ${stat("Median time idle", days(median(mps.map((m) => m.inactive_days))), "Since last comment or review")}
     </div>
 
+    <h2 class="section-title">By team</h2>
+    <div class="card table-wrap">
+      <table>
+        <thead><tr>
+          <th scope="col">Team</th><th scope="col">Repositories</th><th scope="col">Open</th>
+          <th scope="col">Stale</th><th scope="col">Attention</th><th scope="col">Status</th>
+        </tr></thead>
+        <tbody>${teamRows}</tbody>
+      </table>
+    </div>
+
     <h2 class="section-title">By repository</h2>
     <div class="card table-wrap">
       <table>
         <thead><tr>
-          <th scope="col">Repository</th><th scope="col">Open</th>
+          <th scope="col">Repository</th><th scope="col">Team</th><th scope="col">Open</th>
           <th scope="col">Stale</th><th scope="col">Attention</th><th scope="col">Last refresh</th>
         </tr></thead>
-        <tbody>${repoRows}</tbody>
+        <tbody>${repoRows || `<tr><td colspan="6" class="empty">No repository has open merge proposals.</td></tr>`}</tbody>
       </table>
     </div>
+    ${quiet.length ? `<button type="button" class="link-btn" data-toggle-all aria-expanded="${state.overviewShowAll}">
+      ${state.overviewShowAll ? "Show only repositories with open merge proposals"
+        : `Show ${plural(quiet.length, "more repository", "more repositories")} with no open merge proposals`}
+    </button>` : ""}
 
     <h2 class="section-title">Why MPs need attention</h2>
     <div class="card table-wrap">
@@ -286,6 +505,103 @@ function overviewPanel(doc) {
         <tbody>${attnRows}</tbody>
       </table>
     </div>`;
+}
+
+/* -- per team -- */
+
+const TEAM_SORTS = {
+  name: (r) => (r.name || r.id).toLowerCase(),
+  open: (r) => r.merge_requests.length,
+  stale: (r) => r.merge_requests.filter((m) => m.is_stale).length,
+  attention: (r) => r.merge_requests.filter((m) => m.attention?.length).length,
+  refreshed: (r) => new Date(r.last_successful_refresh || 0).getTime() || 0,
+};
+
+function teamPanel(team, doc) {
+  const head = `
+    <div class="team-head">
+      <h2 class="team-head__title">${esc(team.name)}</h2>
+      ${team.description ? `<p class="team-head__desc">${esc(team.description)}</p>` : ""}
+    </div>`;
+
+  if (!team.repos.length) {
+    return `${head}
+      <div class="card empty-state">
+        <strong>No repositories yet.</strong>
+        Add repositories with <code>team: ${esc(team.id)}</code> in <code>config/repos.yaml</code>,
+        or give this team a <code>discover</code> block.
+      </div>`;
+  }
+
+  const v = state.teamView[team.id];
+  const staleDays = doc.config.stale_after_days;
+  const mps = team.repos.flatMap((r) => r.merge_requests.map((m) => ({ ...m, _repo: r.name || r.id })));
+  const stale = mps.filter((m) => m.is_stale).length;
+  const attention = mps.filter((m) => m.attention?.length).length;
+  const active = team.repos.filter((r) => r.merge_requests.length).length;
+  const oldest = mps.reduce((a, b) => (!a || b.age_days > a.age_days ? b : a), null);
+
+  const q = norm(v.q);
+  const get = TEAM_SORTS[v.sort.key] || TEAM_SORTS.open;
+  const rows = team.repos
+    .filter((r) => !v.onlyOpen || r.merge_requests.length)
+    .filter((r) => matchesAll(norm(`${r.name} ${r.id} ${urlPath(r.url)}`), q))
+    .sort((a, b) => {
+      const [x, y] = [get(a), get(b)];
+      const cmp = typeof x === "number" ? x - y : String(x).localeCompare(String(y));
+      return (v.sort.dir === "asc" ? cmp : -cmp) || (a.name || a.id).localeCompare(b.name || b.id);
+    });
+
+  return `${head}
+    <div class="stats" style="margin-bottom:16px">
+      ${stat("Open", mps.length, `Across ${plural(team.repos.length, "repository", "repositories")}`)}
+      ${stat(`<span class="badge__glyph" aria-hidden="true">◷</span> Stale`,
+             stale, `No activity for ${staleDays}+ days`, stale ? "critical" : null)}
+      ${stat(`<span class="badge__glyph" aria-hidden="true">⚑</span> Needs attention`,
+             attention, `${mps.length ? Math.round((attention / mps.length) * 100) : 0}% of open MPs`,
+             attention ? "warning" : null)}
+      ${stat("Repositories", team.repos.length, `${active} with open MPs`)}
+      ${stat("Oldest open MP",
+             oldest ? days(oldest.age_days) : "—",
+             oldest ? `<a href="${esc(oldest.url)}" rel="noopener">${esc(oldest._repo)} #${esc(oldest.id)}</a>` : "")}
+      ${stat("Median time idle", days(median(mps.map((m) => m.inactive_days))), "Since last comment or review")}
+    </div>
+
+    <div class="filters">
+      <input type="search" data-filter="q" value="${esc(v.q)}"
+             placeholder="Filter repositories…"
+             aria-label="Filter repositories in ${esc(team.name)}">
+      <div class="chips">${chip("open", "With open MPs", active, v.onlyOpen)}</div>
+      <span class="filter-summary">${rows.length} of ${plural(team.repos.length, "repository", "repositories")} shown</span>
+    </div>
+
+    <div class="card table-wrap">
+      <table>
+        <thead><tr>
+          ${sortHead(v.sort, "name", "Repository")}
+          ${sortHead(v.sort, "open", "Open")}
+          ${sortHead(v.sort, "stale", "Stale")}
+          ${sortHead(v.sort, "attention", "Attention")}
+          ${sortHead(v.sort, "refreshed", "Last refresh")}
+        </tr></thead>
+        <tbody>${rows.map((r) => repoRow(r)).join("")
+          || `<tr><td colspan="5" class="empty">No repositories match these filters.</td></tr>`}</tbody>
+      </table>
+    </div>`;
+}
+
+function wireTeamPanel(panel, team, doc) {
+  const v = state.teamView[team.id];
+  const rerender = () => {
+    panel.innerHTML = teamPanel(team, doc);
+    wireTeamPanel(panel, team, doc);
+  };
+  wireFilterInput(panel, (value) => { v.q = value; }, rerender);
+  panel.querySelector('[data-chip="open"]')?.addEventListener("click", () => {
+    v.onlyOpen = !v.onlyOpen;
+    rerender();
+  });
+  wireSort(panel, v.sort, new Set(["open", "stale", "attention", "refreshed"]), rerender);
 }
 
 /* -- per repository -- */
@@ -297,6 +613,21 @@ const SORTS = {
   age_days: (m) => m.age_days,
   inactive_days: (m) => m.inactive_days,
 };
+
+
+function repoView(panel, repo, doc) {
+  const team = state.teamOfRepo.get(repo.id);
+  panel.innerHTML = `
+    <nav class="crumbs" aria-label="Breadcrumb">
+      ${team ? `<a href="${esc(routeHash({ view: "team", id: team.id }))}">${esc(team.name)}</a>
+        <span class="crumbs__sep" aria-hidden="true">›</span>` : ""}
+      <span aria-current="page">${esc(repo.name || repo.id)}</span>
+    </nav>
+    <div data-repo-body></div>`;
+  const body = panel.querySelector("[data-repo-body]");
+  body.innerHTML = repoPanel(repo, doc);
+  wireRepoPanel(body, repo, doc);
+}
 
 function visibleMps(repo, doc) {
   const f = state.filters[repo.id];
@@ -329,13 +660,7 @@ function repoPanel(repo, doc) {
   const statuses = [...new Set(all.map((m) => m.status))].sort();
   const f = state.filters[repo.id];
 
-  const head = (key, label, extra = "") => {
-    const active = sort.key === key;
-    const arrow = active ? (sort.dir === "asc" ? "▲" : "▼") : "⇅";
-    return `<th scope="col" role="button" tabindex="0" data-sort="${key}" ${extra}
-       ${active ? `aria-sort="${sort.dir === "asc" ? "ascending" : "descending"}"` : ""}>
-       ${esc(label)}<span class="sort-arrow" aria-hidden="true">${arrow}</span></th>`;
-  };
+  const head = (key, label, extra = "") => sortHead(sort, key, label, extra);
 
   const body = rows.length ? rows.map((m) => `
     <tr>
@@ -357,10 +682,6 @@ function repoPanel(repo, doc) {
       <td><div class="badge-row">${flagBadges(m, staleDays) || `<span class="mp-meta">—</span>`}</div></td>
     </tr>`).join("")
     : `<tr><td colspan="6" class="empty">No merge proposals match these filters.</td></tr>`;
-
-  const chip = (key, label, count, pressed) =>
-    `<button type="button" class="chip" data-chip="${esc(key)}" aria-pressed="${pressed}">
-       ${esc(label)}<span class="chip__count">${count}</span></button>`;
 
   return `
     ${repo.status === "error" ? `<div class="banner banner--critical" style="margin-bottom:14px">
@@ -419,17 +740,7 @@ function wireRepoPanel(panel, repo, doc) {
     wireRepoPanel(panel, repo, doc);
   };
 
-  const input = panel.querySelector('[data-filter="q"]');
-  if (input) {
-    input.addEventListener("input", (e) => {
-      state.filters[repo.id].q = e.target.value;
-      const pos = e.target.selectionStart;
-      rerender();
-      const next = panel.querySelector('[data-filter="q"]');
-      next.focus();
-      next.setSelectionRange(pos, pos);
-    });
-  }
+  wireFilterInput(panel, (value) => { state.filters[repo.id].q = value; }, rerender);
 
   panel.querySelectorAll("[data-chip]").forEach((c) => c.addEventListener("click", () => {
     const key = c.dataset.chip;
@@ -443,51 +754,28 @@ function wireRepoPanel(panel, repo, doc) {
     rerender();
   }));
 
-  panel.querySelectorAll("[data-sort]").forEach((th) => {
-    const go = () => {
-      const key = th.dataset.sort;
-      const s = state.sort[repo.id];
-      // Text sorts read best ascending first; numeric ones descending first.
-      if (s.key === key) s.dir = s.dir === "asc" ? "desc" : "asc";
-      else { s.key = key; s.dir = (key === "age_days" || key === "inactive_days") ? "desc" : "asc"; }
-      rerender();
-    };
-    th.addEventListener("click", go);
-    th.addEventListener("keydown", (e) => {
-      if (e.key === "Enter" || e.key === " ") { e.preventDefault(); go(); }
-    });
-  });
+  wireSort(panel, state.sort[repo.id], new Set(["age_days", "inactive_days"]), rerender);
 }
+
+/* ---------------------------------------------------------------- render -- */
 
 function render(doc) {
   state.doc = doc;
   document.getElementById("loading")?.remove();
 
+  state.teams = teamsOf(doc);
+  state.repoById = new Map(doc.repositories.map((r) => [r.id, r]));
+  state.teamOfRepo = new Map(state.teams.flatMap((t) => t.repos.map((r) => [r.id, t])));
   for (const r of doc.repositories) {
     state.filters[r.id] ??= { q: "", statuses: new Set(), flags: new Set() };
     state.sort[r.id] ??= { key: "inactive_days", dir: "desc" };
   }
-  if (state.activeTab !== "overview" && !doc.repositories.some((r) => r.id === state.activeTab)) {
-    state.activeTab = "overview";
+  for (const t of state.teams) {
+    state.teamView[t.id] ??= { q: "", onlyOpen: false, sort: { key: "open", dir: "desc" } };
   }
 
   renderBanners(doc);
-  renderTabs(doc);
-
-  const panels = document.getElementById("panels");
-  panels.innerHTML = `<section class="panel" role="tabpanel" data-panel="overview"
-      id="panel-overview" aria-labelledby="tab-overview"></section>` +
-    doc.repositories.map((r) => `<section class="panel" role="tabpanel" data-panel="${esc(r.id)}"
-      id="panel-${esc(r.id)}" aria-labelledby="tab-${esc(r.id)}" hidden></section>`).join("");
-
-  panels.querySelector('[data-panel="overview"]').innerHTML = overviewPanel(doc);
-  for (const r of doc.repositories) {
-    const panel = panels.querySelector(`[data-panel="${CSS.escape(r.id)}"]`);
-    panel.innerHTML = repoPanel(r, doc);
-    wireRepoPanel(panel, r, doc);
-  }
-
-  selectTab(state.activeTab);
+  applyRoute();
   updateClocks();
 
   document.getElementById("footer-meta").textContent =
@@ -546,11 +834,9 @@ function initTheme() {
 
 /* ------------------------------------------------------------------- boot -- */
 
-const hash = location.hash.slice(1);
-if (hash) state.activeTab = hash;
-
 initTheme();
 document.getElementById("refresh-btn").addEventListener("click", () => load({ manual: true }));
+window.addEventListener("hashchange", () => { if (state.doc) applyRoute({ scroll: true }); });
 await load();
 scheduleRefresh();
 state.clockTimer = setInterval(updateClocks, 60000);
