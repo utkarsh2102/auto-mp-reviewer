@@ -28,6 +28,12 @@ api.launchpad.net during design. Notes on the non-obvious choices:
 * Enrichment runs concurrently and every enrichment call is individually
   fault-isolated: a lookup that fails costs that one field, never the whole
   merge proposal.
+
+* Discovery: ``{team}?ws.op=getBugSubscriberPackages`` returns exactly the
+  packages on the team's +packagebugs page. Every Ubuntu source package's
+  default git repository (lp:ubuntu/+source/<pkg>) is the git-ubuntu import
+  at ~git-ubuntu-import/ubuntu/+source/<pkg>/+git/<pkg>, and Ubuntu MPs target
+  it -- verified for all 220 ~foundations-bugs packages, none missing.
 """
 
 from __future__ import annotations
@@ -68,7 +74,14 @@ USER_AGENT = "ubuntu-mp-review-dashboard/1.0 (+https://github.com/)"
 # so that we abandon a stalled request and retry instead of blocking on it.
 REQUEST_TIMEOUT = (10, 25)
 MAX_ATTEMPTS = 4
+# Listing a team's bug subscriptions is slow on a cold cache (measured 27s,
+# then 6s, then 0.2s) and Launchpad answers 503 when its own request timeout
+# trips, so discovery gets more attempts; each one warms the cache further.
+DISCOVERY_ATTEMPTS = 8
 RETRY_STATUS = frozenset({429, 500, 502, 503, 504})
+
+# Owner of the git-ubuntu import repositories that source-package MPs target.
+GIT_UBUNTU_OWNER = "~git-ubuntu-import"
 
 # Launchpad BranchMergeProposalStatus -> our shared vocabulary.
 STATUS_MAP = {
@@ -110,20 +123,27 @@ class LaunchpadGitProvider(Provider):
 
     @staticmethod
     def _path(repo_cfg: dict) -> str:
-        """Build '~owner/project/+git/repository' from config."""
-        missing = [k for k in ("namespace", "project", "repository") if not repo_cfg.get(k)]
+        """Build '~owner/project/+git/repository' from config, or
+        '~owner/distribution/+source/package/+git/repository' when the
+        repository is attached to a distribution source package."""
+        target = ("source_package",) if repo_cfg.get("source_package") else ("project",)
+        missing = [k for k in ("namespace", *target, "repository") if not repo_cfg.get(k)]
         if missing:
             raise ProviderError(f"config is missing {', '.join(missing)}")
         ns = repo_cfg["namespace"]
         if not ns.startswith("~"):
             ns = "~" + ns
-        parts = [quote(p, safe="~+") for p in (ns, repo_cfg["project"], "+git", repo_cfg["repository"])]
+        if repo_cfg.get("source_package"):
+            target = (repo_cfg.get("distribution") or "ubuntu", "+source", repo_cfg["source_package"])
+        else:
+            target = (repo_cfg["project"],)
+        parts = [quote(p, safe="~+") for p in (ns, *target, "+git", repo_cfg["repository"])]
         return "/".join(parts)
 
     def repo_url(self, repo_cfg: dict) -> str:
         return repo_cfg.get("url") or f"{WEB_ROOT}/{self._path(repo_cfg)}"
 
-    def _get(self, url: str, params=None) -> dict:
+    def _get(self, url: str, params=None, attempts: int = MAX_ATTEMPTS) -> dict:
         """GET with a short timeout and retries.
 
         A stalled Launchpad request is abandoned rather than waited out: the
@@ -131,7 +151,7 @@ class LaunchpadGitProvider(Provider):
         are raised at once, since retrying them is pointless.
         """
         last: Exception | None = None
-        for attempt in range(1, MAX_ATTEMPTS + 1):
+        for attempt in range(1, attempts + 1):
             try:
                 r = self.session.get(url, params=params, timeout=REQUEST_TIMEOUT)
                 if r.status_code in RETRY_STATUS:
@@ -144,9 +164,9 @@ class LaunchpadGitProvider(Provider):
             except requests.HTTPError:
                 raise  # 404 and friends: no point retrying
 
-            if attempt < MAX_ATTEMPTS:
+            if attempt < attempts:
                 delay = min(2 ** (attempt - 1), 4) + random.uniform(0, 0.4)
-                log.debug("retry %d/%d after %s: %s", attempt, MAX_ATTEMPTS, type(last).__name__, url)
+                log.debug("retry %d/%d after %s: %s", attempt, attempts, type(last).__name__, url)
                 time.sleep(delay)
 
         raise last if last else RuntimeError(f"GET failed: {url}")
@@ -199,6 +219,61 @@ class LaunchpadGitProvider(Provider):
             url, params = page.get("next_collection_link"), None
             seen_pages += 1
         return entries
+
+    # -- discovery -------------------------------------------------------
+
+    def _collection(self, url: str, params, what: str, attempts: int = MAX_ATTEMPTS) -> list[dict]:
+        """Every entry of a collection, or ProviderError. Unlike the MP listing
+        above, a failed or short page is never tolerated: a truncated list would
+        silently drop packages from the dashboard."""
+        entries: list[dict] = []
+        total = None
+        for _ in range(50):  # hard stop against a pagination loop
+            try:
+                page = self._get(url, params, attempts=attempts)
+            except Exception as exc:  # noqa: BLE001
+                raise ProviderError(f"listing {what} failed: {exc}") from exc
+            total = page.get("total_size", total)
+            entries.extend(page.get("entries", []))
+            url, params = page.get("next_collection_link"), None
+            if not url:
+                break
+        if url or (isinstance(total, int) and len(entries) != total):
+            raise ProviderError(f"{what} came back incomplete ({len(entries)} of {total})")
+        return entries
+
+    @staticmethod
+    def _team(spec: dict, key: str) -> str:
+        team = spec.get(key)
+        if not team:
+            raise ProviderError(f"needs a {key} team")
+        return team if team.startswith("~") else "~" + team
+
+    def discover(self, spec: dict) -> list[dict]:
+        """Every source package a team is bug-subscribed to, as git-ubuntu repos."""
+        team = self._team(spec, "bug_subscriber")
+        distribution = spec.get("distribution") or "ubuntu"
+        # Launchpad's default batch (75): smaller pages stay under its timeout.
+        entries = self._collection(
+            f"{API_ROOT}/{quote(team, safe='~')}", {"ws.op": "getBugSubscriberPackages"},
+            f"{team} bug subscriptions", attempts=DISCOVERY_ATTEMPTS,
+        )
+        names = {
+            e["name"]
+            for e in entries
+            if e.get("name")
+            and (e.get("distribution_link") or "").rstrip("/").rsplit("/", 1)[-1] == distribution
+        }
+        return [
+            {
+                "name": name,
+                "namespace": GIT_UBUNTU_OWNER,
+                "distribution": distribution,
+                "source_package": name,
+                "repository": name,
+            }
+            for name in sorted(names)
+        ]
 
     # -- enrichment ------------------------------------------------------
 

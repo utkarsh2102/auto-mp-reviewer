@@ -245,6 +245,15 @@ class Provider(ABC):
     def repo_url(self, repo_cfg: dict) -> str:
         """Human-facing URL for the repository itself."""
 
+    def discover(self, spec: dict) -> list[dict]:
+        """Repository configs for a team's `discover` block in config/repos.yaml.
+
+        Each returned dict carries at least `name` plus whatever fetch() needs;
+        the caller assigns the id and team. Raise ProviderError rather than
+        return a partial list, so a truncated list never silently drops repos.
+        """
+        raise ProviderError(f"provider {self.name!r} cannot discover repositories")
+
 
 def slugify(value: str) -> str:
     """Stable id for use in DOM ids and anchors."""
