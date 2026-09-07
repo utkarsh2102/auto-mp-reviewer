@@ -12,10 +12,11 @@ defaults:
   # needing attention.
   silent_after_days: 7
 
-  # How often the browser re-reads the published data file, and how often the
-  # GitHub Action is scheduled. Changing this value also means updating the
-  # cron expression in .github/workflows/refresh.yml.
-  refresh_interval_minutes: 120
+  # How often the GitHub Action is scheduled to fetch fresh data. The UI uses
+  # it to warn when the data file is out of date (older than twice this), and
+  # re-reads the published file at least hourly. Changing this value also
+  # means updating the cron expression in .github/workflows/refresh.yml.
+  refresh_interval_minutes: 1440
 
   # Launchpad's getRelatedBugTasks operation is slow (~seconds per MP).
   # Set to false if refresh runs start timing out; MPs still render, they

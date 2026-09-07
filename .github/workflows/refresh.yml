@@ -5,9 +5,9 @@ name: Refresh merge proposal data
 # and the static site only ever reads that cached JSON.
 on:
   schedule:
-    # Every 2 hours. Keep in step with defaults.refresh_interval_minutes in
-    # config/repos.yaml, which is what the UI displays and polls on.
-    - cron: "0 */2 * * *"
+    # Daily at 21:02 UTC. Keep in step with defaults.refresh_interval_minutes
+    # in config/repos.yaml, which the UI uses to tell when data is out of date.
+    - cron: "2 21 * * *"
   workflow_dispatch:
     inputs:
       skip_bugs:
