@@ -26,9 +26,23 @@ defaults:
   # Concurrent enrichment requests per repository.
   max_workers: 8
 
+teams:
+  # The dashboard's top-level tabs, in this order. A repository joins a team
+  # with `team: <id>`; nothing about teams is hard-coded in the UI.
+
+  - id: archive-admin
+    name: Archive Admin
+
+  - id: release-team
+    name: Release Team
+
+  - id: autopkgtest-infra
+    name: Autopkgtest Infra
+
 repositories:
   # Launchpad git repositories.
   #
+  #   team       - id of the team (above) this repository is listed under
   #   provider   - key into the provider registry (scripts/providers/__init__.py)
   #   namespace  - Launchpad owner, including the leading "~"
   #   project    - Launchpad project name
@@ -38,6 +52,7 @@ repositories:
 
   - id: ubuntu-cdimage
     name: ubuntu-cdimage
+    team: release-team
     provider: launchpad-git
     namespace: "~ubuntu-cdimage"
     project: ubuntu-cdimage
@@ -45,6 +60,7 @@ repositories:
 
   - id: livecd-rootfs
     name: livecd-rootfs
+    team: release-team
     provider: launchpad-git
     namespace: "~ubuntu-core-dev"
     project: livecd-rootfs
@@ -52,6 +68,7 @@ repositories:
 
   - id: ubuntu-archive-tools
     name: ubuntu-archive-tools
+    team: archive-admin
     provider: launchpad-git
     namespace: "~ubuntu-archive"
     project: ubuntu-archive-tools
@@ -59,6 +76,7 @@ repositories:
 
   - id: ubuntu-archive-scripts
     name: ubuntu-archive-scripts
+    team: archive-admin
     provider: launchpad-git
     namespace: "~ubuntu-archive"
     project: ubuntu-archive-scripts
@@ -66,6 +84,7 @@ repositories:
 
   - id: hints-ubuntu
     name: hints-ubuntu
+    team: release-team
     provider: launchpad-git
     namespace: "~ubuntu-release"
     project: britney
@@ -73,6 +92,7 @@ repositories:
 
   - id: autopkgtest
     name: autopkgtest
+    team: autopkgtest-infra
     provider: launchpad-git
     namespace: "~ubuntu-release"
     project: autopkgtest
@@ -80,6 +100,7 @@ repositories:
 
   - id: autopkgtest-package-configs
     name: autopkgtest-package-configs
+    team: autopkgtest-infra
     provider: launchpad-git
     namespace: "~ubuntu-release"
     project: autopkgtest-cloud
@@ -87,6 +108,7 @@ repositories:
 
   - id: templates
     name: ubuntu-release-tools/templates
+    team: release-team
     provider: launchpad-git
     namespace: "~ubuntu-release"
     project: ubuntu-release-tools
@@ -94,6 +116,7 @@ repositories:
 
   - id: ubuntu-release-tools
     name: ubuntu-release-tools
+    team: release-team
     provider: launchpad-git
     namespace: "~ubuntu-release"
     project: ubuntu-release-tools
@@ -101,6 +124,7 @@ repositories:
 
   - id: ubuntu-images
     name: ubuntu-images
+    team: release-team
     provider: launchpad-git
     namespace: "~ubuntu-release"
     project: ubuntu-images
@@ -108,6 +132,7 @@ repositories:
 
   - id: britney2
     name: britney2-ubuntu
+    team: autopkgtest-infra
     provider: launchpad-git
     namespace: "~ubuntu-release"
     project: britney
@@ -115,6 +140,7 @@ repositories:
 
   - id: britney1
     name: britney1-ubuntu
+    team: autopkgtest-infra
     provider: launchpad-git
     namespace: "~ubuntu-release"
     project: britney
