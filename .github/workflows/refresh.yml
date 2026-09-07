@@ -82,11 +82,30 @@ jobs:
           stale = sum(1 for r in d["repositories"] for m in r["merge_requests"] if m["is_stale"])
           attn  = sum(1 for r in d["repositories"] for m in r["merge_requests"] if m["attention"])
           print(f"**{total} open MPs** - {stale} stale, {attn} needing attention\n")
-          print("| Repository | Open | Stale | Status |")
-          print("|---|---:|---:|---|")
-          for r in d["repositories"]:
-              s = sum(1 for m in r["merge_requests"] if m["is_stale"])
-              flag = "OK" if r["status"] == "ok" else f"FAILED - {r.get('error','')[:60]} (cached)"
-              print(f"| {r['id']} | {len(r['merge_requests'])} | {s} | {flag} |")
+          teams = d.get("teams") or [{"id": None, "name": "Repositories"}]
+          for t in teams:
+              repos = [r for r in d["repositories"] if r.get("team") == t["id"]]
+              print(f"#### {t['name']} - {len(repos)} repos, "
+                    f"{sum(len(r['merge_requests']) for r in repos)} open MPs\n")
+              if t.get("error"):
+                  print(f"> Repository discovery failed: {t['error']}\n")
+              if t.get("people"):
+                  pp = t["people"]
+                  print(f"People ({pp['source']}): {len(pp['members'])} members, "
+                        f"{len(pp['merge_requests'])} open MPs outside tracked repos\n")
+                  if pp.get("error"):
+                      print(f"> People refresh incomplete: {pp['error']}\n")
+              # Only repos with open MPs or failures; the rest are just counted.
+              shown = [r for r in repos if r["merge_requests"] or r["status"] != "ok"]
+              if shown:
+                  print("| Repository | Open | Stale | Status |")
+                  print("|---|---:|---:|---|")
+              for r in shown:
+                  s = sum(1 for m in r["merge_requests"] if m["is_stale"])
+                  flag = "OK" if r["status"] == "ok" else f"FAILED - {r.get('error','')[:60]} (cached)"
+                  print(f"| {r['id']} | {len(r['merge_requests'])} | {s} | {flag} |")
+              if len(repos) > len(shown):
+                  print(f"\n{len(repos) - len(shown)} more with no open MPs.")
+              print()
           EOF
           } >> "$GITHUB_STEP_SUMMARY"
