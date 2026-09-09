@@ -35,6 +35,9 @@ teams:
   # Launchpad team is bug-subscribed to, through the package's git-ubuntu
   # repository (lp:ubuntu/+source/<package>). Discovered repositories get the
   # id "<team id>-<package>", e.g. foundations-apport.
+  #
+  # `people` adds a People view to the team: every member of that Launchpad
+  # team, with every open merge proposal they have, tracked here or not.
 
   - id: archive-admin
     name: Archive Admin
@@ -48,6 +51,10 @@ teams:
     discover:
       provider: launchpad-git
       bug_subscriber: "~foundations-bugs"
+    # The People view: every open MP these members proposed, anywhere.
+    people:
+      provider: launchpad-git
+      members_of: "~canonical-foundations"
 
   - id: autopkgtest-infra
     name: Autopkgtest Infra
