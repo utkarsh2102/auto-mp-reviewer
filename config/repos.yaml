@@ -29,12 +29,25 @@ defaults:
 teams:
   # The dashboard's top-level tabs, in this order. A repository joins a team
   # with `team: <id>`; nothing about teams is hard-coded in the UI.
+  #
+  # A team may also `discover` repositories at fetch time instead of listing
+  # them by hand. `bug_subscriber` tracks every Ubuntu source package that
+  # Launchpad team is bug-subscribed to, through the package's git-ubuntu
+  # repository (lp:ubuntu/+source/<package>). Discovered repositories get the
+  # id "<team id>-<package>", e.g. foundations-apport.
 
   - id: archive-admin
     name: Archive Admin
 
   - id: release-team
     name: Release Team
+
+  - id: foundations
+    name: Foundations
+    description: Ubuntu source packages ~foundations-bugs is subscribed to
+    discover:
+      provider: launchpad-git
+      bug_subscriber: "~foundations-bugs"
 
   - id: autopkgtest-infra
     name: Autopkgtest Infra
@@ -49,6 +62,10 @@ repositories:
   #   repository - git repository name under that project
   #
   # These combine into the API path {namespace}/{project}/+git/{repository}.
+  # For a repository attached to a distribution source package, use
+  # `source_package: <name>` (and optionally `distribution`, default ubuntu)
+  # instead of `project`:
+  # {namespace}/{distribution}/+source/{source_package}/+git/{repository}.
 
   - id: ubuntu-cdimage
     name: ubuntu-cdimage
