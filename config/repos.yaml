@@ -1,0 +1,59 @@
+# Repositories monitored by the Ubuntu MP Review Dashboard.
+#
+# Every value under `defaults` is a tunable threshold; the generated
+# dashboard.json embeds them so the UI and the fetcher can never disagree.
+
+defaults:
+  # An MP is STALE when it has had no activity (comment, review vote, or
+  # status change) for this many days.
+  stale_after_days: 30
+
+  # A "Needs review" MP with no comment for this many days is flagged as
+  # needing attention.
+  silent_after_days: 7
+
+  # How often the browser re-reads the published data file, and how often the
+  # GitHub Action is scheduled. Changing this value also means updating the
+  # cron expression in .github/workflows/refresh.yml.
+  refresh_interval_minutes: 120
+
+  # Launchpad's getRelatedBugTasks operation is slow (~seconds per MP).
+  # Set to false if refresh runs start timing out; MPs still render, they
+  # just lose their linked-bug pills and the "has linked bugs" signal.
+  fetch_linked_bugs: true
+
+  # Concurrent enrichment requests per repository.
+  max_workers: 8
+
+repositories:
+  # Launchpad git repositories.
+  #
+  #   provider   - key into the provider registry (scripts/providers/__init__.py)
+  #   namespace  - Launchpad owner, including the leading "~"
+  #   project    - Launchpad project name
+  #   repository - git repository name under that project
+  #
+  # These combine into the API path {namespace}/{project}/+git/{repository}.
+
+  - id: ubuntu-cdimage
+    name: ubuntu-cdimage
+    provider: launchpad-git
+    namespace: "~ubuntu-cdimage"
+    project: ubuntu-cdimage
+    repository: ubuntu-cdimage
+
+  - id: livecd-rootfs
+    name: livecd-rootfs
+    provider: launchpad-git
+    namespace: "~ubuntu-core-dev"
+    project: livecd-rootfs
+    repository: livecd-rootfs
+
+  # Phase 1 ships a GitHub provider stub so the shape is proven but unused.
+  # Uncomment once scripts/providers/github.py is implemented.
+  #
+  # - id: review-gator
+  #   name: review-gator
+  #   provider: github
+  #   namespace: canonical
+  #   repository: review-gator
