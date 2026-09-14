@@ -1,0 +1,92 @@
+name: Refresh merge proposal data
+
+# Launchpad's API sends no CORS headers, so the browser cannot call it from
+# GitHub Pages. This job is the fetcher: it collects the data and commits it,
+# and the static site only ever reads that cached JSON.
+on:
+  schedule:
+    # Every 2 hours. Keep in step with defaults.refresh_interval_minutes in
+    # config/repos.yaml, which is what the UI displays and polls on.
+    - cron: "0 */2 * * *"
+  workflow_dispatch:
+    inputs:
+      skip_bugs:
+        description: "Skip linked-bug lookups (faster)"
+        type: boolean
+        default: false
+  push:
+    # Re-run when the monitored repositories or the fetcher itself change.
+    branches: [main]
+    paths:
+      - "config/repos.yaml"
+      - "scripts/**"
+      - ".github/workflows/refresh.yml"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: refresh-data
+  cancel-in-progress: false
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    # Launchpad stalls sporadically (see scripts/providers/launchpad.py); the
+    # fetcher times out and retries rather than waiting, but leave headroom.
+    timeout-minutes: 25
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Fetch merge proposals
+        run: |
+          python scripts/fetch.py ${{ inputs.skip_bugs && '--no-bugs' || '' }}
+
+      - name: Commit refreshed data
+        run: |
+          if git diff --quiet -- docs/data/dashboard.json; then
+            echo "No change in merge proposal data; nothing to commit."
+            exit 0
+          fi
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add docs/data/dashboard.json
+          git commit -m "data: refresh merge proposals [skip ci]"
+          # The schedule can overlap a manual push; rebase rather than fail.
+          git pull --rebase --autostash origin "${GITHUB_REF_NAME}"
+          git push origin "HEAD:${GITHUB_REF_NAME}"
+
+      - name: Summary
+        if: always()
+        run: |
+          {
+            echo "### Merge proposal refresh"
+            echo ""
+            python - <<'EOF'
+          import json, pathlib
+          p = pathlib.Path("docs/data/dashboard.json")
+          if not p.exists():
+              print("No data file was produced.")
+              raise SystemExit
+          d = json.loads(p.read_text())
+          total = sum(len(r["merge_requests"]) for r in d["repositories"])
+          stale = sum(1 for r in d["repositories"] for m in r["merge_requests"] if m["is_stale"])
+          attn  = sum(1 for r in d["repositories"] for m in r["merge_requests"] if m["attention"])
+          print(f"**{total} open MPs** - {stale} stale, {attn} needing attention\n")
+          print("| Repository | Open | Stale | Status |")
+          print("|---|---:|---:|---|")
+          for r in d["repositories"]:
+              s = sum(1 for m in r["merge_requests"] if m["is_stale"])
+              flag = "OK" if r["status"] == "ok" else f"FAILED - {r.get('error','')[:60]} (cached)"
+              print(f"| {r['id']} | {len(r['merge_requests'])} | {s} | {flag} |")
+          EOF
+          } >> "$GITHUB_STEP_SUMMARY"
