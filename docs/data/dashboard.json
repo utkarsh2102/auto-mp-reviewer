@@ -1,0 +1,2196 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-09-20T20:54:55.154095+00:00",
+  "config": {
+    "stale_after_days": 30,
+    "silent_after_days": 7,
+    "refresh_interval_minutes": 120
+  },
+  "repositories": [
+    {
+      "id": "ubuntu-cdimage",
+      "name": "ubuntu-cdimage",
+      "provider": "launchpad-git",
+      "url": "https://code.launchpad.net/~ubuntu-cdimage/ubuntu-cdimage/+git/ubuntu-cdimage",
+      "status": "ok",
+      "error": null,
+      "last_successful_refresh": "2026-09-20T20:54:55.154095+00:00",
+      "merge_requests": [
+        {
+          "id": "500275",
+          "title": "prefer the livefs build server ISO over running it through debian-cd",
+          "url": "https://code.launchpad.net/~mwhudson/ubuntu-cdimage/+git/ubuntu-cdimage-1/+merge/500275",
+          "author": {
+            "name": "mwhudson",
+            "display_name": "Michael Hudson-Doyle",
+            "url": "https://launchpad.net/~mwhudson"
+          },
+          "status": "Work in progress",
+          "status_category": "in_progress",
+          "created_at": "2026-02-12T02:50:13.784613+00:00",
+          "updated_at": "2026-02-12T02:50:13.784613+00:00",
+          "source_branch": "server-livefs-isos",
+          "target_branch": "main",
+          "reviewers": [
+            {
+              "name": "ubuntu-cdimage",
+              "display_name": "Ubuntu CD Image Team",
+              "url": "https://launchpad.net/~ubuntu-cdimage",
+              "pending": true,
+              "vote": null
+            }
+          ],
+          "comment_count": 0,
+          "last_comment_at": null,
+          "linked_bugs": [],
+          "diff_url": "https://api.launchpad.net/devel/~mwhudson/ubuntu-cdimage/+git/ubuntu-cdimage-1/+merge/500275/+preview-diff/1120703",
+          "review": null,
+          "age_days": 220,
+          "inactive_days": 220,
+          "is_stale": true,
+          "attention": []
+        },
+        {
+          "id": "505717",
+          "title": "Stop scheduling and configuring Ubuntu desktop daily-dangerous builds",
+          "url": "https://code.launchpad.net/~utkarsh/ubuntu-cdimage/+git/ubuntu-cdimage/+merge/505717",
+          "author": {
+            "name": "utkarsh",
+            "display_name": "Utkarsh Gupta",
+            "url": "https://launchpad.net/~utkarsh"
+          },
+          "status": "Needs review",
+          "status_category": "needs_review",
+          "created_at": "2026-05-29T22:54:51.992758+00:00",
+          "updated_at": "2026-06-03T08:47:31.481385+00:00",
+          "source_branch": "delete-dangerous",
+          "target_branch": "main",
+          "reviewers": [
+            {
+              "name": "jibel",
+              "display_name": "Jean-Baptiste Lallement",
+              "url": "https://launchpad.net/~jibel",
+              "pending": false,
+              "vote": "Approve"
+            },
+            {
+              "name": "skia",
+              "display_name": "Skia",
+              "url": "https://launchpad.net/~skia",
+              "pending": false,
+              "vote": "Approve"
+            }
+          ],
+          "comment_count": 3,
+          "last_comment_at": "2026-06-03T08:47:31.481385+00:00",
+          "linked_bugs": [],
+          "diff_url": "https://api.launchpad.net/devel/~utkarsh/ubuntu-cdimage/+git/ubuntu-cdimage/+merge/505717/+preview-diff/1131331",
+          "review": null,
+          "age_days": 113,
+          "inactive_days": 109,
+          "is_stale": true,
+          "attention": [
+            "silent"
+          ]
+        },
+        {
+          "id": "506871",
+          "title": "push image build logs to test_observer",
+          "url": "https://code.launchpad.net/~mclemenceau/ubuntu-cdimage/+git/ubuntu-cdimage/+merge/506871",
+          "author": {
+            "name": "mclemenceau",
+            "display_name": "Matthieu Clemenceau",
+            "url": "https://launchpad.net/~mclemenceau"
+          },
+          "status": "Work in progress",
+          "status_category": "in_progress",
+          "created_at": "2026-06-18T20:40:16.449767+00:00",
+          "updated_at": "2026-06-18T20:40:16.449767+00:00",
+          "source_branch": "push_builds_log_to_test_observer",
+          "target_branch": "main",
+          "reviewers": [
+            {
+              "name": "ubuntu-cdimage",
+              "display_name": "Ubuntu CD Image Team",
+              "url": "https://launchpad.net/~ubuntu-cdimage",
+              "pending": true,
+              "vote": null
+            }
+          ],
+          "comment_count": 0,
+          "last_comment_at": null,
+          "linked_bugs": [],
+          "diff_url": "https://api.launchpad.net/devel/~mclemenceau/ubuntu-cdimage/+git/ubuntu-cdimage/+merge/506871/+preview-diff/1133510",
+          "review": null,
+          "age_days": 94,
+          "inactive_days": 94,
+          "is_stale": true,
+          "attention": []
+        },
+        {
+          "id": "506704",
+          "title": "To have https://mclemenceau.github.io/ubuntu-mission-control/ be even more useful, we need to push even failed builds to Test Observer.",
+          "url": "https://code.launchpad.net/~skia/ubuntu-cdimage/+git/ubuntu-cdimage/+merge/506704",
+          "author": {
+            "name": "skia",
+            "display_name": "Skia",
+            "url": "https://launchpad.net/~skia"
+          },
+          "status": "Work in progress",
+          "status_category": "in_progress",
+          "created_at": "2026-06-16T17:09:41.235678+00:00",
+          "updated_at": "2026-06-19T07:18:01.473052+00:00",
+          "source_branch": "skia/failed_builds_test_observer",
+          "target_branch": "main",
+          "reviewers": [
+            {
+              "name": "ubuntu-cdimage",
+              "display_name": "Ubuntu CD Image Team",
+              "url": "https://launchpad.net/~ubuntu-cdimage",
+              "pending": true,
+              "vote": null
+            }
+          ],
+          "comment_count": 1,
+          "last_comment_at": "2026-06-19T07:18:01.473052+00:00",
+          "linked_bugs": [],
+          "diff_url": "https://api.launchpad.net/devel/~skia/ubuntu-cdimage/+git/ubuntu-cdimage/+merge/506704/+preview-diff/1133251",
+          "review": null,
+          "age_days": 96,
+          "inactive_days": 93,
+          "is_stale": true,
+          "attention": []
+        },
+        {
+          "id": "506993",
+          "title": "Publish livefs-only arches as they complete",
+          "url": "https://code.launchpad.net/~mwhudson/ubuntu-cdimage/+git/ubuntu-cdimage-1/+merge/506993",
+          "author": {
+            "name": "mwhudson",
+            "display_name": "Michael Hudson-Doyle",
+            "url": "https://launchpad.net/~mwhudson"
+          },
+          "status": "Needs review",
+          "status_category": "needs_review",
+          "created_at": "2026-06-21T23:03:00.410551+00:00",
+          "updated_at": "2026-06-21T23:03:00.410551+00:00",
+          "source_branch": "incremental-livefs-publish",
+          "target_branch": "main",
+          "reviewers": [
+            {
+              "name": "ubuntu-cdimage",
+              "display_name": "Ubuntu CD Image Team",
+              "url": "https://launchpad.net/~ubuntu-cdimage",
+              "pending": true,
+              "vote": null
+            }
+          ],
+          "comment_count": 0,
+          "last_comment_at": null,
+          "linked_bugs": [],
+          "diff_url": "https://api.launchpad.net/devel/~mwhudson/ubuntu-cdimage/+git/ubuntu-cdimage-1/+merge/506993/+preview-diff/1133709",
+          "review": null,
+          "age_days": 90,
+          "inactive_days": 90,
+          "is_stale": true,
+          "attention": [
+            "silent"
+          ]
+        },
+        {
+          "id": "510601",
+          "title": "purge: see the directories an earlier layout left behind",
+          "url": "https://code.launchpad.net/~mwhudson/ubuntu-cdimage/+git/ubuntu-cdimage-1/+merge/510601",
+          "author": {
+            "name": "mwhudson",
+            "display_name": "Michael Hudson-Doyle",
+            "url": "https://launchpad.net/~mwhudson"
+          },
+          "status": "Needs review",
+          "status_category": "needs_review",
+          "created_at": "2026-09-02T01:23:41.752918+00:00",
+          "updated_at": "2026-09-02T01:23:41.752918+00:00",
+          "source_branch": "purge-legacy-layout",
+          "target_branch": "main",
+          "reviewers": [
+            {
+              "name": "ubuntu-cdimage",
+              "display_name": "Ubuntu CD Image Team",
+              "url": "https://launchpad.net/~ubuntu-cdimage",
+              "pending": true,
+              "vote": null
+            }
+          ],
+          "comment_count": 0,
+          "last_comment_at": null,
+          "linked_bugs": [],
+          "diff_url": "https://api.launchpad.net/devel/~mwhudson/ubuntu-cdimage/+git/ubuntu-cdimage-1/+merge/510601/+preview-diff/1140611",
+          "review": null,
+          "age_days": 18,
+          "inactive_days": 18,
+          "is_stale": false,
+          "attention": [
+            "silent"
+          ]
+        },
+        {
+          "id": "510599",
+          "title": "archive: follow the simple tree and Ubuntu releases under ubuntu/",
+          "url": "https://code.launchpad.net/~mwhudson/ubuntu-cdimage/+git/ubuntu-cdimage-1/+merge/510599",
+          "author": {
+            "name": "mwhudson",
+            "display_name": "Michael Hudson-Doyle",
+            "url": "https://launchpad.net/~mwhudson"
+          },
+          "status": "Needs review",
+          "status_category": "needs_review",
+          "created_at": "2026-09-02T00:09:26.766747+00:00",
+          "updated_at": "2026-09-02T00:09:26.766747+00:00",
+          "source_branch": "fix-archive-scripts",
+          "target_branch": "main",
+          "reviewers": [
+            {
+              "name": "ubuntu-cdimage",
+              "display_name": "Ubuntu CD Image Team",
+              "url": "https://launchpad.net/~ubuntu-cdimage",
+              "pending": true,
+              "vote": null
+            }
+          ],
+          "comment_count": 0,
+          "last_comment_at": null,
+          "linked_bugs": [],
+          "diff_url": "https://api.launchpad.net/devel/~mwhudson/ubuntu-cdimage/+git/ubuntu-cdimage-1/+merge/510599/+preview-diff/1140606",
+          "review": null,
+          "age_days": 18,
+          "inactive_days": 18,
+          "is_stale": false,
+          "attention": [
+            "silent"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "livecd-rootfs",
+      "name": "livecd-rootfs",
+      "provider": "launchpad-git",
+      "url": "https://code.launchpad.net/~ubuntu-core-dev/livecd-rootfs/+git/livecd-rootfs",
+      "status": "ok",
+      "error": null,
+      "last_successful_refresh": "2026-09-20T20:54:55.154095+00:00",
+      "merge_requests": [
+        {
+          "id": "380853",
+          "title": "WIP for feedback",
+          "url": "https://code.launchpad.net/~rcj/livecd-rootfs/+git/livecd-rootfs/+merge/380853",
+          "author": {
+            "name": "rcj",
+            "display_name": "Robert C Jennings",
+            "url": "https://launchpad.net/~rcj"
+          },
+          "status": "Work in progress",
+          "status_category": "in_progress",
+          "created_at": "2020-03-18T21:09:43.038588+00:00",
+          "updated_at": "2020-03-25T21:08:35.382348+00:00",
+          "source_branch": "test/binary_build_mirrors-bionic",
+          "target_branch": "ubuntu/bionic",
+          "reviewers": [
+            {
+              "name": "ubuntu-core-dev",
+              "display_name": "Ubuntu Core Development Team",
+              "url": "https://launchpad.net/~ubuntu-core-dev",
+              "pending": true,
+              "vote": null
+            }
+          ],
+          "comment_count": 1,
+          "last_comment_at": "2020-03-25T21:08:35.382348+00:00",
+          "linked_bugs": [],
+          "diff_url": "https://api.launchpad.net/devel/~rcj/livecd-rootfs/+git/livecd-rootfs/+merge/380853/+preview-diff/898785",
+          "review": null,
+          "age_days": 2376,
+          "inactive_days": 2369,
+          "is_stale": true,
+          "attention": []
+        },
+        {
+          "id": "393233",
+          "title": "This is a fix to a build error in Hyper-V hook that affects 20.10+.",
+          "url": "https://code.launchpad.net/~callmepk/livecd-rootfs/+git/livecd-rootfs-1/+merge/393233",
+          "author": {
+            "name": "callmepk",
+            "display_name": "Patrick Wu",
+            "url": "https://launchpad.net/~callmepk"
+          },
+          "status": "Work in progress",
+          "status_category": "in_progress",
+          "created_at": "2020-11-03T08:35:43.421492+00:00",
+          "updated_at": "2020-11-03T09:14:32.027361+00:00",
+          "source_branch": "ubuntu/groovy",
+          "target_branch": "ubuntu/groovy",
+          "reviewers": [
+            {
+              "name": "ubuntu-core-dev",
+              "display_name": "Ubuntu Core Development Team",
+              "url": "https://launchpad.net/~ubuntu-core-dev",
+              "pending": true,
+              "vote": null
+            }
+          ],
+          "comment_count": 1,
+          "last_comment_at": "2020-11-03T09:14:32.027361+00:00",
+          "linked_bugs": [],
+          "diff_url": "https://api.launchpad.net/devel/~callmepk/livecd-rootfs/+git/livecd-rootfs-1/+merge/393233/+preview-diff/922450",
+          "review": null,
+          "age_days": 2147,
+          "inactive_days": 2147,
+          "is_stale": true,
+          "attention": []
+        },
+        {
+          "id": "396582",
+          "title": "First try on using the raspi seeds for raspi image building.",
+          "url": "https://code.launchpad.net/~ubuntu-core-dev/livecd-rootfs/+git/livecd-rootfs/+merge/396582",
+          "author": {
+            "name": "sil2100",
+            "display_name": "\u0141ukasz Zemczak",
+            "url": "https://launchpad.net/~sil2100"
+          },
+          "status": "Work in progress",
+          "status_category": "in_progress",
+          "created_at": "2021-01-20T15:55:45.834320+00:00",
+          "updated_at": "2021-01-27T13:21:36.868618+00:00",
+          "source_branch": "sil2100/raspi-server",
+          "target_branch": "ubuntu/focal",
+          "reviewers": [
+            {
+              "name": "laney",
+              "display_name": "Iain Lane",
+              "url": "https://launchpad.net/~laney",
+              "pending": false,
+              "vote": "Needs Information"
+            }
+          ],
+          "comment_count": 2,
+          "last_comment_at": "2021-01-27T13:21:36.868618+00:00",
+          "linked_bugs": [
+            {
+              "id": "1912498",
+              "title": "Preinstall some new essential raspi packages in the official raspi images",
+              "url": "https://bugs.launchpad.net/ubuntu/+source/livecd-rootfs/+bug/1912498",
+              "status": "Opinion",
+              "importance": "Wishlist"
+            }
+          ],
+          "diff_url": "https://api.launchpad.net/devel/~ubuntu-core-dev/livecd-rootfs/+git/livecd-rootfs/+merge/396582/+preview-diff/928490",
+          "review": null,
+          "age_days": 2069,
+          "inactive_days": 2062,
+          "is_stale": true,
+          "attention": [
+            "linked_bug"
+          ]
+        },
+        {
+          "id": "388963",
+          "title": "vagrant: Use dummy file for the console output",
+          "url": "https://code.launchpad.net/~giner/livecd-rootfs/+git/livecd-rootfs/+merge/388963",
+          "author": {
+            "name": "giner",
+            "display_name": "Stanislav German-Evtushenko",
+            "url": "https://launchpad.net/~giner"
+          },
+          "status": "Work in progress",
+          "status_category": "in_progress",
+          "created_at": "2020-08-09T12:43:12.848541+00:00",
+          "updated_at": "2021-02-05T12:52:07.008839+00:00",
+          "source_branch": "vagrant_use_dummy_file_for_console_output",
+          "target_branch": "ubuntu/master",
+          "reviewers": [
+            {
+              "name": "jchittum",
+              "display_name": "John Chittum",
+              "url": "https://launchpad.net/~jchittum",
+              "pending": false,
+              "vote": "Needs Fixing"
+            },
+            {
+              "name": "ubuntu-core-dev",
+              "display_name": "Ubuntu Core Development Team",
+              "url": "https://launchpad.net/~ubuntu-core-dev",
+              "pending": true,
+              "vote": null
+            }
+          ],
+          "comment_count": 6,
+          "last_comment_at": "2021-02-05T12:52:07.008839+00:00",
+          "linked_bugs": [],
+          "diff_url": "https://api.launchpad.net/devel/~giner/livecd-rootfs/+git/livecd-rootfs/+merge/388963/+preview-diff/914279",
+          "review": null,
+          "age_days": 2233,
+          "inactive_days": 2053,
+          "is_stale": true,
+          "attention": []
+        },
+        {
+          "id": "386307",
+          "title": "Allow passing arbitrary model assertion names for ubuntu-core builds via SUBARCH.",
+          "url": "https://code.launchpad.net/~ubuntu-core-dev/livecd-rootfs/+git/livecd-rootfs/+merge/386307",
+          "author": {
+            "name": "sil2100",
+            "display_name": "\u0141ukasz Zemczak",
+            "url": "https://launchpad.net/~sil2100"
+          },
+          "status": "Work in progress",
+          "status_category": "in_progress",
+          "created_at": "2020-06-24T08:52:30.255954+00:00",
+          "updated_at": "2021-02-05T12:54:29.297640+00:00",
+          "source_branch": "arbitrary-model-names",
+          "target_branch": "ubuntu/master",
+          "reviewers": [
+            {
+              "name": "ubuntu-core-dev",
+              "display_name": "Ubuntu Core Development Team",
+              "url": "https://launchpad.net/~ubuntu-core-dev",
+              "pending": true,
+              "vote": null
+            }
+          ],
+          "comment_count": 2,
+          "last_comment_at": "2021-02-05T12:54:29.297640+00:00",
+          "linked_bugs": [],
+          "diff_url": "https://api.launchpad.net/devel/~ubuntu-core-dev/livecd-rootfs/+git/livecd-rootfs/+merge/386307/+preview-diff/908996",
+          "review": null,
+          "age_days": 2279,
+          "inactive_days": 2053,
+          "is_stale": true,
+          "attention": []
+        },
+        {
+          "id": "369840",
+          "title": "core-include-dmsetup \u2192 ubuntu/xenial",
+          "url": "https://code.launchpad.net/~ubuntu-core-dev/livecd-rootfs/+git/livecd-rootfs/+merge/369840",
+          "author": {
+            "name": "vorlon",
+            "display_name": "Steve Langasek",
+            "url": "https://launchpad.net/~vorlon"
+          },
+          "status": "Needs review",
+          "status_category": "needs_review",
+          "created_at": "2019-07-09T00:31:39.797693+00:00",
+          "updated_at": "2021-02-09T00:37:49.333668+00:00",
+          "source_branch": "core-include-dmsetup",
+          "target_branch": "ubuntu/xenial",
+          "reviewers": [
+            {
+              "name": "ubuntu-core-dev",
+              "display_name": "Ubuntu Core Development Team",
+              "url": "https://launchpad.net/~ubuntu-core-dev",
+              "pending": true,
+              "vote": null
+            }
+          ],
+          "comment_count": 1,
+          "last_comment_at": "2021-02-09T00:37:49.333668+00:00",
+          "linked_bugs": [],
+          "diff_url": "https://api.launchpad.net/devel/~ubuntu-core-dev/livecd-rootfs/+git/livecd-rootfs/+merge/369840/+preview-diff/877424",
+          "review": null,
+          "age_days": 2630,
+          "inactive_days": 2049,
+          "is_stale": true,
+          "attention": [
+            "silent"
+          ]
+        },
+        {
+          "id": "401389",
+          "title": "When building images against x86_64-v2 by-default toolchain PPA, also enable the -v2 rebuild-test archive.",
+          "url": "https://code.launchpad.net/~xnox/livecd-rootfs/+git/livecd-rootfs/+merge/401389",
+          "author": {
+            "name": "xnox",
+            "display_name": "Dimitri John Ledkov",
+            "url": "https://launchpad.net/~xnox"
+          },
+          "status": "Work in progress",
+          "status_category": "in_progress",
+          "created_at": "2021-04-19T15:02:37.987542+00:00",
+          "updated_at": "2021-04-19T15:03:02.118164+00:00",
+          "source_branch": "x86-64-v2",
+          "target_branch": "ubuntu/master",
+          "reviewers": [
+            {
+              "name": "ubuntu-core-dev",
+              "display_name": "Ubuntu Core Development Team",
+              "url": "https://launchpad.net/~ubuntu-core-dev",
+              "pending": true,
+              "vote": null
+            },
+            {
+              "name": "canonical-foundations",
+              "display_name": "Canonical Foundations Team",
+              "url": "https://launchpad.net/~canonical-foundations",
+              "pending": true,
+              "vote": null
+            },
+            {
+              "name": "tag:launchpad.net:2008:redacted",
+              "display_name": "tag:launchpad.net:2008:redacted",
+              "url": "https://launchpad.net/~tag:launchpad.net:2008:redacted",
+              "pending": true,
+              "vote": null
+            },
+            {
+              "name": "doko",
+              "display_name": "Matthias Klose",
+              "url": "https://launchpad.net/~doko",
+              "pending": true,
+              "vote": null
+            }
+          ],
+          "comment_count": 0,
+          "last_comment_at": null,
+          "linked_bugs": [],
+          "diff_url": "https://api.launchpad.net/devel/~xnox/livecd-rootfs/+git/livecd-rootfs/+merge/401389/+preview-diff/938075",
+          "review": null,
+          "age_days": 1980,
+          "inactive_days": 1980,
+          "is_stale": true,
+          "attention": []
+        },
+        {
+          "id": "398900",
+          "title": "Add grub config to buildd images to enable use with lxd vms",
+          "url": "https://code.launchpad.net/~codyshepherd/livecd-rootfs/+git/livecd-rootfs/+merge/398900",
+          "author": {
+            "name": "codyshepherd",
+            "display_name": "Cody Shepherd",
+            "url": "https://launchpad.net/~codyshepherd"
+          },
+          "status": "Needs review",
+          "status_category": "needs_review",
+          "created_at": "2021-03-01T17:14:49.808344+00:00",
+          "updated_at": "2021-04-29T16:10:58.933378+00:00",
+          "source_branch": "buildd/hide-grub-menu-xx",
+          "target_branch": "ubuntu/xenial",
+          "reviewers": [
+            {
+              "name": "ubuntu-core-dev",
+              "display_name": "Ubuntu Core Development Team",
+              "url": "https://launchpad.net/~ubuntu-core-dev",
+              "pending": true,
+              "vote": null
+            },
+            {
+              "name": "gjolly",
+              "display_name": "Gauthier Jolly",
+              "url": "https://launchpad.net/~gjolly",
+              "pending": false,
+              "vote": "Approve"
+            }
+          ],
+          "comment_count": 1,
+          "last_comment_at": "2021-04-29T16:10:58.933378+00:00",
+          "linked_bugs": [
+            {
+              "id": "1915571",
+              "title": "Cannot start bash session for buildd vm images in LXD vm",
+              "url": "https://bugs.launchpad.net/ubuntu/+source/livecd-rootfs/+bug/1915571",
+              "status": "Fix Released",
+              "importance": "Undecided"
+            }
+          ],
+          "diff_url": "https://api.launchpad.net/devel/~codyshepherd/livecd-rootfs/+git/livecd-rootfs/+merge/398900/+preview-diff/1055693",
+          "review": null,
+          "age_days": 2029,
+          "inactive_days": 1970,
+          "is_stale": true,
+          "attention": [
+            "silent",
+            "linked_bug"
+          ]
+        },
+        {
+          "id": "398461",
+          "title": "mount a fresh devmpfs filesystem instead of rbind host /dev",
+          "url": "https://code.launchpad.net/~gjolly/livecd-rootfs/+git/livecd-rootfs/+merge/398461",
+          "author": {
+            "name": "gjolly",
+            "display_name": "Gauthier Jolly",
+            "url": "https://launchpad.net/~gjolly"
+          },
+          "status": "Work in progress",
+          "status_category": "in_progress",
+          "created_at": "2021-02-22T14:37:21.835585+00:00",
+          "updated_at": "2021-05-05T10:49:11.563461+00:00",
+          "source_branch": "no_rbind_devtmpfs",
+          "target_branch": "ubuntu/master",
+          "reviewers": [
+            {
+              "name": "xnox",
+              "display_name": "Dimitri John Ledkov",
+              "url": "https://launchpad.net/~xnox",
+              "pending": false,
+              "vote": "Approve"
+            }
+          ],
+          "comment_count": 2,
+          "last_comment_at": "2021-05-05T10:49:11.563461+00:00",
+          "linked_bugs": [],
+          "diff_url": "https://api.launchpad.net/devel/~gjolly/livecd-rootfs/+git/livecd-rootfs/+merge/398461/+preview-diff/931875",
+          "review": null,
+          "age_days": 2036,
+          "inactive_days": 1964,
+          "is_stale": true,
+          "attention": []
+        },
+        {
+          "id": "397119",
+          "title": "Fix PROPOSED=1 not enabling proposed for all needed components",
+          "url": "https://code.launchpad.net/~ubuntu-core-dev/livecd-rootfs/+git/livecd-rootfs/+merge/397119",
+          "author": {
+            "name": "sil2100",
+            "display_name": "\u0141ukasz Zemczak",
+            "url": "https://launchpad.net/~sil2100"
+          },
+          "status": "Work in progress",
+          "status_category": "in_progress",
+          "created_at": "2021-01-29T00:37:21.481664+00:00",
+          "updated_at": "2021-05-05T10:53:22.195513+00:00",
+          "source_branch": "sil2100/proposed-components",
+          "target_branch": "ubuntu/master",
+          "reviewers": [
+            {
+              "name": "xnox",
+              "display_name": "Dimitri John Ledkov",
+              "url": "https://launchpad.net/~xnox",
+              "pending": false,
+              "vote": "Needs Information"
+            }
+          ],
+          "comment_count": 3,
+          "last_comment_at": "2021-05-05T10:53:22.195513+00:00",
+          "linked_bugs": [],
+          "diff_url": "https://api.launchpad.net/devel/~ubuntu-core-dev/livecd-rootfs/+git/livecd-rootfs/+merge/397119/+preview-diff/929477",
+          "review": null,
+          "age_days": 2060,
+          "inactive_days": 1964,
+          "is_stale": true,
+          "attention": []
+        },
+        {
+          "id": "405754",
+          "title": "999-cpc-fixes: enable more code on grub2 armhf & arm64",
+          "url": "https://code.launchpad.net/~gjolly/livecd-rootfs/+git/livecd-rootfs/+merge/405754",
+          "author": {
+            "name": "gjolly",
+            "display_name": "Gauthier Jolly",
+            "url": "https://launchpad.net/~gjolly"
+          },
+          "status": "Needs review",
+          "status_category": "needs_review",
+          "created_at": "2021-07-15T13:27:58.989596+00:00",
+          "updated_at": "2021-07-15T13:27:58.989596+00:00",
+          "source_branch": "backport/bionic/arm_grub",
+          "target_branch": "ubuntu/bionic",
+          "reviewers": [
+            {
+              "name": "ubuntu-core-dev",
+              "display_name": "Ubuntu Core Development Team",
+              "url": "https://launchpad.net/~ubuntu-core-dev",
+              "pending": true,
+              "vote": null
+            }
+          ],
+          "comment_count": 0,
+          "last_comment_at": null,
+          "linked_bugs": [
+            {
+              "id": "1925780",
+              "title": "armhf & arm64 image do not have cloud-init grub customizations",
+              "url": "https://bugs.launchpad.net/ubuntu/+source/livecd-rootfs/+bug/1925780",
+              "status": "Fix Released",
+              "importance": "Undecided"
+            }
+          ],
+          "diff_url": "https://api.launchpad.net/devel/~gjolly/livecd-rootfs/+git/livecd-rootfs/+merge/405754/+preview-diff/945602",
+          "review": null,
+          "age_days": 1893,
+          "inactive_days": 1893,
+          "is_stale": true,
+          "attention": [
+            "silent",
+            "linked_bug"
+          ]
+        },
+        {
+          "id": "405737",
+          "title": "999-cpc-fixes: enable more code on grub2 armhf & arm64",
+          "url": "https://code.launchpad.net/~gjolly/livecd-rootfs/+git/livecd-rootfs/+merge/405737",
+          "author": {
+            "name": "gjolly",
+            "display_name": "Gauthier Jolly",
+            "url": "https://launchpad.net/~gjolly"
+          },
+          "status": "Needs review",
+          "status_category": "needs_review",
+          "created_at": "2021-07-15T08:59:27.677276+00:00",
+          "updated_at": "2021-07-15T08:59:27.677276+00:00",
+          "source_branch": "backport/focal/arm_grub",
+          "target_branch": "ubuntu/focal",
+          "reviewers": [
+            {
+              "name": "ubuntu-core-dev",
+              "display_name": "Ubuntu Core Development Team",
+              "url": "https://launchpad.net/~ubuntu-core-dev",
+              "pending": true,
+              "vote": null
+            }
+          ],
+          "comment_count": 0,
+          "last_comment_at": null,
+          "linked_bugs": [
+            {
+              "id": "1925780",
+              "title": "armhf & arm64 image do not have cloud-init grub customizations",
+              "url": "https://bugs.launchpad.net/ubuntu/+source/livecd-rootfs/+bug/1925780",
+              "status": "Fix Released",
+              "importance": "Undecided"
+            }
+          ],
+          "diff_url": "https://api.launchpad.net/devel/~gjolly/livecd-rootfs/+git/livecd-rootfs/+merge/405737/+preview-diff/945559",
+          "review": null,
+          "age_days": 1893,
+          "inactive_days": 1893,
+          "is_stale": true,
+          "attention": [
+            "silent",
+            "linked_bug"
+          ]
+        },
+        {
+          "id": "405736",
+          "title": "999-cpc-fixes: enable more code on grub2 armhf & arm64",
+          "url": "https://code.launchpad.net/~gjolly/livecd-rootfs/+git/livecd-rootfs/+merge/405736",
+          "author": {
+            "name": "gjolly",
+            "display_name": "Gauthier Jolly",
+            "url": "https://launchpad.net/~gjolly"
+          },
+          "status": "Needs review",
+          "status_category": "needs_review",
+          "created_at": "2021-07-15T08:58:10.254508+00:00",
+          "updated_at": "2021-07-15T08:58:10.254508+00:00",
+          "source_branch": "backport/groovy/arm_grub",
+          "target_branch": "ubuntu/groovy",
+          "reviewers": [
+            {
+              "name": "ubuntu-core-dev",
+              "display_name": "Ubuntu Core Development Team",
+              "url": "https://launchpad.net/~ubuntu-core-dev",
+              "pending": true,
+              "vote": null
+            }
+          ],
+          "comment_count": 0,
+          "last_comment_at": null,
+          "linked_bugs": [
+            {
+              "id": "1925780",
+              "title": "armhf & arm64 image do not have cloud-init grub customizations",
+              "url": "https://bugs.launchpad.net/ubuntu/+source/livecd-rootfs/+bug/1925780",
+              "status": "Fix Released",
+              "importance": "Undecided"
+            }
+          ],
+          "diff_url": "https://api.launchpad.net/devel/~gjolly/livecd-rootfs/+git/livecd-rootfs/+merge/405736/+preview-diff/945558",
+          "review": null,
+          "age_days": 1893,
+          "inactive_days": 1893,
+          "is_stale": true,
+          "attention": [
+            "silent",
+            "linked_bug"
+          ]
+        },
+        {
+          "id": "405734",
+          "title": "999-cpc-fixes: enable more code on grub2 armhf & arm64",
+          "url": "https://code.launchpad.net/~gjolly/livecd-rootfs/+git/livecd-rootfs/+merge/405734",
+          "author": {
+            "name": "gjolly",
+            "display_name": "Gauthier Jolly",
+            "url": "https://launchpad.net/~gjolly"
+          },
+          "status": "Needs review",
+          "status_category": "needs_review",
+          "created_at": "2021-07-15T08:52:19.762794+00:00",
+          "updated_at": "2021-07-15T08:52:19.762794+00:00",
+          "source_branch": "backport/hirsute/arm_grub",
+          "target_branch": "ubuntu/hirsute",
+          "reviewers": [
+            {
+              "name": "ubuntu-core-dev",
+              "display_name": "Ubuntu Core Development Team",
+              "url": "https://launchpad.net/~ubuntu-core-dev",
+              "pending": true,
+              "vote": null
+            }
+          ],
+          "comment_count": 0,
+          "last_comment_at": null,
+          "linked_bugs": [
+            {
+              "id": "1925780",
+              "title": "armhf & arm64 image do not have cloud-init grub customizations",
+              "url": "https://bugs.launchpad.net/ubuntu/+source/livecd-rootfs/+bug/1925780",
+              "status": "Fix Released",
+              "importance": "Undecided"
+            }
+          ],
+          "diff_url": "https://api.launchpad.net/devel/~gjolly/livecd-rootfs/+git/livecd-rootfs/+merge/405734/+preview-diff/945555",
+          "review": null,
+          "age_days": 1893,
+          "inactive_days": 1893,
+          "is_stale": true,
+          "attention": [
+            "silent",
+            "linked_bug"
+          ]
+        },
+        {
+          "id": "417126",
+          "title": "ARM machines generally use ttyAMA0 for consoles. Instead of using \"console=tty1 console=ttyS0\" the CPC images should use \"console=ttyAMA0 console=ttyS0\"",
+          "url": "https://code.launchpad.net/~darkmuggle/livecd-rootfs/+git/livecd-rootfs/+merge/417126",
+          "author": {
+            "name": "darkmuggle",
+            "display_name": "Ben Howard",
+            "url": "https://launchpad.net/~darkmuggle"
+          },
+          "status": "Needs review",
+          "status_category": "needs_review",
+          "created_at": "2022-03-19T14:52:38.195649+00:00",
+          "updated_at": "2022-03-23T13:16:48.744606+00:00",
+          "source_branch": "lp1926138/arm-console",
+          "target_branch": "ubuntu/master",
+          "reviewers": [
+            {
+              "name": "ubuntu-core-dev",
+              "display_name": "Ubuntu Core Development Team",
+              "url": "https://launchpad.net/~ubuntu-core-dev",
+              "pending": true,
+              "vote": null
+            }
+          ],
+          "comment_count": 2,
+          "last_comment_at": "2022-03-23T13:16:48.744606+00:00",
+          "linked_bugs": [
+            {
+              "id": "1926138",
+              "title": "ARM images should support ttyAMA too",
+              "url": "https://bugs.launchpad.net/ubuntu/+source/livecd-rootfs/+bug/1926138",
+              "status": "New",
+              "importance": "Undecided"
+            }
+          ],
+          "diff_url": "https://api.launchpad.net/devel/~darkmuggle/livecd-rootfs/+git/livecd-rootfs/+merge/417126/+preview-diff/966560",
+          "review": null,
+          "age_days": 1646,
+          "inactive_days": 1642,
+          "is_stale": true,
+          "attention": [
+            "silent",
+            "linked_bug"
+          ]
+        },
+        {
+          "id": "427572",
+          "title": "Forward-port sever-live additions for intel-iotg",
+          "url": "https://code.launchpad.net/~ubuntu-core-dev/livecd-rootfs/+git/livecd-rootfs/+merge/427572",
+          "author": {
+            "name": "sil2100",
+            "display_name": "\u0141ukasz Zemczak",
+            "url": "https://launchpad.net/~sil2100"
+          },
+          "status": "Work in progress",
+          "status_category": "in_progress",
+          "created_at": "2022-07-28T18:13:50.575624+00:00",
+          "updated_at": "2022-07-28T18:13:50.575624+00:00",
+          "source_branch": "intel-iotg-server-jammy",
+          "target_branch": "ubuntu/jammy",
+          "reviewers": [
+            {
+              "name": "ubuntu-core-dev",
+              "display_name": "Ubuntu Core Development Team",
+              "url": "https://launchpad.net/~ubuntu-core-dev",
+              "pending": true,
+              "vote": null
+            }
+          ],
+          "comment_count": 0,
+          "last_comment_at": null,
+          "linked_bugs": [],
+          "diff_url": "https://api.launchpad.net/devel/~ubuntu-core-dev/livecd-rootfs/+git/livecd-rootfs/+merge/427572/+preview-diff/982720",
+          "review": null,
+          "age_days": 1515,
+          "inactive_days": 1515,
+          "is_stale": true,
+          "attention": []
+        },
+        {
+          "id": "429646",
+          "title": "int/alex/fk_force \u2192 ubuntu/master",
+          "url": "https://code.launchpad.net/~alexghiti/livecd-rootfs/+git/livecd-rootfs/+merge/429646",
+          "author": {
+            "name": "alexghiti",
+            "display_name": "Alexandre Ghiti",
+            "url": "https://launchpad.net/~alexghiti"
+          },
+          "status": "Needs review",
+          "status_category": "needs_review",
+          "created_at": "2022-09-08T14:22:24.750315+00:00",
+          "updated_at": "2022-09-13T17:01:26.184354+00:00",
+          "source_branch": "int/alex/fk_force",
+          "target_branch": "ubuntu/master",
+          "reviewers": [
+            {
+              "name": "jawn-smith",
+              "display_name": "William Wilson",
+              "url": "https://launchpad.net/~jawn-smith",
+              "pending": false,
+              "vote": "Approve"
+            },
+            {
+              "name": "toabctl",
+              "display_name": "Thomas Bechtold",
+              "url": "https://launchpad.net/~toabctl",
+              "pending": false,
+              "vote": "Approve"
+            }
+          ],
+          "comment_count": 3,
+          "last_comment_at": "2022-09-13T17:01:26.184354+00:00",
+          "linked_bugs": [
+            {
+              "id": "1989194",
+              "title": "Rename FK_FORCE_CONTAINER into FK_FORCE",
+              "url": "https://bugs.launchpad.net/ubuntu/+source/livecd-rootfs/+bug/1989194",
+              "status": "Fix Released",
+              "importance": "Undecided"
+            }
+          ],
+          "diff_url": "https://api.launchpad.net/devel/~alexghiti/livecd-rootfs/+git/livecd-rootfs/+merge/429646/+preview-diff/986554",
+          "review": null,
+          "age_days": 1473,
+          "inactive_days": 1468,
+          "is_stale": true,
+          "attention": [
+            "silent",
+            "linked_bug"
+          ]
+        },
+        {
+          "id": "439585",
+          "title": "Let's migrate away from writing out a complete /etc/cloud/cloud.cfg in ubuntu-server livecd and instead inject individual config parts so the whole of /etc/cloud/cloud.cfg doesn't get outdated.",
+          "url": "https://code.launchpad.net/~chad.smith/livecd-rootfs/+git/livecd-rootfs/+merge/439585",
+          "author": {
+            "name": "chad.smith",
+            "display_name": "Chad Smith",
+            "url": "https://launchpad.net/~chad.smith"
+          },
+          "status": "Needs review",
+          "status_category": "needs_review",
+          "created_at": "2023-03-23T22:19:07.668811+00:00",
+          "updated_at": "2023-03-23T22:24:16.753632+00:00",
+          "source_branch": "use-cloud-cfg-d-parts",
+          "target_branch": "ubuntu/master",
+          "reviewers": [
+            {
+              "name": "mwhudson",
+              "display_name": "Michael Hudson-Doyle",
+              "url": "https://launchpad.net/~mwhudson",
+              "pending": true,
+              "vote": null
+            },
+            {
+              "name": "xnox",
+              "display_name": "Dimitri John Ledkov",
+              "url": "https://launchpad.net/~xnox",
+              "pending": true,
+              "vote": null
+            },
+            {
+              "name": "dbungert",
+              "display_name": "Dan Bungert",
+              "url": "https://launchpad.net/~dbungert",
+              "pending": true,
+              "vote": null
+            }
+          ],
+          "comment_count": 0,
+          "last_comment_at": null,
+          "linked_bugs": [],
+          "diff_url": "https://api.launchpad.net/devel/~chad.smith/livecd-rootfs/+git/livecd-rootfs/+merge/439585/+preview-diff/1004825",
+          "review": null,
+          "age_days": 1276,
+          "inactive_days": 1276,
+          "is_stale": true,
+          "attention": [
+            "silent"
+          ]
+        },
+        {
+          "id": "443883",
+          "title": "Add an override to provide local image definitions when working with livecd-rootfs, could also be helpful for Launchpad builds with custom image definitions.",
+          "url": "https://code.launchpad.net/~lool/livecd-rootfs/+git/ubuntu/+merge/443883",
+          "author": {
+            "name": "lool",
+            "display_name": "Lo\u00efc Minier",
+            "url": "https://launchpad.net/~lool"
+          },
+          "status": "Needs review",
+          "status_category": "needs_review",
+          "created_at": "2023-05-31T12:51:23.277510+00:00",
+          "updated_at": "2023-06-01T04:57:49.685129+00:00",
+          "source_branch": "ui-override-images-repo",
+          "target_branch": "ui-by-default",
+          "reviewers": [
+            {
+              "name": "mwhudson",
+              "display_name": "Michael Hudson-Doyle",
+              "url": "https://launchpad.net/~mwhudson",
+              "pending": false,
+              "vote": "Approve"
+            },
+            {
+              "name": "sil2100",
+              "display_name": "\u0141ukasz Zemczak",
+              "url": "https://launchpad.net/~sil2100",
+              "pending": true,
+              "vote": null
+            }
+          ],
+          "comment_count": 1,
+          "last_comment_at": "2023-06-01T04:57:49.685129+00:00",
+          "linked_bugs": [],
+          "diff_url": "https://api.launchpad.net/devel/~lool/livecd-rootfs/+git/ubuntu/+merge/443883/+preview-diff/1013038",
+          "review": null,
+          "age_days": 1208,
+          "inactive_days": 1207,
+          "is_stale": true,
+          "attention": [
+            "silent"
+          ]
+        },
+        {
+          "id": "449608",
+          "title": "Switch from xz to zstd compressed squashfs for faster boot",
+          "url": "https://code.launchpad.net/~ubuntu-core-dev/livecd-rootfs/+git/livecd-rootfs/+merge/449608",
+          "author": {
+            "name": "xnox",
+            "display_name": "Dimitri John Ledkov",
+            "url": "https://launchpad.net/~xnox"
+          },
+          "status": "Needs review",
+          "status_category": "needs_review",
+          "created_at": "2023-08-22T10:57:21.165275+00:00",
+          "updated_at": "2023-09-06T18:50:32.386567+00:00",
+          "source_branch": "xnox/mksquashfs-zstd",
+          "target_branch": "ubuntu/master",
+          "reviewers": [
+            {
+              "name": "vorlon",
+              "display_name": "Steve Langasek",
+              "url": "https://launchpad.net/~vorlon",
+              "pending": false,
+              "vote": "Needs Information"
+            },
+            {
+              "name": "tag:launchpad.net:2008:redacted",
+              "display_name": "tag:launchpad.net:2008:redacted",
+              "url": "https://launchpad.net/~tag:launchpad.net:2008:redacted",
+              "pending": true,
+              "vote": null
+            }
+          ],
+          "comment_count": 5,
+          "last_comment_at": "2023-09-06T18:50:32.386567+00:00",
+          "linked_bugs": [],
+          "diff_url": "https://api.launchpad.net/devel/~ubuntu-core-dev/livecd-rootfs/+git/livecd-rootfs/+merge/449608/+preview-diff/1023861",
+          "review": null,
+          "age_days": 1125,
+          "inactive_days": 1110,
+          "is_stale": true,
+          "attention": [
+            "silent"
+          ]
+        },
+        {
+          "id": "450399",
+          "title": "Include unicode.pf2 in the netboot tarball on amd64 and arm64. (LP: #2033692)",
+          "url": "https://code.launchpad.net/~mwhudson/livecd-rootfs/+git/livecd-rootfs/+merge/450399",
+          "author": {
+            "name": "mwhudson",
+            "display_name": "Michael Hudson-Doyle",
+            "url": "https://launchpad.net/~mwhudson"
+          },
+          "status": "Needs review",
+          "status_category": "needs_review",
+          "created_at": "2023-09-01T02:55:22.462531+00:00",
+          "updated_at": "2023-09-07T15:37:15+00:00",
+          "source_branch": "netboot-grub-font",
+          "target_branch": "ubuntu/master",
+          "reviewers": [
+            {
+              "name": "juliank",
+              "display_name": "Julian Andres Klode",
+              "url": "https://launchpad.net/~juliank",
+              "pending": false,
+              "vote": "Needs Fixing"
+            },
+            {
+              "name": "vorlon",
+              "display_name": "Steve Langasek",
+              "url": "https://launchpad.net/~vorlon",
+              "pending": false,
+              "vote": "Needs Fixing"
+            }
+          ],
+          "comment_count": 4,
+          "last_comment_at": "2023-09-07T15:37:15+00:00",
+          "linked_bugs": [
+            {
+              "id": "2033692",
+              "title": "netboot tarball missing grub/fonts/unicode.pf2?",
+              "url": "https://bugs.launchpad.net/ubuntu/+source/livecd-rootfs/+bug/2033692",
+              "status": "New",
+              "importance": "Undecided"
+            }
+          ],
+          "diff_url": "https://api.launchpad.net/devel/~mwhudson/livecd-rootfs/+git/livecd-rootfs/+merge/450399/+preview-diff/1025368",
+          "review": null,
+          "age_days": 1115,
+          "inactive_days": 1109,
+          "is_stale": true,
+          "attention": [
+            "silent",
+            "linked_bug"
+          ]
+        },
+        {
+          "id": "460234",
+          "title": "unminimize: Use lxd-installer to install LXD itself (LP: #2036725)",
+          "url": "https://code.launchpad.net/~utkarsh/livecd-rootfs/+git/livecd-rootfs/+merge/460234",
+          "author": {
+            "name": "utkarsh",
+            "display_name": "Utkarsh Gupta",
+            "url": "https://launchpad.net/~utkarsh"
+          },
+          "status": "Needs review",
+          "status_category": "needs_review",
+          "created_at": "2024-02-08T08:28:24.890465+00:00",
+          "updated_at": "2024-02-08T09:08:46.618911+00:00",
+          "source_branch": "unminimize-fixes-focal",
+          "target_branch": "ubuntu/focal",
+          "reviewers": [
+            {
+              "name": "tomparrott",
+              "display_name": "Thomas Parrott",
+              "url": "https://launchpad.net/~tomparrott",
+              "pending": false,
+              "vote": "Approve"
+            },
+            {
+              "name": "philroche",
+              "display_name": "Philip Roche",
+              "url": "https://launchpad.net/~philroche",
+              "pending": false,
+              "vote": "Approve"
+            },
+            {
+              "name": "canonical-foundations",
+              "display_name": "Canonical Foundations Team",
+              "url": "https://launchpad.net/~canonical-foundations",
+              "pending": true,
+              "vote": null
+            }
+          ],
+          "comment_count": 2,
+          "last_comment_at": "2024-02-08T09:08:46.618911+00:00",
+          "linked_bugs": [
+            {
+              "id": "2036725",
+              "title": "LXD snap not being installed from the right channel when running unminimize",
+              "url": "https://bugs.launchpad.net/ubuntu/+source/livecd-rootfs/+bug/2036725",
+              "status": "Fix Released",
+              "importance": "Undecided"
+            }
+          ],
+          "diff_url": "https://api.launchpad.net/devel/~utkarsh/livecd-rootfs/+git/livecd-rootfs/+merge/460234/+preview-diff/1044121",
+          "review": null,
+          "age_days": 955,
+          "inactive_days": 955,
+          "is_stale": true,
+          "attention": [
+            "silent",
+            "linked_bug"
+          ]
+        },
+        {
+          "id": "464755",
+          "title": "# Proposal to have option to use debian package as a source of image-definitions",
+          "url": "https://code.launchpad.net/~tchavadar/livecd-rootfs/+git/livecd-rootfs/+merge/464755",
+          "author": {
+            "name": "tchavadar",
+            "display_name": "Talha Can Havadar",
+            "url": "https://launchpad.net/~tchavadar"
+          },
+          "status": "Needs review",
+          "status_category": "needs_review",
+          "created_at": "2024-04-22T13:05:22.934772+00:00",
+          "updated_at": "2024-04-25T08:09:52.464607+00:00",
+          "source_branch": "install-image-definitions-deb-option",
+          "target_branch": "ubuntu/master",
+          "reviewers": [
+            {
+              "name": "vorlon",
+              "display_name": "Steve Langasek",
+              "url": "https://launchpad.net/~vorlon",
+              "pending": false,
+              "vote": "Needs Fixing"
+            }
+          ],
+          "comment_count": 4,
+          "last_comment_at": "2024-04-25T08:09:52.464607+00:00",
+          "linked_bugs": [],
+          "diff_url": "https://api.launchpad.net/devel/~tchavadar/livecd-rootfs/+git/livecd-rootfs/+merge/464755/+preview-diff/1053666",
+          "review": null,
+          "age_days": 881,
+          "inactive_days": 878,
+          "is_stale": true,
+          "attention": [
+            "silent"
+          ]
+        },
+        {
+          "id": "460822",
+          "title": "Reorganizing ubuntu-oem:",
+          "url": "https://code.launchpad.net/~medicalwei/livecd-rootfs/+git/livecd-rootfs/+merge/460822",
+          "author": {
+            "name": "medicalwei",
+            "display_name": "Yao Wei",
+            "url": "https://launchpad.net/~medicalwei"
+          },
+          "status": "Needs review",
+          "status_category": "needs_review",
+          "created_at": "2024-02-20T10:28:17.152626+00:00",
+          "updated_at": "2024-05-30T15:49:07.785815+00:00",
+          "source_branch": "ubuntu-oem-reorg",
+          "target_branch": "ubuntu/master",
+          "reviewers": [
+            {
+              "name": "dbungert",
+              "display_name": "Dan Bungert",
+              "url": "https://launchpad.net/~dbungert",
+              "pending": true,
+              "vote": null
+            },
+            {
+              "name": "mwhudson",
+              "display_name": "Michael Hudson-Doyle",
+              "url": "https://launchpad.net/~mwhudson",
+              "pending": true,
+              "vote": null
+            }
+          ],
+          "comment_count": 6,
+          "last_comment_at": "2024-05-30T15:49:07.785815+00:00",
+          "linked_bugs": [],
+          "diff_url": "https://api.launchpad.net/devel/~medicalwei/livecd-rootfs/+git/livecd-rootfs/+merge/460822/+preview-diff/1056983",
+          "review": null,
+          "age_days": 943,
+          "inactive_days": 843,
+          "is_stale": true,
+          "attention": [
+            "silent"
+          ]
+        },
+        {
+          "id": "425053",
+          "title": "livecd-rootfs (2.766) UNRELEASED; urgency=medium",
+          "url": "https://code.launchpad.net/~mwhudson/livecd-rootfs/+git/livecd-rootfs/+merge/425053",
+          "author": {
+            "name": "mwhudson",
+            "display_name": "Michael Hudson-Doyle",
+            "url": "https://launchpad.net/~mwhudson"
+          },
+          "status": "Needs review",
+          "status_category": "needs_review",
+          "created_at": "2022-06-20T08:58:47.763380+00:00",
+          "updated_at": "2024-06-13T01:16:19.089136+00:00",
+          "source_branch": "rebuild-archive-1",
+          "target_branch": "ubuntu/master",
+          "reviewers": [
+            {
+              "name": "vorlon",
+              "display_name": "Steve Langasek",
+              "url": "https://launchpad.net/~vorlon",
+              "pending": false,
+              "vote": "Needs Information"
+            }
+          ],
+          "comment_count": 4,
+          "last_comment_at": "2024-06-13T01:16:19.089136+00:00",
+          "linked_bugs": [],
+          "diff_url": "https://api.launchpad.net/devel/~mwhudson/livecd-rootfs/+git/livecd-rootfs/+merge/425053/+preview-diff/1057406",
+          "review": null,
+          "age_days": 1553,
+          "inactive_days": 829,
+          "is_stale": true,
+          "attention": [
+            "silent"
+          ]
+        },
+        {
+          "id": "471702",
+          "title": "riscv_size \u2192 ubuntu/jammy",
+          "url": "https://code.launchpad.net/~xypron/livecd-rootfs/+git/livecd-rootfs/+merge/471702",
+          "author": {
+            "name": "xypron",
+            "display_name": "Heinrich Schuchardt",
+            "url": "https://launchpad.net/~xypron"
+          },
+          "status": "Needs review",
+          "status_category": "needs_review",
+          "created_at": "2024-08-21T08:52:42.546858+00:00",
+          "updated_at": "2024-08-23T19:16:54.020500+00:00",
+          "source_branch": "riscv_size",
+          "target_branch": "ubuntu/jammy",
+          "reviewers": [
+            {
+              "name": "sil2100",
+              "display_name": "\u0141ukasz Zemczak",
+              "url": "https://launchpad.net/~sil2100",
+              "pending": false,
+              "vote": "Approve"
+            },
+            {
+              "name": "gjolly",
+              "display_name": "Gauthier Jolly",
+              "url": "https://launchpad.net/~gjolly",
+              "pending": false,
+              "vote": "Needs Information"
+            }
+          ],
+          "comment_count": 8,
+          "last_comment_at": "2024-08-23T19:16:54.020500+00:00",
+          "linked_bugs": [],
+          "diff_url": "https://api.launchpad.net/devel/~xypron/livecd-rootfs/+git/livecd-rootfs/+merge/471702/+preview-diff/1066423",
+          "review": null,
+          "age_days": 760,
+          "inactive_days": 758,
+          "is_stale": true,
+          "attention": [
+            "silent"
+          ]
+        },
+        {
+          "id": "486093",
+          "title": "add-nvidia-kernels \u2192 ubuntu/noble",
+          "url": "https://code.launchpad.net/~cypress-team/livecd-rootfs/+git/livecd-rootfs/+merge/486093",
+          "author": {
+            "name": "antoinelassagne",
+            "display_name": "Antoine Lassagne",
+            "url": "https://launchpad.net/~antoinelassagne"
+          },
+          "status": "Needs review",
+          "status_category": "needs_review",
+          "created_at": "2025-05-26T12:39:21.068632+00:00",
+          "updated_at": "2025-05-26T12:39:21.068632+00:00",
+          "source_branch": "add-nvidia-kernels",
+          "target_branch": "ubuntu/noble",
+          "reviewers": [],
+          "comment_count": 0,
+          "last_comment_at": null,
+          "linked_bugs": [],
+          "diff_url": "https://api.launchpad.net/devel/~cypress-team/livecd-rootfs/+git/livecd-rootfs/+merge/486093/+preview-diff/1095399",
+          "review": null,
+          "age_days": 482,
+          "inactive_days": 482,
+          "is_stale": true,
+          "attention": [
+            "no_reviewer",
+            "silent"
+          ]
+        },
+        {
+          "id": "487545",
+          "title": "nvidia-kernels-plucky \u2192 ubuntu/plucky",
+          "url": "https://code.launchpad.net/~cypress-team/livecd-rootfs/+git/livecd-rootfs/+merge/487545",
+          "author": {
+            "name": "antoinelassagne",
+            "display_name": "Antoine Lassagne",
+            "url": "https://launchpad.net/~antoinelassagne"
+          },
+          "status": "Needs review",
+          "status_category": "needs_review",
+          "created_at": "2025-06-23T10:01:15.392947+00:00",
+          "updated_at": "2025-06-23T10:01:15.392947+00:00",
+          "source_branch": "nvidia-kernels-plucky",
+          "target_branch": "ubuntu/plucky",
+          "reviewers": [],
+          "comment_count": 0,
+          "last_comment_at": null,
+          "linked_bugs": [],
+          "diff_url": "https://api.launchpad.net/devel/~cypress-team/livecd-rootfs/+git/livecd-rootfs/+merge/487545/+preview-diff/1096302",
+          "review": null,
+          "age_days": 454,
+          "inactive_days": 454,
+          "is_stale": true,
+          "attention": [
+            "no_reviewer",
+            "silent"
+          ]
+        },
+        {
+          "id": "492241",
+          "title": "enable bridge kernel",
+          "url": "https://code.launchpad.net/~dbungert/livecd-rootfs/+git/livecd-rootfs/+merge/492241",
+          "author": {
+            "name": "dbungert",
+            "display_name": "Dan Bungert",
+            "url": "https://launchpad.net/~dbungert"
+          },
+          "status": "Work in progress",
+          "status_category": "in_progress",
+          "created_at": "2025-09-09T20:24:28.776775+00:00",
+          "updated_at": "2025-09-09T20:24:28.776775+00:00",
+          "source_branch": "bridge",
+          "target_branch": "ubuntu/master",
+          "reviewers": [
+            {
+              "name": "canonical-foundations",
+              "display_name": "Canonical Foundations Team",
+              "url": "https://launchpad.net/~canonical-foundations",
+              "pending": true,
+              "vote": null
+            }
+          ],
+          "comment_count": 0,
+          "last_comment_at": null,
+          "linked_bugs": [],
+          "diff_url": "https://api.launchpad.net/devel/~dbungert/livecd-rootfs/+git/livecd-rootfs/+merge/492241/+preview-diff/1105032",
+          "review": null,
+          "age_days": 376,
+          "inactive_days": 376,
+          "is_stale": true,
+          "attention": []
+        },
+        {
+          "id": "495069",
+          "title": "ubuntu-cpc: use systemd-repart to build disk image",
+          "url": "https://code.launchpad.net/~gjolly/livecd-rootfs/+git/livecd-rootfs/+merge/495069",
+          "author": {
+            "name": "gjolly",
+            "display_name": "Gauthier Jolly",
+            "url": "https://launchpad.net/~gjolly"
+          },
+          "status": "Work in progress",
+          "status_category": "in_progress",
+          "created_at": "2025-10-27T16:50:12.720535+00:00",
+          "updated_at": "2025-10-27T16:50:12.720535+00:00",
+          "source_branch": "repart_and_types",
+          "target_branch": "ubuntu/master",
+          "reviewers": [
+            {
+              "name": "canonical-foundations",
+              "display_name": "Canonical Foundations Team",
+              "url": "https://launchpad.net/~canonical-foundations",
+              "pending": true,
+              "vote": null
+            }
+          ],
+          "comment_count": 0,
+          "last_comment_at": null,
+          "linked_bugs": [],
+          "diff_url": "https://api.launchpad.net/devel/~gjolly/livecd-rootfs/+git/livecd-rootfs/+merge/495069/+preview-diff/1110557",
+          "review": null,
+          "age_days": 328,
+          "inactive_days": 328,
+          "is_stale": true,
+          "attention": []
+        },
+        {
+          "id": "495051",
+          "title": "ubuntu-cpc: discover partitions based on types",
+          "url": "https://code.launchpad.net/~gjolly/livecd-rootfs/+git/livecd-rootfs/+merge/495051",
+          "author": {
+            "name": "gjolly",
+            "display_name": "Gauthier Jolly",
+            "url": "https://launchpad.net/~gjolly"
+          },
+          "status": "Needs review",
+          "status_category": "needs_review",
+          "created_at": "2025-10-27T13:21:24.596013+00:00",
+          "updated_at": "2025-10-27T16:31:40.375525+00:00",
+          "source_branch": "partition_types_discovery",
+          "target_branch": "ubuntu/master",
+          "reviewers": [
+            {
+              "name": "canonical-foundations",
+              "display_name": "Canonical Foundations Team",
+              "url": "https://launchpad.net/~canonical-foundations",
+              "pending": true,
+              "vote": null
+            }
+          ],
+          "comment_count": 0,
+          "last_comment_at": null,
+          "linked_bugs": [],
+          "diff_url": "https://api.launchpad.net/devel/~gjolly/livecd-rootfs/+git/livecd-rootfs/+merge/495051/+preview-diff/1110609",
+          "review": null,
+          "age_days": 328,
+          "inactive_days": 328,
+          "is_stale": true,
+          "attention": [
+            "silent"
+          ]
+        },
+        {
+          "id": "500344",
+          "title": "Add new 6.17 kernel apparmor features (LP: #2141707)",
+          "url": "https://code.launchpad.net/~kajiya/livecd-rootfs/+git/livecd-rootfs/+merge/500344",
+          "author": {
+            "name": "kajiya",
+            "display_name": "Chlo\u00e9 Smith",
+            "url": "https://launchpad.net/~kajiya"
+          },
+          "status": "Needs review",
+          "status_category": "needs_review",
+          "created_at": "2026-02-12T20:58:47.486279+00:00",
+          "updated_at": "2026-02-13T19:50:18.050567+00:00",
+          "source_branch": "ubuntu/noble-update-apparmour-feats",
+          "target_branch": "ubuntu/noble",
+          "reviewers": [
+            {
+              "name": "simpoir",
+              "display_name": "Simon Poirier",
+              "url": "https://launchpad.net/~simpoir",
+              "pending": false,
+              "vote": "Approve"
+            },
+            {
+              "name": "andrew-cloke",
+              "display_name": "Andrew Cloke",
+              "url": "https://launchpad.net/~andrew-cloke",
+              "pending": false,
+              "vote": "Approve"
+            },
+            {
+              "name": "virtustom",
+              "display_name": "Tom\u00e1\u0161 Virtus",
+              "url": "https://launchpad.net/~virtustom",
+              "pending": false,
+              "vote": "Approve"
+            },
+            {
+              "name": "ubuntu-sponsors",
+              "display_name": "Ubuntu Sponsors",
+              "url": "https://launchpad.net/~ubuntu-sponsors",
+              "pending": true,
+              "vote": null
+            },
+            {
+              "name": "canonical-foundations",
+              "display_name": "Canonical Foundations Team",
+              "url": "https://launchpad.net/~canonical-foundations",
+              "pending": true,
+              "vote": null
+            }
+          ],
+          "comment_count": 3,
+          "last_comment_at": "2026-02-13T19:50:18.050567+00:00",
+          "linked_bugs": [
+            {
+              "id": "2141707",
+              "title": "AppArmor profiles missing for noble kernel 6.17",
+              "url": "https://bugs.launchpad.net/ubuntu/+source/livecd-rootfs/+bug/2141707",
+              "status": "New",
+              "importance": "Undecided"
+            }
+          ],
+          "diff_url": "https://api.launchpad.net/devel/~kajiya/livecd-rootfs/+git/livecd-rootfs/+merge/500344/+preview-diff/1120837",
+          "review": null,
+          "age_days": 219,
+          "inactive_days": 219,
+          "is_stale": true,
+          "attention": [
+            "silent",
+            "linked_bug"
+          ]
+        },
+        {
+          "id": "503429",
+          "title": "feat(apparmor): Add new 6.8 kernel apparmor features",
+          "url": "https://code.launchpad.net/~virtustom/livecd-rootfs/+git/livecd-rootfs/+merge/503429",
+          "author": {
+            "name": "virtustom",
+            "display_name": "Tom\u00e1\u0161 Virtus",
+            "url": "https://launchpad.net/~virtustom"
+          },
+          "status": "Needs review",
+          "status_category": "needs_review",
+          "created_at": "2026-04-09T16:19:16.277160+00:00",
+          "updated_at": "2026-04-10T10:21:40.554793+00:00",
+          "source_branch": "noble-apparmor-6.8",
+          "target_branch": "ubuntu/noble",
+          "reviewers": [
+            {
+              "name": "andrew-cloke",
+              "display_name": "Andrew Cloke",
+              "url": "https://launchpad.net/~andrew-cloke",
+              "pending": false,
+              "vote": "Approve"
+            },
+            {
+              "name": "kajiya",
+              "display_name": "Chlo\u00e9 Smith",
+              "url": "https://launchpad.net/~kajiya",
+              "pending": false,
+              "vote": "Approve"
+            },
+            {
+              "name": "canonical-foundations",
+              "display_name": "Canonical Foundations Team",
+              "url": "https://launchpad.net/~canonical-foundations",
+              "pending": true,
+              "vote": null
+            }
+          ],
+          "comment_count": 2,
+          "last_comment_at": "2026-04-10T10:21:40.554793+00:00",
+          "linked_bugs": [
+            {
+              "id": "2147658",
+              "title": "AppArmor feature mismatch for 6.8 kernel",
+              "url": "https://bugs.launchpad.net/ubuntu/+source/livecd-rootfs/+bug/2147658",
+              "status": "New",
+              "importance": "Undecided"
+            }
+          ],
+          "diff_url": "https://api.launchpad.net/devel/~virtustom/livecd-rootfs/+git/livecd-rootfs/+merge/503429/+preview-diff/1127065",
+          "review": null,
+          "age_days": 164,
+          "inactive_days": 163,
+          "is_stale": true,
+          "attention": [
+            "silent",
+            "linked_bug"
+          ]
+        },
+        {
+          "id": "504036",
+          "title": "riscv64: remove boot flag from root partitions in preinstalled server images",
+          "url": "https://code.launchpad.net/~vhaudiquet/livecd-rootfs/+git/livecd-rootfs/+merge/504036",
+          "author": {
+            "name": "vhaudiquet",
+            "display_name": "Valentin Haudiquet",
+            "url": "https://launchpad.net/~vhaudiquet"
+          },
+          "status": "Needs review",
+          "status_category": "needs_review",
+          "created_at": "2026-04-21T07:46:05.104329+00:00",
+          "updated_at": "2026-04-21T07:46:05.104329+00:00",
+          "source_branch": "noble-lp2148511",
+          "target_branch": "ubuntu/noble",
+          "reviewers": [
+            {
+              "name": "canonical-foundations",
+              "display_name": "Canonical Foundations Team",
+              "url": "https://launchpad.net/~canonical-foundations",
+              "pending": true,
+              "vote": null
+            }
+          ],
+          "comment_count": 0,
+          "last_comment_at": null,
+          "linked_bugs": [],
+          "diff_url": "https://api.launchpad.net/devel/~vhaudiquet/livecd-rootfs/+git/livecd-rootfs/+merge/504036/+preview-diff/1135904",
+          "review": null,
+          "age_days": 152,
+          "inactive_days": 152,
+          "is_stale": true,
+          "attention": [
+            "silent"
+          ]
+        },
+        {
+          "id": "503762",
+          "title": "Images built from the ubuntu-cpc (non-minimized) and ubuntu-base (buildd) use dracut as the default initrd generator for 26.04 onward. To ensure the initrd is suitable for a generic host \"hostonly=no\" should be set for both these image lines",
+          "url": "https://code.launchpad.net/~dlalaj/livecd-rootfs/+git/livecd-rootfs/+merge/503762",
+          "author": {
+            "name": "dlalaj",
+            "display_name": "Denis Lalaj",
+            "url": "https://launchpad.net/~dlalaj"
+          },
+          "status": "Needs review",
+          "status_category": "needs_review",
+          "created_at": "2026-04-15T20:27:50.752663+00:00",
+          "updated_at": "2026-04-30T18:50:21.376567+00:00",
+          "source_branch": "hostonly-config-cloud-images",
+          "target_branch": "ubuntu/master",
+          "reviewers": [
+            {
+              "name": "bdrung",
+              "display_name": "Benjamin Drung",
+              "url": "https://launchpad.net/~bdrung",
+              "pending": true,
+              "vote": null
+            }
+          ],
+          "comment_count": 7,
+          "last_comment_at": "2026-04-30T18:50:21.376567+00:00",
+          "linked_bugs": [],
+          "diff_url": "https://api.launchpad.net/devel/~dlalaj/livecd-rootfs/+git/livecd-rootfs/+merge/503762/+preview-diff/1129184",
+          "review": null,
+          "age_days": 158,
+          "inactive_days": 143,
+          "is_stale": true,
+          "attention": [
+            "silent"
+          ]
+        },
+        {
+          "id": "504873",
+          "title": "livecd-rootfs (24.04.97) UNRELEASED; urgency=medium",
+          "url": "https://code.launchpad.net/~mwhudson/livecd-rootfs/+git/livecd-rootfs/+merge/504873",
+          "author": {
+            "name": "mwhudson",
+            "display_name": "Michael Hudson-Doyle",
+            "url": "https://launchpad.net/~mwhudson"
+          },
+          "status": "Needs review",
+          "status_category": "needs_review",
+          "created_at": "2026-05-07T10:00:01.926890+00:00",
+          "updated_at": "2026-05-07T10:00:01.926890+00:00",
+          "source_branch": "remove-enhanced-secureboot",
+          "target_branch": "ubuntu/noble",
+          "reviewers": [
+            {
+              "name": "canonical-foundations",
+              "display_name": "Canonical Foundations Team",
+              "url": "https://launchpad.net/~canonical-foundations",
+              "pending": true,
+              "vote": null
+            }
+          ],
+          "comment_count": 0,
+          "last_comment_at": null,
+          "linked_bugs": [
+            {
+              "id": "2151779",
+              "title": "noble desktop isos contain mostly empty enhanced-secureboot layers",
+              "url": "https://bugs.launchpad.net/ubuntu/+source/livecd-rootfs/+bug/2151779",
+              "status": "Invalid",
+              "importance": "Undecided"
+            }
+          ],
+          "diff_url": "https://api.launchpad.net/devel/~mwhudson/livecd-rootfs/+git/livecd-rootfs/+merge/504873/+preview-diff/1129770",
+          "review": null,
+          "age_days": 136,
+          "inactive_days": 136,
+          "is_stale": true,
+          "attention": [
+            "silent",
+            "linked_bug"
+          ]
+        },
+        {
+          "id": "508826",
+          "title": "For RISC-V boards enablement (and also some ARM platforms if I'm not mistaken), it is always useful to be able to generate images with a custom kernel flavour.",
+          "url": "https://code.launchpad.net/~vhaudiquet/livecd-rootfs/+git/livecd-rootfs/+merge/508826",
+          "author": {
+            "name": "vhaudiquet",
+            "display_name": "Valentin Haudiquet",
+            "url": "https://launchpad.net/~vhaudiquet"
+          },
+          "status": "Work in progress",
+          "status_category": "in_progress",
+          "created_at": "2026-07-22T08:50:39.026753+00:00",
+          "updated_at": "2026-07-23T13:40:51.852512+00:00",
+          "source_branch": "kernel-flavours-env",
+          "target_branch": "ubuntu/master",
+          "reviewers": [
+            {
+              "name": "canonical-foundations",
+              "display_name": "Canonical Foundations Team",
+              "url": "https://launchpad.net/~canonical-foundations",
+              "pending": true,
+              "vote": null
+            }
+          ],
+          "comment_count": 3,
+          "last_comment_at": "2026-07-23T13:40:51.852512+00:00",
+          "linked_bugs": [],
+          "diff_url": "https://api.launchpad.net/devel/~vhaudiquet/livecd-rootfs/+git/livecd-rootfs/+merge/508826/+preview-diff/1137236",
+          "review": null,
+          "age_days": 60,
+          "inactive_days": 59,
+          "is_stale": true,
+          "attention": []
+        },
+        {
+          "id": "507001",
+          "title": "cpc: declare vmx-11 in OVF for amd64-v3 VMware images (LP: #2157546)",
+          "url": "https://code.launchpad.net/~mwhudson/livecd-rootfs/+git/livecd-rootfs/+merge/507001",
+          "author": {
+            "name": "mwhudson",
+            "display_name": "Michael Hudson-Doyle",
+            "url": "https://launchpad.net/~mwhudson"
+          },
+          "status": "Needs review",
+          "status_category": "needs_review",
+          "created_at": "2026-06-22T07:57:07.737257+00:00",
+          "updated_at": "2026-08-17T08:14:48.069069+00:00",
+          "source_branch": "fix-lp-2157546-ovf-vmx11",
+          "target_branch": "ubuntu/master",
+          "reviewers": [
+            {
+              "name": "canonical-foundations",
+              "display_name": "Canonical Foundations Team",
+              "url": "https://launchpad.net/~canonical-foundations",
+              "pending": true,
+              "vote": null
+            }
+          ],
+          "comment_count": 2,
+          "last_comment_at": "2026-08-17T08:14:48.069069+00:00",
+          "linked_bugs": [
+            {
+              "id": "2157546",
+              "title": "resolute 26.04 cloudimg amd64-v3 OVA does not boot on VMWare",
+              "url": "https://bugs.launchpad.net/ubuntu-cdimage/+bug/2157546",
+              "status": "Invalid",
+              "importance": "Undecided"
+            }
+          ],
+          "diff_url": "https://api.launchpad.net/devel/~mwhudson/livecd-rootfs/+git/livecd-rootfs/+merge/507001/+preview-diff/1133746",
+          "review": null,
+          "age_days": 90,
+          "inactive_days": 34,
+          "is_stale": true,
+          "attention": [
+            "silent",
+            "linked_bug"
+          ]
+        },
+        {
+          "id": "501395",
+          "title": "Add 6.19 apparmor feature",
+          "url": "https://code.launchpad.net/~jessica-youjeong/livecd-rootfs/+git/livecd-rootfs/+merge/501395",
+          "author": {
+            "name": "jessica-youjeong",
+            "display_name": "Jess Jang",
+            "url": "https://launchpad.net/~jessica-youjeong"
+          },
+          "status": "Needs review",
+          "status_category": "needs_review",
+          "created_at": "2026-03-05T02:54:24.345593+00:00",
+          "updated_at": "2026-08-19T05:23:27.534430+00:00",
+          "source_branch": "030426-6.19-apparmor",
+          "target_branch": "ubuntu/master",
+          "reviewers": [
+            {
+              "name": "mirespace",
+              "display_name": "Miriam Espa\u00f1a Acebal",
+              "url": "https://launchpad.net/~mirespace",
+              "pending": false,
+              "vote": "Approve"
+            },
+            {
+              "name": "rthill91",
+              "display_name": "Ryan Hill",
+              "url": "https://launchpad.net/~rthill91",
+              "pending": false,
+              "vote": "Approve"
+            },
+            {
+              "name": "canonical-foundations",
+              "display_name": "Canonical Foundations Team",
+              "url": "https://launchpad.net/~canonical-foundations",
+              "pending": true,
+              "vote": null
+            }
+          ],
+          "comment_count": 8,
+          "last_comment_at": "2026-08-19T05:23:27.534430+00:00",
+          "linked_bugs": [
+            {
+              "id": "2143170",
+              "title": "AppArmor profiles missing for resolute kernel 6.19",
+              "url": "https://bugs.launchpad.net/ubuntu/+source/livecd-rootfs/+bug/2143170",
+              "status": "Confirmed",
+              "importance": "Undecided"
+            }
+          ],
+          "diff_url": "https://api.launchpad.net/devel/~jessica-youjeong/livecd-rootfs/+git/livecd-rootfs/+merge/501395/+preview-diff/1124787",
+          "review": null,
+          "age_days": 199,
+          "inactive_days": 32,
+          "is_stale": true,
+          "attention": [
+            "silent",
+            "linked_bug"
+          ]
+        },
+        {
+          "id": "450874",
+          "title": "general-tidy \u2192 ubuntu/master",
+          "url": "https://code.launchpad.net/~waveform/livecd-rootfs/+git/livecd-rootfs/+merge/450874",
+          "author": {
+            "name": "waveform",
+            "display_name": "Dave Jones",
+            "url": "https://launchpad.net/~waveform"
+          },
+          "status": "Needs review",
+          "status_category": "needs_review",
+          "created_at": "2023-09-07T09:56:47.106540+00:00",
+          "updated_at": "2026-08-19T05:12:26.629797+00:00",
+          "source_branch": "general-tidy",
+          "target_branch": "ubuntu/master",
+          "reviewers": [
+            {
+              "name": "philroche",
+              "display_name": "Philip Roche",
+              "url": "https://launchpad.net/~philroche",
+              "pending": false,
+              "vote": "Needs Information"
+            },
+            {
+              "name": "vorlon",
+              "display_name": "Steve Langasek",
+              "url": "https://launchpad.net/~vorlon",
+              "pending": false,
+              "vote": "Abstain"
+            }
+          ],
+          "comment_count": 10,
+          "last_comment_at": "2026-08-19T05:12:26.629797+00:00",
+          "linked_bugs": [],
+          "diff_url": "https://api.launchpad.net/devel/~waveform/livecd-rootfs/+git/livecd-rootfs/+merge/450874/+preview-diff/1037339",
+          "review": null,
+          "age_days": 1109,
+          "inactive_days": 32,
+          "is_stale": true,
+          "attention": [
+            "silent"
+          ]
+        },
+        {
+          "id": "450873",
+          "title": "pi-tidy-2 \u2192 ubuntu/master",
+          "url": "https://code.launchpad.net/~waveform/livecd-rootfs/+git/livecd-rootfs/+merge/450873",
+          "author": {
+            "name": "waveform",
+            "display_name": "Dave Jones",
+            "url": "https://launchpad.net/~waveform"
+          },
+          "status": "Needs review",
+          "status_category": "needs_review",
+          "created_at": "2023-09-07T09:56:26.145401+00:00",
+          "updated_at": "2026-08-25T09:29:10.391533+00:00",
+          "source_branch": "pi-tidy-2",
+          "target_branch": "ubuntu/master",
+          "reviewers": [
+            {
+              "name": "vorlon",
+              "display_name": "Steve Langasek",
+              "url": "https://launchpad.net/~vorlon",
+              "pending": false,
+              "vote": "Needs Fixing"
+            }
+          ],
+          "comment_count": 2,
+          "last_comment_at": "2026-08-25T09:29:10.391533+00:00",
+          "linked_bugs": [],
+          "diff_url": "https://api.launchpad.net/devel/~waveform/livecd-rootfs/+git/livecd-rootfs/+merge/450873/+preview-diff/1139629",
+          "review": null,
+          "age_days": 1109,
+          "inactive_days": 26,
+          "is_stale": false,
+          "attention": [
+            "silent"
+          ]
+        },
+        {
+          "id": "450872",
+          "title": "pi-tidy-1 \u2192 ubuntu/master",
+          "url": "https://code.launchpad.net/~waveform/livecd-rootfs/+git/livecd-rootfs/+merge/450872",
+          "author": {
+            "name": "waveform",
+            "display_name": "Dave Jones",
+            "url": "https://launchpad.net/~waveform"
+          },
+          "status": "Needs review",
+          "status_category": "needs_review",
+          "created_at": "2023-09-07T09:55:54.172365+00:00",
+          "updated_at": "2026-08-25T09:28:40.403003+00:00",
+          "source_branch": "pi-tidy-1",
+          "target_branch": "ubuntu/master",
+          "reviewers": [
+            {
+              "name": "vorlon",
+              "display_name": "Steve Langasek",
+              "url": "https://launchpad.net/~vorlon",
+              "pending": false,
+              "vote": "Needs Fixing"
+            }
+          ],
+          "comment_count": 4,
+          "last_comment_at": "2026-08-25T09:28:40.403003+00:00",
+          "linked_bugs": [],
+          "diff_url": "https://api.launchpad.net/devel/~waveform/livecd-rootfs/+git/livecd-rootfs/+merge/450872/+preview-diff/1139630",
+          "review": null,
+          "age_days": 1109,
+          "inactive_days": 26,
+          "is_stale": false,
+          "attention": [
+            "silent"
+          ]
+        },
+        {
+          "id": "510343",
+          "title": "I performed a build for ubuntu-base, subproject buildd. Before this fix the builds were failing like so:",
+          "url": "https://code.launchpad.net/~dlalaj/livecd-rootfs/+git/livecd-rootfs/+merge/510343",
+          "author": {
+            "name": "dlalaj",
+            "display_name": "Denis Lalaj",
+            "url": "https://launchpad.net/~dlalaj"
+          },
+          "status": "Needs review",
+          "status_category": "needs_review",
+          "created_at": "2026-08-27T18:40:59.658224+00:00",
+          "updated_at": "2026-09-10T21:10:49.996991+00:00",
+          "source_branch": "resolute-mountpoint-setup",
+          "target_branch": "ubuntu/resolute",
+          "reviewers": [
+            {
+              "name": "canonical-foundations",
+              "display_name": "Canonical Foundations Team",
+              "url": "https://launchpad.net/~canonical-foundations",
+              "pending": true,
+              "vote": null
+            }
+          ],
+          "comment_count": 1,
+          "last_comment_at": "2026-09-10T21:10:49.996991+00:00",
+          "linked_bugs": [
+            {
+              "id": "2165422",
+              "title": "setup_mountpoint required before installing packages for 26.04 buildd image",
+              "url": "https://bugs.launchpad.net/ubuntu/+source/livecd-rootfs/+bug/2165422",
+              "status": "Invalid",
+              "importance": "Undecided"
+            }
+          ],
+          "diff_url": "https://api.launchpad.net/devel/~dlalaj/livecd-rootfs/+git/livecd-rootfs/+merge/510343/+preview-diff/1140108",
+          "review": null,
+          "age_days": 24,
+          "inactive_days": 9,
+          "is_stale": false,
+          "attention": [
+            "silent",
+            "linked_bug"
+          ]
+        },
+        {
+          "id": "511465",
+          "title": "feat(apparmor): Add 7.2 kernel apparmor features",
+          "url": "https://code.launchpad.net/~kajiya/livecd-rootfs/+git/livecd-rootfs/+merge/511465",
+          "author": {
+            "name": "kajiya",
+            "display_name": "Chlo\u00e9 Smith",
+            "url": "https://launchpad.net/~kajiya"
+          },
+          "status": "Needs review",
+          "status_category": "needs_review",
+          "created_at": "2026-09-16T15:05:42.321604+00:00",
+          "updated_at": "2026-09-16T17:22:20.318784+00:00",
+          "source_branch": "add-7.2-apparmor-features",
+          "target_branch": "ubuntu/master",
+          "reviewers": [
+            {
+              "name": "ubuntu-sponsors",
+              "display_name": "Ubuntu Sponsors",
+              "url": "https://launchpad.net/~ubuntu-sponsors",
+              "pending": true,
+              "vote": null
+            },
+            {
+              "name": "canonical-foundations",
+              "display_name": "Canonical Foundations Team",
+              "url": "https://launchpad.net/~canonical-foundations",
+              "pending": true,
+              "vote": null
+            }
+          ],
+          "comment_count": 1,
+          "last_comment_at": "2026-09-16T17:00:37.845646+00:00",
+          "linked_bugs": [
+            {
+              "id": "2167455",
+              "title": "apparmor feature mismatch for the 7.2 kernel in stonking",
+              "url": "https://bugs.launchpad.net/ubuntu/+source/livecd-rootfs/+bug/2167455",
+              "status": "New",
+              "importance": "Undecided"
+            }
+          ],
+          "diff_url": "https://api.launchpad.net/devel/~kajiya/livecd-rootfs/+git/livecd-rootfs/+merge/511465/+preview-diff/1142302",
+          "review": null,
+          "age_days": 4,
+          "inactive_days": 4,
+          "is_stale": false,
+          "attention": [
+            "linked_bug"
+          ]
+        },
+        {
+          "id": "511080",
+          "title": "I built an ubuntu-base buildd image using livecd-rootfs to verify dbus was no longer included in the image and to also ensure dbus-broker is installed instead.",
+          "url": "https://code.launchpad.net/~dlalaj/livecd-rootfs/+git/livecd-rootfs/+merge/511080",
+          "author": {
+            "name": "dlalaj",
+            "display_name": "Denis Lalaj",
+            "url": "https://launchpad.net/~dlalaj"
+          },
+          "status": "Approved",
+          "status_category": "approved",
+          "created_at": "2026-09-09T18:58:20.435982+00:00",
+          "updated_at": "2026-09-18T22:25:21.398196+00:00",
+          "source_branch": "dlalaj/remove-dbus-from-bootable-buildd",
+          "target_branch": "ubuntu/master",
+          "reviewers": [
+            {
+              "name": "canonical-foundations",
+              "display_name": "Canonical Foundations Team",
+              "url": "https://launchpad.net/~canonical-foundations",
+              "pending": true,
+              "vote": null
+            }
+          ],
+          "comment_count": 3,
+          "last_comment_at": "2026-09-18T22:25:21.398196+00:00",
+          "linked_bugs": [],
+          "diff_url": "https://api.launchpad.net/devel/~dlalaj/livecd-rootfs/+git/livecd-rootfs/+merge/511080/+preview-diff/1142057",
+          "review": null,
+          "age_days": 11,
+          "inactive_days": 1,
+          "is_stale": false,
+          "attention": [
+            "approved_not_landed"
+          ]
+        }
+      ]
+    }
+  ]
+}
