@@ -3,6 +3,11 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<script>
+  if (!location.pathname.endsWith("/")) {
+    location.replace(location.pathname + "/" + location.search + location.hash);
+  }
+</script>
 <title>Ubuntu MP Review Dashboard</title>
 <meta name="description" content="Open merge proposals across monitored Ubuntu repositories.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
