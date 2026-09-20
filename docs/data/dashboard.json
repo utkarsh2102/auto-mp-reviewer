@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-09-20T20:54:55.154095+00:00",
+  "generated_at": "2026-09-20T23:33:51.648338+00:00",
   "config": {
     "stale_after_days": 30,
     "silent_after_days": 7,
@@ -14,7 +14,7 @@
       "url": "https://code.launchpad.net/~ubuntu-cdimage/ubuntu-cdimage/+git/ubuntu-cdimage",
       "status": "ok",
       "error": null,
-      "last_successful_refresh": "2026-09-20T20:54:55.154095+00:00",
+      "last_successful_refresh": "2026-09-20T23:33:51.648338+00:00",
       "merge_requests": [
         {
           "id": "500275",
@@ -86,7 +86,7 @@
           "linked_bugs": [],
           "diff_url": "https://api.launchpad.net/devel/~utkarsh/ubuntu-cdimage/+git/ubuntu-cdimage/+merge/505717/+preview-diff/1131331",
           "review": null,
-          "age_days": 113,
+          "age_days": 114,
           "inactive_days": 109,
           "is_stale": true,
           "attention": [
@@ -190,8 +190,8 @@
           "linked_bugs": [],
           "diff_url": "https://api.launchpad.net/devel/~mwhudson/ubuntu-cdimage/+git/ubuntu-cdimage-1/+merge/506993/+preview-diff/1133709",
           "review": null,
-          "age_days": 90,
-          "inactive_days": 90,
+          "age_days": 91,
+          "inactive_days": 91,
           "is_stale": true,
           "attention": [
             "silent"
@@ -278,7 +278,7 @@
       "url": "https://code.launchpad.net/~ubuntu-core-dev/livecd-rootfs/+git/livecd-rootfs",
       "status": "ok",
       "error": null,
-      "last_successful_refresh": "2026-09-20T20:54:55.154095+00:00",
+      "last_successful_refresh": "2026-09-20T23:33:51.648338+00:00",
       "merge_requests": [
         {
           "id": "380853",
@@ -309,8 +309,8 @@
           "linked_bugs": [],
           "diff_url": "https://api.launchpad.net/devel/~rcj/livecd-rootfs/+git/livecd-rootfs/+merge/380853/+preview-diff/898785",
           "review": null,
-          "age_days": 2376,
-          "inactive_days": 2369,
+          "age_days": 2377,
+          "inactive_days": 2370,
           "is_stale": true,
           "attention": []
         },
@@ -1032,8 +1032,8 @@
           "linked_bugs": [],
           "diff_url": "https://api.launchpad.net/devel/~chad.smith/livecd-rootfs/+git/livecd-rootfs/+merge/439585/+preview-diff/1004825",
           "review": null,
-          "age_days": 1276,
-          "inactive_days": 1276,
+          "age_days": 1277,
+          "inactive_days": 1277,
           "is_stale": true,
           "attention": [
             "silent"
@@ -1621,7 +1621,7 @@
           ],
           "diff_url": "https://api.launchpad.net/devel/~kajiya/livecd-rootfs/+git/livecd-rootfs/+merge/500344/+preview-diff/1120837",
           "review": null,
-          "age_days": 219,
+          "age_days": 220,
           "inactive_days": 219,
           "is_stale": true,
           "attention": [
@@ -2096,7 +2096,7 @@
           "diff_url": "https://api.launchpad.net/devel/~dlalaj/livecd-rootfs/+git/livecd-rootfs/+merge/510343/+preview-diff/1140108",
           "review": null,
           "age_days": 24,
-          "inactive_days": 9,
+          "inactive_days": 10,
           "is_stale": false,
           "attention": [
             "silent",
@@ -2184,7 +2184,7 @@
           "diff_url": "https://api.launchpad.net/devel/~dlalaj/livecd-rootfs/+git/livecd-rootfs/+merge/511080/+preview-diff/1142057",
           "review": null,
           "age_days": 11,
-          "inactive_days": 1,
+          "inactive_days": 2,
           "is_stale": false,
           "attention": [
             "approved_not_landed"
