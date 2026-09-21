@@ -49,6 +49,76 @@ repositories:
     project: livecd-rootfs
     repository: livecd-rootfs
 
+  - id: ubuntu-archive-tools
+    name: ubuntu-archive-tools
+    provider: launchpad-git
+    namespace: "~ubuntu-archive"
+    project: ubuntu-archive-tools
+    repository: ubuntu-archive-tools
+
+  - id: ubuntu-archive-scripts
+    name: ubuntu-archive-scripts
+    provider: launchpad-git
+    namespace: "~ubuntu-archive"
+    project: ubuntu-archive-scripts
+    repository: ubuntu-archive-scripts
+
+  - id: hints-ubuntu
+    name: hints-ubuntu
+    provider: launchpad-git
+    namespace: "~ubuntu-release"
+    project: britney
+    repository: hints-ubuntu
+
+  - id: autopkgtest
+    name: autopkgtest
+    provider: launchpad-git
+    namespace: "~ubuntu-release"
+    project: autopkgtest
+    repository: autopkgtest
+
+  - id: autopkgtest-package-configs
+    name: autopkgtest-package-configs
+    provider: launchpad-git
+    namespace: "~ubuntu-release"
+    project: autopkgtest-cloud
+    repository: autopkgtest-package-configs
+
+  - id: templates
+    name: ubuntu-release-tools/templates
+    provider: launchpad-git
+    namespace: "~ubuntu-release"
+    project: ubuntu-release-tools
+    repository: templates
+
+  - id: ubuntu-release-tools
+    name: ubuntu-release-tools
+    provider: launchpad-git
+    namespace: "~ubuntu-release"
+    project: ubuntu-release-tools
+    repository: ubuntu-release-tools
+
+  - id: ubuntu-images
+    name: ubuntu-images
+    provider: launchpad-git
+    namespace: "~ubuntu-release"
+    project: ubuntu-images
+    repository: ubuntu-images
+
+  - id: britney2
+    name: britney2-ubuntu
+    provider: launchpad-git
+    namespace: "~ubuntu-release"
+    project: britney
+    repository: britney2-ubuntu
+
+  - id: britney1
+    name: britney1-ubuntu
+    provider: launchpad-git
+    namespace: "~ubuntu-release"
+    project: britney
+    repository: britney1-ubuntu
+
   # Phase 1 ships a GitHub provider stub so the shape is proven but unused.
   # Uncomment once scripts/providers/github.py is implemented.
   #
