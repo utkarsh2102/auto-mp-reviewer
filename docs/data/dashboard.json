@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-09-20T23:33:51.648338+00:00",
+  "generated_at": "2026-09-21T00:49:53.060033+00:00",
   "config": {
     "stale_after_days": 30,
     "silent_after_days": 7,
@@ -14,7 +14,7 @@
       "url": "https://code.launchpad.net/~ubuntu-cdimage/ubuntu-cdimage/+git/ubuntu-cdimage",
       "status": "ok",
       "error": null,
-      "last_successful_refresh": "2026-09-20T23:33:51.648338+00:00",
+      "last_successful_refresh": "2026-09-21T00:49:53.060033+00:00",
       "merge_requests": [
         {
           "id": "500275",
@@ -198,6 +198,42 @@
           ]
         },
         {
+          "id": "510599",
+          "title": "archive: follow the simple tree and Ubuntu releases under ubuntu/",
+          "url": "https://code.launchpad.net/~mwhudson/ubuntu-cdimage/+git/ubuntu-cdimage-1/+merge/510599",
+          "author": {
+            "name": "mwhudson",
+            "display_name": "Michael Hudson-Doyle",
+            "url": "https://launchpad.net/~mwhudson"
+          },
+          "status": "Needs review",
+          "status_category": "needs_review",
+          "created_at": "2026-09-02T00:09:26.766747+00:00",
+          "updated_at": "2026-09-02T00:09:26.766747+00:00",
+          "source_branch": "fix-archive-scripts",
+          "target_branch": "main",
+          "reviewers": [
+            {
+              "name": "ubuntu-cdimage",
+              "display_name": "Ubuntu CD Image Team",
+              "url": "https://launchpad.net/~ubuntu-cdimage",
+              "pending": true,
+              "vote": null
+            }
+          ],
+          "comment_count": 0,
+          "last_comment_at": null,
+          "linked_bugs": [],
+          "diff_url": "https://api.launchpad.net/devel/~mwhudson/ubuntu-cdimage/+git/ubuntu-cdimage-1/+merge/510599/+preview-diff/1140606",
+          "review": null,
+          "age_days": 19,
+          "inactive_days": 19,
+          "is_stale": false,
+          "attention": [
+            "silent"
+          ]
+        },
+        {
           "id": "510601",
           "title": "purge: see the directories an earlier layout left behind",
           "url": "https://code.launchpad.net/~mwhudson/ubuntu-cdimage/+git/ubuntu-cdimage-1/+merge/510601",
@@ -232,42 +268,6 @@
           "attention": [
             "silent"
           ]
-        },
-        {
-          "id": "510599",
-          "title": "archive: follow the simple tree and Ubuntu releases under ubuntu/",
-          "url": "https://code.launchpad.net/~mwhudson/ubuntu-cdimage/+git/ubuntu-cdimage-1/+merge/510599",
-          "author": {
-            "name": "mwhudson",
-            "display_name": "Michael Hudson-Doyle",
-            "url": "https://launchpad.net/~mwhudson"
-          },
-          "status": "Needs review",
-          "status_category": "needs_review",
-          "created_at": "2026-09-02T00:09:26.766747+00:00",
-          "updated_at": "2026-09-02T00:09:26.766747+00:00",
-          "source_branch": "fix-archive-scripts",
-          "target_branch": "main",
-          "reviewers": [
-            {
-              "name": "ubuntu-cdimage",
-              "display_name": "Ubuntu CD Image Team",
-              "url": "https://launchpad.net/~ubuntu-cdimage",
-              "pending": true,
-              "vote": null
-            }
-          ],
-          "comment_count": 0,
-          "last_comment_at": null,
-          "linked_bugs": [],
-          "diff_url": "https://api.launchpad.net/devel/~mwhudson/ubuntu-cdimage/+git/ubuntu-cdimage-1/+merge/510599/+preview-diff/1140606",
-          "review": null,
-          "age_days": 18,
-          "inactive_days": 18,
-          "is_stale": false,
-          "attention": [
-            "silent"
-          ]
         }
       ]
     },
@@ -278,7 +278,7 @@
       "url": "https://code.launchpad.net/~ubuntu-core-dev/livecd-rootfs/+git/livecd-rootfs",
       "status": "ok",
       "error": null,
-      "last_successful_refresh": "2026-09-20T23:33:51.648338+00:00",
+      "last_successful_refresh": "2026-09-21T00:49:53.060033+00:00",
       "merge_requests": [
         {
           "id": "380853",
@@ -496,8 +496,8 @@
           "linked_bugs": [],
           "diff_url": "https://api.launchpad.net/devel/~ubuntu-core-dev/livecd-rootfs/+git/livecd-rootfs/+merge/369840/+preview-diff/877424",
           "review": null,
-          "age_days": 2630,
-          "inactive_days": 2049,
+          "age_days": 2631,
+          "inactive_days": 2050,
           "is_stale": true,
           "attention": [
             "silent"
@@ -673,7 +673,7 @@
           "linked_bugs": [],
           "diff_url": "https://api.launchpad.net/devel/~ubuntu-core-dev/livecd-rootfs/+git/livecd-rootfs/+merge/397119/+preview-diff/929477",
           "review": null,
-          "age_days": 2060,
+          "age_days": 2061,
           "inactive_days": 1964,
           "is_stale": true,
           "attention": []
@@ -2191,6 +2191,3081 @@
           ]
         }
       ]
+    },
+    {
+      "id": "ubuntu-archive-tools",
+      "name": "ubuntu-archive-tools",
+      "provider": "launchpad-git",
+      "url": "https://code.launchpad.net/~ubuntu-archive/ubuntu-archive-tools/+git/ubuntu-archive-tools",
+      "status": "ok",
+      "error": null,
+      "last_successful_refresh": "2026-09-21T00:49:53.060033+00:00",
+      "merge_requests": [
+        {
+          "id": "411081",
+          "title": "Fix \"W605 invalid escape sequence\" flake8 warnings",
+          "url": "https://code.launchpad.net/~cjwatson/ubuntu-archive-tools/+git/ubuntu-archive-tools/+merge/411081",
+          "author": {
+            "name": "cjwatson",
+            "display_name": "Colin Watson",
+            "url": "https://launchpad.net/~cjwatson"
+          },
+          "status": "Needs review",
+          "status_category": "needs_review",
+          "created_at": "2021-11-01T15:13:54.462476+00:00",
+          "updated_at": "2021-11-01T15:13:54.462476+00:00",
+          "source_branch": "flake8-W605",
+          "target_branch": "main",
+          "reviewers": [
+            {
+              "name": "ubuntu-archive",
+              "display_name": "Ubuntu Package Archive Administrators",
+              "url": "https://launchpad.net/~ubuntu-archive",
+              "pending": true,
+              "vote": null
+            }
+          ],
+          "comment_count": 0,
+          "last_comment_at": null,
+          "linked_bugs": [],
+          "diff_url": "https://api.launchpad.net/devel/~cjwatson/ubuntu-archive-tools/+git/ubuntu-archive-tools/+merge/411081/+preview-diff/955298",
+          "review": null,
+          "age_days": 1784,
+          "inactive_days": 1784,
+          "is_stale": true,
+          "attention": [
+            "silent"
+          ]
+        },
+        {
+          "id": "415638",
+          "title": "kernel-sru-review: change task target from promote-to-proposed to sru-review",
+          "url": "https://code.launchpad.net/~xnox/ubuntu-archive-tools/+git/ubuntu-archive-tools/+merge/415638",
+          "author": {
+            "name": "xnox",
+            "display_name": "Dimitri John Ledkov",
+            "url": "https://launchpad.net/~xnox"
+          },
+          "status": "Work in progress",
+          "status_category": "in_progress",
+          "created_at": "2022-02-16T00:31:52.979305+00:00",
+          "updated_at": "2022-02-16T02:49:01.209642+00:00",
+          "source_branch": "kernel-sru-review",
+          "target_branch": "main",
+          "reviewers": [
+            {
+              "name": "ubuntu-archive",
+              "display_name": "Ubuntu Package Archive Administrators",
+              "url": "https://launchpad.net/~ubuntu-archive",
+              "pending": true,
+              "vote": null
+            },
+            {
+              "name": "apw",
+              "display_name": "Andy Whitcroft",
+              "url": "https://launchpad.net/~apw",
+              "pending": true,
+              "vote": null
+            },
+            {
+              "name": "vorlon",
+              "display_name": "Steve Langasek",
+              "url": "https://launchpad.net/~vorlon",
+              "pending": true,
+              "vote": null
+            },
+            {
+              "name": "sil2100",
+              "display_name": "\u0141ukasz Zemczak",
+              "url": "https://launchpad.net/~sil2100",
+              "pending": true,
+              "vote": null
+            }
+          ],
+          "comment_count": 3,
+          "last_comment_at": "2022-02-16T02:49:01.209642+00:00",
+          "linked_bugs": [],
+          "diff_url": "https://api.launchpad.net/devel/~xnox/ubuntu-archive-tools/+git/ubuntu-archive-tools/+merge/415638/+preview-diff/963684",
+          "review": null,
+          "age_days": 1678,
+          "inactive_days": 1677,
+          "is_stale": true,
+          "attention": []
+        },
+        {
+          "id": "433775",
+          "title": "identify-removals-from-rebuilds \u2192 main",
+          "url": "https://code.launchpad.net/~paelzer/ubuntu-archive-tools/+git/ubuntu-archive-tools/+merge/433775",
+          "author": {
+            "name": "paelzer",
+            "display_name": "Christian Ehrhardt",
+            "url": "https://launchpad.net/~paelzer"
+          },
+          "status": "Work in progress",
+          "status_category": "in_progress",
+          "created_at": "2022-11-29T08:37:56.067077+00:00",
+          "updated_at": "2023-04-12T05:27:07.204901+00:00",
+          "source_branch": "identify-removals-from-rebuilds",
+          "target_branch": "main",
+          "reviewers": [
+            {
+              "name": "vorlon",
+              "display_name": "Steve Langasek",
+              "url": "https://launchpad.net/~vorlon",
+              "pending": false,
+              "vote": "Approve"
+            },
+            {
+              "name": "ubuntu-archive",
+              "display_name": "Ubuntu Package Archive Administrators",
+              "url": "https://launchpad.net/~ubuntu-archive",
+              "pending": true,
+              "vote": null
+            },
+            {
+              "name": "aburrage",
+              "display_name": "Alex Burrage",
+              "url": "https://launchpad.net/~aburrage",
+              "pending": true,
+              "vote": null
+            }
+          ],
+          "comment_count": 28,
+          "last_comment_at": "2023-04-12T05:27:07.204901+00:00",
+          "linked_bugs": [],
+          "diff_url": "https://api.launchpad.net/devel/~paelzer/ubuntu-archive-tools/+git/ubuntu-archive-tools/+merge/433775/+preview-diff/1000811",
+          "review": null,
+          "age_days": 1391,
+          "inactive_days": 1257,
+          "is_stale": true,
+          "attention": []
+        },
+        {
+          "id": "443357",
+          "title": "uefi-release \u2192 main",
+          "url": "https://code.launchpad.net/~juliank/ubuntu-archive-tools/+git/ubuntu-archive-tools/+merge/443357",
+          "author": {
+            "name": "juliank",
+            "display_name": "Julian Andres Klode",
+            "url": "https://launchpad.net/~juliank"
+          },
+          "status": "Needs review",
+          "status_category": "needs_review",
+          "created_at": "2023-05-22T15:13:02.884097+00:00",
+          "updated_at": "2023-05-22T15:13:02.884097+00:00",
+          "source_branch": "uefi-release",
+          "target_branch": "main",
+          "reviewers": [
+            {
+              "name": "ubuntu-archive",
+              "display_name": "Ubuntu Package Archive Administrators",
+              "url": "https://launchpad.net/~ubuntu-archive",
+              "pending": true,
+              "vote": null
+            }
+          ],
+          "comment_count": 0,
+          "last_comment_at": null,
+          "linked_bugs": [],
+          "diff_url": "https://api.launchpad.net/devel/~juliank/ubuntu-archive-tools/+git/ubuntu-archive-tools/+merge/443357/+preview-diff/1012038",
+          "review": null,
+          "age_days": 1217,
+          "inactive_days": 1217,
+          "is_stale": true,
+          "attention": [
+            "silent"
+          ]
+        },
+        {
+          "id": "448828",
+          "title": "sru-release-freeze \u2192 main",
+          "url": "https://code.launchpad.net/~racb/ubuntu-archive-tools/+git/ubuntu-archive-tools/+merge/448828",
+          "author": {
+            "name": "racb",
+            "display_name": "Robie Basak",
+            "url": "https://launchpad.net/~racb"
+          },
+          "status": "Needs review",
+          "status_category": "needs_review",
+          "created_at": "2023-08-09T19:49:22.500546+00:00",
+          "updated_at": "2023-08-09T19:51:32.438359+00:00",
+          "source_branch": "sru-release-freeze",
+          "target_branch": "main",
+          "reviewers": [
+            {
+              "name": "ubuntu-sru",
+              "display_name": "Ubuntu Stable Release Updates Team",
+              "url": "https://launchpad.net/~ubuntu-sru",
+              "pending": true,
+              "vote": null
+            },
+            {
+              "name": "ubuntu-archive",
+              "display_name": "Ubuntu Package Archive Administrators",
+              "url": "https://launchpad.net/~ubuntu-archive",
+              "pending": true,
+              "vote": null
+            }
+          ],
+          "comment_count": 1,
+          "last_comment_at": "2023-08-09T19:51:24.173076+00:00",
+          "linked_bugs": [],
+          "diff_url": "https://api.launchpad.net/devel/~racb/ubuntu-archive-tools/+git/ubuntu-archive-tools/+merge/448828/+preview-diff/1022413",
+          "review": null,
+          "age_days": 1138,
+          "inactive_days": 1138,
+          "is_stale": true,
+          "attention": [
+            "silent"
+          ]
+        },
+        {
+          "id": "426990",
+          "title": "This is a 30% reduction locally in the runtime of the phased-updater script; for a script that runs for 2 hours, that seems worth doing.",
+          "url": "https://code.launchpad.net/~ubuntu-archive/ubuntu-archive-tools/+git/ubuntu-archive-tools/+merge/426990",
+          "author": {
+            "name": "vorlon",
+            "display_name": "Steve Langasek",
+            "url": "https://launchpad.net/~vorlon"
+          },
+          "status": "Needs review",
+          "status_category": "needs_review",
+          "created_at": "2022-07-16T04:36:26.019789+00:00",
+          "updated_at": "2023-10-18T22:15:17.379658+00:00",
+          "source_branch": "optimize-phased-updater",
+          "target_branch": "main",
+          "reviewers": [
+            {
+              "name": "brian-murray",
+              "display_name": "Brian Murray",
+              "url": "https://launchpad.net/~brian-murray",
+              "pending": false,
+              "vote": "Needs Information"
+            }
+          ],
+          "comment_count": 3,
+          "last_comment_at": "2023-10-18T22:15:17.379658+00:00",
+          "linked_bugs": [],
+          "diff_url": "https://api.launchpad.net/devel/~ubuntu-archive/ubuntu-archive-tools/+git/ubuntu-archive-tools/+merge/426990/+preview-diff/981421",
+          "review": null,
+          "age_days": 1527,
+          "inactive_days": 1068,
+          "is_stale": true,
+          "attention": [
+            "silent"
+          ]
+        },
+        {
+          "id": "456346",
+          "title": "new-review: switch up application layout to match u-a-t standard and minor fixes",
+          "url": "https://code.launchpad.net/~apw/ubuntu-archive-tools/+git/ubuntu-archive-tools/+merge/456346",
+          "author": {
+            "name": "apw",
+            "display_name": "Andy Whitcroft",
+            "url": "https://launchpad.net/~apw"
+          },
+          "status": "Needs review",
+          "status_category": "needs_review",
+          "created_at": "2023-11-27T13:49:55.109463+00:00",
+          "updated_at": "2023-11-27T13:49:55.109463+00:00",
+          "source_branch": "new-review--switch-form-and-minor-fixes",
+          "target_branch": "main",
+          "reviewers": [
+            {
+              "name": "ubuntu-archive",
+              "display_name": "Ubuntu Package Archive Administrators",
+              "url": "https://launchpad.net/~ubuntu-archive",
+              "pending": true,
+              "vote": null
+            }
+          ],
+          "comment_count": 0,
+          "last_comment_at": null,
+          "linked_bugs": [],
+          "diff_url": "https://api.launchpad.net/devel/~apw/ubuntu-archive-tools/+git/ubuntu-archive-tools/+merge/456346/+preview-diff/1036315",
+          "review": null,
+          "age_days": 1028,
+          "inactive_days": 1028,
+          "is_stale": true,
+          "attention": [
+            "silent"
+          ]
+        },
+        {
+          "id": "438721",
+          "title": "drop-obsolete-series-references \u2192 main",
+          "url": "https://code.launchpad.net/~ubuntu-archive/ubuntu-archive-tools/+git/ubuntu-archive-tools/+merge/438721",
+          "author": {
+            "name": "vorlon",
+            "display_name": "Steve Langasek",
+            "url": "https://launchpad.net/~vorlon"
+          },
+          "status": "Needs review",
+          "status_category": "needs_review",
+          "created_at": "2023-03-11T01:47:54.361516+00:00",
+          "updated_at": "2024-02-15T00:14:21.115343+00:00",
+          "source_branch": "drop-obsolete-series-references",
+          "target_branch": "main",
+          "reviewers": [
+            {
+              "name": "brian-murray",
+              "display_name": "Brian Murray",
+              "url": "https://launchpad.net/~brian-murray",
+              "pending": true,
+              "vote": null
+            },
+            {
+              "name": "ubuntu-archive",
+              "display_name": "Ubuntu Package Archive Administrators",
+              "url": "https://launchpad.net/~ubuntu-archive",
+              "pending": true,
+              "vote": null
+            }
+          ],
+          "comment_count": 3,
+          "last_comment_at": "2024-02-15T00:14:21.115343+00:00",
+          "linked_bugs": [],
+          "diff_url": "https://api.launchpad.net/devel/~ubuntu-archive/ubuntu-archive-tools/+git/ubuntu-archive-tools/+merge/438721/+preview-diff/1003255",
+          "review": null,
+          "age_days": 1289,
+          "inactive_days": 949,
+          "is_stale": true,
+          "attention": [
+            "silent"
+          ]
+        },
+        {
+          "id": "460716",
+          "title": "Phasing language-packages doesn't seem useful to me given that the only crash reports we would get about them would be of the \"Type: Package\" (package install failures) which should surface other ways.",
+          "url": "https://code.launchpad.net/~ubuntu-archive/ubuntu-archive-tools/+git/ubuntu-archive-tools/+merge/460716",
+          "author": {
+            "name": "brian-murray",
+            "display_name": "Brian Murray",
+            "url": "https://launchpad.net/~brian-murray"
+          },
+          "status": "Needs review",
+          "status_category": "needs_review",
+          "created_at": "2024-02-16T20:46:39.469022+00:00",
+          "updated_at": "2024-02-16T20:49:47.468306+00:00",
+          "source_branch": "fully-phase-language-packs",
+          "target_branch": "main",
+          "reviewers": [
+            {
+              "name": "ubuntu-archive",
+              "display_name": "Ubuntu Package Archive Administrators",
+              "url": "https://launchpad.net/~ubuntu-archive",
+              "pending": true,
+              "vote": null
+            }
+          ],
+          "comment_count": 1,
+          "last_comment_at": "2024-02-16T20:49:47.468306+00:00",
+          "linked_bugs": [],
+          "diff_url": "https://api.launchpad.net/devel/~ubuntu-archive/ubuntu-archive-tools/+git/ubuntu-archive-tools/+merge/460716/+preview-diff/1045086",
+          "review": null,
+          "age_days": 947,
+          "inactive_days": 947,
+          "is_stale": true,
+          "attention": [
+            "silent"
+          ]
+        },
+        {
+          "id": "460715",
+          "title": "The cd-boot-images packages are not used by end users but by debian-cd and ubuntu-image so phasing them won't reveal anything useful and just wastes time and energy.",
+          "url": "https://code.launchpad.net/~ubuntu-archive/ubuntu-archive-tools/+git/ubuntu-archive-tools/+merge/460715",
+          "author": {
+            "name": "brian-murray",
+            "display_name": "Brian Murray",
+            "url": "https://launchpad.net/~brian-murray"
+          },
+          "status": "Needs review",
+          "status_category": "needs_review",
+          "created_at": "2024-02-16T20:40:40.755727+00:00",
+          "updated_at": "2024-02-16T20:40:40.755727+00:00",
+          "source_branch": "fully-phase-cd-boot-images",
+          "target_branch": "main",
+          "reviewers": [
+            {
+              "name": "ubuntu-archive",
+              "display_name": "Ubuntu Package Archive Administrators",
+              "url": "https://launchpad.net/~ubuntu-archive",
+              "pending": true,
+              "vote": null
+            }
+          ],
+          "comment_count": 0,
+          "last_comment_at": null,
+          "linked_bugs": [],
+          "diff_url": "https://api.launchpad.net/devel/~ubuntu-archive/ubuntu-archive-tools/+git/ubuntu-archive-tools/+merge/460715/+preview-diff/1045085",
+          "review": null,
+          "age_days": 947,
+          "inactive_days": 947,
+          "is_stale": true,
+          "attention": [
+            "silent"
+          ]
+        },
+        {
+          "id": "465016",
+          "title": "Don't hard-code all openjdk versions across all Ubuntu releases.  We should be selective about which series we hard-code which versions for, so that we can eventually age these out instead of having the list grow indefinitely.",
+          "url": "https://code.launchpad.net/~ubuntu-archive/ubuntu-archive-tools/+git/ubuntu-archive-tools/+merge/465016",
+          "author": {
+            "name": "vorlon",
+            "display_name": "Steve Langasek",
+            "url": "https://launchpad.net/~vorlon"
+          },
+          "status": "Needs review",
+          "status_category": "needs_review",
+          "created_at": "2024-04-25T19:49:31.758092+00:00",
+          "updated_at": "2024-04-25T19:49:37.737091+00:00",
+          "source_branch": "clean-up-java-hard-coding",
+          "target_branch": "main",
+          "reviewers": [
+            {
+              "name": "doko",
+              "display_name": "Matthias Klose",
+              "url": "https://launchpad.net/~doko",
+              "pending": true,
+              "vote": null
+            },
+            {
+              "name": "ubuntu-archive",
+              "display_name": "Ubuntu Package Archive Administrators",
+              "url": "https://launchpad.net/~ubuntu-archive",
+              "pending": true,
+              "vote": null
+            }
+          ],
+          "comment_count": 0,
+          "last_comment_at": null,
+          "linked_bugs": [],
+          "diff_url": "https://api.launchpad.net/devel/~ubuntu-archive/ubuntu-archive-tools/+git/ubuntu-archive-tools/+merge/465016/+preview-diff/1053758",
+          "review": null,
+          "age_days": 878,
+          "inactive_days": 878,
+          "is_stale": true,
+          "attention": [
+            "silent"
+          ]
+        },
+        {
+          "id": "471242",
+          "title": "Adds a small script which parses britney logs for a specified release.",
+          "url": "https://code.launchpad.net/~ssstr1pe/ubuntu-archive-tools/+git/ubuntu-archive-tools/+merge/471242",
+          "author": {
+            "name": "ssstr1pe",
+            "display_name": "Tim Andersson",
+            "url": "https://launchpad.net/~ssstr1pe"
+          },
+          "status": "Needs review",
+          "status_category": "needs_review",
+          "created_at": "2024-08-14T11:08:09.108381+00:00",
+          "updated_at": "2024-11-25T14:45:03.677470+00:00",
+          "source_branch": "britney-log-parser",
+          "target_branch": "main",
+          "reviewers": [
+            {
+              "name": "ubuntu-archive",
+              "display_name": "Ubuntu Package Archive Administrators",
+              "url": "https://launchpad.net/~ubuntu-archive",
+              "pending": true,
+              "vote": null
+            }
+          ],
+          "comment_count": 2,
+          "last_comment_at": "2024-11-25T14:44:59.753490+00:00",
+          "linked_bugs": [],
+          "diff_url": "https://api.launchpad.net/devel/~ssstr1pe/ubuntu-archive-tools/+git/ubuntu-archive-tools/+merge/471242/+preview-diff/1076673",
+          "review": null,
+          "age_days": 767,
+          "inactive_days": 664,
+          "is_stale": true,
+          "attention": [
+            "silent"
+          ]
+        },
+        {
+          "id": "493838",
+          "title": "generate-freeze-block: do not consider architecture variants",
+          "url": "https://code.launchpad.net/~mwhudson/ubuntu-archive-tools/+git/ubuntu-archive-tools/+merge/493838",
+          "author": {
+            "name": "mwhudson",
+            "display_name": "Michael Hudson-Doyle",
+            "url": "https://launchpad.net/~mwhudson"
+          },
+          "status": "Needs review",
+          "status_category": "needs_review",
+          "created_at": "2025-10-05T22:10:47.958480+00:00",
+          "updated_at": "2025-10-06T02:02:54.742000+00:00",
+          "source_branch": "variants-vs-generate-freeze-block",
+          "target_branch": "main",
+          "reviewers": [
+            {
+              "name": "utkarsh",
+              "display_name": "Utkarsh Gupta",
+              "url": "https://launchpad.net/~utkarsh",
+              "pending": false,
+              "vote": "Needs Fixing"
+            }
+          ],
+          "comment_count": 3,
+          "last_comment_at": "2025-10-06T02:02:54.742000+00:00",
+          "linked_bugs": [],
+          "diff_url": "https://api.launchpad.net/devel/~mwhudson/ubuntu-archive-tools/+git/ubuntu-archive-tools/+merge/493838/+preview-diff/1108058",
+          "review": null,
+          "age_days": 350,
+          "inactive_days": 349,
+          "is_stale": true,
+          "attention": [
+            "silent"
+          ]
+        },
+        {
+          "id": "478387",
+          "title": "color-sru \u2192 main",
+          "url": "https://code.launchpad.net/~juliank/ubuntu-archive-tools/+git/ubuntu-archive-tools/+merge/478387",
+          "author": {
+            "name": "juliank",
+            "display_name": "Julian Andres Klode",
+            "url": "https://launchpad.net/~juliank"
+          },
+          "status": "Needs review",
+          "status_category": "needs_review",
+          "created_at": "2024-12-13T12:03:31.258059+00:00",
+          "updated_at": "2025-10-07T16:06:26.048398+00:00",
+          "source_branch": "color-sru",
+          "target_branch": "main",
+          "reviewers": [
+            {
+              "name": "ubuntu-sru",
+              "display_name": "Ubuntu Stable Release Updates Team",
+              "url": "https://launchpad.net/~ubuntu-sru",
+              "pending": true,
+              "vote": null
+            }
+          ],
+          "comment_count": 2,
+          "last_comment_at": "2025-10-07T16:06:26.048398+00:00",
+          "linked_bugs": [],
+          "diff_url": "https://api.launchpad.net/devel/~juliank/ubuntu-archive-tools/+git/ubuntu-archive-tools/+merge/478387/+preview-diff/1078991",
+          "review": null,
+          "age_days": 646,
+          "inactive_days": 348,
+          "is_stale": true,
+          "attention": [
+            "silent"
+          ]
+        },
+        {
+          "id": "456607",
+          "title": "sru-release: mimick britney when releasing packages to release & updates pockets",
+          "url": "https://code.launchpad.net/~xnox/ubuntu-archive-tools/+git/ubuntu-archive-tools/+merge/456607",
+          "author": {
+            "name": "xnox",
+            "display_name": "Dimitri John Ledkov",
+            "url": "https://launchpad.net/~xnox"
+          },
+          "status": "Needs review",
+          "status_category": "needs_review",
+          "created_at": "2023-11-30T14:57:29.593084+00:00",
+          "updated_at": "2025-10-07T16:05:00.816991+00:00",
+          "source_branch": "sru-release-use-move",
+          "target_branch": "main",
+          "reviewers": [
+            {
+              "name": "ubuntu-archive",
+              "display_name": "Ubuntu Package Archive Administrators",
+              "url": "https://launchpad.net/~ubuntu-archive",
+              "pending": true,
+              "vote": null
+            }
+          ],
+          "comment_count": 1,
+          "last_comment_at": "2025-10-07T16:05:00.816991+00:00",
+          "linked_bugs": [],
+          "diff_url": "https://api.launchpad.net/devel/~xnox/ubuntu-archive-tools/+git/ubuntu-archive-tools/+merge/456607/+preview-diff/1036801",
+          "review": null,
+          "age_days": 1025,
+          "inactive_days": 348,
+          "is_stale": true,
+          "attention": [
+            "silent"
+          ]
+        },
+        {
+          "id": "494416",
+          "title": "sync-packageset-kernel: sync kernel packageset to the kernel-team kernel-series data",
+          "url": "https://code.launchpad.net/~apw/ubuntu-archive-tools/+git/ubuntu-archive-tools/+merge/494416",
+          "author": {
+            "name": "apw",
+            "display_name": "Andy Whitcroft",
+            "url": "https://launchpad.net/~apw"
+          },
+          "status": "Needs review",
+          "status_category": "needs_review",
+          "created_at": "2025-10-14T20:40:35.208422+00:00",
+          "updated_at": "2025-10-15T17:32:58.563021+00:00",
+          "source_branch": "nvidia-packageset",
+          "target_branch": "main",
+          "reviewers": [
+            {
+              "name": "utkarsh",
+              "display_name": "Utkarsh Gupta",
+              "url": "https://launchpad.net/~utkarsh",
+              "pending": false,
+              "vote": "Approve"
+            }
+          ],
+          "comment_count": 5,
+          "last_comment_at": "2025-10-15T17:32:58.563021+00:00",
+          "linked_bugs": [],
+          "diff_url": "https://api.launchpad.net/devel/~apw/ubuntu-archive-tools/+git/ubuntu-archive-tools/+merge/494416/+preview-diff/1109325",
+          "review": null,
+          "age_days": 341,
+          "inactive_days": 340,
+          "is_stale": true,
+          "attention": [
+            "silent"
+          ]
+        },
+        {
+          "id": "494688",
+          "title": "priority-ignore-lvspd \u2192 main",
+          "url": "https://code.launchpad.net/~schopin/ubuntu-archive-tools/+git/ubuntu-archive-tools/+merge/494688",
+          "author": {
+            "name": "schopin",
+            "display_name": "Simon Chopin",
+            "url": "https://launchpad.net/~schopin"
+          },
+          "status": "Needs review",
+          "status_category": "needs_review",
+          "created_at": "2025-10-20T13:09:08.851133+00:00",
+          "updated_at": "2025-10-20T13:09:08.851133+00:00",
+          "source_branch": "priority-ignore-lvspd",
+          "target_branch": "main",
+          "reviewers": [
+            {
+              "name": "ubuntu-archive",
+              "display_name": "Ubuntu Package Archive Administrators",
+              "url": "https://launchpad.net/~ubuntu-archive",
+              "pending": true,
+              "vote": null
+            }
+          ],
+          "comment_count": 0,
+          "last_comment_at": null,
+          "linked_bugs": [],
+          "diff_url": "https://api.launchpad.net/devel/~schopin/ubuntu-archive-tools/+git/ubuntu-archive-tools/+merge/494688/+preview-diff/1109782",
+          "review": null,
+          "age_days": 335,
+          "inactive_days": 335,
+          "is_stale": true,
+          "attention": [
+            "silent"
+          ]
+        },
+        {
+          "id": "496106",
+          "title": "manage-chroot: fix --image flag while using --from-livefs",
+          "url": "https://code.launchpad.net/~ruinedyourlife/ubuntu-archive-tools/+git/ubuntu-archive-tools/+merge/496106",
+          "author": {
+            "name": "ruinedyourlife",
+            "display_name": "RuinedYourLife",
+            "url": "https://launchpad.net/~ruinedyourlife"
+          },
+          "status": "Needs review",
+          "status_category": "needs_review",
+          "created_at": "2025-11-20T14:54:50.838187+00:00",
+          "updated_at": "2025-11-20T14:54:50.838187+00:00",
+          "source_branch": "manage-chroot-image-fix",
+          "target_branch": "main",
+          "reviewers": [
+            {
+              "name": "ubuntu-archive",
+              "display_name": "Ubuntu Package Archive Administrators",
+              "url": "https://launchpad.net/~ubuntu-archive",
+              "pending": true,
+              "vote": null
+            }
+          ],
+          "comment_count": 0,
+          "last_comment_at": null,
+          "linked_bugs": [],
+          "diff_url": "https://api.launchpad.net/devel/~ruinedyourlife/ubuntu-archive-tools/+git/ubuntu-archive-tools/+merge/496106/+preview-diff/1112383",
+          "review": null,
+          "age_days": 304,
+          "inactive_days": 304,
+          "is_stale": true,
+          "attention": [
+            "silent"
+          ]
+        },
+        {
+          "id": "498638",
+          "title": "This is a hack to allow me to specify a target to an individual PPA with simpler syntax:",
+          "url": "https://code.launchpad.net/~karljs/ubuntu-archive-tools/+git/ubuntu-archive-tools/+merge/498638",
+          "author": {
+            "name": "karljs",
+            "display_name": "Karl Smeltzer",
+            "url": "https://launchpad.net/~karljs"
+          },
+          "status": "Needs review",
+          "status_category": "needs_review",
+          "created_at": "2026-01-15T00:22:41.537079+00:00",
+          "updated_at": "2026-01-15T00:32:18.981166+00:00",
+          "source_branch": "ppa-format-fix",
+          "target_branch": "main",
+          "reviewers": [
+            {
+              "name": "ubuntu-archive",
+              "display_name": "Ubuntu Package Archive Administrators",
+              "url": "https://launchpad.net/~ubuntu-archive",
+              "pending": true,
+              "vote": null
+            }
+          ],
+          "comment_count": 1,
+          "last_comment_at": "2026-01-15T00:32:18.981166+00:00",
+          "linked_bugs": [],
+          "diff_url": "https://api.launchpad.net/devel/~karljs/ubuntu-archive-tools/+git/ubuntu-archive-tools/+merge/498638/+preview-diff/1117467",
+          "review": null,
+          "age_days": 249,
+          "inactive_days": 249,
+          "is_stale": true,
+          "attention": [
+            "silent"
+          ]
+        },
+        {
+          "id": "508941",
+          "title": "Similar to JJ's merge - https://code.launchpad.net/~jj/ubuntu-archive-tools/+git/ubuntu-archive-tools/+merge/508635 avoid crashes due to missing arches in nbs-report and checkrdepends",
+          "url": "https://code.launchpad.net/~lvoytek/ubuntu-archive-tools/+git/ubuntu-archive-tools/+merge/508941",
+          "author": {
+            "name": "lvoytek",
+            "display_name": "Lena Voytek",
+            "url": "https://launchpad.net/~lvoytek"
+          },
+          "status": "Needs review",
+          "status_category": "needs_review",
+          "created_at": "2026-07-23T21:48:53.277527+00:00",
+          "updated_at": "2026-07-23T21:48:53.277527+00:00",
+          "source_branch": "nbs-arch-fixes",
+          "target_branch": "main",
+          "reviewers": [
+            {
+              "name": "ubuntu-archive",
+              "display_name": "Ubuntu Package Archive Administrators",
+              "url": "https://launchpad.net/~ubuntu-archive",
+              "pending": true,
+              "vote": null
+            }
+          ],
+          "comment_count": 0,
+          "last_comment_at": null,
+          "linked_bugs": [],
+          "diff_url": "https://api.launchpad.net/devel/~lvoytek/ubuntu-archive-tools/+git/ubuntu-archive-tools/+merge/508941/+preview-diff/1137443",
+          "review": null,
+          "age_days": 59,
+          "inactive_days": 59,
+          "is_stale": true,
+          "attention": [
+            "silent"
+          ]
+        },
+        {
+          "id": "509566",
+          "title": "checkrdepends: add option for DEP8 reverse deps",
+          "url": "https://code.launchpad.net/~athos/ubuntu-archive-tools/+git/ubuntu-archive-tools/+merge/509566",
+          "author": {
+            "name": "athos",
+            "display_name": "Athos Ribeiro",
+            "url": "https://launchpad.net/~athos"
+          },
+          "status": "Needs review",
+          "status_category": "needs_review",
+          "created_at": "2026-08-14T19:07:32.929669+00:00",
+          "updated_at": "2026-08-14T19:07:32.929669+00:00",
+          "source_branch": "checkrdepends-test-triggers",
+          "target_branch": "main",
+          "reviewers": [
+            {
+              "name": "ubuntu-archive",
+              "display_name": "Ubuntu Package Archive Administrators",
+              "url": "https://launchpad.net/~ubuntu-archive",
+              "pending": true,
+              "vote": null
+            }
+          ],
+          "comment_count": 0,
+          "last_comment_at": null,
+          "linked_bugs": [],
+          "diff_url": "https://api.launchpad.net/devel/~athos/ubuntu-archive-tools/+git/ubuntu-archive-tools/+merge/509566/+preview-diff/1138608",
+          "review": null,
+          "age_days": 37,
+          "inactive_days": 37,
+          "is_stale": true,
+          "attention": [
+            "silent"
+          ]
+        },
+        {
+          "id": "508395",
+          "title": "I have written a new wrapper tool for retry-autopkgtest-regressions, called",
+          "url": "https://code.launchpad.net/~mruffell/ubuntu-archive-tools/+git/ubuntu-archive-tools/+merge/508395",
+          "author": {
+            "name": "mruffell",
+            "display_name": "Matthew Ruffell",
+            "url": "https://launchpad.net/~mruffell"
+          },
+          "status": "Needs review",
+          "status_category": "needs_review",
+          "created_at": "2026-07-15T05:35:07.514224+00:00",
+          "updated_at": "2026-08-16T22:52:48.704356+00:00",
+          "source_branch": "new-retry-autopkgtest-tool",
+          "target_branch": "main",
+          "reviewers": [
+            {
+              "name": "ubuntu-archive",
+              "display_name": "Ubuntu Package Archive Administrators",
+              "url": "https://launchpad.net/~ubuntu-archive",
+              "pending": true,
+              "vote": null
+            }
+          ],
+          "comment_count": 2,
+          "last_comment_at": "2026-08-16T22:52:48.704356+00:00",
+          "linked_bugs": [],
+          "diff_url": "https://api.launchpad.net/devel/~mruffell/ubuntu-archive-tools/+git/ubuntu-archive-tools/+merge/508395/+preview-diff/1136432",
+          "review": null,
+          "age_days": 67,
+          "inactive_days": 35,
+          "is_stale": true,
+          "attention": [
+            "silent"
+          ]
+        },
+        {
+          "id": "509772",
+          "title": "update url for new germinate report location",
+          "url": "https://code.launchpad.net/~jj/ubuntu-archive-tools/+git/ubuntu-archive-tools/+merge/509772",
+          "author": {
+            "name": "jj",
+            "display_name": "Jonas Jelten",
+            "url": "https://launchpad.net/~jj"
+          },
+          "status": "Work in progress",
+          "status_category": "in_progress",
+          "created_at": "2026-08-19T12:52:04.020994+00:00",
+          "updated_at": "2026-08-19T12:52:04.020994+00:00",
+          "source_branch": "update-i386-builddepends-url",
+          "target_branch": "main",
+          "reviewers": [
+            {
+              "name": "ubuntu-archive",
+              "display_name": "Ubuntu Package Archive Administrators",
+              "url": "https://launchpad.net/~ubuntu-archive",
+              "pending": true,
+              "vote": null
+            }
+          ],
+          "comment_count": 0,
+          "last_comment_at": null,
+          "linked_bugs": [],
+          "diff_url": "https://api.launchpad.net/devel/~jj/ubuntu-archive-tools/+git/ubuntu-archive-tools/+merge/509772/+preview-diff/1139314",
+          "review": null,
+          "age_days": 32,
+          "inactive_days": 32,
+          "is_stale": true,
+          "attention": []
+        },
+        {
+          "id": "510868",
+          "title": "Component-mismatches only sees the dependency graph through germinate",
+          "url": "https://code.launchpad.net/~varranvar/ubuntu-archive-tools/+git/watch-restricted-dependencies/+merge/510868",
+          "author": {
+            "name": "varranvar",
+            "display_name": "Varun Varma",
+            "url": "https://launchpad.net/~varranvar"
+          },
+          "status": "Needs review",
+          "status_category": "needs_review",
+          "created_at": "2026-09-04T18:44:45.403992+00:00",
+          "updated_at": "2026-09-04T18:44:45.403992+00:00",
+          "source_branch": "watch-restricted-dependencies",
+          "target_branch": "main",
+          "reviewers": [
+            {
+              "name": "ubuntu-archive",
+              "display_name": "Ubuntu Package Archive Administrators",
+              "url": "https://launchpad.net/~ubuntu-archive",
+              "pending": true,
+              "vote": null
+            }
+          ],
+          "comment_count": 0,
+          "last_comment_at": null,
+          "linked_bugs": [],
+          "diff_url": "https://api.launchpad.net/devel/~varranvar/ubuntu-archive-tools/+git/watch-restricted-dependencies/+merge/510868/+preview-diff/1141126",
+          "review": null,
+          "age_days": 16,
+          "inactive_days": 16,
+          "is_stale": false,
+          "attention": [
+            "silent"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ubuntu-archive-scripts",
+      "name": "ubuntu-archive-scripts",
+      "provider": "launchpad-git",
+      "url": "https://code.launchpad.net/~ubuntu-archive/ubuntu-archive-scripts/+git/ubuntu-archive-scripts",
+      "status": "ok",
+      "error": null,
+      "last_successful_refresh": "2026-09-21T00:49:53.060033+00:00",
+      "merge_requests": [
+        {
+          "id": "447307",
+          "title": "main \u2192 main",
+          "url": "https://code.launchpad.net/~utkarsh/ubuntu-archive-scripts/+git/ubuntu-archive-scripts/+merge/447307",
+          "author": {
+            "name": "utkarsh",
+            "display_name": "Utkarsh Gupta",
+            "url": "https://launchpad.net/~utkarsh"
+          },
+          "status": "Approved",
+          "status_category": "approved",
+          "created_at": "2023-07-20T13:35:25.049055+00:00",
+          "updated_at": "2023-07-20T13:41:54.726049+00:00",
+          "source_branch": "main",
+          "target_branch": "main",
+          "reviewers": [
+            {
+              "name": "sil2100",
+              "display_name": "\u0141ukasz Zemczak",
+              "url": "https://launchpad.net/~sil2100",
+              "pending": false,
+              "vote": "Approve"
+            }
+          ],
+          "comment_count": 1,
+          "last_comment_at": "2023-07-20T13:41:52.603923+00:00",
+          "linked_bugs": [],
+          "diff_url": "https://api.launchpad.net/devel/~utkarsh/ubuntu-archive-scripts/+git/ubuntu-archive-scripts/+merge/447307/+preview-diff/1019441",
+          "review": null,
+          "age_days": 1158,
+          "inactive_days": 1158,
+          "is_stale": true,
+          "attention": [
+            "approved_not_landed"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "hints-ubuntu",
+      "name": "hints-ubuntu",
+      "provider": "launchpad-git",
+      "url": "https://code.launchpad.net/~ubuntu-release/britney/+git/hints-ubuntu",
+      "status": "ok",
+      "error": null,
+      "last_successful_refresh": "2026-09-21T00:49:53.060033+00:00",
+      "merge_requests": [
+        {
+          "id": "406611",
+          "title": "Recent update to Delve added a new feature that depends on kernel functionality that either isn't available or isn't working on impish's arm64 linux kernel.",
+          "url": "https://code.launchpad.net/~bryce/britney/+git/britney/+merge/406611",
+          "author": {
+            "name": "bryce",
+            "display_name": "Bryce Harrington",
+            "url": "https://launchpad.net/~bryce"
+          },
+          "status": "Needs review",
+          "status_category": "needs_review",
+          "created_at": "2021-08-03T21:52:18.787090+00:00",
+          "updated_at": "2021-08-03T22:21:25.350617+00:00",
+          "source_branch": "plusone-hints",
+          "target_branch": "devel",
+          "reviewers": [
+            {
+              "name": "ubuntu-release",
+              "display_name": "Ubuntu Release Team",
+              "url": "https://launchpad.net/~ubuntu-release",
+              "pending": true,
+              "vote": null
+            }
+          ],
+          "comment_count": 1,
+          "last_comment_at": "2021-08-03T22:21:25.350617+00:00",
+          "linked_bugs": [
+            {
+              "id": "1938474",
+              "title": "delve golang debugger can't read vvar on arm64",
+              "url": "https://bugs.launchpad.net/ubuntu/+source/linux/+bug/1938474",
+              "status": "Invalid",
+              "importance": "Undecided"
+            }
+          ],
+          "diff_url": "https://api.launchpad.net/devel/~bryce/britney/+git/britney/+merge/406611/+preview-diff/947270",
+          "review": null,
+          "age_days": 1874,
+          "inactive_days": 1874,
+          "is_stale": true,
+          "attention": [
+            "silent",
+            "linked_bug"
+          ]
+        },
+        {
+          "id": "407860",
+          "title": "remove reset-test rust-{openssl,curl}-sys",
+          "url": "https://code.launchpad.net/~dbungert/britney/+git/hints-ubuntu/+merge/407860",
+          "author": {
+            "name": "dbungert",
+            "display_name": "Dan Bungert",
+            "url": "https://launchpad.net/~dbungert"
+          },
+          "status": "Needs review",
+          "status_category": "needs_review",
+          "created_at": "2021-08-30T18:18:47.136234+00:00",
+          "updated_at": "2021-08-30T19:45:08.258137+00:00",
+          "source_branch": "remove-rust-openssl-sys",
+          "target_branch": "devel",
+          "reviewers": [
+            {
+              "name": "vorlon",
+              "display_name": "Steve Langasek",
+              "url": "https://launchpad.net/~vorlon",
+              "pending": false,
+              "vote": "Needs Information"
+            }
+          ],
+          "comment_count": 1,
+          "last_comment_at": "2021-08-30T19:45:08.258137+00:00",
+          "linked_bugs": [],
+          "diff_url": "https://api.launchpad.net/devel/~dbungert/britney/+git/hints-ubuntu/+merge/407860/+preview-diff/949484",
+          "review": null,
+          "age_days": 1847,
+          "inactive_days": 1847,
+          "is_stale": true,
+          "attention": [
+            "silent"
+          ]
+        },
+        {
+          "id": "407970",
+          "title": "# Currently raspi arm64 kernel fails to boot in scalingstack making it",
+          "url": "https://code.launchpad.net/~xnox/britney/+git/hints-ubuntu/+merge/407970",
+          "author": {
+            "name": "xnox",
+            "display_name": "Dimitri John Ledkov",
+            "url": "https://launchpad.net/~xnox"
+          },
+          "status": "Work in progress",
+          "status_category": "in_progress",
+          "created_at": "2021-09-01T13:57:09.616635+00:00",
+          "updated_at": "2021-09-06T09:13:03.859877+00:00",
+          "source_branch": "devel",
+          "target_branch": "devel",
+          "reviewers": [
+            {
+              "name": "ubuntu-release",
+              "display_name": "Ubuntu Release Team",
+              "url": "https://launchpad.net/~ubuntu-release",
+              "pending": true,
+              "vote": null
+            },
+            {
+              "name": "apw",
+              "display_name": "Andy Whitcroft",
+              "url": "https://launchpad.net/~apw",
+              "pending": true,
+              "vote": null
+            }
+          ],
+          "comment_count": 2,
+          "last_comment_at": "2021-09-06T09:13:03.859877+00:00",
+          "linked_bugs": [],
+          "diff_url": "https://api.launchpad.net/devel/~xnox/britney/+git/hints-ubuntu/+merge/407970/+preview-diff/949683",
+          "review": null,
+          "age_days": 1845,
+          "inactive_days": 1840,
+          "is_stale": true,
+          "attention": []
+        },
+        {
+          "id": "419138",
+          "title": "This MP adds a hint for ubuntu-fan/0.12.13 on all architectures.",
+          "url": "https://code.launchpad.net/~sergiodj/britney/+git/hints-ubuntu/+merge/419138",
+          "author": {
+            "name": "sergiodj",
+            "display_name": "Sergio Durigan Junior",
+            "url": "https://launchpad.net/~sergiodj"
+          },
+          "status": "Needs review",
+          "status_category": "needs_review",
+          "created_at": "2022-04-08T17:46:16.040493+00:00",
+          "updated_at": "2022-04-11T18:45:07.148581+00:00",
+          "source_branch": "ubuntu-fan-focal",
+          "target_branch": "focal",
+          "reviewers": [
+            {
+              "name": "vorlon",
+              "display_name": "Steve Langasek",
+              "url": "https://launchpad.net/~vorlon",
+              "pending": false,
+              "vote": "Disapprove"
+            }
+          ],
+          "comment_count": 2,
+          "last_comment_at": "2022-04-11T18:45:07.148581+00:00",
+          "linked_bugs": [],
+          "diff_url": "https://api.launchpad.net/devel/~sergiodj/britney/+git/hints-ubuntu/+merge/419138/+preview-diff/969382",
+          "review": null,
+          "age_days": 1626,
+          "inactive_days": 1623,
+          "is_stale": true,
+          "attention": [
+            "silent"
+          ]
+        },
+        {
+          "id": "461142",
+          "title": "force-badtest armhf tests for python-tornado",
+          "url": "https://code.launchpad.net/~upils/britney/+git/hints-ubuntu/+merge/461142",
+          "author": {
+            "name": "upils",
+            "display_name": "Paul Mars",
+            "url": "https://launchpad.net/~upils"
+          },
+          "status": "Needs review",
+          "status_category": "needs_review",
+          "created_at": "2024-02-23T16:11:33.976056+00:00",
+          "updated_at": "2024-02-23T21:33:30.462625+00:00",
+          "source_branch": "python-tornado-flaky-tests",
+          "target_branch": "devel",
+          "reviewers": [
+            {
+              "name": "vorlon",
+              "display_name": "Steve Langasek",
+              "url": "https://launchpad.net/~vorlon",
+              "pending": false,
+              "vote": "Disapprove"
+            },
+            {
+              "name": "ginggs",
+              "display_name": "Graham Inggs",
+              "url": "https://launchpad.net/~ginggs",
+              "pending": true,
+              "vote": null
+            },
+            {
+              "name": "juliank",
+              "display_name": "Julian Andres Klode",
+              "url": "https://launchpad.net/~juliank",
+              "pending": false,
+              "vote": "Approve"
+            }
+          ],
+          "comment_count": 6,
+          "last_comment_at": "2024-02-23T21:33:30.462625+00:00",
+          "linked_bugs": [],
+          "diff_url": "https://api.launchpad.net/devel/~upils/britney/+git/hints-ubuntu/+merge/461142/+preview-diff/1045915",
+          "review": null,
+          "age_days": 940,
+          "inactive_days": 940,
+          "is_stale": true,
+          "attention": [
+            "silent"
+          ]
+        },
+        {
+          "id": "464951",
+          "title": "Unblock [kl]ubuntu-installer-prompt",
+          "url": "https://code.launchpad.net/~utkarsh/britney/+git/hints-ubuntu/+merge/464951",
+          "author": {
+            "name": "utkarsh",
+            "display_name": "Utkarsh Gupta",
+            "url": "https://launchpad.net/~utkarsh"
+          },
+          "status": "Needs review",
+          "status_category": "needs_review",
+          "created_at": "2024-04-24T22:45:08.168384+00:00",
+          "updated_at": "2024-04-24T22:45:08.168384+00:00",
+          "source_branch": "unblock-installer-prompts",
+          "target_branch": "devel",
+          "reviewers": [
+            {
+              "name": "ubuntu-release",
+              "display_name": "Ubuntu Release Team",
+              "url": "https://launchpad.net/~ubuntu-release",
+              "pending": true,
+              "vote": null
+            }
+          ],
+          "comment_count": 0,
+          "last_comment_at": null,
+          "linked_bugs": [],
+          "diff_url": "https://api.launchpad.net/devel/~utkarsh/britney/+git/hints-ubuntu/+merge/464951/+preview-diff/1053634",
+          "review": null,
+          "age_days": 879,
+          "inactive_days": 879,
+          "is_stale": true,
+          "attention": [
+            "silent"
+          ]
+        },
+        {
+          "id": "466461",
+          "title": "Skip xenial/i386 DEP8 tests for ubuntu-advantage-tools:",
+          "url": "https://code.launchpad.net/~ubuntu-release/britney/+git/hints-ubuntu/+merge/466461",
+          "author": {
+            "name": "ahasenack",
+            "display_name": "Andreas Hasenack",
+            "url": "https://launchpad.net/~ahasenack"
+          },
+          "status": "Needs review",
+          "status_category": "needs_review",
+          "created_at": "2024-05-27T16:00:43.104055+00:00",
+          "updated_at": "2024-05-28T14:19:36.151159+00:00",
+          "source_branch": "xenial-uat-i386",
+          "target_branch": "xenial",
+          "reviewers": [
+            {
+              "name": "ginggs",
+              "display_name": "Graham Inggs",
+              "url": "https://launchpad.net/~ginggs",
+              "pending": false,
+              "vote": "Needs Fixing"
+            }
+          ],
+          "comment_count": 1,
+          "last_comment_at": "2024-05-28T14:19:36.151159+00:00",
+          "linked_bugs": [],
+          "diff_url": "https://api.launchpad.net/devel/~ubuntu-release/britney/+git/hints-ubuntu/+merge/466461/+preview-diff/1056435",
+          "review": null,
+          "age_days": 846,
+          "inactive_days": 845,
+          "is_stale": true,
+          "attention": [
+            "silent"
+          ]
+        },
+        {
+          "id": "473318",
+          "title": "badtest-never_run-linux-focal \u2192 focal",
+          "url": "https://code.launchpad.net/~mfo/britney/+git/britney/+merge/473318",
+          "author": {
+            "name": "mfo",
+            "display_name": "Mauricio Faria de Oliveira",
+            "url": "https://launchpad.net/~mfo"
+          },
+          "status": "Needs review",
+          "status_category": "needs_review",
+          "created_at": "2024-09-16T19:49:42.666978+00:00",
+          "updated_at": "2024-09-17T06:38:50.437235+00:00",
+          "source_branch": "badtest-never_run-linux-focal",
+          "target_branch": "focal",
+          "reviewers": [
+            {
+              "name": "vorlon",
+              "display_name": "Steve Langasek",
+              "url": "https://launchpad.net/~vorlon",
+              "pending": false,
+              "vote": "Approve"
+            }
+          ],
+          "comment_count": 1,
+          "last_comment_at": "2024-09-17T06:38:50.437235+00:00",
+          "linked_bugs": [],
+          "diff_url": "https://api.launchpad.net/devel/~mfo/britney/+git/britney/+merge/473318/+preview-diff/1069547",
+          "review": null,
+          "age_days": 734,
+          "inactive_days": 733,
+          "is_stale": true,
+          "attention": [
+            "silent"
+          ]
+        },
+        {
+          "id": "480312",
+          "title": "devel-6.12-skip-signed-s390x \u2192 devel",
+          "url": "https://code.launchpad.net/~p-pisati/britney/+git/hints-ubuntu/+merge/480312",
+          "author": {
+            "name": "p-pisati",
+            "display_name": "Paolo Pisati",
+            "url": "https://launchpad.net/~p-pisati"
+          },
+          "status": "Needs review",
+          "status_category": "needs_review",
+          "created_at": "2025-01-29T15:51:52.671222+00:00",
+          "updated_at": "2025-01-29T15:51:52.671222+00:00",
+          "source_branch": "devel-6.12-skip-signed-s390x",
+          "target_branch": "devel",
+          "reviewers": [
+            {
+              "name": "ubuntu-release",
+              "display_name": "Ubuntu Release Team",
+              "url": "https://launchpad.net/~ubuntu-release",
+              "pending": true,
+              "vote": null
+            }
+          ],
+          "comment_count": 0,
+          "last_comment_at": null,
+          "linked_bugs": [],
+          "diff_url": "https://api.launchpad.net/devel/~p-pisati/britney/+git/hints-ubuntu/+merge/480312/+preview-diff/1082810",
+          "review": null,
+          "age_days": 599,
+          "inactive_days": 599,
+          "is_stale": true,
+          "attention": [
+            "silent"
+          ]
+        },
+        {
+          "id": "480430",
+          "title": "p-pisati-devel-flaky-systemd-oracle \u2192 devel",
+          "url": "https://code.launchpad.net/~p-pisati/britney/+git/hints-ubuntu/+merge/480430",
+          "author": {
+            "name": "p-pisati",
+            "display_name": "Paolo Pisati",
+            "url": "https://launchpad.net/~p-pisati"
+          },
+          "status": "Needs review",
+          "status_category": "needs_review",
+          "created_at": "2025-01-31T07:15:34.087128+00:00",
+          "updated_at": "2025-01-31T12:41:11.060763+00:00",
+          "source_branch": "p-pisati-devel-flaky-systemd-oracle",
+          "target_branch": "devel",
+          "reviewers": [
+            {
+              "name": "ubuntu-release",
+              "display_name": "Ubuntu Release Team",
+              "url": "https://launchpad.net/~ubuntu-release",
+              "pending": true,
+              "vote": null
+            }
+          ],
+          "comment_count": 1,
+          "last_comment_at": "2025-01-31T12:41:11.060763+00:00",
+          "linked_bugs": [],
+          "diff_url": "https://api.launchpad.net/devel/~p-pisati/britney/+git/hints-ubuntu/+merge/480430/+preview-diff/1083049",
+          "review": null,
+          "age_days": 597,
+          "inactive_days": 597,
+          "is_stale": true,
+          "attention": [
+            "silent"
+          ]
+        },
+        {
+          "id": "481986",
+          "title": "Since the autopkgtest is failing with an \"unknown\" version[1], I believe the version needs to be \"all\":",
+          "url": "https://code.launchpad.net/~ubuntu-release/britney/+git/hints-ubuntu/+merge/481986",
+          "author": {
+            "name": "ahasenack",
+            "display_name": "Andreas Hasenack",
+            "url": "https://launchpad.net/~ahasenack"
+          },
+          "status": "Needs review",
+          "status_category": "needs_review",
+          "created_at": "2025-02-26T19:17:36.033528+00:00",
+          "updated_at": "2025-02-26T19:33:51.694530+00:00",
+          "source_branch": "plucky-really-badtest-tdb",
+          "target_branch": "devel",
+          "reviewers": [
+            {
+              "name": "ginggs",
+              "display_name": "Graham Inggs",
+              "url": "https://launchpad.net/~ginggs",
+              "pending": false,
+              "vote": "Disapprove"
+            }
+          ],
+          "comment_count": 2,
+          "last_comment_at": "2025-02-26T19:33:51.694530+00:00",
+          "linked_bugs": [
+            {
+              "id": "2099735",
+              "title": "[RM]: remove src:tdb from plucky, binaries are built from src:samba now",
+              "url": "https://bugs.launchpad.net/ubuntu/+source/tdb/+bug/2099735",
+              "status": "Fix Released",
+              "importance": "Undecided"
+            }
+          ],
+          "diff_url": "https://api.launchpad.net/devel/~ubuntu-release/britney/+git/hints-ubuntu/+merge/481986/+preview-diff/1085982",
+          "review": null,
+          "age_days": 571,
+          "inactive_days": 571,
+          "is_stale": true,
+          "attention": [
+            "silent",
+            "linked_bug"
+          ]
+        },
+        {
+          "id": "482251",
+          "title": "Update the samba hint for the new upload which drops bin:python3-samba@i386",
+          "url": "https://code.launchpad.net/~ubuntu-release/britney/+git/hints-ubuntu/+merge/482251",
+          "author": {
+            "name": "ahasenack",
+            "display_name": "Andreas Hasenack",
+            "url": "https://launchpad.net/~ahasenack"
+          },
+          "status": "Needs review",
+          "status_category": "needs_review",
+          "created_at": "2025-03-03T22:11:09.673823+00:00",
+          "updated_at": "2025-03-05T12:02:36.664353+00:00",
+          "source_branch": "update-samba-hint",
+          "target_branch": "devel",
+          "reviewers": [
+            {
+              "name": "ahasenack",
+              "display_name": "Andreas Hasenack",
+              "url": "https://launchpad.net/~ahasenack",
+              "pending": false,
+              "vote": "Disapprove"
+            },
+            {
+              "name": "paride",
+              "display_name": "Paride Legovini",
+              "url": "https://launchpad.net/~paride",
+              "pending": false,
+              "vote": "Needs Information"
+            }
+          ],
+          "comment_count": 2,
+          "last_comment_at": "2025-03-05T12:02:36.664353+00:00",
+          "linked_bugs": [],
+          "diff_url": "https://api.launchpad.net/devel/~ubuntu-release/britney/+git/hints-ubuntu/+merge/482251/+preview-diff/1086423",
+          "review": null,
+          "age_days": 566,
+          "inactive_days": 564,
+          "is_stale": true,
+          "attention": [
+            "silent"
+          ]
+        },
+        {
+          "id": "482424",
+          "title": "tsimonq2/luanti \u2192 devel",
+          "url": "https://code.launchpad.net/~tsimonq2/britney/+git/hints-ubuntu/+merge/482424",
+          "author": {
+            "name": "tsimonq2",
+            "display_name": "Simon Quigley",
+            "url": "https://launchpad.net/~tsimonq2"
+          },
+          "status": "Needs review",
+          "status_category": "needs_review",
+          "created_at": "2025-03-06T05:21:12.241269+00:00",
+          "updated_at": "2025-03-20T11:23:31.109950+00:00",
+          "source_branch": "tsimonq2/luanti",
+          "target_branch": "devel",
+          "reviewers": [
+            {
+              "name": "athos",
+              "display_name": "Athos Ribeiro",
+              "url": "https://launchpad.net/~athos",
+              "pending": false,
+              "vote": "Needs Information"
+            },
+            {
+              "name": "ubuntu-release",
+              "display_name": "Ubuntu Release Team",
+              "url": "https://launchpad.net/~ubuntu-release",
+              "pending": true,
+              "vote": null
+            }
+          ],
+          "comment_count": 3,
+          "last_comment_at": "2025-03-20T11:23:31.109950+00:00",
+          "linked_bugs": [],
+          "diff_url": "https://api.launchpad.net/devel/~tsimonq2/britney/+git/hints-ubuntu/+merge/482424/+preview-diff/1086731",
+          "review": null,
+          "age_days": 563,
+          "inactive_days": 549,
+          "is_stale": true,
+          "attention": [
+            "silent"
+          ]
+        },
+        {
+          "id": "483271",
+          "title": "tsimonq2/rakudo \u2192 devel",
+          "url": "https://code.launchpad.net/~tsimonq2/britney/+git/hints-ubuntu/+merge/483271",
+          "author": {
+            "name": "tsimonq2",
+            "display_name": "Simon Quigley",
+            "url": "https://launchpad.net/~tsimonq2"
+          },
+          "status": "Needs review",
+          "status_category": "needs_review",
+          "created_at": "2025-03-23T01:28:31.554622+00:00",
+          "updated_at": "2025-04-05T16:43:19.635906+00:00",
+          "source_branch": "tsimonq2/rakudo",
+          "target_branch": "devel",
+          "reviewers": [
+            {
+              "name": "athos",
+              "display_name": "Athos Ribeiro",
+              "url": "https://launchpad.net/~athos",
+              "pending": true,
+              "vote": null
+            },
+            {
+              "name": "ginggs",
+              "display_name": "Graham Inggs",
+              "url": "https://launchpad.net/~ginggs",
+              "pending": true,
+              "vote": null
+            },
+            {
+              "name": "ubuntu-release",
+              "display_name": "Ubuntu Release Team",
+              "url": "https://launchpad.net/~ubuntu-release",
+              "pending": true,
+              "vote": null
+            }
+          ],
+          "comment_count": 0,
+          "last_comment_at": null,
+          "linked_bugs": [],
+          "diff_url": "https://api.launchpad.net/devel/~tsimonq2/britney/+git/hints-ubuntu/+merge/483271/+preview-diff/1088256",
+          "review": null,
+          "age_days": 546,
+          "inactive_days": 533,
+          "is_stale": true,
+          "attention": [
+            "silent"
+          ]
+        },
+        {
+          "id": "487558",
+          "title": "systemd-autopkgtest-jammy \u2192 jammy",
+          "url": "https://code.launchpad.net/~schopin/britney/+git/hints-ubuntu/+merge/487558",
+          "author": {
+            "name": "schopin",
+            "display_name": "Simon Chopin",
+            "url": "https://launchpad.net/~schopin"
+          },
+          "status": "Needs review",
+          "status_category": "needs_review",
+          "created_at": "2025-06-23T13:25:31.959366+00:00",
+          "updated_at": "2025-06-24T18:28:32.025497+00:00",
+          "source_branch": "systemd-autopkgtest-jammy",
+          "target_branch": "jammy",
+          "reviewers": [
+            {
+              "name": "ahasenack",
+              "display_name": "Andreas Hasenack",
+              "url": "https://launchpad.net/~ahasenack",
+              "pending": false,
+              "vote": "Disapprove"
+            },
+            {
+              "name": "utkarsh",
+              "display_name": "Utkarsh Gupta",
+              "url": "https://launchpad.net/~utkarsh",
+              "pending": false,
+              "vote": "Approve"
+            }
+          ],
+          "comment_count": 6,
+          "last_comment_at": "2025-06-24T18:28:32.025497+00:00",
+          "linked_bugs": [
+            {
+              "id": "2106167",
+              "title": "[SRU exception] backport 5.47 to Jammy, Noble, and Oracular",
+              "url": "https://bugs.launchpad.net/ubuntu/+source/autopkgtest/+bug/2106167",
+              "status": "Fix Released",
+              "importance": "Undecided"
+            }
+          ],
+          "diff_url": "https://api.launchpad.net/devel/~schopin/britney/+git/hints-ubuntu/+merge/487558/+preview-diff/1096327",
+          "review": null,
+          "age_days": 454,
+          "inactive_days": 453,
+          "is_stale": true,
+          "attention": [
+            "silent",
+            "linked_bug"
+          ]
+        },
+        {
+          "id": "489792",
+          "title": "jammy-dotnet6-hint \u2192 jammy",
+          "url": "https://code.launchpad.net/~dviererbe/britney/+git/hints-ubuntu/+merge/489792",
+          "author": {
+            "name": "dviererbe",
+            "display_name": "Dominik Viererbe",
+            "url": "https://launchpad.net/~dviererbe"
+          },
+          "status": "Needs review",
+          "status_category": "needs_review",
+          "created_at": "2025-07-28T13:31:24.172615+00:00",
+          "updated_at": "2025-07-28T14:37:38.370926+00:00",
+          "source_branch": "jammy-dotnet6-hint",
+          "target_branch": "jammy",
+          "reviewers": [
+            {
+              "name": "ahasenack",
+              "display_name": "Andreas Hasenack",
+              "url": "https://launchpad.net/~ahasenack",
+              "pending": false,
+              "vote": "Disapprove"
+            }
+          ],
+          "comment_count": 1,
+          "last_comment_at": "2025-07-28T14:37:38.370926+00:00",
+          "linked_bugs": [
+            {
+              "id": "2118896",
+              "title": "Autopkgtest fails installing dotnet-sos/dotnet-dump 9.0.*",
+              "url": "https://bugs.launchpad.net/ubuntu/+source/dotnet6/+bug/2118896",
+              "status": "Confirmed",
+              "importance": "Low"
+            }
+          ],
+          "diff_url": "https://api.launchpad.net/devel/~dviererbe/britney/+git/hints-ubuntu/+merge/489792/+preview-diff/1100297",
+          "review": null,
+          "age_days": 419,
+          "inactive_days": 419,
+          "is_stale": true,
+          "attention": [
+            "silent",
+            "linked_bug"
+          ]
+        },
+        {
+          "id": "490290",
+          "title": "force sudo 1.9.16p2-1ubuntu4",
+          "url": "https://code.launchpad.net/~mwhudson/britney/+git/hints-ubuntu/+merge/490290",
+          "author": {
+            "name": "mwhudson",
+            "display_name": "Michael Hudson-Doyle",
+            "url": "https://launchpad.net/~mwhudson"
+          },
+          "status": "Needs review",
+          "status_category": "needs_review",
+          "created_at": "2025-08-05T23:18:52.952762+00:00",
+          "updated_at": "2025-08-07T13:44:56.085343+00:00",
+          "source_branch": "force-sudo",
+          "target_branch": "devel",
+          "reviewers": [
+            {
+              "name": "ginggs",
+              "display_name": "Graham Inggs",
+              "url": "https://launchpad.net/~ginggs",
+              "pending": false,
+              "vote": "Disapprove"
+            }
+          ],
+          "comment_count": 4,
+          "last_comment_at": "2025-08-07T13:44:56.085343+00:00",
+          "linked_bugs": [],
+          "diff_url": "https://api.launchpad.net/devel/~mwhudson/britney/+git/hints-ubuntu/+merge/490290/+preview-diff/1101316",
+          "review": null,
+          "age_days": 411,
+          "inactive_days": 409,
+          "is_stale": true,
+          "attention": [
+            "silent"
+          ]
+        },
+        {
+          "id": "505400",
+          "title": "unblock-openjdk-security \u2192 devel",
+          "url": "https://code.launchpad.net/~ural/britney/+git/hints-ubuntu/+merge/505400",
+          "author": {
+            "name": "ural",
+            "display_name": "Ural Tunaboyu",
+            "url": "https://launchpad.net/~ural"
+          },
+          "status": "Needs review",
+          "status_category": "needs_review",
+          "created_at": "2026-05-25T17:40:04.084555+00:00",
+          "updated_at": "2026-05-25T17:40:04.084555+00:00",
+          "source_branch": "unblock-openjdk-security",
+          "target_branch": "devel",
+          "reviewers": [
+            {
+              "name": "utkarsh",
+              "display_name": "Utkarsh Gupta",
+              "url": "https://launchpad.net/~utkarsh",
+              "pending": true,
+              "vote": null
+            }
+          ],
+          "comment_count": 0,
+          "last_comment_at": null,
+          "linked_bugs": [],
+          "diff_url": "https://api.launchpad.net/devel/~ural/britney/+git/hints-ubuntu/+merge/505400/+preview-diff/1130754",
+          "review": null,
+          "age_days": 118,
+          "inactive_days": 118,
+          "is_stale": true,
+          "attention": [
+            "silent"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "autopkgtest",
+      "name": "autopkgtest",
+      "provider": "launchpad-git",
+      "url": "https://code.launchpad.net/~ubuntu-release/autopkgtest/+git/autopkgtest",
+      "status": "ok",
+      "error": null,
+      "last_successful_refresh": "2026-09-21T00:49:53.060033+00:00",
+      "merge_requests": [
+        {
+          "id": "337325",
+          "title": "arm64 autopkgtest runners waste a lot of time running 'nova reboot', because this command times out trying to send an ACPI request that will never be heard and then do a hard reboot.  So skip the 2-minute delay and just hard reboot.",
+          "url": "https://code.launchpad.net/~ubuntu-release/autopkgtest/+git/development/+merge/337325",
+          "author": {
+            "name": "vorlon",
+            "display_name": "Steve Langasek",
+            "url": "https://launchpad.net/~vorlon"
+          },
+          "status": "Needs review",
+          "status_category": "needs_review",
+          "created_at": "2018-02-08T07:39:42.757022+00:00",
+          "updated_at": "2018-02-14T09:37:59.950956+00:00",
+          "source_branch": "saner-arm64-reboots",
+          "target_branch": "master",
+          "reviewers": [
+            {
+              "name": "laney",
+              "display_name": "Iain Lane",
+              "url": "https://launchpad.net/~laney",
+              "pending": false,
+              "vote": "Needs Resubmitting"
+            }
+          ],
+          "comment_count": 1,
+          "last_comment_at": "2018-02-14T09:37:59.950956+00:00",
+          "linked_bugs": [],
+          "diff_url": "https://api.launchpad.net/devel/~ubuntu-release/autopkgtest/+git/development/+merge/337325/+preview-diff/818381",
+          "review": null,
+          "age_days": 3146,
+          "inactive_days": 3140,
+          "is_stale": true,
+          "attention": [
+            "silent"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "autopkgtest-package-configs",
+      "name": "autopkgtest-package-configs",
+      "provider": "launchpad-git",
+      "url": "https://code.launchpad.net/~ubuntu-release/autopkgtest-cloud/+git/autopkgtest-package-configs",
+      "status": "ok",
+      "error": null,
+      "last_successful_refresh": "2026-09-21T00:49:53.060033+00:00",
+      "merge_requests": [
+        {
+          "id": "511231",
+          "title": "main \u2192 main",
+          "url": "https://code.launchpad.net/~arif-ali/autopkgtest-cloud/+git/autopkgtest-package-configs/+merge/511231",
+          "author": {
+            "name": "arif-ali",
+            "display_name": "Arif Ali",
+            "url": "https://launchpad.net/~arif-ali"
+          },
+          "status": "Needs review",
+          "status_category": "needs_review",
+          "created_at": "2026-09-11T15:34:53.694304+00:00",
+          "updated_at": "2026-09-15T23:24:58.165411+00:00",
+          "source_branch": "main",
+          "target_branch": "main",
+          "reviewers": [
+            {
+              "name": "canonical-ubuntu-qa",
+              "display_name": "Canonical's Ubuntu QA",
+              "url": "https://launchpad.net/~canonical-ubuntu-qa",
+              "pending": true,
+              "vote": null
+            }
+          ],
+          "comment_count": 1,
+          "last_comment_at": "2026-09-15T23:24:58.165411+00:00",
+          "linked_bugs": [],
+          "diff_url": "https://api.launchpad.net/devel/~arif-ali/autopkgtest-cloud/+git/autopkgtest-package-configs/+merge/511231/+preview-diff/1141874",
+          "review": null,
+          "age_days": 9,
+          "inactive_days": 5,
+          "is_stale": false,
+          "attention": []
+        }
+      ]
+    },
+    {
+      "id": "templates",
+      "name": "ubuntu-release-tools/templates",
+      "provider": "launchpad-git",
+      "url": "https://code.launchpad.net/~ubuntu-release/ubuntu-release-tools/+git/templates",
+      "status": "ok",
+      "error": null,
+      "last_successful_refresh": "2026-09-21T00:49:53.060033+00:00",
+      "merge_requests": [
+        {
+          "id": "433265",
+          "title": "notify-about-post-freeze-changes \u2192 main",
+          "url": "https://code.launchpad.net/~paelzer/ubuntu-release-tools/+git/templates/+merge/433265",
+          "author": {
+            "name": "paelzer",
+            "display_name": "Christian Ehrhardt",
+            "url": "https://launchpad.net/~paelzer"
+          },
+          "status": "Needs review",
+          "status_category": "needs_review",
+          "created_at": "2022-11-18T06:57:53.121125+00:00",
+          "updated_at": "2022-11-20T18:22:04.992203+00:00",
+          "source_branch": "notify-about-post-freeze-changes",
+          "target_branch": "main",
+          "reviewers": [
+            {
+              "name": "vorlon",
+              "display_name": "Steve Langasek",
+              "url": "https://launchpad.net/~vorlon",
+              "pending": false,
+              "vote": "Needs Fixing"
+            },
+            {
+              "name": "sil2100",
+              "display_name": "\u0141ukasz Zemczak",
+              "url": "https://launchpad.net/~sil2100",
+              "pending": false,
+              "vote": "Approve"
+            }
+          ],
+          "comment_count": 2,
+          "last_comment_at": "2022-11-20T18:22:04.992203+00:00",
+          "linked_bugs": [],
+          "diff_url": "https://api.launchpad.net/devel/~paelzer/ubuntu-release-tools/+git/templates/+merge/433265/+preview-diff/992967",
+          "review": null,
+          "age_days": 1402,
+          "inactive_days": 1400,
+          "is_stale": true,
+          "attention": [
+            "silent"
+          ]
+        },
+        {
+          "id": "462245",
+          "title": "Amin Bandali from Desktop will oversee appstream stuff",
+          "url": "https://code.launchpad.net/~utkarsh/ubuntu-release-tools/+git/templates/+merge/462245",
+          "author": {
+            "name": "utkarsh",
+            "display_name": "Utkarsh Gupta",
+            "url": "https://launchpad.net/~utkarsh"
+          },
+          "status": "Needs review",
+          "status_category": "needs_review",
+          "created_at": "2024-03-12T15:44:40.755428+00:00",
+          "updated_at": "2024-05-09T08:56:48.266603+00:00",
+          "source_branch": "amin-takes-over",
+          "target_branch": "main",
+          "reviewers": [
+            {
+              "name": "vorlon",
+              "display_name": "Steve Langasek",
+              "url": "https://launchpad.net/~vorlon",
+              "pending": false,
+              "vote": "Needs Fixing"
+            },
+            {
+              "name": "brian-murray",
+              "display_name": "Brian Murray",
+              "url": "https://launchpad.net/~brian-murray",
+              "pending": false,
+              "vote": "Needs Fixing"
+            }
+          ],
+          "comment_count": 4,
+          "last_comment_at": "2024-05-09T08:56:48.266603+00:00",
+          "linked_bugs": [],
+          "diff_url": "https://api.launchpad.net/devel/~utkarsh/ubuntu-release-tools/+git/templates/+merge/462245/+preview-diff/1048125",
+          "review": null,
+          "age_days": 922,
+          "inactive_days": 864,
+          "is_stale": true,
+          "attention": [
+            "silent"
+          ]
+        },
+        {
+          "id": "460057",
+          "title": "The task list used to have this comment \"Required steps (this could be a checklist, but items are quite 'huge')\", however I think this is actually an argument for having a checklist because the checklist will help you keep track of where you are! So I made the items a checklist so the person assigned the card can document their progress in the card rather than somewhere else.",
+          "url": "https://code.launchpad.net/~ubuntu-release/ubuntu-release-tools/+git/templates/+merge/460057",
+          "author": {
+            "name": "brian-murray",
+            "display_name": "Brian Murray",
+            "url": "https://launchpad.net/~brian-murray"
+          },
+          "status": "Work in progress",
+          "status_category": "in_progress",
+          "created_at": "2024-02-05T22:54:52.877043+00:00",
+          "updated_at": "2024-05-31T23:16:01.788460+00:00",
+          "source_branch": "huge-items-to-checklist",
+          "target_branch": "main",
+          "reviewers": [
+            {
+              "name": "brian-murray",
+              "display_name": "Brian Murray",
+              "url": "https://launchpad.net/~brian-murray",
+              "pending": false,
+              "vote": "Needs Fixing"
+            },
+            {
+              "name": "vorlon",
+              "display_name": "Steve Langasek",
+              "url": "https://launchpad.net/~vorlon",
+              "pending": false,
+              "vote": "Approve"
+            }
+          ],
+          "comment_count": 2,
+          "last_comment_at": "2024-05-31T23:16:01.788460+00:00",
+          "linked_bugs": [],
+          "diff_url": "https://api.launchpad.net/devel/~ubuntu-release/ubuntu-release-tools/+git/templates/+merge/460057/+preview-diff/1043762",
+          "review": null,
+          "age_days": 958,
+          "inactive_days": 842,
+          "is_stale": true,
+          "attention": []
+        },
+        {
+          "id": "475855",
+          "title": "adds a new card instructing the URM team to contact platform leads to begin testing as well as assisting with any testing necessary and possible",
+          "url": "https://code.launchpad.net/~ssstr1pe/ubuntu-release-tools/+git/templates/+merge/475855",
+          "author": {
+            "name": "ssstr1pe",
+            "display_name": "Tim Andersson",
+            "url": "https://launchpad.net/~ssstr1pe"
+          },
+          "status": "Needs review",
+          "status_category": "needs_review",
+          "created_at": "2024-10-25T14:59:44.488446+00:00",
+          "updated_at": "2024-10-25T14:59:44.488446+00:00",
+          "source_branch": "ping-platform-testers",
+          "target_branch": "main",
+          "reviewers": [
+            {
+              "name": "ubuntu-release",
+              "display_name": "Ubuntu Release Team",
+              "url": "https://launchpad.net/~ubuntu-release",
+              "pending": true,
+              "vote": null
+            }
+          ],
+          "comment_count": 0,
+          "last_comment_at": null,
+          "linked_bugs": [],
+          "diff_url": "https://api.launchpad.net/devel/~ssstr1pe/ubuntu-release-tools/+git/templates/+merge/475855/+preview-diff/1074269",
+          "review": null,
+          "age_days": 695,
+          "inactive_days": 695,
+          "is_stale": true,
+          "attention": [
+            "silent"
+          ]
+        },
+        {
+          "id": "482371",
+          "title": "Drop checklists entirely",
+          "url": "https://code.launchpad.net/~ubuntu-release/ubuntu-release-tools/+git/templates/+merge/482371",
+          "author": {
+            "name": "utkarsh",
+            "display_name": "Utkarsh Gupta",
+            "url": "https://launchpad.net/~utkarsh"
+          },
+          "status": "Needs review",
+          "status_category": "needs_review",
+          "created_at": "2025-03-05T07:08:03.736231+00:00",
+          "updated_at": "2025-03-06T08:34:34.216834+00:00",
+          "source_branch": "drop-checklists-entirely",
+          "target_branch": "main",
+          "reviewers": [
+            {
+              "name": "paride",
+              "display_name": "Paride Legovini",
+              "url": "https://launchpad.net/~paride",
+              "pending": false,
+              "vote": "Needs Fixing"
+            },
+            {
+              "name": "skia",
+              "display_name": "Skia",
+              "url": "https://launchpad.net/~skia",
+              "pending": false,
+              "vote": "Approve"
+            }
+          ],
+          "comment_count": 3,
+          "last_comment_at": "2025-03-06T08:34:34.216834+00:00",
+          "linked_bugs": [],
+          "diff_url": "https://api.launchpad.net/devel/~ubuntu-release/ubuntu-release-tools/+git/templates/+merge/482371/+preview-diff/1086619",
+          "review": null,
+          "age_days": 564,
+          "inactive_days": 563,
+          "is_stale": true,
+          "attention": [
+            "silent"
+          ]
+        },
+        {
+          "id": "486292",
+          "title": "esm-switch-announce \u2192 main",
+          "url": "https://code.launchpad.net/~ural/ubuntu-release-tools/+git/templates/+merge/486292",
+          "author": {
+            "name": "ural",
+            "display_name": "Ural Tunaboyu",
+            "url": "https://launchpad.net/~ural"
+          },
+          "status": "Needs review",
+          "status_category": "needs_review",
+          "created_at": "2025-05-30T00:20:33.984414+00:00",
+          "updated_at": "2025-05-30T00:20:33.984414+00:00",
+          "source_branch": "esm-switch-announce",
+          "target_branch": "main",
+          "reviewers": [
+            {
+              "name": "utkarsh",
+              "display_name": "Utkarsh Gupta",
+              "url": "https://launchpad.net/~utkarsh",
+              "pending": true,
+              "vote": null
+            }
+          ],
+          "comment_count": 0,
+          "last_comment_at": null,
+          "linked_bugs": [],
+          "diff_url": "https://api.launchpad.net/devel/~ural/ubuntu-release-tools/+git/templates/+merge/486292/+preview-diff/1094061",
+          "review": null,
+          "age_days": 479,
+          "inactive_days": 479,
+          "is_stale": true,
+          "attention": [
+            "silent"
+          ]
+        },
+        {
+          "id": "488472",
+          "title": "add a few more details for unsubscribing teams.",
+          "url": "https://code.launchpad.net/~ssstr1pe/ubuntu-release-tools/+git/templates/+merge/488472",
+          "author": {
+            "name": "ssstr1pe",
+            "display_name": "Tim Andersson",
+            "url": "https://launchpad.net/~ssstr1pe"
+          },
+          "status": "Needs review",
+          "status_category": "needs_review",
+          "created_at": "2025-07-07T16:03:29.692857+00:00",
+          "updated_at": "2025-07-07T16:03:29.692857+00:00",
+          "source_branch": "unsubscribe-team-details",
+          "target_branch": "main",
+          "reviewers": [
+            {
+              "name": "ubuntu-release",
+              "display_name": "Ubuntu Release Team",
+              "url": "https://launchpad.net/~ubuntu-release",
+              "pending": true,
+              "vote": null
+            }
+          ],
+          "comment_count": 0,
+          "last_comment_at": null,
+          "linked_bugs": [],
+          "diff_url": "https://api.launchpad.net/devel/~ssstr1pe/ubuntu-release-tools/+git/templates/+merge/488472/+preview-diff/1097921",
+          "review": null,
+          "age_days": 440,
+          "inactive_days": 440,
+          "is_stale": true,
+          "attention": [
+            "silent"
+          ]
+        },
+        {
+          "id": "492604",
+          "title": "Let's email the mirrors directly rather than having IS do it on our behalf.",
+          "url": "https://code.launchpad.net/~ssstr1pe/ubuntu-release-tools/+git/templates/+merge/492604",
+          "author": {
+            "name": "ssstr1pe",
+            "display_name": "Tim Andersson",
+            "url": "https://launchpad.net/~ssstr1pe"
+          },
+          "status": "Needs review",
+          "status_category": "needs_review",
+          "created_at": "2025-09-16T10:41:45.978271+00:00",
+          "updated_at": "2025-09-16T14:10:31.584381+00:00",
+          "source_branch": "mirrors-email",
+          "target_branch": "main",
+          "reviewers": [
+            {
+              "name": "ssstr1pe",
+              "display_name": "Tim Andersson",
+              "url": "https://launchpad.net/~ssstr1pe",
+              "pending": false,
+              "vote": "Needs Fixing"
+            },
+            {
+              "name": "ubuntu-release",
+              "display_name": "Ubuntu Release Team",
+              "url": "https://launchpad.net/~ubuntu-release",
+              "pending": true,
+              "vote": null
+            }
+          ],
+          "comment_count": 1,
+          "last_comment_at": "2025-09-16T14:10:31.584381+00:00",
+          "linked_bugs": [],
+          "diff_url": "https://api.launchpad.net/devel/~ssstr1pe/ubuntu-release-tools/+git/templates/+merge/492604/+preview-diff/1105737",
+          "review": null,
+          "age_days": 369,
+          "inactive_days": 369,
+          "is_stale": true,
+          "attention": [
+            "silent"
+          ]
+        },
+        {
+          "id": "494200",
+          "title": "seeded-snaps-card \u2192 main",
+          "url": "https://code.launchpad.net/~ssstr1pe/ubuntu-release-tools/+git/templates/+merge/494200",
+          "author": {
+            "name": "ssstr1pe",
+            "display_name": "Tim Andersson",
+            "url": "https://launchpad.net/~ssstr1pe"
+          },
+          "status": "Needs review",
+          "status_category": "needs_review",
+          "created_at": "2025-10-10T13:13:04.423907+00:00",
+          "updated_at": "2025-10-10T13:13:04.423907+00:00",
+          "source_branch": "seeded-snaps-card",
+          "target_branch": "main",
+          "reviewers": [
+            {
+              "name": "ubuntu-release",
+              "display_name": "Ubuntu Release Team",
+              "url": "https://launchpad.net/~ubuntu-release",
+              "pending": true,
+              "vote": null
+            }
+          ],
+          "comment_count": 0,
+          "last_comment_at": null,
+          "linked_bugs": [],
+          "diff_url": "https://api.launchpad.net/devel/~ssstr1pe/ubuntu-release-tools/+git/templates/+merge/494200/+preview-diff/1108815",
+          "review": null,
+          "age_days": 345,
+          "inactive_days": 345,
+          "is_stale": true,
+          "attention": [
+            "silent"
+          ]
+        },
+        {
+          "id": "499564",
+          "title": "oreiche/update-eol \u2192 main",
+          "url": "https://code.launchpad.net/~oreiche/ubuntu-release-tools/+git/templates/+merge/499564",
+          "author": {
+            "name": "oreiche",
+            "display_name": "Oliver Reiche",
+            "url": "https://launchpad.net/~oreiche"
+          },
+          "status": "Needs review",
+          "status_category": "needs_review",
+          "created_at": "2026-01-30T10:01:25.959344+00:00",
+          "updated_at": "2026-01-30T10:01:25.959344+00:00",
+          "source_branch": "oreiche/update-eol",
+          "target_branch": "main",
+          "reviewers": [
+            {
+              "name": "utkarsh",
+              "display_name": "Utkarsh Gupta",
+              "url": "https://launchpad.net/~utkarsh",
+              "pending": true,
+              "vote": null
+            }
+          ],
+          "comment_count": 0,
+          "last_comment_at": null,
+          "linked_bugs": [],
+          "diff_url": "https://api.launchpad.net/devel/~oreiche/ubuntu-release-tools/+git/templates/+merge/499564/+preview-diff/1119311",
+          "review": null,
+          "age_days": 233,
+          "inactive_days": 233,
+          "is_stale": true,
+          "attention": [
+            "silent"
+          ]
+        },
+        {
+          "id": "508710",
+          "title": "oreiche/add-eol-details \u2192 main",
+          "url": "https://code.launchpad.net/~oreiche/ubuntu-release-tools/+git/templates/+merge/508710",
+          "author": {
+            "name": "oreiche",
+            "display_name": "Oliver Reiche",
+            "url": "https://launchpad.net/~oreiche"
+          },
+          "status": "Needs review",
+          "status_category": "needs_review",
+          "created_at": "2026-07-20T14:03:24.669582+00:00",
+          "updated_at": "2026-08-31T13:02:32.628656+00:00",
+          "source_branch": "oreiche/add-eol-details",
+          "target_branch": "main",
+          "reviewers": [
+            {
+              "name": "skia",
+              "display_name": "Skia",
+              "url": "https://launchpad.net/~skia",
+              "pending": false,
+              "vote": "Approve"
+            },
+            {
+              "name": "utkarsh",
+              "display_name": "Utkarsh Gupta",
+              "url": "https://launchpad.net/~utkarsh",
+              "pending": true,
+              "vote": null
+            }
+          ],
+          "comment_count": 6,
+          "last_comment_at": "2026-08-31T13:02:32.628656+00:00",
+          "linked_bugs": [],
+          "diff_url": "https://api.launchpad.net/devel/~oreiche/ubuntu-release-tools/+git/templates/+merge/508710/+preview-diff/1140368",
+          "review": null,
+          "age_days": 62,
+          "inactive_days": 20,
+          "is_stale": false,
+          "attention": [
+            "silent"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ubuntu-release-tools",
+      "name": "ubuntu-release-tools",
+      "provider": "launchpad-git",
+      "url": "https://code.launchpad.net/~ubuntu-release/ubuntu-release-tools/+git/ubuntu-release-tools",
+      "status": "ok",
+      "error": null,
+      "last_successful_refresh": "2026-09-21T00:49:53.060033+00:00",
+      "merge_requests": [
+        {
+          "id": "436341",
+          "title": "Allow dry-run without Jira credentials or Jira library.",
+          "url": "https://code.launchpad.net/~xnox/ubuntu-release-tools/+git/ubuntu-release-tools/+merge/436341",
+          "author": {
+            "name": "xnox",
+            "display_name": "Dimitri John Ledkov",
+            "url": "https://launchpad.net/~xnox"
+          },
+          "status": "Needs review",
+          "status_category": "needs_review",
+          "created_at": "2023-01-25T17:21:47.005199+00:00",
+          "updated_at": "2023-01-25T17:21:47.005199+00:00",
+          "source_branch": "jiraless-dry-run",
+          "target_branch": "main",
+          "reviewers": [
+            {
+              "name": "ubuntu-release",
+              "display_name": "Ubuntu Release Team",
+              "url": "https://launchpad.net/~ubuntu-release",
+              "pending": true,
+              "vote": null
+            }
+          ],
+          "comment_count": 0,
+          "last_comment_at": null,
+          "linked_bugs": [],
+          "diff_url": "https://api.launchpad.net/devel/~xnox/ubuntu-release-tools/+git/ubuntu-release-tools/+merge/436341/+preview-diff/998575",
+          "review": null,
+          "age_days": 1334,
+          "inactive_days": 1334,
+          "is_stale": true,
+          "attention": [
+            "silent"
+          ]
+        },
+        {
+          "id": "489705",
+          "title": "Add retries to a urlopen call to not be annoyed after it's been running for a while :)",
+          "url": "https://code.launchpad.net/~ssstr1pe/ubuntu-release-tools/+git/ubuntu-release-tools/+merge/489705",
+          "author": {
+            "name": "ssstr1pe",
+            "display_name": "Tim Andersson",
+            "url": "https://launchpad.net/~ssstr1pe"
+          },
+          "status": "Needs review",
+          "status_category": "needs_review",
+          "created_at": "2025-07-25T13:10:55.054896+00:00",
+          "updated_at": "2025-07-25T13:10:55.054896+00:00",
+          "source_branch": "release-updates-urlopen-retries",
+          "target_branch": "main",
+          "reviewers": [
+            {
+              "name": "ubuntu-release",
+              "display_name": "Ubuntu Release Team",
+              "url": "https://launchpad.net/~ubuntu-release",
+              "pending": true,
+              "vote": null
+            }
+          ],
+          "comment_count": 0,
+          "last_comment_at": null,
+          "linked_bugs": [],
+          "diff_url": "https://api.launchpad.net/devel/~ssstr1pe/ubuntu-release-tools/+git/ubuntu-release-tools/+merge/489705/+preview-diff/1100152",
+          "review": null,
+          "age_days": 422,
+          "inactive_days": 422,
+          "is_stale": true,
+          "attention": [
+            "silent"
+          ]
+        },
+        {
+          "id": "494199",
+          "title": "Add a script to simplify and speed up this card",
+          "url": "https://code.launchpad.net/~ssstr1pe/ubuntu-release-tools/+git/ubuntu-release-tools/+merge/494199",
+          "author": {
+            "name": "ssstr1pe",
+            "display_name": "Tim Andersson",
+            "url": "https://launchpad.net/~ssstr1pe"
+          },
+          "status": "Needs review",
+          "status_category": "needs_review",
+          "created_at": "2025-10-10T13:07:39.116110+00:00",
+          "updated_at": "2025-10-10T13:07:39.116110+00:00",
+          "source_branch": "add-script-to-check-seeded-snap-tracks",
+          "target_branch": "main",
+          "reviewers": [
+            {
+              "name": "ubuntu-release",
+              "display_name": "Ubuntu Release Team",
+              "url": "https://launchpad.net/~ubuntu-release",
+              "pending": true,
+              "vote": null
+            }
+          ],
+          "comment_count": 0,
+          "last_comment_at": null,
+          "linked_bugs": [],
+          "diff_url": "https://api.launchpad.net/devel/~ssstr1pe/ubuntu-release-tools/+git/ubuntu-release-tools/+merge/494199/+preview-diff/1108975",
+          "review": null,
+          "age_days": 345,
+          "inactive_days": 345,
+          "is_stale": true,
+          "attention": [
+            "silent"
+          ]
+        },
+        {
+          "id": "510341",
+          "title": "oreiche/fix-point-release-announcement \u2192 main",
+          "url": "https://code.launchpad.net/~oreiche/ubuntu-release-tools/+git/templates/+merge/510341",
+          "author": {
+            "name": "oreiche",
+            "display_name": "Oliver Reiche",
+            "url": "https://launchpad.net/~oreiche"
+          },
+          "status": "Needs review",
+          "status_category": "needs_review",
+          "created_at": "2026-08-27T18:38:17.858120+00:00",
+          "updated_at": "2026-08-27T18:38:17.858120+00:00",
+          "source_branch": "oreiche/fix-point-release-announcement",
+          "target_branch": "main",
+          "reviewers": [
+            {
+              "name": "skia",
+              "display_name": "Skia",
+              "url": "https://launchpad.net/~skia",
+              "pending": true,
+              "vote": null
+            }
+          ],
+          "comment_count": 0,
+          "last_comment_at": null,
+          "linked_bugs": [],
+          "diff_url": "https://api.launchpad.net/devel/~oreiche/ubuntu-release-tools/+git/templates/+merge/510341/+preview-diff/1140106",
+          "review": null,
+          "age_days": 24,
+          "inactive_days": 24,
+          "is_stale": false,
+          "attention": [
+            "silent"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "ubuntu-images",
+      "name": "ubuntu-images",
+      "provider": "launchpad-git",
+      "url": "https://code.launchpad.net/~ubuntu-release/ubuntu-images/+git/ubuntu-images",
+      "status": "ok",
+      "error": null,
+      "last_successful_refresh": "2026-09-21T00:49:53.060033+00:00",
+      "merge_requests": [
+        {
+          "id": "443396",
+          "title": "Set pocket to updates, default is release",
+          "url": "https://code.launchpad.net/~lool/ubuntu-images/+git/ubuntu-images/+merge/443396",
+          "author": {
+            "name": "lool",
+            "display_name": "Lo\u00efc Minier",
+            "url": "https://launchpad.net/~lool"
+          },
+          "status": "Needs review",
+          "status_category": "needs_review",
+          "created_at": "2023-05-23T09:15:56.918552+00:00",
+          "updated_at": "2023-05-23T15:31:04.392396+00:00",
+          "source_branch": "missing-updates-pocket",
+          "target_branch": "lunar",
+          "reviewers": [
+            {
+              "name": "sil2100",
+              "display_name": "\u0141ukasz Zemczak",
+              "url": "https://launchpad.net/~sil2100",
+              "pending": false,
+              "vote": "Disapprove"
+            }
+          ],
+          "comment_count": 1,
+          "last_comment_at": "2023-05-23T15:31:04.392396+00:00",
+          "linked_bugs": [],
+          "diff_url": "https://api.launchpad.net/devel/~lool/ubuntu-images/+git/ubuntu-images/+merge/443396/+preview-diff/1012103",
+          "review": null,
+          "age_days": 1216,
+          "inactive_days": 1216,
+          "is_stale": true,
+          "attention": [
+            "silent"
+          ]
+        },
+        {
+          "id": "451941",
+          "title": "Correct skipping first stage of oem config",
+          "url": "https://code.launchpad.net/~xnox/ubuntu-images/+git/ubuntu-images/+merge/451941",
+          "author": {
+            "name": "xnox",
+            "display_name": "Dimitri John Ledkov",
+            "url": "https://launchpad.net/~xnox"
+          },
+          "status": "Needs review",
+          "status_category": "needs_review",
+          "created_at": "2023-09-23T01:00:02.535085+00:00",
+          "updated_at": "2023-09-25T10:23:32.404543+00:00",
+          "source_branch": "fix-desktop-pi",
+          "target_branch": "mantic",
+          "reviewers": [
+            {
+              "name": "waveform",
+              "display_name": "Dave Jones",
+              "url": "https://launchpad.net/~waveform",
+              "pending": true,
+              "vote": null
+            },
+            {
+              "name": "sil2100",
+              "display_name": "\u0141ukasz Zemczak",
+              "url": "https://launchpad.net/~sil2100",
+              "pending": true,
+              "vote": null
+            },
+            {
+              "name": "ubuntu-release",
+              "display_name": "Ubuntu Release Team",
+              "url": "https://launchpad.net/~ubuntu-release",
+              "pending": true,
+              "vote": null
+            }
+          ],
+          "comment_count": 1,
+          "last_comment_at": "2023-09-25T10:23:32.404543+00:00",
+          "linked_bugs": [],
+          "diff_url": "https://api.launchpad.net/devel/~xnox/ubuntu-images/+git/ubuntu-images/+merge/451941/+preview-diff/1028213",
+          "review": null,
+          "age_days": 1093,
+          "inactive_days": 1091,
+          "is_stale": true,
+          "attention": [
+            "silent"
+          ]
+        },
+        {
+          "id": "456465",
+          "title": "prepare-package \u2192 noble",
+          "url": "https://code.launchpad.net/~waveform/ubuntu-images/+git/ubuntu-images/+merge/456465",
+          "author": {
+            "name": "waveform",
+            "display_name": "Dave Jones",
+            "url": "https://launchpad.net/~waveform"
+          },
+          "status": "Needs review",
+          "status_category": "needs_review",
+          "created_at": "2023-11-28T16:26:30.358700+00:00",
+          "updated_at": "2023-12-05T09:55:29.060648+00:00",
+          "source_branch": "prepare-package",
+          "target_branch": "noble",
+          "reviewers": [
+            {
+              "name": "mwhudson",
+              "display_name": "Michael Hudson-Doyle",
+              "url": "https://launchpad.net/~mwhudson",
+              "pending": false,
+              "vote": "Needs Information"
+            },
+            {
+              "name": "ubuntu-release",
+              "display_name": "Ubuntu Release Team",
+              "url": "https://launchpad.net/~ubuntu-release",
+              "pending": true,
+              "vote": null
+            }
+          ],
+          "comment_count": 2,
+          "last_comment_at": "2023-12-05T09:55:29.060648+00:00",
+          "linked_bugs": [
+            {
+              "id": "2038098",
+              "title": "oem-config-prepare needs manual execution",
+              "url": "https://bugs.launchpad.net/ubuntu/+source/ubiquity/+bug/2038098",
+              "status": "Fix Released",
+              "importance": "Undecided"
+            }
+          ],
+          "diff_url": "https://api.launchpad.net/devel/~waveform/ubuntu-images/+git/ubuntu-images/+merge/456465/+preview-diff/1058337",
+          "review": null,
+          "age_days": 1027,
+          "inactive_days": 1020,
+          "is_stale": true,
+          "attention": [
+            "silent",
+            "linked_bug"
+          ]
+        },
+        {
+          "id": "504061",
+          "title": "Add core22 to edubuntu snaps in noble",
+          "url": "https://code.launchpad.net/~eeickmeyer/ubuntu-images/+git/ubuntu-images/+merge/504061",
+          "author": {
+            "name": "eeickmeyer",
+            "display_name": "Erich Eickmeyer",
+            "url": "https://launchpad.net/~eeickmeyer"
+          },
+          "status": "Needs review",
+          "status_category": "needs_review",
+          "created_at": "2026-04-21T15:04:31.873612+00:00",
+          "updated_at": "2026-04-21T15:04:31.873612+00:00",
+          "source_branch": "noble",
+          "target_branch": "noble",
+          "reviewers": [
+            {
+              "name": "ubuntu-release",
+              "display_name": "Ubuntu Release Team",
+              "url": "https://launchpad.net/~ubuntu-release",
+              "pending": true,
+              "vote": null
+            }
+          ],
+          "comment_count": 0,
+          "last_comment_at": null,
+          "linked_bugs": [],
+          "diff_url": "https://api.launchpad.net/devel/~eeickmeyer/ubuntu-images/+git/ubuntu-images/+merge/504061/+preview-diff/1128262",
+          "review": null,
+          "age_days": 152,
+          "inactive_days": 152,
+          "is_stale": true,
+          "attention": [
+            "silent"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "britney2",
+      "name": "britney2-ubuntu",
+      "provider": "launchpad-git",
+      "url": "https://code.launchpad.net/~ubuntu-release/britney/+git/britney2-ubuntu",
+      "status": "ok",
+      "error": null,
+      "last_successful_refresh": "2026-09-21T00:49:53.060033+00:00",
+      "merge_requests": [
+        {
+          "id": "326406",
+          "title": "Fix wrong log message",
+          "url": "https://code.launchpad.net/~ubuntu-release/britney/+git/britney2-ubuntu/+merge/326406",
+          "author": {
+            "name": "vorlon",
+            "display_name": "Steve Langasek",
+            "url": "https://launchpad.net/~vorlon"
+          },
+          "status": "Needs review",
+          "status_category": "needs_review",
+          "created_at": "2017-06-28T06:10:37.524792+00:00",
+          "updated_at": "2017-06-28T06:10:37.524792+00:00",
+          "source_branch": "broken-hint-logging",
+          "target_branch": "master",
+          "reviewers": [
+            {
+              "name": "stgraber",
+              "display_name": "St\u00e9phane Graber",
+              "url": "https://launchpad.net/~stgraber",
+              "pending": true,
+              "vote": null
+            }
+          ],
+          "comment_count": 0,
+          "last_comment_at": null,
+          "linked_bugs": [],
+          "diff_url": "https://api.launchpad.net/devel/~ubuntu-release/britney/+git/britney2-ubuntu/+merge/326406/+preview-diff/795423",
+          "review": null,
+          "age_days": 3371,
+          "inactive_days": 3371,
+          "is_stale": true,
+          "attention": [
+            "silent"
+          ]
+        },
+        {
+          "id": "345302",
+          "title": "master \u2192 master",
+          "url": "https://code.launchpad.net/~jbicha/britney/+git/https-autopkgtest/+merge/345302",
+          "author": {
+            "name": "jbicha",
+            "display_name": "Jeremy B\u00edcha",
+            "url": "https://launchpad.net/~jbicha"
+          },
+          "status": "Needs review",
+          "status_category": "needs_review",
+          "created_at": "2018-05-09T16:22:50.211018+00:00",
+          "updated_at": "2018-05-09T16:22:50.211018+00:00",
+          "source_branch": "master",
+          "target_branch": "master",
+          "reviewers": [
+            {
+              "name": "ubuntu-release",
+              "display_name": "Ubuntu Release Team",
+              "url": "https://launchpad.net/~ubuntu-release",
+              "pending": true,
+              "vote": null
+            }
+          ],
+          "comment_count": 0,
+          "last_comment_at": null,
+          "linked_bugs": [],
+          "diff_url": "https://api.launchpad.net/devel/~jbicha/britney/+git/https-autopkgtest/+merge/345302/+preview-diff/831733",
+          "review": null,
+          "age_days": 3056,
+          "inactive_days": 3056,
+          "is_stale": true,
+          "attention": [
+            "silent"
+          ]
+        },
+        {
+          "id": "398270",
+          "title": "suiteloader: add configuration option whether to load udebs.",
+          "url": "https://code.launchpad.net/~xnox/britney/+git/britney2-ubuntu/+merge/398270",
+          "author": {
+            "name": "xnox",
+            "display_name": "Dimitri John Ledkov",
+            "url": "https://launchpad.net/~xnox"
+          },
+          "status": "Work in progress",
+          "status_category": "in_progress",
+          "created_at": "2021-02-18T13:50:04.815053+00:00",
+          "updated_at": "2021-02-24T15:54:38.946424+00:00",
+          "source_branch": "ignore-di",
+          "target_branch": "master",
+          "reviewers": [
+            {
+              "name": "ubuntu-release",
+              "display_name": "Ubuntu Release Team",
+              "url": "https://launchpad.net/~ubuntu-release",
+              "pending": true,
+              "vote": null
+            },
+            {
+              "name": "laney",
+              "display_name": "Iain Lane",
+              "url": "https://launchpad.net/~laney",
+              "pending": false,
+              "vote": "Needs Information"
+            },
+            {
+              "name": "xnox",
+              "display_name": "Dimitri John Ledkov",
+              "url": "https://launchpad.net/~xnox",
+              "pending": false,
+              "vote": "Disapprove"
+            }
+          ],
+          "comment_count": 11,
+          "last_comment_at": "2021-02-24T15:54:38.946424+00:00",
+          "linked_bugs": [],
+          "diff_url": "https://api.launchpad.net/devel/~xnox/britney/+git/britney2-ubuntu/+merge/398270/+preview-diff/932083",
+          "review": null,
+          "age_days": 2040,
+          "inactive_days": 2034,
+          "is_stale": true,
+          "attention": []
+        },
+        {
+          "id": "399727",
+          "title": "Add support for running private tests and using private PPAs.",
+          "url": "https://code.launchpad.net/~ubuntu-release/britney/+git/britney2-ubuntu/+merge/399727",
+          "author": {
+            "name": "sil2100",
+            "display_name": "\u0141ukasz Zemczak",
+            "url": "https://launchpad.net/~sil2100"
+          },
+          "status": "Needs review",
+          "status_category": "needs_review",
+          "created_at": "2021-03-16T15:39:56.608203+00:00",
+          "updated_at": "2021-04-08T07:40:36.735443+00:00",
+          "source_branch": "sil2100/private-runs",
+          "target_branch": "master",
+          "reviewers": [
+            {
+              "name": "vorlon",
+              "display_name": "Steve Langasek",
+              "url": "https://launchpad.net/~vorlon",
+              "pending": false,
+              "vote": "Needs Fixing"
+            }
+          ],
+          "comment_count": 4,
+          "last_comment_at": "2021-04-08T07:40:36.735443+00:00",
+          "linked_bugs": [],
+          "diff_url": "https://api.launchpad.net/devel/~ubuntu-release/britney/+git/britney2-ubuntu/+merge/399727/+preview-diff/1000290",
+          "review": null,
+          "age_days": 2014,
+          "inactive_days": 1991,
+          "is_stale": true,
+          "attention": [
+            "silent"
+          ]
+        },
+        {
+          "id": "438325",
+          "title": "Britney operates on source packages, but cloud-test-framework on binary packages. Support listing which binaries we want to test per-source.",
+          "url": "https://code.launchpad.net/~ubuntu-release/britney/+git/britney2-ubuntu/+merge/438325",
+          "author": {
+            "name": "sil2100",
+            "display_name": "\u0141ukasz Zemczak",
+            "url": "https://launchpad.net/~sil2100"
+          },
+          "status": "Needs review",
+          "status_category": "needs_review",
+          "created_at": "2023-03-03T15:37:22.168414+00:00",
+          "updated_at": "2023-03-03T15:42:19.117636+00:00",
+          "source_branch": "sil2100/source-and-binaries",
+          "target_branch": "sil2100/security-britney",
+          "reviewers": [
+            {
+              "name": "jchittum",
+              "display_name": "John Chittum",
+              "url": "https://launchpad.net/~jchittum",
+              "pending": false,
+              "vote": "Approve"
+            },
+            {
+              "name": "ubuntu-release",
+              "display_name": "Ubuntu Release Team",
+              "url": "https://launchpad.net/~ubuntu-release",
+              "pending": true,
+              "vote": null
+            }
+          ],
+          "comment_count": 2,
+          "last_comment_at": "2023-03-03T15:42:19.117636+00:00",
+          "linked_bugs": [],
+          "diff_url": "https://api.launchpad.net/devel/~ubuntu-release/britney/+git/britney2-ubuntu/+merge/438325/+preview-diff/1002458",
+          "review": null,
+          "age_days": 1297,
+          "inactive_days": 1297,
+          "is_stale": true,
+          "attention": [
+            "silent"
+          ]
+        },
+        {
+          "id": "445460",
+          "title": "force-skiptest: allow '/all' version specifier",
+          "url": "https://code.launchpad.net/~xnox/britney/+git/britney2-ubuntu/+merge/445460",
+          "author": {
+            "name": "xnox",
+            "display_name": "Dimitri John Ledkov",
+            "url": "https://launchpad.net/~xnox"
+          },
+          "status": "Needs review",
+          "status_category": "needs_review",
+          "created_at": "2023-06-27T16:25:55.418348+00:00",
+          "updated_at": "2023-06-30T21:31:36.818648+00:00",
+          "source_branch": "force-skiptest-all",
+          "target_branch": "master",
+          "reviewers": [
+            {
+              "name": "vorlon",
+              "display_name": "Steve Langasek",
+              "url": "https://launchpad.net/~vorlon",
+              "pending": false,
+              "vote": "Needs Resubmitting"
+            }
+          ],
+          "comment_count": 2,
+          "last_comment_at": "2023-06-30T21:31:36.818648+00:00",
+          "linked_bugs": [],
+          "diff_url": "https://api.launchpad.net/devel/~xnox/britney/+git/britney2-ubuntu/+merge/445460/+preview-diff/1015991",
+          "review": null,
+          "age_days": 1181,
+          "inactive_days": 1178,
+          "is_stale": true,
+          "attention": [
+            "silent"
+          ]
+        },
+        {
+          "id": "463049",
+          "title": "consult-queued \u2192 master",
+          "url": "https://code.launchpad.net/~juliank/britney/+git/britney2-ubuntu/+merge/463049",
+          "author": {
+            "name": "juliank",
+            "display_name": "Julian Andres Klode",
+            "url": "https://launchpad.net/~juliank"
+          },
+          "status": "Work in progress",
+          "status_category": "in_progress",
+          "created_at": "2024-03-25T17:53:22.632564+00:00",
+          "updated_at": "2024-03-25T17:53:22.632564+00:00",
+          "source_branch": "consult-queued",
+          "target_branch": "master",
+          "reviewers": [
+            {
+              "name": "ubuntu-release",
+              "display_name": "Ubuntu Release Team",
+              "url": "https://launchpad.net/~ubuntu-release",
+              "pending": true,
+              "vote": null
+            }
+          ],
+          "comment_count": 0,
+          "last_comment_at": null,
+          "linked_bugs": [],
+          "diff_url": "https://api.launchpad.net/devel/~juliank/britney/+git/britney2-ubuntu/+merge/463049/+preview-diff/1049751",
+          "review": null,
+          "age_days": 909,
+          "inactive_days": 909,
+          "is_stale": true,
+          "attention": []
+        },
+        {
+          "id": "464245",
+          "title": "Remove SourcePPAPolicy",
+          "url": "https://code.launchpad.net/~mitya57/britney/+git/britney/+merge/464245",
+          "author": {
+            "name": "mitya57",
+            "display_name": "Dmitry Shachnev",
+            "url": "https://launchpad.net/~mitya57"
+          },
+          "status": "Needs review",
+          "status_category": "needs_review",
+          "created_at": "2024-04-13T17:32:18.214965+00:00",
+          "updated_at": "2024-04-13T17:32:18.214965+00:00",
+          "source_branch": "remove-source-ppa-policy",
+          "target_branch": "master",
+          "reviewers": [
+            {
+              "name": "ubuntu-release",
+              "display_name": "Ubuntu Release Team",
+              "url": "https://launchpad.net/~ubuntu-release",
+              "pending": true,
+              "vote": null
+            }
+          ],
+          "comment_count": 0,
+          "last_comment_at": null,
+          "linked_bugs": [],
+          "diff_url": "https://api.launchpad.net/devel/~mitya57/britney/+git/britney/+merge/464245/+preview-diff/1052150",
+          "review": null,
+          "age_days": 890,
+          "inactive_days": 890,
+          "is_stale": true,
+          "attention": [
+            "silent"
+          ]
+        },
+        {
+          "id": "476959",
+          "title": "Implementing a bit of optimisation, making britney not try to remove old NBS kernel packages from stable series.",
+          "url": "https://code.launchpad.net/~ssstr1pe/britney/+git/britney/+merge/476959",
+          "author": {
+            "name": "ssstr1pe",
+            "display_name": "Tim Andersson",
+            "url": "https://launchpad.net/~ssstr1pe"
+          },
+          "status": "Needs review",
+          "status_category": "needs_review",
+          "created_at": "2024-11-21T12:46:10.436879+00:00",
+          "updated_at": "2024-11-28T18:42:57.669840+00:00",
+          "source_branch": "NBS-kernel-packages",
+          "target_branch": "master",
+          "reviewers": [
+            {
+              "name": "paride",
+              "display_name": "Paride Legovini",
+              "url": "https://launchpad.net/~paride",
+              "pending": true,
+              "vote": null
+            },
+            {
+              "name": "vorlon",
+              "display_name": "Steve Langasek",
+              "url": "https://launchpad.net/~vorlon",
+              "pending": false,
+              "vote": "Needs Information"
+            }
+          ],
+          "comment_count": 6,
+          "last_comment_at": "2024-11-28T18:42:57.669840+00:00",
+          "linked_bugs": [],
+          "diff_url": "https://api.launchpad.net/devel/~ssstr1pe/britney/+git/britney/+merge/476959/+preview-diff/1077013",
+          "review": null,
+          "age_days": 668,
+          "inactive_days": 661,
+          "is_stale": true,
+          "attention": [
+            "silent"
+          ]
+        },
+        {
+          "id": "489784",
+          "title": "master \u2192 master",
+          "url": "https://code.launchpad.net/~juliank/britney/+git/britney2-ubuntu/+merge/489784",
+          "author": {
+            "name": "juliank",
+            "display_name": "Julian Andres Klode",
+            "url": "https://launchpad.net/~juliank"
+          },
+          "status": "Needs review",
+          "status_category": "needs_review",
+          "created_at": "2025-07-28T11:46:10.187108+00:00",
+          "updated_at": "2025-08-04T08:20:40.982980+00:00",
+          "source_branch": "master",
+          "target_branch": "master",
+          "reviewers": [
+            {
+              "name": "ubuntu-release",
+              "display_name": "Ubuntu Release Team",
+              "url": "https://launchpad.net/~ubuntu-release",
+              "pending": true,
+              "vote": null
+            }
+          ],
+          "comment_count": 1,
+          "last_comment_at": "2025-08-04T08:20:40.982980+00:00",
+          "linked_bugs": [],
+          "diff_url": "https://api.launchpad.net/devel/~juliank/britney/+git/britney2-ubuntu/+merge/489784/+preview-diff/1100285",
+          "review": null,
+          "age_days": 419,
+          "inactive_days": 412,
+          "is_stale": true,
+          "attention": [
+            "silent"
+          ]
+        },
+        {
+          "id": "490954",
+          "title": "This is very much incomplete and likely not correct and addresses only part of the problem (if at all). We have tons of kernels that only exist on a subset of the supported architectures. We currently seem to blindly trigger tests that are known to fail which is a gigantic waste of precious resources.",
+          "url": "https://code.launchpad.net/~juergh/britney/+git/britney2-ubuntu/+merge/490954",
+          "author": {
+            "name": "juergh",
+            "display_name": "Juerg Haefliger",
+            "url": "https://launchpad.net/~juergh"
+          },
+          "status": "Needs review",
+          "status_category": "needs_review",
+          "created_at": "2025-08-18T15:22:11.640001+00:00",
+          "updated_at": "2025-08-18T15:22:11.640001+00:00",
+          "source_branch": "juergh/remove-riscv",
+          "target_branch": "master",
+          "reviewers": [
+            {
+              "name": "ubuntu-release",
+              "display_name": "Ubuntu Release Team",
+              "url": "https://launchpad.net/~ubuntu-release",
+              "pending": true,
+              "vote": null
+            }
+          ],
+          "comment_count": 0,
+          "last_comment_at": null,
+          "linked_bugs": [],
+          "diff_url": "https://api.launchpad.net/devel/~juergh/britney/+git/britney2-ubuntu/+merge/490954/+preview-diff/1102599",
+          "review": null,
+          "age_days": 398,
+          "inactive_days": 398,
+          "is_stale": true,
+          "attention": [
+            "silent"
+          ]
+        },
+        {
+          "id": "511394",
+          "title": "i386-keyerror-fix \u2192 master",
+          "url": "https://code.launchpad.net/~paride/britney/+git/britney2-ubuntu/+merge/511394",
+          "author": {
+            "name": "paride",
+            "display_name": "Paride Legovini",
+            "url": "https://launchpad.net/~paride"
+          },
+          "status": "Needs review",
+          "status_category": "needs_review",
+          "created_at": "2026-09-15T16:30:54.788384+00:00",
+          "updated_at": "2026-09-15T16:30:54.788384+00:00",
+          "source_branch": "i386-keyerror-fix",
+          "target_branch": "master",
+          "reviewers": [
+            {
+              "name": "ubuntu-release",
+              "display_name": "Ubuntu Release Team",
+              "url": "https://launchpad.net/~ubuntu-release",
+              "pending": true,
+              "vote": null
+            }
+          ],
+          "comment_count": 0,
+          "last_comment_at": null,
+          "linked_bugs": [],
+          "diff_url": "https://api.launchpad.net/devel/~paride/britney/+git/britney2-ubuntu/+merge/511394/+preview-diff/1142175",
+          "review": null,
+          "age_days": 5,
+          "inactive_days": 5,
+          "is_stale": false,
+          "attention": []
+        }
+      ]
+    },
+    {
+      "id": "britney1",
+      "name": "britney1-ubuntu",
+      "provider": "launchpad-git",
+      "url": "https://code.launchpad.net/~ubuntu-release/britney/+git/britney1-ubuntu",
+      "status": "ok",
+      "error": null,
+      "last_successful_refresh": "2026-09-21T00:49:53.060033+00:00",
+      "merge_requests": []
     }
   ]
 }
