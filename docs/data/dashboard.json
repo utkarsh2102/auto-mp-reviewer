@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-09-24T18:01:06.782731+00:00",
+  "generated_at": "2026-09-24T22:46:28.350639+00:00",
   "config": {
     "stale_after_days": 30,
     "silent_after_days": 7,
@@ -14,7 +14,7 @@
       "url": "https://code.launchpad.net/~ubuntu-cdimage/ubuntu-cdimage/+git/ubuntu-cdimage",
       "status": "ok",
       "error": null,
-      "last_successful_refresh": "2026-09-24T18:01:06.782731+00:00",
+      "last_successful_refresh": "2026-09-24T22:46:28.350639+00:00",
       "merge_requests": [
         {
           "id": "500275",
@@ -122,8 +122,8 @@
           "linked_bugs": [],
           "diff_url": "https://api.launchpad.net/devel/~mclemenceau/ubuntu-cdimage/+git/ubuntu-cdimage/+merge/506871/+preview-diff/1133510",
           "review": null,
-          "age_days": 97,
-          "inactive_days": 97,
+          "age_days": 98,
+          "inactive_days": 98,
           "is_stale": true,
           "attention": []
         },
@@ -319,7 +319,7 @@
       "url": "https://code.launchpad.net/~ubuntu-core-dev/livecd-rootfs/+git/livecd-rootfs",
       "status": "ok",
       "error": null,
-      "last_successful_refresh": "2026-09-24T18:01:06.782731+00:00",
+      "last_successful_refresh": "2026-09-24T22:46:28.350639+00:00",
       "merge_requests": [
         {
           "id": "380853",
@@ -350,8 +350,8 @@
           "linked_bugs": [],
           "diff_url": "https://api.launchpad.net/devel/~rcj/livecd-rootfs/+git/livecd-rootfs/+merge/380853/+preview-diff/898785",
           "review": null,
-          "age_days": 2380,
-          "inactive_days": 2373,
+          "age_days": 2381,
+          "inactive_days": 2374,
           "is_stale": true,
           "attention": []
         },
@@ -973,8 +973,8 @@
           "linked_bugs": [],
           "diff_url": "https://api.launchpad.net/devel/~ubuntu-core-dev/livecd-rootfs/+git/livecd-rootfs/+merge/427572/+preview-diff/982720",
           "review": null,
-          "age_days": 1518,
-          "inactive_days": 1518,
+          "age_days": 1519,
+          "inactive_days": 1519,
           "is_stale": true,
           "attention": []
         },
@@ -1073,8 +1073,8 @@
           "linked_bugs": [],
           "diff_url": "https://api.launchpad.net/devel/~chad.smith/livecd-rootfs/+git/livecd-rootfs/+merge/439585/+preview-diff/1004825",
           "review": null,
-          "age_days": 1280,
-          "inactive_days": 1280,
+          "age_days": 1281,
+          "inactive_days": 1281,
           "is_stale": true,
           "attention": [
             "silent"
@@ -1118,6 +1118,49 @@
           "review": null,
           "age_days": 1212,
           "inactive_days": 1211,
+          "is_stale": true,
+          "attention": [
+            "silent"
+          ]
+        },
+        {
+          "id": "449608",
+          "title": "Switch from xz to zstd compressed squashfs for faster boot",
+          "url": "https://code.launchpad.net/~ubuntu-core-dev/livecd-rootfs/+git/livecd-rootfs/+merge/449608",
+          "author": {
+            "name": "xnox",
+            "display_name": "Dimitri John Ledkov",
+            "url": "https://launchpad.net/~xnox"
+          },
+          "status": "Needs review",
+          "status_category": "needs_review",
+          "created_at": "2023-08-22T10:57:21.165275+00:00",
+          "updated_at": "2023-09-06T18:50:32.386567+00:00",
+          "source_branch": "xnox/mksquashfs-zstd",
+          "target_branch": "ubuntu/master",
+          "reviewers": [
+            {
+              "name": "vorlon",
+              "display_name": "Steve Langasek",
+              "url": "https://launchpad.net/~vorlon",
+              "pending": false,
+              "vote": "Needs Information"
+            },
+            {
+              "name": "tag:launchpad.net:2008:redacted",
+              "display_name": "tag:launchpad.net:2008:redacted",
+              "url": "https://launchpad.net/~tag:launchpad.net:2008:redacted",
+              "pending": true,
+              "vote": null
+            }
+          ],
+          "comment_count": 5,
+          "last_comment_at": "2023-09-06T18:50:32.386567+00:00",
+          "linked_bugs": [],
+          "diff_url": "https://api.launchpad.net/devel/~ubuntu-core-dev/livecd-rootfs/+git/livecd-rootfs/+merge/449608/+preview-diff/1023861",
+          "review": null,
+          "age_days": 1129,
+          "inactive_days": 1114,
           "is_stale": true,
           "attention": [
             "silent"
@@ -1173,49 +1216,6 @@
           "attention": [
             "silent",
             "linked_bug"
-          ]
-        },
-        {
-          "id": "449608",
-          "title": "Switch from xz to zstd compressed squashfs for faster boot",
-          "url": "https://code.launchpad.net/~ubuntu-core-dev/livecd-rootfs/+git/livecd-rootfs/+merge/449608",
-          "author": {
-            "name": "xnox",
-            "display_name": "Dimitri John Ledkov",
-            "url": "https://launchpad.net/~xnox"
-          },
-          "status": "Needs review",
-          "status_category": "needs_review",
-          "created_at": "2023-08-22T10:57:21.165275+00:00",
-          "updated_at": "2023-09-06T18:50:32.386567+00:00",
-          "source_branch": "xnox/mksquashfs-zstd",
-          "target_branch": "ubuntu/master",
-          "reviewers": [
-            {
-              "name": "vorlon",
-              "display_name": "Steve Langasek",
-              "url": "https://launchpad.net/~vorlon",
-              "pending": false,
-              "vote": "Needs Information"
-            },
-            {
-              "name": "tag:launchpad.net:2008:redacted",
-              "display_name": "tag:launchpad.net:2008:redacted",
-              "url": "https://launchpad.net/~tag:launchpad.net:2008:redacted",
-              "pending": true,
-              "vote": null
-            }
-          ],
-          "comment_count": 5,
-          "last_comment_at": "2023-09-06T18:50:32.386567+00:00",
-          "linked_bugs": [],
-          "diff_url": "https://api.launchpad.net/devel/~ubuntu-core-dev/livecd-rootfs/+git/livecd-rootfs/+merge/449608/+preview-diff/1023861",
-          "review": null,
-          "age_days": 1129,
-          "inactive_days": 1113,
-          "is_stale": true,
-          "attention": [
-            "silent"
           ]
         },
         {
@@ -1370,7 +1370,7 @@
           "diff_url": "https://api.launchpad.net/devel/~xypron/livecd-rootfs/+git/livecd-rootfs/+merge/471702/+preview-diff/1066423",
           "review": null,
           "age_days": 764,
-          "inactive_days": 761,
+          "inactive_days": 762,
           "is_stale": true,
           "attention": [
             "silent"
@@ -1463,8 +1463,8 @@
           "linked_bugs": [],
           "diff_url": "https://api.launchpad.net/devel/~dbungert/livecd-rootfs/+git/livecd-rootfs/+merge/492241/+preview-diff/1105032",
           "review": null,
-          "age_days": 379,
-          "inactive_days": 379,
+          "age_days": 380,
+          "inactive_days": 380,
           "is_stale": true,
           "attention": []
         },
@@ -1603,8 +1603,8 @@
           ],
           "diff_url": "https://api.launchpad.net/devel/~kajiya/livecd-rootfs/+git/livecd-rootfs/+merge/500344/+preview-diff/1120837",
           "review": null,
-          "age_days": 223,
-          "inactive_days": 222,
+          "age_days": 224,
+          "inactive_days": 223,
           "is_stale": true,
           "attention": [
             "silent",
@@ -1735,8 +1735,8 @@
           "linked_bugs": [],
           "diff_url": "https://api.launchpad.net/devel/~dlalaj/livecd-rootfs/+git/livecd-rootfs/+merge/503762/+preview-diff/1129184",
           "review": null,
-          "age_days": 161,
-          "inactive_days": 146,
+          "age_days": 162,
+          "inactive_days": 147,
           "is_stale": true,
           "attention": [
             "silent"
@@ -2077,8 +2077,8 @@
           ],
           "diff_url": "https://api.launchpad.net/devel/~dlalaj/livecd-rootfs/+git/livecd-rootfs/+merge/510343/+preview-diff/1140108",
           "review": null,
-          "age_days": 27,
-          "inactive_days": 13,
+          "age_days": 28,
+          "inactive_days": 14,
           "is_stale": false,
           "attention": [
             "silent",
@@ -2114,8 +2114,8 @@
           "linked_bugs": [],
           "diff_url": "https://api.launchpad.net/devel/~dlalaj/livecd-rootfs/+git/livecd-rootfs/+merge/511080/+preview-diff/1142057",
           "review": null,
-          "age_days": 14,
-          "inactive_days": 5,
+          "age_days": 15,
+          "inactive_days": 6,
           "is_stale": false,
           "attention": [
             "approved_not_landed"
@@ -2159,7 +2159,7 @@
           "diff_url": "https://api.launchpad.net/devel/~allenab/livecd-rootfs/+git/livecd-rootfs/+merge/511837/+preview-diff/1143065",
           "review": null,
           "age_days": 2,
-          "inactive_days": 1,
+          "inactive_days": 2,
           "is_stale": false,
           "attention": [
             "linked_bug"
@@ -2174,7 +2174,7 @@
       "url": "https://code.launchpad.net/~ubuntu-archive/ubuntu-archive-tools/+git/ubuntu-archive-tools",
       "status": "ok",
       "error": null,
-      "last_successful_refresh": "2026-09-24T18:01:06.782731+00:00",
+      "last_successful_refresh": "2026-09-24T22:46:28.350639+00:00",
       "merge_requests": [
         {
           "id": "411081",
@@ -2387,8 +2387,8 @@
           "linked_bugs": [],
           "diff_url": "https://api.launchpad.net/devel/~racb/ubuntu-archive-tools/+git/ubuntu-archive-tools/+merge/448828/+preview-diff/1022413",
           "review": null,
-          "age_days": 1141,
-          "inactive_days": 1141,
+          "age_days": 1142,
+          "inactive_days": 1142,
           "is_stale": true,
           "attention": [
             "silent"
@@ -2424,7 +2424,7 @@
           "diff_url": "https://api.launchpad.net/devel/~ubuntu-archive/ubuntu-archive-tools/+git/ubuntu-archive-tools/+merge/426990/+preview-diff/981421",
           "review": null,
           "age_days": 1531,
-          "inactive_days": 1071,
+          "inactive_days": 1072,
           "is_stale": true,
           "attention": [
             "silent"
@@ -2538,8 +2538,8 @@
           "linked_bugs": [],
           "diff_url": "https://api.launchpad.net/devel/~ubuntu-archive/ubuntu-archive-tools/+git/ubuntu-archive-tools/+merge/460716/+preview-diff/1045086",
           "review": null,
-          "age_days": 950,
-          "inactive_days": 950,
+          "age_days": 951,
+          "inactive_days": 951,
           "is_stale": true,
           "attention": [
             "silent"
@@ -2574,8 +2574,8 @@
           "linked_bugs": [],
           "diff_url": "https://api.launchpad.net/devel/~ubuntu-archive/ubuntu-archive-tools/+git/ubuntu-archive-tools/+merge/460715/+preview-diff/1045085",
           "review": null,
-          "age_days": 950,
-          "inactive_days": 950,
+          "age_days": 951,
+          "inactive_days": 951,
           "is_stale": true,
           "attention": [
             "silent"
@@ -2617,8 +2617,8 @@
           "linked_bugs": [],
           "diff_url": "https://api.launchpad.net/devel/~ubuntu-archive/ubuntu-archive-tools/+git/ubuntu-archive-tools/+merge/465016/+preview-diff/1053758",
           "review": null,
-          "age_days": 881,
-          "inactive_days": 881,
+          "age_days": 882,
+          "inactive_days": 882,
           "is_stale": true,
           "attention": [
             "silent"
@@ -2689,7 +2689,7 @@
           "linked_bugs": [],
           "diff_url": "https://api.launchpad.net/devel/~mwhudson/ubuntu-archive-tools/+git/ubuntu-archive-tools/+merge/493838/+preview-diff/1108058",
           "review": null,
-          "age_days": 353,
+          "age_days": 354,
           "inactive_days": 353,
           "is_stale": true,
           "attention": [
@@ -2797,7 +2797,7 @@
           "linked_bugs": [],
           "diff_url": "https://api.launchpad.net/devel/~apw/ubuntu-archive-tools/+git/ubuntu-archive-tools/+merge/494416/+preview-diff/1109325",
           "review": null,
-          "age_days": 344,
+          "age_days": 345,
           "inactive_days": 344,
           "is_stale": true,
           "attention": [
@@ -2941,8 +2941,8 @@
           "linked_bugs": [],
           "diff_url": "https://api.launchpad.net/devel/~lvoytek/ubuntu-archive-tools/+git/ubuntu-archive-tools/+merge/508941/+preview-diff/1137443",
           "review": null,
-          "age_days": 62,
-          "inactive_days": 62,
+          "age_days": 63,
+          "inactive_days": 63,
           "is_stale": true,
           "attention": [
             "silent"
@@ -2977,8 +2977,8 @@
           "linked_bugs": [],
           "diff_url": "https://api.launchpad.net/devel/~athos/ubuntu-archive-tools/+git/ubuntu-archive-tools/+merge/509566/+preview-diff/1138608",
           "review": null,
-          "age_days": 40,
-          "inactive_days": 40,
+          "age_days": 41,
+          "inactive_days": 41,
           "is_stale": true,
           "attention": [
             "silent"
@@ -3083,8 +3083,8 @@
           "linked_bugs": [],
           "diff_url": "https://api.launchpad.net/devel/~varranvar/ubuntu-archive-tools/+git/watch-restricted-dependencies/+merge/510868/+preview-diff/1141126",
           "review": null,
-          "age_days": 19,
-          "inactive_days": 19,
+          "age_days": 20,
+          "inactive_days": 20,
           "is_stale": false,
           "attention": [
             "silent"
@@ -3119,8 +3119,8 @@
           "linked_bugs": [],
           "diff_url": "https://api.launchpad.net/devel/~apw/ubuntu-archive-tools/+git/ubuntu-archive-tools/+merge/511859/+preview-diff/1143091",
           "review": null,
-          "age_days": 1,
-          "inactive_days": 1,
+          "age_days": 2,
+          "inactive_days": 2,
           "is_stale": false,
           "attention": [
             "approved_not_landed"
@@ -3179,20 +3179,20 @@
           "status": "Needs review",
           "status_category": "needs_review",
           "created_at": "2026-09-24T10:27:04.369229+00:00",
-          "updated_at": "2026-09-24T10:27:04.369229+00:00",
+          "updated_at": "2026-09-24T21:32:43.077914+00:00",
           "source_branch": "remove-package-closebug",
           "target_branch": "main",
           "reviewers": [
             {
-              "name": "ubuntu-archive",
-              "display_name": "Ubuntu Package Archive Administrators",
-              "url": "https://launchpad.net/~ubuntu-archive",
-              "pending": true,
-              "vote": null
+              "name": "mwhudson",
+              "display_name": "Michael Hudson-Doyle",
+              "url": "https://launchpad.net/~mwhudson",
+              "pending": false,
+              "vote": "Needs Fixing"
             }
           ],
-          "comment_count": 0,
-          "last_comment_at": null,
+          "comment_count": 1,
+          "last_comment_at": "2026-09-24T21:32:43.077914+00:00",
           "linked_bugs": [],
           "diff_url": "https://api.launchpad.net/devel/~seb128/ubuntu-archive-tools/+git/ubuntu-archive-tools/+merge/511981/+preview-diff/1143384",
           "review": null,
@@ -3210,7 +3210,7 @@
       "url": "https://code.launchpad.net/~ubuntu-archive/ubuntu-archive-scripts/+git/ubuntu-archive-scripts",
       "status": "ok",
       "error": null,
-      "last_successful_refresh": "2026-09-24T18:01:06.782731+00:00",
+      "last_successful_refresh": "2026-09-24T22:46:28.350639+00:00",
       "merge_requests": [
         {
           "id": "447307",
@@ -3257,7 +3257,7 @@
       "url": "https://code.launchpad.net/~ubuntu-release/britney/+git/hints-ubuntu",
       "status": "ok",
       "error": null,
-      "last_successful_refresh": "2026-09-24T18:01:06.782731+00:00",
+      "last_successful_refresh": "2026-09-24T22:46:28.350639+00:00",
       "merge_requests": [
         {
           "id": "406611",
@@ -3296,8 +3296,8 @@
           ],
           "diff_url": "https://api.launchpad.net/devel/~bryce/britney/+git/britney/+merge/406611/+preview-diff/947270",
           "review": null,
-          "age_days": 1877,
-          "inactive_days": 1877,
+          "age_days": 1878,
+          "inactive_days": 1878,
           "is_stale": true,
           "attention": [
             "silent",
@@ -3333,8 +3333,8 @@
           "linked_bugs": [],
           "diff_url": "https://api.launchpad.net/devel/~dbungert/britney/+git/hints-ubuntu/+merge/407860/+preview-diff/949484",
           "review": null,
-          "age_days": 1850,
-          "inactive_days": 1850,
+          "age_days": 1851,
+          "inactive_days": 1851,
           "is_stale": true,
           "attention": [
             "silent"
@@ -3411,7 +3411,7 @@
           "diff_url": "https://api.launchpad.net/devel/~sergiodj/britney/+git/hints-ubuntu/+merge/419138/+preview-diff/969382",
           "review": null,
           "age_days": 1630,
-          "inactive_days": 1626,
+          "inactive_days": 1627,
           "is_stale": true,
           "attention": [
             "silent"
@@ -3461,7 +3461,7 @@
           "diff_url": "https://api.launchpad.net/devel/~upils/britney/+git/hints-ubuntu/+merge/461142/+preview-diff/1045915",
           "review": null,
           "age_days": 944,
-          "inactive_days": 943,
+          "inactive_days": 944,
           "is_stale": true,
           "attention": [
             "silent"
@@ -3532,7 +3532,7 @@
           "linked_bugs": [],
           "diff_url": "https://api.launchpad.net/devel/~mfo/britney/+git/britney/+merge/473318/+preview-diff/1069547",
           "review": null,
-          "age_days": 737,
+          "age_days": 738,
           "inactive_days": 737,
           "is_stale": true,
           "attention": [
@@ -3648,8 +3648,8 @@
           ],
           "diff_url": "https://api.launchpad.net/devel/~ubuntu-release/britney/+git/hints-ubuntu/+merge/481986/+preview-diff/1085982",
           "review": null,
-          "age_days": 574,
-          "inactive_days": 574,
+          "age_days": 575,
+          "inactive_days": 575,
           "is_stale": true,
           "attention": [
             "silent",
@@ -3692,7 +3692,7 @@
           "linked_bugs": [],
           "diff_url": "https://api.launchpad.net/devel/~ubuntu-release/britney/+git/hints-ubuntu/+merge/482251/+preview-diff/1086423",
           "review": null,
-          "age_days": 569,
+          "age_days": 570,
           "inactive_days": 568,
           "is_stale": true,
           "attention": [
@@ -3837,7 +3837,7 @@
           "diff_url": "https://api.launchpad.net/devel/~schopin/britney/+git/hints-ubuntu/+merge/487558/+preview-diff/1096327",
           "review": null,
           "age_days": 458,
-          "inactive_days": 456,
+          "inactive_days": 457,
           "is_stale": true,
           "attention": [
             "silent",
@@ -3970,7 +3970,7 @@
       "url": "https://code.launchpad.net/~ubuntu-release/autopkgtest/+git/autopkgtest",
       "status": "ok",
       "error": null,
-      "last_successful_refresh": "2026-09-24T18:01:06.782731+00:00",
+      "last_successful_refresh": "2026-09-24T22:46:28.350639+00:00",
       "merge_requests": [
         {
           "id": "337325",
@@ -4017,7 +4017,7 @@
       "url": "https://code.launchpad.net/~ubuntu-release/autopkgtest-cloud/+git/autopkgtest-package-configs",
       "status": "ok",
       "error": null,
-      "last_successful_refresh": "2026-09-24T18:01:06.782731+00:00",
+      "last_successful_refresh": "2026-09-24T22:46:28.350639+00:00",
       "merge_requests": [
         {
           "id": "511231",
@@ -4064,7 +4064,7 @@
       "url": "https://code.launchpad.net/~ubuntu-release/ubuntu-release-tools/+git/templates",
       "status": "ok",
       "error": null,
-      "last_successful_refresh": "2026-09-24T18:01:06.782731+00:00",
+      "last_successful_refresh": "2026-09-24T22:46:28.350639+00:00",
       "merge_requests": [
         {
           "id": "433265",
@@ -4103,7 +4103,7 @@
           "diff_url": "https://api.launchpad.net/devel/~paelzer/ubuntu-release-tools/+git/templates/+merge/433265/+preview-diff/992967",
           "review": null,
           "age_days": 1406,
-          "inactive_days": 1403,
+          "inactive_days": 1404,
           "is_stale": true,
           "attention": [
             "silent"
@@ -4468,7 +4468,7 @@
       "url": "https://code.launchpad.net/~ubuntu-release/ubuntu-release-tools/+git/ubuntu-release-tools",
       "status": "ok",
       "error": null,
-      "last_successful_refresh": "2026-09-24T18:01:06.782731+00:00",
+      "last_successful_refresh": "2026-09-24T22:46:28.350639+00:00",
       "merge_requests": [
         {
           "id": "436341",
@@ -4607,8 +4607,8 @@
           "linked_bugs": [],
           "diff_url": "https://api.launchpad.net/devel/~oreiche/ubuntu-release-tools/+git/templates/+merge/510341/+preview-diff/1140106",
           "review": null,
-          "age_days": 27,
-          "inactive_days": 27,
+          "age_days": 28,
+          "inactive_days": 28,
           "is_stale": false,
           "attention": [
             "silent"
@@ -4623,7 +4623,7 @@
       "url": "https://code.launchpad.net/~ubuntu-release/ubuntu-images/+git/ubuntu-images",
       "status": "ok",
       "error": null,
-      "last_successful_refresh": "2026-09-24T18:01:06.782731+00:00",
+      "last_successful_refresh": "2026-09-24T22:46:28.350639+00:00",
       "merge_requests": [
         {
           "id": "443396",
@@ -4808,7 +4808,7 @@
       "url": "https://code.launchpad.net/~ubuntu-release/britney/+git/britney2-ubuntu",
       "status": "ok",
       "error": null,
-      "last_successful_refresh": "2026-09-24T18:01:06.782731+00:00",
+      "last_successful_refresh": "2026-09-24T22:46:28.350639+00:00",
       "merge_requests": [
         {
           "id": "326406",
@@ -5039,7 +5039,7 @@
           "diff_url": "https://api.launchpad.net/devel/~xnox/britney/+git/britney2-ubuntu/+merge/445460/+preview-diff/1015991",
           "review": null,
           "age_days": 1185,
-          "inactive_days": 1181,
+          "inactive_days": 1182,
           "is_stale": true,
           "attention": [
             "silent"
@@ -5152,7 +5152,7 @@
           "diff_url": "https://api.launchpad.net/devel/~ssstr1pe/britney/+git/britney/+merge/476959/+preview-diff/1077013",
           "review": null,
           "age_days": 672,
-          "inactive_days": 664,
+          "inactive_days": 665,
           "is_stale": true,
           "attention": [
             "silent"
@@ -5275,7 +5275,7 @@
       "url": "https://code.launchpad.net/~ubuntu-release/britney/+git/britney1-ubuntu",
       "status": "ok",
       "error": null,
-      "last_successful_refresh": "2026-09-24T18:01:06.782731+00:00",
+      "last_successful_refresh": "2026-09-24T22:46:28.350639+00:00",
       "merge_requests": []
     }
   ]
