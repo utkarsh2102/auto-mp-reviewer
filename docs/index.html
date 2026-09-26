@@ -63,6 +63,9 @@
       <button type="button" class="btn" id="refresh-btn">
         <span class="btn__icon" aria-hidden="true">&#8635;</span> Refresh
       </button>
+      <button type="button" class="btn" id="llm-btn" aria-haspopup="dialog" data-configured="false">
+        <span class="btn__icon" aria-hidden="true">&#10022;</span> LLM<span class="btn__dot" aria-hidden="true"></span>
+      </button>
       <button type="button" class="btn btn--icon" id="theme-btn" aria-label="Toggle colour theme" title="Toggle colour theme">
         <span aria-hidden="true">&#9681;</span>
       </button>
@@ -77,6 +80,55 @@
 <main id="panels" class="panels">
   <p class="loading" id="loading">Loading merge proposals&hellip;</p>
 </main>
+
+<dialog id="llm-dialog" class="dialog" aria-labelledby="llm-title">
+  <h2 id="llm-title" class="dialog__title">LLM review settings</h2>
+  <p class="dialog__lede">Merge proposal tables can ask an LLM what a reviewer should watch out for. A review runs
+    only when you ask for one, from this browser, with your own API key, and is kept in this browser.</p>
+
+  <div class="field">
+    <label class="field__label" for="llm-provider">Provider</label>
+    <select id="llm-provider" class="field__input"></select>
+  </div>
+
+  <div class="field">
+    <label class="field__label" for="llm-key" id="llm-key-label">API key</label>
+    <div class="field__row">
+      <input id="llm-key" class="field__input" type="password" autocomplete="off" spellcheck="false">
+      <button type="button" class="action-btn" id="llm-key-show" aria-pressed="false" aria-controls="llm-key">Show</button>
+    </div>
+    <p class="field__hint" id="llm-key-hint"></p>
+  </div>
+
+  <div class="field">
+    <label class="field__label" for="llm-model">Model</label>
+    <div class="field__row">
+      <input id="llm-model" class="field__input" list="llm-models" autocomplete="off" spellcheck="false">
+      <button type="button" class="action-btn" id="llm-load-models">Load models</button>
+    </div>
+    <datalist id="llm-models"></datalist>
+    <p class="field__hint" id="llm-model-hint"></p>
+  </div>
+
+  <label class="check"><input type="checkbox" id="llm-remember"> Remember API keys on this browser</label>
+
+  <div class="dialog__note">
+    <p>Your key goes from this browser straight to the provider you pick, and nowhere else: not to GitHub,
+      not into the dashboard's data, not into cached reviews.</p>
+    <p>Unless you tick <em>Remember</em>, keys are forgotten when you close this tab. A remembered key is
+      stored unencrypted and any page on <span id="llm-host"></span> could read it, so prefer a key with a
+      spending limit.</p>
+  </div>
+
+  <p class="dialog__status" id="llm-status" role="status" aria-live="polite"></p>
+
+  <div class="dialog__actions">
+    <button type="button" class="action-btn" id="llm-forget">Forget keys</button>
+    <span class="dialog__spacer"></span>
+    <button type="button" class="action-btn" id="llm-cancel">Cancel</button>
+    <button type="button" class="action-btn action-btn--primary" id="llm-save">Save</button>
+  </div>
+</dialog>
 
 <footer class="site-footer">
   <p>

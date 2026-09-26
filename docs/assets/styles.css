@@ -170,6 +170,9 @@ a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible
 .btn--icon { padding: 6px 9px; }
 .btn__icon { font-size: 1rem; line-height: 1; }
 .btn.is-spinning .btn__icon { animation: spin .9s linear infinite; display: inline-block; }
+/* The LLM button's dot: a provider and key are set up in this browser. */
+.btn__dot { display: none; width: 7px; height: 7px; border-radius: 50%; background: var(--ubuntu-orange); margin-left: -2px; }
+.btn[data-configured="true"] .btn__dot { display: inline-block; }
 @keyframes spin { to { transform: rotate(360deg); } }
 @media (prefers-reduced-motion: reduce) { .btn.is-spinning .btn__icon { animation: none; } }
 
@@ -650,6 +653,75 @@ tbody tr:last-child td { border-bottom: 0; }
 .filter-summary { font-size: .8rem; color: var(--ink-muted); margin-left: auto; }
 
 .empty { padding: 28px 16px; text-align: center; color: var(--ink-muted); font-size: .9rem; }
+
+/* -------------------------------------------------------------- LLM review */
+
+/* Buttons on cards and in the dialog (.btn is styled for the masthead). */
+.action-btn {
+  font: inherit;
+  font-size: .8rem;
+  padding: 4px 12px;
+  border-radius: var(--radius);
+  border: 1px solid var(--rule-strong);
+  background: var(--card);
+  color: var(--ink);
+  cursor: pointer;
+  white-space: nowrap;
+}
+.action-btn:hover { border-color: var(--ink-muted); }
+.action-btn:disabled { opacity: .55; cursor: default; }
+.action-btn--primary { background: var(--aubergine-mid); border-color: var(--aubergine-mid); color: #fff; font-weight: 500; }
+.action-btn--primary:hover { background: var(--aubergine); border-color: var(--aubergine); }
+:root[data-theme="dark"] .action-btn--primary { background: var(--ubuntu-orange); border-color: var(--ubuntu-orange); }
+@media (prefers-color-scheme: dark) {
+  :root:where(:not([data-theme="light"])) .action-btn--primary { background: var(--ubuntu-orange); border-color: var(--ubuntu-orange); }
+}
+
+/* The settings dialog. */
+.dialog {
+  width: min(560px, calc(100vw - 32px));
+  max-height: calc(100vh - 48px);
+  padding: 20px 22px 18px;
+  border: 1px solid var(--rule-strong);
+  border-top: 3px solid var(--ubuntu-orange);
+  border-radius: var(--radius);
+  background: var(--card);
+  color: var(--ink);
+  box-shadow: 0 12px 40px rgba(17, 17, 17, .3);
+}
+.dialog::backdrop { background: rgba(17, 12, 14, .55); }
+.dialog__title { margin: 0 0 4px; font-size: 1.1rem; font-weight: 500; }
+.dialog__lede { margin: 0 0 16px; font-size: .85rem; color: var(--ink-secondary); }
+.field { margin-bottom: 14px; }
+.field__label { display: block; font-size: .8rem; font-weight: 500; margin-bottom: 4px; }
+.field__row { display: flex; gap: 8px; }
+.field__input {
+  font: inherit;
+  font-size: .87rem;
+  width: 100%;
+  min-width: 0;
+  padding: 6px 9px;
+  border: 1px solid var(--rule-strong);
+  border-radius: var(--radius);
+  background: var(--field);
+  color: var(--ink);
+}
+.field__hint { margin: 4px 0 0; font-size: .76rem; color: var(--ink-muted); }
+.field__hint a { color: var(--ink-secondary); }
+.check { display: flex; align-items: center; gap: 8px; font-size: .85rem; margin-bottom: 12px; }
+.dialog__note {
+  font-size: .78rem;
+  color: var(--ink-secondary);
+  background: var(--card-sunken);
+  border: 1px solid var(--rule);
+  border-radius: var(--radius);
+  padding: 8px 11px;
+}
+.dialog__note p { margin: 0 0 4px; }
+.dialog__note p:last-child { margin: 0; }
+.dialog__status { min-height: 1.2em; margin: 10px 0; font-size: .8rem; color: var(--ink-secondary); }
+.dialog__actions { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+.dialog__spacer { flex: 1; }
 
 /* ------------------------------------------------------------------ footer */
 

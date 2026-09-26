@@ -15,6 +15,10 @@
  * has a shareable link and the page works under any sub-path.
  */
 
+import {
+  REVIEWERS, activeConfig, forgetKeys, getKey, getReviewer, loadSettings, saveSettings,
+} from "./review.js";
+
 const DATA_URL = "data/dashboard.json";
 
 // However rarely the fetcher runs, an open tab re-reads the published file at
@@ -960,6 +964,142 @@ function wireRepoPanel(panel, repo, doc, opts = {}) {
   wireSort(panel, state.sort[repo.id], new Set(["age_days", "inactive_days"]), rerender);
 }
 
+/* ---------------------------------------------------------- LLM settings -- */
+
+const byId = (id) => document.getElementById(id);
+const providerName = (id) => (getReviewer(id)?.label || id).replace(/ \(.*\)$/, "");
+
+// The dialog edits a draft; nothing is stored until Save.
+const draft = { provider: null, models: {}, keys: {}, remember: false };
+
+const settingsStatus = (text) => { byId("llm-status").textContent = text; };
+
+function openSettings() {
+  const s = loadSettings();
+  Object.assign(draft, {
+    provider: s.provider, models: { ...s.models }, remember: s.remember,
+    keys: Object.fromEntries(REVIEWERS.map((r) => [r.id, getKey(r.id)])),
+  });
+  byId("llm-remember").checked = s.remember;
+  settingsStatus("");
+  fillSettings();
+  const dlg = byId("llm-dialog");
+  if (!dlg.open) dlg.showModal();
+}
+
+function fillSettings() {
+  const r = getReviewer(draft.provider);
+  byId("llm-provider").value = r.id;
+  byId("llm-key-label").textContent = r.keyLabel;
+  const key = byId("llm-key");
+  key.value = draft.keys[r.id] || "";
+  key.placeholder = r.keyPlaceholder;
+  byId("llm-key-hint").innerHTML = `<a href="${esc(r.keyUrl)}" rel="noopener" target="_blank">Create a key&nbsp;↗</a>
+    ${esc(r.keyNote || "")}`;
+  const model = byId("llm-model");
+  model.value = draft.models[r.id] || r.defaultModel;
+  model.placeholder = r.defaultModel;
+  byId("llm-models").innerHTML = "";
+  byId("llm-model-hint").textContent = `Default: ${r.defaultModel}. Load models to pick from what ${providerName(r.id)} offers.`;
+}
+
+// The key and model fields belong to the provider shown; keep them in the draft.
+function keepFields() {
+  const r = getReviewer(draft.provider);
+  draft.keys[r.id] = byId("llm-key").value.trim();
+  const model = byId("llm-model").value.trim();
+  if (model && model !== r.defaultModel) draft.models[r.id] = model;
+  else delete draft.models[r.id];
+}
+
+async function loadModels() {
+  keepFields();
+  const r = getReviewer(draft.provider);
+  const key = draft.keys[r.id];
+  if (r.modelsNeedKey && !key) {
+    settingsStatus(`Enter the ${r.keyLabel} first; ${providerName(r.id)} lists its models only for a key.`);
+    return;
+  }
+  const btn = byId("llm-load-models");
+  btn.disabled = true;
+  settingsStatus("Loading models…");
+  try {
+    const models = await r.listModels(key);
+    byId("llm-models").innerHTML = models.map((m) => `<option value="${esc(m.id)}">${esc(m.label)}</option>`).join("");
+    settingsStatus(`${plural(models.length, "model")} available: type in the Model field to pick one.`);
+  } catch (err) {
+    settingsStatus(`Couldn't load models: ${err.status ? `HTTP ${err.status}, ` : ""}${err.message || "unknown error"}`);
+  } finally {
+    btn.disabled = false;
+  }
+}
+
+function settingsChanged() {
+  updateLlmButton();
+  if (state.doc) renderView();
+}
+
+function updateLlmButton() {
+  const cfg = activeConfig();
+  const btn = byId("llm-btn");
+  btn.dataset.configured = String(!!cfg.key);
+  btn.title = cfg.key ? `LLM review: ${cfg.model} via ${providerName(cfg.provider)}` : "Set up LLM review";
+}
+
+function initSettings() {
+  const dlg = byId("llm-dialog");
+  byId("llm-host").textContent = location.host || "this site";
+  byId("llm-provider").innerHTML = REVIEWERS.map((r) => `<option value="${esc(r.id)}">${esc(r.label)}</option>`).join("");
+  byId("llm-btn").addEventListener("click", openSettings);
+  byId("llm-provider").addEventListener("change", (e) => {
+    keepFields();
+    draft.provider = e.target.value;
+    fillSettings();
+  });
+  byId("llm-key-show").addEventListener("click", (e) => {
+    const key = byId("llm-key");
+    const show = key.type === "password";
+    key.type = show ? "text" : "password";
+    e.currentTarget.setAttribute("aria-pressed", String(show));
+    e.currentTarget.textContent = show ? "Hide" : "Show";
+  });
+  byId("llm-load-models").addEventListener("click", loadModels);
+  byId("llm-cancel").addEventListener("click", () => dlg.close());
+  byId("llm-save").addEventListener("click", () => {
+    keepFields();
+    draft.remember = byId("llm-remember").checked;
+    try {
+      saveSettings(draft, draft.keys);
+    } catch (err) {
+      settingsStatus(`Couldn't save: this browser refused to store the settings (${err.message}).`);
+      return;
+    }
+    dlg.close();
+    settingsChanged();
+  });
+  byId("llm-forget").addEventListener("click", () => {
+    forgetKeys();
+    for (const r of REVIEWERS) draft.keys[r.id] = "";
+    byId("llm-key").value = "";
+    settingsStatus("API keys removed from this browser.");
+    settingsChanged();
+  });
+  // The dialog closes and the key field hides again, however it was closed.
+  dlg.addEventListener("close", () => {
+    byId("llm-key").type = "password";
+    byId("llm-key-show").textContent = "Show";
+    byId("llm-key-show").setAttribute("aria-pressed", "false");
+  });
+  // Enter saves, except in the model field, where it picks from the list.
+  dlg.addEventListener("keydown", (e) => {
+    if (e.key === "Enter" && e.target.matches?.('input:not([type="checkbox"]):not([list])')) {
+      e.preventDefault();
+      byId("llm-save").click();
+    }
+  });
+  updateLlmButton();
+}
+
 /* ---------------------------------------------------------------- search -- */
 
 function buildSearchIndex() {
@@ -1222,6 +1362,7 @@ function initTheme() {
 
 initTheme();
 initSearch();
+initSettings();
 document.getElementById("refresh-btn").addEventListener("click", () => load({ manual: true }));
 window.addEventListener("hashchange", () => { if (state.doc) applyRoute({ scroll: true }); });
 await load();
