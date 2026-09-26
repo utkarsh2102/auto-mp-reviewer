@@ -677,6 +677,101 @@ tbody tr:last-child td { border-bottom: 0; }
   :root:where(:not([data-theme="light"])) .action-btn--primary { background: var(--ubuntu-orange); border-color: var(--ubuntu-orange); }
 }
 
+/* The per-MP action under an MP's title. */
+.review-link {
+  font: inherit;
+  font-size: .75rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  margin-top: 5px;
+  padding: 1px 8px 1px 6px;
+  border-radius: 10px;
+  border: 1px solid var(--rule-strong);
+  background: var(--card);
+  color: var(--ink-secondary);
+  cursor: pointer;
+  white-space: nowrap;
+}
+.review-link:hover { border-color: var(--ubuntu-orange); color: var(--ink); }
+.review-link[aria-expanded="true"] { border-color: var(--ubuntu-orange); color: var(--ink); }
+.review-link__glyph { color: var(--ubuntu-orange); }
+.review-link--outdated { border-color: var(--warning); }
+.review-link--outdated .review-link__glyph { color: inherit; }
+
+tbody tr.review-row:hover { background: none; }
+.review-row > td { padding: 0 12px 14px; }
+.review {
+  max-width: 100ch;
+  padding: 12px 14px;
+  border: 1px solid var(--rule);
+  border-left: 3px solid var(--ubuntu-orange);
+  border-radius: var(--radius);
+  background: var(--card-sunken);
+  font-size: .86rem;
+}
+.review p { margin: 0 0 8px; }
+.review code { font-size: .88em; }
+.review__head { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 18px; margin-bottom: 10px; }
+.review__title { margin: 0; font-size: .95rem; font-weight: 500; }
+.review__title span { color: var(--ubuntu-orange); }
+.review__facts { display: flex; flex-wrap: wrap; gap: 2px 16px; margin: 0; font-size: .78rem; color: var(--ink-secondary); }
+.review__facts div { display: flex; gap: 5px; }
+.review__facts dt { color: var(--ink-muted); }
+.review__facts dt::after { content: ":"; }
+.review__facts dd { margin: 0; }
+.review__aside { color: var(--ink-muted); }
+.review__summary { font-size: .9rem; }
+.review__note { font-size: .8rem; color: var(--ink-secondary); }
+.review__detail { font-family: var(--mono); font-size: .75rem; color: var(--ink-secondary); overflow-wrap: anywhere; }
+.review__disclaimer { margin: 10px 0 0 !important; font-size: .74rem; color: var(--ink-muted); }
+.review__others { font-size: .78rem; color: var(--ink-secondary); }
+.review__others .link-btn { padding: 0; font-size: inherit; }
+.review__actions { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin: 8px 0 4px; }
+.review__notice {
+  padding: 9px 12px;
+  margin-bottom: 10px;
+  border-radius: var(--radius);
+  border: 1px solid var(--rule);
+  border-left: 3px solid var(--rule-strong);
+  background: var(--card);
+}
+.review__notice p:last-child { margin-bottom: 0; }
+.review__notice--warning { border-left-color: var(--warning); }
+.review__notice--critical { border-left-color: var(--critical); }
+.review__status { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 10px; margin-bottom: 10px; color: var(--ink-secondary); }
+.review__elapsed { font-variant-numeric: tabular-nums; color: var(--ink-muted); }
+.review__spinner {
+  width: 14px;
+  height: 14px;
+  flex: none;
+  border-radius: 50%;
+  border: 2px solid var(--rule-strong);
+  border-top-color: var(--ubuntu-orange);
+  animation: spin .8s linear infinite;
+}
+@media (prefers-reduced-motion: reduce) { .review__spinner { animation-duration: 3s; } }
+.review__raw {
+  margin: 0;
+  padding: 10px;
+  max-height: 420px;
+  overflow: auto;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  font-family: var(--mono);
+  font-size: .8rem;
+  background: var(--card);
+  border: 1px solid var(--rule);
+  border-radius: var(--radius);
+}
+
+.findings { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
+.finding { padding: 8px 10px; background: var(--card); border: 1px solid var(--rule); border-radius: var(--radius); }
+.finding__head { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 8px; }
+.finding__title { font-weight: 500; }
+.finding__where { color: var(--ink-secondary); overflow-wrap: anywhere; }
+.finding__detail { margin: 4px 0 0 !important; color: var(--ink-secondary); }
+
 /* The settings dialog. */
 .dialog {
   width: min(560px, calc(100vw - 32px));
@@ -750,9 +845,11 @@ tbody tr:last-child td { border-bottom: 0; }
   .filter-summary { margin-left: 0; width: 100%; }
   thead th { position: static; }
   .mp-title { max-width: none; }
+  /* The MP table scrolls sideways here; keep a review in view while it does. */
+  .review { position: sticky; left: 12px; width: calc(100vw - 58px); }
 }
 
 @media print {
-  .masthead__actions, .global-search, .filters, .tabs { display: none; }
+  .masthead__actions, .global-search, .filters, .tabs, .review__actions, .review-link { display: none; }
   .panel[hidden] { display: block !important; }
 }

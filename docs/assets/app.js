@@ -13,10 +13,15 @@
  * Teams come from the data file (config/repos.yaml), never from this file.
  * Every view lives in the URL hash (#overview, #team/<id>, #repo/<id>), so each
  * has a shareable link and the page works under any sub-path.
+ *
+ * Merge proposal tables can also ask an LLM for review notes on one MP. That
+ * only ever happens on a click; review.js holds the provider-neutral part and
+ * reviewers/ the LLM services, so this file only renders and routes clicks.
  */
 
 import {
-  REVIEWERS, activeConfig, forgetKeys, getKey, getReviewer, loadSettings, saveSettings,
+  REVIEWERS, ReviewError, activeConfig, clearReviews, forgetKeys, getKey, getReviewer,
+  loadOpen, loadSettings, reviewCount, reviewsFor, runReview, saveOpen, saveSettings,
 } from "./review.js";
 
 const DATA_URL = "data/dashboard.json";
@@ -40,6 +45,15 @@ const state = {
   peopleView: {},         // teamId -> { q, onlyOpen, sort: { key, dir } }
   overviewShowAll: false,
   search: { index: [], results: [], active: -1 },
+  mpIndex: new Map(),     // MP url -> { mp, repoName }, for the review actions
+  review: {
+    open: loadOpen(),     // MP urls whose review panel is open
+    running: new Map(),   // MP url -> { controller, started, provider, model, info }
+    errors: new Map(),    // MP url -> ReviewError from the last attempt
+    shown: new Map(),     // MP url -> "provider|model" picked among its reviews
+    unsaved: new Map(),   // MP url -> a review the browser had no room to keep
+    ticker: null,
+  },
   timer: null,
   clockTimer: null,
 };
@@ -873,6 +887,7 @@ function repoPanel(repo, doc, { column = "author" } = {}) {
           m.linked_bugs.map((b) => `<a class="bug-pill" href="${esc(b.url)}" rel="noopener"
              title="${esc(b.title)} — ${esc(b.status || "")}, ${esc(b.importance || "")}">#${esc(b.id)}</a>`).join("")
         }</div>` : ""}
+        ${reviewToggle(m)}
       </td>
       ${column === "repository" ? `<td>${m._external
           ? `<a href="${esc(m._repoHref || "")}" rel="noopener">${esc(m._repoName)}&nbsp;↗</a>
@@ -887,7 +902,7 @@ function repoPanel(repo, doc, { column = "author" } = {}) {
       <td class="num" title="Opened ${esc(absolute(m.created_at))}">${days(m.age_days)}</td>
       <td class="num" title="${m.updated_at ? `Last activity ${esc(absolute(m.updated_at))}` : "No activity recorded"}">${days(m.inactive_days)}</td>
       <td><div class="badge-row">${flagBadges(m, staleDays) || `<span class="mp-meta">—</span>`}</div></td>
-    </tr>`).join("")
+    </tr>${reviewRow(m)}`).join("")
     : `<tr><td colspan="6" class="empty">No merge proposals match these filters.</td></tr>`;
 
   return `
@@ -1001,6 +1016,10 @@ function fillSettings() {
   model.placeholder = r.defaultModel;
   byId("llm-models").innerHTML = "";
   byId("llm-model-hint").textContent = `Default: ${r.defaultModel}. Load models to pick from what ${providerName(r.id)} offers.`;
+  const n = reviewCount();
+  const clear = byId("llm-clear");
+  clear.textContent = `Delete cached reviews (${n})`;
+  clear.disabled = !n;
 }
 
 // The key and model fields belong to the provider shown; keep them in the draft.
@@ -1084,6 +1103,16 @@ function initSettings() {
     settingsStatus("API keys removed from this browser.");
     settingsChanged();
   });
+  byId("llm-clear").addEventListener("click", (e) => {
+    const n = reviewCount();
+    if (!n || !confirm(`Delete ${plural(n, "cached LLM review")} from this browser?`)) return;
+    clearReviews();
+    for (const m of [state.review.open, state.review.shown, state.review.unsaved, state.review.errors]) m.clear();
+    e.currentTarget.textContent = "Delete cached reviews (0)";
+    e.currentTarget.disabled = true;
+    settingsStatus("Cached reviews deleted.");
+    settingsChanged();
+  });
   // The dialog closes and the key field hides again, however it was closed.
   dlg.addEventListener("close", () => {
     byId("llm-key").type = "password";
@@ -1098,6 +1127,312 @@ function initSettings() {
     }
   });
   updateLlmButton();
+}
+
+/* ------------------------------------------------------------ LLM review -- */
+
+// A finding's severity as a badge, reusing the status palette.
+const SEVERITY = {
+  high:   { role: "critical", glyph: "▲", label: "High" },
+  medium: { role: "warning",  glyph: "◆", label: "Medium" },
+  low:    { role: "neutral",  glyph: "○", label: "Low" },
+};
+
+// Each ReviewError kind (reviewers/base.js) in words: what happened, what to
+// do, and whether the LLM settings are where to do it.
+const REVIEW_ERRORS = {
+  config:      ["LLM review isn't set up in this browser.", "Add an API key in the LLM settings.", true],
+  auth:        ["The provider rejected the API key.", "Check the key in the LLM settings, or create a new one.", true],
+  credits:     ["The account behind this API key is out of credit.", "Add credit with the provider, or use another key.", true],
+  rate_limit:  ["The provider is limiting requests.", "Wait a minute, then try again.", false],
+  too_large:   ["This merge proposal is too large for the selected model.", "Choose a model with a larger context window in the LLM settings.", true],
+  refusal:     ["The model declined to review this merge proposal.", "Another model may answer; you can pick one in the LLM settings.", true],
+  truncated:   ["The model used up its output allowance before it answered.", "Those tokens were still billed. Try again, or pick another model.", true],
+  unavailable: ["The provider is overloaded or unavailable.", "Try again in a little while.", false],
+  network:     ["The provider could not be reached.", "Check your connection; a browser extension that blocks requests has the same effect.", false],
+  context:     ["This merge proposal's diff could not be loaded from the dashboard.", "It is published with each data refresh; try again after the next one.", false],
+  provider:    ["The provider returned an error.", "", false],
+};
+
+const shortRev = (sha) => (sha ? String(sha).slice(0, 7) : "unknown");
+const kilo = (n) => (n == null ? "?" : n >= 1000 ? `${(n / 1000).toFixed(n >= 10000 ? 0 : 1)}k` : String(n));
+const kb = (n) => (n >= 1024 ? `${Math.round(n / 1024)} KB` : `${n} bytes`);
+const reviewKey = (r) => `${r.provider}|${r.model}`;
+const isOutdated = (r, m) => !!(r.revision && m.revision && r.revision !== m.revision);
+const elapsed = (t0) => {
+  const s = Math.max(0, Math.floor((Date.now() - t0) / 1000));
+  return `${Math.floor(s / 60)}:${String(s % 60).padStart(2, "0")}`;
+};
+
+// A stable element id per MP, for aria-controls.
+function panelId(url) {
+  let h = 2166136261;
+  for (const c of url) h = Math.imul(h ^ c.charCodeAt(0), 16777619);
+  return `review-${(h >>> 0).toString(36)}`;
+}
+
+// An MP's cached reviews, plus one this browser had no room to keep.
+function reviewsOf(url) {
+  const saved = reviewsFor(url);
+  const extra = state.review.unsaved.get(url);
+  return extra ? [extra, ...saved.filter((r) => reviewKey(r) !== reviewKey(extra))] : saved;
+}
+
+// The review to show: the one picked, else the configured model's, else the newest.
+function shownReview(url, reviews) {
+  if (!reviews.length) return null;
+  const cfg = activeConfig();
+  return reviews.find((r) => reviewKey(r) === state.review.shown.get(url))
+    || reviews.find((r) => r.provider === cfg.provider && r.model === cfg.model)
+    || reviews[0];
+}
+
+// The row's review button, or null for an MP that has neither a published
+// diff nor a cached review.
+function toggleState(m) {
+  const reviews = reviewsOf(m.url);
+  if (!m.review_context && !reviews.length) return null;
+  const shown = shownReview(m.url, reviews);
+  const running = state.review.running.has(m.url);
+  const outdated = !running && !!shown && isOutdated(shown, m);
+  return {
+    open: state.review.open.has(m.url),
+    outdated,
+    label: running ? "Reviewing…" : !shown ? "Review with LLM agent"
+      : `LLM review · ${outdated ? "outdated" : relative(shown.reviewed_at)}`,
+    title: running ? "An LLM review is in progress"
+      : !shown ? "Ask an LLM what a reviewer should watch out for in this merge proposal"
+      : outdated ? "The merge proposal has changed since this review"
+      : `Reviewed ${absolute(shown.reviewed_at)}`,
+  };
+}
+
+function reviewToggle(m) {
+  const t = toggleState(m);
+  if (!t) return "";
+  return `<button type="button" class="review-link${t.outdated ? " review-link--outdated" : ""}"
+      data-review-action="toggle" data-url="${esc(m.url)}" aria-expanded="${t.open}"
+      aria-controls="${panelId(m.url)}" title="${esc(t.title)}"><span class="review-link__glyph"
+      aria-hidden="true">${t.outdated ? "⚠" : "✦"}</span><span data-label>${esc(t.label)}</span></button>`;
+}
+
+function reviewRow(m) {
+  if (!state.review.open.has(m.url) || !toggleState(m)) return "";
+  return `<tr class="review-row"><td colspan="6">
+      <section class="review" id="${panelId(m.url)}" aria-label="LLM review of merge proposal #${esc(m.id)}">${reviewBody(m)}</section>
+    </td></tr>`;
+}
+
+function reviewBody(m) {
+  const cfg = activeConfig();
+  const reviews = reviewsOf(m.url);
+  const run = state.review.running.get(m.url);
+  const err = !run && state.review.errors.get(m.url);
+  const shown = shownReview(m.url, reviews);
+  return (run ? runningNotice(m, run) : "")
+    + (err ? errorNotice(m, err, reviews.length) : "")
+    + (shown ? reviewCard(m, shown, reviews, cfg, !!run) : !run && !err ? startNotice(m, cfg) : "");
+}
+
+const runButton = (m, label, primary = false) => (m.review_context
+  ? `<button type="button" class="action-btn${primary ? " action-btn--primary" : ""}"
+       data-review-action="run" data-url="${esc(m.url)}">${esc(label)}</button>` : "");
+
+const settingsButton = (label = "LLM settings") =>
+  `<button type="button" class="action-btn" data-review-action="settings">${esc(label)}</button>`;
+
+function startNotice(m, cfg) {
+  if (!cfg.key) {
+    return `<div class="review__notice">
+        <p><strong>LLM review isn't set up in this browser.</strong> Add an API key for
+        ${REVIEWERS.map((r) => esc(providerName(r.id))).join(" or ")}. It stays in this browser and is
+        sent only to that provider; nothing is reviewed until you ask.</p>
+        <div class="review__actions"><button type="button" class="action-btn action-btn--primary"
+          data-review-action="settings">Set up LLM review</button></div></div>`;
+  }
+  if (!m.review_context) {
+    return `<p class="review__note">This merge proposal's diff isn't published with the current data,
+      so it can't be reviewed until the next data refresh.</p>`;
+  }
+  return `<div class="review__notice">
+      <p>Sends this merge proposal's description and diff to <strong>${esc(cfg.model)}</strong>
+      via ${esc(providerName(cfg.provider))}, and keeps the answer in this browser.</p>
+      <div class="review__actions">${runButton(m, "Review with LLM agent", true)}</div></div>`;
+}
+
+const PHASES = { thinking: "thinking", answering: "writing the answer" };
+
+function runningNotice(m, run) {
+  const i = run.info;
+  const size = !i ? "loading the diff"
+    : `sent ≈ ${kilo(i.tokens)} tokens (diff ${kb(i.diffBytes)}${i.files ? `, ${plural(i.files, "file")}` : ""}` +
+      `${i.truncated ? ", cut to fit" : ""}) · ${PHASES[run.phase] || "waiting for the model"}`;
+  return `<div class="review__status">
+      <span class="review__spinner" aria-hidden="true"></span>
+      <span role="status">Reviewing with <strong>${esc(run.model)}</strong> via ${esc(providerName(run.provider))}
+        · ${esc(size)}</span>
+      <span class="review__elapsed" data-elapsed="${run.started}" aria-hidden="true">${elapsed(run.started)}</span>
+      <button type="button" class="action-btn" data-review-action="cancel" data-url="${esc(m.url)}">Cancel</button>
+    </div>`;
+}
+
+function errorNotice(m, err, cached) {
+  const [headline, hint, inSettings] = REVIEW_ERRORS[err.kind] || REVIEW_ERRORS.provider;
+  const next = err.kind === "rate_limit" && err.retryAfter ? `Try again in ${plural(err.retryAfter, "second")}.` : hint;
+  return `<div class="review__notice review__notice--critical" role="alert">
+      <p><span aria-hidden="true">✕</span> <strong>${esc(headline)}</strong> ${esc(next)}</p>
+      ${err.message ? `<p class="review__detail">${err.status ? `HTTP ${err.status}: ` : ""}${esc(err.message)}</p>` : ""}
+      ${cached ? `<p class="review__note">The cached review below is unchanged.</p>` : ""}
+      <div class="review__actions">${runButton(m, "Try again", true)}${inSettings ? settingsButton() : ""}</div>
+    </div>`;
+}
+
+function finding(f) {
+  const s = SEVERITY[f.severity] || SEVERITY.medium;
+  return `<li class="finding">
+      <div class="finding__head">${badge(s.role, s.glyph, s.label)}
+        <strong class="finding__title">${esc(f.title)}</strong>
+        ${f.file ? `<code class="finding__where">${esc(f.file)}${f.line ? `:${esc(f.line)}` : ""}</code>` : ""}</div>
+      ${f.detail ? `<p class="finding__detail">${esc(f.detail)}</p>` : ""}
+    </li>`;
+}
+
+function reviewCard(m, r, reviews, cfg, running) {
+  const outdated = isOutdated(r, m);
+  const baseMoved = !outdated && r.base_revision && m.base_revision && r.base_revision !== m.base_revision;
+  const current = reviews.some((x) => x.provider === cfg.provider && x.model === cfg.model && !isOutdated(x, m));
+  const u = r.usage || {};
+  const notes = [
+    r.diff_truncated && `Only the first ${kb(r.diff_bytes || 0)} of the diff was sent; files after that were not reviewed.`,
+    r.answer_truncated && "The answer reached the output limit and may be incomplete.",
+    state.review.unsaved.get(m.url) === r && "This browser had no room to keep this review; it will be gone after a reload.",
+  ].filter(Boolean);
+  const others = reviews.filter((x) => x !== r);
+
+  const body = r.result ? `
+      ${r.result.summary ? `<p class="review__summary">${esc(r.result.summary)}</p>` : ""}
+      ${r.result.findings.length ? `<ol class="findings">${r.result.findings.map(finding).join("")}</ol>`
+        : `<p class="review__note">Nothing stood out to the model.</p>`}`
+    : `<p class="review__note">The model didn't answer in the expected format, so its answer is shown as written.</p>
+       <pre class="review__raw">${esc(r.raw)}</pre>`;
+
+  return `
+    <header class="review__head">
+      <h3 class="review__title"><span aria-hidden="true">✦</span> LLM review</h3>
+      <dl class="review__facts">
+        <div><dt>Reviewed by</dt><dd>${esc(r.model)} via ${esc(providerName(r.provider))}${
+          r.served_by && r.served_by !== r.model ? ` <span class="review__aside">(answered by ${esc(r.served_by)})</span>` : ""}</dd></div>
+        <div><dt>Reviewed</dt><dd>${esc(absolute(r.reviewed_at))} <span class="review__aside">(${esc(relative(r.reviewed_at))})</span></dd></div>
+        <div><dt>Revision</dt><dd><code title="${esc(r.revision || "")}">${esc(shortRev(r.revision))}</code></dd></div>
+        <div><dt>Tokens</dt><dd>${esc(kilo(u.input))} in · ${esc(kilo(u.output))} out</dd></div>
+      </dl>
+    </header>
+    ${outdated ? `<div class="review__notice review__notice--warning">
+        <p><span aria-hidden="true">⚠</span> <strong>This review is for an older revision.</strong>
+        It reviewed <code>${esc(shortRev(r.revision))}</code>; the merge proposal is now at
+        <code>${esc(shortRev(m.revision))}</code> (as of the last data refresh, ${esc(relative(state.doc.generated_at))}).</p>
+        ${running ? "" : `<div class="review__actions">${runButton(m, "Review the updated revision", true)}</div>`}
+      </div>` : ""}
+    ${baseMoved ? `<p class="review__note">The target branch has moved since (now at <code>${esc(shortRev(m.base_revision))}</code>);
+        the proposed commits are the ones reviewed.</p>` : ""}
+    ${notes.map((n) => `<p class="review__note">${esc(n)}</p>`).join("")}
+    ${body}
+    ${!running && !outdated && !current && cfg.key && m.review_context ? `<div class="review__actions">
+        ${runButton(m, `Review with ${cfg.model}`)}</div>` : ""}
+    ${others.length ? `<p class="review__others">Other reviews: ${others.map((x) => `<button type="button"
+        class="link-btn" data-review-action="show" data-url="${esc(m.url)}" data-key="${esc(reviewKey(x))}">${
+        esc(x.model)} via ${esc(providerName(x.provider))}, ${esc(relative(x.reviewed_at))}${isOutdated(x, m) ? ", outdated" : ""}</button>`).join(" · ")}</p>` : ""}
+    <p class="review__disclaimer">Notes from an LLM to help a human reviewer, not a review. They can be wrong or miss things.</p>`;
+}
+
+// Re-render one MP's review button and panel in place, leaving the table,
+// its scroll position and focus alone.
+function updateReview(url) {
+  const entry = state.mpIndex.get(url);
+  if (!entry) return;
+  const m = entry.mp, t = toggleState(m);
+  for (const btn of document.querySelectorAll(`[data-review-action="toggle"][data-url="${CSS.escape(url)}"]`)) {
+    if (!t) continue;
+    btn.setAttribute("aria-expanded", String(t.open));
+    btn.title = t.title;
+    btn.classList.toggle("review-link--outdated", t.outdated);
+    btn.querySelector(".review-link__glyph").textContent = t.outdated ? "⚠" : "✦";
+    btn.querySelector("[data-label]").textContent = t.label;
+    const panel = document.getElementById(panelId(url));
+    if (t.open && panel) panel.innerHTML = reviewBody(m);
+    else if (t.open) btn.closest("tr").insertAdjacentHTML("afterend", reviewRow(m));
+    else panel?.closest("tr").remove();
+  }
+}
+
+// The only place tokens are spent: a click on a review button.
+async function startReview(url) {
+  const r = state.review;
+  if (r.running.has(url)) return;
+  const { mp, repoName } = state.mpIndex.get(url);
+  const cfg = activeConfig();
+  const run = { controller: new AbortController(), started: Date.now(), provider: cfg.provider, model: cfg.model, info: null, phase: null };
+  r.running.set(url, run);
+  r.errors.delete(url);
+  r.open.add(url);
+  saveOpen(r.open);
+  updateReview(url);
+  tickReviews();
+  try {
+    const review = await runReview(mp, {
+      repoName, dataUrl: DATA_URL, signal: run.controller.signal,
+      onSend: (info) => { run.info = info; updateReview(url); },
+      onProgress: (phase) => { if (run.phase !== phase) { run.phase = phase; updateReview(url); } },
+    });
+    if (review.cached) r.unsaved.delete(url);
+    else r.unsaved.set(url, review);
+    r.shown.set(url, reviewKey(review));
+  } catch (err) {
+    if (err.name !== "AbortError") {
+      r.errors.set(url, err instanceof ReviewError ? err : new ReviewError("provider", String(err?.message || err)));
+    }
+  } finally {
+    r.running.delete(url);
+    updateReview(url);
+  }
+}
+
+function tickReviews() {
+  if (state.review.ticker) return;
+  state.review.ticker = setInterval(() => {
+    if (!state.review.running.size) {
+      clearInterval(state.review.ticker);
+      state.review.ticker = null;
+    }
+    for (const el of document.querySelectorAll("[data-elapsed]")) el.textContent = elapsed(Number(el.dataset.elapsed));
+  }, 1000);
+}
+
+function onReviewClick(e) {
+  const el = e.target.closest?.("[data-review-action]");
+  if (!el) return;
+  const { reviewAction: action, url } = el.dataset;
+  if (action === "settings") { openSettings(); return; }
+  const entry = state.mpIndex.get(url);
+  if (!entry) return;
+  const r = state.review;
+  if (action === "toggle") {
+    const opening = !r.open.has(url);
+    if (opening) r.open.add(url); else r.open.delete(url);
+    saveOpen(r.open);
+    // "Review with LLM agent" does what it says: opening an MP with no review
+    // yet starts one. Without a key, the panel explains how to set one up.
+    if (opening && entry.mp.review_context && !reviewsOf(url).length && !r.running.has(url)
+        && !r.errors.has(url) && activeConfig().key) startReview(url);
+    else updateReview(url);
+  } else if (action === "run") {
+    if (activeConfig().key) startReview(url); else openSettings();
+  } else if (action === "cancel") {
+    r.running.get(url)?.controller.abort();
+  } else if (action === "show") {
+    r.shown.set(url, el.dataset.key);
+    updateReview(url);
+  }
 }
 
 /* ---------------------------------------------------------------- search -- */
@@ -1292,6 +1627,8 @@ function render(doc) {
   state.repoById = new Map(doc.repositories.map((r) => [r.id, r]));
   state.teamOfRepo = new Map(state.teams.flatMap((t) => t.repos.map((r) => [r.id, t])));
   state.people = new Map(state.teams.filter((t) => t.people).map((t) => [t.id, peopleOf(t, doc)]));
+  state.mpIndex = new Map(doc.repositories.flatMap((r) =>
+    r.merge_requests.map((m) => [m.url, { mp: m, repoName: r.name || r.id }])));
   for (const r of doc.repositories) listState(r.id);
   for (const t of state.teams) {
     state.teamView[t.id] ??= { q: "", onlyOpen: false, sort: { key: "open", dir: "desc" } };
@@ -1363,6 +1700,7 @@ function initTheme() {
 initTheme();
 initSearch();
 initSettings();
+document.addEventListener("click", onReviewClick);
 document.getElementById("refresh-btn").addEventListener("click", () => load({ manual: true }));
 window.addEventListener("hashchange", () => { if (state.doc) applyRoute({ scroll: true }); });
 await load();
