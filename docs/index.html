@@ -3,6 +3,12 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Scripts come only from this site (plus the hashed redirect below), and the
+     page may talk only to this site and the LLM providers in
+     assets/reviewers/. An API key kept in this browser therefore cannot be
+     sent anywhere else, even by injected script. A new provider's API host
+     goes in connect-src. -->
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'sha256-aDRWpG3NL6OdjC5DDMZqKmO1fjmLyz4DyBGgfAxnuAE='; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' https://api.anthropic.com https://openrouter.ai; object-src 'none'; base-uri 'none'; form-action 'none'">
 <script>
   if (!location.pathname.endsWith("/")) {
     location.replace(location.pathname + "/" + location.search + location.hash);
