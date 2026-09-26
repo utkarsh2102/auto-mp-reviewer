@@ -16,6 +16,11 @@ successful run are fetched instead, so only the membership list goes stale.
 A team can also list its people's open MPs wherever they are; those are fetched
 after the repositories, so an MP a tracked repository shows is not fetched twice.
 
+Each MP in a tracked repository also gets a review context: a file next to the
+data file holding its description, diffstat and (capped) diff, which the
+dashboard hands to an LLM when someone asks for a review. The browser can't
+fetch the diff from Launchpad for the same CORS reason.
+
 Usage:
     python scripts/fetch.py
     python scripts/fetch.py --repo ubuntu-cdimage --dry-run
@@ -26,11 +31,14 @@ Usage:
 from __future__ import annotations
 
 import argparse
+import hashlib
 import json
 import logging
 import sys
+import threading
 import time
-from concurrent.futures import ThreadPoolExecutor
+from collections import Counter
+from concurrent.futures import Future, ThreadPoolExecutor
 from dataclasses import asdict
 from datetime import datetime, timezone
 from pathlib import Path
@@ -40,7 +48,7 @@ import yaml
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 
 from providers import Thresholds, apply_rules, get_provider  # noqa: E402
-from providers.base import RepoResult, slugify  # noqa: E402
+from providers.base import MergeRequest, Provider, RepoResult, slugify  # noqa: E402
 
 ROOT = Path(__file__).resolve().parent.parent
 DEFAULT_CONFIG = ROOT / "config" / "repos.yaml"
@@ -49,6 +57,10 @@ SCHEMA_VERSION = 2
 
 # Used when config/repos.yaml defines no teams, so older configs still run.
 DEFAULT_TEAM = {"id": "repositories", "name": "Repositories"}
+
+# Review contexts live in this directory next to the data file; each MP's
+# `review_context` is its path relative to the data file.
+REVIEW_DIR = "review"
 
 log = logging.getLogger("fetch")
 
@@ -212,7 +224,98 @@ def fetch_people(
     return block
 
 
-def fetch_repo(repo_cfg: dict, thresholds: Thresholds, now: datetime) -> RepoResult:
+class ReviewContexts:
+    """Stages the file an on-demand LLM review of each MP reads.
+
+    Only MPs whose diff changed since the last run, or whose file is missing,
+    are fetched; the rest keep last run's file, so a daily run stages a handful.
+    An MP listed twice (a package two teams subscribe to) is staged once. A
+    failure costs that MP its review context, never its repository.
+    """
+
+    def __init__(self, directory: Path, thresholds: Thresholds, previous: dict[str, dict]):
+        self.dir = directory
+        self.max_bytes = int(thresholds.review_diff_max_kb) * 1024
+        self.workers = max(1, int(thresholds.max_workers))
+        self.previous = previous  # MP url -> that MP in the last run's data
+        self.counts: Counter[str] = Counter()
+        self._lock = threading.Lock()
+        self._staged: dict[str, Future] = {}
+
+    def stage(self, provider: Provider, mrs: list[MergeRequest]) -> None:
+        """Set revision, base_revision and review_context on each MR."""
+        if self.max_bytes <= 0 or not mrs:
+            return
+        with ThreadPoolExecutor(max_workers=self.workers) as pool:
+            for mr, found in zip(mrs, pool.map(lambda mr: self._once(provider, mr), mrs)):
+                if found:
+                    mr.revision, mr.base_revision, mr.review_context = found
+
+    def _once(self, provider: Provider, mr: MergeRequest) -> tuple | None:
+        with self._lock:
+            future = self._staged.get(mr.url)
+            owner = future is None
+            if owner:
+                future = self._staged[mr.url] = Future()
+        if owner:
+            try:
+                future.set_result(self._stage(provider, mr))
+            except Exception as exc:  # noqa: BLE001 - a waiting thread must always get an answer
+                log.warning("review context for %s failed: %s", mr.url, exc)
+                self._count("failed")
+                future.set_result(None)
+        return future.result()
+
+    def _count(self, what: str) -> None:
+        with self._lock:
+            self.counts[what] += 1
+
+    def _stage(self, provider: Provider, mr: MergeRequest) -> tuple | None:
+        if not mr.diff_url:
+            return None
+        # Readable, and unique across providers and repositories.
+        name = f"{slugify(mr.id)}-{hashlib.sha1(mr.url.encode()).hexdigest()[:8]}.json"
+        path, rel = self.dir / name, f"{REVIEW_DIR}/{name}"
+        before = self.previous.get(mr.url) or {}
+        if before.get("diff_url") == mr.diff_url and before.get("review_context") == rel and path.exists():
+            self._count("kept")
+            return before.get("revision"), before.get("base_revision"), rel
+        try:
+            context = provider.review_context(mr, self.max_bytes)
+        except Exception as exc:  # noqa: BLE001
+            log.warning("review context for %s failed: %s", mr.url, exc)
+            self._count("failed")
+            return None
+        if not context:
+            return None
+        text = json.dumps({
+            "schema_version": 1,
+            "url": mr.url,
+            "id": mr.id,
+            "title": mr.title,
+            "source_branch": mr.source_branch,
+            "target_branch": mr.target_branch,
+            **context,
+        }, indent=1, ensure_ascii=False) + "\n"
+        self.dir.mkdir(parents=True, exist_ok=True)
+        if not path.exists() or path.read_text() != text:
+            path.write_text(text)
+        self._count("truncated" if context.get("diff_truncated") else "staged")
+        return context.get("revision"), context.get("base_revision"), rel
+
+    def prune(self, referenced: set[str]) -> int:
+        """Delete the files no MP refers to any more (closed MPs, mostly)."""
+        if not self.dir.exists():
+            return 0
+        stale = [f for f in self.dir.glob("*.json") if f"{REVIEW_DIR}/{f.name}" not in referenced]
+        for f in stale:
+            f.unlink()
+        return len(stale)
+
+
+def fetch_repo(
+    repo_cfg: dict, thresholds: Thresholds, now: datetime, contexts: ReviewContexts | None = None
+) -> RepoResult:
     """Fetch one repository. Raises nothing - failure is returned as data."""
     repo_id = repo_cfg.get("id") or repo_cfg.get("repository") or "unknown"
     name = repo_cfg.get("name") or repo_id
@@ -238,6 +341,8 @@ def fetch_repo(repo_cfg: dict, thresholds: Thresholds, now: datetime) -> RepoRes
     for mr in mrs:
         apply_rules(mr, thresholds, now)
     mrs.sort(key=lambda m: m.inactive_days, reverse=True)
+    if contexts:
+        contexts.stage(provider, mrs)
 
     log.info("%s: %d open MPs in %.1fs", repo_id, len(mrs), time.monotonic() - started)
     return RepoResult(
@@ -327,8 +432,13 @@ def main() -> int:
     # Several repositories at once: most discovered packages have no open MPs,
     # so a sequential run spends its time waiting on one near-empty listing
     # after another. Each fetch_repo builds its own provider and session.
+    # A dry run writes nothing, so it skips the review contexts too.
+    contexts = None if args.dry_run else ReviewContexts(
+        args.out.parent / REVIEW_DIR, thresholds,
+        {m["url"]: m for p in previous.values() for m in p.get("merge_requests", [])},
+    )
     with ThreadPoolExecutor(max_workers=max(1, int(thresholds.repo_workers))) as pool:
-        results = list(pool.map(lambda cfg: fetch_repo(cfg, thresholds, now), repos))
+        results = list(pool.map(lambda cfg: fetch_repo(cfg, thresholds, now, contexts), repos))
 
     payloads = []
     for repo_cfg, result in zip(repos, results):
@@ -416,6 +526,17 @@ def main() -> int:
             print(f"    + {quiet} repo(s) with no open MPs")
     if failed:
         print(f"\n  failed: {', '.join(failed)} (serving cached data)")
+
+    if contexts:
+        # Repositories kept from the last run (failed, or outside a --repo or
+        # --team run) keep their files; only unreferenced ones go.
+        referenced = {m["review_context"] for p in payloads for m in p["merge_requests"]
+                      if m.get("review_context")}
+        removed = contexts.prune(referenced)
+        c = contexts.counts
+        print(f"\n  review contexts: {len(referenced)} in use - {c['staged'] + c['truncated']} staged"
+              f" ({c['truncated']} truncated at {thresholds.review_diff_max_kb} KB),"
+              f" {c['kept']} unchanged, {c['failed']} failed, {removed} removed")
 
     if args.dry_run:
         print("\n--dry-run: nothing written")
