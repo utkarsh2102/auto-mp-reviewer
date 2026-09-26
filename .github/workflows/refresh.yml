@@ -53,13 +53,15 @@ jobs:
 
       - name: Commit refreshed data
         run: |
-          if git diff --quiet -- docs/data/dashboard.json; then
+          # The data file plus the per-MP review contexts, including new and
+          # deleted ones.
+          git add -A docs/data
+          if git diff --cached --quiet -- docs/data; then
             echo "No change in merge proposal data; nothing to commit."
             exit 0
           fi
           git config user.name  "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add docs/data/dashboard.json
           git commit -m "data: refresh merge proposals [skip ci]"
           # The schedule can overlap a manual push; rebase rather than fail.
           git pull --rebase --autostash origin "${GITHUB_REF_NAME}"
