@@ -49,6 +49,8 @@ class Thresholds:
     fetch_linked_bugs: bool = True
     max_workers: int = 8
     repo_workers: int = 4
+    # Cap on the diff staged for an MP's on-demand LLM review; 0 stages none.
+    review_diff_max_kb: int = 128
 
     @classmethod
     def from_config(cls, defaults: dict) -> "Thresholds":
@@ -105,11 +107,21 @@ class MergeRequest:
     last_comment_at: str | None = None
     linked_bugs: list[LinkedBug] = field(default_factory=list)
 
-    # Captured now, unused in Phase 1: gives a future LLM review harness the
-    # diff without having to re-crawl the provider.
+    # Where the provider publishes the MP's diff.
     diff_url: str | None = None
 
-    # Reserved for Phase 2 (LLM/code-review harness). Always None in Phase 1.
+    # The commits the diff was made from: the proposed branch's head, and the
+    # target branch it is compared against. A cached LLM review is outdated
+    # once `revision` moves on.
+    revision: str | None = None
+    base_revision: str | None = None
+
+    # The file an on-demand LLM review reads (description, diffstat and the
+    # diff, capped), relative to the data file. None when nothing was staged.
+    review_context: str | None = None
+
+    # Reserved for reviews produced at fetch time. LLM reviews run in the
+    # browser, on request, and are cached there, so this stays None.
     review: dict | None = None
 
     # The repository the MR targets. Set only when the MR is listed outside
@@ -270,6 +282,19 @@ class Provider(ABC):
         with `target_repository` set. MRs whose url is in `skip` are left out
         before any per-MR lookups, since the caller already has them."""
         raise ProviderError(f"provider {self.name!r} cannot list a person's merge requests")
+
+    def review_context(self, mr: MergeRequest, max_bytes: int) -> dict | None:
+        """What an on-demand LLM review of `mr` needs beyond the listing.
+
+        Returns a dict with `revision` and `base_revision` (the commits the diff
+        was made from), `description`, `commit_message`, `diffstat`
+        ({path: [added, removed]}), `files` (how many files changed),
+        `added_lines`, `removed_lines`, `diff` (at most `max_bytes` of it, cut
+        at a file boundary where possible) and `diff_truncated`. Missing values
+        are None. Returns None when the provider has no diff for `mr`; raise
+        on failure, and the MR simply gets no review context.
+        """
+        return None
 
 
 def slugify(value: str) -> str:

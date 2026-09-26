@@ -34,6 +34,14 @@ api.launchpad.net during design. Notes on the non-obvious choices:
   default git repository (lp:ubuntu/+source/<pkg>) is the git-ubuntu import
   at ~git-ubuntu-import/ubuntu/+source/<pkg>/+git/<pkg>, and Ubuntu MPs target
   it -- verified for all 220 ~foundations-bugs packages, none missing.
+
+* Review context: an MP's ``preview_diff_link`` names a preview diff whose id
+  changes whenever either branch moves; it carries ``source_revision_id``,
+  ``target_revision_id`` and a diffstat. The diff text itself is served from
+  ``{preview diff web_link}/+files/preview.diff`` (a redirect to the
+  librarian); the API's ``diff_text`` answers 401 to anonymous callers. Diffs
+  run from a few lines to ~105 MB (git-ubuntu merges of a new upstream
+  release), so the download stops at the configured cap.
 """
 
 from __future__ import annotations
@@ -79,6 +87,11 @@ MAX_ATTEMPTS = 4
 # trips, so discovery gets more attempts; each one warms the cache further.
 DISCOVERY_ATTEMPTS = 8
 RETRY_STATUS = frozenset({429, 500, 502, 503, 504})
+
+# A review context keeps this much of the description and commit message, and
+# lists at most this many files of the diffstat.
+TEXT_LIMIT = 16 * 1024
+DIFFSTAT_LIMIT = 400
 
 # Owner of the git-ubuntu import repositories that source-package MPs target.
 GIT_UBUNTU_OWNER = "~git-ubuntu-import"
@@ -167,6 +180,36 @@ class LaunchpadGitProvider(Provider):
             if attempt < attempts:
                 delay = min(2 ** (attempt - 1), 4) + random.uniform(0, 0.4)
                 log.debug("retry %d/%d after %s: %s", attempt, attempts, type(last).__name__, url)
+                time.sleep(delay)
+
+        raise last if last else RuntimeError(f"GET failed: {url}")
+
+    def _get_capped(self, url: str, max_bytes: int) -> tuple[bytes, bool]:
+        """GET a file's first `max_bytes` (and whether there was more), with
+        the retry rules of _get. The rest of a large file is never read."""
+        last: Exception | None = None
+        for attempt in range(1, MAX_ATTEMPTS + 1):
+            try:
+                with self.session.get(url, headers={"Accept": "*/*"}, timeout=REQUEST_TIMEOUT,
+                                      stream=True) as r:
+                    if r.status_code in RETRY_STATUS:
+                        last = requests.HTTPError(f"HTTP {r.status_code}", response=r)
+                    else:
+                        r.raise_for_status()
+                        body = bytearray()
+                        for chunk in r.iter_content(64 * 1024):
+                            body += chunk
+                            if len(body) > max_bytes:
+                                return bytes(body[:max_bytes]), True
+                        return bytes(body), False
+            except (requests.Timeout, requests.ConnectionError, requests.exceptions.ChunkedEncodingError) as exc:
+                last = exc
+            except requests.HTTPError:
+                raise
+
+            if attempt < MAX_ATTEMPTS:
+                delay = min(2 ** (attempt - 1), 4) + random.uniform(0, 0.4)
+                log.debug("retry %d/%d after %s: %s", attempt, MAX_ATTEMPTS, type(last).__name__, url)
                 time.sleep(delay)
 
         raise last if last else RuntimeError(f"GET failed: {url}")
@@ -399,6 +442,30 @@ class LaunchpadGitProvider(Provider):
             diff_url=entry.get("preview_diff_link"),
         )
 
+    # -- review context --------------------------------------------------
+
+    def review_context(self, mr: MergeRequest, max_bytes: int) -> dict | None:
+        if not mr.diff_url:
+            return None
+        preview = self._get(mr.diff_url)
+        # The MP itself carries the full description and commit message; the
+        # listing only kept their first line, as the title.
+        mp = self._get_quiet(mr.diff_url.split("/+preview-diff/", 1)[0]) or {}
+        raw, truncated = self._get_capped(f"{preview['web_link']}/+files/preview.diff", max_bytes)
+        stat = preview.get("diffstat") or {}
+        return {
+            "revision": preview.get("source_revision_id"),
+            "base_revision": preview.get("target_revision_id"),
+            "description": _clip(mp.get("description")),
+            "commit_message": _clip(mp.get("commit_message")),
+            "diffstat": dict(list(stat.items())[:DIFFSTAT_LIMIT]),
+            "files": len(stat) or None,  # no diffstat at all for the largest diffs
+            "added_lines": preview.get("added_lines_count"),
+            "removed_lines": preview.get("removed_lines_count"),
+            "diff": _cut_diff(raw, truncated),
+            "diff_truncated": truncated,
+        }
+
     # -- entrypoint ------------------------------------------------------
 
     def fetch(self, repo_cfg: dict) -> list[MergeRequest]:
@@ -436,6 +503,25 @@ def _target(entry: dict) -> tuple[str | None, str | None]:
     parts = path.split("/")
     name = parts[parts.index("+git") + 1] if "+git" in parts else "/".join(parts[1:])
     return name, f"{WEB_ROOT}/{path}"
+
+
+def _clip(text: str | None, limit: int = TEXT_LIMIT) -> str | None:
+    if not text or len(text) <= limit:
+        return text or None
+    return text[:limit] + "\n[\u2026 cut]"
+
+
+def _cut_diff(raw: bytes, truncated: bool) -> str:
+    """Decode a diff. A truncated one ends after its last whole file, unless
+    that would drop more than half of what was read (one huge file), and
+    otherwise at a line end, so a reviewer never reads half a line."""
+    text = raw.decode("utf-8", errors="replace")
+    if not truncated:
+        return text
+    cut = text.rfind("\ndiff --git ")
+    if cut >= len(text) // 2:
+        return text[:cut + 1]
+    return text[:text.rfind("\n") + 1] or text
 
 
 def _short_ref(ref: str | None) -> str | None:
