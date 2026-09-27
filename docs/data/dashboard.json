@@ -1,6 +1,6 @@
 {
   "schema_version": 2,
-  "generated_at": "2026-09-27T16:51:51.030241+00:00",
+  "generated_at": "2026-09-27T19:03:49.011311+00:00",
   "config": {
     "stale_after_days": 30,
     "silent_after_days": 7,
@@ -1254,7 +1254,7 @@
             "review": null,
             "target_repository": "ubuntu-dev-tools",
             "target_repository_url": "https://code.launchpad.net/~ubuntu-dev/ubuntu-dev-tools/+git/ubuntu-dev-tools",
-            "age_days": 1618,
+            "age_days": 1619,
             "inactive_days": 1601,
             "is_stale": true,
             "attention": [
@@ -2335,7 +2335,7 @@
             "target_repository": "zict",
             "target_repository_url": "https://code.launchpad.net/~git-ubuntu-import/ubuntu/+source/zict/+git/zict",
             "age_days": 1091,
-            "inactive_days": 1089,
+            "inactive_days": 1090,
             "is_stale": true,
             "attention": [
               "silent",
@@ -2589,7 +2589,7 @@
             "target_repository": "jtreg7",
             "target_repository_url": "https://code.launchpad.net/~git-ubuntu-import/ubuntu/+source/jtreg7/+git/jtreg7",
             "age_days": 1080,
-            "inactive_days": 1074,
+            "inactive_days": 1075,
             "is_stale": true,
             "attention": [
               "linked_bug"
@@ -3344,7 +3344,7 @@
             "review": null,
             "target_repository": "ceph",
             "target_repository_url": "https://code.launchpad.net/~git-ubuntu-import/ubuntu/+source/ceph/+git/ceph",
-            "age_days": 950,
+            "age_days": 951,
             "inactive_days": 948,
             "is_stale": true,
             "attention": [
@@ -4347,7 +4347,7 @@
             "review": null,
             "target_repository": "javaparser",
             "target_repository_url": "https://code.launchpad.net/~git-ubuntu-import/ubuntu/+source/javaparser/+git/javaparser",
-            "age_days": 870,
+            "age_days": 871,
             "inactive_days": 858,
             "is_stale": true,
             "attention": [
@@ -4813,7 +4813,7 @@
             "target_repository": "jtreg7",
             "target_repository_url": "https://code.launchpad.net/~git-ubuntu-import/ubuntu/+source/jtreg7/+git/jtreg7",
             "age_days": 816,
-            "inactive_days": 814,
+            "inactive_days": 815,
             "is_stale": true,
             "attention": [
               "silent"
@@ -5111,7 +5111,7 @@
             "review": null,
             "target_repository": "curl",
             "target_repository_url": "https://code.launchpad.net/~git-ubuntu-import/ubuntu/+source/curl/+git/curl",
-            "age_days": 793,
+            "age_days": 794,
             "inactive_days": 793,
             "is_stale": true,
             "attention": [
@@ -5356,6 +5356,53 @@
             "attention": []
           },
           {
+            "id": "472425",
+            "title": "apport: Add Teamviewer to report-ignore",
+            "url": "https://code.launchpad.net/~r41k0u/ubuntu/+source/apport/+git/apport/+merge/472425",
+            "author": {
+              "name": "r41k0u",
+              "display_name": "Pragyansh Chaturvedi",
+              "url": "https://launchpad.net/~r41k0u"
+            },
+            "status": "Needs review",
+            "status_category": "needs_review",
+            "created_at": "2024-09-02T17:32:44.915941+00:00",
+            "updated_at": "2024-09-02T17:32:44.915941+00:00",
+            "source_branch": "fix-teamviewer-crashing-gdb",
+            "target_branch": "ubuntu/devel",
+            "reviewers": [
+              {
+                "name": "ubuntu-core-dev",
+                "display_name": "Ubuntu Core Development Team",
+                "url": "https://launchpad.net/~ubuntu-core-dev",
+                "pending": true,
+                "vote": null
+              }
+            ],
+            "comment_count": 0,
+            "last_comment_at": null,
+            "linked_bugs": [
+              {
+                "id": "2041830",
+                "title": "/usr/bin/gdb:6:dump_core:internal_vproblem:internal_verror:internal_error_loc:objfile::text_section_offset",
+                "url": "https://bugs.launchpad.net/ubuntu/+source/gdb/+bug/2041830",
+                "status": "Won't Fix",
+                "importance": "Undecided"
+              }
+            ],
+            "diff_url": "https://api.launchpad.net/devel/~r41k0u/ubuntu/+source/apport/+git/apport/+merge/472425/+preview-diff/1067933",
+            "review": null,
+            "target_repository": "apport",
+            "target_repository_url": "https://code.launchpad.net/~ubuntu-core-dev/ubuntu/+source/apport/+git/apport",
+            "age_days": 755,
+            "inactive_days": 755,
+            "is_stale": true,
+            "attention": [
+              "silent",
+              "linked_bug"
+            ]
+          },
+          {
             "id": "471528",
             "title": "fix-2077346 \u2192 ubuntu/devel",
             "url": "https://code.launchpad.net/~pushkarnk/ubuntu/+source/eiciel/+git/eiciel/+merge/471528",
@@ -5401,55 +5448,8 @@
             "review": null,
             "target_repository": "eiciel",
             "target_repository_url": "https://code.launchpad.net/~git-ubuntu-import/ubuntu/+source/eiciel/+git/eiciel",
-            "age_days": 768,
+            "age_days": 769,
             "inactive_days": 755,
-            "is_stale": true,
-            "attention": [
-              "silent",
-              "linked_bug"
-            ]
-          },
-          {
-            "id": "472425",
-            "title": "apport: Add Teamviewer to report-ignore",
-            "url": "https://code.launchpad.net/~r41k0u/ubuntu/+source/apport/+git/apport/+merge/472425",
-            "author": {
-              "name": "r41k0u",
-              "display_name": "Pragyansh Chaturvedi",
-              "url": "https://launchpad.net/~r41k0u"
-            },
-            "status": "Needs review",
-            "status_category": "needs_review",
-            "created_at": "2024-09-02T17:32:44.915941+00:00",
-            "updated_at": "2024-09-02T17:32:44.915941+00:00",
-            "source_branch": "fix-teamviewer-crashing-gdb",
-            "target_branch": "ubuntu/devel",
-            "reviewers": [
-              {
-                "name": "ubuntu-core-dev",
-                "display_name": "Ubuntu Core Development Team",
-                "url": "https://launchpad.net/~ubuntu-core-dev",
-                "pending": true,
-                "vote": null
-              }
-            ],
-            "comment_count": 0,
-            "last_comment_at": null,
-            "linked_bugs": [
-              {
-                "id": "2041830",
-                "title": "/usr/bin/gdb:6:dump_core:internal_vproblem:internal_verror:internal_error_loc:objfile::text_section_offset",
-                "url": "https://bugs.launchpad.net/ubuntu/+source/gdb/+bug/2041830",
-                "status": "Won't Fix",
-                "importance": "Undecided"
-              }
-            ],
-            "diff_url": "https://api.launchpad.net/devel/~r41k0u/ubuntu/+source/apport/+git/apport/+merge/472425/+preview-diff/1067933",
-            "review": null,
-            "target_repository": "apport",
-            "target_repository_url": "https://code.launchpad.net/~ubuntu-core-dev/ubuntu/+source/apport/+git/apport",
-            "age_days": 754,
-            "inactive_days": 754,
             "is_stale": true,
             "attention": [
               "silent",
@@ -5541,7 +5541,7 @@
             "target_repository": "ruby-archive-zip",
             "target_repository_url": "https://code.launchpad.net/~git-ubuntu-import/ubuntu/+source/ruby-archive-zip/+git/ruby-archive-zip",
             "age_days": 766,
-            "inactive_days": 752,
+            "inactive_days": 753,
             "is_stale": true,
             "attention": [
               "approved_not_landed",
@@ -6559,7 +6559,7 @@
             "review": null,
             "target_repository": "tycho",
             "target_repository_url": "https://code.launchpad.net/~git-ubuntu-import/ubuntu/+source/tycho/+git/tycho",
-            "age_days": 669,
+            "age_days": 670,
             "inactive_days": 645,
             "is_stale": true,
             "attention": [
@@ -6613,7 +6613,7 @@
             "review": null,
             "target_repository": "criu",
             "target_repository_url": "https://code.launchpad.net/~git-ubuntu-import/ubuntu/+source/criu/+git/criu",
-            "age_days": 670,
+            "age_days": 671,
             "inactive_days": 645,
             "is_stale": true,
             "attention": [
@@ -6813,6 +6813,67 @@
             ]
           },
           {
+            "id": "479273",
+            "title": "merge-lp2093857-plucky \u2192 debian/sid",
+            "url": "https://code.launchpad.net/~pushkarnk/ubuntu/+source/user-setup/+git/user-setup/+merge/479273",
+            "author": {
+              "name": "pushkarnk",
+              "display_name": "Pushkar Kulkarni",
+              "url": "https://launchpad.net/~pushkarnk"
+            },
+            "status": "Needs review",
+            "status_category": "needs_review",
+            "created_at": "2025-01-13T08:03:32.690563+00:00",
+            "updated_at": "2025-01-22T17:57:37.377704+00:00",
+            "source_branch": "merge-lp2093857-plucky",
+            "target_branch": "debian/sid",
+            "reviewers": [
+              {
+                "name": "schopin",
+                "display_name": "Simon Chopin",
+                "url": "https://launchpad.net/~schopin",
+                "pending": false,
+                "vote": "Approve"
+              },
+              {
+                "name": "tsimonq2",
+                "display_name": "Simon Quigley",
+                "url": "https://launchpad.net/~tsimonq2",
+                "pending": false,
+                "vote": "Needs Fixing"
+              },
+              {
+                "name": "git-ubuntu-import",
+                "display_name": "git-ubuntu import",
+                "url": "https://launchpad.net/~git-ubuntu-import",
+                "pending": true,
+                "vote": null
+              }
+            ],
+            "comment_count": 5,
+            "last_comment_at": "2025-01-22T17:57:37.377704+00:00",
+            "linked_bugs": [
+              {
+                "id": "2093857",
+                "title": "Please merge user-setup 1.102 from Debian unstable",
+                "url": "https://bugs.launchpad.net/ubuntu/+source/user-setup/+bug/2093857",
+                "status": "Fix Released",
+                "importance": "Undecided"
+              }
+            ],
+            "diff_url": "https://api.launchpad.net/devel/~pushkarnk/ubuntu/+source/user-setup/+git/user-setup/+merge/479273/+preview-diff/1081504",
+            "review": null,
+            "target_repository": "user-setup",
+            "target_repository_url": "https://code.launchpad.net/~git-ubuntu-import/ubuntu/+source/user-setup/+git/user-setup",
+            "age_days": 622,
+            "inactive_days": 613,
+            "is_stale": true,
+            "attention": [
+              "silent",
+              "linked_bug"
+            ]
+          },
+          {
             "id": "479892",
             "title": "Changes:",
             "url": "https://code.launchpad.net/~vpa1977/ubuntu/+source/openjdk-23/+git/openjdk-23/+merge/479892",
@@ -6986,67 +7047,6 @@
             "target_repository": "nbd",
             "target_repository_url": "https://code.launchpad.net/~git-ubuntu-import/ubuntu/+source/nbd/+git/nbd",
             "age_days": 655,
-            "inactive_days": 612,
-            "is_stale": true,
-            "attention": [
-              "silent",
-              "linked_bug"
-            ]
-          },
-          {
-            "id": "479273",
-            "title": "merge-lp2093857-plucky \u2192 debian/sid",
-            "url": "https://code.launchpad.net/~pushkarnk/ubuntu/+source/user-setup/+git/user-setup/+merge/479273",
-            "author": {
-              "name": "pushkarnk",
-              "display_name": "Pushkar Kulkarni",
-              "url": "https://launchpad.net/~pushkarnk"
-            },
-            "status": "Needs review",
-            "status_category": "needs_review",
-            "created_at": "2025-01-13T08:03:32.690563+00:00",
-            "updated_at": "2025-01-22T17:57:37.377704+00:00",
-            "source_branch": "merge-lp2093857-plucky",
-            "target_branch": "debian/sid",
-            "reviewers": [
-              {
-                "name": "schopin",
-                "display_name": "Simon Chopin",
-                "url": "https://launchpad.net/~schopin",
-                "pending": false,
-                "vote": "Approve"
-              },
-              {
-                "name": "tsimonq2",
-                "display_name": "Simon Quigley",
-                "url": "https://launchpad.net/~tsimonq2",
-                "pending": false,
-                "vote": "Needs Fixing"
-              },
-              {
-                "name": "git-ubuntu-import",
-                "display_name": "git-ubuntu import",
-                "url": "https://launchpad.net/~git-ubuntu-import",
-                "pending": true,
-                "vote": null
-              }
-            ],
-            "comment_count": 5,
-            "last_comment_at": "2025-01-22T17:57:37.377704+00:00",
-            "linked_bugs": [
-              {
-                "id": "2093857",
-                "title": "Please merge user-setup 1.102 from Debian unstable",
-                "url": "https://bugs.launchpad.net/ubuntu/+source/user-setup/+bug/2093857",
-                "status": "Fix Released",
-                "importance": "Undecided"
-              }
-            ],
-            "diff_url": "https://api.launchpad.net/devel/~pushkarnk/ubuntu/+source/user-setup/+git/user-setup/+merge/479273/+preview-diff/1081504",
-            "review": null,
-            "target_repository": "user-setup",
-            "target_repository_url": "https://code.launchpad.net/~git-ubuntu-import/ubuntu/+source/user-setup/+git/user-setup",
-            "age_days": 622,
             "inactive_days": 612,
             "is_stale": true,
             "attention": [
@@ -7361,8 +7361,62 @@
             "review": null,
             "target_repository": "php-fdomdocument",
             "target_repository_url": "https://code.launchpad.net/~git-ubuntu-import/ubuntu/+source/php-fdomdocument/+git/php-fdomdocument",
-            "age_days": 606,
+            "age_days": 607,
             "inactive_days": 605,
+            "is_stale": true,
+            "attention": [
+              "silent",
+              "linked_bug"
+            ]
+          },
+          {
+            "id": "480436",
+            "title": "merge-sprocket-plucky \u2192 debian/sid",
+            "url": "https://code.launchpad.net/~pushkarnk/ubuntu/+source/ruby-sprockets/+git/ruby-sprockets/+merge/480436",
+            "author": {
+              "name": "pushkarnk",
+              "display_name": "Pushkar Kulkarni",
+              "url": "https://launchpad.net/~pushkarnk"
+            },
+            "status": "Needs review",
+            "status_category": "needs_review",
+            "created_at": "2025-01-31T10:07:20.112774+00:00",
+            "updated_at": "2025-01-31T16:51:57.855783+00:00",
+            "source_branch": "merge-sprocket-plucky",
+            "target_branch": "debian/sid",
+            "reviewers": [
+              {
+                "name": "tsimonq2",
+                "display_name": "Simon Quigley",
+                "url": "https://launchpad.net/~tsimonq2",
+                "pending": false,
+                "vote": "Approve"
+              },
+              {
+                "name": "git-ubuntu-import",
+                "display_name": "git-ubuntu import",
+                "url": "https://launchpad.net/~git-ubuntu-import",
+                "pending": true,
+                "vote": null
+              }
+            ],
+            "comment_count": 3,
+            "last_comment_at": "2025-01-31T16:51:57.855783+00:00",
+            "linked_bugs": [
+              {
+                "id": "2097086",
+                "title": "tdiary 5.3.0-1 FTBFS",
+                "url": "https://bugs.launchpad.net/ubuntu/+source/tdiary/+bug/2097086",
+                "status": "New",
+                "importance": "Undecided"
+              }
+            ],
+            "diff_url": "https://api.launchpad.net/devel/~pushkarnk/ubuntu/+source/ruby-sprockets/+git/ruby-sprockets/+merge/480436/+preview-diff/1083060",
+            "review": null,
+            "target_repository": "ruby-sprockets",
+            "target_repository_url": "https://code.launchpad.net/~git-ubuntu-import/ubuntu/+source/ruby-sprockets/+git/ruby-sprockets",
+            "age_days": 604,
+            "inactive_days": 604,
             "is_stale": true,
             "attention": [
               "silent",
@@ -7485,60 +7539,6 @@
             ]
           },
           {
-            "id": "480436",
-            "title": "merge-sprocket-plucky \u2192 debian/sid",
-            "url": "https://code.launchpad.net/~pushkarnk/ubuntu/+source/ruby-sprockets/+git/ruby-sprockets/+merge/480436",
-            "author": {
-              "name": "pushkarnk",
-              "display_name": "Pushkar Kulkarni",
-              "url": "https://launchpad.net/~pushkarnk"
-            },
-            "status": "Needs review",
-            "status_category": "needs_review",
-            "created_at": "2025-01-31T10:07:20.112774+00:00",
-            "updated_at": "2025-01-31T16:51:57.855783+00:00",
-            "source_branch": "merge-sprocket-plucky",
-            "target_branch": "debian/sid",
-            "reviewers": [
-              {
-                "name": "tsimonq2",
-                "display_name": "Simon Quigley",
-                "url": "https://launchpad.net/~tsimonq2",
-                "pending": false,
-                "vote": "Approve"
-              },
-              {
-                "name": "git-ubuntu-import",
-                "display_name": "git-ubuntu import",
-                "url": "https://launchpad.net/~git-ubuntu-import",
-                "pending": true,
-                "vote": null
-              }
-            ],
-            "comment_count": 3,
-            "last_comment_at": "2025-01-31T16:51:57.855783+00:00",
-            "linked_bugs": [
-              {
-                "id": "2097086",
-                "title": "tdiary 5.3.0-1 FTBFS",
-                "url": "https://bugs.launchpad.net/ubuntu/+source/tdiary/+bug/2097086",
-                "status": "New",
-                "importance": "Undecided"
-              }
-            ],
-            "diff_url": "https://api.launchpad.net/devel/~pushkarnk/ubuntu/+source/ruby-sprockets/+git/ruby-sprockets/+merge/480436/+preview-diff/1083060",
-            "review": null,
-            "target_repository": "ruby-sprockets",
-            "target_repository_url": "https://code.launchpad.net/~git-ubuntu-import/ubuntu/+source/ruby-sprockets/+git/ruby-sprockets",
-            "age_days": 604,
-            "inactive_days": 603,
-            "is_stale": true,
-            "attention": [
-              "silent",
-              "linked_bug"
-            ]
-          },
-          {
             "id": "480507",
             "title": "d/tests/control: fix misspelled test directory",
             "url": "https://code.launchpad.net/~levihackerman-102/ubuntu/+source/emscripten/+git/emscripten/+merge/480507",
@@ -7585,11 +7585,56 @@
             "target_repository": "emscripten",
             "target_repository_url": "https://code.launchpad.net/~git-ubuntu-import/ubuntu/+source/emscripten/+git/emscripten",
             "age_days": 601,
-            "inactive_days": 600,
+            "inactive_days": 601,
             "is_stale": true,
             "attention": [
               "silent",
               "linked_bug"
+            ]
+          },
+          {
+            "id": "480571",
+            "title": "d/tests/control: Bump the version number to 1.0.134",
+            "url": "https://code.launchpad.net/~levihackerman-102/ubuntu/+source/rust-serde-json/+git/rust-serde-json/+merge/480571",
+            "author": {
+              "name": "levihackerman-102",
+              "display_name": "Anshul Singh",
+              "url": "https://launchpad.net/~levihackerman-102"
+            },
+            "status": "Needs review",
+            "status_category": "needs_review",
+            "created_at": "2025-02-04T07:49:35.290582+00:00",
+            "updated_at": "2025-02-04T17:10:03.973148+00:00",
+            "source_branch": "ubuntu/devel",
+            "target_branch": "ubuntu/devel",
+            "reviewers": [
+              {
+                "name": "tsimonq2",
+                "display_name": "Simon Quigley",
+                "url": "https://launchpad.net/~tsimonq2",
+                "pending": false,
+                "vote": "Needs Information"
+              },
+              {
+                "name": "git-ubuntu-import",
+                "display_name": "git-ubuntu import",
+                "url": "https://launchpad.net/~git-ubuntu-import",
+                "pending": true,
+                "vote": null
+              }
+            ],
+            "comment_count": 1,
+            "last_comment_at": "2025-02-04T17:10:03.973148+00:00",
+            "linked_bugs": [],
+            "diff_url": "https://api.launchpad.net/devel/~levihackerman-102/ubuntu/+source/rust-serde-json/+git/rust-serde-json/+merge/480571/+preview-diff/1083326",
+            "review": null,
+            "target_repository": "rust-serde-json",
+            "target_repository_url": "https://code.launchpad.net/~git-ubuntu-import/ubuntu/+source/rust-serde-json/+git/rust-serde-json",
+            "age_days": 600,
+            "inactive_days": 600,
+            "is_stale": true,
+            "attention": [
+              "silent"
             ]
           },
           {
@@ -7706,51 +7751,6 @@
             "target_repository": "recommonmark",
             "target_repository_url": "https://code.launchpad.net/~git-ubuntu-import/ubuntu/+source/recommonmark/+git/recommonmark",
             "age_days": 599,
-            "inactive_days": 599,
-            "is_stale": true,
-            "attention": [
-              "silent"
-            ]
-          },
-          {
-            "id": "480571",
-            "title": "d/tests/control: Bump the version number to 1.0.134",
-            "url": "https://code.launchpad.net/~levihackerman-102/ubuntu/+source/rust-serde-json/+git/rust-serde-json/+merge/480571",
-            "author": {
-              "name": "levihackerman-102",
-              "display_name": "Anshul Singh",
-              "url": "https://launchpad.net/~levihackerman-102"
-            },
-            "status": "Needs review",
-            "status_category": "needs_review",
-            "created_at": "2025-02-04T07:49:35.290582+00:00",
-            "updated_at": "2025-02-04T17:10:03.973148+00:00",
-            "source_branch": "ubuntu/devel",
-            "target_branch": "ubuntu/devel",
-            "reviewers": [
-              {
-                "name": "tsimonq2",
-                "display_name": "Simon Quigley",
-                "url": "https://launchpad.net/~tsimonq2",
-                "pending": false,
-                "vote": "Needs Information"
-              },
-              {
-                "name": "git-ubuntu-import",
-                "display_name": "git-ubuntu import",
-                "url": "https://launchpad.net/~git-ubuntu-import",
-                "pending": true,
-                "vote": null
-              }
-            ],
-            "comment_count": 1,
-            "last_comment_at": "2025-02-04T17:10:03.973148+00:00",
-            "linked_bugs": [],
-            "diff_url": "https://api.launchpad.net/devel/~levihackerman-102/ubuntu/+source/rust-serde-json/+git/rust-serde-json/+merge/480571/+preview-diff/1083326",
-            "review": null,
-            "target_repository": "rust-serde-json",
-            "target_repository_url": "https://code.launchpad.net/~git-ubuntu-import/ubuntu/+source/rust-serde-json/+git/rust-serde-json",
-            "age_days": 600,
             "inactive_days": 599,
             "is_stale": true,
             "attention": [
@@ -8125,7 +8125,7 @@
             "target_repository": "gmp",
             "target_repository_url": "https://code.launchpad.net/~git-ubuntu-import/ubuntu/+source/gmp/+git/gmp",
             "age_days": 584,
-            "inactive_days": 583,
+            "inactive_days": 584,
             "is_stale": true,
             "attention": [
               "silent"
@@ -8338,7 +8338,7 @@
             "review": null,
             "target_repository": "linuxcnc",
             "target_repository_url": "https://code.launchpad.net/~git-ubuntu-import/ubuntu/+source/linuxcnc/+git/linuxcnc",
-            "age_days": 551,
+            "age_days": 552,
             "inactive_days": 551,
             "is_stale": true,
             "attention": [
@@ -8965,7 +8965,7 @@
             "review": null,
             "target_repository": "git",
             "target_repository_url": "https://code.launchpad.net/~git-ubuntu-import/ubuntu/+source/git/+git/git",
-            "age_days": 487,
+            "age_days": 488,
             "inactive_days": 481,
             "is_stale": true,
             "attention": [
@@ -9015,6 +9015,53 @@
             "is_stale": true,
             "attention": [
               "silent"
+            ]
+          },
+          {
+            "id": "486158",
+            "title": "Merge 2.15.0-2.3 into questing (LP: #2111850)",
+            "url": "https://code.launchpad.net/~r41k0u/ubuntu/+source/fontconfig/+git/fontconfig/+merge/486158",
+            "author": {
+              "name": "r41k0u",
+              "display_name": "Pragyansh Chaturvedi",
+              "url": "https://launchpad.net/~r41k0u"
+            },
+            "status": "Needs review",
+            "status_category": "needs_review",
+            "created_at": "2025-05-27T20:45:52.032559+00:00",
+            "updated_at": "2025-06-05T17:46:18.374229+00:00",
+            "source_branch": "merge-lp2111850-questing",
+            "target_branch": "debian/sid",
+            "reviewers": [
+              {
+                "name": "ginggs",
+                "display_name": "Graham Inggs",
+                "url": "https://launchpad.net/~ginggs",
+                "pending": false,
+                "vote": "Needs Fixing"
+              }
+            ],
+            "comment_count": 2,
+            "last_comment_at": "2025-06-05T17:46:18.374229+00:00",
+            "linked_bugs": [
+              {
+                "id": "2111850",
+                "title": "Please merge 2.15.0-2.3 into questing",
+                "url": "https://bugs.launchpad.net/ubuntu/+source/fontconfig/+bug/2111850",
+                "status": "Fix Released",
+                "importance": "Undecided"
+              }
+            ],
+            "diff_url": "https://api.launchpad.net/devel/~r41k0u/ubuntu/+source/fontconfig/+git/fontconfig/+merge/486158/+preview-diff/1093834",
+            "review": null,
+            "target_repository": "fontconfig",
+            "target_repository_url": "https://code.launchpad.net/~git-ubuntu-import/ubuntu/+source/fontconfig/+git/fontconfig",
+            "age_days": 487,
+            "inactive_days": 479,
+            "is_stale": true,
+            "attention": [
+              "silent",
+              "linked_bug"
             ]
           },
           {
@@ -9118,53 +9165,6 @@
             "target_repository": "console-setup",
             "target_repository_url": "https://code.launchpad.net/~git-ubuntu-import/ubuntu/+source/console-setup/+git/console-setup",
             "age_days": 480,
-            "inactive_days": 478,
-            "is_stale": true,
-            "attention": [
-              "silent",
-              "linked_bug"
-            ]
-          },
-          {
-            "id": "486158",
-            "title": "Merge 2.15.0-2.3 into questing (LP: #2111850)",
-            "url": "https://code.launchpad.net/~r41k0u/ubuntu/+source/fontconfig/+git/fontconfig/+merge/486158",
-            "author": {
-              "name": "r41k0u",
-              "display_name": "Pragyansh Chaturvedi",
-              "url": "https://launchpad.net/~r41k0u"
-            },
-            "status": "Needs review",
-            "status_category": "needs_review",
-            "created_at": "2025-05-27T20:45:52.032559+00:00",
-            "updated_at": "2025-06-05T17:46:18.374229+00:00",
-            "source_branch": "merge-lp2111850-questing",
-            "target_branch": "debian/sid",
-            "reviewers": [
-              {
-                "name": "ginggs",
-                "display_name": "Graham Inggs",
-                "url": "https://launchpad.net/~ginggs",
-                "pending": false,
-                "vote": "Needs Fixing"
-              }
-            ],
-            "comment_count": 2,
-            "last_comment_at": "2025-06-05T17:46:18.374229+00:00",
-            "linked_bugs": [
-              {
-                "id": "2111850",
-                "title": "Please merge 2.15.0-2.3 into questing",
-                "url": "https://bugs.launchpad.net/ubuntu/+source/fontconfig/+bug/2111850",
-                "status": "Fix Released",
-                "importance": "Undecided"
-              }
-            ],
-            "diff_url": "https://api.launchpad.net/devel/~r41k0u/ubuntu/+source/fontconfig/+git/fontconfig/+merge/486158/+preview-diff/1093834",
-            "review": null,
-            "target_repository": "fontconfig",
-            "target_repository_url": "https://code.launchpad.net/~git-ubuntu-import/ubuntu/+source/fontconfig/+git/fontconfig",
-            "age_days": 487,
             "inactive_days": 478,
             "is_stale": true,
             "attention": [
@@ -9412,7 +9412,7 @@
             "target_repository": "debmirror",
             "target_repository_url": "https://code.launchpad.net/~git-ubuntu-import/ubuntu/+source/debmirror/+git/debmirror",
             "age_days": 459,
-            "inactive_days": 453,
+            "inactive_days": 454,
             "is_stale": true,
             "attention": [
               "approved_not_landed",
@@ -10355,7 +10355,7 @@
             "target_repository": "bluez",
             "target_repository_url": "https://code.launchpad.net/~git-ubuntu-import/ubuntu/+source/bluez/+git/bluez",
             "age_days": 346,
-            "inactive_days": 344,
+            "inactive_days": 345,
             "is_stale": true,
             "attention": [
               "silent"
@@ -11223,6 +11223,60 @@
             ]
           },
           {
+            "id": "498857",
+            "title": "lp#2138673 \u2192 ubuntu/devel",
+            "url": "https://code.launchpad.net/~pushkarnk/ubuntu/+source/uwsgi-plugin-ruby/+git/uwsgi-plugin-ruby/+merge/498857",
+            "author": {
+              "name": "pushkarnk",
+              "display_name": "Pushkar Kulkarni",
+              "url": "https://launchpad.net/~pushkarnk"
+            },
+            "status": "Needs review",
+            "status_category": "needs_review",
+            "created_at": "2026-01-19T19:44:28.120546+00:00",
+            "updated_at": "2026-01-21T17:27:21.327797+00:00",
+            "source_branch": "lp#2138673",
+            "target_branch": "ubuntu/devel",
+            "reviewers": [
+              {
+                "name": "ginggs",
+                "display_name": "Graham Inggs",
+                "url": "https://launchpad.net/~ginggs",
+                "pending": false,
+                "vote": "Approve"
+              },
+              {
+                "name": "git-ubuntu-import",
+                "display_name": "git-ubuntu import",
+                "url": "https://launchpad.net/~git-ubuntu-import",
+                "pending": true,
+                "vote": null
+              }
+            ],
+            "comment_count": 2,
+            "last_comment_at": "2026-01-21T17:27:21.327797+00:00",
+            "linked_bugs": [
+              {
+                "id": "2138673",
+                "title": "uwsgi-plugin-* need an NCR against uwsgi 2.0.31-2",
+                "url": "https://bugs.launchpad.net/ubuntu/+source/uwsgi-plugin-ruby/+bug/2138673",
+                "status": "Fix Released",
+                "importance": "Undecided"
+              }
+            ],
+            "diff_url": "https://api.launchpad.net/devel/~pushkarnk/ubuntu/+source/uwsgi-plugin-ruby/+git/uwsgi-plugin-ruby/+merge/498857/+preview-diff/1117928",
+            "review": null,
+            "target_repository": "uwsgi-plugin-ruby",
+            "target_repository_url": "https://code.launchpad.net/~git-ubuntu-import/ubuntu/+source/uwsgi-plugin-ruby/+git/uwsgi-plugin-ruby",
+            "age_days": 250,
+            "inactive_days": 249,
+            "is_stale": true,
+            "attention": [
+              "silent",
+              "linked_bug"
+            ]
+          },
+          {
             "id": "495703",
             "title": "merge-lp2131189-resolute \u2192 debian/sid",
             "url": "https://code.launchpad.net/~vmpyr/ubuntu/+source/sdpa/+git/sdpa/+merge/495703",
@@ -11277,60 +11331,6 @@
             "target_repository_url": "https://code.launchpad.net/~git-ubuntu-import/ubuntu/+source/sdpa/+git/sdpa",
             "age_days": 318,
             "inactive_days": 249,
-            "is_stale": true,
-            "attention": [
-              "silent",
-              "linked_bug"
-            ]
-          },
-          {
-            "id": "498857",
-            "title": "lp#2138673 \u2192 ubuntu/devel",
-            "url": "https://code.launchpad.net/~pushkarnk/ubuntu/+source/uwsgi-plugin-ruby/+git/uwsgi-plugin-ruby/+merge/498857",
-            "author": {
-              "name": "pushkarnk",
-              "display_name": "Pushkar Kulkarni",
-              "url": "https://launchpad.net/~pushkarnk"
-            },
-            "status": "Needs review",
-            "status_category": "needs_review",
-            "created_at": "2026-01-19T19:44:28.120546+00:00",
-            "updated_at": "2026-01-21T17:27:21.327797+00:00",
-            "source_branch": "lp#2138673",
-            "target_branch": "ubuntu/devel",
-            "reviewers": [
-              {
-                "name": "ginggs",
-                "display_name": "Graham Inggs",
-                "url": "https://launchpad.net/~ginggs",
-                "pending": false,
-                "vote": "Approve"
-              },
-              {
-                "name": "git-ubuntu-import",
-                "display_name": "git-ubuntu import",
-                "url": "https://launchpad.net/~git-ubuntu-import",
-                "pending": true,
-                "vote": null
-              }
-            ],
-            "comment_count": 2,
-            "last_comment_at": "2026-01-21T17:27:21.327797+00:00",
-            "linked_bugs": [
-              {
-                "id": "2138673",
-                "title": "uwsgi-plugin-* need an NCR against uwsgi 2.0.31-2",
-                "url": "https://bugs.launchpad.net/ubuntu/+source/uwsgi-plugin-ruby/+bug/2138673",
-                "status": "Fix Released",
-                "importance": "Undecided"
-              }
-            ],
-            "diff_url": "https://api.launchpad.net/devel/~pushkarnk/ubuntu/+source/uwsgi-plugin-ruby/+git/uwsgi-plugin-ruby/+merge/498857/+preview-diff/1117928",
-            "review": null,
-            "target_repository": "uwsgi-plugin-ruby",
-            "target_repository_url": "https://code.launchpad.net/~git-ubuntu-import/ubuntu/+source/uwsgi-plugin-ruby/+git/uwsgi-plugin-ruby",
-            "age_days": 250,
-            "inactive_days": 248,
             "is_stale": true,
             "attention": [
               "silent",
@@ -12120,7 +12120,7 @@
             "review": null,
             "target_repository": "initramfs-tools",
             "target_repository_url": "https://code.launchpad.net/~git-ubuntu-import/ubuntu/+source/initramfs-tools/+git/initramfs-tools",
-            "age_days": 234,
+            "age_days": 235,
             "inactive_days": 213,
             "is_stale": true,
             "attention": [
@@ -12283,7 +12283,7 @@
             "target_repository": "checker-framework-java",
             "target_repository_url": "https://code.launchpad.net/~git-ubuntu-import/ubuntu/+source/checker-framework-java/+git/checker-framework-java",
             "age_days": 216,
-            "inactive_days": 212,
+            "inactive_days": 213,
             "is_stale": true,
             "attention": [
               "silent",
@@ -12725,7 +12725,7 @@
             "review": null,
             "target_repository": "opencv",
             "target_repository_url": "https://code.launchpad.net/~git-ubuntu-import/ubuntu/+source/opencv/+git/opencv",
-            "age_days": 238,
+            "age_days": 239,
             "inactive_days": 180,
             "is_stale": true,
             "attention": [
@@ -13355,7 +13355,7 @@
             "review": null,
             "target_repository": "nmap",
             "target_repository_url": "https://code.launchpad.net/~git-ubuntu-import/ubuntu/+source/nmap/+git/nmap",
-            "age_days": 115,
+            "age_days": 116,
             "inactive_days": 101,
             "is_stale": true,
             "attention": [
@@ -14374,7 +14374,7 @@
             "review": null,
             "target_repository": "virtuoso-opensource",
             "target_repository_url": "https://code.launchpad.net/~git-ubuntu-import/ubuntu/+source/virtuoso-opensource/+git/virtuoso-opensource",
-            "age_days": 86,
+            "age_days": 87,
             "inactive_days": 82,
             "is_stale": true,
             "attention": [
@@ -14429,7 +14429,7 @@
             "target_repository": "prometheus-redis-exporter",
             "target_repository_url": "https://code.launchpad.net/~git-ubuntu-import/ubuntu/+source/prometheus-redis-exporter/+git/prometheus-redis-exporter",
             "age_days": 97,
-            "inactive_days": 79,
+            "inactive_days": 80,
             "is_stale": true,
             "attention": [
               "approved_not_landed",
@@ -14824,7 +14824,7 @@
             "review": null,
             "target_repository": "libpoe-filter-ssl-perl",
             "target_repository_url": "https://code.launchpad.net/~git-ubuntu-import/ubuntu/+source/libpoe-filter-ssl-perl/+git/libpoe-filter-ssl-perl",
-            "age_days": 71,
+            "age_days": 72,
             "inactive_days": 67,
             "is_stale": true,
             "attention": [
@@ -15070,6 +15070,67 @@
             ]
           },
           {
+            "id": "508649",
+            "title": "fix-lp2154864 \u2192 ubuntu/devel",
+            "url": "https://code.launchpad.net/~blkerby/ubuntu/+source/odyssey/+git/odyssey/+merge/508649",
+            "author": {
+              "name": "blkerby",
+              "display_name": "Brent Kerby",
+              "url": "https://launchpad.net/~blkerby"
+            },
+            "status": "Needs review",
+            "status_category": "needs_review",
+            "created_at": "2026-07-17T19:16:41.391578+00:00",
+            "updated_at": "2026-08-18T17:41:50.056852+00:00",
+            "source_branch": "fix-lp2154864",
+            "target_branch": "ubuntu/devel",
+            "reviewers": [
+              {
+                "name": "ginggs",
+                "display_name": "Graham Inggs",
+                "url": "https://launchpad.net/~ginggs",
+                "pending": false,
+                "vote": "Approve"
+              },
+              {
+                "name": "ravi-sharma",
+                "display_name": "Ravi Kant Sharma",
+                "url": "https://launchpad.net/~ravi-sharma",
+                "pending": false,
+                "vote": "Approve"
+              },
+              {
+                "name": "git-ubuntu-import",
+                "display_name": "git-ubuntu import",
+                "url": "https://launchpad.net/~git-ubuntu-import",
+                "pending": true,
+                "vote": null
+              }
+            ],
+            "comment_count": 6,
+            "last_comment_at": "2026-08-18T17:41:50.056852+00:00",
+            "linked_bugs": [
+              {
+                "id": "2154864",
+                "title": "odyssey: FTBFS with openssl 4.0",
+                "url": "https://bugs.launchpad.net/ubuntu/+source/odyssey/+bug/2154864",
+                "status": "Fix Released",
+                "importance": "Undecided"
+              }
+            ],
+            "diff_url": "https://api.launchpad.net/devel/~blkerby/ubuntu/+source/odyssey/+git/odyssey/+merge/508649/+preview-diff/1137064",
+            "review": null,
+            "target_repository": "odyssey",
+            "target_repository_url": "https://code.launchpad.net/~git-ubuntu-import/ubuntu/+source/odyssey/+git/odyssey",
+            "age_days": 71,
+            "inactive_days": 40,
+            "is_stale": true,
+            "attention": [
+              "silent",
+              "linked_bug"
+            ]
+          },
+          {
             "id": "508264",
             "title": "merge-lp2160324-stonking \u2192 debian/sid",
             "url": "https://code.launchpad.net/~ravi-sharma/ubuntu/+source/python-cryptography/+git/python-cryptography/+merge/508264",
@@ -15133,67 +15194,6 @@
             "inactive_days": 40,
             "is_stale": true,
             "attention": [
-              "linked_bug"
-            ]
-          },
-          {
-            "id": "508649",
-            "title": "fix-lp2154864 \u2192 ubuntu/devel",
-            "url": "https://code.launchpad.net/~blkerby/ubuntu/+source/odyssey/+git/odyssey/+merge/508649",
-            "author": {
-              "name": "blkerby",
-              "display_name": "Brent Kerby",
-              "url": "https://launchpad.net/~blkerby"
-            },
-            "status": "Needs review",
-            "status_category": "needs_review",
-            "created_at": "2026-07-17T19:16:41.391578+00:00",
-            "updated_at": "2026-08-18T17:41:50.056852+00:00",
-            "source_branch": "fix-lp2154864",
-            "target_branch": "ubuntu/devel",
-            "reviewers": [
-              {
-                "name": "ginggs",
-                "display_name": "Graham Inggs",
-                "url": "https://launchpad.net/~ginggs",
-                "pending": false,
-                "vote": "Approve"
-              },
-              {
-                "name": "ravi-sharma",
-                "display_name": "Ravi Kant Sharma",
-                "url": "https://launchpad.net/~ravi-sharma",
-                "pending": false,
-                "vote": "Approve"
-              },
-              {
-                "name": "git-ubuntu-import",
-                "display_name": "git-ubuntu import",
-                "url": "https://launchpad.net/~git-ubuntu-import",
-                "pending": true,
-                "vote": null
-              }
-            ],
-            "comment_count": 6,
-            "last_comment_at": "2026-08-18T17:41:50.056852+00:00",
-            "linked_bugs": [
-              {
-                "id": "2154864",
-                "title": "odyssey: FTBFS with openssl 4.0",
-                "url": "https://bugs.launchpad.net/ubuntu/+source/odyssey/+bug/2154864",
-                "status": "Fix Released",
-                "importance": "Undecided"
-              }
-            ],
-            "diff_url": "https://api.launchpad.net/devel/~blkerby/ubuntu/+source/odyssey/+git/odyssey/+merge/508649/+preview-diff/1137064",
-            "review": null,
-            "target_repository": "odyssey",
-            "target_repository_url": "https://code.launchpad.net/~git-ubuntu-import/ubuntu/+source/odyssey/+git/odyssey",
-            "age_days": 71,
-            "inactive_days": 39,
-            "is_stale": true,
-            "attention": [
-              "silent",
               "linked_bug"
             ]
           },
@@ -15421,6 +15421,60 @@
             ]
           },
           {
+            "id": "509594",
+            "title": "Merge 0.0~git20260202.cb029da-2 from Debian unstable",
+            "url": "https://code.launchpad.net/~sumit-tiwari/ubuntu/+source/golang-github-google-pprof/+git/golang-github-google-pprof/+merge/509594",
+            "author": {
+              "name": "sumit-tiwari",
+              "display_name": "Sumit Tiwari",
+              "url": "https://launchpad.net/~sumit-tiwari"
+            },
+            "status": "Needs review",
+            "status_category": "needs_review",
+            "created_at": "2026-08-17T05:07:04.519974+00:00",
+            "updated_at": "2026-08-20T18:15:00.097214+00:00",
+            "source_branch": "merge-0.0-git20260202.cb029da-2-stonking",
+            "target_branch": "debian/sid",
+            "reviewers": [
+              {
+                "name": "r41k0u",
+                "display_name": "Pragyansh Chaturvedi",
+                "url": "https://launchpad.net/~r41k0u",
+                "pending": false,
+                "vote": "Approve"
+              },
+              {
+                "name": "git-ubuntu-import",
+                "display_name": "git-ubuntu import",
+                "url": "https://launchpad.net/~git-ubuntu-import",
+                "pending": true,
+                "vote": null
+              }
+            ],
+            "comment_count": 20,
+            "last_comment_at": "2026-08-20T18:15:00.097214+00:00",
+            "linked_bugs": [
+              {
+                "id": "2163736",
+                "title": "Merge golang-github-google-pprof 0.0~git20260202.cb029da-2 from Debian unstable",
+                "url": "https://bugs.launchpad.net/ubuntu/+source/golang-github-google-pprof/+bug/2163736",
+                "status": "Fix Released",
+                "importance": "Undecided"
+              }
+            ],
+            "diff_url": "https://api.launchpad.net/devel/~sumit-tiwari/ubuntu/+source/golang-github-google-pprof/+git/golang-github-google-pprof/+merge/509594/+preview-diff/1139128",
+            "review": null,
+            "target_repository": "golang-github-google-pprof",
+            "target_repository_url": "https://code.launchpad.net/~git-ubuntu-import/ubuntu/+source/golang-github-google-pprof/+git/golang-github-google-pprof",
+            "age_days": 41,
+            "inactive_days": 38,
+            "is_stale": true,
+            "attention": [
+              "silent",
+              "linked_bug"
+            ]
+          },
+          {
             "id": "508525",
             "title": "This merges in the latest Debian unstable, addressing LP: #2160636 and LP: #2154850.",
             "url": "https://code.launchpad.net/~blkerby/ubuntu/+source/kannel/+git/kannel/+merge/508525",
@@ -15560,60 +15614,6 @@
             "is_stale": true,
             "attention": [
               "approved_not_landed",
-              "linked_bug"
-            ]
-          },
-          {
-            "id": "509594",
-            "title": "Merge 0.0~git20260202.cb029da-2 from Debian unstable",
-            "url": "https://code.launchpad.net/~sumit-tiwari/ubuntu/+source/golang-github-google-pprof/+git/golang-github-google-pprof/+merge/509594",
-            "author": {
-              "name": "sumit-tiwari",
-              "display_name": "Sumit Tiwari",
-              "url": "https://launchpad.net/~sumit-tiwari"
-            },
-            "status": "Needs review",
-            "status_category": "needs_review",
-            "created_at": "2026-08-17T05:07:04.519974+00:00",
-            "updated_at": "2026-08-20T18:15:00.097214+00:00",
-            "source_branch": "merge-0.0-git20260202.cb029da-2-stonking",
-            "target_branch": "debian/sid",
-            "reviewers": [
-              {
-                "name": "r41k0u",
-                "display_name": "Pragyansh Chaturvedi",
-                "url": "https://launchpad.net/~r41k0u",
-                "pending": false,
-                "vote": "Approve"
-              },
-              {
-                "name": "git-ubuntu-import",
-                "display_name": "git-ubuntu import",
-                "url": "https://launchpad.net/~git-ubuntu-import",
-                "pending": true,
-                "vote": null
-              }
-            ],
-            "comment_count": 20,
-            "last_comment_at": "2026-08-20T18:15:00.097214+00:00",
-            "linked_bugs": [
-              {
-                "id": "2163736",
-                "title": "Merge golang-github-google-pprof 0.0~git20260202.cb029da-2 from Debian unstable",
-                "url": "https://bugs.launchpad.net/ubuntu/+source/golang-github-google-pprof/+bug/2163736",
-                "status": "Fix Released",
-                "importance": "Undecided"
-              }
-            ],
-            "diff_url": "https://api.launchpad.net/devel/~sumit-tiwari/ubuntu/+source/golang-github-google-pprof/+git/golang-github-google-pprof/+merge/509594/+preview-diff/1139128",
-            "review": null,
-            "target_repository": "golang-github-google-pprof",
-            "target_repository_url": "https://code.launchpad.net/~git-ubuntu-import/ubuntu/+source/golang-github-google-pprof/+git/golang-github-google-pprof",
-            "age_days": 41,
-            "inactive_days": 37,
-            "is_stale": true,
-            "attention": [
-              "silent",
               "linked_bug"
             ]
           },
@@ -16512,6 +16512,66 @@
             ]
           },
           {
+            "id": "511399",
+            "title": "ubuntu/devel \u2192 ubuntu/devel",
+            "url": "https://code.launchpad.net/~karljs/ubuntu/+source/wasmedge/+git/wasmedge/+merge/511399",
+            "author": {
+              "name": "karljs",
+              "display_name": "Karl Smeltzer",
+              "url": "https://launchpad.net/~karljs"
+            },
+            "status": "Needs review",
+            "status_category": "needs_review",
+            "created_at": "2026-09-15T17:06:48.784454+00:00",
+            "updated_at": "2026-09-22T17:39:18.658253+00:00",
+            "source_branch": "ubuntu/devel",
+            "target_branch": "ubuntu/devel",
+            "reviewers": [
+              {
+                "name": "enr0n",
+                "display_name": "Nick Rosbrook",
+                "url": "https://launchpad.net/~enr0n",
+                "pending": false,
+                "vote": "Approve"
+              },
+              {
+                "name": "ubuntu-sponsoring-bot",
+                "display_name": "Ubuntu Sponsoring Bot (seb128)",
+                "url": "https://launchpad.net/~ubuntu-sponsoring-bot",
+                "pending": false,
+                "vote": "Needs Fixing"
+              },
+              {
+                "name": "git-ubuntu-import",
+                "display_name": "git-ubuntu import",
+                "url": "https://launchpad.net/~git-ubuntu-import",
+                "pending": true,
+                "vote": null
+              }
+            ],
+            "comment_count": 2,
+            "last_comment_at": "2026-09-22T17:39:18.658253+00:00",
+            "linked_bugs": [
+              {
+                "id": "2164560",
+                "title": "Build failure against LLVM 22 due to deprecated function",
+                "url": "https://bugs.launchpad.net/ubuntu/+source/wasmedge/+bug/2164560",
+                "status": "Fix Released",
+                "importance": "Undecided"
+              }
+            ],
+            "diff_url": "https://api.launchpad.net/devel/~karljs/ubuntu/+source/wasmedge/+git/wasmedge/+merge/511399/+preview-diff/1142181",
+            "review": null,
+            "target_repository": "wasmedge",
+            "target_repository_url": "https://code.launchpad.net/~git-ubuntu-import/ubuntu/+source/wasmedge/+git/wasmedge",
+            "age_days": 12,
+            "inactive_days": 5,
+            "is_stale": false,
+            "attention": [
+              "linked_bug"
+            ]
+          },
+          {
             "id": "506335",
             "title": "Fix prerequisite visibility gap in merge proposal queries",
             "url": "https://code.launchpad.net/~mwhudson/launchpad/+git/launchpad/+merge/506335",
@@ -16594,66 +16654,6 @@
             ]
           },
           {
-            "id": "511399",
-            "title": "ubuntu/devel \u2192 ubuntu/devel",
-            "url": "https://code.launchpad.net/~karljs/ubuntu/+source/wasmedge/+git/wasmedge/+merge/511399",
-            "author": {
-              "name": "karljs",
-              "display_name": "Karl Smeltzer",
-              "url": "https://launchpad.net/~karljs"
-            },
-            "status": "Needs review",
-            "status_category": "needs_review",
-            "created_at": "2026-09-15T17:06:48.784454+00:00",
-            "updated_at": "2026-09-22T17:39:18.658253+00:00",
-            "source_branch": "ubuntu/devel",
-            "target_branch": "ubuntu/devel",
-            "reviewers": [
-              {
-                "name": "enr0n",
-                "display_name": "Nick Rosbrook",
-                "url": "https://launchpad.net/~enr0n",
-                "pending": false,
-                "vote": "Approve"
-              },
-              {
-                "name": "ubuntu-sponsoring-bot",
-                "display_name": "Ubuntu Sponsoring Bot (seb128)",
-                "url": "https://launchpad.net/~ubuntu-sponsoring-bot",
-                "pending": false,
-                "vote": "Needs Fixing"
-              },
-              {
-                "name": "git-ubuntu-import",
-                "display_name": "git-ubuntu import",
-                "url": "https://launchpad.net/~git-ubuntu-import",
-                "pending": true,
-                "vote": null
-              }
-            ],
-            "comment_count": 2,
-            "last_comment_at": "2026-09-22T17:39:18.658253+00:00",
-            "linked_bugs": [
-              {
-                "id": "2164560",
-                "title": "Build failure against LLVM 22 due to deprecated function",
-                "url": "https://bugs.launchpad.net/ubuntu/+source/wasmedge/+bug/2164560",
-                "status": "Fix Released",
-                "importance": "Undecided"
-              }
-            ],
-            "diff_url": "https://api.launchpad.net/devel/~karljs/ubuntu/+source/wasmedge/+git/wasmedge/+merge/511399/+preview-diff/1142181",
-            "review": null,
-            "target_repository": "wasmedge",
-            "target_repository_url": "https://code.launchpad.net/~git-ubuntu-import/ubuntu/+source/wasmedge/+git/wasmedge",
-            "age_days": 11,
-            "inactive_days": 4,
-            "is_stale": false,
-            "attention": [
-              "linked_bug"
-            ]
-          },
-          {
             "id": "511849",
             "title": "aevol-lp2167811-ftbfs \u2192 ubuntu/devel",
             "url": "https://code.launchpad.net/~mclemenceau/ubuntu/+source/aevol/+git/aevol/+merge/511849",
@@ -16699,7 +16699,7 @@
             "review": null,
             "target_repository": "aevol",
             "target_repository_url": "https://code.launchpad.net/~git-ubuntu-import/ubuntu/+source/aevol/+git/aevol",
-            "age_days": 4,
+            "age_days": 5,
             "inactive_days": 4,
             "is_stale": false,
             "attention": [
@@ -16839,6 +16839,59 @@
             "target_repository_url": "https://code.launchpad.net/~git-ubuntu-import/ubuntu/+source/openms/+git/openms",
             "age_days": 5,
             "inactive_days": 4,
+            "is_stale": false,
+            "attention": [
+              "linked_bug"
+            ]
+          },
+          {
+            "id": "512009",
+            "title": "drbd-doc fails to build from source because the /usr/bin/asciidoctor-pdf binary was split out of ruby-asciidoctor-pdf into a separate asciidoctor-pdf package (version 2.3.19-1). The package Build-Depends only lists ruby-asciidoctor-pdf, so the binary is missing at build time.",
+            "url": "https://code.launchpad.net/~mclemenceau/ubuntu/+source/drbd-doc/+git/drbd-doc/+merge/512009",
+            "author": {
+              "name": "mclemenceau",
+              "display_name": "Matthieu Clemenceau",
+              "url": "https://launchpad.net/~mclemenceau"
+            },
+            "status": "Needs review",
+            "status_category": "needs_review",
+            "created_at": "2026-09-24T16:56:40.511580+00:00",
+            "updated_at": "2026-09-24T19:01:30.588497+00:00",
+            "source_branch": "drbd-doc-lp2168366-ftbfs",
+            "target_branch": "ubuntu/devel",
+            "reviewers": [
+              {
+                "name": "ubuntu-sponsors",
+                "display_name": "Ubuntu Sponsors",
+                "url": "https://launchpad.net/~ubuntu-sponsors",
+                "pending": true,
+                "vote": null
+              },
+              {
+                "name": "git-ubuntu-import",
+                "display_name": "git-ubuntu import",
+                "url": "https://launchpad.net/~git-ubuntu-import",
+                "pending": true,
+                "vote": null
+              }
+            ],
+            "comment_count": 2,
+            "last_comment_at": "2026-09-24T19:01:30.588497+00:00",
+            "linked_bugs": [
+              {
+                "id": "2168366",
+                "title": "drbd-doc: FTBFS: asciidoctor-pdf binary not found (split from ruby-asciidoctor-pdf)",
+                "url": "https://bugs.launchpad.net/ubuntu/+source/drbd-doc/+bug/2168366",
+                "status": "In Progress",
+                "importance": "Undecided"
+              }
+            ],
+            "diff_url": "https://api.launchpad.net/devel/~mclemenceau/ubuntu/+source/drbd-doc/+git/drbd-doc/+merge/512009/+preview-diff/1143443",
+            "review": null,
+            "target_repository": "drbd-doc",
+            "target_repository_url": "https://code.launchpad.net/~git-ubuntu-import/ubuntu/+source/drbd-doc/+git/drbd-doc",
+            "age_days": 3,
+            "inactive_days": 3,
             "is_stale": false,
             "attention": [
               "linked_bug"
@@ -16990,59 +17043,6 @@
             ]
           },
           {
-            "id": "512009",
-            "title": "drbd-doc fails to build from source because the /usr/bin/asciidoctor-pdf binary was split out of ruby-asciidoctor-pdf into a separate asciidoctor-pdf package (version 2.3.19-1). The package Build-Depends only lists ruby-asciidoctor-pdf, so the binary is missing at build time.",
-            "url": "https://code.launchpad.net/~mclemenceau/ubuntu/+source/drbd-doc/+git/drbd-doc/+merge/512009",
-            "author": {
-              "name": "mclemenceau",
-              "display_name": "Matthieu Clemenceau",
-              "url": "https://launchpad.net/~mclemenceau"
-            },
-            "status": "Needs review",
-            "status_category": "needs_review",
-            "created_at": "2026-09-24T16:56:40.511580+00:00",
-            "updated_at": "2026-09-24T19:01:30.588497+00:00",
-            "source_branch": "drbd-doc-lp2168366-ftbfs",
-            "target_branch": "ubuntu/devel",
-            "reviewers": [
-              {
-                "name": "ubuntu-sponsors",
-                "display_name": "Ubuntu Sponsors",
-                "url": "https://launchpad.net/~ubuntu-sponsors",
-                "pending": true,
-                "vote": null
-              },
-              {
-                "name": "git-ubuntu-import",
-                "display_name": "git-ubuntu import",
-                "url": "https://launchpad.net/~git-ubuntu-import",
-                "pending": true,
-                "vote": null
-              }
-            ],
-            "comment_count": 2,
-            "last_comment_at": "2026-09-24T19:01:30.588497+00:00",
-            "linked_bugs": [
-              {
-                "id": "2168366",
-                "title": "drbd-doc: FTBFS: asciidoctor-pdf binary not found (split from ruby-asciidoctor-pdf)",
-                "url": "https://bugs.launchpad.net/ubuntu/+source/drbd-doc/+bug/2168366",
-                "status": "In Progress",
-                "importance": "Undecided"
-              }
-            ],
-            "diff_url": "https://api.launchpad.net/devel/~mclemenceau/ubuntu/+source/drbd-doc/+git/drbd-doc/+merge/512009/+preview-diff/1143443",
-            "review": null,
-            "target_repository": "drbd-doc",
-            "target_repository_url": "https://code.launchpad.net/~git-ubuntu-import/ubuntu/+source/drbd-doc/+git/drbd-doc",
-            "age_days": 2,
-            "inactive_days": 2,
-            "is_stale": false,
-            "attention": [
-              "linked_bug"
-            ]
-          },
-          {
             "id": "512070",
             "title": "Merge upstream 1.26.8 and refresh FIPS patches",
             "url": "https://code.launchpad.net/~sumit-tiwari/golang-fips/+git/golang-fips/+merge/512070",
@@ -17133,7 +17133,7 @@
           }
         ],
         "error": null,
-        "last_successful_refresh": "2026-09-27T16:51:51.030241+00:00"
+        "last_successful_refresh": "2026-09-27T19:03:49.011311+00:00"
       }
     },
     {
@@ -17152,7 +17152,7 @@
       "team": "archive-admin",
       "status": "ok",
       "error": null,
-      "last_successful_refresh": "2026-09-27T16:51:51.030241+00:00",
+      "last_successful_refresh": "2026-09-27T19:03:49.011311+00:00",
       "merge_requests": [
         {
           "id": "411081",
@@ -17808,7 +17808,7 @@
           "target_repository": null,
           "target_repository_url": null,
           "age_days": 347,
-          "inactive_days": 346,
+          "inactive_days": 347,
           "is_stale": true,
           "attention": [
             "silent"
@@ -18109,8 +18109,8 @@
           "review": null,
           "target_repository": null,
           "target_repository_url": null,
-          "age_days": 22,
-          "inactive_days": 22,
+          "age_days": 23,
+          "inactive_days": 23,
           "is_stale": false,
           "attention": [
             "silent"
@@ -18198,42 +18198,6 @@
           "attention": []
         },
         {
-          "id": "511981",
-          "title": "remove-package-closebug \u2192 main",
-          "url": "https://code.launchpad.net/~seb128/ubuntu-archive-tools/+git/ubuntu-archive-tools/+merge/511981",
-          "author": {
-            "name": "seb128",
-            "display_name": "Sebastien Bacher",
-            "url": "https://launchpad.net/~seb128"
-          },
-          "status": "Needs review",
-          "status_category": "needs_review",
-          "created_at": "2026-09-24T10:27:04.369229+00:00",
-          "updated_at": "2026-09-24T21:32:43.077914+00:00",
-          "source_branch": "remove-package-closebug",
-          "target_branch": "main",
-          "reviewers": [
-            {
-              "name": "mwhudson",
-              "display_name": "Michael Hudson-Doyle",
-              "url": "https://launchpad.net/~mwhudson",
-              "pending": false,
-              "vote": "Needs Fixing"
-            }
-          ],
-          "comment_count": 1,
-          "last_comment_at": "2026-09-24T21:32:43.077914+00:00",
-          "linked_bugs": [],
-          "diff_url": "https://api.launchpad.net/devel/~seb128/ubuntu-archive-tools/+git/ubuntu-archive-tools/+merge/511981/+preview-diff/1143384",
-          "review": null,
-          "target_repository": null,
-          "target_repository_url": null,
-          "age_days": 3,
-          "inactive_days": 2,
-          "is_stale": false,
-          "attention": []
-        },
-        {
           "id": "512079",
           "title": "wiki.ubuntu.com was replaced by a new deployment, without much of the pre-existing content. This PR updates all the wiki links I could find in this repository with what I believe are the best Ubuntu project documentation replacements.",
           "url": "https://code.launchpad.net/~ahasenack/ubuntu-archive-tools/+git/ubuntu-archive-tools/+merge/512079",
@@ -18279,7 +18243,43 @@
           "target_repository": null,
           "target_repository_url": null,
           "age_days": 2,
-          "inactive_days": 1,
+          "inactive_days": 2,
+          "is_stale": false,
+          "attention": []
+        },
+        {
+          "id": "511981",
+          "title": "remove-package-closebug \u2192 main",
+          "url": "https://code.launchpad.net/~seb128/ubuntu-archive-tools/+git/ubuntu-archive-tools/+merge/511981",
+          "author": {
+            "name": "seb128",
+            "display_name": "Sebastien Bacher",
+            "url": "https://launchpad.net/~seb128"
+          },
+          "status": "Needs review",
+          "status_category": "needs_review",
+          "created_at": "2026-09-24T10:27:04.369229+00:00",
+          "updated_at": "2026-09-24T21:32:43.077914+00:00",
+          "source_branch": "remove-package-closebug",
+          "target_branch": "main",
+          "reviewers": [
+            {
+              "name": "mwhudson",
+              "display_name": "Michael Hudson-Doyle",
+              "url": "https://launchpad.net/~mwhudson",
+              "pending": false,
+              "vote": "Needs Fixing"
+            }
+          ],
+          "comment_count": 1,
+          "last_comment_at": "2026-09-24T21:32:43.077914+00:00",
+          "linked_bugs": [],
+          "diff_url": "https://api.launchpad.net/devel/~seb128/ubuntu-archive-tools/+git/ubuntu-archive-tools/+merge/511981/+preview-diff/1143384",
+          "review": null,
+          "target_repository": null,
+          "target_repository_url": null,
+          "age_days": 3,
+          "inactive_days": 2,
           "is_stale": false,
           "attention": []
         }
@@ -18293,7 +18293,7 @@
       "team": "archive-admin",
       "status": "ok",
       "error": null,
-      "last_successful_refresh": "2026-09-27T16:51:51.030241+00:00",
+      "last_successful_refresh": "2026-09-27T19:03:49.011311+00:00",
       "merge_requests": [
         {
           "id": "447307",
@@ -18343,7 +18343,7 @@
       "team": "release-team",
       "status": "ok",
       "error": null,
-      "last_successful_refresh": "2026-09-27T16:51:51.030241+00:00",
+      "last_successful_refresh": "2026-09-27T19:03:49.011311+00:00",
       "merge_requests": [
         {
           "id": "500275",
@@ -18493,7 +18493,7 @@
           "review": null,
           "target_repository": null,
           "target_repository_url": null,
-          "age_days": 102,
+          "age_days": 103,
           "inactive_days": 100,
           "is_stale": true,
           "attention": []
@@ -18622,7 +18622,7 @@
       "team": "release-team",
       "status": "ok",
       "error": null,
-      "last_successful_refresh": "2026-09-27T16:51:51.030241+00:00",
+      "last_successful_refresh": "2026-09-27T19:03:49.011311+00:00",
       "merge_requests": [
         {
           "id": "380853",
@@ -18962,7 +18962,7 @@
           "review": null,
           "target_repository": null,
           "target_repository_url": null,
-          "age_days": 2035,
+          "age_days": 2036,
           "inactive_days": 1977,
           "is_stale": true,
           "attention": [
@@ -19308,8 +19308,8 @@
           "review": null,
           "target_repository": null,
           "target_repository_url": null,
-          "age_days": 1521,
-          "inactive_days": 1521,
+          "age_days": 1522,
+          "inactive_days": 1522,
           "is_stale": true,
           "attention": []
         },
@@ -19360,7 +19360,7 @@
           "target_repository": null,
           "target_repository_url": null,
           "age_days": 1480,
-          "inactive_days": 1474,
+          "inactive_days": 1475,
           "is_stale": true,
           "attention": [
             "silent",
@@ -19465,6 +19465,51 @@
           ]
         },
         {
+          "id": "449608",
+          "title": "Switch from xz to zstd compressed squashfs for faster boot",
+          "url": "https://code.launchpad.net/~ubuntu-core-dev/livecd-rootfs/+git/livecd-rootfs/+merge/449608",
+          "author": {
+            "name": "xnox",
+            "display_name": "Dimitri John Ledkov",
+            "url": "https://launchpad.net/~xnox"
+          },
+          "status": "Needs review",
+          "status_category": "needs_review",
+          "created_at": "2023-08-22T10:57:21.165275+00:00",
+          "updated_at": "2023-09-06T18:50:32.386567+00:00",
+          "source_branch": "xnox/mksquashfs-zstd",
+          "target_branch": "ubuntu/master",
+          "reviewers": [
+            {
+              "name": "vorlon",
+              "display_name": "Steve Langasek",
+              "url": "https://launchpad.net/~vorlon",
+              "pending": false,
+              "vote": "Needs Information"
+            },
+            {
+              "name": "tag:launchpad.net:2008:redacted",
+              "display_name": "tag:launchpad.net:2008:redacted",
+              "url": "https://launchpad.net/~tag:launchpad.net:2008:redacted",
+              "pending": true,
+              "vote": null
+            }
+          ],
+          "comment_count": 5,
+          "last_comment_at": "2023-09-06T18:50:32.386567+00:00",
+          "linked_bugs": [],
+          "diff_url": "https://api.launchpad.net/devel/~ubuntu-core-dev/livecd-rootfs/+git/livecd-rootfs/+merge/449608/+preview-diff/1023861",
+          "review": null,
+          "target_repository": null,
+          "target_repository_url": null,
+          "age_days": 1132,
+          "inactive_days": 1117,
+          "is_stale": true,
+          "attention": [
+            "silent"
+          ]
+        },
+        {
           "id": "450399",
           "title": "Include unicode.pf2 in the netboot tarball on amd64 and arm64. (LP: #2033692)",
           "url": "https://code.launchpad.net/~mwhudson/livecd-rootfs/+git/livecd-rootfs/+merge/450399",
@@ -19516,51 +19561,6 @@
           "attention": [
             "silent",
             "linked_bug"
-          ]
-        },
-        {
-          "id": "449608",
-          "title": "Switch from xz to zstd compressed squashfs for faster boot",
-          "url": "https://code.launchpad.net/~ubuntu-core-dev/livecd-rootfs/+git/livecd-rootfs/+merge/449608",
-          "author": {
-            "name": "xnox",
-            "display_name": "Dimitri John Ledkov",
-            "url": "https://launchpad.net/~xnox"
-          },
-          "status": "Needs review",
-          "status_category": "needs_review",
-          "created_at": "2023-08-22T10:57:21.165275+00:00",
-          "updated_at": "2023-09-06T18:50:32.386567+00:00",
-          "source_branch": "xnox/mksquashfs-zstd",
-          "target_branch": "ubuntu/master",
-          "reviewers": [
-            {
-              "name": "vorlon",
-              "display_name": "Steve Langasek",
-              "url": "https://launchpad.net/~vorlon",
-              "pending": false,
-              "vote": "Needs Information"
-            },
-            {
-              "name": "tag:launchpad.net:2008:redacted",
-              "display_name": "tag:launchpad.net:2008:redacted",
-              "url": "https://launchpad.net/~tag:launchpad.net:2008:redacted",
-              "pending": true,
-              "vote": null
-            }
-          ],
-          "comment_count": 5,
-          "last_comment_at": "2023-09-06T18:50:32.386567+00:00",
-          "linked_bugs": [],
-          "diff_url": "https://api.launchpad.net/devel/~ubuntu-core-dev/livecd-rootfs/+git/livecd-rootfs/+merge/449608/+preview-diff/1023861",
-          "review": null,
-          "target_repository": null,
-          "target_repository_url": null,
-          "age_days": 1132,
-          "inactive_days": 1116,
-          "is_stale": true,
-          "attention": [
-            "silent"
           ]
         },
         {
@@ -20107,7 +20107,7 @@
           "target_repository": null,
           "target_repository_url": null,
           "age_days": 164,
-          "inactive_days": 149,
+          "inactive_days": 150,
           "is_stale": true,
           "attention": [
             "silent"
@@ -20464,7 +20464,7 @@
           "review": null,
           "target_repository": null,
           "target_repository_url": null,
-          "age_days": 30,
+          "age_days": 31,
           "inactive_days": 16,
           "is_stale": false,
           "attention": [
@@ -20503,7 +20503,7 @@
           "review": null,
           "target_repository": null,
           "target_repository_url": null,
-          "age_days": 17,
+          "age_days": 18,
           "inactive_days": 8,
           "is_stale": false,
           "attention": [
@@ -20550,7 +20550,7 @@
           "target_repository": null,
           "target_repository_url": null,
           "age_days": 5,
-          "inactive_days": 4,
+          "inactive_days": 5,
           "is_stale": false,
           "attention": [
             "linked_bug"
@@ -20566,7 +20566,7 @@
       "team": "release-team",
       "status": "ok",
       "error": null,
-      "last_successful_refresh": "2026-09-27T16:51:51.030241+00:00",
+      "last_successful_refresh": "2026-09-27T19:03:49.011311+00:00",
       "merge_requests": [
         {
           "id": "406611",
@@ -20646,7 +20646,7 @@
           "review": null,
           "target_repository": null,
           "target_repository_url": null,
-          "age_days": 1853,
+          "age_days": 1854,
           "inactive_days": 1853,
           "is_stale": true,
           "attention": [
@@ -20727,8 +20727,8 @@
           "review": null,
           "target_repository": null,
           "target_repository_url": null,
-          "age_days": 1632,
-          "inactive_days": 1629,
+          "age_days": 1633,
+          "inactive_days": 1630,
           "is_stale": true,
           "attention": [
             "silent"
@@ -21174,7 +21174,7 @@
           "target_repository": null,
           "target_repository_url": null,
           "age_days": 461,
-          "inactive_days": 459,
+          "inactive_days": 460,
           "is_stale": true,
           "attention": [
             "silent",
@@ -21297,8 +21297,8 @@
           "review": null,
           "target_repository": null,
           "target_repository_url": null,
-          "age_days": 124,
-          "inactive_days": 124,
+          "age_days": 125,
+          "inactive_days": 125,
           "is_stale": true,
           "attention": [
             "silent"
@@ -21350,7 +21350,7 @@
       "team": "release-team",
       "status": "ok",
       "error": null,
-      "last_successful_refresh": "2026-09-27T16:51:51.030241+00:00",
+      "last_successful_refresh": "2026-09-27T19:03:49.011311+00:00",
       "merge_requests": [
         {
           "id": "433265",
@@ -21391,7 +21391,7 @@
           "target_repository": null,
           "target_repository_url": null,
           "age_days": 1409,
-          "inactive_days": 1406,
+          "inactive_days": 1407,
           "is_stale": true,
           "attention": [
             "silent"
@@ -21775,7 +21775,7 @@
       "team": "release-team",
       "status": "ok",
       "error": null,
-      "last_successful_refresh": "2026-09-27T16:51:51.030241+00:00",
+      "last_successful_refresh": "2026-09-27T19:03:49.011311+00:00",
       "merge_requests": [
         {
           "id": "436341",
@@ -21808,8 +21808,8 @@
           "review": null,
           "target_repository": null,
           "target_repository_url": null,
-          "age_days": 1340,
-          "inactive_days": 1340,
+          "age_days": 1341,
+          "inactive_days": 1341,
           "is_stale": true,
           "attention": [
             "silent"
@@ -21922,8 +21922,8 @@
           "review": null,
           "target_repository": null,
           "target_repository_url": null,
-          "age_days": 30,
-          "inactive_days": 30,
+          "age_days": 31,
+          "inactive_days": 31,
           "is_stale": true,
           "attention": [
             "silent"
@@ -21939,7 +21939,7 @@
       "team": "release-team",
       "status": "ok",
       "error": null,
-      "last_successful_refresh": "2026-09-27T16:51:51.030241+00:00",
+      "last_successful_refresh": "2026-09-27T19:03:49.011311+00:00",
       "merge_requests": [
         {
           "id": "443396",
@@ -22133,7 +22133,7 @@
       "team": "foundations",
       "status": "ok",
       "error": null,
-      "last_successful_refresh": "2026-09-27T16:51:51.030241+00:00",
+      "last_successful_refresh": "2026-09-27T19:03:49.011311+00:00",
       "merge_requests": [],
       "discovered_config": {
         "name": "amd64-microcode",
@@ -22151,7 +22151,7 @@
       "team": "foundations",
       "status": "ok",
       "error": null,
-      "last_successful_refresh": "2026-09-27T16:51:51.030241+00:00",
+      "last_successful_refresh": "2026-09-27T19:03:49.011311+00:00",
       "merge_requests": [
         {
           "id": "381486",
@@ -22238,7 +22238,7 @@
           "target_repository": null,
           "target_repository_url": null,
           "age_days": 1685,
-          "inactive_days": 1684,
+          "inactive_days": 1685,
           "is_stale": true,
           "attention": [
             "silent",
@@ -22335,7 +22335,7 @@
           "target_repository": null,
           "target_repository_url": null,
           "age_days": 1472,
-          "inactive_days": 1459,
+          "inactive_days": 1460,
           "is_stale": true,
           "attention": [
             "linked_bug"
@@ -22380,7 +22380,7 @@
           "target_repository": null,
           "target_repository_url": null,
           "age_days": 768,
-          "inactive_days": 766,
+          "inactive_days": 767,
           "is_stale": true,
           "attention": [
             "silent"
@@ -22486,7 +22486,7 @@
           "review": null,
           "target_repository": null,
           "target_repository_url": null,
-          "age_days": 39,
+          "age_days": 40,
           "inactive_days": 26,
           "is_stale": false,
           "attention": [
@@ -22511,7 +22511,7 @@
       "team": "foundations",
       "status": "ok",
       "error": null,
-      "last_successful_refresh": "2026-09-27T16:51:51.030241+00:00",
+      "last_successful_refresh": "2026-09-27T19:03:49.011311+00:00",
       "merge_requests": [],
       "discovered_config": {
         "name": "apport-symptoms",
@@ -22529,7 +22529,7 @@
       "team": "foundations",
       "status": "ok",
       "error": null,
-      "last_successful_refresh": "2026-09-27T16:51:51.030241+00:00",
+      "last_successful_refresh": "2026-09-27T19:03:49.011311+00:00",
       "merge_requests": [],
       "discovered_config": {
         "name": "apt",
@@ -22547,7 +22547,7 @@
       "team": "foundations",
       "status": "ok",
       "error": null,
-      "last_successful_refresh": "2026-09-27T16:51:51.030241+00:00",
+      "last_successful_refresh": "2026-09-27T19:03:49.011311+00:00",
       "merge_requests": [],
       "discovered_config": {
         "name": "apt-clone",
@@ -22565,7 +22565,7 @@
       "team": "foundations",
       "status": "ok",
       "error": null,
-      "last_successful_refresh": "2026-09-27T16:51:51.030241+00:00",
+      "last_successful_refresh": "2026-09-27T19:03:49.011311+00:00",
       "merge_requests": [],
       "discovered_config": {
         "name": "apt-listchanges",
@@ -22583,7 +22583,7 @@
       "team": "foundations",
       "status": "ok",
       "error": null,
-      "last_successful_refresh": "2026-09-27T16:51:51.030241+00:00",
+      "last_successful_refresh": "2026-09-27T19:03:49.011311+00:00",
       "merge_requests": [],
       "discovered_config": {
         "name": "apt-setup",
@@ -22601,7 +22601,7 @@
       "team": "foundations",
       "status": "ok",
       "error": null,
-      "last_successful_refresh": "2026-09-27T16:51:51.030241+00:00",
+      "last_successful_refresh": "2026-09-27T19:03:49.011311+00:00",
       "merge_requests": [],
       "discovered_config": {
         "name": "aptdaemon",
@@ -22619,7 +22619,7 @@
       "team": "foundations",
       "status": "ok",
       "error": null,
-      "last_successful_refresh": "2026-09-27T16:51:51.030241+00:00",
+      "last_successful_refresh": "2026-09-27T19:03:49.011311+00:00",
       "merge_requests": [],
       "discovered_config": {
         "name": "apturl",
@@ -22637,7 +22637,7 @@
       "team": "foundations",
       "status": "ok",
       "error": null,
-      "last_successful_refresh": "2026-09-27T16:51:51.030241+00:00",
+      "last_successful_refresh": "2026-09-27T19:03:49.011311+00:00",
       "merge_requests": [
         {
           "id": "469515",
@@ -22787,7 +22787,7 @@
       "team": "foundations",
       "status": "ok",
       "error": null,
-      "last_successful_refresh": "2026-09-27T16:51:51.030241+00:00",
+      "last_successful_refresh": "2026-09-27T19:03:49.011311+00:00",
       "merge_requests": [],
       "discovered_config": {
         "name": "binutils-gold",
@@ -22805,7 +22805,7 @@
       "team": "foundations",
       "status": "ok",
       "error": null,
-      "last_successful_refresh": "2026-09-27T16:51:51.030241+00:00",
+      "last_successful_refresh": "2026-09-27T19:03:49.011311+00:00",
       "merge_requests": [
         {
           "id": "510552",
@@ -22885,7 +22885,7 @@
       "team": "foundations",
       "status": "ok",
       "error": null,
-      "last_successful_refresh": "2026-09-27T16:51:51.030241+00:00",
+      "last_successful_refresh": "2026-09-27T19:03:49.011311+00:00",
       "merge_requests": [],
       "discovered_config": {
         "name": "cd-boot-images-amd64",
@@ -22903,7 +22903,7 @@
       "team": "foundations",
       "status": "ok",
       "error": null,
-      "last_successful_refresh": "2026-09-27T16:51:51.030241+00:00",
+      "last_successful_refresh": "2026-09-27T19:03:49.011311+00:00",
       "merge_requests": [],
       "discovered_config": {
         "name": "cd-boot-images-arm64",
@@ -22921,7 +22921,7 @@
       "team": "foundations",
       "status": "ok",
       "error": null,
-      "last_successful_refresh": "2026-09-27T16:51:51.030241+00:00",
+      "last_successful_refresh": "2026-09-27T19:03:49.011311+00:00",
       "merge_requests": [],
       "discovered_config": {
         "name": "cd-boot-images-ppc64el",
@@ -22939,7 +22939,7 @@
       "team": "foundations",
       "status": "ok",
       "error": null,
-      "last_successful_refresh": "2026-09-27T16:51:51.030241+00:00",
+      "last_successful_refresh": "2026-09-27T19:03:49.011311+00:00",
       "merge_requests": [
         {
           "id": "483536",
@@ -23018,7 +23018,7 @@
       "team": "foundations",
       "status": "ok",
       "error": null,
-      "last_successful_refresh": "2026-09-27T16:51:51.030241+00:00",
+      "last_successful_refresh": "2026-09-27T19:03:49.011311+00:00",
       "merge_requests": [
         {
           "id": "461374",
@@ -23058,7 +23058,7 @@
           "review": null,
           "target_repository": null,
           "target_repository_url": null,
-          "age_days": 942,
+          "age_days": 943,
           "inactive_days": 929,
           "is_stale": true,
           "attention": [
@@ -23103,7 +23103,7 @@
           "review": null,
           "target_repository": null,
           "target_repository_url": null,
-          "age_days": 942,
+          "age_days": 943,
           "inactive_days": 927,
           "is_stale": true,
           "attention": [
@@ -23127,7 +23127,7 @@
       "team": "foundations",
       "status": "ok",
       "error": null,
-      "last_successful_refresh": "2026-09-27T16:51:51.030241+00:00",
+      "last_successful_refresh": "2026-09-27T19:03:49.011311+00:00",
       "merge_requests": [
         {
           "id": "501919",
@@ -23227,7 +23227,7 @@
           "review": null,
           "target_repository": null,
           "target_repository_url": null,
-          "age_days": 180,
+          "age_days": 181,
           "inactive_days": 173,
           "is_stale": true,
           "attention": [
@@ -23299,7 +23299,7 @@
       "team": "foundations",
       "status": "ok",
       "error": null,
-      "last_successful_refresh": "2026-09-27T16:51:51.030241+00:00",
+      "last_successful_refresh": "2026-09-27T19:03:49.011311+00:00",
       "merge_requests": [],
       "discovered_config": {
         "name": "cross-toolchain-base",
@@ -23317,7 +23317,7 @@
       "team": "foundations",
       "status": "ok",
       "error": null,
-      "last_successful_refresh": "2026-09-27T16:51:51.030241+00:00",
+      "last_successful_refresh": "2026-09-27T19:03:49.011311+00:00",
       "merge_requests": [
         {
           "id": "393521",
@@ -23813,7 +23813,7 @@
       "team": "foundations",
       "status": "ok",
       "error": null,
-      "last_successful_refresh": "2026-09-27T16:51:51.030241+00:00",
+      "last_successful_refresh": "2026-09-27T19:03:49.011311+00:00",
       "merge_requests": [],
       "discovered_config": {
         "name": "curtin",
@@ -23831,7 +23831,7 @@
       "team": "foundations",
       "status": "ok",
       "error": null,
-      "last_successful_refresh": "2026-09-27T16:51:51.030241+00:00",
+      "last_successful_refresh": "2026-09-27T19:03:49.011311+00:00",
       "merge_requests": [],
       "discovered_config": {
         "name": "device-tree-compiler",
@@ -23849,7 +23849,7 @@
       "team": "foundations",
       "status": "ok",
       "error": null,
-      "last_successful_refresh": "2026-09-27T16:51:51.030241+00:00",
+      "last_successful_refresh": "2026-09-27T19:03:49.011311+00:00",
       "merge_requests": [],
       "discovered_config": {
         "name": "dh-cargo",
@@ -23867,7 +23867,7 @@
       "team": "foundations",
       "status": "ok",
       "error": null,
-      "last_successful_refresh": "2026-09-27T16:51:51.030241+00:00",
+      "last_successful_refresh": "2026-09-27T19:03:49.011311+00:00",
       "merge_requests": [],
       "discovered_config": {
         "name": "dh-golang",
@@ -23885,7 +23885,7 @@
       "team": "foundations",
       "status": "ok",
       "error": null,
-      "last_successful_refresh": "2026-09-27T16:51:51.030241+00:00",
+      "last_successful_refresh": "2026-09-27T19:03:49.011311+00:00",
       "merge_requests": [
         {
           "id": "494411",
@@ -23926,7 +23926,7 @@
           "target_repository": null,
           "target_repository_url": null,
           "age_days": 347,
-          "inactive_days": 346,
+          "inactive_days": 347,
           "is_stale": true,
           "attention": [
             "silent"
@@ -24039,7 +24039,7 @@
       "team": "foundations",
       "status": "ok",
       "error": null,
-      "last_successful_refresh": "2026-09-27T16:51:51.030241+00:00",
+      "last_successful_refresh": "2026-09-27T19:03:49.011311+00:00",
       "merge_requests": [],
       "discovered_config": {
         "name": "dotnet10",
@@ -24057,7 +24057,7 @@
       "team": "foundations",
       "status": "ok",
       "error": null,
-      "last_successful_refresh": "2026-09-27T16:51:51.030241+00:00",
+      "last_successful_refresh": "2026-09-27T19:03:49.011311+00:00",
       "merge_requests": [
         {
           "id": "490338",
@@ -24236,7 +24236,7 @@
       "team": "foundations",
       "status": "ok",
       "error": null,
-      "last_successful_refresh": "2026-09-27T16:51:51.030241+00:00",
+      "last_successful_refresh": "2026-09-27T19:03:49.011311+00:00",
       "merge_requests": [
         {
           "id": "461136",
@@ -24502,7 +24502,7 @@
       "team": "foundations",
       "status": "ok",
       "error": null,
-      "last_successful_refresh": "2026-09-27T16:51:51.030241+00:00",
+      "last_successful_refresh": "2026-09-27T19:03:49.011311+00:00",
       "merge_requests": [],
       "discovered_config": {
         "name": "dpkg-cross",
@@ -24520,7 +24520,7 @@
       "team": "foundations",
       "status": "ok",
       "error": null,
-      "last_successful_refresh": "2026-09-27T16:51:51.030241+00:00",
+      "last_successful_refresh": "2026-09-27T19:03:49.011311+00:00",
       "merge_requests": [],
       "discovered_config": {
         "name": "edk2",
@@ -24538,7 +24538,7 @@
       "team": "foundations",
       "status": "ok",
       "error": null,
-      "last_successful_refresh": "2026-09-27T16:51:51.030241+00:00",
+      "last_successful_refresh": "2026-09-27T19:03:49.011311+00:00",
       "merge_requests": [
         {
           "id": "496973",
@@ -24670,7 +24670,7 @@
       "team": "foundations",
       "status": "ok",
       "error": null,
-      "last_successful_refresh": "2026-09-27T16:51:51.030241+00:00",
+      "last_successful_refresh": "2026-09-27T19:03:49.011311+00:00",
       "merge_requests": [],
       "discovered_config": {
         "name": "efivar",
@@ -24688,7 +24688,7 @@
       "team": "foundations",
       "status": "ok",
       "error": null,
-      "last_successful_refresh": "2026-09-27T16:51:51.030241+00:00",
+      "last_successful_refresh": "2026-09-27T19:03:49.011311+00:00",
       "merge_requests": [],
       "discovered_config": {
         "name": "elfutils",
@@ -24706,7 +24706,7 @@
       "team": "foundations",
       "status": "ok",
       "error": null,
-      "last_successful_refresh": "2026-09-27T16:51:51.030241+00:00",
+      "last_successful_refresh": "2026-09-27T19:03:49.011311+00:00",
       "merge_requests": [
         {
           "id": "510471",
@@ -24779,7 +24779,7 @@
       "team": "foundations",
       "status": "ok",
       "error": null,
-      "last_successful_refresh": "2026-09-27T16:51:51.030241+00:00",
+      "last_successful_refresh": "2026-09-27T19:03:49.011311+00:00",
       "merge_requests": [
         {
           "id": "367541",
@@ -25173,7 +25173,7 @@
       "team": "foundations",
       "status": "ok",
       "error": null,
-      "last_successful_refresh": "2026-09-27T16:51:51.030241+00:00",
+      "last_successful_refresh": "2026-09-27T19:03:49.011311+00:00",
       "merge_requests": [],
       "discovered_config": {
         "name": "flashrom",
@@ -25191,7 +25191,7 @@
       "team": "foundations",
       "status": "ok",
       "error": null,
-      "last_successful_refresh": "2026-09-27T16:51:51.030241+00:00",
+      "last_successful_refresh": "2026-09-27T19:03:49.011311+00:00",
       "merge_requests": [
         {
           "id": "488530",
@@ -25611,7 +25611,7 @@
       "team": "foundations",
       "status": "ok",
       "error": null,
-      "last_successful_refresh": "2026-09-27T16:51:51.030241+00:00",
+      "last_successful_refresh": "2026-09-27T19:03:49.011311+00:00",
       "merge_requests": [],
       "discovered_config": {
         "name": "fwupd-efi",
@@ -25629,7 +25629,7 @@
       "team": "foundations",
       "status": "ok",
       "error": null,
-      "last_successful_refresh": "2026-09-27T16:51:51.030241+00:00",
+      "last_successful_refresh": "2026-09-27T19:03:49.011311+00:00",
       "merge_requests": [],
       "discovered_config": {
         "name": "fwupd-signed",
@@ -25647,7 +25647,7 @@
       "team": "foundations",
       "status": "ok",
       "error": null,
-      "last_successful_refresh": "2026-09-27T16:51:51.030241+00:00",
+      "last_successful_refresh": "2026-09-27T19:03:49.011311+00:00",
       "merge_requests": [
         {
           "id": "497871",
@@ -25713,7 +25713,7 @@
       "team": "foundations",
       "status": "ok",
       "error": null,
-      "last_successful_refresh": "2026-09-27T16:51:51.030241+00:00",
+      "last_successful_refresh": "2026-09-27T19:03:49.011311+00:00",
       "merge_requests": [],
       "discovered_config": {
         "name": "gcc-10-cross",
@@ -25731,7 +25731,7 @@
       "team": "foundations",
       "status": "ok",
       "error": null,
-      "last_successful_refresh": "2026-09-27T16:51:51.030241+00:00",
+      "last_successful_refresh": "2026-09-27T19:03:49.011311+00:00",
       "merge_requests": [
         {
           "id": "497875",
@@ -25804,7 +25804,7 @@
       "team": "foundations",
       "status": "ok",
       "error": null,
-      "last_successful_refresh": "2026-09-27T16:51:51.030241+00:00",
+      "last_successful_refresh": "2026-09-27T19:03:49.011311+00:00",
       "merge_requests": [],
       "discovered_config": {
         "name": "gcc-11-cross",
@@ -25822,7 +25822,7 @@
       "team": "foundations",
       "status": "ok",
       "error": null,
-      "last_successful_refresh": "2026-09-27T16:51:51.030241+00:00",
+      "last_successful_refresh": "2026-09-27T19:03:49.011311+00:00",
       "merge_requests": [],
       "discovered_config": {
         "name": "gcc-12",
@@ -25840,7 +25840,7 @@
       "team": "foundations",
       "status": "ok",
       "error": null,
-      "last_successful_refresh": "2026-09-27T16:51:51.030241+00:00",
+      "last_successful_refresh": "2026-09-27T19:03:49.011311+00:00",
       "merge_requests": [],
       "discovered_config": {
         "name": "gcc-12-cross",
@@ -25858,7 +25858,7 @@
       "team": "foundations",
       "status": "ok",
       "error": null,
-      "last_successful_refresh": "2026-09-27T16:51:51.030241+00:00",
+      "last_successful_refresh": "2026-09-27T19:03:49.011311+00:00",
       "merge_requests": [],
       "discovered_config": {
         "name": "gcc-13",
@@ -25876,7 +25876,7 @@
       "team": "foundations",
       "status": "ok",
       "error": null,
-      "last_successful_refresh": "2026-09-27T16:51:51.030241+00:00",
+      "last_successful_refresh": "2026-09-27T19:03:49.011311+00:00",
       "merge_requests": [],
       "discovered_config": {
         "name": "gcc-13-cross",
@@ -25894,7 +25894,7 @@
       "team": "foundations",
       "status": "ok",
       "error": null,
-      "last_successful_refresh": "2026-09-27T16:51:51.030241+00:00",
+      "last_successful_refresh": "2026-09-27T19:03:49.011311+00:00",
       "merge_requests": [],
       "discovered_config": {
         "name": "gcc-14",
@@ -25912,7 +25912,7 @@
       "team": "foundations",
       "status": "ok",
       "error": null,
-      "last_successful_refresh": "2026-09-27T16:51:51.030241+00:00",
+      "last_successful_refresh": "2026-09-27T19:03:49.011311+00:00",
       "merge_requests": [],
       "discovered_config": {
         "name": "gcc-14-cross",
@@ -25930,7 +25930,7 @@
       "team": "foundations",
       "status": "ok",
       "error": null,
-      "last_successful_refresh": "2026-09-27T16:51:51.030241+00:00",
+      "last_successful_refresh": "2026-09-27T19:03:49.011311+00:00",
       "merge_requests": [],
       "discovered_config": {
         "name": "gcc-15",
@@ -25948,7 +25948,7 @@
       "team": "foundations",
       "status": "ok",
       "error": null,
-      "last_successful_refresh": "2026-09-27T16:51:51.030241+00:00",
+      "last_successful_refresh": "2026-09-27T19:03:49.011311+00:00",
       "merge_requests": [],
       "discovered_config": {
         "name": "gcc-15-cross",
@@ -25966,7 +25966,7 @@
       "team": "foundations",
       "status": "ok",
       "error": null,
-      "last_successful_refresh": "2026-09-27T16:51:51.030241+00:00",
+      "last_successful_refresh": "2026-09-27T19:03:49.011311+00:00",
       "merge_requests": [],
       "discovered_config": {
         "name": "gcc-16",
@@ -25984,7 +25984,7 @@
       "team": "foundations",
       "status": "ok",
       "error": null,
-      "last_successful_refresh": "2026-09-27T16:51:51.030241+00:00",
+      "last_successful_refresh": "2026-09-27T19:03:49.011311+00:00",
       "merge_requests": [],
       "discovered_config": {
         "name": "gcc-16-cross",
@@ -26002,7 +26002,7 @@
       "team": "foundations",
       "status": "ok",
       "error": null,
-      "last_successful_refresh": "2026-09-27T16:51:51.030241+00:00",
+      "last_successful_refresh": "2026-09-27T19:03:49.011311+00:00",
       "merge_requests": [
         {
           "id": "497861",
@@ -26068,7 +26068,7 @@
       "team": "foundations",
       "status": "ok",
       "error": null,
-      "last_successful_refresh": "2026-09-27T16:51:51.030241+00:00",
+      "last_successful_refresh": "2026-09-27T19:03:49.011311+00:00",
       "merge_requests": [],
       "discovered_config": {
         "name": "gcc-9-cross",
@@ -26086,7 +26086,7 @@
       "team": "foundations",
       "status": "ok",
       "error": null,
-      "last_successful_refresh": "2026-09-27T16:51:51.030241+00:00",
+      "last_successful_refresh": "2026-09-27T19:03:49.011311+00:00",
       "merge_requests": [
         {
           "id": "489350",
@@ -26201,7 +26201,7 @@
       "team": "foundations",
       "status": "ok",
       "error": null,
-      "last_successful_refresh": "2026-09-27T16:51:51.030241+00:00",
+      "last_successful_refresh": "2026-09-27T19:03:49.011311+00:00",
       "merge_requests": [
         {
           "id": "480898",
@@ -26434,7 +26434,7 @@
       "team": "foundations",
       "status": "ok",
       "error": null,
-      "last_successful_refresh": "2026-09-27T16:51:51.030241+00:00",
+      "last_successful_refresh": "2026-09-27T19:03:49.011311+00:00",
       "merge_requests": [],
       "discovered_config": {
         "name": "gnu-efi",
@@ -26452,7 +26452,7 @@
       "team": "foundations",
       "status": "ok",
       "error": null,
-      "last_successful_refresh": "2026-09-27T16:51:51.030241+00:00",
+      "last_successful_refresh": "2026-09-27T19:03:49.011311+00:00",
       "merge_requests": [
         {
           "id": "396531",
@@ -26823,7 +26823,7 @@
           "target_repository": null,
           "target_repository_url": null,
           "age_days": 123,
-          "inactive_days": 116,
+          "inactive_days": 117,
           "is_stale": true,
           "attention": [
             "silent",
@@ -26847,7 +26847,7 @@
       "team": "foundations",
       "status": "ok",
       "error": null,
-      "last_successful_refresh": "2026-09-27T16:51:51.030241+00:00",
+      "last_successful_refresh": "2026-09-27T19:03:49.011311+00:00",
       "merge_requests": [
         {
           "id": "455781",
@@ -27090,7 +27090,7 @@
           "target_repository": null,
           "target_repository_url": null,
           "age_days": 101,
-          "inactive_days": 66,
+          "inactive_days": 67,
           "is_stale": true,
           "attention": [
             "approved_not_landed",
@@ -27114,7 +27114,7 @@
       "team": "foundations",
       "status": "ok",
       "error": null,
-      "last_successful_refresh": "2026-09-27T16:51:51.030241+00:00",
+      "last_successful_refresh": "2026-09-27T19:03:49.011311+00:00",
       "merge_requests": [],
       "discovered_config": {
         "name": "golang-1.13",
@@ -27132,7 +27132,7 @@
       "team": "foundations",
       "status": "ok",
       "error": null,
-      "last_successful_refresh": "2026-09-27T16:51:51.030241+00:00",
+      "last_successful_refresh": "2026-09-27T19:03:49.011311+00:00",
       "merge_requests": [],
       "discovered_config": {
         "name": "golang-1.13-race-detector-runtime",
@@ -27150,7 +27150,7 @@
       "team": "foundations",
       "status": "ok",
       "error": null,
-      "last_successful_refresh": "2026-09-27T16:51:51.030241+00:00",
+      "last_successful_refresh": "2026-09-27T19:03:49.011311+00:00",
       "merge_requests": [],
       "discovered_config": {
         "name": "golang-1.14",
@@ -27168,7 +27168,7 @@
       "team": "foundations",
       "status": "ok",
       "error": null,
-      "last_successful_refresh": "2026-09-27T16:51:51.030241+00:00",
+      "last_successful_refresh": "2026-09-27T19:03:49.011311+00:00",
       "merge_requests": [],
       "discovered_config": {
         "name": "golang-1.17",
@@ -27186,7 +27186,7 @@
       "team": "foundations",
       "status": "ok",
       "error": null,
-      "last_successful_refresh": "2026-09-27T16:51:51.030241+00:00",
+      "last_successful_refresh": "2026-09-27T19:03:49.011311+00:00",
       "merge_requests": [],
       "discovered_config": {
         "name": "golang-1.18",
@@ -27204,7 +27204,7 @@
       "team": "foundations",
       "status": "ok",
       "error": null,
-      "last_successful_refresh": "2026-09-27T16:51:51.030241+00:00",
+      "last_successful_refresh": "2026-09-27T19:03:49.011311+00:00",
       "merge_requests": [],
       "discovered_config": {
         "name": "golang-1.22",
@@ -27222,7 +27222,7 @@
       "team": "foundations",
       "status": "ok",
       "error": null,
-      "last_successful_refresh": "2026-09-27T16:51:51.030241+00:00",
+      "last_successful_refresh": "2026-09-27T19:03:49.011311+00:00",
       "merge_requests": [
         {
           "id": "488375",
@@ -27439,7 +27439,7 @@
       "team": "foundations",
       "status": "ok",
       "error": null,
-      "last_successful_refresh": "2026-09-27T16:51:51.030241+00:00",
+      "last_successful_refresh": "2026-09-27T19:03:49.011311+00:00",
       "merge_requests": [
         {
           "id": "502159",
@@ -27639,8 +27639,8 @@
           "review": null,
           "target_repository": null,
           "target_repository_url": null,
-          "age_days": 15,
-          "inactive_days": 15,
+          "age_days": 16,
+          "inactive_days": 16,
           "is_stale": false,
           "attention": [
             "linked_bug"
@@ -27685,8 +27685,8 @@
           "review": null,
           "target_repository": null,
           "target_repository_url": null,
-          "age_days": 15,
-          "inactive_days": 15,
+          "age_days": 16,
+          "inactive_days": 16,
           "is_stale": false,
           "attention": [
             "linked_bug"
@@ -27731,7 +27731,7 @@
           "review": null,
           "target_repository": null,
           "target_repository_url": null,
-          "age_days": 15,
+          "age_days": 16,
           "inactive_days": 15,
           "is_stale": false,
           "attention": [
@@ -27894,55 +27894,8 @@
       "team": "foundations",
       "status": "ok",
       "error": null,
-      "last_successful_refresh": "2026-09-27T16:51:51.030241+00:00",
+      "last_successful_refresh": "2026-09-27T19:03:49.011311+00:00",
       "merge_requests": [
-        {
-          "id": "511247",
-          "title": "Update resolute's `golang-1.26` to `1.26.7-1~26.04.1` (using stonking's `1.26.7-1` source)",
-          "url": "https://code.launchpad.net/~kajiya/ubuntu/+source/golang-1.26/+git/golang-1.26/+merge/511247",
-          "author": {
-            "name": "kajiya",
-            "display_name": "Chlo\u00e9 Smith",
-            "url": "https://launchpad.net/~kajiya"
-          },
-          "status": "Needs review",
-          "status_category": "needs_review",
-          "created_at": "2026-09-11T19:06:43.476741+00:00",
-          "updated_at": "2026-09-11T19:06:43.476741+00:00",
-          "source_branch": "lp2166409/1.26.7/resolute",
-          "target_branch": "ubuntu/resolute-devel",
-          "reviewers": [
-            {
-              "name": "git-ubuntu-import",
-              "display_name": "git-ubuntu import",
-              "url": "https://launchpad.net/~git-ubuntu-import",
-              "pending": true,
-              "vote": null
-            }
-          ],
-          "comment_count": 0,
-          "last_comment_at": null,
-          "linked_bugs": [
-            {
-              "id": "2166409",
-              "title": "[SRU] Please backport golang-1.25 (1.25.12) and golang-1.26 (1.26.7) to resolute, noble and jammy",
-              "url": "https://bugs.launchpad.net/ubuntu/+source/golang-1.26/+bug/2166409",
-              "status": "Fix Released",
-              "importance": "Undecided"
-            }
-          ],
-          "diff_url": "https://api.launchpad.net/devel/~kajiya/ubuntu/+source/golang-1.26/+git/golang-1.26/+merge/511247/+preview-diff/1141898",
-          "review": null,
-          "target_repository": null,
-          "target_repository_url": null,
-          "age_days": 15,
-          "inactive_days": 15,
-          "is_stale": false,
-          "attention": [
-            "silent",
-            "linked_bug"
-          ]
-        },
         {
           "id": "511240",
           "title": "This is a dummy MP, no mergy!",
@@ -27982,8 +27935,8 @@
           "review": null,
           "target_repository": null,
           "target_repository_url": null,
-          "age_days": 15,
-          "inactive_days": 15,
+          "age_days": 16,
+          "inactive_days": 16,
           "is_stale": false,
           "attention": [
             "linked_bug"
@@ -28028,10 +27981,57 @@
           "review": null,
           "target_repository": null,
           "target_repository_url": null,
+          "age_days": 16,
+          "inactive_days": 16,
+          "is_stale": false,
+          "attention": [
+            "linked_bug"
+          ]
+        },
+        {
+          "id": "511247",
+          "title": "Update resolute's `golang-1.26` to `1.26.7-1~26.04.1` (using stonking's `1.26.7-1` source)",
+          "url": "https://code.launchpad.net/~kajiya/ubuntu/+source/golang-1.26/+git/golang-1.26/+merge/511247",
+          "author": {
+            "name": "kajiya",
+            "display_name": "Chlo\u00e9 Smith",
+            "url": "https://launchpad.net/~kajiya"
+          },
+          "status": "Needs review",
+          "status_category": "needs_review",
+          "created_at": "2026-09-11T19:06:43.476741+00:00",
+          "updated_at": "2026-09-11T19:06:43.476741+00:00",
+          "source_branch": "lp2166409/1.26.7/resolute",
+          "target_branch": "ubuntu/resolute-devel",
+          "reviewers": [
+            {
+              "name": "git-ubuntu-import",
+              "display_name": "git-ubuntu import",
+              "url": "https://launchpad.net/~git-ubuntu-import",
+              "pending": true,
+              "vote": null
+            }
+          ],
+          "comment_count": 0,
+          "last_comment_at": null,
+          "linked_bugs": [
+            {
+              "id": "2166409",
+              "title": "[SRU] Please backport golang-1.25 (1.25.12) and golang-1.26 (1.26.7) to resolute, noble and jammy",
+              "url": "https://bugs.launchpad.net/ubuntu/+source/golang-1.26/+bug/2166409",
+              "status": "Fix Released",
+              "importance": "Undecided"
+            }
+          ],
+          "diff_url": "https://api.launchpad.net/devel/~kajiya/ubuntu/+source/golang-1.26/+git/golang-1.26/+merge/511247/+preview-diff/1141898",
+          "review": null,
+          "target_repository": null,
+          "target_repository_url": null,
           "age_days": 15,
           "inactive_days": 15,
           "is_stale": false,
           "attention": [
+            "silent",
             "linked_bug"
           ]
         },
@@ -28190,7 +28190,7 @@
       "team": "foundations",
       "status": "ok",
       "error": null,
-      "last_successful_refresh": "2026-09-27T16:51:51.030241+00:00",
+      "last_successful_refresh": "2026-09-27T19:03:49.011311+00:00",
       "merge_requests": [],
       "discovered_config": {
         "name": "golang-1.27",
@@ -28208,7 +28208,7 @@
       "team": "foundations",
       "status": "ok",
       "error": null,
-      "last_successful_refresh": "2026-09-27T16:51:51.030241+00:00",
+      "last_successful_refresh": "2026-09-27T19:03:49.011311+00:00",
       "merge_requests": [],
       "discovered_config": {
         "name": "golang-defaults",
@@ -28226,7 +28226,7 @@
       "team": "foundations",
       "status": "ok",
       "error": null,
-      "last_successful_refresh": "2026-09-27T16:51:51.030241+00:00",
+      "last_successful_refresh": "2026-09-27T19:03:49.011311+00:00",
       "merge_requests": [],
       "discovered_config": {
         "name": "google-compute-engine-oslogin",
@@ -28244,7 +28244,7 @@
       "team": "foundations",
       "status": "ok",
       "error": null,
-      "last_successful_refresh": "2026-09-27T16:51:51.030241+00:00",
+      "last_successful_refresh": "2026-09-27T19:03:49.011311+00:00",
       "merge_requests": [
         {
           "id": "442648",
@@ -28545,7 +28545,7 @@
       "team": "foundations",
       "status": "ok",
       "error": null,
-      "last_successful_refresh": "2026-09-27T16:51:51.030241+00:00",
+      "last_successful_refresh": "2026-09-27T19:03:49.011311+00:00",
       "merge_requests": [
         {
           "id": "488463",
@@ -28647,7 +28647,7 @@
           "review": null,
           "target_repository": null,
           "target_repository_url": null,
-          "age_days": 407,
+          "age_days": 408,
           "inactive_days": 366,
           "is_stale": true,
           "attention": [
@@ -28934,7 +28934,7 @@
       "team": "foundations",
       "status": "ok",
       "error": null,
-      "last_successful_refresh": "2026-09-27T16:51:51.030241+00:00",
+      "last_successful_refresh": "2026-09-27T19:03:49.011311+00:00",
       "merge_requests": [],
       "discovered_config": {
         "name": "grub-gfxpayload-lists",
@@ -28952,7 +28952,7 @@
       "team": "foundations",
       "status": "ok",
       "error": null,
-      "last_successful_refresh": "2026-09-27T16:51:51.030241+00:00",
+      "last_successful_refresh": "2026-09-27T19:03:49.011311+00:00",
       "merge_requests": [
         {
           "id": "384068",
@@ -29017,7 +29017,7 @@
       "team": "foundations",
       "status": "ok",
       "error": null,
-      "last_successful_refresh": "2026-09-27T16:51:51.030241+00:00",
+      "last_successful_refresh": "2026-09-27T19:03:49.011311+00:00",
       "merge_requests": [
         {
           "id": "370896",
@@ -29125,7 +29125,7 @@
           "review": null,
           "target_repository": null,
           "target_repository_url": null,
-          "age_days": 1202,
+          "age_days": 1203,
           "inactive_days": 1189,
           "is_stale": true,
           "attention": [
@@ -29233,7 +29233,7 @@
           "target_repository": null,
           "target_repository_url": null,
           "age_days": 435,
-          "inactive_days": 430,
+          "inactive_days": 431,
           "is_stale": true,
           "attention": [
             "silent"
@@ -29310,7 +29310,7 @@
       "team": "foundations",
       "status": "ok",
       "error": null,
-      "last_successful_refresh": "2026-09-27T16:51:51.030241+00:00",
+      "last_successful_refresh": "2026-09-27T19:03:49.011311+00:00",
       "merge_requests": [],
       "discovered_config": {
         "name": "grub2-signed",
@@ -29328,7 +29328,7 @@
       "team": "foundations",
       "status": "ok",
       "error": null,
-      "last_successful_refresh": "2026-09-27T16:51:51.030241+00:00",
+      "last_successful_refresh": "2026-09-27T19:03:49.011311+00:00",
       "merge_requests": [],
       "discovered_config": {
         "name": "grub2-unsigned",
@@ -29346,7 +29346,7 @@
       "team": "foundations",
       "status": "ok",
       "error": null,
-      "last_successful_refresh": "2026-09-27T16:51:51.030241+00:00",
+      "last_successful_refresh": "2026-09-27T19:03:49.011311+00:00",
       "merge_requests": [],
       "discovered_config": {
         "name": "intel-microcode",
@@ -29364,7 +29364,7 @@
       "team": "foundations",
       "status": "ok",
       "error": null,
-      "last_successful_refresh": "2026-09-27T16:51:51.030241+00:00",
+      "last_successful_refresh": "2026-09-27T19:03:49.011311+00:00",
       "merge_requests": [],
       "discovered_config": {
         "name": "java-common",
@@ -29382,7 +29382,7 @@
       "team": "foundations",
       "status": "ok",
       "error": null,
-      "last_successful_refresh": "2026-09-27T16:51:51.030241+00:00",
+      "last_successful_refresh": "2026-09-27T19:03:49.011311+00:00",
       "merge_requests": [
         {
           "id": "499859",
@@ -29494,7 +29494,7 @@
       "team": "foundations",
       "status": "ok",
       "error": null,
-      "last_successful_refresh": "2026-09-27T16:51:51.030241+00:00",
+      "last_successful_refresh": "2026-09-27T19:03:49.011311+00:00",
       "merge_requests": [
         {
           "id": "452342",
@@ -29628,7 +29628,7 @@
       "team": "foundations",
       "status": "ok",
       "error": null,
-      "last_successful_refresh": "2026-09-27T16:51:51.030241+00:00",
+      "last_successful_refresh": "2026-09-27T19:03:49.011311+00:00",
       "merge_requests": [],
       "discovered_config": {
         "name": "libsmbios",
@@ -29646,7 +29646,7 @@
       "team": "foundations",
       "status": "ok",
       "error": null,
-      "last_successful_refresh": "2026-09-27T16:51:51.030241+00:00",
+      "last_successful_refresh": "2026-09-27T19:03:49.011311+00:00",
       "merge_requests": [],
       "discovered_config": {
         "name": "libsodium",
@@ -29664,7 +29664,7 @@
       "team": "foundations",
       "status": "ok",
       "error": null,
-      "last_successful_refresh": "2026-09-27T16:51:51.030241+00:00",
+      "last_successful_refresh": "2026-09-27T19:03:49.011311+00:00",
       "merge_requests": [],
       "discovered_config": {
         "name": "libssh2",
@@ -29682,7 +29682,7 @@
       "team": "foundations",
       "status": "ok",
       "error": null,
-      "last_successful_refresh": "2026-09-27T16:51:51.030241+00:00",
+      "last_successful_refresh": "2026-09-27T19:03:49.011311+00:00",
       "merge_requests": [],
       "discovered_config": {
         "name": "libubootenv",
@@ -29700,7 +29700,7 @@
       "team": "foundations",
       "status": "ok",
       "error": null,
-      "last_successful_refresh": "2026-09-27T16:51:51.030241+00:00",
+      "last_successful_refresh": "2026-09-27T19:03:49.011311+00:00",
       "merge_requests": [],
       "discovered_config": {
         "name": "libxcrypt",
@@ -29718,7 +29718,7 @@
       "team": "foundations",
       "status": "ok",
       "error": null,
-      "last_successful_refresh": "2026-09-27T16:51:51.030241+00:00",
+      "last_successful_refresh": "2026-09-27T19:03:49.011311+00:00",
       "merge_requests": [],
       "discovered_config": {
         "name": "lilo",
@@ -29736,7 +29736,7 @@
       "team": "foundations",
       "status": "ok",
       "error": null,
-      "last_successful_refresh": "2026-09-27T16:51:51.030241+00:00",
+      "last_successful_refresh": "2026-09-27T19:03:49.011311+00:00",
       "merge_requests": [],
       "discovered_config": {
         "name": "linux-firmware-raspi",
@@ -29754,7 +29754,7 @@
       "team": "foundations",
       "status": "ok",
       "error": null,
-      "last_successful_refresh": "2026-09-27T16:51:51.030241+00:00",
+      "last_successful_refresh": "2026-09-27T19:03:49.011311+00:00",
       "merge_requests": [],
       "discovered_config": {
         "name": "linux-firmware-raspi2",
@@ -29772,7 +29772,7 @@
       "team": "foundations",
       "status": "ok",
       "error": null,
-      "last_successful_refresh": "2026-09-27T16:51:51.030241+00:00",
+      "last_successful_refresh": "2026-09-27T19:03:49.011311+00:00",
       "merge_requests": [
         {
           "id": "379723",
@@ -29881,7 +29881,7 @@
       "team": "foundations",
       "status": "ok",
       "error": null,
-      "last_successful_refresh": "2026-09-27T16:51:51.030241+00:00",
+      "last_successful_refresh": "2026-09-27T19:03:49.011311+00:00",
       "merge_requests": [],
       "discovered_config": {
         "name": "live-installer",
@@ -29899,7 +29899,7 @@
       "team": "foundations",
       "status": "ok",
       "error": null,
-      "last_successful_refresh": "2026-09-27T16:51:51.030241+00:00",
+      "last_successful_refresh": "2026-09-27T19:03:49.011311+00:00",
       "merge_requests": [
         {
           "id": "368472",
@@ -30206,7 +30206,7 @@
       "team": "foundations",
       "status": "ok",
       "error": null,
-      "last_successful_refresh": "2026-09-27T16:51:51.030241+00:00",
+      "last_successful_refresh": "2026-09-27T19:03:49.011311+00:00",
       "merge_requests": [],
       "discovered_config": {
         "name": "llvm-toolchain-10",
@@ -30224,7 +30224,7 @@
       "team": "foundations",
       "status": "ok",
       "error": null,
-      "last_successful_refresh": "2026-09-27T16:51:51.030241+00:00",
+      "last_successful_refresh": "2026-09-27T19:03:49.011311+00:00",
       "merge_requests": [],
       "discovered_config": {
         "name": "llvm-toolchain-14",
@@ -30242,7 +30242,7 @@
       "team": "foundations",
       "status": "ok",
       "error": null,
-      "last_successful_refresh": "2026-09-27T16:51:51.030241+00:00",
+      "last_successful_refresh": "2026-09-27T19:03:49.011311+00:00",
       "merge_requests": [
         {
           "id": "503674",
@@ -30282,8 +30282,8 @@
           "review": null,
           "target_repository": null,
           "target_repository_url": null,
-          "age_days": 165,
-          "inactive_days": 165,
+          "age_days": 166,
+          "inactive_days": 166,
           "is_stale": true,
           "attention": []
         }
@@ -30304,7 +30304,7 @@
       "team": "foundations",
       "status": "ok",
       "error": null,
-      "last_successful_refresh": "2026-09-27T16:51:51.030241+00:00",
+      "last_successful_refresh": "2026-09-27T19:03:49.011311+00:00",
       "merge_requests": [
         {
           "id": "466494",
@@ -30408,7 +30408,7 @@
       "team": "foundations",
       "status": "ok",
       "error": null,
-      "last_successful_refresh": "2026-09-27T16:51:51.030241+00:00",
+      "last_successful_refresh": "2026-09-27T19:03:49.011311+00:00",
       "merge_requests": [
         {
           "id": "500087",
@@ -30480,7 +30480,7 @@
       "team": "foundations",
       "status": "ok",
       "error": null,
-      "last_successful_refresh": "2026-09-27T16:51:51.030241+00:00",
+      "last_successful_refresh": "2026-09-27T19:03:49.011311+00:00",
       "merge_requests": [],
       "discovered_config": {
         "name": "llvm-toolchain-20",
@@ -30498,7 +30498,7 @@
       "team": "foundations",
       "status": "ok",
       "error": null,
-      "last_successful_refresh": "2026-09-27T16:51:51.030241+00:00",
+      "last_successful_refresh": "2026-09-27T19:03:49.011311+00:00",
       "merge_requests": [],
       "discovered_config": {
         "name": "llvm-toolchain-21",
@@ -30516,7 +30516,7 @@
       "team": "foundations",
       "status": "ok",
       "error": null,
-      "last_successful_refresh": "2026-09-27T16:51:51.030241+00:00",
+      "last_successful_refresh": "2026-09-27T19:03:49.011311+00:00",
       "merge_requests": [
         {
           "id": "506791",
@@ -30634,7 +30634,7 @@
       "team": "foundations",
       "status": "ok",
       "error": null,
-      "last_successful_refresh": "2026-09-27T16:51:51.030241+00:00",
+      "last_successful_refresh": "2026-09-27T19:03:49.011311+00:00",
       "merge_requests": [],
       "discovered_config": {
         "name": "llvm-toolchain-9",
@@ -30652,7 +30652,7 @@
       "team": "foundations",
       "status": "ok",
       "error": null,
-      "last_successful_refresh": "2026-09-27T16:51:51.030241+00:00",
+      "last_successful_refresh": "2026-09-27T19:03:49.011311+00:00",
       "merge_requests": [
         {
           "id": "492422",
@@ -30693,7 +30693,7 @@
           "target_repository": null,
           "target_repository_url": null,
           "age_days": 380,
-          "inactive_days": 359,
+          "inactive_days": 360,
           "is_stale": true,
           "attention": [
             "silent"
@@ -30716,7 +30716,7 @@
       "team": "foundations",
       "status": "ok",
       "error": null,
-      "last_successful_refresh": "2026-09-27T16:51:51.030241+00:00",
+      "last_successful_refresh": "2026-09-27T19:03:49.011311+00:00",
       "merge_requests": [],
       "discovered_config": {
         "name": "microcode-initrd",
@@ -30734,7 +30734,7 @@
       "team": "foundations",
       "status": "ok",
       "error": null,
-      "last_successful_refresh": "2026-09-27T16:51:51.030241+00:00",
+      "last_successful_refresh": "2026-09-27T19:03:49.011311+00:00",
       "merge_requests": [],
       "discovered_config": {
         "name": "mini-iso-tools",
@@ -30752,7 +30752,7 @@
       "team": "foundations",
       "status": "ok",
       "error": null,
-      "last_successful_refresh": "2026-09-27T16:51:51.030241+00:00",
+      "last_successful_refresh": "2026-09-27T19:03:49.011311+00:00",
       "merge_requests": [
         {
           "id": "444298",
@@ -30793,7 +30793,7 @@
           "review": null,
           "target_repository": null,
           "target_repository_url": null,
-          "age_days": 1207,
+          "age_days": 1208,
           "inactive_days": 1207,
           "is_stale": true,
           "attention": [
@@ -30818,7 +30818,7 @@
       "team": "foundations",
       "status": "ok",
       "error": null,
-      "last_successful_refresh": "2026-09-27T16:51:51.030241+00:00",
+      "last_successful_refresh": "2026-09-27T19:03:49.011311+00:00",
       "merge_requests": [],
       "discovered_config": {
         "name": "mtools",
@@ -30836,7 +30836,7 @@
       "team": "foundations",
       "status": "ok",
       "error": null,
-      "last_successful_refresh": "2026-09-27T16:51:51.030241+00:00",
+      "last_successful_refresh": "2026-09-27T19:03:49.011311+00:00",
       "merge_requests": [],
       "discovered_config": {
         "name": "nettle",
@@ -30854,7 +30854,7 @@
       "team": "foundations",
       "status": "ok",
       "error": null,
-      "last_successful_refresh": "2026-09-27T16:51:51.030241+00:00",
+      "last_successful_refresh": "2026-09-27T19:03:49.011311+00:00",
       "merge_requests": [],
       "discovered_config": {
         "name": "nullboot",
@@ -30872,7 +30872,7 @@
       "team": "foundations",
       "status": "ok",
       "error": null,
-      "last_successful_refresh": "2026-09-27T16:51:51.030241+00:00",
+      "last_successful_refresh": "2026-09-27T19:03:49.011311+00:00",
       "merge_requests": [
         {
           "id": "479886",
@@ -30981,7 +30981,7 @@
       "team": "foundations",
       "status": "ok",
       "error": null,
-      "last_successful_refresh": "2026-09-27T16:51:51.030241+00:00",
+      "last_successful_refresh": "2026-09-27T19:03:49.011311+00:00",
       "merge_requests": [
         {
           "id": "468191",
@@ -31209,7 +31209,7 @@
       "team": "foundations",
       "status": "ok",
       "error": null,
-      "last_successful_refresh": "2026-09-27T16:51:51.030241+00:00",
+      "last_successful_refresh": "2026-09-27T19:03:49.011311+00:00",
       "merge_requests": [
         {
           "id": "487319",
@@ -31274,7 +31274,7 @@
       "team": "foundations",
       "status": "ok",
       "error": null,
-      "last_successful_refresh": "2026-09-27T16:51:51.030241+00:00",
+      "last_successful_refresh": "2026-09-27T19:03:49.011311+00:00",
       "merge_requests": [
         {
           "id": "446249",
@@ -31595,7 +31595,7 @@
           "target_repository": null,
           "target_repository_url": null,
           "age_days": 829,
-          "inactive_days": 823,
+          "inactive_days": 824,
           "is_stale": true,
           "attention": [
             "silent",
@@ -31700,7 +31700,7 @@
       "team": "foundations",
       "status": "ok",
       "error": null,
-      "last_successful_refresh": "2026-09-27T16:51:51.030241+00:00",
+      "last_successful_refresh": "2026-09-27T19:03:49.011311+00:00",
       "merge_requests": [],
       "discovered_config": {
         "name": "opensbi",
@@ -31718,7 +31718,7 @@
       "team": "foundations",
       "status": "ok",
       "error": null,
-      "last_successful_refresh": "2026-09-27T16:51:51.030241+00:00",
+      "last_successful_refresh": "2026-09-27T19:03:49.011311+00:00",
       "merge_requests": [
         {
           "id": "423153",
@@ -32056,7 +32056,7 @@
           "target_repository": null,
           "target_repository_url": null,
           "age_days": 224,
-          "inactive_days": 221,
+          "inactive_days": 222,
           "is_stale": true,
           "attention": [
             "silent",
@@ -32130,8 +32130,8 @@
           "review": null,
           "target_repository": null,
           "target_repository_url": null,
-          "age_days": 103,
-          "inactive_days": 103,
+          "age_days": 104,
+          "inactive_days": 104,
           "is_stale": true,
           "attention": []
         },
@@ -32202,7 +32202,7 @@
           "target_repository": null,
           "target_repository_url": null,
           "age_days": 75,
-          "inactive_days": 66,
+          "inactive_days": 67,
           "is_stale": true,
           "attention": [
             "silent"
@@ -32397,8 +32397,8 @@
           "review": null,
           "target_repository": null,
           "target_repository_url": null,
-          "age_days": 170,
-          "inactive_days": 46,
+          "age_days": 171,
+          "inactive_days": 47,
           "is_stale": true,
           "attention": [
             "silent",
@@ -32681,7 +32681,7 @@
       "team": "foundations",
       "status": "ok",
       "error": null,
-      "last_successful_refresh": "2026-09-27T16:51:51.030241+00:00",
+      "last_successful_refresh": "2026-09-27T19:03:49.011311+00:00",
       "merge_requests": [
         {
           "id": "509615",
@@ -32807,7 +32807,7 @@
       "team": "foundations",
       "status": "ok",
       "error": null,
-      "last_successful_refresh": "2026-09-27T16:51:51.030241+00:00",
+      "last_successful_refresh": "2026-09-27T19:03:49.011311+00:00",
       "merge_requests": [],
       "discovered_config": {
         "name": "p11-kit",
@@ -32825,7 +32825,7 @@
       "team": "foundations",
       "status": "ok",
       "error": null,
-      "last_successful_refresh": "2026-09-27T16:51:51.030241+00:00",
+      "last_successful_refresh": "2026-09-27T19:03:49.011311+00:00",
       "merge_requests": [
         {
           "id": "436857",
@@ -32865,7 +32865,7 @@
           "review": null,
           "target_repository": null,
           "target_repository_url": null,
-          "age_days": 1331,
+          "age_days": 1332,
           "inactive_days": 1209,
           "is_stale": true,
           "attention": [
@@ -32889,7 +32889,7 @@
       "team": "foundations",
       "status": "ok",
       "error": null,
-      "last_successful_refresh": "2026-09-27T16:51:51.030241+00:00",
+      "last_successful_refresh": "2026-09-27T19:03:49.011311+00:00",
       "merge_requests": [],
       "discovered_config": {
         "name": "pemmican",
@@ -32907,7 +32907,7 @@
       "team": "foundations",
       "status": "ok",
       "error": null,
-      "last_successful_refresh": "2026-09-27T16:51:51.030241+00:00",
+      "last_successful_refresh": "2026-09-27T19:03:49.011311+00:00",
       "merge_requests": [],
       "discovered_config": {
         "name": "pi-bluetooth",
@@ -32925,7 +32925,7 @@
       "team": "foundations",
       "status": "ok",
       "error": null,
-      "last_successful_refresh": "2026-09-27T16:51:51.030241+00:00",
+      "last_successful_refresh": "2026-09-27T19:03:49.011311+00:00",
       "merge_requests": [],
       "discovered_config": {
         "name": "piboot-try",
@@ -32943,7 +32943,7 @@
       "team": "foundations",
       "status": "ok",
       "error": null,
-      "last_successful_refresh": "2026-09-27T16:51:51.030241+00:00",
+      "last_successful_refresh": "2026-09-27T19:03:49.011311+00:00",
       "merge_requests": [],
       "discovered_config": {
         "name": "pkcs11-helper",
@@ -32961,7 +32961,7 @@
       "team": "foundations",
       "status": "ok",
       "error": null,
-      "last_successful_refresh": "2026-09-27T16:51:51.030241+00:00",
+      "last_successful_refresh": "2026-09-27T19:03:49.011311+00:00",
       "merge_requests": [
         {
           "id": "486537",
@@ -33088,7 +33088,7 @@
       "team": "foundations",
       "status": "ok",
       "error": null,
-      "last_successful_refresh": "2026-09-27T16:51:51.030241+00:00",
+      "last_successful_refresh": "2026-09-27T19:03:49.011311+00:00",
       "merge_requests": [],
       "discovered_config": {
         "name": "pyopenssl",
@@ -33106,7 +33106,7 @@
       "team": "foundations",
       "status": "ok",
       "error": null,
-      "last_successful_refresh": "2026-09-27T16:51:51.030241+00:00",
+      "last_successful_refresh": "2026-09-27T19:03:49.011311+00:00",
       "merge_requests": [
         {
           "id": "475868",
@@ -33170,7 +33170,7 @@
       "team": "foundations",
       "status": "ok",
       "error": null,
-      "last_successful_refresh": "2026-09-27T16:51:51.030241+00:00",
+      "last_successful_refresh": "2026-09-27T19:03:49.011311+00:00",
       "merge_requests": [],
       "discovered_config": {
         "name": "python-attrs",
@@ -33188,7 +33188,7 @@
       "team": "foundations",
       "status": "ok",
       "error": null,
-      "last_successful_refresh": "2026-09-27T16:51:51.030241+00:00",
+      "last_successful_refresh": "2026-09-27T19:03:49.011311+00:00",
       "merge_requests": [],
       "discovered_config": {
         "name": "python-aws-requests-auth",
@@ -33206,7 +33206,7 @@
       "team": "foundations",
       "status": "ok",
       "error": null,
-      "last_successful_refresh": "2026-09-27T16:51:51.030241+00:00",
+      "last_successful_refresh": "2026-09-27T19:03:49.011311+00:00",
       "merge_requests": [],
       "discovered_config": {
         "name": "python-bsddb3",
@@ -33224,7 +33224,7 @@
       "team": "foundations",
       "status": "ok",
       "error": null,
-      "last_successful_refresh": "2026-09-27T16:51:51.030241+00:00",
+      "last_successful_refresh": "2026-09-27T19:03:49.011311+00:00",
       "merge_requests": [],
       "discovered_config": {
         "name": "python-click",
@@ -33242,7 +33242,7 @@
       "team": "foundations",
       "status": "ok",
       "error": null,
-      "last_successful_refresh": "2026-09-27T16:51:51.030241+00:00",
+      "last_successful_refresh": "2026-09-27T19:03:49.011311+00:00",
       "merge_requests": [],
       "discovered_config": {
         "name": "python-colorama",
@@ -33260,7 +33260,7 @@
       "team": "foundations",
       "status": "ok",
       "error": null,
-      "last_successful_refresh": "2026-09-27T16:51:51.030241+00:00",
+      "last_successful_refresh": "2026-09-27T19:03:49.011311+00:00",
       "merge_requests": [
         {
           "id": "378948",
@@ -33301,7 +33301,7 @@
           "target_repository": null,
           "target_repository_url": null,
           "age_days": 2419,
-          "inactive_days": 2418,
+          "inactive_days": 2419,
           "is_stale": true,
           "attention": []
         }
@@ -33322,7 +33322,7 @@
       "team": "foundations",
       "status": "ok",
       "error": null,
-      "last_successful_refresh": "2026-09-27T16:51:51.030241+00:00",
+      "last_successful_refresh": "2026-09-27T19:03:49.011311+00:00",
       "merge_requests": [],
       "discovered_config": {
         "name": "python-cssselect",
@@ -33340,7 +33340,7 @@
       "team": "foundations",
       "status": "ok",
       "error": null,
-      "last_successful_refresh": "2026-09-27T16:51:51.030241+00:00",
+      "last_successful_refresh": "2026-09-27T19:03:49.011311+00:00",
       "merge_requests": [],
       "discovered_config": {
         "name": "python-cups",
@@ -33358,7 +33358,7 @@
       "team": "foundations",
       "status": "ok",
       "error": null,
-      "last_successful_refresh": "2026-09-27T16:51:51.030241+00:00",
+      "last_successful_refresh": "2026-09-27T19:03:49.011311+00:00",
       "merge_requests": [],
       "discovered_config": {
         "name": "python-dateutil",
@@ -33376,7 +33376,7 @@
       "team": "foundations",
       "status": "ok",
       "error": null,
-      "last_successful_refresh": "2026-09-27T16:51:51.030241+00:00",
+      "last_successful_refresh": "2026-09-27T19:03:49.011311+00:00",
       "merge_requests": [
         {
           "id": "505853",
@@ -33417,7 +33417,7 @@
           "review": null,
           "target_repository": null,
           "target_repository_url": null,
-          "age_days": 116,
+          "age_days": 117,
           "inactive_days": 115,
           "is_stale": true,
           "attention": [
@@ -33442,7 +33442,7 @@
       "team": "foundations",
       "status": "ok",
       "error": null,
-      "last_successful_refresh": "2026-09-27T16:51:51.030241+00:00",
+      "last_successful_refresh": "2026-09-27T19:03:49.011311+00:00",
       "merge_requests": [],
       "discovered_config": {
         "name": "python-defer",
@@ -33460,7 +33460,7 @@
       "team": "foundations",
       "status": "ok",
       "error": null,
-      "last_successful_refresh": "2026-09-27T16:51:51.030241+00:00",
+      "last_successful_refresh": "2026-09-27T19:03:49.011311+00:00",
       "merge_requests": [],
       "discovered_config": {
         "name": "python-distro",
@@ -33478,7 +33478,7 @@
       "team": "foundations",
       "status": "ok",
       "error": null,
-      "last_successful_refresh": "2026-09-27T16:51:51.030241+00:00",
+      "last_successful_refresh": "2026-09-27T19:03:49.011311+00:00",
       "merge_requests": [],
       "discovered_config": {
         "name": "python-docutils",
@@ -33496,7 +33496,7 @@
       "team": "foundations",
       "status": "ok",
       "error": null,
-      "last_successful_refresh": "2026-09-27T16:51:51.030241+00:00",
+      "last_successful_refresh": "2026-09-27T19:03:49.011311+00:00",
       "merge_requests": [],
       "discovered_config": {
         "name": "python-fixtures",
@@ -33514,7 +33514,7 @@
       "team": "foundations",
       "status": "ok",
       "error": null,
-      "last_successful_refresh": "2026-09-27T16:51:51.030241+00:00",
+      "last_successful_refresh": "2026-09-27T19:03:49.011311+00:00",
       "merge_requests": [],
       "discovered_config": {
         "name": "python-future",
@@ -33532,7 +33532,7 @@
       "team": "foundations",
       "status": "ok",
       "error": null,
-      "last_successful_refresh": "2026-09-27T16:51:51.030241+00:00",
+      "last_successful_refresh": "2026-09-27T19:03:49.011311+00:00",
       "merge_requests": [],
       "discovered_config": {
         "name": "python-httplib2",
@@ -33550,7 +33550,7 @@
       "team": "foundations",
       "status": "ok",
       "error": null,
-      "last_successful_refresh": "2026-09-27T16:51:51.030241+00:00",
+      "last_successful_refresh": "2026-09-27T19:03:49.011311+00:00",
       "merge_requests": [],
       "discovered_config": {
         "name": "python-idna",
@@ -33568,7 +33568,7 @@
       "team": "foundations",
       "status": "ok",
       "error": null,
-      "last_successful_refresh": "2026-09-27T16:51:51.030241+00:00",
+      "last_successful_refresh": "2026-09-27T19:03:49.011311+00:00",
       "merge_requests": [],
       "discovered_config": {
         "name": "python-imagesize",
@@ -33586,7 +33586,7 @@
       "team": "foundations",
       "status": "ok",
       "error": null,
-      "last_successful_refresh": "2026-09-27T16:51:51.030241+00:00",
+      "last_successful_refresh": "2026-09-27T19:03:49.011311+00:00",
       "merge_requests": [],
       "discovered_config": {
         "name": "python-keyring",
@@ -33604,7 +33604,7 @@
       "team": "foundations",
       "status": "ok",
       "error": null,
-      "last_successful_refresh": "2026-09-27T16:51:51.030241+00:00",
+      "last_successful_refresh": "2026-09-27T19:03:49.011311+00:00",
       "merge_requests": [],
       "discovered_config": {
         "name": "python-launchpadlib",
@@ -33622,7 +33622,7 @@
       "team": "foundations",
       "status": "ok",
       "error": null,
-      "last_successful_refresh": "2026-09-27T16:51:51.030241+00:00",
+      "last_successful_refresh": "2026-09-27T19:03:49.011311+00:00",
       "merge_requests": [
         {
           "id": "502352",
@@ -33684,7 +33684,7 @@
       "team": "foundations",
       "status": "ok",
       "error": null,
-      "last_successful_refresh": "2026-09-27T16:51:51.030241+00:00",
+      "last_successful_refresh": "2026-09-27T19:03:49.011311+00:00",
       "merge_requests": [],
       "discovered_config": {
         "name": "python-lockfile",
@@ -33702,7 +33702,7 @@
       "team": "foundations",
       "status": "ok",
       "error": null,
-      "last_successful_refresh": "2026-09-27T16:51:51.030241+00:00",
+      "last_successful_refresh": "2026-09-27T19:03:49.011311+00:00",
       "merge_requests": [],
       "discovered_config": {
         "name": "python-magic",
@@ -33720,7 +33720,7 @@
       "team": "foundations",
       "status": "ok",
       "error": null,
-      "last_successful_refresh": "2026-09-27T16:51:51.030241+00:00",
+      "last_successful_refresh": "2026-09-27T19:03:49.011311+00:00",
       "merge_requests": [],
       "discovered_config": {
         "name": "python-mysqldb",
@@ -33738,7 +33738,7 @@
       "team": "foundations",
       "status": "ok",
       "error": null,
-      "last_successful_refresh": "2026-09-27T16:51:51.030241+00:00",
+      "last_successful_refresh": "2026-09-27T19:03:49.011311+00:00",
       "merge_requests": [],
       "discovered_config": {
         "name": "python-packaging",
@@ -33756,7 +33756,7 @@
       "team": "foundations",
       "status": "ok",
       "error": null,
-      "last_successful_refresh": "2026-09-27T16:51:51.030241+00:00",
+      "last_successful_refresh": "2026-09-27T19:03:49.011311+00:00",
       "merge_requests": [],
       "discovered_config": {
         "name": "python-pam",
@@ -33774,7 +33774,7 @@
       "team": "foundations",
       "status": "ok",
       "error": null,
-      "last_successful_refresh": "2026-09-27T16:51:51.030241+00:00",
+      "last_successful_refresh": "2026-09-27T19:03:49.011311+00:00",
       "merge_requests": [],
       "discovered_config": {
         "name": "python-pyasn1-modules",
@@ -33792,7 +33792,7 @@
       "team": "foundations",
       "status": "ok",
       "error": null,
-      "last_successful_refresh": "2026-09-27T16:51:51.030241+00:00",
+      "last_successful_refresh": "2026-09-27T19:03:49.011311+00:00",
       "merge_requests": [],
       "discovered_config": {
         "name": "python-pylibacl",
@@ -33810,7 +33810,7 @@
       "team": "foundations",
       "status": "ok",
       "error": null,
-      "last_successful_refresh": "2026-09-27T16:51:51.030241+00:00",
+      "last_successful_refresh": "2026-09-27T19:03:49.011311+00:00",
       "merge_requests": [],
       "discovered_config": {
         "name": "python-pyxattr",
@@ -33828,7 +33828,7 @@
       "team": "foundations",
       "status": "ok",
       "error": null,
-      "last_successful_refresh": "2026-09-27T16:51:51.030241+00:00",
+      "last_successful_refresh": "2026-09-27T19:03:49.011311+00:00",
       "merge_requests": [],
       "discovered_config": {
         "name": "python-reportlab",
@@ -33846,7 +33846,7 @@
       "team": "foundations",
       "status": "ok",
       "error": null,
-      "last_successful_refresh": "2026-09-27T16:51:51.030241+00:00",
+      "last_successful_refresh": "2026-09-27T19:03:49.011311+00:00",
       "merge_requests": [],
       "discovered_config": {
         "name": "python-roman",
@@ -33864,7 +33864,7 @@
       "team": "foundations",
       "status": "ok",
       "error": null,
-      "last_successful_refresh": "2026-09-27T16:51:51.030241+00:00",
+      "last_successful_refresh": "2026-09-27T19:03:49.011311+00:00",
       "merge_requests": [],
       "discovered_config": {
         "name": "python-secretstorage",
@@ -33882,7 +33882,7 @@
       "team": "foundations",
       "status": "ok",
       "error": null,
-      "last_successful_refresh": "2026-09-27T16:51:51.030241+00:00",
+      "last_successful_refresh": "2026-09-27T19:03:49.011311+00:00",
       "merge_requests": [],
       "discovered_config": {
         "name": "python-service-identity",
@@ -33900,7 +33900,7 @@
       "team": "foundations",
       "status": "ok",
       "error": null,
-      "last_successful_refresh": "2026-09-27T16:51:51.030241+00:00",
+      "last_successful_refresh": "2026-09-27T19:03:49.011311+00:00",
       "merge_requests": [],
       "discovered_config": {
         "name": "python-systemd",
@@ -33918,7 +33918,7 @@
       "team": "foundations",
       "status": "ok",
       "error": null,
-      "last_successful_refresh": "2026-09-27T16:51:51.030241+00:00",
+      "last_successful_refresh": "2026-09-27T19:03:49.011311+00:00",
       "merge_requests": [],
       "discovered_config": {
         "name": "python-testtools",
@@ -33936,7 +33936,7 @@
       "team": "foundations",
       "status": "ok",
       "error": null,
-      "last_successful_refresh": "2026-09-27T16:51:51.030241+00:00",
+      "last_successful_refresh": "2026-09-27T19:03:49.011311+00:00",
       "merge_requests": [],
       "discovered_config": {
         "name": "python-tz",
@@ -33954,7 +33954,7 @@
       "team": "foundations",
       "status": "ok",
       "error": null,
-      "last_successful_refresh": "2026-09-27T16:51:51.030241+00:00",
+      "last_successful_refresh": "2026-09-27T19:03:49.011311+00:00",
       "merge_requests": [],
       "discovered_config": {
         "name": "python-unidiff",
@@ -33972,7 +33972,7 @@
       "team": "foundations",
       "status": "ok",
       "error": null,
-      "last_successful_refresh": "2026-09-27T16:51:51.030241+00:00",
+      "last_successful_refresh": "2026-09-27T19:03:49.011311+00:00",
       "merge_requests": [],
       "discovered_config": {
         "name": "python-wadllib",
@@ -33990,7 +33990,7 @@
       "team": "foundations",
       "status": "ok",
       "error": null,
-      "last_successful_refresh": "2026-09-27T16:51:51.030241+00:00",
+      "last_successful_refresh": "2026-09-27T19:03:49.011311+00:00",
       "merge_requests": [],
       "discovered_config": {
         "name": "python-webencodings",
@@ -34008,7 +34008,7 @@
       "team": "foundations",
       "status": "ok",
       "error": null,
-      "last_successful_refresh": "2026-09-27T16:51:51.030241+00:00",
+      "last_successful_refresh": "2026-09-27T19:03:49.011311+00:00",
       "merge_requests": [],
       "discovered_config": {
         "name": "python-werkzeug",
@@ -34026,7 +34026,7 @@
       "team": "foundations",
       "status": "ok",
       "error": null,
-      "last_successful_refresh": "2026-09-27T16:51:51.030241+00:00",
+      "last_successful_refresh": "2026-09-27T19:03:49.011311+00:00",
       "merge_requests": [
         {
           "id": "479675",
@@ -34203,7 +34203,7 @@
       "team": "foundations",
       "status": "ok",
       "error": null,
-      "last_successful_refresh": "2026-09-27T16:51:51.030241+00:00",
+      "last_successful_refresh": "2026-09-27T19:03:49.011311+00:00",
       "merge_requests": [],
       "discovered_config": {
         "name": "python3-stdlib-extensions",
@@ -34221,7 +34221,7 @@
       "team": "foundations",
       "status": "ok",
       "error": null,
-      "last_successful_refresh": "2026-09-27T16:51:51.030241+00:00",
+      "last_successful_refresh": "2026-09-27T19:03:49.011311+00:00",
       "merge_requests": [],
       "discovered_config": {
         "name": "python3.10",
@@ -34239,7 +34239,7 @@
       "team": "foundations",
       "status": "ok",
       "error": null,
-      "last_successful_refresh": "2026-09-27T16:51:51.030241+00:00",
+      "last_successful_refresh": "2026-09-27T19:03:49.011311+00:00",
       "merge_requests": [
         {
           "id": "468058",
@@ -34296,7 +34296,7 @@
       "team": "foundations",
       "status": "ok",
       "error": null,
-      "last_successful_refresh": "2026-09-27T16:51:51.030241+00:00",
+      "last_successful_refresh": "2026-09-27T19:03:49.011311+00:00",
       "merge_requests": [],
       "discovered_config": {
         "name": "python3.13",
@@ -34314,7 +34314,7 @@
       "team": "foundations",
       "status": "ok",
       "error": null,
-      "last_successful_refresh": "2026-09-27T16:51:51.030241+00:00",
+      "last_successful_refresh": "2026-09-27T19:03:49.011311+00:00",
       "merge_requests": [],
       "discovered_config": {
         "name": "python3.14",
@@ -34332,7 +34332,7 @@
       "team": "foundations",
       "status": "ok",
       "error": null,
-      "last_successful_refresh": "2026-09-27T16:51:51.030241+00:00",
+      "last_successful_refresh": "2026-09-27T19:03:49.011311+00:00",
       "merge_requests": [],
       "discovered_config": {
         "name": "python3.8",
@@ -34350,7 +34350,7 @@
       "team": "foundations",
       "status": "ok",
       "error": null,
-      "last_successful_refresh": "2026-09-27T16:51:51.030241+00:00",
+      "last_successful_refresh": "2026-09-27T19:03:49.011311+00:00",
       "merge_requests": [],
       "discovered_config": {
         "name": "raspberrypi-userland",
@@ -34368,7 +34368,7 @@
       "team": "foundations",
       "status": "ok",
       "error": null,
-      "last_successful_refresh": "2026-09-27T16:51:51.030241+00:00",
+      "last_successful_refresh": "2026-09-27T19:03:49.011311+00:00",
       "merge_requests": [],
       "discovered_config": {
         "name": "raspi-utils",
@@ -34386,7 +34386,7 @@
       "team": "foundations",
       "status": "ok",
       "error": null,
-      "last_successful_refresh": "2026-09-27T16:51:51.030241+00:00",
+      "last_successful_refresh": "2026-09-27T19:03:49.011311+00:00",
       "merge_requests": [],
       "discovered_config": {
         "name": "rpi-eeprom",
@@ -34404,7 +34404,7 @@
       "team": "foundations",
       "status": "ok",
       "error": null,
-      "last_successful_refresh": "2026-09-27T16:51:51.030241+00:00",
+      "last_successful_refresh": "2026-09-27T19:03:49.011311+00:00",
       "merge_requests": [],
       "discovered_config": {
         "name": "rust-cargo-auditable",
@@ -34422,7 +34422,7 @@
       "team": "foundations",
       "status": "ok",
       "error": null,
-      "last_successful_refresh": "2026-09-27T16:51:51.030241+00:00",
+      "last_successful_refresh": "2026-09-27T19:03:49.011311+00:00",
       "merge_requests": [
         {
           "id": "489212",
@@ -34872,7 +34872,7 @@
       "team": "foundations",
       "status": "ok",
       "error": null,
-      "last_successful_refresh": "2026-09-27T16:51:51.030241+00:00",
+      "last_successful_refresh": "2026-09-27T19:03:49.011311+00:00",
       "merge_requests": [],
       "discovered_config": {
         "name": "rust-defaults",
@@ -34890,7 +34890,7 @@
       "team": "foundations",
       "status": "ok",
       "error": null,
-      "last_successful_refresh": "2026-09-27T16:51:51.030241+00:00",
+      "last_successful_refresh": "2026-09-27T19:03:49.011311+00:00",
       "merge_requests": [
         {
           "id": "508836",
@@ -35017,7 +35017,7 @@
       "team": "foundations",
       "status": "ok",
       "error": null,
-      "last_successful_refresh": "2026-09-27T16:51:51.030241+00:00",
+      "last_successful_refresh": "2026-09-27T19:03:49.011311+00:00",
       "merge_requests": [
         {
           "id": "479448",
@@ -35081,7 +35081,7 @@
       "team": "foundations",
       "status": "ok",
       "error": null,
-      "last_successful_refresh": "2026-09-27T16:51:51.030241+00:00",
+      "last_successful_refresh": "2026-09-27T19:03:49.011311+00:00",
       "merge_requests": [
         {
           "id": "492397",
@@ -35648,7 +35648,7 @@
       "team": "foundations",
       "status": "ok",
       "error": null,
-      "last_successful_refresh": "2026-09-27T16:51:51.030241+00:00",
+      "last_successful_refresh": "2026-09-27T19:03:49.011311+00:00",
       "merge_requests": [],
       "discovered_config": {
         "name": "rustc",
@@ -35666,7 +35666,7 @@
       "team": "foundations",
       "status": "ok",
       "error": null,
-      "last_successful_refresh": "2026-09-27T16:51:51.030241+00:00",
+      "last_successful_refresh": "2026-09-27T19:03:49.011311+00:00",
       "merge_requests": [],
       "discovered_config": {
         "name": "rustc-1.80",
@@ -35684,7 +35684,7 @@
       "team": "foundations",
       "status": "ok",
       "error": null,
-      "last_successful_refresh": "2026-09-27T16:51:51.030241+00:00",
+      "last_successful_refresh": "2026-09-27T19:03:49.011311+00:00",
       "merge_requests": [],
       "discovered_config": {
         "name": "rustc-1.85",
@@ -35702,7 +35702,7 @@
       "team": "foundations",
       "status": "ok",
       "error": null,
-      "last_successful_refresh": "2026-09-27T16:51:51.030241+00:00",
+      "last_successful_refresh": "2026-09-27T19:03:49.011311+00:00",
       "merge_requests": [],
       "discovered_config": {
         "name": "rustc-1.91",
@@ -35720,7 +35720,7 @@
       "team": "foundations",
       "status": "ok",
       "error": null,
-      "last_successful_refresh": "2026-09-27T16:51:51.030241+00:00",
+      "last_successful_refresh": "2026-09-27T19:03:49.011311+00:00",
       "merge_requests": [],
       "discovered_config": {
         "name": "rustc-1.93",
@@ -35738,7 +35738,7 @@
       "team": "foundations",
       "status": "ok",
       "error": null,
-      "last_successful_refresh": "2026-09-27T16:51:51.030241+00:00",
+      "last_successful_refresh": "2026-09-27T19:03:49.011311+00:00",
       "merge_requests": [],
       "discovered_config": {
         "name": "rustc-1.95",
@@ -35756,7 +35756,7 @@
       "team": "foundations",
       "status": "ok",
       "error": null,
-      "last_successful_refresh": "2026-09-27T16:51:51.030241+00:00",
+      "last_successful_refresh": "2026-09-27T19:03:49.011311+00:00",
       "merge_requests": [],
       "discovered_config": {
         "name": "rustc-1.97",
@@ -35774,7 +35774,7 @@
       "team": "foundations",
       "status": "ok",
       "error": null,
-      "last_successful_refresh": "2026-09-27T16:51:51.030241+00:00",
+      "last_successful_refresh": "2026-09-27T19:03:49.011311+00:00",
       "merge_requests": [
         {
           "id": "488653",
@@ -35847,7 +35847,7 @@
       "team": "foundations",
       "status": "ok",
       "error": null,
-      "last_successful_refresh": "2026-09-27T16:51:51.030241+00:00",
+      "last_successful_refresh": "2026-09-27T19:03:49.011311+00:00",
       "merge_requests": [
         {
           "id": "454748",
@@ -35920,7 +35920,7 @@
       "team": "foundations",
       "status": "ok",
       "error": null,
-      "last_successful_refresh": "2026-09-27T16:51:51.030241+00:00",
+      "last_successful_refresh": "2026-09-27T19:03:49.011311+00:00",
       "merge_requests": [],
       "discovered_config": {
         "name": "shim",
@@ -35938,7 +35938,7 @@
       "team": "foundations",
       "status": "ok",
       "error": null,
-      "last_successful_refresh": "2026-09-27T16:51:51.030241+00:00",
+      "last_successful_refresh": "2026-09-27T19:03:49.011311+00:00",
       "merge_requests": [
         {
           "id": "386190",
@@ -36002,7 +36002,7 @@
       "team": "foundations",
       "status": "ok",
       "error": null,
-      "last_successful_refresh": "2026-09-27T16:51:51.030241+00:00",
+      "last_successful_refresh": "2026-09-27T19:03:49.011311+00:00",
       "merge_requests": [
         {
           "id": "416950",
@@ -36165,7 +36165,7 @@
           "review": null,
           "target_repository": null,
           "target_repository_url": null,
-          "age_days": 282,
+          "age_days": 283,
           "inactive_days": 215,
           "is_stale": true,
           "attention": [
@@ -36284,7 +36284,7 @@
       "team": "foundations",
       "status": "ok",
       "error": null,
-      "last_successful_refresh": "2026-09-27T16:51:51.030241+00:00",
+      "last_successful_refresh": "2026-09-27T19:03:49.011311+00:00",
       "merge_requests": [],
       "discovered_config": {
         "name": "stubble",
@@ -36302,7 +36302,7 @@
       "team": "foundations",
       "status": "ok",
       "error": null,
-      "last_successful_refresh": "2026-09-27T16:51:51.030241+00:00",
+      "last_successful_refresh": "2026-09-27T19:03:49.011311+00:00",
       "merge_requests": [],
       "discovered_config": {
         "name": "stunnel",
@@ -36320,7 +36320,7 @@
       "team": "foundations",
       "status": "ok",
       "error": null,
-      "last_successful_refresh": "2026-09-27T16:51:51.030241+00:00",
+      "last_successful_refresh": "2026-09-27T19:03:49.011311+00:00",
       "merge_requests": [],
       "discovered_config": {
         "name": "subiquity",
@@ -36338,7 +36338,7 @@
       "team": "foundations",
       "status": "ok",
       "error": null,
-      "last_successful_refresh": "2026-09-27T16:51:51.030241+00:00",
+      "last_successful_refresh": "2026-09-27T19:03:49.011311+00:00",
       "merge_requests": [
         {
           "id": "387483",
@@ -36718,7 +36718,7 @@
           "target_repository": null,
           "target_repository_url": null,
           "age_days": 971,
-          "inactive_days": 963,
+          "inactive_days": 964,
           "is_stale": true,
           "attention": [
             "silent",
@@ -36770,8 +36770,8 @@
           "review": null,
           "target_repository": null,
           "target_repository_url": null,
-          "age_days": 584,
-          "inactive_days": 584,
+          "age_days": 585,
+          "inactive_days": 585,
           "is_stale": true,
           "attention": [
             "silent"
@@ -36958,7 +36958,7 @@
       "team": "foundations",
       "status": "ok",
       "error": null,
-      "last_successful_refresh": "2026-09-27T16:51:51.030241+00:00",
+      "last_successful_refresh": "2026-09-27T19:03:49.011311+00:00",
       "merge_requests": [],
       "discovered_config": {
         "name": "sudo-common",
@@ -36976,7 +36976,7 @@
       "team": "foundations",
       "status": "ok",
       "error": null,
-      "last_successful_refresh": "2026-09-27T16:51:51.030241+00:00",
+      "last_successful_refresh": "2026-09-27T19:03:49.011311+00:00",
       "merge_requests": [
         {
           "id": "496264",
@@ -37024,7 +37024,7 @@
           "review": null,
           "target_repository": null,
           "target_repository_url": null,
-          "age_days": 306,
+          "age_days": 307,
           "inactive_days": 306,
           "is_stale": true,
           "attention": [
@@ -37049,7 +37049,7 @@
       "team": "foundations",
       "status": "ok",
       "error": null,
-      "last_successful_refresh": "2026-09-27T16:51:51.030241+00:00",
+      "last_successful_refresh": "2026-09-27T19:03:49.011311+00:00",
       "merge_requests": [],
       "discovered_config": {
         "name": "syslinux-legacy",
@@ -37067,7 +37067,7 @@
       "team": "foundations",
       "status": "ok",
       "error": null,
-      "last_successful_refresh": "2026-09-27T16:51:51.030241+00:00",
+      "last_successful_refresh": "2026-09-27T19:03:49.011311+00:00",
       "merge_requests": [],
       "discovered_config": {
         "name": "tpm-udev",
@@ -37085,7 +37085,7 @@
       "team": "foundations",
       "status": "ok",
       "error": null,
-      "last_successful_refresh": "2026-09-27T16:51:51.030241+00:00",
+      "last_successful_refresh": "2026-09-27T19:03:49.011311+00:00",
       "merge_requests": [
         {
           "id": "508173",
@@ -37165,7 +37165,7 @@
       "team": "foundations",
       "status": "ok",
       "error": null,
-      "last_successful_refresh": "2026-09-27T16:51:51.030241+00:00",
+      "last_successful_refresh": "2026-09-27T19:03:49.011311+00:00",
       "merge_requests": [
         {
           "id": "371860",
@@ -37282,7 +37282,7 @@
           "target_repository": null,
           "target_repository_url": null,
           "age_days": 1985,
-          "inactive_days": 1984,
+          "inactive_days": 1985,
           "is_stale": true,
           "attention": [
             "silent",
@@ -37391,7 +37391,7 @@
       "team": "foundations",
       "status": "ok",
       "error": null,
-      "last_successful_refresh": "2026-09-27T16:51:51.030241+00:00",
+      "last_successful_refresh": "2026-09-27T19:03:49.011311+00:00",
       "merge_requests": [
         {
           "id": "461343",
@@ -37471,7 +37471,7 @@
       "team": "foundations",
       "status": "ok",
       "error": null,
-      "last_successful_refresh": "2026-09-27T16:51:51.030241+00:00",
+      "last_successful_refresh": "2026-09-27T19:03:49.011311+00:00",
       "merge_requests": [
         {
           "id": "404368",
@@ -37564,7 +37564,7 @@
           "review": null,
           "target_repository": null,
           "target_repository_url": null,
-          "age_days": 1655,
+          "age_days": 1656,
           "inactive_days": 1210,
           "is_stale": true,
           "attention": [
@@ -37740,7 +37740,7 @@
       "team": "foundations",
       "status": "ok",
       "error": null,
-      "last_successful_refresh": "2026-09-27T16:51:51.030241+00:00",
+      "last_successful_refresh": "2026-09-27T19:03:49.011311+00:00",
       "merge_requests": [
         {
           "id": "430060",
@@ -37813,7 +37813,7 @@
       "team": "foundations",
       "status": "ok",
       "error": null,
-      "last_successful_refresh": "2026-09-27T16:51:51.030241+00:00",
+      "last_successful_refresh": "2026-09-27T19:03:49.011311+00:00",
       "merge_requests": [],
       "discovered_config": {
         "name": "ubuntu-image",
@@ -37831,7 +37831,7 @@
       "team": "foundations",
       "status": "ok",
       "error": null,
-      "last_successful_refresh": "2026-09-27T16:51:51.030241+00:00",
+      "last_successful_refresh": "2026-09-27T19:03:49.011311+00:00",
       "merge_requests": [
         {
           "id": "390451",
@@ -38019,7 +38019,7 @@
           "review": null,
           "target_repository": null,
           "target_repository_url": null,
-          "age_days": 1059,
+          "age_days": 1060,
           "inactive_days": 1059,
           "is_stale": true,
           "attention": [
@@ -38074,7 +38074,7 @@
           "target_repository": null,
           "target_repository_url": null,
           "age_days": 801,
-          "inactive_days": 795,
+          "inactive_days": 796,
           "is_stale": true,
           "attention": [
             "silent",
@@ -38251,7 +38251,7 @@
       "team": "foundations",
       "status": "ok",
       "error": null,
-      "last_successful_refresh": "2026-09-27T16:51:51.030241+00:00",
+      "last_successful_refresh": "2026-09-27T19:03:49.011311+00:00",
       "merge_requests": [],
       "discovered_config": {
         "name": "ubuntu-raspi-settings",
@@ -38269,7 +38269,7 @@
       "team": "foundations",
       "status": "ok",
       "error": null,
-      "last_successful_refresh": "2026-09-27T16:51:51.030241+00:00",
+      "last_successful_refresh": "2026-09-27T19:03:49.011311+00:00",
       "merge_requests": [
         {
           "id": "421557",
@@ -38804,7 +38804,7 @@
       "team": "foundations",
       "status": "ok",
       "error": null,
-      "last_successful_refresh": "2026-09-27T16:51:51.030241+00:00",
+      "last_successful_refresh": "2026-09-27T19:03:49.011311+00:00",
       "merge_requests": [
         {
           "id": "491992",
@@ -38851,7 +38851,7 @@
           "review": null,
           "target_repository": null,
           "target_repository_url": null,
-          "age_days": 387,
+          "age_days": 388,
           "inactive_days": 383,
           "is_stale": true,
           "attention": [
@@ -38974,7 +38974,7 @@
       "team": "foundations",
       "status": "ok",
       "error": null,
-      "last_successful_refresh": "2026-09-27T16:51:51.030241+00:00",
+      "last_successful_refresh": "2026-09-27T19:03:49.011311+00:00",
       "merge_requests": [
         {
           "id": "483644",
@@ -39137,7 +39137,7 @@
       "team": "foundations",
       "status": "ok",
       "error": null,
-      "last_successful_refresh": "2026-09-27T16:51:51.030241+00:00",
+      "last_successful_refresh": "2026-09-27T19:03:49.011311+00:00",
       "merge_requests": [
         {
           "id": "502761",
@@ -39422,7 +39422,7 @@
       "team": "foundations",
       "status": "ok",
       "error": null,
-      "last_successful_refresh": "2026-09-27T16:51:51.030241+00:00",
+      "last_successful_refresh": "2026-09-27T19:03:49.011311+00:00",
       "merge_requests": [
         {
           "id": "448264",
@@ -39600,7 +39600,7 @@
           "target_repository": null,
           "target_repository_url": null,
           "age_days": 241,
-          "inactive_days": 240,
+          "inactive_days": 241,
           "is_stale": true,
           "attention": [
             "silent",
@@ -39624,7 +39624,7 @@
       "team": "foundations",
       "status": "ok",
       "error": null,
-      "last_successful_refresh": "2026-09-27T16:51:51.030241+00:00",
+      "last_successful_refresh": "2026-09-27T19:03:49.011311+00:00",
       "merge_requests": [],
       "discovered_config": {
         "name": "update-motd",
@@ -39642,7 +39642,7 @@
       "team": "foundations",
       "status": "ok",
       "error": null,
-      "last_successful_refresh": "2026-09-27T16:51:51.030241+00:00",
+      "last_successful_refresh": "2026-09-27T19:03:49.011311+00:00",
       "merge_requests": [
         {
           "id": "386205",
@@ -39690,7 +39690,7 @@
           "review": null,
           "target_repository": null,
           "target_repository_url": null,
-          "age_days": 2287,
+          "age_days": 2288,
           "inactive_days": 2244,
           "is_stale": true,
           "attention": [
@@ -39941,7 +39941,7 @@
           "review": null,
           "target_repository": null,
           "target_repository_url": null,
-          "age_days": 1465,
+          "age_days": 1466,
           "inactive_days": 1462,
           "is_stale": true,
           "attention": [
@@ -40110,7 +40110,7 @@
       "team": "foundations",
       "status": "ok",
       "error": null,
-      "last_successful_refresh": "2026-09-27T16:51:51.030241+00:00",
+      "last_successful_refresh": "2026-09-27T19:03:49.011311+00:00",
       "merge_requests": [],
       "discovered_config": {
         "name": "upki",
@@ -40128,7 +40128,7 @@
       "team": "foundations",
       "status": "ok",
       "error": null,
-      "last_successful_refresh": "2026-09-27T16:51:51.030241+00:00",
+      "last_successful_refresh": "2026-09-27T19:03:49.011311+00:00",
       "merge_requests": [],
       "discovered_config": {
         "name": "whoopsie",
@@ -40146,7 +40146,7 @@
       "team": "foundations",
       "status": "ok",
       "error": null,
-      "last_successful_refresh": "2026-09-27T16:51:51.030241+00:00",
+      "last_successful_refresh": "2026-09-27T19:03:49.011311+00:00",
       "merge_requests": [
         {
           "id": "511945",
@@ -40211,7 +40211,7 @@
       "team": "autopkgtest-infra",
       "status": "ok",
       "error": null,
-      "last_successful_refresh": "2026-09-27T16:51:51.030241+00:00",
+      "last_successful_refresh": "2026-09-27T19:03:49.011311+00:00",
       "merge_requests": [
         {
           "id": "337325",
@@ -40261,7 +40261,7 @@
       "team": "autopkgtest-infra",
       "status": "ok",
       "error": null,
-      "last_successful_refresh": "2026-09-27T16:51:51.030241+00:00",
+      "last_successful_refresh": "2026-09-27T19:03:49.011311+00:00",
       "merge_requests": [
         {
           "id": "511231",
@@ -40347,7 +40347,7 @@
       "team": "autopkgtest-infra",
       "status": "ok",
       "error": null,
-      "last_successful_refresh": "2026-09-27T16:51:51.030241+00:00",
+      "last_successful_refresh": "2026-09-27T19:03:49.011311+00:00",
       "merge_requests": [
         {
           "id": "326406",
@@ -40627,8 +40627,8 @@
           "review": null,
           "target_repository": null,
           "target_repository_url": null,
-          "age_days": 915,
-          "inactive_days": 915,
+          "age_days": 916,
+          "inactive_days": 916,
           "is_stale": true,
           "attention": []
         },
@@ -40663,8 +40663,8 @@
           "review": null,
           "target_repository": null,
           "target_repository_url": null,
-          "age_days": 896,
-          "inactive_days": 896,
+          "age_days": 897,
+          "inactive_days": 897,
           "is_stale": true,
           "attention": [
             "silent"
@@ -40709,7 +40709,7 @@
           "target_repository": null,
           "target_repository_url": null,
           "age_days": 675,
-          "inactive_days": 667,
+          "inactive_days": 668,
           "is_stale": true,
           "attention": [
             "silent"
@@ -40839,7 +40839,7 @@
       "team": "autopkgtest-infra",
       "status": "ok",
       "error": null,
-      "last_successful_refresh": "2026-09-27T16:51:51.030241+00:00",
+      "last_successful_refresh": "2026-09-27T19:03:49.011311+00:00",
       "merge_requests": []
     }
   ]
