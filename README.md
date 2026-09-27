@@ -77,8 +77,9 @@ python -m http.server 8000 --directory docs
 | `--out PATH` / `--config PATH` | Override the data file or config location |
 | `-v` | Show per-request retry detail |
 
-A full refresh — 232 repositories, about 400 open MPs and the Foundations
-People view as of September 2026 — takes roughly **six to eight minutes**.
+A full refresh — 590 repositories in five teams, about 670 open MPs and two
+People views as of September 2026 — takes roughly **seven minutes**, fetching
+four repositories at a time (`repo_workers`); one at a time it took twenty.
 
 ---
 
@@ -95,6 +96,7 @@ defaults:
   refresh_interval_minutes: 1440 # fetch cadence; keep the workflow cron in step
   fetch_linked_bugs: true        # set false if refresh runs get slow
   max_workers: 8
+  repo_workers: 4                # repositories fetched at once
 
 teams:                           # the tabs, in this order
   - id: release-team
@@ -140,6 +142,9 @@ page — through each package's git-ubuntu repository
 (`lp:ubuntu/+source/<package>`, where Ubuntu MPs are proposed). The list is
 re-read on every refresh, so subscribing to a package is all it takes to add it.
 Discovered repositories get the id `<team>-<package>`, e.g. `foundations-apport`.
+Foundations (`~foundations-bugs`) and Server (`~ubuntu-server`) both work this
+way; a package both teams subscribe to (curtin, edk2, libsodium) appears under
+each, fetched once per team.
 
 If discovery fails, the fetcher keeps refreshing the repositories the last
 successful run found, and the dashboard notes that the team's list is out of
@@ -154,8 +159,14 @@ Launchpad (other packages, upstream projects, old bzr branches). The fetcher
 lists people after the repositories and only fetches details for MPs no tracked
 repository already shows, so nothing is fetched twice. MPs found this way
 appear only in the People view; team and Overview totals count repositories.
-For `~canonical-foundations` that is 42 people and about 340 extra MPs, which
-adds about a minute and a half to a refresh.
+Foundations (`~canonical-foundations`, 43 people) and Server
+(`~canonical-server`, 11 people) have one; together they add about 390 MPs
+outside the tracked repositories and about two and a half minutes to a refresh.
+
+`exclude` leaves listed members (by Launchpad name) out of a team's People view;
+Server excludes four `~canonical-server` members this way. Otherwise a person
+in two teams appears in both People views, just as a package two teams
+subscribe to appears under both.
 
 A member whose MPs cannot be listed keeps the ones from the last run, and the
 dashboard notes it.
