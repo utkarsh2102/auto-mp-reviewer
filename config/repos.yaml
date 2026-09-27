@@ -26,6 +26,10 @@ defaults:
   # Concurrent enrichment requests per repository.
   max_workers: 8
 
+  # Repositories fetched at the same time. Each also runs up to max_workers
+  # enrichment requests, so this multiplies the load on Launchpad.
+  repo_workers: 4
+
 teams:
   # The dashboard's top-level tabs, in this order. A repository joins a team
   # with `team: <id>`; nothing about teams is hard-coded in the UI.

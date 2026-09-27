@@ -48,6 +48,7 @@ class Thresholds:
     refresh_interval_minutes: int = 120
     fetch_linked_bugs: bool = True
     max_workers: int = 8
+    repo_workers: int = 4
 
     @classmethod
     def from_config(cls, defaults: dict) -> "Thresholds":

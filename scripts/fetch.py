@@ -30,6 +30,7 @@ import json
 import logging
 import sys
 import time
+from concurrent.futures import ThreadPoolExecutor
 from dataclasses import asdict
 from datetime import datetime, timezone
 from pathlib import Path
@@ -314,9 +315,14 @@ def main() -> int:
         log.error("no repositories configured")
         return 2
 
+    # Several repositories at once: most discovered packages have no open MPs,
+    # so a sequential run spends its time waiting on one near-empty listing
+    # after another. Each fetch_repo builds its own provider and session.
+    with ThreadPoolExecutor(max_workers=max(1, int(thresholds.repo_workers))) as pool:
+        results = list(pool.map(lambda cfg: fetch_repo(cfg, thresholds, now), repos))
+
     payloads = []
-    for repo_cfg in repos:
-        result = fetch_repo(repo_cfg, thresholds, now)
+    for repo_cfg, result in zip(repos, results):
         payload = carry_forward(result, previous.get(result.id))
         if repo_cfg.get("_discovered"):
             # Lets a later run whose discovery fails keep refreshing this repo.
