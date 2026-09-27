@@ -67,6 +67,16 @@ teams:
     discover:
       provider: launchpad-git
       bug_subscriber: "~ubuntu-server"
+    people:
+      provider: launchpad-git
+      members_of: "~canonical-server"
+      # Members left out of the People view. (~ubuntu-server-leader, "Ubuntu
+      # Server Project Lead", is a team, and teams are never listed.)
+      exclude:
+        - "~utkarsh"      # Utkarsh Gupta
+        - "~paride"       # Paride Legovini
+        - "~jchittum"     # John Chittum
+        - "~chad.smith"   # Chad Smith
 
   - id: autopkgtest-infra
     name: Autopkgtest Infra
