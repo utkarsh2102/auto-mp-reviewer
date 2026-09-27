@@ -149,17 +149,21 @@ def resolve_repositories(
 def fetch_people(
     spec: dict, thresholds: Thresholds, now: datetime, tracked: frozenset[str], previous: dict | None
 ) -> dict:
-    """A team's `people` block: its members, plus every open MP they proposed
-    that no tracked repository already shows (the UI merges the two).
+    """A team's `people` block: its members (minus any the config lists under
+    `exclude`), plus every open MP they proposed that no tracked repository
+    already shows (the UI merges the two).
 
     Failures degrade like repositories do: a member whose MPs cannot be listed
     keeps the ones from the last run, and the block records the error.
     """
     previous = previous or {}
+    # People the config leaves out of the view, by Launchpad name ("~" optional).
+    excluded = {name.lstrip("~") for name in spec.get("exclude") or []}
     block = {
         "source": spec.get("members_of"),
-        "members": previous.get("members", []),
-        "merge_requests": previous.get("merge_requests", []),
+        "members": [m for m in previous.get("members", []) if m.get("name") not in excluded],
+        "merge_requests": [mp for mp in previous.get("merge_requests", [])
+                           if mp.get("author", {}).get("name") not in excluded],
         "error": None,
         "last_successful_refresh": previous.get("last_successful_refresh"),
     }
@@ -170,6 +174,11 @@ def fetch_people(
         log.error("people %s: %s", spec.get("members_of"), exc)
         block["error"] = f"Could not refresh the member list ({exc}). Showing the previous data."
         return block
+    unknown = excluded - {m.name for m in members}
+    if unknown:
+        log.warning("people %s: exclude names %s, not a member", spec.get("members_of"),
+                    ", ".join(sorted("~" + n for n in unknown)))
+    members = [m for m in members if m.name not in excluded]
 
     started = time.monotonic()
     earlier: dict[str, list[dict]] = {}

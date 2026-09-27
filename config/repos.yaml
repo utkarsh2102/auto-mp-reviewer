@@ -42,6 +42,7 @@ teams:
   #
   # `people` adds a People view to the team: every member of that Launchpad
   # team, with every open merge proposal they have, tracked here or not.
+  # `exclude` lists members (Launchpad names) to leave out of that view.
 
   - id: archive-admin
     name: Archive Admin
