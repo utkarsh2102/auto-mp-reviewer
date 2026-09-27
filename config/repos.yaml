@@ -61,6 +61,13 @@ teams:
       provider: launchpad-git
       members_of: "~canonical-foundations"
 
+  - id: server
+    name: Server
+    description: Ubuntu source packages ~ubuntu-server is subscribed to
+    discover:
+      provider: launchpad-git
+      bug_subscriber: "~ubuntu-server"
+
   - id: autopkgtest-infra
     name: Autopkgtest Infra
 
