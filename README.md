@@ -12,7 +12,7 @@ who owns it. Hosted on GitHub Pages, refreshed by GitHub Actions.
 
 ![A team's people with their open, stale and attention counts](docs/assets/screenshot-people.png)
 
-![A sortable, filterable table of merge proposals with status, author, age, idle time and flags](docs/assets/screenshot-project.png)
+![A sortable, filterable table of merge proposals with status, author, age, idle time, flags and a Review with LLM agent action on each](docs/assets/screenshot-project.png)
 
 </details>
 
@@ -23,6 +23,11 @@ with every merge proposal they have open on Launchpad. The search box in the
 header (press <kbd>/</kbd>) finds any repository, team or person by any part of
 its name. Every view has its own link (`#team/foundations`,
 `#team/foundations/people/juliank`, `#repo/livecd-rootfs`).
+
+Any merge proposal in a tracked repository can also get **LLM review notes on
+request**: *Review with LLM agent* under its title asks a model what a reviewer
+should watch out for, with your own API key, and keeps the answer in your
+browser. See [LLM review](#llm-review).
 
 ---
 
@@ -39,6 +44,7 @@ GitHub Actions (daily)                 GitHub Pages (static)
     └─ scripts/providers/launchpad.py      └─ docs/assets/app.js
          │                                        ▲
          └── writes ──▶ docs/data/dashboard.json ─┘  (committed to git)
+                        docs/data/review/*.json     (read on request, for LLM review)
 ```
 
 The fetcher normalises each provider's API into one schema. **The UI never sees
@@ -97,6 +103,7 @@ defaults:
   fetch_linked_bugs: true        # set false if refresh runs get slow
   max_workers: 8
   repo_workers: 4                # repositories fetched at once
+  review_diff_max_kb: 128        # diff published per MP for LLM review; 0 = none
 
 teams:                           # the tabs, in this order
   - id: release-team
@@ -262,21 +269,128 @@ Verified against the live API — useful if you extend the provider.
 | Last updated | **No such field exists on an MP.** It is derived from `date_created`, `date_review_requested`, `date_reviewed`, the newest comment and the newest review vote. |
 | Reviewer votes | Available from `{mp}/all_comments` (`vote`, `vote_tag`) — no extra request needed. |
 | Sporadic stalls | An endpoint answering in 0.2s will occasionally hang ~271s. The provider uses a short read timeout and retries rather than waiting it out. |
+| Preview diff | `preview_diff_link` names a preview diff whose id changes whenever either branch moves. It carries `source_revision_id`, `target_revision_id`, line counts and a `diffstat` (absent for the largest diffs). |
+| Diff text | `{preview diff web_link}/+files/preview.diff` redirects to the librarian. The API's `diff_text` returns **HTTP 401** to anonymous callers. No Launchpad host sends CORS headers, the librarian included. |
 
 ---
 
-## Phase 2 — LLM review (not implemented)
+## LLM review
 
-The architecture leaves a seam, and nothing more:
+Under each merge proposal's title in a repository's table (and in a person's,
+for MPs in tracked repositories) there is a small **Review with LLM agent**
+action. It asks a model one question: *what gotchas should a human reviewer
+know about before reviewing this MP?* — likely bugs, risky or surprising
+changes, missed edge cases, compatibility and regression risks, packaging
+mistakes. The answer is a short summary plus at most eight findings, each with
+a severity and a file and line. It is review assistance, not a verdict.
 
-- every `MergeRequest` carries `review: null`, reserved for a review result;
-- `diff_url` is already captured from Launchpad's `preview_diff_link`, so a
-  review harness has the diff without re-crawling;
-- a future `scripts/reviewers/` registry would mirror `scripts/providers/`:
-  one module per model or harness, selected from config, writing into `review`.
+**Nothing is ever reviewed automatically.** A review costs tokens only when
+someone clicks for one; there is no bulk review, and the Overview and team
+lists have no review action at all.
 
-The UI reads a normalised schema, so surfacing a review means rendering one more
-field — not reshaping the data model.
+### Setting it up
+
+Click **LLM** in the header, pick a provider, paste an API key and optionally a
+model, then Save. Supported providers:
+
+| Provider | Key from | Default model |
+|---|---|---|
+| Anthropic (Claude API) | [console.anthropic.com](https://console.anthropic.com/settings/keys) | `claude-opus-5` |
+| OpenRouter | [openrouter.ai](https://openrouter.ai/settings/keys) | `anthropic/claude-opus-5` |
+
+*Load models* lists what the provider offers. A Claude.ai or Claude Code
+subscription cannot be used from a web page; the Anthropic provider needs an
+API key. OpenCode's hosted API (Zen) sends no CORS headers, so a page cannot
+call it; its models are available through OpenRouter.
+
+### What is sent, and what is kept
+
+Launchpad cannot be called from the browser (see above), so the fetcher
+publishes a **review context** for every MP in a tracked repository:
+`docs/data/review/<id>-<hash>.json`, holding the full description and commit
+message, the diffstat, the commits the diff was made from, and the preview diff
+itself **cut at `review_diff_max_kb`** (128 KB, about 35k tokens). Most diffs
+are far smaller — the median open MP is under 100 lines — but git-ubuntu merges
+of a new upstream release can run to 100 MB; those are cut at a file boundary
+and the model is told so. A context is fetched only when an MP's diff changed
+since the last run, so a daily refresh stages a handful. The browser loads an
+MP's context only when a review is requested.
+
+The answer streams back, so the page can show whether the model is still
+thinking or already writing. A review may use up to **64k output tokens,
+thinking included** (less if the model's own limit is lower): the answer itself
+is a few hundred tokens, but models can think at length first, and one that runs
+out before answering has spent those tokens for nothing. A small MP typically
+costs a few thousand tokens in and out; the review shows the exact counts.
+
+The review is cached in the browser (`localStorage`), keyed by the MP's URL,
+with the provider, model, time, token usage and the **revision** reviewed —
+the source branch's commit. The latest review from each model is kept, so
+reviews from different models can be compared. Opening the MP again shows the
+cached review; it never re-runs by itself.
+
+When the MP's source branch moves on, the next data refresh records the new
+revision, and the cached review is marked **for an older revision**, with an
+explicit *Review the updated revision* button. A moved target branch alone
+only gets a note: the proposed commits are the ones reviewed. The dashboard's
+data is refreshed daily, so a push made since the last refresh shows up after
+the next one.
+
+### Security trade-offs
+
+This is a static site with no server, so an API key has to live in the browser
+of the person using it. The design keeps that as contained as it can:
+
+- **Your key goes from your browser straight to the provider**, and nowhere
+  else. It is never committed, never in the data files or cached reviews, never
+  in a URL, and GitHub Actions never sees it (the fetcher does not talk to any
+  LLM). Everyone uses their own key; there is no shared one.
+- **By default the key lasts only as long as the tab** (`sessionStorage`).
+  *Remember API keys on this browser* keeps it in `localStorage` instead: it
+  survives restarts, unencrypted, and **any page on the same origin can read
+  it** — for the live site that is all of `utkarsh2102.org`, not just this
+  dashboard — as can browser extensions and anyone with access to the browser
+  profile. That is why remembering is opt-in. Encrypting it with a passphrase
+  would not help against the realistic threat, script running in the page,
+  which could read the passphrase too.
+- **Injected script is the real threat, so the page is locked down.** A
+  Content-Security-Policy allows scripts only from this site, and lets the page
+  connect only to this site, `api.anthropic.com` and `openrouter.ai`, so even
+  injected script could not send a key anywhere else. The model's answer is
+  untrusted (a merge proposal can contain text aimed at the model) and is only
+  ever rendered as escaped text.
+- **Anthropic's browser header is called `anthropic-dangerous-direct-browser-access`**
+  because a key embedded in a page is exposed to every visitor. Here each person
+  supplies their own key for their own browser, which is the use it permits.
+- **Use a key with a spending limit**: an OpenRouter key with a credit limit,
+  or an Anthropic key in a workspace with a spend limit. A leaked key then costs
+  at most that.
+- MP text is sent to the provider you choose. Everything reviewed is public on
+  Launchpad already, but check the provider's data-retention terms if that
+  matters to you.
+
+### Adding an LLM provider
+
+The browser side mirrors `scripts/providers/`:
+[`docs/assets/reviewers/`](docs/assets/reviewers/) holds one module per service
+behind the contract documented in
+[`reviewers/index.js`](docs/assets/reviewers/index.js) — `listModels()` and
+`review()`, failures reported as a `ReviewError` kind the UI already explains.
+[`docs/assets/review.js`](docs/assets/review.js) (settings, prompt, parsing,
+the cache) never knows which service answered.
+
+1. Write `docs/assets/reviewers/<name>.js` exporting the provider object.
+2. Add it to `REVIEWERS` in `reviewers/index.js`.
+3. Add its API host to `connect-src` in the Content-Security-Policy in
+   [`docs/index.html`](docs/index.html); the browser blocks every other host.
+
+A provider must be callable from a browser (CORS). An agent that fetches more
+context itself — a local `opencode serve --cors <site>`, say — fits the same
+contract: text in, text out.
+
+On the fetcher side, a repository provider supplies review contexts through
+`Provider.review_context(mr, max_bytes)`; one that doesn't simply offers no
+review action.
 
 ---
 
@@ -290,6 +404,9 @@ scripts/providers/launchpad.py  Launchpad git provider
 scripts/providers/github.py     stub
 docs/index.html                 GitHub Pages root
 docs/assets/{styles.css,app.js} UI, no build step
+docs/assets/review.js           LLM review: settings, prompt, parsing, cache
+docs/assets/reviewers/          one module per LLM provider
 docs/data/dashboard.json        generated, committed
+docs/data/review/               per-MP review contexts, generated, committed
 .github/workflows/refresh.yml   cron + manual dispatch
 ```
