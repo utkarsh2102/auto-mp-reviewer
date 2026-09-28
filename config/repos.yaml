@@ -30,6 +30,13 @@ defaults:
   # enrichment requests, so this multiplies the load on Launchpad.
   repo_workers: 4
 
+  # The dashboard can ask an LLM to review an MP, on request, in the browser.
+  # Launchpad can't be called from there, so each tracked MP's description,
+  # diffstat and diff are published next to the data file (docs/data/review/),
+  # the diff cut at this many KB. Only MPs whose diff changed are re-fetched.
+  # 0 publishes nothing, which also hides the review action.
+  review_diff_max_kb: 128
+
 teams:
   # The dashboard's top-level tabs, in this order. A repository joins a team
   # with `team: <id>`; nothing about teams is hard-coded in the UI.
