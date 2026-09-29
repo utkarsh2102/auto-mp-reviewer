@@ -1,0 +1,27 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~alexvinarskis/ubuntu/+source/ubuntu-x1e-settings/+git/ubuntu-x1e-settings/+merge/483644",
+ "id": "483644",
+ "title": "X1E Asus Zenbook A14 support",
+ "source_branch": "asus-zenbook-a14",
+ "target_branch": "ubuntu/devel",
+ "revision": "cc61ffff719daf15858bdedef7989d2d57056379",
+ "base_revision": "7b278294abbd34930b4755dadaf968e04bf813c8",
+ "description": null,
+ "commit_message": "X1E Asus Zenbook A14 support\n\nDepends on kernel change:\nhttps://code.launchpad.net/~alexvinarskis/ubuntu/+source/linux/+git/linux/+merge/483642",
+ "diffstat": {
+  "debian/hwe-qcom-x1e-meta.modaliases": [
+   1,
+   0
+  ],
+  "hooks/ubuntu-x1e-settings": [
+   6,
+   0
+  ]
+ },
+ "files": 2,
+ "added_lines": 7,
+ "removed_lines": 0,
+ "diff": "diff --git a/debian/hwe-qcom-x1e-meta.modaliases b/debian/hwe-qcom-x1e-meta.modaliases\nindex 160b8e6..94619d2 100644\n--- a/debian/hwe-qcom-x1e-meta.modaliases\n+++ b/debian/hwe-qcom-x1e-meta.modaliases\n@@ -1,5 +1,6 @@\n alias dmi:bvnAcer:*:pnSwiftSF14-11* hwe-qcom-x1e-meta\n alias dmi:bvnASUSTeKCOMPUTERINC.:*:pnASUSVivobookS15* hwe-qcom-x1e-meta\n+alias dmi:bvnASUSTeKCOMPUTERINC.:*:pnASUSZenbookA14* hwe-qcom-x1e-meta\n alias dmi:bvnDellInc.:*:pnXPS139345* hwe-qcom-x1e-meta\n alias dmi:bvnHP:*:pnHPOmniBookXLaptop14* hwe-qcom-x1e-meta\n alias dmi:bvnLENOVO:*:pvrThinkPadT14sGen6* hwe-qcom-x1e-meta\ndiff --git a/hooks/ubuntu-x1e-settings b/hooks/ubuntu-x1e-settings\nindex a1a69d8..2f5b61d 100755\n--- a/hooks/ubuntu-x1e-settings\n+++ b/hooks/ubuntu-x1e-settings\n@@ -20,3 +20,9 @@ done\n for f in $(find /lib/firmware/updates/qcom/x1e80100 -type f); do\n         add_firmware \"${f#/lib/firmware/updates/}\"\n done\n+for f in $(find /lib/firmware/qcom/x1p42100 -type f); do\n+        add_firmware \"${f#/lib/firmware/}\"\n+done\n+for f in $(find /lib/firmware/updates/qcom/x1p42100 -type f); do\n+        add_firmware \"${f#/lib/firmware/updates/}\"\n+done\n",
+ "diff_truncated": false
+}

@@ -1,0 +1,35 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~finnrg/ubuntu/+source/openssh/+git/openssh/+merge/507056",
+ "id": "507056",
+ "title": "PPA: https://launchpad.net/~finnrg/+archive/ubuntu/lp-2150273-openssh-sru/+packages",
+ "source_branch": "lp-2150273-openssh-pam-upn-resolute",
+ "target_branch": "ubuntu/resolute-devel",
+ "revision": "9da9df830f797fb264a8fd8b9d16f298455ae7de",
+ "base_revision": "6192ce6766b462ca24033d70b4925f9080ff7aad",
+ "description": "PPA: https://launchpad.net/~finnrg/+archive/ubuntu/lp-2150273-openssh-sru/+packages\n\nAutopkgtests:\n* Results:\n  - openssh: resolute/openssh/1:10.2p1-2ubuntu3.8 [amd64]\n    + ✅ openssh on resolute for amd64   @ 10.09.26 08:42:49  Log️ 🗒️ \n  - openssh: resolute/openssh/1:10.2p1-2ubuntu3.8 [armhf]\n    + ✅ openssh on resolute for armhf   @ 10.09.26 08:57:02  Log️ 🗒️ \n  - openssh: resolute/openssh/1:10.2p1-2ubuntu3.8 [i386]\n    + ✅ openssh on resolute for i386    @ 10.09.26 08:33:15  Log️ 🗒️ \n  - openssh: resolute/openssh/1:10.2p1-2ubuntu3.8 [ppc64el]\n    + ✅ openssh on resolute for ppc64el @ 10.09.26 08:43:53  Log️ 🗒️ \n  - openssh: resolute/openssh/1:10.2p1-2ubuntu3.8 [s390x]\n    + ✅ openssh on resolute for s390x   @ 10.09.26 10:10:53  Log️ 🗒️ \n\nBased on the Fedora patch (https://src.fedoraproject.org/rpms/openssh/pull-request/105), but we preserve the strcmp check before calling getpwnam to keep the happy path fast and reliable.\n\nI also pulled in a change from a later stonking merge to fix the i386 tests.",
+ "commit_message": null,
+ "diffstat": {
+  "debian/changelog": [
+   10,
+   0
+  ],
+  "debian/patches/lp-2150273-openssh-pam-upn.patch": [
+   30,
+   0
+  ],
+  "debian/patches/series": [
+   1,
+   0
+  ],
+  "debian/tests/control": [
+   1,
+   0
+  ]
+ },
+ "files": 4,
+ "added_lines": 42,
+ "removed_lines": 0,
+ "diff": "diff --git a/debian/changelog b/debian/changelog\nindex beaa6f1..ae07032 100644\n--- a/debian/changelog\n+++ b/debian/changelog\n@@ -1,3 +1,13 @@\n+openssh (1:10.2p1-2ubuntu3.7) resolute; urgency=medium\n+\n+  * d/p/lp-2150273-openssh-pam-upn: Fix PAM user mismatch with\n+    alternative UPN suffixes by comparing account UIDs\n+    instead of username strings. (LP: #2150273)\n+  * d/t/control: disable regress test on i386, since bin:openssh-tests\n+    is not built for that architecture in Ubuntu\n+\n+ -- Finn Rayk Gartner <finn.gartner@canonical.com>  Mon, 07 Sep 2026 10:00:00 +0200\n+\n openssh (1:10.2p1-2ubuntu3.6) resolute-security; urgency=medium\n \n   * SECURITY UPDATE: misinteraction between agent locking and the\ndiff --git a/debian/patches/lp-2150273-openssh-pam-upn.patch b/debian/patches/lp-2150273-openssh-pam-upn.patch\nnew file mode 100644\nindex 0000000..a1fa084\n--- /dev/null\n+++ b/debian/patches/lp-2150273-openssh-pam-upn.patch\n@@ -0,0 +1,30 @@\n+Description: Fix PAM user mismatch with alternative UPN suffixes\n+ OpenSSH >= 10.1 rejects a login when a PAM module canonicalises PAM_USER\n+ to a name that differs from the one the session started with.\n+Author: Finn Rayk Gartner <finn.gartner@canonical.com>\n+Bug: https://bugzilla.mindrot.org/show_bug.cgi?id=3955\n+Bug-Ubuntu: https://bugs.launchpad.net/ubuntu/+source/openssh/+bug/2150273\n+Last-Update: 2026-08-04\n+---\n+--- a/auth-pam.c\n++++ b/auth-pam.c\n+@@ -481,6 +481,7 @@\n+ check_pam_user(Authctxt *authctxt)\n+ {\n+ \tconst char *pam_user;\n++\tconst struct passwd *pam_pw;\n+ \n+ \tif (authctxt == NULL || authctxt->pw == NULL ||\n+ \t    authctxt->pw->pw_name == NULL)\n+@@ -497,7 +498,10 @@\n+ \n+ \tif (sshpam_initial_user == NULL)\n+ \t\tfatal_f(\"internal error: sshpam_initial_user NULL\");\n+-\tif (strcmp(sshpam_initial_user, pam_user) != 0) {\n++\tif (strcmp(sshpam_initial_user, pam_user) == 0)\n++\t\treturn PAM_SUCCESS;\n++\tpam_pw = getpwnam(pam_user);\n++\tif (pam_pw == NULL || pam_pw->pw_uid != authctxt->pw->pw_uid) {\n+ \t\terror_f(\"PAM user \\\"%s\\\" does not match previous \\\"%s\\\"\",\n+ \t\t      pam_user, sshpam_initial_user);\n+ \t\treturn PAM_USER_UNKNOWN;\ndiff --git a/debian/patches/series b/debian/patches/series\nindex e786ec1..d75fa83 100644\n--- a/debian/patches/series\n+++ b/debian/patches/series\n@@ -53,3 +53,4 @@ CVE-2026-60002.patch\n CVE-2026-73281.patch\n CVE-2026-73282.patch\n CVE-2026-73283.patch\n+lp-2150273-openssh-pam-upn.patch\ndiff --git a/debian/tests/control b/debian/tests/control\nindex e3e8739..a1c861f 100644\n--- a/debian/tests/control\n+++ b/debian/tests/control\n@@ -5,6 +5,7 @@ Restrictions:\n  isolation-container,\n  needs-sudo,\n  breaks-testbed,\n+Architecture: !i386\n Depends:\n  devscripts,\n  dropbear,\n",
+ "diff_truncated": false
+}

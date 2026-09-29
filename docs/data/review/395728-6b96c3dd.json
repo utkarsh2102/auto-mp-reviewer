@@ -1,0 +1,27 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~lucaskanashiro/ubuntu/+source/docker.io/+git/docker.io/+merge/395728",
+ "id": "395728",
+ "title": "Fix autopkgtest failure in Xenial. The basic-smoke test relies on an image built based on Debian Stable but the GPG key used to sign the repository is not recognized by default in Ubuntu Xenial. The proposed change replace Debian Stable to Ubuntu Focal which works fine in a clean Ubuntu Xenial VM. Here is the log of the test failure:",
+ "source_branch": "fix-autopkgtest-xenial",
+ "target_branch": "ubuntu/xenial-devel",
+ "revision": "ad8a0db48301090eaa5c4d3d433735de92e5520f",
+ "base_revision": "d44b49f00e5dc6878af941de1dbf48a9915e2d05",
+ "description": "Fix autopkgtest failure in Xenial. The basic-smoke test relies on an image built based on Debian Stable but the GPG key used to sign the repository is not recognized by default in Ubuntu Xenial. The proposed change replace Debian Stable to Ubuntu Focal which works fine in a clean Ubuntu Xenial VM. Here is the log of the test failure:\n\nhttps://objectstorage.prodstack4-5.canonical.com/v1/AUTH_77e2ada1e7a84929a74ba3b87153c0ac/autopkgtest-xenial/xenial/amd64/d/docker.io/20201218_135506_6bcc0@/log.gz\n\nHere is a PPA with the proposed package:\n\nhttps://launchpad.net/~lucaskanashiro/+archive/ubuntu/containerd-upgrade-issue/+packages\n\nautopkgtest is now happy with the proposed change:\n\nautopkgtest [10:58:47]: @@@@@@@@@@@@@@@@@@@@ summary\nbasic-smoke          PASS\ndocker-in-lxd        PASS\n\n",
+ "commit_message": null,
+ "diffstat": {
+  "debian/tests/basic-smoke": [
+   5,
+   5
+  ],
+  "debian/changelog": [
+   10,
+   0
+  ]
+ },
+ "files": 2,
+ "added_lines": 15,
+ "removed_lines": 5,
+ "diff": "diff --git a/debian/changelog b/debian/changelog\nindex a5be997..9bdf0b0 100644\n--- a/debian/changelog\n+++ b/debian/changelog\n@@ -1,3 +1,13 @@\n+docker.io (18.09.7-0ubuntu1~16.04.8) xenial; urgency=medium\n+\n+  * d/t/basic-smoke: bootstrap Ubuntu Focal instead of Debian Stable.\n+    The GPG key used to sign the Debian Stable repository is not\n+    recognized by default in Ubuntu Xenial which leads the test to a\n+    failure. In order to fix that, bootstrap Ubuntu Focal which works\n+    out-of-the-box.\n+\n+ -- Lucas Kanashiro <kanashiro@ubuntu.com>  Mon, 04 Jan 2021 10:36:11 -0300\n+\n docker.io (18.09.7-0ubuntu1~16.04.7) xenial; urgency=medium\n \n   * d/p/do_not_bind_docker_to_containerd.patch: Update docker.io to not\ndiff --git a/debian/tests/basic-smoke b/debian/tests/basic-smoke\nindex ccf8825..ad82a88 100755\n--- a/debian/tests/basic-smoke\n+++ b/debian/tests/basic-smoke\n@@ -11,12 +11,12 @@ docker version\n \n debootstrap \\\n \t--variant=minbase \\\n-\tstable \\\n+\tfocal \\\n \t\"$tempDir\" \\\n-\thttp://httpredir.debian.org/debian\n+\thttp://archive.ubuntu.com/ubuntu\n \n-tar -cC \"$tempDir\" . | docker import - debian\n-defer 'docker rmi debian'\n+tar -cC \"$tempDir\" . | docker import - focal\n+defer 'docker rmi focal'\n \n-docker run --name test debian true\n+docker run --name test focal true\n defer 'docker rm -f test'\n",
+ "diff_truncated": false
+}

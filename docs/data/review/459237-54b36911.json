@@ -1,0 +1,23 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~henry-cy-chang/ubuntu/+source/grub2/+git/grub2/+merge/459237",
+ "id": "459237",
+ "title": "This is fix for Bug #1961079.",
+ "source_branch": "fix-for-1961079",
+ "target_branch": "applied/ubuntu/devel",
+ "revision": "a08606c4b534402b8d234a6c7332e845fe7687ca",
+ "base_revision": "955605bf87386c2e6001b8913d1981b26f3032a6",
+ "description": "As described in commit message.",
+ "commit_message": "This is fix for Bug #1961079.",
+ "diffstat": {
+  "grub-core/osdep/unix/efivar.c": [
+   16,
+   1
+  ]
+ },
+ "files": 1,
+ "added_lines": 16,
+ "removed_lines": 1,
+ "diff": "diff --git a/grub-core/osdep/unix/efivar.c b/grub-core/osdep/unix/efivar.c\nindex 19b6550..c85fa59 100644\n--- a/grub-core/osdep/unix/efivar.c\n+++ b/grub-core/osdep/unix/efivar.c\n@@ -537,6 +537,21 @@ devices_equal (const_efidp a, const_efidp b)\n   return false;\n }\n \n+static const char*\n+get_os_dev (grub_disk_t disk, const char *efidir)\n+{\n+  if (disk->dev->id == GRUB_DISK_DEVICE_BIOSDISK_ID) {\n+    return grub_util_biosdisk_get_osdev (disk);\n+  } else if (disk->dev->id == GRUB_DISK_DEVICE_DISKFILTER_ID) {\n+    char **efidir_device_names = grub_guess_root_devices (efidir);\n+    if (!efidir_device_names || !efidir_device_names[0])\n+      grub_util_error (_(\"cannot find a device for %s (is /dev mounted?)\"),\n+                             efidir);\n+    return efidir_device_names[0];\n+  }\n+  return NULL;\n+}\n+\n int\n grub_install_efivar_register_efi (grub_device_t efidir_grub_dev,\n \t\t\t\t  const char *efidir, const char *efifile_path,\n@@ -563,7 +578,7 @@ grub_install_efivar_register_efi (grub_device_t efidir_grub_dev,\n     }\n \n   is_boot_efi = strstr (efidir, \"/boot/efi\") != NULL;\n-  efidir_disk = grub_util_biosdisk_get_osdev (efidir_grub_dev->disk);\n+  efidir_disk = get_os_dev (efidir_grub_dev->disk, efidir);\n   efidir_part = efidir_grub_dev->disk->partition ? efidir_grub_dev->disk->partition->number + 1 : 1;\n   alternatives = get_alternative_esps ();\n \n",
+ "diff_truncated": false
+}

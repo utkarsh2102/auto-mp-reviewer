@@ -1,0 +1,31 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~vpa1977/ubuntu/+source/gcc-11/+git/gcc-11/+merge/497875",
+ "id": "497875",
+ "title": "Changes:",
+ "source_branch": "plucky",
+ "target_branch": "ubuntu/plucky-devel",
+ "revision": "a709246983e669c28f5b424b25e85f826d3cbf84",
+ "base_revision": "339c15a603c9af22824830f36c4a31e776bc54bd",
+ "description": "Changes:\n - apply upstream patch to resolve code generation issue\n\nPPA: ppa:vpa1977/gcc-arm[1]\n\nTesting:\n\nubuntu@ubuntu:~$ lxc exec plucky -- /bin/sh -c \"gcc-11 -fno-inline -O3 -Wall -fno-strict-aliasing -march=armv8.4-a+sve -o /home/ubuntu/final /home/ubuntu/test.c\"\nubuntu@ubuntu:~$ lxc file pull plucky/home/ubuntu/final final\nubuntu@ubuntu:~$ qemu-aarch64-static -cpu neoverse-n2 ./final\nPASS: got 0x00bbbbbb 0x00aaaaaa as expected\n\n[1] https://launchpad.net/~vpa1977/+archive/ubuntu/gcc-arm",
+ "commit_message": null,
+ "diffstat": {
+  "debian/changelog": [
+   7,
+   0
+  ],
+  "debian/patches/pr118976.diff": [
+   61,
+   0
+  ],
+  "debian/rules.patch": [
+   1,
+   0
+  ]
+ },
+ "files": 3,
+ "added_lines": 69,
+ "removed_lines": 0,
+ "diff": "diff --git a/debian/changelog b/debian/changelog\nindex 1417720..3d33fee 100644\n--- a/debian/changelog\n+++ b/debian/changelog\n@@ -1,3 +1,10 @@\n+gcc-11 (11.5.0-2ubuntu1.1) plucky; urgency=medium\n+\n+  * d/p/pr118976.diff: Fix memory corruption when executing 256-bit\n+    Scalable Vector Extensions code on 128-bit CPUs (LP: #2101084).\n+\n+ -- Vladimir Petko <vladimir.petko@canonical.com>  Thu, 18 Dec 2025 20:08:21 +1300\n+\n gcc-11 (11.5.0-2ubuntu1) plucky; urgency=medium\n \n   * Merge with Debian; remaining changes:\ndiff --git a/debian/patches/pr118976.diff b/debian/patches/pr118976.diff\nnew file mode 100644\nindex 0000000..cb9d4f3\n--- /dev/null\n+++ b/debian/patches/pr118976.diff\n@@ -0,0 +1,61 @@\n+From: Richard Sandiford <richard.sandiford@arm.com>\n+Date: Tue, 4 Mar 2025 10:44:35 +0000\n+Subject: Fix folding of BIT_NOT_EXPR for POLY_INT_CST [PR118976]\n+\n+There was an embarrassing typo in the folding of BIT_NOT_EXPR for\n+POLY_INT_CSTs: it used - rather than ~ on the poly_int.  Not sure\n+how that happened, but it might have been due to the way that\n+~x is implemented as -1 - x internally.\n+\n+gcc/\n+        PR tree-optimization/118976\n+        * fold-const.cc (const_unop): Use ~ rather than - for BIT_NOT_EXPR.\n+        * config/aarch64/aarch64.cc (aarch64_test_sve_folding): New function.\n+        (aarch64_run_selftests): Run it.\n+\n+Bug-Ubuntu: https://launchpad.net/bugs/2101084\n+Origin: backport, https://gcc.gnu.org/g:78380fd7f743e23dfdf013d68a2f0347e1511550\n+[chengen - apply changes to aarch64.c and fold-const.c / adjust the context logic in aarch64.c]\n+\n+diff --git a/src/gcc/config/aarch64/aarch64.c b/src/gcc/config/aarch64/aarch64.c\n+index 391a93f30..00fc7355a 100644\n+--- a/src/gcc/config/aarch64/aarch64.c\n++++ b/src/gcc/config/aarch64/aarch64.c\n+@@ -26136,6 +26136,16 @@ aarch64_test_fractional_cost ()\n+   ASSERT_EQ (cf (1, 2).as_double (), 0.5);\n+ }\n+\n++/* Test SVE arithmetic folding.  */\n++\n++static void\n++aarch64_test_sve_folding ()\n++{\n++  tree res = fold_unary (BIT_NOT_EXPR, ssizetype,\n++\t\t\t ssize_int (poly_int64 (1, 1)));\n++  ASSERT_TRUE (operand_equal_p (res, ssize_int (poly_int64 (-2, -1))));\n++}\n++\n+ /* Run all target-specific selftests.  */\n+\n+ static void\n+@@ -26143,6 +26153,7 @@ aarch64_run_selftests (void)\n+ {\n+   aarch64_test_loading_full_dump ();\n+   aarch64_test_fractional_cost ();\n++  aarch64_test_sve_folding ();\n+ }\n+\n+ } // namespace selftest\n+diff --git a/src/gcc/fold-const.c b/src/gcc/fold-const.c\n+index 5b4053df5..cb05243bb 100644\n+--- a/src/gcc/fold-const.c\n++++ b/src/gcc/fold-const.c\n+@@ -1791,7 +1791,7 @@ const_unop (enum tree_code code, tree type, tree arg0)\n+       if (TREE_CODE (arg0) == INTEGER_CST)\n+ \treturn fold_not_const (arg0, type);\n+       else if (POLY_INT_CST_P (arg0))\n+-\treturn wide_int_to_tree (type, -poly_int_cst_value (arg0));\n++\treturn wide_int_to_tree (type, ~poly_int_cst_value (arg0));\n+       /* Perform BIT_NOT_EXPR on each element individually.  */\n+       else if (TREE_CODE (arg0) == VECTOR_CST)\n+ \t{\ndiff --git a/debian/rules.patch b/debian/rules.patch\nindex b984760..1c81534 100644\n--- a/debian/rules.patch\n+++ b/debian/rules.patch\n@@ -75,6 +75,7 @@ debian_patches += \\\n \tpr117851 \\\n \tgcc-no-multilib-dejagnu \\\n \tlibphobos-unittest \\\n+\tpr118976 \\\n \n # with glibc (>= 2.31)\n ifeq (,$(filter $(distrelease),wheezy jessie stretch buster precise xenial bionic))\n",
+ "diff_truncated": false
+}

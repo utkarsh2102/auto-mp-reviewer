@@ -1,0 +1,23 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~racb/ubuntu-archive-tools/+git/ubuntu-archive-tools/+merge/448828",
+ "id": "448828",
+ "title": "sru-release-freeze → main",
+ "source_branch": "sru-release-freeze",
+ "target_branch": "main",
+ "revision": "cb7dca7ef2956958fe37669443cfb447d6c0fe06",
+ "base_revision": "330d1afb2f444f600c57748739336368197215ca",
+ "description": null,
+ "commit_message": null,
+ "diffstat": {
+  "sru-release": [
+   10,
+   0
+  ]
+ },
+ "files": 1,
+ "added_lines": 10,
+ "removed_lines": 0,
+ "diff": "diff --git a/sru-release b/sru-release\nindex a72eef3..814ef23 100755\n--- a/sru-release\n+++ b/sru-release\n@@ -35,6 +35,7 @@ import subprocess\n import sys\n import time\n import unittest\n+import yaml\n \n from six.moves.urllib.request import urlopen\n from io import TextIOWrapper\n@@ -443,6 +444,9 @@ if __name__ == '__main__':\n     parser.add_option(\n         '-C', '--cache', default='~/.cache/sru-release',\n         help='Cache directory to be used for the britney hints checkout')\n+    parser.add_option(\n+        '--force', default=False, action='store_true',\n+        help='Override some errors that otherwise block release')\n \n     options, args = parser.parse_args()\n \n@@ -478,6 +482,12 @@ if __name__ == '__main__':\n             sys.exit(1)\n         os.makedirs(options.cache)\n \n+    with urlopen('https://git.launchpad.net/~racb/+git/sru-freezes/plain/sru-freezes.yaml?h=main') as request:\n+        frozen_releases = yaml.safe_load(request.read(2**10))\n+    if release in frozen_releases and not options.force:\n+        print(\"Release %s is in freeze and --force not specified\" % release)\n+        sys.exit(1)\n+\n     launchpad = Launchpad.login_with(\n         'ubuntu-archive-tools', options.launchpad_instance, version='devel')\n     ubuntu = launchpad.distributions['ubuntu']\n",
+ "diff_truncated": false
+}

@@ -1,0 +1,31 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~petrakat/ubuntu/+source/rust-sudo-rs/+git/rust-sudo-rs/+merge/502403",
+ "id": "502403",
+ "title": "Hello,",
+ "source_branch": "petrakat/cargo-auditable-0.2.12",
+ "target_branch": "ubuntu/devel",
+ "revision": "deff0580ed1c66531b72047c9db97833ff94d2ec",
+ "base_revision": "5b10a9ae3de7347d6e46835f0b82d70e778b0724",
+ "description": "Hello,\n\nThis merge request makes this package build with the experimental cargo-auditable support introduced in rustc-1.93. This means all binary artifacts will have a JSON manifest embedded of all the dependencies used to build it.\n\nThe substantive changes were applied here: [1] and were approved here: [2]. This MR simply turns on the flag that rustc listens to.\n\nIt builds in a PPA here: [3] and passes autopkgtests here: [4].\n\n[1]: https://git.launchpad.net/~maxgmr/ubuntu/+source/rustc/commit/?h=merge-1.93&id=bb5c8e7bab37ccb3e8a5998e033c00c9865baa7f\nNB at time of writing, cgit is down, so you need to use the VPN to view the patch.\n[2]: https://bugs.launchpad.net/ubuntu/+bug/2138660\n[3]: https://launchpad.net/~petrakat/+archive/ubuntu/cargo-auditable-prod-test/+packages\n[4]: https://autopkgtest.ubuntu.com/results/autopkgtest-resolute-petrakat-cargo-auditable-prod-test/resolute/amd64/r/rust-sudo-rs/20260320_203832_54fbf@/log.gz",
+ "commit_message": null,
+ "diffstat": {
+  "debian/changelog": [
+   6,
+   0
+  ],
+  "debian/control": [
+   2,
+   1
+  ],
+  "debian/rules": [
+   1,
+   0
+  ]
+ },
+ "files": 3,
+ "added_lines": 9,
+ "removed_lines": 1,
+ "diff": "diff --git a/debian/changelog b/debian/changelog\nindex 5f535ab..009baf5 100644\n--- a/debian/changelog\n+++ b/debian/changelog\n@@ -1,3 +1,9 @@\n+rust-sudo-rs (0.2.12-0ubuntu2) resolute; urgency=medium\n+\n+  * Add cargo-auditable metadata\n+\n+ -- Petrichor Park <petrichor.park@canonical.com>  Fri, 20 Mar 2026 09:15:48 -0500\n+\n rust-sudo-rs (0.2.12-0ubuntu1) resolute; urgency=medium\n \n   * New upstream version (LP: #2141927)\ndiff --git a/debian/control b/debian/control\nindex 27ab253..45fc1fc 100644\n--- a/debian/control\n+++ b/debian/control\n@@ -4,7 +4,8 @@ Priority: optional\n Build-Depends: debhelper-compat (= 13),\n                dh-sequence-cargo,\n                libpam-dev,\n-               pandoc [!i386]\n+               pandoc [!i386],\n+\t\t\t   cargo-auditable\n Build-Depends-Arch: cargo:native, libstd-rust-dev, rustc:native (>= 1.70)\n XS-Vendored-Sources-Rust: glob@0.3.3, libc@0.2.180\n Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>\ndiff --git a/debian/rules b/debian/rules\nindex 5989fb2..a893057 100755\n--- a/debian/rules\n+++ b/debian/rules\n@@ -1,4 +1,5 @@\n #!/usr/bin/make -f\n+export UBUNTU_ENABLE_CARGO_AUDITABLE=1\n \n UPSTREAM_VERSION := $(shell dpkg-parsechangelog -S Version|cut -d- -f1)\n \n",
+ "diff_truncated": false
+}

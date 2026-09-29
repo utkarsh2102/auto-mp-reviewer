@@ -1,0 +1,31 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~lmlogiudice/ubuntu/+source/cyrus-sasl2/+git/cyrus-sasl2/+merge/489731",
+ "id": "489731",
+ "title": "ubuntu/jammy-devel → ubuntu/jammy-devel",
+ "source_branch": "ubuntu/jammy-devel",
+ "target_branch": "ubuntu/jammy-devel",
+ "revision": "ac04f5075ed680567b43fdddcfa8f7156b070b5f",
+ "base_revision": "09380f83d1d9ab65198ed14730ece2903cef7317",
+ "description": null,
+ "commit_message": null,
+ "diffstat": {
+  "debian/changelog": [
+   6,
+   0
+  ],
+  "debian/patches/honor-log-level.patch": [
+   70,
+   0
+  ],
+  "debian/patches/series": [
+   1,
+   0
+  ]
+ },
+ "files": 3,
+ "added_lines": 77,
+ "removed_lines": 0,
+ "diff": "diff --git a/debian/changelog b/debian/changelog\nindex c4ce75e..83b5e98 100644\n--- a/debian/changelog\n+++ b/debian/changelog\n@@ -1,3 +1,9 @@\n+cyrus-sasl2 (2.1.27+dfsg2-3ubuntu1.3) jammy; urgency=medium\n+\n+  * d/p/honor-log-level: Allow users to set log level (LP: #827151)\n+\n+ -- Luciano Lo Giudice <luciano.logiudice@canonical.com>  Thu, 24 Jul 2025 16:19:18 -0300\n+\n cyrus-sasl2 (2.1.27+dfsg2-3ubuntu1.2) jammy; urgency=medium\n \n   * d/control, d/libsasl2-modules-gssapi-mit.install,\ndiff --git a/debian/patches/honor-log-level.patch b/debian/patches/honor-log-level.patch\nnew file mode 100644\nindex 0000000..7246692\n--- /dev/null\n+++ b/debian/patches/honor-log-level.patch\n@@ -0,0 +1,70 @@\n+Origin: upstream, https://github.com/cyrusimap/cyrus-sasl/commit/cb549ef71c5bb646fe583697ebdcaba93267a237\n+Bug: https://github.com/cyrusimap/cyrus-sasl/issues/386\n+Bug-Ubuntu: https://bugs.launchpad.net/ubuntu/jammy/+source/cyrus-sasl2/+bug/827151\n+Last-Update: 2022-05-25\n+Description: honor log_level option on clients too\n+Signed-off-by: Howard Chu <hyc@symas.com>\n+Forwarded: no\n+\n+diff --git a/include/saslplug.h b/include/saslplug.h\n+index ab79e68..988010f 100755\n+--- a/include/saslplug.h\n++++ b/include/saslplug.h\n+@@ -305,7 +305,7 @@ typedef struct sasl_client_params {\n+     int (*spare_fptr1)(void);\n+ \n+     unsigned int cbindingdisp;\n+-    int spare_int2;\n++    int log_level;\n+     int spare_int3;\n+ \n+     /* flags field as passed to sasl_client_new */\n+diff --git a/lib/client.c b/lib/client.c\n+index 04ad7d5..a00746d 100644\n+--- a/lib/client.c\n++++ b/lib/client.c\n+@@ -400,7 +400,7 @@ int sasl_client_new(const char *service,\n+   sasl_utils_t *utils;\n+   sasl_getopt_t *getopt;\n+   void *context;\n+-  const char *mlist = NULL;\n++  const char *mlist = NULL, *log_level = NULL;\n+   int plus = 0;\n+ \n+   if (_sasl_client_active == 0) return SASL_NOTINIT;\n+@@ -443,9 +443,12 @@ int sasl_client_new(const char *service,\n+   conn->cparams->utils = utils;\n+ \n+   if(_sasl_getcallback(*pconn, SASL_CB_GETOPT, (sasl_callback_ft *)&getopt, &context) == SASL_OK) {\n++    getopt(context, NULL, \"log_level\", &log_level, NULL);\n+     getopt(context, NULL, \"client_mech_list\", &mlist, NULL);\n+   }\n+ \n++  conn->cparams->log_level = log_level ? atoi(log_level) : SASL_LOG_ERR;\n++\n+   /* if we have a client_mech_list, create ordered list of\n+      available mechanisms for this conn */\n+   if (mlist) {\n+diff --git a/lib/common.c b/lib/common.c\n+index bc3bf1d..b2bf94a 100644\n+--- a/lib/common.c\n++++ b/lib/common.c\n+@@ -1480,13 +1480,16 @@ static int _sasl_syslog(void *context,\n+ \t\t\tconst char *message)\n+ {\n+     int syslog_priority;\n+-    sasl_server_conn_t *sconn;\n+ \n+     if (context) {\n+ \tif (((sasl_conn_t *)context)->type == SASL_CONN_SERVER) {\n+-\t    sconn = (sasl_server_conn_t *)context;\n++\t    sasl_server_conn_t *sconn = (sasl_server_conn_t *)context;\n+ \t    if (sconn->sparams->log_level < priority) \n+ \t\treturn SASL_OK;\n++\t} else {\n++\t    sasl_client_conn_t *conn = (sasl_client_conn_t *)context;\n++\t    if (conn->cparams->log_level < priority)\n++\t        return SASL_OK;\n+ \t}\n+     }\n+ \ndiff --git a/debian/patches/series b/debian/patches/series\nindex d65fedd..1353ecc 100644\n--- a/debian/patches/series\n+++ b/debian/patches/series\n@@ -30,3 +30,4 @@ CVE-2022-24407.patch\n 0034-channel-binding-gssapi-gss-spnego.patch\n 0035-Add-support-for-setting-max-ssf-0-to-GSS-SPNEGO-1.patch\n 0035-Add-support-for-setting-max-ssf-0-to-GSS-SPNEGO-2.patch\n+honor-log-level.patch\n",
+ "diff_truncated": false
+}

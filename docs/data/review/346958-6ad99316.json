@@ -1,0 +1,27 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~dmitriis/ubuntu/+source/simplestreams/+git/simplestreams/+merge/346958",
+ "id": "346958",
+ "title": "xenial-updates-dash-fix → ubuntu/xenial-updates",
+ "source_branch": "xenial-updates-dash-fix",
+ "target_branch": "ubuntu/xenial-updates",
+ "revision": "59ff51d101abfa8b659293a4d555966061ef4de9",
+ "base_revision": "42652aa520c7856e51d365c9e158124ace8d81a5",
+ "description": null,
+ "commit_message": null,
+ "diffstat": {
+  "simplestreams/filters.py": [
+   1,
+   1
+  ],
+  "debian/changelog": [
+   6,
+   0
+  ]
+ },
+ "files": 2,
+ "added_lines": 7,
+ "removed_lines": 1,
+ "diff": "diff --git a/debian/changelog b/debian/changelog\nindex e40a10c..f3e53af 100644\n--- a/debian/changelog\n+++ b/debian/changelog\n@@ -1,5 +1,11 @@\n simplestreams (0.1.0~bzr426-0ubuntu1.2) xenial-proposed; urgency=medium\n \n+  * [SRU] Allow filtered fields to contain a '-' (LP: #1737126)\n+\n+ -- Dmitrii Shcherbakov <dmitrii.shcherbakov@canonical.com>  Tue, 08 Dec 2017 13:36:00 +0300\n+\n+simplestreams (0.1.0~bzr426-0ubuntu1.2) xenial-proposed; urgency=medium\n+\n   * [SRU] Set custom user agent (LP: #1578624)\n \n  -- Andres Rodriguez <andreserl@ubuntu.com>  Tue, 29 Nov 2016 21:41:48 -0500\ndiff --git a/simplestreams/filters.py b/simplestreams/filters.py\nindex 5e93ce4..3818949 100644\n--- a/simplestreams/filters.py\n+++ b/simplestreams/filters.py\n@@ -22,7 +22,7 @@ import re\n \n class ItemFilter(object):\n     def __init__(self, content, noneval=\"\"):\n-        rparsefmt = r\"(\\w+)[ ]*([!]{0,1}[=~])[ ]*(.*)[ ]*$\"\n+        rparsefmt = r\"([\\w|\\-]+)[ ]*([!]{0,1}[=~])[ ]*(.*)[ ]*$\"\n         parsed = re.match(rparsefmt, content)\n \n         if not parsed:\n",
+ "diff_truncated": false
+}

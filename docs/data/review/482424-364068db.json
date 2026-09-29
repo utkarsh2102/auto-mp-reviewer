@@ -1,0 +1,23 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~tsimonq2/britney/+git/hints-ubuntu/+merge/482424",
+ "id": "482424",
+ "title": "tsimonq2/luanti → devel",
+ "source_branch": "tsimonq2/luanti",
+ "target_branch": "devel",
+ "revision": "0ab42f17d567230fda0ad37ca1effd45f03174c1",
+ "base_revision": "c24c9aff53d6271c35d92936c651f3729dbfb84b",
+ "description": null,
+ "commit_message": null,
+ "diffstat": {
+  "ubuntu-release": [
+   4,
+   0
+  ]
+ },
+ "files": 1,
+ "added_lines": 4,
+ "removed_lines": 0,
+ "diff": "diff --git a/ubuntu-release b/ubuntu-release\nindex b80bb00..7b98fe6 100644\n--- a/ubuntu-release\n+++ b/ubuntu-release\n@@ -52,3 +52,7 @@ force-skiptest glibc/2.41-1ubuntu1\n # autopkgtest now depends on python3-msgspec which is not\n # available on armhf and s390x, allowed to regress in Debian testing\n force-skiptest python-cattrs/24.1.2-1\n+\n+# The remaining failure is minetest which fails due to an invalid rules file\n+# Do not block on this, allow luanti to migrate.  -tsimonq2\n+force-skiptest luanti/5.10.0+dfsg-3\n",
+ "diff_truncated": false
+}

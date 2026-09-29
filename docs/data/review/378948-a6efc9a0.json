@@ -1,0 +1,27 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~rafaeldtinoco/ubuntu/+source/python-crypto/+git/python-crypto/+merge/378948",
+ "id": "378948",
+ "title": "BUG: https://bugs.launchpad.net/ubuntu/+source/python-crypto/+bug/1862928",
+ "source_branch": "lp1862928-focal",
+ "target_branch": "ubuntu/focal-devel",
+ "revision": "08c556c0bbe48245737dd9e5bb0e3d7532efbdc9",
+ "base_revision": "8c8556fe650bb18afc34e1bb75dc5eb2907368cc",
+ "description": null,
+ "commit_message": "BUG: https://bugs.launchpad.net/ubuntu/+source/python-crypto/+bug/1862928\nRELATED BUG: https://bugs.launchpad.net/ubuntu/+source/samba/+bug/1861316\nRELATED MERGE: https://code.launchpad.net/~rafaeldtinoco/ubuntu/+source/samba/+git/samba/+merge/378664",
+ "diffstat": {
+  "debian/control": [
+   2,
+   1
+  ],
+  "debian/changelog": [
+   6,
+   0
+  ]
+ },
+ "files": 2,
+ "added_lines": 8,
+ "removed_lines": 1,
+ "diff": "diff --git a/debian/changelog b/debian/changelog\nindex 6458f8c..21e9414 100644\n--- a/debian/changelog\n+++ b/debian/changelog\n@@ -1,3 +1,9 @@\n+python-crypto (2.6.1-11ubuntu3) focal; urgency=medium\n+\n+  * Rebuild as python3 is 3.8.1-2ubuntuX now.\n+\n+ -- Rafael David Tinoco <rafaeldtinoco@ubuntu.com>  Wed, 12 Feb 2020 10:51:08 +0000\n+\n python-crypto (2.6.1-11ubuntu2) focal; urgency=medium\n \n   * Call python2 in the python2 autopkg test.\ndiff --git a/debian/control b/debian/control\nindex d4bcade..c6ca3c0 100644\n--- a/debian/control\n+++ b/debian/control\n@@ -1,7 +1,8 @@\n Source: python-crypto\n Section: python\n Priority: optional\n-Maintainer: Sebastian Ramacher <sramacher@debian.org>\n+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>\n+XSBC-Original-Maintainer: Sebastian Ramacher <sramacher@debian.org>\n Build-Depends:\n  debhelper-compat (= 12),\n  dh-python,\n",
+ "diff_truncated": false
+}

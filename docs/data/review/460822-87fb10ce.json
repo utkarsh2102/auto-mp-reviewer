@@ -1,0 +1,35 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~medicalwei/livecd-rootfs/+git/livecd-rootfs/+merge/460822",
+ "id": "460822",
+ "title": "Reorganizing ubuntu-oem:",
+ "source_branch": "ubuntu-oem-reorg",
+ "target_branch": "ubuntu/master",
+ "revision": "5cb68883d2b410a609d44be6501008ed84597f93",
+ "base_revision": "789729be3b4b46c5c1cd905938ca75ebb3aae686",
+ "description": null,
+ "commit_message": "Reorganizing ubuntu-oem:\n- Use ubuntu config directory for ubuntu-oem to reduce inconsistency between ubuntu and ubuntu-oem.  This effectively reverts commits that makes ubuntu-oem working like ubuntu-cpc.\n- Allow changing kernel for ubuntu-oem by assigning KERNEL_FLAVOURS externally.\n- Add an empty \"minimal.standard.live.hotfix\" filesystem layer, for image hotfixes in the future.",
+ "diffstat": {
+  "live-build/auto/config": [
+   32,
+   6
+  ],
+  "live-build/ubuntu-cpc/hooks.d/base/disk-image-uefi-non-cloud.binary": [
+   2,
+   2
+  ],
+  "dev/null": [
+   0,
+   1
+  ],
+  "live-build/ubuntu/hooks/040-hyperv-desktop-images.binary": [
+   9,
+   0
+  ]
+ },
+ "files": 4,
+ "added_lines": 43,
+ "removed_lines": 9,
+ "diff": "diff --git a/live-build/auto/config b/live-build/auto/config\nindex ac63994..608308b 100755\n--- a/live-build/auto/config\n+++ b/live-build/auto/config\n@@ -711,6 +711,16 @@ do_layered_desktop_image() {\n \t\tfi\n \tfi\n \n+\tHOTFIX_POSTFIX=\"\"\n+\tif [ -n \"$HAS_HOTFIX_LAYERS\" ]; then\n+\t\tHOTFIX_POSTFIX=\".hotfix\"\n+\t\tadd_task minimal.hotfix\n+\t\tif [ \"$HAS_STANDARD\" != no ]; then\n+\t\t\tadd_task \"${MINIMAL_PREFIX}standard.hotfix\"\n+\t\tfi\n+\t\tadd_task \"${LIVE_PREFIX}live.hotfix\"\n+\tfi\n+\n \t# now let's create the necessary catalog files\n \t[ -n \"$LOCALE_SUPPORT\" ] || LOCALE_SUPPORT=langpack\n \n@@ -736,7 +746,7 @@ do_layered_desktop_image() {\n \t\t[ -n \"$MINIMAL_NAME\" ] \\\n \t\t|| MINIMAL_NAME=\"$STANDARD_NAME (minimized)\"\n \n-\t\tcat <<-EOF > config/minimal.catalog-in.yaml\n+\t\tcat <<-EOF > config/minimal${HOTFIX_POSTFIX}.catalog-in.yaml\n \t\t\tname: \"$MINIMAL_NAME\"\n \t\t\tdescription: >-\n \t\t\t  $MINIMAL_DESC\n@@ -748,7 +758,7 @@ do_layered_desktop_image() {\n \t\tEOF\n \tfi\n \tif [ \"$HAS_STANDARD\" != no ]; then\n-\t\tcat <<-EOF > config/${MINIMAL_PREFIX}standard.catalog-in.yaml\n+\t\tcat <<-EOF > \"config/${MINIMAL_PREFIX}standard${HOTFIX_POSTFIX}.catalog-in.yaml\"\n \t\t\tname: \"$STANDARD_NAME\"\n \t\t\tdescription: >-\n \t\t\t  $STANDARD_DESC\n@@ -861,15 +871,20 @@ case $PROJECT in\n \n \tubuntu-oem)\n \t\tHAS_MINIMAL=yes\n+\t\tHAS_HOTFIX_LAYERS=yes\n+\t\tMINIMAL_IS_DEFAULT=no\n \t\tMINIMAL_NAME=\"Ubuntu Desktop for OEM (minimal)\"\n \t\tMINIMAL_DESC=\"Ubuntu Desktop (minimal) for OEM preinstallation.\"\n \t\tSTANDARD_NAME=\"Ubuntu Desktop for OEM\"\n \t\tSTANDARD_DESC=\"Ubuntu Desktop for OEM preinstallation.\"\n \t\tHAS_DEFAULT_LANGUAGES=yes\n-\t\t#KERNEL_FLAVOURS='oem-24.04'\n-\t\tKERNEL_FLAVOURS='generic-hwe-24.04'\n+\t\tKERNEL_FLAVOURS=${SUBPROJECT:-generic-hwe-$(lsb_release -sr)}\n \t\tLOCALE_SUPPORT=none\n \t\tdo_layered_desktop_image\n+\n+\t\t# these are the hacks to the desktop image. these packages\n+\t\t# should be included into ubuntu-oem seeds.\n+\t\tadd_snap minimal factory-reset-tools\n \t\t;;\n \n \tkubuntu)\n@@ -1421,8 +1436,19 @@ case $PROJECT:${SUBPROJECT:-} in\n \t\tubuntu-wsl:*|ubuntu-mini-iso:*|ubuntu:|ubuntu-oem:*| \\\n \t\tubuntustudio:*|edubuntu:*|ubuntu-budgie:*|ubuntucinnamon:*|xubuntu:*| \\\n \t        ubuntukylin:*|ubuntu-mate:*|ubuntu-core-desktop:*)\n+\n+\t\tcase \"$PROJECT\" in\n+\t\t\tubuntu-oem)\n+\t\t\t\t# ubuntu-oem should be as close as ubuntu\n+\t\t\t\tconfig_project=ubuntu\n+\t\t\t\t;;\n+\t\t\t*)\n+\t\t\t\tconfig_project=$PROJECT\n+\t\t\t\t;;\n+\t\tesac\n+\n \t\t# Ensure that most things e.g. includes.chroot are copied as is\n-\t\tfor entry in /usr/share/livecd-rootfs/live-build/${PROJECT}/*; do\n+\t\tfor entry in \"/usr/share/livecd-rootfs/live-build/${config_project}/\"*; do\n \t\t\tcase $entry in\n \t\t\t\t*hooks*)\n \t\t\t\t\t# But hooks are shared across the projects with symlinks\n@@ -1436,7 +1462,7 @@ case $PROJECT:${SUBPROJECT:-} in\n \t\t\tesac\n \t\tdone\n \n-\t\tif [ \"$PROJECT\" = \"ubuntu-cpc\" ] || [ \"$PROJECT\" = \"ubuntu-oem\" ] ; then\n+\t\tif [ \"$PROJECT\" = \"ubuntu-cpc\" ] ; then\n \t\t\tcase ${IMAGE_TARGETS:-} in\n \t\t\t\t\"\")\n \t\t\t\t\tconfig/hooks.d/make-hooks --hooks-dir config/hooks all\ndiff --git a/live-build/ubuntu-cpc/hooks.d/base/disk-image-uefi-non-cloud.binary b/live-build/ubuntu-cpc/hooks.d/base/disk-image-uefi-non-cloud.binary\nindex 44d2e4c..dc14611 100755\n--- a/live-build/ubuntu-cpc/hooks.d/base/disk-image-uefi-non-cloud.binary\n+++ b/live-build/ubuntu-cpc/hooks.d/base/disk-image-uefi-non-cloud.binary\n@@ -30,8 +30,8 @@ if [ \"$ARCH\" = \"riscv64\" ]; then\n fi\n \n case ${PROJECT:-}:${SUBPROJECT:-} in\n-    ubuntu:)\n-        echo \"We don't create EFI images for Ubuntu Desktop.\"\n+    ubuntu:|ubuntu-oem:*)\n+        echo \"We don't create EFI images for PROJECT=${PROJECT}.\"\n         exit 0\n         ;;\n     ubuntu:desktop-preinstalled)\ndiff --git a/live-build/ubuntu-oem/hooks.d/base/series/mazu-mantic b/live-build/ubuntu-oem/hooks.d/base/series/mazu-mantic\ndeleted file mode 100644\nindex e69de29..0000000\n--- a/live-build/ubuntu-oem/hooks.d/base/series/mazu-mantic\n+++ /dev/null\ndiff --git a/live-build/ubuntu-oem/hooks.d/base/series/nantou-noble b/live-build/ubuntu-oem/hooks.d/base/series/nantou-noble\ndeleted file mode 100644\nindex e69de29..0000000\n--- a/live-build/ubuntu-oem/hooks.d/base/series/nantou-noble\n+++ /dev/null\ndiff --git a/live-build/ubuntu-oem/hooks.d/chroot/PLACEHOLDER b/live-build/ubuntu-oem/hooks.d/chroot/PLACEHOLDER\ndeleted file mode 100644\nindex e69de29..0000000\n--- a/live-build/ubuntu-oem/hooks.d/chroot/PLACEHOLDER\n+++ /dev/null\ndiff --git a/live-build/ubuntu-oem/hooks.d/make-hooks b/live-build/ubuntu-oem/hooks.d/make-hooks\ndeleted file mode 120000\nindex 0a857d6..0000000\n--- a/live-build/ubuntu-oem/hooks.d/make-hooks\n+++ /dev/null\n@@ -1 +0,0 @@\n-../../ubuntu-cpc/hooks.d/make-hooks\n\\ No newline at end of file\ndiff --git a/live-build/ubuntu/hooks/040-hyperv-desktop-images.binary b/live-build/ubuntu/hooks/040-hyperv-desktop-images.binary\nindex b10536b..00ab908 100644\n--- a/live-build/ubuntu/hooks/040-hyperv-desktop-images.binary\n+++ b/live-build/ubuntu/hooks/040-hyperv-desktop-images.binary\n@@ -2,6 +2,15 @@\n \n echo \"Creating Hyper-V image with Desktop...\"\n \n+case ${PROJECT:-} in\n+    ubuntu-oem)\n+        echo \"We don't create Hyper-V image for PROJECT=$PROJECT\"\n+        exit 0\n+        ;;\n+    *)\n+        ;;\n+esac\n+\n case ${SUBPROJECT:-} in\n     minimized|\"\")\n         echo \"We don't create minimized images for $0.\"\n",
+ "diff_truncated": false
+}

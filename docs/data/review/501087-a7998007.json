@@ -1,0 +1,31 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~kajiya/ubuntu/+source/google-guest-agent/+git/google-guest-agent/+merge/501087",
+ "id": "501087",
+ "title": "Use override_dh_auto_install for the conffile instead",
+ "source_branch": "fix-postinst-resolute-devel",
+ "target_branch": "ubuntu/resolute-devel",
+ "revision": "28a600ab5b6caecfb7ac2954a57ab1b8fb1bb936",
+ "base_revision": "ad21cc9e1651217cf3bcede488cc8b0455fd13a9",
+ "description": "Tested by booting a resolute `lxc` VM, installing all the 4 Google guest packages from `-proposed` (including `google-compute-engine-oslogin` which is what was crashing in excuses) and verified that it does indeed crash when trying to instal `google-guest-agent` from `-proposed`.\n\nMade the changes in this MP, uploaded it to a PPA (https://launchpad.net/~kajiya/+archive/ubuntu/gga-v2/+packages), downloaded the .deb file to the VM (I'm impatient and didn't wait for it to publish) and installed it via `sudo apt install ./google-guest-agent_20260115.00-0ubuntu3~ppa1_amd64v3.deb`\n\nVerified that it installed/didn't crash out from dpkg!\n\n(Pastebin of the `dpkg -s` outputs here: https://pastebin.ubuntu.com/p/H65kMKHNJY/)",
+ "commit_message": "Use override_dh_auto_install for the conffile instead\n\nFix/clean up the postinst",
+ "diffstat": {
+  "debian/changelog": [
+   16,
+   0
+  ],
+  "debian/google-guest-agent.postinst": [
+   12,
+   25
+  ],
+  "debian/rules": [
+   5,
+   0
+  ]
+ },
+ "files": 3,
+ "added_lines": 33,
+ "removed_lines": 25,
+ "diff": "diff --git a/debian/changelog b/debian/changelog\nindex 3f17ee9..240c4f6 100644\n--- a/debian/changelog\n+++ b/debian/changelog\n@@ -1,3 +1,19 @@\n+google-guest-agent (20260115.00-0ubuntu3) resolute; urgency=medium\n+\n+  * Use override_dh_auto_install for the conffile and clean up\n+    the postinst\n+    * Install `/etc/google-guest-agent/core-plugin-enabled` as\n+      a conffile (set to default \"true\") instead of creating it\n+      from scratch in the postinst (and possibly introducing more\n+      weird behaviour)\n+    * Drop the custom enable/starting logic from the\n+      google-guest-agent.postinst file and just keep\n+      the (best effort) disable/stop of the old unit files\n+      (google-guest-agent.service and\n+      gce-workload-cert-refresh.timer)\n+\n+ -- Chloé 'kajiya' Smith <chloe.smith@canonical.com>  Thu, 26 Feb 2026 22:35:23 +0000\n+\n google-guest-agent (20260115.00-0ubuntu2) resolute; urgency=medium\n \n   * Now with the actual *.orig-google-guest-agent.tar.xz blob\ndiff --git a/debian/google-guest-agent.postinst b/debian/google-guest-agent.postinst\nindex 4070f58..2105db1 100644\n--- a/debian/google-guest-agent.postinst\n+++ b/debian/google-guest-agent.postinst\n@@ -1,36 +1,23 @@\n #!/bin/sh\n set -e\n \n-STATE_DIR=\"/etc/google-guest-agent\"\n-STATE_FILE=\"${STATE_DIR}/core-plugin-enabled\"\n-\n case \"$1\" in\n   configure)\n-    mkdir --parents \"$STATE_DIR\"\n-\n-    # Just default to true if unset\n-    if [ ! -e \"$STATE_FILE\" ]; then\n-      printf '%s' 'true' > \"$STATE_FILE\"\n-      chmod 0644 \"$STATE_FILE\"\n-    fi\n-\n-    if command -v deb-systemd-helper >/dev/null 2>&1; then\n-      deb-systemd-helper enable google-guest-agent-manager.service google-guest-compat-manager.service >/dev/null 2>&1\n-      deb-systemd-helper disable google-guest-agent.service gce-workload-cert-refresh.timer >/dev/null 2>&1\n-    fi\n-\n-    if command -v deb-systemd-invoke >/dev/null 2>&1; then\n-      deb-systemd-invoke start google-guest-agent-manager.service google-guest-compat-manager.service >/dev/null 2>&1\n-      deb-systemd-invoke stop google-guest-agent.service gce-workload-cert-refresh.timer >/dev/null 2>&1\n-    else\n-      systemctl --no-reload enable google-guest-agent-manager.service google-guest-compat-manager.service >/dev/null 2>&1\n-      systemctl --no-reload disable google-guest-agent.service gce-workload-cert-refresh.timer >/dev/null 2>&1\n-      systemctl start google-guest-agent-manager.service google-guest-compat-manager.service >/dev/null 2>&1\n-      systemctl stop google-guest-agent.service gce-workload-cert-refresh.timer >/dev/null 2>&1\n+    # Turn the old agent service and timer off (and don't fail on dpkg if this cannot run)\n+    if [ -d /run/systemd/system ]; then\n+      if command -v deb-systemd-helper >/dev/null 2>&1; then\n+        deb-systemd-helper disable google-guest-agent.service gce-workload-cert-refresh.timer >/dev/null 2>&1 || true\n+      fi\n+      if command -v deb-systemd-invoke >/dev/null 2>&1; then\n+        deb-systemd-invoke stop google-guest-agent.service gce-workload-cert-refresh.timer >/dev/null 2>&1 || true\n+      else\n+        systemctl --no-reload disable google-guest-agent.service gce-workload-cert-refresh.timer >/dev/null 2>&1 || true\n+        systemctl stop google-guest-agent.service gce-workload-cert-refresh.timer >/dev/null 2>&1 || true\n+      fi\n     fi\n     ;;\n esac\n \n #DEBHELPER#\n \n-exit 0\n+exit 0\n\\ No newline at end of file\ndiff --git a/debian/rules b/debian/rules\nindex 23d013d..c2fac2d 100755\n--- a/debian/rules\n+++ b/debian/rules\n@@ -60,6 +60,11 @@ override_dh_auto_install:\n \tln -sf ../bin/ggactl_plugin debian/google-guest-agent/usr/sbin/ggactl_plugin_cleanup\n \tinstall -p -m 0755 google_metadata_script_runner_adapt debian/google-guest-agent/usr/bin/\n \n+\t# Default conffile (to be preserved across updates)\n+\tinstall -d debian/google-guest-agent/etc/google-guest-agent\n+\tprintf '%s\\n' 'true' > debian/google-guest-agent/etc/google-guest-agent/core-plugin-enabled\n+\tchmod 0644 debian/google-guest-agent/etc/google-guest-agent/core-plugin-enabled\n+\n override_dh_systemd_enable:\n \tinstall -d debian/google-guest-agent/lib/systemd/system\n \tinstall -p -m 0644 *.service debian/google-guest-agent/lib/systemd/system/\n",
+ "diff_truncated": false
+}

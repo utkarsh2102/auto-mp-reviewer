@@ -1,0 +1,31 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~aleasto/ubuntu/+source/unattended-upgrades/+git/unattended-upgrades/+merge/502761",
+ "id": "502761",
+ "title": "* Adapt to pygobject change of GLib.Idle.set_callback parameters,",
+ "source_branch": "ubuntu/devel",
+ "target_branch": "ubuntu/devel",
+ "revision": "4bf99fd662930de3f2e3249c4e72506f5291abe5",
+ "base_revision": "8749955cea8ecdd3e2b1d6fe2266e2a2b29ee9dc",
+ "description": null,
+ "commit_message": "* Adapt to pygobject change of GLib.Idle.set_callback parameters,\n  fixing crash and FTBFS (LP: #2146446)\n",
+ "diffstat": {
+  "debian/changelog": [
+   7,
+   0
+  ],
+  "test/test_postpone.py": [
+   1,
+   1
+  ],
+  "unattended-upgrade": [
+   1,
+   1
+  ]
+ },
+ "files": 3,
+ "added_lines": 9,
+ "removed_lines": 2,
+ "diff": "diff --git a/debian/changelog b/debian/changelog\nindex 7868220..333113d 100644\n--- a/debian/changelog\n+++ b/debian/changelog\n@@ -1,3 +1,10 @@\n+unattended-upgrades (2.12ubuntu8) resolute; urgency=medium\n+\n+  * Adapt to pygobject change of GLib.Idle.set_callback parameters,\n+    fixing crash and FTBFS (LP: #2146446)\n+\n+ -- Alessandro Astone <alessandro.astone@canonical.com>  Thu, 26 Mar 2026 12:47:31 +0100\n+\n unattended-upgrades (2.12ubuntu7) resolute; urgency=medium\n \n   * unattended-upgrade: cherry-pick upstream change to fix flake8 tests\ndiff --git a/test/test_postpone.py b/test/test_postpone.py\nindex a869223..2d40e82 100755\n--- a/test/test_postpone.py\n+++ b/test/test_postpone.py\n@@ -92,7 +92,7 @@ class PostponeClient(threading.Thread):\n         handler_id = self.proxy.connect('g-signal', on_signal)\n \n         source = GLib.idle_source_new()\n-        source.set_callback(lambda _: self.started_sem.release())\n+        source.set_callback(self.started_sem.release)\n         source.attach(self.thread_context)\n \n         self.loop.run()\ndiff --git a/unattended-upgrade b/unattended-upgrade\nindex 22c5a32..583b297 100755\n--- a/unattended-upgrade\n+++ b/unattended-upgrade\n@@ -1974,7 +1974,7 @@ def install_or_postpone(cache,             # type: UnattendedUpgradesCache\n \n     def run_in_thread(callback):\n         source = GLib.idle_source_new()\n-        source.set_callback(lambda _: callback())\n+        source.set_callback(callback)\n         source.attach(thread_context)\n \n     t = threading.Thread(target=dbus_thread)\n",
+ "diff_truncated": false
+}

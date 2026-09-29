@@ -1,0 +1,27 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~danilogondolfo/ubuntu/+source/netplan.io/+git/netplan.io/+merge/468428",
+ "id": "468428",
+ "title": "focal_generator_postinst → ubuntu/focal-devel",
+ "source_branch": "focal_generator_postinst",
+ "target_branch": "ubuntu/focal-devel",
+ "revision": "2c06c83fd2e3c617d06c8ac4cc7b8c90dbd1a77f",
+ "base_revision": "f52bddb55d3e89ddc921ac74ca071429726fac95",
+ "description": null,
+ "commit_message": null,
+ "diffstat": {
+  "debian/changelog": [
+   8,
+   0
+  ],
+  "debian/netplan.io.postinst": [
+   5,
+   1
+  ]
+ },
+ "files": 2,
+ "added_lines": 13,
+ "removed_lines": 1,
+ "diff": "diff --git a/debian/changelog b/debian/changelog\nindex fea6a3b..b894b45 100644\n--- a/debian/changelog\n+++ b/debian/changelog\n@@ -1,3 +1,11 @@\n+netplan.io (0.104-0ubuntu2~20.04.6) focal; urgency=medium\n+\n+  * debian/netplan.io.postinst:\n+    Don't call the generator if no networkd configuration file exists.\n+    (LP: #2071333)\n+\n+ -- Danilo Egea Gondolfo <danilo.egea.gondolfo@canonical.com>  Fri, 28 Jun 2024 10:43:21 +0100\n+\n netplan.io (0.104-0ubuntu2~20.04.5) focal-security; urgency=medium\n \n   * SECURITY UPDATE: weak permissions on secret files, command injection\ndiff --git a/debian/netplan.io.postinst b/debian/netplan.io.postinst\nindex d76598a..b3554f5 100644\n--- a/debian/netplan.io.postinst\n+++ b/debian/netplan.io.postinst\n@@ -3,8 +3,12 @@\n set -e\n \n # Calling the generator after installation to mitigate CVE-2022-4968\n+# We avoid calling the generator if the system doesn't have networkd files to be fixed (LP: #2071333)\n if [ \"$1\" = configure ]; then\n-    /usr/lib/netplan/generate 2>/dev/null || echo \"WARNING: Netplan could not re-generate network configuration. Please run 'netplan generate' to see details.\"\n+    FILES=$(find /run/systemd/network/ -type f -regex \".*-netplan.*\\.\\(network\\|netdev\\)\" 2>/dev/null || true)\n+    if [ -n \"${FILES}\" ]; then\n+        /usr/lib/netplan/generate 2>/dev/null || echo \"WARNING: Netplan could not re-generate network configuration. Please run 'netplan generate' to see details.\"\n+    fi\n fi\n \n #DEBHELPER#\n",
+ "diff_truncated": false
+}

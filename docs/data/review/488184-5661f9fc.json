@@ -1,0 +1,27 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~alexvinarskis/ubuntu/+source/flash-kernel/+git/flash-kernel/+merge/488184",
+ "id": "488184",
+ "title": "Add two more devices. They are currently in early stages on LKML, but both were verified to work.",
+ "source_branch": "dell-new",
+ "target_branch": "ubuntu/plucky",
+ "revision": "08325b5e87e9112b7809ec4cd64df315056a6779",
+ "base_revision": "52648a8e64505ed803a898e68e9597484676d040",
+ "description": null,
+ "commit_message": "Add two more devices. They are currently in early stages on LKML, but both were verified to work.",
+ "diffstat": {
+  "db/all.db": [
+   20,
+   0
+  ],
+  "debian/changelog": [
+   10,
+   0
+  ]
+ },
+ "files": 2,
+ "added_lines": 30,
+ "removed_lines": 0,
+ "diff": "diff --git a/db/all.db b/db/all.db\nindex b8facee..ccce6fa 100644\n--- a/db/all.db\n+++ b/db/all.db\n@@ -8,6 +8,10 @@ DTB-Id: sun5i-a10s-wobo-i5.dtb\n U-Boot-Script-Name: bootscr.sunxi\n Required-Packages: u-boot-tools\n \n+Machine: Acer Swift 14 AI (SF14-11)\n+Kernel-Flavors: any\n+DTB-Id: qcom/x1p64100-acer-swift-sf14-11.dtb\n+\n Machine: Allwinner A23 Evaluation Board\n Kernel-Flavors: armmp armmp-lpae\n Boot-Script-Path: /boot/boot.scr\n@@ -72,6 +76,14 @@ Machine: ASUS Vivobook S 15\n Kernel-Flavors: any\n DTB-Id: qcom/x1e80100-asus-vivobook-s15.dtb\n \n+Machine: ASUS Zenbook A14 (UX3407QA)\n+Kernel-Flavors: any\n+DTB-Id: qcom/x1p42100-asus-zenbook-a14.dtb\n+\n+Machine: ASUS Zenbook A14 (UX3407RA)\n+Kernel-Flavors: any\n+DTB-Id: qcom/x1e80100-asus-zenbook-a14.dtb\n+\n Machine: Auxtek t003 A10s hdmi tv-stick\n Kernel-Flavors: armmp\n Boot-Script-Path: /boot/boot.scr\n@@ -397,6 +409,14 @@ Boot-Script-Path: /boot/boot.scr\n U-Boot-Script-Name: bootscr.uboot-generic\n Required-Packages: u-boot-tools\n \n+Machine: Dell Inspiron 14 Plus 7441\n+Kernel-Flavors: any\n+DTB-Id: qcom/x1e80100-dell-inspiron-14-plus-7441.dtb\n+\n+Machine: Dell Latitude 7455\n+Kernel-Flavors: any\n+DTB-Id: qcom/x1e80100-dell-latitude-7455.dtb\n+\n Machine: Dell XPS 13 9345\n Kernel-Flavors: any\n DTB-Id: qcom/x1e80100-dell-xps13-9345.dtb\ndiff --git a/debian/changelog b/debian/changelog\nindex d62bc4b..9f65fa1 100644\n--- a/debian/changelog\n+++ b/debian/changelog\n@@ -1,3 +1,13 @@\n+flash-kernel (3.108ubuntu2+x1e0.25.04) plucky; urgency=medium\n+\n+  [ Aleksandrs Vinarskis ]\n+  * Add Asus Zenbook A14\n+\n+  [ Tobias Heider ]\n+  * Add Acer Swift 14 AI\n+\n+ -- Tobias Heider <tobias.heider@canonical.com>  Sun, 11 May 2025 14:06:53 +0200\n+\n flash-kernel (3.108ubuntu2) plucky; urgency=medium\n \n   * Prevent removal of flash-kernel on switch to dracut (LP: #2100618)\n",
+ "diff_truncated": false
+}

@@ -1,0 +1,27 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~tobhe/ubuntu/+source/ubuntu-x1e-settings/+git/ubuntu-x1e-settings/+merge/484725",
+ "id": "484725",
+ "title": "See https://bugs.launchpad.net/ubuntu/+source/ubuntu-x1e-settings/+bug/2107692",
+ "source_branch": "vivobook",
+ "target_branch": "ubuntu/devel",
+ "revision": "1b94340c201986239c61bf66c06523da168abaef",
+ "base_revision": "6ff696a59b72953361a52cd4725e47ac7812a1f3",
+ "description": "See https://bugs.launchpad.net/ubuntu/+source/ubuntu-x1e-settings/+bug/2107692",
+ "commit_message": null,
+ "diffstat": {
+  "debian/changelog": [
+   6,
+   0
+  ],
+  "debian/hwe-qcom-x1e-meta.modaliases": [
+   1,
+   1
+  ]
+ },
+ "files": 2,
+ "added_lines": 7,
+ "removed_lines": 1,
+ "diff": "diff --git a/debian/changelog b/debian/changelog\nindex b62e4c6..6402e6d 100644\n--- a/debian/changelog\n+++ b/debian/changelog\n@@ -1,3 +1,9 @@\n+ubuntu-x1e-settings (25.04.9) plucky; urgency=medium\n+\n+  * Fix Asus Vivobook modalias pattern (LP: #2107692)\n+\n+ -- Tobias Heider <tobias.heider@canonical.com>  Sat, 19 Apr 2025 15:10:02 +0200\n+\n ubuntu-x1e-settings (25.04.8) plucky; urgency=medium\n \n   * Fix HP Omnibook and T14s modalias (LP: #2106254)\ndiff --git a/debian/hwe-qcom-x1e-meta.modaliases b/debian/hwe-qcom-x1e-meta.modaliases\nindex 50791a8..c9ac0f5 100644\n--- a/debian/hwe-qcom-x1e-meta.modaliases\n+++ b/debian/hwe-qcom-x1e-meta.modaliases\n@@ -1,5 +1,5 @@\n alias dmi:bvnAcer:*:pnSwiftSF14-11* hwe-qcom-x1e-meta\n-alias dmi:bvnASUSTeKCOMPUTERINC.:*:pnASUSVivobookS15* hwe-qcom-x1e-meta\n+alias dmi:*:svnASUSTeKCOMPUTERINC.:pnASUSVivobookS15* hwe-qcom-x1e-meta\n alias dmi:bvnDellInc.:*:pnXPS139345* hwe-qcom-x1e-meta\n alias dmi:*:svnHP:pnHPOmniBookXLaptop14* hwe-qcom-x1e-meta\n alias dmi:*:svnLENOVO:*:pvrThinkPadT14sGen6* hwe-qcom-x1e-meta\n",
+ "diff_truncated": false
+}

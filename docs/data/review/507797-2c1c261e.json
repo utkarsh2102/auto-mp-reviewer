@@ -1,0 +1,27 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~zhhuabj/ubuntu/+source/open-iscsi/+git/open-iscsi/+merge/507797",
+ "id": "507797",
+ "title": "questing-devel → ubuntu/questing-devel",
+ "source_branch": "questing-devel",
+ "target_branch": "ubuntu/questing-devel",
+ "revision": "1c5a0bc220697f385c13275442ab25899678b152",
+ "base_revision": "5cefa98b9152294887e6b7c550b0927fbbaf0202",
+ "description": null,
+ "commit_message": null,
+ "diffstat": {
+  "debian/changelog": [
+   10,
+   0
+  ],
+  "debian/extra/initramfs/local-top/iscsi": [
+   16,
+   3
+  ]
+ },
+ "files": 2,
+ "added_lines": 26,
+ "removed_lines": 3,
+ "diff": "diff --git a/debian/changelog b/debian/changelog\nindex 7d73741..2cb81c2 100644\n--- a/debian/changelog\n+++ b/debian/changelog\n@@ -1,3 +1,13 @@\n+open-iscsi (2.1.11-1ubuntu3.1) questing; urgency=medium\n+\n+  * d/extra/initramfs/local-top/iscsi: normalize static bootproto for\n+    initramfs netplan conversion. In iscsi_auto flow, firmware reports\n+    bootproto as STATIC, but netinfo_to_netplan handles static IPv4\n+    through PROTO=none with address fields. Map STATIC to PROTO=none\n+    and record IPV4PROTO=static in net-*.conf. (LP: #2147499)\n+\n+ -- Zhang Hua <joshua.zhang@canonical.com>  Fri, 03 Jul 2026 16:39:10 +0800\n+\n open-iscsi (2.1.11-1ubuntu3) questing; urgency=medium\n \n   * d/t/patch-image: Ignore binaries with Architecture: amd64 of\ndiff --git a/debian/extra/initramfs/local-top/iscsi b/debian/extra/initramfs/local-top/iscsi\nindex d294da9..4de4de2 100755\n--- a/debian/extra/initramfs/local-top/iscsi\n+++ b/debian/extra/initramfs/local-top/iscsi\n@@ -108,6 +108,7 @@ do_iscsi_login ()\n \t\t\t(\"# BEGIN RECORD\"*)\n \t\t\t\tDEVICE=\"\"\n \t\t\t\tPROTO=\"none\"\n+\t\t\t\tIPV4PROTO=\"\"\n \t\t\t\tIPV4ADDR=\"\"\n \t\t\t\tIPV4NETMASK=\"\"\n \t\t\t\tIPV4GATEWAY=\"\"\n@@ -123,6 +124,7 @@ do_iscsi_login ()\n \t\t\t\t{\n \t\t\t\t\techo \"DEVICE='${DEVICE}'\"\n \t\t\t\t\techo \"PROTO='${PROTO}'\"\n+\t\t\t\t\techo \"IPV4PROTO='${IPV4PROTO}'\"\n \t\t\t\t\techo \"IPV4ADDR='${IPV4ADDR}'\"\n \t\t\t\t\techo \"IPV4BROADCAST=''\"\n \t\t\t\t\techo \"IPV4NETMASK='${IPV4NETMASK}'\"\n@@ -168,9 +170,20 @@ do_iscsi_login ()\n \t\t\t\tiface.net_ifacename) DEVICE=\"${v}\" ;;\n \t\t\t\tiface.bootproto)\n \t\t\t\t\tcase \"${v}\" in\n-\t\t\t\t\t\tDHCP)\tPROTO=\"dhcp\"   ;;\n-\t\t\t\t\t\tSTATIC)\tPROTO=\"static\" ;;\n-\t\t\t\t\t\t*)\tPROTO=\"${v}\"   ;;\n+\t\t\t\t\t\tDHCP)\n+\t\t\t\t\t\t\tPROTO=\"dhcp\"\n+\t\t\t\t\t\t\tIPV4PROTO=\"dhcp\"\n+\t\t\t\t\t\t\t;;\n+\t\t\t\t\t\tSTATIC)\n+\t\t\t\t\t\t\t# netinfo_to_netplan handles static IPv4 via PROTO=none + address fields.\n+\t\t\t\t\t\t\t# Keep IPV4PROTO=static for consumers that parse /run/network/dynamic-interfaces.\n+\t\t\t\t\t\t\tPROTO=\"none\"\n+\t\t\t\t\t\t\tIPV4PROTO=\"static\"\n+\t\t\t\t\t\t\t;;\n+\t\t\t\t\t\t*)\n+\t\t\t\t\t\t\tPROTO=\"${v}\"\n+\t\t\t\t\t\t\tIPV4PROTO=\"${v}\"\n+\t\t\t\t\t\t\t;;\n \t\t\t\t\tesac\n \t\t\t\t\t;;\n \t\t\tesac\n",
+ "diff_truncated": false
+}

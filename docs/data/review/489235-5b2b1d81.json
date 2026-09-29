@@ -1,0 +1,23 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~bluca/ubuntu/+source/grub2/+git/grub2/+merge/489235",
+ "id": "489235",
+ "title": "The bli (Boot Loader Interface) module makes grub2 export the",
+ "source_branch": "bli",
+ "target_branch": "applied/ubuntu/devel",
+ "revision": "3058b9f2ad6bda16f51f2fb7633c547304d58eb2",
+ "base_revision": "5f36b609a231bafa333c94773b7f90cdf72e3c48",
+ "description": null,
+ "commit_message": "The bli (Boot Loader Interface) module makes grub2 export the\nLoaderDevicePartUUID variable, which identifies the ESP from\nwhere the bootloader was loaded. This is used by systemd\ntools for disk autodiscovery.\n\nhttps://systemd.io/BOOT_LOADER_INTERFACE/",
+ "diffstat": {
+  "debian/build-efi-images": [
+   1,
+   0
+  ]
+ },
+ "files": 1,
+ "added_lines": 1,
+ "removed_lines": 0,
+ "diff": "diff --git a/debian/build-efi-images b/debian/build-efi-images\nindex 2f847f2..2da2914 100755\n--- a/debian/build-efi-images\n+++ b/debian/build-efi-images\n@@ -99,6 +99,7 @@ mksquashfs \"$workdir/memdisk\" \"$workdir/memdisk.squashfs\" -comp xz\n \n CD_MODULES=\"\n \tall_video\n+\tbli\n \tboot\n \tbtrfs\n \tcat\n",
+ "diff_truncated": false
+}

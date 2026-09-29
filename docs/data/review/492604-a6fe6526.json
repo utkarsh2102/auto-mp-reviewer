@@ -1,0 +1,23 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~ssstr1pe/ubuntu-release-tools/+git/templates/+merge/492604",
+ "id": "492604",
+ "title": "Let's email the mirrors directly rather than having IS do it on our behalf.",
+ "source_branch": "mirrors-email",
+ "target_branch": "main",
+ "revision": "91479201518f0f11150646ed3ba12e2832477c76",
+ "base_revision": "50f05b7afd23ebb8fc35f26de1597419d03e2640",
+ "description": "Let's email the mirrors directly rather than having IS do it on our behalf.",
+ "commit_message": null,
+ "diffstat": {
+  "jira-milestones/devel-release/beta-release.yaml": [
+   13,
+   9
+  ]
+ },
+ "files": 1,
+ "added_lines": 13,
+ "removed_lines": 9,
+ "diff": "diff --git a/jira-milestones/devel-release/beta-release.yaml b/jira-milestones/devel-release/beta-release.yaml\nindex 8138887..87a7734 100644\n--- a/jira-milestones/devel-release/beta-release.yaml\n+++ b/jira-milestones/devel-release/beta-release.yaml\n@@ -12,20 +12,24 @@ timelines:\n       The ship-live seed is the seed that contains all packages that are put into the iso pool.\n       Some packages might have been renamed, most likely hwe kernels and their modules.\n       Make sure that those are correct.\n-  - task: Notify IS to remind mirrors to check free disk space\n+  - task: Email mirrors mailing list with a reminder to check free disk space\n     description: |\n-      Estimate the extra disk space needed for publishing the beta images under\n-      cdimage.ubuntu.com and releases.ubuntu.com. Then reach out to IS on Mattermost\n-      or via an RT asking something like:\n+      Send the following email to `ubuntu-mirrors@lists.ubuntu.com`, estimating X, Y and Z\n+      appropriately:\n       ```\n       Ubuntu XX.XX beta is happening this week, which means an increase to the\n-      size of the mirrored image set for cdimage.ubuntu.com and releases.ubuntu.com\n-      Release Team checklist says to ask IS to remind mirror operators to check their\n-      free disk space since the disk usage will be increasing.\n+      size of the mirrored image set for releases.ubuntu.com and cdimage.ubuntu.com.\n \n-      Publishing the images will require XGiB of extra disk space for cdimage.ubuntu.com,\n-      and YGiB under releases.ubuntu.com. Please check that the mirrors can accommodate that.\n+      The mirror set is currently XGiB.  The beta is expected to add just under YGiB\n+      to the set, for a total of around ZGiB.\n       ```\n+      You can acquire the value for X by running `du -sh /srv/cdimage.ubuntu.com/www/simple` on `cdimage-master.internal`.\n+      You can acquire the value for Y by adding up the sizes of the following images:\n+      - amd64 desktop\n+      - amd64 server\n+      - wsl amd64\n+      - netboot amd64\n+      ... and Z=X+Y\n   - task: Notify a translation coordinator to coordinate a fresh set of language packs\n     description: |\n       Notify an Ubuntu translation coordinator (i.e. member of the ubuntu-translations-coordinators\n",
+ "diff_truncated": false
+}

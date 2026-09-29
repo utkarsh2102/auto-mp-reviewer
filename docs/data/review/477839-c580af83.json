@@ -1,0 +1,35 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~adrien/ubuntu/+source/gnupg2/+git/gnupg2/+merge/477839",
+ "id": "477839",
+ "title": "Remove the logic in d/rules that builds gpgv-win32.exe which a) needs a",
+ "source_branch": "plucky-broken",
+ "target_branch": "ubuntu/devel",
+ "revision": "21a09808a60119efa772c3e7d1f46d11df311f6d",
+ "base_revision": "78470faa978b1a9f5100694a086a4abca290f160",
+ "description": "Please review this merge request. In addition to the git commits, a\ndebdiff will be posted in the comments.\n\n\n# 📊 PPA\nA PPA is available at:\n https://launchpad.net/~adrien/+archive/ubuntu/plucky-gnupg2-broken\n\n# 🧪 Autopkgtest results\n- ✅ gnupg2 on plucky for arm64   @ 10.01.25 15:05:41\n      • Log: https://autopkgtest.ubuntu.com/results/autopkgtest-plucky-adrien-plucky-gnupg2-broken/plucky/arm64/g/gnupg2/20250110_150541_9ed87@/log.gz\n- ✅ gnupg2 on plucky for armhf   @ 10.01.25 15:08:09\n      • Log: https://autopkgtest.ubuntu.com/results/autopkgtest-plucky-adrien-plucky-gnupg2-broken/plucky/armhf/g/gnupg2/20250110_150809_8f6ca@/log.gz\n- ✅ gnupg2 on plucky for ppc64el @ 10.01.25 15:04:27\n      • Log: https://autopkgtest.ubuntu.com/results/autopkgtest-plucky-adrien-plucky-gnupg2-broken/plucky/ppc64el/g/gnupg2/20250110_150427_45643@/log.gz\n\nWaiting for results on other arches. My -20 version was passing and this was a simple rebase. At the moment, amd64 and i386 are stuck so there won't be results for them probably, only for s390x.\n\n# 🔍 Lintian diff from most recent published package\nNo change",
+ "commit_message": "Remove the logic in d/rules that builds gpgv-win32.exe which a) needs a\nmingw-w64 toolchain, and b) is only used by debian-installer.\nIt seems to cause more failures than should be warranted because it's\ncustom build logic in d/rules. Since we don't need it, we can just drop\nit.\n",
+ "diffstat": {
+  "debian/changelog": [
+   6,
+   0
+  ],
+  "debian/control": [
+   0,
+   27
+  ],
+  "dev/null": [
+   0,
+   34
+  ],
+  "debian/rules": [
+   0,
+   18
+  ]
+ },
+ "files": 4,
+ "added_lines": 6,
+ "removed_lines": 79,
+ "diff": "diff --git a/debian/changelog b/debian/changelog\nindex 02b2490..8d526d7 100644\n--- a/debian/changelog\n+++ b/debian/changelog\n@@ -1,3 +1,9 @@\n+gnupg2 (2.4.4-2ubuntu22) plucky; urgency=medium\n+\n+  * Don't build the gpgv-win32 package which only debian-installer uses\n+\n+ -- Adrien Nader <adrien.nader@canonical.com>  Fri, 10 Jan 2025 14:24:01 +0100\n+\n gnupg2 (2.4.4-2ubuntu21) plucky; urgency=medium\n \n   * revert-rfc4880bis.patch: Revert the \"LibrePGP\" changes that introduce\ndiff --git a/debian/control b/debian/control\nindex 704833d..0bcf4e7 100644\n--- a/debian/control\n+++ b/debian/control\n@@ -29,15 +29,6 @@ Build-Depends:\n  pkg-config,\n  texinfo,\n  zlib1g-dev | libz-dev,\n-Build-Depends-Indep:\n- binutils-multiarch [!amd64 !i386],\n- libassuan-mingw-w64-dev (>= 2.5.0),\n- libgcrypt-mingw-w64-dev (>= 1.9.1),\n- libgpg-error-mingw-w64-dev (>= 1.46),\n- libksba-mingw-w64-dev (>= 1.6.3),\n- libnpth-mingw-w64-dev (>= 1.2),\n- libz-mingw-w64-dev,\n- mingw-w64,\n Vcs-Git: https://salsa.debian.org/debian/gnupg2.git -b debian/main\n Vcs-Browser: https://salsa.debian.org/debian/gnupg2\n Homepage: https://www.gnupg.org/\n@@ -423,24 +414,6 @@ Description: minimal signature verification tool (static build)\n  installs on these platforms by using the full Debian signature\n  verification that is present in all official Debian mirrors.\n \n-Package: gpgv-win32\n-Architecture: all\n-Multi-Arch: foreign\n-Depends:\n- ${misc:Depends},\n-Suggests:\n- wine,\n-Description: GNU privacy guard - signature verification tool (win32 build)\n- GnuPG is GNU's tool for secure communication and data storage.\n- .\n- gpgv is a stripped-down version of gnupg which is only able to check\n- signatures.  It is smaller than the full-blown gnupg and uses a\n- different (and simpler) way to check that the public keys used to\n- make the signature are trustworthy.\n- .\n- This is a win32 version of gpgv.  It's meant to be used by the win32-loader\n- component of Debian-Installer.\n-\n Package: gnupg-l10n\n Section: localization\n Architecture: all\ndiff --git a/debian/gpgv-win32.install b/debian/gpgv-win32.install\ndeleted file mode 100644\nindex cf3cd8c..0000000\n--- a/debian/gpgv-win32.install\n+++ /dev/null\n@@ -1 +0,0 @@\n-build-gpgv-win32/g10/gpgv.exe usr/share/win32\ndiff --git a/debian/rules b/debian/rules\nindex 81590a1..b9e0d31 100755\n--- a/debian/rules\n+++ b/debian/rules\n@@ -64,24 +64,6 @@ override_dh_auto_build-arch:\n \tcd build-gpgv-static/g10 && $(MAKE) LDFLAGS=\"$$LDFLAGS $(GPGV_STATIC_HARDENING) -static\" gpgv\n \tmv build-gpgv-static/g10/gpgv build-gpgv-static/g10/gpgv-static\n \n-override_dh_auto_build-indep:\n-\tmkdir -p build-gpgv-win32\n-\tcd build-gpgv-win32 && $(WIN32_FLAGS) ../configure \\\n-\t   \t$(foreach x, $(GPGV_UDEB_UNNEEDED), --disable-$(x)) \\\n-\t\t$(foreach x, libgpg-error libgcrypt libassuan ksba npth, --with-$x-prefix=/usr/i686-w64-mingw32) \\\n-\t\t--enable-gpg2-is-gpg \\\n-\t\t--with-zlib=/usr/i686-w64-mingw \\\n-\t\t--prefix=/usr/i686-w64-mingw32 \\\n-\t\t--host i686-w64-mingw32\n-\tcd build-gpgv-win32/common && $(WIN32_FLAGS) $(MAKE) libgpgrl.a\n-\tcd build-gpgv-win32/common && $(WIN32_FLAGS) $(MAKE) libsimple-pwquery.a\n-\tcd build-gpgv-win32/common && $(WIN32_FLAGS) $(MAKE) libcommonpth.a\n-\tcd build-gpgv-win32/kbx && $(WIN32_FLAGS) $(MAKE) libkeybox.a\n-\tcd build-gpgv-win32/regexp && $(WIN32_FLAGS) $(MAKE) libregexp.a\n-\tcd build-gpgv-win32/g10 && $(WIN32_FLAGS) $(MAKE) gpgv.exe\n-\tstrip build-gpgv-win32/g10/gpgv.exe\n-\n-\n override_dh_auto_test:\n \tdh_auto_test --builddirectory=build -- verbose=3 TESTFLAGS=$(AUTOTEST_FLAGS)\n \ndiff --git a/debian/tests/gpgv-win32 b/debian/tests/gpgv-win32\ndeleted file mode 100755\nindex 035c060..0000000\n--- a/debian/tests/gpgv-win32\n+++ /dev/null\n@@ -1,34 +0,0 @@\n-#!/bin/bash\n-\n-set -e\n-\n-export GNUPGHOME=$(mktemp -d)\n-gpgargs=(--batch --quiet --pinentry-mode=loopback --passphrase '' --with-colons)\n-\n-# Generate a minimal signing key:\n-gpg \"${gpgargs[@]}\" --quick-gen-key 'Test key for gpgv-win32 <test-key@example.com>'\n-\n-gpg \"${gpgargs[@]}\" -o \"$GNUPGHOME/key.gpg\" --export test-key@example.com\n-\n-# Sign this very script\n-rm -f \"${0}.gpg\"\n-gpg \"${gpgargs[@]}\" --output \"${0}.gpg\" --detach-sign \"${0}\"\n-\n-# Verify using gpgv\n-gpgv --quiet --status-fd 3 3> native.status --keyring \"$GNUPGHOME/key.gpg\" \"${0}.gpg\" \"${0}\"\n-\n-WINE=/usr/lib/wine/wine\n-export WINESERVER=/usr/lib/wine/wineserver32\n-\n-# Verify using gpgv.exe (using --status-fd 1 because i don't know how\n-# to pass a non-standard file descriptor into wine)\n-\"$WINE\" /usr/share/win32/gpgv.exe --quiet --status-fd 1 > win32.status --keyring \"Z://${GNUPGHOME}/key.gpg\" \"${0}.gpg\" \"${0}\" \n-\n-# convert to unix newlines if necessary:\n-sed -i 's/\\r$//' win32.status\n-\n-diff -u native.status win32.status\n-\n-head -v win32.status\n-\n-rm -rf \"$GNUPGHOME\"\n",
+ "diff_truncated": false
+}

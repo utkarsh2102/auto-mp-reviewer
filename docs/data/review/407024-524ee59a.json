@@ -1,0 +1,31 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~paride/ubuntu/+source/postfix/+git/postfix/+merge/407024",
+ "id": "407024",
+ "title": "Bionic SRU for LP: #1906970, same as https://code.launchpad.net/~paride/ubuntu/+source/postfix/+git/postfix/+merge/406805 but done against Bionic.",
+ "source_branch": "lp1906970-bionic",
+ "target_branch": "ubuntu/bionic-devel",
+ "revision": "dbc32cff6e680d9ba842635597f8b15485ee4545",
+ "base_revision": "213fbe02ae2e74768841c294776ed997add57d22",
+ "description": null,
+ "commit_message": "Bionic SRU for LP: #1906970, same as https://code.launchpad.net/~paride/ubuntu/+source/postfix/+git/postfix/+merge/406805 but done against Bionic.\n\nTest PPA: https://launchpad.net/~paride/+archive/ubuntu/postfix-lp1906970\n\nTest case: see [Test Plan] in the SRU bug description.\n\nAutopkgtest results (virt-server: qemu):\n\npostfix              PASS\n\n(I tried with autopkgtest-virt-lxd but it FTBFS because postfix fails to recognize the newer kernel I'm running locally. Worked fine with qemu. I wonder if autopkgtest-virt-lxd could support LXD VMs.)",
+ "diffstat": {
+  "debian/postfix.postinst": [
+   1,
+   1
+  ],
+  "debian/control": [
+   2,
+   1
+  ],
+  "debian/changelog": [
+   7,
+   0
+  ]
+ },
+ "files": 3,
+ "added_lines": 10,
+ "removed_lines": 2,
+ "diff": "diff --git a/debian/changelog b/debian/changelog\nindex 790a21f..57c360f 100644\n--- a/debian/changelog\n+++ b/debian/changelog\n@@ -1,3 +1,10 @@\n+postfix (3.3.0-1ubuntu0.4) bionic; urgency=medium\n+\n+  * d/postfix.postinst: tolerate search domain with a leading dot\n+    (LP: #1906970)\n+\n+ -- Paride Legovini <paride@ubuntu.com>  Thu, 12 Aug 2021 14:43:19 +0200\n+\n postfix (3.3.0-1ubuntu0.3) bionic; urgency=medium\n \n   * d/p/fix_tls_deploy-server-cert.patch: handle missing opt arg (LP: #1881196)\ndiff --git a/debian/control b/debian/control\nindex 7828b9b..69343ed 100644\n--- a/debian/control\n+++ b/debian/control\n@@ -1,7 +1,8 @@\n Source: postfix\n Section: mail\n Priority: optional\n-Maintainer: LaMont Jones <lamont@debian.org>\n+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>\n+XSBC-Original-Maintainer: LaMont Jones <lamont@debian.org>\n Standards-Version: 4.1.3\n Homepage: http://www.postfix.org\n Build-Depends: debhelper (>= 9.20160709), po-debconf (>= 0.5.0), groff-base, patch, lsb-release, libdb-dev (>=4.6.19), libldap2-dev (>=2.1), liblmdb-dev, libpcre3-dev, default-libmysqlclient-dev | libmysqlclient-dev, libssl-dev (>=0.9.7), libsasl2-dev, libpq-dev, libcdb-dev, dpkg-dev (>= 1.16.1~), libsqlite3-dev, html2text, libicu-dev\ndiff --git a/debian/postfix.postinst b/debian/postfix.postinst\nindex 7c04187..7261f9e 100644\n--- a/debian/postfix.postinst\n+++ b/debian/postfix.postinst\n@@ -49,7 +49,7 @@ myfqdn() {\n \tif [ $myhostname = ${myhostname%.*} ]; then\n \t    if [ -f /etc/resolv.conf ]; then\n \t\t# The resolver uses the last one found, and ignores the rest\n-\t\tmydom=$(sed -n 's/^search[[:space:]]*\\([^[:space:]]*\\).*/\\1/p;s/^domain[[:space:]]*\\([^[:space:]]*\\).*/\\1/p' /etc/resolv.conf | tail -1)\n+\t\tmydom=$(sed -n 's/^search[[:space:]]*\\.*\\([^[:space:]]*\\).*/\\1/p;s/^domain[[:space:]]*\\.*\\([^[:space:]]*\\).*/\\1/p' /etc/resolv.conf | tail -1)\n \t\tmyhostname=\"$myhostname${mydom:+.$mydom}\"\n \t    else\n \t\tmyhostname=\"$myhostname.UNKNOWN\"\n",
+ "diff_truncated": false
+}

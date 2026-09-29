@@ -1,0 +1,23 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~eeickmeyer/ubuntu-images/+git/ubuntu-images/+merge/504061",
+ "id": "504061",
+ "title": "Add core22 to edubuntu snaps in noble",
+ "source_branch": "noble",
+ "target_branch": "noble",
+ "revision": "d3103874fe3fc17bd58627a46ed3648e01b4ada8",
+ "base_revision": "64476bae6605422d819cc6384ebb2fb4cea84a72",
+ "description": "Currently image builds for edubuntu are failing in noble. https://launchpadlibrarian.net/858099179/buildlog_ubuntu_noble_arm64_raspi_edubuntu-preinstalled_BUILDING.txt.gz\n\nError: Error preparing image: prerequisites need to be added explicitly: cannot use snap \"gnome-42-2204\": base \"core22\" is missing\nBuild failed",
+ "commit_message": "Add core22 to edubuntu snaps in noble",
+ "diffstat": {
+  "edubuntu-pi-arm64.yaml": [
+   1,
+   0
+  ]
+ },
+ "files": 1,
+ "added_lines": 1,
+ "removed_lines": 0,
+ "diff": "diff --git a/edubuntu-pi-arm64.yaml b/edubuntu-pi-arm64.yaml\nindex 462fbe2..124f09a 100644\n--- a/edubuntu-pi-arm64.yaml\n+++ b/edubuntu-pi-arm64.yaml\n@@ -44,6 +44,7 @@ customization:\n   extra-snaps:\n     - name: snapd\n     - name: bare\n+    - name: core22\n     - name: gnome-42-2204\n       channel: stable/ubuntu-24.04\n     - name: gtk-common-themes\n",
+ "diff_truncated": false
+}

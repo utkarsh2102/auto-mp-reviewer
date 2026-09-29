@@ -1,0 +1,31 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~varranvar/ubuntu/+source/coreutils-from/+git/coreutils-from/+merge/502922",
+ "id": "502922",
+ "title": "Fixes three bugs in coreutils-from:",
+ "source_branch": "fix/lp2146312-lp2137443-lp2127231",
+ "target_branch": "ubuntu/devel",
+ "revision": "01650685d648bf1d4523410e31453a829d7d2e5e",
+ "base_revision": "0c2d57d39588a6b1a126cf27289fcf879315b4a1",
+ "description": "Fixes three bugs in coreutils-from:\n  * d/coreutils-from-uutils.links:\n    - Reinstate chown and chmod links (LP: #2146312).\n    - Remove b3sum link (LP: #2127231).\n  * d/control: Add libdigest-sha3-perl << 1.05-1ubuntu3 to Break and\n    replace to accommodate the bug fix for LP: #2137443.\n\nPPA: ppa:varranvar/fix2146312-2137443-2127231\n\nSteps to test:\n\n# lxc launch ubuntu-daily:resolute tester\n# lxc exec tester -- bash\n# sudo apt update\n# sudo apt install coreutils-from-uutils\n# ls -l /usr/bin/b3sum\n\nThis should indicate that /usr/bin/b3sum exists and is a symlink.\n\n# ls -lL /usr/bin/b3sum\n\nThis should fail, indicating that the symlink is dangling.\n\n# sudo add-apt-repository ppa:varranvar/fix2146312-2137443-2127231\n# sudo apt update\n# apt install libdigest-sha3-perl\n# sudo apt -y install coreutils-from-uutils\n# ls -l /usr/bin/b3sum\n\nThis should fail, indicating that /usr/bin/b3sum no longer exists.",
+ "commit_message": null,
+ "diffstat": {
+  "debian/changelog": [
+   10,
+   0
+  ],
+  "debian/control": [
+   2,
+   2
+  ],
+  "debian/coreutils-from-uutils.links": [
+   4,
+   5
+  ]
+ },
+ "files": 3,
+ "added_lines": 16,
+ "removed_lines": 7,
+ "diff": "diff --git a/debian/changelog b/debian/changelog\nindex 5df66c3..985dcf1 100644\n--- a/debian/changelog\n+++ b/debian/changelog\n@@ -1,3 +1,13 @@\n+coreutils-from (0.0.0~ubuntu25) resolute; urgency=medium\n+\n+  * uutils:\n+    - Reinstate chown and chmod links (LP: #2146312).\n+    - Remove b3sum (LP: #2127231).\n+  * d/control: Add libdigest-sha3-perl << 1.05-1ubuntu3 to Break and\n+    replace to accommodate the bug fix for LP: #2137443.\n+    \n+ -- Varun Varma <varun.varma@canonical.com>  Mon, 30 Mar 2026 12:50:24 -0400\n+\n coreutils-from (0.0.0~ubuntu24) questing; urgency=medium\n \n   * uutils: Redirect cp, mv, rm back to GNU.\ndiff --git a/debian/control b/debian/control\nindex 9c4633e..1cf8e42 100644\n--- a/debian/control\n+++ b/debian/control\n@@ -35,8 +35,8 @@ Multi-Arch: foreign\n Pre-Depends: rust-coreutils (>> 0.1.0+git20250813), gnu-coreutils\n Provides: coreutils, coreutils-from\n Protected: yes\n-Replaces: coreutils (<< ${coreutils:Version}), coreutils-from\n-Breaks: coreutils (<< ${coreutils:Version})\n+Replaces: coreutils (<< ${coreutils:Version}), coreutils-from, libdigest-sha3-perl (<< 1.05-1ubuntu3~)\n+Breaks: coreutils (<< ${coreutils:Version}), libdigest-sha3-perl (<< 1.05-1ubuntu3~)\n Conflicts: coreutils-from\n Description: coreutils from the uutils project\n  A Rust-based implementation of the coreutils, aiming at\ndiff --git a/debian/coreutils-from-uutils.links b/debian/coreutils-from-uutils.links\nindex e5e1d3a..95c7214 100644\n--- a/debian/coreutils-from-uutils.links\n+++ b/debian/coreutils-from-uutils.links\n@@ -1,7 +1,6 @@\n usr/lib/cargo/bin/coreutils/[ usr/bin/[\n usr/lib/cargo/bin/coreutils/arch usr/bin/arch\n usr/lib/cargo/bin/coreutils/b2sum usr/bin/b2sum\n-usr/lib/cargo/bin/coreutils/b3sum usr/bin/b3sum\n usr/lib/cargo/bin/coreutils/base32 usr/bin/base32\n usr/lib/cargo/bin/coreutils/base64 usr/bin/base64\n usr/lib/cargo/bin/coreutils/basename usr/bin/basename\n@@ -9,8 +8,8 @@ usr/lib/cargo/bin/coreutils/basenc usr/bin/basenc\n usr/lib/cargo/bin/coreutils/cat usr/bin/cat\n usr/lib/cargo/bin/coreutils/chcon usr/bin/chcon\n usr/lib/cargo/bin/coreutils/chgrp usr/bin/chgrp\n-usr/bin/gnuchmod usr/bin/chmod\n-usr/bin/gnuchown usr/bin/chown\n+usr/lib/cargo/bin/coreutils/chmod usr/bin/chmod\n+usr/lib/cargo/bin/coreutils/chown usr/bin/chown\n usr/lib/cargo/bin/coreutils/chroot usr/bin/chroot\n usr/lib/cargo/bin/coreutils/cksum usr/bin/cksum\n usr/lib/cargo/bin/coreutils/comm usr/bin/comm\n@@ -120,8 +119,8 @@ usr/share/man/man1/rust-basenc.1.gz usr/share/man/man1/basenc.1.gz\n usr/share/man/man1/rust-cat.1.gz usr/share/man/man1/cat.1.gz\n usr/share/man/man1/rust-chcon.1.gz usr/share/man/man1/chcon.1.gz\n usr/share/man/man1/rust-chgrp.1.gz usr/share/man/man1/chgrp.1.gz\n-usr/share/man/man1/gnuchmod.1.gz usr/share/man/man1/chmod.1.gz\n-usr/share/man/man1/gnuchown.1.gz usr/share/man/man1/chown.1.gz\n+usr/share/man/man1/rust-chmod.1.gz usr/share/man/man1/chmod.1.gz\n+usr/share/man/man1/rust-chown.1.gz usr/share/man/man1/chown.1.gz\n usr/share/man/man1/rust-chroot.1.gz usr/share/man/man1/chroot.1.gz\n usr/share/man/man1/rust-cksum.1.gz usr/share/man/man1/cksum.1.gz\n usr/share/man/man1/rust-comm.1.gz usr/share/man/man1/comm.1.gz\n",
+ "diff_truncated": false
+}

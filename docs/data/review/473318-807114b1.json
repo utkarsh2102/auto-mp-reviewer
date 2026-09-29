@@ -1,0 +1,23 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~mfo/britney/+git/britney/+merge/473318",
+ "id": "473318",
+ "title": "badtest-never_run-linux-focal → focal",
+ "source_branch": "badtest-never_run-linux-focal",
+ "target_branch": "focal",
+ "revision": "b60cb7ba31d3b40f075a428236a63e57dafeb792",
+ "base_revision": "7d542848fec5a275760bf0fa7126197baa794d1c",
+ "description": null,
+ "commit_message": null,
+ "diffstat": {
+  "ubuntu-release": [
+   7,
+   1
+  ]
+ },
+ "files": 1,
+ "added_lines": 7,
+ "removed_lines": 1,
+ "diff": "diff --git a/ubuntu-release b/ubuntu-release\nindex e9960cf..69ed324 100644\n--- a/ubuntu-release\n+++ b/ubuntu-release\n@@ -91,7 +91,6 @@ force-badtest gscan2pdf/2.6.4-1/arm64\n force-badtest linux-aws/all\n force-badtest linux-azure/all\n force-badtest linux-gcp/all\n-force-badtest linux-gke/all\n force-badtest linux-oem/all\n force-badtest linux-oem-5.4/all\n force-badtest linux-adv-uno420/all\n@@ -102,9 +101,13 @@ force-badtest linux-aws-5.8/all\n force-badtest linux-azure-5.11/all\n force-badtest linux-azure-5.13/all\n force-badtest linux-azure-5.8/all\n+force-badtest linux-azure-cvm/all\n+force-badtest linux-azure-fde/all\n force-badtest linux-gcp-5.11/all\n force-badtest linux-gcp-5.13/all\n force-badtest linux-gcp-5.8/all\n+force-badtest linux-gke/all\n+force-badtest linux-gke-5.15/all\n force-badtest linux-hwe-5.11/all\n force-badtest linux-hwe-5.13/all\n force-badtest linux-hwe-5.8/all\n@@ -112,16 +115,19 @@ force-badtest linux-intel/all\n force-badtest linux-intel-5.13/all\n force-badtest linux-oem-5.10/all\n force-badtest linux-oem-5.13/all\n+force-badtest linux-oem-5.14/all\n force-badtest linux-oem-5.6/all\n force-badtest linux-oracle-5.11/all\n force-badtest linux-oracle-5.13/all\n force-badtest linux-oracle-5.8/all\n+force-badtest linux-qcomm/all\n force-badtest linux-raspi2/all\n force-badtest linux-riscv/all\n force-badtest linux-riscv-5.11/all\n force-badtest linux-riscv-5.13/all\n force-badtest linux-riscv-5.8/all\n force-badtest linux-uc20-intel/all\n+force-badtest linux-uc20-qcomm/all\n # the autopktest is not reliable in the current form, see LP: #1721558\n force-badtest linux-kvm/all\n # fails rebuild test due to timeouts, but linux/arm64 passes\n",
+ "diff_truncated": false
+}

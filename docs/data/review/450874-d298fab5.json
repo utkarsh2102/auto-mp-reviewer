@@ -1,0 +1,27 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~waveform/livecd-rootfs/+git/livecd-rootfs/+merge/450874",
+ "id": "450874",
+ "title": "general-tidy → ubuntu/master",
+ "source_branch": "general-tidy",
+ "target_branch": "ubuntu/master",
+ "revision": "f86e113f4af0526720b3832f99c14155e6cb93a7",
+ "base_revision": "a6844722a87eca029b3f0e40b384d910716040ad",
+ "description": null,
+ "commit_message": null,
+ "diffstat": {
+  "live-build/auto/config": [
+   0,
+   1
+  ],
+  "live-build/ubuntu-cpc/hooks.d/chroot/999-cpc-fixes.chroot": [
+   41,
+   9
+  ]
+ },
+ "files": 2,
+ "added_lines": 41,
+ "removed_lines": 10,
+ "diff": "diff --git a/live-build/auto/config b/live-build/auto/config\nindex 20e280b..91549da 100755\n--- a/live-build/auto/config\n+++ b/live-build/auto/config\n@@ -1004,7 +1004,6 @@ case $PROJECT in\n \t\t\t\t\tKERNEL_FLAVOURS=generic\n \t\t\t\telif [ \"${SUBARCH:-}\" = \"intel-iot\" ]; then\n \t\t\t\t\tKERNEL_FLAVOURS=intel-iotg\n-\t\t\t\t\tOPTS=\"${OPTS:+$OPTS }--initramfs=none\"\n \t\t\t\tfi\n \t\t\t\t;;\n \t\t\triscv64*)\ndiff --git a/live-build/ubuntu-cpc/hooks.d/chroot/999-cpc-fixes.chroot b/live-build/ubuntu-cpc/hooks.d/chroot/999-cpc-fixes.chroot\nindex 295cc2a..a291958 100755\n--- a/live-build/ubuntu-cpc/hooks.d/chroot/999-cpc-fixes.chroot\n+++ b/live-build/ubuntu-cpc/hooks.d/chroot/999-cpc-fixes.chroot\n@@ -65,15 +65,47 @@ if [ -n \"${build_name}\" -o -n \"${serial}\" ]; then\n fi\n \n ## --------------\n-# for maverick and newer, use LABEL= for the '/' entry in fstab\n-if [ -n \"${root_fs_label}\" ]; then\n-   bl=\"[:blank:]\"\n-   lstr=\"LABEL=${root_fs_label}\"\n-   sed -i \"s,^[^#${bl}]*\\([${bl}]*/[${bl}].*\\),${lstr}\\1,\" \"${rootd}/etc/fstab\"\n-fi\n-cat > /etc/fstab << EOM\n-LABEL=cloudimg-rootfs\t/\t ext4\tdiscard,commit=30,errors=remount-ro\t0 1\n-EOM\n+# Find the root mount in fstab and re-write the source device (fs_spec field)\n+# to be LABEL=$root_fs_label. Also change the root mount's options (fs_mntops)\n+# to those specified in the root_fs_options variable. Finally force the\n+# fsck ordering field (fs_passno) to \"1\".\n+#\n+# If multiple root-mount definitions are found, only the first is kept. If no\n+# root-mount definitions are found, one is appended (with the specified source,\n+# mount options, and fsck ordering). If the \"# UNCONFIGURED FSTAB\" comment is\n+# found, it is stripped out. All other comment lines are ignored and passed\n+# through\n+awk \\\n+    -v root_fs_label=\"$root_fs_label\" \\\n+    -v root_fs_options=\"discard,commit=30,errors=remount-ro\" \\\n+    '\n+BEGIN { OFS=\"\\t\"; count=0; }\n+\n+# Omit the \"UNCONFIGURED\" warning if it is still present\n+/^# UNCONFIGURED FSTAB/ { next; }\n+\n+# Only modify the first non-comment line where the second field is the root and\n+# omit multiple root definitions\n+/^[^#]/ && $2 == \"/\" {\n+    if (!count++) {\n+        $1=\"LABEL=\" root_fs_label;\n+        $4=root_fs_options;\n+        $6=\"1\";\n+    } else {\n+        next;\n+    }\n+}\n+\n+{ print; }\n+\n+# If we reach the end without seeing a root mount line, add one\n+END {\n+    if (!count) {\n+        print \"LABEL=\" root_fs_label, \"/\", \"ext4\", root_fs_options, \"0\", \"1\";\n+    }\n+}\n+' \"$rootd\"/etc/fstab > \"$rootd\"/etc/fstab.new\n+mv \"$rootd\"/etc/fstab.new \"$rootd\"/etc/fstab\n \n # for quantal and newer, add /etc/overlayroot.local.conf\n # but do not overwrite anything that somehow got there\n",
+ "diff_truncated": false
+}

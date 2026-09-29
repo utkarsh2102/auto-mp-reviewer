@@ -1,0 +1,31 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~hectorcao/ubuntu/+source/init-system-helpers/+git/init-system-helpers/+merge/509963",
+ "id": "509963",
+ "title": "PPA: https://launchpad.net/~hectorcao/+archive/ubuntu/lp2164744",
+ "source_branch": "lp2164744-resolute",
+ "target_branch": "ubuntu/resolute-devel",
+ "revision": "21de1c2ee18433c1165d77ad3df06511dafa7380",
+ "base_revision": "f493a67aca7e3924e62fb8005b7f6992dc8c1504",
+ "description": "PPA: https://launchpad.net/~hectorcao/+archive/ubuntu/lp2164744",
+ "commit_message": null,
+ "diffstat": {
+  "debian/changelog": [
+   6,
+   0
+  ],
+  "debian/control": [
+   2,
+   1
+  ],
+  "script/deb-systemd-helper": [
+   13,
+   2
+  ]
+ },
+ "files": 3,
+ "added_lines": 21,
+ "removed_lines": 3,
+ "diff": "diff --git a/debian/changelog b/debian/changelog\nindex 98e97be..d02e896 100644\n--- a/debian/changelog\n+++ b/debian/changelog\n@@ -1,3 +1,9 @@\n+init-system-helpers (1.69ubuntu0.1) resolute; urgency=medium\n+\n+  * Fix deb-systemd-helper remove_links() infinite loop (LP: #2164744)\n+\n+ -- Hector Cao <hector.cao@canonical.com>  Sat, 22 Aug 2026 11:28:31 +0200\n+\n init-system-helpers (1.69) unstable; urgency=medium\n \n   * Add postinst to hotfix an upgrade bug on certain newly live-installed\ndiff --git a/debian/control b/debian/control\nindex a492019..e7eccf3 100644\n--- a/debian/control\n+++ b/debian/control\n@@ -1,7 +1,8 @@\n Source: init-system-helpers\n Section: admin\n Priority: optional\n-Maintainer: Debian systemd Maintainers <pkg-systemd-maintainers@lists.alioth.debian.org>\n+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>\n+XSBC-Original-Maintainer: Debian systemd Maintainers <pkg-systemd-maintainers@lists.alioth.debian.org>\n Uploaders: Michael Biebl <biebl@debian.org>,\n            Martin Pitt <mpitt@debian.org>,\n            Felipe Sateler <fsateler@debian.org>,\ndiff --git a/script/deb-systemd-helper b/script/deb-systemd-helper\nindex 5e7e167..cef2e95 100755\n--- a/script/deb-systemd-helper\n+++ b/script/deb-systemd-helper\n@@ -439,7 +439,7 @@ sub debian_installed {\n }\n \n sub remove_links {\n-    my ($service_path) = @_;\n+    my ($service_path, @visited) = @_;\n \n     my $dsh_state = dsh_state_path($service_path);\n     my @entries = state_file_entries($dsh_state);\n@@ -480,12 +480,23 @@ sub remove_links {\n     # dh_installsystemd generating an appropriate disable\n     # command by parsing the service file at debhelper-time.\n     open(my $fh, '<', \"$dpkg_root$service_path\") or return;\n+    my $unit_name = basename($service_path);\n+    push @visited, $unit_name;\n     while (my $line = <$fh>) {\n         chomp($line);\n         my $service_link;\n \n         if ($line =~ /^\\s*Also=(.+)$/i) {\n-            remove_links(find_unit($1));\n+            # Also= can contain multiple unit names, separated by whitespace. See\n+            # systemd.unit(5) for details.\n+            for my $value (split(/\\s+/, $1)) {\n+                $value =~ s/^([\"'])(.*)\\g1$/$2/;\n+                # We can end up in an infinite recursion, so remember what units we\n+                # already processed to break it\n+                next if grep $_ eq $value, @visited;\n+                push @visited, $value;\n+                remove_links(find_unit($value), @visited);\n+            }\n         }\n     }\n     close($fh);\n",
+ "diff_truncated": false
+}

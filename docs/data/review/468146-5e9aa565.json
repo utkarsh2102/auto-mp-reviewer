@@ -1,0 +1,23 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~bdrung/ubuntu/+source/openjdk-21/+git/openjdk-21/+merge/468146",
+ "id": "468146",
+ "title": "ubuntu/devel → ubuntu/devel",
+ "source_branch": "ubuntu/devel",
+ "target_branch": "ubuntu/devel",
+ "revision": "4c49d6234b46f3b7df6f415c002e5548d4348682",
+ "base_revision": "86ffddcc6bce2dc8993a67eedb494ac7effaa85e",
+ "description": null,
+ "commit_message": null,
+ "diffstat": {
+  "debian/rules": [
+   14,
+   18
+  ]
+ },
+ "files": 1,
+ "added_lines": 14,
+ "removed_lines": 18,
+ "diff": "diff --git a/debian/rules b/debian/rules\nindex 5fb988a..fa7d87e 100755\n--- a/debian/rules\n+++ b/debian/rules\n@@ -4,6 +4,15 @@\n # Uncomment this to turn on verbose mode.\n #export DH_VERBOSE=1\n \n+include /usr/share/dpkg/architecture.mk\n+include /usr/share/dpkg/pkg-info.mk\n+\n+# Export variables needed for ELF package metadata\n+export DEB_BUILD_OS_RELEASE_ID=$(shell . /usr/lib/os-release && echo $$ID)\n+export DEB_HOST_ARCH\n+export DEB_SOURCE\n+export DEB_VERSION\n+\n unexport LANG LC_ALL\n \n dh_version := $(shell dpkg-query -f '$${Version}\\n' -W debhelper | sed -n 's/^\\(.\\).*/\\1/p')\n@@ -18,23 +27,10 @@ else\n   TIME = time\n endif\n \n-vafilt = $(subst $(2)=,,$(filter $(2)=%,$(1)))\n-\n-DPKG_VARS\t\t:= $(shell dpkg-architecture)\n-DEB_HOST_GNU_TYPE\t?= $(call vafilt,$(DPKG_VARS),DEB_HOST_GNU_TYPE)\n-DEB_BUILD_GNU_TYPE\t?= $(call vafilt,$(DPKG_VARS),DEB_BUILD_GNU_TYPE)\n-DEB_HOST_ARCH\t\t?= $(call vafilt,$(DPKG_VARS),DEB_HOST_ARCH)\n-DEB_BUILD_ARCH\t\t?= $(call vafilt,$(DPKG_VARS),DEB_BUILD_ARCH)\n-DEB_HOST_ARCH_CPU\t?= $(call vafilt,$(DPKG_VARS),DEB_HOST_ARCH_CPU)\n-DEB_HOST_MULTIARCH\t?= $(call vafilt,$(DPKG_VARS),DEB_HOST_MULTIARCH)\n-\n PATH := $(CURDIR)/bin:$(PATH)\n export PATH\n \n-CHANGELOG_VARS := $(shell dpkg-parsechangelog | sed -n 's/ /_/g;/^[^_]/s/^\\([^:]*\\):_\\(.*\\)/\\1=\\2/p')\n-PKGSOURCE := $(call vafilt,$(CHANGELOG_VARS),Source)\n-PKGVERSION := $(call vafilt,$(CHANGELOG_VARS),Version)\n-PKGYEAR := $(shell echo $(call vafilt,$(CHANGELOG_VARS),Timestamp) | date --utc +%Y)\n+PKGYEAR := $(shell date --utc +%Y --date=\"@$(SOURCE_DATE_EPOCH)\")\n \n distribution := $(shell lsb_release --id --short)\n distrel := $(shell lsb_release --codename --short)\n@@ -101,7 +97,7 @@ else\n endif\n jvmver\t\t= 1.21.0\n shortver\t= 21\n-v_debian\t:= $(shell echo $(PKGVERSION) | sed 's/ea//' | sed 's/\\~us[[:digit:]]\\+//')\n+v_debian\t:= $(shell echo $(DEB_VERSION) | sed 's/ea//' | sed 's/\\~us[[:digit:]]\\+//')\n v_upstream\t:= $(shell echo $(v_debian) | sed 's/-[^-][^-]*$$//')\n v_pkgrel\t:= $(shell echo $(v_debian) | sed 's/^.*-//')\n \n@@ -477,7 +473,7 @@ endif\n \n # not sure if this is a good idea, might change parsing of java -version\n #COMMON_CONFIGURE_ARGS += \\\n-#\t--with-vendor-version-string='$(PKGVERSION)'\n+#\t--with-vendor-version-string='$(DEB_VERSION)'\n \n ifeq ($(distribution),Debian)\n   COMMON_CONFIGURE_ARGS += \\\n@@ -723,7 +719,7 @@ endif\n ifeq (,$(filter $(distrel),jessie stretch buster precise trusty xenial bionic focal groovy))\n   with_debugedit = yes\n   bd_debugedit = debugedit (>= 4.16),\n-  build_id_seed = $(PKGSOURCE)-$(PKGVERSION)\n+  build_id_seed = $(DEB_SOURCE)-$(DEB_VERSION)\n endif\n \n ifeq (,$(filter $(distrel),jessie stretch buster precise trusty xenial bionic))\n@@ -1985,7 +1981,7 @@ endif\n \n git_project\t\t= jdk21u\n git_tag\t\t\t= jdk-21.0.3+9\n-package_version\t\t= $(shell echo $(PKGVERSION) | sed 's/-[^-][^-]*$$//')\n+package_version\t\t= $(DEB_VERSION_EPOCH_UPSTREAM)\n ifneq ($(is_upstream_release),yes)\n   package_version\t:= $(subst +,~,$(package_version))\n endif\n",
+ "diff_truncated": false
+}

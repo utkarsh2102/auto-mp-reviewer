@@ -1,0 +1,23 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~karljs/ubuntu-archive-tools/+git/ubuntu-archive-tools/+merge/498638",
+ "id": "498638",
+ "title": "This is a hack to allow me to specify a target to an individual PPA with simpler syntax:",
+ "source_branch": "ppa-format-fix",
+ "target_branch": "main",
+ "revision": "bb1479df93cd2a63353554e69e761d4f3744a10a",
+ "base_revision": "3f20ae9acec2cad6f3fa075f8c7f7ded419993f9",
+ "description": "This is a hack to allow me to specify a target to an individual PPA with simpler syntax:\n    --to ppa:karljs/my_ppa\n\nBecause for whatever reason, the API wrapper can handle that syntax for teams, but not for individuals, which instead requires me to use a syntax I'm not familiar with:\n    --to ~karljs/ubuntu/my_ppa",
+ "commit_message": null,
+ "diffstat": {
+  "lputils.py": [
+   8,
+   1
+  ]
+ },
+ "files": 1,
+ "added_lines": 8,
+ "removed_lines": 1,
+ "diff": "diff --git a/lputils.py b/lputils.py\nindex 6907fad..3c263c7 100644\n--- a/lputils.py\n+++ b/lputils.py\n@@ -78,8 +78,15 @@ def setup_location(args, default_pocket=\"Release\"):\n     archive = None\n     if getattr(args, \"archive\", False):\n         # Try parsing an archive reference first.\n+        archive_ref = args.archive\n+        # Convert ppa:user/name format to ~user/ubuntu/name format\n+        # which getByReference seems to require\n+        if archive_ref.startswith(\"ppa:\"):\n+            parts = archive_ref[4:].split(\"/\")\n+            if len(parts) == 2:\n+                archive_ref = f\"~{parts[0]}/ubuntu/{parts[1]}\"\n         archive = args.launchpad.archives.getByReference(\n-            reference=args.archive)\n+            reference=archive_ref)\n         if archive is None:\n             raise AssertionError(\"No such archive: %s\" % args.archive)\n     else:\n",
+ "diff_truncated": false
+}

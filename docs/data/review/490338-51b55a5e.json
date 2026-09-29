@@ -1,0 +1,23 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~vpa1977/ubuntu/+source/dotnet8/+git/dotnet8/+merge/490338",
+ "id": "490338",
+ "title": "sru-jammy → ubuntu/jammy-devel",
+ "source_branch": "sru-jammy",
+ "target_branch": "ubuntu/jammy-devel",
+ "revision": "b6a33c8e8f26ed328a5c4414998737c161d612dd",
+ "base_revision": "0236c46a93d43736448473b3bcce6ca21ea412ce",
+ "description": null,
+ "commit_message": null,
+ "diffstat": {
+  "debian/changelog": [
+   6,
+   0
+  ]
+ },
+ "files": 1,
+ "added_lines": 6,
+ "removed_lines": 0,
+ "diff": "diff --git a/debian/changelog b/debian/changelog\nindex 01070dd..020d0ed 100644\n--- a/debian/changelog\n+++ b/debian/changelog\n@@ -1,3 +1,9 @@\n+dotnet8 (8.0.119-8.0.19-0ubuntu1~22.04.1) jammy; urgency=medium\n+\n+  * New upstream release (LP: #2119537)\n+\n+ -- Dominik Viererbe <dominik.viererbe@canonical.com>  Tue, 05 Aug 2025 16:37:26 +0300\n+\n dotnet8 (8.0.118-8.0.18-0ubuntu1~22.04.1) jammy; urgency=medium\n \n   * New upstream release (LP: #2115829)\n",
+ "diff_truncated": false
+}

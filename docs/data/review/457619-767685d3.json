@@ -1,0 +1,35 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~mirespace/ubuntu/+source/heimdal/+git/heimdal/+merge/457619",
+ "id": "457619",
+ "title": "ftbfs-kafs_strlcpy-lp2036253 → ubuntu/devel",
+ "source_branch": "ftbfs-kafs_strlcpy-lp2036253",
+ "target_branch": "ubuntu/devel",
+ "revision": "7449e0a7b82f0ce563152d020dd19eec19c67760",
+ "base_revision": "4140632bc62db8e7bd316eedecbe73840ca3c9b0",
+ "description": null,
+ "commit_message": null,
+ "diffstat": {
+  "debian/changelog": [
+   10,
+   0
+  ],
+  "debian/control": [
+   6,
+   1
+  ],
+  "debian/libkafs0-heimdal.symbols": [
+   2,
+   1
+  ],
+  "debian/libroken19-heimdal.symbols": [
+   2,
+   1
+  ]
+ },
+ "files": 4,
+ "added_lines": 20,
+ "removed_lines": 3,
+ "diff": "diff --git a/debian/changelog b/debian/changelog\nindex eb37c42..11637c4 100644\n--- a/debian/changelog\n+++ b/debian/changelog\n@@ -1,3 +1,13 @@\n+heimdal (7.8.git20221117.28daf24+dfsg-3ubuntu3) noble; urgency=medium\n+\n+  * d/lib{kafs0,roken19}-heimdal.symbols: Change symbol dependencies\n+    on libroken19-heimdal and libkafs0-heimdal to build-depends on\n+    itself to avoid future symbol skew.\n+  * d/control: Add packages with binary commands that uses\n+    libroken19-heimdal symbols to the Breaks: (not only libraries).\n+\n+ -- Miriam España Acebal <miriam.espana@canonical.com>  Fri, 15 Dec 2023 12:16:53 +0100\n+\n heimdal (7.8.git20221117.28daf24+dfsg-3ubuntu2) noble; urgency=medium\n \n   * d/lib{kafs0,roken19}-heimdal.symbols:\ndiff --git a/debian/control b/debian/control\nindex b02d633..11b9080 100644\n--- a/debian/control\n+++ b/debian/control\n@@ -252,7 +252,12 @@ Pre-Depends: ${misc:Pre-Depends}\n Section: libs\n Architecture: any\n Depends: ${misc:Depends}, ${shlibs:Depends}\n-Breaks: libafsauthent2 (<< 1.8.10-1ubuntu4~),\n+Breaks: openafs-client (<< 1.8.10-1ubuntu4~),\n+        openafs-dbserver (<< 1.8.10-1ubuntu4~),\n+        openafs-fileserver (<< 1.8.10-1ubuntu4~),\n+        openafs-fuse (<< 1.8.10-1ubuntu4~),\n+        openafs-krb5 (<< 1.8.10-1ubuntu4~),\n+        libafsauthent2 (<< 1.8.10-1ubuntu4~),\n         libafsrpc2 (<< 1.8.10-1ubuntu4~),\n         libhdb9-heimdal (<<7.8.git20221117.28daf24+dfsg-3ubuntu2~),\n         libhx509-5-heimdal (<<7.8.git20221117.28daf24+dfsg-3ubuntu2~),\ndiff --git a/debian/libkafs0-heimdal.symbols b/debian/libkafs0-heimdal.symbols\nindex dea514d..eab2806 100644\n--- a/debian/libkafs0-heimdal.symbols\n+++ b/debian/libkafs0-heimdal.symbols\n@@ -1,4 +1,5 @@\n-libkafs.so.0 #PACKAGE# (= ${binary:Version})\n+libkafs.so.0 #PACKAGE# #MINVER#\n+* Build-Depends-Package: libkafs0-heimdal\n  _kafs_afslog_all_local_cells@Base 1.4.0+git20110226\n  _kafs_debug@Base 1.4.0+git20110226\n  _kafs_derive_des_key@Base 1.7~git20150920\ndiff --git a/debian/libroken19-heimdal.symbols b/debian/libroken19-heimdal.symbols\nindex fee9bf5..0406650 100644\n--- a/debian/libroken19-heimdal.symbols\n+++ b/debian/libroken19-heimdal.symbols\n@@ -1,4 +1,5 @@\n-libroken.so.19 #PACKAGE# (= ${binary:Version})\n+libroken.so.19 #PACKAGE# #MINVER#\n+* Build-Depends-Package: libroken19-heimdal\n  HEIMDAL_ROKEN_1.0@HEIMDAL_ROKEN_1.0 1.4.0+git20110226\n  arg_printusage@HEIMDAL_ROKEN_1.0 1.4.0+git20110226\n  arg_printusage_i18n@HEIMDAL_ROKEN_1.0 1.4.0+git20110226\n",
+ "diff_truncated": false
+}

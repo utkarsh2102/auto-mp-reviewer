@@ -1,0 +1,23 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~ssstr1pe/ubuntu-release-tools/+git/templates/+merge/488472",
+ "id": "488472",
+ "title": "add a few more details for unsubscribing teams.",
+ "source_branch": "unsubscribe-team-details",
+ "target_branch": "main",
+ "revision": "dea9ae5d6b65e1e527492d0d4b52124857f47f1e",
+ "base_revision": "e1f1888afed239ee2744db1a5f6871f7f3cdaca1",
+ "description": "add a few more details for unsubscribing teams.",
+ "commit_message": null,
+ "diffstat": {
+  "jira-milestones/end-of-life.yaml": [
+   2,
+   0
+  ]
+ },
+ "files": 1,
+ "added_lines": 2,
+ "removed_lines": 0,
+ "diff": "diff --git a/jira-milestones/end-of-life.yaml b/jira-milestones/end-of-life.yaml\nindex c0b1a96..fa54d16 100644\n--- a/jira-milestones/end-of-life.yaml\n+++ b/jira-milestones/end-of-life.yaml\n@@ -126,6 +126,8 @@\n   - task: Update utils.py in https://code.launchpad.net/~daisy-pluckers/daisy/trunk so that the release is in EOL_RELEASES\n     description: ...which will also increment a counter for that specific release e.g. unsupported.eol_raring.\n   - task: Run script which unsubscribes teams (specifically Canonical teams) from packages which are no longer in main or restricted for supported releases\n+    description: |\n+      `unsubscribe-team` exists in `ubuntu-archive-tools`. Do this for at least `[canonical-server, canonical-foundations, canonical-desktop-team]`. If you don't have the perms to run the script fully, run it in `--dry-run` mode and ping members of the teams with details.\n   - task: Remove /srv/cdimage.ubuntu.com/scratch/*/RELEASE to free up disk space\n   - task: Remove the EoL release from ddebs\n     description: >\n",
+ "diff_truncated": false
+}

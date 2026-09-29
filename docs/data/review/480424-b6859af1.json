@@ -1,0 +1,31 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~pushkarnk/ubuntu/+source/ruby-sinatra/+git/ruby-sinatra/+merge/480424",
+ "id": "480424",
+ "title": "ubuntu/devel → ubuntu/devel",
+ "source_branch": "ubuntu/devel",
+ "target_branch": "ubuntu/devel",
+ "revision": "600658bd7b03fbf128765d82b9e7112266c53b80",
+ "base_revision": "cd2b9bc7e91e9033c0981915e91dace986cdc15b",
+ "description": null,
+ "commit_message": null,
+ "diffstat": {
+  "debian/changelog": [
+   8,
+   0
+  ],
+  "debian/control": [
+   2,
+   1
+  ],
+  "debian/tests/control": [
+   1,
+   1
+  ]
+ },
+ "files": 3,
+ "added_lines": 11,
+ "removed_lines": 2,
+ "diff": "diff --git a/debian/changelog b/debian/changelog\nindex 20287ff..236ef3d 100644\n--- a/debian/changelog\n+++ b/debian/changelog\n@@ -1,3 +1,11 @@\n+ruby-sinatra (4.1.1-3ubuntu1) plucky; urgency=medium\n+\n+  * d/t/control: Add rackup & puma as dependencies for smoke-test.\n+    Background: WEBrick was removed as bundled gem by Ruby 3 and\n+    sinatra only recommends puma as the web-server (LP: #2097028)\n+\n+ -- Pushkar Kulkarni <pushkar.kulkarni@canonical.com>  Fri, 31 Jan 2025 10:45:12 +0530\n+\n ruby-sinatra (4.1.1-3) unstable; urgency=medium\n \n   * Team upload\ndiff --git a/debian/control b/debian/control\nindex 7e4a50d..ea71d35 100644\n--- a/debian/control\n+++ b/debian/control\n@@ -1,7 +1,8 @@\n Source: ruby-sinatra\n Section: ruby\n Priority: optional\n-Maintainer: Debian Ruby Team <pkg-ruby-extras-maintainers@lists.alioth.debian.org>\n+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>\n+XSBC-Original-Maintainer: Debian Ruby Team <pkg-ruby-extras-maintainers@lists.alioth.debian.org>\n Uploaders: Youhei SASAKI <uwabami@gfd-dennou.org>,\n            Pirate Praveen <praveen@debian.org>,\n            Lucas Kanashiro <kanashiro@debian.org>\ndiff --git a/debian/tests/control b/debian/tests/control\nindex e84614c..7514bb2 100644\n--- a/debian/tests/control\n+++ b/debian/tests/control\n@@ -1,3 +1,3 @@\n Tests: smoke-test\n-Depends: @, curl\n+Depends: @, ruby-rackup, puma, curl\n Restrictions: allow-stderr\n",
+ "diff_truncated": false
+}

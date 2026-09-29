@@ -1,0 +1,31 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~michal-maloszewski99/ubuntu/+source/simplestreams/+git/simplestreams/+merge/431668",
+ "id": "431668",
+ "title": "bionic-simplestr → ubuntu/bionic-devel",
+ "source_branch": "bionic-simplestr",
+ "target_branch": "ubuntu/bionic-devel",
+ "revision": "41f63039691b770e1de0045bed89c6234c3de2c2",
+ "base_revision": "5a86f35e310eecd80ad554942568d59d81ae9140",
+ "description": null,
+ "commit_message": null,
+ "diffstat": {
+  "debian/changelog": [
+   6,
+   0
+  ],
+  "debian/patches/series": [
+   1,
+   0
+  ],
+  "debian/patches/sstream_mirror_bionic.patch": [
+   48,
+   0
+  ]
+ },
+ "files": 3,
+ "added_lines": 55,
+ "removed_lines": 0,
+ "diff": "diff --git a/debian/changelog b/debian/changelog\nindex 611b936..f98cec7 100644\n--- a/debian/changelog\n+++ b/debian/changelog\n@@ -1,3 +1,9 @@\n+simplestreams (0.1.0~bzr460-0ubuntu1.2) bionic; urgency=medium\n+\n+  * d/p/sstream_mirror_bionic.patch: msg (LP: 1870360)\n+\n+ -- Michal Maloszewski <michal.maloszewski@canonical.com>  Fri, 07 Oct 2022 15:58:58 +0200\n+\n simplestreams (0.1.0~bzr460-0ubuntu1.1) bionic; urgency=medium\n \n   * Use glance v2 when \"non-legacy\" versions of clients are used:\ndiff --git a/debian/patches/series b/debian/patches/series\nindex 8631130..8eb4a8d 100644\n--- a/debian/patches/series\n+++ b/debian/patches/series\n@@ -1 +1,2 @@\n+sstream_mirror_bionic.patch\n lp1790904-support-glance-version-2.patch\ndiff --git a/debian/patches/sstream_mirror_bionic.patch b/debian/patches/sstream_mirror_bionic.patch\nnew file mode 100644\nindex 0000000..887f6b8\n--- /dev/null\n+++ b/debian/patches/sstream_mirror_bionic.patch\n@@ -0,0 +1,48 @@\n+Description: <short description, required>\n+ <long description that can span multiple lines, optional>\n+Author: <name and email of author, optional>\n+Origin: <upstream|backport|vendor|other>, <URL, required except if Author is present>\n+Bug: <URL to the upstream bug report if any, implies patch has been forwarded, optional>\n+Bug-<Vendor>: <URL to the vendor bug report if any, optional>\n+Forwarded: <URL|no|not-needed, useless if you have a Bug field, optional>\n+Applied-Upstream: <version|URL|commit, identifies patches merged upstream, optional>\n+Reviewed-by: <name and email of a reviewer, optional>\n+Last-Update: 2022-10-07 <YYYY-MM-DD, last update of the meta-information, optional>\n+---\n+This patch header follows DEP-3: http://dep.debian.net/deps/dep3/\n+--- a/simplestreams/mirrors/__init__.py\n++++ b/simplestreams/mirrors/__init__.py\n+@@ -280,6 +280,23 @@\n+ \n+         filtered_products = []\n+         prodname = None\n++\n++\t# Apply filters to items before filtering versions\n++\tfor prodname, product in list(stree.items()):\n++\n++\t    for vername, version in list(product.get('versions', {}).items()):\n++\t\tfor itemname, item in list(version.get('items', {}).items()):\n++\t\t    pgree = (prodname, vername, itemname)\n++\t\t    if not self.filter item(item, src, target, pgree):\n++\t\t\tLOG.debug(\"Filtered out item: %s/%s\", itemname, item)\n++\t\t\tdel stree[prodname]['versions'][vername]['items'][\n++\t\t\t    itemname]\n++\t\t\tif not stree[prodname]['versions'][vername].get(\n++\t\t\t\t'items', {}):\n++\t\t\t    del stree[prodname]['versions'][vername]\n++\t\t\tif not stree[prodname].get('versions', {}):\n++\t\t\t    del stree[prodname]\n++\n+         for prodname, product in stree.items():\n+             if not self.filter_product(product, src, target, (prodname,)):\n+                 filtered_products.append(prodname)\n+@@ -320,9 +337,6 @@\n+                 added_items = []\n+                 for itemname, item in version.get('items', {}).items():\n+                     pgree = (prodname, vername, itemname)\n+-                    if not self.filter_item(item, src, target, pgree):\n+-                        LOG.debug(\"Filtered out item: %s/%s\", itemname, item)\n+-                        continue\n+ \n+                     added_items.append(itemname)\n+ \n",
+ "diff_truncated": false
+}

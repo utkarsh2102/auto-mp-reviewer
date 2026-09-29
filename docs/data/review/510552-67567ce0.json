@@ -1,0 +1,55 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~bamf0/ubuntu/+source/boot-managed-by-snapd/+git/boot-managed-by-snapd/+merge/510552",
+ "id": "510552",
+ "title": "This merge proposal will make the boot-managed-by-snapd package divert `update-grub` and `update-grub2` to a no-op script with the purpose of preventing overwrites to grub.cfg during dpkg transactions.",
+ "source_branch": "stonking-lp2020466-divert-update-grub",
+ "target_branch": "ubuntu/devel",
+ "revision": "e9217165e5e7e66416f613b130295fe0b655f5f8",
+ "base_revision": "686da082e64b0e714e1650d7d9115bd8a378bc46",
+ "description": "This merge proposal will make the boot-managed-by-snapd package divert `update-grub` and `update-grub2` to a no-op script with the purpose of preventing overwrites to grub.cfg during dpkg transactions.\n\nPPA: https://launchpad.net/~bamf0/+archive/ubuntu/boot-snapd-lp2020466-divert-update-grub",
+ "commit_message": null,
+ "diffstat": {
+  "debian/boot-managed-by-snapd.dirs": [
+   1,
+   0
+  ],
+  "debian/boot-managed-by-snapd.install": [
+   2,
+   0
+  ],
+  "debian/boot-managed-by-snapd.postinst": [
+   23,
+   0
+  ],
+  "debian/boot-managed-by-snapd.postrm": [
+   25,
+   0
+  ],
+  "debian/boot-managed-by-snapd.preinst": [
+   25,
+   0
+  ],
+  "debian/boot-managed-by-snapd.prerm": [
+   23,
+   0
+  ],
+  "debian/changelog": [
+   12,
+   0
+  ],
+  "debian/update-grub": [
+   3,
+   0
+  ],
+  "debian/update-grub2": [
+   3,
+   0
+  ]
+ },
+ "files": 9,
+ "added_lines": 117,
+ "removed_lines": 0,
+ "diff": "diff --git a/debian/boot-managed-by-snapd.dirs b/debian/boot-managed-by-snapd.dirs\nnew file mode 100644\nindex 0000000..08f6616\n--- /dev/null\n+++ b/debian/boot-managed-by-snapd.dirs\n@@ -0,0 +1 @@\n+/lib/firmware.unused\ndiff --git a/debian/boot-managed-by-snapd.install b/debian/boot-managed-by-snapd.install\nnew file mode 100644\nindex 0000000..e6439a1\n--- /dev/null\n+++ b/debian/boot-managed-by-snapd.install\n@@ -0,0 +1,2 @@\n+debian/update-grub usr/sbin/\n+debian/update-grub2 usr/sbin/\ndiff --git a/debian/boot-managed-by-snapd.postinst b/debian/boot-managed-by-snapd.postinst\nnew file mode 100644\nindex 0000000..44ce094\n--- /dev/null\n+++ b/debian/boot-managed-by-snapd.postinst\n@@ -0,0 +1,23 @@\n+#!/bin/sh\n+set -e\n+\n+case \"$1\" in\n+\tinstall|upgrade)\n+# This must be done .postinst as we need to create the /lib/firmware.unused/\n+# diretory first\n+\t\tdpkg-divert \\\n+\t\t    --package boot-managed-by-snapd \\\n+\t\t    --divert /lib/firmware.unused/regulatory.db \\\n+\t\t    --no-rename /lib/firmware/regulatory.db\n+\n+\t\tdpkg-divert \\\n+\t\t    --package boot-managed-by-snapd \\\n+\t\t    --divert /lib/firmware.unused/regulatory.db.p7s \\\n+\t\t    --no-rename /lib/firmware/regulatory.db.p7s\n+\t\t;;\n+\t*)\n+\t\t;;\n+esac\n+\n+\n+#DEBHELPER\ndiff --git a/debian/boot-managed-by-snapd.postrm b/debian/boot-managed-by-snapd.postrm\nnew file mode 100644\nindex 0000000..e7fbfd9\n--- /dev/null\n+++ b/debian/boot-managed-by-snapd.postrm\n@@ -0,0 +1,25 @@\n+#! /bin/sh\n+# Revert update-grub\n+set -e\n+\n+# Prevent diversions from being removed on upgrade, abort-upgrade, and\n+# failed-upgrade\n+case \"$1\" in\n+\tremove|abort-install|disappear)\n+\t\tdpkg-divert \\\n+\t\t\t--package boot-managed-by-snapd \\\n+\t\t\t--rename \\\n+\t\t\t--remove \\\n+\t\t\t/usr/sbin/update-grub\n+\n+\t\tdpkg-divert \\\n+\t\t\t--package boot-managed-by-snapd \\\n+\t\t\t--rename \\\n+\t\t\t--remove \\\n+\t\t\t/usr/sbin/update-grub2\n+\t\t;;\n+\t*)\n+\t\t;;\n+esac\n+\n+#DEBHELPER#\ndiff --git a/debian/boot-managed-by-snapd.preinst b/debian/boot-managed-by-snapd.preinst\nnew file mode 100644\nindex 0000000..6304c02\n--- /dev/null\n+++ b/debian/boot-managed-by-snapd.preinst\n@@ -0,0 +1,25 @@\n+#! /bin/sh\n+# Prevent broken boot entries by external grub updates\n+set -e\n+\n+# Only create the diversions during install or upgrade - other dpkg actions\n+# risk leaving them in a state where they will not be removed correctly\n+case \"$1\" in\n+\tinstall|upgrade)\n+\t\tdpkg-divert \\\n+\t\t    --package boot-managed-by-snapd \\\n+\t\t    --add \\\n+\t\t    --divert /usr/sbin/update-grub.boot-managed-by-snapd \\\n+\t\t    --rename /usr/sbin/update-grub\n+\n+\t\tdpkg-divert \\\n+\t\t    --package boot-managed-by-snapd \\\n+\t\t    --add \\\n+\t\t    --divert /usr/sbin/update-grub2.boot-managed-by-snapd \\\n+\t\t    --rename /usr/sbin/update-grub2\n+\t\t;;\n+\t*)\n+\t\t;;\n+esac\n+\n+#DEBHELPER#\ndiff --git a/debian/boot-managed-by-snapd.prerm b/debian/boot-managed-by-snapd.prerm\nnew file mode 100644\nindex 0000000..3966db8\n--- /dev/null\n+++ b/debian/boot-managed-by-snapd.prerm\n@@ -0,0 +1,23 @@\n+#!/bin/sh\n+set -e\n+\n+case \"$1\" in\n+\tremove|abort-install|disappear)\n+# This must be done .prerm as the created /lib/firmware.unused/ will not\n+# be removed if the diversions still exist\n+\t\tdpkg-divert \\\n+\t\t    --remove \\\n+\t\t    --package boot-managed-by-snapd \\\n+\t\t    --divert /lib/firmware.unused/regulatory.db \\\n+\t\t    --no-rename /lib/firmware/regulatory.db\n+\t\tdpkg-divert \\\n+\t\t    --remove \\\n+\t\t    --package boot-managed-by-snapd \\\n+\t\t\t--divert /lib/firmware.unused/regulatory.db.p7s \\\n+\t\t\t--no-rename /lib/firmware/regulatory.db.p7s\n+\t\t;;\n+\t*)\n+\t\t;;\n+esac\n+\n+#DEBHELPER\ndiff --git a/debian/changelog b/debian/changelog\nindex b08aeab..2183bfc 100644\n--- a/debian/changelog\n+++ b/debian/changelog\n@@ -1,3 +1,15 @@\n+boot-managed-by-snapd (5) stonking; urgency=medium\n+\n+  [ Simon Johnsson ]\n+  * Fix update-grub breaking boot (LP: #2157702):\n+    - Add dpkg-divert for update-grub{,2} hooks in preinst, reset in postrm\n+    - Install no-op update-grub{,2} hooks\n+\n+  [ Julian Andres Klode ]\n+  * Setup diversions for wireless-regdb (LP: #2096979)\n+\n+ -- Simon Johnsson <simon.johnsson@canonical.com>  Tue, 01 Sep 2026 10:47:36 +0200\n+\n boot-managed-by-snapd (4build2) resolute; urgency=medium\n \n   * No-change mass rebuild for Ubuntu 26.04 (LP: #2132257)\ndiff --git a/debian/update-grub b/debian/update-grub\nnew file mode 100755\nindex 0000000..f6591aa\n--- /dev/null\n+++ b/debian/update-grub\n@@ -0,0 +1,3 @@\n+#! /bin/sh\n+# no-op GRUB update as boot is managed by snapd\n+exit 0\ndiff --git a/debian/update-grub2 b/debian/update-grub2\nnew file mode 100755\nindex 0000000..f6591aa\n--- /dev/null\n+++ b/debian/update-grub2\n@@ -0,0 +1,3 @@\n+#! /bin/sh\n+# no-op GRUB update as boot is managed by snapd\n+exit 0\n",
+ "diff_truncated": false
+}

@@ -1,0 +1,23 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~giner/livecd-rootfs/+git/livecd-rootfs/+merge/388963",
+ "id": "388963",
+ "title": "vagrant: Use dummy file for the console output",
+ "source_branch": "vagrant_use_dummy_file_for_console_output",
+ "target_branch": "ubuntu/master",
+ "revision": "2462e647c8659aa554239d178d11a7c6f43dc7ca",
+ "base_revision": "fa8398d671a892fb6b23e0626337620dd47a6c76",
+ "description": "vagrant: Use dummy file for the console output\n\nFixes #1874453",
+ "commit_message": null,
+ "diffstat": {
+  "live-build/ubuntu-cpc/hooks.d/base/vagrant.binary": [
+   4,
+   2
+  ]
+ },
+ "files": 1,
+ "added_lines": 4,
+ "removed_lines": 2,
+ "diff": "diff --git a/live-build/ubuntu-cpc/hooks.d/base/vagrant.binary b/live-build/ubuntu-cpc/hooks.d/base/vagrant.binary\nindex f9b21d3..ff7d459 100755\n--- a/live-build/ubuntu-cpc/hooks.d/base/vagrant.binary\n+++ b/live-build/ubuntu-cpc/hooks.d/base/vagrant.binary\n@@ -154,8 +154,10 @@ Vagrant.configure(\"2\") do |config|\n \n   config.vm.provider \"virtualbox\" do |vb|\n      vb.customize [ \"modifyvm\", :id, \"--uart1\", \"0x3F8\", \"4\" ]\n-# Creating a console log file is not an expected behavior for vagrant boxes. LP #1777827\n-#     vb.customize [ \"modifyvm\", :id, \"--uartmode1\", \"file\", File.join(Dir.pwd, \"${prefix}-console.log\") ]\n+     # Creating a console log file is not an expected behavior for vagrant boxes. LP #1777827\n+     #vb.customize [ \"modifyvm\", :id, \"--uartmode1\", \"file\", File.join(Dir.pwd, \"${prefix}-console.log\") ]\n+     # Use dummy file for the console output. LP #1874453\n+     vb.customize [ \"modifyvm\", :id, \"--uartmode1\", \"file\", File::NULL ]\n   end\n end\n EOF\n",
+ "diff_truncated": false
+}

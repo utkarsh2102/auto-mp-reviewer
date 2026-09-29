@@ -1,0 +1,31 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~r41k0u/ubuntu/+source/apport/+git/apport/+merge/472346",
+ "id": "472346",
+ "title": "* etc/apport/report-ignore/ignore-teamviewer - add Teamviewer",
+ "source_branch": "ignore-teamviewer-crash",
+ "target_branch": "ubuntu/devel",
+ "revision": "f006a3783442b5e9e7c77f0d98fdf1972cb114e7",
+ "base_revision": "6cd58137cb92a9260f3761ef61fa6132a7dec358",
+ "description": null,
+ "commit_message": "* etc/apport/report-ignore/ignore-teamviewer - add Teamviewer\n  to crash blacklist to prevent a GDB crash (LP: #2041830)",
+ "diffstat": {
+  "debian/changelog": [
+   8,
+   0
+  ],
+  "debian/patches/ignore-teamviewer-crashes.patch": [
+   10,
+   0
+  ],
+  "debian/patches/series": [
+   1,
+   0
+  ]
+ },
+ "files": 3,
+ "added_lines": 19,
+ "removed_lines": 0,
+ "diff": "diff --git a/debian/changelog b/debian/changelog\nindex d71daab..02ae839 100644\n--- a/debian/changelog\n+++ b/debian/changelog\n@@ -1,3 +1,11 @@\n+apport (2.30.0-0ubuntu2) oracular; urgency=medium\n+\n+  [ Pragyansh Chaturvedi ]\n+  * etc/apport/report-ignore/ignore-teamviewer - add Teamviewer\n+    to crash blacklist to prevent a GDB crash (LP: #2041830)\n+\n+ -- Pragyansh Chaturvedi <pragyansh.chaturvedi@canonical.com>  Fri, 30 Aug 2024 20:33:48 +0530\n+\n apport (2.30.0-0ubuntu1) oracular; urgency=medium\n \n   [ Benjamin Drung ]\ndiff --git a/debian/patches/ignore-teamviewer-crashes.patch b/debian/patches/ignore-teamviewer-crashes.patch\nnew file mode 100644\nindex 0000000..82bf59a\n--- /dev/null\n+++ b/debian/patches/ignore-teamviewer-crashes.patch\n@@ -0,0 +1,10 @@\n+Description: Ignore Teamviewer crashes \n+ * etc/apport/report-ignore/ignore-teamviewer - add Teamviewer\n+   to crash blacklist to prevent a GDB crash (LP: #2041830)\n+Author: Pragyansh Chaturvedi <pragyansh.chaturvedi@canonical.com>\n+Bug: https://bugs.launchpad.net/ubuntu/+source/gdb/+bug/2041830\n+Last-Update: 2024-08-30\n+--- /dev/null\t1970-01-01 00:00:00.000000000 +0000\n++++ b/etc/apport/report-ignore/ignore-teamviewer\t2024-08-30 19:50:28.928691346 +0530\n+@@ -0,0 +1 @@\n++/opt/teamviewer/tv_bin/TeamViewer\ndiff --git a/debian/patches/series b/debian/patches/series\nindex d46d3e1..f6290d2 100644\n--- a/debian/patches/series\n+++ b/debian/patches/series\n@@ -1,3 +1,4 @@\n+ignore-teamviewer-crashes.patch\n Add-bin-oem-getlogs.patch\n Add-general-hooks.patch\n Default-to-Ubuntu-crash-DB.patch\n",
+ "diff_truncated": false
+}

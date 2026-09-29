@@ -1,0 +1,39 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~lucaskanashiro/ubuntu/+source/ruby-defaults/+git/ruby-defaults/+merge/379763",
+ "id": "379763",
+ "title": "The proposed changes drop Ruby 2.5 support, and leave Ruby 2.7 as the only default (we are going ahead of Debian here).",
+ "source_branch": "ruby2.7-support",
+ "target_branch": "debian/sid",
+ "revision": "7c0a69dcd5c20674ccf0df7408874d258e089de0",
+ "base_revision": "490cf4705649e3b86fd98cb9d20452d532dcdd63",
+ "description": "The proposed changes drop Ruby 2.5 support, and leave Ruby 2.7 as the only default (we are going ahead of Debian here).\n\nautopkgtest is happy (I found an issue in the tests declaration and I'll apply my changes in Debian as well):\n\nautopkgtest [16:52:14]: @@@@@@@@@@@@@@@@@@@@ summary\nsmoke-test           PASS\nruby-all-dev         PASS\ncommand1             PASS\n\nPPA with the proposed package:\n\nhttps://launchpad.net/~lucaskanashiro/+archive/ubuntu/focal-ruby-defaults-drop-2.5/+packages",
+ "commit_message": null,
+ "diffstat": {
+  "ruby_debian_dev.rb": [
+   0,
+   11
+  ],
+  "debian/rules": [
+   1,
+   1
+  ],
+  "debian/control": [
+   11,
+   10
+  ],
+  "debian/changelog": [
+   17,
+   0
+  ],
+  "debian/tests/control": [
+   3,
+   3
+  ]
+ },
+ "files": 5,
+ "added_lines": 32,
+ "removed_lines": 25,
+ "diff": "diff --git a/debian/changelog b/debian/changelog\nindex 1d1a377..1300c0c 100644\n--- a/debian/changelog\n+++ b/debian/changelog\n@@ -1,3 +1,14 @@\n+ruby-defaults (1:2.7.0ubuntu1) focal; urgency=medium\n+\n+  * Support only Ruby 2.7, drop Ruby 2.5 support\n+    - ruby_debian_dev.rb: drop ruby2.5 has_support_for block\n+    - d/rules: update DEBIAN_DEFAULT_RUBY_VERSION to 2.7\n+  * Make DEP-8 tests depend on the generated binaries instead of the\n+    ones available in the archive\n+  * d/control: update from ruby2.5 to ruby2.7 in Depends and Description\n+\n+ -- Lucas Kanashiro <lucas.kanashiro@canonical.com>  Mon, 24 Feb 2020 18:31:54 -0300\n+\n ruby-defaults (1:2.5.7.1) unstable; urgency=medium\n \n   * d/t/control: Make autopkgtests cross-test-friendly\n@@ -21,6 +32,12 @@ ruby-defaults (1:2.5.7~0) experimental; urgency=medium\n \n  -- Lucas Kanashiro <kanashiro@debian.org>  Wed, 27 Nov 2019 18:27:44 -0300\n \n+ruby-defaults (1:2.5.2ubuntu1) focal; urgency=medium\n+\n+  * Make autopkgtests cross-test-friendly.\n+\n+ -- Steve Langasek <steve.langasek@ubuntu.com>  Tue, 21 Jan 2020 16:13:54 -0800\n+\n ruby-defaults (1:2.5.2) unstable; urgency=medium\n \n   * Team upload.\ndiff --git a/debian/control b/debian/control\nindex 5e610b3..c1c0f7a 100644\n--- a/debian/control\n+++ b/debian/control\n@@ -1,7 +1,8 @@\n Source: ruby-defaults\n Section: ruby\n Priority: optional\n-Maintainer: Debian Ruby Team <pkg-ruby-extras-maintainers@lists.alioth.debian.org>\n+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>\n+XSBC-Original-Maintainer: Debian Ruby Team <pkg-ruby-extras-maintainers@lists.alioth.debian.org>\n Uploaders: Antonio Terceiro <terceiro@debian.org>,\n            Lucas Kanashiro <kanashiro@debian.org>\n Build-Depends: debhelper (>= 12~)\n@@ -13,7 +14,7 @@ Vcs-Browser: https://salsa.debian.org/ruby-team/ruby-defaults\n Package: ruby\n Architecture: any\n Multi-Arch: allowed\n-Depends: ruby2.5, ${misc:Depends}\n+Depends: ruby2.7, ${misc:Depends}\n Suggests: ri, ruby-dev\n Conflicts: ruby-activesupport-3.2, ruby-activesupport-2.3\n Breaks:\n@@ -30,12 +31,12 @@ Description: Interpreter of object-oriented scripting language Ruby (default ver\n  straight-forward, and extensible.\n  .\n  This package is a dependency package, which depends on Debian's default Ruby\n- version (currently v2.5).\n+ version (currently v2.7).\n \n Package: ruby-dev\n Architecture: any\n Multi-Arch: same\n-Depends: ruby2.5-dev, ${misc:Depends}\n+Depends: ruby2.7-dev, ${misc:Depends}\n Description: Header files for compiling extension modules for Ruby (default version)\n  Ruby is the interpreted scripting language for quick and easy\n  object-oriented programming.  It has many features to process text\n@@ -47,7 +48,7 @@ Description: Header files for compiling extension modules for Ruby (default vers\n  many gems.\n  .\n  This package is a dependency package, which depends on Debian's default Ruby\n- version (currently v2.5).\n+ version (currently v2.7).\n \n Package: ruby-all-dev\n Architecture: any\n@@ -74,7 +75,7 @@ Description: Ruby development environment (all versions supported in Debian)\n Package: libruby\n Section: libs\n Architecture: all\n-Depends: libruby2.5, ${misc:Depends}\n+Depends: libruby2.7, ${misc:Depends}\n Description: Libraries necessary to run Ruby\n  Ruby is the interpreted scripting language for quick and easy\n  object-oriented programming.  It has many features to process text\n@@ -84,11 +85,11 @@ Description: Libraries necessary to run Ruby\n  This package includes the 'libruby' library, necessary to run Ruby.\n  .\n  This package is a dependency package, which depends on Debian's default Ruby\n- version (currently v2.5).\n+ version (currently v2.7).\n \n Package: ri\n Architecture: all\n-Depends: ruby2.5, ruby2.5-doc, ${misc:Depends}\n+Depends: ruby2.7, ruby2.7-doc, ${misc:Depends}\n Description: Ruby Interactive reference\n  ri is a command line tool that displays descriptions of built-in Ruby\n  methods, classes, and modules. For methods, it shows you the calling\n@@ -101,7 +102,7 @@ Description: Ruby Interactive reference\n  The ri executable itself is in the ruby package.\n  .\n  This package is a dependency package, which depends on Debian's default Ruby\n- version (currently v2.5).\n+ version (currently v2.7).\n \n Package: ruby-full\n Architecture: all\n@@ -113,5 +114,5 @@ Description: Ruby full installation (default version)\n  of the Tcl/Tk bindings for Ruby, which are only recommended.\n  .\n  This package is a dependency package, which depends on Debian's default Ruby\n- version (currently v2.5).\n+ version (currently v2.7).\n \ndiff --git a/debian/rules b/debian/rules\nindex d8dcb05..1ae2088 100755\n--- a/debian/rules\n+++ b/debian/rules\n@@ -8,7 +8,7 @@ include /usr/share/dpkg/pkg-info.mk\n #\n # $ debian/rules debian/ruby.postinst\n #\n-export DEBIAN_DEFAULT_RUBY_VERSION=2.5\n+export DEBIAN_DEFAULT_RUBY_VERSION=2.7\n export DEBIAN_RUBY_PROGRAMS = \\\n   erb \\\n   gem \\\ndiff --git a/debian/tests/control b/debian/tests/control\nindex 5fbafda..b716704 100644\n--- a/debian/tests/control\n+++ b/debian/tests/control\n@@ -1,10 +1,10 @@\n Tests: smoke-test\n-Depends: ruby\n+Depends: @\n Restrictions: allow-stderr\n \n Tests: ruby-all-dev\n-Depends: ruby, ruby-all-dev\n+Depends: @\n Restrictions: allow-stderr\n \n Test-Command: ${DEB_HOST_GNU_TYPE:+$DEB_HOST_GNU_TYPE-}pkg-config --cflags --libs ruby\n-Depends: ruby-dev, pkg-config\n+Depends: @, pkg-config\ndiff --git a/ruby_debian_dev.rb b/ruby_debian_dev.rb\nindex 8c0366a..82a12c5 100644\n--- a/ruby_debian_dev.rb\n+++ b/ruby_debian_dev.rb\n@@ -8,17 +8,6 @@ module RubyDebianDev\n \n   # XXX the default Ruby must come first here\n \n-  has_support_for 'ruby2.5' do\n-    {\n-      version:             '2.5',\n-      binary:              '/usr/bin/ruby2.5',\n-      api_version:         '2.5.0',\n-      shared_library:      'libruby2.5',\n-      min_ruby_version:    '1:2.5~0',\n-      ruby_upper_bound:    '1:2.6~',\n-    }\n-  end\n-\n   has_support_for 'ruby2.7' do\n     {\n       version:             '2.7',\n",
+ "diff_truncated": false
+}

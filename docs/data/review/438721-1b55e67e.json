@@ -1,0 +1,31 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~ubuntu-archive/ubuntu-archive-tools/+git/ubuntu-archive-tools/+merge/438721",
+ "id": "438721",
+ "title": "drop-obsolete-series-references → main",
+ "source_branch": "drop-obsolete-series-references",
+ "target_branch": "main",
+ "revision": "22a3fdabb3181616ae13b0da252109f842aca757",
+ "base_revision": "ba6721c5e3379470126e139e0fedaf42113e8db7",
+ "description": null,
+ "commit_message": null,
+ "diffstat": {
+  "sru-release": [
+   1,
+   1
+  ],
+  "checkrdepends": [
+   5,
+   9
+  ],
+  "package-subscribers": [
+   1,
+   1
+  ]
+ },
+ "files": 3,
+ "added_lines": 7,
+ "removed_lines": 11,
+ "diff": "diff --git a/checkrdepends b/checkrdepends\nindex 6813d26..7b874cb 100755\n--- a/checkrdepends\n+++ b/checkrdepends\n@@ -50,18 +50,14 @@ def primary_arches(suite):\n \n \n def ports_arches(suite):\n-    if suite == 'lucid':\n-        return ('armel', 'ia64', 'powerpc', 'sparc')\n-    elif suite == 'precise':\n-        return ('armel', 'armhf', 'powerpc')\n-    elif suite in ('14.09', '14.09-factory'):\n-        return ('armhf',)\n-    elif suite in ('trusty', 'vivid', 'wily'):\n+    elif suite == 'trusty':\n         return ('arm64', 'armhf', 'powerpc', 'ppc64el')\n-    elif suite in ('xenial', 'yakkety'):\n+    elif suite == 'xenial':\n         return ('arm64', 'armhf', 'powerpc', 'ppc64el', 's390x')\n-    else:\n+    elif suite == 'bionic':\n         return ('arm64', 'armhf', 'ppc64el', 's390x')\n+    else:\n+        return ('arm64', 'armhf', 'ppc64el', 'riscv64', 's390x')\n \n \n def read_sources(path):\ndiff --git a/package-subscribers b/package-subscribers\nindex 4925119..d0cf14d 100755\n--- a/package-subscribers\n+++ b/package-subscribers\n@@ -96,7 +96,7 @@ def main():\n     options.suites = []\n     for series in ubuntu.series:\n         # very few lucid packages are supported\n-        if series.name in ('lucid', 'precise', 'trusty'):\n+        if series.name in ('trusty'):\n             continue\n         if series.active:\n             options.suites.append(series.name)\ndiff --git a/sru-release b/sru-release\nindex 47d0e2e..b9ba391 100755\n--- a/sru-release\n+++ b/sru-release\n@@ -507,7 +507,7 @@ if __name__ == '__main__':\n                         'WARNING: {} not found in packages for kernel {}\\n'.format(\n                         package, ks_source.name))\n \n-    if ks_source is None and release in ('precise', 'trusty'):\n+    if ks_source is None and release in ('trusty', 'xenial'):\n         sys.stdout.write(\n             'Called for {}; assuming kernel ESM publication\\n'.format(release))\n         options.esm = True\n",
+ "diff_truncated": false
+}

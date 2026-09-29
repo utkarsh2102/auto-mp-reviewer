@@ -1,0 +1,31 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~edugomez/ubuntu/+source/ubuntu-release-upgrader/+git/ubuntu-release-upgrader/+merge/425145",
+ "id": "425145",
+ "title": "DistUpgrade: No longer attempting to reboot in WSL (LP: #1958668).",
+ "source_branch": "no-restart-wsl",
+ "target_branch": "ubuntu/devel",
+ "revision": "967efaae0ad58f5cc644a1422063988f2f48a71a",
+ "base_revision": "fc856cee339fa99827e295cbe705f0276aa54868",
+ "description": "On WSL, at the end of a do-release-upgrade, the upgrader proposes to reboot the machine and then fails to do so. This happens because it is not possible to reboot, due to the lack of systemd. This results in an error.\n\nThere is no clean way of restarting from within WSL, so the solution is to ask the user to close all other Ubuntu WSL instances before the current one, and signal the Launcher to restart after quitting. This will kill all instances of Ubuntu WSL, hence why the user is advised to close the others first.",
+ "commit_message": "DistUpgrade: No longer attempting to reboot in WSL (LP: #1958668).",
+ "diffstat": {
+  "DistUpgrade/DistUpgradeController.py": [
+   12,
+   3
+  ],
+  "DistUpgrade/DistUpgradeView.py": [
+   10,
+   0
+  ],
+  "debian/changelog": [
+   6,
+   0
+  ]
+ },
+ "files": 3,
+ "added_lines": 28,
+ "removed_lines": 3,
+ "diff": "diff --git a/DistUpgrade/DistUpgradeController.py b/DistUpgrade/DistUpgradeController.py\nindex 6571ebb..b9ec75b 100644\n--- a/DistUpgrade/DistUpgradeController.py\n+++ b/DistUpgrade/DistUpgradeController.py\n@@ -2026,9 +2026,14 @@ class DistUpgradeController(object):\n         self._view.updateStatus(_(\"System upgrade is complete.\"))            \n         get_telemetry().done()\n         # FIXME should we look into /var/run/reboot-required here?\n-        if (not inside_chroot() and\n-            self._view.confirmRestart()):\n-            subprocess.Popen(\"/sbin/reboot\")\n+        if (not inside_chroot()):\n+            if self._inside_WSL():\n+                self._view.adviseExitOtherWSL()\n+                with open(\"/run/launcher-command\", \"w+\", encoding=\"utf-8\") as f:\n+                    f.write(\"action: reboot\\n\")\n+                self._view.adviseRestartWSL()\n+            elif self._view.confirmRestart():\n+                subprocess.Popen(\"/sbin/reboot\")\n             sys.exit(0)\n         return True\n         \n@@ -2126,6 +2131,10 @@ class DistUpgradeController(object):\n \n         os.seteuid(int(uid))\n \n+    def _inside_WSL(self):\n+        return os.path.exists(\"/proc/sys/fs/binfmt_misc/WSLInterop\")\n+\n+\n if __name__ == \"__main__\":\n     from .DistUpgradeViewText import DistUpgradeViewText\n     logging.basicConfig(level=logging.DEBUG)\ndiff --git a/DistUpgrade/DistUpgradeView.py b/DistUpgrade/DistUpgradeView.py\nindex 3611c89..9f9f34b 100644\n--- a/DistUpgrade/DistUpgradeView.py\n+++ b/DistUpgrade/DistUpgradeView.py\n@@ -430,6 +430,16 @@ class DistUpgradeView(object):\n                  \"Do you want to do this \"\n                  \"now?\")\n         return self.askYesNoQuestion(summary, msg)\n+    def adviseExitOtherWSL(self):\n+        summary = _(\"Action required\")\n+        msg = _(\"Exit all other instances of Ubuntu WSL before continuing.\")\n+        extended = _(\"Unsaved progress may otherwise be lost.\")\n+        return self.information(summary, msg, extended)\n+    def adviseRestartWSL(self):\n+        summary = _(\"WSL restart required\")\n+        msg = _(\"Exit this instance of Ubuntu WSL.\")\n+        extended = _(\"The upgrade will then be complete.\")\n+        return self.information(summary, msg, extended)\n     def error(self, summary, msg, extended_msg=None):\n         \" display a error \"\n         pass\ndiff --git a/debian/changelog b/debian/changelog\nindex ba99ee1..34f69db 100644\n--- a/debian/changelog\n+++ b/debian/changelog\n@@ -1,3 +1,9 @@\n+ubuntu-release-upgrader (1:22.10.5~ppa1) UNRELEASED; urgency=medium\n+\n+  * DistUpgrade: No longer attempting to reboot in WSL (LP: #1958668).\n+\n+ -- Edu Gómez Escandell <edu.gomez.escandell@canonical.com>  Tue, 21 Jun 2022 12:26:36 +0200\n+\n ubuntu-release-upgrader (1:22.10.4) kinetic; urgency=medium\n \n   * DistUpgrade: Add deb2snap entry for snapd-desktop-integration (LP: #1975747).\n",
+ "diff_truncated": false
+}

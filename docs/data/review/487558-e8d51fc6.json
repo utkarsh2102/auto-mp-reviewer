@@ -1,0 +1,23 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~schopin/britney/+git/hints-ubuntu/+merge/487558",
+ "id": "487558",
+ "title": "systemd-autopkgtest-jammy → jammy",
+ "source_branch": "systemd-autopkgtest-jammy",
+ "target_branch": "jammy",
+ "revision": "dbfaf505ebc3062206f1528931237ef478fb0bb9",
+ "base_revision": "42ebb92eef81116458d71e024f8d13fe852a6d28",
+ "description": null,
+ "commit_message": null,
+ "diffstat": {
+  "ubuntu-sru": [
+   4,
+   0
+  ]
+ },
+ "files": 1,
+ "added_lines": 4,
+ "removed_lines": 0,
+ "diff": "diff --git a/ubuntu-sru b/ubuntu-sru\nindex 1162ba4..dbd774f 100644\n--- a/ubuntu-sru\n+++ b/ubuntu-sru\n@@ -11,3 +11,7 @@ force-badtest gcc-9/9.5.0-1ubuntu1~22.04/armhf\n \n # sosreport is flaky on ppc64el (LP: #2038648 comment #58)\n force-badtest sosreport/4.7.2-0ubuntu1~22.04.2/ppc64el\n+\n+# the testsuite is being broken by the new autopkgtest, to be fixed\n+# in a future systemd upload. (LP: #2106167 comment #15)\n+force-badtest systemd/249.11-0ubuntu3.16/ppc64el\n",
+ "diff_truncated": false
+}

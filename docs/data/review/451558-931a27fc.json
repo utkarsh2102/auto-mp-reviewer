@@ -1,0 +1,31 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~mitchdz/ubuntu/+source/multipath-tools/+git/multipath-tools/+merge/451558",
+ "id": "451558",
+ "title": "PPA - https://launchpad.net/~mitchdz/+archive/ubuntu/multipath-tools-manually-restart-service-socket",
+ "source_branch": "mitch/manually_restart_service_socket",
+ "target_branch": "ubuntu/mantic-devel",
+ "revision": "2a791b74b57f0e8a8eab87d220bf39609dc0fe7a",
+ "base_revision": "28f8332fe5c59ccaca4c7a6632fc27cb0374a0b7",
+ "description": "PPA - https://launchpad.net/~mitchdz/+archive/ubuntu/multipath-tools-manually-restart-service-socket",
+ "commit_message": null,
+ "diffstat": {
+  "debian/changelog": [
+   8,
+   0
+  ],
+  "debian/multipath-tools.postinst": [
+   20,
+   0
+  ],
+  "debian/rules": [
+   4,
+   1
+  ]
+ },
+ "files": 3,
+ "added_lines": 32,
+ "removed_lines": 1,
+ "diff": "diff --git a/debian/changelog b/debian/changelog\nindex 032e3d0..07c65aa 100644\n--- a/debian/changelog\n+++ b/debian/changelog\n@@ -1,3 +1,11 @@\n+multipath-tools (0.9.4-5ubuntu4) mantic; urgency=medium\n+\n+  * Manually handle starting/restarting multipathd (LP: #2034471)\n+    - d/rules: add --no-start to dh_installsystemd \n+    - d/multipath-tools.posinst: manually start/restart service/socket\n+\n+ -- Mitchell Dzurick <mitchell.dzurick@canonical.com>  Mon, 18 Sep 2023 10:51:51 -0400\n+\n multipath-tools (0.9.4-5ubuntu3) mantic; urgency=medium\n \n   * d/initramfs/scripts/{local-bottom,local-top}/multipath: Make initramfs\ndiff --git a/debian/multipath-tools.postinst b/debian/multipath-tools.postinst\nnew file mode 100644\nindex 0000000..965656c\n--- /dev/null\n+++ b/debian/multipath-tools.postinst\n@@ -0,0 +1,20 @@\n+#!/bin/sh\n+# postinst script for multipath-tools\n+#\n+# see: dh_installdeb(1)\n+\n+set -e\n+\n+#DEBHELPER#\n+\n+# See (LP: #2034471)\n+# Handles ordering the socket/service start/restart manually.\n+if [ \"$1\" = \"configure\" ] || [ \"$1\" = \"abort-upgrade\" ] || [ \"$1\" = \"abort-deconfigure\" ] || [ \"$1\" = \"abort-remove\" ] ; then\n+\tif [ -d /run/systemd/system ]; then\n+\t\tsystemctl --system daemon-reload >/dev/null || true\n+\t\tdeb-systemd-invoke stop multipathd.service multipathd.socket >/dev/null || true\n+\t\tdeb-systemd-invoke start multipathd.socket multipathd.service >/dev/null || true\n+\tfi\n+fi\n+\n+exit 0\ndiff --git a/debian/rules b/debian/rules\nindex b2f9922..5dd4f40 100755\n--- a/debian/rules\n+++ b/debian/rules\n@@ -91,7 +91,10 @@ override_dh_installudev:\n override_dh_installsystemd:\n \tdh_link -a lib/systemd/system/multipathd.service \\\n \t\tlib/systemd/system/multipath-tools.service\n-\tdh_installsystemd -pmultipath-tools multipathd.service\n+\t# Adding --no-start, but service/socket is started/restarted manually in\n+\t# multipath-tools.postinst to force the correct order of start/stop\n+\t# see (LP: #2034471)\n+\tdh_installsystemd -pmultipath-tools multipathd.service --no-start\n \n override_dh_makeshlibs:\n \tdh_makeshlibs -a --add-udeb=multipath-udeb\n",
+ "diff_truncated": false
+}

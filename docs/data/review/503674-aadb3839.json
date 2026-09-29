@@ -1,0 +1,27 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~karljs/ubuntu/+source/llvm-toolchain-17/+git/llvm-toolchain-17/+merge/503674",
+ "id": "503674",
+ "title": "The newer version of cmake in Resolute has some stricter checks around shared libraries, which now causes an error when building runtimes libraries for WASM. This patch adds an additional check around the problematic cmake import, which causes it to be skipped on the WASM builds. It's safe to skip because the build does not use any of the recursively imported targets.",
+ "source_branch": "ubuntu/resolute-devel",
+ "target_branch": "ubuntu/resolute-devel",
+ "revision": "1e2247174939ec8409d131d3a046e31c95343a26",
+ "base_revision": "aec8dfafa12fd4860b04c1e57556940416b39414",
+ "description": "The newer version of cmake in Resolute has some stricter checks around shared libraries, which now causes an error when building runtimes libraries for WASM. This patch adds an additional check around the problematic cmake import, which causes it to be skipped on the WASM builds. It's safe to skip because the build does not use any of the recursively imported targets.",
+ "commit_message": null,
+ "diffstat": {
+  "debian/changelog": [
+   7,
+   0
+  ],
+  "debian/rules": [
+   2,
+   0
+  ]
+ },
+ "files": 2,
+ "added_lines": 9,
+ "removed_lines": 0,
+ "diff": "diff --git a/debian/changelog b/debian/changelog\nindex a34373a..c34356d 100644\n--- a/debian/changelog\n+++ b/debian/changelog\n@@ -1,3 +1,10 @@\n+llvm-toolchain-17 (1:17.0.6-23ubuntu10) resolute; urgency=medium\n+\n+  * Bug-fix only, avoiding stricter cmake 4 behavior. This fix should be\n+    dropped if upstream provides a proper solution. LP: #2146914.\n+\n+ -- Karl Smeltzer <karl.smeltzer@canonical.com>  Wed, 15 Apr 2026 12:33:06 -0700\n+\n llvm-toolchain-17 (1:17.0.6-23ubuntu7) resolute; urgency=medium\n \n   * Cherry-pick change from Debian git\ndiff --git a/debian/rules b/debian/rules\nindex 2d39077..d031d53 100755\n--- a/debian/rules\n+++ b/debian/rules\n@@ -918,6 +918,8 @@ build-wasm/compiler-rt-%:\n \t@echo \"Building compiler-rt for $(cpu)\"\n \t@echo \"Using cmake: $(CMAKE_BIN)\"\n \tmkdir -p \"$@\"\n+\tsed -i -e 's/^\\(cmake_policy(VERSION .*\\.\\.\\.\\).*/\\13.29)/' build-llvm/tools/clang/stage2-bins/lib/cmake/llvm/LLVMExports.cmake\n+\tsed -i -e 's/^\\(cmake_policy(VERSION .*\\.\\.\\.\\).*/\\13.29)/' build-llvm/tools/clang/stage2-bins/lib/cmake/llvm/LLVMBuildTreeOnlyTargets.cmake\n \t$(CMAKE_BIN) -B \"$@\" -S compiler-rt/lib/builtins/ \\\n \t\t-G Ninja \\\n \t\t$(SCCACHE_CMAKE) \\\n",
+ "diff_truncated": false
+}

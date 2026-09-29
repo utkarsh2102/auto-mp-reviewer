@@ -1,0 +1,27 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~mylesjp/ubuntu/+source/software-properties/+git/software-properties/+merge/508563",
+ "id": "508563",
+ "title": "lp2161023-resolute → ubuntu/resolute",
+ "source_branch": "lp2161023-resolute",
+ "target_branch": "ubuntu/resolute",
+ "revision": "dff866727da2e2fb256286d599cf89e730402525",
+ "base_revision": "b2a247c0241bac0c2ebaa409ea8c0045fb5a87c4",
+ "description": null,
+ "commit_message": null,
+ "diffstat": {
+  "debian/changelog": [
+   7,
+   0
+  ],
+  "softwareproperties/cloudarchive.py": [
+   1,
+   0
+  ]
+ },
+ "files": 2,
+ "added_lines": 8,
+ "removed_lines": 0,
+ "diff": "diff --git a/debian/changelog b/debian/changelog\nindex 535d71f..8013218 100644\n--- a/debian/changelog\n+++ b/debian/changelog\n@@ -1,3 +1,10 @@\n+software-properties (0.121) resolute; urgency=medium\n+\n+  * cloudarchive: Enable support for the Hibiscus Ubuntu Cloud Archive\n+    (LP: #2161023).\n+\n+ -- Myles Penner <myles.penner@canonical.com>  Thu, 16 Jul 2026 15:00:00 -0700\n+\n software-properties (0.120) resolute; urgency=medium\n \n   * qt: Refactor driver selection handling to pass button\ndiff --git a/softwareproperties/cloudarchive.py b/softwareproperties/cloudarchive.py\nindex 78bbc47..978e0f4 100644\n--- a/softwareproperties/cloudarchive.py\n+++ b/softwareproperties/cloudarchive.py\n@@ -61,6 +61,7 @@ RELEASE_MAP = {\n     'epoxy': 'noble',\n     'flamingo': 'noble',\n     'gazpacho': 'noble',\n+    'hibiscus': 'resolute',\n }\n UCA = \"Ubuntu Cloud Archive\"\n WEB_LINK = 'https://wiki.ubuntu.com/OpenStack/CloudArchive'\n",
+ "diff_truncated": false
+}

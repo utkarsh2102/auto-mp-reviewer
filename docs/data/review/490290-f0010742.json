@@ -1,0 +1,23 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~mwhudson/britney/+git/hints-ubuntu/+merge/490290",
+ "id": "490290",
+ "title": "force sudo 1.9.16p2-1ubuntu4",
+ "source_branch": "force-sudo",
+ "target_branch": "devel",
+ "revision": "50018f3acc788efb516e0649d67517a788ae4d8f",
+ "base_revision": "2410f09a0d1ebc6b6227d8d86e330af85e7d4bcc",
+ "description": "I *think* this is the appropriate action. I guess we could also badtest the failing test.",
+ "commit_message": "force sudo 1.9.16p2-1ubuntu4",
+ "diffstat": {
+  "ubuntu-release": [
+   4,
+   0
+  ]
+ },
+ "files": 1,
+ "added_lines": 4,
+ "removed_lines": 0,
+ "diff": "diff --git a/ubuntu-release b/ubuntu-release\nindex 93bedc9..d01ee16 100644\n--- a/ubuntu-release\n+++ b/ubuntu-release\n@@ -41,3 +41,7 @@ force-badtest gcc-snapshot/all\n # block coreutils-from while failures are being investigated\n # see LP: #2111603\n block coreutils-from\n+\n+# sudo is not migrating only because of livecd-rootfs autopkgtests that fail\n+# because sudo has not migrated\n+force sudo/1.9.16p2-1ubuntu4\n",
+ "diff_truncated": false
+}

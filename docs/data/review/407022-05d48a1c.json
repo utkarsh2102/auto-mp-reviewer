@@ -1,0 +1,31 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~paride/ubuntu/+source/postfix/+git/postfix/+merge/407022",
+ "id": "407022",
+ "title": "Hirsute SRU for LP: #1906970, same as https://code.launchpad.net/~paride/ubuntu/+source/postfix/+git/postfix/+merge/406805 but done against Hirsute.",
+ "source_branch": "lp1906970-hirsute",
+ "target_branch": "ubuntu/hirsute-devel",
+ "revision": "511eb40b838096406663c059bc6b7e54e36a7111",
+ "base_revision": "7523244ae9e5a3a6c736397f15cbf9bb975ef767",
+ "description": null,
+ "commit_message": "Hirsute SRU for LP: #1906970, same as https://code.launchpad.net/~paride/ubuntu/+source/postfix/+git/postfix/+merge/406805 but done against Hirsute.\n\nTest PPA: https://launchpad.net/~paride/+archive/ubuntu/postfix-lp1906970\n\nTest case: see [Test Plan] in the SRU bug description.\n\nAutopkgtest summary (virt-server: lxd):\n\npostfix              PASS",
+ "diffstat": {
+  "debian/postfix.postinst": [
+   1,
+   1
+  ],
+  "debian/control": [
+   2,
+   1
+  ],
+  "debian/changelog": [
+   7,
+   0
+  ]
+ },
+ "files": 3,
+ "added_lines": 10,
+ "removed_lines": 2,
+ "diff": "diff --git a/debian/changelog b/debian/changelog\nindex 2a161f5..b4ced17 100644\n--- a/debian/changelog\n+++ b/debian/changelog\n@@ -1,3 +1,10 @@\n+postfix (3.5.6-1ubuntu0.1) hirsute; urgency=medium\n+\n+  * d/postfix.postinst: tolerate search domain with a leading dot\n+    (LP: #1906970)\n+\n+ -- Paride Legovini <paride@ubuntu.com>  Thu, 12 Aug 2021 14:39:06 +0200\n+\n postfix (3.5.6-1) unstable; urgency=medium\n \n   [Dominic Raferd]\ndiff --git a/debian/control b/debian/control\nindex 5e9a483..3288242 100644\n--- a/debian/control\n+++ b/debian/control\n@@ -1,7 +1,8 @@\n Source: postfix\n Section: mail\n Priority: optional\n-Maintainer: LaMont Jones <lamont@debian.org>\n+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>\n+XSBC-Original-Maintainer: LaMont Jones <lamont@debian.org>\n Uploaders: Scott Kitterman <scott@kitterman.com>\n Standards-Version: 4.5.0\n Homepage: http://www.postfix.org\ndiff --git a/debian/postfix.postinst b/debian/postfix.postinst\nindex dc28f3c..9ba7eac 100644\n--- a/debian/postfix.postinst\n+++ b/debian/postfix.postinst\n@@ -49,7 +49,7 @@ myfqdn() {\n \tif [ $myhostname = ${myhostname%.*} ]; then\n \t    if [ -f /etc/resolv.conf ]; then\n \t\t# The resolver uses the last one found, and ignores the rest\n-\t\tmydom=$(sed -n 's/^search[[:space:]]*\\([^[:space:]]*\\).*/\\1/p;s/^domain[[:space:]]*\\([^[:space:]]*\\).*/\\1/p' /etc/resolv.conf | tail -1)\n+\t\tmydom=$(sed -n 's/^search[[:space:]]*\\.*\\([^[:space:]]*\\).*/\\1/p;s/^domain[[:space:]]*\\.*\\([^[:space:]]*\\).*/\\1/p' /etc/resolv.conf | tail -1)\n \t\tmyhostname=\"$myhostname${mydom:+.$mydom}\"\n \t    else\n \t\tmyhostname=\"$myhostname.UNKNOWN\"\n",
+ "diff_truncated": false
+}

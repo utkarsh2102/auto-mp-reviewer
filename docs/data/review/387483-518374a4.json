@@ -1,0 +1,31 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~bryce/ubuntu/+source/sudo/+git/sudo/+merge/387483",
+ "id": "387483",
+ "title": "Quells an unnecessary warning when running sudo in a focal lxc container. Fix comes from upstream; I trimmed some debug messaging to get a minimal fix.",
+ "source_branch": "ubuntu/focal-devel",
+ "target_branch": "ubuntu/focal-devel",
+ "revision": "17c60860104d2fac1de9ce6c418d95eabca84688",
+ "base_revision": "976ea17636e4d1a2feaae29f752f5a53b7a2d7e0",
+ "description": "Quells an unnecessary warning when running sudo in a focal lxc container. Fix comes from upstream; I trimmed some debug messaging to get a minimal fix.\n\nSRU: https://bugs.launchpad.net/ubuntu/+source/sudo/+bug/1857036\nPPA: https://launchpad.net/~bryce/+archive/ubuntu/sudo-sru-lp1857036-setrlimit-in-lxc\n\nTest Case:\n\n$ lxc launch ubuntu:20.04/amd64 sudo-sru-lp1857036-test\n$ lxc shell sudo-sru-lp1857036-test\n\n# sudo --login --user ubuntu\nsudo: setrlimit(RLIMIT_CORE): Operation not permitted\nTo run a command as administrator (user \"root\"), use \"sudo <command>\".\nSee \"man sudo_root\" for details.\n$ logout\n\nInstall the PPA\n# apt-add-repository -yus ppa:bryce/sudo-sru-lp1857036-setrlimit-in-lxc\n# apt-get install sudo\n\n# sudo --login --user ubuntu\n$",
+ "commit_message": null,
+ "diffstat": {
+  "debian/patches/series": [
+   1,
+   0
+  ],
+  "debian/changelog": [
+   11,
+   0
+  ],
+  "debian/patches/ignore-rlimit-core-failure.patch": [
+   57,
+   0
+  ]
+ },
+ "files": 3,
+ "added_lines": 69,
+ "removed_lines": 0,
+ "diff": "diff --git a/debian/changelog b/debian/changelog\nindex 231063c..af72016 100644\n--- a/debian/changelog\n+++ b/debian/changelog\n@@ -1,3 +1,14 @@\n+sudo (1.8.31-1ubuntu1.1) focal; urgency=medium\n+\n+  * d/p/ignore-rlimit-core-failure.patch: Ignore a failure to restore the\n+    RLIMIT_CORE resource limit.  Linux containers don't allow RLIMIT_CORE\n+    to be set back to RLIM_INFINITY if we set the limit to zero, even for\n+    root.  RLIMIT_NPROC is also not allowed to be set back.  This is not a\n+    problem outside the container.\n+    (LP: #1857036)\n+\n+ -- Bryce Harrington <bryce@canonical.com>  Wed, 15 Jul 2020 00:17:58 +0000\n+\n sudo (1.8.31-1ubuntu1) focal; urgency=medium\n \n   * Merge from Debian unstable. Remaining changes:\ndiff --git a/debian/patches/ignore-rlimit-core-failure.patch b/debian/patches/ignore-rlimit-core-failure.patch\nnew file mode 100644\nindex 0000000..2868780\n--- /dev/null\n+++ b/debian/patches/ignore-rlimit-core-failure.patch\n@@ -0,0 +1,57 @@\n+From 712afe03195e9747a442cac633b03dc5c8bfa54c Mon Sep 17 00:00:00 2001\n+From: \"Todd C. Miller\" <Todd.Miller@sudo.ws>\n+Date: Sat, 14 Mar 2020 11:13:55 -0600\n+Subject: [PATCH] Ignore a failure to restore the RLIMIT_CORE resource limit.\n+ Linux containers don't allow RLIMIT_CORE to be set back to RLIM_INFINITY if\n+ we set the limit to zero, even for root.  This is not a problem outside the\n+ container.\n+\n+ Note: The original upstream patch includes addition of debug printf\n+ code which, while harmless, is not necessary for the fix and is not\n+ visible to end users, so has been excluded to make a more minimal fix.\n+\n+---\n+ src/limits.c | 71 ++++++++++++++++++++++++++++++++++++++++++++--------\n+ 1 file changed, 61 insertions(+), 10 deletions(-)\n+\n+Origin: upstream, https://github.com/sudo-project/sudo/commit/712afe03195e9747a442cac633b03dc5c8bfa54c\n+Bug: https://github.com/sudo-project/sudo/issues/42\n+Bug-Ubuntu: https://bugs.launchpad.net/ubuntu/+source/sudo/+bug/1857036\n+Bug-Fedora: https://bugzilla.redhat.com/show_bug.cgi?id=1773148\n+Reviewed-By: Bryce Harrington <bryce@canonical.com>\n+Last-Updated: 2020-07-14\n+\n+--- a/src/limits.c\n++++ b/src/limits.c\n+@@ -136,8 +136,15 @@\n+     debug_decl(restore_coredump, SUDO_DEBUG_UTIL)\n+ \n+     if (coredump_disabled) {\n+-\tif (setrlimit(RLIMIT_CORE, &corelimit) == -1)\n+-\t    sudo_warn(\"setrlimit(RLIMIT_CORE)\");\n++\t/*\n++\t * Linux containers don't allow RLIMIT_CORE to be set back to\n++\t * RLIM_INFINITY if we set the limit to zero, even for root.\n++\t */\n++\tif (setrlimit(RLIMIT_CORE, &corelimit) == -1) {\n++\t    sudo_debug_printf(SUDO_DEBUG_ERROR|SUDO_DEBUG_ERRNO,\n++\t\t\"setrlimit(RLIMIT_CORE, [%lld, %lld])\",\n++\t\t(long long)corelimit.rlim_cur, (long long)corelimit.rlim_max);\n++\t}\n+ #ifdef __linux__\n+ \t(void) prctl(PR_SET_DUMPABLE, dumpflag, 0, 0, 0);\n+ #endif /* __linux__ */\n+@@ -180,8 +187,11 @@\n+ #ifdef __linux__\n+     debug_decl(restore_nproc, SUDO_DEBUG_UTIL)\n+ \n+-    if (setrlimit(RLIMIT_NPROC, &nproclimit) != 0)\n+-\tsudo_warn(\"setrlimit(RLIMIT_NPROC)\");\n++    if (setrlimit(RLIMIT_NPROC, &nproclimit) != 0) {\n++\tsudo_debug_printf(SUDO_DEBUG_ERROR|SUDO_DEBUG_ERRNO,\n++\t    \"setrlimit(RLIMIT_NPROC, [%lld, %lld])\",\n++\t    (long long)nproclimit.rlim_cur, (long long)nproclimit.rlim_max);\n++    }\n+ \n+     debug_return;\n+ #endif /* __linux__ */\ndiff --git a/debian/patches/series b/debian/patches/series\nindex e6c11f0..50a1980 100644\n--- a/debian/patches/series\n+++ b/debian/patches/series\n@@ -1,3 +1,4 @@\n typo-in-classic-insults.diff\n paths-in-samples.diff\n Whitelist-DPKG_COLORS-environment-variable.diff\n+ignore-rlimit-core-failure.patch\n",
+ "diff_truncated": false
+}

@@ -1,0 +1,35 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~ubuntu-core-dev/livecd-rootfs/+git/livecd-rootfs/+merge/427572",
+ "id": "427572",
+ "title": "Forward-port sever-live additions for intel-iotg",
+ "source_branch": "intel-iotg-server-jammy",
+ "target_branch": "ubuntu/jammy",
+ "revision": "e3e8a16a6df7f8064208ff185ee59c82081d800f",
+ "base_revision": "e7a198578b511e44e4c51f0ef4305891942a433a",
+ "description": "WIP",
+ "commit_message": "Forward-port sever-live additions for intel-iotg",
+ "diffstat": {
+  "live-build/ubuntu-server/hooks/04-kernel-bits.binary": [
+   2,
+   0
+  ],
+  "live-build/ubuntu-server/hooks/03-kernel-metapkg.chroot_early": [
+   2,
+   0
+  ],
+  "live-build/auto/config": [
+   12,
+   3
+  ],
+  "live-build/lb_binary_layered": [
+   11,
+   8
+  ]
+ },
+ "files": 4,
+ "added_lines": 27,
+ "removed_lines": 11,
+ "diff": "diff --git a/live-build/auto/config b/live-build/auto/config\nindex 862bb55..f32644a 100755\n--- a/live-build/auto/config\n+++ b/live-build/auto/config\n@@ -848,9 +848,15 @@ case $PROJECT in\n \t\t\t\t# the GA and HWE kernels (in separate layers) so this code is\n \t\t\t\t# written generically to support both even though a lot of the\n \t\t\t\t# time only one kernel is offered.\n-\n-\t\t\t\t# variants='ga hwe'\n-\t\t\t\tvariants='ga'\n+\t\t\t\tcase ${SUBARCH-} in\n+\t\t\t\t\tintel-iot)\n+\t\t\t\t\t\tvariants='intel'\n+\t\t\t\t\t\t;;\n+\t\t\t\t\t*)\n+\t\t\t\t\t\t# variants='ga hwe'\n+\t\t\t\t\t\tvariants='ga'\n+\t\t\t\t\t\t;;\n+\t\t\t\tesac\n \n \t\t\t\tfor variant in $variants; do\n \t\t\t\t\tif [ \"$variant\" = \"ga\" ]; then\n@@ -859,6 +865,9 @@ case $PROJECT in\n \t\t\t\t\telif [ \"$variant\" = \"hwe\" ]; then\n \t\t\t\t\t\tkernel_metapkg=linux-generic-hwe-$(lsb_release -sr)\n \t\t\t\t\t\tflavor=generic-hwe\n+\t\t\t\t\telif [ \"$variant\" = \"intel\" ]; then\n+\t\t\t\t\t\tkernel_metapkg=linux-intel-iotg\n+\t\t\t\t\t\tflavor=intel-iotg\n \t\t\t\t\telse\n \t\t\t\t\t\techo \"bogus variant: $variant\"\n \t\t\t\t\t\texit 1\ndiff --git a/live-build/lb_binary_layered b/live-build/lb_binary_layered\nindex 424f700..f31d5e2 100755\n--- a/live-build/lb_binary_layered\n+++ b/live-build/lb_binary_layered\n@@ -56,9 +56,12 @@ build_layered_squashfs () {\n \n \tEcho_message \"lb_binary_layered: treating pass $pass\"\n \n+\t# Per convention, we include the subarch name next to the project\n+\tPROJECT_FULL=$PROJECT${SUBARCH:+-$SUBARCH}\n+\n \t# Building squashfs filesystem & manifest\n \tlocal overlay_dir=\"overlay.${pass}\"\n-\tbase=\"${PWD}/livecd.${PROJECT}.${pass}\"\n+\tbase=\"${PWD}/livecd.${PROJECT_FULL}.${pass}\"\n \tsquashfs_f=\"${base}.squashfs\"\n \n \t# We have already treated that pass\n@@ -113,7 +116,7 @@ build_layered_squashfs () {\n \t\tcreate_manifest \"chroot\" \"${squashfs_f_manifest}.full\"\n \n \t\t# Delta manifest\n-\t\tdiff -NU0 ${PWD}/livecd.${PROJECT}.$(get_parent_pass $pass).manifest.full ${squashfs_f_manifest}.full|grep -v ^@ > $squashfs_f_manifest\n+\t\tdiff -NU0 ${PWD}/livecd.${PROJECT_FULL}.$(get_parent_pass $pass).manifest.full ${squashfs_f_manifest}.full|grep -v ^@ > $squashfs_f_manifest\n \n \t\tsquashfs_f_size=\"${base}.size\"\n \t\tdu -B 1 -s \"overlay.${pass}/\" | cut -f1 > \"${squashfs_f_size}\"\n@@ -121,7 +124,7 @@ build_layered_squashfs () {\n \t\t# We take first live pass for \"global\" ISO properties (used by installers and checkers):\n \t\t# Prepare initrd + kernel\n \t\t# Main manifest and size files\n-\t\tprefix=\"livecd.$PROJECT${SUBARCH:+-$SUBARCH}\"\n+\t\tprefix=\"livecd.$PROJECT_FULL\"\n \t\tif [ ! -e \"${prefix}.manifest\" ] && $(is_live_layer \"$pass\"); then\n \t\t\ttotalsize=$(cat ${squashfs_f_size})\n \t\t\tcurpass=\"$pass\"\n@@ -130,7 +133,7 @@ build_layered_squashfs () {\n \t\t\t\t# We climbed up the tree to the root layer, we are done\n \t\t\t\t[ -z \"$curpass\" ] && break\n \n-\t\t\t\ttotalsize=$(expr $totalsize + $(cat \"${PWD}/livecd.${PROJECT}.${curpass}.size\"))\n+\t\t\t\ttotalsize=$(expr $totalsize + $(cat \"${PWD}/livecd.${PROJECT_FULL}.${curpass}.size\"))\n \t\t\tdone\n \t\t\techo ${totalsize} > \"${prefix}.size\"\n \n@@ -141,7 +144,7 @@ build_layered_squashfs () {\n \n \t\tif [ -f config/$pass.catalog-in.yaml ]; then\n \t\t\techo \"Expanding catalog entry template for $pass\"\n-\t\t\tusc_opts=\"--output livecd.${PROJECT}.install-sources.yaml \\\n+\t\t\tusc_opts=\"--output livecd.${PROJECT_FULL}.install-sources.yaml \\\n \t\t\t\t--template config/$pass.catalog-in.yaml \\\n \t\t\t\t--size $(du -B 1 -s chroot/ | cut -f1) --squashfs ${pass}.squashfs \\\n \t\t\t\t--translations config/catalog-translations\"\n@@ -168,9 +171,9 @@ do\n done\n \n # Ubiquity-compatible removal manifest for ISO not using a layered-aware installer\n-if [ -n \"$(ls livecd.${PROJECT}.*install.live.manifest.full 2>/dev/null)\" ] && \\\n-   [ -n \"$(ls livecd.${PROJECT}.*install.manifest.full 2>/dev/null)\" ]; then\n-\techo \"$(diff livecd.${PROJECT}.*install.live.manifest.full livecd.${PROJECT}.*install.manifest.full | awk '/^< / { print $2 }')\" > livecd.${PROJECT}-manifest-remove\n+if [ -n \"$(ls livecd.${PROJECT_FULL}.*install.live.manifest.full 2>/dev/null)\" ] && \\\n+   [ -n \"$(ls livecd.${PROJECT_FULL}.*install.manifest.full 2>/dev/null)\" ]; then\n+\techo \"$(diff livecd.${PROJECT_FULL}.*install.live.manifest.full livecd.${PROJECT_FULL}.*install.manifest.full | awk '/^< / { print $2 }')\" > livecd.${PROJECT_FULL}-manifest-remove\n fi\n \n chmod 644 *.squashfs *.manifest* *.size\ndiff --git a/live-build/ubuntu-server/hooks/03-kernel-metapkg.chroot_early b/live-build/ubuntu-server/hooks/03-kernel-metapkg.chroot_early\nindex 864d4c4..3e0be41 100755\n--- a/live-build/ubuntu-server/hooks/03-kernel-metapkg.chroot_early\n+++ b/live-build/ubuntu-server/hooks/03-kernel-metapkg.chroot_early\n@@ -8,6 +8,8 @@ case $PASS in\n             kernel_metapkg=linux-generic\n         elif [ \"$flavor\" = \"generic-hwe\" ]; then\n             kernel_metapkg=linux-generic-hwe-$(lsb_release -sr)\n+        elif [ \"$flavor\" = \"intel-iotg\" ]; then\n+            kernel_metapkg=linux-intel-iotg\n         else\n             echo \"bogus flavor: $flavor\"\n             exit 1\ndiff --git a/live-build/ubuntu-server/hooks/04-kernel-bits.binary b/live-build/ubuntu-server/hooks/04-kernel-bits.binary\nindex c0b2e3d..5152026 100755\n--- a/live-build/ubuntu-server/hooks/04-kernel-bits.binary\n+++ b/live-build/ubuntu-server/hooks/04-kernel-bits.binary\n@@ -10,6 +10,8 @@ case $PASS in\n         ;;\n esac\n \n+PROJECT=$PROJECT${SUBARCH:+-$SUBARCH}\n+\n # Fish out generated kernel image and initrd\n mv chroot/boot/initrd.img-* ${PWD}/livecd.${PROJECT}.initrd-$flavor\n mv chroot/boot/vmlinu?-* ${PWD}/livecd.${PROJECT}.kernel-$flavor\n",
+ "diff_truncated": false
+}

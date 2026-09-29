@@ -1,0 +1,23 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~callmepk/livecd-rootfs/+git/livecd-rootfs-1/+merge/393233",
+ "id": "393233",
+ "title": "This is a fix to a build error in Hyper-V hook that affects 20.10+.",
+ "source_branch": "ubuntu/groovy",
+ "target_branch": "ubuntu/groovy",
+ "revision": "a1b140e40ffe2204921f126d0395dfda42aff5c8",
+ "base_revision": "4aedf53772b85e52fd37200b19eeb3d9ad41fd8e",
+ "description": "This is a fix to a build error in Hyper-V hook that affects 20.10+. \n\nThis is a fix for groovy.",
+ "commit_message": null,
+ "diffstat": {
+  "live-build/ubuntu/hooks/040-hyperv-desktop-images.binary": [
+   1,
+   1
+  ]
+ },
+ "files": 1,
+ "added_lines": 1,
+ "removed_lines": 1,
+ "diff": "diff --git a/live-build/ubuntu/hooks/040-hyperv-desktop-images.binary b/live-build/ubuntu/hooks/040-hyperv-desktop-images.binary\nindex d8d0c99..0444602 100644\n--- a/live-build/ubuntu/hooks/040-hyperv-desktop-images.binary\n+++ b/live-build/ubuntu/hooks/040-hyperv-desktop-images.binary\n@@ -103,7 +103,7 @@ ResultInactive=no\n ResultActive=yes\n EOF\n \n-cat >/etc/polkit-1/localauthority/50-local.d/46-allow-update-repo.pkla <<EOF\n+cat >${scratch_d}/etc/polkit-1/localauthority/50-local.d/46-allow-update-repo.pkla <<EOF\n [Allow Package Management all Users]\n Identity=unix-user:*\n Action=org.freedesktop.packagekit.system-sources-refresh\n",
+ "diff_truncated": false
+}

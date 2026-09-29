@@ -1,0 +1,23 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~schopin/ubuntu-archive-tools/+git/ubuntu-archive-tools/+merge/494688",
+ "id": "494688",
+ "title": "priority-ignore-lvspd → main",
+ "source_branch": "priority-ignore-lvspd",
+ "target_branch": "main",
+ "revision": "33a0e38c57e6da232017776a4f988a6b58a41d99",
+ "base_revision": "3df00c5941e6609be95b6b137b99fa5824a10c52",
+ "description": null,
+ "commit_message": null,
+ "diffstat": {
+  "priority-mismatches": [
+   3,
+   0
+  ]
+ },
+ "files": 1,
+ "added_lines": 3,
+ "removed_lines": 0,
+ "diff": "diff --git a/priority-mismatches b/priority-mismatches\nindex 3d610cf..588538a 100755\n--- a/priority-mismatches\n+++ b/priority-mismatches\n@@ -65,6 +65,9 @@ ignore = [\n     ('bc', 'important', 'ppc64el'),  # needed for powerpc-ibm-utils\n     ('libsgutils2-2', 'standard', 'powerpc'),  # needed for lsvpd\n     ('libsgutils2-2', 'standard', 'ppc64el'),  # needed for lsvpd\n+    ('hwdata','standard','ppc64el'), # needed for lsvpd\n+    ('libsgutils2-1.48','standard','ppc64el'), # needed for lsvpd\n+    ('libvpd-2.2-3','standard','ppc64el'), # needed for lsvpd\n     ('libdrm-intel1', 'required', 'amd64'),  # needed for plymouth only on x86\n     ('libdrm-intel1', 'required', 'i386'),  # needed for plymouth only on x86\n     ('libelf1', 'optional', 'arm64'),  # ltrace not built on arm64\n",
+ "diff_truncated": false
+}

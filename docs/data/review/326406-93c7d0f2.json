@@ -1,0 +1,23 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~ubuntu-release/britney/+git/britney2-ubuntu/+merge/326406",
+ "id": "326406",
+ "title": "Fix wrong log message",
+ "source_branch": "broken-hint-logging",
+ "target_branch": "master",
+ "revision": "b80b8c533ade9a4aef153ead904387a82dc8d97e",
+ "base_revision": "41ac7a81f99876d4b349c26b2b86c9dbb37757f3",
+ "description": "Fix wrong log message\n    \nBritney2's Hint object has no 'days' attribute, so we ought not try to print it.\n    \nSeen in the wild for several hours during the Artful Alpha 1 milestone freeze, when a duplicate block hint caused britney to fail to run due to the resulting exception.\n",
+ "commit_message": null,
+ "diffstat": {
+  "britney.py": [
+   3,
+   3
+  ]
+ },
+ "files": 1,
+ "added_lines": 3,
+ "removed_lines": 3,
+ "diff": "diff --git a/britney.py b/britney.py\nindex de20218..847aecc 100755\n--- a/britney.py\n+++ b/britney.py\n@@ -1077,9 +1077,9 @@ class Britney(object):\n                                (x, package, hint.version, hint.user, hint2.version, hint2.user), type=\"W\")\n                             hint.set_active(False)\n                     else:\n-                        self.log(\"Overriding %s[%s] = ('%s', '%s', '%s') with ('%s', '%s', '%s')\" %\n-                           (x, package, hint2.version, hint2.user, hint2.days,\n-                            hint.version, hint.user, hint.days), type=\"W\")\n+                        self.log(\"Overriding %s[%s] = ('%s', '%s') with ('%s', '%s')\" %\n+                           (x, package, hint2.version, hint2.user,\n+                            hint.version, hint.user), type=\"W\")\n                         hint2.set_active(False)\n \n                 z[package] = key\n",
+ "diff_truncated": false
+}

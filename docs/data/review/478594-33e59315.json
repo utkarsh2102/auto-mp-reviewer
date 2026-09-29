@@ -1,0 +1,67 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~mirespace/ubuntu/+source/dnsmasq/+git/dnsmasq/+merge/478594",
+ "id": "478594",
+ "title": "Hello team,",
+ "source_branch": "lp2026757-oracular-ironic-fix",
+ "target_branch": "ubuntu/oracular-devel",
+ "revision": "883e9b1578b1f307cb732cb4cc1b8770bb3d1a36",
+ "base_revision": "69ede455891ec6aada14cf2551237e900576e0eb",
+ "description": "Hello team,\n\nppa for this is:\n\nppa:mirespace/dnsmasq\nhttps://launchpad.net/~mirespace/+archive/ubuntu/dnsmasq\n\nThis is the same fix that for Plucky (soon in sync with Debian after they accept our submitted patch [2])\n\nIt also includes the fix from Lukas (thanks!) for the testing part, also accepted in Debian [3]. Therefore, tests OK:\n\n- dnsmasq: oracular/dnsmasq/2.90-4ubuntu1+ppa1 [amd64]\n    + ✅ dnsmasq on oracular for amd64   @ 15.01.25 12:10:35\n      • Log: https://autopkgtest.ubuntu.com/results/autopkgtest-oracular-mirespace-dnsmasq/oracular/amd64/d/dnsmasq/20250115_121035_f20a1@/log.gz\n    + ✅ dnsmasq on oracular for arm64   @ 15.01.25 09:56:08\n      • Log: https://autopkgtest.ubuntu.com/results/autopkgtest-oracular-mirespace-dnsmasq/oracular/arm64/d/dnsmasq/20250115_095608_2c9d7@/log.gz\n    + ✅ dnsmasq on oracular for armhf   @ 15.01.25 10:00:22\n      • Log: https://autopkgtest.ubuntu.com/results/autopkgtest-oracular-mirespace-dnsmasq/oracular/armhf/d/dnsmasq/20250115_100022_a2356@/log.gz\n   + ✅ dnsmasq on oracular for ppc64el @ 15.01.25 12:16:45\n      • Log: https://autopkgtest.ubuntu.com/results/autopkgtest-oracular-mirespace-dnsmasq/oracular/ppc64el/d/dnsmasq/20250115_121645_31147@/log.gz\n   + ✅ dnsmasq on oracular for s390x   @ 15.01.25 09:48:06\n      • Log: https://autopkgtest.ubuntu.com/results/autopkgtest-oracular-mirespace-dnsmasq/oracular/s390x/d/dnsmasq/20250115_094806_75391@/log.gz\n\n[1] https://code.launchpad.net/~mirespace/ubuntu/+source/dnsmasq/+git/dnsmasq/+merge/478238\n[2] https://launchpad.net/debian/+source/dnsmasq/2.90-7\n[3] https://launchpad.net/ubuntu/+source/dnsmasq/2.90-6\n\nSRU paperwork is in place.\n\nInstallation/removal/upgrade testing OK:\n\n#upgrade\n\nroot@Oazure:~# apt list --upgradable -a\ndnsmasq-base/oracular 2.90-4ubuntu1+ppa1 amd64 [upgradable from: 2.90-4]\ndnsmasq-base/oracular,now 2.90-4 amd64 [installed,upgradable to: 2.90-4ubuntu1+ppa1]\n\ndnsmasq/oracular 2.90-4ubuntu1+ppa1 all [upgradable from: 2.90-4]\ndnsmasq/oracular 2.90-4ubuntu1 all\ndnsmasq/oracular,now 2.90-4 all [installed,upgradable to: 2.90-4ubuntu1+ppa1]\n\nroot@Oazure:~# dnsmasq -v\nDnsmasq version 2.90  Copyright (c) 2000-2024 Simon Kelley\nCompile time options: IPv6 GNU-getopt DBus no-UBus i18n IDN2 DHCP DHCPv6 no-Lua TFTP conntrack ipset nftset auth cryptohash DNSSEC loop-detect inotify dumpfile\n\nThis software comes with ABSOLUTELY NO WARRANTY.\nDnsmasq is free software, and you are welcome to redistribute it\nunder the terms of the GNU General Public License, version 2 or 3.\n\n#removal\nroot@Oazure:~# dpkg -l dnsmasq | grep dnsmasq\nun  dnsmasq        <none>       <none>       (no description available)\n\n#installation\nroot@Oazure:~# dpkg -l dnsmasq | grep dnsmasq\nii  dnsmasq        2.90-4ubuntu1+ppa1 all          Small caching DNS proxy and DHCP/TFTP server - system daemon\n\n",
+ "commit_message": null,
+ "diffstat": {
+  "debian/changelog": [
+   17,
+   0
+  ],
+  "debian/control": [
+   2,
+   1
+  ],
+  "debian/patches/fix-crash-when-reloading-DHCP-config-on-SIGHUP.patch": [
+   42,
+   0
+  ],
+  "debian/patches/series": [
+   1,
+   0
+  ],
+  "debian/tests/compile-time-options": [
+   2,
+   0
+  ],
+  "debian/tests/compile-time-options+lua": [
+   2,
+   0
+  ],
+  "debian/tests/control": [
+   3,
+   0
+  ],
+  "debian/tests/functions": [
+   14,
+   1
+  ],
+  "debian/tests/functions.d/ip-addr.patterns": [
+   2,
+   2
+  ],
+  "debian/tests/get-address+query-dns+check-utils": [
+   1,
+   0
+  ],
+  "debian/tests/get-address+query-dns+lua+alt": [
+   2,
+   0
+  ],
+  "debian/tests/get-address+query-dns+sysv+alt": [
+   1,
+   0
+  ]
+ },
+ "files": 12,
+ "added_lines": 89,
+ "removed_lines": 4,
+ "diff": "diff --git a/debian/changelog b/debian/changelog\nindex 27293d6..bbdd3c1 100644\n--- a/debian/changelog\n+++ b/debian/changelog\n@@ -1,3 +1,20 @@\n+dnsmasq (2.90-4ubuntu1) oracular; urgency=medium\n+\n+  * d/p/fix-crash-when-reloading-DHCP-config-on-SIGHUP.patch:\n+    Confusion in the code to free old DHCP configuration when\n+    it's being reloaded causes invalid pointers to be followed\n+    and a crash (LP: #2026757).\n+\n+  [ Lukas Märdian ]\n+  * d/t/{control,functions}: Allow running on non-ifupdown systems and work\n+    around systemd-resolved conflict\n+  * d/t/{get-address+query-dns+lua+alt,ip-addr.patterns}: dhcpcd compat.\n+    It does not send the hostname in its default configuration, provides\n+    slightly different lease lifetimes and adds the 'noprefixroute' tag to\n+    the test address from ip-addr.patterns (compared to ISC dhclient).\n+\n+ -- Miriam España Acebal <miriam.espana@canonical.com>  Wed, 18 Dec 2024 13:53:28 +0100\n+\n dnsmasq (2.90-4) unstable; urgency=medium\n \n   * d/dnsmasq-base.postrm:\ndiff --git a/debian/control b/debian/control\nindex 9b1d131..9659294 100644\n--- a/debian/control\n+++ b/debian/control\n@@ -6,7 +6,8 @@ Build-Depends: dh-exec, gettext, libnetfilter-conntrack-dev [linux-any],\n                nettle-dev (>=2.4-3), libbsd-dev [kfreebsd-any],\n \t       liblua5.4-dev, dh-runit, debhelper-compat (= 13),\n                pkgconf, libnftables-dev\n-Maintainer: Simon Kelley <simon@thekelleys.org.uk>\n+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>\n+XSBC-Original-Maintainer: Simon Kelley <simon@thekelleys.org.uk>\n Uploaders: Sven Geuer <debmaint@g-e-u-e-r.de>\n Homepage: https://www.thekelleys.org.uk/dnsmasq/doc.html\n Vcs-Git: https://thekelleys.org.uk/git/dnsmasq-debian.git\ndiff --git a/debian/patches/fix-crash-when-reloading-DHCP-config-on-SIGHUP.patch b/debian/patches/fix-crash-when-reloading-DHCP-config-on-SIGHUP.patch\nnew file mode 100644\nindex 0000000..dcaf01a\n--- /dev/null\n+++ b/debian/patches/fix-crash-when-reloading-DHCP-config-on-SIGHUP.patch\n@@ -0,0 +1,42 @@\n+From f006be7842104a9f86fbf419326b7aad08ade61d Mon Sep 17 00:00:00 2001\n+From: Simon Kelley <simon@thekelleys.org.uk>\n+Date: Fri, 4 Oct 2024 16:59:14 +0100\n+Subject: [PATCH] Fix crash when reloading DHCP config on SIGHUP.\n+ Confusion in the code to free old DHCP configuration when it's\n+ being reloaded causes invalid pointers to be followed and a crash.\n+ .\n+ https://lists.thekelleys.org.uk/pipermail/dnsmasq-discuss/2024q4/017764.html\n+ has a more complete explanation of the problem.\n+Origin: https://thekelleys.org.uk/gitweb/?p=dnsmasq.git;a=commitdiff;h=f006be7842104a9f86fbf419326b7aad08ade61d\n+Bug-Ubuntu: https://bugs.launchpad.net/ubuntu/jammy/+source/dnsmasq/+bug/2026757\n+Fordwarded: not-needed\n+---\n+ src/option.c | 10 ++++++++--\n+ 1 file changed, 8 insertions(+), 2 deletions(-)\n+\n+--- a/src/option.c\n++++ b/src/option.c\n+@@ -1336,7 +1336,7 @@\n+ \n+ /* Parse one or more tag:s before parameters.\n+  * Moves arg to the end of tags. */\n+-static struct dhcp_netid * dhcp_tags(char **arg)\n++static struct dhcp_netid *dhcp_tags(char **arg)\n+ {\n+   struct dhcp_netid *id = NULL;\n+ \n+@@ -1360,7 +1360,13 @@\n+     {\n+       struct dhcp_netid_list *tmplist = netid;\n+       netid = netid->next;\n+-      dhcp_netid_free(tmplist->list);\n++      /* Note: don't use dhcp_netid_free() here, since that \n++\t frees a list linked on netid->next. Where a netid_list\n++\t is used that's because the the ->next pointers in the\n++\t netids are being used to temporarily construct \n++\t a list of valid tags. */\n++      free(tmplist->list->net);\n++      free(tmplist->list);\n+       free(tmplist);\n+     }\n+ }\ndiff --git a/debian/patches/series b/debian/patches/series\nindex b869a13..204ce00 100644\n--- a/debian/patches/series\n+++ b/debian/patches/series\n@@ -1 +1,2 @@\n eliminate-privacy-breaches.patch\n+fix-crash-when-reloading-DHCP-config-on-SIGHUP.patch\ndiff --git a/debian/tests/compile-time-options b/debian/tests/compile-time-options\nindex 494d9ca..b036ec5 100755\n--- a/debian/tests/compile-time-options\n+++ b/debian/tests/compile-time-options\n@@ -4,4 +4,6 @@ set -e\n \n . debian/tests/functions\n \n+purge_resolved\n+restart_dnsmasq\n check_compile_time_options\ndiff --git a/debian/tests/compile-time-options+lua b/debian/tests/compile-time-options+lua\nindex 0d8f1a4..e434c26 100755\n--- a/debian/tests/compile-time-options+lua\n+++ b/debian/tests/compile-time-options+lua\n@@ -4,4 +4,6 @@ set -e\n \n . debian/tests/functions\n \n+purge_resolved\n+restart_dnsmasq\n check_compile_time_options +lua\ndiff --git a/debian/tests/control b/debian/tests/control\nindex cb156f7..e3fbf9c 100644\n--- a/debian/tests/control\n+++ b/debian/tests/control\n@@ -16,6 +16,7 @@ Depends: bind9,\n          dnsmasq,\n          dnsmasq-base,\n          dnsmasq-utils,\n+         ifupdown\n Restrictions: needs-root,\n               allow-stderr,\n               isolation-container,\n@@ -25,6 +26,7 @@ Depends: bind9,\n          bind9-dnsutils,\n          dnsmasq,\n          dnsmasq-base-lua,\n+         ifupdown\n Restrictions: needs-root,\n               allow-stderr,\n               isolation-container,\n@@ -34,6 +36,7 @@ Depends: bind9,\n          bind9-dnsutils,\n          dnsmasq,\n          dnsmasq-base,\n+         ifupdown\n Restrictions: needs-root,\n               allow-stderr,\n               isolation-container,\ndiff --git a/debian/tests/functions b/debian/tests/functions\nindex 8823948..f801166 100644\n--- a/debian/tests/functions\n+++ b/debian/tests/functions\n@@ -25,6 +25,19 @@ error_exit () {\n \texit 1\n }\n \n+purge_resolved () {\n+\t# Uninstall systemd-resolved, to free port 53/UDP\n+\tif [ \"$(systemctl is-active systemd-resolved.service)\" = active ]; then\n+\t\techo \"Purging systemd-resolved  ...\"\n+\t\tapt-get -yq purge systemd-resolved\n+\tfi\n+}\n+\n+restart_dnsmasq () {\n+\techo \"Restarting dnsmasq.service\"\n+\tsystemctl restart dnsmasq.service\n+}\n+\n stop_dnsmasq_bind_networking () {\n \tsystemctl stop dnsmasq.service\n \tsystemctl stop named.service\n@@ -89,7 +102,7 @@ configure_and_start_dnsmasq () {\n check_compile_time_options () {\n \tjournalctl -b -u dnsmasq\n \techo ~~~ Check compile time options...\n-\tjournalctl -b -u dnsmasq -g '[a-z]+: ' --output cat >options.msg\n+\tjournalctl -b -u dnsmasq -g 'options: ' --output cat >options.msg  # ignore previous errors\n \tcat options.msg\n \tmatch_or_exit options.msg ${FUNCTIONS_DIR}/options${1}.patterns\n }\ndiff --git a/debian/tests/functions.d/ip-addr.patterns b/debian/tests/functions.d/ip-addr.patterns\nindex a5bdddf..e4a42f1 100644\n--- a/debian/tests/functions.d/ip-addr.patterns\n+++ b/debian/tests/functions.d/ip-addr.patterns\n@@ -1,6 +1,6 @@\n *: veth1@if*: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc noqueue state UP group default qlen 1000\n     link/ether ??:??:??:??:??:?? brd ff:ff:ff:ff:ff:ff link-netnsid 0\n-    inet 192.168.142.?/29 brd 192.168.142.7 scope global dynamic veth1\n-       valid_lft 3[56][0-9][0-9]sec preferred_lft 3[56][0-9][0-9]sec\n+    inet 192.168.142.?/29 brd 192.168.142.7 scope global dynamic* veth1\n+       valid_lft 3[56][0-9][0-9]sec preferred_lft 3[0-9][0-9][0-9]sec\n     inet6 fe80::*:*:*:*/64 scope link*\n        valid_lft forever preferred_lft forever\ndiff --git a/debian/tests/get-address+query-dns+check-utils b/debian/tests/get-address+query-dns+check-utils\nindex ac75208..791bda6 100755\n--- a/debian/tests/get-address+query-dns+check-utils\n+++ b/debian/tests/get-address+query-dns+check-utils\n@@ -4,6 +4,7 @@ set -e\n \n . debian/tests/functions\n \n+purge_resolved\n stop_dnsmasq_bind_networking\n configure_and_start_networking\n configure_and_start_bind\ndiff --git a/debian/tests/get-address+query-dns+lua+alt b/debian/tests/get-address+query-dns+lua+alt\nindex dc92391..58a744d 100755\n--- a/debian/tests/get-address+query-dns+lua+alt\n+++ b/debian/tests/get-address+query-dns+lua+alt\n@@ -4,6 +4,8 @@ set -e\n \n . debian/tests/functions\n \n+echo \"hostname\" >> /etc/dhcpcd.conf  # Make it work on dhcpcd\n+purge_resolved\n stop_dnsmasq_bind_networking\n configure_and_start_networking\n configure_and_start_bind\ndiff --git a/debian/tests/get-address+query-dns+sysv+alt b/debian/tests/get-address+query-dns+sysv+alt\nindex 46d5ae5..feaaec1 100755\n--- a/debian/tests/get-address+query-dns+sysv+alt\n+++ b/debian/tests/get-address+query-dns+sysv+alt\n@@ -4,6 +4,7 @@ set -e\n \n . debian/tests/functions\n \n+purge_resolved\n stop_dnsmasq_bind_networking\n configure_and_start_networking\n configure_and_start_bind\n",
+ "diff_truncated": false
+}

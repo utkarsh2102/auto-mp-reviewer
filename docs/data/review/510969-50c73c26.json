@@ -1,0 +1,59 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~zgrigoryan/ubuntu/+source/unattended-upgrades/+git/unattended-upgrades/+merge/510969",
+ "id": "510969",
+ "title": "driver-deferral-phase1 → ubuntu/devel",
+ "source_branch": "driver-deferral-phase1",
+ "target_branch": "ubuntu/devel",
+ "revision": "de7f668f31f86de5afee02c0f1dda6938c12e585",
+ "base_revision": "905a25e324f2a81242efa1e4534cf6139d9524ba",
+ "description": null,
+ "commit_message": null,
+ "diffstat": {
+  "test/root.driver-deferral/etc/apt/sources.list": [
+   1,
+   0
+  ],
+  "test/root.driver-deferral/var/cache/apt/archives/partial/.keep": [
+   0,
+   0
+  ],
+  "test/root.driver-deferral/var/lib/apt/lists/archive.ubuntu.com_ubuntu_dists_lucid-security_Release": [
+   9,
+   0
+  ],
+  "test/root.driver-deferral/var/lib/apt/lists/archive.ubuntu.com_ubuntu_dists_lucid-security_Release.gpg": [
+   0,
+   0
+  ],
+  "test/root.driver-deferral/var/lib/apt/lists/archive.ubuntu.com_ubuntu_dists_lucid-security_main_binary-amd64_Packages": [
+   19,
+   0
+  ],
+  "test/root.driver-deferral/var/lib/apt/lists/partial/.keep": [
+   0,
+   0
+  ],
+  "test/root.driver-deferral/var/lib/dpkg/status": [
+   9,
+   0
+  ],
+  "test/test_driver_deferral.py": [
+   44,
+   0
+  ],
+  "test/test_origin_pattern.py": [
+   26,
+   0
+  ],
+  "unattended-upgrade": [
+   25,
+   1
+  ]
+ },
+ "files": 10,
+ "added_lines": 133,
+ "removed_lines": 1,
+ "diff": "diff --git a/test/root.driver-deferral/etc/apt/sources.list b/test/root.driver-deferral/etc/apt/sources.list\nnew file mode 100644\nindex 0000000..0b84fb5\n--- /dev/null\n+++ b/test/root.driver-deferral/etc/apt/sources.list\n@@ -0,0 +1 @@\n+deb http://archive.ubuntu.com/ubuntu/ lucid-security main\ndiff --git a/test/root.driver-deferral/var/cache/apt/archives/partial/.keep b/test/root.driver-deferral/var/cache/apt/archives/partial/.keep\nnew file mode 100644\nindex 0000000..e69de29\n--- /dev/null\n+++ b/test/root.driver-deferral/var/cache/apt/archives/partial/.keep\ndiff --git a/test/root.driver-deferral/var/lib/apt/lists/archive.ubuntu.com_ubuntu_dists_lucid-security_Release b/test/root.driver-deferral/var/lib/apt/lists/archive.ubuntu.com_ubuntu_dists_lucid-security_Release\nnew file mode 100644\nindex 0000000..3cc9da9\n--- /dev/null\n+++ b/test/root.driver-deferral/var/lib/apt/lists/archive.ubuntu.com_ubuntu_dists_lucid-security_Release\n@@ -0,0 +1,9 @@\n+Origin: Ubuntu\n+Label: Ubuntu\n+Suite: lucid-security\n+Version: 10.04\n+Codename: lucid\n+Date: Tue, 08 Apr 2014  6:19:06 UTC\n+Architectures: amd64\n+Components: main\n+Description: Ubuntu Lucid 10.04\ndiff --git a/test/root.driver-deferral/var/lib/apt/lists/archive.ubuntu.com_ubuntu_dists_lucid-security_Release.gpg b/test/root.driver-deferral/var/lib/apt/lists/archive.ubuntu.com_ubuntu_dists_lucid-security_Release.gpg\nnew file mode 100644\nindex 0000000..e69de29\n--- /dev/null\n+++ b/test/root.driver-deferral/var/lib/apt/lists/archive.ubuntu.com_ubuntu_dists_lucid-security_Release.gpg\ndiff --git a/test/root.driver-deferral/var/lib/apt/lists/archive.ubuntu.com_ubuntu_dists_lucid-security_main_binary-amd64_Packages b/test/root.driver-deferral/var/lib/apt/lists/archive.ubuntu.com_ubuntu_dists_lucid-security_main_binary-amd64_Packages\nnew file mode 100644\nindex 0000000..ba5e1cd\n--- /dev/null\n+++ b/test/root.driver-deferral/var/lib/apt/lists/archive.ubuntu.com_ubuntu_dists_lucid-security_main_binary-amd64_Packages\n@@ -0,0 +1,19 @@\n+Package: ordinary-root\n+Architecture: all\n+Version: 2.0\n+Depends: driver-dependency (= 2.0)\n+Description-en: ordinary package with a driver dependency\n+Filename: ./ordinary-root_2.0_all.deb\n+\n+Package: driver-dependency\n+Architecture: all\n+Version: 2.0\n+Modaliases: pci:v000010DEd*\n+Description-en: driver package selected as a dependency\n+Filename: ./driver-dependency_2.0_all.deb\n+\n+Package: unrelated-safe\n+Architecture: all\n+Version: 2.0\n+Description-en: unrelated package safe to upgrade normally\n+Filename: ./unrelated-safe_2.0_all.deb\ndiff --git a/test/root.driver-deferral/var/lib/apt/lists/partial/.keep b/test/root.driver-deferral/var/lib/apt/lists/partial/.keep\nnew file mode 100644\nindex 0000000..e69de29\n--- /dev/null\n+++ b/test/root.driver-deferral/var/lib/apt/lists/partial/.keep\ndiff --git a/test/root.driver-deferral/var/lib/dpkg/status b/test/root.driver-deferral/var/lib/dpkg/status\nnew file mode 100644\nindex 0000000..887cb1c\n--- /dev/null\n+++ b/test/root.driver-deferral/var/lib/dpkg/status\n@@ -0,0 +1,9 @@\n+Package: ordinary-root\n+Status: install ok installed\n+Architecture: all\n+Version: 1.0\n+\n+Package: unrelated-safe\n+Status: install ok installed\n+Architecture: all\n+Version: 1.0\ndiff --git a/test/test_driver_deferral.py b/test/test_driver_deferral.py\nnew file mode 100644\nindex 0000000..a2b20c8\n--- /dev/null\n+++ b/test/test_driver_deferral.py\n@@ -0,0 +1,44 @@\n+#!/usr/bin/python3\n+\n+import os\n+import unittest\n+\n+import unattended_upgrade\n+from test.test_base import MockOptions, TestBase\n+\n+\n+class TestDriverDeferral(TestBase):\n+\n+    def setUp(self):\n+        TestBase.setUp(self)\n+        self.mock_allowed_origins(\n+            \"origin=Ubuntu,archive=lucid-security\")\n+        rootdir = self.make_fake_aptroot(\n+            os.path.join(self.testdir, \"root.driver-deferral\"))\n+        self.cache = unattended_upgrade.UnattendedUpgradesCache(\n+            rootdir=rootdir)\n+\n+    def test_modaliases_dependency_defers_entire_root_transaction(self):\n+        root = self.cache[\"ordinary-root\"]\n+        root.mark_upgrade(from_user=True)\n+\n+        self.assertEqual(\n+            {pkg.name for pkg in self.cache.get_changes()},\n+            {\"ordinary-root\", \"driver-dependency\"})\n+        self.assertEqual(\n+            unattended_upgrade.sanity_problem(self.cache, root),\n+            \"pkg driver-dependency has Modaliases and is not safe to \"\n+            \"upgrade unattended\")\n+        self.assertFalse(\n+            unattended_upgrade.check_changes_for_sanity(self.cache, root))\n+\n+        self.cache.clear()\n+        to_upgrade = unattended_upgrade.calculate_upgradable_pkgs(\n+            self.cache, MockOptions())\n+\n+        self.assertEqual(\n+            [pkg.name for pkg in to_upgrade], [\"unrelated-safe\"])\n+\n+\n+if __name__ == \"__main__\":\n+    unittest.main()\ndiff --git a/test/test_origin_pattern.py b/test/test_origin_pattern.py\nindex 5094069..8c44781 100755\n--- a/test/test_origin_pattern.py\n+++ b/test/test_origin_pattern.py\n@@ -2,6 +2,7 @@\n \n import logging\n import unittest\n+from unittest.mock import Mock\n \n import apt_pkg\n \n@@ -135,6 +136,31 @@ class TestOriginPatern(TestBase):\n         self.assertTrue(\n             check_changes_for_sanity(cache))\n \n+    def test_modaliases_candidate_is_not_safe_to_upgrade(self):\n+        pkg = self._get_mock_package()\n+        cache = self._get_mock_cache()\n+        cache[pkg.name] = pkg\n+        cache.allowed_origins = [\"o=Ubuntu\"]\n+\n+        pkg.candidate.record[\"Modaliases\"] = \"pci:v000010DEd*\"\n+\n+        self.assertFalse(check_changes_for_sanity(cache))\n+\n+    def test_modaliases_candidate_cannot_be_committed(self):\n+        pkg = self._get_mock_package()\n+        pkg.candidate.record[\"Modaliases\"] = \"pci:v000010DEd*\"\n+\n+        cache = Mock()\n+        cache.get_changes.return_value = [pkg]\n+\n+        result, error = unattended_upgrade.cache_commit(\n+            cache, \"\", False, iprogress=Mock())\n+\n+        self.assertFalse(result)\n+        self.assertIsInstance(error, RuntimeError)\n+        cache.commit.assert_not_called()\n+        cache.clear.assert_called_once_with()\n+\n     def test_whitelist_with_strict_whitelisting(self):\n         cache = self._get_mock_cache()\n         for pkgname in [\"not-whitelisted\", \"whitelisted\"]:\ndiff --git a/unattended-upgrade b/unattended-upgrade\nindex 83f1d59..aee326e 100755\n--- a/unattended-upgrade\n+++ b/unattended-upgrade\n@@ -1144,6 +1144,14 @@ def python_regex_is_posix(expression):\n     return re.match(\"^[-a-zA-Z0-9\\\\^\\\\$\\\\+\\\\.:]*$\", expression) is not None\n \n \n+def candidate_has_modaliases(pkg):\n+    # type: (apt.Package) -> bool\n+    candidate = pkg.candidate\n+    return bool(\n+        candidate and str(\n+            candidate.record.get(\"Modaliases\") or \"\").strip())\n+\n+\n def cache_commit(cache,           # type: apt.Cache\n                  logfile_dpkg,    # type: str\n                  verbose,         # type: bool\n@@ -1152,11 +1160,24 @@ def cache_commit(cache,           # type: apt.Cache\n     # type: (...) -> Tuple[bool, Optional[Exception]]\n     \"\"\"Commit the changes from the given cache to the system\"\"\"\n \n-    error = None\n+    error = None  # type: Optional[Exception]\n     res = False\n     if iprogress is None:\n         iprogress = LogInstallProgress(logfile_dpkg, verbose)\n \n+    modalias_packages = [\n+        pkg.name for pkg in cache.get_changes()\n+        if (pkg.marked_install or pkg.marked_upgrade)\n+        and candidate_has_modaliases(pkg)\n+    ]\n+    if modalias_packages:\n+        error = RuntimeError(\n+            \"refusing to install driver packages unattended: %s\" %\n+            \", \".join(modalias_packages))\n+        logging.error(\"%s\", error)\n+        cache.clear()\n+        return res, error\n+\n     try:\n         res = cache.commit(install_progress=iprogress)\n         cache.open()\n@@ -1408,6 +1429,9 @@ def sanity_problem(cache, desired_pkg):\n         if not pkg.candidate:\n             return (\"internal error: pkg %s has no candidate\" % pkg.candidate)\n         if pkg.marked_install or pkg.marked_upgrade:\n+            if candidate_has_modaliases(pkg):\n+                return (\"pkg %s has Modaliases and is not safe to \"\n+                        \"upgrade unattended\" % pkg.name)\n             # apt will never fallback from a trusted to a untrusted\n             # origin so its good enough if we have a single trusted one\n             if not any([o.trusted for o in pkg.candidate.origins]):\n",
+ "diff_truncated": false
+}

@@ -1,0 +1,47 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~cnihelton/ubuntu/+source/livecd-rootfs/+git/livecd-rootfs/+merge/498087",
+ "id": "498087",
+ "title": "livecd-rootfs (2.664.55) focal; urgency=medium",
+ "source_branch": "focal-wsl-pkg",
+ "target_branch": "ubuntu/focal-devel",
+ "revision": "7927b19dc2e8f13d092810d83cd028200517269e",
+ "base_revision": "6ad32cb1c4f8bb6dc5e3a9fe2eb67e79bbb507bb",
+ "description": "This MP brings the latest state of the focal branch of the upstream livecd-rootfs project source code (after the merge of https://code.launchpad.net/~cnihelton/livecd-rootfs/+git/livecd-rootfs/+merge/488297) to the Ubuntu source package in order to build images of focal for WSL in the new image format.\n\nVia this MP I request sponsorship to complete the SRU bug #2115536.",
+ "commit_message": "livecd-rootfs (2.664.55) focal; urgency=medium\n\n  * Adapt WSL images in the new Microsoft package format: (LP: #2115536)\n    - Making it possible to distribute Focal for WSL without the MS Store.\n    - Separate them from CPC's.\n    - Requires a WSL-specific seed for Focal.\n    - Remove attributes not supported by WSL's tar.\n    - Creates missing groups in chroot.\n    - Keep a single wsl rootfs upgrade policy.\n    - Create livecd-roots tarball as a .wsl extension.\n    - Create wsl-distribution.conf for WSL images.\n\n -- Carlos Nihelton <email address hidden>  Fri, 27 Jun 2025 17:31:55 -0300\n",
+ "diffstat": {
+  "debian/changelog": [
+   14,
+   0
+  ],
+  "live-build/auto/build": [
+   1,
+   1
+  ],
+  "live-build/auto/config": [
+   16,
+   4
+  ],
+  "live-build/ubuntu-wsl/hooks/00-enable-systemd.chroot": [
+   10,
+   0
+  ],
+  "live-build/ubuntu-wsl/hooks/01-distribution-conf.chroot": [
+   20,
+   0
+  ],
+  "live-build/ubuntu-wsl/hooks/10-create-groups.chroot": [
+   10,
+   0
+  ],
+  "live-build/ubuntu-wsl/hooks/99-tar.binary": [
+   25,
+   0
+  ]
+ },
+ "files": 7,
+ "added_lines": 96,
+ "removed_lines": 5,
+ "diff": "diff --git a/debian/changelog b/debian/changelog\nindex 2a4c09e..e24fb6f 100644\n--- a/debian/changelog\n+++ b/debian/changelog\n@@ -1,3 +1,17 @@\n+livecd-rootfs (2.664.55) focal; urgency=medium\n+\n+  * Adapt WSL images in the new Microsoft package format: (LP: #2115536)\n+    - Making it possible to distribute Focal for WSL without the MS Store.\n+    - Separate them from CPC's.\n+    - Requires a WSL-specific seed for Focal.\n+    - Remove attributes not supported by WSL's tar.\n+    - Creates missing groups in chroot.\n+    - Keep a single wsl rootfs upgrade policy.\n+    - Create livecd-roots tarball as a .wsl extension.\n+    - Create wsl-distribution.conf for WSL images.\n+\n+ -- Carlos Nihelton <cnihelton@ubuntu.com>  Fri, 27 Jun 2025 17:31:55 -0300\n+\n livecd-rootfs (2.664.54) focal; urgency=medium\n \n   * add cpc-sbom to create_manifest calls to generate sboms (LP: #2077105) \ndiff --git a/live-build/auto/build b/live-build/auto/build\nindex 96a4a9c..b63c7ef 100755\n--- a/live-build/auto/build\n+++ b/live-build/auto/build\n@@ -154,7 +154,7 @@ Expire-Date: 0\n \tlb bootstrap \"$@\"\n \n         case $PROJECT:${SUBPROJECT:-} in\n-\t\tubuntu-server:*|ubuntu-cpc:*|ubuntu:desktop-preinstalled)\n+\t\tubuntu-server:*|ubuntu-cpc:*|ubuntu:desktop-preinstalled|ubuntu-wsl:*)\n \t\t\t# Set locale to C.UTF-8 by default. We should\n \t\t\t# probably do this for all images early in the\n \t\t\t# 18.10 cycle but for now just do it for\ndiff --git a/live-build/auto/config b/live-build/auto/config\nindex 08e5ff3..bd0198b 100755\n--- a/live-build/auto/config\n+++ b/live-build/auto/config\n@@ -278,7 +278,7 @@ _get_live_passes ()\n \n if [ -z \"${IMAGEFORMAT:-}\" ]; then\n \tcase $PROJECT:${SUBPROJECT:-} in\n-\t\tubuntu-cpc:*|ubuntu:desktop-preinstalled)\n+\t\tubuntu-cpc:*|ubuntu:desktop-preinstalled|ubuntu-wsl:*)\n \t\t\tcase $SUBARCH in\n \t\t\t\traspi|imx6|intel-iot)\n \t\t\t\t\tIMAGEFORMAT=ubuntu-image\n@@ -472,6 +472,8 @@ case $IMAGEFORMAT in\n \t\tcase $PROJECT in\n \t\t\tubuntu-server)\n \t\t\t\t;;\n+\t\t\tubuntu-wsl)\n+\t\t\t\t;;\n \t\t\tubuntu)\n \t\t\t\tif [ \"$SUBPROJECT\" != \"canary\" ]; then\n \t\t\t\t\tadd_package live lupin-casper\n@@ -508,7 +510,7 @@ if [ \"$PREINSTALLED\" = \"true\" ]; then\n \t\tubuntu-server)\n \t\t\tadd_package live oem-config-debconf ubiquity-frontend-debconf\n \t\t\t;;\n-\t\tubuntu-core|ubuntu-base|ubuntu-oci|base|ubuntu-cpc)\n+\t\tubuntu-core|ubuntu-base|ubuntu-oci|base|ubuntu-cpc|ubuntu-wsl)\n \t\t\t;;\n \t\tubuntu)\n \t\t\tadd_package live oem-config-gtk ubiquity-frontend-gtk\n@@ -815,6 +817,13 @@ case $PROJECT in\n \t\tOPTS=\"${OPTS:+$OPTS }--bootstrap-flavour=minimal\"\n \t\t;;\n \n+\tubuntu-wsl)\n+\t\tadd_task install minimal standard ubuntu-wsl\n+\t\tOPTS=\"${OPTS:+$OPTS }--linux-packages=none --initramfs=none\"\n+\t\tKERNEL_FLAVOURS=none\n+\t\tBINARY_REMOVE_LINUX=false\n+\t\t;;\n+\n \tubuntu-cpc)\n \t\tKERNEL_FLAVOURS=virtual\n \n@@ -904,6 +913,9 @@ case $PROJECT:${SUBPROJECT:-} in\n \tubuntu:*|kubuntu*:*|lubuntu*:*|xubuntu*:*|ubuntu-mate*:*|ubuntustudio*:*|ubuntukylin*:*|ubuntu-budgie*:*)\n \t\tBASE_SEED='desktop'\n \t\t;;\n+\tubuntu-wsl:*)\n+\t\tBASE_SEED='wsl'\n+\t\t;;\n \tubuntu-cpc:*)\n \t\tBASE_SEED='server'\n \t\t;;\n@@ -1064,7 +1076,7 @@ echo \"SUBPROJECT=\\\"${SUBPROJECT:-}\\\"\" >> config/binary\n echo \"LB_DISTRIBUTION=\\\"$SUITE\\\"\" >> config/binary\n \n case $PROJECT in\n-  ubuntu-cpc|ubuntu-core|ubuntu-base|ubuntu-oci|base)\n+  ubuntu-cpc|ubuntu-core|ubuntu-base|ubuntu-oci|base|ubuntu-wsl)\n     # ubuntu-cpc gets this added in 025-create-groups.chroot, and we do\n     # not want this group in projects that are effectively just chroots\n     ;;\n@@ -1243,7 +1255,7 @@ EOF\n \t\tfi\n \t\t;;\n \n-\tubuntu-core:system-image|ubuntu-cpc:*|ubuntu-server:live|ubuntu:desktop-preinstalled)\n+\tubuntu-core:system-image|ubuntu-cpc:*|ubuntu-server:live|ubuntu:desktop-preinstalled|ubuntu-wsl:*)\n \t\t# Ensure that most things e.g. includes.chroot are copied as is\n \t\tfor entry in /usr/share/livecd-rootfs/live-build/${PROJECT}/*; do\n \t\t\tcase $entry in\ndiff --git a/live-build/ubuntu-wsl/hooks/00-enable-systemd.chroot b/live-build/ubuntu-wsl/hooks/00-enable-systemd.chroot\nnew file mode 100755\nindex 0000000..67f9d85\n--- /dev/null\n+++ b/live-build/ubuntu-wsl/hooks/00-enable-systemd.chroot\n@@ -0,0 +1,10 @@\n+#!/bin/bash -eu\n+# vi: ts=4 expandtab\n+#\n+#\tEnable systemd by default on our WSL image\n+#\n+\n+cat <<EOF >/etc/wsl.conf\n+[boot]\n+systemd=true\n+EOF\ndiff --git a/live-build/ubuntu-wsl/hooks/01-distribution-conf.chroot b/live-build/ubuntu-wsl/hooks/01-distribution-conf.chroot\nnew file mode 100755\nindex 0000000..764867f\n--- /dev/null\n+++ b/live-build/ubuntu-wsl/hooks/01-distribution-conf.chroot\n@@ -0,0 +1,20 @@\n+#!/bin/bash -eu\n+# vi: ts=4 expandtab\n+#\n+#\tCreate wsl-distribution.conf for WSL setup\n+#\n+\n+source /etc/os-release\n+\n+cat <<EOF >/etc/wsl-distribution.conf\n+[oobe]\n+command = /usr/lib/wsl/wsl-setup\n+defaultUid = 1000\n+defaultName = ${NAME}-${VERSION_ID}\n+\n+[shortcut]\n+icon = /usr/share/wsl/ubuntu.ico\n+\n+[windowsterminal]\n+ProfileTemplate = /usr/share/wsl/terminal-profile.json\n+EOF\ndiff --git a/live-build/ubuntu-wsl/hooks/10-create-groups.chroot b/live-build/ubuntu-wsl/hooks/10-create-groups.chroot\nnew file mode 100755\nindex 0000000..d731044\n--- /dev/null\n+++ b/live-build/ubuntu-wsl/hooks/10-create-groups.chroot\n@@ -0,0 +1,10 @@\n+#!/bin/bash\n+#\n+#\tCreate the necessary groups\n+#\n+\n+echo \"Adding admin group...\"\n+addgroup --system --quiet admin\n+\n+echo \"Adding netdev group...\"\n+addgroup --system --quiet netdev\ndiff --git a/live-build/ubuntu-wsl/hooks/99-tar.binary b/live-build/ubuntu-wsl/hooks/99-tar.binary\nnew file mode 100755\nindex 0000000..58c50ef\n--- /dev/null\n+++ b/live-build/ubuntu-wsl/hooks/99-tar.binary\n@@ -0,0 +1,25 @@\n+#!/bin/bash -eu\n+# vi: ts=4 expandtab\n+#\n+# Generate the compressed root directory for WSL manually.\n+# Type \"plain\" unfortunately does not execute lb_binary_* helpers.\n+\n+case $ARCH in\n+    amd64|arm64)\n+        ;;\n+    *)\n+        echo \"WSL root tarballs are not generated for $ARCH.\"\n+        exit 0;;\n+esac\n+\n+## remove attributes not supported by WSL's tar\n+setfattr -x system.posix_acl_access chroot/var/log/journal\n+setfattr -x system.posix_acl_default chroot/var/log/journal\n+\n+# Create the rootfs as a .wsl extension\n+cd chroot\n+tar --xattrs --sort=name -czf ../livecd.$PROJECT${SUBARCH:+-$SUBARCH}.wsl *\n+cd ..\n+\n+# Remove initial ext4-formatted fs\n+rm -f binary/boot/filesystem.ext4\n",
+ "diff_truncated": false
+}

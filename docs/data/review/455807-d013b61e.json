@@ -1,0 +1,27 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~orndorffgrant/ubuntu/+source/ubuntu-advantage-tools/+git/ubuntu-advantage-tools/+merge/455807",
+ "id": "455807",
+ "title": "Fixes #2043836",
+ "source_branch": "upload-30.1-noble",
+ "target_branch": "ubuntu/devel",
+ "revision": "5faf627e6730d128b9eabe4542ff6429b58b599f",
+ "base_revision": "422c66b32124559bac9046007e3a95ee1cfa78e8",
+ "description": "Fixes #2043836\n\nDo we need to address any of the other errors that halted phasing of v30? https://ubuntu-archive-team.ubuntu.com/phased-updates.html",
+ "commit_message": null,
+ "diffstat": {
+  "debian/changelog": [
+   6,
+   0
+  ],
+  "uaclient/version.py": [
+   2,
+   1
+  ]
+ },
+ "files": 2,
+ "added_lines": 8,
+ "removed_lines": 1,
+ "diff": "diff --git a/debian/changelog b/debian/changelog\nindex 78901ae..5facae5 100644\n--- a/debian/changelog\n+++ b/debian/changelog\n@@ -1,3 +1,9 @@\n+ubuntu-advantage-tools (30.1) noble; urgency=medium\n+\n+  * fix UnboundLocalError in update-check error handling (LP: #2043836)\n+\n+ -- Grant Orndorff <grant.orndorff@canonical.com>  Fri, 17 Nov 2023 14:25:22 -0500\n+\n ubuntu-advantage-tools (30) noble; urgency=medium\n \n   * d/control:\ndiff --git a/uaclient/version.py b/uaclient/version.py\nindex 1a26f8f..aceff72 100644\n--- a/uaclient/version.py\n+++ b/uaclient/version.py\n@@ -14,7 +14,7 @@ from uaclient.defaults import CANDIDATE_CACHE_PATH, UAC_RUN_PATH\n from uaclient.exceptions import ProcessExecutionError\n from uaclient.system import subp\n \n-__VERSION__ = \"30\"\n+__VERSION__ = \"30.1\"\n PACKAGED_VERSION = \"@@PACKAGED_VERSION@@\"\n \n \n@@ -51,6 +51,7 @@ def get_last_known_candidate() -> Optional[str]:\n         not os.path.exists(CANDIDATE_CACHE_PATH)\n         or os.stat(CANDIDATE_CACHE_PATH).st_mtime < last_apt_cache_update\n     ):\n+        candidate_version = None\n         try:\n             candidate_version = get_pkg_candidate_version(\n                 \"ubuntu-advantage-tools\"\n",
+ "diff_truncated": false
+}

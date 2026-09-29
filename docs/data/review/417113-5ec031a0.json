@@ -1,0 +1,31 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~jessica-youjeong/ubuntu/+source/librabbitmq/+git/librabbitmq/+merge/417113",
+ "id": "417113",
+ "title": "This MP contains a fix for LP: 1888313, which I intend to SRU as well, so this is a fix for Impish which is backported from link below. The package was successfully built using sbuild and I also ran the autopkgtest and all the tests are passing.",
+ "source_branch": "031822-impish-devel-librabbitmq",
+ "target_branch": "ubuntu/impish-devel",
+ "revision": "dc6b0aa711b7e74c996b307068643988c43b4c37",
+ "base_revision": "1a940e69d9ad2842d03bde01577c4c69d45b7118",
+ "description": "This MP contains a fix for LP: 1888313, which I intend to SRU as well, so this is a fix for Impish which is backported from link below. The package was successfully built using sbuild and I also ran the autopkgtest and all the tests are passing.\n\nRequesting you to please review and sponsor the upload. Thank you!\n\n[https://code.launchpad.net/~jessica-youjeong/ubuntu/+source/librabbitmq/+git/librabbitmq/+merge/417036]",
+ "commit_message": null,
+ "diffstat": {
+  "debian/changelog": [
+   15,
+   0
+  ],
+  "debian/patches/server_flag_deprecation.patch": [
+   42,
+   0
+  ],
+  "debian/patches/series": [
+   2,
+   0
+  ]
+ },
+ "files": 3,
+ "added_lines": 59,
+ "removed_lines": 0,
+ "diff": "diff --git a/debian/changelog b/debian/changelog\nindex 19ba96d..7b5b69e 100644\n--- a/debian/changelog\n+++ b/debian/changelog\n@@ -1,3 +1,18 @@\n+librabbitmq (0.10.0-1ubuntu1.21.10.1) impish; urgency=medium\n+\n+  * d/p/server-flag-deprecation.patch:\n+    add patch to fix issue parsing hostname in --server flag.\n+    (LP: #1888313)\n+\n+ -- Jess Jang <jess.jang@canonical.com>  Thu, 03 Feb 2022 14:30:36 -0600\n+\n+librabbitmq (0.10.0-1ubuntu1) jammy; urgency=medium\n+\n+  * d/p/ssl-remove-reference-to-FIPS_set_mode.patch: backported\n+    to fix the build against OpenSSL 3.0 (LP: #1945812)\n+\n+ -- Simon Chopin <simon.chopin@canonical.com>  Wed, 17 Nov 2021 14:22:23 +0100\n+\n librabbitmq (0.10.0-1build1) impish; urgency=medium\n \n   * No-change rebuild to build packages with zstd compression.\ndiff --git a/debian/patches/series b/debian/patches/series\nindex f96d27b..3365953 100644\n--- a/debian/patches/series\n+++ b/debian/patches/series\n@@ -1,3 +1,5 @@\n cmake_with_ssl.patch\n use_cmake_package.patch\n disable-test-basic.patch\n+ssl-remove-reference-to-FIPS_set_mode.patch\n+server_flag_deprecation.patch\ndiff --git a/debian/patches/server_flag_deprecation.patch b/debian/patches/server_flag_deprecation.patch\nnew file mode 100644\nindex 0000000..de99b0b\n--- /dev/null\n+++ b/debian/patches/server_flag_deprecation.patch\n@@ -0,0 +1,42 @@\n+From 637f0275ffcc2bfb58c94f0bf6e290aa40c1695a Mon Sep 17 00:00:00 2001\n+From: Alan Antonuk <alan.antonuk@gmail.com>\n+Date: Fri, 7 Aug 2020 05:07:50 +0000\n+Subject: [PATCH] tool: set port when not specified in --server flag\n+\n+Set the port to 5672 and 5671 in SSL mode in the tools when the --server\n+flag is used, but does not specify a port.\n+\n+From 54d00bee5cc4603dc96af5f86c899210689dfeeb Mon Sep 17 00:00:00 2001\n+From: Alan Antonuk <alan.antonuk@gmail.com>\n+Date: Sun, 9 Aug 2020 06:44:28 +0000\n+Subject: [PATCH] tool: fix issue parsing hostname in --server flag\n+\n+Set both the host and port when a ':' isn't found in in the --server\n+flag.  The attempted fix in #622 was not complete as the host was not\n+properly set.\n+\n+Fixes: #621\n+\n+Origin: upstream;\n+        https://github.com/alanxz/rabbitmq-c/commit/637f0275ffcc2bfb58c94f0bf6e290aa40c1695a\n+        https://github.com/alanxz/rabbitmq-c/commit/4d03c849868231dc217785c6f0e78eab9cd79fd5\n+Bug-Ubuntu: https://bugs.launchpad.net/ubuntu/+source/librabbitmq/+bug/1888313\n+Last-Updated: 2022-01-19\n+\n+--- a/tools/common.c\n++++ b/tools/common.c\n+@@ -240,6 +240,14 @@\n+       if (ci->port < 0 || ci->port > 65535 || port_end == colon + 1 ||\n+           *port_end != 0)\n+         die(\"bad server port number in '%s'\", amqp_server);\n++    } else {\n++      ci->host = amqp_server;\n++      ci->port = 5672;\n++#if WITH_SSL\n++      if (amqp_ssl) {\n++        ci->port = 5671;\n++      }\n++#endif\n+     }\n+ \n+ #if WITH_SSL\n",
+ "diff_truncated": false
+}

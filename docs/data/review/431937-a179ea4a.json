@@ -1,0 +1,31 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~michal-maloszewski99/ubuntu/+source/dovecot/+git/dovecot/+merge/431937",
+ "id": "431937",
+ "title": "jammy-dovecot-fix → ubuntu/jammy-devel",
+ "source_branch": "jammy-dovecot-fix",
+ "target_branch": "ubuntu/jammy-devel",
+ "revision": "86848ae4018f1f0190b992c34fe02ffc71610279",
+ "base_revision": "20252305d93f4e62b8b97e1fa9b487280b422e70",
+ "description": null,
+ "commit_message": null,
+ "diffstat": {
+  "debian/patches/jammy-fix-leaking-mailboxes.patch": [
+   37,
+   0
+  ],
+  "debian/changelog": [
+   7,
+   0
+  ],
+  "debian/patches/series": [
+   1,
+   0
+  ]
+ },
+ "files": 3,
+ "added_lines": 45,
+ "removed_lines": 0,
+ "diff": "diff --git a/debian/changelog b/debian/changelog\nindex b02548e..7221207 100644\n--- a/debian/changelog\n+++ b/debian/changelog\n@@ -1,3 +1,10 @@\n+dovecot (1:2.3.16+dfsg1-3ubuntu2.2) jammy; urgency=medium\n+\n+  * d/p/jammy-fix-leaking-mailboxes.patch: Fix leaking mailboxes if\n+    virtual mailbox can not be opened (LP: #1992848)\n+\n+ -- Michal Maloszewski <michal.maloszewski@canonical.com>  Thu, 20 Oct 2022 23:36:54 +0200\n+\n dovecot (1:2.3.16+dfsg1-3ubuntu2.1) jammy-security; urgency=medium\n \n   * SECURITY UPDATE: privilege escalation via multiple passdbs\ndiff --git a/debian/patches/jammy-fix-leaking-mailboxes.patch b/debian/patches/jammy-fix-leaking-mailboxes.patch\nnew file mode 100644\nindex 0000000..bb7979e\n--- /dev/null\n+++ b/debian/patches/jammy-fix-leaking-mailboxes.patch\n@@ -0,0 +1,37 @@\n+From bdf4474ed82aaf964e7d94e72ca56b496e3815f9 Mon Sep 17 00:00:00 2001\n+From: Timo Sirainen <timo.sirainen@open-xchange.com>\n+Date: Fri, 1 Oct 2021 15:08:45 +0300\n+Subject: [PATCH] virtual: Fix leaking mailboxes if virtual mailbox can't\n+ be opened\n+\n+Fixes also a crash at deinit:\n+Panic: file mail-user.c: line 232 (mail_user_deinit): assertion failed: ((*user)->refcount == 1)\n+\n+Description: Fix the dovecot package to prevent from leaking mailboxes\n+ if virtual mailbox cannot be opened.\n+Origin: upstream, https://github.com/dovecot/core/commit/bdf4474ed82aaf964e7d94e72ca56b496e3815f9\n+Bug-Ubuntu: https://bugs.launchpad.net/ubuntu/+source/dovecot/+bug/1992848\n+Last-Update: 2022-10-20\n+---\n+ src/plugins/virtual/virtual-storage.c | 4 ++--\n+ 1 file changed, 2 insertions(+), 2 deletions(-)\n+\n+diff --git a/src/plugins/virtual/virtual-storage.c b/src/plugins/virtual/virtual-storage.c\n+index 2f31503d53..a0779cc186 100644\n+--- a/src/plugins/virtual/virtual-storage.c\n++++ b/src/plugins/virtual/virtual-storage.c\n+@@ -495,12 +495,12 @@ static int virtual_mailbox_open(struct mailbox *box)\n+ \t\tret = virtual_mailboxes_open(mbox, box->flags);\n+ \t\tarray_pop_back(&mbox->storage->open_stack);\n+ \t}\n++\tif (ret == 0)\n++\t\tret = index_storage_mailbox_open(box, FALSE);\n+ \tif (ret < 0) {\n+ \t\tvirtual_mailbox_close_internal(mbox);\n+ \t\treturn -1;\n+ \t}\n+-\tif (index_storage_mailbox_open(box, FALSE) < 0)\n+-\t\treturn -1;\n+ \n+ \tmbox->virtual_ext_id =\n+ \t\tmail_index_ext_register(mbox->box.index, \"virtual\", 0,\ndiff --git a/debian/patches/series b/debian/patches/series\nindex 6839beb..b8f8ff6 100644\n--- a/debian/patches/series\n+++ b/debian/patches/series\n@@ -22,3 +22,4 @@ mail-cache-bigendian-1.patch\n # Ubuntu patches\n OpenSSL3.patch\n CVE-2022-30550.patch\n+jammy-fix-leaking-mailboxes.patch\n",
+ "diff_truncated": false
+}

@@ -1,0 +1,39 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~mwhudson/livecd-rootfs/+git/livecd-rootfs/+merge/425053",
+ "id": "425053",
+ "title": "livecd-rootfs (2.766) UNRELEASED; urgency=medium",
+ "source_branch": "rebuild-archive-1",
+ "target_branch": "ubuntu/master",
+ "revision": "d717be0d191d0f10e02473b0f0513230fb63f01d",
+ "base_revision": "789729be3b4b46c5c1cd905938ca75ebb3aae686",
+ "description": "live-build has a million different options and variables for mirrors to use at different points in the build process but this seems to work (image builds against the current rebuild archives fail in the end because they don't have published kernels, but it works up to that point at least).",
+ "commit_message": " livecd-rootfs (2.766) UNRELEASED; urgency=medium\n .\n   * auto/config, auto/build, functions: Add some code to make building against\n     a rebuild archive easier (such a build will still require a sourceful\n     change, but that seems OK).\n",
+ "diffstat": {
+  "debian/changelog": [
+   8,
+   0
+  ],
+  "debian/control": [
+   1,
+   0
+  ],
+  "live-build/auto/build": [
+   3,
+   0
+  ],
+  "live-build/auto/config": [
+   33,
+   8
+  ],
+  "live-build/functions": [
+   20,
+   8
+  ]
+ },
+ "files": 5,
+ "added_lines": 65,
+ "removed_lines": 16,
+ "diff": "diff --git a/debian/changelog b/debian/changelog\nindex 540c2be..30350d2 100644\n--- a/debian/changelog\n+++ b/debian/changelog\n@@ -1,3 +1,11 @@\n+livecd-rootfs (24.10.3) UNRELEASED; urgency=medium\n+\n+  * auto/config, auto/build, functions: Add some code to make building against\n+    a rebuild archive easier (such a build will still require a sourceful\n+    change, but that seems OK).\n+\n+ -- Michael Hudson-Doyle <michael.hudson@ubuntu.com>  Thu, 06 Jun 2024 15:14:47 +1200\n+\n livecd-rootfs (24.10.2) oracular; urgency=medium\n \n   [ Michael Hudson-Doyle ]\ndiff --git a/debian/control b/debian/control\nindex eb66d6d..cd51b14 100644\n--- a/debian/control\n+++ b/debian/control\n@@ -44,6 +44,7 @@ Depends: ${misc:Depends},\n          u-boot-tools [arm64 armhf],\n          python3-vmdkstream [amd64 i386],\n          xorriso [!i386],\n+         wget,\n          xz-utils,\n          zerofree,\n          zstd\ndiff --git a/live-build/auto/build b/live-build/auto/build\nindex 93184e7..012560d 100755\n--- a/live-build/auto/build\n+++ b/live-build/auto/build\n@@ -132,6 +132,9 @@ Expire-Date: 0\n \tfi\n \n \tec=0\n+\tif [ -e ./config/rebuild-archive-keyring.gpg ]; then\n+\t\texport DEBOOTSTRAP_OPTIONS='--keyring ./config/rebuild-archive-keyring.gpg'\n+\tfi\n \tlb bootstrap \"$@\" || ec=$?\n \tif [ $ec -ne 0 ] ; then\n \t\tif [ ! -f chroot/debootstrap/debootstrap.log ] ; then\ndiff --git a/live-build/auto/config b/live-build/auto/config\nindex ac63994..2066273 100755\n--- a/live-build/auto/config\n+++ b/live-build/auto/config\n@@ -21,18 +21,45 @@ case $ARCH:$SUBARCH in\n esac\n \n if [ -e config/germinate-output ]; then\n-            mv -T config/germinate-output germ-tmp\n-            rm -rf config\n-            mkdir config\n-            mv -T germ-tmp config/germinate-output\n+\tmv -T config/germinate-output germ-tmp\n+\trm -rf config\n+\tmkdir config\n+\tmv -T germ-tmp config/germinate-output\n else\n-        rm -rf config\n+\trm -rf config\n+\tmkdir config\n fi\n \n echo \"Building on $(hostname --fqdn)\"\n \n+OPTS=\n+\n+REBUILDARCHIVENAME=\n+\n SEEDMIRROR=https://ubuntu-archive-team.ubuntu.com/seeds/\n-if [ -z \"$MIRROR\" ]; then\n+if [ -n \"$REBUILDARCHIVENAME\" ]; then\n+\tEXTMIRROR=http://rebuild-test.ubuntu.com/ubuntu-$REBUILDARCHIVENAME/ubuntu/\n+\tcase $(hostname --fqdn) in\n+\t\t*.ubuntu.com|*.buildd|*.ppa|*.scalingstack)\n+\t\t\tMIRROR=http://rebuild-test.internal/ubuntu-$REBUILDARCHIVENAME/ubuntu/\n+\t\t\tSEEDMIRROR=http://archive-team.internal/seeds/\n+\t\t\t;;\n+\t\t*)\n+\t\t\tMIRROR=$EXTMIRROR\n+\t\t\t;;\n+\tesac\n+\n+\t# Assume the rebuild archive does not publish security or updates pockets.\n+\tOPTS=\"$OPTS --security false --volatile false --mirror-binary=${EXTMIRROR}\"\n+\n+\twget -O- https://api.launchpad.net/devel/ubuntu/+archive/$REBUILDARCHIVENAME?ws.op=getSigningKeyData \\\n+\t    | python3 -c 'import sys, json; print(json.load(sys.stdin))' \\\n+\t    | gpg --import --no-default-keyring --keyring ./config/rebuild-archive-keyring.gpg\n+\n+\tmkdir -p config/archives\n+\tgpg --no-default-keyring --keyring ./config/rebuild-archive-keyring.gpg \\\n+            --output config/archives/rebuild-archive.key.chroot --export\n+elif [ -z \"$MIRROR\" ]; then\n \tcase $(hostname --fqdn) in\n \t\t*.ubuntu.com|*.buildd|*.ppa|*.scalingstack)\n \t\t\tMIRROR=http://ftpmaster.internal/ubuntu/\n@@ -58,7 +85,6 @@ mkdir -p config/package-lists\n \n . config/functions\n \n-OPTS=\n COMPONENTS=\n BINARY_REMOVE_LINUX=:\n BINARY_IMAGES=none\n@@ -1265,7 +1291,6 @@ lb config noauto \\\n \t--mode ubuntu \\\n \t--distribution \"$SUITE\" \\\n \t--iso-preparer \"livecd-rootfs\" \\\n-\t--bootstrap-keyring ubuntu-keyring \\\n \t--binary-images \"$BINARY_IMAGES\" \\\n \t--memtest \"$MEMTEST\" \\\n \t$SOURCE \\\ndiff --git a/live-build/functions b/live-build/functions\nindex 543bb3f..0177f3a 100644\n--- a/live-build/functions\n+++ b/live-build/functions\n@@ -886,11 +886,7 @@ clean_debian_chroot() {\n }\n \n configure_universe() {\n-\tif [ -f config/universe-enabled ]; then\n-        # This is cargo-culted almost verbatim (with some syntax changes for\n-        # preinstalled being slightly different in what it doesn't ask) from\n-        # debian-installer's apt-setup:\n-\n+    if [ -f config/universe-enabled ]; then\n         cat > chroot/etc/apt/sources.list << EOF\n # Ubuntu sources have moved to the /etc/apt/sources.list.d/ubuntu.sources\n # file, which uses the deb822 format. Use deb822-formatted .sources files\n@@ -898,7 +894,8 @@ configure_universe() {\n # See the sources.list(5) manual page for details.\n EOF\n \n-        cat > chroot/etc/apt/sources.list.d/ubuntu.sources << EOF\n+        if [ $LB_VOLATILE = \"true\" ]; then\n+            cat > chroot/etc/apt/sources.list.d/ubuntu.sources << EOF\n # See http://help.ubuntu.com/community/UpgradeNotes for how to upgrade to\n # newer versions of the distribution.\n \n@@ -944,8 +941,23 @@ Suites: $LB_DISTRIBUTION-security\n Components: main universe restricted multiverse\n Signed-By: /usr/share/keyrings/ubuntu-archive-keyring.gpg\n EOF\n-\n-fi\n+        else\n+            # We only expect to fall into this path when building for a rebuild archive.\n+            if [ \"$LB_PARENT_MIRROR_BINARY\" = \"http://archive.ubuntu.com/ubuntu/\" ]; then\n+                echo \"Unexpected LB_VOLATILE=false\" >&2\n+                exit 1\n+            fi\n+            # live-build just runs apt-key add on the rebuild archive's key so we don't\n+            # need to include Signed-By here. It's a bit ugly but well, hopefully we\n+            # can stop using live-build before this is a real problem.\n+            cat > chroot/etc/apt/sources.list.d/ubuntu.sources << EOF\n+Types: deb\n+URIs: $LB_PARENT_MIRROR_BINARY\n+Suites: $LB_DISTRIBUTION\n+Components: main universe restricted multiverse\n+EOF\n+        fi\n+    fi\n }\n \n configure_oci() {\n",
+ "diff_truncated": false
+}

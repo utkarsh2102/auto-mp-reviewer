@@ -1,0 +1,1119 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~bamf0/ubuntu/+source/rust-sudo-rs/+git/rust-sudo-rs/+merge/495658",
+ "id": "495658",
+ "title": "PPA: https://launchpad.net/~bamf0/+archive/ubuntu/resolute-sudo-rs-merge-lp2130702",
+ "source_branch": "merge-lp2130702-resolute",
+ "target_branch": "debian/sid",
+ "revision": "93b598794918bc2004a507475c2ac9cfc3d4de5a",
+ "base_revision": "67d3990c9e58e4a542b13d8487ce10c4c4aed5b7",
+ "description": "PPA: https://launchpad.net/~bamf0/+archive/ubuntu/resolute-sudo-rs-merge-lp2130702\n\nBasic tests:\nuser@machine$ sudo id             # This should output \"root\"\nuser@machine$ sudo --version      # This should output 0.2.10\nuser@machine$ sudo -u root whoami # This should NOT accept the user's password, only root \n\nPackage tests:\n  - rust-sudo-rs: resolute/rust-sudo-rs/0.2.10-1ubuntu1~resolute1 [amd64]\n    + ✅ rust-sudo-rs on resolute for amd64 @ 12.11.25 08:54:48\n      • Log: https://autopkgtest.ubuntu.com/results/autopkgtest-resolute-bamf0-resolute-sudo-rs-merge-lp2130702/resolute/amd64/r/rust-sudo-rs/20251112_085448_e6593@/log.gz\n  - rust-sudo-rs: resolute/rust-sudo-rs/0.2.10-1ubuntu1~resolute1 [arm64]\n    + ✅ rust-sudo-rs on resolute for arm64 @ 12.11.25 08:55:37\n      • Log: https://autopkgtest.ubuntu.com/results/autopkgtest-resolute-bamf0-resolute-sudo-rs-merge-lp2130702/resolute/arm64/r/rust-sudo-rs/20251112_085537_10985@/log.gz\n  - rust-sudo-rs: resolute/rust-sudo-rs/0.2.10-1ubuntu1~resolute1 [armhf]\n    + ✅ rust-sudo-rs on resolute for armhf @ 12.11.25 08:57:10\n      • Log: https://autopkgtest.ubuntu.com/results/autopkgtest-resolute-bamf0-resolute-sudo-rs-merge-lp2130702/resolute/armhf/r/rust-sudo-rs/20251112_085710_99eb7@/log.gz\n  - rust-sudo-rs: resolute/rust-sudo-rs/0.2.10-1ubuntu1~resolute1 [i386]\n    + ✅ rust-sudo-rs on resolute for i386 @ 12.11.25 08:54:44\n      • Log: https://autopkgtest.ubuntu.com/results/autopkgtest-resolute-bamf0-resolute-sudo-rs-merge-lp2130702/resolute/i386/r/rust-sudo-rs/20251112_085444_faad1@/log.gz\n  - rust-sudo-rs: resolute/rust-sudo-rs/0.2.10-1ubuntu1~resolute1 [ppc64el]\n    + ✅ rust-sudo-rs on resolute for ppc64el @ 12.11.25 08:55:04\n      • Log: https://autopkgtest.ubuntu.com/results/autopkgtest-resolute-bamf0-resolute-sudo-rs-merge-lp2130702/resolute/ppc64el/r/rust-sudo-rs/20251112_085504_e6d5c@/log.gz\n  - rust-sudo-rs: resolute/rust-sudo-rs/0.2.10-1ubuntu1~resolute1 [riscv64]\n    + ⛔ rust-sudo-rs on resolute for riscv64 @ 12.11.25 09:03:18\n      • Log: https://autopkgtest.ubuntu.com/results/autopkgtest-resolute-bamf0-resolute-sudo-rs-merge-lp2130702/resolute/riscv64/r/rust-sudo-rs/20251112_090318_654a7@/log.gz\n      • Status: BAD\n      • testbed BAD ⛔\n  - rust-sudo-rs: resolute/rust-sudo-rs/0.2.10-1ubuntu1~resolute1 [s390x]\n    + ✅ rust-sudo-rs on resolute for s390x @ 12.11.25 08:54:39\n      • Log: https://autopkgtest.ubuntu.com/results/autopkgtest-resolute-bamf0-resolute-sudo-rs-merge-lp2130702/resolute/s390x/r/rust-sudo-rs/20251112_085439_ecf6c@/log.gz\n\nNOTE: ricsv64 fails due to missing image.\n",
+ "commit_message": null,
+ "diffstat": {
+  "debian/README.source": [
+   5,
+   0
+  ],
+  "debian/changelog": [
+   108,
+   0
+  ],
+  "debian/control": [
+   8,
+   40
+  ],
+  "debian/copyright": [
+   5,
+   3
+  ],
+  "dev/null": [
+   0,
+   11
+  ],
+  "debian/patches/series": [
+   0,
+   2
+  ],
+  "debian/rules": [
+   47,
+   4
+  ],
+  "debian/sudo-rs.alternatives": [
+   11,
+   0
+  ],
+  "debian/tests/control": [
+   3,
+   28
+  ],
+  "debian/tests/run-cargo-tests.sh": [
+   19,
+   0
+  ],
+  "rust-vendor/diff/.cargo-checksum.json": [
+   1,
+   0
+  ],
+  "rust-vendor/diff/Cargo.lock": [
+   727,
+   0
+  ],
+  "rust-vendor/diff/Cargo.toml": [
+   33,
+   0
+  ],
+  "rust-vendor/diff/LICENSE-APACHE": [
+   201,
+   0
+  ],
+  "rust-vendor/diff/LICENSE-MIT": [
+   21,
+   0
+  ],
+  "rust-vendor/diff/README.md": [
+   46,
+   0
+  ],
+  "rust-vendor/diff/benches/benches.rs": [
+   83,
+   0
+  ],
+  "rust-vendor/diff/examples/simple.rs": [
+   14,
+   0
+  ],
+  "rust-vendor/diff/src/lib.rs": [
+   167,
+   0
+  ],
+  "rust-vendor/glob/.cargo-checksum.json": [
+   1,
+   0
+  ],
+  "rust-vendor/glob/CHANGELOG.md": [
+   44,
+   0
+  ],
+  "rust-vendor/glob/Cargo.lock": [
+   107,
+   0
+  ],
+  "rust-vendor/glob/Cargo.toml": [
+   45,
+   0
+  ],
+  "rust-vendor/glob/LICENSE-APACHE": [
+   201,
+   0
+  ],
+  "rust-vendor/glob/LICENSE-MIT": [
+   25,
+   0
+  ],
+  "rust-vendor/glob/README.md": [
+   38,
+   0
+  ],
+  "rust-vendor/glob/src/lib.rs": [
+   1511,
+   0
+  ],
+  "rust-vendor/glob/triagebot.toml": [
+   1,
+   0
+  ],
+  "rust-vendor/libc/.cargo-checksum.json": [
+   1,
+   0
+  ],
+  "rust-vendor/libc/CHANGELOG.md": [
+   747,
+   0
+  ],
+  "rust-vendor/libc/CONTRIBUTING.md": [
+   126,
+   0
+  ],
+  "rust-vendor/libc/Cargo.lock": [
+   16,
+   0
+  ],
+  "rust-vendor/libc/Cargo.toml": [
+   201,
+   0
+  ],
+  "rust-vendor/libc/LICENSE-APACHE": [
+   176,
+   0
+  ],
+  "rust-vendor/libc/LICENSE-MIT": [
+   25,
+   0
+  ],
+  "rust-vendor/libc/README.md": [
+   117,
+   0
+  ],
+  "rust-vendor/libc/build.rs": [
+   298,
+   0
+  ],
+  "rust-vendor/libc/cherry-pick-stable.sh": [
+   150,
+   0
+  ],
+  "rust-vendor/libc/rustfmt.toml": [
+   4,
+   0
+  ],
+  "rust-vendor/libc/src/fuchsia/aarch64.rs": [
+   69,
+   0
+  ],
+  "rust-vendor/libc/src/fuchsia/mod.rs": [
+   4322,
+   0
+  ],
+  "rust-vendor/libc/src/fuchsia/riscv64.rs": [
+   46,
+   0
+  ],
+  "rust-vendor/libc/src/fuchsia/x86_64.rs": [
+   142,
+   0
+  ],
+  "rust-vendor/libc/src/hermit.rs": [
+   561,
+   0
+  ],
+  "rust-vendor/libc/src/lib.rs": [
+   159,
+   0
+  ],
+  "rust-vendor/libc/src/macros.rs": [
+   446,
+   0
+  ],
+  "rust-vendor/libc/src/new/bionic/mod.rs": [
+   2,
+   0
+  ],
+  "rust-vendor/libc/src/new/bionic/sys/mod.rs": [
+   2,
+   0
+  ],
+  "rust-vendor/libc/src/new/bionic/sys/socket.rs": [
+   51,
+   0
+  ],
+  "rust-vendor/libc/src/new/linux_uapi/linux/can.rs": [
+   136,
+   0
+  ],
+  "rust-vendor/libc/src/new/linux_uapi/linux/can/j1939.rs": [
+   60,
+   0
+  ],
+  "rust-vendor/libc/src/new/linux_uapi/linux/can/raw.rs": [
+   15,
+   0
+  ],
+  "rust-vendor/libc/src/new/linux_uapi/linux/mod.rs": [
+   4,
+   0
+  ],
+  "rust-vendor/libc/src/new/linux_uapi/mod.rs": [
+   4,
+   0
+  ],
+  "rust-vendor/libc/src/new/mod.rs": [
+   15,
+   0
+  ],
+  "rust-vendor/libc/src/primitives.rs": [
+   95,
+   0
+  ],
+  "rust-vendor/libc/src/psp.rs": [
+   4131,
+   0
+  ],
+  "rust-vendor/libc/src/sgx.rs": [
+   15,
+   0
+  ],
+  "rust-vendor/libc/src/solid/aarch64.rs": [
+   1,
+   0
+  ],
+  "rust-vendor/libc/src/solid/arm.rs": [
+   1,
+   0
+  ],
+  "rust-vendor/libc/src/solid/mod.rs": [
+   876,
+   0
+  ],
+  "rust-vendor/libc/src/switch.rs": [
+   16,
+   0
+  ],
+  "rust-vendor/libc/src/teeos/mod.rs": [
+   1355,
+   0
+  ],
+  "rust-vendor/libc/src/trusty.rs": [
+   72,
+   0
+  ],
+  "rust-vendor/libc/src/types.rs": [
+   39,
+   0
+  ],
+  "rust-vendor/libc/src/unix/aix/mod.rs": [
+   3382,
+   0
+  ],
+  "rust-vendor/libc/src/unix/aix/powerpc64.rs": [
+   477,
+   0
+  ],
+  "rust-vendor/libc/src/unix/bsd/apple/b32/mod.rs": [
+   135,
+   0
+  ],
+  "rust-vendor/libc/src/unix/bsd/apple/b64/aarch64/mod.rs": [
+   53,
+   0
+  ],
+  "rust-vendor/libc/src/unix/bsd/apple/b64/mod.rs": [
+   141,
+   0
+  ],
+  "rust-vendor/libc/src/unix/bsd/apple/b64/x86_64/mod.rs": [
+   179,
+   0
+  ],
+  "rust-vendor/libc/src/unix/bsd/apple/mod.rs": [
+   6245,
+   0
+  ],
+  "rust-vendor/libc/src/unix/bsd/freebsdlike/dragonfly/errno.rs": [
+   17,
+   0
+  ],
+  "rust-vendor/libc/src/unix/bsd/freebsdlike/dragonfly/mod.rs": [
+   1635,
+   0
+  ],
+  "rust-vendor/libc/src/unix/bsd/freebsdlike/freebsd/aarch64.rs": [
+   110,
+   0
+  ],
+  "rust-vendor/libc/src/unix/bsd/freebsdlike/freebsd/arm.rs": [
+   53,
+   0
+  ],
+  "rust-vendor/libc/src/unix/bsd/freebsdlike/freebsd/freebsd11/b32.rs": [
+   37,
+   0
+  ],
+  "rust-vendor/libc/src/unix/bsd/freebsdlike/freebsd/freebsd11/b64.rs": [
+   36,
+   0
+  ],
+  "rust-vendor/libc/src/unix/bsd/freebsdlike/freebsd/freebsd11/mod.rs": [
+   449,
+   0
+  ],
+  "rust-vendor/libc/src/unix/bsd/freebsdlike/freebsd/freebsd12/mod.rs": [
+   487,
+   0
+  ],
+  "rust-vendor/libc/src/unix/bsd/freebsdlike/freebsd/freebsd12/x86_64.rs": [
+   7,
+   0
+  ],
+  "rust-vendor/libc/src/unix/bsd/freebsdlike/freebsd/freebsd13/mod.rs": [
+   531,
+   0
+  ],
+  "rust-vendor/libc/src/unix/bsd/freebsdlike/freebsd/freebsd13/x86_64.rs": [
+   7,
+   0
+  ],
+  "rust-vendor/libc/src/unix/bsd/freebsdlike/freebsd/freebsd14/mod.rs": [
+   532,
+   0
+  ],
+  "rust-vendor/libc/src/unix/bsd/freebsdlike/freebsd/freebsd14/x86_64.rs": [
+   14,
+   0
+  ],
+  "rust-vendor/libc/src/unix/bsd/freebsdlike/freebsd/freebsd15/mod.rs": [
+   534,
+   0
+  ],
+  "rust-vendor/libc/src/unix/bsd/freebsdlike/freebsd/freebsd15/x86_64.rs": [
+   14,
+   0
+  ],
+  "rust-vendor/libc/src/unix/bsd/freebsdlike/freebsd/mod.rs": [
+   5659,
+   0
+  ],
+  "rust-vendor/libc/src/unix/bsd/freebsdlike/freebsd/powerpc.rs": [
+   62,
+   0
+  ],
+  "rust-vendor/libc/src/unix/bsd/freebsdlike/freebsd/powerpc64.rs": [
+   63,
+   0
+  ],
+  "rust-vendor/libc/src/unix/bsd/freebsdlike/freebsd/riscv64.rs": [
+   116,
+   0
+  ],
+  "rust-vendor/libc/src/unix/bsd/freebsdlike/freebsd/x86.rs": [
+   134,
+   0
+  ],
+  "rust-vendor/libc/src/unix/bsd/freebsdlike/freebsd/x86_64/mod.rs": [
+   346,
+   0
+  ],
+  "rust-vendor/libc/src/unix/bsd/freebsdlike/mod.rs": [
+   2009,
+   0
+  ],
+  "rust-vendor/libc/src/unix/bsd/mod.rs": [
+   969,
+   0
+  ],
+  "rust-vendor/libc/src/unix/bsd/netbsdlike/mod.rs": [
+   905,
+   0
+  ],
+  "rust-vendor/libc/src/unix/bsd/netbsdlike/netbsd/aarch64.rs": [
+   132,
+   0
+  ],
+  "rust-vendor/libc/src/unix/bsd/netbsdlike/netbsd/arm.rs": [
+   70,
+   0
+  ],
+  "rust-vendor/libc/src/unix/bsd/netbsdlike/netbsd/mips.rs": [
+   11,
+   0
+  ],
+  "rust-vendor/libc/src/unix/bsd/netbsdlike/netbsd/mod.rs": [
+   3007,
+   0
+  ],
+  "rust-vendor/libc/src/unix/bsd/netbsdlike/netbsd/powerpc.rs": [
+   10,
+   0
+  ],
+  "rust-vendor/libc/src/unix/bsd/netbsdlike/netbsd/riscv64.rs": [
+   77,
+   0
+  ],
+  "rust-vendor/libc/src/unix/bsd/netbsdlike/netbsd/sparc64.rs": [
+   7,
+   0
+  ],
+  "rust-vendor/libc/src/unix/bsd/netbsdlike/netbsd/x86.rs": [
+   5,
+   0
+  ],
+  "rust-vendor/libc/src/unix/bsd/netbsdlike/netbsd/x86_64.rs": [
+   56,
+   0
+  ],
+  "rust-vendor/libc/src/unix/bsd/netbsdlike/openbsd/aarch64.rs": [
+   20,
+   0
+  ],
+  "rust-vendor/libc/src/unix/bsd/netbsdlike/openbsd/arm.rs": [
+   5,
+   0
+  ],
+  "rust-vendor/libc/src/unix/bsd/netbsdlike/openbsd/mips64.rs": [
+   4,
+   0
+  ],
+  "rust-vendor/libc/src/unix/bsd/netbsdlike/openbsd/mod.rs": [
+   2149,
+   0
+  ],
+  "rust-vendor/libc/src/unix/bsd/netbsdlike/openbsd/powerpc.rs": [
+   5,
+   0
+  ],
+  "rust-vendor/libc/src/unix/bsd/netbsdlike/openbsd/powerpc64.rs": [
+   5,
+   0
+  ],
+  "rust-vendor/libc/src/unix/bsd/netbsdlike/openbsd/riscv64.rs": [
+   25,
+   0
+  ],
+  "rust-vendor/libc/src/unix/bsd/netbsdlike/openbsd/sparc64.rs": [
+   4,
+   0
+  ],
+  "rust-vendor/libc/src/unix/bsd/netbsdlike/openbsd/x86.rs": [
+   5,
+   0
+  ],
+  "rust-vendor/libc/src/unix/bsd/netbsdlike/openbsd/x86_64.rs": [
+   109,
+   0
+  ],
+  "rust-vendor/libc/src/unix/cygwin/mod.rs": [
+   2477,
+   0
+  ],
+  "rust-vendor/libc/src/unix/haiku/b32.rs": [
+   18,
+   0
+  ],
+  "rust-vendor/libc/src/unix/haiku/b64.rs": [
+   18,
+   0
+  ],
+  "rust-vendor/libc/src/unix/haiku/bsd.rs": [
+   151,
+   0
+  ],
+  "rust-vendor/libc/src/unix/haiku/mod.rs": [
+   2097,
+   0
+  ],
+  "rust-vendor/libc/src/unix/haiku/native.rs": [
+   1388,
+   0
+  ],
+  "rust-vendor/libc/src/unix/haiku/x86_64.rs": [
+   208,
+   0
+  ],
+  "rust-vendor/libc/src/unix/hurd/b32.rs": [
+   92,
+   0
+  ],
+  "rust-vendor/libc/src/unix/hurd/b64.rs": [
+   94,
+   0
+  ],
+  "rust-vendor/libc/src/unix/hurd/mod.rs": [
+   4623,
+   0
+  ],
+  "rust-vendor/libc/src/unix/linux_like/android/b32/arm.rs": [
+   532,
+   0
+  ],
+  "rust-vendor/libc/src/unix/linux_like/android/b32/mod.rs": [
+   239,
+   0
+  ],
+  "rust-vendor/libc/src/unix/linux_like/android/b32/x86/mod.rs": [
+   604,
+   0
+  ],
+  "rust-vendor/libc/src/unix/linux_like/android/b64/aarch64/mod.rs": [
+   473,
+   0
+  ],
+  "rust-vendor/libc/src/unix/linux_like/android/b64/mod.rs": [
+   292,
+   0
+  ],
+  "rust-vendor/libc/src/unix/linux_like/android/b64/riscv64/mod.rs": [
+   384,
+   0
+  ],
+  "rust-vendor/libc/src/unix/linux_like/android/b64/x86_64/mod.rs": [
+   748,
+   0
+  ],
+  "rust-vendor/libc/src/unix/linux_like/android/mod.rs": [
+   4157,
+   0
+  ],
+  "rust-vendor/libc/src/unix/linux_like/emscripten/lfs64.rs": [
+   211,
+   0
+  ],
+  "rust-vendor/libc/src/unix/linux_like/emscripten/mod.rs": [
+   1589,
+   0
+  ],
+  "rust-vendor/libc/src/unix/linux_like/linux/arch/generic/mod.rs": [
+   334,
+   0
+  ],
+  "rust-vendor/libc/src/unix/linux_like/linux/arch/mips/mod.rs": [
+   333,
+   0
+  ],
+  "rust-vendor/libc/src/unix/linux_like/linux/arch/mod.rs": [
+   20,
+   0
+  ],
+  "rust-vendor/libc/src/unix/linux_like/linux/arch/powerpc/mod.rs": [
+   280,
+   0
+  ],
+  "rust-vendor/libc/src/unix/linux_like/linux/arch/sparc/mod.rs": [
+   247,
+   0
+  ],
+  "rust-vendor/libc/src/unix/linux_like/linux/gnu/b32/arm/mod.rs": [
+   928,
+   0
+  ],
+  "rust-vendor/libc/src/unix/linux_like/linux/gnu/b32/csky/mod.rs": [
+   745,
+   0
+  ],
+  "rust-vendor/libc/src/unix/linux_like/linux/gnu/b32/m68k/mod.rs": [
+   863,
+   0
+  ],
+  "rust-vendor/libc/src/unix/linux_like/linux/gnu/b32/mips/mod.rs": [
+   925,
+   0
+  ],
+  "rust-vendor/libc/src/unix/linux_like/linux/gnu/b32/mod.rs": [
+   491,
+   0
+  ],
+  "rust-vendor/libc/src/unix/linux_like/linux/gnu/b32/powerpc.rs": [
+   892,
+   0
+  ],
+  "rust-vendor/libc/src/unix/linux_like/linux/gnu/b32/riscv32/mod.rs": [
+   808,
+   0
+  ],
+  "rust-vendor/libc/src/unix/linux_like/linux/gnu/b32/sparc/mod.rs": [
+   865,
+   0
+  ],
+  "rust-vendor/libc/src/unix/linux_like/linux/gnu/b32/x86/mod.rs": [
+   1098,
+   0
+  ],
+  "rust-vendor/libc/src/unix/linux_like/linux/gnu/b64/aarch64/ilp32.rs": [
+   54,
+   0
+  ],
+  "rust-vendor/libc/src/unix/linux_like/linux/gnu/b64/aarch64/lp64.rs": [
+   57,
+   0
+  ],
+  "rust-vendor/libc/src/unix/linux_like/linux/gnu/b64/aarch64/mod.rs": [
+   973,
+   0
+  ],
+  "rust-vendor/libc/src/unix/linux_like/linux/gnu/b64/loongarch64/mod.rs": [
+   922,
+   0
+  ],
+  "rust-vendor/libc/src/unix/linux_like/linux/gnu/b64/mips64/mod.rs": [
+   930,
+   0
+  ],
+  "rust-vendor/libc/src/unix/linux_like/linux/gnu/b64/mod.rs": [
+   213,
+   0
+  ],
+  "rust-vendor/libc/src/unix/linux_like/linux/gnu/b64/powerpc64/mod.rs": [
+   974,
+   0
+  ],
+  "rust-vendor/libc/src/unix/linux_like/linux/gnu/b64/riscv64/mod.rs": [
+   910,
+   0
+  ],
+  "rust-vendor/libc/src/unix/linux_like/linux/gnu/b64/s390x.rs": [
+   955,
+   0
+  ],
+  "rust-vendor/libc/src/unix/linux_like/linux/gnu/b64/sparc64/mod.rs": [
+   930,
+   0
+  ],
+  "rust-vendor/libc/src/unix/linux_like/linux/gnu/b64/x86_64/mod.rs": [
+   809,
+   0
+  ],
+  "rust-vendor/libc/src/unix/linux_like/linux/gnu/b64/x86_64/not_x32.rs": [
+   446,
+   0
+  ],
+  "rust-vendor/libc/src/unix/linux_like/linux/gnu/b64/x86_64/x32.rs": [
+   398,
+   0
+  ],
+  "rust-vendor/libc/src/unix/linux_like/linux/gnu/mod.rs": [
+   1382,
+   0
+  ],
+  "rust-vendor/libc/src/unix/linux_like/linux/mod.rs": [
+   6830,
+   0
+  ],
+  "rust-vendor/libc/src/unix/linux_like/linux/musl/b32/arm/mod.rs": [
+   792,
+   0
+  ],
+  "rust-vendor/libc/src/unix/linux_like/linux/musl/b32/hexagon.rs": [
+   621,
+   0
+  ],
+  "rust-vendor/libc/src/unix/linux_like/linux/musl/b32/mips/mod.rs": [
+   775,
+   0
+  ],
+  "rust-vendor/libc/src/unix/linux_like/linux/musl/b32/mod.rs": [
+   65,
+   0
+  ],
+  "rust-vendor/libc/src/unix/linux_like/linux/musl/b32/powerpc.rs": [
+   766,
+   0
+  ],
+  "rust-vendor/libc/src/unix/linux_like/linux/musl/b32/riscv32/mod.rs": [
+   655,
+   0
+  ],
+  "rust-vendor/libc/src/unix/linux_like/linux/musl/b32/x86/mod.rs": [
+   889,
+   0
+  ],
+  "rust-vendor/libc/src/unix/linux_like/linux/musl/b64/aarch64/mod.rs": [
+   712,
+   0
+  ],
+  "rust-vendor/libc/src/unix/linux_like/linux/musl/b64/loongarch64/mod.rs": [
+   667,
+   0
+  ],
+  "rust-vendor/libc/src/unix/linux_like/linux/musl/b64/mips64.rs": [
+   708,
+   0
+  ],
+  "rust-vendor/libc/src/unix/linux_like/linux/musl/b64/mod.rs": [
+   116,
+   0
+  ],
+  "rust-vendor/libc/src/unix/linux_like/linux/musl/b64/powerpc64.rs": [
+   752,
+   0
+  ],
+  "rust-vendor/libc/src/unix/linux_like/linux/musl/b64/riscv64/mod.rs": [
+   672,
+   0
+  ],
+  "rust-vendor/libc/src/unix/linux_like/linux/musl/b64/s390x.rs": [
+   732,
+   0
+  ],
+  "rust-vendor/libc/src/unix/linux_like/linux/musl/b64/wasm32/mod.rs": [
+   688,
+   0
+  ],
+  "rust-vendor/libc/src/unix/linux_like/linux/musl/b64/wasm32/wali.rs": [
+   441,
+   0
+  ],
+  "rust-vendor/libc/src/unix/linux_like/linux/musl/b64/x86_64/mod.rs": [
+   915,
+   0
+  ],
+  "rust-vendor/libc/src/unix/linux_like/linux/musl/lfs64.rs": [
+   239,
+   0
+  ],
+  "rust-vendor/libc/src/unix/linux_like/linux/musl/mod.rs": [
+   1006,
+   0
+  ],
+  "rust-vendor/libc/src/unix/linux_like/linux/uclibc/arm/mod.rs": [
+   925,
+   0
+  ],
+  "rust-vendor/libc/src/unix/linux_like/linux/uclibc/mips/mips32/mod.rs": [
+   695,
+   0
+  ],
+  "rust-vendor/libc/src/unix/linux_like/linux/uclibc/mips/mips64/mod.rs": [
+   204,
+   0
+  ],
+  "rust-vendor/libc/src/unix/linux_like/linux/uclibc/mips/mod.rs": [
+   312,
+   0
+  ],
+  "rust-vendor/libc/src/unix/linux_like/linux/uclibc/mod.rs": [
+   517,
+   0
+  ],
+  "rust-vendor/libc/src/unix/linux_like/linux/uclibc/x86_64/l4re.rs": [
+   53,
+   0
+  ],
+  "rust-vendor/libc/src/unix/linux_like/linux/uclibc/x86_64/mod.rs": [
+   355,
+   0
+  ],
+  "rust-vendor/libc/src/unix/linux_like/linux/uclibc/x86_64/other.rs": [
+   7,
+   0
+  ],
+  "rust-vendor/libc/src/unix/linux_like/mod.rs": [
+   2214,
+   0
+  ],
+  "rust-vendor/libc/src/unix/mod.rs": [
+   1901,
+   0
+  ],
+  "rust-vendor/libc/src/unix/newlib/aarch64/mod.rs": [
+   52,
+   0
+  ],
+  "rust-vendor/libc/src/unix/newlib/arm/mod.rs": [
+   54,
+   0
+  ],
+  "rust-vendor/libc/src/unix/newlib/espidf/mod.rs": [
+   120,
+   0
+  ],
+  "rust-vendor/libc/src/unix/newlib/generic.rs": [
+   39,
+   0
+  ],
+  "rust-vendor/libc/src/unix/newlib/horizon/mod.rs": [
+   278,
+   0
+  ],
+  "rust-vendor/libc/src/unix/newlib/mod.rs": [
+   997,
+   0
+  ],
+  "rust-vendor/libc/src/unix/newlib/powerpc/mod.rs": [
+   14,
+   0
+  ],
+  "rust-vendor/libc/src/unix/newlib/rtems/mod.rs": [
+   146,
+   0
+  ],
+  "rust-vendor/libc/src/unix/newlib/vita/mod.rs": [
+   235,
+   0
+  ],
+  "rust-vendor/libc/src/unix/nto/aarch64.rs": [
+   35,
+   0
+  ],
+  "rust-vendor/libc/src/unix/nto/mod.rs": [
+   3406,
+   0
+  ],
+  "rust-vendor/libc/src/unix/nto/neutrino.rs": [
+   1270,
+   0
+  ],
+  "rust-vendor/libc/src/unix/nto/x86_64.rs": [
+   111,
+   0
+  ],
+  "rust-vendor/libc/src/unix/nuttx/mod.rs": [
+   597,
+   0
+  ],
+  "rust-vendor/libc/src/unix/redox/mod.rs": [
+   1496,
+   0
+  ],
+  "rust-vendor/libc/src/unix/solarish/compat.rs": [
+   218,
+   0
+  ],
+  "rust-vendor/libc/src/unix/solarish/illumos.rs": [
+   343,
+   0
+  ],
+  "rust-vendor/libc/src/unix/solarish/mod.rs": [
+   3240,
+   0
+  ],
+  "rust-vendor/libc/src/unix/solarish/solaris.rs": [
+   239,
+   0
+  ],
+  "rust-vendor/libc/src/unix/solarish/x86.rs": [
+   31,
+   0
+  ],
+  "rust-vendor/libc/src/unix/solarish/x86_64.rs": [
+   170,
+   0
+  ],
+  "rust-vendor/libc/src/unix/solarish/x86_common.rs": [
+   69,
+   0
+  ],
+  "rust-vendor/libc/src/vxworks/aarch64.rs": [
+   1,
+   0
+  ],
+  "rust-vendor/libc/src/vxworks/arm.rs": [
+   1,
+   0
+  ],
+  "rust-vendor/libc/src/vxworks/mod.rs": [
+   2018,
+   0
+  ],
+  "rust-vendor/libc/src/vxworks/powerpc.rs": [
+   1,
+   0
+  ],
+  "rust-vendor/libc/src/vxworks/powerpc64.rs": [
+   1,
+   0
+  ],
+  "rust-vendor/libc/src/vxworks/riscv32.rs": [
+   1,
+   0
+  ],
+  "rust-vendor/libc/src/vxworks/riscv64.rs": [
+   1,
+   0
+  ],
+  "rust-vendor/libc/src/vxworks/x86.rs": [
+   1,
+   0
+  ],
+  "rust-vendor/libc/src/vxworks/x86_64.rs": [
+   1,
+   0
+  ],
+  "rust-vendor/libc/src/wasi/mod.rs": [
+   853,
+   0
+  ],
+  "rust-vendor/libc/src/wasi/p2.rs": [
+   188,
+   0
+  ],
+  "rust-vendor/libc/src/windows/gnu/mod.rs": [
+   36,
+   0
+  ],
+  "rust-vendor/libc/src/windows/mod.rs": [
+   611,
+   0
+  ],
+  "rust-vendor/libc/src/windows/msvc/mod.rs": [
+   17,
+   0
+  ],
+  "rust-vendor/libc/src/xous.rs": [
+   18,
+   0
+  ],
+  "rust-vendor/log/.cargo-checksum.json": [
+   1,
+   0
+  ],
+  "rust-vendor/log/CHANGELOG.md": [
+   410,
+   0
+  ],
+  "rust-vendor/log/Cargo.lock": [
+   270,
+   0
+  ],
+  "rust-vendor/log/Cargo.toml": [
+   151,
+   0
+  ],
+  "rust-vendor/log/LICENSE-APACHE": [
+   201,
+   0
+  ],
+  "rust-vendor/log/LICENSE-MIT": [
+   25,
+   0
+  ],
+  "rust-vendor/log/README.md": [
+   134,
+   0
+  ],
+  "rust-vendor/log/benches/value.rs": [
+   27,
+   0
+  ],
+  "rust-vendor/log/src/__private_api.rs": [
+   151,
+   0
+  ],
+  "rust-vendor/log/src/kv/error.rs": [
+   94,
+   0
+  ],
+  "rust-vendor/log/src/kv/key.rs": [
+   163,
+   0
+  ],
+  "rust-vendor/log/src/kv/mod.rs": [
+   265,
+   0
+  ],
+  "rust-vendor/log/src/kv/source.rs": [
+   514,
+   0
+  ],
+  "rust-vendor/log/src/kv/value.rs": [
+   1395,
+   0
+  ],
+  "rust-vendor/log/src/lib.rs": [
+   2005,
+   0
+  ],
+  "rust-vendor/log/src/macros.rs": [
+   579,
+   0
+  ],
+  "rust-vendor/log/src/serde.rs": [
+   397,
+   0
+  ],
+  "rust-vendor/log/triagebot.toml": [
+   1,
+   0
+  ],
+  "rust-vendor/pretty_assertions/.cargo-checksum.json": [
+   1,
+   0
+  ],
+  "rust-vendor/pretty_assertions/Cargo.lock": [
+   23,
+   0
+  ],
+  "rust-vendor/pretty_assertions/Cargo.toml": [
+   68,
+   0
+  ],
+  "rust-vendor/pretty_assertions/LICENSE-APACHE": [
+   202,
+   0
+  ],
+  "rust-vendor/pretty_assertions/LICENSE-MIT": [
+   21,
+   0
+  ],
+  "rust-vendor/pretty_assertions/README.md": [
+   115,
+   0
+  ],
+  "rust-vendor/pretty_assertions/examples/pretty_assertion.rs": [
+   3,
+   0
+  ],
+  "rust-vendor/pretty_assertions/examples/standard_assertion.rs": [
+   26,
+   0
+  ],
+  "rust-vendor/pretty_assertions/src/lib.rs": [
+   458,
+   0
+  ],
+  "rust-vendor/pretty_assertions/src/printer.rs": [
+   601,
+   0
+  ],
+  "rust-vendor/yansi/.cargo-checksum.json": [
+   1,
+   0
+  ],
+  "rust-vendor/yansi/Cargo.toml": [
+   50,
+   0
+  ],
+  "rust-vendor/yansi/LICENSE-APACHE": [
+   201,
+   0
+  ],
+  "rust-vendor/yansi/LICENSE-MIT": [
+   19,
+   0
+  ],
+  "rust-vendor/yansi/README.md": [
+   86,
+   0
+  ],
+  "rust-vendor/yansi/src/attr_quirk.rs": [
+   207,
+   0
+  ],
+  "rust-vendor/yansi/src/bitops.rs": [
+   67,
+   0
+  ],
+  "rust-vendor/yansi/src/color.rs": [
+   227,
+   0
+  ],
+  "rust-vendor/yansi/src/condition.rs": [
+   356,
+   0
+  ],
+  "rust-vendor/yansi/src/global.rs": [
+   110,
+   0
+  ],
+  "rust-vendor/yansi/src/hyperlink.rs": [
+   138,
+   0
+  ],
+  "rust-vendor/yansi/src/lib.rs": [
+   373,
+   0
+  ],
+  "rust-vendor/yansi/src/macros.rs": [
+   376,
+   0
+  ],
+  "rust-vendor/yansi/src/paint.rs": [
+   270,
+   0
+  ],
+  "rust-vendor/yansi/src/set.rs": [
+   93,
+   0
+  ],
+  "rust-vendor/yansi/src/style.rs": [
+   390,
+   0
+  ],
+  "rust-vendor/yansi/src/windows.rs": [
+   121,
+   0
+  ]
+ },
+ "files": 275,
+ "added_lines": 142708,
+ "removed_lines": 88,
+ "diff": "diff --git a/debian/README.source b/debian/README.source\nnew file mode 100644\nindex 0000000..7b1b2e8\n--- /dev/null\n+++ b/debian/README.source\n@@ -0,0 +1,5 @@\n+steps to create the vendor tarball:\n+1. apt install cargo-vendor-filterer\n+2. debian/rules vendor-tarball\n+3. CARGO_VENDOR_DIR=rust-vendor /usr/share/cargo/bin/dh-cargo-vendored-sources\n+4. update the debian/control XS-Vendored-Sources-Rust with output of the previous command\ndiff --git a/debian/changelog b/debian/changelog\nindex 2974414..2ce49db 100644\n--- a/debian/changelog\n+++ b/debian/changelog\n@@ -1,3 +1,27 @@\n+rust-sudo-rs (0.2.10-1ubuntu1) resolute; urgency=medium\n+\n+  * Merge with Debian unstable (LP: #2130702). Remaining changes:\n+    - Add Breaks for sudo and sudo-ldap\n+    - Add depends on sudo (>= 1.9.16p2-3ubuntu2~)\n+    - Add Recommends libapparmor1\n+    - Add sudo alternatives\n+    - Add vendored dependencies for 0.2.10\n+    - Enable feature apparmor\n+    - Move test command to script in debian/tests\n+    - Remove librust-sudo-rs-dev\n+    - Remove irrelevant patches\n+      + d/p/disable-test-timeout.diff: Debian specific since 0.2.5.\n+      + d/p/drop-unused-features.patch: Features used in Ubuntu.\n+    - Set setuid bit after dh_fixperms\n+    - Skip pandoc on i386\n+    - Skip test_build_run_context test_traverse_secure_open_positive\n+    - Update copyright information\n+\n+  * Dropped delta:\n+    - d/p/post_028/: Containing patches fixed in 0.2.10\n+\n+ -- Simon Johnsson <simon.johnsson@canonical.com>  Tue, 11 Nov 2025 17:46:16 +0100\n+\n rust-sudo-rs (0.2.10-1) unstable; urgency=high\n \n   * Team upload.\n@@ -24,6 +48,90 @@ rust-sudo-rs (0.2.9-1) unstable; urgency=medium\n \n  -- Fabian Grünbichler <debian@fabian.gruenbichler.email>  Fri, 31 Oct 2025 21:35:49 +0100\n \n+rust-sudo-rs (0.2.8-1ubuntu5.1) questing; urgency=medium\n+\n+  * SRU: fix escaped equals in sudoers file (LP: #2127080)\n+\n+ -- Simon Johnsson <simon.johnsson@canonical.com>  Mon, 13 Oct 2025 10:34:08 +0200\n+\n+rust-sudo-rs (0.2.8-1ubuntu5) questing; urgency=medium\n+\n+  * set setuid bit after dh_fixperms (LP: #2125731)\n+  * fix missing set_perms in postinst\n+\n+ -- Ravi Kant Sharma <ravi.kant.sharma@canonical.com>  Thu, 02 Oct 2025 12:08:08 +0200\n+\n+rust-sudo-rs (0.2.8-1ubuntu4) questing; urgency=medium\n+\n+  * Pick post 0.2.8 bug fixes from upstream:\n+    - d/p/post_028/allow_equals_incommands.patch (LP: #2123859)\n+    - d/p/post_028/fix_race_between_parent_and_monitor_in_use_pty.patch (LP: #2121743)\n+    - d/p/post_028/forbid_comma_in_envvar.patch\n+  * fix man sudoers alternatives target (LP: #2125483)\n+\n+ -- Ravi Kant Sharma <ravi.kant.sharma@canonical.com>  Wed, 24 Sep 2025 11:26:29 +0200\n+\n+rust-sudo-rs (0.2.8-1ubuntu3) questing; urgency=medium\n+\n+  * Pick post 0.2.8 patches from git:\n+    - d/p/post_028/fix_version_number_in_sudoer.patch\n+    - d/p/post_028/remove_documentation_for_the_ignored_flags.patch\n+    - d/p/post_028/some_corrections_to_canonicalization_test.patch\n+    - d/p/post_028/remove_unhandled_exception.patch\n+    - d/p/post_028/process_format_flags_for_sudo_prompt.patch\n+    - d/p/post_028/put_sudo_parent_process_in_background_if_stdout_is_a_pipe.patch (LP: #2121830)\n+  * set suid bit for su (LP: #2121399)\n+\n+ -- Ravi Kant Sharma <ravi.kant.sharma@canonical.com>  Wed, 03 Sep 2025 10:35:30 +0200\n+\n+rust-sudo-rs (0.2.8-1ubuntu2) questing; urgency=medium\n+\n+  * skip test test_traverse_secure_open_positive (LP: #2120989)\n+  * add alternatives for sudoers man\n+\n+ -- Ravi Kant Sharma <ravi.kant.sharma@canonical.com>  Tue, 19 Aug 2025 22:11:38 +0200\n+\n+rust-sudo-rs (0.2.8-1ubuntu1) questing; urgency=medium\n+\n+  * Package sudo-rs 0.2.8 from crates.io using debcargo 2.7.8 (LP: #2119669)\n+    - Update copyright information\n+  * Add depends on sudo (>= 1.9.16p2-1ubuntu2~)\n+  * Enable features pam-login, apparmor, sudoedit\n+  * Add sudoedit to alternatives\n+  * Recommend libapparmor1\n+  * Vendor dependencies for 0.2.8\n+  * Drop all patches\n+  * skip test test_build_run_context\n+\n+ -- Ravi Kant Sharma <ravi.kant.sharma@canonical.com>  Mon, 11 Aug 2025 11:25:52 +0200\n+\n+rust-sudo-rs (0.2.5-5ubuntu3) questing; urgency=medium\n+\n+  * Remove package librust-sudo-rs-dev (LP: #2115785)\n+  * Run test suite with default build flags as autopkgtest\n+  * Use vendored dependencies for autopkgtest\n+\n+ -- Ravi Kant Sharma <ravi.kant.sharma@canonical.com>  Wed, 02 Jul 2025 10:40:47 +0000\n+\n+rust-sudo-rs (0.2.5-5ubuntu2) questing; urgency=medium\n+\n+  * Vendor dependencies (LP: #2114733)\n+    - debian/rules:\n+      + Add vendoring rules\n+    - debian/control:\n+      + Add XS-Vendored-Sources-Rust\n+  * Add build time tests (LP: #2113928)\n+  * Skip pandoc on i386 (LP: #2114728)\n+\n+ -- Ravi Kant Sharma <ravi.kant.sharma@canonical.com>  Mon, 16 Jun 2025 15:50:00 +0200\n+\n+rust-sudo-rs (0.2.5-5ubuntu1) questing; urgency=medium\n+\n+  * set sudo-rs as sudo alternative (LP: #2111423)\n+    - add d/sudo-rs.alternatives for update-alternatives run in postint\n+\n+ -- Ravi Kant Sharma <ravi.kant.sharma@canonical.com>  Tue, 20 May 2025 17:58:31 +0200\n+\n rust-sudo-rs (0.2.5-5) unstable; urgency=medium\n \n   * Package sudo-rs 0.2.5 from crates.io using debcargo 2.7.8\ndiff --git a/debian/control b/debian/control\nindex 99a4628..48cf476 100644\n--- a/debian/control\n+++ b/debian/control\n@@ -4,15 +4,13 @@ Priority: optional\n Build-Depends: debhelper-compat (= 13),\n  dh-sequence-cargo,\n  libpam-dev,\n- pandoc\n+ pandoc [!i386]\n Build-Depends-Arch: cargo:native,\n  rustc:native (>= 1.70),\n  libstd-rust-dev,\n- librust-glob-0.3+default-dev,\n- librust-libc-0.2+default-dev (>= 0.2.152-~~),\n- librust-log-0.4+default-dev (>= 0.4.11-~~),\n- librust-log-0.4+std-dev (>= 0.4.11-~~)\n-Maintainer: Debian Rust Maintainers <pkg-rust-maintainers@alioth-lists.debian.net>\n+XS-Vendored-Sources-Rust: diff@0.1.13, glob@0.3.3, libc@0.2.177, log@0.4.28, pretty_assertions@1.4.1, yansi@1.0.1\n+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>\n+XSBC-Original-Maintainer: Debian Rust Maintainers <pkg-rust-maintainers@alioth-lists.debian.net>\n Uploaders:\n  Sylvestre Ledru <sylvestre@debian.org>\n Standards-Version: 4.7.2\n@@ -21,47 +19,17 @@ Vcs-Browser: https://salsa.debian.org/rust-team/debcargo-conf/tree/master/src/su\n Homepage: https://github.com/trifectatechfoundation/sudo-rs\n X-Cargo-Crate: sudo-rs\n \n-Package: librust-sudo-rs-dev\n-Architecture: any\n-Multi-Arch: same\n-Depends:\n- ${misc:Depends},\n- librust-glob-0.3+default-dev,\n- librust-libc-0.2+default-dev (>= 0.2.152-~~),\n- librust-log-0.4+default-dev (>= 0.4.11-~~),\n- librust-log-0.4+std-dev (>= 0.4.11-~~)\n-Provides:\n- librust-sudo-rs+apparmor-dev (= ${binary:Version}),\n- librust-sudo-rs+default-dev (= ${binary:Version}),\n- librust-sudo-rs+pam-login-dev (= ${binary:Version}),\n- librust-sudo-rs+sudoedit-dev (= ${binary:Version}),\n- librust-sudo-rs-0-dev (= ${binary:Version}),\n- librust-sudo-rs-0+apparmor-dev (= ${binary:Version}),\n- librust-sudo-rs-0+default-dev (= ${binary:Version}),\n- librust-sudo-rs-0+pam-login-dev (= ${binary:Version}),\n- librust-sudo-rs-0+sudoedit-dev (= ${binary:Version}),\n- librust-sudo-rs-0.2-dev (= ${binary:Version}),\n- librust-sudo-rs-0.2+apparmor-dev (= ${binary:Version}),\n- librust-sudo-rs-0.2+default-dev (= ${binary:Version}),\n- librust-sudo-rs-0.2+pam-login-dev (= ${binary:Version}),\n- librust-sudo-rs-0.2+sudoedit-dev (= ${binary:Version}),\n- librust-sudo-rs-0.2.10-dev (= ${binary:Version}),\n- librust-sudo-rs-0.2.10+apparmor-dev (= ${binary:Version}),\n- librust-sudo-rs-0.2.10+default-dev (= ${binary:Version}),\n- librust-sudo-rs-0.2.10+pam-login-dev (= ${binary:Version}),\n- librust-sudo-rs-0.2.10+sudoedit-dev (= ${binary:Version})\n-Description: Memory safe implementation of sudo and su - Rust source code\n- Source code for Debianized Rust crate \"sudo-rs\"\n-\n Package: sudo-rs\n Architecture: any\n Section: utils\n Depends:\n  ${misc:Depends},\n  ${shlibs:Depends},\n- ${cargo:Depends}\n+ ${cargo:Depends},\n+ sudo (>= 1.9.16p2-3ubuntu2~)\n Recommends:\n- ${cargo:Recommends}\n+ ${cargo:Recommends},\n+ libapparmor1\n Suggests:\n  ${cargo:Suggests}\n Provides:\ndiff --git a/debian/copyright b/debian/copyright\nindex 41c57e7..cced33c 100644\n--- a/debian/copyright\n+++ b/debian/copyright\n@@ -1,15 +1,17 @@\n Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/\n Upstream-Name: sudo-rs\n-Source: https://github.com/memorysafety/sudo-rs\n+Source: https://github.com/trifectatechfoundation/sudo-rs\n \n Files: *\n-Copyright: 2022-2023 Internet Security Research Group\n+Copyright: 2022-2025 Trifecta Tech Foundation and contributors\n  2023 Conrad Kleinespel et al\n License: Apache-2.0 or MIT\n \n+\n+\n Files: debian/*\n Copyright:\n- 2023 Debian Rust Maintainers <pkg-rust-maintainers@alioth-lists.debian.net>\n+ 2025 Debian Rust Maintainers <pkg-rust-maintainers@alioth-lists.debian.net>\n  2023 Sylvestre Ledru <sylvestre@debian.org>\n License: Apache-2.0 or MIT\n \ndiff --git a/debian/patches/disable-test-timeout.diff b/debian/patches/disable-test-timeout.diff\ndeleted file mode 100644\nindex 136918a..0000000\n--- a/debian/patches/disable-test-timeout.diff\n+++ /dev/null\n@@ -1,11 +0,0 @@\n---- a/src/system/term/mod.rs\n-+++ b/src/system/term/mod.rs\n-@@ -274,7 +274,7 @@\n-         assert!(path.starts_with(\"/dev/pts/\"));\n-     }\n- \n--    #[test]\n-+    //#[test]\n-     fn tcsetpgrp_and_tcgetpgrp_are_consistent() {\n-         // Create a socket so the child can send us a byte if successful.\n-         let (mut rx, mut tx) = UnixStream::pair().unwrap();\ndiff --git a/debian/patches/drop-unneeded-features.patch b/debian/patches/drop-unneeded-features.patch\ndeleted file mode 100644\nindex 85e106b..0000000\n--- a/debian/patches/drop-unneeded-features.patch\n+++ /dev/null\n@@ -1,11 +0,0 @@\n---- a/Cargo.toml\n-+++ b/Cargo.toml\n-@@ -36,8 +36,6 @@\n- [features]\n- apparmor = []\n- default = [\"sudoedit\"]\n--dev = []\n--do-not-use-all-features = []\n- pam-login = []\n- sudoedit = []\n- \ndiff --git a/debian/patches/series b/debian/patches/series\nindex 982d39d..660408d 100644\n--- a/debian/patches/series\n+++ b/debian/patches/series\n@@ -1,3 +1 @@\n-disable-test-timeout.diff\n-drop-unneeded-features.patch\n disable-broken-tests.patch\ndiff --git a/debian/rules b/debian/rules\nindex 0f4f8d0..5989fb2 100755\n--- a/debian/rules\n+++ b/debian/rules\n@@ -1,16 +1,59 @@\n #!/usr/bin/make -f\n \n+UPSTREAM_VERSION := $(shell dpkg-parsechangelog -S Version|cut -d- -f1)\n+\n+# Vendoring setup\n+export CARGO_VENDOR_DIR = rust-vendor\n+export CARGO_HOME = $(CURDIR)/debian/cargo_home\n+VENDOR_TARBALL = rust-sudo-rs_$(UPSTREAM_VERSION).orig-$(CARGO_VENDOR_DIR).tar.xz\n+\n+DEB_HOST_ARCH ?= $(shell dpkg-architecture -qDEB_HOST_ARCH)\n+\n %:\n \tdh $@ --buildsystem cargo\n \n-override_dh_auto_install:\n-\t# /usr/bin/{su,sudo,visudo} are already used, install into /usr/lib/cargo/bin\n-\tDEB_CARGO_INSTALL_PREFIX=/usr/lib/cargo dh_auto_install -- --features pam-login\n+vendor-tarball-quick-check:\n+\tif [ -e ../$(VENDOR_TARBALL) ]; then echo \"../$(VENDOR_TARBALL) already exists, bailing!\"; exit 1; fi\n+\n+vendor-deps-cargo:\n+\trm -rf $(CARGO_VENDOR_DIR)\n+\tenv -i cargo-vendor-filterer --all-features  --tier 2  --platform '*-*-linux-gnu' --platform '*-*-linux-gnueabi' $(CARGO_VENDOR_DIR)\n+\n+vendor-deps: vendor-deps-cargo\n+\trm -r \\\n+\t\t$(CARGO_VENDOR_DIR)/*/tests\n+\t# Remove the checksum files to allow us to patch the crates to remove extraneous dependencies\n+\tfor crate in $(CARGO_VENDOR_DIR)/*; do \\\n+\t\tsed -i 's/^{\"files\":.*\"package\":\"\\([a-z0-9]\\+\\)\"}$$/{\"files\":{},\"package\":\"\\1\"}/' $$crate/.cargo-checksum.json; \\\n+\t\tdone\n+\t# Cleanup temp files\n+\trm -rf $(CARGO_HOME)\n+\n+vendor-tarball: vendor-tarball-quick-check vendor-deps\n+\ttar --sort=name --mtime=@0 --owner=0 --group=0 --numeric-owner --pax-option=exthdr.name=%d/PaxHeaders/%f,delete=atime,delete=ctime -caf ../$(VENDOR_TARBALL) $(CARGO_VENDOR_DIR)\n+\n+override_dh_auto_test:\n+\tCARGO_HOME=$(CURDIR)/debian/cargo_home cargo test --features=pam-login,apparmor,sudoedit -- --skip test_build_run_context --skip test_traverse_secure_open_positive\n+\n+ifeq ($(DEB_HOST_ARCH),i386)\n+override_dh_installman:\n+\techo \"Skipping pandoc for i386\"\n+else\n+override_dh_installman:\n \tpandoc -s -t man docs/man/su.1.md -o su-rs.1\n \tpandoc -s -t man docs/man/sudo.8.md  -o sudo-rs.8\n-\tpandoc -s -t man docs/man/visudo.8.md -o visudo-rs.8\n \tpandoc -s -t man docs/man/sudoers.5.md -o sudoers-rs.5\n+\tpandoc -s -t man docs/man/visudo.8.md -o visudo-rs.8\n+\tdh_installman\n+endif\n+\n+override_dh_auto_install:\n+\t# /usr/bin/{su,sudo,visudo} are already used, install into /usr/lib/cargo/bin\n+\tDEB_CARGO_INSTALL_PREFIX=/usr/lib/cargo dh_auto_install -O--buildsystem=cargo -- --features=pam-login,apparmor,sudoedit\n+\n+execute_after_dh_fixperms:\n \tchmod 4755 debian/sudo-rs/usr/lib/cargo/bin/sudo\n+\tchmod 4755 debian/sudo-rs/usr/lib/cargo/bin/su\n \n override_dh_dwz:\n \t# Don't do anything. fails because of the\ndiff --git a/debian/sudo-rs.alternatives b/debian/sudo-rs.alternatives\nnew file mode 100644\nindex 0000000..1c43f5e\n--- /dev/null\n+++ b/debian/sudo-rs.alternatives\n@@ -0,0 +1,11 @@\n+Name: sudo\n+Link: /usr/bin/sudo\n+Alternative: /usr/lib/cargo/bin/sudo\n+Dependents:\n+ /usr/sbin/visudo visudo /usr/lib/cargo/bin/visudo\n+ /usr/bin/sudoedit sudoedit /usr/lib/cargo/bin/sudo\n+ /usr/share/man/man8/sudo.8.gz sudo.8.gz /usr/share/man/man8/sudo-rs.8.gz\n+ /usr/share/man/man5/sudoers.5.gz sudoers.5.gz /usr/share/man/man5/sudoers-rs.5.gz\n+ /usr/share/man/man8/sudoedit.8.gz sudoedit.8.gz /usr/share/man/man8/sudo-rs.8.gz\n+ /usr/share/man/man8/visudo.8.gz visudo.8.gz /usr/share/man/man8/visudo-rs.8.gz\n+Priority: 50\ndiff --git a/debian/tests/control b/debian/tests/control\nindex 54bf7e7..fa47b4c 100644\n--- a/debian/tests/control\n+++ b/debian/tests/control\n@@ -1,29 +1,4 @@\n-Test-Command: /usr/share/cargo/bin/cargo-auto-test sudo-rs 0.2.10 --all-targets --all-features\n+Test-Command: debian/tests/run-cargo-tests.sh\n Features: test-name=rust-sudo-rs:@\n-Depends: dh-cargo (>= 31), libpam-dev, procps, rustc (>= 1.70), librust-pretty-assertions-1+default-dev (>= 1.2.1-~~), @\n-Restrictions: allow-stderr, skip-not-installable\n-\n-Test-Command: /usr/share/cargo/bin/cargo-auto-test sudo-rs 0.2.10 --all-targets --no-default-features --features apparmor\n-Features: test-name=librust-sudo-rs-dev:apparmor\n-Depends: dh-cargo (>= 31), libpam-dev, procps, rustc (>= 1.70), librust-pretty-assertions-1+default-dev (>= 1.2.1-~~), @\n-Restrictions: allow-stderr, skip-not-installable\n-\n-Test-Command: /usr/share/cargo/bin/cargo-auto-test sudo-rs 0.2.10 --all-targets\n-Features: test-name=librust-sudo-rs-dev:default\n-Depends: dh-cargo (>= 31), libpam-dev, procps, rustc (>= 1.70), librust-pretty-assertions-1+default-dev (>= 1.2.1-~~), @\n-Restrictions: allow-stderr, skip-not-installable\n-\n-Test-Command: /usr/share/cargo/bin/cargo-auto-test sudo-rs 0.2.10 --all-targets --no-default-features --features pam-login\n-Features: test-name=librust-sudo-rs-dev:pam-login\n-Depends: dh-cargo (>= 31), libpam-dev, procps, rustc (>= 1.70), librust-pretty-assertions-1+default-dev (>= 1.2.1-~~), @\n-Restrictions: allow-stderr, skip-not-installable\n-\n-Test-Command: /usr/share/cargo/bin/cargo-auto-test sudo-rs 0.2.10 --all-targets --no-default-features --features sudoedit\n-Features: test-name=librust-sudo-rs-dev:sudoedit\n-Depends: dh-cargo (>= 31), libpam-dev, procps, rustc (>= 1.70), librust-pretty-assertions-1+default-dev (>= 1.2.1-~~), @\n-Restrictions: allow-stderr, skip-not-installable\n-\n-Test-Command: /usr/share/cargo/bin/cargo-auto-test sudo-rs 0.2.10 --all-targets --no-default-features\n-Features: test-name=librust-sudo-rs-dev:\n-Depends: dh-cargo (>= 31), libpam-dev, procps, rustc (>= 1.70), librust-pretty-assertions-1+default-dev (>= 1.2.1-~~), @\n-Restrictions: allow-stderr, skip-not-installable\n+Depends: @builddeps@\n+Restrictions: allow-stderr\ndiff --git a/debian/tests/run-cargo-tests.sh b/debian/tests/run-cargo-tests.sh\nnew file mode 100755\nindex 0000000..68b72fc\n--- /dev/null\n+++ b/debian/tests/run-cargo-tests.sh\n@@ -0,0 +1,19 @@\n+#!/bin/sh\n+set -xeu\n+\n+# Create cargo config directory\n+CARGO_TMP_DIR=$(mktemp -d)\n+\n+# Create config.toml\n+cat > $CARGO_TMP_DIR/config.toml << EOL\n+[source.crates-io]\n+replace-with = \"vendored-sources\"\n+\n+[source.vendored-sources]\n+directory = \"$(pwd)/rust-vendor\"\n+EOL\n+\n+# Run the actual test\n+CARGO_HOME=$CARGO_TMP_DIR cargo test --offline --manifest-path Cargo.toml --features=pam-login,apparmor,sudoedit --all-targets -- --skip test_build_run_context --skip test_traverse_secure_open_positive\n+\n+rm -rf $CARGO_TMP_DIR\ndiff --git a/rust-vendor/diff/.cargo-checksum.json b/rust-vendor/diff/.cargo-checksum.json\nnew file mode 100644\nindex 0000000..8fe941e\n--- /dev/null\n+++ b/rust-vendor/diff/.cargo-checksum.json\n@@ -0,0 +1 @@\n+{\"files\":{},\"package\":\"56254986775e3233ffa9c4d7d3faaf6d36a2c09d30b20687e9f88bc8bafc16c8\"}\n\\ No newline at end of file\ndiff --git a/rust-vendor/diff/Cargo.lock b/rust-vendor/diff/Cargo.lock\nnew file mode 100644\nindex 0000000..8c1ea62\n--- /dev/null\n+++ b/rust-vendor/diff/Cargo.lock\n@@ -0,0 +1,727 @@\n+# This file is automatically @generated by Cargo.\n+# It is not intended for manual editing.\n+version = 3\n+\n+[[package]]\n+name = \"aho-corasick\"\n+version = \"0.7.18\"\n+source = \"registry+https://github.com/rust-lang/crates.io-index\"\n+checksum = \"1e37cfd5e7657ada45f742d6e99ca5788580b5c529dc78faf11ece6dc702656f\"\n+dependencies = [\n+ \"memchr\",\n+]\n+\n+[[package]]\n+name = \"atty\"\n+version = \"0.2.14\"\n+source = \"registry+https://github.com/rust-lang/crates.io-index\"\n+checksum = \"d9b39be18770d11421cdb1b9947a45dd3f37e93092cbf377614828a319d5fee8\"\n+dependencies = [\n+ \"hermit-abi\",\n+ \"libc\",\n+ \"winapi\",\n+]\n+\n+[[package]]\n+name = \"autocfg\"\n+version = \"1.1.0\"\n+source = \"registry+https://github.com/rust-lang/crates.io-index\"\n+checksum = \"d468802bab17cbc0cc575e9b053f41e72aa36bfa6b7f55e3529ffa43161b97fa\"\n+\n+[[package]]\n+name = \"bitflags\"\n+version = \"1.3.2\"\n+source = \"registry+https://github.com/rust-lang/crates.io-index\"\n+checksum = \"bef38d45163c2f1dde094a7dfd33ccf595c92905c8f8f4fdc18d06fb1037718a\"\n+\n+[[package]]\n+name = \"bstr\"\n+version = \"0.2.17\"\n+source = \"registry+https://github.com/rust-lang/crates.io-index\"\n+checksum = \"ba3569f383e8f1598449f1a423e72e99569137b47740b1da11ef19af3d5c3223\"\n+dependencies = [\n+ \"lazy_static\",\n+ \"memchr\",\n+ \"regex-automata\",\n+ \"serde\",\n+]\n+\n+[[package]]\n+name = \"bumpalo\"\n+version = \"3.10.0\"\n+source = \"registry+https://github.com/rust-lang/crates.io-index\"\n+checksum = \"37ccbd214614c6783386c1af30caf03192f17891059cecc394b4fb119e363de3\"\n+\n+[[package]]\n+name = \"cast\"\n+version = \"0.2.7\"\n+source = \"registry+https://github.com/rust-lang/crates.io-index\"\n+checksum = \"4c24dab4283a142afa2fdca129b80ad2c6284e073930f964c3a1293c225ee39a\"\n+dependencies = [\n+ \"rustc_version\",\n+]\n+\n+[[package]]\n+name = \"cfg-if\"\n+version = \"1.0.0\"\n+source = \"registry+https://github.com/rust-lang/crates.io-index\"\n+checksum = \"baf1de4339761588bc0619e3cbc0120ee582ebb74b53b4efbf79117bd2da40fd\"\n+\n+[[package]]\n+name = \"clap\"\n+version = \"2.34.0\"\n+source = \"registry+https://github.com/rust-lang/crates.io-index\"\n+checksum = \"a0610544180c38b88101fecf2dd634b174a62eef6946f84dfc6a7127512b381c\"\n+dependencies = [\n+ \"bitflags\",\n+ \"textwrap\",\n+ \"unicode-width\",\n+]\n+\n+[[package]]\n+name = \"criterion\"\n+version = \"0.3.5\"\n+source = \"registry+https://github.com/rust-lang/crates.io-index\"\n+checksum = \"1604dafd25fba2fe2d5895a9da139f8dc9b319a5fe5354ca137cbbce4e178d10\"\n+dependencies = [\n+ \"atty\",\n+ \"cast\",\n+ \"clap\",\n+ \"criterion-plot\",\n+ \"csv\",\n+ \"itertools\",\n+ \"lazy_static\",\n+ \"num-traits\",\n+ \"oorandom\",\n+ \"plotters\",\n+ \"rayon\",\n+ \"regex\",\n+ \"serde\",\n+ \"serde_cbor\",\n+ \"serde_derive\",\n+ \"serde_json\",\n+ \"tinytemplate\",\n+ \"walkdir\",\n+]\n+\n+[[package]]\n+name = \"criterion-plot\"\n+version = \"0.4.4\"\n+source = \"registry+https://github.com/rust-lang/crates.io-index\"\n+checksum = \"d00996de9f2f7559f7f4dc286073197f83e92256a59ed395f9aac01fe717da57\"\n+dependencies = [\n+ \"cast\",\n+ \"itertools\",\n+]\n+\n+[[package]]\n+name = \"crossbeam-channel\"\n+version = \"0.5.5\"\n+source = \"registry+https://github.com/rust-lang/crates.io-index\"\n+checksum = \"4c02a4d71819009c192cf4872265391563fd6a84c81ff2c0f2a7026ca4c1d85c\"\n+dependencies = [\n+ \"cfg-if\",\n+ \"crossbeam-utils\",\n+]\n+\n+[[package]]\n+name = \"crossbeam-deque\"\n+version = \"0.8.1\"\n+source = \"registry+https://github.com/rust-lang/crates.io-index\"\n+checksum = \"6455c0ca19f0d2fbf751b908d5c55c1f5cbc65e03c4225427254b46890bdde1e\"\n+dependencies = [\n+ \"cfg-if\",\n+ \"crossbeam-epoch\",\n+ \"crossbeam-utils\",\n+]\n+\n+[[package]]\n+name = \"crossbeam-epoch\"\n+version = \"0.9.9\"\n+source = \"registry+https://github.com/rust-lang/crates.io-index\"\n+checksum = \"07db9d94cbd326813772c968ccd25999e5f8ae22f4f8d1b11effa37ef6ce281d\"\n+dependencies = [\n+ \"autocfg\",\n+ \"cfg-if\",\n+ \"crossbeam-utils\",\n+ \"memoffset\",\n+ \"once_cell\",\n+ \"scopeguard\",\n+]\n+\n+[[package]]\n+name = \"crossbeam-utils\"\n+version = \"0.8.10\"\n+source = \"registry+https://github.com/rust-lang/crates.io-index\"\n+checksum = \"7d82ee10ce34d7bc12c2122495e7593a9c41347ecdd64185af4ecf72cb1a7f83\"\n+dependencies = [\n+ \"cfg-if\",\n+ \"once_cell\",\n+]\n+\n+[[package]]\n+name = \"csv\"\n+version = \"1.1.6\"\n+source = \"registry+https://github.com/rust-lang/crates.io-index\"\n+checksum = \"22813a6dc45b335f9bade10bf7271dc477e81113e89eb251a0bc2a8a81c536e1\"\n+dependencies = [\n+ \"bstr\",\n+ \"csv-core\",\n+ \"itoa 0.4.8\",\n+ \"ryu\",\n+ \"serde\",\n+]\n+\n+[[package]]\n+name = \"csv-core\"\n+version = \"0.1.10\"\n+source = \"registry+https://github.com/rust-lang/crates.io-index\"\n+checksum = \"2b2466559f260f48ad25fe6317b3c8dac77b5bdb5763ac7d9d6103530663bc90\"\n+dependencies = [\n+ \"memchr\",\n+]\n+\n+[[package]]\n+name = \"diff\"\n+version = \"0.1.13\"\n+dependencies = [\n+ \"criterion\",\n+ \"quickcheck\",\n+ \"speculate\",\n+]\n+\n+[[package]]\n+name = \"either\"\n+version = \"1.6.1\"\n+source = \"registry+https://github.com/rust-lang/crates.io-index\"\n+checksum = \"e78d4f1cc4ae33bbfc157ed5d5a5ef3bc29227303d595861deb238fcec4e9457\"\n+\n+[[package]]\n+name = \"env_logger\"\n+version = \"0.8.4\"\n+source = \"registry+https://github.com/rust-lang/crates.io-index\"\n+checksum = \"a19187fea3ac7e84da7dacf48de0c45d63c6a76f9490dae389aead16c243fce3\"\n+dependencies = [\n+ \"log\",\n+ \"regex\",\n+]\n+\n+[[package]]\n+name = \"getrandom\"\n+version = \"0.2.7\"\n+source = \"registry+https://github.com/rust-lang/crates.io-index\"\n+checksum = \"4eb1a864a501629691edf6c15a593b7a51eebaa1e8468e9ddc623de7c9b58ec6\"\n+dependencies = [\n+ \"cfg-if\",\n+ \"libc\",\n+ \"wasi\",\n+]\n+\n+[[package]]\n+name = \"half\"\n+version = \"1.8.2\"\n+source = \"registry+https://github.com/rust-lang/crates.io-index\"\n+checksum = \"eabb4a44450da02c90444cf74558da904edde8fb4e9035a9a6a4e15445af0bd7\"\n+\n+[[package]]\n+name = \"hermit-abi\"\n+version = \"0.1.19\"\n+source = \"registry+https://github.com/rust-lang/crates.io-index\"\n+checksum = \"62b467343b94ba476dcb2500d242dadbb39557df889310ac77c5d99100aaac33\"\n+dependencies = [\n+ \"libc\",\n+]\n+\n+[[package]]\n+name = \"itertools\"\n+version = \"0.10.3\"\n+source = \"registry+https://github.com/rust-lang/crates.io-index\"\n+checksum = \"a9a9d19fa1e79b6215ff29b9d6880b706147f16e9b1dbb1e4e5947b5b02bc5e3\"\n+dependencies = [\n+ \"either\",\n+]\n+\n+[[package]]\n+name = \"itoa\"\n+version = \"0.4.8\"\n+source = \"registry+https://github.com/rust-lang/crates.io-index\"\n+checksum = \"b71991ff56294aa922b450139ee08b3bfc70982c6b2c7562771375cf73542dd4\"\n+\n+[[package]]\n+name = \"itoa\"\n+version = \"1.0.2\"\n+source = \"registry+https://github.com/rust-lang/crates.io-index\"\n+checksum = \"112c678d4050afce233f4f2852bb2eb519230b3cf12f33585275537d7e41578d\"\n+\n+[[package]]\n+name = \"js-sys\"\n+version = \"0.3.58\"\n+source = \"registry+https://github.com/rust-lang/crates.io-index\"\n+checksum = \"c3fac17f7123a73ca62df411b1bf727ccc805daa070338fda671c86dac1bdc27\"\n+dependencies = [\n+ \"wasm-bindgen\",\n+]\n+\n+[[package]]\n+name = \"lazy_static\"\n+version = \"1.4.0\"\n+source = \"registry+https://github.com/rust-lang/crates.io-index\"\n+checksum = \"e2abad23fbc42b3700f2f279844dc832adb2b2eb069b2df918f455c4e18cc646\"\n+\n+[[package]]\n+name = \"libc\"\n+version = \"0.2.126\"\n+source = \"registry+https://github.com/rust-lang/crates.io-index\"\n+checksum = \"349d5a591cd28b49e1d1037471617a32ddcda5731b99419008085f72d5a53836\"\n+\n+[[package]]\n+name = \"log\"\n+version = \"0.4.17\"\n+source = \"registry+https://github.com/rust-lang/crates.io-index\"\n+checksum = \"abb12e687cfb44aa40f41fc3978ef76448f9b6038cad6aef4259d3c095a2382e\"\n+dependencies = [\n+ \"cfg-if\",\n+]\n+\n+[[package]]\n+name = \"memchr\"\n+version = \"2.5.0\"\n+source = \"registry+https://github.com/rust-lang/crates.io-index\"\n+checksum = \"2dffe52ecf27772e601905b7522cb4ef790d2cc203488bbd0e2fe85fcb74566d\"\n+\n+[[package]]\n+name = \"memoffset\"\n+version = \"0.6.5\"\n+source = \"registry+https://github.com/rust-lang/crates.io-index\"\n+checksum = \"5aa361d4faea93603064a027415f07bd8e1d5c88c9fbf68bf56a285428fd79ce\"\n+dependencies = [\n+ \"autocfg\",\n+]\n+\n+[[package]]\n+name = \"num-traits\"\n+version = \"0.2.15\"\n+source = \"registry+https://github.com/rust-lang/crates.io-index\"\n+checksum = \"578ede34cf02f8924ab9447f50c28075b4d3e5b269972345e7e0372b38c6cdcd\"\n+dependencies = [\n+ \"autocfg\",\n+]\n+\n+[[package]]\n+name = \"num_cpus\"\n+version = \"1.13.1\"\n+source = \"registry+https://github.com/rust-lang/crates.io-index\"\n+checksum = \"19e64526ebdee182341572e50e9ad03965aa510cd94427a4549448f285e957a1\"\n+dependencies = [\n+ \"hermit-abi\",\n+ \"libc\",\n+]\n+\n+[[package]]\n+name = \"once_cell\"\n+version = \"1.12.0\"\n+source = \"registry+https://github.com/rust-lang/crates.io-index\"\n+checksum = \"7709cef83f0c1f58f666e746a08b21e0085f7440fa6a29cc194d68aac97a4225\"\n+\n+[[package]]\n+name = \"oorandom\"\n+version = \"11.1.3\"\n+source = \"registry+https://github.com/rust-lang/crates.io-index\"\n+checksum = \"0ab1bc2a289d34bd04a330323ac98a1b4bc82c9d9fcb1e66b63caa84da26b575\"\n+\n+[[package]]\n+name = \"plotters\"\n+version = \"0.3.1\"\n+source = \"registry+https://github.com/rust-lang/crates.io-index\"\n+checksum = \"32a3fd9ec30b9749ce28cd91f255d569591cdf937fe280c312143e3c4bad6f2a\"\n+dependencies = [\n+ \"num-traits\",\n+ \"plotters-backend\",\n+ \"plotters-svg\",\n+ \"wasm-bindgen\",\n+ \"web-sys\",\n+]\n+\n+[[package]]\n+name = \"plotters-backend\"\n+version = \"0.3.2\"\n+source = \"registry+https://github.com/rust-lang/crates.io-index\"\n+checksum = \"d88417318da0eaf0fdcdb51a0ee6c3bed624333bff8f946733049380be67ac1c\"\n+\n+[[package]]\n+name = \"plotters-svg\"\n+version = \"0.3.1\"\n+source = \"registry+https://github.com/rust-lang/crates.io-index\"\n+checksum = \"521fa9638fa597e1dc53e9412a4f9cefb01187ee1f7413076f9e6749e2885ba9\"\n+dependencies = [\n+ \"plotters-backend\",\n+]\n+\n+[[package]]\n+name = \"proc-macro2\"\n+version = \"0.4.30\"\n+source = \"registry+https://github.com/rust-lang/crates.io-index\"\n+checksum = \"cf3d2011ab5c909338f7887f4fc896d35932e29146c12c8d01da6b22a80ba759\"\n+dependencies = [\n+ \"unicode-xid\",\n+]\n+\n+[[package]]\n+name = \"proc-macro2\"\n+version = \"1.0.40\"\n+source = \"registry+https://github.com/rust-lang/crates.io-index\"\n+checksum = \"dd96a1e8ed2596c337f8eae5f24924ec83f5ad5ab21ea8e455d3566c69fbcaf7\"\n+dependencies = [\n+ \"unicode-ident\",\n+]\n+\n+[[package]]\n+name = \"quickcheck\"\n+version = \"1.0.3\"\n+source = \"registry+https://github.com/rust-lang/crates.io-index\"\n+checksum = \"588f6378e4dd99458b60ec275b4477add41ce4fa9f64dcba6f15adccb19b50d6\"\n+dependencies = [\n+ \"env_logger\",\n+ \"log\",\n+ \"rand\",\n+]\n+\n+[[package]]\n+name = \"quote\"\n+version = \"0.6.13\"\n+source = \"registry+https://github.com/rust-lang/crates.io-index\"\n+checksum = \"6ce23b6b870e8f94f81fb0a363d65d86675884b34a09043c81e5562f11c1f8e1\"\n+dependencies = [\n+ \"proc-macro2 0.4.30\",\n+]\n+\n+[[package]]\n+name = \"quote\"\n+version = \"1.0.20\"\n+source = \"registry+https://github.com/rust-lang/crates.io-index\"\n+checksum = \"3bcdf212e9776fbcb2d23ab029360416bb1706b1aea2d1a5ba002727cbcab804\"\n+dependencies = [\n+ \"proc-macro2 1.0.40\",\n+]\n+\n+[[package]]\n+name = \"rand\"\n+version = \"0.8.5\"\n+source = \"registry+https://github.com/rust-lang/crates.io-index\"\n+checksum = \"34af8d1a0e25924bc5b7c43c079c942339d8f0a8b57c39049bef581b46327404\"\n+dependencies = [\n+ \"rand_core\",\n+]\n+\n+[[package]]\n+name = \"rand_core\"\n+version = \"0.6.3\"\n+source = \"registry+https://github.com/rust-lang/crates.io-index\"\n+checksum = \"d34f1408f55294453790c48b2f1ebbb1c5b4b7563eb1f418bcfcfdbb06ebb4e7\"\n+dependencies = [\n+ \"getrandom\",\n+]\n+\n+[[package]]\n+name = \"rayon\"\n+version = \"1.5.3\"\n+source = \"registry+https://github.com/rust-lang/crates.io-index\"\n+checksum = \"bd99e5772ead8baa5215278c9b15bf92087709e9c1b2d1f97cdb5a183c933a7d\"\n+dependencies = [\n+ \"autocfg\",\n+ \"crossbeam-deque\",\n+ \"either\",\n+ \"rayon-core\",\n+]\n+\n+[[package]]\n+name = \"rayon-core\"\n+version = \"1.9.3\"\n+source = \"registry+https://github.com/rust-lang/crates.io-index\"\n+checksum = \"258bcdb5ac6dad48491bb2992db6b7cf74878b0384908af124823d118c99683f\"\n+dependencies = [\n+ \"crossbeam-channel\",\n+ \"crossbeam-deque\",\n+ \"crossbeam-utils\",\n+ \"num_cpus\",\n+]\n+\n+[[package]]\n+name = \"regex\"\n+version = \"1.5.6\"\n+source = \"registry+https://github.com/rust-lang/crates.io-index\"\n+checksum = \"d83f127d94bdbcda4c8cc2e50f6f84f4b611f69c902699ca385a39c3a75f9ff1\"\n+dependencies = [\n+ \"aho-corasick\",\n+ \"memchr\",\n+ \"regex-syntax\",\n+]\n+\n+[[package]]\n+name = \"regex-automata\"\n+version = \"0.1.10\"\n+source = \"registry+https://github.com/rust-lang/crates.io-index\"\n+checksum = \"6c230d73fb8d8c1b9c0b3135c5142a8acee3a0558fb8db5cf1cb65f8d7862132\"\n+\n+[[package]]\n+name = \"regex-syntax\"\n+version = \"0.6.26\"\n+source = \"registry+https://github.com/rust-lang/crates.io-index\"\n+checksum = \"49b3de9ec5dc0a3417da371aab17d729997c15010e7fd24ff707773a33bddb64\"\n+\n+[[package]]\n+name = \"rustc_version\"\n+version = \"0.4.0\"\n+source = \"registry+https://github.com/rust-lang/crates.io-index\"\n+checksum = \"bfa0f585226d2e68097d4f95d113b15b83a82e819ab25717ec0590d9584ef366\"\n+dependencies = [\n+ \"semver\",\n+]\n+\n+[[package]]\n+name = \"ryu\"\n+version = \"1.0.10\"\n+source = \"registry+https://github.com/rust-lang/crates.io-index\"\n+checksum = \"f3f6f92acf49d1b98f7a81226834412ada05458b7364277387724a237f062695\"\n+\n+[[package]]\n+name = \"same-file\"\n+version = \"1.0.6\"\n+source = \"registry+https://github.com/rust-lang/crates.io-index\"\n+checksum = \"93fc1dc3aaa9bfed95e02e6eadabb4baf7e3078b0bd1b4d7b6b0b68378900502\"\n+dependencies = [\n+ \"winapi-util\",\n+]\n+\n+[[package]]\n+name = \"scopeguard\"\n+version = \"1.1.0\"\n+source = \"registry+https://github.com/rust-lang/crates.io-index\"\n+checksum = \"d29ab0c6d3fc0ee92fe66e2d99f700eab17a8d57d1c1d3b748380fb20baa78cd\"\n+\n+[[package]]\n+name = \"semver\"\n+version = \"1.0.10\"\n+source = \"registry+https://github.com/rust-lang/crates.io-index\"\n+checksum = \"a41d061efea015927ac527063765e73601444cdc344ba855bc7bd44578b25e1c\"\n+\n+[[package]]\n+name = \"serde\"\n+version = \"1.0.137\"\n+source = \"registry+https://github.com/rust-lang/crates.io-index\"\n+checksum = \"61ea8d54c77f8315140a05f4c7237403bf38b72704d031543aa1d16abbf517d1\"\n+\n+[[package]]\n+name = \"serde_cbor\"\n+version = \"0.11.2\"\n+source = \"registry+https://github.com/rust-lang/crates.io-index\"\n+checksum = \"2bef2ebfde456fb76bbcf9f59315333decc4fda0b2b44b420243c11e0f5ec1f5\"\n+dependencies = [\n+ \"half\",\n+ \"serde\",\n+]\n+\n+[[package]]\n+name = \"serde_derive\"\n+version = \"1.0.137\"\n+source = \"registry+https://github.com/rust-lang/crates.io-index\"\n+checksum = \"1f26faba0c3959972377d3b2d306ee9f71faee9714294e41bb777f83f88578be\"\n+dependencies = [\n+ \"proc-macro2 1.0.40\",\n+ \"quote 1.0.20\",\n+ \"syn 1.0.98\",\n+]\n+\n+[[package]]\n+name = \"serde_json\"\n+version = \"1.0.81\"\n+source = \"registry+https://github.com/rust-lang/crates.io-index\"\n+checksum = \"9b7ce2b32a1aed03c558dc61a5cd328f15aff2dbc17daad8fb8af04d2100e15c\"\n+dependencies = [\n+ \"itoa 1.0.2\",\n+ \"ryu\",\n+ \"serde\",\n+]\n+\n+[[package]]\n+name = \"speculate\"\n+version = \"0.1.2\"\n+source = \"registry+https://github.com/rust-lang/crates.io-index\"\n+checksum = \"3cb45d32c801cddf308603926b7c3760db4fa2c66d84c64376b64eec860d005e\"\n+dependencies = [\n+ \"proc-macro2 0.4.30\",\n+ \"quote 0.6.13\",\n+ \"syn 0.14.9\",\n+ \"unicode-xid\",\n+]\n+\n+[[package]]\n+name = \"syn\"\n+version = \"0.14.9\"\n+source = \"registry+https://github.com/rust-lang/crates.io-index\"\n+checksum = \"261ae9ecaa397c42b960649561949d69311f08eeaea86a65696e6e46517cf741\"\n+dependencies = [\n+ \"proc-macro2 0.4.30\",\n+ \"quote 0.6.13\",\n+ \"unicode-xid\",\n+]\n+\n+[[package]]\n+name = \"syn\"\n+version = \"1.0.98\"\n+source = \"registry+https://github.com/rust-lang/crates.io-index\"\n+checksum = \"c50aef8a904de4c23c788f104b7dddc7d6f79c647c7c8ce4cc8f73eb0ca773dd\"\n+dependencies = [\n+ \"proc-macro2 1.0.40\",\n+ \"quote 1.0.20\",\n+ \"unicode-ident\",\n+]\n+\n+[[package]]\n+name = \"textwrap\"\n+version = \"0.11.0\"\n+source = \"registry+https://github.com/rust-lang/crates.io-index\"\n+checksum = \"d326610f408c7a4eb6f51c37c330e496b08506c9457c9d34287ecc38809fb060\"\n+dependencies = [\n+ \"unicode-width\",\n+]\n+\n+[[package]]\n+name = \"tinytemplate\"\n+version = \"1.2.1\"\n+source = \"registry+https://github.com/rust-lang/crates.io-index\"\n+checksum = \"be4d6b5f19ff7664e8c98d03e2139cb510db9b0a60b55f8e8709b689d939b6bc\"\n+dependencies = [\n+ \"serde\",\n+ \"serde_json\",\n+]\n+\n+[[package]]\n+name = \"unicode-ident\"\n+version = \"1.0.1\"\n+source = \"registry+https://github.com/rust-lang/crates.io-index\"\n+checksum = \"5bd2fe26506023ed7b5e1e315add59d6f584c621d037f9368fea9cfb988f368c\"\n+\n+[[package]]\n+name = \"unicode-width\"\n+version = \"0.1.9\"\n+source = \"registry+https://github.com/rust-lang/crates.io-index\"\n+checksum = \"3ed742d4ea2bd1176e236172c8429aaf54486e7ac098db29ffe6529e0ce50973\"\n+\n+[[package]]\n+name = \"unicode-xid\"\n+version = \"0.1.0\"\n+source = \"registry+https://github.com/rust-lang/crates.io-index\"\n+checksum = \"fc72304796d0818e357ead4e000d19c9c174ab23dc11093ac919054d20a6a7fc\"\n+\n+[[package]]\n+name = \"walkdir\"\n+version = \"2.3.2\"\n+source = \"registry+https://github.com/rust-lang/crates.io-index\"\n+checksum = \"808cf2735cd4b6866113f648b791c6adc5714537bc222d9347bb203386ffda56\"\n+dependencies = [\n+ \"same-file\",\n+ \"winapi\",\n+ \"winapi-util\",\n+]\n+\n+[[package]]\n+name = \"wasi\"\n+version = \"0.11.0+wasi-snapshot-preview1\"\n+source = \"registry+https://github.com/rust-lang/crates.io-index\"\n+checksum = \"9c8d87e72b64a3b4db28d11ce29237c246188f4f51057d65a7eab63b7987e423\"\n+\n+[[package]]\n+name = \"wasm-bindgen\"\n+version = \"0.2.81\"\n+source = \"registry+https://github.com/rust-lang/crates.io-index\"\n+checksum = \"7c53b543413a17a202f4be280a7e5c62a1c69345f5de525ee64f8cfdbc954994\"\n+dependencies = [\n+ \"cfg-if\",\n+ \"wasm-bindgen-macro\",\n+]\n+\n+[[package]]\n+name = \"wasm-bindgen-backend\"\n+version = \"0.2.81\"\n+source = \"registry+https://github.com/rust-lang/crates.io-index\"\n+checksum = \"5491a68ab4500fa6b4d726bd67408630c3dbe9c4fe7bda16d5c82a1fd8c7340a\"\n+dependencies = [\n+ \"bumpalo\",\n+ \"lazy_static\",\n+ \"log\",\n+ \"proc-macro2 1.0.40\",\n+ \"quote 1.0.20\",\n+ \"syn 1.0.98\",\n+ \"wasm-bindgen-shared\",\n+]\n+\n+[[package]]\n+name = \"wasm-bindgen-macro\"\n+version = \"0.2.81\"\n+source = \"registry+https://github.com/rust-lang/crates.io-index\"\n+checksum = \"c441e177922bc58f1e12c022624b6216378e5febc2f0533e41ba443d505b80aa\"\n+dependencies = [\n+ \"quote 1.0.20\",\n+ \"wasm-bindgen-macro-support\",\n+]\n+\n+[[package]]\n+name = \"wasm-bindgen-macro-support\"\n+version = \"0.2.81\"\n+source = \"registry+https://github.com/rust-lang/crates.io-index\"\n+checksum = \"7d94ac45fcf608c1f45ef53e748d35660f168490c10b23704c7779ab8f5c3048\"\n+dependencies = [\n+ \"proc-macro2 1.0.40\",\n+ \"quote 1.0.20\",\n+ \"syn 1.0.98\",\n+ \"wasm-bindgen-backend\",\n+ \"wasm-bindgen-shared\",\n+]\n+\n+[[package]]\n+name = \"wasm-bindgen-shared\"\n+version = \"0.2.81\"\n+source = \"registry+https://github.com/rust-lang/crates.io-index\"\n+checksum = \"6a89911bd99e5f3659ec4acf9c4d93b0a90fe4a2a11f15328472058edc5261be\"\n+\n+[[package]]\n+name = \"web-sys\"\n+version = \"0.3.58\"\n+source = \"registry+https://github.com/rust-lang/crates.io-index\"\n+checksum = \"2fed94beee57daf8dd7d51f2b15dc2bcde92d7a72304cdf662a4371008b71b90\"\n+dependencies = [\n+ \"js-sys\",\n+ \"wasm-bindgen\",\n+]\n+\n+[[package]]\n+name = \"winapi\"\n+version = \"0.3.9\"\n+source = \"registry+https://github.com/rust-lang/crates.io-index\"\n+checksum = \"5c839a674fcd7a98952e593242ea400abe93992746761e38641405d28b00f419\"\n+dependencies = [\n+ \"winapi-i686-pc-windows-gnu\",\n+ \"winapi-x86_64-pc-windows-gnu\",\n+]\n+\n+[[package]]\n+name = \"winapi-i686-pc-windows-gnu\"\n+version = \"0.4.0\"\n+source = \"registry+https://github.com/rust-lang/crates.io-index\"\n+checksum = \"ac3b87c63620426dd9b991e5ce0329eff545bccbbb34f3be09ff6fb6ab51b7b6\"\n+\n+[[package]]\n+name = \"winapi-util\"\n+version = \"0.1.5\"\n+source = \"registry+https://github.com/rust-lang/crates.io-index\"\n+checksum = \"70ec6ce85bb158151cae5e5c87f95a8e97d2c0c4b001223f33a334e3ce5de178\"\n+dependencies = [\n+ \"winapi\",\n+]\n+\n+[[package]]\n+name = \"winapi-x86_64-pc-windows-gnu\"\n+version = \"0.4.0\"\n+source = \"registry+https://github.com/rust-lang/crates.io-index\"\n+checksum = \"712e227841d057c1ee1cd2fb22fa7e5a5461ae8e48fa2ca79ec42cfc1931183f\"\ndiff --git a/rust-vendor/diff/Cargo.toml b/rust-vendor/diff/Cargo.toml\nnew file mode 100644\nindex 0000000..757e518\n--- /dev/null\n+++ b/rust-vendor/diff/Cargo.toml\n@@ -0,0 +1,33 @@\n+# THIS FILE IS AUTOMATICALLY GENERATED BY CARGO\n+#\n+# When uploading crates to the registry Cargo will automatically\n+# \"normalize\" Cargo.toml files for maximal compatibility\n+# with all versions of Cargo and also rewrite `path` dependencies\n+# to registry (e.g., crates.io) dependencies.\n+#\n+# If you are reading this file be aware that the original Cargo.toml\n+# will likely look very different (and much more reasonable).\n+# See Cargo.toml.orig for the original contents.\n+\n+[package]\n+name = \"diff\"\n+version = \"0.1.13\"\n+authors = [\"Utkarsh Kukreti <utkarshkukreti@gmail.com>\"]\n+description = \"An LCS based slice and string diffing implementation.\"\n+homepage = \"https://github.com/utkarshkukreti/diff.rs\"\n+documentation = \"https://docs.rs/diff\"\n+license = \"MIT OR Apache-2.0\"\n+repository = \"https://github.com/utkarshkukreti/diff.rs\"\n+\n+[[bench]]\n+name = \"benches\"\n+harness = false\n+\n+[dev-dependencies.criterion]\n+version = \"0.3.5\"\n+\n+[dev-dependencies.quickcheck]\n+version = \"1.0.3\"\n+\n+[dev-dependencies.speculate]\n+version = \"0.1.2\"\ndiff --git a/rust-vendor/diff/LICENSE-APACHE b/rust-vendor/diff/LICENSE-APACHE\nnew file mode 100644\nindex 0000000..8dada3e\n--- /dev/null\n+++ b/rust-vendor/diff/LICENSE-APACHE\n@@ -0,0 +1,201 @@\n+                                 Apache License\n+                           Version 2.0, January 2004\n+                        http://www.apache.org/licenses/\n+\n+   TERMS AND CONDITIONS FOR USE, REPRODUCTION, AND DISTRIBUTION\n+\n+   1. Definitions.\n+\n+      \"License\" shall mean the terms and conditions for use, reproduction,\n+      and distribution as defined by Sections 1 through 9 of this document.\n+\n+      \"Licensor\" shall mean the copyright owner or entity authorized by\n+      the copyright owner that is granting the License.\n+\n+      \"Legal Entity\" shall mean the union of the acting entity and all\n+      other entities that control, are controlled by, or are under common\n+      control with that entity. For the purposes of this definition,\n+      \"control\" means (i) the power, direct or indirect, to cause the\n+      direction or management of such entity, whether by contract or\n+      otherwise, or (ii) ownership of fifty percent (50%) or more of the\n+      outstanding shares, or (iii) beneficial ownership of such entity.\n+\n+      \"You\" (or \"Your\") shall mean an individual or Legal Entity\n+      exercising permissions granted by this License.\n+\n+      \"Source\" form shall mean the preferred form for making modifications,\n+      including but not limited to software source code, documentation\n+      source, and configuration files.\n+\n+      \"Object\" form shall mean any form resulting from mechanical\n+      transformation or translation of a Source form, including but\n+      not limited to compiled object code, generated documentation,\n+      and conversions to other media types.\n+\n+      \"Work\" shall mean the work of authorship, whether in Source or\n+      Object form, made available under the License, as indicated by a\n+      copyright notice that is included in or attached to the work\n+      (an example is provided in the Appendix below).\n+\n+      \"Derivative Works\" shall mean any work, whether in Source or Object\n+      form, that is based on (or derived from) the Work and for which the\n+      editorial revisions, annotations, elaborations, or other modifications\n+      represent, as a whole, an original work of authorship. For the purposes\n+      of this License, Derivative Works shall not include works that remain\n+      separable from, or merely link (or bind by name) to the interfaces of,\n+      the Work and Derivative Works thereof.\n+\n+      \"Contribution\" shall mean any work of authorship, including\n+      the original version of the Work and any modifications or additions\n+      to that Work or Derivative Works thereof, that is intentionally\n+      submitted to Licensor for inclusion in the Work by the copyright owner\n+      or by an individual or Legal Entity authorized to submit on behalf of\n+      the copyright owner. For the purposes of this definition, \"submitted\"\n+      means any form of electronic, verbal, or written communication sent\n+      to the Licensor or its representatives, including but not limited to\n+      communication on electronic mailing lists, source code control systems,\n+      and issue tracking systems that are managed by, or on behalf of, the\n+      Licensor for the purpose of discussing and improving the Work, but\n+      excluding communication that is conspicuously marked or otherwise\n+      designated in writing by the copyright owner as \"Not a Contribution.\"\n+\n+      \"Contributor\" shall mean Licensor and any individual or Legal Entity\n+      on behalf of whom a Contribution has been received by Licensor and\n+      subsequently incorporated within the Work.\n+\n+   2. Grant of Copyright License. Subject to the terms and conditions of\n+      this License, each Contributor hereby grants to You a perpetual,\n+      worldwide, non-exclusive, no-charge, royalty-free, irrevocable\n+      copyright license to reproduce, prepare Derivative Works of,\n+      publicly display, publicly perform, sublicense, and distribute the\n+      Work and such Derivative Works in Source or Object form.\n+\n+   3. Grant of Patent License. Subject to the terms and conditions of\n+      this License, each Contributor hereby grants to You a perpetual,\n+      worldwide, non-exclusive, no-charge, royalty-free, irrevocable\n+      (except as stated in this section) patent license to make, have made,\n+      use, offer to sell, sell, import, and otherwise transfer the Work,\n+      where such license applies only to those patent claims licensable\n+      by such Contributor that are necessarily infringed by their\n+      Contribution(s) alone or by combination of their Contribution(s)\n+      with the Work to which such Contribution(s) was submitted. If You\n+      institute patent litigation against any entity (including a\n+      cross-claim or counterclaim in a lawsuit) alleging that the Work\n+      or a Contribution incorporated within the Work constitutes direct\n+      or contributory patent infringement, then any patent licenses\n+      granted to You under this License for that Work shall terminate\n+      as of the date such litigation is filed.\n+\n+   4. Redistribution. You may reproduce and distribute copies of the\n+      Work or Derivative Works thereof in any medium, with or without\n+      modifications, and in Source or Object form, provided that You\n+      meet the following conditions:\n+\n+      (a) You must give any other recipients of the Work or\n+          Derivative Works a copy of this License; and\n+\n+      (b) You must cause any modified files to carry prominent notices\n+          stating that You changed the files; and\n+\n+      (c) You must retain, in the Source form of any Derivative Works\n+          that You distribute, all copyright, patent, trademark, and\n+          attribution notices from the Source form of the Work,\n+          excluding those notices that do not pertain to any part of\n+          the Derivative Works; and\n+\n+      (d) If the Work includes a \"NOTICE\" text file as part of its\n+          distribution, then any Derivative Works that You distribute must\n+          include a readable copy of the attribution notices contained\n+          within such NOTICE file, excluding those notices that do not\n+          pertain to any part of the Derivative Works, in at least one\n+          of the following places: within a NOTICE text file distributed\n+          as part of the Derivative Works; within the Source form or\n+          documentation, if provided along with the Derivative Works; or,\n+          within a display generated by the Derivative Works, if and\n+          wherever such third-party notices normally appear. The contents\n+          of the NOTICE file are for informational purposes only and\n+          do not modify the License. You may add Your own attribution\n+          notices within Derivative Works that You distribute, alongside\n+          or as an addendum to the NOTICE text from the Work, provided\n+          that such additional attribution notices cannot be construed\n+          as modifying the License.\n+\n+      You may add Your own copyright statement to Your modifications and\n+      may provide additional or different license terms and conditions\n+      for use, reproduction, or distribution of Your modifications, or\n+      for any such Derivative Works as a whole, provided Your use,\n+      reproduction, and distribution of the Work otherwise complies with\n+      the conditions stated in this License.\n+\n+   5. Submission of Contributions. Unless You explicitly state otherwise,\n+      any Contribution intentionally submitted for inclusion in the Work\n+      by You to the Licensor shall be under the terms and conditions of\n+      this License, without any additional terms or conditions.\n+      Notwithstanding the above, nothing herein shall supersede or modify\n+      the terms of any separate license agreement you may have executed\n+      with Licensor regarding such Contributions.\n+\n+   6. Trademarks. This License does not grant permission to use the trade\n+      names, trademarks, service marks, or product names of the Licensor,\n+      except as required for reasonable and customary use in describing the\n+      origin of the Work and reproducing the content of the NOTICE file.\n+\n+   7. Disclaimer of Warranty. Unless required by applicable law or\n+      agreed to in writing, Licensor provides the Work (and each\n+      Contributor provides its Contributions) on an \"AS IS\" BASIS,\n+      WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or\n+      implied, including, without limitation, any warranties or conditions\n+      of TITLE, NON-INFRINGEMENT, MERCHANTABILITY, or FITNESS FOR A\n+      PARTICULAR PURPOSE. You are solely responsible for determining the\n+      appropriateness of using or redistributing the Work and assume any\n+      risks associated with Your exercise of permissions under this License.\n+\n+   8. Limitation of Liability. In no event and under no legal theory,\n+      whether in tort (including negligence), contract, or otherwise,\n+      unless required by applicable law (such as deliberate and grossly\n+      negligent acts) or agreed to in writing, shall any Contributor be\n+      liable to You for damages, including any direct, indirect, special,\n+      incidental, or consequential damages of any character arising as a\n+      result of this License or out of the use or inability to use the\n+      Work (including but not limited to damages for loss of goodwill,\n+      work stoppage, computer failure or malfunction, or any and all\n+      other commercial damages or losses), even if such Contributor\n+      has been advised of the possibility of such damages.\n+\n+   9. Accepting Warranty or Additional Liability. While redistributing\n+      the Work or Derivative Works thereof, You may choose to offer,\n+      and charge a fee for, acceptance of support, warranty, indemnity,\n+      or other liability obligations and/or rights consistent with this\n+      License. However, in accepting such obligations, You may act only\n+      on Your own behalf and on Your sole responsibility, not on behalf\n+      of any other Contributor, and only if You agree to indemnify,\n+      defend, and hold each Contributor harmless for any liability\n+      incurred by, or claims asserted against, such Contributor by reason\n+      of your accepting any such warranty or additional liability.\n+\n+   END OF TERMS AND CONDITIONS\n+\n+   APPENDIX: How to apply the Apache License to your work.\n+\n+      To apply the Apache License to your work, attach the following\n+      boilerplate notice, with the fields enclosed by brackets \"{}\"\n+      replaced with your own identifying information. (Don't include\n+      the brackets!)  The text should be enclosed in the appropriate\n+      comment syntax for the file format. We also recommend that a\n+      file or class name and description of purpose be included on the\n+      same \"printed page\" as the copyright notice for easier\n+      identification within third-party archives.\n+\n+   Copyright {yyyy} {name of copyright owner}\n+\n+   Licensed under the Apache License, Version 2.0 (the \"License\");\n+   you may not use this file except in compliance with the License.\n+   You may obtain a copy of the License at\n+\n+       http://www.apache.org/licenses/LICENSE-2.0\n+\n+   Unless required by applicable law or agreed to in writing, software\n+   distributed under the License is distributed on an \"AS IS\" BASIS,\n+   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\n+   See the License for the specific language governing permissions and\n+   limitations under the License.\ndiff --git a/rust-vendor/diff/LICENSE-MIT b/rust-vendor/diff/LICENSE-MIT\nnew file mode 100644\nindex 0000000..410eb94\n--- /dev/null\n+++ b/rust-vendor/diff/LICENSE-MIT\n@@ -0,0 +1,21 @@\n+MIT License\n+\n+Copyright (c) 2015 Utkarsh Kukreti\n+\n+Permission is hereby granted, free of charge, to any person obtaining a copy\n+of this software and associated documentation files (the \"Software\"), to deal\n+in the Software without restriction, including without limitation the rights\n+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell\n+copies of the Software, and to permit persons to whom the Software is\n+furnished to do so, subject to the following conditions:\n+\n+The above copyright notice and this permission notice shall be included in all\n+copies or substantial portions of the Software.\n+\n+THE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR\n+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,\n+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE\n+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER\n+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,\n+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE\n+SOFTWARE.\ndiff --git a/rust-vendor/diff/README.md b/rust-vendor/diff/README.md\nnew file mode 100644\nindex 0000000..6447f5e\n--- /dev/null\n+++ b/rust-vendor/diff/README.md\n@@ -0,0 +1,46 @@\n+# diff.rs\n+\n+> An LCS based slice and string diffing implementation.\n+\n+## Install\n+\n+```toml\n+[dependencies]\n+diff = \"0.1\"\n+```\n+\n+## Example\n+\n+```rust\n+extern crate diff;\n+\n+fn main() {\n+    let left = \"foo\\nbar\\nbaz\\nquux\";\n+    let right = \"foo\\nbaz\\nbar\\nquux\";\n+\n+    for diff in diff::lines(left, right) {\n+        match diff {\n+            diff::Result::Left(l)    => println!(\"-{}\", l),\n+            diff::Result::Both(l, _) => println!(\" {}\", l),\n+            diff::Result::Right(r)   => println!(\"+{}\", r)\n+        }\n+    }\n+}\n+```\n+\n+prints\n+\n+```\n+ foo\n+-bar\n+ baz\n++bar\n+ quux\n+```\n+\n+## License\n+\n+`diff` is primarily distributed under the terms of both the MIT license and the\n+Apache License (Version 2.0).\n+\n+See LICENSE-APACHE, and LICENSE-MIT for details.\ndiff --git a/rust-vendor/diff/benches/benches.rs b/rust-vendor/diff/benches/benches.rs\nnew file mode 100644\nindex 0000000..691d44c\n--- /dev/null\n+++ b/rust-vendor/diff/benches/benches.rs\n@@ -0,0 +1,83 @@\n+extern crate criterion;\n+extern crate diff;\n+\n+use criterion::Criterion;\n+\n+criterion::criterion_group!(benches, bench_slice, bench_chars, bench_real_world);\n+criterion::criterion_main!(benches);\n+\n+fn bench_slice(c: &mut Criterion) {\n+    c.bench_function(\"empty\", |b| {\n+        let slice = [0u8; 0];\n+        b.iter(|| ::diff::slice(&slice, &slice));\n+    });\n+\n+    c.bench_function(\"10 equal items\", |b| {\n+        let slice = [0u8; 10];\n+        b.iter(|| ::diff::slice(&slice, &slice));\n+    });\n+\n+    c.bench_function(\"10 non-equal items\", |b| {\n+        let (left, right) = ([0u8; 10], [1u8; 10]);\n+        b.iter(|| ::diff::slice(&left, &right));\n+    });\n+\n+    c.bench_function(\"100 equal items\", |b| {\n+        let slice = [0u8; 100];\n+        b.iter(|| ::diff::slice(&slice, &slice));\n+    });\n+\n+    c.bench_function(\"100 non-equal items\", |b| {\n+        let (left, right) = ([0u8; 100], [1u8; 100]);\n+        b.iter(|| ::diff::slice(&left, &right));\n+    });\n+\n+    c.bench_function(\"1000 equal items\", |b| {\n+        let slice = [0u8; 1000];\n+        b.iter(|| ::diff::slice(&slice, &slice));\n+    });\n+\n+    c.bench_function(\"1000 non-equal items\", |b| {\n+        let (left, right) = ([0u8; 1000], [1u8; 1000]);\n+        b.iter(|| ::diff::slice(&left, &right));\n+    });\n+}\n+\n+fn bench_chars(c: &mut Criterion) {\n+    c.bench_function(\"1024 byte string, last 256 different\", |b| {\n+        let left = \"?\".repeat(768) + &\"_\".repeat(256);\n+        let right = \"?\".repeat(768) + &\"!\".repeat(256);\n+        assert_eq!(left.len(), right.len());\n+        b.iter(|| ::diff::chars(&left, &right));\n+    });\n+}\n+\n+fn bench_real_world(c: &mut Criterion) {\n+    let gitignores = std::fs::read_to_string(\"tests/data/gitignores.txt\")\n+        .unwrap()\n+        .split(\"!!!\")\n+        .filter_map(|str| (!str.is_empty()).then(|| str.into()))\n+        .collect::<Vec<String>>();\n+\n+    c.bench_function(\"diff::lines on gitignore files from rust-lang/rust\", |b| {\n+        b.iter(|| {\n+            for (i, left) in gitignores.iter().enumerate() {\n+                // diff with previous 3, itself, and next 3\n+                for right in gitignores[i.saturating_sub(3)..(i + 3).min(gitignores.len())].iter() {\n+                    ::diff::lines(&left, &right);\n+                }\n+            }\n+        })\n+    });\n+\n+    c.bench_function(\"diff::chars on gitignore files from rust-lang/rust\", |b| {\n+        b.iter(|| {\n+            for (i, left) in gitignores.iter().enumerate() {\n+                // diff with previous 2, itself, and next 2\n+                for right in gitignores[i.saturating_sub(2)..(i + 2).min(gitignores.len())].iter() {\n+                    ::diff::chars(&left, &right);\n+                }\n+            }\n+        })\n+    });\n+}\ndiff --git a/rust-vendor/diff/examples/simple.rs b/rust-vendor/diff/examples/simple.rs\nnew file mode 100644\nindex 0000000..07cbc20\n--- /dev/null\n+++ b/rust-vendor/diff/examples/simple.rs\n@@ -0,0 +1,14 @@\n+extern crate diff;\n+\n+fn main() {\n+    let left = \"foo\\nbar\\nbaz\\nquux\";\n+    let right = \"foo\\nbaz\\nbar\\nquux\";\n+\n+    for diff in diff::lines(left, right) {\n+        match diff {\n+            diff::Result::Left(l) => println!(\"-{}\", l),\n+            diff::Result::Both(l, _) => println!(\" {}\", l),\n+            diff::Result::Right(r) => println!(\"+{}\", r),\n+        }\n+    }\n+}\ndiff --git a/rust-vendor/diff/src/lib.rs b/rust-vendor/diff/src/lib.rs\nnew file mode 100644\nindex 0000000..1ab3b1e\n--- /dev/null\n+++ b/rust-vendor/diff/src/lib.rs\n@@ -0,0 +1,167 @@\n+/// A fragment of a computed diff.\n+#[derive(Clone, Debug, PartialEq)]\n+pub enum Result<T> {\n+    /// An element that only exists in the left input.\n+    Left(T),\n+    /// Elements that exist in both inputs.\n+    Both(T, T),\n+    /// An element that only exists in the right input.\n+    Right(T),\n+}\n+\n+/// Computes the diff between two slices.\n+pub fn slice<'a, T: PartialEq>(left: &'a [T], right: &'a [T]) -> Vec<Result<&'a T>> {\n+    do_diff(left, right, |t| t)\n+}\n+\n+/// Computes the diff between the lines of two strings.\n+pub fn lines<'a>(left: &'a str, right: &'a str) -> Vec<Result<&'a str>> {\n+    let mut diff = do_diff(\n+        &left.lines().collect::<Vec<_>>(),\n+        &right.lines().collect::<Vec<_>>(),\n+        |str| *str,\n+    );\n+    // str::lines() does not yield an empty str at the end if the str ends with\n+    // '\\n'. We handle this special case by inserting one last diff item,\n+    // depending on whether the left string ends with '\\n', or the right one,\n+    // or both.\n+    match (\n+        left.as_bytes().last().cloned(),\n+        right.as_bytes().last().cloned(),\n+    ) {\n+        (Some(b'\\n'), Some(b'\\n')) => {\n+            diff.push(Result::Both(&left[left.len()..], &right[right.len()..]))\n+        }\n+        (Some(b'\\n'), _) => diff.push(Result::Left(&left[left.len()..])),\n+        (_, Some(b'\\n')) => diff.push(Result::Right(&right[right.len()..])),\n+        _ => {}\n+    }\n+    diff\n+}\n+\n+/// Computes the diff between the chars of two strings.\n+pub fn chars<'a>(left: &'a str, right: &'a str) -> Vec<Result<char>> {\n+    do_diff(\n+        &left.chars().collect::<Vec<_>>(),\n+        &right.chars().collect::<Vec<_>>(),\n+        |char| *char,\n+    )\n+}\n+\n+fn do_diff<'a, T, F, U>(left: &'a [T], right: &'a [T], mapper: F) -> Vec<Result<U>>\n+where\n+    T: PartialEq,\n+    F: Fn(&'a T) -> U,\n+{\n+    let leading_equals = left\n+        .iter()\n+        .zip(right.iter())\n+        .take_while(|(l, r)| l == r)\n+        .count();\n+    let trailing_equals = left[leading_equals..]\n+        .iter()\n+        .rev()\n+        .zip(right[leading_equals..].iter().rev())\n+        .take_while(|(l, r)| l == r)\n+        .count();\n+\n+    let table: Vec2<u32> = {\n+        let left_diff_size = left.len() - leading_equals - trailing_equals;\n+        let right_diff_size = right.len() - leading_equals - trailing_equals;\n+\n+        let mut table = Vec2::new(0, [left_diff_size + 1, right_diff_size + 1]);\n+\n+        let left_skip = &left[leading_equals..left.len() - trailing_equals];\n+        let right_skip = &right[leading_equals..right.len() - trailing_equals];\n+\n+        for (i, l) in left_skip.iter().enumerate() {\n+            for (j, r) in right_skip.iter().enumerate() {\n+                table.set(\n+                    [i + 1, j + 1],\n+                    if l == r {\n+                        table.get([i, j]) + 1\n+                    } else {\n+                        *table.get([i, j + 1]).max(table.get([i + 1, j]))\n+                    },\n+                );\n+            }\n+        }\n+\n+        table\n+    };\n+\n+    let mut diff = Vec::with_capacity(left.len().max(right.len()));\n+\n+    diff.extend(\n+        left[..leading_equals]\n+            .iter()\n+            .zip(&right[..leading_equals])\n+            .map(|(l, r)| Result::Both(mapper(l), mapper(r))),\n+    );\n+\n+    {\n+        let start = diff.len();\n+        let mut i = table.len[0] - 1;\n+        let mut j = table.len[1] - 1;\n+        let left = &left[leading_equals..];\n+        let right = &right[leading_equals..];\n+\n+        loop {\n+            if j > 0 && (i == 0 || table.get([i, j]) == table.get([i, j - 1])) {\n+                j -= 1;\n+                diff.push(Result::Right(mapper(&right[j])));\n+            } else if i > 0 && (j == 0 || table.get([i, j]) == table.get([i - 1, j])) {\n+                i -= 1;\n+                diff.push(Result::Left(mapper(&left[i])));\n+            } else if i > 0 && j > 0 {\n+                i -= 1;\n+                j -= 1;\n+                diff.push(Result::Both(mapper(&left[i]), mapper(&right[j])));\n+            } else {\n+                break;\n+            }\n+        }\n+        diff[start..].reverse();\n+    }\n+\n+    diff.extend(\n+        left[left.len() - trailing_equals..]\n+            .iter()\n+            .zip(&right[right.len() - trailing_equals..])\n+            .map(|(l, r)| Result::Both(mapper(l), mapper(r))),\n+    );\n+\n+    diff\n+}\n+\n+struct Vec2<T> {\n+    len: [usize; 2],\n+    data: Vec<T>,\n+}\n+\n+impl<T> Vec2<T> {\n+    #[inline]\n+    fn new(value: T, len: [usize; 2]) -> Self\n+    where\n+        T: Clone,\n+    {\n+        Vec2 {\n+            len,\n+            data: vec![value; len[0] * len[1]],\n+        }\n+    }\n+\n+    #[inline]\n+    fn get(&self, index: [usize; 2]) -> &T {\n+        debug_assert!(index[0] < self.len[0]);\n+        debug_assert!(index[1] < self.len[1]);\n+        &self.data[index[0] * self.len[1] + index[1]]\n+    }\n+\n+    #[inline]\n+    fn set(&mut self, index: [usize; 2], value: T) {\n+        debug_assert!(index[0] < self.len[0]);\n+        debug_assert!(index[1] < self.len[1]);\n+        self.data[index[0] * self.len[1] + index[1]] = value;\n+    }\n+}\ndiff --git a/rust-vendor/glob/.cargo-checksum.json b/rust-vendor/glob/.cargo-checksum.json\nnew file mode 100644\nindex 0000000..7aa86b3\n--- /dev/null\n+++ b/rust-vendor/glob/.cargo-checksum.json\n@@ -0,0 +1 @@\n+{\"files\":{},\"package\":\"0cc23270f6e1808e30a928bdc84dea0b9b4136a8bc82338574f23baf47bbd280\"}\n\\ No newline at end of file\ndiff --git a/rust-vendor/glob/CHANGELOG.md b/rust-vendor/glob/CHANGELOG.md\nnew file mode 100644\nindex 0000000..52d7c25\n--- /dev/null\n+++ b/rust-vendor/glob/CHANGELOG.md\n@@ -0,0 +1,44 @@\n+# Changelog\n+\n+All notable changes to this project will be documented in this file.\n+\n+The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),\n+and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).\n+\n+## [Unreleased]\n+\n+## [0.3.3](https://github.com/rust-lang/glob/compare/v0.3.2...v0.3.3) - 2025-08-11\n+\n+- Optimize memory allocations ([#147](https://github.com/rust-lang/glob/pull/147))\n+- Bump the MSRV to 1.63 ([#172](https://github.com/rust-lang/glob/pull/172))\n+- Fix spelling in pattern documentation ([#164](https://github.com/rust-lang/glob/pull/164))\n+- Fix version numbers and some formatting ([#157](https://github.com/rust-lang/glob/pull/157))\n+- Style fixes ([#137](https://github.com/rust-lang/glob/pull/137))\n+\n+## [0.3.2](https://github.com/rust-lang/glob/compare/v0.3.1...v0.3.2) - 2024-12-28\n+\n+## What's Changed\n+* Add fs::symlink_metadata to detect broken symlinks by @kyoheiu in https://github.com/rust-lang/glob/pull/105\n+* Add support for windows verbatim disk paths by @nico-abram in https://github.com/rust-lang/glob/pull/112\n+* Respect `require_literal_leading_dot` option in `glob_with` method for path components by @JohnTitor in https://github.com/rust-lang/glob/pull/128\n+* Harden tests for symlink by @JohnTitor in https://github.com/rust-lang/glob/pull/127\n+* Remove \"extern crate\" directions from README by @zmitchell in https://github.com/rust-lang/glob/pull/131\n+* Add FIXME for tempdir by @JohnTitor in https://github.com/rust-lang/glob/pull/126\n+* Cache information about file type by @Kobzol in https://github.com/rust-lang/glob/pull/135\n+* Document the behaviour of ** with files by @Wilfred in https://github.com/rust-lang/glob/pull/138\n+* Add dependabot by @oriontvv in https://github.com/rust-lang/glob/pull/139\n+* Bump actions/checkout from 3 to 4 by @dependabot in https://github.com/rust-lang/glob/pull/140\n+* Check only (no longer test) at the MSRV by @tgross35 in https://github.com/rust-lang/glob/pull/151\n+* Add release-plz for automated releases by @tgross35 in https://github.com/rust-lang/glob/pull/150\n+\n+## New Contributors\n+* @kyoheiu made their first contribution in https://github.com/rust-lang/glob/pull/105\n+* @nico-abram made their first contribution in https://github.com/rust-lang/glob/pull/112\n+* @zmitchell made their first contribution in https://github.com/rust-lang/glob/pull/131\n+* @Kobzol made their first contribution in https://github.com/rust-lang/glob/pull/135\n+* @Wilfred made their first contribution in https://github.com/rust-lang/glob/pull/138\n+* @oriontvv made their first contribution in https://github.com/rust-lang/glob/pull/139\n+* @dependabot made their first contribution in https://github.com/rust-lang/glob/pull/140\n+* @tgross35 made their first contribution in https://github.com/rust-lang/glob/pull/151\n+\n+**Full Changelog**: https://github.com/rust-lang/glob/compare/0.3.1...0.3.2\ndiff --git a/rust-vendor/glob/Cargo.lock b/rust-vendor/glob/Cargo.lock\nnew file mode 100644\nindex 0000000..d1da04b\n--- /dev/null\n+++ b/rust-vendor/glob/Cargo.lock\n@@ -0,0 +1,107 @@\n+# This file is automatically @generated by Cargo.\n+# It is not intended for manual editing.\n+version = 3\n+\n+[[package]]\n+name = \"doc-comment\"\n+version = \"0.3.3\"\n+source = \"registry+https://github.com/rust-lang/crates.io-index\"\n+checksum = \"fea41bba32d969b513997752735605054bc0dfa92b4c56bf1189f2e174be7a10\"\n+\n+[[package]]\n+name = \"fuchsia-cprng\"\n+version = \"0.1.1\"\n+source = \"registry+https://github.com/rust-lang/crates.io-index\"\n+checksum = \"a06f77d526c1a601b7c4cdd98f54b5eaabffc14d5f2f0296febdc7f357c6d3ba\"\n+\n+[[package]]\n+name = \"glob\"\n+version = \"0.3.3\"\n+dependencies = [\n+ \"doc-comment\",\n+ \"tempdir\",\n+]\n+\n+[[package]]\n+name = \"libc\"\n+version = \"0.2.175\"\n+source = \"registry+https://github.com/rust-lang/crates.io-index\"\n+checksum = \"6a82ae493e598baaea5209805c49bbf2ea7de956d50d7da0da1164f9c6d28543\"\n+\n+[[package]]\n+name = \"rand\"\n+version = \"0.4.6\"\n+source = \"registry+https://github.com/rust-lang/crates.io-index\"\n+checksum = \"552840b97013b1a26992c11eac34bdd778e464601a4c2054b5f0bff7c6761293\"\n+dependencies = [\n+ \"fuchsia-cprng\",\n+ \"libc\",\n+ \"rand_core 0.3.1\",\n+ \"rdrand\",\n+ \"winapi\",\n+]\n+\n+[[package]]\n+name = \"rand_core\"\n+version = \"0.3.1\"\n+source = \"registry+https://github.com/rust-lang/crates.io-index\"\n+checksum = \"7a6fdeb83b075e8266dcc8762c22776f6877a63111121f5f8c7411e5be7eed4b\"\n+dependencies = [\n+ \"rand_core 0.4.2\",\n+]\n+\n+[[package]]\n+name = \"rand_core\"\n+version = \"0.4.2\"\n+source = \"registry+https://github.com/rust-lang/crates.io-index\"\n+checksum = \"9c33a3c44ca05fa6f1807d8e6743f3824e8509beca625669633be0acbdf509dc\"\n+\n+[[package]]\n+name = \"rdrand\"\n+version = \"0.4.0\"\n+source = \"registry+https://github.com/rust-lang/crates.io-index\"\n+checksum = \"678054eb77286b51581ba43620cc911abf02758c91f93f479767aed0f90458b2\"\n+dependencies = [\n+ \"rand_core 0.3.1\",\n+]\n+\n+[[package]]\n+name = \"remove_dir_all\"\n+version = \"0.5.3\"\n+source = \"registry+https://github.com/rust-lang/crates.io-index\"\n+checksum = \"3acd125665422973a33ac9d3dd2df85edad0f4ae9b00dafb1a05e43a9f5ef8e7\"\n+dependencies = [\n+ \"winapi\",\n+]\n+\n+[[package]]\n+name = \"tempdir\"\n+version = \"0.3.7\"\n+source = \"registry+https://github.com/rust-lang/crates.io-index\"\n+checksum = \"15f2b5fb00ccdf689e0149d1b1b3c03fead81c2b37735d812fa8bddbbf41b6d8\"\n+dependencies = [\n+ \"rand\",\n+ \"remove_dir_all\",\n+]\n+\n+[[package]]\n+name = \"winapi\"\n+version = \"0.3.9\"\n+source = \"registry+https://github.com/rust-lang/crates.io-index\"\n+checksum = \"5c839a674fcd7a98952e593242ea400abe93992746761e38641405d28b00f419\"\n+dependencies = [\n+ \"winapi-i686-pc-windows-gnu\",\n+ \"winapi-x86_64-pc-windows-gnu\",\n+]\n+\n+[[package]]\n+name = \"winapi-i686-pc-windows-gnu\"\n+version = \"0.4.0\"\n+source = \"registry+https://github.com/rust-lang/crates.io-index\"\n+checksum = \"ac3b87c63620426dd9b991e5ce0329eff545bccbbb34f3be09ff6fb6ab51b7b6\"\n+\n+[[package]]\n+name = \"winapi-x86_64-pc-windows-gnu\"\n+version = \"0.4.0\"\n+source = \"registry+https://github.com/rust-lang/crates.io-index\"\n+checksum = \"712e227841d057c1ee1cd2fb22fa7e5a5461ae8e48fa2ca79ec42cfc1931183f\"\ndiff --git a/rust-vendor/glob/Cargo.toml b/rust-vendor/glob/Cargo.toml\nnew file mode 100644\nindex 0000000..c72d5c5\n--- /dev/null\n+++ b/rust-vendor/glob/Cargo.toml\n@@ -0,0 +1,45 @@\n+# THIS FILE IS AUTOMATICALLY GENERATED BY CARGO\n+#\n+# When uploading crates to the registry Cargo will automatically\n+# \"normalize\" Cargo.toml files for maximal compatibility\n+# with all versions of Cargo and also rewrite `path` dependencies\n+# to registry (e.g., crates.io) dependencies.\n+#\n+# If you are reading this file be aware that the original Cargo.toml\n+# will likely look very different (and much more reasonable).\n+# See Cargo.toml.orig for the original contents.\n+\n+[package]\n+rust-version = \"1.63.0\"\n+name = \"glob\"\n+version = \"0.3.3\"\n+authors = [\"The Rust Project Developers\"]\n+build = false\n+autolib = false\n+autobins = false\n+autoexamples = false\n+autotests = false\n+autobenches = false\n+description = \"\"\"\n+Support for matching file paths against Unix shell style patterns.\n+\"\"\"\n+homepage = \"https://github.com/rust-lang/glob\"\n+documentation = \"https://docs.rs/glob\"\n+readme = \"README.md\"\n+categories = [\"filesystem\"]\n+license = \"MIT OR Apache-2.0\"\n+repository = \"https://github.com/rust-lang/glob\"\n+\n+[lib]\n+name = \"glob\"\n+path = \"src/lib.rs\"\n+\n+[[test]]\n+name = \"glob-std\"\n+path = \"tests/glob-std.rs\"\n+\n+[dev-dependencies.doc-comment]\n+version = \"0.3\"\n+\n+[dev-dependencies.tempdir]\n+version = \"0.3\"\ndiff --git a/rust-vendor/glob/LICENSE-APACHE b/rust-vendor/glob/LICENSE-APACHE\nnew file mode 100644\nindex 0000000..16fe87b\n--- /dev/null\n+++ b/rust-vendor/glob/LICENSE-APACHE\n@@ -0,0 +1,201 @@\n+                              Apache License\n+                        Version 2.0, January 2004\n+                     http://www.apache.org/licenses/\n+\n+TERMS AND CONDITIONS FOR USE, REPRODUCTION, AND DISTRIBUTION\n+\n+1. Definitions.\n+\n+   \"License\" shall mean the terms and conditions for use, reproduction,\n+   and distribution as defined by Sections 1 through 9 of this document.\n+\n+   \"Licensor\" shall mean the copyright owner or entity authorized by\n+   the copyright owner that is granting the License.\n+\n+   \"Legal Entity\" shall mean the union of the acting entity and all\n+   other entities that control, are controlled by, or are under common\n+   control with that entity. For the purposes of this definition,\n+   \"control\" means (i) the power, direct or indirect, to cause the\n+   direction or management of such entity, whether by contract or\n+   otherwise, or (ii) ownership of fifty percent (50%) or more of the\n+   outstanding shares, or (iii) beneficial ownership of such entity.\n+\n+   \"You\" (or \"Your\") shall mean an individual or Legal Entity\n+   exercising permissions granted by this License.\n+\n+   \"Source\" form shall mean the preferred form for making modifications,\n+   including but not limited to software source code, documentation\n+   source, and configuration files.\n+\n+   \"Object\" form shall mean any form resulting from mechanical\n+   transformation or translation of a Source form, including but\n+   not limited to compiled object code, generated documentation,\n+   and conversions to other media types.\n+\n+   \"Work\" shall mean the work of authorship, whether in Source or\n+   Object form, made available under the License, as indicated by a\n+   copyright notice that is included in or attached to the work\n+   (an example is provided in the Appendix below).\n+\n+   \"Derivative Works\" shall mean any work, whether in Source or Object\n+   form, that is based on (or derived from) the Work and for which the\n+   editorial revisions, annotations, elaborations, or other modifications\n+   represent, as a whole, an original work of authorship. For the purposes\n+   of this License, Derivative Works shall not include works that remain\n+   separable from, or merely link (or bind by name) to the interfaces of,\n+   the Work and Derivative Works thereof.\n+\n+   \"Contribution\" shall mean any work of authorship, including\n+   the original version of the Work and any modifications or additions\n+   to that Work or Derivative Works thereof, that is intentionally\n+   submitted to Licensor for inclusion in the Work by the copyright owner\n+   or by an individual or Legal Entity authorized to submit on behalf of\n+   the copyright owner. For the purposes of this definition, \"submitted\"\n+   means any form of electronic, verbal, or written communication sent\n+   to the Licensor or its representatives, including but not limited to\n+   communication on electronic mailing lists, source code control systems,\n+   and issue tracking systems that are managed by, or on behalf of, the\n+   Licensor for the purpose of discussing and improving the Work, but\n+   excluding communication that is conspicuously marked or otherwise\n+   designated in writing by the copyright owner as \"Not a Contribution.\"\n+\n+   \"Contributor\" shall mean Licensor and any individual or Legal Entity\n+   on behalf of whom a Contribution has been received by Licensor and\n+   subsequently incorporated within the Work.\n+\n+2. Grant of Copyright License. Subject to the terms and conditions of\n+   this License, each Contributor hereby grants to You a perpetual,\n+   worldwide, non-exclusive, no-charge, royalty-free, irrevocable\n+   copyright license to reproduce, prepare Derivative Works of,\n+   publicly display, publicly perform, sublicense, and distribute the\n+   Work and such Derivative Works in Source or Object form.\n+\n+3. Grant of Patent License. Subject to the terms and conditions of\n+   this License, each Contributor hereby grants to You a perpetual,\n+   worldwide, non-exclusive, no-charge, royalty-free, irrevocable\n+   (except as stated in this section) patent license to make, have made,\n+   use, offer to sell, sell, import, and otherwise transfer the Work,\n+   where such license applies only to those patent claims licensable\n+   by such Contributor that are necessarily infringed by their\n+   Contribution(s) alone or by combination of their Contribution(s)\n+   with the Work to which such Contribution(s) was submitted. If You\n+   institute patent litigation against any entity (including a\n+   cross-claim or counterclaim in a lawsuit) alleging that the Work\n+   or a Contribution incorporated within the Work constitutes direct\n+   or contributory patent infringement, then any patent licenses\n+   granted to You under this License for that Work shall terminate\n+   as of the date such litigation is filed.\n+\n+4. Redistribution. You may reproduce and distribute copies of the\n+   Work or Derivative Works thereof in any medium, with or without\n+   modifications, and in Source or Object form, provided that You\n+   meet the following conditions:\n+\n+   (a) You must give any other recipients of the Work or\n+       Derivative Works a copy of this License; and\n+\n+   (b) You must cause any modified files to carry prominent notices\n+       stating that You changed the files; and\n+\n+   (c) You must retain, in the Source form of any Derivative Works\n+       that You distribute, all copyright, patent, trademark, and\n+       attribution notices from the Source form of the Work,\n+       excluding those notices that do not pertain to any part of\n+       the Derivative Works; and\n+\n+   (d) If the Work includes a \"NOTICE\" text file as part of its\n+       distribution, then any Derivative Works that You distribute must\n+       include a readable copy of the attribution notices contained\n+       within such NOTICE file, excluding those notices that do not\n+       pertain to any part of the Derivative Works, in at least one\n+       of the following places: within a NOTICE text file distributed\n+       as part of the Derivative Works; within the Source form or\n+       documentation, if provided along with the Derivative Works; or,\n+       within a display generated by the Derivative Works, if and\n+       wherever such third-party notices normally appear. The contents\n+       of the NOTICE file are for informational purposes only and\n+       do not modify the License. You may add Your own attribution\n+       notices within Derivative Works that You distribute, alongside\n+       or as an addendum to the NOTICE text from the Work, provided\n+       that such additional attribution notices cannot be construed\n+       as modifying the License.\n+\n+   You may add Your own copyright statement to Your modifications and\n+   may provide additional or different license terms and conditions\n+   for use, reproduction, or distribution of Your modifications, or\n+   for any such Derivative Works as a whole, provided Your use,\n+   reproduction, and distribution of the Work otherwise complies with\n+   the conditions stated in this License.\n+\n+5. Submission of Contributions. Unless You explicitly state otherwise,\n+   any Contribution intentionally submitted for inclusion in the Work\n+   by You to the Licensor shall be under the terms and conditions of\n+   this License, without any additional terms or conditions.\n+   Notwithstanding the above, nothing herein shall supersede or modify\n+   the terms of any separate license agreement you may have executed\n+   with Licensor regarding such Contributions.\n+\n+6. Trademarks. This License does not grant permission to use the trade\n+   names, trademarks, service marks, or product names of the Licensor,\n+   except as required for reasonable and customary use in describing the\n+   origin of the Work and reproducing the content of the NOTICE file.\n+\n+7. Disclaimer of Warranty. Unless required by applicable law or\n+   agreed to in writing, Licensor provides the Work (and each\n+   Contributor provides its Contributions) on an \"AS IS\" BASIS,\n+   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or\n+   implied, including, without limitation, any warranties or conditions\n+   of TITLE, NON-INFRINGEMENT, MERCHANTABILITY, or FITNESS FOR A\n+   PARTICULAR PURPOSE. You are solely responsible for determining the\n+   appropriateness of using or redistributing the Work and assume any\n+   risks associated with Your exercise of permissions under this License.\n+\n+8. Limitation of Liability. In no event and under no legal theory,\n+   whether in tort (including negligence), contract, or otherwise,\n+   unless required by applicable law (such as deliberate and grossly\n+   negligent acts) or agreed to in writing, shall any Contributor be\n+   liable to You for damages, including any direct, indirect, special,\n+   incidental, or consequential damages of any character arising as a\n+   result of this License or out of the use or inability to use the\n+   Work (including but not limited to damages for loss of goodwill,\n+   work stoppage, computer failure or malfunction, or any and all\n+   other commercial damages or losses), even if such Contributor\n+   has been advised of the possibility of such damages.\n+\n+9. Accepting Warranty or Additional Liability. While redistributing\n+   the Work or Derivative Works thereof, You may choose to offer,\n+   and charge a fee for, acceptance of support, warranty, indemnity,\n+   or other liability obligations and/or rights consistent with this\n+   License. However, in accepting such obligations, You may act only\n+   on Your own behalf and on Your sole responsibility, not on behalf\n+   of any other Contributor, and only if You agree to indemnify,\n+   defend, and hold each Contributor harmless for any liability\n+   incurred by, or claims asserted against, such Contributor by reason\n+   of your accepting any such warranty or additional liability.\n+\n+END OF TERMS AND CONDITIONS\n+\n+APPENDIX: How to apply the Apache License to your work.\n+\n+   To apply the Apache License to your work, attach the following\n+   boilerplate notice, with the fields enclosed by brackets \"[]\"\n+   replaced with your own identifying information. (Don't include\n+   the brackets!)  The text should be enclosed in the appropriate\n+   comment syntax for the file format. We also recommend that a\n+   file or class name and description of purpose be included on the\n+   same \"printed page\" as the copyright notice for easier\n+   identification within third-party archives.\n+\n+Copyright [yyyy] [name of copyright owner]\n+\n+Licensed under the Apache License, Version 2.0 (the \"License\");\n+you may not use this file except in compliance with the License.\n+You may obtain a copy of the License at\n+\n+\thttp://www.apache.org/licenses/LICENSE-2.0\n+\n+Unless required by applicable law or agreed to in writing, software\n+distributed under the License is distributed on an \"AS IS\" BASIS,\n+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\n+See the License for the specific language governing permissions and\n+limitations under the License.\ndiff --git a/rust-vendor/glob/LICENSE-MIT b/rust-vendor/glob/LICENSE-MIT\nnew file mode 100644\nindex 0000000..39d4bdb\n--- /dev/null\n+++ b/rust-vendor/glob/LICENSE-MIT\n@@ -0,0 +1,25 @@\n+Copyright (c) 2014 The Rust Project Developers\n+\n+Permission is hereby granted, free of charge, to any\n+person obtaining a copy of this software and associated\n+documentation files (the \"Software\"), to deal in the\n+Software without restriction, including without\n+limitation the rights to use, copy, modify, merge,\n+publish, distribute, sublicense, and/or sell copies of\n+the Software, and to permit persons to whom the Software\n+is furnished to do so, subject to the following\n+conditions:\n+\n+The above copyright notice and this permission notice\n+shall be included in all copies or substantial portions\n+of the Software.\n+\n+THE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF\n+ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED\n+TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A\n+PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT\n+SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY\n+CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION\n+OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR\n+IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER\n+DEALINGS IN THE SOFTWARE.\ndiff --git a/rust-vendor/glob/README.md b/rust-vendor/glob/README.md\nnew file mode 100644\nindex 0000000..3ad9ff8\n--- /dev/null\n+++ b/rust-vendor/glob/README.md\n@@ -0,0 +1,38 @@\n+glob\n+====\n+\n+Support for matching file paths against Unix shell style patterns.\n+\n+[![Continuous integration](https://github.com/rust-lang/glob/actions/workflows/rust.yml/badge.svg)](https://github.com/rust-lang/glob/actions/workflows/rust.yml)\n+\n+[Documentation](https://docs.rs/glob)\n+\n+## Usage\n+\n+To use `glob`, add this to your `Cargo.toml`:\n+\n+```toml\n+[dependencies]\n+glob = \"0.3.2\"\n+```\n+\n+If you're using Rust 1.30 or earlier, or edition 2015, add this to your crate root:\n+\n+```rust\n+extern crate glob;\n+```\n+\n+## Examples\n+\n+Print all jpg files in /media/ and all of its subdirectories.\n+\n+```rust\n+use glob::glob;\n+\n+for entry in glob(\"/media/**/*.jpg\").expect(\"Failed to read glob pattern\") {\n+    match entry {\n+        Ok(path) => println!(\"{:?}\", path.display()),\n+        Err(e) => println!(\"{:?}\", e),\n+    }\n+}\n+```\n",
+ "diff_truncated": true
+}

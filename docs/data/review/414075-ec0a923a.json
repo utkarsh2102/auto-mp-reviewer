@@ -1,0 +1,23 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~jawn-smith/ubuntu/+source/livecd-rootfs/+git/livecd-rootfs/+merge/414075",
+ "id": "414075",
+ "title": "This change is causing broken autopkgtest. Since the local fix was only for the nezha build I am asking xypron to investigate a way to mitigate the original problem without breaking autopkgtests.",
+ "source_branch": "ubuntu/devel",
+ "target_branch": "ubuntu/devel",
+ "revision": "7e358b326d7726ea255e6862608f134cd9f1ed1e",
+ "base_revision": "ba1a372edf26e12c18c69786720efcbbe96e0f56",
+ "description": "This change is causing broken autopkgtest. Since the local fix was only for the nezha build I am asking xypron to investigate a way to mitigate the original problem without breaking autopkgtests.",
+ "commit_message": null,
+ "diffstat": {
+  "debian/changelog": [
+   1,
+   0
+  ]
+ },
+ "files": 1,
+ "added_lines": 1,
+ "removed_lines": 0,
+ "diff": "diff --git a/debian/changelog b/debian/changelog\nindex 12c47d1..d407aab 100644\n--- a/debian/changelog\n+++ b/debian/changelog\n@@ -557,6 +557,7 @@ livecd-rootfs (2.752) jammy; urgency=medium\n \n  -- Steve Langasek <steve.langasek@ubuntu.com>  Thu, 27 Jan 2022 14:26:52 -0800\n \n+>>>>>>> upstream/ubuntu/devel\n livecd-rootfs (2.751) jammy; urgency=medium\n \n   * Revert patch for unmounting in local builds as it is causing autopkgtest\n",
+ "diff_truncated": false
+}

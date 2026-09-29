@@ -1,0 +1,295 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~kajiya/livecd-rootfs/+git/livecd-rootfs/+merge/512255",
+ "id": "512255",
+ "title": "feat(apparmor): Add the new 7.3 kernel apparmor features",
+ "source_branch": "add-7-3-kernel-apparmor-features",
+ "target_branch": "ubuntu/master",
+ "revision": "1ec3ab76f0b5164feb3f375c20f30b4ac3bec928",
+ "base_revision": "726b60cd1a80356b708f2dd9155daf5a19d637f4",
+ "description": "PPA build here [0] and I'll report back with test results...\n\nhttps://launchpad.net/~kajiya/+archive/ubuntu/livecd-rootfs-yay/+packages",
+ "commit_message": "feat(apparmor): Add the new 7.3 kernel apparmor features",
+ "diffstat": {
+  "debian/changelog": [
+   7,
+   0
+  ],
+  "live-build/apparmor/7.3/capability": [
+   1,
+   0
+  ],
+  "live-build/apparmor/7.3/caps/extended": [
+   1,
+   0
+  ],
+  "live-build/apparmor/7.3/caps/mask": [
+   1,
+   0
+  ],
+  "live-build/apparmor/7.3/dbus/mask": [
+   1,
+   0
+  ],
+  "live-build/apparmor/7.3/domain/attach_conditions/xattr": [
+   1,
+   0
+  ],
+  "live-build/apparmor/7.3/domain/change_hat": [
+   1,
+   0
+  ],
+  "live-build/apparmor/7.3/domain/change_hatv": [
+   1,
+   0
+  ],
+  "live-build/apparmor/7.3/domain/change_onexec": [
+   1,
+   0
+  ],
+  "live-build/apparmor/7.3/domain/change_profile": [
+   1,
+   0
+  ],
+  "live-build/apparmor/7.3/domain/computed_longest_left": [
+   1,
+   0
+  ],
+  "live-build/apparmor/7.3/domain/disconnected.ipc": [
+   1,
+   0
+  ],
+  "live-build/apparmor/7.3/domain/disconnected.path": [
+   1,
+   0
+  ],
+  "live-build/apparmor/7.3/domain/fix_binfmt_elf_mmap": [
+   1,
+   0
+  ],
+  "live-build/apparmor/7.3/domain/interruptible": [
+   1,
+   0
+  ],
+  "live-build/apparmor/7.3/domain/kill.signal": [
+   1,
+   0
+  ],
+  "live-build/apparmor/7.3/domain/post_nnp_subset": [
+   1,
+   0
+  ],
+  "live-build/apparmor/7.3/domain/stack": [
+   1,
+   0
+  ],
+  "live-build/apparmor/7.3/domain/unconfined_allowed_children": [
+   1,
+   0
+  ],
+  "live-build/apparmor/7.3/domain/version": [
+   1,
+   0
+  ],
+  "live-build/apparmor/7.3/file/mask": [
+   1,
+   0
+  ],
+  "live-build/apparmor/7.3/io_uring/mask": [
+   1,
+   0
+  ],
+  "live-build/apparmor/7.3/ipc/posix_mqueue": [
+   1,
+   0
+  ],
+  "live-build/apparmor/7.3/mount/mask": [
+   1,
+   0
+  ],
+  "live-build/apparmor/7.3/mount/move_mount": [
+   1,
+   0
+  ],
+  "live-build/apparmor/7.3/namespaces/mask": [
+   1,
+   0
+  ],
+  "live-build/apparmor/7.3/namespaces/pivot_root": [
+   1,
+   0
+  ],
+  "live-build/apparmor/7.3/namespaces/profile": [
+   1,
+   0
+  ],
+  "live-build/apparmor/7.3/namespaces/userns_create": [
+   1,
+   0
+  ],
+  "live-build/apparmor/7.3/network/af_mask": [
+   1,
+   0
+  ],
+  "live-build/apparmor/7.3/network/af_unix": [
+   1,
+   0
+  ],
+  "live-build/apparmor/7.3/network_v8/af_inet": [
+   1,
+   0
+  ],
+  "live-build/apparmor/7.3/network_v8/af_mask": [
+   1,
+   0
+  ],
+  "live-build/apparmor/7.3/network_v8/tcp-fast-open": [
+   1,
+   0
+  ],
+  "live-build/apparmor/7.3/network_v9/af_mask": [
+   1,
+   0
+  ],
+  "live-build/apparmor/7.3/network_v9/af_unix": [
+   1,
+   0
+  ],
+  "live-build/apparmor/7.3/network_v9/tcp-fast-open": [
+   1,
+   0
+  ],
+  "live-build/apparmor/7.3/network_v9_skb/af_mask": [
+   1,
+   0
+  ],
+  "live-build/apparmor/7.3/network_v9_skb/iface": [
+   1,
+   0
+  ],
+  "live-build/apparmor/7.3/network_v9_skb/localout": [
+   1,
+   0
+  ],
+  "live-build/apparmor/7.3/network_v9_skb/postroute": [
+   1,
+   0
+  ],
+  "live-build/apparmor/7.3/network_v9_skb/rcv_skb": [
+   1,
+   0
+  ],
+  "live-build/apparmor/7.3/network_v9_skb/relabel": [
+   1,
+   0
+  ],
+  "live-build/apparmor/7.3/policy/compressed_load": [
+   1,
+   0
+  ],
+  "live-build/apparmor/7.3/policy/diff-encode": [
+   1,
+   0
+  ],
+  "live-build/apparmor/7.3/policy/extended_policy_header": [
+   1,
+   0
+  ],
+  "live-build/apparmor/7.3/policy/metadata_tagging_version": [
+   1,
+   0
+  ],
+  "live-build/apparmor/7.3/policy/notify/user": [
+   1,
+   0
+  ],
+  "live-build/apparmor/7.3/policy/notify_versions/v3": [
+   1,
+   0
+  ],
+  "live-build/apparmor/7.3/policy/notify_versions/v5": [
+   1,
+   0
+  ],
+  "live-build/apparmor/7.3/policy/outofband": [
+   1,
+   0
+  ],
+  "live-build/apparmor/7.3/policy/permstable32": [
+   1,
+   0
+  ],
+  "live-build/apparmor/7.3/policy/permstable32_version": [
+   1,
+   0
+  ],
+  "live-build/apparmor/7.3/policy/set_load": [
+   1,
+   0
+  ],
+  "live-build/apparmor/7.3/policy/state32": [
+   1,
+   0
+  ],
+  "live-build/apparmor/7.3/policy/unconfined_restrictions/change_profile": [
+   1,
+   0
+  ],
+  "live-build/apparmor/7.3/policy/unconfined_restrictions/io_uring": [
+   1,
+   0
+  ],
+  "live-build/apparmor/7.3/policy/unconfined_restrictions/userns": [
+   1,
+   0
+  ],
+  "live-build/apparmor/7.3/policy/versions/v5": [
+   1,
+   0
+  ],
+  "live-build/apparmor/7.3/policy/versions/v6": [
+   1,
+   0
+  ],
+  "live-build/apparmor/7.3/policy/versions/v7": [
+   1,
+   0
+  ],
+  "live-build/apparmor/7.3/policy/versions/v8": [
+   1,
+   0
+  ],
+  "live-build/apparmor/7.3/policy/versions/v9": [
+   1,
+   0
+  ],
+  "live-build/apparmor/7.3/ptrace/mask": [
+   1,
+   0
+  ],
+  "live-build/apparmor/7.3/query/label/data": [
+   1,
+   0
+  ],
+  "live-build/apparmor/7.3/query/label/multi_transaction": [
+   1,
+   0
+  ],
+  "live-build/apparmor/7.3/query/label/perms": [
+   1,
+   0
+  ],
+  "live-build/apparmor/7.3/rlimit/mask": [
+   1,
+   0
+  ],
+  "live-build/apparmor/7.3/signal/mask": [
+   1,
+   0
+  ]
+ },
+ "files": 69,
+ "added_lines": 75,
+ "removed_lines": 0,
+ "diff": "diff --git a/debian/changelog b/debian/changelog\nindex ea01278..f4c35c8 100644\n--- a/debian/changelog\n+++ b/debian/changelog\n@@ -1,3 +1,10 @@\n+livecd-rootfs (26.10.16) stonking; urgency=medium\n+\n+  * Add the new 7.3 kernel apparmor feature tree\n+    (LP: #2168878)\n+\n+ -- Chloé Smith <kajiya@ubuntu.com>  Mon, 28 Sep 2026 16:21:32 +0100\n+\n livecd-rootfs (26.10.15) stonking; urgency=medium\n \n   * Remove -v from the losetup calls because util-linux 2.42 has removed this\ndiff --git a/live-build/apparmor/7.3/capability b/live-build/apparmor/7.3/capability\nnew file mode 100644\nindex 0000000..96a10b9\n--- /dev/null\n+++ b/live-build/apparmor/7.3/capability\n@@ -0,0 +1 @@\n+0xffffff\ndiff --git a/live-build/apparmor/7.3/caps/extended b/live-build/apparmor/7.3/caps/extended\nnew file mode 100644\nindex 0000000..7cfab5b\n--- /dev/null\n+++ b/live-build/apparmor/7.3/caps/extended\n@@ -0,0 +1 @@\n+yes\ndiff --git a/live-build/apparmor/7.3/caps/mask b/live-build/apparmor/7.3/caps/mask\nnew file mode 100644\nindex 0000000..1bfa8ea\n--- /dev/null\n+++ b/live-build/apparmor/7.3/caps/mask\n@@ -0,0 +1 @@\n+chown dac_override dac_read_search fowner fsetid kill setgid setuid setpcap linux_immutable net_bind_service net_broadcast net_admin net_raw ipc_lock ipc_owner sys_module sys_rawio sys_chroot sys_ptrace sys_pacct sys_admin sys_boot sys_nice sys_resource sys_time sys_tty_config mknod lease audit_write audit_control setfcap mac_override mac_admin syslog wake_alarm block_suspend audit_read perfmon bpf checkpoint_restore\ndiff --git a/live-build/apparmor/7.3/dbus/mask b/live-build/apparmor/7.3/dbus/mask\nnew file mode 100644\nindex 0000000..1248078\n--- /dev/null\n+++ b/live-build/apparmor/7.3/dbus/mask\n@@ -0,0 +1 @@\n+acquire send receive\ndiff --git a/live-build/apparmor/7.3/domain/attach_conditions/xattr b/live-build/apparmor/7.3/domain/attach_conditions/xattr\nnew file mode 100644\nindex 0000000..7cfab5b\n--- /dev/null\n+++ b/live-build/apparmor/7.3/domain/attach_conditions/xattr\n@@ -0,0 +1 @@\n+yes\ndiff --git a/live-build/apparmor/7.3/domain/change_hat b/live-build/apparmor/7.3/domain/change_hat\nnew file mode 100644\nindex 0000000..7cfab5b\n--- /dev/null\n+++ b/live-build/apparmor/7.3/domain/change_hat\n@@ -0,0 +1 @@\n+yes\ndiff --git a/live-build/apparmor/7.3/domain/change_hatv b/live-build/apparmor/7.3/domain/change_hatv\nnew file mode 100644\nindex 0000000..7cfab5b\n--- /dev/null\n+++ b/live-build/apparmor/7.3/domain/change_hatv\n@@ -0,0 +1 @@\n+yes\ndiff --git a/live-build/apparmor/7.3/domain/change_onexec b/live-build/apparmor/7.3/domain/change_onexec\nnew file mode 100644\nindex 0000000..7cfab5b\n--- /dev/null\n+++ b/live-build/apparmor/7.3/domain/change_onexec\n@@ -0,0 +1 @@\n+yes\ndiff --git a/live-build/apparmor/7.3/domain/change_profile b/live-build/apparmor/7.3/domain/change_profile\nnew file mode 100644\nindex 0000000..7cfab5b\n--- /dev/null\n+++ b/live-build/apparmor/7.3/domain/change_profile\n@@ -0,0 +1 @@\n+yes\ndiff --git a/live-build/apparmor/7.3/domain/computed_longest_left b/live-build/apparmor/7.3/domain/computed_longest_left\nnew file mode 100644\nindex 0000000..7cfab5b\n--- /dev/null\n+++ b/live-build/apparmor/7.3/domain/computed_longest_left\n@@ -0,0 +1 @@\n+yes\ndiff --git a/live-build/apparmor/7.3/domain/disconnected.ipc b/live-build/apparmor/7.3/domain/disconnected.ipc\nnew file mode 100644\nindex 0000000..7cfab5b\n--- /dev/null\n+++ b/live-build/apparmor/7.3/domain/disconnected.ipc\n@@ -0,0 +1 @@\n+yes\ndiff --git a/live-build/apparmor/7.3/domain/disconnected.path b/live-build/apparmor/7.3/domain/disconnected.path\nnew file mode 100644\nindex 0000000..7cfab5b\n--- /dev/null\n+++ b/live-build/apparmor/7.3/domain/disconnected.path\n@@ -0,0 +1 @@\n+yes\ndiff --git a/live-build/apparmor/7.3/domain/fix_binfmt_elf_mmap b/live-build/apparmor/7.3/domain/fix_binfmt_elf_mmap\nnew file mode 100644\nindex 0000000..7cfab5b\n--- /dev/null\n+++ b/live-build/apparmor/7.3/domain/fix_binfmt_elf_mmap\n@@ -0,0 +1 @@\n+yes\ndiff --git a/live-build/apparmor/7.3/domain/interruptible b/live-build/apparmor/7.3/domain/interruptible\nnew file mode 100644\nindex 0000000..7cfab5b\n--- /dev/null\n+++ b/live-build/apparmor/7.3/domain/interruptible\n@@ -0,0 +1 @@\n+yes\ndiff --git a/live-build/apparmor/7.3/domain/kill.signal b/live-build/apparmor/7.3/domain/kill.signal\nnew file mode 100644\nindex 0000000..7cfab5b\n--- /dev/null\n+++ b/live-build/apparmor/7.3/domain/kill.signal\n@@ -0,0 +1 @@\n+yes\ndiff --git a/live-build/apparmor/7.3/domain/post_nnp_subset b/live-build/apparmor/7.3/domain/post_nnp_subset\nnew file mode 100644\nindex 0000000..7cfab5b\n--- /dev/null\n+++ b/live-build/apparmor/7.3/domain/post_nnp_subset\n@@ -0,0 +1 @@\n+yes\ndiff --git a/live-build/apparmor/7.3/domain/stack b/live-build/apparmor/7.3/domain/stack\nnew file mode 100644\nindex 0000000..7cfab5b\n--- /dev/null\n+++ b/live-build/apparmor/7.3/domain/stack\n@@ -0,0 +1 @@\n+yes\ndiff --git a/live-build/apparmor/7.3/domain/unconfined_allowed_children b/live-build/apparmor/7.3/domain/unconfined_allowed_children\nnew file mode 100644\nindex 0000000..7cfab5b\n--- /dev/null\n+++ b/live-build/apparmor/7.3/domain/unconfined_allowed_children\n@@ -0,0 +1 @@\n+yes\ndiff --git a/live-build/apparmor/7.3/domain/version b/live-build/apparmor/7.3/domain/version\nnew file mode 100644\nindex 0000000..5625e59\n--- /dev/null\n+++ b/live-build/apparmor/7.3/domain/version\n@@ -0,0 +1 @@\n+1.2\ndiff --git a/live-build/apparmor/7.3/file/mask b/live-build/apparmor/7.3/file/mask\nnew file mode 100644\nindex 0000000..087b677\n--- /dev/null\n+++ b/live-build/apparmor/7.3/file/mask\n@@ -0,0 +1 @@\n+create read write exec append mmap_exec link lock\ndiff --git a/live-build/apparmor/7.3/io_uring/mask b/live-build/apparmor/7.3/io_uring/mask\nnew file mode 100644\nindex 0000000..feffab8\n--- /dev/null\n+++ b/live-build/apparmor/7.3/io_uring/mask\n@@ -0,0 +1 @@\n+sqpoll override_creds\ndiff --git a/live-build/apparmor/7.3/ipc/posix_mqueue b/live-build/apparmor/7.3/ipc/posix_mqueue\nnew file mode 100644\nindex 0000000..6da33c6\n--- /dev/null\n+++ b/live-build/apparmor/7.3/ipc/posix_mqueue\n@@ -0,0 +1 @@\n+create read write open delete setattr getattr label\ndiff --git a/live-build/apparmor/7.3/mount/mask b/live-build/apparmor/7.3/mount/mask\nnew file mode 100644\nindex 0000000..652c879\n--- /dev/null\n+++ b/live-build/apparmor/7.3/mount/mask\n@@ -0,0 +1 @@\n+mount umount pivot_root\ndiff --git a/live-build/apparmor/7.3/mount/move_mount b/live-build/apparmor/7.3/mount/move_mount\nnew file mode 100644\nindex 0000000..9aa4e2b\n--- /dev/null\n+++ b/live-build/apparmor/7.3/mount/move_mount\n@@ -0,0 +1 @@\n+detached\ndiff --git a/live-build/apparmor/7.3/namespaces/mask b/live-build/apparmor/7.3/namespaces/mask\nnew file mode 100644\nindex 0000000..b0faec2\n--- /dev/null\n+++ b/live-build/apparmor/7.3/namespaces/mask\n@@ -0,0 +1 @@\n+userns_create\ndiff --git a/live-build/apparmor/7.3/namespaces/pivot_root b/live-build/apparmor/7.3/namespaces/pivot_root\nnew file mode 100644\nindex 0000000..7ecb56e\n--- /dev/null\n+++ b/live-build/apparmor/7.3/namespaces/pivot_root\n@@ -0,0 +1 @@\n+no\ndiff --git a/live-build/apparmor/7.3/namespaces/profile b/live-build/apparmor/7.3/namespaces/profile\nnew file mode 100644\nindex 0000000..7cfab5b\n--- /dev/null\n+++ b/live-build/apparmor/7.3/namespaces/profile\n@@ -0,0 +1 @@\n+yes\ndiff --git a/live-build/apparmor/7.3/namespaces/userns_create b/live-build/apparmor/7.3/namespaces/userns_create\nnew file mode 100644\nindex 0000000..64abab7\n--- /dev/null\n+++ b/live-build/apparmor/7.3/namespaces/userns_create\n@@ -0,0 +1 @@\n+pciu&\ndiff --git a/live-build/apparmor/7.3/network/af_mask b/live-build/apparmor/7.3/network/af_mask\nnew file mode 100644\nindex 0000000..d39f5b8\n--- /dev/null\n+++ b/live-build/apparmor/7.3/network/af_mask\n@@ -0,0 +1 @@\n+unspec unix inet ax25 ipx appletalk netrom bridge atmpvc x25 inet6 rose netbeui security key netlink packet ash econet atmsvc rds sna irda pppox wanpipe llc ib mpls can tipc bluetooth iucv rxrpc isdn phonet ieee802154 caif alg nfc vsock kcm qipcrtr smc xdp mctp\ndiff --git a/live-build/apparmor/7.3/network/af_unix b/live-build/apparmor/7.3/network/af_unix\nnew file mode 100644\nindex 0000000..7cfab5b\n--- /dev/null\n+++ b/live-build/apparmor/7.3/network/af_unix\n@@ -0,0 +1 @@\n+yes\ndiff --git a/live-build/apparmor/7.3/network_v8/af_inet b/live-build/apparmor/7.3/network_v8/af_inet\nnew file mode 100644\nindex 0000000..7cfab5b\n--- /dev/null\n+++ b/live-build/apparmor/7.3/network_v8/af_inet\n@@ -0,0 +1 @@\n+yes\ndiff --git a/live-build/apparmor/7.3/network_v8/af_mask b/live-build/apparmor/7.3/network_v8/af_mask\nnew file mode 100644\nindex 0000000..d39f5b8\n--- /dev/null\n+++ b/live-build/apparmor/7.3/network_v8/af_mask\n@@ -0,0 +1 @@\n+unspec unix inet ax25 ipx appletalk netrom bridge atmpvc x25 inet6 rose netbeui security key netlink packet ash econet atmsvc rds sna irda pppox wanpipe llc ib mpls can tipc bluetooth iucv rxrpc isdn phonet ieee802154 caif alg nfc vsock kcm qipcrtr smc xdp mctp\ndiff --git a/live-build/apparmor/7.3/network_v8/tcp-fast-open b/live-build/apparmor/7.3/network_v8/tcp-fast-open\nnew file mode 100644\nindex 0000000..7cfab5b\n--- /dev/null\n+++ b/live-build/apparmor/7.3/network_v8/tcp-fast-open\n@@ -0,0 +1 @@\n+yes\ndiff --git a/live-build/apparmor/7.3/network_v9/af_mask b/live-build/apparmor/7.3/network_v9/af_mask\nnew file mode 100644\nindex 0000000..d39f5b8\n--- /dev/null\n+++ b/live-build/apparmor/7.3/network_v9/af_mask\n@@ -0,0 +1 @@\n+unspec unix inet ax25 ipx appletalk netrom bridge atmpvc x25 inet6 rose netbeui security key netlink packet ash econet atmsvc rds sna irda pppox wanpipe llc ib mpls can tipc bluetooth iucv rxrpc isdn phonet ieee802154 caif alg nfc vsock kcm qipcrtr smc xdp mctp\ndiff --git a/live-build/apparmor/7.3/network_v9/af_unix b/live-build/apparmor/7.3/network_v9/af_unix\nnew file mode 100644\nindex 0000000..7cfab5b\n--- /dev/null\n+++ b/live-build/apparmor/7.3/network_v9/af_unix\n@@ -0,0 +1 @@\n+yes\ndiff --git a/live-build/apparmor/7.3/network_v9/tcp-fast-open b/live-build/apparmor/7.3/network_v9/tcp-fast-open\nnew file mode 100644\nindex 0000000..7cfab5b\n--- /dev/null\n+++ b/live-build/apparmor/7.3/network_v9/tcp-fast-open\n@@ -0,0 +1 @@\n+yes\ndiff --git a/live-build/apparmor/7.3/network_v9_skb/af_mask b/live-build/apparmor/7.3/network_v9_skb/af_mask\nnew file mode 100644\nindex 0000000..421fe97\n--- /dev/null\n+++ b/live-build/apparmor/7.3/network_v9_skb/af_mask\n@@ -0,0 +1 @@\n+inet inet6\ndiff --git a/live-build/apparmor/7.3/network_v9_skb/iface b/live-build/apparmor/7.3/network_v9_skb/iface\nnew file mode 100644\nindex 0000000..b3c5f06\n--- /dev/null\n+++ b/live-build/apparmor/7.3/network_v9_skb/iface\n@@ -0,0 +1 @@\n+receive connect, secmark_postroute\ndiff --git a/live-build/apparmor/7.3/network_v9_skb/localout b/live-build/apparmor/7.3/network_v9_skb/localout\nnew file mode 100644\nindex 0000000..ebba8ec\n--- /dev/null\n+++ b/live-build/apparmor/7.3/network_v9_skb/localout\n@@ -0,0 +1 @@\n+secmark_set\ndiff --git a/live-build/apparmor/7.3/network_v9_skb/postroute b/live-build/apparmor/7.3/network_v9_skb/postroute\nnew file mode 100644\nindex 0000000..4087c95\n--- /dev/null\n+++ b/live-build/apparmor/7.3/network_v9_skb/postroute\n@@ -0,0 +1 @@\n+secmark_send\ndiff --git a/live-build/apparmor/7.3/network_v9_skb/rcv_skb b/live-build/apparmor/7.3/network_v9_skb/rcv_skb\nnew file mode 100644\nindex 0000000..493d9f1\n--- /dev/null\n+++ b/live-build/apparmor/7.3/network_v9_skb/rcv_skb\n@@ -0,0 +1 @@\n+secmark_receive\ndiff --git a/live-build/apparmor/7.3/network_v9_skb/relabel b/live-build/apparmor/7.3/network_v9_skb/relabel\nnew file mode 100644\nindex 0000000..d6b6f7d\n--- /dev/null\n+++ b/live-build/apparmor/7.3/network_v9_skb/relabel\n@@ -0,0 +1 @@\n+setcred\ndiff --git a/live-build/apparmor/7.3/policy/compressed_load b/live-build/apparmor/7.3/policy/compressed_load\nnew file mode 100644\nindex 0000000..7cfab5b\n--- /dev/null\n+++ b/live-build/apparmor/7.3/policy/compressed_load\n@@ -0,0 +1 @@\n+yes\ndiff --git a/live-build/apparmor/7.3/policy/diff-encode b/live-build/apparmor/7.3/policy/diff-encode\nnew file mode 100644\nindex 0000000..7cfab5b\n--- /dev/null\n+++ b/live-build/apparmor/7.3/policy/diff-encode\n@@ -0,0 +1 @@\n+yes\ndiff --git a/live-build/apparmor/7.3/policy/extended_policy_header b/live-build/apparmor/7.3/policy/extended_policy_header\nnew file mode 100644\nindex 0000000..7cfab5b\n--- /dev/null\n+++ b/live-build/apparmor/7.3/policy/extended_policy_header\n@@ -0,0 +1 @@\n+yes\ndiff --git a/live-build/apparmor/7.3/policy/metadata_tagging_version b/live-build/apparmor/7.3/policy/metadata_tagging_version\nnew file mode 100644\nindex 0000000..2180fce\n--- /dev/null\n+++ b/live-build/apparmor/7.3/policy/metadata_tagging_version\n@@ -0,0 +1 @@\n+0x000001\ndiff --git a/live-build/apparmor/7.3/policy/notify/user b/live-build/apparmor/7.3/policy/notify/user\nnew file mode 100644\nindex 0000000..ed4500c\n--- /dev/null\n+++ b/live-build/apparmor/7.3/policy/notify/user\n@@ -0,0 +1 @@\n+file tags\ndiff --git a/live-build/apparmor/7.3/policy/notify_versions/v3 b/live-build/apparmor/7.3/policy/notify_versions/v3\nnew file mode 100644\nindex 0000000..7cfab5b\n--- /dev/null\n+++ b/live-build/apparmor/7.3/policy/notify_versions/v3\n@@ -0,0 +1 @@\n+yes\ndiff --git a/live-build/apparmor/7.3/policy/notify_versions/v5 b/live-build/apparmor/7.3/policy/notify_versions/v5\nnew file mode 100644\nindex 0000000..7cfab5b\n--- /dev/null\n+++ b/live-build/apparmor/7.3/policy/notify_versions/v5\n@@ -0,0 +1 @@\n+yes\ndiff --git a/live-build/apparmor/7.3/policy/outofband b/live-build/apparmor/7.3/policy/outofband\nnew file mode 100644\nindex 0000000..2180fce\n--- /dev/null\n+++ b/live-build/apparmor/7.3/policy/outofband\n@@ -0,0 +1 @@\n+0x000001\ndiff --git a/live-build/apparmor/7.3/policy/permstable32 b/live-build/apparmor/7.3/policy/permstable32\nnew file mode 100644\nindex 0000000..ee08660\n--- /dev/null\n+++ b/live-build/apparmor/7.3/policy/permstable32\n@@ -0,0 +1 @@\n+allow deny subtree cond kill complain prompt audit quiet hide xindex tag label\ndiff --git a/live-build/apparmor/7.3/policy/permstable32_version b/live-build/apparmor/7.3/policy/permstable32_version\nnew file mode 100644\nindex 0000000..eb8ece3\n--- /dev/null\n+++ b/live-build/apparmor/7.3/policy/permstable32_version\n@@ -0,0 +1 @@\n+0x000003\ndiff --git a/live-build/apparmor/7.3/policy/set_load b/live-build/apparmor/7.3/policy/set_load\nnew file mode 100644\nindex 0000000..7cfab5b\n--- /dev/null\n+++ b/live-build/apparmor/7.3/policy/set_load\n@@ -0,0 +1 @@\n+yes\ndiff --git a/live-build/apparmor/7.3/policy/state32 b/live-build/apparmor/7.3/policy/state32\nnew file mode 100644\nindex 0000000..2180fce\n--- /dev/null\n+++ b/live-build/apparmor/7.3/policy/state32\n@@ -0,0 +1 @@\n+0x000001\ndiff --git a/live-build/apparmor/7.3/policy/unconfined_restrictions/change_profile b/live-build/apparmor/7.3/policy/unconfined_restrictions/change_profile\nnew file mode 100644\nindex 0000000..7cfab5b\n--- /dev/null\n+++ b/live-build/apparmor/7.3/policy/unconfined_restrictions/change_profile\n@@ -0,0 +1 @@\n+yes\ndiff --git a/live-build/apparmor/7.3/policy/unconfined_restrictions/io_uring b/live-build/apparmor/7.3/policy/unconfined_restrictions/io_uring\nnew file mode 100644\nindex 0000000..d00491f\n--- /dev/null\n+++ b/live-build/apparmor/7.3/policy/unconfined_restrictions/io_uring\n@@ -0,0 +1 @@\n+1\ndiff --git a/live-build/apparmor/7.3/policy/unconfined_restrictions/userns b/live-build/apparmor/7.3/policy/unconfined_restrictions/userns\nnew file mode 100644\nindex 0000000..d00491f\n--- /dev/null\n+++ b/live-build/apparmor/7.3/policy/unconfined_restrictions/userns\n@@ -0,0 +1 @@\n+1\ndiff --git a/live-build/apparmor/7.3/policy/versions/v5 b/live-build/apparmor/7.3/policy/versions/v5\nnew file mode 100644\nindex 0000000..7cfab5b\n--- /dev/null\n+++ b/live-build/apparmor/7.3/policy/versions/v5\n@@ -0,0 +1 @@\n+yes\ndiff --git a/live-build/apparmor/7.3/policy/versions/v6 b/live-build/apparmor/7.3/policy/versions/v6\nnew file mode 100644\nindex 0000000..7cfab5b\n--- /dev/null\n+++ b/live-build/apparmor/7.3/policy/versions/v6\n@@ -0,0 +1 @@\n+yes\ndiff --git a/live-build/apparmor/7.3/policy/versions/v7 b/live-build/apparmor/7.3/policy/versions/v7\nnew file mode 100644\nindex 0000000..7cfab5b\n--- /dev/null\n+++ b/live-build/apparmor/7.3/policy/versions/v7\n@@ -0,0 +1 @@\n+yes\ndiff --git a/live-build/apparmor/7.3/policy/versions/v8 b/live-build/apparmor/7.3/policy/versions/v8\nnew file mode 100644\nindex 0000000..7cfab5b\n--- /dev/null\n+++ b/live-build/apparmor/7.3/policy/versions/v8\n@@ -0,0 +1 @@\n+yes\ndiff --git a/live-build/apparmor/7.3/policy/versions/v9 b/live-build/apparmor/7.3/policy/versions/v9\nnew file mode 100644\nindex 0000000..7cfab5b\n--- /dev/null\n+++ b/live-build/apparmor/7.3/policy/versions/v9\n@@ -0,0 +1 @@\n+yes\ndiff --git a/live-build/apparmor/7.3/ptrace/mask b/live-build/apparmor/7.3/ptrace/mask\nnew file mode 100644\nindex 0000000..10fc201\n--- /dev/null\n+++ b/live-build/apparmor/7.3/ptrace/mask\n@@ -0,0 +1 @@\n+read trace\ndiff --git a/live-build/apparmor/7.3/query/label/data b/live-build/apparmor/7.3/query/label/data\nnew file mode 100644\nindex 0000000..7cfab5b\n--- /dev/null\n+++ b/live-build/apparmor/7.3/query/label/data\n@@ -0,0 +1 @@\n+yes\ndiff --git a/live-build/apparmor/7.3/query/label/multi_transaction b/live-build/apparmor/7.3/query/label/multi_transaction\nnew file mode 100644\nindex 0000000..7cfab5b\n--- /dev/null\n+++ b/live-build/apparmor/7.3/query/label/multi_transaction\n@@ -0,0 +1 @@\n+yes\ndiff --git a/live-build/apparmor/7.3/query/label/perms b/live-build/apparmor/7.3/query/label/perms\nnew file mode 100644\nindex 0000000..71685cb\n--- /dev/null\n+++ b/live-build/apparmor/7.3/query/label/perms\n@@ -0,0 +1 @@\n+allow deny audit quiet\ndiff --git a/live-build/apparmor/7.3/rlimit/mask b/live-build/apparmor/7.3/rlimit/mask\nnew file mode 100644\nindex 0000000..c305a7d\n--- /dev/null\n+++ b/live-build/apparmor/7.3/rlimit/mask\n@@ -0,0 +1 @@\n+cpu fsize data stack core rss nproc nofile memlock as locks sigpending msgqueue nice rtprio rttime\ndiff --git a/live-build/apparmor/7.3/signal/mask b/live-build/apparmor/7.3/signal/mask\nnew file mode 100644\nindex 0000000..9eb55a0\n--- /dev/null\n+++ b/live-build/apparmor/7.3/signal/mask\n@@ -0,0 +1 @@\n+hup int quit ill trap abrt bus fpe kill usr1 segv usr2 pipe alrm term stkflt chld cont stop stp ttin ttou urg xcpu xfsz vtalrm prof winch io pwr sys emt lost\n",
+ "diff_truncated": false
+}

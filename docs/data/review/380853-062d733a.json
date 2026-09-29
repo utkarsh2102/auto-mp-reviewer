@@ -1,0 +1,23 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~rcj/livecd-rootfs/+git/livecd-rootfs/+merge/380853",
+ "id": "380853",
+ "title": "WIP for feedback",
+ "source_branch": "test/binary_build_mirrors-bionic",
+ "target_branch": "ubuntu/bionic",
+ "revision": "77a51bd649388e6985c4f98a38bad024ea12b15c",
+ "base_revision": "6b8bcf00ad2bd847bf7aa8bc8a2278bc6e9ead63",
+ "description": null,
+ "commit_message": "WIP for feedback",
+ "diffstat": {
+  "live-build/functions": [
+   30,
+   0
+  ]
+ },
+ "files": 1,
+ "added_lines": 30,
+ "removed_lines": 0,
+ "diff": "diff --git a/live-build/functions b/live-build/functions\nindex 17be9eb..9a6bea1 100644\n--- a/live-build/functions\n+++ b/live-build/functions\n@@ -88,6 +88,34 @@ mount_image() {\n     return 0\n }\n \n+setup_sourceslist(){\n+    # Use the build environment apt mirror during the build,\n+    # for both archive and security.\n+    # live-build does this in the chroot (lb_chroot_archives)\n+    # but not for the binary hooks\n+\n+    . config/bootstrap  # For the LB_MIRROR_* variables\n+    cp -a \"${mountpoint}/etc/apt/sources.list\" sources.list.tmp\n+    sed -i \"s#http://archive.ubuntu.com/ubuntu#${LB_PARENT_MIRROR_CHROOT}#g\" \\\n+        \"${mountpoint}/etc/apt/sources.list\"\n+    sed -i \"s#http://security.ubuntu.com/ubuntu#${LB_PARENT_MIRROR_CHROOT}#g\" \\\n+        \"${mountpoint}/etc/apt/sources.list\"\n+\n+    sha256sum \"${mountpoint}/etc/apt/sources.list\" > sources.list.sha\n+}\n+\n+recover_sourceslist(){\n+    # Remove the build environment apt mirror from the image\n+\n+    # Check that the sources.list has not changed.  If it has changed then the\n+    # binary hook has modified the file that will be discarded.  If the build\n+    # fails here the binary hook needs to alter sources.list.tmp and regenerate\n+    # sources.list.sha\n+    sha256sum --check sources.list.sha\n+\n+    mv sources.list.tmp \"${mountpoint}/etc/apt/sources.list\"\n+}\n+\n setup_mountpoint() {\n     local mountpoint=\"$1\"\n \n@@ -99,6 +127,7 @@ setup_mountpoint() {\n     mount -t tmpfs none \"$mountpoint/var/cache/apt\"\n     mv \"$mountpoint/etc/resolv.conf\" resolv.conf.tmp\n     cp /etc/resolv.conf \"$mountpoint/etc/resolv.conf\"\n+    setup_sourceslist \"${mountpoint}\"\n     chroot \"$mountpoint\" apt-get update\n \n }\n@@ -114,6 +143,7 @@ teardown_mountpoint() {\n                       { print \\$2 }\" | LC_ALL=C sort -r); do\n         umount $submount\n     done\n+    recover_sourceslist \"${mountpoint}\"\n     mv resolv.conf.tmp \"$mountpoint/etc/resolv.conf\"\n }\n \n",
+ "diff_truncated": false
+}

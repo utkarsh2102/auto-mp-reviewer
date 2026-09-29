@@ -1,0 +1,1619 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~bamf0/ubuntu/+source/rust-sudo-rs/+git/rust-sudo-rs/+merge/508055",
+ "id": "508055",
+ "title": "Merge 0.2.14-1 into Ubuntu from Debian. This is a minor bugfix/change update. Additionally it also contains some QoL fixes on the Ubuntu packaging side by removing some delta, dropping all Ubuntu exclusive patches, and centralizes Cargo feature enablement.",
+ "source_branch": "merge-lp2159633-stonking",
+ "target_branch": "debian/sid",
+ "revision": "58d5d545ba4b79df5e453a7afc1ff8bad2f3cb58",
+ "base_revision": "7723b28b4b884901346b706821106d3d61bb3ae1",
+ "description": "Merge 0.2.14-1 into Ubuntu from Debian. This is a minor bugfix/change update. Additionally it also contains some QoL fixes on the Ubuntu packaging side by removing some delta, dropping all Ubuntu exclusive patches, and centralizes Cargo feature enablement. \n\nPPA: https://launchpad.net/~bamf0/+archive/ubuntu/stonking-rust-sudo-rs-merge-lp2159633",
+ "commit_message": null,
+ "diffstat": {
+  "debian/README.source": [
+   3,
+   0
+  ],
+  "debian/cargo-features": [
+   1,
+   0
+  ],
+  "debian/changelog": [
+   224,
+   0
+  ],
+  "debian/control": [
+   10,
+   38
+  ],
+  "debian/copyright": [
+   3,
+   3
+  ],
+  "dev/null": [
+   0,
+   11
+  ],
+  "debian/patches/series": [
+   0,
+   2
+  ],
+  "debian/rules": [
+   73,
+   4
+  ],
+  "debian/rust-vendor/glob/.cargo-checksum.json": [
+   1,
+   0
+  ],
+  "debian/rust-vendor/glob/.cargo_vcs_info.json": [
+   6,
+   0
+  ],
+  "debian/rust-vendor/glob/.github/dependabot.yml": [
+   13,
+   0
+  ],
+  "debian/rust-vendor/glob/.github/workflows/publish.yml": [
+   27,
+   0
+  ],
+  "debian/rust-vendor/glob/.github/workflows/rust.yml": [
+   99,
+   0
+  ],
+  "debian/rust-vendor/glob/CHANGELOG.md": [
+   44,
+   0
+  ],
+  "debian/rust-vendor/glob/Cargo.lock": [
+   107,
+   0
+  ],
+  "debian/rust-vendor/glob/Cargo.toml": [
+   45,
+   0
+  ],
+  "debian/rust-vendor/glob/LICENSE-APACHE": [
+   201,
+   0
+  ],
+  "debian/rust-vendor/glob/LICENSE-MIT": [
+   25,
+   0
+  ],
+  "debian/rust-vendor/glob/README.md": [
+   38,
+   0
+  ],
+  "debian/rust-vendor/glob/src/lib.rs": [
+   1511,
+   0
+  ],
+  "debian/rust-vendor/glob/tests/glob-std.rs": [
+   477,
+   0
+  ],
+  "debian/rust-vendor/glob/triagebot.toml": [
+   1,
+   0
+  ],
+  "debian/rust-vendor/libc/.cargo-checksum.json": [
+   1,
+   0
+  ],
+  "debian/rust-vendor/libc/.cargo_vcs_info.json": [
+   6,
+   0
+  ],
+  "debian/rust-vendor/libc/.editorconfig": [
+   7,
+   0
+  ],
+  "debian/rust-vendor/libc/.git-blame-ignore-revs": [
+   6,
+   0
+  ],
+  "debian/rust-vendor/libc/.release-plz.toml": [
+   49,
+   0
+  ],
+  "debian/rust-vendor/libc/.rustfmt.toml": [
+   6,
+   0
+  ],
+  "debian/rust-vendor/libc/CHANGELOG.md": [
+   1034,
+   0
+  ],
+  "debian/rust-vendor/libc/CONTRIBUTING.md": [
+   126,
+   0
+  ],
+  "debian/rust-vendor/libc/Cargo.lock": [
+   16,
+   0
+  ],
+  "debian/rust-vendor/libc/Cargo.toml": [
+   229,
+   0
+  ],
+  "debian/rust-vendor/libc/LICENSE-APACHE": [
+   176,
+   0
+  ],
+  "debian/rust-vendor/libc/LICENSE-MIT": [
+   25,
+   0
+  ],
+  "debian/rust-vendor/libc/README.md": [
+   115,
+   0
+  ],
+  "debian/rust-vendor/libc/build.rs": [
+   346,
+   0
+  ],
+  "debian/rust-vendor/libc/src/fuchsia/aarch64.rs": [
+   69,
+   0
+  ],
+  "debian/rust-vendor/libc/src/fuchsia/mod.rs": [
+   4026,
+   0
+  ],
+  "debian/rust-vendor/libc/src/fuchsia/riscv64.rs": [
+   46,
+   0
+  ],
+  "debian/rust-vendor/libc/src/fuchsia/x86_64.rs": [
+   110,
+   0
+  ],
+  "debian/rust-vendor/libc/src/hermit.rs": [
+   562,
+   0
+  ],
+  "debian/rust-vendor/libc/src/lib.rs": [
+   168,
+   0
+  ],
+  "debian/rust-vendor/libc/src/macros.rs": [
+   654,
+   0
+  ],
+  "debian/rust-vendor/libc/src/new/aix/mod.rs": [
+   6,
+   0
+  ],
+  "debian/rust-vendor/libc/src/new/aix/unistd.rs": [
+   7,
+   0
+  ],
+  "debian/rust-vendor/libc/src/new/apple/libc/signal.rs": [
+   5,
+   0
+  ],
+  "debian/rust-vendor/libc/src/new/apple/libc/unistd.rs": [
+   7,
+   0
+  ],
+  "debian/rust-vendor/libc/src/new/apple/libpthread/mod.rs": [
+   20,
+   0
+  ],
+  "debian/rust-vendor/libc/src/new/apple/libpthread/pthread_/introspection.rs": [
+   36,
+   0
+  ],
+  "debian/rust-vendor/libc/src/new/apple/libpthread/pthread_/pthread.rs": [
+   76,
+   0
+  ],
+  "debian/rust-vendor/libc/src/new/apple/libpthread/pthread_/pthread_impl.rs": [
+   12,
+   0
+  ],
+  "debian/rust-vendor/libc/src/new/apple/libpthread/pthread_/pthread_spis.rs": [
+   14,
+   0
+  ],
+  "debian/rust-vendor/libc/src/new/apple/libpthread/pthread_/qos.rs": [
+   25,
+   0
+  ],
+  "debian/rust-vendor/libc/src/new/apple/libpthread/pthread_/sched.rs": [
+   9,
+   0
+  ],
+  "debian/rust-vendor/libc/src/new/apple/libpthread/pthread_/spawn.rs": [
+   16,
+   0
+  ],
+  "debian/rust-vendor/libc/src/new/apple/libpthread/pthread_/stack_np.rs": [
+   12,
+   0
+  ],
+  "debian/rust-vendor/libc/src/new/apple/libpthread/sys/_pthread/_pthread_types.rs": [
+   79,
+   0
+  ],
+  "debian/rust-vendor/libc/src/new/apple/libpthread/sys/mod.rs": [
+   14,
+   0
+  ],
+  "debian/rust-vendor/libc/src/new/apple/libpthread/sys/qos.rs": [
+   22,
+   0
+  ],
+  "debian/rust-vendor/libc/src/new/apple/mod.rs": [
+   20,
+   0
+  ],
+  "debian/rust-vendor/libc/src/new/apple/xnu/arm/_mcontext.rs": [
+   15,
+   0
+  ],
+  "debian/rust-vendor/libc/src/new/apple/xnu/i386/_mcontext.rs": [
+   15,
+   0
+  ],
+  "debian/rust-vendor/libc/src/new/apple/xnu/mach/arm/_structs.rs": [
+   37,
+   0
+  ],
+  "debian/rust-vendor/libc/src/new/apple/xnu/mach/i386/_structs.rs": [
+   92,
+   0
+  ],
+  "debian/rust-vendor/libc/src/new/apple/xnu/mach/machine/_structs.rs": [
+   13,
+   0
+  ],
+  "debian/rust-vendor/libc/src/new/apple/xnu/mach/mod.rs": [
+   20,
+   0
+  ],
+  "debian/rust-vendor/libc/src/new/apple/xnu/machine/_mcontext.rs": [
+   11,
+   0
+  ],
+  "debian/rust-vendor/libc/src/new/apple/xnu/mod.rs": [
+   30,
+   0
+  ],
+  "debian/rust-vendor/libc/src/new/apple/xnu/sys/_types/_ucontext.rs": [
+   17,
+   0
+  ],
+  "debian/rust-vendor/libc/src/new/apple/xnu/sys/mod.rs": [
+   15,
+   0
+  ],
+  "debian/rust-vendor/libc/src/new/apple/xnu/sys/signal.rs": [
+   6,
+   0
+  ],
+  "debian/rust-vendor/libc/src/new/bionic_libc/mod.rs": [
+   7,
+   0
+  ],
+  "debian/rust-vendor/libc/src/new/bionic_libc/pthread.rs": [
+   42,
+   0
+  ],
+  "debian/rust-vendor/libc/src/new/bionic_libc/sys/mod.rs": [
+   3,
+   0
+  ],
+  "debian/rust-vendor/libc/src/new/bionic_libc/sys/socket.rs": [
+   51,
+   0
+  ],
+  "debian/rust-vendor/libc/src/new/bionic_libc/unistd.rs": [
+   7,
+   0
+  ],
+  "debian/rust-vendor/libc/src/new/common/bsd.rs": [
+   1,
+   0
+  ],
+  "debian/rust-vendor/libc/src/new/common/freebsd_like.rs": [
+   1,
+   0
+  ],
+  "debian/rust-vendor/libc/src/new/common/linux_like/mod.rs": [
+   9,
+   0
+  ],
+  "debian/rust-vendor/libc/src/new/common/linux_like/pthread.rs": [
+   25,
+   0
+  ],
+  "debian/rust-vendor/libc/src/new/common/mod.rs": [
+   39,
+   0
+  ],
+  "debian/rust-vendor/libc/src/new/common/netbsd_like.rs": [
+   1,
+   0
+  ],
+  "debian/rust-vendor/libc/src/new/common/posix/mod.rs": [
+   15,
+   0
+  ],
+  "debian/rust-vendor/libc/src/new/common/posix/pthread.rs": [
+   322,
+   0
+  ],
+  "debian/rust-vendor/libc/src/new/common/posix/unistd.rs": [
+   9,
+   0
+  ],
+  "debian/rust-vendor/libc/src/new/common/solarish.rs": [
+   1,
+   0
+  ],
+  "debian/rust-vendor/libc/src/new/cygwin/mod.rs": [
+   5,
+   0
+  ],
+  "debian/rust-vendor/libc/src/new/cygwin/unistd.rs": [
+   7,
+   0
+  ],
+  "debian/rust-vendor/libc/src/new/dragonfly/mod.rs": [
+   6,
+   0
+  ],
+  "debian/rust-vendor/libc/src/new/dragonfly/unistd.rs": [
+   7,
+   0
+  ],
+  "debian/rust-vendor/libc/src/new/emscripten/mod.rs": [
+   7,
+   0
+  ],
+  "debian/rust-vendor/libc/src/new/emscripten/pthread.rs": [
+   14,
+   0
+  ],
+  "debian/rust-vendor/libc/src/new/emscripten/sched.rs": [
+   38,
+   0
+  ],
+  "debian/rust-vendor/libc/src/new/emscripten/unistd.rs": [
+   7,
+   0
+  ],
+  "debian/rust-vendor/libc/src/new/espidf/mod.rs": [
+   2,
+   0
+  ],
+  "debian/rust-vendor/libc/src/new/freebsd/mod.rs": [
+   7,
+   0
+  ],
+  "debian/rust-vendor/libc/src/new/freebsd/sys/file.rs": [
+   46,
+   0
+  ],
+  "debian/rust-vendor/libc/src/new/freebsd/sys/mod.rs": [
+   5,
+   0
+  ],
+  "debian/rust-vendor/libc/src/new/freebsd/unistd.rs": [
+   7,
+   0
+  ],
+  "debian/rust-vendor/libc/src/new/fuchsia/mod.rs": [
+   4,
+   0
+  ],
+  "debian/rust-vendor/libc/src/new/fuchsia/unistd.rs": [
+   7,
+   0
+  ],
+  "debian/rust-vendor/libc/src/new/glibc/mod.rs": [
+   31,
+   0
+  ],
+  "debian/rust-vendor/libc/src/new/glibc/posix/unistd.rs": [
+   9,
+   0
+  ],
+  "debian/rust-vendor/libc/src/new/glibc/sysdeps/nptl/mod.rs": [
+   7,
+   0
+  ],
+  "debian/rust-vendor/libc/src/new/glibc/sysdeps/nptl/pthread.rs": [
+   59,
+   0
+  ],
+  "debian/rust-vendor/libc/src/new/glibc/sysdeps/unix/linux/mod.rs": [
+   10,
+   0
+  ],
+  "debian/rust-vendor/libc/src/new/glibc/sysdeps/unix/linux/net/route.rs": [
+   30,
+   0
+  ],
+  "debian/rust-vendor/libc/src/new/glibc/sysdeps/unix/mod.rs": [
+   6,
+   0
+  ],
+  "debian/rust-vendor/libc/src/new/haiku/mod.rs": [
+   4,
+   0
+  ],
+  "debian/rust-vendor/libc/src/new/haiku/unistd.rs": [
+   7,
+   0
+  ],
+  "debian/rust-vendor/libc/src/new/hermit_abi/mod.rs": [
+   3,
+   0
+  ],
+  "debian/rust-vendor/libc/src/new/horizon/mod.rs": [
+   2,
+   0
+  ],
+  "debian/rust-vendor/libc/src/new/hurd/mod.rs": [
+   2,
+   0
+  ],
+  "debian/rust-vendor/libc/src/new/illumos/mod.rs": [
+   4,
+   0
+  ],
+  "debian/rust-vendor/libc/src/new/illumos/unistd.rs": [
+   7,
+   0
+  ],
+  "debian/rust-vendor/libc/src/new/l4re/mod.rs": [
+   3,
+   0
+  ],
+  "debian/rust-vendor/libc/src/new/linux_uapi/linux/can.rs": [
+   135,
+   0
+  ],
+  "debian/rust-vendor/libc/src/new/linux_uapi/linux/can/bcm.rs": [
+   52,
+   0
+  ],
+  "debian/rust-vendor/libc/src/new/linux_uapi/linux/can/error.rs": [
+   73,
+   0
+  ],
+  "debian/rust-vendor/libc/src/new/linux_uapi/linux/can/j1939.rs": [
+   60,
+   0
+  ],
+  "debian/rust-vendor/libc/src/new/linux_uapi/linux/can/netlink.rs": [
+   125,
+   0
+  ],
+  "debian/rust-vendor/libc/src/new/linux_uapi/linux/can/raw.rs": [
+   15,
+   0
+  ],
+  "debian/rust-vendor/libc/src/new/linux_uapi/linux/keyctl.rs": [
+   69,
+   0
+  ],
+  "debian/rust-vendor/libc/src/new/linux_uapi/linux/membarrier.rs": [
+   20,
+   0
+  ],
+  "debian/rust-vendor/libc/src/new/linux_uapi/linux/mod.rs": [
+   9,
+   0
+  ],
+  "debian/rust-vendor/libc/src/new/linux_uapi/linux/netlink.rs": [
+   136,
+   0
+  ],
+  "debian/rust-vendor/libc/src/new/linux_uapi/linux/pidfd.rs": [
+   59,
+   0
+  ],
+  "debian/rust-vendor/libc/src/new/linux_uapi/mod.rs": [
+   3,
+   0
+  ],
+  "debian/rust-vendor/libc/src/new/mod.rs": [
+   239,
+   0
+  ],
+  "debian/rust-vendor/libc/src/new/musl/arch/generic/mod.rs": [
+   7,
+   0
+  ],
+  "debian/rust-vendor/libc/src/new/musl/arch/mips/bits/socket.rs": [
+   4,
+   0
+  ],
+  "debian/rust-vendor/libc/src/new/musl/arch/mips/mod.rs": [
+   7,
+   0
+  ],
+  "debian/rust-vendor/libc/src/new/musl/arch/mips64/bits/socket.rs": [
+   4,
+   0
+  ],
+  "debian/rust-vendor/libc/src/new/musl/arch/mips64/mod.rs": [
+   7,
+   0
+  ],
+  "debian/rust-vendor/libc/src/new/musl/arch/mod.rs": [
+   10,
+   0
+  ],
+  "debian/rust-vendor/libc/src/new/musl/mod.rs": [
+   33,
+   0
+  ],
+  "debian/rust-vendor/libc/src/new/musl/pthread.rs": [
+   62,
+   0
+  ],
+  "debian/rust-vendor/libc/src/new/musl/sched.rs": [
+   38,
+   0
+  ],
+  "debian/rust-vendor/libc/src/new/musl/sys/socket.rs": [
+   64,
+   0
+  ],
+  "debian/rust-vendor/libc/src/new/musl/unistd.rs": [
+   7,
+   0
+  ],
+  "debian/rust-vendor/libc/src/new/netbsd/mod.rs": [
+   14,
+   0
+  ],
+  "debian/rust-vendor/libc/src/new/netbsd/net/if_.rs": [
+   101,
+   0
+  ],
+  "debian/rust-vendor/libc/src/new/netbsd/sys/file.rs": [
+   16,
+   0
+  ],
+  "debian/rust-vendor/libc/src/new/netbsd/sys/ipc.rs": [
+   17,
+   0
+  ],
+  "debian/rust-vendor/libc/src/new/netbsd/sys/mod.rs": [
+   11,
+   0
+  ],
+  "debian/rust-vendor/libc/src/new/netbsd/sys/socket.rs": [
+   44,
+   0
+  ],
+  "debian/rust-vendor/libc/src/new/netbsd/sys/statvfs.rs": [
+   47,
+   0
+  ],
+  "debian/rust-vendor/libc/src/new/netbsd/sys/time.rs": [
+   15,
+   0
+  ],
+  "debian/rust-vendor/libc/src/new/netbsd/sys/timex.rs": [
+   95,
+   0
+  ],
+  "debian/rust-vendor/libc/src/new/netbsd/sys/types.rs": [
+   16,
+   0
+  ],
+  "debian/rust-vendor/libc/src/new/netbsd/unistd.rs": [
+   7,
+   0
+  ],
+  "debian/rust-vendor/libc/src/new/netbsd/utmp_.rs": [
+   33,
+   0
+  ],
+  "debian/rust-vendor/libc/src/new/netbsd/utmpx_.rs": [
+   92,
+   0
+  ],
+  "debian/rust-vendor/libc/src/new/newlib/mod.rs": [
+   4,
+   0
+  ],
+  "debian/rust-vendor/libc/src/new/newlib/unistd.rs": [
+   159,
+   0
+  ],
+  "debian/rust-vendor/libc/src/new/nto/mod.rs": [
+   9,
+   0
+  ],
+  "debian/rust-vendor/libc/src/new/nto/net/bpf.rs": [
+   83,
+   0
+  ],
+  "debian/rust-vendor/libc/src/new/nto/net/if_.rs": [
+   32,
+   0
+  ],
+  "debian/rust-vendor/libc/src/new/nto/unistd.rs": [
+   7,
+   0
+  ],
+  "debian/rust-vendor/libc/src/new/nuttx/mod.rs": [
+   4,
+   0
+  ],
+  "debian/rust-vendor/libc/src/new/nuttx/unistd.rs": [
+   7,
+   0
+  ],
+  "debian/rust-vendor/libc/src/new/openbsd/mod.rs": [
+   7,
+   0
+  ],
+  "debian/rust-vendor/libc/src/new/openbsd/sys/ipc.rs": [
+   17,
+   0
+  ],
+  "debian/rust-vendor/libc/src/new/openbsd/sys/mod.rs": [
+   5,
+   0
+  ],
+  "debian/rust-vendor/libc/src/new/openbsd/unistd.rs": [
+   7,
+   0
+  ],
+  "debian/rust-vendor/libc/src/new/qurt/dlfcn.rs": [
+   26,
+   0
+  ],
+  "debian/rust-vendor/libc/src/new/qurt/errno.rs": [
+   154,
+   0
+  ],
+  "debian/rust-vendor/libc/src/new/qurt/fcntl.rs": [
+   52,
+   0
+  ],
+  "debian/rust-vendor/libc/src/new/qurt/limits.rs": [
+   41,
+   0
+  ],
+  "debian/rust-vendor/libc/src/new/qurt/mod.rs": [
+   375,
+   0
+  ],
+  "debian/rust-vendor/libc/src/new/qurt/pthread.rs": [
+   129,
+   0
+  ],
+  "debian/rust-vendor/libc/src/new/qurt/semaphore.rs": [
+   13,
+   0
+  ],
+  "debian/rust-vendor/libc/src/new/qurt/signal.rs": [
+   117,
+   0
+  ],
+  "debian/rust-vendor/libc/src/new/qurt/stdio.rs": [
+   73,
+   0
+  ],
+  "debian/rust-vendor/libc/src/new/qurt/stdlib.rs": [
+   67,
+   0
+  ],
+  "debian/rust-vendor/libc/src/new/qurt/sys/mman.rs": [
+   55,
+   0
+  ],
+  "debian/rust-vendor/libc/src/new/qurt/sys/mod.rs": [
+   6,
+   0
+  ],
+  "debian/rust-vendor/libc/src/new/qurt/sys/sched.rs": [
+   24,
+   0
+  ],
+  "debian/rust-vendor/libc/src/new/qurt/sys/stat.rs": [
+   36,
+   0
+  ],
+  "debian/rust-vendor/libc/src/new/qurt/sys/types.rs": [
+   9,
+   0
+  ],
+  "debian/rust-vendor/libc/src/new/qurt/time.rs": [
+   34,
+   0
+  ],
+  "debian/rust-vendor/libc/src/new/qurt/unistd.rs": [
+   248,
+   0
+  ],
+  "debian/rust-vendor/libc/src/new/redox/mod.rs": [
+   3,
+   0
+  ],
+  "debian/rust-vendor/libc/src/new/relibc/mod.rs": [
+   5,
+   0
+  ],
+  "debian/rust-vendor/libc/src/new/relibc/unistd.rs": [
+   7,
+   0
+  ],
+  "debian/rust-vendor/libc/src/new/rtems/mod.rs": [
+   2,
+   0
+  ],
+  "debian/rust-vendor/libc/src/new/sgx/mod.rs": [
+   1,
+   0
+  ],
+  "debian/rust-vendor/libc/src/new/sgx/unistd.rs": [
+   7,
+   0
+  ],
+  "debian/rust-vendor/libc/src/new/solaris/mod.rs": [
+   5,
+   0
+  ],
+  "debian/rust-vendor/libc/src/new/solaris/unistd.rs": [
+   7,
+   0
+  ],
+  "debian/rust-vendor/libc/src/new/solid/mod.rs": [
+   2,
+   0
+  ],
+  "debian/rust-vendor/libc/src/new/teeos/mod.rs": [
+   2,
+   0
+  ],
+  "debian/rust-vendor/libc/src/new/trusty/mod.rs": [
+   2,
+   0
+  ],
+  "debian/rust-vendor/libc/src/new/uclibc/mod.rs": [
+   7,
+   0
+  ],
+  "debian/rust-vendor/libc/src/new/uclibc/pthread.rs": [
+   66,
+   0
+  ],
+  "debian/rust-vendor/libc/src/new/uclibc/unistd.rs": [
+   7,
+   0
+  ],
+  "debian/rust-vendor/libc/src/new/ucrt/mod.rs": [
+   4,
+   0
+  ],
+  "debian/rust-vendor/libc/src/new/vita/mod.rs": [
+   2,
+   0
+  ],
+  "debian/rust-vendor/libc/src/new/vxworks/mod.rs": [
+   4,
+   0
+  ],
+  "debian/rust-vendor/libc/src/new/vxworks/unistd.rs": [
+   7,
+   0
+  ],
+  "debian/rust-vendor/libc/src/new/wasi/mod.rs": [
+   3,
+   0
+  ],
+  "debian/rust-vendor/libc/src/new/xous/mod.rs": [
+   2,
+   0
+  ],
+  "debian/rust-vendor/libc/src/primitives.rs": [
+   58,
+   0
+  ],
+  "debian/rust-vendor/libc/src/psp.rs": [
+   4131,
+   0
+  ],
+  "debian/rust-vendor/libc/src/qurt/mod.rs": [
+   18,
+   0
+  ],
+  "debian/rust-vendor/libc/src/sgx.rs": [
+   15,
+   0
+  ],
+  "debian/rust-vendor/libc/src/solid/aarch64.rs": [
+   1,
+   0
+  ],
+  "debian/rust-vendor/libc/src/solid/arm.rs": [
+   1,
+   0
+  ],
+  "debian/rust-vendor/libc/src/solid/mod.rs": [
+   865,
+   0
+  ],
+  "debian/rust-vendor/libc/src/switch.rs": [
+   17,
+   0
+  ],
+  "debian/rust-vendor/libc/src/teeos/mod.rs": [
+   1349,
+   0
+  ],
+  "debian/rust-vendor/libc/src/trusty.rs": [
+   73,
+   0
+  ],
+  "debian/rust-vendor/libc/src/types.rs": [
+   67,
+   0
+  ],
+  "debian/rust-vendor/libc/src/unix/aix/mod.rs": [
+   3363,
+   0
+  ],
+  "debian/rust-vendor/libc/src/unix/aix/powerpc64.rs": [
+   427,
+   0
+  ],
+  "debian/rust-vendor/libc/src/unix/bsd/apple/b32/mod.rs": [
+   73,
+   0
+  ],
+  "debian/rust-vendor/libc/src/unix/bsd/apple/b64/aarch64/mod.rs": [
+   15,
+   0
+  ],
+  "debian/rust-vendor/libc/src/unix/bsd/apple/b64/mod.rs": [
+   78,
+   0
+  ],
+  "debian/rust-vendor/libc/src/unix/bsd/apple/b64/x86_64/mod.rs": [
+   77,
+   0
+  ],
+  "debian/rust-vendor/libc/src/unix/bsd/apple/mod.rs": [
+   5190,
+   0
+  ],
+  "debian/rust-vendor/libc/src/unix/bsd/freebsdlike/dragonfly/mod.rs": [
+   1374,
+   0
+  ],
+  "debian/rust-vendor/libc/src/unix/bsd/freebsdlike/freebsd/aarch64.rs": [
+   42,
+   0
+  ],
+  "debian/rust-vendor/libc/src/unix/bsd/freebsdlike/freebsd/arm.rs": [
+   27,
+   0
+  ],
+  "debian/rust-vendor/libc/src/unix/bsd/freebsdlike/freebsd/freebsd11/b32.rs": [
+   29,
+   0
+  ],
+  "debian/rust-vendor/libc/src/unix/bsd/freebsdlike/freebsd/freebsd11/b64.rs": [
+   28,
+   0
+  ],
+  "debian/rust-vendor/libc/src/unix/bsd/freebsdlike/freebsd/freebsd11/mod.rs": [
+   330,
+   0
+  ],
+  "debian/rust-vendor/libc/src/unix/bsd/freebsdlike/freebsd/freebsd12/mod.rs": [
+   366,
+   0
+  ],
+  "debian/rust-vendor/libc/src/unix/bsd/freebsdlike/freebsd/freebsd12/x86_64.rs": [
+   7,
+   0
+  ],
+  "debian/rust-vendor/libc/src/unix/bsd/freebsdlike/freebsd/freebsd13/mod.rs": [
+   410,
+   0
+  ],
+  "debian/rust-vendor/libc/src/unix/bsd/freebsdlike/freebsd/freebsd13/x86_64.rs": [
+   7,
+   0
+  ],
+  "debian/rust-vendor/libc/src/unix/bsd/freebsdlike/freebsd/freebsd14/mod.rs": [
+   411,
+   0
+  ],
+  "debian/rust-vendor/libc/src/unix/bsd/freebsdlike/freebsd/freebsd14/x86_64.rs": [
+   14,
+   0
+  ],
+  "debian/rust-vendor/libc/src/unix/bsd/freebsdlike/freebsd/freebsd15/mod.rs": [
+   413,
+   0
+  ],
+  "debian/rust-vendor/libc/src/unix/bsd/freebsdlike/freebsd/freebsd15/x86_64.rs": [
+   14,
+   0
+  ],
+  "debian/rust-vendor/libc/src/unix/bsd/freebsdlike/freebsd/mod.rs": [
+   5189,
+   0
+  ],
+  "debian/rust-vendor/libc/src/unix/bsd/freebsdlike/freebsd/powerpc.rs": [
+   30,
+   0
+  ],
+  "debian/rust-vendor/libc/src/unix/bsd/freebsdlike/freebsd/powerpc64.rs": [
+   31,
+   0
+  ],
+  "debian/rust-vendor/libc/src/unix/bsd/freebsdlike/freebsd/riscv64.rs": [
+   44,
+   0
+  ],
+  "debian/rust-vendor/libc/src/unix/bsd/freebsdlike/freebsd/x86.rs": [
+   52,
+   0
+  ],
+  "debian/rust-vendor/libc/src/unix/bsd/freebsdlike/freebsd/x86_64/mod.rs": [
+   187,
+   0
+  ],
+  "debian/rust-vendor/libc/src/unix/bsd/freebsdlike/mod.rs": [
+   1986,
+   0
+  ],
+  "debian/rust-vendor/libc/src/unix/bsd/mod.rs": [
+   897,
+   0
+  ],
+  "debian/rust-vendor/libc/src/unix/bsd/netbsdlike/mod.rs": [
+   882,
+   0
+  ],
+  "debian/rust-vendor/libc/src/unix/bsd/netbsdlike/netbsd/aarch64.rs": [
+   132,
+   0
+  ],
+  "debian/rust-vendor/libc/src/unix/bsd/netbsdlike/netbsd/arm.rs": [
+   70,
+   0
+  ],
+  "debian/rust-vendor/libc/src/unix/bsd/netbsdlike/netbsd/mips.rs": [
+   11,
+   0
+  ],
+  "debian/rust-vendor/libc/src/unix/bsd/netbsdlike/netbsd/mod.rs": [
+   2487,
+   0
+  ],
+  "debian/rust-vendor/libc/src/unix/bsd/netbsdlike/netbsd/powerpc.rs": [
+   10,
+   0
+  ],
+  "debian/rust-vendor/libc/src/unix/bsd/netbsdlike/netbsd/riscv64.rs": [
+   97,
+   0
+  ],
+  "debian/rust-vendor/libc/src/unix/bsd/netbsdlike/netbsd/sparc64.rs": [
+   7,
+   0
+  ],
+  "debian/rust-vendor/libc/src/unix/bsd/netbsdlike/netbsd/x86.rs": [
+   5,
+   0
+  ],
+  "debian/rust-vendor/libc/src/unix/bsd/netbsdlike/netbsd/x86_64.rs": [
+   59,
+   0
+  ],
+  "debian/rust-vendor/libc/src/unix/bsd/netbsdlike/openbsd/aarch64.rs": [
+   20,
+   0
+  ],
+  "debian/rust-vendor/libc/src/unix/bsd/netbsdlike/openbsd/arm.rs": [
+   5,
+   0
+  ],
+  "debian/rust-vendor/libc/src/unix/bsd/netbsdlike/openbsd/mips64.rs": [
+   4,
+   0
+  ],
+  "debian/rust-vendor/libc/src/unix/bsd/netbsdlike/openbsd/mod.rs": [
+   2105,
+   0
+  ],
+  "debian/rust-vendor/libc/src/unix/bsd/netbsdlike/openbsd/powerpc.rs": [
+   5,
+   0
+  ],
+  "debian/rust-vendor/libc/src/unix/bsd/netbsdlike/openbsd/powerpc64.rs": [
+   5,
+   0
+  ],
+  "debian/rust-vendor/libc/src/unix/bsd/netbsdlike/openbsd/riscv64.rs": [
+   25,
+   0
+  ],
+  "debian/rust-vendor/libc/src/unix/bsd/netbsdlike/openbsd/sparc64.rs": [
+   4,
+   0
+  ],
+  "debian/rust-vendor/libc/src/unix/bsd/netbsdlike/openbsd/x86.rs": [
+   5,
+   0
+  ],
+  "debian/rust-vendor/libc/src/unix/bsd/netbsdlike/openbsd/x86_64.rs": [
+   65,
+   0
+  ],
+  "debian/rust-vendor/libc/src/unix/cygwin/mod.rs": [
+   2389,
+   0
+  ],
+  "debian/rust-vendor/libc/src/unix/haiku/b32.rs": [
+   18,
+   0
+  ],
+  "debian/rust-vendor/libc/src/unix/haiku/b64.rs": [
+   18,
+   0
+  ],
+  "debian/rust-vendor/libc/src/unix/haiku/bsd.rs": [
+   151,
+   0
+  ],
+  "debian/rust-vendor/libc/src/unix/haiku/mod.rs": [
+   1961,
+   0
+  ],
+  "debian/rust-vendor/libc/src/unix/haiku/native.rs": [
+   1390,
+   0
+  ],
+  "debian/rust-vendor/libc/src/unix/haiku/x86_64.rs": [
+   58,
+   0
+  ],
+  "debian/rust-vendor/libc/src/unix/hurd/b32.rs": [
+   92,
+   0
+  ],
+  "debian/rust-vendor/libc/src/unix/hurd/b64.rs": [
+   94,
+   0
+  ],
+  "debian/rust-vendor/libc/src/unix/hurd/mod.rs": [
+   4564,
+   0
+  ],
+  "debian/rust-vendor/libc/src/unix/linux_like/android/b32/arm.rs": [
+   494,
+   0
+  ],
+  "debian/rust-vendor/libc/src/unix/linux_like/android/b32/mod.rs": [
+   239,
+   0
+  ],
+  "debian/rust-vendor/libc/src/unix/linux_like/android/b32/x86/mod.rs": [
+   568,
+   0
+  ],
+  "debian/rust-vendor/libc/src/unix/linux_like/android/b64/aarch64/mod.rs": [
+   473,
+   0
+  ],
+  "debian/rust-vendor/libc/src/unix/linux_like/android/b64/mod.rs": [
+   218,
+   0
+  ],
+  "debian/rust-vendor/libc/src/unix/linux_like/android/b64/riscv64/mod.rs": [
+   384,
+   0
+  ],
+  "debian/rust-vendor/libc/src/unix/linux_like/android/b64/x86_64/mod.rs": [
+   620,
+   0
+  ],
+  "debian/rust-vendor/libc/src/unix/linux_like/android/mod.rs": [
+   3832,
+   0
+  ],
+  "debian/rust-vendor/libc/src/unix/linux_like/emscripten/lfs64.rs": [
+   214,
+   0
+  ],
+  "debian/rust-vendor/libc/src/unix/linux_like/emscripten/mod.rs": [
+   1455,
+   0
+  ],
+  "debian/rust-vendor/libc/src/unix/linux_like/l4re/mod.rs": [
+   204,
+   0
+  ],
+  "debian/rust-vendor/libc/src/unix/linux_like/l4re/uclibc/aarch64/mod.rs": [
+   414,
+   0
+  ],
+  "debian/rust-vendor/libc/src/unix/linux_like/l4re/uclibc/mod.rs": [
+   538,
+   0
+  ],
+  "debian/rust-vendor/libc/src/unix/linux_like/l4re/uclibc/x86_64/mod.rs": [
+   416,
+   0
+  ],
+  "debian/rust-vendor/libc/src/unix/linux_like/linux/arch/generic/mod.rs": [
+   336,
+   0
+  ],
+  "debian/rust-vendor/libc/src/unix/linux_like/linux/arch/mips/mod.rs": [
+   335,
+   0
+  ],
+  "debian/rust-vendor/libc/src/unix/linux_like/linux/arch/mod.rs": [
+   20,
+   0
+  ],
+  "debian/rust-vendor/libc/src/unix/linux_like/linux/arch/powerpc/mod.rs": [
+   282,
+   0
+  ],
+  "debian/rust-vendor/libc/src/unix/linux_like/linux/arch/sparc/mod.rs": [
+   249,
+   0
+  ],
+  "debian/rust-vendor/libc/src/unix/linux_like/linux/gnu/b32/arm/mod.rs": [
+   907,
+   0
+  ],
+  "debian/rust-vendor/libc/src/unix/linux_like/linux/gnu/b32/csky/mod.rs": [
+   748,
+   0
+  ],
+  "debian/rust-vendor/libc/src/unix/linux_like/linux/gnu/b32/m68k/mod.rs": [
+   885,
+   0
+  ],
+  "debian/rust-vendor/libc/src/unix/linux_like/linux/gnu/b32/mips/mod.rs": [
+   928,
+   0
+  ],
+  "debian/rust-vendor/libc/src/unix/linux_like/linux/gnu/b32/mod.rs": [
+   491,
+   0
+  ],
+  "debian/rust-vendor/libc/src/unix/linux_like/linux/gnu/b32/powerpc.rs": [
+   895,
+   0
+  ],
+  "debian/rust-vendor/libc/src/unix/linux_like/linux/gnu/b32/riscv32/mod.rs": [
+   811,
+   0
+  ],
+  "debian/rust-vendor/libc/src/unix/linux_like/linux/gnu/b32/sparc/mod.rs": [
+   868,
+   0
+  ],
+  "debian/rust-vendor/libc/src/unix/linux_like/linux/gnu/b32/x86/mod.rs": [
+   1035,
+   0
+  ],
+  "debian/rust-vendor/libc/src/unix/linux_like/linux/gnu/b64/aarch64/ilp32.rs": [
+   54,
+   0
+  ],
+  "debian/rust-vendor/libc/src/unix/linux_like/linux/gnu/b64/aarch64/lp64.rs": [
+   57,
+   0
+  ],
+  "debian/rust-vendor/libc/src/unix/linux_like/linux/gnu/b64/aarch64/mod.rs": [
+   976,
+   0
+  ],
+  "debian/rust-vendor/libc/src/unix/linux_like/linux/gnu/b64/loongarch64/mod.rs": [
+   925,
+   0
+  ],
+  "debian/rust-vendor/libc/src/unix/linux_like/linux/gnu/b64/mips64/mod.rs": [
+   934,
+   0
+  ],
+  "debian/rust-vendor/libc/src/unix/linux_like/linux/gnu/b64/mod.rs": [
+   213,
+   0
+  ],
+  "debian/rust-vendor/libc/src/unix/linux_like/linux/gnu/b64/powerpc64/mod.rs": [
+   1062,
+   0
+  ],
+  "debian/rust-vendor/libc/src/unix/linux_like/linux/gnu/b64/riscv64/mod.rs": [
+   918,
+   0
+  ],
+  "debian/rust-vendor/libc/src/unix/linux_like/linux/gnu/b64/s390x.rs": [
+   958,
+   0
+  ],
+  "debian/rust-vendor/libc/src/unix/linux_like/linux/gnu/b64/sparc64/mod.rs": [
+   934,
+   0
+  ],
+  "debian/rust-vendor/libc/src/unix/linux_like/linux/gnu/b64/x86_64/mod.rs": [
+   743,
+   0
+  ],
+  "debian/rust-vendor/libc/src/unix/linux_like/linux/gnu/b64/x86_64/not_x32.rs": [
+   446,
+   0
+  ],
+  "debian/rust-vendor/libc/src/unix/linux_like/linux/gnu/b64/x86_64/x32.rs": [
+   398,
+   0
+  ],
+  "debian/rust-vendor/libc/src/unix/linux_like/linux/gnu/mod.rs": [
+   1283,
+   0
+  ],
+  "debian/rust-vendor/libc/src/unix/linux_like/linux/mod.rs": [
+   4436,
+   0
+  ],
+  "debian/rust-vendor/libc/src/unix/linux_like/linux/musl/b32/arm/mod.rs": [
+   832,
+   0
+  ],
+  "debian/rust-vendor/libc/src/unix/linux_like/linux/musl/b32/hexagon.rs": [
+   719,
+   0
+  ],
+  "debian/rust-vendor/libc/src/unix/linux_like/linux/musl/b32/mips/mod.rs": [
+   878,
+   0
+  ],
+  "debian/rust-vendor/libc/src/unix/linux_like/linux/musl/b32/mod.rs": [
+   49,
+   0
+  ],
+  "debian/rust-vendor/libc/src/unix/linux_like/linux/musl/b32/powerpc.rs": [
+   835,
+   0
+  ],
+  "debian/rust-vendor/libc/src/unix/linux_like/linux/musl/b32/riscv32/mod.rs": [
+   645,
+   0
+  ],
+  "debian/rust-vendor/libc/src/unix/linux_like/linux/musl/b32/x86/mod.rs": [
+   878,
+   0
+  ],
+  "debian/rust-vendor/libc/src/unix/linux_like/linux/musl/b64/aarch64/mod.rs": [
+   689,
+   0
+  ],
+  "debian/rust-vendor/libc/src/unix/linux_like/linux/musl/b64/loongarch64/mod.rs": [
+   643,
+   0
+  ],
+  "debian/rust-vendor/libc/src/unix/linux_like/linux/musl/b64/mips64.rs": [
+   683,
+   0
+  ],
+  "debian/rust-vendor/libc/src/unix/linux_like/linux/musl/b64/mod.rs": [
+   88,
+   0
+  ],
+  "debian/rust-vendor/libc/src/unix/linux_like/linux/musl/b64/powerpc64.rs": [
+   730,
+   0
+  ],
+  "debian/rust-vendor/libc/src/unix/linux_like/linux/musl/b64/riscv64/mod.rs": [
+   649,
+   0
+  ],
+  "debian/rust-vendor/libc/src/unix/linux_like/linux/musl/b64/s390x.rs": [
+   734,
+   0
+  ],
+  "debian/rust-vendor/libc/src/unix/linux_like/linux/musl/b64/wasm32/mod.rs": [
+   666,
+   0
+  ],
+  "debian/rust-vendor/libc/src/unix/linux_like/linux/musl/b64/wasm32/wali.rs": [
+   441,
+   0
+  ],
+  "debian/rust-vendor/libc/src/unix/linux_like/linux/musl/b64/x86_64/mod.rs": [
+   833,
+   0
+  ],
+  "debian/rust-vendor/libc/src/unix/linux_like/linux/musl/lfs64.rs": [
+   242,
+   0
+  ],
+  "debian/rust-vendor/libc/src/unix/linux_like/linux/musl/mod.rs": [
+   914,
+   0
+  ],
+  "debian/rust-vendor/libc/src/unix/linux_like/linux/uclibc/arm/mod.rs": [
+   925,
+   0
+  ],
+  "debian/rust-vendor/libc/src/unix/linux_like/linux/uclibc/mips/mips32/mod.rs": [
+   695,
+   0
+  ],
+  "debian/rust-vendor/libc/src/unix/linux_like/linux/uclibc/mips/mips64/mod.rs": [
+   204,
+   0
+  ],
+  "debian/rust-vendor/libc/src/unix/linux_like/linux/uclibc/mips/mod.rs": [
+   312,
+   0
+  ],
+  "debian/rust-vendor/libc/src/unix/linux_like/linux/uclibc/mod.rs": [
+   509,
+   0
+  ],
+  "debian/rust-vendor/libc/src/unix/linux_like/linux/uclibc/x86_64/mod.rs": [
+   346,
+   0
+  ],
+  "debian/rust-vendor/libc/src/unix/linux_like/linux_l4re_shared.rs": [
+   1997,
+   0
+  ],
+  "debian/rust-vendor/libc/src/unix/linux_like/mod.rs": [
+   2211,
+   0
+  ],
+  "debian/rust-vendor/libc/src/unix/mod.rs": [
+   2500,
+   0
+  ],
+  "debian/rust-vendor/libc/src/unix/newlib/aarch64/mod.rs": [
+   56,
+   0
+  ],
+  "debian/rust-vendor/libc/src/unix/newlib/arm/mod.rs": [
+   58,
+   0
+  ],
+  "debian/rust-vendor/libc/src/unix/newlib/espidf/mod.rs": [
+   137,
+   0
+  ],
+  "debian/rust-vendor/libc/src/unix/newlib/generic.rs": [
+   39,
+   0
+  ],
+  "debian/rust-vendor/libc/src/unix/newlib/horizon/mod.rs": [
+   281,
+   0
+  ],
+  "debian/rust-vendor/libc/src/unix/newlib/mod.rs": [
+   977,
+   0
+  ],
+  "debian/rust-vendor/libc/src/unix/newlib/powerpc/mod.rs": [
+   18,
+   0
+  ],
+  "debian/rust-vendor/libc/src/unix/newlib/rtems/mod.rs": [
+   144,
+   0
+  ],
+  "debian/rust-vendor/libc/src/unix/newlib/vita/mod.rs": [
+   233,
+   0
+  ],
+  "debian/rust-vendor/libc/src/unix/nto/aarch64.rs": [
+   35,
+   0
+  ],
+  "debian/rust-vendor/libc/src/unix/nto/mod.rs": [
+   3216,
+   0
+  ],
+  "debian/rust-vendor/libc/src/unix/nto/neutrino.rs": [
+   1270,
+   0
+  ],
+  "debian/rust-vendor/libc/src/unix/nto/x86_64.rs": [
+   111,
+   0
+  ],
+  "debian/rust-vendor/libc/src/unix/nuttx/mod.rs": [
+   594,
+   0
+  ],
+  "debian/rust-vendor/libc/src/unix/redox/mod.rs": [
+   1433,
+   0
+  ],
+  "debian/rust-vendor/libc/src/unix/solarish/compat.rs": [
+   222,
+   0
+  ],
+  "debian/rust-vendor/libc/src/unix/solarish/illumos.rs": [
+   292,
+   0
+  ],
+  "debian/rust-vendor/libc/src/unix/solarish/mod.rs": [
+   3049,
+   0
+  ],
+  "debian/rust-vendor/libc/src/unix/solarish/solaris.rs": [
+   204,
+   0
+  ],
+  "debian/rust-vendor/libc/src/unix/solarish/x86.rs": [
+   31,
+   0
+  ],
+  "debian/rust-vendor/libc/src/unix/solarish/x86_64.rs": [
+   154,
+   0
+  ],
+  "debian/rust-vendor/libc/src/unix/solarish/x86_common.rs": [
+   69,
+   0
+  ],
+  "debian/rust-vendor/libc/src/vxworks/aarch64.rs": [
+   1,
+   0
+  ],
+  "debian/rust-vendor/libc/src/vxworks/arm.rs": [
+   1,
+   0
+  ],
+  "debian/rust-vendor/libc/src/vxworks/mod.rs": [
+   2477,
+   0
+  ],
+  "debian/rust-vendor/libc/src/vxworks/powerpc.rs": [
+   1,
+   0
+  ],
+  "debian/rust-vendor/libc/src/vxworks/powerpc64.rs": [
+   1,
+   0
+  ],
+  "debian/rust-vendor/libc/src/vxworks/riscv32.rs": [
+   1,
+   0
+  ],
+  "debian/rust-vendor/libc/src/vxworks/riscv64.rs": [
+   1,
+   0
+  ],
+  "debian/rust-vendor/libc/src/vxworks/x86.rs": [
+   1,
+   0
+  ],
+  "debian/rust-vendor/libc/src/vxworks/x86_64.rs": [
+   1,
+   0
+  ],
+  "debian/rust-vendor/libc/src/wasi/mod.rs": [
+   1098,
+   0
+  ],
+  "debian/rust-vendor/libc/src/wasi/p2.rs": [
+   188,
+   0
+  ],
+  "debian/rust-vendor/libc/src/windows/gnu/mod.rs": [
+   35,
+   0
+  ],
+  "debian/rust-vendor/libc/src/windows/mod.rs": [
+   612,
+   0
+  ],
+  "debian/rust-vendor/libc/src/windows/msvc/mod.rs": [
+   14,
+   0
+  ],
+  "debian/rust-vendor/libc/src/xous.rs": [
+   18,
+   0
+  ],
+  "debian/rust-vendor/libc/tests/const_fn.rs": [
+   3,
+   0
+  ],
+  "debian/source_rust-sudo-rs.py": [
+   35,
+   0
+  ],
+  "debian/sudo-rs.alternatives": [
+   11,
+   0
+  ],
+  "debian/sudo-rs.install": [
+   1,
+   0
+  ],
+  "debian/tests/01-getroot": [
+   103,
+   0
+  ],
+  "debian/tests/02-1003969-audit-no-resolve": [
+   46,
+   0
+  ],
+  "debian/tests/04-getroot-sssd": [
+   148,
+   0
+  ],
+  "debian/tests/04/ldif/adminpw-example-com.ldif": [
+   4,
+   0
+  ],
+  "debian/tests/04/ldif/adminpw.ldif": [
+   7,
+   0
+  ],
+  "debian/tests/04/ldif/container.ldif": [
+   5,
+   0
+  ],
+  "debian/tests/04/ldif/debconf": [
+   15,
+   0
+  ],
+  "debian/tests/04/ldif/ldap.conf": [
+   6,
+   0
+  ],
+  "debian/tests/04/ldif/ldapsudoers": [
+   1,
+   0
+  ],
+  "debian/tests/04/ldif/ldapsudoers.ldif": [
+   6,
+   0
+  ],
+  "debian/tests/04/ldif/server_cert.pem": [
+   30,
+   0
+  ],
+  "debian/tests/04/ldif/server_key.pem": [
+   52,
+   0
+  ],
+  "debian/tests/04/ldif/slapd-default": [
+   7,
+   0
+  ],
+  "debian/tests/04/ldif/sss-ous.ldif": [
+   9,
+   0
+  ],
+  "debian/tests/04/ldif/sssd.conf": [
+   24,
+   0
+  ],
+  "debian/tests/04/ldif/testuser1.ldif": [
+   16,
+   0
+  ]
+ },
+ "files": 406,
+ "added_lines": 133088,
+ "removed_lines": 87,
+ "diff": "diff --git a/debian/README.source b/debian/README.source\nnew file mode 100644\nindex 0000000..91c98c5\n--- /dev/null\n+++ b/debian/README.source\n@@ -0,0 +1,3 @@\n+Steps to update the vendored dependencies:\n+1. apt install cargo-vendor-filterer dh-cargo-tools\n+2. debian/rules vendor\ndiff --git a/debian/cargo-features b/debian/cargo-features\nnew file mode 100644\nindex 0000000..b1a82c9\n--- /dev/null\n+++ b/debian/cargo-features\n@@ -0,0 +1 @@\n+CARGO_FEATURES=apparmor,gettext,pam-login,sudoedit\ndiff --git a/debian/changelog b/debian/changelog\nindex 59583cb..e241b33 100644\n--- a/debian/changelog\n+++ b/debian/changelog\n@@ -1,3 +1,52 @@\n+rust-sudo-rs (0.2.14-1ubuntu1) stonking; urgency=medium\n+\n+  * Merge with Debian unstable (LP: #2159633). Remaining changes:\n+    - drop unnecessary upstream patches:\n+      + auto/auto-remove-features\n+      + disable-test-timeout\n+    - d/rules:\n+      + add vendoring targets\n+      + set setuid bit after dh_fixperms\n+      + change DEB_CARGO_INSTALL_PREFIX\n+      + set features and skip tests in dh_auto_test\n+      + set SUDO_RS_VERSION\n+    - Add autopkgtest and centralize cargo build features\n+    - Remove librust-sudo-rs-dev\n+    - debian/control:\n+      + add Depends sudo-common\n+      + add Recommends apport\n+      + add Recommends libapparmor1\n+      + remove vendored librust Build-Depends\n+      + update XS-Vendored-Sources-Rust field\n+    - debian/README.source: add vendoring instructions\n+    - debian/copyright: update information\n+    - rust-vendor: update vendored dependencies\n+    - Skip pandoc on i386\n+    - Add and modify sudo.ws tests\n+    - Add sudo alternatives\n+    - Add apport package hook\n+    - Add cargo-auditable metadata\n+  * Fixes:\n+    - Remove unnecessary python dependency: Replace Depends python3:any with\n+      Recommends apport as that better aligns with the apport hook intent\n+      (LP: #2156983)\n+    - PAM_TTY is wrongly computed by sudo-rs (LP: #2153817)\n+    - sudo-rs fails with \"I'm sorry\" message in systems with large groups\n+      (LP: #2158541)\n+    - [security] sudo-rs ≤ 0.2.13: silent drop of argument restrictions on\n+      \\<newline> line continuation (LPE) (LP: #2152220)\n+    - command permanently stop (LP: #2146860)\n+  * New Changes:\n+    - Use debian/rust-vendor for vendoring as this allows changing the\n+      versions of vendored dependencies without bumping the upstream version.\n+  * Drop Changes:\n+    - debian/patches:\n+      + fix-toggle-pwfeedback-tab: Fixed upstream.\n+    - wrap-and-sort debian/ files: Dropped as it created unnecessary delta\n+      with Debian.\n+\n+ -- Simon Johnsson <simon.johnsson@canonical.com>  Wed, 08 Jul 2026 11:50:23 +0200\n+\n rust-sudo-rs (0.2.14-1) unstable; urgency=medium\n \n   * Team upload.\n@@ -11,6 +60,97 @@ rust-sudo-rs (0.2.14-1) unstable; urgency=medium\n \n  -- Fabian Grünbichler <debian@fabian.gruenbichler.email>  Sun, 05 Jul 2026 20:24:59 +0200\n \n+rust-sudo-rs (0.2.13-0ubuntu2) stonking; urgency=medium\n+\n+  * d/tests: Add test suit from sudo.ws and change expected outputs\n+    to match sudo-rs output formats.\n+\n+ -- Varun Varma <varun.varma@canonical.com>  Wed, 01 Apr 2026 09:56:32 -0400\n+\n+rust-sudo-rs (0.2.13-0ubuntu1) resolute; urgency=medium\n+\n+  * New upstream version (LP: #2143916)\n+  * Fixes:\n+    - Merge from upstream \"Add error messages on wildcards and accept a 'final'\n+      wildcard #1463\" (LP: #2143125)\n+    - sudo-rs does not show the entire version string on Ubuntu (LP: #2142449)\n+  * Drop patches:\n+    - enable-pwfeedback-by-default.patch: Upstream enabled pwfeedback by\n+      default in 0.2.13.\n+    - correct-backspace-for-multibyte-characters.patch: Upstream fixed\n+      backspace.\n+  * Refresh patches:\n+    - disable-broken-tests.patch\n+  * New patches:\n+    - fix-toggle-pwfeedback-tab.patch: Add a patch to fix toggling pwfeedback\n+      with the TAB key, thanks Marc Schoolderman.\n+  * Skip tests:\n+    - traverse_secure_open_negative\n+\n+ -- Simon Johnsson <simon.johnsson@canonical.com>  Wed, 11 Mar 2026 14:27:00 +0100\n+\n+rust-sudo-rs (0.2.12-0ubuntu3) resolute; urgency=medium\n+\n+  * Disable cargo-auditable on i386\n+\n+ -- Florent 'Skia' Jacquet <skia@ubuntu.com>  Tue, 24 Mar 2026 11:58:04 +0100\n+\n+rust-sudo-rs (0.2.12-0ubuntu2) resolute; urgency=medium\n+\n+  * Add cargo-auditable metadata (LP: #2145317)\n+\n+ -- Petrichor Park <petrichor.park@canonical.com>  Fri, 20 Mar 2026 09:15:48 -0500\n+\n+rust-sudo-rs (0.2.12-0ubuntu1) resolute; urgency=medium\n+\n+  * New upstream version (LP: #2141927)\n+  * Fixes:\n+    - Cockpit cannot escalate privileges with sudo-rs [--askpass unsupported]\n+      (LP: #2122048)\n+    - wrong /dev/pts owner for login shell (and $HOME) (LP: #2131153)\n+    - The visudo command fails to read files passed via stdin (LP: #2136942)\n+    - renable test `test_build_run_context` (LP: #2120544)\n+  * New patches:\n+    - enable-pwfeedback-by-default.patch: Cherry-pick enable pwfeedback by\n+      default, thanks Tim Hutt.\n+    - correct-backspace-for-multibyte-characters.patch: Cherry-pick correct\n+      backspace for multibyte characters, thanks Marc Schoolderman.\n+  * Changes:\n+    - d/control: Add python3:any as dependency for apport package hook.\n+    - d/sudo-rs.manpages: Sort entry order alphabetically.\n+\n+ -- Simon Johnsson <simon.johnsson@canonical.com>  Mon, 16 Feb 2026 14:24:39 +0100\n+\n+rust-sudo-rs (0.2.10-1ubuntu2) resolute; urgency=medium\n+\n+  * Replace dependency sudo with sudo-common (LP: #2113927)\n+  * Add Apport package hook (LP: #2129168)\n+\n+ -- Simon Johnsson <simon.johnsson@canonical.com>  Fri, 17 Oct 2025 17:15:13 +0200\n+\n+rust-sudo-rs (0.2.10-1ubuntu1) resolute; urgency=medium\n+\n+  * Merge with Debian unstable (LP: #2130702). Remaining changes:\n+    - Add Breaks for sudo and sudo-ldap\n+    - Add depends on sudo (>= 1.9.16p2-3ubuntu2~)\n+    - Add Recommends libapparmor1\n+    - Add sudo alternatives\n+    - Add vendored dependencies for 0.2.10\n+    - Enable feature apparmor\n+    - Move test command to script in debian/tests\n+    - Remove librust-sudo-rs-dev\n+    - Remove irrelevant patches\n+      + d/p/disable-test-timeout.diff: Debian specific since 0.2.5.\n+      + d/p/drop-unused-features.patch: Features used in Ubuntu.\n+    - Set setuid bit after dh_fixperms\n+    - Skip pandoc on i386\n+    - Skip test_build_run_context test_traverse_secure_open_positive\n+    - Update copyright information\n+  * Dropped delta:\n+    - d/p/post_028/: Containing patches fixed in 0.2.10\n+\n+ -- Simon Johnsson <simon.johnsson@canonical.com>  Tue, 11 Nov 2025 17:46:16 +0100\n+\n rust-sudo-rs (0.2.10-1) unstable; urgency=high\n \n   * Team upload.\n@@ -37,6 +177,90 @@ rust-sudo-rs (0.2.9-1) unstable; urgency=medium\n \n  -- Fabian Grünbichler <debian@fabian.gruenbichler.email>  Fri, 31 Oct 2025 21:35:49 +0100\n \n+rust-sudo-rs (0.2.8-1ubuntu5.1) questing; urgency=medium\n+\n+  * SRU: fix escaped equals in sudoers file (LP: #2127080)\n+\n+ -- Simon Johnsson <simon.johnsson@canonical.com>  Mon, 13 Oct 2025 10:34:08 +0200\n+\n+rust-sudo-rs (0.2.8-1ubuntu5) questing; urgency=medium\n+\n+  * set setuid bit after dh_fixperms (LP: #2125731)\n+  * fix missing set_perms in postinst\n+\n+ -- Ravi Kant Sharma <ravi.kant.sharma@canonical.com>  Thu, 02 Oct 2025 12:08:08 +0200\n+\n+rust-sudo-rs (0.2.8-1ubuntu4) questing; urgency=medium\n+\n+  * Pick post 0.2.8 bug fixes from upstream:\n+    - d/p/post_028/allow_equals_incommands.patch (LP: #2123859)\n+    - d/p/post_028/fix_race_between_parent_and_monitor_in_use_pty.patch (LP: #2121743)\n+    - d/p/post_028/forbid_comma_in_envvar.patch\n+  * fix man sudoers alternatives target (LP: #2125483)\n+\n+ -- Ravi Kant Sharma <ravi.kant.sharma@canonical.com>  Wed, 24 Sep 2025 11:26:29 +0200\n+\n+rust-sudo-rs (0.2.8-1ubuntu3) questing; urgency=medium\n+\n+  * Pick post 0.2.8 patches from git:\n+    - d/p/post_028/fix_version_number_in_sudoer.patch\n+    - d/p/post_028/remove_documentation_for_the_ignored_flags.patch\n+    - d/p/post_028/some_corrections_to_canonicalization_test.patch\n+    - d/p/post_028/remove_unhandled_exception.patch\n+    - d/p/post_028/process_format_flags_for_sudo_prompt.patch\n+    - d/p/post_028/put_sudo_parent_process_in_background_if_stdout_is_a_pipe.patch (LP: #2121830)\n+  * set suid bit for su (LP: #2121399)\n+\n+ -- Ravi Kant Sharma <ravi.kant.sharma@canonical.com>  Wed, 03 Sep 2025 10:35:30 +0200\n+\n+rust-sudo-rs (0.2.8-1ubuntu2) questing; urgency=medium\n+\n+  * skip test test_traverse_secure_open_positive (LP: #2120989)\n+  * add alternatives for sudoers man\n+\n+ -- Ravi Kant Sharma <ravi.kant.sharma@canonical.com>  Tue, 19 Aug 2025 22:11:38 +0200\n+\n+rust-sudo-rs (0.2.8-1ubuntu1) questing; urgency=medium\n+\n+  * Package sudo-rs 0.2.8 from crates.io using debcargo 2.7.8 (LP: #2119669)\n+    - Update copyright information\n+  * Add depends on sudo (>= 1.9.16p2-1ubuntu2~)\n+  * Enable features pam-login, apparmor, sudoedit\n+  * Add sudoedit to alternatives\n+  * Recommend libapparmor1\n+  * Vendor dependencies for 0.2.8\n+  * Drop all patches\n+  * skip test test_build_run_context\n+\n+ -- Ravi Kant Sharma <ravi.kant.sharma@canonical.com>  Mon, 11 Aug 2025 11:25:52 +0200\n+\n+rust-sudo-rs (0.2.5-5ubuntu3) questing; urgency=medium\n+\n+  * Remove package librust-sudo-rs-dev (LP: #2115785)\n+  * Run test suite with default build flags as autopkgtest\n+  * Use vendored dependencies for autopkgtest\n+\n+ -- Ravi Kant Sharma <ravi.kant.sharma@canonical.com>  Wed, 02 Jul 2025 10:40:47 +0000\n+\n+rust-sudo-rs (0.2.5-5ubuntu2) questing; urgency=medium\n+\n+  * Vendor dependencies (LP: #2114733)\n+    - debian/rules:\n+      + Add vendoring rules\n+    - debian/control:\n+      + Add XS-Vendored-Sources-Rust\n+  * Add build time tests (LP: #2113928)\n+  * Skip pandoc on i386 (LP: #2114728)\n+\n+ -- Ravi Kant Sharma <ravi.kant.sharma@canonical.com>  Mon, 16 Jun 2025 15:50:00 +0200\n+\n+rust-sudo-rs (0.2.5-5ubuntu1) questing; urgency=medium\n+\n+  * set sudo-rs as sudo alternative (LP: #2111423)\n+    - add d/sudo-rs.alternatives for update-alternatives run in postint\n+\n+ -- Ravi Kant Sharma <ravi.kant.sharma@canonical.com>  Tue, 20 May 2025 17:58:31 +0200\n+\n rust-sudo-rs (0.2.5-5) unstable; urgency=medium\n \n   * Package sudo-rs 0.2.5 from crates.io using debcargo 2.7.8\ndiff --git a/debian/control b/debian/control\nindex f183a4d..b4c4bf3 100644\n--- a/debian/control\n+++ b/debian/control\n@@ -3,13 +3,13 @@ Section: utils\n Build-Depends: debhelper-compat (= 13),\n  dh-sequence-cargo,\n  libpam-dev,\n- pandoc\n+ pandoc [!i386],\n+ cargo-auditable [!i386]\n Build-Depends-Arch: cargo:native,\n  rustc:native (>= 1.85),\n  libstd-rust-dev,\n- librust-glob-0.3+default-dev,\n- librust-libc-0.2+default-dev (>= 0.2.176)\n-Maintainer: Debian Rust Maintainers <pkg-rust-maintainers@alioth-lists.debian.net>\n+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>\n+XSBC-Original-Maintainer: Debian Rust Maintainers <pkg-rust-maintainers@alioth-lists.debian.net>\n Uploaders:\n  Sylvestre Ledru <sylvestre@debian.org>\n Standards-Version: 4.7.4\n@@ -18,38 +18,7 @@ Vcs-Browser: https://salsa.debian.org/rust-team/debcargo-conf/tree/master/src/su\n Homepage: https://github.com/trifectatechfoundation/sudo-rs\n X-Cargo-Crate: sudo-rs\n X-Cargo-Crate-Version: 0.2.14\n-\n-Package: librust-sudo-rs-dev\n-Architecture: any\n-Multi-Arch: same\n-Depends:\n- ${misc:Depends},\n- librust-glob-0.3+default-dev,\n- librust-libc-0.2+default-dev (>= 0.2.176)\n-Provides:\n- librust-sudo-rs+apparmor-dev (= ${binary:Version}),\n- librust-sudo-rs+default-dev (= ${binary:Version}),\n- librust-sudo-rs+gettext-dev (= ${binary:Version}),\n- librust-sudo-rs+pam-login-dev (= ${binary:Version}),\n- librust-sudo-rs-0-dev (= ${binary:Version}),\n- librust-sudo-rs-0+apparmor-dev (= ${binary:Version}),\n- librust-sudo-rs-0+default-dev (= ${binary:Version}),\n- librust-sudo-rs-0+gettext-dev (= ${binary:Version}),\n- librust-sudo-rs-0+pam-login-dev (= ${binary:Version}),\n- librust-sudo-rs-0.2-dev (= ${binary:Version}),\n- librust-sudo-rs-0.2+apparmor-dev (= ${binary:Version}),\n- librust-sudo-rs-0.2+default-dev (= ${binary:Version}),\n- librust-sudo-rs-0.2+gettext-dev (= ${binary:Version}),\n- librust-sudo-rs-0.2+pam-login-dev (= ${binary:Version}),\n- librust-sudo-rs-0.2.14-dev (= ${binary:Version}),\n- librust-sudo-rs-0.2.14+apparmor-dev (= ${binary:Version}),\n- librust-sudo-rs-0.2.14+default-dev (= ${binary:Version}),\n- librust-sudo-rs-0.2.14+gettext-dev (= ${binary:Version}),\n- librust-sudo-rs-0.2.14+pam-login-dev (= ${binary:Version})\n-Breaks:\n- rustc (<< 1.85~)\n-Description: Memory safe implementation of sudo and su - Rust source code\n- Source code for Debianized Rust crate \"sudo-rs\"\n+XS-Vendored-Sources-Rust: glob@0.3.3, libc@0.2.186\n \n Package: sudo-rs\n Architecture: any\n@@ -57,9 +26,12 @@ Section: utils\n Depends:\n  ${misc:Depends},\n  ${shlibs:Depends},\n- ${cargo:Depends}\n+ ${cargo:Depends},\n+ sudo-common\n Recommends:\n- ${cargo:Recommends}\n+ ${cargo:Recommends},\n+ libapparmor1,\n+ apport\n Suggests:\n  ${cargo:Suggests}\n Provides:\ndiff --git a/debian/copyright b/debian/copyright\nindex 253ca2b..7a933e8 100644\n--- a/debian/copyright\n+++ b/debian/copyright\n@@ -1,9 +1,9 @@\n Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/\n Upstream-Name: sudo-rs\n-Source: https://github.com/memorysafety/sudo-rs\n+Source: https://github.com/trifectatechfoundation/sudo-rs\n \n Files: *\n-Copyright: 2022-2023 Internet Security Research Group\n+Copyright: 2022-2025 Trifecta Tech Foundation and contributors\n  2023 Conrad Kleinespel et al\n License: Apache-2.0 or MIT\n \n@@ -13,7 +13,7 @@ License: Apache-2.0 or MIT\n \n Files: debian/*\n Copyright:\n- 2023 Debian Rust Maintainers <pkg-rust-maintainers@alioth-lists.debian.net>\n+ 2025 Debian Rust Maintainers <pkg-rust-maintainers@alioth-lists.debian.net>\n  2023 Sylvestre Ledru <sylvestre@debian.org>\n License: Apache-2.0 or MIT\n \ndiff --git a/debian/patches/auto/auto-remove-features.patch b/debian/patches/auto/auto-remove-features.patch\ndeleted file mode 100644\nindex 5df6fb5..0000000\n--- a/debian/patches/auto/auto-remove-features.patch\n+++ /dev/null\n@@ -1,27 +0,0 @@\n-This patch was autogenerated using debcargo. Do not edit manually!\n---- a/Cargo.toml\n-+++ b/Cargo.toml\n-@@ -37,12 +37,8 @@ repository = \"https://github.com/trifect\n- [features]\n- apparmor = []\n- default = []\n--dev = []\n--do-not-use-all-features = []\n- gettext = []\n- pam-login = []\n--sudoedit = []\n--unstable-remote-sudoers = []\n- \n- [lib]\n- name = \"sudo_rs\"\n-@@ -73,6 +69,10 @@ undocumented_unsafe_blocks = \"warn\"\n- level = \"deny\"\n- priority = 0\n- \n-+[lints.rust.unexpected_cfgs]\n-+level = \"warn\"\n-+check-cfg = ['cfg(feature, values(\"dev\"))', 'cfg(feature, values(\"do-not-use-all-features\"))', 'cfg(feature, values(\"unstable-remote-sudoers\"))', 'cfg(feature, values(\"sudoedit\"))']\n-+\n- [profile.release]\n- opt-level = \"s\"\n- lto = true\ndiff --git a/debian/patches/disable-test-timeout.diff b/debian/patches/disable-test-timeout.diff\ndeleted file mode 100644\nindex 24e1051..0000000\n--- a/debian/patches/disable-test-timeout.diff\n+++ /dev/null\n@@ -1,11 +0,0 @@\n---- a/src/system/term/mod.rs\n-+++ b/src/system/term/mod.rs\n-@@ -307,7 +307,7 @@\n-         assert!(path.starts_with(\"/dev/pts/\"));\n-     }\n- \n--    #[test]\n-+    //#[test]\n-     fn tcsetpgrp_and_tcgetpgrp_are_consistent() {\n-         // Create a socket so the child can send us a byte if successful.\n-         let (mut rx, mut tx) = UnixStream::pair().unwrap();\ndiff --git a/debian/patches/series b/debian/patches/series\nindex 9cf71f0..660408d 100644\n--- a/debian/patches/series\n+++ b/debian/patches/series\n@@ -1,3 +1 @@\n-auto/auto-remove-features.patch\n-disable-test-timeout.diff\n disable-broken-tests.patch\ndiff --git a/debian/rules b/debian/rules\nindex 0f4f8d0..c0ec0fd 100755\n--- a/debian/rules\n+++ b/debian/rules\n@@ -1,16 +1,85 @@\n #!/usr/bin/make -f\n \n+ifneq ($(DEB_HOST_ARCH),i386)\n+export UBUNTU_ENABLE_CARGO_AUDITABLE=1\n+endif\n+\n+export SUDO_RS_VERSION := $(shell dpkg-parsechangelog -S Version)\n+UPSTREAM_VERSION := $(shell dpkg-parsechangelog -S Version|cut -d- -f1)\n+\n+# Vendoring setup\n+# NOTE: debian/tests/cargo-test needs to be updated in case of\n+# vendor directory change as it is hardcoded there\n+export CARGO_VENDOR_DIR = debian/rust-vendor\n+export CARGO_HOME = $(CURDIR)/debian/cargo_home\n+\n+CARGO_FEATURES := $(shell sed -n 's/^CARGO_FEATURES=//p' debian/cargo-features)\n+\n+DEB_HOST_ARCH ?= $(shell dpkg-architecture -qDEB_HOST_ARCH)\n+\n+include /usr/share/rustc/architecture.mk\n+export DEB_HOST_RUST_TYPE DEB_HOST_GNU_TYPE\n+\n %:\n \tdh $@ --buildsystem cargo\n \n-override_dh_auto_install:\n-\t# /usr/bin/{su,sudo,visudo} are already used, install into /usr/lib/cargo/bin\n-\tDEB_CARGO_INSTALL_PREFIX=/usr/lib/cargo dh_auto_install -- --features pam-login\n+vendor:\n+\trm -rf $(CARGO_VENDOR_DIR)\n+\t# Deliberately don't use the wrapper, as it expects the configure step\n+\t# to have occurred already.\n+\t# If you have to modify the path here, don't forget to change the README.source doc\n+\t# as well.\n+\tenv -i cargo-vendor-filterer --all-features  --tier 2  --platform '*-*-linux-gnu' --platform '*-*-linux-gnueabi' $(CARGO_VENDOR_DIR)\n+\t# Remove the checksum files to allow us to patch the crates\n+\t@for crate in $(CARGO_VENDOR_DIR)/*; do \\\n+\t\tsed -i 's/^{\"files\":.*\"package\":\"\\([a-z0-9]\\+\\)\"}$$/{\"files\":{},\"package\":\"\\1\"}/' \"$$crate/.cargo-checksum.json\"; \\\n+\tdone\n+\t# Cleanup temp files\n+\trm -rf $(CARGO_HOME)\n+\tfind $(CARGO_VENDOR_DIR) -type f -name 'Cargo.toml.orig' -delete\n+\t# Update include-binaries\n+\trm -f Cargo.lock\n+\trm -f debian/source/include-binaries\n+\tdpkg-source --include-binaries -b .\n+\t# Update XS-Vendored-Sources-Rust field\n+\tVENDORED_SOURCES=$$(/usr/share/cargo/bin/dh-cargo-vendored-sources 2>&1 | grep \"^XS-Vendored-Sources-Rust:\") \\\n+\t  && sed -i \"s/^XS-Vendored-Sources-Rust:.*/$${VENDORED_SOURCES}/\" debian/control || true\n+\t# Commit changes\n+\tgit add -f $(CARGO_VENDOR_DIR)\n+\tgit commit -m \"Update vendored rust crates\" || true\n+\tgit add debian/source/\n+\tgit commit -m \"Update debian/source/include-binaries\" || true\n+\tgit add debian/control\n+\tgit commit debian/control -m \"Update XS-Vendored-Sources-Rust field\" || true\n+\n+override_dh_auto_test:\n+\tCARGO_HOME=$(CURDIR)/debian/cargo_home \\\n+\t    debian/tests/run-cargo-tests \\\n+\t\t    --skip test_build_run_context \\\n+\t\t    --skip test_traverse_secure_open_positive \\\n+\t\t    --skip test_traverse_secure_open_negative\n+\n+ifeq ($(DEB_HOST_ARCH),i386)\n+override_dh_installman:\n+\techo \"Skipping pandoc for i386\"\n+else\n+override_dh_installman:\n \tpandoc -s -t man docs/man/su.1.md -o su-rs.1\n \tpandoc -s -t man docs/man/sudo.8.md  -o sudo-rs.8\n-\tpandoc -s -t man docs/man/visudo.8.md -o visudo-rs.8\n \tpandoc -s -t man docs/man/sudoers.5.md -o sudoers-rs.5\n+\tpandoc -s -t man docs/man/visudo.8.md -o visudo-rs.8\n+\tdh_installman\n+endif\n+\n+override_dh_auto_install:\n+\t# /usr/bin/{su,sudo,visudo} are already used, install into /usr/lib/cargo/bin\n+\tDEB_CARGO_INSTALL_PREFIX=/usr/lib/cargo \\\n+\t    dh_auto_install -O--buildsystem=cargo -- \\\n+\t\t--features=$(CARGO_FEATURES)\n+\n+execute_after_dh_fixperms:\n \tchmod 4755 debian/sudo-rs/usr/lib/cargo/bin/sudo\n+\tchmod 4755 debian/sudo-rs/usr/lib/cargo/bin/su\n \n override_dh_dwz:\n \t# Don't do anything. fails because of the\ndiff --git a/debian/rust-vendor/glob/.cargo-checksum.json b/debian/rust-vendor/glob/.cargo-checksum.json\nnew file mode 100644\nindex 0000000..7aa86b3\n--- /dev/null\n+++ b/debian/rust-vendor/glob/.cargo-checksum.json\n@@ -0,0 +1 @@\n+{\"files\":{},\"package\":\"0cc23270f6e1808e30a928bdc84dea0b9b4136a8bc82338574f23baf47bbd280\"}\n\\ No newline at end of file\ndiff --git a/debian/rust-vendor/glob/.cargo_vcs_info.json b/debian/rust-vendor/glob/.cargo_vcs_info.json\nnew file mode 100644\nindex 0000000..195cd9f\n--- /dev/null\n+++ b/debian/rust-vendor/glob/.cargo_vcs_info.json\n@@ -0,0 +1,6 @@\n+{\n+  \"git\": {\n+    \"sha1\": \"952da299a3a98893805133ec852ab29877e64e98\"\n+  },\n+  \"path_in_vcs\": \"\"\n+}\n\\ No newline at end of file\ndiff --git a/debian/rust-vendor/glob/.github/dependabot.yml b/debian/rust-vendor/glob/.github/dependabot.yml\nnew file mode 100644\nindex 0000000..de97070\n--- /dev/null\n+++ b/debian/rust-vendor/glob/.github/dependabot.yml\n@@ -0,0 +1,13 @@\n+version: 2\n+updates:\n+  - package-ecosystem: \"cargo\"\n+    directory: \"/\"\n+    schedule:\n+      interval: \"monthly\"\n+    open-pull-requests-limit: 10\n+    ignore:\n+      - dependency-name: \"tempdir\"\n+  - package-ecosystem: \"github-actions\"\n+    directory: \"/\"\n+    schedule:\n+      interval: \"monthly\"\ndiff --git a/debian/rust-vendor/glob/.github/workflows/publish.yml b/debian/rust-vendor/glob/.github/workflows/publish.yml\nnew file mode 100644\nindex 0000000..e715c61\n--- /dev/null\n+++ b/debian/rust-vendor/glob/.github/workflows/publish.yml\n@@ -0,0 +1,27 @@\n+name: Release-plz\n+\n+permissions:\n+  pull-requests: write\n+  contents: write\n+\n+on:\n+  push:\n+    branches:\n+      - master\n+\n+jobs:\n+  release-plz:\n+    name: Release-plz\n+    runs-on: ubuntu-latest\n+    steps:\n+      - name: Checkout repository\n+        uses: actions/checkout@v4\n+        with:\n+          fetch-depth: 0\n+      - name: Install Rust (rustup)\n+        run: rustup update nightly --no-self-update && rustup default nightly\n+      - name: Run release-plz\n+        uses: MarcoIeni/release-plz-action@v0.5\n+        env:\n+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}\n+          CARGO_REGISTRY_TOKEN: ${{ secrets.CARGO_REGISTRY_TOKEN }}\ndiff --git a/debian/rust-vendor/glob/.github/workflows/rust.yml b/debian/rust-vendor/glob/.github/workflows/rust.yml\nnew file mode 100644\nindex 0000000..e16d2a9\n--- /dev/null\n+++ b/debian/rust-vendor/glob/.github/workflows/rust.yml\n@@ -0,0 +1,99 @@\n+name: CI\n+\n+env:\n+  CARGO_TERM_VERBOSE: true\n+  RUSTDOCFLAGS: -Dwarnings\n+  RUSTFLAGS: -Dwarnings\n+\n+on:\n+  pull_request:\n+  push:\n+    branches:\n+      - master\n+\n+jobs:\n+  test:\n+    name: Tests\n+    runs-on: ${{ matrix.os }}\n+    strategy:\n+      matrix:\n+        channel:\n+          - stable\n+          - nightly\n+          - 1.63.0 # MSRV of test dependencies\n+        os:\n+          - macos-13 # x86 MacOS\n+          - macos-15 # Arm MacOS\n+          - windows-2025\n+          - ubuntu-24.04\n+        include:\n+          - channel: beta\n+            os: ubuntu-24.04\n+\n+    steps:\n+    - name: Checkout repository\n+      uses: actions/checkout@v4\n+\n+    - name: Update rust\n+      run: |\n+        rustup default ${{ matrix.channel }}\n+        rustup update --no-self-update\n+\n+    - run: cargo test --all\n+\n+  clippy:\n+    name: Clippy\n+    runs-on: ubuntu-24.04\n+    steps:\n+    - name: Checkout repository\n+      uses: actions/checkout@v4\n+\n+    - name: Update rust\n+      run: |\n+        # use beta since it gives us near-latest fixes but isn't as volatile as nightly\n+        rustup default beta\n+        rustup component add clippy\n+        rustup update --no-self-update\n+    - run: cargo clippy --all -- -Aclippy::while_let_loop\n+\n+  msrv:\n+    name: Check building with the MSRV\n+    runs-on: ubuntu-24.04\n+    steps:\n+    - name: Checkout repository\n+      uses: actions/checkout@v4\n+\n+    - name: Update rust\n+      run: |\n+        rustup default 1.63.0\n+        rustup update --no-self-update\n+\n+    - run: cargo build\n+\n+  rustfmt:\n+    name: Rustfmt\n+    runs-on: ubuntu-latest\n+    steps:\n+    - uses: actions/checkout@master\n+    - name: Install Rust\n+      run: |\n+        rustup default nightly\n+        rustup update --no-self-update\n+        rustup component add rustfmt\n+    - run: cargo fmt -- --check\n+\n+  success:\n+    needs:\n+      - test\n+      - clippy\n+      - msrv\n+      - rustfmt\n+    runs-on: ubuntu-latest\n+    # GitHub branch protection is exceedingly silly and treats \"jobs skipped because a dependency\n+    # failed\" as success. So we have to do some contortions to ensure the job fails if any of its\n+    # dependencies fails.\n+    if: always() # make sure this is never \"skipped\"\n+    steps:\n+      # Manually check the status of all dependencies. `if: failure()` does not work.\n+      - name: check if any dependency failed\n+        run: jq --exit-status 'all(.result == \"success\")' <<< '${{ toJson(needs) }}'\ndiff --git a/debian/rust-vendor/glob/CHANGELOG.md b/debian/rust-vendor/glob/CHANGELOG.md\nnew file mode 100644\nindex 0000000..52d7c25\n--- /dev/null\n+++ b/debian/rust-vendor/glob/CHANGELOG.md\n@@ -0,0 +1,44 @@\n+# Changelog\n+\n+All notable changes to this project will be documented in this file.\n+\n+The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),\n+and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).\n+\n+## [Unreleased]\n+\n+## [0.3.3](https://github.com/rust-lang/glob/compare/v0.3.2...v0.3.3) - 2025-08-11\n+\n+- Optimize memory allocations ([#147](https://github.com/rust-lang/glob/pull/147))\n+- Bump the MSRV to 1.63 ([#172](https://github.com/rust-lang/glob/pull/172))\n+- Fix spelling in pattern documentation ([#164](https://github.com/rust-lang/glob/pull/164))\n+- Fix version numbers and some formatting ([#157](https://github.com/rust-lang/glob/pull/157))\n+- Style fixes ([#137](https://github.com/rust-lang/glob/pull/137))\n+\n+## [0.3.2](https://github.com/rust-lang/glob/compare/v0.3.1...v0.3.2) - 2024-12-28\n+\n+## What's Changed\n+* Add fs::symlink_metadata to detect broken symlinks by @kyoheiu in https://github.com/rust-lang/glob/pull/105\n+* Add support for windows verbatim disk paths by @nico-abram in https://github.com/rust-lang/glob/pull/112\n+* Respect `require_literal_leading_dot` option in `glob_with` method for path components by @JohnTitor in https://github.com/rust-lang/glob/pull/128\n+* Harden tests for symlink by @JohnTitor in https://github.com/rust-lang/glob/pull/127\n+* Remove \"extern crate\" directions from README by @zmitchell in https://github.com/rust-lang/glob/pull/131\n+* Add FIXME for tempdir by @JohnTitor in https://github.com/rust-lang/glob/pull/126\n+* Cache information about file type by @Kobzol in https://github.com/rust-lang/glob/pull/135\n+* Document the behaviour of ** with files by @Wilfred in https://github.com/rust-lang/glob/pull/138\n+* Add dependabot by @oriontvv in https://github.com/rust-lang/glob/pull/139\n+* Bump actions/checkout from 3 to 4 by @dependabot in https://github.com/rust-lang/glob/pull/140\n+* Check only (no longer test) at the MSRV by @tgross35 in https://github.com/rust-lang/glob/pull/151\n+* Add release-plz for automated releases by @tgross35 in https://github.com/rust-lang/glob/pull/150\n+\n+## New Contributors\n+* @kyoheiu made their first contribution in https://github.com/rust-lang/glob/pull/105\n+* @nico-abram made their first contribution in https://github.com/rust-lang/glob/pull/112\n+* @zmitchell made their first contribution in https://github.com/rust-lang/glob/pull/131\n+* @Kobzol made their first contribution in https://github.com/rust-lang/glob/pull/135\n+* @Wilfred made their first contribution in https://github.com/rust-lang/glob/pull/138\n+* @oriontvv made their first contribution in https://github.com/rust-lang/glob/pull/139\n+* @dependabot made their first contribution in https://github.com/rust-lang/glob/pull/140\n+* @tgross35 made their first contribution in https://github.com/rust-lang/glob/pull/151\n+\n+**Full Changelog**: https://github.com/rust-lang/glob/compare/0.3.1...0.3.2\ndiff --git a/debian/rust-vendor/glob/Cargo.lock b/debian/rust-vendor/glob/Cargo.lock\nnew file mode 100644\nindex 0000000..d1da04b\n--- /dev/null\n+++ b/debian/rust-vendor/glob/Cargo.lock\n@@ -0,0 +1,107 @@\n+# This file is automatically @generated by Cargo.\n+# It is not intended for manual editing.\n+version = 3\n+\n+[[package]]\n+name = \"doc-comment\"\n+version = \"0.3.3\"\n+source = \"registry+https://github.com/rust-lang/crates.io-index\"\n+checksum = \"fea41bba32d969b513997752735605054bc0dfa92b4c56bf1189f2e174be7a10\"\n+\n+[[package]]\n+name = \"fuchsia-cprng\"\n+version = \"0.1.1\"\n+source = \"registry+https://github.com/rust-lang/crates.io-index\"\n+checksum = \"a06f77d526c1a601b7c4cdd98f54b5eaabffc14d5f2f0296febdc7f357c6d3ba\"\n+\n+[[package]]\n+name = \"glob\"\n+version = \"0.3.3\"\n+dependencies = [\n+ \"doc-comment\",\n+ \"tempdir\",\n+]\n+\n+[[package]]\n+name = \"libc\"\n+version = \"0.2.175\"\n+source = \"registry+https://github.com/rust-lang/crates.io-index\"\n+checksum = \"6a82ae493e598baaea5209805c49bbf2ea7de956d50d7da0da1164f9c6d28543\"\n+\n+[[package]]\n+name = \"rand\"\n+version = \"0.4.6\"\n+source = \"registry+https://github.com/rust-lang/crates.io-index\"\n+checksum = \"552840b97013b1a26992c11eac34bdd778e464601a4c2054b5f0bff7c6761293\"\n+dependencies = [\n+ \"fuchsia-cprng\",\n+ \"libc\",\n+ \"rand_core 0.3.1\",\n+ \"rdrand\",\n+ \"winapi\",\n+]\n+\n+[[package]]\n+name = \"rand_core\"\n+version = \"0.3.1\"\n+source = \"registry+https://github.com/rust-lang/crates.io-index\"\n+checksum = \"7a6fdeb83b075e8266dcc8762c22776f6877a63111121f5f8c7411e5be7eed4b\"\n+dependencies = [\n+ \"rand_core 0.4.2\",\n+]\n+\n+[[package]]\n+name = \"rand_core\"\n+version = \"0.4.2\"\n+source = \"registry+https://github.com/rust-lang/crates.io-index\"\n+checksum = \"9c33a3c44ca05fa6f1807d8e6743f3824e8509beca625669633be0acbdf509dc\"\n+\n+[[package]]\n+name = \"rdrand\"\n+version = \"0.4.0\"\n+source = \"registry+https://github.com/rust-lang/crates.io-index\"\n+checksum = \"678054eb77286b51581ba43620cc911abf02758c91f93f479767aed0f90458b2\"\n+dependencies = [\n+ \"rand_core 0.3.1\",\n+]\n+\n+[[package]]\n+name = \"remove_dir_all\"\n+version = \"0.5.3\"\n+source = \"registry+https://github.com/rust-lang/crates.io-index\"\n+checksum = \"3acd125665422973a33ac9d3dd2df85edad0f4ae9b00dafb1a05e43a9f5ef8e7\"\n+dependencies = [\n+ \"winapi\",\n+]\n+\n+[[package]]\n+name = \"tempdir\"\n+version = \"0.3.7\"\n+source = \"registry+https://github.com/rust-lang/crates.io-index\"\n+checksum = \"15f2b5fb00ccdf689e0149d1b1b3c03fead81c2b37735d812fa8bddbbf41b6d8\"\n+dependencies = [\n+ \"rand\",\n+ \"remove_dir_all\",\n+]\n+\n+[[package]]\n+name = \"winapi\"\n+version = \"0.3.9\"\n+source = \"registry+https://github.com/rust-lang/crates.io-index\"\n+checksum = \"5c839a674fcd7a98952e593242ea400abe93992746761e38641405d28b00f419\"\n+dependencies = [\n+ \"winapi-i686-pc-windows-gnu\",\n+ \"winapi-x86_64-pc-windows-gnu\",\n+]\n+\n+[[package]]\n+name = \"winapi-i686-pc-windows-gnu\"\n+version = \"0.4.0\"\n+source = \"registry+https://github.com/rust-lang/crates.io-index\"\n+checksum = \"ac3b87c63620426dd9b991e5ce0329eff545bccbbb34f3be09ff6fb6ab51b7b6\"\n+\n+[[package]]\n+name = \"winapi-x86_64-pc-windows-gnu\"\n+version = \"0.4.0\"\n+source = \"registry+https://github.com/rust-lang/crates.io-index\"\n+checksum = \"712e227841d057c1ee1cd2fb22fa7e5a5461ae8e48fa2ca79ec42cfc1931183f\"\ndiff --git a/debian/rust-vendor/glob/Cargo.toml b/debian/rust-vendor/glob/Cargo.toml\nnew file mode 100644\nindex 0000000..c72d5c5\n--- /dev/null\n+++ b/debian/rust-vendor/glob/Cargo.toml\n@@ -0,0 +1,45 @@\n+# THIS FILE IS AUTOMATICALLY GENERATED BY CARGO\n+#\n+# When uploading crates to the registry Cargo will automatically\n+# \"normalize\" Cargo.toml files for maximal compatibility\n+# with all versions of Cargo and also rewrite `path` dependencies\n+# to registry (e.g., crates.io) dependencies.\n+#\n+# If you are reading this file be aware that the original Cargo.toml\n+# will likely look very different (and much more reasonable).\n+# See Cargo.toml.orig for the original contents.\n+\n+[package]\n+rust-version = \"1.63.0\"\n+name = \"glob\"\n+version = \"0.3.3\"\n+authors = [\"The Rust Project Developers\"]\n+build = false\n+autolib = false\n+autobins = false\n+autoexamples = false\n+autotests = false\n+autobenches = false\n+description = \"\"\"\n+Support for matching file paths against Unix shell style patterns.\n+\"\"\"\n+homepage = \"https://github.com/rust-lang/glob\"\n+documentation = \"https://docs.rs/glob\"\n+readme = \"README.md\"\n+categories = [\"filesystem\"]\n+license = \"MIT OR Apache-2.0\"\n+repository = \"https://github.com/rust-lang/glob\"\n+\n+[lib]\n+name = \"glob\"\n+path = \"src/lib.rs\"\n+\n+[[test]]\n+name = \"glob-std\"\n+path = \"tests/glob-std.rs\"\n+\n+[dev-dependencies.doc-comment]\n+version = \"0.3\"\n+\n+[dev-dependencies.tempdir]\n+version = \"0.3\"\ndiff --git a/debian/rust-vendor/glob/LICENSE-APACHE b/debian/rust-vendor/glob/LICENSE-APACHE\nnew file mode 100644\nindex 0000000..16fe87b\n--- /dev/null\n+++ b/debian/rust-vendor/glob/LICENSE-APACHE\n@@ -0,0 +1,201 @@\n+                              Apache License\n+                        Version 2.0, January 2004\n+                     http://www.apache.org/licenses/\n+\n+TERMS AND CONDITIONS FOR USE, REPRODUCTION, AND DISTRIBUTION\n+\n+1. Definitions.\n+\n+   \"License\" shall mean the terms and conditions for use, reproduction,\n+   and distribution as defined by Sections 1 through 9 of this document.\n+\n+   \"Licensor\" shall mean the copyright owner or entity authorized by\n+   the copyright owner that is granting the License.\n+\n+   \"Legal Entity\" shall mean the union of the acting entity and all\n+   other entities that control, are controlled by, or are under common\n+   control with that entity. For the purposes of this definition,\n+   \"control\" means (i) the power, direct or indirect, to cause the\n+   direction or management of such entity, whether by contract or\n+   otherwise, or (ii) ownership of fifty percent (50%) or more of the\n+   outstanding shares, or (iii) beneficial ownership of such entity.\n+\n+   \"You\" (or \"Your\") shall mean an individual or Legal Entity\n+   exercising permissions granted by this License.\n+\n+   \"Source\" form shall mean the preferred form for making modifications,\n+   including but not limited to software source code, documentation\n+   source, and configuration files.\n+\n+   \"Object\" form shall mean any form resulting from mechanical\n+   transformation or translation of a Source form, including but\n+   not limited to compiled object code, generated documentation,\n+   and conversions to other media types.\n+\n+   \"Work\" shall mean the work of authorship, whether in Source or\n+   Object form, made available under the License, as indicated by a\n+   copyright notice that is included in or attached to the work\n+   (an example is provided in the Appendix below).\n+\n+   \"Derivative Works\" shall mean any work, whether in Source or Object\n+   form, that is based on (or derived from) the Work and for which the\n+   editorial revisions, annotations, elaborations, or other modifications\n+   represent, as a whole, an original work of authorship. For the purposes\n+   of this License, Derivative Works shall not include works that remain\n+   separable from, or merely link (or bind by name) to the interfaces of,\n+   the Work and Derivative Works thereof.\n+\n+   \"Contribution\" shall mean any work of authorship, including\n+   the original version of the Work and any modifications or additions\n+   to that Work or Derivative Works thereof, that is intentionally\n+   submitted to Licensor for inclusion in the Work by the copyright owner\n+   or by an individual or Legal Entity authorized to submit on behalf of\n+   the copyright owner. For the purposes of this definition, \"submitted\"\n+   means any form of electronic, verbal, or written communication sent\n+   to the Licensor or its representatives, including but not limited to\n+   communication on electronic mailing lists, source code control systems,\n+   and issue tracking systems that are managed by, or on behalf of, the\n+   Licensor for the purpose of discussing and improving the Work, but\n+   excluding communication that is conspicuously marked or otherwise\n+   designated in writing by the copyright owner as \"Not a Contribution.\"\n+\n+   \"Contributor\" shall mean Licensor and any individual or Legal Entity\n+   on behalf of whom a Contribution has been received by Licensor and\n+   subsequently incorporated within the Work.\n+\n+2. Grant of Copyright License. Subject to the terms and conditions of\n+   this License, each Contributor hereby grants to You a perpetual,\n+   worldwide, non-exclusive, no-charge, royalty-free, irrevocable\n+   copyright license to reproduce, prepare Derivative Works of,\n+   publicly display, publicly perform, sublicense, and distribute the\n+   Work and such Derivative Works in Source or Object form.\n+\n+3. Grant of Patent License. Subject to the terms and conditions of\n+   this License, each Contributor hereby grants to You a perpetual,\n+   worldwide, non-exclusive, no-charge, royalty-free, irrevocable\n+   (except as stated in this section) patent license to make, have made,\n+   use, offer to sell, sell, import, and otherwise transfer the Work,\n+   where such license applies only to those patent claims licensable\n+   by such Contributor that are necessarily infringed by their\n+   Contribution(s) alone or by combination of their Contribution(s)\n+   with the Work to which such Contribution(s) was submitted. If You\n+   institute patent litigation against any entity (including a\n+   cross-claim or counterclaim in a lawsuit) alleging that the Work\n+   or a Contribution incorporated within the Work constitutes direct\n+   or contributory patent infringement, then any patent licenses\n+   granted to You under this License for that Work shall terminate\n+   as of the date such litigation is filed.\n+\n+4. Redistribution. You may reproduce and distribute copies of the\n+   Work or Derivative Works thereof in any medium, with or without\n+   modifications, and in Source or Object form, provided that You\n+   meet the following conditions:\n+\n+   (a) You must give any other recipients of the Work or\n+       Derivative Works a copy of this License; and\n+\n+   (b) You must cause any modified files to carry prominent notices\n+       stating that You changed the files; and\n+\n+   (c) You must retain, in the Source form of any Derivative Works\n+       that You distribute, all copyright, patent, trademark, and\n+       attribution notices from the Source form of the Work,\n+       excluding those notices that do not pertain to any part of\n+       the Derivative Works; and\n+\n+   (d) If the Work includes a \"NOTICE\" text file as part of its\n+       distribution, then any Derivative Works that You distribute must\n+       include a readable copy of the attribution notices contained\n+       within such NOTICE file, excluding those notices that do not\n+       pertain to any part of the Derivative Works, in at least one\n+       of the following places: within a NOTICE text file distributed\n+       as part of the Derivative Works; within the Source form or\n+       documentation, if provided along with the Derivative Works; or,\n+       within a display generated by the Derivative Works, if and\n+       wherever such third-party notices normally appear. The contents\n+       of the NOTICE file are for informational purposes only and\n+       do not modify the License. You may add Your own attribution\n+       notices within Derivative Works that You distribute, alongside\n+       or as an addendum to the NOTICE text from the Work, provided\n+       that such additional attribution notices cannot be construed\n+       as modifying the License.\n+\n+   You may add Your own copyright statement to Your modifications and\n+   may provide additional or different license terms and conditions\n+   for use, reproduction, or distribution of Your modifications, or\n+   for any such Derivative Works as a whole, provided Your use,\n+   reproduction, and distribution of the Work otherwise complies with\n+   the conditions stated in this License.\n+\n+5. Submission of Contributions. Unless You explicitly state otherwise,\n+   any Contribution intentionally submitted for inclusion in the Work\n+   by You to the Licensor shall be under the terms and conditions of\n+   this License, without any additional terms or conditions.\n+   Notwithstanding the above, nothing herein shall supersede or modify\n+   the terms of any separate license agreement you may have executed\n+   with Licensor regarding such Contributions.\n+\n+6. Trademarks. This License does not grant permission to use the trade\n+   names, trademarks, service marks, or product names of the Licensor,\n+   except as required for reasonable and customary use in describing the\n+   origin of the Work and reproducing the content of the NOTICE file.\n+\n+7. Disclaimer of Warranty. Unless required by applicable law or\n+   agreed to in writing, Licensor provides the Work (and each\n+   Contributor provides its Contributions) on an \"AS IS\" BASIS,\n+   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or\n+   implied, including, without limitation, any warranties or conditions\n+   of TITLE, NON-INFRINGEMENT, MERCHANTABILITY, or FITNESS FOR A\n+   PARTICULAR PURPOSE. You are solely responsible for determining the\n+   appropriateness of using or redistributing the Work and assume any\n+   risks associated with Your exercise of permissions under this License.\n+\n+8. Limitation of Liability. In no event and under no legal theory,\n+   whether in tort (including negligence), contract, or otherwise,\n+   unless required by applicable law (such as deliberate and grossly\n+   negligent acts) or agreed to in writing, shall any Contributor be\n+   liable to You for damages, including any direct, indirect, special,\n+   incidental, or consequential damages of any character arising as a\n+   result of this License or out of the use or inability to use the\n+   Work (including but not limited to damages for loss of goodwill,\n+   work stoppage, computer failure or malfunction, or any and all\n+   other commercial damages or losses), even if such Contributor\n+   has been advised of the possibility of such damages.\n+\n+9. Accepting Warranty or Additional Liability. While redistributing\n+   the Work or Derivative Works thereof, You may choose to offer,\n+   and charge a fee for, acceptance of support, warranty, indemnity,\n+   or other liability obligations and/or rights consistent with this\n+   License. However, in accepting such obligations, You may act only\n+   on Your own behalf and on Your sole responsibility, not on behalf\n+   of any other Contributor, and only if You agree to indemnify,\n+   defend, and hold each Contributor harmless for any liability\n+   incurred by, or claims asserted against, such Contributor by reason\n+   of your accepting any such warranty or additional liability.\n+\n+END OF TERMS AND CONDITIONS\n+\n+APPENDIX: How to apply the Apache License to your work.\n+\n+   To apply the Apache License to your work, attach the following\n+   boilerplate notice, with the fields enclosed by brackets \"[]\"\n+   replaced with your own identifying information. (Don't include\n+   the brackets!)  The text should be enclosed in the appropriate\n+   comment syntax for the file format. We also recommend that a\n+   file or class name and description of purpose be included on the\n+   same \"printed page\" as the copyright notice for easier\n+   identification within third-party archives.\n+\n+Copyright [yyyy] [name of copyright owner]\n+\n+Licensed under the Apache License, Version 2.0 (the \"License\");\n+you may not use this file except in compliance with the License.\n+You may obtain a copy of the License at\n+\n+\thttp://www.apache.org/licenses/LICENSE-2.0\n+\n+Unless required by applicable law or agreed to in writing, software\n+distributed under the License is distributed on an \"AS IS\" BASIS,\n+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\n+See the License for the specific language governing permissions and\n+limitations under the License.\ndiff --git a/debian/rust-vendor/glob/LICENSE-MIT b/debian/rust-vendor/glob/LICENSE-MIT\nnew file mode 100644\nindex 0000000..39d4bdb\n--- /dev/null\n+++ b/debian/rust-vendor/glob/LICENSE-MIT\n@@ -0,0 +1,25 @@\n+Copyright (c) 2014 The Rust Project Developers\n+\n+Permission is hereby granted, free of charge, to any\n+person obtaining a copy of this software and associated\n+documentation files (the \"Software\"), to deal in the\n+Software without restriction, including without\n+limitation the rights to use, copy, modify, merge,\n+publish, distribute, sublicense, and/or sell copies of\n+the Software, and to permit persons to whom the Software\n+is furnished to do so, subject to the following\n+conditions:\n+\n+The above copyright notice and this permission notice\n+shall be included in all copies or substantial portions\n+of the Software.\n+\n+THE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF\n+ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED\n+TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A\n+PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT\n+SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY\n+CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION\n+OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR\n+IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER\n+DEALINGS IN THE SOFTWARE.\ndiff --git a/debian/rust-vendor/glob/README.md b/debian/rust-vendor/glob/README.md\nnew file mode 100644\nindex 0000000..3ad9ff8\n--- /dev/null\n+++ b/debian/rust-vendor/glob/README.md\n@@ -0,0 +1,38 @@\n+glob\n+====\n+\n+Support for matching file paths against Unix shell style patterns.\n+\n+[![Continuous integration](https://github.com/rust-lang/glob/actions/workflows/rust.yml/badge.svg)](https://github.com/rust-lang/glob/actions/workflows/rust.yml)\n+\n+[Documentation](https://docs.rs/glob)\n+\n+## Usage\n+\n+To use `glob`, add this to your `Cargo.toml`:\n+\n+```toml\n+[dependencies]\n+glob = \"0.3.2\"\n+```\n+\n+If you're using Rust 1.30 or earlier, or edition 2015, add this to your crate root:\n+\n+```rust\n+extern crate glob;\n+```\n+\n+## Examples\n+\n+Print all jpg files in /media/ and all of its subdirectories.\n+\n+```rust\n+use glob::glob;\n+\n+for entry in glob(\"/media/**/*.jpg\").expect(\"Failed to read glob pattern\") {\n+    match entry {\n+        Ok(path) => println!(\"{:?}\", path.display()),\n+        Err(e) => println!(\"{:?}\", e),\n+    }\n+}\n+```\ndiff --git a/debian/rust-vendor/glob/src/lib.rs b/debian/rust-vendor/glob/src/lib.rs\nnew file mode 100644\nindex 0000000..133a17a\n--- /dev/null\n+++ b/debian/rust-vendor/glob/src/lib.rs\n@@ -0,0 +1,1511 @@\n+// Copyright 2014 The Rust Project Developers. See the COPYRIGHT\n+// file at the top-level directory of this distribution and at\n+// http://rust-lang.org/COPYRIGHT.\n+//\n+// Licensed under the Apache License, Version 2.0 <LICENSE-APACHE or\n+// http://www.apache.org/licenses/LICENSE-2.0> or the MIT license\n+// <LICENSE-MIT or http://opensource.org/licenses/MIT>, at your\n+// option. This file may not be copied, modified, or distributed\n+// except according to those terms.\n+\n+//! Support for matching file paths against Unix shell style patterns.\n+//!\n+//! The `glob` and `glob_with` functions allow querying the filesystem for all\n+//! files that match a particular pattern (similar to the libc `glob` function).\n+//! The methods on the `Pattern` type provide functionality for checking if\n+//! individual paths match a particular pattern (similar to the libc `fnmatch`\n+//! function).\n+//!\n+//! For consistency across platforms, and for Windows support, this module\n+//! is implemented entirely in Rust rather than deferring to the libc\n+//! `glob`/`fnmatch` functions.\n+//!\n+//! # Examples\n+//!\n+//! To print all jpg files in `/media/` and all of its subdirectories.\n+//!\n+//! ```rust,no_run\n+//! use glob::glob;\n+//!\n+//! for entry in glob(\"/media/**/*.jpg\").expect(\"Failed to read glob pattern\") {\n+//!     match entry {\n+//!         Ok(path) => println!(\"{:?}\", path.display()),\n+//!         Err(e) => println!(\"{:?}\", e),\n+//!     }\n+//! }\n+//! ```\n+//!\n+//! To print all files containing the letter \"a\", case insensitive, in a `local`\n+//! directory relative to the current working directory. This ignores errors\n+//! instead of printing them.\n+//!\n+//! ```rust,no_run\n+//! use glob::glob_with;\n+//! use glob::MatchOptions;\n+//!\n+//! let options = MatchOptions {\n+//!     case_sensitive: false,\n+//!     require_literal_separator: false,\n+//!     require_literal_leading_dot: false,\n+//! };\n+//! for entry in glob_with(\"local/*a*\", options).unwrap() {\n+//!     if let Ok(path) = entry {\n+//!         println!(\"{:?}\", path.display())\n+//!     }\n+//! }\n+//! ```\n+\n+#![doc(\n+    html_logo_url = \"https://www.rust-lang.org/logos/rust-logo-128x128-blk-v2.png\",\n+    html_favicon_url = \"https://www.rust-lang.org/favicon.ico\",\n+    html_root_url = \"https://docs.rs/glob/0.3.1\"\n+)]\n+#![deny(missing_docs)]\n+#![allow(clippy::while_let_loop)]\n+\n+#[cfg(test)]\n+#[macro_use]\n+extern crate doc_comment;\n+\n+#[cfg(test)]\n+doctest!(\"../README.md\");\n+\n+use std::cmp;\n+use std::cmp::Ordering;\n+use std::error::Error;\n+use std::fmt;\n+use std::fs;\n+use std::fs::DirEntry;\n+use std::io;\n+use std::ops::Deref;\n+use std::path::{self, Component, Path, PathBuf};\n+use std::str::FromStr;\n+\n+use CharSpecifier::{CharRange, SingleChar};\n+use MatchResult::{EntirePatternDoesntMatch, Match, SubPatternDoesntMatch};\n+use PatternToken::AnyExcept;\n+use PatternToken::{AnyChar, AnyRecursiveSequence, AnySequence, AnyWithin, Char};\n+\n+/// An iterator that yields `Path`s from the filesystem that match a particular\n+/// pattern.\n+///\n+/// Note that it yields `GlobResult` in order to report any `IoErrors` that may\n+/// arise during iteration. If a directory matches but is unreadable,\n+/// thereby preventing its contents from being checked for matches, a\n+/// `GlobError` is returned to express this.\n+///\n+/// See the `glob` function for more details.\n+#[derive(Debug)]\n+pub struct Paths {\n+    dir_patterns: Vec<Pattern>,\n+    require_dir: bool,\n+    options: MatchOptions,\n+    todo: Vec<Result<(PathWrapper, usize), GlobError>>,\n+    scope: Option<PathWrapper>,\n+}\n+\n+/// Return an iterator that produces all the `Path`s that match the given\n+/// pattern using default match options, which may be absolute or relative to\n+/// the current working directory.\n+///\n+/// This may return an error if the pattern is invalid.\n+///\n+/// This method uses the default match options and is equivalent to calling\n+/// `glob_with(pattern, MatchOptions::new())`. Use `glob_with` directly if you\n+/// want to use non-default match options.\n+///\n+/// When iterating, each result is a `GlobResult` which expresses the\n+/// possibility that there was an `IoError` when attempting to read the contents\n+/// of the matched path.  In other words, each item returned by the iterator\n+/// will either be an `Ok(Path)` if the path matched, or an `Err(GlobError)` if\n+/// the path (partially) matched _but_ its contents could not be read in order\n+/// to determine if its contents matched.\n+///\n+/// See the `Paths` documentation for more information.\n+///\n+/// # Examples\n+///\n+/// Consider a directory `/media/pictures` containing only the files\n+/// `kittens.jpg`, `puppies.jpg` and `hamsters.gif`:\n+///\n+/// ```rust,no_run\n+/// use glob::glob;\n+///\n+/// for entry in glob(\"/media/pictures/*.jpg\").unwrap() {\n+///     match entry {\n+///         Ok(path) => println!(\"{:?}\", path.display()),\n+///\n+///         // if the path matched but was unreadable,\n+///         // thereby preventing its contents from matching\n+///         Err(e) => println!(\"{:?}\", e),\n+///     }\n+/// }\n+/// ```\n+///\n+/// The above code will print:\n+///\n+/// ```ignore\n+/// /media/pictures/kittens.jpg\n+/// /media/pictures/puppies.jpg\n+/// ```\n+///\n+/// If you want to ignore unreadable paths, you can use something like\n+/// `filter_map`:\n+///\n+/// ```rust\n+/// use glob::glob;\n+/// use std::result::Result;\n+///\n+/// for path in glob(\"/media/pictures/*.jpg\").unwrap().filter_map(Result::ok) {\n+///     println!(\"{}\", path.display());\n+/// }\n+/// ```\n+/// Paths are yielded in alphabetical order.\n+pub fn glob(pattern: &str) -> Result<Paths, PatternError> {\n+    glob_with(pattern, MatchOptions::new())\n+}\n+\n+/// Return an iterator that produces all the `Path`s that match the given\n+/// pattern using the specified match options, which may be absolute or relative\n+/// to the current working directory.\n+///\n+/// This may return an error if the pattern is invalid.\n+///\n+/// This function accepts Unix shell style patterns as described by\n+/// `Pattern::new(..)`.  The options given are passed through unchanged to\n+/// `Pattern::matches_with(..)` with the exception that\n+/// `require_literal_separator` is always set to `true` regardless of the value\n+/// passed to this function.\n+///\n+/// Paths are yielded in alphabetical order.\n+pub fn glob_with(pattern: &str, options: MatchOptions) -> Result<Paths, PatternError> {\n+    #[cfg(windows)]\n+    fn check_windows_verbatim(p: &Path) -> bool {\n+        match p.components().next() {\n+            Some(Component::Prefix(ref p)) => {\n+                // Allow VerbatimDisk paths. std canonicalize() generates them, and they work fine\n+                p.kind().is_verbatim()\n+                    && if let std::path::Prefix::VerbatimDisk(_) = p.kind() {\n+                        false\n+                    } else {\n+                        true\n+                    }\n+            }\n+            _ => false,\n+        }\n+    }\n+    #[cfg(not(windows))]\n+    fn check_windows_verbatim(_: &Path) -> bool {\n+        false\n+    }\n+\n+    #[cfg(windows)]\n+    fn to_scope(p: &Path) -> PathBuf {\n+        // FIXME handle volume relative paths here\n+        p.to_path_buf()\n+    }\n+    #[cfg(not(windows))]\n+    fn to_scope(p: &Path) -> PathBuf {\n+        p.to_path_buf()\n+    }\n+\n+    // make sure that the pattern is valid first, else early return with error\n+    let _ = Pattern::new(pattern)?;\n+\n+    let mut components = Path::new(pattern).components().peekable();\n+    loop {\n+        match components.peek() {\n+            Some(&Component::Prefix(..)) | Some(&Component::RootDir) => {\n+                components.next();\n+            }\n+            _ => break,\n+        }\n+    }\n+    let rest = components.map(|s| s.as_os_str()).collect::<PathBuf>();\n+    let normalized_pattern = Path::new(pattern).iter().collect::<PathBuf>();\n+    let root_len = normalized_pattern.to_str().unwrap().len() - rest.to_str().unwrap().len();\n+    let root = if root_len > 0 {\n+        Some(Path::new(&pattern[..root_len]))\n+    } else {\n+        None\n+    };\n+\n+    if root_len > 0 && check_windows_verbatim(root.unwrap()) {\n+        // FIXME: How do we want to handle verbatim paths? I'm inclined to\n+        // return nothing, since we can't very well find all UNC shares with a\n+        // 1-letter server name.\n+        return Ok(Paths {\n+            dir_patterns: Vec::new(),\n+            require_dir: false,\n+            options,\n+            todo: Vec::new(),\n+            scope: None,\n+        });\n+    }\n+\n+    let scope = root.map_or_else(|| PathBuf::from(\".\"), to_scope);\n+    let scope = PathWrapper::from_path(scope);\n+\n+    let mut dir_patterns = Vec::new();\n+    let components =\n+        pattern[cmp::min(root_len, pattern.len())..].split_terminator(path::is_separator);\n+\n+    for component in components {\n+        dir_patterns.push(Pattern::new(component)?);\n+    }\n+\n+    if root_len == pattern.len() {\n+        dir_patterns.push(Pattern {\n+            original: \"\".to_string(),\n+            tokens: Vec::new(),\n+            is_recursive: false,\n+            has_metachars: false,\n+        });\n+    }\n+\n+    let last_is_separator = pattern.chars().next_back().map(path::is_separator);\n+    let require_dir = last_is_separator == Some(true);\n+    let todo = Vec::new();\n+\n+    Ok(Paths {\n+        dir_patterns,\n+        require_dir,\n+        options,\n+        todo,\n+        scope: Some(scope),\n+    })\n+}\n+\n+/// A glob iteration error.\n+///\n+/// This is typically returned when a particular path cannot be read\n+/// to determine if its contents match the glob pattern. This is possible\n+/// if the program lacks the appropriate permissions, for example.\n+#[derive(Debug)]\n+pub struct GlobError {\n+    path: PathBuf,\n+    error: io::Error,\n+}\n+\n+impl GlobError {\n+    /// The Path that the error corresponds to.\n+    pub fn path(&self) -> &Path {\n+        &self.path\n+    }\n+\n+    /// The error in question.\n+    pub fn error(&self) -> &io::Error {\n+        &self.error\n+    }\n+\n+    /// Consumes self, returning the _raw_ underlying `io::Error`\n+    pub fn into_error(self) -> io::Error {\n+        self.error\n+    }\n+}\n+\n+impl Error for GlobError {\n+    #[allow(deprecated)]\n+    fn description(&self) -> &str {\n+        self.error.description()\n+    }\n+\n+    #[allow(unknown_lints, bare_trait_objects)]\n+    fn cause(&self) -> Option<&Error> {\n+        Some(&self.error)\n+    }\n+}\n+\n+impl fmt::Display for GlobError {\n+    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {\n+        write!(\n+            f,\n+            \"attempting to read `{}` resulted in an error: {}\",\n+            self.path.display(),\n+            self.error\n+        )\n+    }\n+}\n+\n+#[derive(Debug)]\n+struct PathWrapper {\n+    path: PathBuf,\n+    is_directory: bool,\n+}\n+\n+impl PathWrapper {\n+    fn from_dir_entry(path: PathBuf, e: DirEntry) -> Self {\n+        let is_directory = e\n+            .file_type()\n+            .ok()\n+            .and_then(|file_type| {\n+                // We need to use fs::metadata to resolve the actual path\n+                // if it's a symlink.\n+                if file_type.is_symlink() {\n+                    None\n+                } else {\n+                    Some(file_type.is_dir())\n+                }\n+            })\n+            .or_else(|| fs::metadata(&path).map(|m| m.is_dir()).ok())\n+            .unwrap_or(false);\n+        Self { path, is_directory }\n+    }\n+    fn from_path(path: PathBuf) -> Self {\n+        let is_directory = fs::metadata(&path).map(|m| m.is_dir()).unwrap_or(false);\n+        Self { path, is_directory }\n+    }\n+\n+    fn into_path(self) -> PathBuf {\n+        self.path\n+    }\n+}\n+\n+impl Deref for PathWrapper {\n+    type Target = Path;\n+\n+    fn deref(&self) -> &Self::Target {\n+        self.path.deref()\n+    }\n+}\n+\n+impl AsRef<Path> for PathWrapper {\n+    fn as_ref(&self) -> &Path {\n+        self.path.as_ref()\n+    }\n+}\n+\n+/// An alias for a glob iteration result.\n+///\n+/// This represents either a matched path or a glob iteration error,\n+/// such as failing to read a particular directory's contents.\n+pub type GlobResult = Result<PathBuf, GlobError>;\n+\n+impl Iterator for Paths {\n+    type Item = GlobResult;\n+\n+    fn next(&mut self) -> Option<GlobResult> {\n+        // the todo buffer hasn't been initialized yet, so it's done at this\n+        // point rather than in glob() so that the errors are unified that is,\n+        // failing to fill the buffer is an iteration error construction of the\n+        // iterator (i.e. glob()) only fails if it fails to compile the Pattern\n+        if let Some(scope) = self.scope.take() {\n+            if !self.dir_patterns.is_empty() {\n+                // Shouldn't happen, but we're using -1 as a special index.\n+                assert!(self.dir_patterns.len() < usize::MAX);\n+\n+                fill_todo(&mut self.todo, &self.dir_patterns, 0, &scope, self.options);\n+            }\n+        }\n+\n+        loop {\n+            if self.dir_patterns.is_empty() || self.todo.is_empty() {\n+                return None;\n+            }\n+\n+            let (path, mut idx) = match self.todo.pop().unwrap() {\n+                Ok(pair) => pair,\n+                Err(e) => return Some(Err(e)),\n+            };\n+\n+            // idx -1: was already checked by fill_todo, maybe path was '.' or\n+            // '..' that we can't match here because of normalization.\n+            if idx == usize::MAX {\n+                if self.require_dir && !path.is_directory {\n+                    continue;\n+                }\n+                return Some(Ok(path.into_path()));\n+            }\n+\n+            if self.dir_patterns[idx].is_recursive {\n+                let mut next = idx;\n+\n+                // collapse consecutive recursive patterns\n+                while (next + 1) < self.dir_patterns.len()\n+                    && self.dir_patterns[next + 1].is_recursive\n+                {\n+                    next += 1;\n+                }\n+\n+                if path.is_directory {\n+                    // the path is a directory, so it's a match\n+\n+                    // push this directory's contents\n+                    fill_todo(\n+                        &mut self.todo,\n+                        &self.dir_patterns,\n+                        next,\n+                        &path,\n+                        self.options,\n+                    );\n+\n+                    if next == self.dir_patterns.len() - 1 {\n+                        // pattern ends in recursive pattern, so return this\n+                        // directory as a result\n+                        return Some(Ok(path.into_path()));\n+                    } else {\n+                        // advanced to the next pattern for this path\n+                        idx = next + 1;\n+                    }\n+                } else if next == self.dir_patterns.len() - 1 {\n+                    // not a directory and it's the last pattern, meaning no\n+                    // match\n+                    continue;\n+                } else {\n+                    // advanced to the next pattern for this path\n+                    idx = next + 1;\n+                }\n+            }\n+\n+            // not recursive, so match normally\n+            if self.dir_patterns[idx].matches_with(\n+                {\n+                    match path.file_name().and_then(|s| s.to_str()) {\n+                        // FIXME (#9639): How do we handle non-utf8 filenames?\n+                        // Ignore them for now; ideally we'd still match them\n+                        // against a *\n+                        None => continue,\n+                        Some(x) => x,\n+                    }\n+                },\n+                self.options,\n+            ) {\n+                if idx == self.dir_patterns.len() - 1 {\n+                    // it is not possible for a pattern to match a directory\n+                    // *AND* its children so we don't need to check the\n+                    // children\n+\n+                    if !self.require_dir || path.is_directory {\n+                        return Some(Ok(path.into_path()));\n+                    }\n+                } else {\n+                    fill_todo(\n+                        &mut self.todo,\n+                        &self.dir_patterns,\n+                        idx + 1,\n+                        &path,\n+                        self.options,\n+                    );\n+                }\n+            }\n+        }\n+    }\n+}\n+\n+/// A pattern parsing error.\n+#[derive(Debug)]\n+#[allow(missing_copy_implementations)]\n+pub struct PatternError {\n+    /// The approximate character index of where the error occurred.\n+    pub pos: usize,\n+\n+    /// A message describing the error.\n+    pub msg: &'static str,\n+}\n+\n+impl Error for PatternError {\n+    fn description(&self) -> &str {\n+        self.msg\n+    }\n+}\n+\n+impl fmt::Display for PatternError {\n+    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {\n+        write!(\n+            f,\n+            \"Pattern syntax error near position {}: {}\",\n+            self.pos, self.msg\n+        )\n+    }\n+}\n+\n+/// A compiled Unix shell style pattern.\n+///\n+/// - `?` matches any single character.\n+///\n+/// - `*` matches any (possibly empty) sequence of characters.\n+///\n+/// - `**` matches the current directory and arbitrary\n+///   subdirectories. To match files in arbitrary subdirectories, use\n+///   `**/*`.\n+///\n+///   This sequence **must** form a single path component, so both\n+///   `**a` and `b**` are invalid and will result in an error.  A\n+///   sequence of more than two consecutive `*` characters is also\n+///   invalid.\n+///\n+/// - `[...]` matches any character inside the brackets.  Character sequences\n+///   can also specify ranges of characters, as ordered by Unicode, so e.g.\n+///   `[0-9]` specifies any character between 0 and 9 inclusive. An unclosed\n+///   bracket is invalid.\n+///\n+/// - `[!...]` is the negation of `[...]`, i.e. it matches any characters\n+///   **not** in the brackets.\n+///\n+/// - The metacharacters `?`, `*`, `[`, `]` can be matched by using brackets\n+///   (e.g. `[?]`).  When a `]` occurs immediately following `[` or `[!` then it\n+///   is interpreted as being part of, rather then ending, the character set, so\n+///   `]` and NOT `]` can be matched by `[]]` and `[!]]` respectively.  The `-`\n+///   character can be specified inside a character sequence pattern by placing\n+///   it at the start or the end, e.g. `[abc-]`.\n+#[derive(Clone, PartialEq, Eq, PartialOrd, Ord, Hash, Default, Debug)]\n+pub struct Pattern {\n+    original: String,\n+    tokens: Vec<PatternToken>,\n+    is_recursive: bool,\n+    /// A bool value that indicates whether the pattern contains any metacharacters.\n+    /// We use this information for some fast path optimizations.\n+    has_metachars: bool,\n+}\n+\n+/// Show the original glob pattern.\n+impl fmt::Display for Pattern {\n+    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {\n+        self.original.fmt(f)\n+    }\n+}\n+\n+impl FromStr for Pattern {\n+    type Err = PatternError;\n+\n+    fn from_str(s: &str) -> Result<Self, PatternError> {\n+        Self::new(s)\n+    }\n+}\n+\n+#[derive(Clone, PartialEq, Eq, PartialOrd, Ord, Hash, Debug)]\n+enum PatternToken {\n+    Char(char),\n+    AnyChar,\n+    AnySequence,\n+    AnyRecursiveSequence,\n+    AnyWithin(Vec<CharSpecifier>),\n+    AnyExcept(Vec<CharSpecifier>),\n+}\n+\n+#[derive(Copy, Clone, PartialEq, Eq, PartialOrd, Ord, Hash, Debug)]\n+enum CharSpecifier {\n+    SingleChar(char),\n+    CharRange(char, char),\n+}\n+\n+#[derive(Copy, Clone, PartialEq)]\n+enum MatchResult {\n+    Match,\n+    SubPatternDoesntMatch,\n+    EntirePatternDoesntMatch,\n+}\n+\n+const ERROR_WILDCARDS: &str = \"wildcards are either regular `*` or recursive `**`\";\n+const ERROR_RECURSIVE_WILDCARDS: &str = \"recursive wildcards must form a single path \\\n+                                         component\";\n+const ERROR_INVALID_RANGE: &str = \"invalid range pattern\";\n+\n+impl Pattern {\n+    /// This function compiles Unix shell style patterns.\n+    ///\n+    /// An invalid glob pattern will yield a `PatternError`.\n+    pub fn new(pattern: &str) -> Result<Self, PatternError> {\n+        let chars = pattern.chars().collect::<Vec<_>>();\n+        let mut tokens = Vec::new();\n+        let mut is_recursive = false;\n+        let mut has_metachars = false;\n+        let mut i = 0;\n+\n+        while i < chars.len() {\n+            match chars[i] {\n+                '?' => {\n+                    has_metachars = true;\n+                    tokens.push(AnyChar);\n+                    i += 1;\n+                }\n+                '*' => {\n+                    has_metachars = true;\n+\n+                    let old = i;\n+\n+                    while i < chars.len() && chars[i] == '*' {\n+                        i += 1;\n+                    }\n+\n+                    let count = i - old;\n+\n+                    match count.cmp(&2) {\n+                        Ordering::Greater => {\n+                            return Err(PatternError {\n+                                pos: old + 2,\n+                                msg: ERROR_WILDCARDS,\n+                            })\n+                        }\n+                        Ordering::Equal => {\n+                            // ** can only be an entire path component\n+                            // i.e. a/**/b is valid, but a**/b or a/**b is not\n+                            // invalid matches are treated literally\n+                            let is_valid = if i == 2 || path::is_separator(chars[i - count - 1]) {\n+                                // it ends in a '/'\n+                                if i < chars.len() && path::is_separator(chars[i]) {\n+                                    i += 1;\n+                                    true\n+                                // or the pattern ends here\n+                                // this enables the existing globbing mechanism\n+                                } else if i == chars.len() {\n+                                    true\n+                                // `**` ends in non-separator\n+                                } else {\n+                                    return Err(PatternError {\n+                                        pos: i,\n+                                        msg: ERROR_RECURSIVE_WILDCARDS,\n+                                    });\n+                                }\n+                            // `**` begins with non-separator\n+                            } else {\n+                                return Err(PatternError {\n+                                    pos: old - 1,\n+                                    msg: ERROR_RECURSIVE_WILDCARDS,\n+                                });\n+                            };\n+\n+                            if is_valid {\n+                                // collapse consecutive AnyRecursiveSequence to a\n+                                // single one\n+\n+                                let tokens_len = tokens.len();\n+\n+                                if !(tokens_len > 1\n+                                    && tokens[tokens_len - 1] == AnyRecursiveSequence)\n+                                {\n+                                    is_recursive = true;\n+                                    tokens.push(AnyRecursiveSequence);\n+                                }\n+                            }\n+                        }\n+                        Ordering::Less => tokens.push(AnySequence),\n+                    }\n+                }\n+                '[' => {\n+                    has_metachars = true;\n+\n+                    if i + 4 <= chars.len() && chars[i + 1] == '!' {\n+                        match chars[i + 3..].iter().position(|x| *x == ']') {\n+                            None => (),\n+                            Some(j) => {\n+                                let chars = &chars[i + 2..i + 3 + j];\n+                                let cs = parse_char_specifiers(chars);\n+                                tokens.push(AnyExcept(cs));\n+                                i += j + 4;\n+                                continue;\n+                            }\n+                        }\n+                    } else if i + 3 <= chars.len() && chars[i + 1] != '!' {\n+                        match chars[i + 2..].iter().position(|x| *x == ']') {\n+                            None => (),\n+                            Some(j) => {\n+                                let cs = parse_char_specifiers(&chars[i + 1..i + 2 + j]);\n+                                tokens.push(AnyWithin(cs));\n+                                i += j + 3;\n+                                continue;\n+                            }\n+                        }\n+                    }\n+\n+                    // if we get here then this is not a valid range pattern\n+                    return Err(PatternError {\n+                        pos: i,\n+                        msg: ERROR_INVALID_RANGE,\n+                    });\n+                }\n+                c => {\n+                    tokens.push(Char(c));\n+                    i += 1;\n+                }\n+            }\n+        }\n+\n+        Ok(Self {\n+            tokens,\n+            original: pattern.to_string(),\n+            is_recursive,\n+            has_metachars,\n+        })\n+    }\n+\n+    /// Escape metacharacters within the given string by surrounding them in\n+    /// brackets. The resulting string will, when compiled into a `Pattern`,\n+    /// match the input string and nothing else.\n+    pub fn escape(s: &str) -> String {\n+        let mut escaped = String::new();\n+        for c in s.chars() {\n+            match c {\n+                // note that ! does not need escaping because it is only special\n+                // inside brackets\n+                '?' | '*' | '[' | ']' => {\n+                    escaped.push('[');\n+                    escaped.push(c);\n+                    escaped.push(']');\n+                }\n+                c => {\n+                    escaped.push(c);\n+                }\n+            }\n+        }\n+        escaped\n+    }\n+\n+    /// Return if the given `str` matches this `Pattern` using the default\n+    /// match options (i.e. `MatchOptions::new()`).\n+    ///\n+    /// # Examples\n+    ///\n+    /// ```rust\n+    /// use glob::Pattern;\n+    ///\n+    /// assert!(Pattern::new(\"c?t\").unwrap().matches(\"cat\"));\n+    /// assert!(Pattern::new(\"k[!e]tteh\").unwrap().matches(\"kitteh\"));\n+    /// assert!(Pattern::new(\"d*g\").unwrap().matches(\"doog\"));\n+    /// ```\n+    pub fn matches(&self, str: &str) -> bool {\n+        self.matches_with(str, MatchOptions::new())\n+    }\n+\n+    /// Return if the given `Path`, when converted to a `str`, matches this\n+    /// `Pattern` using the default match options (i.e. `MatchOptions::new()`).\n+    pub fn matches_path(&self, path: &Path) -> bool {\n+        // FIXME (#9639): This needs to handle non-utf8 paths\n+        path.to_str().map_or(false, |s| self.matches(s))\n+    }\n+\n+    /// Return if the given `str` matches this `Pattern` using the specified\n+    /// match options.\n+    pub fn matches_with(&self, str: &str, options: MatchOptions) -> bool {\n+        self.matches_from(true, str.chars(), 0, options) == Match\n+    }\n+\n+    /// Return if the given `Path`, when converted to a `str`, matches this\n+    /// `Pattern` using the specified match options.\n+    pub fn matches_path_with(&self, path: &Path, options: MatchOptions) -> bool {\n+        // FIXME (#9639): This needs to handle non-utf8 paths\n+        path.to_str()\n+            .map_or(false, |s| self.matches_with(s, options))\n+    }\n+\n+    /// Access the original glob pattern.\n+    pub fn as_str(&self) -> &str {\n+        &self.original\n+    }\n+\n+    fn matches_from(\n+        &self,\n+        mut follows_separator: bool,\n+        mut file: std::str::Chars,\n+        i: usize,\n+        options: MatchOptions,\n+    ) -> MatchResult {\n+        for (ti, token) in self.tokens[i..].iter().enumerate() {\n+            match *token {\n+                AnySequence | AnyRecursiveSequence => {\n+                    // ** must be at the start.\n+                    debug_assert!(match *token {\n+                        AnyRecursiveSequence => follows_separator,\n+                        _ => true,\n+                    });\n+\n+                    // Empty match\n+                    match self.matches_from(follows_separator, file.clone(), i + ti + 1, options) {\n+                        SubPatternDoesntMatch => (), // keep trying\n+                        m => return m,\n+                    };\n+\n+                    while let Some(c) = file.next() {\n+                        if follows_separator && options.require_literal_leading_dot && c == '.' {\n+                            return SubPatternDoesntMatch;\n+                        }\n+                        follows_separator = path::is_separator(c);\n+                        match *token {\n+                            AnyRecursiveSequence if !follows_separator => continue,\n+                            AnySequence\n+                                if options.require_literal_separator && follows_separator =>\n+                            {\n+                                return SubPatternDoesntMatch\n+                            }\n+                            _ => (),\n+                        }\n+                        match self.matches_from(\n+                            follows_separator,\n+                            file.clone(),\n+                            i + ti + 1,\n+                            options,\n+                        ) {\n+                            SubPatternDoesntMatch => (), // keep trying\n+                            m => return m,\n+                        }\n+                    }\n+                }\n+                _ => {\n+                    let c = match file.next() {\n+                        Some(c) => c,\n+                        None => return EntirePatternDoesntMatch,\n+                    };\n+\n+                    let is_sep = path::is_separator(c);\n+\n+                    if !match *token {\n+                        AnyChar | AnyWithin(..) | AnyExcept(..)\n+                            if (options.require_literal_separator && is_sep)\n+                                || (follows_separator\n+                                    && options.require_literal_leading_dot\n+                                    && c == '.') =>\n+                        {\n+                            false\n+                        }\n+                        AnyChar => true,\n+                        AnyWithin(ref specifiers) => in_char_specifiers(specifiers, c, options),\n+                        AnyExcept(ref specifiers) => !in_char_specifiers(specifiers, c, options),\n+                        Char(c2) => chars_eq(c, c2, options.case_sensitive),\n+                        AnySequence | AnyRecursiveSequence => unreachable!(),\n+                    } {\n+                        return SubPatternDoesntMatch;\n+                    }\n+                    follows_separator = is_sep;\n+                }\n+            }\n+        }\n+\n+        // Iter is fused.\n+        if file.next().is_none() {\n+            Match\n+        } else {\n+            SubPatternDoesntMatch\n+        }\n+    }\n+}\n+\n+// Fills `todo` with paths under `path` to be matched by `patterns[idx]`,\n+// special-casing patterns to match `.` and `..`, and avoiding `readdir()`\n+// calls when there are no metacharacters in the pattern.\n+fn fill_todo(\n+    todo: &mut Vec<Result<(PathWrapper, usize), GlobError>>,\n+    patterns: &[Pattern],\n+    idx: usize,\n+    path: &PathWrapper,\n+    options: MatchOptions,\n+) {\n+    let add = |todo: &mut Vec<_>, next_path: PathWrapper| {\n+        if idx + 1 == patterns.len() {\n+            // We know it's good, so don't make the iterator match this path\n+            // against the pattern again. In particular, it can't match\n+            // . or .. globs since these never show up as path components.\n+            todo.push(Ok((next_path, usize::MAX)));\n+        } else {\n+            fill_todo(todo, patterns, idx + 1, &next_path, options);\n+        }\n+    };\n+\n+    let pattern = &patterns[idx];\n+    let is_dir = path.is_directory;\n+    let curdir = path.as_ref() == Path::new(\".\");\n+    match (pattern.has_metachars, is_dir) {\n+        (false, _) => {\n+            debug_assert!(\n+                pattern\n+                    .tokens\n+                    .iter()\n+                    .all(|tok| matches!(tok, PatternToken::Char(_))),\n+                \"broken invariant: pattern has metachars but shouldn't\"\n+            );\n+            let s = pattern.as_str();\n+\n+            // This pattern component doesn't have any metacharacters, so we\n+            // don't need to read the current directory to know where to\n+            // continue. So instead of passing control back to the iterator,\n+            // we can just check for that one entry and potentially recurse\n+            // right away.\n+            let special = \".\" == s || \"..\" == s;\n+            let next_path = if curdir {\n+                PathBuf::from(s)\n+            } else {\n+                path.join(s)\n+            };\n+            let next_path = PathWrapper::from_path(next_path);\n+            if (special && is_dir)\n+                || (!special\n+                    && (fs::metadata(&next_path).is_ok()\n+                        || fs::symlink_metadata(&next_path).is_ok()))\n+            {\n+                add(todo, next_path);\n+            }\n+        }\n+        (true, true) => {\n+            let dirs = fs::read_dir(path).and_then(|d| {\n+                d.map(|e| {\n+                    e.map(|e| {\n+                        let path = if curdir {\n+                            PathBuf::from(e.path().file_name().unwrap())\n+                        } else {\n+                            e.path()\n+                        };\n+                        PathWrapper::from_dir_entry(path, e)\n+                    })\n+                })\n+                .collect::<Result<Vec<_>, _>>()\n+            });\n+            match dirs {\n+                Ok(mut children) => {\n+                    if options.require_literal_leading_dot {\n+                        children\n+                            .retain(|x| !x.file_name().unwrap().to_str().unwrap().starts_with('.'));\n+                    }\n+                    children.sort_by(|p1, p2| p2.file_name().cmp(&p1.file_name()));\n+                    todo.extend(children.into_iter().map(|x| Ok((x, idx))));\n+\n+                    // Matching the special directory entries . and .. that\n+                    // refer to the current and parent directory respectively\n+                    // requires that the pattern has a leading dot, even if the\n+                    // `MatchOptions` field `require_literal_leading_dot` is not\n+                    // set.\n+                    if !pattern.tokens.is_empty() && pattern.tokens[0] == Char('.') {\n+                        for &special in &[\".\", \"..\"] {\n+                            if pattern.matches_with(special, options) {\n+                                add(todo, PathWrapper::from_path(path.join(special)));\n+                            }\n+                        }\n+                    }\n+                }\n+                Err(e) => {\n+                    todo.push(Err(GlobError {\n+                        path: path.to_path_buf(),\n+                        error: e,\n+                    }));\n+                }\n+            }\n+        }\n+        (true, false) => {\n+            // not a directory, nothing more to find\n+        }\n+    }\n+}\n+\n+fn parse_char_specifiers(s: &[char]) -> Vec<CharSpecifier> {\n+    let mut cs = Vec::new();\n+    let mut i = 0;\n+    while i < s.len() {\n+        if i + 3 <= s.len() && s[i + 1] == '-' {\n+            cs.push(CharRange(s[i], s[i + 2]));\n+            i += 3;\n+        } else {\n+            cs.push(SingleChar(s[i]));\n+            i += 1;\n+        }\n+    }\n+    cs\n+}\n+\n+fn in_char_specifiers(specifiers: &[CharSpecifier], c: char, options: MatchOptions) -> bool {\n+    for &specifier in specifiers.iter() {\n+        match specifier {\n+            SingleChar(sc) => {\n+                if chars_eq(c, sc, options.case_sensitive) {\n+                    return true;\n+                }\n+            }\n+            CharRange(start, end) => {\n+                // FIXME: work with non-ascii chars properly (issue #1347)\n+                if !options.case_sensitive && c.is_ascii() && start.is_ascii() && end.is_ascii() {\n+                    let start = start.to_ascii_lowercase();\n+                    let end = end.to_ascii_lowercase();\n+\n+                    let start_up = start.to_uppercase().next().unwrap();\n+                    let end_up = end.to_uppercase().next().unwrap();\n+\n+                    // only allow case insensitive matching when\n+                    // both start and end are within a-z or A-Z\n+                    if start != start_up && end != end_up {\n+                        let c = c.to_ascii_lowercase();\n+                        if c >= start && c <= end {\n+                            return true;\n+                        }\n+                    }\n+                }\n+\n+                if c >= start && c <= end {\n+                    return true;\n+                }\n+            }\n+        }\n+    }\n+\n+    false\n+}\n+\n+/// A helper function to determine if two chars are (possibly case-insensitively) equal.\n+fn chars_eq(a: char, b: char, case_sensitive: bool) -> bool {\n+    if cfg!(windows) && path::is_separator(a) && path::is_separator(b) {\n+        true\n+    } else if !case_sensitive && a.is_ascii() && b.is_ascii() {\n+        // FIXME: work with non-ascii chars properly (issue #9084)\n+        a.eq_ignore_ascii_case(&b)\n+    } else {\n+        a == b\n+    }\n+}\n+\n+/// Configuration options to modify the behaviour of `Pattern::matches_with(..)`.\n+#[allow(missing_copy_implementations)]\n+#[derive(Debug, Copy, Clone, PartialEq, Eq, PartialOrd, Ord, Hash, Default)]\n+pub struct MatchOptions {\n+    /// Whether or not patterns should be matched in a case-sensitive manner.\n+    /// This currently only considers upper/lower case relationships between\n+    /// ASCII characters, but in future this might be extended to work with\n+    /// Unicode.\n+    pub case_sensitive: bool,\n+\n+    /// Whether or not path-component separator characters (e.g. `/` on\n+    /// Posix) must be matched by a literal `/`, rather than by `*` or `?` or\n+    /// `[...]`.\n+    pub require_literal_separator: bool,\n+\n+    /// Whether or not paths that contain components that start with a `.`\n+    /// will require that `.` appears literally in the pattern; `*`, `?`, `**`,\n+    /// or `[...]` will not match. This is useful because such files are\n+    /// conventionally considered hidden on Unix systems and it might be\n+    /// desirable to skip them when listing files.\n+    pub require_literal_leading_dot: bool,\n+}\n+\n+impl MatchOptions {\n+    /// Constructs a new `MatchOptions` with default field values. This is used\n+    /// when calling functions that do not take an explicit `MatchOptions`\n+    /// parameter.\n+    ///\n+    /// This function always returns this value:\n+    ///\n+    /// ```rust,ignore\n+    /// MatchOptions {\n+    ///     case_sensitive: true,\n+    ///     require_literal_separator: false,\n+    ///     require_literal_leading_dot: false\n+    /// }\n+    /// ```\n+    ///\n+    /// # Note\n+    /// The behavior of this method doesn't match `default()`'s. This returns\n+    /// `case_sensitive` as `true` while `default()` does it as `false`.\n+    // FIXME: Consider unity the behavior with `default()` in a next major release.\n+    pub fn new() -> Self {\n+        Self {\n+            case_sensitive: true,\n+            require_literal_separator: false,\n+            require_literal_leading_dot: false,\n+        }\n+    }\n+}\n+\n+#[cfg(test)]\n+mod test {\n+    use super::{glob, MatchOptions, Pattern};\n+    use std::path::Path;\n+\n+    #[test]\n+    fn test_pattern_from_str() {\n+        assert!(\"a*b\".parse::<Pattern>().unwrap().matches(\"a_b\"));\n+        assert!(\"a/**b\".parse::<Pattern>().unwrap_err().pos == 4);\n+    }\n+\n+    #[test]\n+    fn test_wildcard_errors() {\n+        assert!(Pattern::new(\"a/**b\").unwrap_err().pos == 4);\n+        assert!(Pattern::new(\"a/bc**\").unwrap_err().pos == 3);\n+        assert!(Pattern::new(\"a/*****\").unwrap_err().pos == 4);\n+        assert!(Pattern::new(\"a/b**c**d\").unwrap_err().pos == 2);\n+        assert!(Pattern::new(\"a**b\").unwrap_err().pos == 0);\n+    }\n+\n+    #[test]\n+    fn test_unclosed_bracket_errors() {\n+        assert!(Pattern::new(\"abc[def\").unwrap_err().pos == 3);\n+        assert!(Pattern::new(\"abc[!def\").unwrap_err().pos == 3);\n+        assert!(Pattern::new(\"abc[\").unwrap_err().pos == 3);\n+        assert!(Pattern::new(\"abc[!\").unwrap_err().pos == 3);\n+        assert!(Pattern::new(\"abc[d\").unwrap_err().pos == 3);\n+        assert!(Pattern::new(\"abc[!d\").unwrap_err().pos == 3);\n+        assert!(Pattern::new(\"abc[]\").unwrap_err().pos == 3);\n+        assert!(Pattern::new(\"abc[!]\").unwrap_err().pos == 3);\n+    }\n+\n+    #[test]\n+    fn test_glob_errors() {\n+        assert!(glob(\"a/**b\").err().unwrap().pos == 4);\n+        assert!(glob(\"abc[def\").err().unwrap().pos == 3);\n+    }\n+\n+    // this test assumes that there is a /root directory and that\n+    // the user running this test is not root or otherwise doesn't\n+    // have permission to read its contents\n+    #[cfg(all(unix, not(target_os = \"macos\")))]\n+    #[test]\n+    fn test_iteration_errors() {\n+        use std::io;\n+        let mut iter = glob(\"/root/*\").unwrap();\n+\n+        // GlobErrors shouldn't halt iteration\n+        let next = iter.next();\n+        assert!(next.is_some());\n+\n+        let err = next.unwrap();\n+        assert!(err.is_err());\n+\n+        let err = err.err().unwrap();\n+        assert!(err.path() == Path::new(\"/root\"));\n+        assert!(err.error().kind() == io::ErrorKind::PermissionDenied);\n+    }\n+\n+    #[test]\n+    fn test_absolute_pattern() {\n+        assert!(glob(\"/\").unwrap().next().is_some());\n+        assert!(glob(\"//\").unwrap().next().is_some());\n+\n+        // assume that the filesystem is not empty!\n+        assert!(glob(\"/*\").unwrap().next().is_some());\n+\n+        #[cfg(not(windows))]\n+        fn win() {}\n+\n+        #[cfg(windows)]\n+        fn win() {\n+            use std::env::current_dir;\n+            use std::path::Component;\n+\n+            // check windows absolute paths with host/device components\n+            let root_with_device = current_dir()\n+                .ok()\n+                .and_then(|p| match p.components().next().unwrap() {\n+                    Component::Prefix(prefix_component) => {\n+                        let path = Path::new(prefix_component.as_os_str()).join(\"*\");\n+                        Some(path.to_path_buf())\n+                    }\n+                    _ => panic!(\"no prefix in this path\"),\n+                })\n+                .unwrap();\n+            // FIXME (#9639): This needs to handle non-utf8 paths\n+            assert!(glob(root_with_device.as_os_str().to_str().unwrap())\n+                .unwrap()\n+                .next()\n+                .is_some());\n+        }\n+        win()\n+    }\n+\n+    #[test]\n+    fn test_wildcards() {\n+        assert!(Pattern::new(\"a*b\").unwrap().matches(\"a_b\"));\n+        assert!(Pattern::new(\"a*b*c\").unwrap().matches(\"abc\"));\n+        assert!(!Pattern::new(\"a*b*c\").unwrap().matches(\"abcd\"));\n+        assert!(Pattern::new(\"a*b*c\").unwrap().matches(\"a_b_c\"));\n+        assert!(Pattern::new(\"a*b*c\").unwrap().matches(\"a___b___c\"));\n+        assert!(Pattern::new(\"abc*abc*abc\")\n+            .unwrap()\n+            .matches(\"abcabcabcabcabcabcabc\"));\n+        assert!(!Pattern::new(\"abc*abc*abc\")\n+            .unwrap()\n+            .matches(\"abcabcabcabcabcabcabca\"));\n+        assert!(Pattern::new(\"a*a*a*a*a*a*a*a*a\")\n+            .unwrap()\n+            .matches(\"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\"));\n+        assert!(Pattern::new(\"a*b[xyz]c*d\").unwrap().matches(\"abxcdbxcddd\"));\n+    }\n+\n+    #[test]\n+    fn test_recursive_wildcards() {\n+        let pat = Pattern::new(\"some/**/needle.txt\").unwrap();\n+        assert!(pat.matches(\"some/needle.txt\"));\n+        assert!(pat.matches(\"some/one/needle.txt\"));\n+        assert!(pat.matches(\"some/one/two/needle.txt\"));\n+        assert!(pat.matches(\"some/other/needle.txt\"));\n+        assert!(!pat.matches(\"some/other/notthis.txt\"));\n+\n+        // a single ** should be valid, for globs\n+        // Should accept anything\n+        let pat = Pattern::new(\"**\").unwrap();\n+        assert!(pat.is_recursive);\n+        assert!(pat.matches(\"abcde\"));\n+        assert!(pat.matches(\"\"));\n+        assert!(pat.matches(\".asdf\"));\n+        assert!(pat.matches(\"/x/.asdf\"));\n+\n+        // collapse consecutive wildcards\n+        let pat = Pattern::new(\"some/**/**/needle.txt\").unwrap();\n+        assert!(pat.matches(\"some/needle.txt\"));\n+        assert!(pat.matches(\"some/one/needle.txt\"));\n+        assert!(pat.matches(\"some/one/two/needle.txt\"));\n+        assert!(pat.matches(\"some/other/needle.txt\"));\n+        assert!(!pat.matches(\"some/other/notthis.txt\"));\n+\n+        // ** can begin the pattern\n+        let pat = Pattern::new(\"**/test\").unwrap();\n+        assert!(pat.matches(\"one/two/test\"));\n+        assert!(pat.matches(\"one/test\"));\n+        assert!(pat.matches(\"test\"));\n+\n+        // /** can begin the pattern\n+        let pat = Pattern::new(\"/**/test\").unwrap();\n+        assert!(pat.matches(\"/one/two/test\"));\n+        assert!(pat.matches(\"/one/test\"));\n+        assert!(pat.matches(\"/test\"));\n+        assert!(!pat.matches(\"/one/notthis\"));\n+        assert!(!pat.matches(\"/notthis\"));\n+\n+        // Only start sub-patterns on start of path segment.\n+        let pat = Pattern::new(\"**/.*\").unwrap();\n+        assert!(pat.matches(\".abc\"));\n+        assert!(pat.matches(\"abc/.abc\"));\n+        assert!(!pat.matches(\"ab.c\"));\n+        assert!(!pat.matches(\"abc/ab.c\"));\n+    }\n+\n+    #[test]\n+    fn test_lots_of_files() {\n+        // this is a good test because it touches lots of differently named files\n+        glob(\"/*/*/*/*\").unwrap().skip(10000).next();\n+    }\n+\n+    #[test]\n+    fn test_range_pattern() {\n+        let pat = Pattern::new(\"a[0-9]b\").unwrap();\n+        for i in 0..10 {\n+            assert!(pat.matches(&format!(\"a{}b\", i)));\n+        }\n+        assert!(!pat.matches(\"a_b\"));\n+\n+        let pat = Pattern::new(\"a[!0-9]b\").unwrap();\n+        for i in 0..10 {\n+            assert!(!pat.matches(&format!(\"a{}b\", i)));\n+        }\n+        assert!(pat.matches(\"a_b\"));\n+\n+        let pats = [\"[a-z123]\", \"[1a-z23]\", \"[123a-z]\"];\n+        for &p in pats.iter() {\n+            let pat = Pattern::new(p).unwrap();\n+            for c in \"abcdefghijklmnopqrstuvwxyz\".chars() {\n+                assert!(pat.matches(&c.to_string()));\n+            }\n+            for c in \"ABCDEFGHIJKLMNOPQRSTUVWXYZ\".chars() {\n+                let options = MatchOptions {\n+                    case_sensitive: false,\n+                    ..MatchOptions::new()\n+                };\n+                assert!(pat.matches_with(&c.to_string(), options));\n+            }\n+            assert!(pat.matches(\"1\"));\n+            assert!(pat.matches(\"2\"));\n+            assert!(pat.matches(\"3\"));\n+        }\n+\n+        let pats = [\"[abc-]\", \"[-abc]\", \"[a-c-]\"];\n+        for &p in pats.iter() {\n+            let pat = Pattern::new(p).unwrap();\n+            assert!(pat.matches(\"a\"));\n+            assert!(pat.matches(\"b\"));\n+            assert!(pat.matches(\"c\"));\n+            assert!(pat.matches(\"-\"));\n+            assert!(!pat.matches(\"d\"));\n+        }\n+\n+        let pat = Pattern::new(\"[2-1]\").unwrap();\n+        assert!(!pat.matches(\"1\"));\n+        assert!(!pat.matches(\"2\"));\n+\n+        assert!(Pattern::new(\"[-]\").unwrap().matches(\"-\"));\n+        assert!(!Pattern::new(\"[!-]\").unwrap().matches(\"-\"));\n+    }\n+\n+    #[test]\n+    fn test_pattern_matches() {\n+        let txt_pat = Pattern::new(\"*hello.txt\").unwrap();\n+        assert!(txt_pat.matches(\"hello.txt\"));\n+        assert!(txt_pat.matches(\"gareth_says_hello.txt\"));\n+        assert!(txt_pat.matches(\"some/path/to/hello.txt\"));\n+        assert!(txt_pat.matches(\"some\\\\path\\\\to\\\\hello.txt\"));\n+        assert!(txt_pat.matches(\"/an/absolute/path/to/hello.txt\"));\n+        assert!(!txt_pat.matches(\"hello.txt-and-then-some\"));\n+        assert!(!txt_pat.matches(\"goodbye.txt\"));\n+\n+        let dir_pat = Pattern::new(\"*some/path/to/hello.txt\").unwrap();\n+        assert!(dir_pat.matches(\"some/path/to/hello.txt\"));\n+        assert!(dir_pat.matches(\"a/bigger/some/path/to/hello.txt\"));\n+        assert!(!dir_pat.matches(\"some/path/to/hello.txt-and-then-some\"));\n+        assert!(!dir_pat.matches(\"some/other/path/to/hello.txt\"));\n+    }\n+\n+    #[test]\n+    fn test_pattern_escape() {\n+        let s = \"_[_]_?_*_!_\";\n+        assert_eq!(Pattern::escape(s), \"_[[]_[]]_[?]_[*]_!_\".to_string());\n+        assert!(Pattern::new(&Pattern::escape(s)).unwrap().matches(s));\n+    }\n+\n+    #[test]\n+    fn test_pattern_matches_case_insensitive() {\n+        let pat = Pattern::new(\"aBcDeFg\").unwrap();\n+        let options = MatchOptions {\n+            case_sensitive: false,\n+            require_literal_separator: false,\n+            require_literal_leading_dot: false,\n+        };\n+\n+        assert!(pat.matches_with(\"aBcDeFg\", options));\n+        assert!(pat.matches_with(\"abcdefg\", options));\n+        assert!(pat.matches_with(\"ABCDEFG\", options));\n+        assert!(pat.matches_with(\"AbCdEfG\", options));\n+    }\n+\n+    #[test]\n+    fn test_pattern_matches_case_insensitive_range() {\n+        let pat_within = Pattern::new(\"[a]\").unwrap();\n+        let pat_except = Pattern::new(\"[!a]\").unwrap();\n+\n+        let options_case_insensitive = MatchOptions {\n+            case_sensitive: false,\n+            require_literal_separator: false,\n+            require_literal_leading_dot: false,\n+        };\n+        let options_case_sensitive = MatchOptions {\n+            case_sensitive: true,\n+            require_literal_separator: false,\n+            require_literal_leading_dot: false,\n+        };\n+\n+        assert!(pat_within.matches_with(\"a\", options_case_insensitive));\n+        assert!(pat_within.matches_with(\"A\", options_case_insensitive));\n+        assert!(!pat_within.matches_with(\"A\", options_case_sensitive));\n+\n+        assert!(!pat_except.matches_with(\"a\", options_case_insensitive));\n+        assert!(!pat_except.matches_with(\"A\", options_case_insensitive));\n+        assert!(pat_except.matches_with(\"A\", options_case_sensitive));\n+    }\n+\n+    #[test]\n+    fn test_pattern_matches_require_literal_separator() {\n+        let options_require_literal = MatchOptions {\n+            case_sensitive: true,\n+            require_literal_separator: true,\n+            require_literal_leading_dot: false,\n+        };\n+        let options_not_require_literal = MatchOptions {\n+            case_sensitive: true,\n+            require_literal_separator: false,\n+            require_literal_leading_dot: false,\n+        };\n+\n+        assert!(Pattern::new(\"abc/def\")\n+            .unwrap()\n+            .matches_with(\"abc/def\", options_require_literal));\n+        assert!(!Pattern::new(\"abc?def\")\n+            .unwrap()\n+            .matches_with(\"abc/def\", options_require_literal));\n+        assert!(!Pattern::new(\"abc*def\")\n+            .unwrap()\n+            .matches_with(\"abc/def\", options_require_literal));\n+        assert!(!Pattern::new(\"abc[/]def\")\n+            .unwrap()\n+            .matches_with(\"abc/def\", options_require_literal));\n+\n+        assert!(Pattern::new(\"abc/def\")\n+            .unwrap()\n+            .matches_with(\"abc/def\", options_not_require_literal));\n+        assert!(Pattern::new(\"abc?def\")\n+            .unwrap()\n+            .matches_with(\"abc/def\", options_not_require_literal));\n+        assert!(Pattern::new(\"abc*def\")\n+            .unwrap()\n+            .matches_with(\"abc/def\", options_not_require_literal));\n+        assert!(Pattern::new(\"abc[/]def\")\n+            .unwrap()\n+            .matches_with(\"abc/def\", options_not_require_literal));\n+    }\n+\n+    #[test]\n+    fn test_pattern_matches_require_literal_leading_dot() {\n+        let options_require_literal_leading_dot = MatchOptions {\n+            case_sensitive: true,\n+            require_literal_separator: false,\n+            require_literal_leading_dot: true,\n+        };\n+        let options_not_require_literal_leading_dot = MatchOptions {\n+            case_sensitive: true,\n+            require_literal_separator: false,\n+            require_literal_leading_dot: false,\n+        };\n+\n+        let f = |options| {\n+            Pattern::new(\"*.txt\")\n+                .unwrap()\n+                .matches_with(\".hello.txt\", options)\n+        };\n+        assert!(f(options_not_require_literal_leading_dot));\n+        assert!(!f(options_require_literal_leading_dot));\n+\n+        let f = |options| {\n+            Pattern::new(\".*.*\")\n+                .unwrap()\n+                .matches_with(\".hello.txt\", options)\n+        };\n+        assert!(f(options_not_require_literal_leading_dot));\n+        assert!(f(options_require_literal_leading_dot));\n+\n+        let f = |options| {\n+            Pattern::new(\"aaa/bbb/*\")\n+                .unwrap()\n+                .matches_with(\"aaa/bbb/.ccc\", options)\n+        };\n+        assert!(f(options_not_require_literal_leading_dot));\n+        assert!(!f(options_require_literal_leading_dot));\n+\n+        let f = |options| {\n+            Pattern::new(\"aaa/bbb/*\")\n+                .unwrap()\n+                .matches_with(\"aaa/bbb/c.c.c.\", options)\n+        };\n+        assert!(f(options_not_require_literal_leading_dot));\n+        assert!(f(options_require_literal_leading_dot));\n+\n+        let f = |options| {\n+            Pattern::new(\"aaa/bbb/.*\")\n+                .unwrap()\n+                .matches_with(\"aaa/bbb/.ccc\", options)\n+        };\n+        assert!(f(options_not_require_literal_leading_dot));\n+        assert!(f(options_require_literal_leading_dot));\n+\n+        let f = |options| {\n+            Pattern::new(\"aaa/?bbb\")\n+                .unwrap()\n+                .matches_with(\"aaa/.bbb\", options)\n+        };\n+        assert!(f(options_not_require_literal_leading_dot));\n+        assert!(!f(options_require_literal_leading_dot));\n+\n+        let f = |options| {\n+            Pattern::new(\"aaa/[.]bbb\")\n+                .unwrap()\n+                .matches_with(\"aaa/.bbb\", options)\n+        };\n+        assert!(f(options_not_require_literal_leading_dot));\n+        assert!(!f(options_require_literal_leading_dot));\n+\n+        let f = |options| Pattern::new(\"**/*\").unwrap().matches_with(\".bbb\", options);\n+        assert!(f(options_not_require_literal_leading_dot));\n+        assert!(!f(options_require_literal_leading_dot));\n+    }\n+\n+    #[test]\n+    fn test_matches_path() {\n+        // on windows, (Path::new(\"a/b\").as_str().unwrap() == \"a\\\\b\"), so this\n+        // tests that / and \\ are considered equivalent on windows\n+        assert!(Pattern::new(\"a/b\").unwrap().matches_path(Path::new(\"a/b\")));\n+    }\n+\n+    #[test]\n+    fn test_path_join() {\n+        let pattern = Path::new(\"one\").join(Path::new(\"**/*.rs\"));\n+        assert!(Pattern::new(pattern.to_str().unwrap()).is_ok());\n+    }\n+}\ndiff --git a/debian/rust-vendor/glob/tests/glob-std.rs b/debian/rust-vendor/glob/tests/glob-std.rs\nnew file mode 100644\nindex 0000000..ba12701\n--- /dev/null\n+++ b/debian/rust-vendor/glob/tests/glob-std.rs\n@@ -0,0 +1,477 @@\n+// Copyright 2013-2014 The Rust Project Developers. See the COPYRIGHT\n+// file at the top-level directory of this distribution and at\n+// http://rust-lang.org/COPYRIGHT.\n+//\n+// Licensed under the Apache License, Version 2.0 <LICENSE-APACHE or\n+// http://www.apache.org/licenses/LICENSE-2.0> or the MIT license\n+// <LICENSE-MIT or http://opensource.org/licenses/MIT>, at your\n+// option. This file may not be copied, modified, or distributed\n+// except according to those terms.\n+\n+// ignore-windows TempDir may cause IoError on windows: #10462\n+\n+#![cfg_attr(test, deny(warnings))]\n+\n+extern crate glob;\n+extern crate tempdir;\n+\n+use glob::{glob, glob_with};\n+use std::env;\n+use std::fs;\n+use std::path::PathBuf;\n+use tempdir::TempDir;\n+\n+#[test]\n+fn main() {\n+    fn mk_file(path: &str, directory: bool) {\n+        if directory {\n+            fs::create_dir(path).unwrap();\n+        } else {\n+            fs::File::create(path).unwrap();\n+        }\n+    }\n+\n+    fn mk_symlink_file(original: &str, link: &str) {\n+        #[cfg(unix)]\n+        {\n+            use std::os::unix::fs::symlink;\n+            symlink(original, link).unwrap();\n+        }\n+        #[cfg(windows)]\n+        {\n+            use std::os::windows::fs::symlink_file;\n+            symlink_file(original, link).unwrap();\n+        }\n+    }\n+\n+    fn mk_symlink_dir(original: &str, link: &str) {\n+        #[cfg(unix)]\n+        {\n+            use std::os::unix::fs::symlink;\n+            symlink(original, link).unwrap();\n+        }\n+        #[cfg(windows)]\n+        {\n+            use std::os::windows::fs::symlink_dir;\n+            symlink_dir(original, link).unwrap();\n+        }\n+    }\n+\n+    fn glob_vec(pattern: &str) -> Vec<PathBuf> {\n+        glob(pattern).unwrap().map(|r| r.unwrap()).collect()\n+    }\n+\n+    fn glob_with_vec(pattern: &str, options: glob::MatchOptions) -> Vec<PathBuf> {\n+        glob_with(pattern, options)\n+            .unwrap()\n+            .map(|r| r.unwrap())\n+            .collect()\n+    }\n+\n+    let root = TempDir::new(\"glob-tests\");\n+    let root = root.ok().expect(\"Should have created a temp directory\");\n+    assert!(env::set_current_dir(root.path()).is_ok());\n+\n+    mk_file(\"aaa\", true);\n+    mk_file(\"aaa/apple\", true);\n+    mk_file(\"aaa/orange\", true);\n+    mk_file(\"aaa/tomato\", true);\n+    mk_file(\"aaa/tomato/tomato.txt\", false);\n+    mk_file(\"aaa/tomato/tomoto.txt\", false);\n+    mk_file(\"bbb\", true);\n+    mk_file(\"bbb/specials\", true);\n+    mk_file(\"bbb/specials/!\", false);\n+    // a valid symlink\n+    mk_symlink_file(\"aaa/apple\", \"aaa/green_apple\");\n+    // a broken symlink\n+    mk_symlink_file(\"aaa/setsuna\", \"aaa/kazusa\");\n+\n+    // windows does not allow `*` or `?` characters to exist in filenames\n+    if env::consts::FAMILY != \"windows\" {\n+        mk_file(\"bbb/specials/*\", false);\n+        mk_file(\"bbb/specials/?\", false);\n+    }\n+\n+    mk_file(\"bbb/specials/[\", false);\n+    mk_file(\"bbb/specials/]\", false);\n+    mk_file(\"ccc\", true);\n+    mk_file(\"xyz\", true);\n+    mk_file(\"xyz/x\", false);\n+    mk_file(\"xyz/y\", false);\n+    mk_file(\"xyz/z\", false);\n+\n+    mk_file(\"r\", true);\n+    mk_file(\"r/current_dir.md\", false);\n+    mk_file(\"r/one\", true);\n+    mk_file(\"r/one/a.md\", false);\n+    mk_file(\"r/one/another\", true);\n+    mk_file(\"r/one/another/a.md\", false);\n+    mk_file(\"r/one/another/deep\", true);\n+    mk_file(\"r/one/another/deep/spelunking.md\", false);\n+    mk_file(\"r/another\", true);\n+    mk_file(\"r/another/a.md\", false);\n+    mk_file(\"r/two\", true);\n+    mk_file(\"r/two/b.md\", false);\n+    mk_file(\"r/three\", true);\n+    mk_file(\"r/three/c.md\", false);\n+\n+    mk_file(\"dirsym\", true);\n+    mk_symlink_dir(root.path().join(\"r\").to_str().unwrap(), \"dirsym/link\");\n+\n+    assert_eq!(\n+        glob_vec(\"dirsym/**/*.md\"),\n+        vec!(\n+            PathBuf::from(\"dirsym/link/another/a.md\"),\n+            PathBuf::from(\"dirsym/link/current_dir.md\"),\n+            PathBuf::from(\"dirsym/link/one/a.md\"),\n+            PathBuf::from(\"dirsym/link/one/another/a.md\"),\n+            PathBuf::from(\"dirsym/link/one/another/deep/spelunking.md\"),\n+            PathBuf::from(\"dirsym/link/three/c.md\"),\n+            PathBuf::from(\"dirsym/link/two/b.md\")\n+        )\n+    );\n+\n+    // all recursive entities\n+    assert_eq!(\n+        glob_vec(\"r/**\"),\n+        vec!(\n+            PathBuf::from(\"r/another\"),\n+            PathBuf::from(\"r/one\"),\n+            PathBuf::from(\"r/one/another\"),\n+            PathBuf::from(\"r/one/another/deep\"),\n+            PathBuf::from(\"r/three\"),\n+            PathBuf::from(\"r/two\")\n+        )\n+    );\n+\n+    // std-canonicalized windows verbatim disk paths should work\n+    if env::consts::FAMILY == \"windows\" {\n+        let r_verbatim = PathBuf::from(\"r\").canonicalize().unwrap();\n+        assert_eq!(\n+            glob_vec(&format!(\"{}\\\\**\", r_verbatim.display().to_string()))\n+                .into_iter()\n+                .map(|p| p.strip_prefix(&r_verbatim).unwrap().to_owned())\n+                .collect::<Vec<_>>(),\n+            vec!(\n+                PathBuf::from(\"another\"),\n+                PathBuf::from(\"one\"),\n+                PathBuf::from(\"one\\\\another\"),\n+                PathBuf::from(\"one\\\\another\\\\deep\"),\n+                PathBuf::from(\"three\"),\n+                PathBuf::from(\"two\")\n+            )\n+        );\n+    }\n+\n+    // collapse consecutive recursive patterns\n+    assert_eq!(\n+        glob_vec(\"r/**/**\"),\n+        vec!(\n+            PathBuf::from(\"r/another\"),\n+            PathBuf::from(\"r/one\"),\n+            PathBuf::from(\"r/one/another\"),\n+            PathBuf::from(\"r/one/another/deep\"),\n+            PathBuf::from(\"r/three\"),\n+            PathBuf::from(\"r/two\")\n+        )\n+    );\n+\n+    assert_eq!(\n+        glob_vec(\"r/**/*\"),\n+        vec!(\n+            PathBuf::from(\"r/another\"),\n+            PathBuf::from(\"r/another/a.md\"),\n+            PathBuf::from(\"r/current_dir.md\"),\n+            PathBuf::from(\"r/one\"),\n+            PathBuf::from(\"r/one/a.md\"),\n+            PathBuf::from(\"r/one/another\"),\n+            PathBuf::from(\"r/one/another/a.md\"),\n+            PathBuf::from(\"r/one/another/deep\"),\n+            PathBuf::from(\"r/one/another/deep/spelunking.md\"),\n+            PathBuf::from(\"r/three\"),\n+            PathBuf::from(\"r/three/c.md\"),\n+            PathBuf::from(\"r/two\"),\n+            PathBuf::from(\"r/two/b.md\")\n+        )\n+    );\n+\n+    // followed by a wildcard\n+    assert_eq!(\n+        glob_vec(\"r/**/*.md\"),\n+        vec!(\n+            PathBuf::from(\"r/another/a.md\"),\n+            PathBuf::from(\"r/current_dir.md\"),\n+            PathBuf::from(\"r/one/a.md\"),\n+            PathBuf::from(\"r/one/another/a.md\"),\n+            PathBuf::from(\"r/one/another/deep/spelunking.md\"),\n+            PathBuf::from(\"r/three/c.md\"),\n+            PathBuf::from(\"r/two/b.md\")\n+        )\n+    );\n+\n+    // followed by a precise pattern\n+    assert_eq!(\n+        glob_vec(\"r/one/**/a.md\"),\n+        vec!(\n+            PathBuf::from(\"r/one/a.md\"),\n+            PathBuf::from(\"r/one/another/a.md\")\n+        )\n+    );\n+\n+    // followed by another recursive pattern\n+    // collapses consecutive recursives into one\n+    assert_eq!(\n+        glob_vec(\"r/one/**/**/a.md\"),\n+        vec!(\n+            PathBuf::from(\"r/one/a.md\"),\n+            PathBuf::from(\"r/one/another/a.md\")\n+        )\n+    );\n+\n+    // followed by two precise patterns\n+    assert_eq!(\n+        glob_vec(\"r/**/another/a.md\"),\n+        vec!(\n+            PathBuf::from(\"r/another/a.md\"),\n+            PathBuf::from(\"r/one/another/a.md\")\n+        )\n+    );\n+\n+    assert_eq!(glob_vec(\"\"), Vec::<PathBuf>::new());\n+    assert_eq!(glob_vec(\".\"), vec!(PathBuf::from(\".\")));\n+    assert_eq!(glob_vec(\"..\"), vec!(PathBuf::from(\"..\")));\n+\n+    assert_eq!(glob_vec(\"aaa\"), vec!(PathBuf::from(\"aaa\")));\n+    assert_eq!(glob_vec(\"aaa/\"), vec!(PathBuf::from(\"aaa\")));\n+    assert_eq!(glob_vec(\"a\"), Vec::<PathBuf>::new());\n+    assert_eq!(glob_vec(\"aa\"), Vec::<PathBuf>::new());\n+    assert_eq!(glob_vec(\"aaaa\"), Vec::<PathBuf>::new());\n+\n+    assert_eq!(glob_vec(\"aaa/apple\"), vec!(PathBuf::from(\"aaa/apple\")));\n+    assert_eq!(glob_vec(\"aaa/apple/nope\"), Vec::<PathBuf>::new());\n+\n+    // windows should support both / and \\ as directory separators\n+    if env::consts::FAMILY == \"windows\" {\n+        assert_eq!(glob_vec(\"aaa\\\\apple\"), vec!(PathBuf::from(\"aaa/apple\")));\n+    }\n+\n+    assert_eq!(\n+        glob_vec(\"???/\"),\n+        vec!(\n+            PathBuf::from(\"aaa\"),\n+            PathBuf::from(\"bbb\"),\n+            PathBuf::from(\"ccc\"),\n+            PathBuf::from(\"xyz\")\n+        )\n+    );\n+\n+    assert_eq!(\n+        glob_vec(\"aaa/tomato/tom?to.txt\"),\n+        vec!(\n+            PathBuf::from(\"aaa/tomato/tomato.txt\"),\n+            PathBuf::from(\"aaa/tomato/tomoto.txt\")\n+        )\n+    );\n+\n+    assert_eq!(\n+        glob_vec(\"xyz/?\"),\n+        vec!(\n+            PathBuf::from(\"xyz/x\"),\n+            PathBuf::from(\"xyz/y\"),\n+            PathBuf::from(\"xyz/z\")\n+        )\n+    );\n+\n+    assert_eq!(glob_vec(\"a*\"), vec!(PathBuf::from(\"aaa\")));\n+    assert_eq!(glob_vec(\"*a*\"), vec!(PathBuf::from(\"aaa\")));\n+    assert_eq!(glob_vec(\"a*a\"), vec!(PathBuf::from(\"aaa\")));\n+    assert_eq!(glob_vec(\"aaa*\"), vec!(PathBuf::from(\"aaa\")));\n+    assert_eq!(glob_vec(\"*aaa\"), vec!(PathBuf::from(\"aaa\")));\n+    assert_eq!(glob_vec(\"*aaa*\"), vec!(PathBuf::from(\"aaa\")));\n+    assert_eq!(glob_vec(\"*a*a*a*\"), vec!(PathBuf::from(\"aaa\")));\n+    assert_eq!(glob_vec(\"aaa*/\"), vec!(PathBuf::from(\"aaa\")));\n+\n+    assert_eq!(\n+        glob_vec(\"aaa/*\"),\n+        vec!(\n+            PathBuf::from(\"aaa/apple\"),\n+            PathBuf::from(\"aaa/green_apple\"),\n+            PathBuf::from(\"aaa/kazusa\"),\n+            PathBuf::from(\"aaa/orange\"),\n+            PathBuf::from(\"aaa/tomato\"),\n+        )\n+    );\n+\n+    assert_eq!(\n+        glob_vec(\"aaa/*a*\"),\n+        vec!(\n+            PathBuf::from(\"aaa/apple\"),\n+            PathBuf::from(\"aaa/green_apple\"),\n+            PathBuf::from(\"aaa/kazusa\"),\n+            PathBuf::from(\"aaa/orange\"),\n+            PathBuf::from(\"aaa/tomato\")\n+        )\n+    );\n+\n+    assert_eq!(\n+        glob_vec(\"*/*/*.txt\"),\n+        vec!(\n+            PathBuf::from(\"aaa/tomato/tomato.txt\"),\n+            PathBuf::from(\"aaa/tomato/tomoto.txt\")\n+        )\n+    );\n+\n+    assert_eq!(\n+        glob_vec(\"*/*/t[aob]m?to[.]t[!y]t\"),\n+        vec!(\n+            PathBuf::from(\"aaa/tomato/tomato.txt\"),\n+            PathBuf::from(\"aaa/tomato/tomoto.txt\")\n+        )\n+    );\n+\n+    assert_eq!(glob_vec(\"./aaa\"), vec!(PathBuf::from(\"aaa\")));\n+    assert_eq!(glob_vec(\"./*\"), glob_vec(\"*\"));\n+    assert_eq!(glob_vec(\"*/..\").pop().unwrap(), PathBuf::from(\"xyz/..\"));\n+    assert_eq!(glob_vec(\"aaa/../bbb\"), vec!(PathBuf::from(\"aaa/../bbb\")));\n+    assert_eq!(glob_vec(\"nonexistent/../bbb\"), Vec::<PathBuf>::new());\n+    assert_eq!(glob_vec(\"aaa/tomato/tomato.txt/..\"), Vec::<PathBuf>::new());\n+\n+    assert_eq!(glob_vec(\"aaa/tomato/tomato.txt/\"), Vec::<PathBuf>::new());\n+\n+    // Ensure to find a broken symlink.\n+    assert_eq!(glob_vec(\"aaa/kazusa\"), vec!(PathBuf::from(\"aaa/kazusa\")));\n+\n+    assert_eq!(glob_vec(\"aa[a]\"), vec!(PathBuf::from(\"aaa\")));\n+    assert_eq!(glob_vec(\"aa[abc]\"), vec!(PathBuf::from(\"aaa\")));\n+    assert_eq!(glob_vec(\"a[bca]a\"), vec!(PathBuf::from(\"aaa\")));\n+    assert_eq!(glob_vec(\"aa[b]\"), Vec::<PathBuf>::new());\n+    assert_eq!(glob_vec(\"aa[xyz]\"), Vec::<PathBuf>::new());\n+    assert_eq!(glob_vec(\"aa[]]\"), Vec::<PathBuf>::new());\n+\n+    assert_eq!(glob_vec(\"aa[!b]\"), vec!(PathBuf::from(\"aaa\")));\n+    assert_eq!(glob_vec(\"aa[!bcd]\"), vec!(PathBuf::from(\"aaa\")));\n+    assert_eq!(glob_vec(\"a[!bcd]a\"), vec!(PathBuf::from(\"aaa\")));\n+    assert_eq!(glob_vec(\"aa[!a]\"), Vec::<PathBuf>::new());\n+    assert_eq!(glob_vec(\"aa[!abc]\"), Vec::<PathBuf>::new());\n+\n+    assert_eq!(\n+        glob_vec(\"bbb/specials/[[]\"),\n+        vec!(PathBuf::from(\"bbb/specials/[\"))\n+    );\n+    assert_eq!(\n+        glob_vec(\"bbb/specials/!\"),\n+        vec!(PathBuf::from(\"bbb/specials/!\"))\n+    );\n+    assert_eq!(\n+        glob_vec(\"bbb/specials/[]]\"),\n+        vec!(PathBuf::from(\"bbb/specials/]\"))\n+    );\n+\n+    mk_file(\"i\", true);\n+    mk_file(\"i/qwe\", true);\n+    mk_file(\"i/qwe/.aaa\", false);\n+    mk_file(\"i/qwe/.bbb\", true);\n+    mk_file(\"i/qwe/.bbb/ccc\", false);\n+    mk_file(\"i/qwe/.bbb/.ddd\", false);\n+    mk_file(\"i/qwe/eee\", false);\n+\n+    let options = glob::MatchOptions {\n+        case_sensitive: false,\n+        require_literal_separator: true,\n+        require_literal_leading_dot: true,\n+    };\n+    assert_eq!(glob_with_vec(\"i/**/*a*\", options), Vec::<PathBuf>::new());\n+    assert_eq!(glob_with_vec(\"i/**/*c*\", options), Vec::<PathBuf>::new());\n+    assert_eq!(glob_with_vec(\"i/**/*d*\", options), Vec::<PathBuf>::new());\n+    assert_eq!(\n+        glob_with_vec(\"i/**/*e*\", options),\n+        vec!(PathBuf::from(\"i/qwe\"), PathBuf::from(\"i/qwe/eee\"))\n+    );\n+\n+    if env::consts::FAMILY != \"windows\" {\n+        assert_eq!(\n+            glob_vec(\"bbb/specials/[*]\"),\n+            vec!(PathBuf::from(\"bbb/specials/*\"))\n+        );\n+        assert_eq!(\n+            glob_vec(\"bbb/specials/[?]\"),\n+            vec!(PathBuf::from(\"bbb/specials/?\"))\n+        );\n+    }\n+\n+    if env::consts::FAMILY == \"windows\" {\n+        assert_eq!(\n+            glob_vec(\"bbb/specials/[![]\"),\n+            vec!(\n+                PathBuf::from(\"bbb/specials/!\"),\n+                PathBuf::from(\"bbb/specials/]\")\n+            )\n+        );\n+\n+        assert_eq!(\n+            glob_vec(\"bbb/specials/[!]]\"),\n+            vec!(\n+                PathBuf::from(\"bbb/specials/!\"),\n+                PathBuf::from(\"bbb/specials/[\")\n+            )\n+        );\n+\n+        assert_eq!(\n+            glob_vec(\"bbb/specials/[!!]\"),\n+            vec!(\n+                PathBuf::from(\"bbb/specials/[\"),\n+                PathBuf::from(\"bbb/specials/]\")\n+            )\n+        );\n+    } else {\n+        assert_eq!(\n+            glob_vec(\"bbb/specials/[![]\"),\n+            vec!(\n+                PathBuf::from(\"bbb/specials/!\"),\n+                PathBuf::from(\"bbb/specials/*\"),\n+                PathBuf::from(\"bbb/specials/?\"),\n+                PathBuf::from(\"bbb/specials/]\")\n+            )\n+        );\n+\n+        assert_eq!(\n+            glob_vec(\"bbb/specials/[!]]\"),\n+            vec!(\n+                PathBuf::from(\"bbb/specials/!\"),\n+                PathBuf::from(\"bbb/specials/*\"),\n+                PathBuf::from(\"bbb/specials/?\"),\n+                PathBuf::from(\"bbb/specials/[\")\n+            )\n+        );\n+\n+        assert_eq!(\n+            glob_vec(\"bbb/specials/[!!]\"),\n+            vec!(\n+                PathBuf::from(\"bbb/specials/*\"),\n+                PathBuf::from(\"bbb/specials/?\"),\n+                PathBuf::from(\"bbb/specials/[\"),\n+                PathBuf::from(\"bbb/specials/]\")\n+            )\n+        );\n+\n+        assert_eq!(\n+            glob_vec(\"bbb/specials/[!*]\"),\n+            vec!(\n+                PathBuf::from(\"bbb/specials/!\"),\n+                PathBuf::from(\"bbb/specials/?\"),\n+                PathBuf::from(\"bbb/specials/[\"),\n+                PathBuf::from(\"bbb/specials/]\")\n+            )\n+        );\n+\n+        assert_eq!(\n+            glob_vec(\"bbb/specials/[!?]\"),\n+            vec!(\n+                PathBuf::from(\"bbb/specials/!\"),\n+                PathBuf::from(\"bbb/specials/*\"),\n+                PathBuf::from(\"bbb/specials/[\"),\n+                PathBuf::from(\"bbb/specials/]\")\n+            )\n+        );\n+    }\n+}\ndiff --git a/debian/rust-vendor/glob/triagebot.toml b/debian/rust-vendor/glob/triagebot.toml\nnew file mode 100644\nindex 0000000..fa0824a\n--- /dev/null\n+++ b/debian/rust-vendor/glob/triagebot.toml\n@@ -0,0 +1 @@\n+[assign]\ndiff --git a/debian/rust-vendor/libc/.cargo-checksum.json b/debian/rust-vendor/libc/.cargo-checksum.json\nnew file mode 100644\nindex 0000000..e2d27dc\n--- /dev/null\n+++ b/debian/rust-vendor/libc/.cargo-checksum.json\n@@ -0,0 +1 @@\n+{\"files\":{},\"package\":\"68ab91017fe16c622486840e4c83c9a37afeff978bd239b5293d61ece587de66\"}\n\\ No newline at end of file\ndiff --git a/debian/rust-vendor/libc/.cargo_vcs_info.json b/debian/rust-vendor/libc/.cargo_vcs_info.json\nnew file mode 100644\nindex 0000000..2e53efb\n--- /dev/null\n+++ b/debian/rust-vendor/libc/.cargo_vcs_info.json\n@@ -0,0 +1,6 @@\n+{\n+  \"git\": {\n+    \"sha1\": \"42620ffc4109dc32e02f1cae9e63a3f4311b4b71\"\n+  },\n+  \"path_in_vcs\": \"\"\n+}\n\\ No newline at end of file\ndiff --git a/debian/rust-vendor/libc/.editorconfig b/debian/rust-vendor/libc/.editorconfig\nnew file mode 100644\nindex 0000000..155c990\n--- /dev/null\n+++ b/debian/rust-vendor/libc/.editorconfig\n@@ -0,0 +1,7 @@\n+[*.sh]\n+# See https://github.com/mvdan/sh/blob/master/cmd/shfmt/shfmt.1.scd#examples\n+indent_style = space\n+indent_size = 4\n+\n+switch_case_indent = true\n+space_redirects = true\ndiff --git a/debian/rust-vendor/libc/.git-blame-ignore-revs b/debian/rust-vendor/libc/.git-blame-ignore-revs\nnew file mode 100644\nindex 0000000..d358a2c\n--- /dev/null\n+++ b/debian/rust-vendor/libc/.git-blame-ignore-revs\n@@ -0,0 +1,6 @@\n+# Format macro bodies\n+50f26e08e146b7e9c7d1af9614486eba327d1e31\n+\n+# Automated changes related to the 2021 edition upgrade\n+643182f7da26cedb09349b8bb3735c2e58ba24e6\n+108310db03e7db35ef48a902d9ce9a88ab8f9b77\ndiff --git a/debian/rust-vendor/libc/.release-plz.toml b/debian/rust-vendor/libc/.release-plz.toml\nnew file mode 100644\nindex 0000000..6442af5\n--- /dev/null\n+++ b/debian/rust-vendor/libc/.release-plz.toml\n@@ -0,0 +1,49 @@\n+[workspace]\n+git_release_name = \"{{ version }}\"\n+git_tag_name = \"{{ version }}\"\n+\n+[changelog]\n+body = \"\"\"\n+## [{{ version | trim_start_matches(pat=\"v\") }}]\\\n+    {%- if release_link -%}\\\n+        ({{ release_link }})\\\n+    {% endif %} \\\n+    - {{ timestamp | date(format=\"%Y-%m-%d\") }}\n+{% for group, commits in commits | group_by(attribute=\"group\") %}\n+### {{ group | upper_first }}\n+    {% for commit in commits %}\n+        - {% if commit.scope -%}{{ commit.scope | upper_first }}: {% endif %}\n+        {%- if commit.breaking %}[**breaking**] {% endif %}\n+        {{- commit.message }}\n+        {%- if commit.links %} ([{{ commit.links.1.text }}]({{ commit.links.1.href }})){% endif -%}\n+    {% endfor %}\n+{% endfor %}\n+{%- if github -%}\n+{% if github.contributors | filter(attribute=\"is_first_time\", value=true) | length != 0 %}\n+  ## New Contributors ❤️\n+{% endif %}\\\n+{% for contributor in github.contributors | filter(attribute=\"is_first_time\", value=true) %}\n+  * @{{ contributor.username }} made their first contribution\n+    {%- if contributor.pr_number %} in \\\n+      [#{{ contributor.pr_number }}]({{ self::remote_url() }}/pull/{{ contributor.pr_number }}) \\\n+    {%- endif %}\n+{%- endfor -%}\n+{%- endif %}\n+\"\"\"\n+\n+commit_parsers = [\n+  { message = '(?i)^(\\w+: )?feat', group = \"added\" },\n+  { message = '(?i)^(\\w+: )?add', group = \"added\" },\n+  { message = '(?i)^(\\w+: )?change', group = \"changed\" },\n+  { message = '(?i)^(\\w+: )?cleanup', group = \"cleanup\" },\n+  { message = '(?i)^(\\w+: )?deprecate', group = \"deprecated\" },\n+  { message = '(?i)^(\\w+: )?remove', group = \"removed\" },\n+  { message = '(?i)^(\\w+: )?fix', group = \"fixed\" },\n+  { message = '(?i)^(\\w+: )?fix', group = \"fixed\" },\n+  { message = '^.*', group = \"other\" },\n+]\n+\n+link_parsers = [\n+    # Extract backport patterns\n+    { pattern = '\\(backport <.*/(\\d+)>\\)', text = \"#$1\", href = \"https://github.com/rust-lang/libc/pull/$1\"}\n+]\ndiff --git a/debian/rust-vendor/libc/.rustfmt.toml b/debian/rust-vendor/libc/.rustfmt.toml\nnew file mode 100644\nindex 0000000..42e6cff\n--- /dev/null\n+++ b/debian/rust-vendor/libc/.rustfmt.toml\n@@ -0,0 +1,6 @@\n+edition = \"2021\"\n+error_on_line_overflow = true\n+group_imports = \"StdExternalCrate\"\n+imports_granularity = \"Module\"\n+# This crate gets large lists of reexports. Use vertical to reduce conflicts.\n+imports_layout = \"Vertical\"\n",
+ "diff_truncated": true
+}

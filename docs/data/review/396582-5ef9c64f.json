@@ -1,0 +1,27 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~ubuntu-core-dev/livecd-rootfs/+git/livecd-rootfs/+merge/396582",
+ "id": "396582",
+ "title": "First try on using the raspi seeds for raspi image building.",
+ "source_branch": "sil2100/raspi-server",
+ "target_branch": "ubuntu/focal",
+ "revision": "ae1cedb49ebf4a65449b3f640fcc17a478a62a62",
+ "base_revision": "3e56c4c82e66b8e269e99cb2b2aa59b824168d3b",
+ "description": "First try on using the raspi seeds for raspi image building.",
+ "commit_message": "First try on using the raspi seeds for raspi image building.",
+ "diffstat": {
+  "live-build/auto/config": [
+   18,
+   23
+  ],
+  "debian/changelog": [
+   8,
+   0
+  ]
+ },
+ "files": 2,
+ "added_lines": 26,
+ "removed_lines": 23,
+ "diff": "diff --git a/debian/changelog b/debian/changelog\nindex 1f0a7dd..6323ff6 100644\n--- a/debian/changelog\n+++ b/debian/changelog\n@@ -1,3 +1,11 @@\n+livecd-rootfs (2.664.13) UNRELEASED; urgency=medium\n+\n+  * Remove some unused and unneeded imx6 code paths.\n+  * Enable usage of the ubuntu-server-raspi task for raspi images\n+    (LP: #1912498).\n+\n+ -- Łukasz 'sil2100' Zemczak <lukasz.zemczak@ubuntu.com>  Wed, 20 Jan 2021 15:43:18 +0100\n+\n livecd-rootfs (2.664.12) focal; urgency=medium\n \n   * riscv64: backport HiFive unleashed & cloud-image building support\ndiff --git a/live-build/auto/config b/live-build/auto/config\nindex 1a86731..7f232d4 100755\n--- a/live-build/auto/config\n+++ b/live-build/auto/config\n@@ -802,11 +802,21 @@ case $PROJECT in\n \t\t\tadd_task install minimal standard cloud-image\n \t\t\tadd_package install ubuntu-minimal\n \t\t\tKERNEL_FLAVOURS=virtual\n-\t\t        case $ARCH in\n-\t\t\t\tarmhf|arm64|ppc64el|powerpc)\n+\n+\t\t\tcase $ARCH+${SUBARCH:-} in\n+\t\t\t\tarmhf+raspi|arm64+raspi)\n+\t\t\t\t\t# Generic Raspberry Pi images\n+\t\t\t\t\tCOMPONENTS='main restricted universe multiverse'\n+\t\t\t\t\tadd_task install ubuntu-server-raspi\n+\t\t\t\t\tadd_package install u-boot-rpi u-boot-tools\n+\t\t\t\t\tBINARY_REMOVE_LINUX=false\n+\t\t\t\t\t;;\n+\n+\t\t\t\tarmhf*|arm64*|ppc64el*|powerpc*)\n \t\t\t\t\tadd_task install server\n \t\t\t\t\t;;\n \t\t\tesac\n+\n \t\tfi\n \n \t\tBINARY_REMOVE_LINUX=false\n@@ -869,6 +879,12 @@ case $SUBPROJECT in\n \t\t;;\n esac\n \n+case $ARCH in\n+\tarmhf|arm64)\n+\t\tKERNEL_FLAVOURS=\"${SUBARCH:-$KERNEL_FLAVOURS}\"\n+\t\t;;\n+esac\n+\n # we'll expand the base seed given here according to the STRUCTURE file, and\n # then look in all of the seeds found to see which snaps are seeded\n case $PROJECT:${SUBPROJECT:-} in\n@@ -937,27 +953,6 @@ case $PROJECT in\n \t\t;;\n esac\n \n-case $ARCH in\n-\tarmhf|arm64)\n-\t\tKERNEL_FLAVOURS=\"${SUBARCH:-$KERNEL_FLAVOURS}\"\n-\t\tcase $SUBARCH in\n-\t\t\traspi)\n-\t\t\t\t# Generic Raspberry Pi images\n-\t\t\t\tCOMPONENTS='main restricted universe multiverse'\n-\t\t\t\tadd_package install linux-firmware-raspi2 u-boot-rpi flash-kernel u-boot-tools wpasupplicant\n-\t\t\t\tBINARY_REMOVE_LINUX=false\n-\t\t\t\t;;\n-\t\t\timx6)\n-\t\t\t\tCOMPONENTS='main restricted universe multiverse'\n-\t\t\t\tKERNEL_FLAVOURS=generic\n-\t\t\t\tadd_package install flash-kernel u-boot-tools wpasupplicant\n-\t\t\t\tBINARY_REMOVE_LINUX=false\n-\t\t\t\t;;\n-\n-\t\tesac\n-\t\t;;\n-esac\n-\n case $PROJECT:${SUBPROJECT:-} in\n \tubuntu-server:*|ubuntu-base:*)\n \t\tOPTS=\"${OPTS:+$OPTS }--linux-packages=none --initramfs=none\"\n",
+ "diff_truncated": false
+}

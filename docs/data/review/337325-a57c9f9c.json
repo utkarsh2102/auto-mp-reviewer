@@ -1,0 +1,27 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~ubuntu-release/autopkgtest/+git/development/+merge/337325",
+ "id": "337325",
+ "title": "arm64 autopkgtest runners waste a lot of time running 'nova reboot', because this command times out trying to send an ACPI request that will never be heard and then do a hard reboot.  So skip the 2-minute delay and just hard reboot.",
+ "source_branch": "saner-arm64-reboots",
+ "target_branch": "master",
+ "revision": "9d62b7a24f5ec4358b9c1fe97b1ceae28a3da2f1",
+ "base_revision": "9c8f6445f2019475a1cd5e2157bd3b74b53cefbb",
+ "description": "arm64 autopkgtest runners waste a lot of time running 'nova reboot', because this command times out trying to send an ACPI request that will never be heard and then do a hard reboot.  So skip the 2-minute delay and just hard reboot.",
+ "commit_message": null,
+ "diffstat": {
+  "virt/autopkgtest-virt-ssh": [
+   5,
+   0
+  ],
+  "ssh-setup/nova": [
+   12,
+   0
+  ]
+ },
+ "files": 2,
+ "added_lines": 17,
+ "removed_lines": 0,
+ "diff": "diff --git a/ssh-setup/nova b/ssh-setup/nova\nindex 5336252..d0f73c4 100755\n--- a/ssh-setup/nova\n+++ b/ssh-setup/nova\n@@ -381,6 +381,18 @@ wait_reboot() {\n         echo \"Needs to be called with --uuid <server UUID>\" >&2\n         exit 1\n     fi\n+    # arm64 doesn't honor a soft nova reboot because it has no ACPI platform;\n+    # so every 'nova reboot' call just waits 2 minutes and then does a\n+    # hard reboot anyway.  Use our knowledge of this to short-circuit.\n+    case $IMAGE in\n+        *-arm64-*)\n+            if ! nova reboot --hard --poll \"$SRVUUID\"; then\n+                echo \"hard reboot failed, aborting\" >&2\n+                exit 1\n+            fi\n+            return\n+            ;;\n+    esac\n     if ! timeout 5m nova reboot --poll \"$SRVUUID\"; then\n         echo \"soft reboot timed out, doing hard reboot\" >&2\n         if ! nova reboot --hard --poll \"$SRVUUID\"; then\ndiff --git a/virt/autopkgtest-virt-ssh b/virt/autopkgtest-virt-ssh\nindex 7d2e379..e348563 100755\n--- a/virt/autopkgtest-virt-ssh\n+++ b/virt/autopkgtest-virt-ssh\n@@ -455,6 +455,11 @@ def wait_port_down(host, port, timeout):\n     VirtSubproc.timeout_stop()\n \n \n+def hook_prepare_reboot():\n+    global sshcmd\n+    VirtSubproc.check_exec(sshcmd + ['--', 'sync'])\n+\n+\n def hook_wait_reboot():\n     global sshcmd\n \n",
+ "diff_truncated": false
+}

@@ -1,0 +1,27 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~tobhe/ubuntu/+source/ubuntu-x13s-settings/+git/ubuntu-x13s-settings/+merge/504091",
+ "id": "504091",
+ "title": "modalias → ubuntu/devel",
+ "source_branch": "modalias",
+ "target_branch": "ubuntu/devel",
+ "revision": "8cb2de1a49aaf5e2e8ad7f76f8c29dc37d6e1ea0",
+ "base_revision": "8a0092a35a12e0b3e35d628e760d47069f2efba1",
+ "description": null,
+ "commit_message": null,
+ "diffstat": {
+  "debian/changelog": [
+   6,
+   0
+  ],
+  "debian/hwe-lenovo-x13s-meta.modaliases": [
+   1,
+   1
+  ]
+ },
+ "files": 2,
+ "added_lines": 7,
+ "removed_lines": 1,
+ "diff": "diff --git a/debian/changelog b/debian/changelog\nindex 4cfe51e..1cc54c0 100644\n--- a/debian/changelog\n+++ b/debian/changelog\n@@ -1,3 +1,9 @@\n+ubuntu-x13s-settings (26.04.0) resulute; urgency=medium\n+\n+  * Fix modalias: use sc8280xp-cpufreq-epss (LP: #2149827)\n+\n+ -- Tobias Heider <tobias.heider@canonical.com>  Tue, 21 Apr 2026 19:47:29 +0200\n+\n ubuntu-x13s-settings (25.10.3build1) resolute; urgency=medium\n \n   * No-change mass rebuild for Ubuntu 26.04 (LP: #2132257)\ndiff --git a/debian/hwe-lenovo-x13s-meta.modaliases b/debian/hwe-lenovo-x13s-meta.modaliases\nindex 5bcbdd7..22e759e 100644\n--- a/debian/hwe-lenovo-x13s-meta.modaliases\n+++ b/debian/hwe-lenovo-x13s-meta.modaliases\n@@ -1 +1 @@\n-alias of:*qcom*sc8280xp-clk-virt hwe-lenovo-x13s-meta\n+alias of:*qcom*sc8280xp-cpufreq-epss* hwe-lenovo-x13s-meta\n",
+ "diff_truncated": false
+}

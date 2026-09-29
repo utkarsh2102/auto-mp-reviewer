@@ -1,0 +1,39 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~ack/ubuntu/+source/maas/+git/maas/+merge/379967",
+ "id": "379967",
+ "title": "Fix lintian warnings/errors",
+ "source_branch": "lintian-cleanups",
+ "target_branch": "ubuntu/devel",
+ "revision": "dda488286d96a9c6295c2d92736499028d859132",
+ "base_revision": "4b7509341f2cf5e617b5ef5ac1d09b52dd164f4e",
+ "description": null,
+ "commit_message": "Fix lintian warnings/errors",
+ "diffstat": {
+  "debian/po/POTFILES.in": [
+   1,
+   0
+  ],
+  "debian/po/templates.pot": [
+   99,
+   0
+  ],
+  "debian/control": [
+   13,
+   10
+  ],
+  "debian/changelog": [
+   6,
+   0
+  ],
+  "debian/maas.templates": [
+   3,
+   3
+  ]
+ },
+ "files": 5,
+ "added_lines": 122,
+ "removed_lines": 13,
+ "diff": "diff --git a/debian/changelog b/debian/changelog\nindex 60cef05..1d34be5 100644\n--- a/debian/changelog\n+++ b/debian/changelog\n@@ -1,3 +1,9 @@\n+maas (1:0.5) focal; urgency=medium\n+\n+  * Fix all lintian warning/errors\n+\n+ -- Alberto Donato <alberto.donato@canonical.com>  Thu, 27 Feb 2020 14:40:33 +0100\n+\n maas (1:0.4) focal; urgency=medium\n \n   * Fix description for transitional packages so that tools can properly\ndiff --git a/debian/control b/debian/control\nindex 75b810a..5e2590b 100644\n--- a/debian/control\n+++ b/debian/control\n@@ -1,9 +1,9 @@\n Source: maas\n-Section: net\n+Section: oldlibs\n Priority: optional\n Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>\n-Build-Depends: debhelper (>= 10)\n-Standards-Version: 4.1.3\n+Build-Depends: debhelper (>= 11)\n+Standards-Version: 4.5.0\n Homepage: https://maas.io/\n \n Package: maas\n@@ -45,22 +45,25 @@ Pre-Depends: debconf,\n              snapd\n Depends: ${misc:Depends}\n Description: Transitional package to the maas snap\n-  This is a transitional package. It can be safely removed.\n+ This is a transitional package. It can be safely removed.\n \n Package: maas-rack-controller\n Architecture: all\n-Depends: maas (= ${binary:Version})\n+Depends: maas (= ${binary:Version}),\n+         ${misc:Depends}\n Description: Transitional package to the maas snap\n-  This is a transitional package. It can be safely removed.\n+ This is a transitional package. It can be safely removed.\n \n Package: maas-region-api\n Architecture: all\n-Depends: maas (= ${binary:Version})\n+Depends: maas (= ${binary:Version}),\n+         ${misc:Depends}\n Description: Transitional package to the maas snap\n-  This is a transitional package. It can be safely removed.\n+ This is a transitional package. It can be safely removed.\n \n Package: maas-region-controller\n Architecture: all\n-Depends: maas-region-api (= ${binary:Version})\n+Depends: maas-region-api (= ${binary:Version}),\n+         ${misc:Depends}\n Description: Transitional package to the maas snap\n-  This is a transitional package. It can be safely removed.\n+ This is a transitional package. It can be safely removed.\ndiff --git a/debian/maas.templates b/debian/maas.templates\nindex c59f4e4..9598b76 100644\n--- a/debian/maas.templates\n+++ b/debian/maas.templates\n@@ -1,6 +1,6 @@\n Template: maas/snap-track\n Type: string\n-Description: Track for the MAAS snap\n+_Description: Track for the MAAS snap:\n  This can be specified just as a track name (e.g. \"2.7\", \"latest\", ...) or include\n  a risk as well (e.g. \"latest/candidate\").\n  .\n@@ -9,7 +9,7 @@ Description: Track for the MAAS snap\n Template: maas/snap-no-connectivity\n Type: select\n Choices: Retry, Abort\n-Description: Unable to reach the snap store\n+_Description: Unable to reach the snap store\n  Your system is unable to reach the Snap Store, please make sure you're\n  connected to the Internet and update any firewall or proxy settings as\n  needed so that you can reach the Snap Store.\n@@ -21,7 +21,7 @@ Description: Unable to reach the snap store\n \n Template: maas/snap-needs-setup\n Type: note\n-Description: MAAS installed but not set up\n+_Description: MAAS installed but not set up\n  The MAAS snap has been installed but service needs to be setup.\n  .\n  To set up MAAS, run the following command:\ndiff --git a/debian/po/POTFILES.in b/debian/po/POTFILES.in\nnew file mode 100644\nindex 0000000..fddc1ea\n--- /dev/null\n+++ b/debian/po/POTFILES.in\n@@ -0,0 +1 @@\n+[type: gettext/rfc822deb] maas.templates\ndiff --git a/debian/po/templates.pot b/debian/po/templates.pot\nnew file mode 100644\nindex 0000000..d5b3b09\n--- /dev/null\n+++ b/debian/po/templates.pot\n@@ -0,0 +1,99 @@\n+# SOME DESCRIPTIVE TITLE.\n+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER\n+# This file is distributed under the same license as the maas package.\n+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.\n+#\n+#, fuzzy\n+msgid \"\"\n+msgstr \"\"\n+\"Project-Id-Version: maas\\n\"\n+\"Report-Msgid-Bugs-To: maas@packages.debian.org\\n\"\n+\"POT-Creation-Date: 2020-02-27 13:34+0000\\n\"\n+\"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\\n\"\n+\"Last-Translator: FULL NAME <EMAIL@ADDRESS>\\n\"\n+\"Language-Team: LANGUAGE <LL@li.org>\\n\"\n+\"Language: \\n\"\n+\"MIME-Version: 1.0\\n\"\n+\"Content-Type: text/plain; charset=CHARSET\\n\"\n+\"Content-Transfer-Encoding: 8bit\\n\"\n+\n+#. Type: string\n+#. Description\n+#: ../maas.templates:1001\n+msgid \"Track for the MAAS snap:\"\n+msgstr \"\"\n+\n+#. Type: string\n+#. Description\n+#: ../maas.templates:1001\n+msgid \"\"\n+\"This can be specified just as a track name (e.g. \\\"2.7\\\", \\\"latest\\\", ...) \"\n+\"or include a risk as well (e.g. \\\"latest/candidate\\\").\"\n+msgstr \"\"\n+\n+#. Type: string\n+#. Description\n+#: ../maas.templates:1001\n+msgid \"If not specified \\\"stable\\\" will be used.\"\n+msgstr \"\"\n+\n+#. Type: select\n+#. Description\n+#: ../maas.templates:2001\n+msgid \"Unable to reach the snap store\"\n+msgstr \"\"\n+\n+#. Type: select\n+#. Description\n+#: ../maas.templates:2001\n+msgid \"\"\n+\"Your system is unable to reach the Snap Store, please make sure you're \"\n+\"connected to the Internet and update any firewall or proxy settings as \"\n+\"needed so that you can reach the Snap Store.\"\n+msgstr \"\"\n+\n+#. Type: select\n+#. Description\n+#: ../maas.templates:2001\n+msgid \"You can manually check for connectivity by running \\\"snap info maas\\\"\"\n+msgstr \"\"\n+\n+#. Type: select\n+#. Description\n+#: ../maas.templates:2001\n+msgid \"\"\n+\"Aborting will cause the upgrade to fail and will require it to be re-\"\n+\"attempted once snapd is functional on the system.\"\n+msgstr \"\"\n+\n+#. Type: note\n+#. Description\n+#: ../maas.templates:3001\n+msgid \"MAAS installed but not set up\"\n+msgstr \"\"\n+\n+#. Type: note\n+#. Description\n+#: ../maas.templates:3001\n+msgid \"The MAAS snap has been installed but service needs to be setup.\"\n+msgstr \"\"\n+\n+#. Type: note\n+#. Description\n+#: ../maas.templates:3001\n+msgid \"To set up MAAS, run the following command:\"\n+msgstr \"\"\n+\n+#. Type: note\n+#. Description\n+#: ../maas.templates:3001\n+msgid \"  sudo maas init\"\n+msgstr \"\"\n+\n+#. Type: note\n+#. Description\n+#: ../maas.templates:3001\n+msgid \"\"\n+\"This will interactively ask a set of questions.  Non-interactive set up is \"\n+\"also available; run with --help to get a full list of available options.\"\n+msgstr \"\"\n",
+ "diff_truncated": false
+}

@@ -1,0 +1,927 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~kicchou/ubuntu/+source/sosreport/+git/sosreport/+merge/508537",
+ "id": "508537",
+ "title": "ubuntu/focal-devel → ubuntu/focal-devel",
+ "source_branch": "ubuntu/focal-devel",
+ "target_branch": "ubuntu/focal-devel",
+ "revision": "68401b896f8cf1dfab2169852f5c7ac96027e757",
+ "base_revision": "5781841385476a1729ee837582ff563c00cb282b",
+ "description": null,
+ "commit_message": null,
+ "diffstat": {
+  ".cirrus.yml": [
+   105,
+   61
+  ],
+  "dev/null": [
+   0,
+   50
+  ],
+  ".gitignore": [
+   2,
+   1
+  ],
+  ".packit.yaml": [
+   1,
+   0
+  ],
+  ".readthedocs.yaml": [
+   13,
+   0
+  ],
+  "AI_POLICY.md": [
+   15,
+   0
+  ],
+  "AUTHORS": [
+   314,
+   10
+  ],
+  "LICENSE": [
+   19,
+   21
+  ],
+  "README.md": [
+   26,
+   35
+  ],
+  "debian/bin.sos-collector": [
+   1,
+   2
+  ],
+  "debian/bin.sosreport": [
+   1,
+   2
+  ],
+  "debian/changelog": [
+   20,
+   0
+  ],
+  "debian/copyright": [
+   9,
+   0
+  ],
+  "debian/links": [
+   2,
+   0
+  ],
+  "debian/rules": [
+   6,
+   0
+  ],
+  "docs/conf.py": [
+   2,
+   2
+  ],
+  "docs/index.rst": [
+   3,
+   6
+  ],
+  "docs/requirements.txt": [
+   1,
+   0
+  ],
+  "docs/targets.rst": [
+   7,
+   0
+  ],
+  "docs/upload.rst": [
+   7,
+   0
+  ],
+  "man/en/sos-collect.1": [
+   6,
+   0
+  ],
+  "man/en/sos-upload.1": [
+   151,
+   0
+  ],
+  "man/en/sos.1": [
+   14,
+   6
+  ],
+  "plugins_overview.py": [
+   6,
+   2
+  ],
+  "requirements.txt": [
+   0,
+   1
+  ],
+  "setup.py": [
+   18,
+   12
+  ],
+  "snap/snapcraft.yaml": [
+   0,
+   4
+  ],
+  "sos.conf": [
+   7,
+   0
+  ],
+  "sos.spec": [
+   37,
+   16
+  ],
+  "sos/__init__.py": [
+   6,
+   3
+  ],
+  "sos/archive.py": [
+   19,
+   13
+  ],
+  "sos/cleaner/__init__.py": [
+   149,
+   159
+  ],
+  "sos/cleaner/archives/__init__.py": [
+   185,
+   12
+  ],
+  "sos/cleaner/archives/sos.py": [
+   3,
+   1
+  ],
+  "sos/cleaner/mappings/__init__.py": [
+   114,
+   9
+  ],
+  "sos/cleaner/mappings/hostname_map.py": [
+   17,
+   30
+  ],
+  "sos/cleaner/mappings/ip_map.py": [
+   31,
+   13
+  ],
+  "sos/cleaner/mappings/ipv6_map.py": [
+   42,
+   37
+  ],
+  "sos/cleaner/mappings/mac_map.py": [
+   14,
+   8
+  ],
+  "sos/cleaner/parsers/__init__.py": [
+   27,
+   22
+  ],
+  "sos/cleaner/parsers/hostname_parser.py": [
+   4,
+   4
+  ],
+  "sos/cleaner/parsers/ip_parser.py": [
+   6,
+   4
+  ],
+  "sos/cleaner/parsers/ipv6_parser.py": [
+   6,
+   5
+  ],
+  "sos/cleaner/parsers/keyword_parser.py": [
+   2,
+   2
+  ],
+  "sos/cleaner/parsers/mac_parser.py": [
+   23,
+   23
+  ],
+  "sos/cleaner/parsers/username_parser.py": [
+   2,
+   3
+  ],
+  "sos/cleaner/preppers/hostname.py": [
+   1,
+   1
+  ],
+  "sos/cleaner/preppers/usernames.py": [
+   9,
+   0
+  ],
+  "sos/collector/__init__.py": [
+   35,
+   18
+  ],
+  "sos/collector/clusters/juju.py": [
+   3,
+   1
+  ],
+  "sos/collector/clusters/ocp.py": [
+   1,
+   1
+  ],
+  "sos/collector/sosnode.py": [
+   17,
+   1
+  ],
+  "sos/collector/transports/saltstack.py": [
+   1,
+   1
+  ],
+  "sos/component.py": [
+   24,
+   6
+  ],
+  "sos/help/__init__.py": [
+   4,
+   2
+  ],
+  "sos/options.py": [
+   12,
+   8
+  ],
+  "sos/policies/auth/__init__.py": [
+   5,
+   5
+  ],
+  "sos/policies/distros/__init__.py": [
+   10,
+   679
+  ],
+  "sos/policies/distros/azure.py": [
+   1,
+   1
+  ],
+  "sos/policies/distros/debian.py": [
+   7,
+   0
+  ],
+  "sos/policies/distros/redhat.py": [
+   2,
+   203
+  ],
+  "sos/policies/distros/ubuntu.py": [
+   0,
+   18
+  ],
+  "sos/presets/redhat/__init__.py": [
+   5,
+   1
+  ],
+  "sos/report/__init__.py": [
+   51,
+   22
+  ],
+  "sos/report/plugins/__init__.py": [
+   151,
+   41
+  ],
+  "sos/report/plugins/aap_containerized.py": [
+   291,
+   0
+  ],
+  "sos/report/plugins/aap_controller.py": [
+   21,
+   7
+  ],
+  "sos/report/plugins/aap_eda.py": [
+   65,
+   17
+  ],
+  "sos/report/plugins/aap_gateway.py": [
+   26,
+   3
+  ],
+  "sos/report/plugins/aap_hub.py": [
+   20,
+   0
+  ],
+  "sos/report/plugins/apache.py": [
+   35,
+   0
+  ],
+  "sos/report/plugins/apparmor.py": [
+   2,
+   2
+  ],
+  "sos/report/plugins/apt.py": [
+   4,
+   1
+  ],
+  "sos/report/plugins/authd.py": [
+   74,
+   0
+  ],
+  "sos/report/plugins/aws.py": [
+   78,
+   0
+  ],
+  "sos/report/plugins/azure.py": [
+   1,
+   1
+  ],
+  "sos/report/plugins/block.py": [
+   13,
+   1
+  ],
+  "sos/report/plugins/boom.py": [
+   5,
+   1
+  ],
+  "sos/report/plugins/boot.py": [
+   4,
+   1
+  ],
+  "sos/report/plugins/bootc.py": [
+   2,
+   0
+  ],
+  "sos/report/plugins/candlepin.py": [
+   8,
+   5
+  ],
+  "sos/report/plugins/ceph_common.py": [
+   92,
+   4
+  ],
+  "sos/report/plugins/ceph_mon.py": [
+   10,
+   5
+  ],
+  "sos/report/plugins/charmed_cruise_control.py": [
+   141,
+   0
+  ],
+  "sos/report/plugins/charmed_kafka.py": [
+   222,
+   0
+  ],
+  "sos/report/plugins/charmed_mysql.py": [
+   294,
+   0
+  ],
+  "sos/report/plugins/charmed_opensearch.py": [
+   146,
+   0
+  ],
+  "sos/report/plugins/charmed_opensearch_dashboards.py": [
+   143,
+   0
+  ],
+  "sos/report/plugins/charmed_zookeeper.py": [
+   205,
+   0
+  ],
+  "sos/report/plugins/chrony.py": [
+   12,
+   1
+  ],
+  "sos/report/plugins/containerd.py": [
+   8,
+   1
+  ],
+  "sos/report/plugins/containers_common.py": [
+   11,
+   0
+  ],
+  "sos/report/plugins/crio.py": [
+   13,
+   14
+  ],
+  "sos/report/plugins/cups.py": [
+   56,
+   3
+  ],
+  "sos/report/plugins/dhcp.py": [
+   1,
+   2
+  ],
+  "sos/report/plugins/dnf.py": [
+   9,
+   1
+  ],
+  "sos/report/plugins/docker.py": [
+   12,
+   4
+  ],
+  "sos/report/plugins/dpkg.py": [
+   1,
+   0
+  ],
+  "sos/report/plugins/drbd.py": [
+   53,
+   6
+  ],
+  "sos/report/plugins/fapolicyd.py": [
+   3,
+   0
+  ],
+  "sos/report/plugins/firewalld.py": [
+   2,
+   0
+  ],
+  "sos/report/plugins/foreman.py": [
+   87,
+   14
+  ],
+  "sos/report/plugins/foreman_installer.py": [
+   3,
+   2
+  ],
+  "sos/report/plugins/foreman_proxy.py": [
+   0,
+   8
+  ],
+  "sos/report/plugins/gcp.py": [
+   21,
+   20
+  ],
+  "sos/report/plugins/gfs2.py": [
+   2,
+   1
+  ],
+  "sos/report/plugins/gluster.py": [
+   1,
+   25
+  ],
+  "sos/report/plugins/graylog.py": [
+   48,
+   0
+  ],
+  "sos/report/plugins/grout.py": [
+   80,
+   0
+  ],
+  "sos/report/plugins/haproxy.py": [
+   13,
+   3
+  ],
+  "sos/report/plugins/helm.py": [
+   40,
+   0
+  ],
+  "sos/report/plugins/insights.py": [
+   3,
+   0
+  ],
+  "sos/report/plugins/ipa.py": [
+   13,
+   12
+  ],
+  "sos/report/plugins/iscsi.py": [
+   2,
+   2
+  ],
+  "sos/report/plugins/juju.py": [
+   41,
+   16
+  ],
+  "sos/report/plugins/kdump.py": [
+   50,
+   6
+  ],
+  "sos/report/plugins/kea.py": [
+   14,
+   3
+  ],
+  "sos/report/plugins/kernel.py": [
+   4,
+   0
+  ],
+  "sos/report/plugins/kubernetes.py": [
+   9,
+   1
+  ],
+  "sos/report/plugins/leapp.py": [
+   10,
+   0
+  ],
+  "sos/report/plugins/login.py": [
+   3,
+   1
+  ],
+  "sos/report/plugins/logs.py": [
+   36,
+   32
+  ],
+  "sos/report/plugins/loki.py": [
+   189,
+   0
+  ],
+  "sos/report/plugins/lustre.py": [
+   8,
+   4
+  ],
+  "sos/report/plugins/lxd.py": [
+   77,
+   8
+  ],
+  "sos/report/plugins/maas.py": [
+   17,
+   0
+  ],
+  "sos/report/plugins/md.py": [
+   1,
+   0
+  ],
+  "sos/report/plugins/memory.py": [
+   1,
+   1
+  ],
+  "sos/report/plugins/microcloud.py": [
+   52,
+   4
+  ],
+  "sos/report/plugins/microk8s.py": [
+   79,
+   3
+  ],
+  "sos/report/plugins/microovn.py": [
+   70,
+   0
+  ],
+  "sos/report/plugins/mongodb.py": [
+   74,
+   3
+  ],
+  "sos/report/plugins/mssql.py": [
+   3,
+   10
+  ],
+  "sos/report/plugins/networking.py": [
+   26,
+   7
+  ],
+  "sos/report/plugins/networkmanager.py": [
+   7,
+   0
+  ],
+  "sos/report/plugins/omnipath_client.py": [
+   1,
+   2
+  ],
+  "sos/report/plugins/omnipath_manager.py": [
+   1,
+   2
+  ],
+  "sos/report/plugins/opensearch.py": [
+   66,
+   0
+  ],
+  "sos/report/plugins/openshift_ovn.py": [
+   24,
+   14
+  ],
+  "sos/report/plugins/openstack_aodh.py": [
+   2,
+   3
+  ],
+  "sos/report/plugins/openstack_ceilometer.py": [
+   8,
+   5
+  ],
+  "sos/report/plugins/openstack_cinder.py": [
+   4,
+   10
+  ],
+  "sos/report/plugins/openstack_designate.py": [
+   7,
+   5
+  ],
+  "sos/report/plugins/openstack_glance.py": [
+   4,
+   4
+  ],
+  "sos/report/plugins/openstack_gnocchi.py": [
+   36,
+   9
+  ],
+  "sos/report/plugins/openstack_heat.py": [
+   4,
+   3
+  ],
+  "sos/report/plugins/openstack_horizon.py": [
+   6,
+   3
+  ],
+  "sos/report/plugins/openstack_instack.py": [
+   14,
+   18
+  ],
+  "sos/report/plugins/openstack_ironic.py": [
+   4,
+   3
+  ],
+  "sos/report/plugins/openstack_keystone.py": [
+   3,
+   3
+  ],
+  "sos/report/plugins/openstack_neutron.py": [
+   3,
+   8
+  ],
+  "sos/report/plugins/openstack_nova.py": [
+   15,
+   14
+  ],
+  "sos/report/plugins/openstack_sahara.py": [
+   3,
+   3
+  ],
+  "sos/report/plugins/openstack_swift.py": [
+   3,
+   4
+  ],
+  "sos/report/plugins/openstack_trove.py": [
+   4,
+   3
+  ],
+  "sos/report/plugins/opensvc.py": [
+   15,
+   0
+  ],
+  "sos/report/plugins/openvswitch.py": [
+   8,
+   1
+  ],
+  "sos/report/plugins/oratab.py": [
+   56,
+   0
+  ],
+  "sos/report/plugins/ovn_central.py": [
+   10,
+   0
+  ],
+  "sos/report/plugins/ovn_host.py": [
+   7,
+   0
+  ],
+  "sos/report/plugins/pacemaker.py": [
+   6,
+   1
+  ],
+  "sos/report/plugins/pam.py": [
+   1,
+   1
+  ],
+  "sos/report/plugins/pipewire.py": [
+   76,
+   0
+  ],
+  "sos/report/plugins/podman.py": [
+   2,
+   8
+  ],
+  "sos/report/plugins/postgresql.py": [
+   27,
+   11
+  ],
+  "sos/report/plugins/powerpc.py": [
+   3,
+   1
+  ],
+  "sos/report/plugins/ptp.py": [
+   3,
+   1
+  ],
+  "sos/report/plugins/pulpcore.py": [
+   44,
+   21
+  ],
+  "sos/report/plugins/pulseaudio.py": [
+   55,
+   0
+  ],
+  "sos/report/plugins/puppet.py": [
+   2,
+   1
+  ],
+  "sos/report/plugins/python.py": [
+   1,
+   1
+  ],
+  "sos/report/plugins/rear.py": [
+   3,
+   1
+  ],
+  "sos/report/plugins/redis.py": [
+   2,
+   2
+  ],
+  "sos/report/plugins/release.py": [
+   2,
+   2
+  ],
+  "sos/report/plugins/rhc.py": [
+   13,
+   3
+  ],
+  "sos/report/plugins/rhel_drivers.py": [
+   29,
+   0
+  ],
+  "sos/report/plugins/rhui_containerized.py": [
+   85,
+   0
+  ],
+  "sos/report/plugins/saltmaster.py": [
+   14,
+   1
+  ],
+  "sos/report/plugins/samba.py": [
+   1,
+   0
+  ],
+  "sos/report/plugins/scsi.py": [
+   1,
+   0
+  ],
+  "sos/report/plugins/snapm.py": [
+   38,
+   0
+  ],
+  "sos/report/plugins/soundcard.py": [
+   1,
+   8
+  ],
+  "sos/report/plugins/spyre.py": [
+   97,
+   0
+  ],
+  "sos/report/plugins/squid.py": [
+   8,
+   6
+  ],
+  "sos/report/plugins/ssh.py": [
+   4,
+   1
+  ],
+  "sos/report/plugins/sssd.py": [
+   2,
+   1
+  ],
+  "sos/report/plugins/stunnel.py": [
+   35,
+   0
+  ],
+  "sos/report/plugins/subscription_manager.py": [
+   16,
+   4
+  ],
+  "sos/report/plugins/sunbeam.py": [
+   37,
+   16
+  ],
+  "sos/report/plugins/sunbeam_hypervisor.py": [
+   17,
+   4
+  ],
+  "sos/report/plugins/systemd.py": [
+   9,
+   0
+  ],
+  "sos/report/plugins/tftpserver.py": [
+   18,
+   4
+  ],
+  "sos/report/plugins/tomcat.py": [
+   1,
+   0
+  ],
+  "sos/report/plugins/ubuntu.py": [
+   40,
+   25
+  ],
+  "sos/report/plugins/valkey.py": [
+   56,
+   0
+  ],
+  "sos/report/plugins/virsh.py": [
+   1,
+   1
+  ],
+  "sos/report/reporting.py": [
+   6,
+   6
+  ],
+  "sos/upload/__init__.py": [
+   321,
+   0
+  ],
+  "sos/upload/targets/__init__.py": [
+   809,
+   0
+  ],
+  "sos/upload/targets/redhat.py": [
+   261,
+   0
+  ],
+  "sos/upload/targets/ubuntu.py": [
+   47,
+   0
+  ],
+  "sos/utilities.py": [
+   173,
+   17
+  ],
+  "test-requirements.txt": [
+   2,
+   1
+  ],
+  "tests/cleaner_tests/existing_archive.py": [
+   7,
+   4
+  ],
+  "tests/cleaner_tests/ipv6_test/sos-test-ipv6.txt": [
+   2,
+   0
+  ],
+  "tests/product_tests/foreman/foreman_tests.py": [
+   14,
+   3
+  ],
+  "tests/report_tests/basic_report_tests.py": [
+   1,
+   1
+  ],
+  "tests/report_tests/help_output_tests.py": [
+   52,
+   0
+  ],
+  "tests/report_tests/options_tests/options_tests.py": [
+   42,
+   8
+  ],
+  "tests/report_tests/options_tests/options_tests_preset.json": [
+   13,
+   0
+  ],
+  "tests/report_tests/options_tests/options_tests_sos.conf": [
+   4,
+   0
+  ],
+  "tests/report_tests/plugin_tests/apt/apt.py": [
+   1,
+   1
+  ],
+  "tests/report_tests/plugin_tests/authd/authd.py": [
+   49,
+   0
+  ],
+  "tests/report_tests/plugin_tests/authd/entra_broker.conf": [
+   4,
+   0
+  ],
+  "tests/report_tests/plugin_tests/authd/google_broker.conf": [
+   5,
+   0
+  ],
+  "tests/report_tests/plugin_tests/defaults.py": [
+   6,
+   3
+  ],
+  "tests/report_tests/plugin_tests/krb5.py": [
+   4,
+   3
+  ],
+  "tests/report_tests/plugin_tests/logs.py": [
+   2,
+   2
+  ],
+  "tests/report_tests/smoke_tests.py": [
+   11,
+   9
+  ],
+  "tests/report_tests/symlinks_test/symlink.conf": [
+   0,
+   0
+  ],
+  "tests/report_tests/symlinks_test/symlinks.py": [
+   43,
+   0
+  ],
+  "tests/report_tests/symlinks_test/symlinks_test.py": [
+   102,
+   0
+  ],
+  "tests/sos_tests.py": [
+   24,
+   8
+  ],
+  "tests/test_data/foreman_setup.sh": [
+   16,
+   23
+  ],
+  "tests/unittests/cleaner_tests.py": [
+   37,
+   22
+  ],
+  "tests/unittests/utilities_tests.py": [
+   99,
+   1
+  ],
+  "tox.ini": [
+   4,
+   4
+  ]
+ },
+ "files": 227,
+ "added_lines": 8168,
+ "removed_lines": 2212,
+ "diff": "diff --git a/.cirrus.yml b/.cirrus.yml\nindex 7da4a6f..308eebe 100644\n--- a/.cirrus.yml\n+++ b/.cirrus.yml\n@@ -3,18 +3,20 @@\n # Main environment vars to set for all tasks\n env:\n \n-    FEDORA_NAME: \"fedora-38\"\n-    FEDORA_PRIOR_NAME: \"fedora-37\"\n+    FEDORA_NAME: \"fedora-42\"\n+    FEDORA_PRIOR_NAME: \"fedora-41\"\n \n-    DEBIAN_NAME: \"debian-11\"\n+    DEBIAN_13_NAME: \"debian-13\"\n+    DEBIAN_12_NAME: \"debian-12\"\n+    DEBIAN_11_NAME: \"debian-11\"\n \n-    UBUNTU_DEVEL_NAME: \"ubuntu-25.04\"\n-    UBUNTU_LATEST_NAME: \"ubuntu-24.10\"\n-    UBUNTU_NAME: \"ubuntu-24.04\"\n-    UBUNTU_PRIOR_NAME: \"ubuntu-22.04\"\n-    UBUNTU_PRIOR2_NAME: \"ubuntu-20.04\"\n+    UBUNTU_DEVEL_NAME: \"ubuntu-26.04\"\n+    UBUNTU_LATEST_NAME: \"ubuntu-25.10\"\n+    UBUNTU_2404_NAME: \"ubuntu-24.04\"\n+    UBUNTU_2204_NAME: \"ubuntu-22.04\"\n \n     CENTOS_9_NAME: \"centos-stream-9\"\n+    CENTOS_10_NAME: \"centos-stream-10\"\n \n     CENTOS_PROJECT: \"centos-cloud\"\n     DEBIAN_PROJECT: \"debian-cloud\"\n@@ -25,17 +27,19 @@ env:\n \n     # Images exist on GCP already\n     CENTOS_9_FAMILY_NAME: \"centos-stream-9\"\n-    DEBIAN_FAMILY_NAME: \"debian-11\"\n-    FEDORA_FAMILY_NAME: \"fedora-cloud-38\"\n-    FEDORA_PRIOR_FAMILY_NAME: \"fedora-cloud-37\"\n+    CENTOS_10_FAMILY_NAME: \"centos-stream-10\"\n+    DEBIAN_13_FAMILY_NAME: \"debian-13\"\n+    DEBIAN_12_FAMILY_NAME: \"debian-12\"\n+    DEBIAN_11_FAMILY_NAME: \"debian-11\"\n+    FEDORA_FAMILY_NAME: \"fedora-cloud-42-x86-64\"\n+    FEDORA_PRIOR_FAMILY_NAME: \"fedora-cloud-41-x86-64\"\n \n-    UBUNTU_DEB_FAMILY_NAME: \"ubuntu-minimal-2410-amd64\"\n-    UBUNTU_LATEST_FAMILY_NAME: \"ubuntu-2410-amd64\"\n-    UBUNTU_FAMILY_NAME: \"ubuntu-2404-lts-amd64\"\n-    UBUNTU_PRIOR_FAMILY_NAME: \"ubuntu-2204-lts\"\n-    UBUNTU_PRIOR2_FAMILY_NAME: \"ubuntu-2004-lts\"\n+    UBUNTU_DEVEL_FAMILY_NAME: \"ubuntu-2604-lts-amd64\"\n+    UBUNTU_DEB_FAMILY_NAME: \"ubuntu-minimal-2510-amd64\"\n+    UBUNTU_LATEST_FAMILY_NAME: \"ubuntu-2510-amd64\"\n     UBUNTU_SNAP_FAMILY_NAME: \"ubuntu-2404-lts-amd64\"\n-    UBUNTU_DEVEL_FAMILY_NAME: \"ubuntu-2504-amd64\"\n+    UBUNTU_2404_FAMILY_NAME: \"ubuntu-2404-lts-amd64\"\n+    UBUNTU_2204_FAMILY_NAME: \"ubuntu-2204-lts\"\n \n     # Curl-command prefix for downloading task artifacts, simply add the\n     # the url-encoded task name, artifact name, and path as a suffix.\n@@ -55,7 +59,7 @@ gcp_credentials: ENCRYPTED[!77d4c8251094346c41db63cb05eba2ff98eaff04e58c5d0e2a8e\n \n # Run a simple lint on the community cluster\n flake8_task:\n-    skip: &man-changes-include \"changesIncludeOnly('man/**')\"\n+    skip: &man-changes-include \"changesIncludeOnly('man/**', 'docs/**', 'po/**')\"\n     alias: \"flake8_test\"\n     name: \"Flake8 linting test\"\n     container:\n@@ -106,17 +110,23 @@ rpm_build_task:\n             PROJECT: ${CENTOS_PROJECT}\n             BUILD_NAME: ${CENTOS_9_NAME}\n             VM_FAMILY_NAME: ${CENTOS_9_FAMILY_NAME}\n-        - env: &fedora\n-            PROJECT: ${FEDORA_PROJECT}\n-            BUILD_NAME: ${FEDORA_NAME}\n-            VM_FAMILY_NAME: ${FEDORA_FAMILY_NAME}\n-        - env: &fedoraprior\n-            PROJECT: ${FEDORA_PROJECT}\n-            BUILD_NAME: ${FEDORA_PRIOR_NAME}\n-            VM_FAMILY_NAME: ${FEDORA_PRIOR_FAMILY_NAME}\n+        - env: &centos10\n+            PROJECT: ${CENTOS_PROJECT}\n+            BUILD_NAME: ${CENTOS_10_NAME}\n+            VM_FAMILY_NAME: ${CENTOS_10_FAMILY_NAME}\n+#        - env: &fedora\n+#            PROJECT: ${FEDORA_PROJECT}\n+#            BUILD_NAME: ${FEDORA_NAME}\n+#            VM_FAMILY_NAME: ${FEDORA_FAMILY_NAME}\n+#        - env: &fedoraprior\n+#            PROJECT: ${FEDORA_PROJECT}\n+#            BUILD_NAME: ${FEDORA_PRIOR_NAME}\n+#            VM_FAMILY_NAME: ${FEDORA_PRIOR_FAMILY_NAME}\n     setup_script: |\n         dnf clean all\n-        dnf -y install rpm-build rpmdevtools gettext python3-devel\n+        dnf -y install rpm-build rpmdevtools gettext python3-devel python3-pexpect python3-pyyaml python3-setuptools\n+        dnf -y install python3-wheel || true\n+    # dnf failures above ignored for distros that do not yet have python3-wheel, e.g. CS 9\n     main_script: |\n         mkdir -p /rpmbuild/{BUILD,BUILDROOT,RPMS,SRPMS,SOURCES}\n         python3 setup.py sdist\n@@ -135,22 +145,41 @@ rpm_build_task:\n deb_build_task:\n     skip: *man-changes-include\n     alias: \"deb_build\"\n-    name: \"deb Build From Checkout\"\n+    name: \"deb Build From Checkout - ${BUILD_NAME}\"\n     gce_instance:\n-        image_project: \"${UBUNTU_PROJECT}\"\n-        image_family: \"${UBUNTU_DEB_FAMILY_NAME}\"\n+        image_project: \"${PROJECT}\"\n+        image_family: \"${VM_FAMILY_NAME}\"\n         type: e2-medium\n+    matrix:\n+        - env: &debian-11-deb-pkg\n+            PROJECT: ${DEBIAN_PROJECT}\n+            BUILD_NAME: ${DEBIAN_11_NAME}\n+            VM_FAMILY_NAME: ${DEBIAN_11_FAMILY_NAME}\n+        - env: &debian-12-deb-pkg\n+            PROJECT: ${DEBIAN_PROJECT}\n+            BUILD_NAME: ${DEBIAN_12_NAME}\n+            VM_FAMILY_NAME: ${DEBIAN_12_FAMILY_NAME}\n+        - env: &debian-13-deb-pkg\n+            PROJECT: ${DEBIAN_PROJECT}\n+            BUILD_NAME: ${DEBIAN_13_NAME}\n+            VM_FAMILY_NAME: ${DEBIAN_13_FAMILY_NAME}\n+        - env: &ubuntu-latest-deb-pkg\n+            PROJECT: ${UBUNTU_PROJECT}\n+            BUILD_NAME: ${UBUNTU_LATEST_NAME}\n+            VM_FAMILY_NAME: ${UBUNTU_DEB_FAMILY_NAME}\n     setup_script: |\n+        [[ ${BUILD_NAME} == \"${DEBIAN_11_NAME}\" ]] && sudo sed -i '/-backports/ s/^/#/' /etc/apt/sources.list\n         apt update --allow-releaseinfo-change\n         apt -y install devscripts equivs python3-pip\n         mk-build-deps\n-        apt -y install ./sosreport-build-deps*.deb\n-        pip3 install -r test-requirements.txt --break-system-packages\n+        apt -y install ./sos-build-deps*.deb\n+        [[ $(pip3 install --help | grep break-system) ]] && PIP_EXTRA=\"--break-system-packages\"\n+        pip3 install -r test-requirements.txt ${PIP_EXTRA}\n     main_script: |\n         dpkg-buildpackage -b -us -uc -rfakeroot -m --build-by=\"noreply@canonical.com\"\n-    prep_artifacts_script: mv ../*.deb ./sos_cirrus.deb\n+    prep_artifacts_script: mv ../*.deb ./sos_${BUILD_NAME}.deb\n     packages_artifacts:\n-        path: ./sos_cirrus.deb\n+        path: ./sos_${BUILD_NAME}.deb\n         type: application/octet-stream\n \n # Make sure a user can manually build a snap from the checkout\n@@ -190,48 +219,60 @@ report_stageone_task:\n     gce_instance: *standardvm\n     matrix:\n         - env: *centos9\n-        - env: *fedora\n-        - env: *fedoraprior\n-        - env: &ubuntu\n-            PKG: \"snap\"\n-            PROJECT: ${UBUNTU_PROJECT}\n-            BUILD_NAME: \"${UBUNTU_NAME} - ${PKG}\"\n-            VM_FAMILY_NAME: ${UBUNTU_FAMILY_NAME}\n-        - env: &ubuntuprior\n+#        - env: *fedora\n+#        - env: *fedoraprior\n+        - env: &ubuntu-2404\n             PKG: \"snap\"\n             PROJECT: ${UBUNTU_PROJECT}\n-            BUILD_NAME: \"${UBUNTU_PRIOR_NAME} - ${PKG}\"\n-            VM_FAMILY_NAME: ${UBUNTU_PRIOR_FAMILY_NAME}\n-        - env: &ubuntuprior2\n+            BUILD_NAME: \"${UBUNTU_2404_NAME} - ${PKG}\"\n+            VM_FAMILY_NAME: ${UBUNTU_2404_FAMILY_NAME}\n+        - env: &ubuntu-2204\n             PKG: \"snap\"\n             PROJECT: ${UBUNTU_PROJECT}\n-            BUILD_NAME: \"${UBUNTU_PRIOR2_NAME} - ${PKG}\"\n-            VM_FAMILY_NAME: ${UBUNTU_PRIOR2_FAMILY_NAME}\n+            BUILD_NAME: \"${UBUNTU_2204_NAME} - ${PKG}\"\n+            VM_FAMILY_NAME: ${UBUNTU_2204_FAMILY_NAME}\n         - env: &ubuntu-latest-snap\n             PKG: \"snap\"\n             PROJECT: ${UBUNTU_PROJECT}\n             BUILD_NAME: \"${UBUNTU_LATEST_NAME} - ${PKG}\"\n             VM_FAMILY_NAME: ${UBUNTU_LATEST_FAMILY_NAME}\n         - env: &ubuntu-latest-deb\n+            <<: *ubuntu-latest-deb-pkg\n             PKG: \"deb\"\n-            PROJECT: ${UBUNTU_PROJECT}\n             BUILD_NAME: \"${UBUNTU_LATEST_NAME} - ${PKG}\"\n+            DEB_BUILD_NAME: ${UBUNTU_LATEST_NAME}\n             VM_FAMILY_NAME: ${UBUNTU_LATEST_FAMILY_NAME}\n+        - env: &debian-13\n+            <<: *debian-13-deb-pkg\n+            PKG: \"deb\"\n+            DEB_BUILD_NAME: ${BUILD_NAME}\n+        - env: &debian-12\n+            <<: *debian-12-deb-pkg\n+            PKG: \"deb\"\n+            DEB_BUILD_NAME: ${BUILD_NAME}\n+        - env: &debian-11\n+            <<: *debian-11-deb-pkg\n+            PKG: \"deb\"\n+            DEB_BUILD_NAME: ${BUILD_NAME}\n     setup_script: &setup |\n         if [ $(command -v apt) ]; then\n-            apt -y purge sosreport\n+            [[ ${BUILD_NAME} == \"${DEBIAN_11_NAME}\" ]] && sudo sed -i '/-backports/ s/^/#/' /etc/apt/sources.list\n+            [[ \"$(dpkg -l sos)\" ]] && apt -y purge sos ubuntu-server\n+            [[ \"$(dpkg -l sosreport)\" ]] && apt -y purge sosreport ubuntu-server\n             apt update --allow-releaseinfo-change\n-            apt -y install python3-pip snapd\n+            apt -y install python3-pip ethtool python3-systemd\n             if [ ${PKG} == \"snap\" ] ; then\n+                apt -y install snapd\n                 echo \"$ARTCURL/snap%20Build%20From%20Checkout/packages/sosreport_test_amd64.snap\"\n                 $ARTCURL/snap%20Build%20From%20Checkout/packages/sosreport_test_amd64.snap\n                 systemctl start snapd\n                 snap install ./sosreport_test_amd64.snap --classic --dangerous\n                 snap alias sosreport.sos sos\n             elif [ ${PKG} == \"deb\" ]; then\n-                echo \"$ARTCURL/deb%20Build%20From%20Checkout/packages/sos_cirrus.deb\"\n-                $ARTCURL/deb%20Build%20From%20Checkout/packages/sos_cirrus.deb\n-                apt -y install ./sos_cirrus.deb\n+                echo \"$ARTCURL/deb%20Build%20From%20Checkout%20-%20${DEB_BUILD_NAME}/packages/sos_${DEB_BUILD_NAME}.deb\"\n+                $ARTCURL/deb%20Build%20From%20Checkout%20-%20${DEB_BUILD_NAME}/packages/sos_${DEB_BUILD_NAME}.deb\n+                apt -y install ./sos_${DEB_BUILD_NAME}.deb\n+                sed -i 's/\\(127.0.1.1\\)/#\\1/g' /etc/hosts\n             fi\n         fi\n         if [ $(command -v dnf) ]; then\n@@ -286,10 +327,12 @@ report_stagetwo_task:\n     gce_instance: *standardvm\n     matrix:\n         - env: *centos9\n-        - env: *fedora\n-        - env: *ubuntu\n+        - env: *centos10\n+#        - env: *fedora\n+        - env: *ubuntu-2404\n         - env: *ubuntu-latest-snap\n         - env: *ubuntu-latest-deb\n+        - env: *debian-13\n     setup_script: *setup\n     install_pexpect_script: |\n         if [ $(command -v apt) ]; then\n@@ -325,15 +368,16 @@ report_foreman_task:\n     alias: \"foreman_integration\"\n     name: \"Integration Test - Foreman ${FOREMAN_VER} - ${BUILD_NAME}\"\n     depends_on: stageone_report\n+    environment:\n+      FOREMAN_VER: \"3.15\"\n+      KATELLO_VER: \"4.17\"\n     gce_instance: &bigvm\n         <<: *standardvm\n-        type: e2-standard-2\n+        type: e2-highmem-4\n     matrix:\n-        - env:\n-            PROJECT: ${DEBIAN_PROJECT}\n-            VM_FAMILY_NAME: ${DEBIAN_FAMILY_NAME}\n-            BUILD_NAME: ${DEBIAN_NAME}\n-            FOREMAN_VER: \"3.7\"\n+        - env: *centos9\n+        - env: *debian-12\n+        - env: *ubuntu-2204\n     setup_script: *setup\n     foreman_setup_script: ./tests/test_data/foreman_setup.sh\n     main_script: PYTHONPATH=tests/ avocado run -p TESTLOCAL=true --max-parallel-tasks=1 -t foreman tests/product_tests/foreman/\ndiff --git a/.github/workflows/snap.yaml b/.github/workflows/snap.yaml\ndeleted file mode 100644\nindex d7d8935..0000000\n--- a/.github/workflows/snap.yaml\n+++ /dev/null\n@@ -1,43 +0,0 @@\n-name: snap\n-on:\n-  push:\n-    branches:\n-      - main\n-  release:\n-    types:\n-      - published\n-\n-jobs:\n-  build:\n-    runs-on: ubuntu-22.04\n-    concurrency:\n-      group: snap-build\n-      cancel-in-progress: true\n-    steps:\n-    - uses: actions/checkout@v3\n-      with:\n-        fetch-depth: 0\n-    - uses: snapcore/action-build@v1\n-      id: build-snap\n-    # Make sure the snap is installable\n-    - run: |\n-        sudo apt -y remove sosreport\n-        sudo snap install --classic --dangerous ${{ steps.build-snap.outputs.snap }}\n-        sudo snap alias sosreport.sos sos\n-    # Do some testing with the snap\n-    - run: |\n-        sudo sos help\n-    - uses: snapcore/action-publish@v1\n-      if: ${{ github.event_name == 'push' }}\n-      env:\n-        SNAPCRAFT_STORE_CREDENTIALS: ${{ secrets.STORE_LOGIN }}\n-      with:\n-        snap: ${{ steps.build-snap.outputs.snap }}\n-        release: \"latest/edge\"\n-    - uses: snapcore/action-publish@v1\n-      if: ${{ github.event_name == 'release' }}\n-      env:\n-        SNAPCRAFT_STORE_CREDENTIALS: ${{ secrets.STORE_LOGIN }}\n-      with:\n-        snap: ${{ steps.build-snap.outputs.snap }}\n-        release: \"latest/candidate\"\ndiff --git a/.gitignore b/.gitignore\nindex 1fc4abc..a2f2e6b 100644\n--- a/.gitignore\n+++ b/.gitignore\n@@ -24,7 +24,8 @@ docs/_build\n .idea/\n \n # debian files\n-debian/sosreport*\n+debian/sosreport/*\n+debian/sos/*\n debian/files\n debian/.debhelper\n debian/debhelper-build-stamp\ndiff --git a/.packit.yaml b/.packit.yaml\nindex 76d9912..5bacd5d 100644\n--- a/.packit.yaml\n+++ b/.packit.yaml\n@@ -20,6 +20,7 @@ jobs:\n       - fedora-development-ppc64le\n       - fedora-development-s390x\n       - centos-stream-9\n+      - centos-stream-10\n \n notifications:\n   pull_request:\ndiff --git a/.readthedocs.yaml b/.readthedocs.yaml\nnew file mode 100644\nindex 0000000..72a7163\n--- /dev/null\n+++ b/.readthedocs.yaml\n@@ -0,0 +1,13 @@\n+version: 2\n+\n+build:\n+  os: ubuntu-24.04\n+  tools:\n+    python: \"3\"\n+\n+sphinx:\n+  configuration: docs/conf.py\n+\n+python:\n+  install:\n+    - requirements: docs/requirements.txt\ndiff --git a/AI_POLICY.md b/AI_POLICY.md\nnew file mode 100644\nindex 0000000..1398198\n--- /dev/null\n+++ b/AI_POLICY.md\n@@ -0,0 +1,15 @@\n+# Policy on the use of generative AI tools\n+\n+The project welcomes contributions made with the assistance of AI coding\n+assistants and agents as long as they meet all the normal criteria for\n+correctness, clarity, formatting and so on. If you do use AI assistants to write\n+meaningful volumes of code, we prefer that you make this clear by including text\n+like the following in your commit message:\n+\n+  Assisted-by: Some AI Tool <https://someai.example.com>\n+\n+Replacing `Some AI Tool` and the address with the name and URL of whatever tool\n+you used. The Assisted-by tag should immediately precede your DCO on a separate\n+line. This helps the maintainers to understand where the changes came from and\n+to track them over time. Inspect the current git logs for many prior examples of\n+this convention.\ndiff --git a/AUTHORS b/AUTHORS\nindex 572107a..fe36917 100644\n--- a/AUTHORS\n+++ b/AUTHORS\n@@ -1,139 +1,443 @@\n Individuals\n -----------\n+Aadhar Agarwal <aadagarwal@microsoft.com>\n Aaron Conole <aconole@redhat.com>\n+Abdullah Cosgun <abdullah.cosgun@canonical.com>\n Abhijeet Kasurde <akasurde@redhat.com>\n+Abhishek Rawal <rawal.abhishek92@gmail.com>\n+Adam Collard <adam.collard@canonical.com>\n+Adam R Bell <a_0x07@protonmail.ch>\n+Adam Ruzicka <aruzicka@redhat.com>\n Adam Stokes <adam.stokes@ubuntu.com>\n+Adam Vest <adam.vest@canonical.com>\n+Adolfo Jayme-Barrientos <fitojb@ubuntu.com>\n+Adriana Jurkechova <ajurkech@redhat.com>\n Adrien Kunysz <akunysz@acunu.com>\n+Adrien Mahieux <adrien@mahieux.net>\n+Akhil John <ajohn@ajohn.redhat.com>\n+Akshay Gaikwad <akgaikwad001@gmail.com>\n+Alan Baghumian <alan.baghumian@canonical.com>\n Alan Pevec <apevec@redhat.com>\n+Alberto Donato <alberto.donato@canonical.com>\n+Aldo Sotolongo <aldenso@gmail.com>\n+Alejandro Santoyo <alejandro.santoyo@canonical.com>\n Alexandru Juncu <alexj@linux.com>\n+Alin-Gabriel Serdean <aserdean@ovn.org>\n+Amit Ghadge <amitg.b14@gmail.com>\n+Ananth N Mavinakayanahalli <ananth@linux.vnet.ibm.com>\n+Andrea Ieri <aieri@users.noreply.github.com>\n+Andrea Perotti <aperotti@redhat.com>\n+Andreas Karis <akaris@redhat.com>\n+Andreas Schneider <asn@cryptomilk.org>\n+Andrew Price <anprice@redhat.com>\n+Anoop C S <anoopcs@redhat.com>\n Ante Karamatic <ante.karamatic@canonical.com>\n+Antoine Tenart <atenart@kernel.org>\n+Antonio Ojea <antonio.ojea.garcia@gmail.com>\n+Anton Troyanov <anton.troyanov@canonical.com>\n Archit Sharma <arcsharm@redhat.com>\n+Arif Ali <arif-ali@ubuntu.com>\n+Arnaud Veron <arnaud.veron@opensvc.com>\n Aruna Balakrishnaiah <aruna@linux.vnet.ibm.com>\n+Ashish Humbe <ahumbe@redhat.com>\n+Ashish Singh <assingh@redhat.com>\n Assaf Muller <amuller@redhat.com>\n+Bella Zhang <bella@cclinux.org>\n+Beniamino Galvani <bgalvani@redhat.com>\n Ben Turner <bturner@redhat.com>\n+Bernhard Suttner <suttner@atix.de>\n Bharani C.V. <bharanve@linux.vnet.ibm.com>\n+Bhushan Kale <bhushanskale@hotmail.com>\n Bill Yodlowsky <byodlows@redhat.com>\n+Bissenbay <bissenbay@gmail.com>\n+Bogdan Dobrelya <bdobreli@redhat.com>\n+Brad Hubbard <bhubbard@redhat.com>\n Brent Eagles <beagles@redhat.com>\n+Brenton Leanhardt <bleanhar@redhat.com>\n+Brian Gribble <83problems@users.noreply.github.com>\n+Brian Haley <bhaley@redhat.com>\n+Bryan Fraschetti <bryan.fraschetti@canonical.com>\n Bryan Quigley <bryan.quigley@canonical.com>\n Bryn M. Reeves <bmr@redhat.com>\n+Carlos Goncalves <cgoncalves@redhat.com>\n+Cédric Jeanneret <cjeanner@redhat.com>\n+Charles Haithcock <chaithco@redhat.com>\n+Charlie Krell <ckrell@redhat.com>\n+Chi Wai, Chan <chiwai.chan@canonical.com>\n Chris J Arges <chris.j.arges@ubuntu.com>\n Chris Johnston <chrisjohnston@ubuntu.com>\n Chris Newcomer <chris.newcomer@canonical.com>\n+Christoph Böhmwalder <christoph.boehmwalder@linbit.com>\n Christy Perez <christy@linux.vnet.ibm.com>\n+Cleber Rosa <crosa@redhat.com>\n+Costa Shulyupin <costa.shul@redhat.com>\n Coty Sutherland <csutherl@redhat.com>\n+Dan Hill <daniel.hill@canonical.com>\n+Dan Horák <dan@danny.cz>\n+Daniel Alvarez Sanchez <dalvarez@redhat.com>\n+Daniel Emmons <dan.emmons@canonical.com>\n+Daniel J Walsh <dwalsh@redhat.com>\n+Daniel Zhou <dzhou@redhat.com>\n+Dan Kenigsberg <danken@redhat.com>\n+Dan Streetman <ddstreet@canonical.com>\n+Daria Bukharina <d.bukharina@yadro.com>\n+David A. Desrosiers <setuid@gmail.com>\n+David Luong <dluong@redhat.com>\n+David Marchand <david.marchand@redhat.com>\n+David Negreira <david.negreira@canonical.com>\n+David Vallee Delisle <dvd@redhat.com>\n+David Wolstromer <dwolstro@redhat.com>\n+Deezzir <yurii.kondrakov@canonical.com>\n Dimitri John Ledkov <xnox@ubuntu.com>\n+Dmitry Tantsur <divius.inside@gmail.com>\n+Dominika Hodovska <dhodovsk@redhat.com>\n+Douglas Schilling Landgraf <dougsland@gmail.com>\n+Drien Breton <drien.breton@orness.com>\n+Dr. Jason Breitweg <jason@breitweg.com>\n+Eduard Abdullin <eabdullin@almalinux.org>\n Eduardo Damato <eduardo.damato@canonical.com>\n Edward Hope-Morley <edward.hope-morley@canonical.com>\n+Eelco Chaudron <echaudro@redhat.com>\n+Ehud Yonasi <eyonasi@redhat.com>\n+Emilien Macchi <emilien@redhat.com>\n+Emmanuel Ferdman <emmanuelferdman@gmail.com>\n+Emmanuel Roullit <emmanuel.roullit@gmail.com>\n Eoghan Glynn <eglynn@redhat.com>\n Eric Desrochers <eric.desrochers@canonical.com>\n Eric Rich <erich@redhat.com>\n Eric Williams <eric.williams@canonical.com>\n+Erik Bernoth <ebernoth@redhat.com>\n+Etienne Champetier <e.champetier@ateme.com>\n Eugene Teo <eteo@redhat.com>\n+Evgeni Golov <evgeni@golov.de>\n+Evgeny Slutsky <eslutsky@redhat.com>\n+Ewoud Kohl van Wijngaarden <ewoud@kohlvanwijngaarden.nl>\n+Fabiano Fidêncio <fidencio@redhat.com>\n+Fabricio Aguiar <fabricio.aguiar@gmail.com>\n Felipe Reyes <felipe.reyes@canonical.com>\n+Fernando Royo <froyo@redhat.com>\n+Filip Krska <fkrska@redhat.com>\n Flaper Fesp <flaper87@gmail.com>\n Flavio Leitner <fbl@redhat.com>\n Flavio Percoco <fpercoco@redhat.com>\n+François Cami <fcami@redhat.com>\n Frank Ch. Eigler <fche@elastic.org>\n-Gary Kotton <gkotton@redhat.com>\n+Frank Liang <xiliang@redhat.com>\n Gaël Chamoulaud <gael.chamoulaud@gmail.com>\n+Ganesh Payelkar <gpayelka@redhat.com>\n+Gary Kotton <gkotton@redhat.com>\n Germano Veit Michel <germano@redhat.com>\n-Guy Streeter <streeter@redhat.com>\n+Gobinda Das <godas@redhat.com>\n+Gorka Eguileor <geguileo@redhat.com>\n+Goutham Pacha Ravi <gouthampravi@gmail.com>\n Günther Deschner <gd@samba.org>\n+Guy Streeter <streeter@redhat.com>\n+Han Han <hhan@redhat.com>\n Harald Klein <hari@vt100.at>\n+Hari Gowtham <hgowtham@redhat.com>\n+HATAYAMA Daisuke <d.hatayama@jp.fujitsu.com>\n+Heather Lemon <heather.lemon@canonical.com>\n+Hemanth Nakkina <hemanth.nakkina@canonical.com>\n+Hiroyuki Yasuhara <h.yasuhara@fujitsu.com>\n Hisanobu Okuda <hokuda@redhat.com>\n+Honza Pokorny <me@honza.ca>\n+Igor Brovtsin <brigaccess@gmail.com>\n+Irit Goihman <igoihman@redhat.com>\n+Iwao Miyake <miyake.iwao@fujitsu.com>\n Jacob Wen <jian.w.wen@oracle.com>\n Jake Hunsaker <jhunsake@redhat.com>\n+Jake Nabasny <jake.nabasny@canonical.com>\n+Jakub Čajka <jcajka@redhat.com>\n+Jakub Jelen <jjelen@redhat.com>\n James Hunt <james.hunt@ubuntu.com>\n+James O. D. Hunt <james.o.hunt@intel.com>\n+James Slagle <jslagle@redhat.com>\n+Jamie Bainbridge <jamie.bainbridge@gmail.com>\n+Jan Friesse <jfriesse@redhat.com>\n Jan Grant <jan.grant@hp.com>\n+Jan Jansky <jjansky@redhat.com>\n Jan Pokorný <jpokorny@redhat.com>\n+Javier Blanco <javier@jblanco.es>\n Jeff Dutton <jeff.r.dutton@gmail.com>\n Jeff Peeler <jpeeler@redhat.com>\n Jeff Welch <whatthejeff@gmail.com>\n Jeremy Agee <jagee@redhat.com>\n+Jeremy Coulombe <jeremy.coulombe@hotmail.fr>\n Jeremy Crafts <jcrafts@redhat.com>\n Jeremy Eder <jeder@redhat.com>\n-Jesse Jaggars <jjaggars@redhat.com>\n+Jesse Jaggars <jhjaggars@gmail.com>\n Jian Wen <jian.wen@canonical.com>\n Jiri Popelka <jpopelka@redhat.com>\n Jirka Hladky <jhladky@redhat.com>\n Joel Stanley <joel@jms.id.au>\n+Joe Talerico <jtaleric@redhat.com>\n Joey Boggs <jboggs@redhat.com>\n+Johan Guldmyr <johan@meetiqm.com>\n John Berninger <jwb@redhat.com>\n John Haxby <john.haxby@oracle.com>\n+John Pittman <jpittman@redhat.com>\n+Jon Cope <jcope@redhat.com>\n Jon Magrini <jmagrini@redhat.com>\n Jon Stanley <jonstanley@gmail.com>\n+Jorge Merlino <jorge@merlino.uy>\n Jorge Niedbalski <niedbalski@gmail.com>\n+Jorge Rodríguez <jorge.rodriguez@canonical.com>\n Jose Castillo <jcastillo@redhat.com>\n+Juan-Luis de Sousa-Valadas Castaño <jdesousa@redhat.com>\n+Juanma Sanchez <juasanch@redhat.com>\n+Juan Orti Alcaine <jortialc@redhat.com>\n+Junius Gao <Junius.Gao@veritas.com>\n Justin Payne <jpayne@redhat.com>\n Justin Stephenson <jstephen@redhat.com>\n Kamalesh Babulal <kamalesh@linux.vnet.ibm.com>\n+Kameron Carr <kameroncarrcollege@gmail.com>\n+Kazuhito Hagio <k-hagio-ab@nec.com>\n Keigo Noha <knoha@redhat.com>\n Keith Kearnan <kearnan_keith@emc.com>\n Keith Robertson <kroberts@redhat.com>\n+Ken Gaillot <kgaillot@redhat.com>\n+Kenjiro Nakayama <nakayamakenjiro@gmail.com>\n+Kenneth D'souza <kennethdsouza94@gmail.com>\n Kenneth Koski <mechaxl@gmail.com>\n+Kenny Tordeurs <ktordeur@redhat.com>\n Kent Lamb <klamb@redhat.com>\n+Kevin Carter <kecarter@redhat.com>\n+Kevin C Myers <kevin.myers@redhat.com>\n Kevin Traynor <ktraynor@redhat.com>\n+Kir Kolyshkin <kolyshkin@gmail.com>\n+Koichiro Iwao <meta@almalinux.org>\n+Korrapati Likhitha <likhitha@linux.ibm.com>\n+KyleMahlkuch <Kyle.Mahlkuch@ibm.com>\n+Kyle Walker <kwalker@redhat.com>\n+Leah Goldberg <leah.goldberg@canonical.com>\n Lee Yarwood <lyarwood@redhat.com>\n Leno Hou <lenohou@gmail.com>\n+Leon Goldberg <lgoldber@redhat.com>\n+Lev Veyde <lveyde@redhat.com>\n Louis Bouchard <louis.bouchard@canonical.com>\n Luca Miccini <luca.miccini@redhat.com>\n+Lucas Benedito <lbenedit@redhat.com>\n Luigi Toscano <ltoscano@redhat.com>\n Lukas Herbolt <lherbolt@redhat.com>\n Lukas Zapletal <lzap@redhat.com>\n+Maciej Strzelczyk <strzelczyk@google.com>\n+Mahesh Potkar <Mahesh.Potkar@veritas.com>\n Major Hayden <major@mhtx.net>\n+Mamatha Inamdar <mamatha4@linux.vnet.ibm.com>\n+Marcelo Moreira de Mello <mmello@redhat.com>\n+Marcin Wilk <marcin.wilk@canonical.com>\n Marc Sauton <msauton@redhat.com>\n+Marek Czernek <marek.czernek@suse.com>\n+Mark Michelson <mmichels@redhat.com>\n+Mark Reynolds <mreynolds@redhat.com>\n+Maros Kopec <makopec@redhat.com>\n+Martin Basti <mbasti@redhat.com>\n Martin Frodl <mfrodl@redhat.com>\n+Martin Perina <mperina@redhat.com>\n+Martin Pitt <mpitt@debian.org>\n Martin Schuppert <mschuppert@redhat.com>\n+Masco Kaliyamoorthy <mkaliyam@redhat.com>\n+Mateusz Kulewicz <mateusz.kulewicz@canonical.com>\n+Mat Kowalski <mko@redhat.com>\n+Matteo Croce <mcroce@redhat.com>\n+Matthias Runge <mrunge@redhat.com>\n+Mauricio Faria de Oliveira <mfo@canonical.com>\n+Micah Abbott <miabbott@redhat.com>\n Michael Adam <obnox@samba.org>\n+Michael Biebl <biebl@debian.org>\n+Michael Cambria <mcambria@redhat.com>\n+Michael Chapman <woppin@gmail.com>\n+Michael Colombo <mcolombo@redhat.com>\n+Michael Johnson <johnsomor@gmail.com>\n Michael Kerrin <michael.kerrin@hp.com>\n+Michael Thamm <mike.thamm@canonical.com>\n+Michael Vorburger <mike@vorburger.ch>\n+Michal Bocek <mbocek@redhat.com>\n+Michał Dulko <mdulko@redhat.com>\n Michal Srb <msrb@redhat.com>\n Michele Baldessari <michele@acksyn.org>\n+Miguel Angel Ajo <majopela@redhat.com>\n+Miguel Martín <mmartinv@redhat.com>\n+Mikel Olasagasti Uranga <mikel@olasagasti.info>\n+Miro Hrončok <miro@hroncok.cz>\n+Miroslav Hradilek <mhradile@redhat.com>\n+Miroslav Lichvar <mlichvar@redhat.com>\n+MIZUTA Takeshi <mizuta.takeshi@fujitsu.com>\n+MORISHIMA Shigeki <s.morishima@fujitsu.com>\n Mukesh Ojha <mukesh02@linux.vnet.ibm.com>\n+Murilo Opsfelder Araujo <muriloo@linux.ibm.com>\n+Nadia Pinaeva <npinaeva@redhat.com>\n+Nagoor Shaik <nshaik@redhat.com>\n+Nate Johnston <nate.johnston@redhat.com>\n+Nathaniel Clark <nclark@whamcloud.com>\n Navid Sheikhol-Eslami <navid@redhat.com>\n Neependra Khare <nkhare@redhat.com>\n+Nick Niehoff <nick.niehoff@canonical.com>\n+Nicolas Bock <nicolas.bock@canonical.com>\n Nijin Ashok <nashok@redhat.com>\n+Nikhil Kakade <nikhilkaka5@outlook.com>\n+Nikhil Kshirsagar <nikhil.kshirsagar@canonical.com>\n+Nir Soffer <nsoffer@redhat.com>\n+Nitin U. Yewale <nyewale@redhat.com>\n+Nobuto Murata <nobuto.murata@canonical.com>\n+NorwayFun <72336380+NorwayFun@users.noreply.github.com>\n+Oliver Falk <oliver@linux-kernel.at>\n+Oscar Arribas <oarribas@redhat.com>\n+Osher De Paz <osherdepaz@gmail.com>\n+Pablo Acevedo Montserrat <pacevedo@redhat.com>\n+Pablo Alonso Rodriguez (Red Hat) <palonsor@redhat.com>\n+Pablo Fernández Rodríguez <pafernan@redhat.com>\n Pablo Iranzo Gómez <Pablo.Iranzo@gmail.com>\n Patrick Talbert <ptalbert@redhat.com>\n+Paul Peereboom <paul.peereboom@duo.nl>\n+Paul Wayper <paulway@redhat.com>\n Pavel Moravec <pmoravec@redhat.com>\n-Pep Turro Mauri <pep@redhat.com>\n+Paweł Poławski <ppolawsk@redhat.com>\n+Pawel Szubert <pbm@google.com>\n+Pedro Guimaraes <pedro.guimaraes@canonical.com>\n+Pep Turró Mauri <pep@redhat.com>\n+Periyasamy Palanisamy <pepalani@redhat.com>\n+Peter Hunt <pehunt@redhat.com>\n Peter Portante <peter.portante@redhat.com>\n Pierguido Lambri <plambri@redhat.com>\n Pierre Amadio  <pamadio@redhat.com>\n Pierre Carrier <pcarrier@redhat.com>\n+Pierre Equoy <pierre.equoy@canonical.com>\n Piotr Drąg <piotrdrag@gmail.com>\n-Poornima <pkshiras@redhat.com>\n+Ponnuvel Palaniyappan <pponnuvel@gmail.com>\n+Poornima Kshirsagar <pkshiras@redhat.com>\n+Prashant D <pdhange@redhat.com>\n Pratik Bandarkar <pbandark@redhat.com>\n+Purandhar Sairam Mannidi <pmannidi@redhat.com>\n+Rabi Mishra <ramishra@redhat.com>\n+Rafael Lopez <rafael.lopez@canonical.com>\n+Raimund Sacherer <rsachere@redhat.com>\n+Ranjith ML <rmadhuso@redhat.com>\n Ranjith Rajaram <rrajaram@redhat.com>\n Raphael Badin <raphael.badin@canonical.com>\n+Reid wahl <nrwahl@protonmail.com>\n+Reid Wahl <nwahl@redhat.com>\n+Renaud Métrich <rmetrich@redhat.com>\n Richard Brantley <brantleyr@gmail.com>\n+Robbie Harwood <rharwood@redhat.com>\n Robb Manes <rmanes@redhat.com>\n+Rob Crittenden <rcritten@redhat.com>\n+Roberto Alfieri <ralfieri@redhat.com>\n+Robin Cernin <rcernin@redhat.com>\n+Rodolfo Olivieri <rolivier@redhat.com>\n+Rodrigo R. Galvão <rodrigo_rosatti@hotmail.com>\n+Rohan Arora <roarora@redhat.com>\n Rohan Kanade <rkanade@redhat.com>\n+Rohan Sable <rohanjsable@yahoo.com>\n+Rudnei Bertol Junior <rudnei@redhat.com>\n+Ryan Blakley <rblakley@redhat.com>\n Sachin <psachin@redhat.com>\n Sadique Puthen <sputhenp@redhat.com>\n+Salvatore Daniele <sdaniele@redhat.com>\n+Samuel Karp <samuelkarp@google.com>\n Samuel Mendoza-Jonas <samjc.mj@gmail.com>\n+Samuel Walladge <samuel.walladge@canonical.com>\n Sandro Bonazzola <sbonazzo redhat com>\n+Sanne Raymaekers <sanne.raymaekers@gmail.com>\n+Saravanan KR <skramaja@redhat.com>\n+Sathvika Vasireddy <sv@linux.ibm.com>\n+Sayan Das <saydas@redhat.com>\n+Seeteena Thoufeek <s1seetee@linux.vnet.ibm.com>\n+Seiichi Ikarashi <s.ikarashi@fujitsu.com>\n+Sergii Golovatiuk <sgolovat@redhat.com>\n Shane Bradley <sbradley@redhat.com>\n+Shatadru Bandyopadhyay <shatadru1@gmail.com>\n Shijoe George <spanjikk@redhat.com>\n+Shreyas Mahangade <smahanga@redhat.com>\n+Shunde Zhang <shunde.zhang@canonical.com>\n+Simon Deziel <simon.deziel@canonical.com>\n+Simon Glass <sjg@chromium.org>\n Soumya Koduri <skoduri@redhat.com>\n+Sourabh Jain <sourabhjain@linux.ibm.com>\n+Stepan Broz <sbroz@redhat.com>\n Steve Conklin <sconklin@redhat.com>\n+Steve Scargall <steve.scargall@intel.com>\n+Taft Sanders <taftsanders@gmail.com>\n+Takashi Kajinami <tkajinam@redhat.com>\n+Takayoshi Kimura <takayoshi@gmail.com>\n+Takayoshi Tanaka <tatanaka@redhat.com>\n+Teoman ONAY <tonay@redhat.com>\n+Thiago Rafael Becker <thiago.becker@gmail.com>\n+Thomas Haller <thaller@redhat.com>\n+Thomas Martin <twoflowers@users.noreply.github.com>\n+Thom Carlin <tcarlin@redhat.com>\n+Thorsten Scherf <tscherf@redhat.com>\n Tim Speetjens <tim.speetjens@redhat.com>\n+Toke Høiland-Jørgensen <toke@redhat.com>\n+Tomas Halman <thalman@redhat.com>\n Tomas Petr <tpetr@redhat.com>\n Tomas Smetana <tsmetana@redhat.com>\n Tomas Tomecek <ttomecek@redhat.com>\n+Tomofumi Yoshida <yoshida.tomo@fujitsu.com>\n+Toshi Aoyama <toaoyama@microsoft.com>\n+Trent Lloyd <trent.lloyd@canonical.com>\n+Trevor Benson <trevor.benson@gmail.com>\n+Varsha Teratipally <teratipally@google.com>\n Vasant Hegde <hegdevasant@linux.vnet.ibm.com>\n+Victor Pickard <vpickard@redhat.com>\n+Vikas Goel <vikas.goel@veritas.com>\n+Ville Heikkinen <ville.heikkinen@nokia.com>\n+Vlad Apostol <vlad.apostol@canonical.com>\n+Vladislav Walek <22072258+vwalek@users.noreply.github.com>\n+Wesley Hershberger <wesley.hershberger@canonical.com>\n+William Bradford Clark <wclark@redhat.com>\n+William Konitzer <wkonitzer@mirantis.com>\n Xavier Queralt <xqueralt@redhat.com>\n+Xuewei Zhang <xueweiz@google.com>\n Yedidyah Bar David <didi@redhat.com>\n-amitg.b14@gmail.com <amitg.b14@gmail.com>\n+Yuan-Chen Cheng <yc.cheng@canonical.com>\n+Yuki Inoguchi <inoguchi.yuki@fujitsu.com>\n+abregman <abregman@redhat.com>\n+ajaymohite25 <ajaymohite244@gmail.com>\n+aleksander.baranowski <aleksander.baranowski@yahoo.pl>\n+bvassova <bvassova@redhat.com>\n+christyp <christy@linux.vnet.ibm.com>\n+davecore82 <davecoronel@gmail.com>\n+dluong <dluong@redhat.com>\n+drobinso <drobinso@ef72aa8b-4018-0410-8976-d6e080ef94d8>\n galstrom21 <jshepher@rackspace.com>\n-hari gowtham <hgowtham@redhat.com>\n+henryoudaimy <henry.oudaimy@gmail.com>\n+illuminatus <trevor.benson@gmail.com>\n+irit.go <igoihman@redhat.com>\n+ivoks <ante.karamatic@canonical.com>\n jbainbri <jbainbri@redhat.com>\n-jhjaggars <jhjaggars@gmail.com>\n+jneo8 <james.lin@canonical.com>\n+jwbernin <jwbernin@ef72aa8b-4018-0410-8976-d6e080ef94d8>\n+kevinverma <kevinverma@ef72aa8b-4018-0410-8976-d6e080ef94d8>\n+lijingwei <lijingwei@uniontech.com>\n+lilinjie <lilinjie@uniontech.com>\n+liugang <liuganga@uniontech.com>\n+mahailiang <mahailiang@uniontech.com>\n+mamatha <mainamdar@in.ibm.com>\n+marcli <markus.linden@gmail.com>\n+mcriswell <mcriswell@mirantis.com>\n mulhern <amulhern@redhat.com>\n+nashok@redhat.com <nashok@redhat.com>\n+navid <navid@ef72aa8b-4018-0410-8976-d6e080ef94d8>\n+nazunalika <tucklesepk@gmail.com>\n ncoghlan <ncoghlan@gmail.com>\n+pamadio <pamadio@ef72aa8b-4018-0410-8976-d6e080ef94d8>\n+pcarrier <pcarrier@ef72aa8b-4018-0410-8976-d6e080ef94d8>\n qsn <sd@queasysnail.net>\n+rbelokar <rbelokar@redhat.com>\n+reidliu41 <reid201711@gmail.com>\n+scality-trevorbenson <trevor.benson@scality.com>\n+sconklin <sconklin@ef72aa8b-4018-0410-8976-d6e080ef94d8>\n+shnavid <shnavid@ef72aa8b-4018-0410-8976-d6e080ef94d8>\n spandey <spandey@redhat.com>\n-tanaka_733 <tanaka-takayoshi@users.noreply.github.com>\n+stuggi <github@schuppert.net>\n+suresh2514 <suresh2514@gmail.com>\n+swarajpande5 <swarajpande5@gmail.com>\n+tcarpentier <theo.carpentier@opensvc.com>\n tiwillia@redhat.com <tiwillia@redhat.com>\n+tuxpreacher <55449231+tuxpreacher@users.noreply.github.com>\n+vredara <redara@redhat.com>\n+zoedong <zoedong@tencent.com>\n \n Companies\n ---------\n@@ -148,4 +452,4 @@ Oracle Corporation\n Organizations\n -------------\n The Linux Foundation\n-Samba\n\\ No newline at end of file\n+Samba\ndiff --git a/LICENSE b/LICENSE\nindex 7a8e8ab..9efa6fb 100644\n--- a/LICENSE\n+++ b/LICENSE\n@@ -1,12 +1,12 @@\n-\t\t    GNU GENERAL PUBLIC LICENSE\n-\t\t       Version 2, June 1991\n+                    GNU GENERAL PUBLIC LICENSE\n+                       Version 2, June 1991\n \n- Copyright (C) 1989, 1991 Free Software Foundation, Inc.\n- 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA\n+ Copyright (C) 1989, 1991 Free Software Foundation, Inc.,\n+ <https://fsf.org/>\n  Everyone is permitted to copy and distribute verbatim copies\n  of this license document, but changing it is not allowed.\n \n-\t\t\t    Preamble\n+                            Preamble\n \n   The licenses for most software are designed to take away your\n freedom to share and change it.  By contrast, the GNU General Public\n@@ -15,7 +15,7 @@ software--to make sure the software is free for all its users.  This\n General Public License applies to most of the Free Software\n Foundation's software and to any other program whose authors commit to\n using it.  (Some other Free Software Foundation software is covered by\n-the GNU Library General Public License instead.)  You can apply it to\n+the GNU Lesser General Public License instead.)  You can apply it to\n your programs, too.\n \n   When we speak of free software, we are referring to freedom, not\n@@ -55,8 +55,8 @@ patent must be licensed for everyone's free use or not licensed at all.\n \n   The precise terms and conditions for copying, distribution and\n modification follow.\n-\f\n-\t\t    GNU GENERAL PUBLIC LICENSE\n+\n+                    GNU GENERAL PUBLIC LICENSE\n    TERMS AND CONDITIONS FOR COPYING, DISTRIBUTION AND MODIFICATION\n \n   0. This License applies to any program or other work which contains\n@@ -110,7 +110,7 @@ above, provided that you also meet all of these conditions:\n     License.  (Exception: if the Program itself is interactive but\n     does not normally print such an announcement, your work based on\n     the Program is not required to print an announcement.)\n-\f\n+\n These requirements apply to the modified work as a whole.  If\n identifiable sections of that work are not derived from the Program,\n and can be reasonably considered independent and separate works in\n@@ -168,7 +168,7 @@ access to copy from a designated place, then offering equivalent\n access to copy the source code from the same place counts as\n distribution of the source code, even though third parties are not\n compelled to copy the source along with the object code.\n-\f\n+\n   4. You may not copy, modify, sublicense, or distribute the Program\n except as expressly provided under this License.  Any attempt\n otherwise to copy, modify, sublicense or distribute the Program is\n@@ -225,7 +225,7 @@ impose that choice.\n \n This section is intended to make thoroughly clear what is believed to\n be a consequence of the rest of this License.\n-\f\n+\n   8. If the distribution and/or use of the Program is restricted in\n certain countries either by patents or by copyrighted interfaces, the\n original copyright holder who places the Program under this License\n@@ -255,7 +255,7 @@ make exceptions for this.  Our decision will be guided by the two goals\n of preserving the free status of all derivatives of our free software and\n of promoting the sharing and reuse of software generally.\n \n-\t\t\t    NO WARRANTY\n+                            NO WARRANTY\n \n   11. BECAUSE THE PROGRAM IS LICENSED FREE OF CHARGE, THERE IS NO WARRANTY\n FOR THE PROGRAM, TO THE EXTENT PERMITTED BY APPLICABLE LAW.  EXCEPT WHEN\n@@ -277,9 +277,9 @@ YOU OR THIRD PARTIES OR A FAILURE OF THE PROGRAM TO OPERATE WITH ANY OTHER\n PROGRAMS), EVEN IF SUCH HOLDER OR OTHER PARTY HAS BEEN ADVISED OF THE\n POSSIBILITY OF SUCH DAMAGES.\n \n-\t\t     END OF TERMS AND CONDITIONS\n-\f\n-\t    How to Apply These Terms to Your New Programs\n+                     END OF TERMS AND CONDITIONS\n+\n+            How to Apply These Terms to Your New Programs\n \n   If you develop a new program, and you want it to be of the greatest\n possible use to the public, the best way to achieve this is to make it\n@@ -303,10 +303,8 @@ the \"copyright\" line and a pointer to where the full notice is found.\n     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\n     GNU General Public License for more details.\n \n-    You should have received a copy of the GNU General Public License\n-    along with this program; if not, write to the Free Software\n-    Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA\n-\n+    You should have received a copy of the GNU General Public License along\n+    with this program; if not, see <https://www.gnu.org/licenses/>.\n \n Also add information on how to contact you by electronic and paper mail.\n \n@@ -330,8 +328,8 @@ necessary.  Here is a sample; alter the names:\n   Yoyodyne, Inc., hereby disclaims all copyright interest in the program\n   `Gnomovision' (which makes passes at compilers) written by James Hacker.\n \n-  <signature of Ty Coon>, 1 April 1989\n-  Ty Coon, President of Vice\n+  <signature of Moe Ghoul>, 1 April 1989\n+  Moe Ghoul, President of Vice\n \n This General Public License does not permit incorporating your program into\n proprietary programs.  If your program is a subroutine library, you may\ndiff --git a/README.md b/README.md\nindex 4366403..ab4997d 100644\n--- a/README.md\n+++ b/README.md\n@@ -1,5 +1,11 @@\n-[![Build Status](https://api.cirrus-ci.com/github/sosreport/sos.svg?branch=main)](https://cirrus-ci.com/github/sosreport/sos) [![Documentation Status](https://readthedocs.org/projects/sos/badge/?version=main)](https://sos.readthedocs.io/en/main/?badge=main) [![sosreport](https://snapcraft.io/sosreport/badge.svg)](https://snapcraft.io/sosreport)\n-\n+[![Build Status](https://api.cirrus-ci.com/github/sosreport/sos.svg?branch=main)](https://cirrus-ci.com/github/sosreport/sos)\n+[![Documentation Status](https://readthedocs.org/projects/sos/badge/?version=main)](https://sos.readthedocs.io/en/main/?badge=main)\n+[![](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/downloads/)\n+[![sosreport](https://snapcraft.io/sosreport/badge.svg)](https://snapcraft.io/sosreport)\n+[![Fedora package](https://img.shields.io/fedora/v/sos?color=darkgreen)](https://packages.fedoraproject.org/pkgs/sos/sos/)\n+[![Ubuntu Package Version](https://img.shields.io/ubuntu/v/sos?color=darkgreen)](https://launchpad.net/ubuntu/+source/sos)\n+[![Debian package (for distribution)](https://img.shields.io/debian/v/sos/unstable?color=darkgreen)](https://packages.debian.org/unstable/sos)\n+![GitHub contributors](https://img.shields.io/github/contributors/sosreport/sos)\n \n # SoS\n \n@@ -21,8 +27,7 @@ git clone git://github.com/sosreport/sos.git\n \n ## Reporting bugs\n \n-Please report bugs via the mailing list or by opening an issue in the [GitHub\n-Issue Tracker][5]\n+Please report bugs by opening an issue in the [GitHub Issue Tracker][4].\n \n ## Chat\n \n@@ -37,11 +42,6 @@ appear in both.\n \n The Freenode #sos room **is no longer used by this project**.\n \n-## Mailing list\n-\n-The [sos-devel][4] list is the mailing list for any sos-related questions and\n-discussion. Patch submissions and reviews are welcome too.\n-\n ## Patches and pull requests\n \n Patches can be submitted via the mailing list or as GitHub pull requests. If\n@@ -53,15 +53,17 @@ Please refer to the [contributor guidelines][0] for guidance on formatting\n patches and commit messages.\n \n Before sending a [pull request][0], it is advisable to check your contribution\n-against the `flake8` linter, the unit tests, and the stage one avocado test suite:\n+against the `flake8` & `pylint` linter, the unit tests, and the stage one avocado\n+test suite:\n \n ```\n # from within the git checkout\n-$ flake8 sos\n-$ nosetests -v tests/unittests/\n+$ tox -e flake8\n+$ tox -e pylint\n+$ tox -e unit_tests\n \n # as root\n-# PYTHONPATH=tests/ avocado run --test-runner=runner -t stageone tests/{cleaner,collect,report,vendor}_tests\n+# tox -e stageone_tests\n ```\n \n Note that the avocado test suite will generate and remove several reports over its\n@@ -71,26 +73,21 @@ All contributions must pass the entire test suite before being accepted.\n \n ## Documentation\n \n-User and API [documentation][6] is automatically generated using [Sphinx][7]\n-and [Read the Docs][8].\n+User and API [documentation][5] is automatically generated using [Sphinx][6]\n+and [Read the Docs][7].\n \n-To generate HTML documents locally, install dependencies using\n+To generate HTML documents locally, by default this will build locally into\n+`docs/_build`\n \n ```\n-pip install -r requirements.txt\n-```\n-\n-and run\n-\n-```\n-sphinx-build -b html docs <destination dir> \n+tox -e docs\n ```\n \n \n ### Wiki\n \n For more in-depth information on the project's features and functionality, please\n-see [the GitHub wiki][9].\n+see [the GitHub wiki][8].\n \n If you are interested in contributing an entirely new plugin, or extending sos to\n support your distribution of choice, please see these wiki pages:\n@@ -111,11 +108,6 @@ You can simply run from the git checkout now:\n ```\n $ sudo ./bin/sos report \n ```\n-The command `sosreport` is still available, as a legacy redirector,\n-and can be used like this:\n-```\n-$ sudo ./bin/sosreport \n-```\n \n To see a list of all available plugins and plugin options, run\n ```\n@@ -160,9 +152,8 @@ Ubuntu (14.04 LTS and above) users install via apt:\n  [1]: https://github.com/sosreport/sos/wiki/How-to-Write-a-Plugin\n  [2]: https://github.com/sosreport/sos/wiki/How-to-Write-a-Policy\n  [3]: https://github.com/sosreport/sos/wiki/Plugin-options\n- [4]: https://www.redhat.com/mailman/listinfo/sos-devel\n- [5]: https://github.com/sosreport/sos/issues?state=open\n- [6]: https://sos.readthedocs.org/\n- [7]: https://www.sphinx-doc.org/\n- [8]: https://www.readthedocs.org/\n- [9]: https://github.com/sosreport/sos/wiki\n+ [4]: https://github.com/sosreport/sos/issues?state=open\n+ [5]: https://sos.readthedocs.org/\n+ [6]: https://www.sphinx-doc.org/\n+ [7]: https://www.readthedocs.org/\n+ [8]: https://github.com/sosreport/sos/wiki\ndiff --git a/bin/sos-collector b/debian/bin.sos-collector\nsimilarity index 95%\nrename from bin/sos-collector\nrename to debian/bin.sos-collector\nold mode 100755\nnew mode 100644\nindex e04e38b..9badf7d\n--- a/bin/sos-collector\n+++ b/debian/bin.sos-collector\n@@ -23,8 +23,7 @@ except KeyboardInterrupt:\n \n if __name__ == '__main__':\n     msg = (\"WARNING: the 'sos-collector' command has been deprecated in \"\n-           \" favor of the new 'sos' command, E.G. 'sos collect', and will be \"\n-           \"removed in the upcoming sos-4.9 release.\\n\"\n+           \" favor of the new 'sos' command, E.G. 'sos collect'.\\n\"\n            \"Redirecting to 'sos collect %s'\" % (' '.join(sys.argv[1:]) or ''))\n     print(msg)\n     time.sleep(0.5)\ndiff --git a/bin/sosreport b/debian/bin.sosreport\nsimilarity index 95%\nrename from bin/sosreport\nrename to debian/bin.sosreport\nold mode 100755\nnew mode 100644\nindex d2e8181..a5965f7\n--- a/bin/sosreport\n+++ b/debian/bin.sosreport\n@@ -23,8 +23,7 @@ except KeyboardInterrupt:\n \n if __name__ == '__main__':\n     msg = (\"WARNING: the 'sosreport' command has been deprecated in favor \"\n-           \"of the new 'sos' command, E.G. 'sos report', and will be removed \"\n-           \"in the upcoming sos-4.9 release.\\n\"\n+           \"of the new 'sos' command, E.G. 'sos report'.\\n\"\n            \"Redirecting to 'sos report %s'\" % (' '.join(sys.argv[1:]) or ''))\n     print(msg)\n     time.sleep(0.5)\ndiff --git a/debian/changelog b/debian/changelog\nindex 94ac2b2..5552731 100644\n--- a/debian/changelog\n+++ b/debian/changelog\n@@ -1,3 +1,23 @@\n+sosreport (4.11.1-0ubuntu0.20.04.1~esm1) focal; urgency=medium\n+\n+  * New 4.11.1 upstream release. (LP: #2158810)\n+\n+  * For more details, full release note is available here:\n+    - https://github.com/sosreport/sos/releases/tag/4.11.1\n+\n+  * Update the package to bring back the sosreport and sos-collector commands\n+    and their respective man pages. This add various files for this\n+    - debian/bin.sosreport\n+    - debian/bin.sos-collector\n+    - debian/links\n+    - d/rules was updated to install the bin files in the right location\n+\n+  * Remaining patches:\n+    - d/p/0001-debian-change-tmp-dir-location.patch\n+    - d/p/0002-debian-remove-magic-stderr.patch\n+\n+ -- Alex Ramírez <alex.ramirez@canonical.com>  Tue, 07 Jul 2026 15:01:30 +0000\n+\n sosreport (4.8.2-0ubuntu0~20.04.1) focal; urgency=medium\n \n   * New 4.8.2 upstream release. (LP: #2091858)\ndiff --git a/debian/copyright b/debian/copyright\nindex 39bf84f..7231744 100644\n--- a/debian/copyright\n+++ b/debian/copyright\n@@ -16,6 +16,15 @@ Files: debian/*\n Copyright: 2013 Adam Stokes <adam.stokes@ubuntu.com>\n License: GPL-2+\n \n+Files: debian/tests/simple.sh\n+Copyright: 2020 Eric Desrochers <eric.desrochers@canonical.com>\n+ (C) 2020-2024 Canonical Ltd.\n+License: GPL-2\n+\n+Files: debian/bin.sos*\n+Copyright: (C) 2025 Canonical Ltd.\n+License: GPL-2\n+\n License: GPL-2\n  This program is free software; you can redistribute it and/or\n  modify it under the terms of the GNU General Public License\ndiff --git a/debian/links b/debian/links\nnew file mode 100644\nindex 0000000..f5e3c8d\n--- /dev/null\n+++ b/debian/links\n@@ -0,0 +1,2 @@\n+usr/share/man/man1/sos-collect.1.gz usr/share/man/man1/sos-collector.1.gz\n+usr/share/man/man1/sos-report.1.gz usr/share/man/man1/sosreport.1.gz\ndiff --git a/debian/rules b/debian/rules\nindex 7a889d2..32a7269 100755\n--- a/debian/rules\n+++ b/debian/rules\n@@ -10,6 +10,12 @@ override_dh_install:\n \tmv debian/sosreport/usr/config/sos.conf debian/sosreport/etc/sos/sos.conf\n \t# Remove unnecessary unused dir.\n \trm -rf debian/sosreport/usr/config\n+\t# Install the binaries that were removed upstream to keep compatablity\n+\t# with support Ubuntu platforms.\n+\tmkdir -p debian/sosreport/usr/bin\n+\tinstall -p -m755 debian/bin.sosreport debian/sosreport/usr/bin/sosreport\n+\tinstall -p -m755 debian/bin.sos-collector debian/sosreport/usr/bin/sos-collector\n+\n \n override_dh_auto_test:\n \tnosetests3 -v --with-cover --cover-package=sos tests/unittests --ignore-files=\"policy_tests\\.py\"\ndiff --git a/docs/conf.py b/docs/conf.py\nindex 899fcac..32939e2 100644\n--- a/docs/conf.py\n+++ b/docs/conf.py\n@@ -58,9 +58,9 @@ project_copyright = '2014, Bryn Reeves'\n # built documents.\n #\n # The short X.Y version.\n-version = '4.8.2'\n+version = '4.11.1'\n # The full version, including alpha/beta/rc tags.\n-release = '4.8.2'\n+release = '4.11.1'\n \n # The language for content autogenerated by Sphinx. Refer to documentation\n # for a list of supported languages.\ndiff --git a/docs/index.rst b/docs/index.rst\nindex d3ed028..c3392dd 100644\n--- a/docs/index.rst\n+++ b/docs/index.rst\n@@ -22,12 +22,7 @@ To clone the current main (development) branch run:\n Reporting bugs\n ^^^^^^^^^^^^^^\n \n-Please report bugs via the mailing list or by opening an issue in the GitHub Issue Tracker\n-\n-Mailing list\n-^^^^^^^^^^^^^\n-\n-`sos-devel <https://www.redhat.com/mailman/listinfo/sos-devel>`_ is the mailing list for any sos-related questions and discussion. Patch submissions and reviews are welcome too.\n+Please report bugs by opening an issue in the GitHub Issue Tracker.\n \n Patches and pull requests\n ^^^^^^^^^^^^^^^^^^^^^^^^^\n@@ -91,3 +86,5 @@ Core Reference\n    plugins\n    reporting\n    utilities\n+   upload\n+   targets\ndiff --git a/docs/requirements.txt b/docs/requirements.txt\nnew file mode 100644\nindex 0000000..1b8d6d2\n--- /dev/null\n+++ b/docs/requirements.txt\n@@ -0,0 +1 @@\n+Sphinx>=1.3.5\ndiff --git a/docs/targets.rst b/docs/targets.rst\nnew file mode 100644\nindex 0000000..0650c0e\n--- /dev/null\n+++ b/docs/targets.rst\n@@ -0,0 +1,7 @@\n+``sos.upload.targets`` --- Targets Interface\n+================================================\n+\n+.. automodule:: sos.upload.targets\n+    :members:\n+    :undoc-members:\n+    :show-inheritance:\ndiff --git a/docs/upload.rst b/docs/upload.rst\nnew file mode 100644\nindex 0000000..71d5bd5\n--- /dev/null\n+++ b/docs/upload.rst\n@@ -0,0 +1,7 @@\n+``sos.upload`` --- Upload Interface\n+================================================\n+\n+.. automodule:: sos.upload\n+    :members:\n+    :undoc-members:\n+    :show-inheritance:\ndiff --git a/man/en/sos-collect.1 b/man/en/sos-collect.1\nindex e3100bf..bb46996 100644\n--- a/man/en/sos-collect.1\n+++ b/man/en/sos-collect.1\n@@ -41,6 +41,7 @@ sos_collect \\- Collect sos reports from multiple (cluster) nodes\n     [\\-\\-skip-files FILES]\n     [\\-s|\\-\\-sysroot SYSROOT]\n     [\\-\\-ssh\\-user SSH_USER]\n+    [\\-\\-sudo\\-binary BINARY]\n     [\\-t|\\-\\-threads THREADS]\n     [\\-\\-timeout TIMEOUT]\n     [\\-\\-transport TRANSPORT]\n@@ -336,6 +337,11 @@ Specify an SSH user for sos collect to connect to nodes with. Default is root.\n \n sos collect will prompt for a sudo password for non-root users.\n .TP\n+\\fB\\-\\-sudo\\-binary\\fR BINARY\n+Specify the binary to use for privilege escalation on remote hosts when connecting\n+as a non-root user. Note that this binary MUST be in the connecting user's PATH\n+on the remote host.\n+.TP\n \\fB\\-s\\fR SYSROOT, \\fB\\-\\-sysroot\\fR SYSROOT\n Report option. Specify an alternate root file system path.\n .TP\ndiff --git a/man/en/sos-collector.1 b/man/en/sos-collector.1\ndeleted file mode 120000\nindex 4304b38..0000000\n--- a/man/en/sos-collector.1\n+++ /dev/null\n@@ -1 +0,0 @@\n-sos-collect.1\n\\ No newline at end of file\ndiff --git a/man/en/sos-upload.1 b/man/en/sos-upload.1\nnew file mode 100644\nindex 0000000..624458c\n--- /dev/null\n+++ b/man/en/sos-upload.1\n@@ -0,0 +1,151 @@\n+.TH UPLOAD 1 \"December 2024\"\n+\n+.SH NAME\n+sos_upload \\- Upload files like previously generated sos reports or logs to a policy specific location\n+.SH SYNOPSIS\n+.B sos upload FILE [options]\n+          [--case-id id]\\fR\n+          [--upload-url url]\\fR\n+          [--upload-user user]\\fR\n+          [--upload-pass pass]\\fR\n+          [--upload-directory dir]\\fR\n+          [--upload-method]\\fR\n+          [--upload-no-ssl-verify]\\fR\n+          [--upload-protocol protocol]\\fR\n+          [--upload-target target]\\fR\n+          [--upload-s3-endpoint  endpoint]\\fR\n+          [--upload-s3-region region]\\fR\n+          [--upload-s3-bucket bucket]\\fR\n+          [--upload-s3-access-key key]\\fR\n+          [--upload-s3-secret-key key]\\fR\n+          [--upload-s3-object-prefix prefix]\\fR\n+\n+.PP\n+.SH DESCRIPTION\n+upload is an sos subcommand to upload sos reports,\n+logs, vmcores, or other files to a policy defined\n+remote location, or a user defined one.\n+.SH REQUIRED ARGUMENTS\n+.B FILE\n+.TP\n+The path to the archive that is to be uploaded.\n+.SH OPTIONS\n+.TP\n+.B \\--case-id NUMBER\n+Specify a case identifier to associate with the archive.\n+Identifiers may include alphanumeric characters, commas and periods ('.').\n+This applies only to Red Hat uploads.\n+.TP\n+.B \\--upload-url URL\n+If a vendor does not provide a default upload location, or if you would like to upload\n+the archive to a different location, specify the address here.\n+\n+An upload protocol MUST be specified in this URL. Currently uploading is supported\n+for HTTPS, SFTP, and FTP protocols.\n+\n+If your destination server listens on a non-standard port, specify the listening\n+port in the URL.\n+.TP\n+.B \\-\\-upload-user USER\n+If a vendor does not provide a default user for uploading, specify the username here.\n+\n+If --batch is used and this option is omitted, no username will\n+be collected and thus uploads will fail if no vendor default is set.\n+\n+You also have the option of providing this value via the SOSUPLOADUSER environment\n+variable. If this variable is set, then no username prompt will occur and --batch\n+may be used provided all other required values (case number, upload password)\n+are provided.\n+.TP\n+.B \\-\\-upload-pass PASS\n+Specify the password to use for authentication with the destination server.\n+\n+If this option is omitted and upload is requested, you will be prompted for one.\n+\n+If --batch is used, this prompt will not occur, so any uploads are likely to fail unless\n+this option is used.\n+\n+Note that this will result in the plaintext string appearing in `ps` output that may\n+be collected by sos and be in the archive. If a password must be provided by you\n+for uploading, it is strongly recommended to not use --batch and enter the password\n+when prompted rather than using this option.\n+\n+You also have the option of providing this value via the SOSUPLOADPASSWORD environment\n+variable. If this variable is set, then no password prompt will occur and --batch may\n+be used provided all other required values (case number, upload user) are provided.\n+.TP\n+.B \\--upload-directory DIR\n+Specify a directory to upload to, if one is not specified by a vendor default location\n+or if your destination server does not allow writes to '/'.\n+.TP\n+.B \\--upload-method METHOD\n+Specify the HTTP method to use for uploading to the provided --upload-url. Valid\n+values are 'auto' (default), 'put', or 'post'. The use of 'auto' will default to\n+the method required by the policy-default upload location, if one exists.\n+\n+This option has no effect on upload protocols other than HTTPS.\n+.TP\n+.B \\--upload-no-ssl-verify\n+Disable SSL verification for HTTPS uploads. This may be used to allow uploading\n+to locations that have self-signed certificates, or certificates that are otherwise\n+untrusted by the local system.\n+\n+Default behavior is to perform SSL verification against all upload locations.\n+.TP\n+.B \\--upload-protocol PROTO\n+Manually specify the protocol to use for uploading to the target \\fBupload-url\\fR.\n+\n+Normally this is determined via the upload address, assuming that the protocol is part\n+of the address provided, e.g. 'https://example.com'. By using this option, sos will skip\n+the protocol check and use the method defined for the specified PROTO.\n+\n+For RHEL systems, setting this option to \\fBsftp\\fR will skip the initial attempt to\n+upload to the Red Hat Customer Portal, and only attempt an upload to Red Hat's SFTP server,\n+which is typically used as a fallback target.\n+\n+Valid values for PROTO are: 'auto' (default), 'https', 'ftp', 'sftp', 's3'.\n+\n+.TP\n+.B \\--upload-target TARGET\n+Manually specify the upload target to use for uploading. Possible targets\n+are: redhat, canonical, generic, local.\n+If this option is not called, sos will try to determine the local target\n+and use it for uploads.\n+\n+.TP\n+.B \\---upload-s3-endpoint ENDPOINT\n+Endpoint to upload to for S3 bucket\n+\n+.TP\n+.B \\---upload-s3-region REGION\n+Region to upload to for S3 bucket\n+\n+.TP\n+.B \\---upload-s3-bucket BUCKET\n+Name of the S3 bucket to upload to\n+\n+.TP\n+.B \\---upload-s3-access-key KEY\n+Access key for the S3 bucket\n+\n+.TP\n+.B \\-  --upload-s3-secret-key KEY\n+Secret key for the S3 bucket\n+\n+.TP\n+.B \\-  --upload-s3-object-prefix PREFIX\n+Prefix for the S3 object/key\n+\n+.SH SEE ALSO\n+.BR sos (1)\n+.BR sos-report (1)\n+.BR sos-clean (1)\n+.BR sos.conf (5)\n+.BR sos-collect (1)\n+\n+.SH MAINTAINER\n+.nf\n+Maintained on GitHub at https://github.com/sosreport/sos\n+.fi\n+.SH AUTHORS & CONTRIBUTORS\n+See \\fBAUTHORS\\fR file in the package documentation.\ndiff --git a/man/en/sos.1 b/man/en/sos.1\nindex 863da15..1434563 100644\n--- a/man/en/sos.1\n+++ b/man/en/sos.1\n@@ -10,8 +10,7 @@ sos \\- A unified tool for collecting system logs and other debug information\n support representatives, and the like to assist in troubleshooting issues with\n a system or group of systems.\n \n-The most well known function is \\fB sos report\\fR or \\fBsos report\\fR as it was\n-previously known.\n+The most well known function is \\fBsos report\\fR.\n \n An sos archive is typically requested by support organizations to collect baseline\n configuration and system data from which to begin the troubleshooting process.\n@@ -31,7 +30,7 @@ services, or system architecture is detected.\n \n See \\fBsos report --help\\fR and \\fBman sos-report\\fR for more information.\n \n-May also be invoked via the alias \\fBrep\\fR or the deprecated command \\fBsos report\\fR.\n+May also be invoked via the alias \\fBrep\\fR.\n \n .TP\n .B collect\n@@ -75,6 +74,14 @@ commands and components than is directly available in either other manpages or\n \n See \\fB sos help --help\\fR and \\fB man sos-help\\fR for more information.\n \n+.TP\n+.B upload\n+This subcommand uploads an input file to either a distribution-defined or a\n+user-defined target. The file can be an SOS archive or any other type of file,\n+such as a vmcore or log file.\n+\n+See \\fB sos upload --help\\fR and \\fB man sos-upload\\fR for more information.\n+\n .SH GLOBAL OPTIONS\n sos components provide their own set of options, however the following are available\n to be set across all components.\n@@ -156,8 +163,9 @@ The following table summarizes the effects of different verbosity levels:\n .B \\-q, \\--quiet\n Only log fatal errors to stderr.\n .TP\n-.B \\-z, \\-\\-compression-type {auto|xz|gzip}\n-Compression type to use when compression the final archive output\n+.B \\-z, \\-\\-compression-type {auto|xz|gzip|none}\n+Compression type to use when compressing the final archive output. If the value \\fBnone\\fP is given\n+the tar archive will be written directly with no compression.\n .TP\n .B \\--help\n Display usage message.\n@@ -165,7 +173,7 @@ Display usage message.\n .BR sos.conf (5)\n .SH MAINTAINER\n .nf\n-Maintained on GitHub at https://github.com/sos report/sos\n+Maintained on GitHub at https://github.com/sosreport/sos\n .fi\n .SH AUTHORS & CONTRIBUTORS\n See \\fBAUTHORS\\fR file in the package documentation.\ndiff --git a/man/en/sosreport.1 b/man/en/sosreport.1\ndeleted file mode 120000\nindex d1716cc..0000000\n--- a/man/en/sosreport.1\n+++ /dev/null\n@@ -1 +0,0 @@\n-sos-report.1\n\\ No newline at end of file\ndiff --git a/plugins_overview.py b/plugins_overview.py\nindex f7ef042..b315519 100644\n--- a/plugins_overview.py\n+++ b/plugins_overview.py\n@@ -55,7 +55,10 @@ def add_all_items(method, dest, plugfd, wrapopen=r'\\(', wrapclose=r'\\)'):\n                         # dirty hack to remove spaces and \"Plugin\"\n                         if \"Plugin\" not in it:\n                             continue\n-                        it = it.strip(' ()')[0:-6]\n+                        if \"=\" in it:\n+                            it = re.sub(r\"Plugin.*\", \"Plugin\", it)\n+                        plug_col_len = 9 if \"PluginOpt\" in it else 6\n+                        it = it.strip(' ()')[:-plug_col_len]\n                         if len(it):\n                             dest.append(it)\n         # list of specs separated by comma ..\n@@ -94,7 +97,8 @@ for plugfile in sorted(os.listdir(PLUGDIR)):\n         pfd_content = pfd.read().replace('\\n', '')\n         add_all_items(\n             \"from sos.report.plugins import \", plugs_data[plugname]['distros'],\n-            pfd_content, wrapopen='', wrapclose='(class|from|import)'\n+            pfd_content, wrapopen='',\n+            wrapclose=r'(class|from|import|#|\\))'\n         )\n         add_all_items(\"profiles = \", plugs_data[plugname]['profiles'],\n                       pfd_content, wrapopen='')\ndiff --git a/requirements.txt b/requirements.txt\nindex 4f6cbb7..e46fbb6 100644\n--- a/requirements.txt\n+++ b/requirements.txt\n@@ -1,6 +1,5 @@\n pycodestyle>=2.4.0\n coverage>=4.0.3\n-Sphinx>=1.3.5\n pexpect>=4.0.0\n pyyaml\n packaging\ndiff --git a/setup.py b/setup.py\nindex 9ad4bb7..24daf43 100644\n--- a/setup.py\n+++ b/setup.py\n@@ -2,7 +2,22 @@\n \n from setuptools import setup, find_packages\n from sos import __version__ as VERSION\n+from sos.policies import load\n \n+data_files = [\n+    ('share/man/man1', ['man/en/sos-report.1', 'man/en/sos.1',\n+                        'man/en/sos-collect.1', 'man/en/sos-clean.1',\n+                        'man/en/sos-mask.1', 'man/en/sos-help.1',\n+                        'man/en/sos-upload.1']),\n+    ('share/man/man5', ['man/en/sos.conf.5']),\n+    ('config', ['sos.conf', 'tmpfiles/tmpfilesd-sos-rh.conf'])\n+]\n+\n+if load().os_release_name not in (\"Ubuntu\", \"Debian\"):\n+    data_files.extend([\n+        ('share/licenses/sos', ['LICENSE']),\n+        ('share/doc/sos', ['AUTHORS', 'README.md'])\n+    ])\n \n setup(\n     name='sos',\n@@ -16,20 +31,11 @@ setup(\n     author='Bryn M. Reeves',\n     author_email='bmr@redhat.com',\n     maintainer='Jake Hunsaker',\n-    maintainer_email='jhunsake@redhat.com',\n+    maintainer_email='jacob.r.hunsaker@gmail.com',\n     url='https://github.com/sosreport/sos',\n     license=\"GPLv2+\",\n-    scripts=['bin/sos', 'bin/sosreport', 'bin/sos-collector'],\n-    data_files=[\n-        ('share/man/man1', ['man/en/sosreport.1', 'man/en/sos-report.1',\n-                            'man/en/sos.1', 'man/en/sos-collect.1',\n-                            'man/en/sos-collector.1', 'man/en/sos-clean.1',\n-                            'man/en/sos-mask.1', 'man/en/sos-help.1']),\n-        ('share/man/man5', ['man/en/sos.conf.5']),\n-        ('share/licenses/sos', ['LICENSE']),\n-        ('share/doc/sos', ['AUTHORS', 'README.md']),\n-        ('config', ['sos.conf', 'tmpfiles/tmpfilesd-sos-rh.conf'])\n-    ],\n+    scripts=['bin/sos'],\n+    data_files=data_files,\n     packages=find_packages(include=['sos', 'sos.*'])\n )\n \ndiff --git a/snap/snapcraft.yaml b/snap/snapcraft.yaml\nindex 1c796aa..ab865f3 100644\n--- a/snap/snapcraft.yaml\n+++ b/snap/snapcraft.yaml\n@@ -41,7 +41,3 @@ parts:\n apps:\n   sos:\n     command: bin/sos\n-  sosreport:\n-    command: bin/sos report\n-  sos-collector:\n-    command: bin/sos collector\ndiff --git a/sos.conf b/sos.conf\nindex 2be22a3..05aa1a5 100644\n--- a/sos.conf\n+++ b/sos.conf\n@@ -30,6 +30,13 @@\n #domains = mydomain.com\n #no-update = true\n \n+[upload]\n+# Options that will apply to any `sos upload` run should be listed here.\n+# Note that the option names *must* be the long-form name as seen in --help\n+# output. Use a comma for list delimitations\n+#upload-target = local\n+#upload-protocol = sftp\n+\n [plugin_options]\n # Specify any plugin options and their values here. These options take the form\n # plugin_name.option_name = value\ndiff --git a/sos.spec b/sos.spec\nindex cf88669..f17f9fe 100644\n--- a/sos.spec\n+++ b/sos.spec\n@@ -1,6 +1,6 @@\n Summary: A set of tools to gather troubleshooting information from a system\n Name: sos\n-Version: 4.8.2\n+Version: 4.11.1\n Release: 1%{?dist}\n Source0: https://github.com/sosreport/sos/archive/%{name}-%{version}.tar.gz\n License: GPL-2.0-only\n@@ -33,20 +33,20 @@ support technicians and developers.\n %prep\n %setup -qn %{name}-%{version}\n \n-%if 0%{?fedora} >= 39\n+%if 0%{?fedora} >= 39 || 0%{?rhel} >= 11\n %generate_buildrequires\n %pyproject_buildrequires\n %endif\n \n %build\n-%if 0%{?fedora} >= 39\n+%if 0%{?fedora} >= 39 || 0%{?rhel} >= 11\n %pyproject_wheel\n %else\n %py3_build\n %endif\n \n %install\n-%if 0%{?fedora} >= 39\n+%if 0%{?fedora} >= 39 || 0%{?rhel} >= 11\n %pyproject_install\n %pyproject_save_files sos\n %else\n@@ -69,21 +69,19 @@ rm -rf %{buildroot}/usr/config/\n # internationalization is currently broken. Uncomment this line once fixed.\n # %%files -f %%{name}.lang\n %files\n-%if 0%{?fedora} >= 39\n+%if 0%{?fedora} >= 39 || 0%{?rhel} >= 11\n %{_bindir}/sos\n-%{_bindir}/sosreport\n-%{_bindir}/sos-collector\n %else\n %{_sbindir}/sos\n-%{_sbindir}/sosreport\n-%{_sbindir}/sos-collector\n %endif\n+%dir /etc/sos\n %dir /etc/sos/cleaner\n %dir /etc/sos/presets.d\n %dir /etc/sos/extras.d\n %dir /etc/sos/groups.d\n %{_tmpfilesdir}/%{name}.conf\n-%{python3_sitelib}/*\n+%{python3_sitelib}/sos/\n+%{python3_sitelib}/sos-*info/\n %{_mandir}/man1/*\n %{_mandir}/man5/*\n %doc AUTHORS README.md\n@@ -91,6 +89,30 @@ rm -rf %{buildroot}/usr/config/\n %config(noreplace) %{_sysconfdir}/sos/sos.conf\n \n %changelog\n+* Tue Apr 21 2026 Pavel Moravec <pmoravec@redhat.com> = 4.11.1\n+- New upstream release\n+\n+* Mon Feb 16 2026 Jake Hunsaker <jacob.r.hunsaker@gmail.com> = 4.11.0\n+- New upstream release\n+\n+* Mon Dec 15 2025 Pavel Moravec <pmoravec@redhat.com> = 4.10.2\n+- New upstream release\n+\n+* Wed Oct 15 2025 Pavel Moravec <pmoravec@redhat.com> = 4.10.1\n+- New upstream release\n+\n+* Mon Aug 18 2025 Jake Hunsaker <jacob.r.hunsaker@gmail.com> = 4.10.0\n+- New upstream release\n+\n+* Tue Jun 17 2025 Pavel Moravec <pmoravec@redhat.com> = 4.9.2\n+- New upstream release\n+\n+* Tue Apr 15 2025 Pavel Moravec <pmoravec@redhat.com> = 4.9.1\n+- New upstream release\n+\n+* Mon Feb 17 2025 Jake Hunsaker <jacob.r.hunsaker@gmail.com> = 4.9.0\n+- New upstream release\n+\n * Mon Dec 16 2024 Pavel Moravec <pmoravec@redhat.com> = 4.8.2\n - New upstream release\n \n@@ -179,10 +201,10 @@ rm -rf %{buildroot}/usr/config/\n \n * Wed Sep 17 2014 Bryn M. Reeves <bmr@redhat.com> = 3.2-beta1\n - New upstream beta release\n- \n+\n * Thu Jun 12 2014 Bryn M. Reeves <bmr@redhat.com> = 3.2-alpha1\n - New upstream alpha release\n- \n+\n * Mon Jan 27 2014 Bryn M. Reeves <bmr@redhat.com> = 3.1-1\n - New upstream release\n \n@@ -311,7 +333,7 @@ rm -rf %{buildroot}/usr/config/\n - Improve sanitization of RHN user and case number in report name\n   Resolves: bz771393\n - Fix verbose output and debug logging\n-  Resolves: bz782339 \n+  Resolves: bz782339\n - Add basic support for CloudForms data collection\n   Resolves: bz752666\n - Add support for Subscription Asset Manager diagnostics\n@@ -356,7 +378,7 @@ rm -rf %{buildroot}/usr/config/\n * Tue Nov  1 2011 Bryn M. Reeves <bmr@redhat.com> = 2.2-17\n - Do not collect subscription manager keys in general plugin\n   Resolves: bz750607\n- \n+\n * Fri Sep 23 2011 Bryn M. Reeves <bmr@redhat.com> = 2.2-16\n - Fix execution of RHN hardware.py from hardware plugin\n   Resolves: bz736718\n@@ -414,7 +436,7 @@ rm -rf %{buildroot}/usr/config/\n * Thu Apr 07 2011 Bryn M. Reeves <bmr@redhat.com> = 2.2-8\n - Use sha256 for report digest when operating in FIPS mode\n   Resolves: bz689387\n- \n+\n * Tue Apr 05 2011 Bryn M. Reeves <bmr@redhat.com> = 2.2-7\n - Fix parted and dumpe2fs output on s390\n   Resolves: bz622784\n@@ -783,4 +805,3 @@ rm -rf %{buildroot}/usr/config/\n \n * Mon May 22 2006 John Berninger <jwb at redhat dot com> - 0.1-1\n - initial package build\n-\ndiff --git a/sos/__init__.py b/sos/__init__.py\nindex c0baa3b..ef22a50 100644\n--- a/sos/__init__.py\n+++ b/sos/__init__.py\n@@ -14,7 +14,7 @@\n This module houses the i18n setup and message function. The default is to use\n gettext to internationalize messages.\n \"\"\"\n-__version__ = \"4.8.2\"\n+__version__ = \"4.11.1\"\n \n import os\n import sys\n@@ -54,10 +54,12 @@ class SoS():\n         import sos.report\n         import sos.cleaner\n         import sos.help\n+        import sos.upload\n         self._components = {\n             'report': (sos.report.SoSReport, ['rep']),\n             'clean': (sos.cleaner.SoSCleaner, ['cleaner', 'mask']),\n-            'help': (sos.help.SoSHelper, [])\n+            'help': (sos.help.SoSHelper, []),\n+            'upload': (sos.upload.SoSUpload, [])\n         }\n         # some distros do not want pexpect as a default dep, so try to load\n         # collector here, and if it fails add an entry that implies it is at\n@@ -146,7 +148,8 @@ class SoS():\n \n         global_grp.add_argument('-z', '--compression-type',\n                                 dest=\"compression_type\",\n-                                choices=['auto', 'gzip', 'xz'],\n+                                choices=['auto', 'gzip', 'xz',\n+                                         'none'],\n                                 help=\"compression technology to use\")\n \n         # Group to make tarball encryption (via GPG/password) exclusive\ndiff --git a/sos/archive.py b/sos/archive.py\nindex 3374899..f2ef030 100644\n--- a/sos/archive.py\n+++ b/sos/archive.py\n@@ -35,6 +35,7 @@ P_FILE = \"file\"\n P_LINK = \"link\"\n P_NODE = \"node\"\n P_DIR = \"dir\"\n+P_CONTFILE = \"contaner file\"\n \n \n class Archive:\n@@ -653,7 +654,7 @@ class FileCacheArchive(Archive):\n             enc_cmd += \"-c --passphrase-fd 0 \"\n             enc_cmd = f\"/bin/bash -c \\\"echo $sos_gpg | {enc_cmd}\\\"\"\n             enc_cmd += archive\n-        r = sos_get_command_output(enc_cmd, timeout=0, env=env)\n+        r = sos_get_command_output(enc_cmd, timeout=0, env=env, stderr=True)\n         if r[\"status\"] == 0:\n             return arc_name\n         if r[\"status\"] == 2:\n@@ -662,9 +663,7 @@ class FileCacheArchive(Archive):\n             else:\n                 msg = \"Could not read passphrase\"\n         else:\n-            # TODO: report the actual error from gpg. Currently, we cannot as\n-            # sos_get_command_output() does not capture stderr\n-            msg = f\"gpg exited with code {r['status']}\"\n+            msg = f\"gpg exited with code {r['status']} and error {r['output']}\"\n         raise Exception(msg)\n \n     def _build_archive(self, method):  # pylint: disable=unused-argument\n@@ -728,18 +727,26 @@ class TarFileArchive(FileCacheArchive):\n         return f\"{self._archive_root}.{self._suffix}\"\n \n     def _build_archive(self, method):\n+        _mode = 'w'\n         if method == 'auto':\n             method = 'xz' if find_spec('lzma') is not None else 'gzip'\n-        _comp_mode = method.strip('ip')\n-        self._archive_name = f\"{self._archive_name}.{_comp_mode}\"\n+        if method == 'none':\n+            method = None\n+        if method is not None:\n+            _comp_mode = method.strip('ip')\n+            self._archive_name = f\"{self._archive_name}.{_comp_mode}\"\n+            self._suffix += f\".{_comp_mode}\"\n+            _mode = f\"w:{_comp_mode}\"\n         # tarfile does not currently have a consistent way to define comnpress\n         # level for both xz and gzip ('preset' for xz, 'compresslevel' for gz)\n-        if method == 'gzip':\n-            kwargs = {'compresslevel': 6}\n-        else:\n-            kwargs = {'preset': 3}\n-        with tarfile.open(self._archive_name, mode=f\"w:{_comp_mode}\",\n-                          **kwargs) as tar:\n+        kwargs = {\n+            None: {},\n+            'gzip': {'compresslevel': 6},\n+            'xz':   {'preset': 3}\n+        }\n+        with tarfile.open(self._archive_name,\n+                          mode=_mode,\n+                          **kwargs[method]) as tar:\n             # Add commonly reviewed files first, so that they can be more\n             # easily read from memory without needing to extract\n             # the whole archive\n@@ -753,7 +760,6 @@ class TarFileArchive(FileCacheArchive):\n             # want the names used in the archive to be relative.\n             tar.add(self._archive_root, arcname=self._name,\n                     filter=self.copy_permissions_filter)\n-        self._suffix += f\".{_comp_mode}\"\n         return self.name()\n \n \ndiff --git a/sos/cleaner/__init__.py b/sos/cleaner/__init__.py\nindex e057936..d6b317b 100644\n--- a/sos/cleaner/__init__.py\n+++ b/sos/cleaner/__init__.py\n@@ -13,13 +13,11 @@ import json\n import logging\n import os\n import shutil\n-import tempfile\n import fnmatch\n \n-from concurrent.futures import ThreadPoolExecutor\n+from concurrent.futures import ProcessPoolExecutor\n from datetime import datetime\n from pwd import getpwuid\n-from textwrap import fill\n \n import sos.cleaner.preppers\n \n@@ -36,7 +34,13 @@ from sos.cleaner.archives.sos import (SoSReportArchive, SoSReportDirectory,\n                                       SoSCollectorDirectory)\n from sos.cleaner.archives.generic import DataDirArchive, TarballArchive\n from sos.cleaner.archives.insights import InsightsArchive\n-from sos.utilities import get_human_readable, import_module, ImporterHelper\n+from sos.utilities import (get_human_readable, import_module,\n+                           ImporterHelper, is_executable)\n+\n+\n+# an auxiliary method to kick off child processes over its instances\n+def obfuscate_arc_files(arc, flist):\n+    return arc.obfuscate_arc_files(flist)\n \n \n class SoSCleaner(SoSComponent):\n@@ -62,7 +66,8 @@ class SoSCleaner(SoSComponent):\n     In the case of IP addresses, support is for IPv4 and IPv6 - effort is made\n     to keep network topology intact so that later analysis is as accurate and\n     easily understandable as possible. If an IP address is encountered that we\n-    cannot determine the netmask for, a random IP address is used instead.\n+    cannot determine the netmask for, a private IP address from 172.17.0.0/22\n+    range is used instead.\n \n     For IPv6, note that IPv4-mapped addresses, e.g. ::ffff:10.11.12.13, are\n     NOT supported currently, and will remain unobfuscated.\n@@ -92,7 +97,8 @@ class SoSCleaner(SoSComponent):\n         'no_update': False,\n         'keep_binary_files': False,\n         'target': '',\n-        'usernames': []\n+        'usernames': [],\n+        'treat_certificates': 'obfuscate'\n     }\n \n     def __init__(self, parser=None, args=None, cmdline=None, in_place=False,\n@@ -111,8 +117,9 @@ class SoSCleaner(SoSComponent):\n             self.policy = hook_commons['policy']\n             self.manifest = hook_commons['manifest']\n             self.from_cmdline = False\n+            # precede 'report -t' option above 'cleaner --jobs'\n             if not hasattr(self.opts, 'jobs'):\n-                self.opts.jobs = 4\n+                self.opts.jobs = self.opts.threads\n             self.opts.archive_type = 'auto'\n             self.soslog = logging.getLogger('sos')\n             self.ui_log = logging.getLogger('sos_ui')\n@@ -129,27 +136,48 @@ class SoSCleaner(SoSComponent):\n \n         self.cleaner_md = self.manifest.components.add_section('cleaner')\n \n-        skip_cleaning_files = self.opts.skip_cleaning_files\n-        self.parsers = [\n-            SoSHostnameParser(self.cleaner_mapping, skip_cleaning_files),\n-            SoSIPParser(self.cleaner_mapping, skip_cleaning_files),\n-            SoSIPv6Parser(self.cleaner_mapping, skip_cleaning_files),\n-            SoSMacParser(self.cleaner_mapping, skip_cleaning_files),\n-            SoSKeywordParser(self.cleaner_mapping, skip_cleaning_files),\n-            SoSUsernameParser(self.cleaner_mapping, skip_cleaning_files)\n+        cleaner_dir = os.path.dirname(self.opts.map_file) \\\n+            if self.opts.map_file else '/etc/sos/cleaner'\n+        parser_args = [\n+            self.cleaner_mapping,\n+            cleaner_dir,\n+            self.opts.skip_cleaning_files,\n+        ]\n+\n+        parser_classes = [\n+            SoSHostnameParser,\n+            SoSIPParser,\n+            SoSIPv6Parser,\n+            SoSMacParser,\n+            SoSKeywordParser,\n+            SoSUsernameParser,\n+        ]\n+        parser_names = [\n+            cls.__name__ for cls in parser_classes\n         ]\n \n         for _parser in self.opts.disable_parsers:\n-            for _loaded in self.parsers:\n-                _temp = _loaded.name.lower().split('parser', maxsplit=1)[0]\n-                _loaded_name = _temp.strip()\n-                if _parser.lower().strip() == _loaded_name:\n-                    self.log_info(f\"Disabling parser: {_loaded_name}\")\n+            found = False\n+            for pname in parser_names:\n+                parser_name = pname[3:-6].lower()  # strip \"SoS\" and \"Parser\"\n+                if _parser.lower().strip() == parser_name:\n+                    self.log_info(f\"Disabling parser: {parser_name}\")\n                     self.ui_log.warning(\n                         f\"Disabling the '{_parser}' parser. Be aware that this\"\n                         \" may leave sensitive plain-text data in the archive.\"\n                     )\n-                    self.parsers.remove(_loaded)\n+                    parser_names.remove(pname)  # pylint: disable=W4701\n+                    found = True\n+                    break\n+            if not found:\n+                self.ui_log.warning(\n+                    f\"Failing to disable an unknown parser '{_parser}'.\"\n+                )\n+\n+        self.parsers = [\n+            globals()[cls_name](*parser_args)\n+            for cls_name in parser_names\n+        ]\n \n         self.archive_types = [\n             SoSReportDirectory,\n@@ -178,13 +206,6 @@ class SoSCleaner(SoSComponent):\n     def log_error(self, msg, caller=None):\n         self.soslog.error(self._fmt_log_msg(msg, caller))\n \n-    def _fmt_msg(self, msg):\n-        width = 80\n-        _fmt = ''\n-        for line in msg.splitlines():\n-            _fmt = _fmt + fill(line, width, replace_whitespace=False) + '\\n'\n-        return _fmt\n-\n     @classmethod\n     def display_help(cls, section):\n         section.set_title(\"SoS Cleaner Detailed Help\")\n@@ -296,6 +317,15 @@ third party.\n         clean_grp.add_argument('--usernames', dest='usernames', default=[],\n                                action='extend',\n                                help='List of usernames to obfuscate')\n+        clean_grp.add_argument('--treat-certificates', default='obfuscate',\n+                               choices=['obfuscate', 'keep', 'remove'],\n+                               dest='treat_certificates',\n+                               help=(\n+                                   'How to treat certificate files '\n+                                   '[.csr .crt .pem]. Defaults to \"obfuscate\" '\n+                                   'after convert the file to text. '\n+                                   '\"Key\" certificate files are always '\n+                                   'removed.'))\n \n     def set_target_path(self, path):\n         \"\"\"For use by report and collect to set the TARGET option appropriately\n@@ -315,14 +345,19 @@ third party.\n             check_type = self.opts.archive_type.replace('-', '_')\n             for archive in self.archive_types:\n                 if archive.type_name == check_type:\n-                    _arc = archive(self.opts.target, self.tmpdir)\n+                    _arc = archive(self.opts.target, self.tmpdir,\n+                                   self.opts.keep_binary_files,\n+                                   self.opts.treat_certificates)\n         else:\n             for arc in self.archive_types:\n                 if arc.check_is_type(self.opts.target):\n-                    _arc = arc(self.opts.target, self.tmpdir)\n+                    _arc = arc(self.opts.target, self.tmpdir,\n+                               self.opts.keep_binary_files,\n+                               self.opts.treat_certificates)\n                     break\n         if not _arc:\n             return\n+        self.main_archive = _arc\n         self.report_paths.append(_arc)\n         if _arc.is_nested:\n             self.report_paths.extend(_arc.get_nested_archives())\n@@ -359,6 +394,7 @@ third party.\n         be unpacked, cleaned, and repacked and the final top-level archive will\n         then be repacked as well.\n         \"\"\"\n+        self.opts.target = self.opts.target.rstrip('/')\n         self.arc_name = self.opts.target.split('/')[-1].split('.tar')[0]\n         if self.from_cmdline:\n             self.print_disclaimer()\n@@ -560,7 +596,8 @@ third party.\n         try:\n             msg = (\n                 f\"Found {len(self.report_paths)} total reports to obfuscate, \"\n-                f\"processing up to {self.opts.jobs} concurrently\\n\"\n+                f\"processing up to {self.opts.jobs} concurrently within one\\n\"\n+                \"archive.\\n\"\n             )\n             self.ui_log.info(msg)\n             if self.opts.keep_binary_files:\n@@ -568,9 +605,33 @@ third party.\n                     \"WARNING: binary files that potentially contain sensitive \"\n                     \"information will NOT be removed from the final archive\\n\"\n                 )\n-            pool = ThreadPoolExecutor(self.opts.jobs)\n-            pool.map(self.obfuscate_report, self.report_paths, chunksize=1)\n-            pool.shutdown(wait=True)\n+            if (self.opts.treat_certificates == \"obfuscate\"\n+                    and not is_executable(\"openssl\")):\n+                self.opts.treat_certificates = \"remove\"\n+                self.ui_log.warning(\n+                    \"WARNING: No `openssl` command available. Replacing \"\n+                    \"`--treat-certificates` from `obfuscate` to `remove`.\"\n+                )\n+            if self.opts.treat_certificates == \"obfuscate\":\n+                self.ui_log.warning(\n+                    \"WARNING: certificate files that potentially contain \"\n+                    \"sensitive information will\\nbe CONVERTED to text and \"\n+                    \"OBFUSCATED in the final archive.\\n\"\n+                )\n+            elif self.opts.treat_certificates == \"keep\":\n+                self.ui_log.warning(\n+                    \"WARNING: certificate files that potentially contain \"\n+                    \"sensitive information will\\nbe KEPT in the final \"\n+                    \"archive as is.\\n\"\n+                )\n+            elif self.opts.treat_certificates == \"remove\":\n+                self.ui_log.warning(\n+                    \"WARNING: certificate files that potentially contain \"\n+                    \"sensitive information will\\nbe REMOVED in the final \"\n+                    \"archive.\\n\")\n+            for report_path in self.report_paths:\n+                self.ui_log.info(f\"Obfuscating {report_path.archive_path}\")\n+                self.obfuscate_report(report_path)\n             # finally, obfuscate the nested archive if one exists\n             if self.nested_archive:\n                 self._replace_obfuscated_archives()\n@@ -641,6 +702,8 @@ third party.\n \n             for ritem in prepper.regex_items[pname]:\n                 _parser.mapping.add_regex_item(ritem)\n+        # we must initialize stuff inside (cloned processes') archive - REALLY?\n+        archive.set_parsers(self.parsers)\n \n     def get_preppers(self):\n         \"\"\"\n@@ -667,6 +730,7 @@ third party.\n         for prepper in self.get_preppers():\n             for archive in self.report_paths:\n                 self._prepare_archive_with_prepper(archive, prepper)\n+        self.main_archive.set_parsers(self.parsers)\n \n     def obfuscate_report(self, archive):  # pylint: disable=too-many-branches\n         \"\"\"Individually handle each archive or directory we've discovered by\n@@ -674,8 +738,9 @@ third party.\n \n         Positional arguments:\n \n-            :param report str:      Filepath to the directory or archive\n+            :param archive str:      Filepath to the directory or archive\n         \"\"\"\n+\n         try:\n             arc_md = self.cleaner_md.add_section(archive.archive_name)\n             start_time = datetime.now()\n@@ -685,21 +750,47 @@ third party.\n                 archive.extract()\n             archive.report_msg(\"Beginning obfuscation...\")\n \n-            for fname in archive.get_file_list():\n-                short_name = fname.split(archive.archive_name + '/')[1]\n-                if archive.should_skip_file(short_name):\n-                    continue\n-                if (not self.opts.keep_binary_files and\n-                        archive.should_remove_file(short_name)):\n-                    archive.remove_file(short_name)\n-                    continue\n-                try:\n-                    count = self.obfuscate_file(fname, short_name,\n-                                                archive.archive_name)\n-                    if count:\n-                        archive.update_sub_count(short_name, count)\n-                except Exception as err:\n-                    self.log_debug(f\"Unable to parse file {short_name}: {err}\")\n+            file_list = list(archive.get_files())\n+            # we can't call simple\n+            # executor.map(archive.obfuscate_arc_files,archive.get_files())\n+            # because a child process does not carry forward internal changes\n+            # (e.g. mappings' datasets) from one call of obfuscate_arc_files\n+            # method to another. Each obfuscate_arc_files method starts with\n+            # vanilla parent archive, that is initialised *once* at its\n+            # beginning via initializer=archive.load_parser_entries\n+            # - but not afterwards..\n+            #\n+            # So we must pass list of all files for each worker at the\n+            # beginning. This means less granularity of the child processes\n+            # work (one worker can finish much sooner than the other), but\n+            # it is the best we can have (or have found)\n+            #\n+            # At least, the \"file_list[i::self.opts.jobs]\" means subsequent\n+            # files (speculativelly of similar size and content) are\n+            # distributed to different processes, which attempts to split the\n+            # load evenly. Yet better approach might be reorderig file_list\n+            # based on files' sizes.\n+\n+            files_obfuscated_count = total_sub_count = removed_file_count = 0\n+            archive_list = [archive for i in range(self.opts.jobs)]\n+            with ProcessPoolExecutor(\n+                    max_workers=self.opts.jobs,\n+                    initializer=archive.load_parser_entries) as executor:\n+                futures = executor.map(obfuscate_arc_files, archive_list,\n+                                       [file_list[i::self.opts.jobs] for i in\n+                                        range(self.opts.jobs)])\n+                for (foc, tsc, rfc) in futures:\n+                    files_obfuscated_count += foc\n+                    total_sub_count += tsc\n+                    removed_file_count += rfc\n+\n+            # As there is no easy way to get dataset dicts from child\n+            # processes' mappings, we can reload our own parent-process\n+            # archive from the disk files. The trick is that sequence of\n+            # files/entries is the source of truth of *sequence* of calling\n+            # *all* mapping.all(item) methods - so replaying this will\n+            # generate the right datasets!\n+            archive.load_parser_entries()\n \n             try:\n                 self.obfuscate_directory_names(archive)\n@@ -734,95 +825,20 @@ third party.\n             end_time = datetime.now()\n             arc_md.add_field('end_time', end_time)\n             arc_md.add_field('run_time', end_time - start_time)\n-            arc_md.add_field('files_obfuscated', len(archive.file_sub_list))\n-            arc_md.add_field('total_substitutions', archive.total_sub_count)\n+            arc_md.add_field('files_obfuscated', files_obfuscated_count)\n+            arc_md.add_field('total_substitutions', total_sub_count)\n             rmsg = ''\n-            if archive.removed_file_count:\n+            if removed_file_count:\n                 rmsg = \" [removed %s unprocessable files]\"\n-                rmsg = rmsg % archive.removed_file_count\n+                rmsg = rmsg % removed_file_count\n             archive.report_msg(f\"Obfuscation completed{rmsg}\")\n \n         except Exception as err:\n             self.ui_log.info(\"Exception while processing \"\n                              f\"{archive.archive_name}: {err}\")\n \n-    def obfuscate_file(self, filename, short_name=None, arc_name=None):\n-        # pylint: disable=too-many-locals\n-        \"\"\"Obfuscate and individual file, line by line.\n-\n-        Lines processed, even if no substitutions occur, are then written to a\n-        temp file without our own tmpdir. Once the file has been completely\n-        iterated through, if there have been substitutions then the temp file\n-        overwrites the original file. If there are no substitutions, then the\n-        original file is left in place.\n-\n-        Positional arguments:\n-\n-            :param filename str:        Filename relative to the extracted\n-                                        archive root\n-        \"\"\"\n-        if not filename:\n-            # the requested file doesn't exist in the archive\n-            return None\n-        subs = 0\n-        if not short_name:\n-            short_name = filename.split('/')[-1]\n-        if not os.path.islink(filename):\n-            # don't run the obfuscation on the link, but on the actual file\n-            # at some other point.\n-            _parsers = [\n-                _p for _p in self.parsers if not\n-                any(\n-                    _skip.match(short_name) for _skip in _p.skip_patterns\n-                )\n-            ]\n-            if not _parsers:\n-                self.log_debug(\n-                    f\"Skipping obfuscation of {short_name or filename} due to \"\n-                    f\"matching file skip pattern\"\n-                )\n-                return 0\n-            self.log_debug(f\"Obfuscating {short_name or filename}\",\n-                           caller=arc_name)\n-            with tempfile.NamedTemporaryFile(mode='w', dir=self.tmpdir) \\\n-                    as tfile:\n-                with open(filename, 'r', encoding='utf-8',\n-                          errors='replace') as fname:\n-                    for line in fname:\n-                        try:\n-                            line, count = self.obfuscate_line(line, _parsers)\n-                            subs += count\n-                            tfile.write(line)\n-                        except Exception as err:\n-                            self.log_debug(f\"Unable to obfuscate {short_name}:\"\n-                                           f\"{err}\", caller=arc_name)\n-                tfile.seek(0)\n-                if subs:\n-                    shutil.copyfile(tfile.name, filename)\n-\n-        _ob_short_name = self.obfuscate_string(short_name.split('/')[-1])\n-        _ob_filename = short_name.replace(short_name.split('/')[-1],\n-                                          _ob_short_name)\n-\n-        if _ob_filename != short_name:\n-            arc_path = filename.split(short_name)[0]\n-            _ob_path = os.path.join(arc_path, _ob_filename)\n-            # ensure that any plugin subdirs that contain obfuscated strings\n-            # get created with obfuscated counterparts\n-            if not os.path.islink(filename):\n-                os.rename(filename, _ob_path)\n-            else:\n-                # generate the obfuscated name of the link target\n-                _target_ob = self.obfuscate_string(os.readlink(filename))\n-                # remove the unobfuscated original symlink first, in case the\n-                # symlink name hasn't changed but the target has\n-                os.remove(filename)\n-                # create the newly obfuscated symlink, pointing to the\n-                # obfuscated target name, which may not exist just yet, but\n-                # when the actual file is obfuscated, will be created\n-                os.symlink(_target_ob, _ob_path)\n-\n-        return subs\n+    def obfuscate_file(self, filename):\n+        self.main_archive.obfuscate_arc_files([filename])\n \n     def obfuscate_symlinks(self, archive):\n         \"\"\"Iterate over symlinks in the archive and obfuscate their names.\n@@ -891,6 +907,8 @@ third party.\n                         )\n                         os.rename(_dirname, _ob_arc_dir)\n \n+    # TODO: this is a duplicate method from SoSObfuscationArchive but we can't\n+    # easily remove either of them..?\n     def obfuscate_string(self, string_data):\n         for parser in self.parsers:\n             try:\n@@ -899,34 +917,6 @@ third party.\n                 self.log_info(f\"Error obfuscating string data: {err}\")\n         return string_data\n \n-    def obfuscate_line(self, line, parsers=None):\n-        \"\"\"Run a line through each of the obfuscation parsers, keeping a\n-        cumulative total of substitutions done on that particular line.\n-\n-        Positional arguments:\n-\n-            :param line str:        The raw line as read from the file being\n-                                    processed\n-            :param parsers:         A list of parser objects to obfuscate\n-                                    with. If None, use all.\n-\n-        Returns the fully obfuscated line and the number of substitutions made\n-        \"\"\"\n-        # don't iterate over blank lines, but still write them to the tempfile\n-        # to maintain the same structure when we write a scrubbed file back\n-        count = 0\n-        if not line.strip():\n-            return line, count\n-        if parsers is None:\n-            parsers = self.parsers\n-        for parser in parsers:\n-            try:\n-                line, _count = parser.parse_line(line)\n-                count += _count\n-            except Exception as err:\n-                self.log_debug(f\"failed to parse line: {err}\", parser.name)\n-        return line, count\n-\n     def write_stats_to_manifest(self):\n         \"\"\"Write some cleaner-level, non-report-specific stats to the manifest\n         \"\"\"\ndiff --git a/sos/cleaner/archives/__init__.py b/sos/cleaner/archives/__init__.py\nindex a70ae5d..1d00cfd 100644\n--- a/sos/cleaner/archives/__init__.py\n+++ b/sos/cleaner/archives/__init__.py\n@@ -13,10 +13,12 @@ import os\n import shutil\n import stat\n import tarfile\n+import tempfile\n import re\n \n from concurrent.futures import ProcessPoolExecutor\n-from sos.utilities import file_is_binary\n+from sos.utilities import (file_is_binary, sos_get_command_output,\n+                           file_is_certificate)\n \n \n # python older than 3.8 will hit a pickling error when we go to spawn a new\n@@ -54,7 +56,7 @@ class SoSObfuscationArchive():\n     class. All report-level operations should be contained within this class.\n     \"\"\"\n \n-    file_sub_list = []\n+    files_obfuscated_count = 0\n     total_sub_count = 0\n     removed_file_count = 0\n     type_name = 'undetermined'\n@@ -62,7 +64,8 @@ class SoSObfuscationArchive():\n     is_nested = False\n     prep_files = {}\n \n-    def __init__(self, archive_path, tmpdir):\n+    def __init__(self, archive_path, tmpdir, keep_binary_files,\n+                 treat_certificates):\n         self.archive_path = archive_path\n         self.final_archive_path = self.archive_path\n         self.tmpdir = tmpdir\n@@ -74,10 +77,162 @@ class SoSObfuscationArchive():\n         self.is_extracted = False\n         self._load_self()\n         self.archive_root = ''\n+        self.keep_binary_files = keep_binary_files\n+        self.treat_certificates = treat_certificates\n+        self.parsers = ()\n         self.log_info(\n             f\"Loaded {self.archive_path} as type {self.description}\"\n         )\n \n+    def obfuscate_string(self, string_data):\n+        for parser in self.parsers:\n+            try:\n+                string_data = parser.parse_string_for_keys(string_data)\n+            except Exception as err:\n+                self.log_info(f\"Error obfuscating string data: {err}\")\n+        return string_data\n+\n+    # TODO: merge content to obfuscate_arc_files as that is the only place we\n+    # call obfuscate_filename ?\n+    def obfuscate_filename(self, short_name, filename):\n+        _ob_short_name = self.obfuscate_string(short_name.split('/')[-1])\n+        _ob_filename = short_name.replace(short_name.split('/')[-1],\n+                                          _ob_short_name)\n+\n+        if _ob_filename != short_name:\n+            arc_path = filename.split(short_name)[0]\n+            _ob_path = os.path.join(arc_path, _ob_filename)\n+            # ensure that any plugin subdirs that contain obfuscated strings\n+            # get created with obfuscated counterparts\n+            if not os.path.islink(filename):\n+                os.rename(filename, _ob_path)\n+            else:\n+                # generate the obfuscated name of the link target\n+                _target_ob = self.obfuscate_string(os.readlink(filename))\n+                # remove the unobfuscated original symlink first, in case the\n+                # symlink name hasn't changed but the target has\n+                os.remove(filename)\n+                # create the newly obfuscated symlink, pointing to the\n+                # obfuscated target name, which may not exist just yet, but\n+                # when the actual file is obfuscated, will be created\n+                os.symlink(_target_ob, _ob_path)\n+\n+    def set_parsers(self, parsers):\n+        self.parsers = parsers  # TODO: include this in __init__?\n+\n+    def load_parser_entries(self):\n+        for parser in self.parsers:\n+            parser.load_map_entries()\n+\n+    def obfuscate_line(self, line, parsers=None):\n+        \"\"\"Run a line through each of the obfuscation parsers, keeping a\n+        cumulative total of substitutions done on that particular line.\n+\n+        Positional arguments:\n+\n+            :param line str:        The raw line as read from the file being\n+                                    processed\n+            :param parsers:         A list of parser objects to obfuscate\n+                                    with. If None, use all.\n+\n+        Returns the fully obfuscated line and the number of substitutions made\n+        \"\"\"\n+        # don't iterate over blank lines, but still write them to the tempfile\n+        # to maintain the same structure when we write a scrubbed file back\n+        count = 0\n+        if not line.strip():\n+            return line, count\n+        if parsers is None:\n+            parsers = self.parsers\n+        for parser in parsers:\n+            try:\n+                line, _count = parser.parse_line(line)\n+                count += _count\n+            except Exception as err:\n+                self.log_debug(f\"failed to parse line: {err}\", parser.name)\n+        return line, count\n+\n+    def obfuscate_arc_files(self, flist):\n+        for filename in flist:\n+            self.log_debug(f\"    pid={os.getpid()}: obfuscating {filename}\")\n+            try:\n+                rel_name = os.path.relpath(filename, start=self.extracted_path)\n+                if self.should_skip_file(rel_name):\n+                    continue\n+                if (not self.keep_binary_files and\n+                        self.should_remove_file(rel_name)):\n+                    # We reach this case if the option --keep-binary-files\n+                    # was not used, and the file is in a list to be removed\n+                    self.remove_file(rel_name)\n+                    continue\n+                if (self.keep_binary_files and\n+                        (file_is_binary(filename) or\n+                         self.should_remove_file(rel_name))):\n+                    # We reach this case if the option --keep-binary-files\n+                    # is used. In this case we want to make sure\n+                    # the cleaner doesn't try to clean a binary file\n+                    continue\n+                if os.path.islink(filename):\n+                    # don't run the obfuscation on the link, but on the actual\n+                    # file at some other point.\n+                    continue\n+                is_certificate = file_is_certificate(filename)\n+                if is_certificate:\n+                    if is_certificate == \"certificatekey\":\n+                        # Always remove certificate Key files\n+                        self.remove_file(rel_name)\n+                        continue\n+                    if self.treat_certificates == \"keep\":\n+                        continue\n+                    if self.treat_certificates == \"remove\":\n+                        self.remove_file(rel_name)\n+                        continue\n+                    if self.treat_certificates == \"obfuscate\":\n+                        # since the original filename is deleted, we must\n+                        # update both \"filename\" and \"rel_name\"\n+                        filename = self.certificate_to_text(filename)\n+                        rel_name = os.path.relpath(filename,\n+                                                   start=self.extracted_path)\n+                _parsers = [\n+                    _p for _p in self.parsers if not\n+                    any(\n+                        _skip.match(rel_name) for _skip in _p.skip_patterns\n+                    )\n+                ]\n+                if not _parsers:\n+                    self.log_debug(\n+                        f\"Skipping obfuscation of {rel_name or filename} \"\n+                        f\"due to matching file skip pattern\"\n+                    )\n+                    continue\n+                self.log_debug(f\"Obfuscating {rel_name or filename}\")\n+                subs = 0\n+                with tempfile.NamedTemporaryFile(mode='w', dir=self.tmpdir) \\\n+                        as tfile:\n+                    with open(filename, 'r', encoding='utf-8',\n+                              errors='replace') as fname:\n+                        for line in fname:\n+                            try:\n+                                line, cnt = self.obfuscate_line(line, _parsers)\n+                                subs += cnt\n+                                tfile.write(line)\n+                            except Exception as err:\n+                                self.log_debug(f\"Unable to obfuscate \"\n+                                               f\"{rel_name}: {err}\")\n+                    tfile.seek(0)\n+                    if subs:\n+                        shutil.copyfile(tfile.name, filename)\n+                        self.update_sub_count(subs)\n+\n+                self.obfuscate_filename(rel_name, filename)\n+\n+            except Exception as err:\n+                self.log_debug(f\"    pid={os.getpid()}: caught exception on \"\n+                               f\"obfuscating file {filename}: {err}\")\n+\n+        return (self.files_obfuscated_count, self.total_sub_count,\n+                self.removed_file_count)\n+\n     @classmethod\n     def check_is_type(cls, arc_path):\n         \"\"\"Check if the archive is a well-known type we directly support\"\"\"\n@@ -120,14 +275,18 @@ class SoSObfuscationArchive():\n         \"\"\"Helper to easily format ui messages on a per-report basis\"\"\"\n         self.ui_log.info(f\"{self.ui_name + ' :':<50} {msg}\")\n \n-    def _fmt_log_msg(self, msg):\n-        return f\"[cleaner:{self.archive_name}] {msg}\"\n+    def _fmt_log_msg(self, msg, caller=None):\n+        return f\"[cleaner{f':{caller}' if caller else ''}\" \\\n+               f\"[{self.archive_name}]] {msg}\"\n+\n+    def log_debug(self, msg, caller=None):\n+        self.soslog.debug(self._fmt_log_msg(msg, caller))\n \n-    def log_debug(self, msg):\n-        self.soslog.debug(self._fmt_log_msg(msg))\n+    def log_info(self, msg, caller=None):\n+        self.soslog.info(self._fmt_log_msg(msg, caller))\n \n-    def log_info(self, msg):\n-        self.soslog.info(self._fmt_log_msg(msg))\n+    def log_error(self, msg, caller=None):\n+        self.soslog.error(self._fmt_log_msg(msg, caller))\n \n     def _load_skip_list(self):\n         \"\"\"Provide a list of files and file regexes to skip obfuscation on\n@@ -150,6 +309,19 @@ class SoSObfuscationArchive():\n         except Exception:\n             return False\n \n+    def certificate_to_text(self, fname):\n+        \"\"\"Convert a certificate to text. This is used when cleaner encounters\n+        a certificate file and the option 'treat_certificates' is 'obfuscate'.\n+        \"\"\"\n+        out_fn = f\"{fname}.text\"\n+        self.log_info(f\"Converting certificate file '{fname}' to text\")\n+        sos_get_command_output(\n+            f\"openssl storeutl -r -noout -out {out_fn} \"\n+            f\"-text -certs {str(fname)}\"\n+        )\n+        os.remove(fname)\n+        return out_fn\n+\n     def remove_file(self, fname):\n         \"\"\"Remove a file from the archive. This is used when cleaner encounters\n         a binary file, which we cannot reliably obfuscate.\n@@ -201,6 +373,7 @@ class SoSObfuscationArchive():\n                 self.report_msg(\"Extracting...\")\n             self.extracted_path = self.extract_self()\n             self.is_extracted = True\n+            self.tarobj = None    # we can't pickle this & not further needed\n         else:\n             self.extracted_path = self.archive_path\n         # if we're running as non-root (e.g. collector), then we can have a\n@@ -326,7 +499,7 @@ class SoSObfuscationArchive():\n                 if os.path.islink(_fname):\n                     yield _fname\n \n-    def get_file_list(self):\n+    def get_files(self):\n         \"\"\"Iterator for a list of files in the archive, to allow clean to\n         iterate over.\n \n@@ -345,11 +518,11 @@ class SoSObfuscationArchive():\n             dir_list.append(dirname)\n         return dir_list\n \n-    def update_sub_count(self, fname, count):\n+    def update_sub_count(self, count):\n         \"\"\"Called when a file has finished being parsed and used to track\n         total substitutions made and number of files that had changes made\n         \"\"\"\n-        self.file_sub_list.append(fname)\n+        self.files_obfuscated_count += 1\n         self.total_sub_count += count\n \n     def get_file_path(self, fname):\ndiff --git a/sos/cleaner/archives/sos.py b/sos/cleaner/archives/sos.py\nindex ace71d5..bf010ec 100644\n--- a/sos/cleaner/archives/sos.py\n+++ b/sos/cleaner/archives/sos.py\n@@ -69,7 +69,9 @@ class SoSCollectorArchive(SoSObfuscationArchive):\n         for fname in os.listdir(_path):\n             arc_name = os.path.join(_path, fname)\n             if 'sosreport-' in fname and tarfile.is_tarfile(arc_name):\n-                archives.append(SoSReportArchive(arc_name, self.tmpdir))\n+                archives.append(SoSReportArchive(arc_name, self.tmpdir,\n+                                                 self.keep_binary_files,\n+                                                 self.treat_certificates))\n         return archives\n \n \ndiff --git a/sos/cleaner/mappings/__init__.py b/sos/cleaner/mappings/__init__.py\nindex b5009bb..8eafd04 100644\n--- a/sos/cleaner/mappings/__init__.py\n+++ b/sos/cleaner/mappings/__init__.py\n@@ -9,8 +9,9 @@\n # See the LICENSE file in the source distribution for further information.\n \n import re\n-\n-from threading import Lock\n+import os\n+import tempfile\n+from pathlib import Path\n \n \n class SoSMap():\n@@ -28,11 +29,38 @@ class SoSMap():\n     ignore_short_items = False\n     match_full_words_only = False\n \n-    def __init__(self):\n+    def __init__(self, workdir):\n+        self.initializing = True\n         self.dataset = {}\n         self._regexes_made = set()\n         self.compiled_regexes = []\n-        self.lock = Lock()\n+        self.compiled_search = re.compile('(?!)')  # no match\n+        self.cname = self.__class__.__name__.lower()\n+        # workdir's default value '/tmp' is used just by avocado tests,\n+        # otherwise we override it to /etc/sos/cleaner (or map_file dir)\n+        self.workdir = workdir\n+        self.cache_dir = os.path.join(self.workdir, 'cleaner_cache',\n+                                      self.cname)\n+        self.cache_counter = 0  # number of expected items in cache_dir\n+        self.load_entries()\n+        self.initializing = False\n+        self.generate_compiled_regexes()\n+\n+    def load_entries(self):\n+        \"\"\" Load cached entries from the disk. This method must be called when\n+        we initialize a Map instance and whenever we want to retrieve\n+        self.dataset (e.g. to store default_mapping file). The later is\n+        essential since a concurrent Map can add more objects to the cache,\n+        so we need to update self.dataset up to date.\n+\n+        Keep in mind that size of self.dataset is usually bigger than number\n+        of files in the corresponding cleaner's directory: directory contains\n+        just whole items (e.g. IP addresses) while dataset contains more\n+        derived objects (e.g. subnets).\n+        \"\"\"\n+\n+        Path(self.cache_dir).mkdir(parents=True, exist_ok=True)\n+        self.load_new_entries_from_dir()\n \n     def ignore_item(self, item):\n         \"\"\"Some items need to be completely ignored, for example link-local or\n@@ -46,6 +74,41 @@ class SoSMap():\n                 return True\n         return False\n \n+    def insert_to_dataset(self, item, value):\n+        self.dataset[item] = value\n+\n+    def add_sanitised_item_to_dataset(self, item):\n+        try:\n+            self.insert_to_dataset(item, self.sanitize_item(item))\n+        except Exception:\n+            # we failed to obfuscate the item as it is not a real IP address\n+            # or hostname or similar. Let return the original string and keep\n+            # the item->item \"mapping\" in dataset to save time the next time.\n+            self.insert_to_dataset(item, item)\n+        if self.compile_regexes:\n+            self.add_regex_item(item)\n+\n+    def load_new_entries_from_dir(self):\n+        # Load all new items from the cache_dir. \"New\" = any numbered file not\n+        # lower than self.cache_counter.\n+        # The \">=\" is essential for calls from self.add(item) / FileExistsError\n+        # Update self.cache_counter at the end.\n+        with os.scandir(self.cache_dir) as it:\n+            num_files = [\n+                f.name\n+                for f in it\n+                if f.name.isdigit() and int(f.name) >= self.cache_counter\n+            ]\n+        num_files.sort(key=int)\n+        for file_name in num_files:\n+            fname = os.path.join(self.cache_dir, file_name)\n+            with open(fname, 'r', encoding='utf-8') as f:\n+                item = f.read()\n+            if not self.dataset.get(item, False):\n+                self.add_sanitised_item_to_dataset(item)\n+        if num_files:\n+            self.cache_counter = int(num_files[-1])  # last/biggest number\n+\n     def add(self, item):\n         \"\"\"Add a particular item to the map, generating an obfuscated pair\n         for it.\n@@ -56,11 +119,24 @@ class SoSMap():\n         \"\"\"\n         if self.ignore_item(item):\n             return item\n-        with self.lock:\n-            self.dataset[item] = self.sanitize_item(item)\n-            if self.compile_regexes:\n-                self.add_regex_item(item)\n-            return self.dataset[item]\n+\n+        tmpfile = None\n+        while not self.dataset.get(item, False):\n+            if not tmpfile:\n+                # pylint: disable=consider-using-with\n+                tmpfile = tempfile.NamedTemporaryFile(dir=self.cache_dir)\n+                with open(tmpfile.name, 'w', encoding='utf-8') as f:\n+                    f.write(item)\n+            try:\n+                self.cache_counter += 1\n+                os.link(tmpfile.name,\n+                        os.path.join(self.cache_dir,\n+                                     f\"{self.cache_counter}\"))\n+                self.add_sanitised_item_to_dataset(item)\n+            except FileExistsError:\n+                self.load_new_entries_from_dir()\n+\n+        return self.dataset[item]\n \n     def add_regex_item(self, item):\n         \"\"\"Add an item to the regexes dict and then re-sort the list that the\n@@ -72,11 +148,18 @@ class SoSMap():\n         if self.ignore_item(item):\n             return\n         if item not in self._regexes_made:\n+            # we do re.I everywhere, so unify the item\n+            item = item.lower()\n             # save the item in a set to avoid clobbering existing regexes,\n             # as searching this set is significantly faster than searching\n             # through the actual compiled_regexes list, especially for very\n             # large collections of entries\n             self._regexes_made.add(item)\n+            # don't iteratively build compiled_regexes and compiled_search\n+            # during initialisation, that is redundant;\n+            # generate_compiled_regexes is called at the end of init\n+            if self.initializing:\n+                return\n             # add the item, Pattern tuple directly to the compiled_regexes list\n             # and then sort the existing list, rather than rebuild the list\n             # from scratch every time we add something like we would do if we\n@@ -84,6 +167,28 @@ class SoSMap():\n             # the set above\n             self.compiled_regexes.append((item, self.get_regex_result(item)))\n             self.compiled_regexes.sort(key=lambda x: len(x[0]), reverse=True)\n+            self.generate_compiled_regexes(only_search=True)\n+\n+    def generate_compiled_regexes(self, only_search=False):\n+        keys = sorted(self._regexes_made, key=len, reverse=True)\n+        if not only_search:\n+            self.compiled_regexes = [\n+                (item, self.get_regex_result(item)) for item in keys\n+            ]\n+        pattern = \"|\".join([f'{self.get_regex_escape(k)}' for k in keys])\n+        self.compiled_search = re.compile(\n+            self.get_regex_fullword(pattern),\n+            flags=re.I\n+        )\n+\n+    def get_regex_escape(self, item):\n+        return rf'{re.escape(item)}'\n+\n+    def get_regex_fullword(self, item):\n+        item = rf'(?:{item})'\n+        if self.match_full_words_only:\n+            return rf'(?<![a-z0-9]){item}(?=\\b|_|-)'\n+        return item\n \n     def get_regex_result(self, item):\n         \"\"\"Generate the object/value that is used by the parser when iterating\ndiff --git a/sos/cleaner/mappings/hostname_map.py b/sos/cleaner/mappings/hostname_map.py\nindex 2a535f9..54209f9 100644\n--- a/sos/cleaner/mappings/hostname_map.py\n+++ b/sos/cleaner/mappings/hostname_map.py\n@@ -50,36 +50,6 @@ class SoSHostnameMap(SoSMap):\n     _domains = {}\n     hosts = {}\n \n-    def load_domains_from_map(self):\n-        \"\"\"Because we use 'intermediary' dicts for host names and domain names\n-        in this parser, we need to re-inject entries from the map_file into\n-        these dicts and not just the underlying 'dataset' dict\n-        \"\"\"\n-        for domain, ob_pair in self.dataset.items():\n-            if len(domain.split('.')) == 1:\n-                self.hosts[domain.split('.')[0]] = self.dataset[domain]\n-            else:\n-                if ob_pair.startswith('obfuscateddomain'):\n-                    # directly exact domain matches\n-                    self._domains[domain] = ob_pair.split('.')[0]\n-                    continue\n-                # strip the host name and trailing top-level domain so that\n-                # we in inject the domain properly for later string matching\n-\n-                # note: this is artificially complex due to our stance on\n-                # preserving TLDs. If in the future the project decides to\n-                # obfuscate TLDs as well somehow, then this will all become\n-                # much simpler\n-                _domain_to_inject = '.'.join(domain.split('.')[1:-1])\n-                if not _domain_to_inject:\n-                    continue\n-                for existing_domain, value in self.dataset.items():\n-                    _existing = '.'.join(existing_domain.split('.')[:-1])\n-                    if _existing == _domain_to_inject:\n-                        _ob_domain = '.'.join(value.split('.')[:-1])\n-                        self._domains[_domain_to_inject] = _ob_domain\n-        self.set_initial_counts()\n-\n     def get_regex_result(self, item):\n         \"\"\"Override the base get_regex_result() to provide a regex that, if\n         this is an FQDN or a straight domain, will include an underscore\n@@ -89,6 +59,23 @@ class SoSHostnameMap(SoSMap):\n             item = item.replace('.', '(\\\\.|_)')\n         return super().get_regex_result(item)\n \n+    def get_regex_fullword(self, item):\n+        # we do match_full_words_only, so always wrap\n+        return rf'(?<![a-z0-9])(?:{item})(?![a-z0-9])'\n+\n+    def get_regex_escape(self, item):\n+        \"\"\"Override the base get_regex_escape() to provide a regex that, if\n+        this is an FQDN or a straight domain, will include an underscore\n+        formatted regex as well.\n+        \"\"\"\n+        # Build core allowing '.' or '_' at dot positions\n+        if \".\" in item:\n+            parts = [re.escape(p) for p in item.split('.')]\n+            item = r'(?:\\.|_)'.join(parts)\n+        else:\n+            item = re.escape(item)\n+        return item\n+\n     def set_initial_counts(self):\n         \"\"\"Set the initial counter for host and domain obfuscation numbers\n         based on what is already present in the mapping.\ndiff --git a/sos/cleaner/mappings/ip_map.py b/sos/cleaner/mappings/ip_map.py\nindex be6230d..b04556a 100644\n--- a/sos/cleaner/mappings/ip_map.py\n+++ b/sos/cleaner/mappings/ip_map.py\n@@ -9,7 +9,6 @@\n # See the LICENSE file in the source distribution for further information.\n \n import ipaddress\n-import random\n \n from sos.cleaner.mappings import SoSMap\n \n@@ -42,9 +41,27 @@ class SoSIPMap(SoSMap):\n     ]\n \n     _networks = {}\n+    obfuscated_ips = set()\n     network_first_octet = 100\n     skip_network_octets = ['127', '169', '172', '192']\n     compile_regexes = False\n+    # counter for obfuscating a single IP address; the value stands for\n+    # 172.17.0.0; we use a private block of IP addresses and ignore\n+    # 172.16.0.0/16 block as those addresses are more often used in real\n+    # (an attempt to prevent confusion)\n+    _saddr_cnt = 2886795264\n+\n+    def conf_update(self, config):\n+        \"\"\"Override the base conf_update() so that we can add items into\n+        obfuscated_ips.\n+        \"\"\"\n+        for value in config.values():\n+            self.obfuscated_ips.add(value.split('/', maxsplit=1)[0])\n+        super().conf_update(config)\n+\n+    def insert_to_dataset(self, item, value):\n+        self.obfuscated_ips.add(value.split('/', maxsplit=1)[0])\n+        self.dataset[item] = value\n \n     def ip_in_dataset(self, ipaddr):\n         \"\"\"There are multiple ways in which an ip address could be handed to us\n@@ -53,10 +70,8 @@ class SoSIPMap(SoSMap):\n         Here, match the ip address to any of the obfuscated addresses we've\n         already created\n         \"\"\"\n-        for _ip in self.dataset.values():\n-            if str(ipaddr).split('/', maxsplit=1)[0] == _ip.split('/')[0]:\n-                return True\n-        return False\n+        addr_str = str(ipaddr).split('/', maxsplit=1)[0]\n+        return addr_str in self.obfuscated_ips\n \n     def get(self, item):\n         \"\"\"Ensure that when requesting an obfuscated address, we return a str\n@@ -162,13 +177,14 @@ class SoSIPMap(SoSMap):\n         return self._new_obfuscated_single_address()\n \n     def _new_obfuscated_single_address(self):\n-        def _gen_address():\n-            _octets = []\n-            for _ in range(0, 4):\n-                _octets.append(random.randint(11, 99))\n-            return f\"{_octets[0]}.{_octets[1]}.{_octets[2]}.{_octets[3]}\"\n-\n-        _addr = _gen_address()\n+        # increment the counter and ignore *.0 and *.255 addresses\n+        self._saddr_cnt += 1\n+        while self._saddr_cnt % 256 in (0, 255):\n+            self._saddr_cnt += 1\n+        # split the counter value to four octets (i.e. % 256) to get an\n+        # obfuscated IP address\n+        _addr = f\"{self._saddr_cnt >> 24}.{(self._saddr_cnt >> 16) % 256}.\" \\\n+            f\"{(self._saddr_cnt >> 8) % 256}.{self._saddr_cnt % 256}\"\n         if _addr in self.dataset.values():\n             return self._new_obfuscated_single_address()\n         return _addr\n@@ -197,5 +213,7 @@ class SoSIPMap(SoSMap):\n             pass\n \n         if _obf_network:\n+            _obf_network_s = str(_obf_network)\n             self._networks[network] = _obf_network\n-            self.dataset[str(network)] = str(_obf_network)\n+            self.dataset[str(network)] = _obf_network_s\n+            self.obfuscated_ips.add(_obf_network_s.split('/', maxsplit=1)[0])\ndiff --git a/sos/cleaner/mappings/ipv6_map.py b/sos/cleaner/mappings/ipv6_map.py\nindex 10b1cbc..053c6df 100644\n--- a/sos/cleaner/mappings/ipv6_map.py\n+++ b/sos/cleaner/mappings/ipv6_map.py\n@@ -10,39 +10,9 @@\n \n import ipaddress\n \n-from random import getrandbits\n from sos.cleaner.mappings import SoSMap\n \n \n-def generate_hextets(hextets):\n-    \"\"\"Generate a random set of hextets, based on the length of the source\n-    hextet. If any hextets are compressed, keep that compression.\n-\n-    E.G. '::1234:bcd' will generate a leading empty '' hextet, followed by two\n-    4-character hextets.\n-\n-    :param hextets:     The extracted hextets from a source address\n-    :type hextets:      ``list``\n-\n-    :returns:           A set of randomized hextets for use in an obfuscated\n-                        address\n-    :rtype:             ``list``\n-    \"\"\"\n-    return [random_hex(4) if h else '' for h in hextets]\n-\n-\n-def random_hex(length):\n-    \"\"\"Generate a string of size length of random hex characters.\n-\n-    :param length:  The number of characters to generate\n-    :type length:   ``int``\n-\n-    :returns:       A string of ``length`` hex characters\n-    :rtype:         ``str``\n-    \"\"\"\n-    return f\"{getrandbits(4*length):0{length}x}\"\n-\n-\n class SoSIPv6Map(SoSMap):\n     \"\"\"Mapping for IPv6 addresses and networks.\n \n@@ -137,6 +107,9 @@ class ObfuscatedIPv6Network():\n     an obfuscation string is not passed, one will be created during init.\n     \"\"\"\n \n+    # dict of counters for obfuscated hexes generation\n+    ob_counters = {}\n+\n     def __init__(self, addr, obfuscation='', used_hexes=None):\n         \"\"\"Basic setup for the obfuscated network. Minor validation on the addr\n         used to create the instance, as well as on an optional ``obfuscation``\n@@ -179,6 +152,37 @@ class ObfuscatedIPv6Network():\n     def original_address(self):\n         return self.addr.compressed\n \n+    def generate_hextets(self, hextets):\n+        \"\"\"Generate a set of obfuscated hextets, based on the length of the\n+        source hextet. If any hextets are compressed, keep that compression.\n+\n+        E.G. '::1234:bcd' will generate a leading empty '' hextet, followed by\n+        two 4-character hextets, e.g. '::0005:0006'.\n+\n+        :param hextets:     The extracted hextets from a source address\n+        :type hextets:      ``list``\n+\n+        :returns:           A set of generated hextets for use in an obfuscated\n+                            address\n+        :rtype:             ``list``\n+        \"\"\"\n+        return [self.obfuscate_hex(4) if h else '' for h in hextets]\n+\n+    def obfuscate_hex(self, length):\n+        \"\"\"Generate a string of size length of hex characters. Due to the need\n+        of deterministic generation in concurrent cleaner, generation starts\n+        from zero values and is incremented by one (for a given length).\n+\n+        :param length:  The number of characters to generate\n+        :type length:   ``int``\n+\n+        :returns:       A string of ``length`` hex characters\n+        :rtype:         ``str``\n+        \"\"\"\n+        val = self.ob_counters.get(length, 0) + 1\n+        self.ob_counters[length] = val\n+        return f\"{val:0{length}x}\"\n+\n     def _obfuscate_network_address(self):\n         \"\"\"Generate the obfuscated pair for the network address. This is\n         determined based on the netmask of the network this class was built\n@@ -202,7 +206,7 @@ class ObfuscatedIPv6Network():\n         sos-specific identifier that could never be seen in the wild,\n         '534f:'\n \n-        We then randomize the subnet hextet.\n+        We then obfuscate the subnet hextet.\n         \"\"\"\n         _hextets = self.network_addr.split(':')[1:]\n         _ob_hex = ['534f']\n@@ -213,24 +217,25 @@ class ObfuscatedIPv6Network():\n             # Set the leading bits to 53, but increment upwards from there for\n             # when we exceed 256 networks obfuscated in this manner.\n             _start = 53 + (len(self.first_hexes) // 256)\n-            _ob_hex = f\"{_start}{random_hex(2)}\"\n+            _ob_hex = f\"{_start}{self.obfuscate_hex(2)}\"\n             while _ob_hex in self.first_hexes:\n                 # prevent duplicates\n-                _ob_hex = f\"{_start}{random_hex(2)}\"\n+                _ob_hex = f\"{_start}{self.obfuscate_hex(2)}\"\n             self.first_hexes.append(_ob_hex)\n             _ob_hex = [_ob_hex]\n-        _ob_hex.extend(generate_hextets(_hextets))\n+        ext = self.generate_hextets(_hextets)\n+        _ob_hex.extend(ext)\n         return ':'.join(_ob_hex)\n \n     def _obfuscate_private_address(self):\n         \"\"\"The first 8 bits will always be 'fd', the next 40 bits are meant\n         to be a global ID, followed by 16 bits for the subnet. To keep things\n         relatively simply we maintain the first hextet as 'fd53', and then\n-        randomize any remaining hextets\n+        obfuscate any remaining hextets.\n         \"\"\"\n         _hextets = self.network_addr.split(':')[1:]\n         _ob_hex = ['fd53']\n-        _ob_hex.extend(generate_hextets(_hextets))\n+        _ob_hex.extend(self.generate_hextets(_hextets))\n         return ':'.join(_ob_hex)\n \n     def obfuscate_host_address(self, addr):\n@@ -259,7 +264,7 @@ class ObfuscatedIPv6Network():\n         def _generate_address(host):\n             return ''.join([\n                 self._obfuscated_network,\n-                ':'.join(generate_hextets(host.split(':')))\n+                ':'.join(self.generate_hextets(host.split(':')))\n             ])\n \n         if addr.compressed not in self.hosts:\ndiff --git a/sos/cleaner/mappings/mac_map.py b/sos/cleaner/mappings/mac_map.py\nindex cf6744e..78403be 100644\n--- a/sos/cleaner/mappings/mac_map.py\n+++ b/sos/cleaner/mappings/mac_map.py\n@@ -8,7 +8,6 @@\n #\n # See the LICENSE file in the source distribution for further information.\n \n-import random\n import re\n \n from sos.cleaner.mappings import SoSMap\n@@ -20,8 +19,9 @@ class SoSMacMap(SoSMap):\n     MAC addresses added to this map will be broken into two halves, vendor and\n     device like how MAC addresses are normally crafted. For the vendor hextets,\n     obfuscation will take the form of 53:4f:53, or 'SOS' in hex. The following\n-    device hextets will be randomized, for example a MAC address of\n-    '60:55:cb:4b:c9:27' may be obfuscated into '53:4f:53:79:ac:29' or similar\n+    device hextets will be obfuscated by a series of suffixes starting from\n+    zeroes. For example a MAC address of '60:55:cb:4b:c9:27' may be obfuscated\n+    into '53:4f:53:00:00:1a' or similar.\n \n     This map supports both 48-bit and 64-bit MAC addresses.\n \n@@ -49,6 +49,7 @@ class SoSMacMap(SoSMap):\n     mac6_template = '53:4f:53:ff:fe:%s:%s:%s'\n     mac6_quad_template = '534f:53ff:fe%s:%s%s'\n     compile_regexes = False\n+    ob_hextets_cnt = 0\n \n     def add(self, item):\n         item = item.replace('-', ':').lower().strip('=.,').strip()\n@@ -59,15 +60,20 @@ class SoSMacMap(SoSMap):\n         return super().get(item)\n \n     def sanitize_item(self, item):\n-        \"\"\"Randomize the device hextets, and append those to our 'vendor'\n+        \"\"\"Obfuscate the device hextets, and append those to our 'vendor'\n         hextet\n         \"\"\"\n         hexdigits = \"0123456789abdcef\"\n-        hextets = []\n-        for _ in range(0, 3):\n-            hextets.append(''.join(random.choice(hexdigits) for x in range(2)))\n+        self.ob_hextets_cnt += 1\n+        # we need to convert the counter to a triple of double hex-digits\n+        hextets = [\n+            self.ob_hextets_cnt >> 16,\n+            (self.ob_hextets_cnt >> 8) % 256,\n+            self.ob_hextets_cnt % 256\n+        ]\n+        hextets = tuple(f'{hexdigits[i//16]}{hexdigits[i % 16]}'\n+                        for i in hextets)\n \n-        hextets = tuple(hextets)\n         # match 64-bit IPv6 MAC addresses matching MM:MM:MM:FF:FE:SS:SS:SS\n         if re.match('(([0-9a-fA-F]{2}:){7}[0-9a-fA-F]{2})', item):\n             return self.mac6_template % hextets\ndiff --git a/sos/cleaner/parsers/__init__.py b/sos/cleaner/parsers/__init__.py\nindex e422f32..402880e 100644\n--- a/sos/cleaner/parsers/__init__.py\n+++ b/sos/cleaner/parsers/__init__.py\n@@ -28,9 +28,9 @@ class SoSCleanerParser():\n     :cvar name:     The parser name, used in logging errors\n     :vartype name: ``str``\n \n-    :cvar regex_patterns:   A list of regex patterns to iterate over for every\n-                            line processed\n-    :vartype regex_patterns: ``list``\n+    :cvar regex_pattern:   A static (compiled) regex pattern to check for every\n+                           line processed\n+    :vartype regex_pattern: ``re.Pattern``\n \n     :cvar mapping: Used by the parser to store and obfuscate matches\n     :vartype mapping: ``SoSMap()``\n@@ -42,7 +42,7 @@ class SoSCleanerParser():\n     \"\"\"\n \n     name = 'Undefined Parser'\n-    regex_patterns = []\n+    regex_pattern = re.compile(r'(?!)')  # match nothing\n     skip_line_patterns = []\n     parser_skip_files = []  # list of skip files relevant to a parser\n     skip_cleaning_files = []   # list of global skip files from cmdline args\n@@ -55,6 +55,9 @@ class SoSCleanerParser():\n         self.skip_cleaning_files = skip_cleaning_files\n         self._generate_skip_regexes()\n \n+    def load_map_entries(self):\n+        self.mapping.load_entries()\n+\n     def _generate_skip_regexes(self):\n         \"\"\"Generate the regexes for the parser's configured parser_skip_files\n         or global skip_cleaning_files, so that we don't regenerate them on\n@@ -107,10 +110,14 @@ class SoSCleanerParser():\n         :rtype:     ``str``, ``int``\n         \"\"\"\n         count = 0\n-        for item, reg in self.mapping.compiled_regexes:\n-            if reg.search(line):\n-                line, _count = reg.subn(self.mapping.get(item.lower()), line)\n-                count += _count\n+        if self.mapping.compiled_search.search(line):\n+            for item, reg in self.mapping.compiled_regexes:\n+                if reg.search(line):\n+                    line, _count = reg.subn(self.mapping.get(item), line)\n+                    count += _count\n+                    # break the cycle if no further search can apply\n+                    if not self.mapping.compiled_search.search(line):\n+                        break\n         return line, count\n \n     def _parse_line(self, line):\n@@ -124,18 +131,17 @@ class SoSCleanerParser():\n         :rtype: ``tuple``, ``(str, int))``\n         \"\"\"\n         count = 0\n-        for pattern in self.regex_patterns:\n-            matches = [m[0] for m in re.findall(pattern, line, re.I)]\n-            if matches:\n-                matches.sort(reverse=True, key=len)\n-                count += len(matches)\n-                for match in matches:\n-                    match = match.strip()\n-                    if match in self.mapping.dataset.values():\n-                        continue\n-                    new_match = self.mapping.get(match)\n-                    if new_match != match:\n-                        line = line.replace(match, new_match)\n+        matches = [m[0] for m in self.regex_pattern.findall(line)]\n+        if matches:\n+            matches.sort(reverse=True, key=len)\n+            count += len(matches)\n+            for match in matches:\n+                match = match.strip()\n+                if match in self.mapping.dataset.values():\n+                    continue\n+                new_match = self.mapping.get(match)\n+                if new_match != match:\n+                    line = line.replace(match, new_match)\n         return line, count\n \n     def parse_string_for_keys(self, string_data):\n@@ -155,8 +161,7 @@ class SoSCleanerParser():\n         if self.compile_regexes:\n             for item, reg in self.mapping.compiled_regexes:\n                 if reg.search(string_data):\n-                    string_data = reg.sub(self.mapping.get(item.lower()),\n-                                          string_data)\n+                    string_data = reg.sub(self.mapping.get(item), string_data)\n         else:\n             for k, ob in sorted(self.mapping.dataset.items(), reverse=True,\n                                 key=lambda x: len(x[0])):\n",
+ "diff_truncated": true
+}

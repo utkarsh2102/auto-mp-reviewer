@@ -1,0 +1,27 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~vhaudiquet/ubuntu/+source/flash-kernel/+git/flash-kernel/+merge/507617",
+ "id": "507617",
+ "title": "db: add SpacemiT K3 CoM260 IFX (LP: #2158717)",
+ "source_branch": "k3-com260-resolute",
+ "target_branch": "ubuntu/resolute-devel",
+ "revision": "45cc88ff1cded9621d97d1d96e1f7d65adc53319",
+ "base_revision": "975f9f7cb697ffc1ab4f29cb29fb69aa6ed69470",
+ "description": null,
+ "commit_message": "db: add SpacemiT K3 CoM260 IFX (LP: #2158717)",
+ "diffstat": {
+  "db/all.db": [
+   7,
+   0
+  ],
+  "debian/changelog": [
+   6,
+   0
+  ]
+ },
+ "files": 2,
+ "added_lines": 13,
+ "removed_lines": 0,
+ "diff": "diff --git a/db/all.db b/db/all.db\nindex bc0d6a7..c7b9d2a 100644\n--- a/db/all.db\n+++ b/db/all.db\n@@ -2278,6 +2278,13 @@ Boot-Script-Path: /boot/boot.scr\n U-Boot-Script-Name: bootscr.uboot-generic\n Required-Packages: u-boot-tools\n \n+Machine: SpacemiT K3 CoM260 IFX\n+Kernel-Flavors: any\n+DTB-Id: spacemit/k3-com260-ifx.dtb\n+Boot-Script-Path: /boot/boot.scr\n+U-Boot-Script-Name: bootscr.uboot-generic\n+Required-Packages: u-boot-tools\n+\n Machine: SpacemiT K3 Pico-ITX\n Kernel-Flavors: any\n DTB-Id: spacemit/k3-pico-itx.dtb\ndiff --git a/debian/changelog b/debian/changelog\nindex 755acf9..b7b9492 100644\n--- a/debian/changelog\n+++ b/debian/changelog\n@@ -1,3 +1,9 @@\n+flash-kernel (3.110ubuntu2.2) resolute; urgency=medium\n+\n+  * db/all.db: Add entry for SpacemiT K3 CoM260 IFX (LP: #2158717)\n+\n+ -- Valentin Haudiquet <valentin.haudiquet@canonical.com>  Thu, 02 Jul 2026 13:25:22 +0200\n+\n flash-kernel (3.110ubuntu2.1) resolute; urgency=medium\n \n   * db/all.db: Add entry for DeepComputing FML13V05 (LP: #2149885)\n",
+ "diff_truncated": false
+}

@@ -1,0 +1,23 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~lamoura/ubuntu/+source/ubuntu-advantage-tools/+git/ubuntu-advantage-tools/+merge/406237",
+ "id": "406237",
+ "title": "This release will fix postinst problems where users have cloud-init in the system but cloud-id fails to run. We will no longer fail postinst in those situations",
+ "source_branch": "upload-27.2.2-hirsute",
+ "target_branch": "ubuntu/devel",
+ "revision": "ce742a1a24587f42cce3ca99b1375f81211c137d",
+ "base_revision": "b64c1da6ed1133a2fe2d3e6fc70a29f7d7d9fac2",
+ "description": "This release will fix postinst problems where users have cloud-init in the system but cloud-id fails to run. We will no longer fail postinst in those situations",
+ "commit_message": null,
+ "diffstat": {
+  "debian/changelog": [
+   7,
+   0
+  ]
+ },
+ "files": 1,
+ "added_lines": 7,
+ "removed_lines": 0,
+ "diff": "diff --git a/debian/changelog b/debian/changelog\nindex 266050a..a11f4c9 100644\n--- a/debian/changelog\n+++ b/debian/changelog\n@@ -1,3 +1,10 @@\n+ubuntu-advantage-tools (27.2.2~21.04.1) hirsute; urgency=medium\n+\n+  * Backport new upstream fix: (LP: #1936833) to hirsute\n+    - Fix regression introduced on 27.2.1 (LP: #1934902)\n+\n+ -- Lucas Moura <lucas.moura@canonical.com>  Tue, 27 Jul 2021 10:57:27 -0300\n+\n ubuntu-advantage-tools (27.2.2~21.10.1) impish; urgency=medium\n \n   * d/tools.postinst:\n",
+ "diff_truncated": false
+}

@@ -1,0 +1,23 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~ubuntu-archive/ubuntu-archive-tools/+git/ubuntu-archive-tools/+merge/460715",
+ "id": "460715",
+ "title": "The cd-boot-images packages are not used by end users but by debian-cd and ubuntu-image so phasing them won't reveal anything useful and just wastes time and energy.",
+ "source_branch": "fully-phase-cd-boot-images",
+ "target_branch": "main",
+ "revision": "bde7232201067239a24f3f60a1f1ad08c6439dbc",
+ "base_revision": "9e5028255183905c5427ba4e9d3847f4733c6ca1",
+ "description": "The cd-boot-images packages are not used by end users but by debian-cd and ubuntu-image so phasing them won't reveal anything useful and just wastes time and energy.",
+ "commit_message": null,
+ "diffstat": {
+  "phased-updater": [
+   7,
+   1
+  ]
+ },
+ "files": 1,
+ "added_lines": 7,
+ "removed_lines": 1,
+ "diff": "diff --git a/phased-updater b/phased-updater\nindex a1c2aea..43f12cc 100755\n--- a/phased-updater\n+++ b/phased-updater\n@@ -776,7 +776,13 @@ if __name__ == '__main__':\n     }\n     PUP_SLOW_INCREMENT = 1\n     PUP_MEDIUM_INCREMENT = 5\n-    FULLY_PHASED_PACKAGES = ('livecd-rootfs')\n+    FULLY_PHASED_PACKAGES = (\n+        'livecd-rootfs',\n+        'cd-boot-images-amd64',\n+        'cd-boot-images-arm64',\n+        'cd-boot-images-ppc64el',\n+        'cd-boot-images-riscv64'\n+    )\n     REPORT_FILE = 'phased-updates.html'\n     parser = OptionParser(usage=\"usage: %prog [options]\")\n     parser.add_option(\n",
+ "diff_truncated": false
+}

@@ -1,0 +1,27 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~2bdkid/ubuntu/+source/ubiquity/+git/ubiquity/+merge/432828",
+ "id": "432828",
+ "title": "set the partman-auto/disk question to the selected bootloader install device so partman will select an EFI partition from only that device.",
+ "source_branch": "fix-1396379",
+ "target_branch": "ubuntu/devel",
+ "revision": "528f339730410c15c376fe4e721a5653aa4d3e18",
+ "base_revision": "b8113cbb2cb6400dc982c4c7f5ebf89000911c69",
+ "description": "set the partman-auto/disk question to the selected bootloader install device so partman will select an EFI partition from only that device.",
+ "commit_message": null,
+ "diffstat": {
+  "debian/changelog": [
+   8,
+   0
+  ],
+  "ubiquity/plugins/ubi-partman.py": [
+   1,
+   0
+  ]
+ },
+ "files": 2,
+ "added_lines": 9,
+ "removed_lines": 0,
+ "diff": "diff --git a/debian/changelog b/debian/changelog\nindex 7c40ed1..63013b2 100644\n--- a/debian/changelog\n+++ b/debian/changelog\n@@ -1,3 +1,11 @@\n+ubiquity (22.10.10+nmu1) UNRELEASED; urgency=medium\n+\n+  * Non-maintainer upload.\n+  * ubiquity: set the partman-auto/disk question to the device selected to install the bootloader on\n+    (LP: #1396379)\n+\n+ -- Brady Dean <2bdkid@gmail.com>  Thu, 10 Nov 2022 10:20:05 -0500\n+\n ubiquity (22.10.10) kinetic; urgency=medium\n \n   * Temporarily disable zfs + encryption option (LP: #1993318)\ndiff --git a/ubiquity/plugins/ubi-partman.py b/ubiquity/plugins/ubi-partman.py\nindex 8059446..9620555 100644\n--- a/ubiquity/plugins/ubi-partman.py\n+++ b/ubiquity/plugins/ubi-partman.py\n@@ -3546,6 +3546,7 @@ class Page(plugin.Plugin):\n     def ok_handler(self):\n         if self.install_bootloader and not self.is_bootdev_preseeded():\n             self.preseed('grub-installer/bootdev', self.ui.get_grub_choice())\n+            self.preseed('partman-auto/disk', self.ui.get_grub_choice())\n \n         if self.current_question.endswith('automatically_partition'):\n             (autopartition_choice, self.extra_choice, method) = \\\n",
+ "diff_truncated": false
+}

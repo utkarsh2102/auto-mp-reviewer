@@ -1,0 +1,23 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~juergh/britney/+git/britney2-ubuntu/+merge/490954",
+ "id": "490954",
+ "title": "This is very much incomplete and likely not correct and addresses only part of the problem (if at all). We have tons of kernels that only exist on a subset of the supported architectures. We currently seem to blindly trigger tests that are known to fail which is a gigantic waste of precious resources.",
+ "source_branch": "juergh/remove-riscv",
+ "target_branch": "master",
+ "revision": "90f499acac1b4415a5290e099243e7037894a8a2",
+ "base_revision": "3bbf1d5866c6755467cbe0482dbbc09a6d8eba45",
+ "description": "This is very much incomplete and likely not correct and addresses only part of the problem (if at all). We have tons of kernels that only exist on a subset of the supported architectures. We currently seem to blindly trigger tests that are known to fail which is a gigantic waste of precious resources.\n\n1) We should not try to run tests on those kernels on architectures where they don't exist.\n2) The kernel packages should not trigger tests of other packages on architectures where the kernels don't exist.\n\nWhat is likely the correct fix for this? I assume this can be coded intelligently somewhere and added as an excuse or a blocklist or something?\n\nLooking for feedback. Thanks!\n\n[1] https://autopkgtest.ubuntu.com/packages/linux-aws/noble/ppc64el\n[2] https://autopkgtest.ubuntu.com/packages/initramfs-tools/noble/amd64",
+ "commit_message": null,
+ "diffstat": {
+  "britney2/policies/autopkgtest.py": [
+   4,
+   0
+  ]
+ },
+ "files": 1,
+ "added_lines": 4,
+ "removed_lines": 0,
+ "diff": "diff --git a/britney2/policies/autopkgtest.py b/britney2/policies/autopkgtest.py\nindex e20a951..73ca267 100644\n--- a/britney2/policies/autopkgtest.py\n+++ b/britney2/policies/autopkgtest.py\n@@ -729,6 +729,10 @@ class AutopkgtestPolicy(BasePolicy):\n         if src.startswith('linux-meta-raspi'):\n             return []\n \n+        # The riscv kernel only exist on riscv64\n+        if src.startswith('linux-meta-riscv') and arch != 'riscv64':\n+            return []\n+\n         # Debian doesn't have linux-meta, but Ubuntu does\n         # for linux themselves we don't want to trigger tests -- these should\n         # all come from linux-meta*. A new kernel ABI without a corresponding\n",
+ "diff_truncated": false
+}

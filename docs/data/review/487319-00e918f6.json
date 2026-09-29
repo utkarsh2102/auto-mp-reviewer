@@ -1,0 +1,43 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~vpa1977/ubuntu/+source/openjdk-25/+git/openjdk-25/+merge/487319",
+ "id": "487319",
+ "title": "Add workaround for S390x crash issue - disable C2 compiler.",
+ "source_branch": "s390x-workaround",
+ "target_branch": "ubuntu/devel",
+ "revision": "3d392aa402ea870c68e76523dc1405f518175ef9",
+ "base_revision": "b046471aa28bcbb8e59d8d4695e877f7a8e388e7",
+ "description": "Add workaround for S390x crash issue - disable C2 compiler.\n\n\nPPA: ppa:vpa1977/october-21[1]\n\nTesting:\n - S390x build must succeed.\n\n\n[1] https://launchpad.net/~vpa1977/+archive/ubuntu/october-21/+packages",
+ "commit_message": null,
+ "diffstat": {
+  "debian/changelog": [
+   9,
+   0
+  ],
+  "debian/control": [
+   2,
+   1
+  ],
+  "debian/control.in": [
+   2,
+   1
+  ],
+  "debian/patches/jdk-8359735-proposed.patch": [
+   63,
+   0
+  ],
+  "debian/patches/series": [
+   1,
+   0
+  ],
+  "debian/rules": [
+   5,
+   0
+  ]
+ },
+ "files": 6,
+ "added_lines": 82,
+ "removed_lines": 2,
+ "diff": "diff --git a/debian/changelog b/debian/changelog\nindex e559ee5..165b645 100644\n--- a/debian/changelog\n+++ b/debian/changelog\n@@ -1,3 +1,12 @@\n+openjdk-25 (25~25ea-2ubuntu1) questing; urgency=medium\n+\n+  * d/rules: add -XX:TieredStopAtLevel=1 to workaround s390x builder\n+    crash in Launchpad, see  LP: 2095441.\n+  * d/p/jdk-8359735-proposed.patch: fix process tests failing in Ubuntu\n+    25.10 (questing).\n+\n+ -- Vladimir Petko <vladimir.petko@canonical.com>  Thu, 19 Jun 2025 09:58:09 +1200\n+\n openjdk-25 (25~25ea-2) unstable; urgency=medium\n \n   * Don't run the test suite on ppc64 and ppc64el for now, time outs\ndiff --git a/debian/control b/debian/control\nindex 74f43be..03424ee 100644\n--- a/debian/control\n+++ b/debian/control\n@@ -1,7 +1,8 @@\n Source: openjdk-25\n Section: java\n Priority: optional\n-Maintainer: OpenJDK Team <openjdk-25@packages.debian.org>\n+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>\n+XSBC-Original-Maintainer: OpenJDK Team <openjdk-25@packages.debian.org>\n Uploaders: Matthias Klose <doko@ubuntu.com>\n Build-Depends: debhelper (>= 11),\n   m4, lsb-release, zip, unzip,\ndiff --git a/debian/control.in b/debian/control.in\nindex 13b6845..c843024 100644\n--- a/debian/control.in\n+++ b/debian/control.in\n@@ -1,7 +1,8 @@\n Source: @basename@\n Section: java\n Priority: optional\n-Maintainer: OpenJDK Team <@basename@@packages.debian.org>\n+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>\n+XSBC-Original-Maintainer: OpenJDK Team <@basename@@packages.debian.org>\n Uploaders: Matthias Klose <doko@ubuntu.com>\n Build-Depends: @bd_debhelper@\n   m4, lsb-release, zip, unzip,\ndiff --git a/debian/patches/jdk-8359735-proposed.patch b/debian/patches/jdk-8359735-proposed.patch\nnew file mode 100644\nindex 0000000..6f158e3\n--- /dev/null\n+++ b/debian/patches/jdk-8359735-proposed.patch\n@@ -0,0 +1,63 @@\n+Description: Process tests fail due to rust-coreutils\n+ To accommodate systems like Ubuntu 25.10 that use Rust coreutils,\n+ this PR updates tests that previously assumed busybox was the only\n+ environment to use symlinks for core utilities.\n+ - java/lang/ProcessBuilder/Basic.java: The test is updated to simply\n+   verify that /bin/true and /bin/false are symlinks,\n+   removing the hardcoded check for a /bin/busybox target.\n+ - java/lang/ProcessHandle/InfoTest.java: The test logic is relaxed.\n+   It now confirms that /bin/sleep is a symlink and then uses the\n+   symlink's target as the expected executable name.\n+Author: Vladimir Petko <vladimir.petko@canonical.com>\n+Origin: upstream, https://github.com/openjdk/jdk/pull/25838\n+Bug: https://bugs.openjdk.org/browse/JDK-8359735\n+Reviewed-by: Roger Riggs <roger.riggs@oracle.com>\n+Last-Update: 2025-06-19\n+---\n+\n+--- a/test/jdk/java/lang/ProcessBuilder/Basic.java\n++++ b/test/jdk/java/lang/ProcessBuilder/Basic.java\n+@@ -696,7 +696,7 @@\n+         public static String path() { return path; }\n+         private static final String path = path0();\n+         private static String path0(){\n+-            if (!Platform.isBusybox(\"/bin/true\")) {\n++            if (!Files.isSymbolicLink(Paths.get(\"/bin/true\"))) {\n+                 return \"/bin/true\";\n+             } else {\n+                 File trueExe = new File(\"true\");\n+@@ -711,7 +711,7 @@\n+         public static String path() { return path; }\n+         private static final String path = path0();\n+         private static String path0(){\n+-            if (!Platform.isBusybox(\"/bin/false\")) {\n++            if (!Files.isSymbolicLink(Paths.get(\"/bin/false\"))) {\n+                 return \"/bin/false\";\n+             } else {\n+                 File falseExe = new File(\"false\");\n+--- a/test/jdk/java/lang/ProcessHandle/InfoTest.java\n++++ b/test/jdk/java/lang/ProcessHandle/InfoTest.java\n+@@ -1,5 +1,5 @@\n+ /*\n+- * Copyright (c) 2014, 2023, Oracle and/or its affiliates. All rights reserved.\n++ * Copyright (c) 2014, 2025, Oracle and/or its affiliates. All rights reserved.\n+  * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.\n+  *\n+  * This code is free software; you can redistribute it and/or modify it\n+@@ -295,10 +295,12 @@\n+                     String expected = \"sleep\";\n+                     if (Platform.isWindows()) {\n+                         expected = \"sleep.exe\";\n+-                    } else if (Platform.isBusybox(\"/bin/sleep\")) {\n+-                        // With busybox sleep is just a sym link to busybox.\n+-                        // The busbox executable is seen as ProcessHandle.Info command.\n+-                        expected = \"busybox\";\n++                    } else if (Files.isSymbolicLink(Paths.get(\"/bin/sleep\"))) {\n++                        // Busybox sleep is a symbolic link to /bin/busybox.\n++                        // Rust coreutils sleep is a symbolic link to coreutils\n++                        // The busbox/coreutils executables are seen as ProcessHandle.Info command.\n++                        Path executable = Files.readSymbolicLink(Paths.get(\"/bin/sleep\"));\n++                        expected = executable.getFileName().toString();\n+                     }\n+                     Assert.assertTrue(command.endsWith(expected), \"Command: expected: \\'\" +\n+                             expected + \"\\', actual: \" + command);\ndiff --git a/debian/patches/series b/debian/patches/series\nindex ea585bd..ef38fce 100644\n--- a/debian/patches/series\n+++ b/debian/patches/series\n@@ -41,3 +41,4 @@ zero-alpha-workaround.diff\n #jdk-8347014-proposed.patch\n power-opt.diff\n test-empty-path.patch\n+jdk-8359735-proposed.patch\ndiff --git a/debian/rules b/debian/rules\nindex 8fdf14f..35f28fe 100755\n--- a/debian/rules\n+++ b/debian/rules\n@@ -454,6 +454,11 @@ ifneq (,$(filter $(DEB_HOST_ARCH), alpha ppc64 ppc64el powerpc s390x sparc64))\n   COMMON_CONFIGURE_ARGS += --with-boot-jdk-jvmargs=\"-XX:ThreadStackSize=2240 -Xss4M\"\n endif\n \n+# Disable C2 compiler to workaround launchpad build chroot issue\n+ifneq (,$(filter $(DEB_HOST_ARCH), s390x))\n+  COMMON_CONFIGURE_ARGS += --with-boot-jdk-jvmargs=\"-XX:TieredStopAtLevel=1 -XX:ThreadStackSize=2240 -Xss4M\"\n+endif\n+\n ifeq ($(with_check),yes)\n   COMMON_CONFIGURE_ARGS += --with-jtreg=/usr/share/jtreg\n else\n",
+ "diff_truncated": false
+}

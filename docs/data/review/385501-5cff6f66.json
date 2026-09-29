@@ -1,0 +1,59 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~lucaskanashiro/ubuntu/+source/postfix/+git/postfix/+merge/385501",
+ "id": "385501",
+ "title": "This MP updates postfix to version 3.4.11 in Focal to fix this bug:",
+ "source_branch": "update-to-version-3.4.11",
+ "target_branch": "ubuntu/focal-devel",
+ "revision": "b4a96e9bbe9b1ceebb75dd0a24ed6b711c98749b",
+ "base_revision": "741cc12486cafa739a4d48142283103c7c4c6627",
+ "description": "This MP updates postfix to version 3.4.11 in Focal to fix this bug:\n\nhttps://bugs.launchpad.net/ubuntu/+source/postfix/+bug/1868955\n\nScott Kitterman proposed this microrelease update (from 3.4.10 to 3.4.11) since the changes are minimal and it was already approved by the Tech Board in the past.\n\nHere is a PPA with the proposed package:\n\nhttps://launchpad.net/~lucaskanashiro/+archive/ubuntu/focal-postifx-lp1868955/+packages\n\nautopkgtest is still happy:\n\nautopkgtest [10:53:30]: @@@@@@@@@@@@@@@@@@@@ summary\npostfix              PASS\n",
+ "commit_message": null,
+ "diffstat": {
+  "src/global/mail_version.h": [
+   2,
+   2
+  ],
+  "debian/patches/series": [
+   0,
+   1
+  ],
+  "src/dns/dns_lookup.c": [
+   5,
+   2
+  ],
+  "Makefile.in": [
+   1,
+   1
+  ],
+  "src/dns/dns.h": [
+   4,
+   0
+  ],
+  "src/dns/dns_str_resflags.c": [
+   6,
+   0
+  ],
+  "makedefs": [
+   1,
+   1
+  ],
+  "HISTORY": [
+   9,
+   0
+  ],
+  "debian/changelog": [
+   10,
+   0
+  ],
+  "dev/null": [
+   0,
+   51
+  ]
+ },
+ "files": 10,
+ "added_lines": 38,
+ "removed_lines": 58,
+ "diff": "diff --git a/HISTORY b/HISTORY\nindex 1ebf42a..73db7c3 100644\n--- a/HISTORY\n+++ b/HISTORY\n@@ -24346,3 +24346,12 @@ Apologies for any names omitted.\n \tmulti-Milter configuration during MAIL FROM. Milter client\n \tstate was not properly reset after one of the Milters failed.\n \tReported by WeiYu Wu.\n+\n+20200416\n+\n+\tWorkaround for broken builds after an incompatible change\n+\tin GCC 10. Files: makedefs, Makefile.in.\n+\n+\tWorkaround for broken DANE support after an incompatible\n+\tchange in GLIBC 2.31. This avoids the need for new options\n+\tin /etc/resolv.conf. Files: dns/dns.h, dns/dns_lookup.c.\ndiff --git a/Makefile.in b/Makefile.in\nindex fa12b04..aaab94d 100644\n--- a/Makefile.in\n+++ b/Makefile.in\n@@ -1,5 +1,5 @@\n SHELL\t= /bin/sh\n-WARN    = -Wmissing-prototypes -Wformat -Wno-comment\n+WARN    = -Wmissing-prototypes -Wformat -Wno-comment -fcommon\n OPTS\t= 'WARN=$(WARN)'\n DIRS\t= src/util src/global src/dns src/tls src/xsasl src/master src/milter \\\n \tsrc/postfix src/fsstone src/smtpstone \\\ndiff --git a/debian/changelog b/debian/changelog\nindex 86e71a2..fb7f5ad 100644\n--- a/debian/changelog\n+++ b/debian/changelog\n@@ -1,3 +1,13 @@\n+postfix (3.4.11-0ubuntu1) focal; urgency=medium\n+\n+  * New upstream release: 3.4.11\n+    - Workaround for broken DANE support after an incompatible change in\n+      GLIBC 2.31 (LP: #1868955)\n+  * Drop patch 80_glibc2.30-ftbfs.diff. This patch is not needed anymore and\n+    it does not cleanly apply to this new upstream release.\n+\n+ -- Lucas Kanashiro <kanashiro@ubuntu.com>  Mon, 08 Jun 2020 18:43:19 -0300\n+\n postfix (3.4.10-1ubuntu1) focal; urgency=medium\n \n   * d/configure-instance.sh: fix typo in tls_CApath copying (LP: #1872288)\ndiff --git a/debian/patches/80_glibc2.30-ftbfs.diff b/debian/patches/80_glibc2.30-ftbfs.diff\ndeleted file mode 100644\nindex c36baf0..0000000\n--- a/debian/patches/80_glibc2.30-ftbfs.diff\n+++ /dev/null\n@@ -1,51 +0,0 @@\n-Description: fix build with glibc 2.30\n- glibc 2.30 release notes at\n- https://savannah.gnu.org/forum/forum.php?forum_id=9515 states:\n- \"\"\"\n- Support for the \"inet6\" option in /etc/resolv.conf and the RES_USE_INET6\n- resolver flag (deprecated in glibc 2.25) have been removed.\n- ...\n- The obsolete RES_INSECURE1 and RES_INSECURE2 option flags for the DNS stub\n- resolver have been removed from <resolv.h>.\n- \"\"\"\n- And RES_AAONLY and RES_PRIMARY are already flagged as deprecated and are\n- being guarded with the same fix.\n-Origin: upstream, https://github.com/vdukhovni/postfix/commit/3274c3cea9d739f86e84b65664aabb692e37e83f#diff-777bfb681a1cd539ddc8e1e606959ffa\n-Bug: http://postfix.1071664.n5.nabble.com/build-failure-with-glibc-2-30-td102511.html\n-Bug-Ubuntu: https://bugs.launchpad.net/ubuntu/+source/postfix/+bug/1842923\n-Last-Update: 2019-09-05\n----\n-This patch header follows DEP-3: http://dep.debian.net/deps/dep3/\n-diff --git a/postfix/src/dns/dns_str_resflags.c b/postfix/src/dns/dns_str_resflags.c\n-index 5f2cce5e..472394c3 100644\n---- a/src/dns/dns_str_resflags.c\n-+++ b/src/dns/dns_str_resflags.c\n-@@ -52,18 +52,28 @@\n- static const LONG_NAME_MASK resflag_table[] = {\n-     \"RES_INIT\", RES_INIT,\n-     \"RES_DEBUG\", RES_DEBUG,\n-+#ifdef RES_AAONLY\n-     \"RES_AAONLY\", RES_AAONLY,\n-+#endif\n-     \"RES_USEVC\", RES_USEVC,\n-+#ifdef RES_PRIMARY\n-     \"RES_PRIMARY\", RES_PRIMARY,\n-+#endif\n-     \"RES_IGNTC\", RES_IGNTC,\n-     \"RES_RECURSE\", RES_RECURSE,\n-     \"RES_DEFNAMES\", RES_DEFNAMES,\n-     \"RES_STAYOPEN\", RES_STAYOPEN,\n-     \"RES_DNSRCH\", RES_DNSRCH,\n-+#ifdef RES_INSECURE1\n-     \"RES_INSECURE1\", RES_INSECURE1,\n-+#endif\n-+#ifdef RES_INSECURE2\n-     \"RES_INSECURE2\", RES_INSECURE2,\n-+#endif\n-     \"RES_NOALIASES\", RES_NOALIASES,\n-+#ifdef RES_USE_INET6\n-     \"RES_USE_INET6\", RES_USE_INET6,\n-+#endif\n- #ifdef RES_ROTATE\n-     \"RES_ROTATE\", RES_ROTATE,\n- #endif\ndiff --git a/debian/patches/series b/debian/patches/series\nindex 4976a63..fe67e62 100644\n--- a/debian/patches/series\n+++ b/debian/patches/series\n@@ -14,6 +14,5 @@\n 41_rmail.diff\n 50_LANG.diff\n 70_postfix-check.diff\n-80_glibc2.30-ftbfs.diff\n tls_version.diff\n debian-man-name.diff\ndiff --git a/makedefs b/makedefs\nindex 93731c2..aea15d6 100644\n--- a/makedefs\n+++ b/makedefs\n@@ -1136,7 +1136,7 @@ esac\n : ${CC=gcc} ${OPT='-O'} ${DEBUG='-g'} ${AWK=awk} \\\n ${WARN='-Wall -Wno-comment -Wformat -Wimplicit -Wmissing-prototypes \\\n \t-Wparentheses -Wstrict-prototypes -Wswitch -Wuninitialized \\\n-\t-Wunused -Wno-missing-braces'}\n+\t-Wunused -Wno-missing-braces -fcommon'}\n \n # Extract map type names from -DHAS_XXX compiler options.  We avoid\n # problems with tr(1) range syntax by using enumerations instead,\ndiff --git a/src/dns/dns.h b/src/dns/dns.h\nindex f758e44..b8c4c4a 100644\n--- a/src/dns/dns.h\n+++ b/src/dns/dns.h\n@@ -59,6 +59,7 @@\n  */\n #ifdef NO_DNSSEC\n #undef RES_USE_DNSSEC\n+#undef RES_TRUSTAD\n #endif\n \n  /*\n@@ -70,6 +71,9 @@\n #ifndef RES_USE_EDNS0\n #define RES_USE_EDNS0\t0\n #endif\n+#ifndef RES_TRUSTAD\n+#define RES_TRUSTAD\t0\n+#endif\n \n  /*-\n   * TLSA: https://tools.ietf.org/html/rfc6698#section-7.1\ndiff --git a/src/dns/dns_lookup.c b/src/dns/dns_lookup.c\nindex 1bfeb7e..2ae6483 100644\n--- a/src/dns/dns_lookup.c\n+++ b/src/dns/dns_lookup.c\n@@ -116,6 +116,9 @@\n /*\tRequest DNSSEC validation. This flag is silently ignored\n /*\twhen the system stub resolver API, resolver(3), does not\n /*\timplement DNSSEC.\n+/*\tAutomatically turns on the RES_TRUSTAD flag on systems that\n+/*\tsupport this flag (this behavior will be more configurable\n+/*\tin a later release).\n /* .RE\n /* .IP lflags\n /*\tFlags that control the operation of the dns_lookup*()\n@@ -453,10 +456,10 @@ static int dns_query(const char *name, int type, unsigned flags,\n     /*\n      * Set extra options that aren't exposed to the application.\n      */\n-#define XTRA_FLAGS (RES_USE_EDNS0)\n+#define XTRA_FLAGS (RES_USE_EDNS0 | RES_TRUSTAD)\n \n     if (flags & RES_USE_DNSSEC)\n-\tflags |= RES_USE_EDNS0;\n+\tflags |= (RES_USE_EDNS0 | RES_TRUSTAD);\n \n     /*\n      * Save and restore resolver options that we overwrite, to avoid\ndiff --git a/src/dns/dns_str_resflags.c b/src/dns/dns_str_resflags.c\nindex 5f2cce5..df32345 100644\n--- a/src/dns/dns_str_resflags.c\n+++ b/src/dns/dns_str_resflags.c\n@@ -60,10 +60,16 @@ static const LONG_NAME_MASK resflag_table[] = {\n     \"RES_DEFNAMES\", RES_DEFNAMES,\n     \"RES_STAYOPEN\", RES_STAYOPEN,\n     \"RES_DNSRCH\", RES_DNSRCH,\n+#ifdef RES_INSECURE1\n     \"RES_INSECURE1\", RES_INSECURE1,\n+#endif\n+#ifdef RES_INSECURE2\n     \"RES_INSECURE2\", RES_INSECURE2,\n+#endif\n     \"RES_NOALIASES\", RES_NOALIASES,\n+#ifdef RES_USE_INET6\n     \"RES_USE_INET6\", RES_USE_INET6,\n+#endif\n #ifdef RES_ROTATE\n     \"RES_ROTATE\", RES_ROTATE,\n #endif\ndiff --git a/src/global/mail_version.h b/src/global/mail_version.h\nindex 41647d3..1893837 100644\n--- a/src/global/mail_version.h\n+++ b/src/global/mail_version.h\n@@ -20,8 +20,8 @@\n   * Patches change both the patchlevel and the release date. Snapshots have no\n   * patchlevel; they change the release date only.\n   */\n-#define MAIL_RELEASE_DATE\t\"20200312\"\n-#define MAIL_VERSION_NUMBER\t\"3.4.10\"\n+#define MAIL_RELEASE_DATE\t\"20200418\"\n+#define MAIL_VERSION_NUMBER\t\"3.4.11\"\n \n #ifdef SNAPSHOT\n #define MAIL_VERSION_DATE\t\"-\" MAIL_RELEASE_DATE\n",
+ "diff_truncated": false
+}

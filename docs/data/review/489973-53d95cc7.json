@@ -1,0 +1,799 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~kajiya/ubuntu/+source/google-guest-agent/+git/google-guest-agent/+merge/489973",
+ "id": "489973",
+ "title": "[SRU] New upstream version 20250506.01",
+ "source_branch": "ubuntu/update-plucky-to-20250506.01",
+ "target_branch": "ubuntu/plucky-devel",
+ "revision": "07dc3de912a1134344fff1ecbc738056f2096996",
+ "base_revision": "7a8c30d81023b986dac867b4dbfcfd124ed689d6",
+ "description": "PPA build may be found here: https://launchpad.net/~kajiya/+archive/ubuntu/gga/+packages?field.name_filter=&field.status_filter=published&field.series_filter=plucky\n\nautopkgtests run here: https://pastebin.ubuntu.com/p/rCKDygN747/",
+ "commit_message": "[SRU] New upstream version 20250506.01",
+ "diffstat": {
+  "OWNERS": [
+   0,
+   2
+  ],
+  "build-deb.sh": [
+   47,
+   0
+  ],
+  "debian/changelog": [
+   13,
+   0
+  ],
+  "debian/extra/vendor/cloud.google.com/go/.gitignore": [
+   12,
+   0
+  ],
+  "debian/extra/vendor/github.com/GoogleCloudPlatform/guest-logging-go/logger/logger.go": [
+   57,
+   5
+  ],
+  "debian/extra/vendor/github.com/GoogleCloudPlatform/guest-logging-go/logger/logger_unix.go": [
+   1,
+   1
+  ],
+  "debian/extra/vendor/github.com/GoogleCloudPlatform/guest-logging-go/logger/logger_windows.go": [
+   1,
+   1
+  ],
+  "debian/extra/vendor/github.com/Microsoft/go-winio/.gitattributes": [
+   1,
+   0
+  ],
+  "debian/extra/vendor/github.com/Microsoft/go-winio/.gitignore": [
+   10,
+   0
+  ],
+  "debian/extra/vendor/github.com/go-ini/ini/.gitignore": [
+   7,
+   0
+  ],
+  "debian/extra/vendor/github.com/google/s2a-go/.gitignore": [
+   6,
+   0
+  ],
+  "dev/null": [
+   0,
+   109
+  ],
+  "debian/extra/vendor/github.com/kardianos/service/.gitignore": [
+   1,
+   0
+  ],
+  "debian/extra/vendor/github.com/pkg/errors/.gitignore": [
+   24,
+   0
+  ],
+  "debian/extra/vendor/github.com/robfig/cron/v3/.gitignore": [
+   22,
+   0
+  ],
+  "debian/extra/vendor/go.opencensus.io/.gitignore": [
+   9,
+   0
+  ],
+  "debian/extra/vendor/golang.org/x/crypto/LICENSE": [
+   2,
+   2
+  ],
+  "debian/extra/vendor/golang.org/x/crypto/chacha20/chacha_noasm.go": [
+   1,
+   1
+  ],
+  "debian/extra/vendor/golang.org/x/crypto/chacha20/chacha_ppc64x.go": [
+   1,
+   1
+  ],
+  "debian/extra/vendor/golang.org/x/crypto/chacha20/chacha_ppc64x.s": [
+   86,
+   28
+  ],
+  "debian/extra/vendor/golang.org/x/crypto/chacha20poly1305/chacha20poly1305_amd64.s": [
+   9275,
+   2228
+  ],
+  "debian/extra/vendor/golang.org/x/crypto/internal/poly1305/mac_noasm.go": [
+   1,
+   1
+  ],
+  "debian/extra/vendor/golang.org/x/crypto/internal/poly1305/sum_amd64.s": [
+   59,
+   74
+  ],
+  "debian/extra/vendor/golang.org/x/crypto/internal/poly1305/sum_ppc64x.go": [
+   1,
+   1
+  ],
+  "debian/extra/vendor/golang.org/x/crypto/internal/poly1305/sum_ppc64x.s": [
+   19,
+   11
+  ],
+  "debian/extra/vendor/golang.org/x/crypto/ssh/client_auth.go": [
+   5,
+   0
+  ],
+  "debian/extra/vendor/golang.org/x/crypto/ssh/handshake.go": [
+   49,
+   12
+  ],
+  "debian/extra/vendor/golang.org/x/crypto/ssh/keys.go": [
+   43,
+   1
+  ],
+  "debian/extra/vendor/golang.org/x/crypto/ssh/server.go": [
+   50,
+   19
+  ],
+  "debian/extra/vendor/golang.org/x/net/LICENSE": [
+   2,
+   2
+  ],
+  "debian/extra/vendor/golang.org/x/net/context/context.go": [
+   100,
+   12
+  ],
+  "debian/extra/vendor/golang.org/x/net/http2/.gitignore": [
+   2,
+   0
+  ],
+  "debian/extra/vendor/golang.org/x/net/http2/client_conn_pool.go": [
+   4,
+   4
+  ],
+  "debian/extra/vendor/golang.org/x/net/http2/config.go": [
+   122,
+   0
+  ],
+  "debian/extra/vendor/golang.org/x/net/http2/config_go124.go": [
+   61,
+   0
+  ],
+  "debian/extra/vendor/golang.org/x/net/http2/config_pre_go124.go": [
+   16,
+   0
+  ],
+  "debian/extra/vendor/golang.org/x/net/http2/frame.go": [
+   2,
+   2
+  ],
+  "debian/extra/vendor/golang.org/x/net/http2/http2.go": [
+   76,
+   36
+  ],
+  "debian/extra/vendor/golang.org/x/net/http2/server.go": [
+   188,
+   167
+  ],
+  "debian/extra/vendor/golang.org/x/net/http2/transport.go": [
+   394,
+   439
+  ],
+  "debian/extra/vendor/golang.org/x/net/http2/unencrypted.go": [
+   32,
+   0
+  ],
+  "debian/extra/vendor/golang.org/x/net/http2/write.go": [
+   12,
+   1
+  ],
+  "debian/extra/vendor/golang.org/x/net/internal/httpcommon/ascii.go": [
+   53,
+   0
+  ],
+  "debian/extra/vendor/golang.org/x/net/internal/httpcommon/headermap.go": [
+   17,
+   7
+  ],
+  "debian/extra/vendor/golang.org/x/net/internal/httpcommon/request.go": [
+   467,
+   0
+  ],
+  "debian/extra/vendor/golang.org/x/sync/LICENSE": [
+   2,
+   2
+  ],
+  "debian/extra/vendor/golang.org/x/sync/errgroup/errgroup.go": [
+   1,
+   0
+  ],
+  "debian/extra/vendor/golang.org/x/sys/LICENSE": [
+   2,
+   2
+  ],
+  "debian/extra/vendor/golang.org/x/sys/cpu/asm_darwin_x86_gc.s": [
+   17,
+   0
+  ],
+  "debian/extra/vendor/golang.org/x/sys/cpu/cpu.go": [
+   24,
+   0
+  ],
+  "debian/extra/vendor/golang.org/x/sys/cpu/cpu_arm64.go": [
+   12,
+   0
+  ],
+  "debian/extra/vendor/golang.org/x/sys/cpu/cpu_darwin_x86.go": [
+   61,
+   0
+  ],
+  "debian/extra/vendor/golang.org/x/sys/cpu/cpu_gc_x86.go": [
+   2,
+   2
+  ],
+  "debian/extra/vendor/golang.org/x/sys/cpu/cpu_gc_x86.s": [
+   1,
+   1
+  ],
+  "debian/extra/vendor/golang.org/x/sys/cpu/cpu_gccgo_x86.go": [
+   0,
+   6
+  ],
+  "debian/extra/vendor/golang.org/x/sys/cpu/cpu_linux_arm64.go": [
+   4,
+   0
+  ],
+  "debian/extra/vendor/golang.org/x/sys/cpu/cpu_linux_noinit.go": [
+   1,
+   1
+  ],
+  "debian/extra/vendor/golang.org/x/sys/cpu/cpu_linux_riscv64.go": [
+   137,
+   0
+  ],
+  "debian/extra/vendor/golang.org/x/sys/cpu/cpu_other_x86.go": [
+   11,
+   0
+  ],
+  "debian/extra/vendor/golang.org/x/sys/cpu/cpu_riscv64.go": [
+   10,
+   1
+  ],
+  "debian/extra/vendor/golang.org/x/sys/cpu/cpu_x86.go": [
+   19,
+   8
+  ],
+  "debian/extra/vendor/golang.org/x/sys/cpu/syscall_darwin_x86_gc.go": [
+   98,
+   0
+  ],
+  "debian/extra/vendor/golang.org/x/sys/unix/.gitignore": [
+   2,
+   0
+  ],
+  "debian/extra/vendor/golang.org/x/sys/unix/README.md": [
+   1,
+   1
+  ],
+  "debian/extra/vendor/golang.org/x/sys/unix/auxv.go": [
+   36,
+   0
+  ],
+  "debian/extra/vendor/golang.org/x/sys/unix/auxv_unsupported.go": [
+   13,
+   0
+  ],
+  "debian/extra/vendor/golang.org/x/sys/unix/ioctl_linux.go": [
+   96,
+   0
+  ],
+  "debian/extra/vendor/golang.org/x/sys/unix/mkerrors.sh": [
+   16,
+   2
+  ],
+  "debian/extra/vendor/golang.org/x/sys/unix/syscall_aix.go": [
+   1,
+   1
+  ],
+  "debian/extra/vendor/golang.org/x/sys/unix/syscall_darwin.go": [
+   49,
+   0
+  ],
+  "debian/extra/vendor/golang.org/x/sys/unix/syscall_dragonfly.go": [
+   12,
+   0
+  ],
+  "debian/extra/vendor/golang.org/x/sys/unix/syscall_hurd.go": [
+   1,
+   0
+  ],
+  "debian/extra/vendor/golang.org/x/sys/unix/syscall_linux.go": [
+   64,
+   1
+  ],
+  "debian/extra/vendor/golang.org/x/sys/unix/syscall_linux_arm64.go": [
+   2,
+   0
+  ],
+  "debian/extra/vendor/golang.org/x/sys/unix/syscall_linux_loong64.go": [
+   2,
+   0
+  ],
+  "debian/extra/vendor/golang.org/x/sys/unix/syscall_linux_riscv64.go": [
+   2,
+   0
+  ],
+  "debian/extra/vendor/golang.org/x/sys/unix/syscall_openbsd.go": [
+   1,
+   0
+  ],
+  "debian/extra/vendor/golang.org/x/sys/unix/syscall_solaris.go": [
+   87,
+   0
+  ],
+  "debian/extra/vendor/golang.org/x/sys/unix/syscall_zos_s390x.go": [
+   100,
+   4
+  ],
+  "debian/extra/vendor/golang.org/x/sys/unix/vgetrandom_linux.go": [
+   13,
+   0
+  ],
+  "debian/extra/vendor/golang.org/x/sys/unix/vgetrandom_unsupported.go": [
+   11,
+   0
+  ],
+  "debian/extra/vendor/golang.org/x/sys/unix/zerrors_darwin_amd64.go": [
+   12,
+   0
+  ],
+  "debian/extra/vendor/golang.org/x/sys/unix/zerrors_darwin_arm64.go": [
+   12,
+   0
+  ],
+  "debian/extra/vendor/golang.org/x/sys/unix/zerrors_linux.go": [
+   96,
+   6
+  ],
+  "debian/extra/vendor/golang.org/x/sys/unix/zerrors_linux_386.go": [
+   30,
+   0
+  ],
+  "debian/extra/vendor/golang.org/x/sys/unix/zerrors_linux_amd64.go": [
+   30,
+   0
+  ],
+  "debian/extra/vendor/golang.org/x/sys/unix/zerrors_linux_arm.go": [
+   30,
+   0
+  ],
+  "debian/extra/vendor/golang.org/x/sys/unix/zerrors_linux_arm64.go": [
+   32,
+   0
+  ],
+  "debian/extra/vendor/golang.org/x/sys/unix/zerrors_linux_loong64.go": [
+   30,
+   0
+  ],
+  "debian/extra/vendor/golang.org/x/sys/unix/zerrors_linux_mips.go": [
+   30,
+   0
+  ],
+  "debian/extra/vendor/golang.org/x/sys/unix/zerrors_linux_mips64.go": [
+   30,
+   0
+  ],
+  "debian/extra/vendor/golang.org/x/sys/unix/zerrors_linux_mips64le.go": [
+   30,
+   0
+  ],
+  "debian/extra/vendor/golang.org/x/sys/unix/zerrors_linux_mipsle.go": [
+   30,
+   0
+  ],
+  "debian/extra/vendor/golang.org/x/sys/unix/zerrors_linux_ppc.go": [
+   30,
+   0
+  ],
+  "debian/extra/vendor/golang.org/x/sys/unix/zerrors_linux_ppc64.go": [
+   30,
+   0
+  ],
+  "debian/extra/vendor/golang.org/x/sys/unix/zerrors_linux_ppc64le.go": [
+   30,
+   0
+  ],
+  "debian/extra/vendor/golang.org/x/sys/unix/zerrors_linux_riscv64.go": [
+   30,
+   0
+  ],
+  "debian/extra/vendor/golang.org/x/sys/unix/zerrors_linux_s390x.go": [
+   30,
+   0
+  ],
+  "debian/extra/vendor/golang.org/x/sys/unix/zerrors_linux_sparc64.go": [
+   30,
+   0
+  ],
+  "debian/extra/vendor/golang.org/x/sys/unix/zerrors_zos_s390x.go": [
+   2,
+   0
+  ],
+  "debian/extra/vendor/golang.org/x/sys/unix/zsyscall_darwin_amd64.go": [
+   68,
+   0
+  ],
+  "debian/extra/vendor/golang.org/x/sys/unix/zsyscall_darwin_amd64.s": [
+   15,
+   0
+  ],
+  "debian/extra/vendor/golang.org/x/sys/unix/zsyscall_darwin_arm64.go": [
+   68,
+   0
+  ],
+  "debian/extra/vendor/golang.org/x/sys/unix/zsyscall_darwin_arm64.s": [
+   15,
+   0
+  ],
+  "debian/extra/vendor/golang.org/x/sys/unix/zsyscall_linux.go": [
+   26,
+   17
+  ],
+  "debian/extra/vendor/golang.org/x/sys/unix/zsyscall_openbsd_386.go": [
+   24,
+   0
+  ],
+  "debian/extra/vendor/golang.org/x/sys/unix/zsyscall_openbsd_386.s": [
+   5,
+   0
+  ],
+  "debian/extra/vendor/golang.org/x/sys/unix/zsyscall_openbsd_amd64.go": [
+   24,
+   0
+  ],
+  "debian/extra/vendor/golang.org/x/sys/unix/zsyscall_openbsd_amd64.s": [
+   5,
+   0
+  ],
+  "debian/extra/vendor/golang.org/x/sys/unix/zsyscall_openbsd_arm.go": [
+   24,
+   0
+  ],
+  "debian/extra/vendor/golang.org/x/sys/unix/zsyscall_openbsd_arm.s": [
+   5,
+   0
+  ],
+  "debian/extra/vendor/golang.org/x/sys/unix/zsyscall_openbsd_arm64.go": [
+   24,
+   0
+  ],
+  "debian/extra/vendor/golang.org/x/sys/unix/zsyscall_openbsd_arm64.s": [
+   5,
+   0
+  ],
+  "debian/extra/vendor/golang.org/x/sys/unix/zsyscall_openbsd_mips64.go": [
+   24,
+   0
+  ],
+  "debian/extra/vendor/golang.org/x/sys/unix/zsyscall_openbsd_mips64.s": [
+   5,
+   0
+  ],
+  "debian/extra/vendor/golang.org/x/sys/unix/zsyscall_openbsd_ppc64.go": [
+   24,
+   0
+  ],
+  "debian/extra/vendor/golang.org/x/sys/unix/zsyscall_openbsd_ppc64.s": [
+   6,
+   0
+  ],
+  "debian/extra/vendor/golang.org/x/sys/unix/zsyscall_openbsd_riscv64.go": [
+   24,
+   0
+  ],
+  "debian/extra/vendor/golang.org/x/sys/unix/zsyscall_openbsd_riscv64.s": [
+   5,
+   0
+  ],
+  "debian/extra/vendor/golang.org/x/sys/unix/zsyscall_solaris_amd64.go": [
+   114,
+   0
+  ],
+  "debian/extra/vendor/golang.org/x/sys/unix/zsysnum_linux_386.go": [
+   5,
+   0
+  ],
+  "debian/extra/vendor/golang.org/x/sys/unix/zsysnum_linux_amd64.go": [
+   6,
+   0
+  ],
+  "debian/extra/vendor/golang.org/x/sys/unix/zsysnum_linux_arm.go": [
+   5,
+   0
+  ],
+  "debian/extra/vendor/golang.org/x/sys/unix/zsysnum_linux_arm64.go": [
+   6,
+   1
+  ],
+  "debian/extra/vendor/golang.org/x/sys/unix/zsysnum_linux_loong64.go": [
+   7,
+   0
+  ],
+  "debian/extra/vendor/golang.org/x/sys/unix/zsysnum_linux_mips.go": [
+   5,
+   0
+  ],
+  "debian/extra/vendor/golang.org/x/sys/unix/zsysnum_linux_mips64.go": [
+   5,
+   0
+  ],
+  "debian/extra/vendor/golang.org/x/sys/unix/zsysnum_linux_mips64le.go": [
+   5,
+   0
+  ],
+  "debian/extra/vendor/golang.org/x/sys/unix/zsysnum_linux_mipsle.go": [
+   5,
+   0
+  ],
+  "debian/extra/vendor/golang.org/x/sys/unix/zsysnum_linux_ppc.go": [
+   5,
+   0
+  ],
+  "debian/extra/vendor/golang.org/x/sys/unix/zsysnum_linux_ppc64.go": [
+   5,
+   0
+  ],
+  "debian/extra/vendor/golang.org/x/sys/unix/zsysnum_linux_ppc64le.go": [
+   5,
+   0
+  ],
+  "debian/extra/vendor/golang.org/x/sys/unix/zsysnum_linux_riscv64.go": [
+   6,
+   1
+  ],
+  "debian/extra/vendor/golang.org/x/sys/unix/zsysnum_linux_s390x.go": [
+   5,
+   0
+  ],
+  "debian/extra/vendor/golang.org/x/sys/unix/zsysnum_linux_sparc64.go": [
+   5,
+   0
+  ],
+  "debian/extra/vendor/golang.org/x/sys/unix/ztypes_darwin_amd64.go": [
+   73,
+   0
+  ],
+  "debian/extra/vendor/golang.org/x/sys/unix/ztypes_darwin_arm64.go": [
+   73,
+   0
+  ],
+  "debian/extra/vendor/golang.org/x/sys/unix/ztypes_freebsd_386.go": [
+   1,
+   0
+  ],
+  "debian/extra/vendor/golang.org/x/sys/unix/ztypes_freebsd_amd64.go": [
+   1,
+   0
+  ],
+  "debian/extra/vendor/golang.org/x/sys/unix/ztypes_freebsd_arm.go": [
+   1,
+   0
+  ],
+  "debian/extra/vendor/golang.org/x/sys/unix/ztypes_freebsd_arm64.go": [
+   1,
+   0
+  ],
+  "debian/extra/vendor/golang.org/x/sys/unix/ztypes_freebsd_riscv64.go": [
+   1,
+   0
+  ],
+  "debian/extra/vendor/golang.org/x/sys/unix/ztypes_linux.go": [
+   189,
+   45
+  ],
+  "debian/extra/vendor/golang.org/x/sys/unix/ztypes_linux_riscv64.go": [
+   33,
+   0
+  ],
+  "debian/extra/vendor/golang.org/x/sys/unix/ztypes_zos_s390x.go": [
+   6,
+   0
+  ],
+  "debian/extra/vendor/golang.org/x/sys/windows/dll_windows.go": [
+   6,
+   7
+  ],
+  "debian/extra/vendor/golang.org/x/sys/windows/security_windows.go": [
+   1,
+   1
+  ],
+  "debian/extra/vendor/golang.org/x/sys/windows/svc/mgr/config.go": [
+   1,
+   1
+  ],
+  "debian/extra/vendor/golang.org/x/sys/windows/svc/mgr/recovery.go": [
+   2,
+   2
+  ],
+  "debian/extra/vendor/golang.org/x/sys/windows/syscall_windows.go": [
+   33,
+   19
+  ],
+  "debian/extra/vendor/golang.org/x/sys/windows/types_windows.go": [
+   198,
+   1
+  ],
+  "debian/extra/vendor/golang.org/x/sys/windows/zsyscall_windows.go": [
+   150,
+   8
+  ],
+  "debian/extra/vendor/golang.org/x/text/LICENSE": [
+   2,
+   2
+  ],
+  "debian/extra/vendor/modules.txt": [
+   9,
+   8
+  ],
+  "debian/extra/vendor/software.sslmate.com/src/go-pkcs12/.gitattributes": [
+   10,
+   0
+  ],
+  "debian/extra/vendor/software.sslmate.com/src/go-pkcs12/.gitignore": [
+   2,
+   0
+  ],
+  "debian/rules": [
+   39,
+   0
+  ],
+  "gce_workload_cert_refresh/main.go": [
+   4,
+   1
+  ],
+  "go.mod": [
+   7,
+   7
+  ],
+  "go.sum": [
+   20,
+   13
+  ],
+  "google-guest-agent-manager.service": [
+   2,
+   2
+  ],
+  "google-guest-compat-manager.service": [
+   12,
+   0
+  ],
+  "google-shutdown-scripts.service": [
+   1,
+   1
+  ],
+  "google-startup-scripts.service": [
+   1,
+   1
+  ],
+  "google_authorized_keys/main.go": [
+   2,
+   0
+  ],
+  "google_guest_agent/cfg/cfg.go": [
+   2,
+   2
+  ],
+  "google_guest_agent/main.go": [
+   1,
+   0
+  ],
+  "google_guest_agent/network/manager/common.go": [
+   39,
+   56
+  ],
+  "google_guest_agent/network/manager/common_test.go": [
+   0,
+   123
+  ],
+  "google_guest_agent/network/manager/dhclient_linux.go": [
+   3,
+   0
+  ],
+  "google_guest_agent/network/manager/dhclient_linux_test.go": [
+   1,
+   1
+  ],
+  "google_guest_agent/network/manager/manager.go": [
+   6,
+   5
+  ],
+  "google_guest_agent/network/manager/manager_test.go": [
+   6,
+   6
+  ],
+  "google_guest_agent/network/manager/netplan_linux.go": [
+   34,
+   17
+  ],
+  "google_guest_agent/network/manager/netplan_linux_test.go": [
+   14,
+   7
+  ],
+  "google_guest_agent/network/manager/network_manager_linux.go": [
+   10,
+   10
+  ],
+  "google_guest_agent/network/manager/network_manager_linux_test.go": [
+   4,
+   8
+  ],
+  "google_guest_agent/network/manager/systemd_networkd_linux.go": [
+   4,
+   2
+  ],
+  "google_guest_agent/network/manager/systemd_networkd_linux_test.go": [
+   3,
+   2
+  ],
+  "google_guest_agent/network/manager/wicked_linux.go": [
+   18,
+   11
+  ],
+  "google_guest_agent/network/manager/wicked_linux_test.go": [
+   11,
+   1
+  ],
+  "google_guest_agent/oslogin.go": [
+   7,
+   5
+  ],
+  "google_metadata_script_runner/main.go": [
+   4,
+   0
+  ],
+  "instance_configs.cfg": [
+   1,
+   0
+  ],
+  "metadata/metadata.go": [
+   3,
+   0
+  ],
+  "packaging/debian/postinst": [
+   12,
+   3
+  ],
+  "packaging/debian/prerm": [
+   8,
+   0
+  ],
+  "packaging/debian/rules": [
+   22,
+   7
+  ],
+  "packaging/googet/agent_install.ps1": [
+   15,
+   1
+  ],
+  "packaging/googet/agent_uninstall.ps1": [
+   11,
+   0
+  ],
+  "packaging/googet/google-compute-engine-windows.goospec": [
+   15,
+   1
+  ],
+  "packaging/googet/run_shutdown_scripts.cmd": [
+   5,
+   1
+  ],
+  "packaging/googet/run_startup_scripts.cmd": [
+   5,
+   1
+  ],
+  "packaging/googet/windows_agent_build.sh": [
+   28,
+   2
+  ],
+  "packaging/google-guest-agent.spec": [
+   38,
+   1
+  ]
+ },
+ "files": 195,
+ "added_lines": 14637,
+ "removed_lines": 3616,
+ "diff": "diff --git a/OWNERS b/OWNERS\nindex b083115..4e4763f 100644\n--- a/OWNERS\n+++ b/OWNERS\n@@ -2,7 +2,6 @@\n # See the OWNERS docs at https://go.k8s.io/owners\n \n approvers:\n-  - a-crate\n   - ajorg\n   - bkatyl\n   - chaitanyakulkarni28\n@@ -13,4 +12,3 @@ approvers:\n   - karnvadaliya\n   - koln67\n   - lpleahy\n-  - zmarano\ndiff --git a/build-deb.sh b/build-deb.sh\nnew file mode 100755\nindex 0000000..fa1062b\n--- /dev/null\n+++ b/build-deb.sh\n@@ -0,0 +1,47 @@\n+#!/bin/env bash\n+#\n+# This script wraps the steps required to locally build a deb package\n+# based on the in tree debian packaging (see invocation example bellow).\n+#\n+# After the build is finished the script will print out where the final\n+# artifact was generated.\n+#\n+# Invocation:\n+# VERSION=<version> RELEASE=<release> ./build-deb.sh\n+#\n+\n+BUILD_DIR=$(mktemp -d)\n+PKGNAME=\"google-guest-agent\"\n+\n+if [ -z \"${VERSION}\" ]; then\n+   echo \"VERSION environment variable is not set\"\n+   exit 1\n+fi\n+\n+if [ -z \"${RELEASE}\" ]; then\n+   echo \"RELEASE environment variable is not set\"\n+   exit 1\n+fi\n+\n+TARBALL=\"${PKGNAME}_${VERSION}.orig.tar.gz\"\n+\n+echo \"Creating tarball: ${TARBALL}\"\n+tar czvf \"${BUILD_DIR}/${TARBALL}\" --exclude .git --exclude packaging \\\n+  --transform \"s/^\\./${PKGNAME}-${VERSION}/\" .\n+\n+tar -C \"$BUILD_DIR\" -xzvf \"${BUILD_DIR}/${TARBALL}\"\n+PKGDIR=\"${BUILD_DIR}/${PKGNAME}-${VERSION}\"\n+\n+cp -r packaging/debian \"${BUILD_DIR}/${PKGNAME}-${VERSION}/\"\n+\n+cd \"${BUILD_DIR}/${PKGNAME}-${VERSION}\"\n+\n+# We generate this to enable auto-versioning.\n+[[ -f debian/changelog ]] && rm debian/changelog\n+\n+dch --create -M -v 1:${VERSION}-${RELEASE} --package $PKGNAME -D stable \\\n+  \"Debian packaging for ${PKGNAME}\"\n+\n+DEB_BUILD_OPTIONS=\"noautodbgsym nocheck\" debuild -e \"VERSION=${VERSION}\" -e \"RELEASE=${RELEASE}\" -us -uc\n+\n+echo \"Package built at: ${BUILD_DIR}\"\ndiff --git a/debian/changelog b/debian/changelog\nindex 763412b..39be1b5 100644\n--- a/debian/changelog\n+++ b/debian/changelog\n@@ -1,3 +1,16 @@\n+google-guest-agent (20250506.01-0ubuntu1~25.04.0) plucky; urgency=medium\n+\n+  * No-change rebuild for Plucky (LP: #2113792).\n+\n+ -- Chloé 'kajiya' Smith <chloe.smith@canonical.com>  Mon, 07 Jul 2025 12:59:59 +0100\n+\n+google-guest-agent (20250506.01-0ubuntu1) questing; urgency=medium\n+\n+  * New upstream version for upstream tag 20250506.01. (LP: #2113792)\n+    * Golang revendoring for the bump from 1.20 to 1.23.\n+\n+ -- Chloé 'kajiya' Smith <chloe.smith@canonical.com>  Mon, 09 Jun 2025 21:56:02 +0100\n+\n google-guest-agent (20250116.00-0ubuntu2) plucky; urgency=medium\n \n   * No-change rebuild against Go 1.24.\ndiff --git a/debian/extra/vendor/cloud.google.com/go/.gitignore b/debian/extra/vendor/cloud.google.com/go/.gitignore\nnew file mode 100644\nindex 0000000..cc7e53b\n--- /dev/null\n+++ b/debian/extra/vendor/cloud.google.com/go/.gitignore\n@@ -0,0 +1,12 @@\n+# Editors\n+.idea\n+.vscode\n+*.swp\n+.history\n+\n+# Test files\n+*.test\n+coverage.txt\n+\n+# Other\n+.DS_Store\ndiff --git a/debian/extra/vendor/github.com/GoogleCloudPlatform/guest-logging-go/logger/logger.go b/debian/extra/vendor/github.com/GoogleCloudPlatform/guest-logging-go/logger/logger.go\nindex ea4d9ad..97a8728 100644\n--- a/debian/extra/vendor/github.com/GoogleCloudPlatform/guest-logging-go/logger/logger.go\n+++ b/debian/extra/vendor/github.com/GoogleCloudPlatform/guest-logging-go/logger/logger.go\n@@ -20,6 +20,7 @@ import (\n \t\"fmt\"\n \t\"io\"\n \t\"os\"\n+\t\"regexp\"\n \t\"time\"\n \n \t\"cloud.google.com/go/compute/metadata\"\n@@ -40,6 +41,13 @@ var (\n \twriters []io.Writer\n )\n \n+const (\n+\t// The following are MIG labels.\n+\tmigNameLabel   = `compute.googleapis.com/instance_group_manager/name`\n+\tmigZoneLabel   = `compute.googleapis.com/instance_group_manager/zone`\n+\tmigRegionLabel = `compute.googleapis.com/instance_group_manager/region`\n+)\n+\n // LogOpts represents options for logging.\n type LogOpts struct {\n \tDebug               bool\n@@ -52,6 +60,8 @@ type LogOpts struct {\n \t// Additional writers that will be used during logging.\n \tWriters   []io.Writer\n \tUserAgent string\n+\t// MIG is the Managed Instance Group, used for labeling logs.\n+\tMIG string\n }\n \n // SetDebugLogging enables or disables debug level logging.\n@@ -59,6 +69,32 @@ func SetDebugLogging(enabled bool) {\n \tdebugEnabled = enabled\n }\n \n+// parseMIGLabels parses the given MIG string into a map of labels for\n+// Cloud Logging.\n+func parseMIGLabels(mig string) map[string]string {\n+\tlabels := make(map[string]string)\n+\tif mig == \"\" {\n+\t\treturn labels\n+\t}\n+\n+\tmigRe := regexp.MustCompile(`^projects/[^/]+/(zones|regions)/([^/]+)/instanceGroupManagers/([^/]+)$`)\n+\tmatches := migRe.FindStringSubmatch(mig)\n+\tif matches == nil {\n+\t\treturn labels\n+\t}\n+\n+\tvar locationLabel string\n+\tswitch matches[1] {\n+\tcase \"zones\":\n+\t\tlocationLabel = migZoneLabel\n+\tcase \"regions\":\n+\t\tlocationLabel = migRegionLabel\n+\t}\n+\tlabels[migNameLabel] = matches[3]\n+\tlabels[locationLabel] = matches[2]\n+\treturn labels\n+}\n+\n // Init instantiates the logger.\n func Init(ctx context.Context, opts LogOpts) error {\n \tif opts.LoggerName == \"\" {\n@@ -96,12 +132,20 @@ func Init(ctx context.Context, opts LogOpts) error {\n \t\t// resource. However instance_name is not included in this\n \t\t// resource, so add an instance_name label to all log Entries.\n \t\tname, err := metadata.InstanceName()\n+\t\tlabels := make(map[string]string)\n \t\tif err == nil {\n-\t\t\tcloudLogger = cloudLoggingClient.Logger(loggerName, logging.CommonLabels(map[string]string{\"instance_name\": name}))\n-\t\t} else {\n-\t\t\tcloudLogger = cloudLoggingClient.Logger(loggerName)\n+\t\t\tlabels[\"instance_name\"] = name\n+\t\t}\n+\n+\t\t// Add MIG labels if provided.\n+\t\tmigLabels := parseMIGLabels(opts.MIG)\n+\t\tfor k, v := range migLabels {\n+\t\t\tlabels[k] = v\n \t\t}\n \n+\t\t// Initialize the logger.\n+\t\tcloudLogger = cloudLoggingClient.Logger(loggerName, logging.CommonLabels(labels))\n+\n \t\tgo func() {\n \t\t\tfor {\n \t\t\t\ttime.Sleep(5 * time.Second)\n@@ -116,8 +160,16 @@ func Init(ctx context.Context, opts LogOpts) error {\n // Close closes the logger.\n func Close() {\n \tif cloudLoggingClient != nil {\n-\t\tcloudLogger.Flush()\n-\t\tcloudLoggingClient.Close()\n+\t\t// Attempt to connect to Cloud Logging.\n+\t\ttimeoutContext, cancelFunc := context.WithTimeout(context.Background(), time.Second*3)\n+\t\tdefer cancelFunc()\n+\n+\t\tif err := cloudLoggingClient.Ping(timeoutContext); err != nil {\n+\t\t\tWarningf(\"Cannot connect to cloud logging, skipping flush: %v\", err)\n+\t\t} else {\n+\t\t\tcloudLogger.Flush()\n+\t\t\tcloudLoggingClient.Close()\n+\t\t}\n \t}\n \tlocalClose()\n }\ndiff --git a/debian/extra/vendor/github.com/GoogleCloudPlatform/guest-logging-go/logger/logger_unix.go b/debian/extra/vendor/github.com/GoogleCloudPlatform/guest-logging-go/logger/logger_unix.go\nindex 271a539..d09ccef 100644\n--- a/debian/extra/vendor/github.com/GoogleCloudPlatform/guest-logging-go/logger/logger_unix.go\n+++ b/debian/extra/vendor/github.com/GoogleCloudPlatform/guest-logging-go/logger/logger_unix.go\n@@ -12,7 +12,7 @@\n //  See the License for the specific language governing permissions and\n //  limitations under the License.\n \n-// +build !windows\n+//go:build !windows\n \n // Package logger logs messages as appropriate.\n package logger\ndiff --git a/debian/extra/vendor/github.com/GoogleCloudPlatform/guest-logging-go/logger/logger_windows.go b/debian/extra/vendor/github.com/GoogleCloudPlatform/guest-logging-go/logger/logger_windows.go\nindex 78e5443..91c2275 100644\n--- a/debian/extra/vendor/github.com/GoogleCloudPlatform/guest-logging-go/logger/logger_windows.go\n+++ b/debian/extra/vendor/github.com/GoogleCloudPlatform/guest-logging-go/logger/logger_windows.go\n@@ -12,7 +12,7 @@\n //  See the License for the specific language governing permissions and\n //  limitations under the License.\n \n-// +build windows\n+//go:build windows\n \n // Package logger logs messages as appropriate.\n package logger\ndiff --git a/debian/extra/vendor/github.com/Microsoft/go-winio/.gitattributes b/debian/extra/vendor/github.com/Microsoft/go-winio/.gitattributes\nnew file mode 100644\nindex 0000000..94f480d\n--- /dev/null\n+++ b/debian/extra/vendor/github.com/Microsoft/go-winio/.gitattributes\n@@ -0,0 +1 @@\n+* text=auto eol=lf\n\\ No newline at end of file\ndiff --git a/debian/extra/vendor/github.com/Microsoft/go-winio/.gitignore b/debian/extra/vendor/github.com/Microsoft/go-winio/.gitignore\nnew file mode 100644\nindex 0000000..815e206\n--- /dev/null\n+++ b/debian/extra/vendor/github.com/Microsoft/go-winio/.gitignore\n@@ -0,0 +1,10 @@\n+.vscode/\n+\n+*.exe\n+\n+# testing\n+testdata\n+\n+# go workspaces\n+go.work\n+go.work.sum\ndiff --git a/debian/extra/vendor/github.com/go-ini/ini/.gitignore b/debian/extra/vendor/github.com/go-ini/ini/.gitignore\nnew file mode 100644\nindex 0000000..588388b\n--- /dev/null\n+++ b/debian/extra/vendor/github.com/go-ini/ini/.gitignore\n@@ -0,0 +1,7 @@\n+testdata/conf_out.ini\n+ini.sublime-project\n+ini.sublime-workspace\n+testdata/conf_reflect.ini\n+.idea\n+/.vscode\n+.DS_Store\ndiff --git a/debian/extra/vendor/github.com/google/s2a-go/.gitignore b/debian/extra/vendor/github.com/google/s2a-go/.gitignore\nnew file mode 100644\nindex 0000000..01764d1\n--- /dev/null\n+++ b/debian/extra/vendor/github.com/google/s2a-go/.gitignore\n@@ -0,0 +1,6 @@\n+# Ignore binaries without extension\n+//example/client/client\n+//example/server/server\n+//internal/v2/fakes2av2_server/fakes2av2_server\n+\n+.idea/\n\\ No newline at end of file\ndiff --git a/debian/extra/vendor/github.com/google/s2a-go/internal/v2/certverifier/testdata/client_intermediate_cert.der b/debian/extra/vendor/github.com/google/s2a-go/internal/v2/certverifier/testdata/client_intermediate_cert.der\ndeleted file mode 100644\nindex 958f3cf..0000000\nBinary files a/debian/extra/vendor/github.com/google/s2a-go/internal/v2/certverifier/testdata/client_intermediate_cert.der and /dev/null differ\ndiff --git a/debian/extra/vendor/github.com/google/s2a-go/internal/v2/certverifier/testdata/client_leaf_cert.der b/debian/extra/vendor/github.com/google/s2a-go/internal/v2/certverifier/testdata/client_leaf_cert.der\ndeleted file mode 100644\nindex d281764..0000000\nBinary files a/debian/extra/vendor/github.com/google/s2a-go/internal/v2/certverifier/testdata/client_leaf_cert.der and /dev/null differ\ndiff --git a/debian/extra/vendor/github.com/google/s2a-go/internal/v2/certverifier/testdata/client_root_cert.der b/debian/extra/vendor/github.com/google/s2a-go/internal/v2/certverifier/testdata/client_root_cert.der\ndeleted file mode 100644\nindex d8c3710..0000000\nBinary files a/debian/extra/vendor/github.com/google/s2a-go/internal/v2/certverifier/testdata/client_root_cert.der and /dev/null differ\ndiff --git a/debian/extra/vendor/github.com/google/s2a-go/internal/v2/certverifier/testdata/server_intermediate_cert.der b/debian/extra/vendor/github.com/google/s2a-go/internal/v2/certverifier/testdata/server_intermediate_cert.der\ndeleted file mode 100644\nindex dae619c..0000000\nBinary files a/debian/extra/vendor/github.com/google/s2a-go/internal/v2/certverifier/testdata/server_intermediate_cert.der and /dev/null differ\ndiff --git a/debian/extra/vendor/github.com/google/s2a-go/internal/v2/certverifier/testdata/server_leaf_cert.der b/debian/extra/vendor/github.com/google/s2a-go/internal/v2/certverifier/testdata/server_leaf_cert.der\ndeleted file mode 100644\nindex ce7f8d3..0000000\nBinary files a/debian/extra/vendor/github.com/google/s2a-go/internal/v2/certverifier/testdata/server_leaf_cert.der and /dev/null differ\ndiff --git a/debian/extra/vendor/github.com/google/s2a-go/internal/v2/certverifier/testdata/server_root_cert.der b/debian/extra/vendor/github.com/google/s2a-go/internal/v2/certverifier/testdata/server_root_cert.der\ndeleted file mode 100644\nindex 04b0d73..0000000\nBinary files a/debian/extra/vendor/github.com/google/s2a-go/internal/v2/certverifier/testdata/server_root_cert.der and /dev/null differ\ndiff --git a/debian/extra/vendor/github.com/google/s2a-go/internal/v2/remotesigner/testdata/client_cert.der b/debian/extra/vendor/github.com/google/s2a-go/internal/v2/remotesigner/testdata/client_cert.der\ndeleted file mode 100644\nindex d8c3710..0000000\nBinary files a/debian/extra/vendor/github.com/google/s2a-go/internal/v2/remotesigner/testdata/client_cert.der and /dev/null differ\ndiff --git a/debian/extra/vendor/github.com/google/s2a-go/internal/v2/remotesigner/testdata/client_cert.pem b/debian/extra/vendor/github.com/google/s2a-go/internal/v2/remotesigner/testdata/client_cert.pem\ndeleted file mode 100644\nindex 493a5a2..0000000\n--- a/debian/extra/vendor/github.com/google/s2a-go/internal/v2/remotesigner/testdata/client_cert.pem\n+++ /dev/null\n@@ -1,24 +0,0 @@\n------BEGIN CERTIFICATE-----\n-MIID8TCCAtmgAwIBAgIUKXNlBRVe6UepjQUijIFPZBd/4qYwDQYJKoZIhvcNAQEL\n-BQAwgYcxCzAJBgNVBAYTAlVTMQswCQYDVQQIDAJDQTESMBAGA1UEBwwJU3Vubnl2\n-YWxlMRAwDgYDVQQKDAdDb21wYW55MREwDwYDVQQLDAhEaXZpc2lvbjEWMBQGA1UE\n-AwwNczJhX3Rlc3RfY2VydDEaMBgGCSqGSIb3DQEJARYLeHl6QHh5ei5jb20wHhcN\n-MjIwNTMxMjAwMzE1WhcNNDIwNTI2MjAwMzE1WjCBhzELMAkGA1UEBhMCVVMxCzAJ\n-BgNVBAgMAkNBMRIwEAYDVQQHDAlTdW5ueXZhbGUxEDAOBgNVBAoMB0NvbXBhbnkx\n-ETAPBgNVBAsMCERpdmlzaW9uMRYwFAYDVQQDDA1zMmFfdGVzdF9jZXJ0MRowGAYJ\n-KoZIhvcNAQkBFgt4eXpAeHl6LmNvbTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCC\n-AQoCggEBAOOFuIucH7XXfohGxKd3uR/ihUA/LdduR9I8kfpUEbq5BOt8xZe5/Yn9\n-a1ozEHVW6cOAbHbnwAR8tkSgZ/t42QIA2k77HWU1Jh2xiEIsJivo3imm4/kZWuR0\n-OqPh7MhzxpR/hvNwpI5mJsAVBWFMa5KtecFZLnyZtwHylrRN1QXzuLrOxuKFufK3\n-RKbTABScn5RbZL976H/jgfSeXrbt242NrIoBnVe6fRbekbq2DQ6zFArbQMUgHjHK\n-P0UqBgdr1QmHfi9KytFyx9BTP3gXWnWIu+bY7/v7qKJMHFwGETo+dCLWYevJL316\n-HnLfhApDMfP8U+Yv/y1N/YvgaSOSlEcCAwEAAaNTMFEwHQYDVR0OBBYEFKhAU4nu\n-0h/lrnggbIGvx4ej0WklMB8GA1UdIwQYMBaAFKhAU4nu0h/lrnggbIGvx4ej0Wkl\n-MA8GA1UdEwEB/wQFMAMBAf8wDQYJKoZIhvcNAQELBQADggEBAE/6NghzQ5fu6yR6\n-EHKbj/YMrFdT7aGn5n2sAf7wJ33LIhiFHkpWBsVlm7rDtZtwhe891ZK/P60anlg9\n-/P0Ua53tSRVRmCvTnEbXWOVMN4is6MsR7BlmzUxl4AtIn7jbeifEwRL7B4xDYmdA\n-QrQnsqoz45dLgS5xK4WDqXATP09Q91xQDuhud/b+A4jrvgwFASmL7rMIZbp4f1JQ\n-nlnl/9VoTBQBvJiWkDUtQDMpRLtauddEkv4AGz75p5IspXWD6cOemuh2iQec11xD\n-X20rs2WZbAcAiUa3nmy8OKYw435vmpj8gp39WYbX/Yx9TymrFFbVY92wYn+quTco\n-pKklVz0=\n------END CERTIFICATE-----\ndiff --git a/debian/extra/vendor/github.com/google/s2a-go/internal/v2/remotesigner/testdata/client_key.pem b/debian/extra/vendor/github.com/google/s2a-go/internal/v2/remotesigner/testdata/client_key.pem\ndeleted file mode 100644\nindex 55a7f10..0000000\n--- a/debian/extra/vendor/github.com/google/s2a-go/internal/v2/remotesigner/testdata/client_key.pem\n+++ /dev/null\n@@ -1,27 +0,0 @@\n------BEGIN RSA PRIVATE KEY-----\n-MIIEogIBAAKCAQEA44W4i5wftdd+iEbEp3e5H+KFQD8t125H0jyR+lQRurkE63zF\n-l7n9if1rWjMQdVbpw4BsdufABHy2RKBn+3jZAgDaTvsdZTUmHbGIQiwmK+jeKabj\n-+Rla5HQ6o+HsyHPGlH+G83CkjmYmwBUFYUxrkq15wVkufJm3AfKWtE3VBfO4us7G\n-4oW58rdEptMAFJyflFtkv3vof+OB9J5etu3bjY2sigGdV7p9Ft6RurYNDrMUCttA\n-xSAeMco/RSoGB2vVCYd+L0rK0XLH0FM/eBdadYi75tjv+/uookwcXAYROj50ItZh\n-68kvfXoect+ECkMx8/xT5i//LU39i+BpI5KURwIDAQABAoIBABgyjo/6iLzUMFbZ\n-/+w3pW6orrdIgN2akvTfED9pVYFgUA+jc3hRhY95bkNnjuaL2cy7Cc4Tk65mfRQL\n-Y0OxdJLr+EvSFSxAXM9npDA1ddHRsF8JqtFBSxNk8R+g1Yf0GDiO35Fgd3/ViWWA\n-VtQkRoSRApP3oiQKTRZd8H04keFR+PvmDk/Lq11l3Kc24A1PevKIPX1oI990ggw9\n-9i4uSV+cnuMxmcI9xxJtgwdDFdjr39l2arLOHr4s6LGoV2IOdXHNlv5xRqWUZ0FH\n-MDHowkLgwDrdSTnNeaVNkce14Gqx+bd4hNaLCdKXMpedBTEmrut3f3hdV1kKjaKt\n-aqRYr8ECgYEA/YDGZY2jvFoHHBywlqmEMFrrCvQGH51m5R1Ntpkzr+Rh3YCmrpvq\n-xgwJXING0PUw3dz+xrH5lJICrfNE5Kt3fPu1rAEy+13mYsNowghtUq2Rtu0Hsjjx\n-2E3Bf8vEB6RNBMmGkUpTTIAroGF5tpJoRvfnWax+k4pFdrKYFtyZdNcCgYEA5cNv\n-EPltvOobjTXlUmtVP3n27KZN2aXexTcagLzRxE9CV4cYySENl3KuOMmccaZpIl6z\n-aHk6BT4X+M0LqElNUczrInfVqI+SGAFLGy7W6CJaqSr6cpyFUP/fosKpm6wKGgLq\n-udHfpvz5rckhKd8kJxFLvhGOK9yN5qpzih0gfhECgYAJfwRvk3G5wYmYpP58dlcs\n-VIuPenqsPoI3PPTHTU/hW+XKnWIhElgmGRdUrto9Q6IT/Y5RtSMLTLjq+Tzwb/fm\n-56rziYv2XJsfwgAvnI8z1Kqrto9ePsHYf3krJ1/thVsZPc9bq/QY3ohD1sLvcuaT\n-GgBBnLOVJU3a12/ZE2RwOwKBgF0csWMAoj8/5IB6if+3ral2xOGsl7oPZVMo/J2V\n-Z7EVqb4M6rd/pKFugTpUQgkwtkSOekhpcGD1hAN5HTNK2YG/+L5UMAsKe9sskwJm\n-HgOfAHy0BSDzW3ey6i9skg2bT9Cww+0gJ3Hl7U1HSCBO5LjMYpSZSrNtwzfqdb5Q\n-BX3xAoGARZdR28Ej3+/+0+fz47Yu2h4z0EI/EbrudLOWY936jIeAVwHckI3+BuqH\n-qR4poj1gfbnMxNuI9UzIXzjEmGewx9kDZ7IYnvloZKqoVQODO5GlKF2ja6IcMNlh\n-GCNdD6PSAS6HcmalmWo9sj+1YMkrl+GJikKZqVBHrHNwMGAG67w=\n------END RSA PRIVATE KEY-----\ndiff --git a/debian/extra/vendor/github.com/google/s2a-go/internal/v2/remotesigner/testdata/server_cert.der b/debian/extra/vendor/github.com/google/s2a-go/internal/v2/remotesigner/testdata/server_cert.der\ndeleted file mode 100644\nindex 04b0d73..0000000\nBinary files a/debian/extra/vendor/github.com/google/s2a-go/internal/v2/remotesigner/testdata/server_cert.der and /dev/null differ\ndiff --git a/debian/extra/vendor/github.com/google/s2a-go/internal/v2/remotesigner/testdata/server_cert.pem b/debian/extra/vendor/github.com/google/s2a-go/internal/v2/remotesigner/testdata/server_cert.pem\ndeleted file mode 100644\nindex 0f98322..0000000\n--- a/debian/extra/vendor/github.com/google/s2a-go/internal/v2/remotesigner/testdata/server_cert.pem\n+++ /dev/null\n@@ -1,24 +0,0 @@\n------BEGIN CERTIFICATE-----\n-MIID8TCCAtmgAwIBAgIUKCoDuLtiZXvhsBY2RoDm0ugizJ8wDQYJKoZIhvcNAQEL\n-BQAwgYcxCzAJBgNVBAYTAlVTMQswCQYDVQQIDAJDQTESMBAGA1UEBwwJU3Vubnl2\n-YWxlMRAwDgYDVQQKDAdDb21wYW55MREwDwYDVQQLDAhEaXZpc2lvbjEWMBQGA1UE\n-AwwNczJhX3Rlc3RfY2VydDEaMBgGCSqGSIb3DQEJARYLeHl6QHh5ei5jb20wHhcN\n-MjIwNTMxMjAwODI1WhcNNDIwNTI2MjAwODI1WjCBhzELMAkGA1UEBhMCVVMxCzAJ\n-BgNVBAgMAkNBMRIwEAYDVQQHDAlTdW5ueXZhbGUxEDAOBgNVBAoMB0NvbXBhbnkx\n-ETAPBgNVBAsMCERpdmlzaW9uMRYwFAYDVQQDDA1zMmFfdGVzdF9jZXJ0MRowGAYJ\n-KoZIhvcNAQkBFgt4eXpAeHl6LmNvbTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCC\n-AQoCggEBAKK1++PXQ+M3hjYH/v0K4UEYl5ljzpNM1i52eQM+gFooojT87PDSaphT\n-fs0PXy/PTAjHBEvPhWpOpmQXfJNYzjwcCvg66hbqkv++/VTZiFLAsHagzkEz+FRJ\n-qT5Eq7G5FLyw1izX1uxyPN7tAEWEEg7eqsiaXD3Cq8+TYN9cjirPeF7RZF8yFCYE\n-xqvbo+Yc6RL6xw19iXVTfctRgQe581KQuIY5/LXo3dWDEilFdsADAe8XAEcO64es\n-Ow0g1UvXLnpXSE151kXBFb3sKH/ZjCecDYMCIMEb4sWLSblkSxJ5sNSmXIG4wtr2\n-Qnii7CXZgnVYraQE/Jyh+NMQANuoSdMCAwEAAaNTMFEwHQYDVR0OBBYEFAyQQQuM\n-ab+YUQqjK8dVVOoHVFmXMB8GA1UdIwQYMBaAFAyQQQuMab+YUQqjK8dVVOoHVFmX\n-MA8GA1UdEwEB/wQFMAMBAf8wDQYJKoZIhvcNAQELBQADggEBADj0vQ6ykWhicoqR\n-e6VZMwlEJV7/DSvWWKBd9MUjfKye0A4565ya5lmnzP3DiD3nqGe3miqmLsXKDs+X\n-POqlPXTWIamP7D4MJ32XtSLwZB4ru+I+Ao/P/VngPepoRPQoBnzHe7jww0rokqxl\n-AZERjlbTUwUAy/BPWPSzSJZ2j0tcs6ZLDNyYzpK4ao8R9/1VmQ92Tcp3feJs1QTg\n-odRQc3om/AkWOwsll+oyX0UbJeHkFHiLanUPXbdh+/BkSvZJ8ynL+feSDdaurPe+\n-PSfnqLtQft9/neecGRdEaQzzzSFVQUVQzTdK1Q7hA7b55b2HvIa3ktDiks+sJsYN\n-Dhm6uZM=\n------END CERTIFICATE-----\ndiff --git a/debian/extra/vendor/github.com/google/s2a-go/internal/v2/remotesigner/testdata/server_key.pem b/debian/extra/vendor/github.com/google/s2a-go/internal/v2/remotesigner/testdata/server_key.pem\ndeleted file mode 100644\nindex 81afea7..0000000\n--- a/debian/extra/vendor/github.com/google/s2a-go/internal/v2/remotesigner/testdata/server_key.pem\n+++ /dev/null\n@@ -1,27 +0,0 @@\n------BEGIN RSA PRIVATE KEY-----\n-MIIEpAIBAAKCAQEAorX749dD4zeGNgf+/QrhQRiXmWPOk0zWLnZ5Az6AWiiiNPzs\n-8NJqmFN+zQ9fL89MCMcES8+Fak6mZBd8k1jOPBwK+DrqFuqS/779VNmIUsCwdqDO\n-QTP4VEmpPkSrsbkUvLDWLNfW7HI83u0ARYQSDt6qyJpcPcKrz5Ng31yOKs94XtFk\n-XzIUJgTGq9uj5hzpEvrHDX2JdVN9y1GBB7nzUpC4hjn8tejd1YMSKUV2wAMB7xcA\n-Rw7rh6w7DSDVS9cueldITXnWRcEVvewof9mMJ5wNgwIgwRvixYtJuWRLEnmw1KZc\n-gbjC2vZCeKLsJdmCdVitpAT8nKH40xAA26hJ0wIDAQABAoIBACaNR+lsD8G+XiZf\n-LqN1+HkcAo9tfnyYMAdCOtnx7SdviT9Uzi8hK/B7mAeuJLeHPlS2EuaDfPD7QaFl\n-jza6S+MiIdc+3kgfvESsVAnOoOY6kZUJ9NSuI6CU82y1iJjLaYZrv9NQMLRFPPb0\n-4KOX709mosB1EnXvshW0rbc+jtDFhrm1SxMt+k9TuzmMxjbOeW4LOLXPgU8X1T3Q\n-Xy0hMZZtcgBs9wFIo8yCtmOixax9pnFE8rRltgDxTodn9LLdz1FieyntNgDksZ0P\n-nt4kV7Mqly7ELaea+Foaj244mKsesic2e3GhAlMRLun/VSunSf7mOCxfpITB8dp1\n-drDhOYECgYEA19151dVxRcviuovN6Dar+QszMTnU8pDJ8BjLFjXjP/hNBBwMTHDE\n-duMuWk2qnwZqMooI/shxrF/ufmTgS0CFrh2+ANBZu27vWConJNXcyNtdigI4wt50\n-L0Y2qcZn2mg67qFXHwoR3QNwrwnPwEjRXA09at9CSRZzcwDQ0ETXhYsCgYEAwPaG\n-06QdK8Zyly7TTzZJwxzv9uGiqzodmGtX6NEKjgij2JaCxHpukqZBJoqa0jKeK1cm\n-eNVkOvT5ff9TMzarSHQLr3pZen2/oVLb5gaFkbcJt/klv9Fd+ZRilHY3i6QwS6pD\n-uMiPOWS4DrLHDRVoVlAZTDjT1RVwwTs+P2NhJdkCgYEAsriXysbxBYyMp05gqEW7\n-lHIFbFgpSrs9th+Q5U6wW6JEgYaHWDJ1NslY80MiZI93FWjbkbZ7BvBWESeL3EIL\n-a+EMErht0pVCbIhZ6FF4foPAqia0wAJVx14mm+G80kNBp5jE/NnleEsE3KcO7nBb\n-hg8gLn+x7bk81JZ0TDrzBYkCgYEAuQKluv47SeF3tSScTfKLPpvcKCWmxe1uutkQ\n-7JShPhVioyOMNb39jnYBOWbjkm4d4QgqRuiytSR0oi3QI+Ziy5EYMyNn713qAk9j\n-r2TJZDDPDKnBW+zt4YI4EohWMXk3JRUW4XDKggjjwJQA7bZ812TtHHvP/xoThfG7\n-eSNb3eECgYBw6ssgCtMrdvQiEmjKVX/9yI38mvC2kSGyzbrQnGUfgqRGomRpeZuD\n-B5E3kysA4td5pT5lvcLgSW0TbOz+YbiriXjwOihPIelCvc9gE2eOUI71/byUWPFz\n-7u5F/xQ4NaGr5suLF+lBC6h7pSbM4El9lIHQAQadpuEdzHqrw+hs3g==\n------END RSA PRIVATE KEY-----\ndiff --git a/debian/extra/vendor/github.com/google/s2a-go/internal/v2/testdata/client_cert.pem b/debian/extra/vendor/github.com/google/s2a-go/internal/v2/testdata/client_cert.pem\ndeleted file mode 100644\nindex 493a5a2..0000000\n--- a/debian/extra/vendor/github.com/google/s2a-go/internal/v2/testdata/client_cert.pem\n+++ /dev/null\n@@ -1,24 +0,0 @@\n------BEGIN CERTIFICATE-----\n-MIID8TCCAtmgAwIBAgIUKXNlBRVe6UepjQUijIFPZBd/4qYwDQYJKoZIhvcNAQEL\n-BQAwgYcxCzAJBgNVBAYTAlVTMQswCQYDVQQIDAJDQTESMBAGA1UEBwwJU3Vubnl2\n-YWxlMRAwDgYDVQQKDAdDb21wYW55MREwDwYDVQQLDAhEaXZpc2lvbjEWMBQGA1UE\n-AwwNczJhX3Rlc3RfY2VydDEaMBgGCSqGSIb3DQEJARYLeHl6QHh5ei5jb20wHhcN\n-MjIwNTMxMjAwMzE1WhcNNDIwNTI2MjAwMzE1WjCBhzELMAkGA1UEBhMCVVMxCzAJ\n-BgNVBAgMAkNBMRIwEAYDVQQHDAlTdW5ueXZhbGUxEDAOBgNVBAoMB0NvbXBhbnkx\n-ETAPBgNVBAsMCERpdmlzaW9uMRYwFAYDVQQDDA1zMmFfdGVzdF9jZXJ0MRowGAYJ\n-KoZIhvcNAQkBFgt4eXpAeHl6LmNvbTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCC\n-AQoCggEBAOOFuIucH7XXfohGxKd3uR/ihUA/LdduR9I8kfpUEbq5BOt8xZe5/Yn9\n-a1ozEHVW6cOAbHbnwAR8tkSgZ/t42QIA2k77HWU1Jh2xiEIsJivo3imm4/kZWuR0\n-OqPh7MhzxpR/hvNwpI5mJsAVBWFMa5KtecFZLnyZtwHylrRN1QXzuLrOxuKFufK3\n-RKbTABScn5RbZL976H/jgfSeXrbt242NrIoBnVe6fRbekbq2DQ6zFArbQMUgHjHK\n-P0UqBgdr1QmHfi9KytFyx9BTP3gXWnWIu+bY7/v7qKJMHFwGETo+dCLWYevJL316\n-HnLfhApDMfP8U+Yv/y1N/YvgaSOSlEcCAwEAAaNTMFEwHQYDVR0OBBYEFKhAU4nu\n-0h/lrnggbIGvx4ej0WklMB8GA1UdIwQYMBaAFKhAU4nu0h/lrnggbIGvx4ej0Wkl\n-MA8GA1UdEwEB/wQFMAMBAf8wDQYJKoZIhvcNAQELBQADggEBAE/6NghzQ5fu6yR6\n-EHKbj/YMrFdT7aGn5n2sAf7wJ33LIhiFHkpWBsVlm7rDtZtwhe891ZK/P60anlg9\n-/P0Ua53tSRVRmCvTnEbXWOVMN4is6MsR7BlmzUxl4AtIn7jbeifEwRL7B4xDYmdA\n-QrQnsqoz45dLgS5xK4WDqXATP09Q91xQDuhud/b+A4jrvgwFASmL7rMIZbp4f1JQ\n-nlnl/9VoTBQBvJiWkDUtQDMpRLtauddEkv4AGz75p5IspXWD6cOemuh2iQec11xD\n-X20rs2WZbAcAiUa3nmy8OKYw435vmpj8gp39WYbX/Yx9TymrFFbVY92wYn+quTco\n-pKklVz0=\n------END CERTIFICATE-----\ndiff --git a/debian/extra/vendor/github.com/google/s2a-go/internal/v2/testdata/client_key.pem b/debian/extra/vendor/github.com/google/s2a-go/internal/v2/testdata/client_key.pem\ndeleted file mode 100644\nindex 55a7f10..0000000\n--- a/debian/extra/vendor/github.com/google/s2a-go/internal/v2/testdata/client_key.pem\n+++ /dev/null\n@@ -1,27 +0,0 @@\n------BEGIN RSA PRIVATE KEY-----\n-MIIEogIBAAKCAQEA44W4i5wftdd+iEbEp3e5H+KFQD8t125H0jyR+lQRurkE63zF\n-l7n9if1rWjMQdVbpw4BsdufABHy2RKBn+3jZAgDaTvsdZTUmHbGIQiwmK+jeKabj\n-+Rla5HQ6o+HsyHPGlH+G83CkjmYmwBUFYUxrkq15wVkufJm3AfKWtE3VBfO4us7G\n-4oW58rdEptMAFJyflFtkv3vof+OB9J5etu3bjY2sigGdV7p9Ft6RurYNDrMUCttA\n-xSAeMco/RSoGB2vVCYd+L0rK0XLH0FM/eBdadYi75tjv+/uookwcXAYROj50ItZh\n-68kvfXoect+ECkMx8/xT5i//LU39i+BpI5KURwIDAQABAoIBABgyjo/6iLzUMFbZ\n-/+w3pW6orrdIgN2akvTfED9pVYFgUA+jc3hRhY95bkNnjuaL2cy7Cc4Tk65mfRQL\n-Y0OxdJLr+EvSFSxAXM9npDA1ddHRsF8JqtFBSxNk8R+g1Yf0GDiO35Fgd3/ViWWA\n-VtQkRoSRApP3oiQKTRZd8H04keFR+PvmDk/Lq11l3Kc24A1PevKIPX1oI990ggw9\n-9i4uSV+cnuMxmcI9xxJtgwdDFdjr39l2arLOHr4s6LGoV2IOdXHNlv5xRqWUZ0FH\n-MDHowkLgwDrdSTnNeaVNkce14Gqx+bd4hNaLCdKXMpedBTEmrut3f3hdV1kKjaKt\n-aqRYr8ECgYEA/YDGZY2jvFoHHBywlqmEMFrrCvQGH51m5R1Ntpkzr+Rh3YCmrpvq\n-xgwJXING0PUw3dz+xrH5lJICrfNE5Kt3fPu1rAEy+13mYsNowghtUq2Rtu0Hsjjx\n-2E3Bf8vEB6RNBMmGkUpTTIAroGF5tpJoRvfnWax+k4pFdrKYFtyZdNcCgYEA5cNv\n-EPltvOobjTXlUmtVP3n27KZN2aXexTcagLzRxE9CV4cYySENl3KuOMmccaZpIl6z\n-aHk6BT4X+M0LqElNUczrInfVqI+SGAFLGy7W6CJaqSr6cpyFUP/fosKpm6wKGgLq\n-udHfpvz5rckhKd8kJxFLvhGOK9yN5qpzih0gfhECgYAJfwRvk3G5wYmYpP58dlcs\n-VIuPenqsPoI3PPTHTU/hW+XKnWIhElgmGRdUrto9Q6IT/Y5RtSMLTLjq+Tzwb/fm\n-56rziYv2XJsfwgAvnI8z1Kqrto9ePsHYf3krJ1/thVsZPc9bq/QY3ohD1sLvcuaT\n-GgBBnLOVJU3a12/ZE2RwOwKBgF0csWMAoj8/5IB6if+3ral2xOGsl7oPZVMo/J2V\n-Z7EVqb4M6rd/pKFugTpUQgkwtkSOekhpcGD1hAN5HTNK2YG/+L5UMAsKe9sskwJm\n-HgOfAHy0BSDzW3ey6i9skg2bT9Cww+0gJ3Hl7U1HSCBO5LjMYpSZSrNtwzfqdb5Q\n-BX3xAoGARZdR28Ej3+/+0+fz47Yu2h4z0EI/EbrudLOWY936jIeAVwHckI3+BuqH\n-qR4poj1gfbnMxNuI9UzIXzjEmGewx9kDZ7IYnvloZKqoVQODO5GlKF2ja6IcMNlh\n-GCNdD6PSAS6HcmalmWo9sj+1YMkrl+GJikKZqVBHrHNwMGAG67w=\n------END RSA PRIVATE KEY-----\ndiff --git a/debian/extra/vendor/github.com/google/s2a-go/internal/v2/testdata/server_cert.pem b/debian/extra/vendor/github.com/google/s2a-go/internal/v2/testdata/server_cert.pem\ndeleted file mode 100644\nindex 0f98322..0000000\n--- a/debian/extra/vendor/github.com/google/s2a-go/internal/v2/testdata/server_cert.pem\n+++ /dev/null\n@@ -1,24 +0,0 @@\n------BEGIN CERTIFICATE-----\n-MIID8TCCAtmgAwIBAgIUKCoDuLtiZXvhsBY2RoDm0ugizJ8wDQYJKoZIhvcNAQEL\n-BQAwgYcxCzAJBgNVBAYTAlVTMQswCQYDVQQIDAJDQTESMBAGA1UEBwwJU3Vubnl2\n-YWxlMRAwDgYDVQQKDAdDb21wYW55MREwDwYDVQQLDAhEaXZpc2lvbjEWMBQGA1UE\n-AwwNczJhX3Rlc3RfY2VydDEaMBgGCSqGSIb3DQEJARYLeHl6QHh5ei5jb20wHhcN\n-MjIwNTMxMjAwODI1WhcNNDIwNTI2MjAwODI1WjCBhzELMAkGA1UEBhMCVVMxCzAJ\n-BgNVBAgMAkNBMRIwEAYDVQQHDAlTdW5ueXZhbGUxEDAOBgNVBAoMB0NvbXBhbnkx\n-ETAPBgNVBAsMCERpdmlzaW9uMRYwFAYDVQQDDA1zMmFfdGVzdF9jZXJ0MRowGAYJ\n-KoZIhvcNAQkBFgt4eXpAeHl6LmNvbTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCC\n-AQoCggEBAKK1++PXQ+M3hjYH/v0K4UEYl5ljzpNM1i52eQM+gFooojT87PDSaphT\n-fs0PXy/PTAjHBEvPhWpOpmQXfJNYzjwcCvg66hbqkv++/VTZiFLAsHagzkEz+FRJ\n-qT5Eq7G5FLyw1izX1uxyPN7tAEWEEg7eqsiaXD3Cq8+TYN9cjirPeF7RZF8yFCYE\n-xqvbo+Yc6RL6xw19iXVTfctRgQe581KQuIY5/LXo3dWDEilFdsADAe8XAEcO64es\n-Ow0g1UvXLnpXSE151kXBFb3sKH/ZjCecDYMCIMEb4sWLSblkSxJ5sNSmXIG4wtr2\n-Qnii7CXZgnVYraQE/Jyh+NMQANuoSdMCAwEAAaNTMFEwHQYDVR0OBBYEFAyQQQuM\n-ab+YUQqjK8dVVOoHVFmXMB8GA1UdIwQYMBaAFAyQQQuMab+YUQqjK8dVVOoHVFmX\n-MA8GA1UdEwEB/wQFMAMBAf8wDQYJKoZIhvcNAQELBQADggEBADj0vQ6ykWhicoqR\n-e6VZMwlEJV7/DSvWWKBd9MUjfKye0A4565ya5lmnzP3DiD3nqGe3miqmLsXKDs+X\n-POqlPXTWIamP7D4MJ32XtSLwZB4ru+I+Ao/P/VngPepoRPQoBnzHe7jww0rokqxl\n-AZERjlbTUwUAy/BPWPSzSJZ2j0tcs6ZLDNyYzpK4ao8R9/1VmQ92Tcp3feJs1QTg\n-odRQc3om/AkWOwsll+oyX0UbJeHkFHiLanUPXbdh+/BkSvZJ8ynL+feSDdaurPe+\n-PSfnqLtQft9/neecGRdEaQzzzSFVQUVQzTdK1Q7hA7b55b2HvIa3ktDiks+sJsYN\n-Dhm6uZM=\n------END CERTIFICATE-----\ndiff --git a/debian/extra/vendor/github.com/google/s2a-go/internal/v2/testdata/server_key.pem b/debian/extra/vendor/github.com/google/s2a-go/internal/v2/testdata/server_key.pem\ndeleted file mode 100644\nindex 81afea7..0000000\n--- a/debian/extra/vendor/github.com/google/s2a-go/internal/v2/testdata/server_key.pem\n+++ /dev/null\n@@ -1,27 +0,0 @@\n------BEGIN RSA PRIVATE KEY-----\n-MIIEpAIBAAKCAQEAorX749dD4zeGNgf+/QrhQRiXmWPOk0zWLnZ5Az6AWiiiNPzs\n-8NJqmFN+zQ9fL89MCMcES8+Fak6mZBd8k1jOPBwK+DrqFuqS/779VNmIUsCwdqDO\n-QTP4VEmpPkSrsbkUvLDWLNfW7HI83u0ARYQSDt6qyJpcPcKrz5Ng31yOKs94XtFk\n-XzIUJgTGq9uj5hzpEvrHDX2JdVN9y1GBB7nzUpC4hjn8tejd1YMSKUV2wAMB7xcA\n-Rw7rh6w7DSDVS9cueldITXnWRcEVvewof9mMJ5wNgwIgwRvixYtJuWRLEnmw1KZc\n-gbjC2vZCeKLsJdmCdVitpAT8nKH40xAA26hJ0wIDAQABAoIBACaNR+lsD8G+XiZf\n-LqN1+HkcAo9tfnyYMAdCOtnx7SdviT9Uzi8hK/B7mAeuJLeHPlS2EuaDfPD7QaFl\n-jza6S+MiIdc+3kgfvESsVAnOoOY6kZUJ9NSuI6CU82y1iJjLaYZrv9NQMLRFPPb0\n-4KOX709mosB1EnXvshW0rbc+jtDFhrm1SxMt+k9TuzmMxjbOeW4LOLXPgU8X1T3Q\n-Xy0hMZZtcgBs9wFIo8yCtmOixax9pnFE8rRltgDxTodn9LLdz1FieyntNgDksZ0P\n-nt4kV7Mqly7ELaea+Foaj244mKsesic2e3GhAlMRLun/VSunSf7mOCxfpITB8dp1\n-drDhOYECgYEA19151dVxRcviuovN6Dar+QszMTnU8pDJ8BjLFjXjP/hNBBwMTHDE\n-duMuWk2qnwZqMooI/shxrF/ufmTgS0CFrh2+ANBZu27vWConJNXcyNtdigI4wt50\n-L0Y2qcZn2mg67qFXHwoR3QNwrwnPwEjRXA09at9CSRZzcwDQ0ETXhYsCgYEAwPaG\n-06QdK8Zyly7TTzZJwxzv9uGiqzodmGtX6NEKjgij2JaCxHpukqZBJoqa0jKeK1cm\n-eNVkOvT5ff9TMzarSHQLr3pZen2/oVLb5gaFkbcJt/klv9Fd+ZRilHY3i6QwS6pD\n-uMiPOWS4DrLHDRVoVlAZTDjT1RVwwTs+P2NhJdkCgYEAsriXysbxBYyMp05gqEW7\n-lHIFbFgpSrs9th+Q5U6wW6JEgYaHWDJ1NslY80MiZI93FWjbkbZ7BvBWESeL3EIL\n-a+EMErht0pVCbIhZ6FF4foPAqia0wAJVx14mm+G80kNBp5jE/NnleEsE3KcO7nBb\n-hg8gLn+x7bk81JZ0TDrzBYkCgYEAuQKluv47SeF3tSScTfKLPpvcKCWmxe1uutkQ\n-7JShPhVioyOMNb39jnYBOWbjkm4d4QgqRuiytSR0oi3QI+Ziy5EYMyNn713qAk9j\n-r2TJZDDPDKnBW+zt4YI4EohWMXk3JRUW4XDKggjjwJQA7bZ812TtHHvP/xoThfG7\n-eSNb3eECgYBw6ssgCtMrdvQiEmjKVX/9yI38mvC2kSGyzbrQnGUfgqRGomRpeZuD\n-B5E3kysA4td5pT5lvcLgSW0TbOz+YbiriXjwOihPIelCvc9gE2eOUI71/byUWPFz\n-7u5F/xQ4NaGr5suLF+lBC6h7pSbM4El9lIHQAQadpuEdzHqrw+hs3g==\n------END RSA PRIVATE KEY-----\ndiff --git a/debian/extra/vendor/github.com/google/s2a-go/internal/v2/tlsconfigstore/testdata/client_cert.pem b/debian/extra/vendor/github.com/google/s2a-go/internal/v2/tlsconfigstore/testdata/client_cert.pem\ndeleted file mode 100644\nindex 493a5a2..0000000\n--- a/debian/extra/vendor/github.com/google/s2a-go/internal/v2/tlsconfigstore/testdata/client_cert.pem\n+++ /dev/null\n@@ -1,24 +0,0 @@\n------BEGIN CERTIFICATE-----\n-MIID8TCCAtmgAwIBAgIUKXNlBRVe6UepjQUijIFPZBd/4qYwDQYJKoZIhvcNAQEL\n-BQAwgYcxCzAJBgNVBAYTAlVTMQswCQYDVQQIDAJDQTESMBAGA1UEBwwJU3Vubnl2\n-YWxlMRAwDgYDVQQKDAdDb21wYW55MREwDwYDVQQLDAhEaXZpc2lvbjEWMBQGA1UE\n-AwwNczJhX3Rlc3RfY2VydDEaMBgGCSqGSIb3DQEJARYLeHl6QHh5ei5jb20wHhcN\n-MjIwNTMxMjAwMzE1WhcNNDIwNTI2MjAwMzE1WjCBhzELMAkGA1UEBhMCVVMxCzAJ\n-BgNVBAgMAkNBMRIwEAYDVQQHDAlTdW5ueXZhbGUxEDAOBgNVBAoMB0NvbXBhbnkx\n-ETAPBgNVBAsMCERpdmlzaW9uMRYwFAYDVQQDDA1zMmFfdGVzdF9jZXJ0MRowGAYJ\n-KoZIhvcNAQkBFgt4eXpAeHl6LmNvbTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCC\n-AQoCggEBAOOFuIucH7XXfohGxKd3uR/ihUA/LdduR9I8kfpUEbq5BOt8xZe5/Yn9\n-a1ozEHVW6cOAbHbnwAR8tkSgZ/t42QIA2k77HWU1Jh2xiEIsJivo3imm4/kZWuR0\n-OqPh7MhzxpR/hvNwpI5mJsAVBWFMa5KtecFZLnyZtwHylrRN1QXzuLrOxuKFufK3\n-RKbTABScn5RbZL976H/jgfSeXrbt242NrIoBnVe6fRbekbq2DQ6zFArbQMUgHjHK\n-P0UqBgdr1QmHfi9KytFyx9BTP3gXWnWIu+bY7/v7qKJMHFwGETo+dCLWYevJL316\n-HnLfhApDMfP8U+Yv/y1N/YvgaSOSlEcCAwEAAaNTMFEwHQYDVR0OBBYEFKhAU4nu\n-0h/lrnggbIGvx4ej0WklMB8GA1UdIwQYMBaAFKhAU4nu0h/lrnggbIGvx4ej0Wkl\n-MA8GA1UdEwEB/wQFMAMBAf8wDQYJKoZIhvcNAQELBQADggEBAE/6NghzQ5fu6yR6\n-EHKbj/YMrFdT7aGn5n2sAf7wJ33LIhiFHkpWBsVlm7rDtZtwhe891ZK/P60anlg9\n-/P0Ua53tSRVRmCvTnEbXWOVMN4is6MsR7BlmzUxl4AtIn7jbeifEwRL7B4xDYmdA\n-QrQnsqoz45dLgS5xK4WDqXATP09Q91xQDuhud/b+A4jrvgwFASmL7rMIZbp4f1JQ\n-nlnl/9VoTBQBvJiWkDUtQDMpRLtauddEkv4AGz75p5IspXWD6cOemuh2iQec11xD\n-X20rs2WZbAcAiUa3nmy8OKYw435vmpj8gp39WYbX/Yx9TymrFFbVY92wYn+quTco\n-pKklVz0=\n------END CERTIFICATE-----\ndiff --git a/debian/extra/vendor/github.com/google/s2a-go/internal/v2/tlsconfigstore/testdata/client_key.pem b/debian/extra/vendor/github.com/google/s2a-go/internal/v2/tlsconfigstore/testdata/client_key.pem\ndeleted file mode 100644\nindex 55a7f10..0000000\n--- a/debian/extra/vendor/github.com/google/s2a-go/internal/v2/tlsconfigstore/testdata/client_key.pem\n+++ /dev/null\n@@ -1,27 +0,0 @@\n------BEGIN RSA PRIVATE KEY-----\n-MIIEogIBAAKCAQEA44W4i5wftdd+iEbEp3e5H+KFQD8t125H0jyR+lQRurkE63zF\n-l7n9if1rWjMQdVbpw4BsdufABHy2RKBn+3jZAgDaTvsdZTUmHbGIQiwmK+jeKabj\n-+Rla5HQ6o+HsyHPGlH+G83CkjmYmwBUFYUxrkq15wVkufJm3AfKWtE3VBfO4us7G\n-4oW58rdEptMAFJyflFtkv3vof+OB9J5etu3bjY2sigGdV7p9Ft6RurYNDrMUCttA\n-xSAeMco/RSoGB2vVCYd+L0rK0XLH0FM/eBdadYi75tjv+/uookwcXAYROj50ItZh\n-68kvfXoect+ECkMx8/xT5i//LU39i+BpI5KURwIDAQABAoIBABgyjo/6iLzUMFbZ\n-/+w3pW6orrdIgN2akvTfED9pVYFgUA+jc3hRhY95bkNnjuaL2cy7Cc4Tk65mfRQL\n-Y0OxdJLr+EvSFSxAXM9npDA1ddHRsF8JqtFBSxNk8R+g1Yf0GDiO35Fgd3/ViWWA\n-VtQkRoSRApP3oiQKTRZd8H04keFR+PvmDk/Lq11l3Kc24A1PevKIPX1oI990ggw9\n-9i4uSV+cnuMxmcI9xxJtgwdDFdjr39l2arLOHr4s6LGoV2IOdXHNlv5xRqWUZ0FH\n-MDHowkLgwDrdSTnNeaVNkce14Gqx+bd4hNaLCdKXMpedBTEmrut3f3hdV1kKjaKt\n-aqRYr8ECgYEA/YDGZY2jvFoHHBywlqmEMFrrCvQGH51m5R1Ntpkzr+Rh3YCmrpvq\n-xgwJXING0PUw3dz+xrH5lJICrfNE5Kt3fPu1rAEy+13mYsNowghtUq2Rtu0Hsjjx\n-2E3Bf8vEB6RNBMmGkUpTTIAroGF5tpJoRvfnWax+k4pFdrKYFtyZdNcCgYEA5cNv\n-EPltvOobjTXlUmtVP3n27KZN2aXexTcagLzRxE9CV4cYySENl3KuOMmccaZpIl6z\n-aHk6BT4X+M0LqElNUczrInfVqI+SGAFLGy7W6CJaqSr6cpyFUP/fosKpm6wKGgLq\n-udHfpvz5rckhKd8kJxFLvhGOK9yN5qpzih0gfhECgYAJfwRvk3G5wYmYpP58dlcs\n-VIuPenqsPoI3PPTHTU/hW+XKnWIhElgmGRdUrto9Q6IT/Y5RtSMLTLjq+Tzwb/fm\n-56rziYv2XJsfwgAvnI8z1Kqrto9ePsHYf3krJ1/thVsZPc9bq/QY3ohD1sLvcuaT\n-GgBBnLOVJU3a12/ZE2RwOwKBgF0csWMAoj8/5IB6if+3ral2xOGsl7oPZVMo/J2V\n-Z7EVqb4M6rd/pKFugTpUQgkwtkSOekhpcGD1hAN5HTNK2YG/+L5UMAsKe9sskwJm\n-HgOfAHy0BSDzW3ey6i9skg2bT9Cww+0gJ3Hl7U1HSCBO5LjMYpSZSrNtwzfqdb5Q\n-BX3xAoGARZdR28Ej3+/+0+fz47Yu2h4z0EI/EbrudLOWY936jIeAVwHckI3+BuqH\n-qR4poj1gfbnMxNuI9UzIXzjEmGewx9kDZ7IYnvloZKqoVQODO5GlKF2ja6IcMNlh\n-GCNdD6PSAS6HcmalmWo9sj+1YMkrl+GJikKZqVBHrHNwMGAG67w=\n------END RSA PRIVATE KEY-----\ndiff --git a/debian/extra/vendor/github.com/google/s2a-go/internal/v2/tlsconfigstore/testdata/server_cert.pem b/debian/extra/vendor/github.com/google/s2a-go/internal/v2/tlsconfigstore/testdata/server_cert.pem\ndeleted file mode 100644\nindex 0f98322..0000000\n--- a/debian/extra/vendor/github.com/google/s2a-go/internal/v2/tlsconfigstore/testdata/server_cert.pem\n+++ /dev/null\n@@ -1,24 +0,0 @@\n------BEGIN CERTIFICATE-----\n-MIID8TCCAtmgAwIBAgIUKCoDuLtiZXvhsBY2RoDm0ugizJ8wDQYJKoZIhvcNAQEL\n-BQAwgYcxCzAJBgNVBAYTAlVTMQswCQYDVQQIDAJDQTESMBAGA1UEBwwJU3Vubnl2\n-YWxlMRAwDgYDVQQKDAdDb21wYW55MREwDwYDVQQLDAhEaXZpc2lvbjEWMBQGA1UE\n-AwwNczJhX3Rlc3RfY2VydDEaMBgGCSqGSIb3DQEJARYLeHl6QHh5ei5jb20wHhcN\n-MjIwNTMxMjAwODI1WhcNNDIwNTI2MjAwODI1WjCBhzELMAkGA1UEBhMCVVMxCzAJ\n-BgNVBAgMAkNBMRIwEAYDVQQHDAlTdW5ueXZhbGUxEDAOBgNVBAoMB0NvbXBhbnkx\n-ETAPBgNVBAsMCERpdmlzaW9uMRYwFAYDVQQDDA1zMmFfdGVzdF9jZXJ0MRowGAYJ\n-KoZIhvcNAQkBFgt4eXpAeHl6LmNvbTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCC\n-AQoCggEBAKK1++PXQ+M3hjYH/v0K4UEYl5ljzpNM1i52eQM+gFooojT87PDSaphT\n-fs0PXy/PTAjHBEvPhWpOpmQXfJNYzjwcCvg66hbqkv++/VTZiFLAsHagzkEz+FRJ\n-qT5Eq7G5FLyw1izX1uxyPN7tAEWEEg7eqsiaXD3Cq8+TYN9cjirPeF7RZF8yFCYE\n-xqvbo+Yc6RL6xw19iXVTfctRgQe581KQuIY5/LXo3dWDEilFdsADAe8XAEcO64es\n-Ow0g1UvXLnpXSE151kXBFb3sKH/ZjCecDYMCIMEb4sWLSblkSxJ5sNSmXIG4wtr2\n-Qnii7CXZgnVYraQE/Jyh+NMQANuoSdMCAwEAAaNTMFEwHQYDVR0OBBYEFAyQQQuM\n-ab+YUQqjK8dVVOoHVFmXMB8GA1UdIwQYMBaAFAyQQQuMab+YUQqjK8dVVOoHVFmX\n-MA8GA1UdEwEB/wQFMAMBAf8wDQYJKoZIhvcNAQELBQADggEBADj0vQ6ykWhicoqR\n-e6VZMwlEJV7/DSvWWKBd9MUjfKye0A4565ya5lmnzP3DiD3nqGe3miqmLsXKDs+X\n-POqlPXTWIamP7D4MJ32XtSLwZB4ru+I+Ao/P/VngPepoRPQoBnzHe7jww0rokqxl\n-AZERjlbTUwUAy/BPWPSzSJZ2j0tcs6ZLDNyYzpK4ao8R9/1VmQ92Tcp3feJs1QTg\n-odRQc3om/AkWOwsll+oyX0UbJeHkFHiLanUPXbdh+/BkSvZJ8ynL+feSDdaurPe+\n-PSfnqLtQft9/neecGRdEaQzzzSFVQUVQzTdK1Q7hA7b55b2HvIa3ktDiks+sJsYN\n-Dhm6uZM=\n------END CERTIFICATE-----\ndiff --git a/debian/extra/vendor/github.com/google/s2a-go/internal/v2/tlsconfigstore/testdata/server_key.pem b/debian/extra/vendor/github.com/google/s2a-go/internal/v2/tlsconfigstore/testdata/server_key.pem\ndeleted file mode 100644\nindex 81afea7..0000000\n--- a/debian/extra/vendor/github.com/google/s2a-go/internal/v2/tlsconfigstore/testdata/server_key.pem\n+++ /dev/null\n@@ -1,27 +0,0 @@\n------BEGIN RSA PRIVATE KEY-----\n-MIIEpAIBAAKCAQEAorX749dD4zeGNgf+/QrhQRiXmWPOk0zWLnZ5Az6AWiiiNPzs\n-8NJqmFN+zQ9fL89MCMcES8+Fak6mZBd8k1jOPBwK+DrqFuqS/779VNmIUsCwdqDO\n-QTP4VEmpPkSrsbkUvLDWLNfW7HI83u0ARYQSDt6qyJpcPcKrz5Ng31yOKs94XtFk\n-XzIUJgTGq9uj5hzpEvrHDX2JdVN9y1GBB7nzUpC4hjn8tejd1YMSKUV2wAMB7xcA\n-Rw7rh6w7DSDVS9cueldITXnWRcEVvewof9mMJ5wNgwIgwRvixYtJuWRLEnmw1KZc\n-gbjC2vZCeKLsJdmCdVitpAT8nKH40xAA26hJ0wIDAQABAoIBACaNR+lsD8G+XiZf\n-LqN1+HkcAo9tfnyYMAdCOtnx7SdviT9Uzi8hK/B7mAeuJLeHPlS2EuaDfPD7QaFl\n-jza6S+MiIdc+3kgfvESsVAnOoOY6kZUJ9NSuI6CU82y1iJjLaYZrv9NQMLRFPPb0\n-4KOX709mosB1EnXvshW0rbc+jtDFhrm1SxMt+k9TuzmMxjbOeW4LOLXPgU8X1T3Q\n-Xy0hMZZtcgBs9wFIo8yCtmOixax9pnFE8rRltgDxTodn9LLdz1FieyntNgDksZ0P\n-nt4kV7Mqly7ELaea+Foaj244mKsesic2e3GhAlMRLun/VSunSf7mOCxfpITB8dp1\n-drDhOYECgYEA19151dVxRcviuovN6Dar+QszMTnU8pDJ8BjLFjXjP/hNBBwMTHDE\n-duMuWk2qnwZqMooI/shxrF/ufmTgS0CFrh2+ANBZu27vWConJNXcyNtdigI4wt50\n-L0Y2qcZn2mg67qFXHwoR3QNwrwnPwEjRXA09at9CSRZzcwDQ0ETXhYsCgYEAwPaG\n-06QdK8Zyly7TTzZJwxzv9uGiqzodmGtX6NEKjgij2JaCxHpukqZBJoqa0jKeK1cm\n-eNVkOvT5ff9TMzarSHQLr3pZen2/oVLb5gaFkbcJt/klv9Fd+ZRilHY3i6QwS6pD\n-uMiPOWS4DrLHDRVoVlAZTDjT1RVwwTs+P2NhJdkCgYEAsriXysbxBYyMp05gqEW7\n-lHIFbFgpSrs9th+Q5U6wW6JEgYaHWDJ1NslY80MiZI93FWjbkbZ7BvBWESeL3EIL\n-a+EMErht0pVCbIhZ6FF4foPAqia0wAJVx14mm+G80kNBp5jE/NnleEsE3KcO7nBb\n-hg8gLn+x7bk81JZ0TDrzBYkCgYEAuQKluv47SeF3tSScTfKLPpvcKCWmxe1uutkQ\n-7JShPhVioyOMNb39jnYBOWbjkm4d4QgqRuiytSR0oi3QI+Ziy5EYMyNn713qAk9j\n-r2TJZDDPDKnBW+zt4YI4EohWMXk3JRUW4XDKggjjwJQA7bZ812TtHHvP/xoThfG7\n-eSNb3eECgYBw6ssgCtMrdvQiEmjKVX/9yI38mvC2kSGyzbrQnGUfgqRGomRpeZuD\n-B5E3kysA4td5pT5lvcLgSW0TbOz+YbiriXjwOihPIelCvc9gE2eOUI71/byUWPFz\n-7u5F/xQ4NaGr5suLF+lBC6h7pSbM4El9lIHQAQadpuEdzHqrw+hs3g==\n------END RSA PRIVATE KEY-----\ndiff --git a/debian/extra/vendor/github.com/google/s2a-go/testdata/client_cert.pem b/debian/extra/vendor/github.com/google/s2a-go/testdata/client_cert.pem\ndeleted file mode 100644\nindex 493a5a2..0000000\n--- a/debian/extra/vendor/github.com/google/s2a-go/testdata/client_cert.pem\n+++ /dev/null\n@@ -1,24 +0,0 @@\n------BEGIN CERTIFICATE-----\n-MIID8TCCAtmgAwIBAgIUKXNlBRVe6UepjQUijIFPZBd/4qYwDQYJKoZIhvcNAQEL\n-BQAwgYcxCzAJBgNVBAYTAlVTMQswCQYDVQQIDAJDQTESMBAGA1UEBwwJU3Vubnl2\n-YWxlMRAwDgYDVQQKDAdDb21wYW55MREwDwYDVQQLDAhEaXZpc2lvbjEWMBQGA1UE\n-AwwNczJhX3Rlc3RfY2VydDEaMBgGCSqGSIb3DQEJARYLeHl6QHh5ei5jb20wHhcN\n-MjIwNTMxMjAwMzE1WhcNNDIwNTI2MjAwMzE1WjCBhzELMAkGA1UEBhMCVVMxCzAJ\n-BgNVBAgMAkNBMRIwEAYDVQQHDAlTdW5ueXZhbGUxEDAOBgNVBAoMB0NvbXBhbnkx\n-ETAPBgNVBAsMCERpdmlzaW9uMRYwFAYDVQQDDA1zMmFfdGVzdF9jZXJ0MRowGAYJ\n-KoZIhvcNAQkBFgt4eXpAeHl6LmNvbTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCC\n-AQoCggEBAOOFuIucH7XXfohGxKd3uR/ihUA/LdduR9I8kfpUEbq5BOt8xZe5/Yn9\n-a1ozEHVW6cOAbHbnwAR8tkSgZ/t42QIA2k77HWU1Jh2xiEIsJivo3imm4/kZWuR0\n-OqPh7MhzxpR/hvNwpI5mJsAVBWFMa5KtecFZLnyZtwHylrRN1QXzuLrOxuKFufK3\n-RKbTABScn5RbZL976H/jgfSeXrbt242NrIoBnVe6fRbekbq2DQ6zFArbQMUgHjHK\n-P0UqBgdr1QmHfi9KytFyx9BTP3gXWnWIu+bY7/v7qKJMHFwGETo+dCLWYevJL316\n-HnLfhApDMfP8U+Yv/y1N/YvgaSOSlEcCAwEAAaNTMFEwHQYDVR0OBBYEFKhAU4nu\n-0h/lrnggbIGvx4ej0WklMB8GA1UdIwQYMBaAFKhAU4nu0h/lrnggbIGvx4ej0Wkl\n-MA8GA1UdEwEB/wQFMAMBAf8wDQYJKoZIhvcNAQELBQADggEBAE/6NghzQ5fu6yR6\n-EHKbj/YMrFdT7aGn5n2sAf7wJ33LIhiFHkpWBsVlm7rDtZtwhe891ZK/P60anlg9\n-/P0Ua53tSRVRmCvTnEbXWOVMN4is6MsR7BlmzUxl4AtIn7jbeifEwRL7B4xDYmdA\n-QrQnsqoz45dLgS5xK4WDqXATP09Q91xQDuhud/b+A4jrvgwFASmL7rMIZbp4f1JQ\n-nlnl/9VoTBQBvJiWkDUtQDMpRLtauddEkv4AGz75p5IspXWD6cOemuh2iQec11xD\n-X20rs2WZbAcAiUa3nmy8OKYw435vmpj8gp39WYbX/Yx9TymrFFbVY92wYn+quTco\n-pKklVz0=\n------END CERTIFICATE-----\ndiff --git a/debian/extra/vendor/github.com/google/s2a-go/testdata/client_key.pem b/debian/extra/vendor/github.com/google/s2a-go/testdata/client_key.pem\ndeleted file mode 100644\nindex 55a7f10..0000000\n--- a/debian/extra/vendor/github.com/google/s2a-go/testdata/client_key.pem\n+++ /dev/null\n@@ -1,27 +0,0 @@\n------BEGIN RSA PRIVATE KEY-----\n-MIIEogIBAAKCAQEA44W4i5wftdd+iEbEp3e5H+KFQD8t125H0jyR+lQRurkE63zF\n-l7n9if1rWjMQdVbpw4BsdufABHy2RKBn+3jZAgDaTvsdZTUmHbGIQiwmK+jeKabj\n-+Rla5HQ6o+HsyHPGlH+G83CkjmYmwBUFYUxrkq15wVkufJm3AfKWtE3VBfO4us7G\n-4oW58rdEptMAFJyflFtkv3vof+OB9J5etu3bjY2sigGdV7p9Ft6RurYNDrMUCttA\n-xSAeMco/RSoGB2vVCYd+L0rK0XLH0FM/eBdadYi75tjv+/uookwcXAYROj50ItZh\n-68kvfXoect+ECkMx8/xT5i//LU39i+BpI5KURwIDAQABAoIBABgyjo/6iLzUMFbZ\n-/+w3pW6orrdIgN2akvTfED9pVYFgUA+jc3hRhY95bkNnjuaL2cy7Cc4Tk65mfRQL\n-Y0OxdJLr+EvSFSxAXM9npDA1ddHRsF8JqtFBSxNk8R+g1Yf0GDiO35Fgd3/ViWWA\n-VtQkRoSRApP3oiQKTRZd8H04keFR+PvmDk/Lq11l3Kc24A1PevKIPX1oI990ggw9\n-9i4uSV+cnuMxmcI9xxJtgwdDFdjr39l2arLOHr4s6LGoV2IOdXHNlv5xRqWUZ0FH\n-MDHowkLgwDrdSTnNeaVNkce14Gqx+bd4hNaLCdKXMpedBTEmrut3f3hdV1kKjaKt\n-aqRYr8ECgYEA/YDGZY2jvFoHHBywlqmEMFrrCvQGH51m5R1Ntpkzr+Rh3YCmrpvq\n-xgwJXING0PUw3dz+xrH5lJICrfNE5Kt3fPu1rAEy+13mYsNowghtUq2Rtu0Hsjjx\n-2E3Bf8vEB6RNBMmGkUpTTIAroGF5tpJoRvfnWax+k4pFdrKYFtyZdNcCgYEA5cNv\n-EPltvOobjTXlUmtVP3n27KZN2aXexTcagLzRxE9CV4cYySENl3KuOMmccaZpIl6z\n-aHk6BT4X+M0LqElNUczrInfVqI+SGAFLGy7W6CJaqSr6cpyFUP/fosKpm6wKGgLq\n-udHfpvz5rckhKd8kJxFLvhGOK9yN5qpzih0gfhECgYAJfwRvk3G5wYmYpP58dlcs\n-VIuPenqsPoI3PPTHTU/hW+XKnWIhElgmGRdUrto9Q6IT/Y5RtSMLTLjq+Tzwb/fm\n-56rziYv2XJsfwgAvnI8z1Kqrto9ePsHYf3krJ1/thVsZPc9bq/QY3ohD1sLvcuaT\n-GgBBnLOVJU3a12/ZE2RwOwKBgF0csWMAoj8/5IB6if+3ral2xOGsl7oPZVMo/J2V\n-Z7EVqb4M6rd/pKFugTpUQgkwtkSOekhpcGD1hAN5HTNK2YG/+L5UMAsKe9sskwJm\n-HgOfAHy0BSDzW3ey6i9skg2bT9Cww+0gJ3Hl7U1HSCBO5LjMYpSZSrNtwzfqdb5Q\n-BX3xAoGARZdR28Ej3+/+0+fz47Yu2h4z0EI/EbrudLOWY936jIeAVwHckI3+BuqH\n-qR4poj1gfbnMxNuI9UzIXzjEmGewx9kDZ7IYnvloZKqoVQODO5GlKF2ja6IcMNlh\n-GCNdD6PSAS6HcmalmWo9sj+1YMkrl+GJikKZqVBHrHNwMGAG67w=\n------END RSA PRIVATE KEY-----\ndiff --git a/debian/extra/vendor/github.com/google/s2a-go/testdata/server_cert.pem b/debian/extra/vendor/github.com/google/s2a-go/testdata/server_cert.pem\ndeleted file mode 100644\nindex 0f98322..0000000\n--- a/debian/extra/vendor/github.com/google/s2a-go/testdata/server_cert.pem\n+++ /dev/null\n@@ -1,24 +0,0 @@\n------BEGIN CERTIFICATE-----\n-MIID8TCCAtmgAwIBAgIUKCoDuLtiZXvhsBY2RoDm0ugizJ8wDQYJKoZIhvcNAQEL\n-BQAwgYcxCzAJBgNVBAYTAlVTMQswCQYDVQQIDAJDQTESMBAGA1UEBwwJU3Vubnl2\n-YWxlMRAwDgYDVQQKDAdDb21wYW55MREwDwYDVQQLDAhEaXZpc2lvbjEWMBQGA1UE\n-AwwNczJhX3Rlc3RfY2VydDEaMBgGCSqGSIb3DQEJARYLeHl6QHh5ei5jb20wHhcN\n-MjIwNTMxMjAwODI1WhcNNDIwNTI2MjAwODI1WjCBhzELMAkGA1UEBhMCVVMxCzAJ\n-BgNVBAgMAkNBMRIwEAYDVQQHDAlTdW5ueXZhbGUxEDAOBgNVBAoMB0NvbXBhbnkx\n-ETAPBgNVBAsMCERpdmlzaW9uMRYwFAYDVQQDDA1zMmFfdGVzdF9jZXJ0MRowGAYJ\n-KoZIhvcNAQkBFgt4eXpAeHl6LmNvbTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCC\n-AQoCggEBAKK1++PXQ+M3hjYH/v0K4UEYl5ljzpNM1i52eQM+gFooojT87PDSaphT\n-fs0PXy/PTAjHBEvPhWpOpmQXfJNYzjwcCvg66hbqkv++/VTZiFLAsHagzkEz+FRJ\n-qT5Eq7G5FLyw1izX1uxyPN7tAEWEEg7eqsiaXD3Cq8+TYN9cjirPeF7RZF8yFCYE\n-xqvbo+Yc6RL6xw19iXVTfctRgQe581KQuIY5/LXo3dWDEilFdsADAe8XAEcO64es\n-Ow0g1UvXLnpXSE151kXBFb3sKH/ZjCecDYMCIMEb4sWLSblkSxJ5sNSmXIG4wtr2\n-Qnii7CXZgnVYraQE/Jyh+NMQANuoSdMCAwEAAaNTMFEwHQYDVR0OBBYEFAyQQQuM\n-ab+YUQqjK8dVVOoHVFmXMB8GA1UdIwQYMBaAFAyQQQuMab+YUQqjK8dVVOoHVFmX\n-MA8GA1UdEwEB/wQFMAMBAf8wDQYJKoZIhvcNAQELBQADggEBADj0vQ6ykWhicoqR\n-e6VZMwlEJV7/DSvWWKBd9MUjfKye0A4565ya5lmnzP3DiD3nqGe3miqmLsXKDs+X\n-POqlPXTWIamP7D4MJ32XtSLwZB4ru+I+Ao/P/VngPepoRPQoBnzHe7jww0rokqxl\n-AZERjlbTUwUAy/BPWPSzSJZ2j0tcs6ZLDNyYzpK4ao8R9/1VmQ92Tcp3feJs1QTg\n-odRQc3om/AkWOwsll+oyX0UbJeHkFHiLanUPXbdh+/BkSvZJ8ynL+feSDdaurPe+\n-PSfnqLtQft9/neecGRdEaQzzzSFVQUVQzTdK1Q7hA7b55b2HvIa3ktDiks+sJsYN\n-Dhm6uZM=\n------END CERTIFICATE-----\ndiff --git a/debian/extra/vendor/github.com/google/s2a-go/testdata/server_key.pem b/debian/extra/vendor/github.com/google/s2a-go/testdata/server_key.pem\ndeleted file mode 100644\nindex 81afea7..0000000\n--- a/debian/extra/vendor/github.com/google/s2a-go/testdata/server_key.pem\n+++ /dev/null\n@@ -1,27 +0,0 @@\n------BEGIN RSA PRIVATE KEY-----\n-MIIEpAIBAAKCAQEAorX749dD4zeGNgf+/QrhQRiXmWPOk0zWLnZ5Az6AWiiiNPzs\n-8NJqmFN+zQ9fL89MCMcES8+Fak6mZBd8k1jOPBwK+DrqFuqS/779VNmIUsCwdqDO\n-QTP4VEmpPkSrsbkUvLDWLNfW7HI83u0ARYQSDt6qyJpcPcKrz5Ng31yOKs94XtFk\n-XzIUJgTGq9uj5hzpEvrHDX2JdVN9y1GBB7nzUpC4hjn8tejd1YMSKUV2wAMB7xcA\n-Rw7rh6w7DSDVS9cueldITXnWRcEVvewof9mMJ5wNgwIgwRvixYtJuWRLEnmw1KZc\n-gbjC2vZCeKLsJdmCdVitpAT8nKH40xAA26hJ0wIDAQABAoIBACaNR+lsD8G+XiZf\n-LqN1+HkcAo9tfnyYMAdCOtnx7SdviT9Uzi8hK/B7mAeuJLeHPlS2EuaDfPD7QaFl\n-jza6S+MiIdc+3kgfvESsVAnOoOY6kZUJ9NSuI6CU82y1iJjLaYZrv9NQMLRFPPb0\n-4KOX709mosB1EnXvshW0rbc+jtDFhrm1SxMt+k9TuzmMxjbOeW4LOLXPgU8X1T3Q\n-Xy0hMZZtcgBs9wFIo8yCtmOixax9pnFE8rRltgDxTodn9LLdz1FieyntNgDksZ0P\n-nt4kV7Mqly7ELaea+Foaj244mKsesic2e3GhAlMRLun/VSunSf7mOCxfpITB8dp1\n-drDhOYECgYEA19151dVxRcviuovN6Dar+QszMTnU8pDJ8BjLFjXjP/hNBBwMTHDE\n-duMuWk2qnwZqMooI/shxrF/ufmTgS0CFrh2+ANBZu27vWConJNXcyNtdigI4wt50\n-L0Y2qcZn2mg67qFXHwoR3QNwrwnPwEjRXA09at9CSRZzcwDQ0ETXhYsCgYEAwPaG\n-06QdK8Zyly7TTzZJwxzv9uGiqzodmGtX6NEKjgij2JaCxHpukqZBJoqa0jKeK1cm\n-eNVkOvT5ff9TMzarSHQLr3pZen2/oVLb5gaFkbcJt/klv9Fd+ZRilHY3i6QwS6pD\n-uMiPOWS4DrLHDRVoVlAZTDjT1RVwwTs+P2NhJdkCgYEAsriXysbxBYyMp05gqEW7\n-lHIFbFgpSrs9th+Q5U6wW6JEgYaHWDJ1NslY80MiZI93FWjbkbZ7BvBWESeL3EIL\n-a+EMErht0pVCbIhZ6FF4foPAqia0wAJVx14mm+G80kNBp5jE/NnleEsE3KcO7nBb\n-hg8gLn+x7bk81JZ0TDrzBYkCgYEAuQKluv47SeF3tSScTfKLPpvcKCWmxe1uutkQ\n-7JShPhVioyOMNb39jnYBOWbjkm4d4QgqRuiytSR0oi3QI+Ziy5EYMyNn713qAk9j\n-r2TJZDDPDKnBW+zt4YI4EohWMXk3JRUW4XDKggjjwJQA7bZ812TtHHvP/xoThfG7\n-eSNb3eECgYBw6ssgCtMrdvQiEmjKVX/9yI38mvC2kSGyzbrQnGUfgqRGomRpeZuD\n-B5E3kysA4td5pT5lvcLgSW0TbOz+YbiriXjwOihPIelCvc9gE2eOUI71/byUWPFz\n-7u5F/xQ4NaGr5suLF+lBC6h7pSbM4El9lIHQAQadpuEdzHqrw+hs3g==\n------END RSA PRIVATE KEY-----\ndiff --git a/debian/extra/vendor/github.com/kardianos/service/.gitignore b/debian/extra/vendor/github.com/kardianos/service/.gitignore\nnew file mode 100644\nindex 0000000..dbe9c82\n--- /dev/null\n+++ b/debian/extra/vendor/github.com/kardianos/service/.gitignore\n@@ -0,0 +1 @@\n+.vscode/\n\\ No newline at end of file\ndiff --git a/debian/extra/vendor/github.com/pkg/errors/.gitignore b/debian/extra/vendor/github.com/pkg/errors/.gitignore\nnew file mode 100644\nindex 0000000..daf913b\n--- /dev/null\n+++ b/debian/extra/vendor/github.com/pkg/errors/.gitignore\n@@ -0,0 +1,24 @@\n+# Compiled Object files, Static and Dynamic libs (Shared Objects)\n+*.o\n+*.a\n+*.so\n+\n+# Folders\n+_obj\n+_test\n+\n+# Architecture specific extensions/prefixes\n+*.[568vq]\n+[568vq].out\n+\n+*.cgo1.go\n+*.cgo2.c\n+_cgo_defun.c\n+_cgo_gotypes.go\n+_cgo_export.*\n+\n+_testmain.go\n+\n+*.exe\n+*.test\n+*.prof\ndiff --git a/debian/extra/vendor/github.com/robfig/cron/v3/.gitignore b/debian/extra/vendor/github.com/robfig/cron/v3/.gitignore\nnew file mode 100644\nindex 0000000..0026861\n--- /dev/null\n+++ b/debian/extra/vendor/github.com/robfig/cron/v3/.gitignore\n@@ -0,0 +1,22 @@\n+# Compiled Object files, Static and Dynamic libs (Shared Objects)\n+*.o\n+*.a\n+*.so\n+\n+# Folders\n+_obj\n+_test\n+\n+# Architecture specific extensions/prefixes\n+*.[568vq]\n+[568vq].out\n+\n+*.cgo1.go\n+*.cgo2.c\n+_cgo_defun.c\n+_cgo_gotypes.go\n+_cgo_export.*\n+\n+_testmain.go\n+\n+*.exe\ndiff --git a/debian/extra/vendor/go.opencensus.io/.gitignore b/debian/extra/vendor/go.opencensus.io/.gitignore\nnew file mode 100644\nindex 0000000..74a6db4\n--- /dev/null\n+++ b/debian/extra/vendor/go.opencensus.io/.gitignore\n@@ -0,0 +1,9 @@\n+/.idea/\n+\n+# go.opencensus.io/exporter/aws\n+/exporter/aws/\n+\n+# Exclude vendor, use dep ensure after checkout:\n+/vendor/github.com/\n+/vendor/golang.org/\n+/vendor/google.golang.org/\ndiff --git a/debian/extra/vendor/golang.org/x/crypto/LICENSE b/debian/extra/vendor/golang.org/x/crypto/LICENSE\nindex 6a66aea..2a7cf70 100644\n--- a/debian/extra/vendor/golang.org/x/crypto/LICENSE\n+++ b/debian/extra/vendor/golang.org/x/crypto/LICENSE\n@@ -1,4 +1,4 @@\n-Copyright (c) 2009 The Go Authors. All rights reserved.\n+Copyright 2009 The Go Authors.\n \n Redistribution and use in source and binary forms, with or without\n modification, are permitted provided that the following conditions are\n@@ -10,7 +10,7 @@ notice, this list of conditions and the following disclaimer.\n copyright notice, this list of conditions and the following disclaimer\n in the documentation and/or other materials provided with the\n distribution.\n-   * Neither the name of Google Inc. nor the names of its\n+   * Neither the name of Google LLC nor the names of its\n contributors may be used to endorse or promote products derived from\n this software without specific prior written permission.\n \ndiff --git a/debian/extra/vendor/golang.org/x/crypto/chacha20/chacha_noasm.go b/debian/extra/vendor/golang.org/x/crypto/chacha20/chacha_noasm.go\nindex db42e66..c709b72 100644\n--- a/debian/extra/vendor/golang.org/x/crypto/chacha20/chacha_noasm.go\n+++ b/debian/extra/vendor/golang.org/x/crypto/chacha20/chacha_noasm.go\n@@ -2,7 +2,7 @@\n // Use of this source code is governed by a BSD-style\n // license that can be found in the LICENSE file.\n \n-//go:build (!arm64 && !s390x && !ppc64le) || !gc || purego\n+//go:build (!arm64 && !s390x && !ppc64 && !ppc64le) || !gc || purego\n \n package chacha20\n \ndiff --git a/debian/extra/vendor/golang.org/x/crypto/chacha20/chacha_ppc64le.go b/debian/extra/vendor/golang.org/x/crypto/chacha20/chacha_ppc64x.go\nsimilarity index 91%\nrename from debian/extra/vendor/golang.org/x/crypto/chacha20/chacha_ppc64le.go\nrename to debian/extra/vendor/golang.org/x/crypto/chacha20/chacha_ppc64x.go\nindex 3a4287f..bd183d9 100644\n--- a/debian/extra/vendor/golang.org/x/crypto/chacha20/chacha_ppc64le.go\n+++ b/debian/extra/vendor/golang.org/x/crypto/chacha20/chacha_ppc64x.go\n@@ -2,7 +2,7 @@\n // Use of this source code is governed by a BSD-style\n // license that can be found in the LICENSE file.\n \n-//go:build gc && !purego\n+//go:build gc && !purego && (ppc64 || ppc64le)\n \n package chacha20\n \ndiff --git a/debian/extra/vendor/golang.org/x/crypto/chacha20/chacha_ppc64le.s b/debian/extra/vendor/golang.org/x/crypto/chacha20/chacha_ppc64x.s\nsimilarity index 63%\nrename from debian/extra/vendor/golang.org/x/crypto/chacha20/chacha_ppc64le.s\nrename to debian/extra/vendor/golang.org/x/crypto/chacha20/chacha_ppc64x.s\nindex c672ccf..a660b41 100644\n--- a/debian/extra/vendor/golang.org/x/crypto/chacha20/chacha_ppc64le.s\n+++ b/debian/extra/vendor/golang.org/x/crypto/chacha20/chacha_ppc64x.s\n@@ -19,7 +19,7 @@\n // The differences in this and the original implementation are\n // due to the calling conventions and initialization of constants.\n \n-//go:build gc && !purego\n+//go:build gc && !purego && (ppc64 || ppc64le)\n \n #include \"textflag.h\"\n \n@@ -36,32 +36,68 @@\n // for VPERMXOR\n #define MASK  R18\n \n-DATA consts<>+0x00(SB)/8, $0x3320646e61707865\n-DATA consts<>+0x08(SB)/8, $0x6b20657479622d32\n-DATA consts<>+0x10(SB)/8, $0x0000000000000001\n-DATA consts<>+0x18(SB)/8, $0x0000000000000000\n-DATA consts<>+0x20(SB)/8, $0x0000000000000004\n-DATA consts<>+0x28(SB)/8, $0x0000000000000000\n-DATA consts<>+0x30(SB)/8, $0x0a0b08090e0f0c0d\n-DATA consts<>+0x38(SB)/8, $0x0203000106070405\n-DATA consts<>+0x40(SB)/8, $0x090a0b080d0e0f0c\n-DATA consts<>+0x48(SB)/8, $0x0102030005060704\n-DATA consts<>+0x50(SB)/8, $0x6170786561707865\n-DATA consts<>+0x58(SB)/8, $0x6170786561707865\n-DATA consts<>+0x60(SB)/8, $0x3320646e3320646e\n-DATA consts<>+0x68(SB)/8, $0x3320646e3320646e\n-DATA consts<>+0x70(SB)/8, $0x79622d3279622d32\n-DATA consts<>+0x78(SB)/8, $0x79622d3279622d32\n-DATA consts<>+0x80(SB)/8, $0x6b2065746b206574\n-DATA consts<>+0x88(SB)/8, $0x6b2065746b206574\n-DATA consts<>+0x90(SB)/8, $0x0000000100000000\n-DATA consts<>+0x98(SB)/8, $0x0000000300000002\n-DATA consts<>+0xa0(SB)/8, $0x5566774411223300\n-DATA consts<>+0xa8(SB)/8, $0xddeeffcc99aabb88\n-DATA consts<>+0xb0(SB)/8, $0x6677445522330011\n-DATA consts<>+0xb8(SB)/8, $0xeeffccddaabb8899\n+DATA consts<>+0x00(SB)/4, $0x61707865\n+DATA consts<>+0x04(SB)/4, $0x3320646e\n+DATA consts<>+0x08(SB)/4, $0x79622d32\n+DATA consts<>+0x0c(SB)/4, $0x6b206574\n+DATA consts<>+0x10(SB)/4, $0x00000001\n+DATA consts<>+0x14(SB)/4, $0x00000000\n+DATA consts<>+0x18(SB)/4, $0x00000000\n+DATA consts<>+0x1c(SB)/4, $0x00000000\n+DATA consts<>+0x20(SB)/4, $0x00000004\n+DATA consts<>+0x24(SB)/4, $0x00000000\n+DATA consts<>+0x28(SB)/4, $0x00000000\n+DATA consts<>+0x2c(SB)/4, $0x00000000\n+DATA consts<>+0x30(SB)/4, $0x0e0f0c0d\n+DATA consts<>+0x34(SB)/4, $0x0a0b0809\n+DATA consts<>+0x38(SB)/4, $0x06070405\n+DATA consts<>+0x3c(SB)/4, $0x02030001\n+DATA consts<>+0x40(SB)/4, $0x0d0e0f0c\n+DATA consts<>+0x44(SB)/4, $0x090a0b08\n+DATA consts<>+0x48(SB)/4, $0x05060704\n+DATA consts<>+0x4c(SB)/4, $0x01020300\n+DATA consts<>+0x50(SB)/4, $0x61707865\n+DATA consts<>+0x54(SB)/4, $0x61707865\n+DATA consts<>+0x58(SB)/4, $0x61707865\n+DATA consts<>+0x5c(SB)/4, $0x61707865\n+DATA consts<>+0x60(SB)/4, $0x3320646e\n+DATA consts<>+0x64(SB)/4, $0x3320646e\n+DATA consts<>+0x68(SB)/4, $0x3320646e\n+DATA consts<>+0x6c(SB)/4, $0x3320646e\n+DATA consts<>+0x70(SB)/4, $0x79622d32\n+DATA consts<>+0x74(SB)/4, $0x79622d32\n+DATA consts<>+0x78(SB)/4, $0x79622d32\n+DATA consts<>+0x7c(SB)/4, $0x79622d32\n+DATA consts<>+0x80(SB)/4, $0x6b206574\n+DATA consts<>+0x84(SB)/4, $0x6b206574\n+DATA consts<>+0x88(SB)/4, $0x6b206574\n+DATA consts<>+0x8c(SB)/4, $0x6b206574\n+DATA consts<>+0x90(SB)/4, $0x00000000\n+DATA consts<>+0x94(SB)/4, $0x00000001\n+DATA consts<>+0x98(SB)/4, $0x00000002\n+DATA consts<>+0x9c(SB)/4, $0x00000003\n+DATA consts<>+0xa0(SB)/4, $0x11223300\n+DATA consts<>+0xa4(SB)/4, $0x55667744\n+DATA consts<>+0xa8(SB)/4, $0x99aabb88\n+DATA consts<>+0xac(SB)/4, $0xddeeffcc\n+DATA consts<>+0xb0(SB)/4, $0x22330011\n+DATA consts<>+0xb4(SB)/4, $0x66774455\n+DATA consts<>+0xb8(SB)/4, $0xaabb8899\n+DATA consts<>+0xbc(SB)/4, $0xeeffccdd\n GLOBL consts<>(SB), RODATA, $0xc0\n \n+#ifdef GOARCH_ppc64\n+#define BE_XXBRW_INIT() \\\n+\t\tLVSL (R0)(R0), V24 \\\n+\t\tVSPLTISB $3, V25   \\\n+\t\tVXOR V24, V25, V24 \\\n+\n+#define BE_XXBRW(vr) VPERM vr, vr, V24, vr\n+#else\n+#define BE_XXBRW_INIT()\n+#define BE_XXBRW(vr)\n+#endif\n+\n //func chaCha20_ctr32_vsx(out, inp *byte, len int, key *[8]uint32, counter *uint32)\n TEXT ·chaCha20_ctr32_vsx(SB),NOSPLIT,$64-40\n \tMOVD out+0(FP), OUT\n@@ -94,6 +130,8 @@ TEXT ·chaCha20_ctr32_vsx(SB),NOSPLIT,$64-40\n \t// Clear V27\n \tVXOR V27, V27, V27\n \n+\tBE_XXBRW_INIT()\n+\n \t// V28\n \tLXVW4X (CONSTBASE)(R11), VS60\n \n@@ -299,6 +337,11 @@ loop_vsx:\n \tVADDUWM V8, V18, V8\n \tVADDUWM V12, V19, V12\n \n+\tBE_XXBRW(V0)\n+\tBE_XXBRW(V4)\n+\tBE_XXBRW(V8)\n+\tBE_XXBRW(V12)\n+\n \tCMPU LEN, $64\n \tBLT tail_vsx\n \n@@ -327,6 +370,11 @@ loop_vsx:\n \tVADDUWM V9, V18, V8\n \tVADDUWM V13, V19, V12\n \n+\tBE_XXBRW(V0)\n+\tBE_XXBRW(V4)\n+\tBE_XXBRW(V8)\n+\tBE_XXBRW(V12)\n+\n \tCMPU  LEN, $64\n \tBLT   tail_vsx\n \n@@ -334,8 +382,8 @@ loop_vsx:\n \tLXVW4X (INP)(R8), VS60\n \tLXVW4X (INP)(R9), VS61\n \tLXVW4X (INP)(R10), VS62\n-\tVXOR   V27, V0, V27\n \n+\tVXOR V27, V0, V27\n \tVXOR V28, V4, V28\n \tVXOR V29, V8, V29\n \tVXOR V30, V12, V30\n@@ -354,6 +402,11 @@ loop_vsx:\n \tVADDUWM V10, V18, V8\n \tVADDUWM V14, V19, V12\n \n+\tBE_XXBRW(V0)\n+\tBE_XXBRW(V4)\n+\tBE_XXBRW(V8)\n+\tBE_XXBRW(V12)\n+\n \tCMPU LEN, $64\n \tBLT  tail_vsx\n \n@@ -381,6 +434,11 @@ loop_vsx:\n \tVADDUWM V11, V18, V8\n \tVADDUWM V15, V19, V12\n \n+\tBE_XXBRW(V0)\n+\tBE_XXBRW(V4)\n+\tBE_XXBRW(V8)\n+\tBE_XXBRW(V12)\n+\n \tCMPU  LEN, $64\n \tBLT   tail_vsx\n \n@@ -408,9 +466,9 @@ loop_vsx:\n \n done_vsx:\n \t// Increment counter by number of 64 byte blocks\n-\tMOVD (CNT), R14\n+\tMOVWZ (CNT), R14\n \tADD  BLOCKS, R14\n-\tMOVD R14, (CNT)\n+\tMOVWZ R14, (CNT)\n \tRET\n \n tail_vsx:\ndiff --git a/debian/extra/vendor/golang.org/x/crypto/chacha20poly1305/chacha20poly1305_amd64.s b/debian/extra/vendor/golang.org/x/crypto/chacha20poly1305/chacha20poly1305_amd64.s\nindex 731d2ac..fd5ee84 100644\n--- a/debian/extra/vendor/golang.org/x/crypto/chacha20poly1305/chacha20poly1305_amd64.s\n+++ b/debian/extra/vendor/golang.org/x/crypto/chacha20poly1305/chacha20poly1305_amd64.s\n@@ -1,2715 +1,9762 @@\n-// Copyright 2016 The Go Authors. All rights reserved.\n-// Use of this source code is governed by a BSD-style\n-// license that can be found in the LICENSE file.\n-\n-// This file was originally from https://golang.org/cl/24717 by Vlad Krasnov of CloudFlare.\n+// Code generated by command: go run chacha20poly1305_amd64_asm.go -out ../chacha20poly1305_amd64.s -pkg chacha20poly1305. DO NOT EDIT.\n \n //go:build gc && !purego\n \n #include \"textflag.h\"\n-// General register allocation\n-#define oup DI\n-#define inp SI\n-#define inl BX\n-#define adp CX // free to reuse, after we hash the additional data\n-#define keyp R8 // free to reuse, when we copy the key to stack\n-#define itr2 R9 // general iterator\n-#define itr1 CX // general iterator\n-#define acc0 R10\n-#define acc1 R11\n-#define acc2 R12\n-#define t0 R13\n-#define t1 R14\n-#define t2 R15\n-#define t3 R8\n-// Register and stack allocation for the SSE code\n-#define rStore (0*16)(BP)\n-#define sStore (1*16)(BP)\n-#define state1Store (2*16)(BP)\n-#define state2Store (3*16)(BP)\n-#define tmpStore (4*16)(BP)\n-#define ctr0Store (5*16)(BP)\n-#define ctr1Store (6*16)(BP)\n-#define ctr2Store (7*16)(BP)\n-#define ctr3Store (8*16)(BP)\n-#define A0 X0\n-#define A1 X1\n-#define A2 X2\n-#define B0 X3\n-#define B1 X4\n-#define B2 X5\n-#define C0 X6\n-#define C1 X7\n-#define C2 X8\n-#define D0 X9\n-#define D1 X10\n-#define D2 X11\n-#define T0 X12\n-#define T1 X13\n-#define T2 X14\n-#define T3 X15\n-#define A3 T0\n-#define B3 T1\n-#define C3 T2\n-#define D3 T3\n-// Register and stack allocation for the AVX2 code\n-#define rsStoreAVX2 (0*32)(BP)\n-#define state1StoreAVX2 (1*32)(BP)\n-#define state2StoreAVX2 (2*32)(BP)\n-#define ctr0StoreAVX2 (3*32)(BP)\n-#define ctr1StoreAVX2 (4*32)(BP)\n-#define ctr2StoreAVX2 (5*32)(BP)\n-#define ctr3StoreAVX2 (6*32)(BP)\n-#define tmpStoreAVX2 (7*32)(BP) // 256 bytes on stack\n-#define AA0 Y0\n-#define AA1 Y5\n-#define AA2 Y6\n-#define AA3 Y7\n-#define BB0 Y14\n-#define BB1 Y9\n-#define BB2 Y10\n-#define BB3 Y11\n-#define CC0 Y12\n-#define CC1 Y13\n-#define CC2 Y8\n-#define CC3 Y15\n-#define DD0 Y4\n-#define DD1 Y1\n-#define DD2 Y2\n-#define DD3 Y3\n-#define TT0 DD3\n-#define TT1 AA3\n-#define TT2 BB3\n-#define TT3 CC3\n-// ChaCha20 constants\n-DATA ·chacha20Constants<>+0x00(SB)/4, $0x61707865\n-DATA ·chacha20Constants<>+0x04(SB)/4, $0x3320646e\n-DATA ·chacha20Constants<>+0x08(SB)/4, $0x79622d32\n-DATA ·chacha20Constants<>+0x0c(SB)/4, $0x6b206574\n-DATA ·chacha20Constants<>+0x10(SB)/4, $0x61707865\n-DATA ·chacha20Constants<>+0x14(SB)/4, $0x3320646e\n-DATA ·chacha20Constants<>+0x18(SB)/4, $0x79622d32\n-DATA ·chacha20Constants<>+0x1c(SB)/4, $0x6b206574\n-// <<< 16 with PSHUFB\n-DATA ·rol16<>+0x00(SB)/8, $0x0504070601000302\n-DATA ·rol16<>+0x08(SB)/8, $0x0D0C0F0E09080B0A\n-DATA ·rol16<>+0x10(SB)/8, $0x0504070601000302\n-DATA ·rol16<>+0x18(SB)/8, $0x0D0C0F0E09080B0A\n-// <<< 8 with PSHUFB\n-DATA ·rol8<>+0x00(SB)/8, $0x0605040702010003\n-DATA ·rol8<>+0x08(SB)/8, $0x0E0D0C0F0A09080B\n-DATA ·rol8<>+0x10(SB)/8, $0x0605040702010003\n-DATA ·rol8<>+0x18(SB)/8, $0x0E0D0C0F0A09080B\n-\n-DATA ·avx2InitMask<>+0x00(SB)/8, $0x0\n-DATA ·avx2InitMask<>+0x08(SB)/8, $0x0\n-DATA ·avx2InitMask<>+0x10(SB)/8, $0x1\n-DATA ·avx2InitMask<>+0x18(SB)/8, $0x0\n-\n-DATA ·avx2IncMask<>+0x00(SB)/8, $0x2\n-DATA ·avx2IncMask<>+0x08(SB)/8, $0x0\n-DATA ·avx2IncMask<>+0x10(SB)/8, $0x2\n-DATA ·avx2IncMask<>+0x18(SB)/8, $0x0\n-// Poly1305 key clamp\n-DATA ·polyClampMask<>+0x00(SB)/8, $0x0FFFFFFC0FFFFFFF\n-DATA ·polyClampMask<>+0x08(SB)/8, $0x0FFFFFFC0FFFFFFC\n-DATA ·polyClampMask<>+0x10(SB)/8, $0xFFFFFFFFFFFFFFFF\n-DATA ·polyClampMask<>+0x18(SB)/8, $0xFFFFFFFFFFFFFFFF\n-\n-DATA ·sseIncMask<>+0x00(SB)/8, $0x1\n-DATA ·sseIncMask<>+0x08(SB)/8, $0x0\n-// To load/store the last < 16 bytes in a buffer\n-DATA ·andMask<>+0x00(SB)/8, $0x00000000000000ff\n-DATA ·andMask<>+0x08(SB)/8, $0x0000000000000000\n-DATA ·andMask<>+0x10(SB)/8, $0x000000000000ffff\n-DATA ·andMask<>+0x18(SB)/8, $0x0000000000000000\n-DATA ·andMask<>+0x20(SB)/8, $0x0000000000ffffff\n-DATA ·andMask<>+0x28(SB)/8, $0x0000000000000000\n-DATA ·andMask<>+0x30(SB)/8, $0x00000000ffffffff\n-DATA ·andMask<>+0x38(SB)/8, $0x0000000000000000\n-DATA ·andMask<>+0x40(SB)/8, $0x000000ffffffffff\n-DATA ·andMask<>+0x48(SB)/8, $0x0000000000000000\n-DATA ·andMask<>+0x50(SB)/8, $0x0000ffffffffffff\n-DATA ·andMask<>+0x58(SB)/8, $0x0000000000000000\n-DATA ·andMask<>+0x60(SB)/8, $0x00ffffffffffffff\n-DATA ·andMask<>+0x68(SB)/8, $0x0000000000000000\n-DATA ·andMask<>+0x70(SB)/8, $0xffffffffffffffff\n-DATA ·andMask<>+0x78(SB)/8, $0x0000000000000000\n-DATA ·andMask<>+0x80(SB)/8, $0xffffffffffffffff\n-DATA ·andMask<>+0x88(SB)/8, $0x00000000000000ff\n-DATA ·andMask<>+0x90(SB)/8, $0xffffffffffffffff\n-DATA ·andMask<>+0x98(SB)/8, $0x000000000000ffff\n-DATA ·andMask<>+0xa0(SB)/8, $0xffffffffffffffff\n-DATA ·andMask<>+0xa8(SB)/8, $0x0000000000ffffff\n-DATA ·andMask<>+0xb0(SB)/8, $0xffffffffffffffff\n-DATA ·andMask<>+0xb8(SB)/8, $0x00000000ffffffff\n-DATA ·andMask<>+0xc0(SB)/8, $0xffffffffffffffff\n-DATA ·andMask<>+0xc8(SB)/8, $0x000000ffffffffff\n-DATA ·andMask<>+0xd0(SB)/8, $0xffffffffffffffff\n-DATA ·andMask<>+0xd8(SB)/8, $0x0000ffffffffffff\n-DATA ·andMask<>+0xe0(SB)/8, $0xffffffffffffffff\n-DATA ·andMask<>+0xe8(SB)/8, $0x00ffffffffffffff\n-\n-GLOBL ·chacha20Constants<>(SB), (NOPTR+RODATA), $32\n-GLOBL ·rol16<>(SB), (NOPTR+RODATA), $32\n-GLOBL ·rol8<>(SB), (NOPTR+RODATA), $32\n-GLOBL ·sseIncMask<>(SB), (NOPTR+RODATA), $16\n-GLOBL ·avx2IncMask<>(SB), (NOPTR+RODATA), $32\n-GLOBL ·avx2InitMask<>(SB), (NOPTR+RODATA), $32\n-GLOBL ·polyClampMask<>(SB), (NOPTR+RODATA), $32\n-GLOBL ·andMask<>(SB), (NOPTR+RODATA), $240\n-// No PALIGNR in Go ASM yet (but VPALIGNR is present).\n-#define shiftB0Left BYTE $0x66; BYTE $0x0f; BYTE $0x3a; BYTE $0x0f; BYTE $0xdb; BYTE $0x04 // PALIGNR $4, X3, X3\n-#define shiftB1Left BYTE $0x66; BYTE $0x0f; BYTE $0x3a; BYTE $0x0f; BYTE $0xe4; BYTE $0x04 // PALIGNR $4, X4, X4\n-#define shiftB2Left BYTE $0x66; BYTE $0x0f; BYTE $0x3a; BYTE $0x0f; BYTE $0xed; BYTE $0x04 // PALIGNR $4, X5, X5\n-#define shiftB3Left BYTE $0x66; BYTE $0x45; BYTE $0x0f; BYTE $0x3a; BYTE $0x0f; BYTE $0xed; BYTE $0x04 // PALIGNR $4, X13, X13\n-#define shiftC0Left BYTE $0x66; BYTE $0x0f; BYTE $0x3a; BYTE $0x0f; BYTE $0xf6; BYTE $0x08 // PALIGNR $8, X6, X6\n-#define shiftC1Left BYTE $0x66; BYTE $0x0f; BYTE $0x3a; BYTE $0x0f; BYTE $0xff; BYTE $0x08 // PALIGNR $8, X7, X7\n-#define shiftC2Left BYTE $0x66; BYTE $0x45; BYTE $0x0f; BYTE $0x3a; BYTE $0x0f; BYTE $0xc0; BYTE $0x08 // PALIGNR $8, X8, X8\n-#define shiftC3Left BYTE $0x66; BYTE $0x45; BYTE $0x0f; BYTE $0x3a; BYTE $0x0f; BYTE $0xf6; BYTE $0x08 // PALIGNR $8, X14, X14\n-#define shiftD0Left BYTE $0x66; BYTE $0x45; BYTE $0x0f; BYTE $0x3a; BYTE $0x0f; BYTE $0xc9; BYTE $0x0c // PALIGNR $12, X9, X9\n-#define shiftD1Left BYTE $0x66; BYTE $0x45; BYTE $0x0f; BYTE $0x3a; BYTE $0x0f; BYTE $0xd2; BYTE $0x0c // PALIGNR $12, X10, X10\n-#define shiftD2Left BYTE $0x66; BYTE $0x45; BYTE $0x0f; BYTE $0x3a; BYTE $0x0f; BYTE $0xdb; BYTE $0x0c // PALIGNR $12, X11, X11\n-#define shiftD3Left BYTE $0x66; BYTE $0x45; BYTE $0x0f; BYTE $0x3a; BYTE $0x0f; BYTE $0xff; BYTE $0x0c // PALIGNR $12, X15, X15\n-#define shiftB0Right BYTE $0x66; BYTE $0x0f; BYTE $0x3a; BYTE $0x0f; BYTE $0xdb; BYTE $0x0c // PALIGNR $12, X3, X3\n-#define shiftB1Right BYTE $0x66; BYTE $0x0f; BYTE $0x3a; BYTE $0x0f; BYTE $0xe4; BYTE $0x0c // PALIGNR $12, X4, X4\n-#define shiftB2Right BYTE $0x66; BYTE $0x0f; BYTE $0x3a; BYTE $0x0f; BYTE $0xed; BYTE $0x0c // PALIGNR $12, X5, X5\n-#define shiftB3Right BYTE $0x66; BYTE $0x45; BYTE $0x0f; BYTE $0x3a; BYTE $0x0f; BYTE $0xed; BYTE $0x0c // PALIGNR $12, X13, X13\n-#define shiftC0Right shiftC0Left\n-#define shiftC1Right shiftC1Left\n-#define shiftC2Right shiftC2Left\n-#define shiftC3Right shiftC3Left\n-#define shiftD0Right BYTE $0x66; BYTE $0x45; BYTE $0x0f; BYTE $0x3a; BYTE $0x0f; BYTE $0xc9; BYTE $0x04 // PALIGNR $4, X9, X9\n-#define shiftD1Right BYTE $0x66; BYTE $0x45; BYTE $0x0f; BYTE $0x3a; BYTE $0x0f; BYTE $0xd2; BYTE $0x04 // PALIGNR $4, X10, X10\n-#define shiftD2Right BYTE $0x66; BYTE $0x45; BYTE $0x0f; BYTE $0x3a; BYTE $0x0f; BYTE $0xdb; BYTE $0x04 // PALIGNR $4, X11, X11\n-#define shiftD3Right BYTE $0x66; BYTE $0x45; BYTE $0x0f; BYTE $0x3a; BYTE $0x0f; BYTE $0xff; BYTE $0x04 // PALIGNR $4, X15, X15\n-\n-// Some macros\n-\n-// ROL rotates the uint32s in register R left by N bits, using temporary T.\n-#define ROL(N, R, T) \\\n-\tMOVO R, T; PSLLL $(N), T; PSRLL $(32-(N)), R; PXOR T, R\n-\n-// ROL16 rotates the uint32s in register R left by 16, using temporary T if needed.\n-#ifdef GOAMD64_v2\n-#define ROL16(R, T) PSHUFB ·rol16<>(SB), R\n-#else\n-#define ROL16(R, T) ROL(16, R, T)\n-#endif\n-\n-// ROL8 rotates the uint32s in register R left by 8, using temporary T if needed.\n-#ifdef GOAMD64_v2\n-#define ROL8(R, T) PSHUFB ·rol8<>(SB), R\n-#else\n-#define ROL8(R, T) ROL(8, R, T)\n-#endif\n-\n-#define chachaQR(A, B, C, D, T) \\\n-\tPADDD B, A; PXOR A, D; ROL16(D, T) \\\n-\tPADDD D, C; PXOR C, B; MOVO B, T; PSLLL $12, T; PSRLL $20, B; PXOR T, B \\\n-\tPADDD B, A; PXOR A, D; ROL8(D, T) \\\n-\tPADDD D, C; PXOR C, B; MOVO B, T; PSLLL $7, T; PSRLL $25, B; PXOR T, B\n-\n-#define chachaQR_AVX2(A, B, C, D, T) \\\n-\tVPADDD B, A, A; VPXOR A, D, D; VPSHUFB ·rol16<>(SB), D, D                         \\\n-\tVPADDD D, C, C; VPXOR C, B, B; VPSLLD $12, B, T; VPSRLD $20, B, B; VPXOR T, B, B \\\n-\tVPADDD B, A, A; VPXOR A, D, D; VPSHUFB ·rol8<>(SB), D, D                          \\\n-\tVPADDD D, C, C; VPXOR C, B, B; VPSLLD $7, B, T; VPSRLD $25, B, B; VPXOR T, B, B\n-\n-#define polyAdd(S) ADDQ S, acc0; ADCQ 8+S, acc1; ADCQ $1, acc2\n-#define polyMulStage1 MOVQ (0*8)(BP), AX; MOVQ AX, t2; MULQ acc0; MOVQ AX, t0; MOVQ DX, t1; MOVQ (0*8)(BP), AX; MULQ acc1; IMULQ acc2, t2; ADDQ AX, t1; ADCQ DX, t2\n-#define polyMulStage2 MOVQ (1*8)(BP), AX; MOVQ AX, t3; MULQ acc0; ADDQ AX, t1; ADCQ $0, DX; MOVQ DX, acc0; MOVQ (1*8)(BP), AX; MULQ acc1; ADDQ AX, t2; ADCQ $0, DX\n-#define polyMulStage3 IMULQ acc2, t3; ADDQ acc0, t2; ADCQ DX, t3\n-#define polyMulReduceStage MOVQ t0, acc0; MOVQ t1, acc1; MOVQ t2, acc2; ANDQ $3, acc2; MOVQ t2, t0; ANDQ $-4, t0; MOVQ t3, t1; SHRQ $2, t3, t2; SHRQ $2, t3; ADDQ t0, acc0; ADCQ t1, acc1; ADCQ $0, acc2; ADDQ t2, acc0; ADCQ t3, acc1; ADCQ $0, acc2\n-\n-#define polyMulStage1_AVX2 MOVQ (0*8)(BP), DX; MOVQ DX, t2; MULXQ acc0, t0, t1; IMULQ acc2, t2; MULXQ acc1, AX, DX; ADDQ AX, t1; ADCQ DX, t2\n-#define polyMulStage2_AVX2 MOVQ (1*8)(BP), DX; MULXQ acc0, acc0, AX; ADDQ acc0, t1; MULXQ acc1, acc1, t3; ADCQ acc1, t2; ADCQ $0, t3\n-#define polyMulStage3_AVX2 IMULQ acc2, DX; ADDQ AX, t2; ADCQ DX, t3\n-\n-#define polyMul polyMulStage1; polyMulStage2; polyMulStage3; polyMulReduceStage\n-#define polyMulAVX2 polyMulStage1_AVX2; polyMulStage2_AVX2; polyMulStage3_AVX2; polyMulReduceStage\n-// ----------------------------------------------------------------------------\n+\n+// func polyHashADInternal<>()\n TEXT polyHashADInternal<>(SB), NOSPLIT, $0\n-\t// adp points to beginning of additional data\n-\t// itr2 holds ad length\n-\tXORQ acc0, acc0\n-\tXORQ acc1, acc1\n-\tXORQ acc2, acc2\n-\tCMPQ itr2, $13\n-\tJNE  hashADLoop\n-\n-openFastTLSAD:\n-\t// Special treatment for the TLS case of 13 bytes\n-\tMOVQ (adp), acc0\n-\tMOVQ 5(adp), acc1\n-\tSHRQ $24, acc1\n-\tMOVQ $1, acc2\n-\tpolyMul\n+\t// Hack: Must declare #define macros inside of a function due to Avo constraints\n+\t// ROL rotates the uint32s in register R left by N bits, using temporary T.\n+\t#define ROL(N, R, T) \\\n+\t\tMOVO R, T; \\\n+\t\tPSLLL $(N), T; \\\n+\t\tPSRLL $(32-(N)), R; \\\n+\t\tPXOR T, R\n+\n+\t// ROL8 rotates the uint32s in register R left by 8, using temporary T if needed.\n+\t#ifdef GOAMD64_v2\n+\t\t#define ROL8(R, T) PSHUFB ·rol8<>(SB), R\n+\t#else\n+\t\t#define ROL8(R, T) ROL(8, R, T)\n+\t#endif\n+\n+\t// ROL16 rotates the uint32s in register R left by 16, using temporary T if needed.\n+\t#ifdef GOAMD64_v2\n+\t\t#define ROL16(R, T) PSHUFB ·rol16<>(SB), R\n+\t#else\n+\t\t#define ROL16(R, T) ROL(16, R, T)\n+\t#endif\n+\tXORQ  R10, R10\n+\tXORQ  R11, R11\n+\tXORQ  R12, R12\n+\tCMPQ  R9, $0x0d\n+\tJNE   hashADLoop\n+\tMOVQ  (CX), R10\n+\tMOVQ  5(CX), R11\n+\tSHRQ  $0x18, R11\n+\tMOVQ  $0x00000001, R12\n+\tMOVQ  (BP), AX\n+\tMOVQ  AX, R15\n+\tMULQ  R10\n+\tMOVQ  AX, R13\n+\tMOVQ  DX, R14\n+\tMOVQ  (BP), AX\n+\tMULQ  R11\n+\tIMULQ R12, R15\n+\tADDQ  AX, R14\n+\tADCQ  DX, R15\n+\tMOVQ  8(BP), AX\n+\tMOVQ  AX, R8\n+\tMULQ  R10\n+\tADDQ  AX, R14\n+\tADCQ  $0x00, DX\n+\tMOVQ  DX, R10\n+\tMOVQ  8(BP), AX\n+\tMULQ  R11\n+\tADDQ  AX, R15\n+\tADCQ  $0x00, DX\n+\tIMULQ R12, R8\n+\tADDQ  R10, R15\n+\tADCQ  DX, R8\n+\tMOVQ  R13, R10\n+\tMOVQ  R14, R11\n+\tMOVQ  R15, R12\n+\tANDQ  $0x03, R12\n+\tMOVQ  R15, R13\n+\tANDQ  $-4, R13\n+\tMOVQ  R8, R14\n+\tSHRQ  $0x02, R8, R15\n+\tSHRQ  $0x02, R8\n+\tADDQ  R13, R10\n+\tADCQ  R14, R11\n+\tADCQ  $0x00, R12\n+\tADDQ  R15, R10\n+\tADCQ  R8, R11\n+\tADCQ  $0x00, R12\n \tRET\n \n hashADLoop:\n \t// Hash in 16 byte chunks\n-\tCMPQ itr2, $16\n-\tJB   hashADTail\n-\tpolyAdd(0(adp))\n-\tLEAQ (1*16)(adp), adp\n-\tSUBQ $16, itr2\n-\tpolyMul\n-\tJMP  hashADLoop\n+\tCMPQ  R9, $0x10\n+\tJB    hashADTail\n+\tADDQ  (CX), R10\n+\tADCQ  8(CX), R11\n+\tADCQ  $0x01, R12\n+\tLEAQ  16(CX), CX\n+\tSUBQ  $0x10, R9\n+\tMOVQ  (BP), AX\n+\tMOVQ  AX, R15\n+\tMULQ  R10\n+\tMOVQ  AX, R13\n+\tMOVQ  DX, R14\n+\tMOVQ  (BP), AX\n+\tMULQ  R11\n+\tIMULQ R12, R15\n+\tADDQ  AX, R14\n+\tADCQ  DX, R15\n+\tMOVQ  8(BP), AX\n+\tMOVQ  AX, R8\n+\tMULQ  R10\n+\tADDQ  AX, R14\n+\tADCQ  $0x00, DX\n+\tMOVQ  DX, R10\n+\tMOVQ  8(BP), AX\n+\tMULQ  R11\n+\tADDQ  AX, R15\n+\tADCQ  $0x00, DX\n+\tIMULQ R12, R8\n+\tADDQ  R10, R15\n+\tADCQ  DX, R8\n+\tMOVQ  R13, R10\n+\tMOVQ  R14, R11\n+\tMOVQ  R15, R12\n+\tANDQ  $0x03, R12\n+\tMOVQ  R15, R13\n+\tANDQ  $-4, R13\n+\tMOVQ  R8, R14\n+\tSHRQ  $0x02, R8, R15\n+\tSHRQ  $0x02, R8\n+\tADDQ  R13, R10\n+\tADCQ  R14, R11\n+\tADCQ  $0x00, R12\n+\tADDQ  R15, R10\n+\tADCQ  R8, R11\n+\tADCQ  $0x00, R12\n+\tJMP   hashADLoop\n \n hashADTail:\n-\tCMPQ itr2, $0\n+\tCMPQ R9, $0x00\n \tJE   hashADDone\n \n \t// Hash last < 16 byte tail\n-\tXORQ t0, t0\n-\tXORQ t1, t1\n-\tXORQ t2, t2\n-\tADDQ itr2, adp\n+\tXORQ R13, R13\n+\tXORQ R14, R14\n+\tXORQ R15, R15\n+\tADDQ R9, CX\n \n hashADTailLoop:\n-\tSHLQ $8, t0, t1\n-\tSHLQ $8, t0\n-\tMOVB -1(adp), t2\n-\tXORQ t2, t0\n-\tDECQ adp\n-\tDECQ itr2\n-\tJNE  hashADTailLoop\n-\n-hashADTailFinish:\n-\tADDQ t0, acc0; ADCQ t1, acc1; ADCQ $1, acc2\n-\tpolyMul\n-\n-\t// Finished AD\n+\tSHLQ  $0x08, R13, R14\n+\tSHLQ  $0x08, R13\n+\tMOVB  -1(CX), R15\n+\tXORQ  R15, R13\n+\tDECQ  CX\n+\tDECQ  R9\n+\tJNE   hashADTailLoop\n+\tADDQ  R13, R10\n+\tADCQ  R14, R11\n+\tADCQ  $0x01, R12\n+\tMOVQ  (BP), AX\n+\tMOVQ  AX, R15\n+\tMULQ  R10\n+\tMOVQ  AX, R13\n+\tMOVQ  DX, R14\n+\tMOVQ  (BP), AX\n+\tMULQ  R11\n+\tIMULQ R12, R15\n+\tADDQ  AX, R14\n+\tADCQ  DX, R15\n+\tMOVQ  8(BP), AX\n+\tMOVQ  AX, R8\n+\tMULQ  R10\n+\tADDQ  AX, R14\n+\tADCQ  $0x00, DX\n+\tMOVQ  DX, R10\n+\tMOVQ  8(BP), AX\n+\tMULQ  R11\n+\tADDQ  AX, R15\n+\tADCQ  $0x00, DX\n+\tIMULQ R12, R8\n+\tADDQ  R10, R15\n+\tADCQ  DX, R8\n+\tMOVQ  R13, R10\n+\tMOVQ  R14, R11\n+\tMOVQ  R15, R12\n+\tANDQ  $0x03, R12\n+\tMOVQ  R15, R13\n+\tANDQ  $-4, R13\n+\tMOVQ  R8, R14\n+\tSHRQ  $0x02, R8, R15\n+\tSHRQ  $0x02, R8\n+\tADDQ  R13, R10\n+\tADCQ  R14, R11\n+\tADCQ  $0x00, R12\n+\tADDQ  R15, R10\n+\tADCQ  R8, R11\n+\tADCQ  $0x00, R12\n+\n hashADDone:\n \tRET\n \n-// ----------------------------------------------------------------------------\n-// func chacha20Poly1305Open(dst, key, src, ad []byte) bool\n-TEXT ·chacha20Poly1305Open(SB), 0, $288-97\n+// func chacha20Poly1305Open(dst []byte, key []uint32, src []byte, ad []byte) bool\n+// Requires: AVX, AVX2, BMI2, CMOV, SSE2\n+TEXT ·chacha20Poly1305Open(SB), $288-97\n \t// For aligned stack access\n \tMOVQ SP, BP\n-\tADDQ $32, BP\n+\tADDQ $0x20, BP\n \tANDQ $-32, BP\n-\tMOVQ dst+0(FP), oup\n-\tMOVQ key+24(FP), keyp\n-\tMOVQ src+48(FP), inp\n-\tMOVQ src_len+56(FP), inl\n-\tMOVQ ad+72(FP), adp\n+\tMOVQ dst_base+0(FP), DI\n+\tMOVQ key_base+24(FP), R8\n+\tMOVQ src_base+48(FP), SI\n+\tMOVQ src_len+56(FP), BX\n+\tMOVQ ad_base+72(FP), CX\n \n \t// Check for AVX2 support\n-\tCMPB ·useAVX2(SB), $1\n+\tCMPB ·useAVX2+0(SB), $0x01\n \tJE   chacha20Poly1305Open_AVX2\n \n \t// Special optimization, for very short buffers\n-\tCMPQ inl, $128\n-\tJBE  openSSE128 // About 16% faster\n+\tCMPQ BX, $0x80\n+\tJBE  openSSE128\n \n \t// For long buffers, prepare the poly key first\n-\tMOVOU ·chacha20Constants<>(SB), A0\n-\tMOVOU (1*16)(keyp), B0\n-\tMOVOU (2*16)(keyp), C0\n-\tMOVOU (3*16)(keyp), D0\n-\tMOVO  D0, T1\n+\tMOVOU ·chacha20Constants<>+0(SB), X0\n+\tMOVOU 16(R8), X3\n+\tMOVOU 32(R8), X6\n+\tMOVOU 48(R8), X9\n+\tMOVO  X9, X13\n \n \t// Store state on stack for future use\n-\tMOVO B0, state1Store\n-\tMOVO C0, state2Store\n-\tMOVO D0, ctr3Store\n-\tMOVQ $10, itr2\n+\tMOVO X3, 32(BP)\n+\tMOVO X6, 48(BP)\n+\tMOVO X9, 128(BP)\n+\tMOVQ $0x0000000a, R9\n \n openSSEPreparePolyKey:\n-\tchachaQR(A0, B0, C0, D0, T0)\n-\tshiftB0Left;  shiftC0Left; shiftD0Left\n-\tchachaQR(A0, B0, C0, D0, T0)\n-\tshiftB0Right; shiftC0Right; shiftD0Right\n-\tDECQ          itr2\n-\tJNE           openSSEPreparePolyKey\n+\tPADDD X3, X0\n+\tPXOR  X0, X9\n+\tROL16(X9, X12)\n+\tPADDD X9, X6\n+\tPXOR  X6, X3\n+\tMOVO  X3, X12\n+\tPSLLL $0x0c, X12\n+\tPSRLL $0x14, X3\n+\tPXOR  X12, X3\n+\tPADDD X3, X0\n+\tPXOR  X0, X9\n+\tROL8(X9, X12)\n+\tPADDD X9, X6\n+\tPXOR  X6, X3\n+\tMOVO  X3, X12\n+\tPSLLL $0x07, X12\n+\tPSRLL $0x19, X3\n+\tPXOR  X12, X3\n+\tBYTE  $0x66\n+\tBYTE  $0x0f\n+\tBYTE  $0x3a\n+\tBYTE  $0x0f\n+\tBYTE  $0xdb\n+\tBYTE  $0x04\n+\tBYTE  $0x66\n+\tBYTE  $0x0f\n+\tBYTE  $0x3a\n+\tBYTE  $0x0f\n+\tBYTE  $0xf6\n+\tBYTE  $0x08\n+\tBYTE  $0x66\n+\tBYTE  $0x45\n+\tBYTE  $0x0f\n+\tBYTE  $0x3a\n+\tBYTE  $0x0f\n+\tBYTE  $0xc9\n+\tBYTE  $0x0c\n+\tPADDD X3, X0\n+\tPXOR  X0, X9\n+\tROL16(X9, X12)\n+\tPADDD X9, X6\n+\tPXOR  X6, X3\n+\tMOVO  X3, X12\n+\tPSLLL $0x0c, X12\n+\tPSRLL $0x14, X3\n+\tPXOR  X12, X3\n+\tPADDD X3, X0\n+\tPXOR  X0, X9\n+\tROL8(X9, X12)\n+\tPADDD X9, X6\n+\tPXOR  X6, X3\n+\tMOVO  X3, X12\n+\tPSLLL $0x07, X12\n+\tPSRLL $0x19, X3\n+\tPXOR  X12, X3\n+\tBYTE  $0x66\n+\tBYTE  $0x0f\n+\tBYTE  $0x3a\n+\tBYTE  $0x0f\n+\tBYTE  $0xdb\n+\tBYTE  $0x0c\n+\tBYTE  $0x66\n+\tBYTE  $0x0f\n+\tBYTE  $0x3a\n+\tBYTE  $0x0f\n+\tBYTE  $0xf6\n+\tBYTE  $0x08\n+\tBYTE  $0x66\n+\tBYTE  $0x45\n+\tBYTE  $0x0f\n+\tBYTE  $0x3a\n+\tBYTE  $0x0f\n+\tBYTE  $0xc9\n+\tBYTE  $0x04\n+\tDECQ  R9\n+\tJNE   openSSEPreparePolyKey\n \n \t// A0|B0 hold the Poly1305 32-byte key, C0,D0 can be discarded\n-\tPADDL ·chacha20Constants<>(SB), A0; PADDL state1Store, B0\n+\tPADDL ·chacha20Constants<>+0(SB), X0\n+\tPADDL 32(BP), X3\n \n \t// Clamp and store the key\n-\tPAND ·polyClampMask<>(SB), A0\n-\tMOVO A0, rStore; MOVO B0, sStore\n+\tPAND ·polyClampMask<>+0(SB), X0\n+\tMOVO X0, (BP)\n+\tMOVO X3, 16(BP)\n \n \t// Hash AAD\n-\tMOVQ ad_len+80(FP), itr2\n+\tMOVQ ad_len+80(FP), R9\n \tCALL polyHashADInternal<>(SB)\n \n openSSEMainLoop:\n-\tCMPQ inl, $256\n+\tCMPQ BX, $0x00000100\n \tJB   openSSEMainLoopDone\n \n \t// Load state, increment counter blocks\n-\tMOVO ·chacha20Constants<>(SB), A0; MOVO state1Store, B0; MOVO state2Store, C0; MOVO ctr3Store, D0; PADDL ·sseIncMask<>(SB), D0\n-\tMOVO A0, A1; MOVO B0, B1; MOVO C0, C1; MOVO D0, D1; PADDL ·sseIncMask<>(SB), D1\n-\tMOVO A1, A2; MOVO B1, B2; MOVO C1, C2; MOVO D1, D2; PADDL ·sseIncMask<>(SB), D2\n-\tMOVO A2, A3; MOVO B2, B3; MOVO C2, C3; MOVO D2, D3; PADDL ·sseIncMask<>(SB), D3\n+\tMOVO  ·chacha20Constants<>+0(SB), X0\n+\tMOVO  32(BP), X3\n+\tMOVO  48(BP), X6\n+\tMOVO  128(BP), X9\n+\tPADDL ·sseIncMask<>+0(SB), X9\n+\tMOVO  X0, X1\n+\tMOVO  X3, X4\n+\tMOVO  X6, X7\n+\tMOVO  X9, X10\n+\tPADDL ·sseIncMask<>+0(SB), X10\n+\tMOVO  X1, X2\n+\tMOVO  X4, X5\n+\tMOVO  X7, X8\n+\tMOVO  X10, X11\n+\tPADDL ·sseIncMask<>+0(SB), X11\n+\tMOVO  X2, X12\n+\tMOVO  X5, X13\n+\tMOVO  X8, X14\n+\tMOVO  X11, X15\n+\tPADDL ·sseIncMask<>+0(SB), X15\n \n \t// Store counters\n-\tMOVO D0, ctr0Store; MOVO D1, ctr1Store; MOVO D2, ctr2Store; MOVO D3, ctr3Store\n+\tMOVO X9, 80(BP)\n+\tMOVO X10, 96(BP)\n+\tMOVO X11, 112(BP)\n+\tMOVO X15, 128(BP)\n \n-\t// There are 10 ChaCha20 iterations of 2QR each, so for 6 iterations we hash 2 blocks, and for the remaining 4 only 1 block - for a total of 16\n-\tMOVQ $4, itr1\n-\tMOVQ inp, itr2\n+\t// There are 10 ChaCha20 iterations of 2QR each, so for 6 iterations we hash\n+\t// 2 blocks, and for the remaining 4 only 1 block - for a total of 16\n+\tMOVQ $0x00000004, CX\n+\tMOVQ SI, R9\n \n openSSEInternalLoop:\n-\tMOVO          C3, tmpStore\n-\tchachaQR(A0, B0, C0, D0, C3); chachaQR(A1, B1, C1, D1, C3); chachaQR(A2, B2, C2, D2, C3)\n-\tMOVO          tmpStore, C3\n-\tMOVO          C1, tmpStore\n-\tchachaQR(A3, B3, C3, D3, C1)\n-\tMOVO          tmpStore, C1\n-\tpolyAdd(0(itr2))\n-\tshiftB0Left;  shiftB1Left; shiftB2Left; shiftB3Left\n-\tshiftC0Left;  shiftC1Left; shiftC2Left; shiftC3Left\n-\tshiftD0Left;  shiftD1Left; shiftD2Left; shiftD3Left\n-\tpolyMulStage1\n-\tpolyMulStage2\n-\tLEAQ          (2*8)(itr2), itr2\n-\tMOVO          C3, tmpStore\n-\tchachaQR(A0, B0, C0, D0, C3); chachaQR(A1, B1, C1, D1, C3); chachaQR(A2, B2, C2, D2, C3)\n-\tMOVO          tmpStore, C3\n-\tMOVO          C1, tmpStore\n-\tpolyMulStage3\n-\tchachaQR(A3, B3, C3, D3, C1)\n-\tMOVO          tmpStore, C1\n-\tpolyMulReduceStage\n-\tshiftB0Right; shiftB1Right; shiftB2Right; shiftB3Right\n-\tshiftC0Right; shiftC1Right; shiftC2Right; shiftC3Right\n-\tshiftD0Right; shiftD1Right; shiftD2Right; shiftD3Right\n-\tDECQ          itr1\n-\tJGE           openSSEInternalLoop\n-\n-\tpolyAdd(0(itr2))\n-\tpolyMul\n-\tLEAQ (2*8)(itr2), itr2\n-\n-\tCMPQ itr1, $-6\n-\tJG   openSSEInternalLoop\n+\tMOVO  X14, 64(BP)\n+\tPADDD X3, X0\n+\tPXOR  X0, X9\n+\tROL16(X9, X14)\n+\tPADDD X9, X6\n+\tPXOR  X6, X3\n+\tMOVO  X3, X14\n+\tPSLLL $0x0c, X14\n+\tPSRLL $0x14, X3\n+\tPXOR  X14, X3\n+\tPADDD X3, X0\n+\tPXOR  X0, X9\n+\tROL8(X9, X14)\n+\tPADDD X9, X6\n+\tPXOR  X6, X3\n+\tMOVO  X3, X14\n+\tPSLLL $0x07, X14\n+\tPSRLL $0x19, X3\n+\tPXOR  X14, X3\n+\tPADDD X4, X1\n+\tPXOR  X1, X10\n+\tROL16(X10, X14)\n+\tPADDD X10, X7\n+\tPXOR  X7, X4\n+\tMOVO  X4, X14\n+\tPSLLL $0x0c, X14\n+\tPSRLL $0x14, X4\n+\tPXOR  X14, X4\n+\tPADDD X4, X1\n+\tPXOR  X1, X10\n+\tROL8(X10, X14)\n+\tPADDD X10, X7\n+\tPXOR  X7, X4\n+\tMOVO  X4, X14\n+\tPSLLL $0x07, X14\n+\tPSRLL $0x19, X4\n+\tPXOR  X14, X4\n+\tPADDD X5, X2\n+\tPXOR  X2, X11\n+\tROL16(X11, X14)\n+\tPADDD X11, X8\n+\tPXOR  X8, X5\n+\tMOVO  X5, X14\n+\tPSLLL $0x0c, X14\n+\tPSRLL $0x14, X5\n+\tPXOR  X14, X5\n+\tPADDD X5, X2\n+\tPXOR  X2, X11\n+\tROL8(X11, X14)\n+\tPADDD X11, X8\n+\tPXOR  X8, X5\n+\tMOVO  X5, X14\n+\tPSLLL $0x07, X14\n+\tPSRLL $0x19, X5\n+\tPXOR  X14, X5\n+\tMOVO  64(BP), X14\n+\tMOVO  X7, 64(BP)\n+\tPADDD X13, X12\n+\tPXOR  X12, X15\n+\tROL16(X15, X7)\n+\tPADDD X15, X14\n+\tPXOR  X14, X13\n+\tMOVO  X13, X7\n+\tPSLLL $0x0c, X7\n+\tPSRLL $0x14, X13\n+\tPXOR  X7, X13\n+\tPADDD X13, X12\n+\tPXOR  X12, X15\n+\tROL8(X15, X7)\n+\tPADDD X15, X14\n+\tPXOR  X14, X13\n+\tMOVO  X13, X7\n+\tPSLLL $0x07, X7\n+\tPSRLL $0x19, X13\n+\tPXOR  X7, X13\n+\tMOVO  64(BP), X7\n+\tADDQ  (R9), R10\n+\tADCQ  8(R9), R11\n+\tADCQ  $0x01, R12\n+\tBYTE  $0x66\n+\tBYTE  $0x0f\n+\tBYTE  $0x3a\n+\tBYTE  $0x0f\n+\tBYTE  $0xdb\n+\tBYTE  $0x04\n+\tBYTE  $0x66\n+\tBYTE  $0x0f\n+\tBYTE  $0x3a\n+\tBYTE  $0x0f\n+\tBYTE  $0xe4\n+\tBYTE  $0x04\n+\tBYTE  $0x66\n+\tBYTE  $0x0f\n+\tBYTE  $0x3a\n+\tBYTE  $0x0f\n+\tBYTE  $0xed\n+\tBYTE  $0x04\n+\tBYTE  $0x66\n+\tBYTE  $0x45\n+\tBYTE  $0x0f\n+\tBYTE  $0x3a\n+\tBYTE  $0x0f\n+\tBYTE  $0xed\n+\tBYTE  $0x04\n+\tBYTE  $0x66\n+\tBYTE  $0x0f\n+\tBYTE  $0x3a\n+\tBYTE  $0x0f\n+\tBYTE  $0xf6\n+\tBYTE  $0x08\n+\tBYTE  $0x66\n+\tBYTE  $0x0f\n+\tBYTE  $0x3a\n+\tBYTE  $0x0f\n+\tBYTE  $0xff\n+\tBYTE  $0x08\n+\tBYTE  $0x66\n+\tBYTE  $0x45\n+\tBYTE  $0x0f\n+\tBYTE  $0x3a\n+\tBYTE  $0x0f\n+\tBYTE  $0xc0\n+\tBYTE  $0x08\n+\tBYTE  $0x66\n+\tBYTE  $0x45\n+\tBYTE  $0x0f\n+\tBYTE  $0x3a\n+\tBYTE  $0x0f\n+\tBYTE  $0xf6\n+\tBYTE  $0x08\n+\tBYTE  $0x66\n+\tBYTE  $0x45\n+\tBYTE  $0x0f\n+\tBYTE  $0x3a\n+\tBYTE  $0x0f\n+\tBYTE  $0xc9\n+\tBYTE  $0x0c\n+\tBYTE  $0x66\n+\tBYTE  $0x45\n+\tBYTE  $0x0f\n+\tBYTE  $0x3a\n+\tBYTE  $0x0f\n+\tBYTE  $0xd2\n+\tBYTE  $0x0c\n+\tBYTE  $0x66\n+\tBYTE  $0x45\n+\tBYTE  $0x0f\n+\tBYTE  $0x3a\n+\tBYTE  $0x0f\n+\tBYTE  $0xdb\n+\tBYTE  $0x0c\n+\tBYTE  $0x66\n+\tBYTE  $0x45\n+\tBYTE  $0x0f\n+\tBYTE  $0x3a\n+\tBYTE  $0x0f\n+\tBYTE  $0xff\n+\tBYTE  $0x0c\n+\tMOVQ  (BP), AX\n+\tMOVQ  AX, R15\n+\tMULQ  R10\n+\tMOVQ  AX, R13\n+\tMOVQ  DX, R14\n+\tMOVQ  (BP), AX\n+\tMULQ  R11\n+\tIMULQ R12, R15\n+\tADDQ  AX, R14\n+\tADCQ  DX, R15\n+\tMOVQ  8(BP), AX\n+\tMOVQ  AX, R8\n+\tMULQ  R10\n+\tADDQ  AX, R14\n+\tADCQ  $0x00, DX\n+\tMOVQ  DX, R10\n+\tMOVQ  8(BP), AX\n+\tMULQ  R11\n+\tADDQ  AX, R15\n+\tADCQ  $0x00, DX\n+\tLEAQ  16(R9), R9\n+\tMOVO  X14, 64(BP)\n+\tPADDD X3, X0\n+\tPXOR  X0, X9\n+\tROL16(X9, X14)\n+\tPADDD X9, X6\n+\tPXOR  X6, X3\n+\tMOVO  X3, X14\n+\tPSLLL $0x0c, X14\n+\tPSRLL $0x14, X3\n+\tPXOR  X14, X3\n+\tPADDD X3, X0\n+\tPXOR  X0, X9\n+\tROL8(X9, X14)\n+\tPADDD X9, X6\n+\tPXOR  X6, X3\n+\tMOVO  X3, X14\n+\tPSLLL $0x07, X14\n+\tPSRLL $0x19, X3\n+\tPXOR  X14, X3\n+\tPADDD X4, X1\n+\tPXOR  X1, X10\n+\tROL16(X10, X14)\n+\tPADDD X10, X7\n+\tPXOR  X7, X4\n+\tMOVO  X4, X14\n+\tPSLLL $0x0c, X14\n+\tPSRLL $0x14, X4\n+\tPXOR  X14, X4\n+\tPADDD X4, X1\n+\tPXOR  X1, X10\n+\tROL8(X10, X14)\n+\tPADDD X10, X7\n+\tPXOR  X7, X4\n+\tMOVO  X4, X14\n+\tPSLLL $0x07, X14\n+\tPSRLL $0x19, X4\n+\tPXOR  X14, X4\n+\tPADDD X5, X2\n+\tPXOR  X2, X11\n+\tROL16(X11, X14)\n+\tPADDD X11, X8\n+\tPXOR  X8, X5\n+\tMOVO  X5, X14\n+\tPSLLL $0x0c, X14\n+\tPSRLL $0x14, X5\n+\tPXOR  X14, X5\n+\tPADDD X5, X2\n+\tPXOR  X2, X11\n+\tROL8(X11, X14)\n+\tPADDD X11, X8\n+\tPXOR  X8, X5\n+\tMOVO  X5, X14\n+\tPSLLL $0x07, X14\n+\tPSRLL $0x19, X5\n+\tPXOR  X14, X5\n+\tMOVO  64(BP), X14\n+\tMOVO  X7, 64(BP)\n+\tIMULQ R12, R8\n+\tADDQ  R10, R15\n+\tADCQ  DX, R8\n+\tPADDD X13, X12\n+\tPXOR  X12, X15\n+\tROL16(X15, X7)\n+\tPADDD X15, X14\n+\tPXOR  X14, X13\n+\tMOVO  X13, X7\n+\tPSLLL $0x0c, X7\n+\tPSRLL $0x14, X13\n+\tPXOR  X7, X13\n+\tPADDD X13, X12\n+\tPXOR  X12, X15\n+\tROL8(X15, X7)\n+\tPADDD X15, X14\n+\tPXOR  X14, X13\n+\tMOVO  X13, X7\n+\tPSLLL $0x07, X7\n+\tPSRLL $0x19, X13\n+\tPXOR  X7, X13\n+\tMOVO  64(BP), X7\n+\tMOVQ  R13, R10\n+\tMOVQ  R14, R11\n+\tMOVQ  R15, R12\n+\tANDQ  $0x03, R12\n+\tMOVQ  R15, R13\n+\tANDQ  $-4, R13\n+\tMOVQ  R8, R14\n+\tSHRQ  $0x02, R8, R15\n+\tSHRQ  $0x02, R8\n+\tADDQ  R13, R10\n+\tADCQ  R14, R11\n+\tADCQ  $0x00, R12\n+\tADDQ  R15, R10\n+\tADCQ  R8, R11\n+\tADCQ  $0x00, R12\n+\tBYTE  $0x66\n+\tBYTE  $0x0f\n+\tBYTE  $0x3a\n+\tBYTE  $0x0f\n+\tBYTE  $0xdb\n+\tBYTE  $0x0c\n+\tBYTE  $0x66\n+\tBYTE  $0x0f\n+\tBYTE  $0x3a\n+\tBYTE  $0x0f\n+\tBYTE  $0xe4\n+\tBYTE  $0x0c\n+\tBYTE  $0x66\n+\tBYTE  $0x0f\n+\tBYTE  $0x3a\n+\tBYTE  $0x0f\n+\tBYTE  $0xed\n+\tBYTE  $0x0c\n+\tBYTE  $0x66\n+\tBYTE  $0x45\n+\tBYTE  $0x0f\n+\tBYTE  $0x3a\n+\tBYTE  $0x0f\n+\tBYTE  $0xed\n+\tBYTE  $0x0c\n+\tBYTE  $0x66\n+\tBYTE  $0x0f\n+\tBYTE  $0x3a\n+\tBYTE  $0x0f\n+\tBYTE  $0xf6\n+\tBYTE  $0x08\n+\tBYTE  $0x66\n+\tBYTE  $0x0f\n+\tBYTE  $0x3a\n+\tBYTE  $0x0f\n+\tBYTE  $0xff\n+\tBYTE  $0x08\n+\tBYTE  $0x66\n+\tBYTE  $0x45\n+\tBYTE  $0x0f\n+\tBYTE  $0x3a\n+\tBYTE  $0x0f\n+\tBYTE  $0xc0\n+\tBYTE  $0x08\n+\tBYTE  $0x66\n+\tBYTE  $0x45\n+\tBYTE  $0x0f\n+\tBYTE  $0x3a\n+\tBYTE  $0x0f\n+\tBYTE  $0xf6\n+\tBYTE  $0x08\n+\tBYTE  $0x66\n+\tBYTE  $0x45\n+\tBYTE  $0x0f\n+\tBYTE  $0x3a\n+\tBYTE  $0x0f\n+\tBYTE  $0xc9\n+\tBYTE  $0x04\n+\tBYTE  $0x66\n+\tBYTE  $0x45\n+\tBYTE  $0x0f\n+\tBYTE  $0x3a\n+\tBYTE  $0x0f\n+\tBYTE  $0xd2\n+\tBYTE  $0x04\n+\tBYTE  $0x66\n+\tBYTE  $0x45\n+\tBYTE  $0x0f\n+\tBYTE  $0x3a\n+\tBYTE  $0x0f\n+\tBYTE  $0xdb\n+\tBYTE  $0x04\n+\tBYTE  $0x66\n+\tBYTE  $0x45\n+\tBYTE  $0x0f\n+\tBYTE  $0x3a\n+\tBYTE  $0x0f\n+\tBYTE  $0xff\n+\tBYTE  $0x04\n+\tDECQ  CX\n+\tJGE   openSSEInternalLoop\n+\tADDQ  (R9), R10\n+\tADCQ  8(R9), R11\n+\tADCQ  $0x01, R12\n+\tMOVQ  (BP), AX\n+\tMOVQ  AX, R15\n+\tMULQ  R10\n+\tMOVQ  AX, R13\n+\tMOVQ  DX, R14\n+\tMOVQ  (BP), AX\n+\tMULQ  R11\n+\tIMULQ R12, R15\n+\tADDQ  AX, R14\n+\tADCQ  DX, R15\n+\tMOVQ  8(BP), AX\n+\tMOVQ  AX, R8\n+\tMULQ  R10\n+\tADDQ  AX, R14\n+\tADCQ  $0x00, DX\n+\tMOVQ  DX, R10\n+\tMOVQ  8(BP), AX\n+\tMULQ  R11\n+\tADDQ  AX, R15\n+\tADCQ  $0x00, DX\n+\tIMULQ R12, R8\n+\tADDQ  R10, R15\n+\tADCQ  DX, R8\n+\tMOVQ  R13, R10\n+\tMOVQ  R14, R11\n+\tMOVQ  R15, R12\n+\tANDQ  $0x03, R12\n+\tMOVQ  R15, R13\n+\tANDQ  $-4, R13\n+\tMOVQ  R8, R14\n+\tSHRQ  $0x02, R8, R15\n+\tSHRQ  $0x02, R8\n+\tADDQ  R13, R10\n+\tADCQ  R14, R11\n+\tADCQ  $0x00, R12\n+\tADDQ  R15, R10\n+\tADCQ  R8, R11\n+\tADCQ  $0x00, R12\n+\tLEAQ  16(R9), R9\n+\tCMPQ  CX, $-6\n+\tJG    openSSEInternalLoop\n \n \t// Add in the state\n-\tPADDD ·chacha20Constants<>(SB), A0; PADDD ·chacha20Constants<>(SB), A1; PADDD ·chacha20Constants<>(SB), A2; PADDD ·chacha20Constants<>(SB), A3\n-\tPADDD state1Store, B0; PADDD state1Store, B1; PADDD state1Store, B2; PADDD state1Store, B3\n-\tPADDD state2Store, C0; PADDD state2Store, C1; PADDD state2Store, C2; PADDD state2Store, C3\n-\tPADDD ctr0Store, D0; PADDD ctr1Store, D1; PADDD ctr2Store, D2; PADDD ctr3Store, D3\n+\tPADDD ·chacha20Constants<>+0(SB), X0\n+\tPADDD ·chacha20Constants<>+0(SB), X1\n+\tPADDD ·chacha20Constants<>+0(SB), X2\n+\tPADDD ·chacha20Constants<>+0(SB), X12\n+\tPADDD 32(BP), X3\n+\tPADDD 32(BP), X4\n+\tPADDD 32(BP), X5\n+\tPADDD 32(BP), X13\n+\tPADDD 48(BP), X6\n+\tPADDD 48(BP), X7\n+\tPADDD 48(BP), X8\n+\tPADDD 48(BP), X14\n+\tPADDD 80(BP), X9\n+\tPADDD 96(BP), X10\n+\tPADDD 112(BP), X11\n+\tPADDD 128(BP), X15\n \n \t// Load - xor - store\n-\tMOVO  D3, tmpStore\n-\tMOVOU (0*16)(inp), D3; PXOR D3, A0; MOVOU A0, (0*16)(oup)\n-\tMOVOU (1*16)(inp), D3; PXOR D3, B0; MOVOU B0, (1*16)(oup)\n-\tMOVOU (2*16)(inp), D3; PXOR D3, C0; MOVOU C0, (2*16)(oup)\n-\tMOVOU (3*16)(inp), D3; PXOR D3, D0; MOVOU D0, (3*16)(oup)\n-\tMOVOU (4*16)(inp), D0; PXOR D0, A1; MOVOU A1, (4*16)(oup)\n-\tMOVOU (5*16)(inp), D0; PXOR D0, B1; MOVOU B1, (5*16)(oup)\n-\tMOVOU (6*16)(inp), D0; PXOR D0, C1; MOVOU C1, (6*16)(oup)\n-\tMOVOU (7*16)(inp), D0; PXOR D0, D1; MOVOU D1, (7*16)(oup)\n-\tMOVOU (8*16)(inp), D0; PXOR D0, A2; MOVOU A2, (8*16)(oup)\n-\tMOVOU (9*16)(inp), D0; PXOR D0, B2; MOVOU B2, (9*16)(oup)\n-\tMOVOU (10*16)(inp), D0; PXOR D0, C2; MOVOU C2, (10*16)(oup)\n-\tMOVOU (11*16)(inp), D0; PXOR D0, D2; MOVOU D2, (11*16)(oup)\n-\tMOVOU (12*16)(inp), D0; PXOR D0, A3; MOVOU A3, (12*16)(oup)\n-\tMOVOU (13*16)(inp), D0; PXOR D0, B3; MOVOU B3, (13*16)(oup)\n-\tMOVOU (14*16)(inp), D0; PXOR D0, C3; MOVOU C3, (14*16)(oup)\n-\tMOVOU (15*16)(inp), D0; PXOR tmpStore, D0; MOVOU D0, (15*16)(oup)\n-\tLEAQ  256(inp), inp\n-\tLEAQ  256(oup), oup\n-\tSUBQ  $256, inl\n+\tMOVO  X15, 64(BP)\n+\tMOVOU (SI), X15\n+\tPXOR  X15, X0\n+\tMOVOU X0, (DI)\n+\tMOVOU 16(SI), X15\n+\tPXOR  X15, X3\n+\tMOVOU X3, 16(DI)\n+\tMOVOU 32(SI), X15\n+\tPXOR  X15, X6\n+\tMOVOU X6, 32(DI)\n+\tMOVOU 48(SI), X15\n+\tPXOR  X15, X9\n+\tMOVOU X9, 48(DI)\n+\tMOVOU 64(SI), X9\n+\tPXOR  X9, X1\n+\tMOVOU X1, 64(DI)\n+\tMOVOU 80(SI), X9\n+\tPXOR  X9, X4\n+\tMOVOU X4, 80(DI)\n+\tMOVOU 96(SI), X9\n+\tPXOR  X9, X7\n+\tMOVOU X7, 96(DI)\n+\tMOVOU 112(SI), X9\n+\tPXOR  X9, X10\n+\tMOVOU X10, 112(DI)\n+\tMOVOU 128(SI), X9\n+\tPXOR  X9, X2\n+\tMOVOU X2, 128(DI)\n+\tMOVOU 144(SI), X9\n+\tPXOR  X9, X5\n+\tMOVOU X5, 144(DI)\n+\tMOVOU 160(SI), X9\n+\tPXOR  X9, X8\n+\tMOVOU X8, 160(DI)\n+\tMOVOU 176(SI), X9\n+\tPXOR  X9, X11\n+\tMOVOU X11, 176(DI)\n+\tMOVOU 192(SI), X9\n+\tPXOR  X9, X12\n+\tMOVOU X12, 192(DI)\n+\tMOVOU 208(SI), X9\n+\tPXOR  X9, X13\n+\tMOVOU X13, 208(DI)\n+\tMOVOU 224(SI), X9\n+\tPXOR  X9, X14\n+\tMOVOU X14, 224(DI)\n+\tMOVOU 240(SI), X9\n+\tPXOR  64(BP), X9\n+\tMOVOU X9, 240(DI)\n+\tLEAQ  256(SI), SI\n+\tLEAQ  256(DI), DI\n+\tSUBQ  $0x00000100, BX\n \tJMP   openSSEMainLoop\n \n openSSEMainLoopDone:\n \t// Handle the various tail sizes efficiently\n-\tTESTQ inl, inl\n+\tTESTQ BX, BX\n \tJE    openSSEFinalize\n-\tCMPQ  inl, $64\n+\tCMPQ  BX, $0x40\n \tJBE   openSSETail64\n-\tCMPQ  inl, $128\n+\tCMPQ  BX, $0x80\n \tJBE   openSSETail128\n-\tCMPQ  inl, $192\n+\tCMPQ  BX, $0xc0\n \tJBE   openSSETail192\n \tJMP   openSSETail256\n \n openSSEFinalize:\n \t// Hash in the PT, AAD lengths\n-\tADDQ ad_len+80(FP), acc0; ADCQ src_len+56(FP), acc1; ADCQ $1, acc2\n-\tpolyMul\n+\tADDQ  ad_len+80(FP), R10\n+\tADCQ  src_len+56(FP), R11\n+\tADCQ  $0x01, R12\n+\tMOVQ  (BP), AX\n+\tMOVQ  AX, R15\n+\tMULQ  R10\n+\tMOVQ  AX, R13\n+\tMOVQ  DX, R14\n+\tMOVQ  (BP), AX\n+\tMULQ  R11\n+\tIMULQ R12, R15\n+\tADDQ  AX, R14\n+\tADCQ  DX, R15\n+\tMOVQ  8(BP), AX\n+\tMOVQ  AX, R8\n+\tMULQ  R10\n+\tADDQ  AX, R14\n+\tADCQ  $0x00, DX\n+\tMOVQ  DX, R10\n+\tMOVQ  8(BP), AX\n+\tMULQ  R11\n+\tADDQ  AX, R15\n+\tADCQ  $0x00, DX\n+\tIMULQ R12, R8\n+\tADDQ  R10, R15\n+\tADCQ  DX, R8\n+\tMOVQ  R13, R10\n+\tMOVQ  R14, R11\n+\tMOVQ  R15, R12\n+\tANDQ  $0x03, R12\n+\tMOVQ  R15, R13\n+\tANDQ  $-4, R13\n+\tMOVQ  R8, R14\n+\tSHRQ  $0x02, R8, R15\n+\tSHRQ  $0x02, R8\n+\tADDQ  R13, R10\n+\tADCQ  R14, R11\n+\tADCQ  $0x00, R12\n+\tADDQ  R15, R10\n+\tADCQ  R8, R11\n+\tADCQ  $0x00, R12\n \n \t// Final reduce\n-\tMOVQ    acc0, t0\n-\tMOVQ    acc1, t1\n-\tMOVQ    acc2, t2\n-\tSUBQ    $-5, acc0\n-\tSBBQ    $-1, acc1\n-\tSBBQ    $3, acc2\n-\tCMOVQCS t0, acc0\n-\tCMOVQCS t1, acc1\n-\tCMOVQCS t2, acc2\n+\tMOVQ    R10, R13\n+\tMOVQ    R11, R14\n+\tMOVQ    R12, R15\n+\tSUBQ    $-5, R10\n+\tSBBQ    $-1, R11\n+\tSBBQ    $0x03, R12\n+\tCMOVQCS R13, R10\n+\tCMOVQCS R14, R11\n+\tCMOVQCS R15, R12\n \n \t// Add in the \"s\" part of the key\n-\tADDQ 0+sStore, acc0\n-\tADCQ 8+sStore, acc1\n+\tADDQ 16(BP), R10\n+\tADCQ 24(BP), R11\n \n \t// Finally, constant time compare to the tag at the end of the message\n \tXORQ    AX, AX\n-\tMOVQ    $1, DX\n-\tXORQ    (0*8)(inp), acc0\n-\tXORQ    (1*8)(inp), acc1\n-\tORQ     acc1, acc0\n+\tMOVQ    $0x00000001, DX\n+\tXORQ    (SI), R10\n+\tXORQ    8(SI), R11\n+\tORQ     R11, R10\n \tCMOVQEQ DX, AX\n \n \t// Return true iff tags are equal\n \tMOVB AX, ret+96(FP)\n \tRET\n \n-// ----------------------------------------------------------------------------\n-// Special optimization for buffers smaller than 129 bytes\n openSSE128:\n-\t// For up to 128 bytes of ciphertext and 64 bytes for the poly key, we require to process three blocks\n-\tMOVOU ·chacha20Constants<>(SB), A0; MOVOU (1*16)(keyp), B0; MOVOU (2*16)(keyp), C0; MOVOU (3*16)(keyp), D0\n-\tMOVO  A0, A1; MOVO B0, B1; MOVO C0, C1; MOVO D0, D1; PADDL ·sseIncMask<>(SB), D1\n-\tMOVO  A1, A2; MOVO B1, B2; MOVO C1, C2; MOVO D1, D2; PADDL ·sseIncMask<>(SB), D2\n-\tMOVO  B0, T1; MOVO C0, T2; MOVO D1, T3\n-\tMOVQ  $10, itr2\n+\tMOVOU ·chacha20Constants<>+0(SB), X0\n+\tMOVOU 16(R8), X3\n+\tMOVOU 32(R8), X6\n+\tMOVOU 48(R8), X9\n+\tMOVO  X0, X1\n+\tMOVO  X3, X4\n+\tMOVO  X6, X7\n+\tMOVO  X9, X10\n+\tPADDL ·sseIncMask<>+0(SB), X10\n+\tMOVO  X1, X2\n+\tMOVO  X4, X5\n+\tMOVO  X7, X8\n+\tMOVO  X10, X11\n+\tPADDL ·sseIncMask<>+0(SB), X11\n+\tMOVO  X3, X13\n+\tMOVO  X6, X14\n+\tMOVO  X10, X15\n+\tMOVQ  $0x0000000a, R9\n \n openSSE128InnerCipherLoop:\n-\tchachaQR(A0, B0, C0, D0, T0); chachaQR(A1, B1, C1, D1, T0); chachaQR(A2, B2, C2, D2, T0)\n-\tshiftB0Left;  shiftB1Left; shiftB2Left\n-\tshiftC0Left;  shiftC1Left; shiftC2Left\n-\tshiftD0Left;  shiftD1Left; shiftD2Left\n-\tchachaQR(A0, B0, C0, D0, T0); chachaQR(A1, B1, C1, D1, T0); chachaQR(A2, B2, C2, D2, T0)\n-\tshiftB0Right; shiftB1Right; shiftB2Right\n-\tshiftC0Right; shiftC1Right; shiftC2Right\n-\tshiftD0Right; shiftD1Right; shiftD2Right\n-\tDECQ          itr2\n-\tJNE           openSSE128InnerCipherLoop\n+\tPADDD X3, X0\n+\tPXOR  X0, X9\n+\tROL16(X9, X12)\n+\tPADDD X9, X6\n+\tPXOR  X6, X3\n+\tMOVO  X3, X12\n+\tPSLLL $0x0c, X12\n+\tPSRLL $0x14, X3\n+\tPXOR  X12, X3\n+\tPADDD X3, X0\n+\tPXOR  X0, X9\n+\tROL8(X9, X12)\n+\tPADDD X9, X6\n+\tPXOR  X6, X3\n+\tMOVO  X3, X12\n+\tPSLLL $0x07, X12\n+\tPSRLL $0x19, X3\n+\tPXOR  X12, X3\n+\tPADDD X4, X1\n+\tPXOR  X1, X10\n+\tROL16(X10, X12)\n+\tPADDD X10, X7\n+\tPXOR  X7, X4\n+\tMOVO  X4, X12\n+\tPSLLL $0x0c, X12\n+\tPSRLL $0x14, X4\n+\tPXOR  X12, X4\n+\tPADDD X4, X1\n+\tPXOR  X1, X10\n+\tROL8(X10, X12)\n+\tPADDD X10, X7\n+\tPXOR  X7, X4\n+\tMOVO  X4, X12\n+\tPSLLL $0x07, X12\n+\tPSRLL $0x19, X4\n+\tPXOR  X12, X4\n+\tPADDD X5, X2\n+\tPXOR  X2, X11\n+\tROL16(X11, X12)\n+\tPADDD X11, X8\n+\tPXOR  X8, X5\n+\tMOVO  X5, X12\n+\tPSLLL $0x0c, X12\n+\tPSRLL $0x14, X5\n+\tPXOR  X12, X5\n+\tPADDD X5, X2\n+\tPXOR  X2, X11\n+\tROL8(X11, X12)\n+\tPADDD X11, X8\n+\tPXOR  X8, X5\n+\tMOVO  X5, X12\n+\tPSLLL $0x07, X12\n+\tPSRLL $0x19, X5\n+\tPXOR  X12, X5\n+\tBYTE  $0x66\n+\tBYTE  $0x0f\n+\tBYTE  $0x3a\n+\tBYTE  $0x0f\n+\tBYTE  $0xdb\n+\tBYTE  $0x04\n+\tBYTE  $0x66\n+\tBYTE  $0x0f\n+\tBYTE  $0x3a\n+\tBYTE  $0x0f\n+\tBYTE  $0xe4\n+\tBYTE  $0x04\n+\tBYTE  $0x66\n+\tBYTE  $0x0f\n+\tBYTE  $0x3a\n+\tBYTE  $0x0f\n+\tBYTE  $0xed\n+\tBYTE  $0x04\n+\tBYTE  $0x66\n+\tBYTE  $0x0f\n+\tBYTE  $0x3a\n+\tBYTE  $0x0f\n+\tBYTE  $0xf6\n+\tBYTE  $0x08\n+\tBYTE  $0x66\n+\tBYTE  $0x0f\n+\tBYTE  $0x3a\n+\tBYTE  $0x0f\n+\tBYTE  $0xff\n+\tBYTE  $0x08\n+\tBYTE  $0x66\n+\tBYTE  $0x45\n+\tBYTE  $0x0f\n+\tBYTE  $0x3a\n+\tBYTE  $0x0f\n+\tBYTE  $0xc0\n+\tBYTE  $0x08\n+\tBYTE  $0x66\n+\tBYTE  $0x45\n+\tBYTE  $0x0f\n+\tBYTE  $0x3a\n+\tBYTE  $0x0f\n+\tBYTE  $0xc9\n+\tBYTE  $0x0c\n+\tBYTE  $0x66\n+\tBYTE  $0x45\n+\tBYTE  $0x0f\n+\tBYTE  $0x3a\n+\tBYTE  $0x0f\n+\tBYTE  $0xd2\n+\tBYTE  $0x0c\n+\tBYTE  $0x66\n+\tBYTE  $0x45\n+\tBYTE  $0x0f\n+\tBYTE  $0x3a\n+\tBYTE  $0x0f\n+\tBYTE  $0xdb\n+\tBYTE  $0x0c\n+\tPADDD X3, X0\n+\tPXOR  X0, X9\n+\tROL16(X9, X12)\n+\tPADDD X9, X6\n+\tPXOR  X6, X3\n+\tMOVO  X3, X12\n+\tPSLLL $0x0c, X12\n+\tPSRLL $0x14, X3\n+\tPXOR  X12, X3\n+\tPADDD X3, X0\n+\tPXOR  X0, X9\n+\tROL8(X9, X12)\n+\tPADDD X9, X6\n+\tPXOR  X6, X3\n+\tMOVO  X3, X12\n+\tPSLLL $0x07, X12\n+\tPSRLL $0x19, X3\n+\tPXOR  X12, X3\n+\tPADDD X4, X1\n+\tPXOR  X1, X10\n+\tROL16(X10, X12)\n+\tPADDD X10, X7\n+\tPXOR  X7, X4\n+\tMOVO  X4, X12\n+\tPSLLL $0x0c, X12\n+\tPSRLL $0x14, X4\n+\tPXOR  X12, X4\n+\tPADDD X4, X1\n+\tPXOR  X1, X10\n+\tROL8(X10, X12)\n+\tPADDD X10, X7\n+\tPXOR  X7, X4\n+\tMOVO  X4, X12\n+\tPSLLL $0x07, X12\n+\tPSRLL $0x19, X4\n+\tPXOR  X12, X4\n+\tPADDD X5, X2\n+\tPXOR  X2, X11\n+\tROL16(X11, X12)\n+\tPADDD X11, X8\n+\tPXOR  X8, X5\n+\tMOVO  X5, X12\n+\tPSLLL $0x0c, X12\n+\tPSRLL $0x14, X5\n+\tPXOR  X12, X5\n+\tPADDD X5, X2\n+\tPXOR  X2, X11\n+\tROL8(X11, X12)\n+\tPADDD X11, X8\n+\tPXOR  X8, X5\n+\tMOVO  X5, X12\n+\tPSLLL $0x07, X12\n+\tPSRLL $0x19, X5\n+\tPXOR  X12, X5\n+\tBYTE  $0x66\n+\tBYTE  $0x0f\n+\tBYTE  $0x3a\n+\tBYTE  $0x0f\n+\tBYTE  $0xdb\n+\tBYTE  $0x0c\n+\tBYTE  $0x66\n+\tBYTE  $0x0f\n+\tBYTE  $0x3a\n+\tBYTE  $0x0f\n+\tBYTE  $0xe4\n+\tBYTE  $0x0c\n+\tBYTE  $0x66\n+\tBYTE  $0x0f\n+\tBYTE  $0x3a\n+\tBYTE  $0x0f\n+\tBYTE  $0xed\n+\tBYTE  $0x0c\n+\tBYTE  $0x66\n+\tBYTE  $0x0f\n+\tBYTE  $0x3a\n+\tBYTE  $0x0f\n+\tBYTE  $0xf6\n+\tBYTE  $0x08\n+\tBYTE  $0x66\n+\tBYTE  $0x0f\n+\tBYTE  $0x3a\n+\tBYTE  $0x0f\n+\tBYTE  $0xff\n+\tBYTE  $0x08\n+\tBYTE  $0x66\n+\tBYTE  $0x45\n+\tBYTE  $0x0f\n+\tBYTE  $0x3a\n+\tBYTE  $0x0f\n+\tBYTE  $0xc0\n+\tBYTE  $0x08\n+\tBYTE  $0x66\n+\tBYTE  $0x45\n+\tBYTE  $0x0f\n+\tBYTE  $0x3a\n+\tBYTE  $0x0f\n+\tBYTE  $0xc9\n+\tBYTE  $0x04\n+\tBYTE  $0x66\n+\tBYTE  $0x45\n+\tBYTE  $0x0f\n+\tBYTE  $0x3a\n+\tBYTE  $0x0f\n+\tBYTE  $0xd2\n+\tBYTE  $0x04\n+\tBYTE  $0x66\n+\tBYTE  $0x45\n+\tBYTE  $0x0f\n+\tBYTE  $0x3a\n+\tBYTE  $0x0f\n+\tBYTE  $0xdb\n+\tBYTE  $0x04\n+\tDECQ  R9\n+\tJNE   openSSE128InnerCipherLoop\n \n \t// A0|B0 hold the Poly1305 32-byte key, C0,D0 can be discarded\n-\tPADDL ·chacha20Constants<>(SB), A0; PADDL ·chacha20Constants<>(SB), A1; PADDL ·chacha20Constants<>(SB), A2\n-\tPADDL T1, B0; PADDL T1, B1; PADDL T1, B2\n-\tPADDL T2, C1; PADDL T2, C2\n-\tPADDL T3, D1; PADDL ·sseIncMask<>(SB), T3; PADDL T3, D2\n+\tPADDL ·chacha20Constants<>+0(SB), X0\n+\tPADDL ·chacha20Constants<>+0(SB), X1\n+\tPADDL ·chacha20Constants<>+0(SB), X2\n+\tPADDL X13, X3\n+\tPADDL X13, X4\n+\tPADDL X13, X5\n+\tPADDL X14, X7\n+\tPADDL X14, X8\n+\tPADDL X15, X10\n+\tPADDL ·sseIncMask<>+0(SB), X15\n+\tPADDL X15, X11\n \n \t// Clamp and store the key\n-\tPAND  ·polyClampMask<>(SB), A0\n-\tMOVOU A0, rStore; MOVOU B0, sStore\n+\tPAND  ·polyClampMask<>+0(SB), X0\n+\tMOVOU X0, (BP)\n+\tMOVOU X3, 16(BP)\n \n \t// Hash\n-\tMOVQ ad_len+80(FP), itr2\n+\tMOVQ ad_len+80(FP), R9\n \tCALL polyHashADInternal<>(SB)\n \n openSSE128Open:\n-\tCMPQ inl, $16\n+\tCMPQ BX, $0x10\n \tJB   openSSETail16\n-\tSUBQ $16, inl\n+\tSUBQ $0x10, BX\n \n \t// Load for hashing\n-\tpolyAdd(0(inp))\n+\tADDQ (SI), R10\n+\tADCQ 8(SI), R11\n+\tADCQ $0x01, R12\n \n \t// Load for decryption\n-\tMOVOU (inp), T0; PXOR T0, A1; MOVOU A1, (oup)\n-\tLEAQ  (1*16)(inp), inp\n-\tLEAQ  (1*16)(oup), oup\n-\tpolyMul\n+\tMOVOU (SI), X12\n+\tPXOR  X12, X1\n+\tMOVOU X1, (DI)\n+\tLEAQ  16(SI), SI\n+\tLEAQ  16(DI), DI\n+\tMOVQ  (BP), AX\n+\tMOVQ  AX, R15\n+\tMULQ  R10\n+\tMOVQ  AX, R13\n+\tMOVQ  DX, R14\n+\tMOVQ  (BP), AX\n+\tMULQ  R11\n+\tIMULQ R12, R15\n+\tADDQ  AX, R14\n+\tADCQ  DX, R15\n+\tMOVQ  8(BP), AX\n+\tMOVQ  AX, R8\n+\tMULQ  R10\n+\tADDQ  AX, R14\n+\tADCQ  $0x00, DX\n+\tMOVQ  DX, R10\n+\tMOVQ  8(BP), AX\n+\tMULQ  R11\n+\tADDQ  AX, R15\n+\tADCQ  $0x00, DX\n+\tIMULQ R12, R8\n+\tADDQ  R10, R15\n+\tADCQ  DX, R8\n+\tMOVQ  R13, R10\n+\tMOVQ  R14, R11\n+\tMOVQ  R15, R12\n+\tANDQ  $0x03, R12\n+\tMOVQ  R15, R13\n+\tANDQ  $-4, R13\n+\tMOVQ  R8, R14\n+\tSHRQ  $0x02, R8, R15\n+\tSHRQ  $0x02, R8\n+\tADDQ  R13, R10\n+\tADCQ  R14, R11\n+\tADCQ  $0x00, R12\n+\tADDQ  R15, R10\n+\tADCQ  R8, R11\n+\tADCQ  $0x00, R12\n \n \t// Shift the stream \"left\"\n-\tMOVO B1, A1\n-\tMOVO C1, B1\n-\tMOVO D1, C1\n-\tMOVO A2, D1\n-\tMOVO B2, A2\n-\tMOVO C2, B2\n-\tMOVO D2, C2\n+\tMOVO X4, X1\n+\tMOVO X7, X4\n+\tMOVO X10, X7\n+\tMOVO X2, X10\n+\tMOVO X5, X2\n+\tMOVO X8, X5\n+\tMOVO X11, X8\n \tJMP  openSSE128Open\n \n openSSETail16:\n-\tTESTQ inl, inl\n+\tTESTQ BX, BX\n \tJE    openSSEFinalize\n \n \t// We can safely load the CT from the end, because it is padded with the MAC\n-\tMOVQ   inl, itr2\n-\tSHLQ   $4, itr2\n-\tLEAQ   ·andMask<>(SB), t0\n-\tMOVOU  (inp), T0\n-\tADDQ   inl, inp\n-\tPAND   -16(t0)(itr2*1), T0\n-\tMOVO   T0, 0+tmpStore\n-\tMOVQ   T0, t0\n-\tMOVQ   8+tmpStore, t1\n-\tPXOR   A1, T0\n+\tMOVQ  BX, R9\n+\tSHLQ  $0x04, R9\n+\tLEAQ  ·andMask<>+0(SB), R13\n+\tMOVOU (SI), X12\n+\tADDQ  BX, SI\n+\tPAND  -16(R13)(R9*1), X12\n+\tMOVO  X12, 64(BP)\n+\tMOVQ  X12, R13\n+\tMOVQ  72(BP), R14\n+\tPXOR  X1, X12\n \n \t// We can only store one byte at a time, since plaintext can be shorter than 16 bytes\n openSSETail16Store:\n-\tMOVQ T0, t3\n-\tMOVB t3, (oup)\n-\tPSRLDQ $1, T0\n-\tINCQ   oup\n-\tDECQ   inl\n+\tMOVQ   X12, R8\n+\tMOVB   R8, (DI)\n+\tPSRLDQ $0x01, X12\n+\tINCQ   DI\n+\tDECQ   BX\n \tJNE    openSSETail16Store\n-\tADDQ   t0, acc0; ADCQ t1, acc1; ADCQ $1, acc2\n-\tpolyMul\n+\tADDQ   R13, R10\n+\tADCQ   R14, R11\n+\tADCQ   $0x01, R12\n+\tMOVQ   (BP), AX\n+\tMOVQ   AX, R15\n+\tMULQ   R10\n+\tMOVQ   AX, R13\n+\tMOVQ   DX, R14\n+\tMOVQ   (BP), AX\n+\tMULQ   R11\n+\tIMULQ  R12, R15\n+\tADDQ   AX, R14\n+\tADCQ   DX, R15\n+\tMOVQ   8(BP), AX\n+\tMOVQ   AX, R8\n+\tMULQ   R10\n+\tADDQ   AX, R14\n+\tADCQ   $0x00, DX\n+\tMOVQ   DX, R10\n+\tMOVQ   8(BP), AX\n+\tMULQ   R11\n+\tADDQ   AX, R15\n+\tADCQ   $0x00, DX\n+\tIMULQ  R12, R8\n+\tADDQ   R10, R15\n+\tADCQ   DX, R8\n+\tMOVQ   R13, R10\n+\tMOVQ   R14, R11\n+\tMOVQ   R15, R12\n+\tANDQ   $0x03, R12\n+\tMOVQ   R15, R13\n+\tANDQ   $-4, R13\n+\tMOVQ   R8, R14\n+\tSHRQ   $0x02, R8, R15\n+\tSHRQ   $0x02, R8\n+\tADDQ   R13, R10\n+\tADCQ   R14, R11\n+\tADCQ   $0x00, R12\n+\tADDQ   R15, R10\n+\tADCQ   R8, R11\n+\tADCQ   $0x00, R12\n \tJMP    openSSEFinalize\n \n-// ----------------------------------------------------------------------------\n-// Special optimization for the last 64 bytes of ciphertext\n openSSETail64:\n-\t// Need to decrypt up to 64 bytes - prepare single block\n-\tMOVO ·chacha20Constants<>(SB), A0; MOVO state1Store, B0; MOVO state2Store, C0; MOVO ctr3Store, D0; PADDL ·sseIncMask<>(SB), D0; MOVO D0, ctr0Store\n-\tXORQ itr2, itr2\n-\tMOVQ inl, itr1\n-\tCMPQ itr1, $16\n-\tJB   openSSETail64LoopB\n+\tMOVO  ·chacha20Constants<>+0(SB), X0\n+\tMOVO  32(BP), X3\n+\tMOVO  48(BP), X6\n+\tMOVO  128(BP), X9\n+\tPADDL ·sseIncMask<>+0(SB), X9\n+\tMOVO  X9, 80(BP)\n+\tXORQ  R9, R9\n+\tMOVQ  BX, CX\n+\tCMPQ  CX, $0x10\n+\tJB    openSSETail64LoopB\n \n openSSETail64LoopA:\n-\t// Perform ChaCha rounds, while hashing the remaining input\n-\tpolyAdd(0(inp)(itr2*1))\n-\tpolyMul\n-\tSUBQ $16, itr1\n+\tADDQ  (SI)(R9*1), R10\n+\tADCQ  8(SI)(R9*1), R11\n+\tADCQ  $0x01, R12\n+\tMOVQ  (BP), AX\n+\tMOVQ  AX, R15\n+\tMULQ  R10\n+\tMOVQ  AX, R13\n+\tMOVQ  DX, R14\n+\tMOVQ  (BP), AX\n+\tMULQ  R11\n+\tIMULQ R12, R15\n+\tADDQ  AX, R14\n+\tADCQ  DX, R15\n+\tMOVQ  8(BP), AX\n+\tMOVQ  AX, R8\n+\tMULQ  R10\n+\tADDQ  AX, R14\n+\tADCQ  $0x00, DX\n+\tMOVQ  DX, R10\n+\tMOVQ  8(BP), AX\n+\tMULQ  R11\n+\tADDQ  AX, R15\n+\tADCQ  $0x00, DX\n+\tIMULQ R12, R8\n+\tADDQ  R10, R15\n+\tADCQ  DX, R8\n+\tMOVQ  R13, R10\n+\tMOVQ  R14, R11\n+\tMOVQ  R15, R12\n+\tANDQ  $0x03, R12\n+\tMOVQ  R15, R13\n+\tANDQ  $-4, R13\n+\tMOVQ  R8, R14\n+\tSHRQ  $0x02, R8, R15\n+\tSHRQ  $0x02, R8\n+\tADDQ  R13, R10\n+\tADCQ  R14, R11\n+\tADCQ  $0x00, R12\n+\tADDQ  R15, R10\n+\tADCQ  R8, R11\n+\tADCQ  $0x00, R12\n+\tSUBQ  $0x10, CX\n \n openSSETail64LoopB:\n-\tADDQ          $16, itr2\n-\tchachaQR(A0, B0, C0, D0, T0)\n-\tshiftB0Left;  shiftC0Left; shiftD0Left\n-\tchachaQR(A0, B0, C0, D0, T0)\n-\tshiftB0Right; shiftC0Right; shiftD0Right\n-\n-\tCMPQ itr1, $16\n-\tJAE  openSSETail64LoopA\n-\n-\tCMPQ itr2, $160\n-\tJNE  openSSETail64LoopB\n-\n-\tPADDL ·chacha20Constants<>(SB), A0; PADDL state1Store, B0; PADDL state2Store, C0; PADDL ctr0Store, D0\n+\tADDQ  $0x10, R9\n+\tPADDD X3, X0\n+\tPXOR  X0, X9\n+\tROL16(X9, X12)\n+\tPADDD X9, X6\n+\tPXOR  X6, X3\n+\tMOVO  X3, X12\n+\tPSLLL $0x0c, X12\n+\tPSRLL $0x14, X3\n+\tPXOR  X12, X3\n+\tPADDD X3, X0\n+\tPXOR  X0, X9\n+\tROL8(X9, X12)\n+\tPADDD X9, X6\n+\tPXOR  X6, X3\n+\tMOVO  X3, X12\n+\tPSLLL $0x07, X12\n+\tPSRLL $0x19, X3\n+\tPXOR  X12, X3\n+\tBYTE  $0x66\n+\tBYTE  $0x0f\n+\tBYTE  $0x3a\n+\tBYTE  $0x0f\n+\tBYTE  $0xdb\n+\tBYTE  $0x04\n+\tBYTE  $0x66\n+\tBYTE  $0x0f\n+\tBYTE  $0x3a\n+\tBYTE  $0x0f\n+\tBYTE  $0xf6\n+\tBYTE  $0x08\n+\tBYTE  $0x66\n+\tBYTE  $0x45\n+\tBYTE  $0x0f\n+\tBYTE  $0x3a\n+\tBYTE  $0x0f\n+\tBYTE  $0xc9\n+\tBYTE  $0x0c\n+\tPADDD X3, X0\n+\tPXOR  X0, X9\n+\tROL16(X9, X12)\n+\tPADDD X9, X6\n+\tPXOR  X6, X3\n+\tMOVO  X3, X12\n+\tPSLLL $0x0c, X12\n+\tPSRLL $0x14, X3\n+\tPXOR  X12, X3\n+\tPADDD X3, X0\n+\tPXOR  X0, X9\n+\tROL8(X9, X12)\n+\tPADDD X9, X6\n+\tPXOR  X6, X3\n+\tMOVO  X3, X12\n+\tPSLLL $0x07, X12\n+\tPSRLL $0x19, X3\n+\tPXOR  X12, X3\n+\tBYTE  $0x66\n+\tBYTE  $0x0f\n+\tBYTE  $0x3a\n+\tBYTE  $0x0f\n+\tBYTE  $0xdb\n+\tBYTE  $0x0c\n+\tBYTE  $0x66\n+\tBYTE  $0x0f\n+\tBYTE  $0x3a\n+\tBYTE  $0x0f\n+\tBYTE  $0xf6\n+\tBYTE  $0x08\n+\tBYTE  $0x66\n+\tBYTE  $0x45\n+\tBYTE  $0x0f\n+\tBYTE  $0x3a\n+\tBYTE  $0x0f\n+\tBYTE  $0xc9\n+\tBYTE  $0x04\n+\tCMPQ  CX, $0x10\n+\tJAE   openSSETail64LoopA\n+\tCMPQ  R9, $0xa0\n+\tJNE   openSSETail64LoopB\n+\tPADDL ·chacha20Constants<>+0(SB), X0\n+\tPADDL 32(BP), X3\n+\tPADDL 48(BP), X6\n+\tPADDL 80(BP), X9\n \n openSSETail64DecLoop:\n-\tCMPQ  inl, $16\n+\tCMPQ  BX, $0x10\n \tJB    openSSETail64DecLoopDone\n-\tSUBQ  $16, inl\n-\tMOVOU (inp), T0\n-\tPXOR  T0, A0\n-\tMOVOU A0, (oup)\n-\tLEAQ  16(inp), inp\n-\tLEAQ  16(oup), oup\n-\tMOVO  B0, A0\n-\tMOVO  C0, B0\n-\tMOVO  D0, C0\n+\tSUBQ  $0x10, BX\n+\tMOVOU (SI), X12\n+\tPXOR  X12, X0\n+\tMOVOU X0, (DI)\n+\tLEAQ  16(SI), SI\n+\tLEAQ  16(DI), DI\n+\tMOVO  X3, X0\n+\tMOVO  X6, X3\n+\tMOVO  X9, X6\n \tJMP   openSSETail64DecLoop\n \n openSSETail64DecLoopDone:\n-\tMOVO A0, A1\n+\tMOVO X0, X1\n \tJMP  openSSETail16\n \n-// ----------------------------------------------------------------------------\n-// Special optimization for the last 128 bytes of ciphertext\n openSSETail128:\n-\t// Need to decrypt up to 128 bytes - prepare two blocks\n-\tMOVO ·chacha20Constants<>(SB), A1; MOVO state1Store, B1; MOVO state2Store, C1; MOVO ctr3Store, D1; PADDL ·sseIncMask<>(SB), D1; MOVO D1, ctr0Store\n-\tMOVO A1, A0; MOVO B1, B0; MOVO C1, C0; MOVO D1, D0; PADDL ·sseIncMask<>(SB), D0; MOVO D0, ctr1Store\n-\tXORQ itr2, itr2\n-\tMOVQ inl, itr1\n-\tANDQ $-16, itr1\n+\tMOVO  ·chacha20Constants<>+0(SB), X1\n+\tMOVO  32(BP), X4\n+\tMOVO  48(BP), X7\n+\tMOVO  128(BP), X10\n+\tPADDL ·sseIncMask<>+0(SB), X10\n+\tMOVO  X10, 80(BP)\n+\tMOVO  X1, X0\n+\tMOVO  X4, X3\n+\tMOVO  X7, X6\n+\tMOVO  X10, X9\n+\tPADDL ·sseIncMask<>+0(SB), X9\n+\tMOVO  X9, 96(BP)\n+\tXORQ  R9, R9\n+\tMOVQ  BX, CX\n+\tANDQ  $-16, CX\n \n openSSETail128LoopA:\n-\t// Perform ChaCha rounds, while hashing the remaining input\n-\tpolyAdd(0(inp)(itr2*1))\n-\tpolyMul\n+\tADDQ  (SI)(R9*1), R10\n+\tADCQ  8(SI)(R9*1), R11\n+\tADCQ  $0x01, R12\n+\tMOVQ  (BP), AX\n+\tMOVQ  AX, R15\n+\tMULQ  R10\n+\tMOVQ  AX, R13\n+\tMOVQ  DX, R14\n+\tMOVQ  (BP), AX\n+\tMULQ  R11\n+\tIMULQ R12, R15\n+\tADDQ  AX, R14\n+\tADCQ  DX, R15\n+\tMOVQ  8(BP), AX\n+\tMOVQ  AX, R8\n+\tMULQ  R10\n+\tADDQ  AX, R14\n+\tADCQ  $0x00, DX\n+\tMOVQ  DX, R10\n+\tMOVQ  8(BP), AX\n+\tMULQ  R11\n+\tADDQ  AX, R15\n+\tADCQ  $0x00, DX\n+\tIMULQ R12, R8\n+\tADDQ  R10, R15\n+\tADCQ  DX, R8\n+\tMOVQ  R13, R10\n+\tMOVQ  R14, R11\n+\tMOVQ  R15, R12\n+\tANDQ  $0x03, R12\n+\tMOVQ  R15, R13\n+\tANDQ  $-4, R13\n+\tMOVQ  R8, R14\n+\tSHRQ  $0x02, R8, R15\n+\tSHRQ  $0x02, R8\n+\tADDQ  R13, R10\n+\tADCQ  R14, R11\n+\tADCQ  $0x00, R12\n+\tADDQ  R15, R10\n+\tADCQ  R8, R11\n+\tADCQ  $0x00, R12\n \n openSSETail128LoopB:\n-\tADDQ          $16, itr2\n-\tchachaQR(A0, B0, C0, D0, T0); chachaQR(A1, B1, C1, D1, T0)\n-\tshiftB0Left;  shiftC0Left; shiftD0Left\n-\tshiftB1Left;  shiftC1Left; shiftD1Left\n-\tchachaQR(A0, B0, C0, D0, T0); chachaQR(A1, B1, C1, D1, T0)\n-\tshiftB0Right; shiftC0Right; shiftD0Right\n-\tshiftB1Right; shiftC1Right; shiftD1Right\n-\n-\tCMPQ itr2, itr1\n-\tJB   openSSETail128LoopA\n-\n-\tCMPQ itr2, $160\n-\tJNE  openSSETail128LoopB\n-\n-\tPADDL ·chacha20Constants<>(SB), A0; PADDL ·chacha20Constants<>(SB), A1\n-\tPADDL state1Store, B0; PADDL state1Store, B1\n-\tPADDL state2Store, C0; PADDL state2Store, C1\n-\tPADDL ctr1Store, D0; PADDL ctr0Store, D1\n-\n-\tMOVOU (0*16)(inp), T0; MOVOU (1*16)(inp), T1; MOVOU (2*16)(inp), T2; MOVOU (3*16)(inp), T3\n-\tPXOR  T0, A1; PXOR T1, B1; PXOR T2, C1; PXOR T3, D1\n-\tMOVOU A1, (0*16)(oup); MOVOU B1, (1*16)(oup); MOVOU C1, (2*16)(oup); MOVOU D1, (3*16)(oup)\n-\n-\tSUBQ $64, inl\n-\tLEAQ 64(inp), inp\n-\tLEAQ 64(oup), oup\n-\tJMP  openSSETail64DecLoop\n-\n-// ----------------------------------------------------------------------------\n-// Special optimization for the last 192 bytes of ciphertext\n+\tADDQ  $0x10, R9\n+\tPADDD X3, X0\n+\tPXOR  X0, X9\n+\tROL16(X9, X12)\n+\tPADDD X9, X6\n+\tPXOR  X6, X3\n+\tMOVO  X3, X12\n+\tPSLLL $0x0c, X12\n+\tPSRLL $0x14, X3\n+\tPXOR  X12, X3\n+\tPADDD X3, X0\n+\tPXOR  X0, X9\n+\tROL8(X9, X12)\n+\tPADDD X9, X6\n+\tPXOR  X6, X3\n+\tMOVO  X3, X12\n+\tPSLLL $0x07, X12\n+\tPSRLL $0x19, X3\n+\tPXOR  X12, X3\n+\tPADDD X4, X1\n+\tPXOR  X1, X10\n+\tROL16(X10, X12)\n+\tPADDD X10, X7\n+\tPXOR  X7, X4\n+\tMOVO  X4, X12\n+\tPSLLL $0x0c, X12\n+\tPSRLL $0x14, X4\n+\tPXOR  X12, X4\n+\tPADDD X4, X1\n+\tPXOR  X1, X10\n+\tROL8(X10, X12)\n+\tPADDD X10, X7\n+\tPXOR  X7, X4\n+\tMOVO  X4, X12\n+\tPSLLL $0x07, X12\n+\tPSRLL $0x19, X4\n+\tPXOR  X12, X4\n+\tBYTE  $0x66\n+\tBYTE  $0x0f\n+\tBYTE  $0x3a\n+\tBYTE  $0x0f\n+\tBYTE  $0xdb\n+\tBYTE  $0x04\n+\tBYTE  $0x66\n+\tBYTE  $0x0f\n+\tBYTE  $0x3a\n+\tBYTE  $0x0f\n+\tBYTE  $0xf6\n+\tBYTE  $0x08\n+\tBYTE  $0x66\n+\tBYTE  $0x45\n+\tBYTE  $0x0f\n+\tBYTE  $0x3a\n+\tBYTE  $0x0f\n+\tBYTE  $0xc9\n+\tBYTE  $0x0c\n+\tBYTE  $0x66\n+\tBYTE  $0x0f\n+\tBYTE  $0x3a\n+\tBYTE  $0x0f\n+\tBYTE  $0xe4\n+\tBYTE  $0x04\n+\tBYTE  $0x66\n+\tBYTE  $0x0f\n+\tBYTE  $0x3a\n+\tBYTE  $0x0f\n+\tBYTE  $0xff\n+\tBYTE  $0x08\n+\tBYTE  $0x66\n+\tBYTE  $0x45\n+\tBYTE  $0x0f\n+\tBYTE  $0x3a\n+\tBYTE  $0x0f\n+\tBYTE  $0xd2\n+\tBYTE  $0x0c\n+\tPADDD X3, X0\n+\tPXOR  X0, X9\n+\tROL16(X9, X12)\n+\tPADDD X9, X6\n+\tPXOR  X6, X3\n+\tMOVO  X3, X12\n+\tPSLLL $0x0c, X12\n+\tPSRLL $0x14, X3\n+\tPXOR  X12, X3\n+\tPADDD X3, X0\n+\tPXOR  X0, X9\n+\tROL8(X9, X12)\n+\tPADDD X9, X6\n+\tPXOR  X6, X3\n+\tMOVO  X3, X12\n+\tPSLLL $0x07, X12\n+\tPSRLL $0x19, X3\n+\tPXOR  X12, X3\n+\tPADDD X4, X1\n+\tPXOR  X1, X10\n+\tROL16(X10, X12)\n+\tPADDD X10, X7\n+\tPXOR  X7, X4\n+\tMOVO  X4, X12\n+\tPSLLL $0x0c, X12\n+\tPSRLL $0x14, X4\n+\tPXOR  X12, X4\n+\tPADDD X4, X1\n+\tPXOR  X1, X10\n+\tROL8(X10, X12)\n+\tPADDD X10, X7\n+\tPXOR  X7, X4\n+\tMOVO  X4, X12\n+\tPSLLL $0x07, X12\n+\tPSRLL $0x19, X4\n+\tPXOR  X12, X4\n+\tBYTE  $0x66\n+\tBYTE  $0x0f\n+\tBYTE  $0x3a\n+\tBYTE  $0x0f\n+\tBYTE  $0xdb\n+\tBYTE  $0x0c\n+\tBYTE  $0x66\n+\tBYTE  $0x0f\n+\tBYTE  $0x3a\n+\tBYTE  $0x0f\n+\tBYTE  $0xf6\n+\tBYTE  $0x08\n+\tBYTE  $0x66\n+\tBYTE  $0x45\n+\tBYTE  $0x0f\n+\tBYTE  $0x3a\n+\tBYTE  $0x0f\n+\tBYTE  $0xc9\n+\tBYTE  $0x04\n+\tBYTE  $0x66\n+\tBYTE  $0x0f\n+\tBYTE  $0x3a\n+\tBYTE  $0x0f\n+\tBYTE  $0xe4\n+\tBYTE  $0x0c\n+\tBYTE  $0x66\n+\tBYTE  $0x0f\n+\tBYTE  $0x3a\n+\tBYTE  $0x0f\n+\tBYTE  $0xff\n+\tBYTE  $0x08\n+\tBYTE  $0x66\n+\tBYTE  $0x45\n+\tBYTE  $0x0f\n+\tBYTE  $0x3a\n+\tBYTE  $0x0f\n+\tBYTE  $0xd2\n+\tBYTE  $0x04\n+\tCMPQ  R9, CX\n+\tJB    openSSETail128LoopA\n+\tCMPQ  R9, $0xa0\n+\tJNE   openSSETail128LoopB\n+\tPADDL ·chacha20Constants<>+0(SB), X0\n+\tPADDL ·chacha20Constants<>+0(SB), X1\n+\tPADDL 32(BP), X3\n+\tPADDL 32(BP), X4\n+\tPADDL 48(BP), X6\n+\tPADDL 48(BP), X7\n+\tPADDL 96(BP), X9\n+\tPADDL 80(BP), X10\n+\tMOVOU (SI), X12\n+\tMOVOU 16(SI), X13\n+\tMOVOU 32(SI), X14\n+\tMOVOU 48(SI), X15\n+\tPXOR  X12, X1\n+\tPXOR  X13, X4\n+\tPXOR  X14, X7\n+\tPXOR  X15, X10\n+\tMOVOU X1, (DI)\n+\tMOVOU X4, 16(DI)\n+\tMOVOU X7, 32(DI)\n+\tMOVOU X10, 48(DI)\n+\tSUBQ  $0x40, BX\n+\tLEAQ  64(SI), SI\n+\tLEAQ  64(DI), DI\n+\tJMP   openSSETail64DecLoop\n+\n openSSETail192:\n-\t// Need to decrypt up to 192 bytes - prepare three blocks\n-\tMOVO ·chacha20Constants<>(SB), A2; MOVO state1Store, B2; MOVO state2Store, C2; MOVO ctr3Store, D2; PADDL ·sseIncMask<>(SB), D2; MOVO D2, ctr0Store\n-\tMOVO A2, A1; MOVO B2, B1; MOVO C2, C1; MOVO D2, D1; PADDL ·sseIncMask<>(SB), D1; MOVO D1, ctr1Store\n-\tMOVO A1, A0; MOVO B1, B0; MOVO C1, C0; MOVO D1, D0; PADDL ·sseIncMask<>(SB), D0; MOVO D0, ctr2Store\n-\n-\tMOVQ    inl, itr1\n-\tMOVQ    $160, itr2\n-\tCMPQ    itr1, $160\n-\tCMOVQGT itr2, itr1\n-\tANDQ    $-16, itr1\n-\tXORQ    itr2, itr2\n+\tMOVO    ·chacha20Constants<>+0(SB), X2\n+\tMOVO    32(BP), X5\n+\tMOVO    48(BP), X8\n+\tMOVO    128(BP), X11\n+\tPADDL   ·sseIncMask<>+0(SB), X11\n+\tMOVO    X11, 80(BP)\n+\tMOVO    X2, X1\n+\tMOVO    X5, X4\n+\tMOVO    X8, X7\n+\tMOVO    X11, X10\n+\tPADDL   ·sseIncMask<>+0(SB), X10\n+\tMOVO    X10, 96(BP)\n+\tMOVO    X1, X0\n+\tMOVO    X4, X3\n+\tMOVO    X7, X6\n+\tMOVO    X10, X9\n+\tPADDL   ·sseIncMask<>+0(SB), X9\n+\tMOVO    X9, 112(BP)\n+\tMOVQ    BX, CX\n+\tMOVQ    $0x000000a0, R9\n+\tCMPQ    CX, $0xa0\n+\tCMOVQGT R9, CX\n+\tANDQ    $-16, CX\n+\tXORQ    R9, R9\n \n openSSLTail192LoopA:\n-\t// Perform ChaCha rounds, while hashing the remaining input\n-\tpolyAdd(0(inp)(itr2*1))\n-\tpolyMul\n+\tADDQ  (SI)(R9*1), R10\n+\tADCQ  8(SI)(R9*1), R11\n+\tADCQ  $0x01, R12\n+\tMOVQ  (BP), AX\n+\tMOVQ  AX, R15\n+\tMULQ  R10\n+\tMOVQ  AX, R13\n+\tMOVQ  DX, R14\n+\tMOVQ  (BP), AX\n+\tMULQ  R11\n+\tIMULQ R12, R15\n+\tADDQ  AX, R14\n+\tADCQ  DX, R15\n+\tMOVQ  8(BP), AX\n+\tMOVQ  AX, R8\n+\tMULQ  R10\n+\tADDQ  AX, R14\n+\tADCQ  $0x00, DX\n+\tMOVQ  DX, R10\n+\tMOVQ  8(BP), AX\n+\tMULQ  R11\n+\tADDQ  AX, R15\n+\tADCQ  $0x00, DX\n+\tIMULQ R12, R8\n+\tADDQ  R10, R15\n+\tADCQ  DX, R8\n+\tMOVQ  R13, R10\n+\tMOVQ  R14, R11\n+\tMOVQ  R15, R12\n+\tANDQ  $0x03, R12\n+\tMOVQ  R15, R13\n+\tANDQ  $-4, R13\n+\tMOVQ  R8, R14\n+\tSHRQ  $0x02, R8, R15\n+\tSHRQ  $0x02, R8\n+\tADDQ  R13, R10\n+\tADCQ  R14, R11\n+\tADCQ  $0x00, R12\n+\tADDQ  R15, R10\n+\tADCQ  R8, R11\n+\tADCQ  $0x00, R12\n \n openSSLTail192LoopB:\n-\tADDQ         $16, itr2\n-\tchachaQR(A0, B0, C0, D0, T0); chachaQR(A1, B1, C1, D1, T0); chachaQR(A2, B2, C2, D2, T0)\n-\tshiftB0Left; shiftC0Left; shiftD0Left\n-\tshiftB1Left; shiftC1Left; shiftD1Left\n-\tshiftB2Left; shiftC2Left; shiftD2Left\n-\n-\tchachaQR(A0, B0, C0, D0, T0); chachaQR(A1, B1, C1, D1, T0); chachaQR(A2, B2, C2, D2, T0)\n-\tshiftB0Right; shiftC0Right; shiftD0Right\n-\tshiftB1Right; shiftC1Right; shiftD1Right\n-\tshiftB2Right; shiftC2Right; shiftD2Right\n-\n-\tCMPQ itr2, itr1\n-\tJB   openSSLTail192LoopA\n-\n-\tCMPQ itr2, $160\n-\tJNE  openSSLTail192LoopB\n-\n-\tCMPQ inl, $176\n-\tJB   openSSLTail192Store\n-\n-\tpolyAdd(160(inp))\n-\tpolyMul\n-\n-\tCMPQ inl, $192\n-\tJB   openSSLTail192Store\n-\n-\tpolyAdd(176(inp))\n-\tpolyMul\n+\tADDQ  $0x10, R9\n+\tPADDD X3, X0\n+\tPXOR  X0, X9\n+\tROL16(X9, X12)\n+\tPADDD X9, X6\n+\tPXOR  X6, X3\n+\tMOVO  X3, X12\n+\tPSLLL $0x0c, X12\n+\tPSRLL $0x14, X3\n+\tPXOR  X12, X3\n+\tPADDD X3, X0\n+\tPXOR  X0, X9\n+\tROL8(X9, X12)\n+\tPADDD X9, X6\n+\tPXOR  X6, X3\n+\tMOVO  X3, X12\n+\tPSLLL $0x07, X12\n+\tPSRLL $0x19, X3\n+\tPXOR  X12, X3\n+\tPADDD X4, X1\n+\tPXOR  X1, X10\n+\tROL16(X10, X12)\n+\tPADDD X10, X7\n+\tPXOR  X7, X4\n+\tMOVO  X4, X12\n+\tPSLLL $0x0c, X12\n+\tPSRLL $0x14, X4\n+\tPXOR  X12, X4\n+\tPADDD X4, X1\n+\tPXOR  X1, X10\n+\tROL8(X10, X12)\n+\tPADDD X10, X7\n+\tPXOR  X7, X4\n+\tMOVO  X4, X12\n+\tPSLLL $0x07, X12\n+\tPSRLL $0x19, X4\n+\tPXOR  X12, X4\n+\tPADDD X5, X2\n+\tPXOR  X2, X11\n+\tROL16(X11, X12)\n+\tPADDD X11, X8\n+\tPXOR  X8, X5\n+\tMOVO  X5, X12\n+\tPSLLL $0x0c, X12\n+\tPSRLL $0x14, X5\n+\tPXOR  X12, X5\n+\tPADDD X5, X2\n+\tPXOR  X2, X11\n+\tROL8(X11, X12)\n+\tPADDD X11, X8\n+\tPXOR  X8, X5\n+\tMOVO  X5, X12\n+\tPSLLL $0x07, X12\n+\tPSRLL $0x19, X5\n+\tPXOR  X12, X5\n+\tBYTE  $0x66\n+\tBYTE  $0x0f\n+\tBYTE  $0x3a\n+\tBYTE  $0x0f\n+\tBYTE  $0xdb\n+\tBYTE  $0x04\n+\tBYTE  $0x66\n+\tBYTE  $0x0f\n+\tBYTE  $0x3a\n+\tBYTE  $0x0f\n+\tBYTE  $0xf6\n+\tBYTE  $0x08\n+\tBYTE  $0x66\n+\tBYTE  $0x45\n+\tBYTE  $0x0f\n+\tBYTE  $0x3a\n+\tBYTE  $0x0f\n+\tBYTE  $0xc9\n+\tBYTE  $0x0c\n+\tBYTE  $0x66\n+\tBYTE  $0x0f\n+\tBYTE  $0x3a\n+\tBYTE  $0x0f\n+\tBYTE  $0xe4\n+\tBYTE  $0x04\n+\tBYTE  $0x66\n+\tBYTE  $0x0f\n+\tBYTE  $0x3a\n+\tBYTE  $0x0f\n+\tBYTE  $0xff\n+\tBYTE  $0x08\n+\tBYTE  $0x66\n+\tBYTE  $0x45\n+\tBYTE  $0x0f\n+\tBYTE  $0x3a\n+\tBYTE  $0x0f\n+\tBYTE  $0xd2\n+\tBYTE  $0x0c\n+\tBYTE  $0x66\n+\tBYTE  $0x0f\n+\tBYTE  $0x3a\n+\tBYTE  $0x0f\n+\tBYTE  $0xed\n+\tBYTE  $0x04\n+\tBYTE  $0x66\n+\tBYTE  $0x45\n+\tBYTE  $0x0f\n+\tBYTE  $0x3a\n+\tBYTE  $0x0f\n+\tBYTE  $0xc0\n+\tBYTE  $0x08\n+\tBYTE  $0x66\n+\tBYTE  $0x45\n+\tBYTE  $0x0f\n+\tBYTE  $0x3a\n+\tBYTE  $0x0f\n+\tBYTE  $0xdb\n+\tBYTE  $0x0c\n+\tPADDD X3, X0\n+\tPXOR  X0, X9\n+\tROL16(X9, X12)\n+\tPADDD X9, X6\n+\tPXOR  X6, X3\n+\tMOVO  X3, X12\n+\tPSLLL $0x0c, X12\n+\tPSRLL $0x14, X3\n+\tPXOR  X12, X3\n+\tPADDD X3, X0\n+\tPXOR  X0, X9\n+\tROL8(X9, X12)\n+\tPADDD X9, X6\n+\tPXOR  X6, X3\n+\tMOVO  X3, X12\n+\tPSLLL $0x07, X12\n+\tPSRLL $0x19, X3\n+\tPXOR  X12, X3\n+\tPADDD X4, X1\n+\tPXOR  X1, X10\n+\tROL16(X10, X12)\n+\tPADDD X10, X7\n+\tPXOR  X7, X4\n+\tMOVO  X4, X12\n+\tPSLLL $0x0c, X12\n+\tPSRLL $0x14, X4\n+\tPXOR  X12, X4\n+\tPADDD X4, X1\n+\tPXOR  X1, X10\n+\tROL8(X10, X12)\n+\tPADDD X10, X7\n+\tPXOR  X7, X4\n+\tMOVO  X4, X12\n+\tPSLLL $0x07, X12\n+\tPSRLL $0x19, X4\n+\tPXOR  X12, X4\n+\tPADDD X5, X2\n+\tPXOR  X2, X11\n+\tROL16(X11, X12)\n+\tPADDD X11, X8\n+\tPXOR  X8, X5\n+\tMOVO  X5, X12\n+\tPSLLL $0x0c, X12\n+\tPSRLL $0x14, X5\n+\tPXOR  X12, X5\n+\tPADDD X5, X2\n+\tPXOR  X2, X11\n+\tROL8(X11, X12)\n+\tPADDD X11, X8\n+\tPXOR  X8, X5\n+\tMOVO  X5, X12\n+\tPSLLL $0x07, X12\n+\tPSRLL $0x19, X5\n+\tPXOR  X12, X5\n+\tBYTE  $0x66\n+\tBYTE  $0x0f\n+\tBYTE  $0x3a\n+\tBYTE  $0x0f\n+\tBYTE  $0xdb\n+\tBYTE  $0x0c\n+\tBYTE  $0x66\n+\tBYTE  $0x0f\n+\tBYTE  $0x3a\n+\tBYTE  $0x0f\n+\tBYTE  $0xf6\n+\tBYTE  $0x08\n+\tBYTE  $0x66\n+\tBYTE  $0x45\n+\tBYTE  $0x0f\n+\tBYTE  $0x3a\n+\tBYTE  $0x0f\n+\tBYTE  $0xc9\n+\tBYTE  $0x04\n+\tBYTE  $0x66\n+\tBYTE  $0x0f\n+\tBYTE  $0x3a\n+\tBYTE  $0x0f\n+\tBYTE  $0xe4\n+\tBYTE  $0x0c\n+\tBYTE  $0x66\n+\tBYTE  $0x0f\n+\tBYTE  $0x3a\n+\tBYTE  $0x0f\n+\tBYTE  $0xff\n+\tBYTE  $0x08\n+\tBYTE  $0x66\n+\tBYTE  $0x45\n+\tBYTE  $0x0f\n+\tBYTE  $0x3a\n+\tBYTE  $0x0f\n+\tBYTE  $0xd2\n+\tBYTE  $0x04\n+\tBYTE  $0x66\n+\tBYTE  $0x0f\n+\tBYTE  $0x3a\n+\tBYTE  $0x0f\n+\tBYTE  $0xed\n+\tBYTE  $0x0c\n+\tBYTE  $0x66\n+\tBYTE  $0x45\n+\tBYTE  $0x0f\n+\tBYTE  $0x3a\n+\tBYTE  $0x0f\n+\tBYTE  $0xc0\n+\tBYTE  $0x08\n+\tBYTE  $0x66\n+\tBYTE  $0x45\n+\tBYTE  $0x0f\n+\tBYTE  $0x3a\n+\tBYTE  $0x0f\n+\tBYTE  $0xdb\n+\tBYTE  $0x04\n+\tCMPQ  R9, CX\n+\tJB    openSSLTail192LoopA\n+\tCMPQ  R9, $0xa0\n+\tJNE   openSSLTail192LoopB\n+\tCMPQ  BX, $0xb0\n+\tJB    openSSLTail192Store\n+\tADDQ  160(SI), R10\n+\tADCQ  168(SI), R11\n+\tADCQ  $0x01, R12\n+\tMOVQ  (BP), AX\n+\tMOVQ  AX, R15\n+\tMULQ  R10\n+\tMOVQ  AX, R13\n+\tMOVQ  DX, R14\n+\tMOVQ  (BP), AX\n+\tMULQ  R11\n+\tIMULQ R12, R15\n+\tADDQ  AX, R14\n+\tADCQ  DX, R15\n+\tMOVQ  8(BP), AX\n+\tMOVQ  AX, R8\n+\tMULQ  R10\n+\tADDQ  AX, R14\n+\tADCQ  $0x00, DX\n+\tMOVQ  DX, R10\n+\tMOVQ  8(BP), AX\n+\tMULQ  R11\n+\tADDQ  AX, R15\n+\tADCQ  $0x00, DX\n+\tIMULQ R12, R8\n+\tADDQ  R10, R15\n+\tADCQ  DX, R8\n+\tMOVQ  R13, R10\n+\tMOVQ  R14, R11\n+\tMOVQ  R15, R12\n+\tANDQ  $0x03, R12\n+\tMOVQ  R15, R13\n+\tANDQ  $-4, R13\n+\tMOVQ  R8, R14\n+\tSHRQ  $0x02, R8, R15\n+\tSHRQ  $0x02, R8\n+\tADDQ  R13, R10\n+\tADCQ  R14, R11\n+\tADCQ  $0x00, R12\n+\tADDQ  R15, R10\n+\tADCQ  R8, R11\n+\tADCQ  $0x00, R12\n+\tCMPQ  BX, $0xc0\n+\tJB    openSSLTail192Store\n+\tADDQ  176(SI), R10\n+\tADCQ  184(SI), R11\n+\tADCQ  $0x01, R12\n+\tMOVQ  (BP), AX\n+\tMOVQ  AX, R15\n+\tMULQ  R10\n+\tMOVQ  AX, R13\n+\tMOVQ  DX, R14\n+\tMOVQ  (BP), AX\n+\tMULQ  R11\n+\tIMULQ R12, R15\n+\tADDQ  AX, R14\n+\tADCQ  DX, R15\n+\tMOVQ  8(BP), AX\n+\tMOVQ  AX, R8\n+\tMULQ  R10\n+\tADDQ  AX, R14\n+\tADCQ  $0x00, DX\n+\tMOVQ  DX, R10\n+\tMOVQ  8(BP), AX\n+\tMULQ  R11\n+\tADDQ  AX, R15\n+\tADCQ  $0x00, DX\n+\tIMULQ R12, R8\n+\tADDQ  R10, R15\n+\tADCQ  DX, R8\n+\tMOVQ  R13, R10\n+\tMOVQ  R14, R11\n+\tMOVQ  R15, R12\n+\tANDQ  $0x03, R12\n+\tMOVQ  R15, R13\n+\tANDQ  $-4, R13\n+\tMOVQ  R8, R14\n+\tSHRQ  $0x02, R8, R15\n+\tSHRQ  $0x02, R8\n+\tADDQ  R13, R10\n+\tADCQ  R14, R11\n+\tADCQ  $0x00, R12\n+\tADDQ  R15, R10\n+\tADCQ  R8, R11\n+\tADCQ  $0x00, R12\n \n openSSLTail192Store:\n-\tPADDL ·chacha20Constants<>(SB), A0; PADDL ·chacha20Constants<>(SB), A1; PADDL ·chacha20Constants<>(SB), A2\n-\tPADDL state1Store, B0; PADDL state1Store, B1; PADDL state1Store, B2\n-\tPADDL state2Store, C0; PADDL state2Store, C1; PADDL state2Store, C2\n-\tPADDL ctr2Store, D0; PADDL ctr1Store, D1; PADDL ctr0Store, D2\n-\n-\tMOVOU (0*16)(inp), T0; MOVOU (1*16)(inp), T1; MOVOU (2*16)(inp), T2; MOVOU (3*16)(inp), T3\n-\tPXOR  T0, A2; PXOR T1, B2; PXOR T2, C2; PXOR T3, D2\n-\tMOVOU A2, (0*16)(oup); MOVOU B2, (1*16)(oup); MOVOU C2, (2*16)(oup); MOVOU D2, (3*16)(oup)\n-\n-\tMOVOU (4*16)(inp), T0; MOVOU (5*16)(inp), T1; MOVOU (6*16)(inp), T2; MOVOU (7*16)(inp), T3\n-\tPXOR  T0, A1; PXOR T1, B1; PXOR T2, C1; PXOR T3, D1\n-\tMOVOU A1, (4*16)(oup); MOVOU B1, (5*16)(oup); MOVOU C1, (6*16)(oup); MOVOU D1, (7*16)(oup)\n-\n-\tSUBQ $128, inl\n-\tLEAQ 128(inp), inp\n-\tLEAQ 128(oup), oup\n-\tJMP  openSSETail64DecLoop\n-\n-// ----------------------------------------------------------------------------\n-// Special optimization for the last 256 bytes of ciphertext\n+\tPADDL ·chacha20Constants<>+0(SB), X0\n+\tPADDL ·chacha20Constants<>+0(SB), X1\n+\tPADDL ·chacha20Constants<>+0(SB), X2\n+\tPADDL 32(BP), X3\n+\tPADDL 32(BP), X4\n+\tPADDL 32(BP), X5\n+\tPADDL 48(BP), X6\n+\tPADDL 48(BP), X7\n+\tPADDL 48(BP), X8\n+\tPADDL 112(BP), X9\n+\tPADDL 96(BP), X10\n+\tPADDL 80(BP), X11\n+\tMOVOU (SI), X12\n+\tMOVOU 16(SI), X13\n+\tMOVOU 32(SI), X14\n+\tMOVOU 48(SI), X15\n+\tPXOR  X12, X2\n+\tPXOR  X13, X5\n+\tPXOR  X14, X8\n+\tPXOR  X15, X11\n+\tMOVOU X2, (DI)\n+\tMOVOU X5, 16(DI)\n+\tMOVOU X8, 32(DI)\n+\tMOVOU X11, 48(DI)\n+\tMOVOU 64(SI), X12\n+\tMOVOU 80(SI), X13\n+\tMOVOU 96(SI), X14\n+\tMOVOU 112(SI), X15\n+\tPXOR  X12, X1\n+\tPXOR  X13, X4\n+\tPXOR  X14, X7\n+\tPXOR  X15, X10\n+\tMOVOU X1, 64(DI)\n+\tMOVOU X4, 80(DI)\n+\tMOVOU X7, 96(DI)\n+\tMOVOU X10, 112(DI)\n+\tSUBQ  $0x80, BX\n+\tLEAQ  128(SI), SI\n+\tLEAQ  128(DI), DI\n+\tJMP   openSSETail64DecLoop\n+\n openSSETail256:\n-\t// Need to decrypt up to 256 bytes - prepare four blocks\n-\tMOVO ·chacha20Constants<>(SB), A0; MOVO state1Store, B0; MOVO state2Store, C0; MOVO ctr3Store, D0; PADDL ·sseIncMask<>(SB), D0\n-\tMOVO A0, A1; MOVO B0, B1; MOVO C0, C1; MOVO D0, D1; PADDL ·sseIncMask<>(SB), D1\n-\tMOVO A1, A2; MOVO B1, B2; MOVO C1, C2; MOVO D1, D2; PADDL ·sseIncMask<>(SB), D2\n-\tMOVO A2, A3; MOVO B2, B3; MOVO C2, C3; MOVO D2, D3; PADDL ·sseIncMask<>(SB), D3\n+\tMOVO  ·chacha20Constants<>+0(SB), X0\n+\tMOVO  32(BP), X3\n+\tMOVO  48(BP), X6\n+\tMOVO  128(BP), X9\n+\tPADDL ·sseIncMask<>+0(SB), X9\n+\tMOVO  X0, X1\n+\tMOVO  X3, X4\n+\tMOVO  X6, X7\n+\tMOVO  X9, X10\n+\tPADDL ·sseIncMask<>+0(SB), X10\n+\tMOVO  X1, X2\n+\tMOVO  X4, X5\n+\tMOVO  X7, X8\n+\tMOVO  X10, X11\n+\tPADDL ·sseIncMask<>+0(SB), X11\n+\tMOVO  X2, X12\n+\tMOVO  X5, X13\n+\tMOVO  X8, X14\n+\tMOVO  X11, X15\n+\tPADDL ·sseIncMask<>+0(SB), X15\n \n \t// Store counters\n-\tMOVO D0, ctr0Store; MOVO D1, ctr1Store; MOVO D2, ctr2Store; MOVO D3, ctr3Store\n-\tXORQ itr2, itr2\n+\tMOVO X9, 80(BP)\n+\tMOVO X10, 96(BP)\n+\tMOVO X11, 112(BP)\n+\tMOVO X15, 128(BP)\n+\tXORQ R9, R9\n \n openSSETail256Loop:\n-\t// This loop inteleaves 8 ChaCha quarter rounds with 1 poly multiplication\n-\tpolyAdd(0(inp)(itr2*1))\n-\tMOVO          C3, tmpStore\n-\tchachaQR(A0, B0, C0, D0, C3); chachaQR(A1, B1, C1, D1, C3); chachaQR(A2, B2, C2, D2, C3)\n-\tMOVO          tmpStore, C3\n-\tMOVO          C1, tmpStore\n-\tchachaQR(A3, B3, C3, D3, C1)\n-\tMOVO          tmpStore, C1\n-\tshiftB0Left;  shiftB1Left; shiftB2Left; shiftB3Left\n-\tshiftC0Left;  shiftC1Left; shiftC2Left; shiftC3Left\n-\tshiftD0Left;  shiftD1Left; shiftD2Left; shiftD3Left\n-\tpolyMulStage1\n-\tpolyMulStage2\n-\tMOVO          C3, tmpStore\n-\tchachaQR(A0, B0, C0, D0, C3); chachaQR(A1, B1, C1, D1, C3); chachaQR(A2, B2, C2, D2, C3)\n-\tMOVO          tmpStore, C3\n-\tMOVO          C1, tmpStore\n-\tchachaQR(A3, B3, C3, D3, C1)\n-\tMOVO          tmpStore, C1\n-\tpolyMulStage3\n-\tpolyMulReduceStage\n-\tshiftB0Right; shiftB1Right; shiftB2Right; shiftB3Right\n-\tshiftC0Right; shiftC1Right; shiftC2Right; shiftC3Right\n-\tshiftD0Right; shiftD1Right; shiftD2Right; shiftD3Right\n-\tADDQ          $2*8, itr2\n-\tCMPQ          itr2, $160\n-\tJB            openSSETail256Loop\n-\tMOVQ          inl, itr1\n-\tANDQ          $-16, itr1\n+\tADDQ  (SI)(R9*1), R10\n+\tADCQ  8(SI)(R9*1), R11\n+\tADCQ  $0x01, R12\n+\tMOVO  X14, 64(BP)\n+\tPADDD X3, X0\n+\tPXOR  X0, X9\n+\tROL16(X9, X14)\n+\tPADDD X9, X6\n+\tPXOR  X6, X3\n+\tMOVO  X3, X14\n+\tPSLLL $0x0c, X14\n+\tPSRLL $0x14, X3\n+\tPXOR  X14, X3\n+\tPADDD X3, X0\n+\tPXOR  X0, X9\n+\tROL8(X9, X14)\n+\tPADDD X9, X6\n+\tPXOR  X6, X3\n+\tMOVO  X3, X14\n+\tPSLLL $0x07, X14\n+\tPSRLL $0x19, X3\n+\tPXOR  X14, X3\n+\tPADDD X4, X1\n+\tPXOR  X1, X10\n+\tROL16(X10, X14)\n+\tPADDD X10, X7\n+\tPXOR  X7, X4\n+\tMOVO  X4, X14\n+\tPSLLL $0x0c, X14\n+\tPSRLL $0x14, X4\n+\tPXOR  X14, X4\n+\tPADDD X4, X1\n+\tPXOR  X1, X10\n+\tROL8(X10, X14)\n+\tPADDD X10, X7\n+\tPXOR  X7, X4\n+\tMOVO  X4, X14\n+\tPSLLL $0x07, X14\n+\tPSRLL $0x19, X4\n+\tPXOR  X14, X4\n+\tPADDD X5, X2\n+\tPXOR  X2, X11\n+\tROL16(X11, X14)\n+\tPADDD X11, X8\n+\tPXOR  X8, X5\n+\tMOVO  X5, X14\n+\tPSLLL $0x0c, X14\n+\tPSRLL $0x14, X5\n+\tPXOR  X14, X5\n+\tPADDD X5, X2\n+\tPXOR  X2, X11\n+\tROL8(X11, X14)\n+\tPADDD X11, X8\n+\tPXOR  X8, X5\n+\tMOVO  X5, X14\n+\tPSLLL $0x07, X14\n+\tPSRLL $0x19, X5\n+\tPXOR  X14, X5\n+\tMOVO  64(BP), X14\n+\tMOVO  X7, 64(BP)\n+\tPADDD X13, X12\n+\tPXOR  X12, X15\n+\tROL16(X15, X7)\n+\tPADDD X15, X14\n+\tPXOR  X14, X13\n+\tMOVO  X13, X7\n+\tPSLLL $0x0c, X7\n+\tPSRLL $0x14, X13\n+\tPXOR  X7, X13\n+\tPADDD X13, X12\n+\tPXOR  X12, X15\n+\tROL8(X15, X7)\n+\tPADDD X15, X14\n+\tPXOR  X14, X13\n+\tMOVO  X13, X7\n+\tPSLLL $0x07, X7\n+\tPSRLL $0x19, X13\n+\tPXOR  X7, X13\n+\tMOVO  64(BP), X7\n+\tBYTE  $0x66\n+\tBYTE  $0x0f\n+\tBYTE  $0x3a\n+\tBYTE  $0x0f\n+\tBYTE  $0xdb\n+\tBYTE  $0x04\n+\tBYTE  $0x66\n+\tBYTE  $0x0f\n+\tBYTE  $0x3a\n+\tBYTE  $0x0f\n+\tBYTE  $0xe4\n+\tBYTE  $0x04\n+\tBYTE  $0x66\n+\tBYTE  $0x0f\n+\tBYTE  $0x3a\n+\tBYTE  $0x0f\n+\tBYTE  $0xed\n+\tBYTE  $0x04\n+\tBYTE  $0x66\n+\tBYTE  $0x45\n+\tBYTE  $0x0f\n+\tBYTE  $0x3a\n+\tBYTE  $0x0f\n+\tBYTE  $0xed\n+\tBYTE  $0x04\n+\tBYTE  $0x66\n+\tBYTE  $0x0f\n+\tBYTE  $0x3a\n+\tBYTE  $0x0f\n+\tBYTE  $0xf6\n+\tBYTE  $0x08\n+\tBYTE  $0x66\n+\tBYTE  $0x0f\n+\tBYTE  $0x3a\n+\tBYTE  $0x0f\n+\tBYTE  $0xff\n+\tBYTE  $0x08\n+\tBYTE  $0x66\n+\tBYTE  $0x45\n+\tBYTE  $0x0f\n+\tBYTE  $0x3a\n+\tBYTE  $0x0f\n+\tBYTE  $0xc0\n+\tBYTE  $0x08\n+\tBYTE  $0x66\n+\tBYTE  $0x45\n+\tBYTE  $0x0f\n+\tBYTE  $0x3a\n+\tBYTE  $0x0f\n+\tBYTE  $0xf6\n+\tBYTE  $0x08\n+\tBYTE  $0x66\n+\tBYTE  $0x45\n+\tBYTE  $0x0f\n+\tBYTE  $0x3a\n+\tBYTE  $0x0f\n+\tBYTE  $0xc9\n+\tBYTE  $0x0c\n+\tBYTE  $0x66\n+\tBYTE  $0x45\n+\tBYTE  $0x0f\n+\tBYTE  $0x3a\n+\tBYTE  $0x0f\n+\tBYTE  $0xd2\n+\tBYTE  $0x0c\n+\tBYTE  $0x66\n+\tBYTE  $0x45\n+\tBYTE  $0x0f\n+\tBYTE  $0x3a\n+\tBYTE  $0x0f\n+\tBYTE  $0xdb\n+\tBYTE  $0x0c\n+\tBYTE  $0x66\n+\tBYTE  $0x45\n+\tBYTE  $0x0f\n+\tBYTE  $0x3a\n+\tBYTE  $0x0f\n+\tBYTE  $0xff\n+\tBYTE  $0x0c\n+\tMOVQ  (BP), AX\n+\tMOVQ  AX, R15\n+\tMULQ  R10\n+\tMOVQ  AX, R13\n+\tMOVQ  DX, R14\n+\tMOVQ  (BP), AX\n+\tMULQ  R11\n+\tIMULQ R12, R15\n+\tADDQ  AX, R14\n+\tADCQ  DX, R15\n+\tMOVQ  8(BP), AX\n+\tMOVQ  AX, R8\n+\tMULQ  R10\n+\tADDQ  AX, R14\n+\tADCQ  $0x00, DX\n+\tMOVQ  DX, R10\n+\tMOVQ  8(BP), AX\n+\tMULQ  R11\n+\tADDQ  AX, R15\n+\tADCQ  $0x00, DX\n+\tMOVO  X14, 64(BP)\n+\tPADDD X3, X0\n+\tPXOR  X0, X9\n+\tROL16(X9, X14)\n+\tPADDD X9, X6\n+\tPXOR  X6, X3\n+\tMOVO  X3, X14\n+\tPSLLL $0x0c, X14\n+\tPSRLL $0x14, X3\n+\tPXOR  X14, X3\n+\tPADDD X3, X0\n+\tPXOR  X0, X9\n+\tROL8(X9, X14)\n+\tPADDD X9, X6\n+\tPXOR  X6, X3\n+\tMOVO  X3, X14\n+\tPSLLL $0x07, X14\n+\tPSRLL $0x19, X3\n+\tPXOR  X14, X3\n+\tPADDD X4, X1\n+\tPXOR  X1, X10\n+\tROL16(X10, X14)\n+\tPADDD X10, X7\n+\tPXOR  X7, X4\n+\tMOVO  X4, X14\n+\tPSLLL $0x0c, X14\n+\tPSRLL $0x14, X4\n+\tPXOR  X14, X4\n+\tPADDD X4, X1\n+\tPXOR  X1, X10\n+\tROL8(X10, X14)\n+\tPADDD X10, X7\n+\tPXOR  X7, X4\n+\tMOVO  X4, X14\n+\tPSLLL $0x07, X14\n+\tPSRLL $0x19, X4\n+\tPXOR  X14, X4\n+\tPADDD X5, X2\n+\tPXOR  X2, X11\n+\tROL16(X11, X14)\n+\tPADDD X11, X8\n+\tPXOR  X8, X5\n+\tMOVO  X5, X14\n+\tPSLLL $0x0c, X14\n+\tPSRLL $0x14, X5\n+\tPXOR  X14, X5\n+\tPADDD X5, X2\n+\tPXOR  X2, X11\n+\tROL8(X11, X14)\n+\tPADDD X11, X8\n+\tPXOR  X8, X5\n+\tMOVO  X5, X14\n+\tPSLLL $0x07, X14\n+\tPSRLL $0x19, X5\n+\tPXOR  X14, X5\n+\tMOVO  64(BP), X14\n+\tMOVO  X7, 64(BP)\n+\tPADDD X13, X12\n+\tPXOR  X12, X15\n+\tROL16(X15, X7)\n+\tPADDD X15, X14\n+\tPXOR  X14, X13\n+\tMOVO  X13, X7\n+\tPSLLL $0x0c, X7\n+\tPSRLL $0x14, X13\n+\tPXOR  X7, X13\n+\tPADDD X13, X12\n+\tPXOR  X12, X15\n+\tROL8(X15, X7)\n+\tPADDD X15, X14\n+\tPXOR  X14, X13\n+\tMOVO  X13, X7\n+\tPSLLL $0x07, X7\n+\tPSRLL $0x19, X13\n+\tPXOR  X7, X13\n+\tMOVO  64(BP), X7\n+\tIMULQ R12, R8\n+\tADDQ  R10, R15\n+\tADCQ  DX, R8\n+\tMOVQ  R13, R10\n+\tMOVQ  R14, R11\n+\tMOVQ  R15, R12\n+\tANDQ  $0x03, R12\n+\tMOVQ  R15, R13\n+\tANDQ  $-4, R13\n+\tMOVQ  R8, R14\n+\tSHRQ  $0x02, R8, R15\n+\tSHRQ  $0x02, R8\n+\tADDQ  R13, R10\n+\tADCQ  R14, R11\n+\tADCQ  $0x00, R12\n+\tADDQ  R15, R10\n+\tADCQ  R8, R11\n+\tADCQ  $0x00, R12\n+\tBYTE  $0x66\n+\tBYTE  $0x0f\n+\tBYTE  $0x3a\n+\tBYTE  $0x0f\n+\tBYTE  $0xdb\n+\tBYTE  $0x0c\n+\tBYTE  $0x66\n+\tBYTE  $0x0f\n+\tBYTE  $0x3a\n+\tBYTE  $0x0f\n+\tBYTE  $0xe4\n+\tBYTE  $0x0c\n+\tBYTE  $0x66\n+\tBYTE  $0x0f\n+\tBYTE  $0x3a\n+\tBYTE  $0x0f\n+\tBYTE  $0xed\n+\tBYTE  $0x0c\n+\tBYTE  $0x66\n+\tBYTE  $0x45\n+\tBYTE  $0x0f\n+\tBYTE  $0x3a\n+\tBYTE  $0x0f\n+\tBYTE  $0xed\n+\tBYTE  $0x0c\n+\tBYTE  $0x66\n+\tBYTE  $0x0f\n+\tBYTE  $0x3a\n+\tBYTE  $0x0f\n+\tBYTE  $0xf6\n+\tBYTE  $0x08\n+\tBYTE  $0x66\n+\tBYTE  $0x0f\n+\tBYTE  $0x3a\n+\tBYTE  $0x0f\n+\tBYTE  $0xff\n+\tBYTE  $0x08\n+\tBYTE  $0x66\n+\tBYTE  $0x45\n+\tBYTE  $0x0f\n+\tBYTE  $0x3a\n+\tBYTE  $0x0f\n+\tBYTE  $0xc0\n+\tBYTE  $0x08\n+\tBYTE  $0x66\n+\tBYTE  $0x45\n+\tBYTE  $0x0f\n+\tBYTE  $0x3a\n+\tBYTE  $0x0f\n+\tBYTE  $0xf6\n+\tBYTE  $0x08\n+\tBYTE  $0x66\n+\tBYTE  $0x45\n+\tBYTE  $0x0f\n+\tBYTE  $0x3a\n+\tBYTE  $0x0f\n+\tBYTE  $0xc9\n+\tBYTE  $0x04\n+\tBYTE  $0x66\n+\tBYTE  $0x45\n+\tBYTE  $0x0f\n+\tBYTE  $0x3a\n+\tBYTE  $0x0f\n+\tBYTE  $0xd2\n+\tBYTE  $0x04\n+\tBYTE  $0x66\n+\tBYTE  $0x45\n+\tBYTE  $0x0f\n+\tBYTE  $0x3a\n+\tBYTE  $0x0f\n+\tBYTE  $0xdb\n+\tBYTE  $0x04\n+\tBYTE  $0x66\n+\tBYTE  $0x45\n+\tBYTE  $0x0f\n+\tBYTE  $0x3a\n+\tBYTE  $0x0f\n+\tBYTE  $0xff\n+\tBYTE  $0x04\n+\tADDQ  $0x10, R9\n+\tCMPQ  R9, $0xa0\n+\tJB    openSSETail256Loop\n+\tMOVQ  BX, CX\n+\tANDQ  $-16, CX\n \n openSSETail256HashLoop:\n-\tpolyAdd(0(inp)(itr2*1))\n-\tpolyMul\n-\tADDQ $2*8, itr2\n-\tCMPQ itr2, itr1\n-\tJB   openSSETail256HashLoop\n+\tADDQ  (SI)(R9*1), R10\n+\tADCQ  8(SI)(R9*1), R11\n+\tADCQ  $0x01, R12\n+\tMOVQ  (BP), AX\n+\tMOVQ  AX, R15\n+\tMULQ  R10\n+\tMOVQ  AX, R13\n+\tMOVQ  DX, R14\n+\tMOVQ  (BP), AX\n+\tMULQ  R11\n+\tIMULQ R12, R15\n+\tADDQ  AX, R14\n+\tADCQ  DX, R15\n+\tMOVQ  8(BP), AX\n+\tMOVQ  AX, R8\n+\tMULQ  R10\n+\tADDQ  AX, R14\n+\tADCQ  $0x00, DX\n+\tMOVQ  DX, R10\n+\tMOVQ  8(BP), AX\n+\tMULQ  R11\n+\tADDQ  AX, R15\n+\tADCQ  $0x00, DX\n+\tIMULQ R12, R8\n+\tADDQ  R10, R15\n+\tADCQ  DX, R8\n+\tMOVQ  R13, R10\n+\tMOVQ  R14, R11\n+\tMOVQ  R15, R12\n+\tANDQ  $0x03, R12\n+\tMOVQ  R15, R13\n+\tANDQ  $-4, R13\n+\tMOVQ  R8, R14\n+\tSHRQ  $0x02, R8, R15\n+\tSHRQ  $0x02, R8\n+\tADDQ  R13, R10\n+\tADCQ  R14, R11\n+\tADCQ  $0x00, R12\n+\tADDQ  R15, R10\n+\tADCQ  R8, R11\n+\tADCQ  $0x00, R12\n+\tADDQ  $0x10, R9\n+\tCMPQ  R9, CX\n+\tJB    openSSETail256HashLoop\n \n \t// Add in the state\n-\tPADDD ·chacha20Constants<>(SB), A0; PADDD ·chacha20Constants<>(SB), A1; PADDD ·chacha20Constants<>(SB), A2; PADDD ·chacha20Constants<>(SB), A3\n-\tPADDD state1Store, B0; PADDD state1Store, B1; PADDD state1Store, B2; PADDD state1Store, B3\n-\tPADDD state2Store, C0; PADDD state2Store, C1; PADDD state2Store, C2; PADDD state2Store, C3\n-\tPADDD ctr0Store, D0; PADDD ctr1Store, D1; PADDD ctr2Store, D2; PADDD ctr3Store, D3\n-\tMOVO  D3, tmpStore\n+\tPADDD ·chacha20Constants<>+0(SB), X0\n+\tPADDD ·chacha20Constants<>+0(SB), X1\n+\tPADDD ·chacha20Constants<>+0(SB), X2\n+\tPADDD ·chacha20Constants<>+0(SB), X12\n+\tPADDD 32(BP), X3\n+\tPADDD 32(BP), X4\n+\tPADDD 32(BP), X5\n+\tPADDD 32(BP), X13\n+\tPADDD 48(BP), X6\n+\tPADDD 48(BP), X7\n+\tPADDD 48(BP), X8\n+\tPADDD 48(BP), X14\n+\tPADDD 80(BP), X9\n+\tPADDD 96(BP), X10\n+\tPADDD 112(BP), X11\n+\tPADDD 128(BP), X15\n+\tMOVO  X15, 64(BP)\n \n \t// Load - xor - store\n-\tMOVOU (0*16)(inp), D3; PXOR D3, A0\n-\tMOVOU (1*16)(inp), D3; PXOR D3, B0\n-\tMOVOU (2*16)(inp), D3; PXOR D3, C0\n-\tMOVOU (3*16)(inp), D3; PXOR D3, D0\n-\tMOVOU A0, (0*16)(oup)\n-\tMOVOU B0, (1*16)(oup)\n-\tMOVOU C0, (2*16)(oup)\n-\tMOVOU D0, (3*16)(oup)\n-\tMOVOU (4*16)(inp), A0; MOVOU (5*16)(inp), B0; MOVOU (6*16)(inp), C0; MOVOU (7*16)(inp), D0\n-\tPXOR  A0, A1; PXOR B0, B1; PXOR C0, C1; PXOR D0, D1\n-\tMOVOU A1, (4*16)(oup); MOVOU B1, (5*16)(oup); MOVOU C1, (6*16)(oup); MOVOU D1, (7*16)(oup)\n-\tMOVOU (8*16)(inp), A0; MOVOU (9*16)(inp), B0; MOVOU (10*16)(inp), C0; MOVOU (11*16)(inp), D0\n-\tPXOR  A0, A2; PXOR B0, B2; PXOR C0, C2; PXOR D0, D2\n-\tMOVOU A2, (8*16)(oup); MOVOU B2, (9*16)(oup); MOVOU C2, (10*16)(oup); MOVOU D2, (11*16)(oup)\n-\tLEAQ  192(inp), inp\n-\tLEAQ  192(oup), oup\n-\tSUBQ  $192, inl\n-\tMOVO  A3, A0\n-\tMOVO  B3, B0\n-\tMOVO  C3, C0\n-\tMOVO  tmpStore, D0\n-\n-\tJMP openSSETail64DecLoop\n-\n-// ----------------------------------------------------------------------------\n-// ------------------------- AVX2 Code ----------------------------------------\n+\tMOVOU (SI), X15\n+\tPXOR  X15, X0\n+\tMOVOU 16(SI), X15\n+\tPXOR  X15, X3\n+\tMOVOU 32(SI), X15\n+\tPXOR  X15, X6\n+\tMOVOU 48(SI), X15\n+\tPXOR  X15, X9\n+\tMOVOU X0, (DI)\n+\tMOVOU X3, 16(DI)\n+\tMOVOU X6, 32(DI)\n+\tMOVOU X9, 48(DI)\n+\tMOVOU 64(SI), X0\n+\tMOVOU 80(SI), X3\n+\tMOVOU 96(SI), X6\n+\tMOVOU 112(SI), X9\n+\tPXOR  X0, X1\n+\tPXOR  X3, X4\n+\tPXOR  X6, X7\n+\tPXOR  X9, X10\n+\tMOVOU X1, 64(DI)\n+\tMOVOU X4, 80(DI)\n+\tMOVOU X7, 96(DI)\n+\tMOVOU X10, 112(DI)\n+\tMOVOU 128(SI), X0\n+\tMOVOU 144(SI), X3\n+\tMOVOU 160(SI), X6\n+\tMOVOU 176(SI), X9\n+\tPXOR  X0, X2\n+\tPXOR  X3, X5\n+\tPXOR  X6, X8\n+\tPXOR  X9, X11\n+\tMOVOU X2, 128(DI)\n+\tMOVOU X5, 144(DI)\n+\tMOVOU X8, 160(DI)\n+\tMOVOU X11, 176(DI)\n+\tLEAQ  192(SI), SI\n+\tLEAQ  192(DI), DI\n+\tSUBQ  $0xc0, BX\n+\tMOVO  X12, X0\n+\tMOVO  X13, X3\n+\tMOVO  X14, X6\n+\tMOVO  64(BP), X9\n+\tJMP   openSSETail64DecLoop\n+\n chacha20Poly1305Open_AVX2:\n \tVZEROUPPER\n-\tVMOVDQU ·chacha20Constants<>(SB), AA0\n-\tBYTE    $0xc4; BYTE $0x42; BYTE $0x7d; BYTE $0x5a; BYTE $0x70; BYTE $0x10 // broadcasti128 16(r8), ymm14\n-\tBYTE    $0xc4; BYTE $0x42; BYTE $0x7d; BYTE $0x5a; BYTE $0x60; BYTE $0x20 // broadcasti128 32(r8), ymm12\n-\tBYTE    $0xc4; BYTE $0xc2; BYTE $0x7d; BYTE $0x5a; BYTE $0x60; BYTE $0x30 // broadcasti128 48(r8), ymm4\n-\tVPADDD  ·avx2InitMask<>(SB), DD0, DD0\n+\tVMOVDQU ·chacha20Constants<>+0(SB), Y0\n+\tBYTE    $0xc4\n+\tBYTE    $0x42\n+\tBYTE    $0x7d\n+\tBYTE    $0x5a\n+\tBYTE    $0x70\n+\tBYTE    $0x10\n+\tBYTE    $0xc4\n+\tBYTE    $0x42\n+\tBYTE    $0x7d\n+\tBYTE    $0x5a\n+\tBYTE    $0x60\n+\tBYTE    $0x20\n+\tBYTE    $0xc4\n+\tBYTE    $0xc2\n+\tBYTE    $0x7d\n+\tBYTE    $0x5a\n+\tBYTE    $0x60\n+\tBYTE    $0x30\n+\tVPADDD  ·avx2InitMask<>+0(SB), Y4, Y4\n \n \t// Special optimization, for very short buffers\n-\tCMPQ inl, $192\n+\tCMPQ BX, $0xc0\n \tJBE  openAVX2192\n-\tCMPQ inl, $320\n+\tCMPQ BX, $0x00000140\n \tJBE  openAVX2320\n \n \t// For the general key prepare the key first - as a byproduct we have 64 bytes of cipher stream\n-\tVMOVDQA BB0, state1StoreAVX2\n-\tVMOVDQA CC0, state2StoreAVX2\n-\tVMOVDQA DD0, ctr3StoreAVX2\n-\tMOVQ    $10, itr2\n+\tVMOVDQA Y14, 32(BP)\n+\tVMOVDQA Y12, 64(BP)\n+\tVMOVDQA Y4, 192(BP)\n+\tMOVQ    $0x0000000a, R9\n \n openAVX2PreparePolyKey:\n-\tchachaQR_AVX2(AA0, BB0, CC0, DD0, TT0)\n-\tVPALIGNR $4, BB0, BB0, BB0; VPALIGNR $8, CC0, CC0, CC0; VPALIGNR $12, DD0, DD0, DD0\n-\tchachaQR_AVX2(AA0, BB0, CC0, DD0, TT0)\n-\tVPALIGNR $12, BB0, BB0, BB0; VPALIGNR $8, CC0, CC0, CC0; VPALIGNR $4, DD0, DD0, DD0\n-\tDECQ     itr2\n-\tJNE      openAVX2PreparePolyKey\n-\n-\tVPADDD ·chacha20Constants<>(SB), AA0, AA0\n-\tVPADDD state1StoreAVX2, BB0, BB0\n-\tVPADDD state2StoreAVX2, CC0, CC0\n-\tVPADDD ctr3StoreAVX2, DD0, DD0\n-\n-\tVPERM2I128 $0x02, AA0, BB0, TT0\n+\tVPADDD     Y14, Y0, Y0\n+\tVPXOR      Y0, Y4, Y4\n+\tVPSHUFB    ·rol16<>+0(SB), Y4, Y4\n+\tVPADDD     Y4, Y12, Y12\n+\tVPXOR      Y12, Y14, Y14\n+\tVPSLLD     $0x0c, Y14, Y3\n+\tVPSRLD     $0x14, Y14, Y14\n+\tVPXOR      Y3, Y14, Y14\n+\tVPADDD     Y14, Y0, Y0\n+\tVPXOR      Y0, Y4, Y4\n+\tVPSHUFB    ·rol8<>+0(SB), Y4, Y4\n+\tVPADDD     Y4, Y12, Y12\n+\tVPXOR      Y12, Y14, Y14\n+\tVPSLLD     $0x07, Y14, Y3\n+\tVPSRLD     $0x19, Y14, Y14\n+\tVPXOR      Y3, Y14, Y14\n+\tVPALIGNR   $0x04, Y14, Y14, Y14\n+\tVPALIGNR   $0x08, Y12, Y12, Y12\n+\tVPALIGNR   $0x0c, Y4, Y4, Y4\n+\tVPADDD     Y14, Y0, Y0\n+\tVPXOR      Y0, Y4, Y4\n+\tVPSHUFB    ·rol16<>+0(SB), Y4, Y4\n+\tVPADDD     Y4, Y12, Y12\n+\tVPXOR      Y12, Y14, Y14\n+\tVPSLLD     $0x0c, Y14, Y3\n+\tVPSRLD     $0x14, Y14, Y14\n+\tVPXOR      Y3, Y14, Y14\n+\tVPADDD     Y14, Y0, Y0\n+\tVPXOR      Y0, Y4, Y4\n+\tVPSHUFB    ·rol8<>+0(SB), Y4, Y4\n+\tVPADDD     Y4, Y12, Y12\n+\tVPXOR      Y12, Y14, Y14\n+\tVPSLLD     $0x07, Y14, Y3\n+\tVPSRLD     $0x19, Y14, Y14\n+\tVPXOR      Y3, Y14, Y14\n+\tVPALIGNR   $0x0c, Y14, Y14, Y14\n+\tVPALIGNR   $0x08, Y12, Y12, Y12\n+\tVPALIGNR   $0x04, Y4, Y4, Y4\n+\tDECQ       R9\n+\tJNE        openAVX2PreparePolyKey\n+\tVPADDD     ·chacha20Constants<>+0(SB), Y0, Y0\n+\tVPADDD     32(BP), Y14, Y14\n+\tVPADDD     64(BP), Y12, Y12\n+\tVPADDD     192(BP), Y4, Y4\n+\tVPERM2I128 $0x02, Y0, Y14, Y3\n \n \t// Clamp and store poly key\n-\tVPAND   ·polyClampMask<>(SB), TT0, TT0\n-\tVMOVDQA TT0, rsStoreAVX2\n+\tVPAND   ·polyClampMask<>+0(SB), Y3, Y3\n+\tVMOVDQA Y3, (BP)\n \n \t// Stream for the first 64 bytes\n-\tVPERM2I128 $0x13, AA0, BB0, AA0\n-\tVPERM2I128 $0x13, CC0, DD0, BB0\n+\tVPERM2I128 $0x13, Y0, Y14, Y0\n+\tVPERM2I128 $0x13, Y12, Y4, Y14\n \n \t// Hash AD + first 64 bytes\n-\tMOVQ ad_len+80(FP), itr2\n+\tMOVQ ad_len+80(FP), R9\n \tCALL polyHashADInternal<>(SB)\n-\tXORQ itr1, itr1\n+\tXORQ CX, CX\n \n openAVX2InitialHash64:\n-\tpolyAdd(0(inp)(itr1*1))\n-\tpolyMulAVX2\n-\tADDQ $16, itr1\n-\tCMPQ itr1, $64\n-\tJNE  openAVX2InitialHash64\n+\tADDQ  (SI)(CX*1), R10\n+\tADCQ  8(SI)(CX*1), R11\n+\tADCQ  $0x01, R12\n+\tMOVQ  (BP), DX\n+\tMOVQ  DX, R15\n+\tMULXQ R10, R13, R14\n+\tIMULQ R12, R15\n+\tMULXQ R11, AX, DX\n+\tADDQ  AX, R14\n+\tADCQ  DX, R15\n+\tMOVQ  8(BP), DX\n+\tMULXQ R10, R10, AX\n+\tADDQ  R10, R14\n+\tMULXQ R11, R11, R8\n+\tADCQ  R11, R15\n+\tADCQ  $0x00, R8\n+\tIMULQ R12, DX\n+\tADDQ  AX, R15\n+\tADCQ  DX, R8\n+\tMOVQ  R13, R10\n+\tMOVQ  R14, R11\n+\tMOVQ  R15, R12\n+\tANDQ  $0x03, R12\n+\tMOVQ  R15, R13\n+\tANDQ  $-4, R13\n+\tMOVQ  R8, R14\n+\tSHRQ  $0x02, R8, R15\n+\tSHRQ  $0x02, R8\n+\tADDQ  R13, R10\n+\tADCQ  R14, R11\n+\tADCQ  $0x00, R12\n+\tADDQ  R15, R10\n+\tADCQ  R8, R11\n+\tADCQ  $0x00, R12\n+\tADDQ  $0x10, CX\n+\tCMPQ  CX, $0x40\n+\tJNE   openAVX2InitialHash64\n \n \t// Decrypt the first 64 bytes\n-\tVPXOR   (0*32)(inp), AA0, AA0\n-\tVPXOR   (1*32)(inp), BB0, BB0\n-\tVMOVDQU AA0, (0*32)(oup)\n-\tVMOVDQU BB0, (1*32)(oup)\n-\tLEAQ    (2*32)(inp), inp\n-\tLEAQ    (2*32)(oup), oup\n-\tSUBQ    $64, inl\n+\tVPXOR   (SI), Y0, Y0\n+\tVPXOR   32(SI), Y14, Y14\n+\tVMOVDQU Y0, (DI)\n+\tVMOVDQU Y14, 32(DI)\n+\tLEAQ    64(SI), SI\n+\tLEAQ    64(DI), DI\n+\tSUBQ    $0x40, BX\n \n openAVX2MainLoop:\n-\tCMPQ inl, $512\n+\tCMPQ BX, $0x00000200\n \tJB   openAVX2MainLoopDone\n \n \t// Load state, increment counter blocks, store the incremented counters\n-\tVMOVDQU ·chacha20Constants<>(SB), AA0; VMOVDQA AA0, AA1; VMOVDQA AA0, AA2; VMOVDQA AA0, AA3\n-\tVMOVDQA state1StoreAVX2, BB0; VMOVDQA BB0, BB1; VMOVDQA BB0, BB2; VMOVDQA BB0, BB3\n-\tVMOVDQA state2StoreAVX2, CC0; VMOVDQA CC0, CC1; VMOVDQA CC0, CC2; VMOVDQA CC0, CC3\n-\tVMOVDQA ctr3StoreAVX2, DD0; VPADDD ·avx2IncMask<>(SB), DD0, DD0; VPADDD ·avx2IncMask<>(SB), DD0, DD1; VPADDD ·avx2IncMask<>(SB), DD1, DD2; VPADDD ·avx2IncMask<>(SB), DD2, DD3\n-\tVMOVDQA DD0, ctr0StoreAVX2; VMOVDQA DD1, ctr1StoreAVX2; VMOVDQA DD2, ctr2StoreAVX2; VMOVDQA DD3, ctr3StoreAVX2\n-\tXORQ    itr1, itr1\n+\tVMOVDQU ·chacha20Constants<>+0(SB), Y0\n+\tVMOVDQA Y0, Y5\n+\tVMOVDQA Y0, Y6\n+\tVMOVDQA Y0, Y7\n+\tVMOVDQA 32(BP), Y14\n+\tVMOVDQA Y14, Y9\n+\tVMOVDQA Y14, Y10\n+\tVMOVDQA Y14, Y11\n+\tVMOVDQA 64(BP), Y12\n+\tVMOVDQA Y12, Y13\n+\tVMOVDQA Y12, Y8\n+\tVMOVDQA Y12, Y15\n+\tVMOVDQA 192(BP), Y4\n+\tVPADDD  ·avx2IncMask<>+0(SB), Y4, Y4\n+\tVPADDD  ·avx2IncMask<>+0(SB), Y4, Y1\n+\tVPADDD  ·avx2IncMask<>+0(SB), Y1, Y2\n+\tVPADDD  ·avx2IncMask<>+0(SB), Y2, Y3\n+\tVMOVDQA Y4, 96(BP)\n+\tVMOVDQA Y1, 128(BP)\n+\tVMOVDQA Y2, 160(BP)\n+\tVMOVDQA Y3, 192(BP)\n+\tXORQ    CX, CX\n \n openAVX2InternalLoop:\n-\t// Lets just say this spaghetti loop interleaves 2 quarter rounds with 3 poly multiplications\n-\t// Effectively per 512 bytes of stream we hash 480 bytes of ciphertext\n-\tpolyAdd(0*8(inp)(itr1*1))\n-\tVPADDD   BB0, AA0, AA0; VPADDD BB1, AA1, AA1; VPADDD BB2, AA2, AA2; VPADDD BB3, AA3, AA3\n-\tpolyMulStage1_AVX2\n-\tVPXOR    AA0, DD0, DD0; VPXOR AA1, DD1, DD1; VPXOR AA2, DD2, DD2; VPXOR AA3, DD3, DD3\n-\tVPSHUFB  ·rol16<>(SB), DD0, DD0; VPSHUFB ·rol16<>(SB), DD1, DD1; VPSHUFB ·rol16<>(SB), DD2, DD2; VPSHUFB ·rol16<>(SB), DD3, DD3\n-\tpolyMulStage2_AVX2\n",
+ "diff_truncated": true
+}

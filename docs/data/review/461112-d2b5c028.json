@@ -1,0 +1,23 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~bluca/ubuntu/+source/dpkg/+git/dpkg/+merge/461112",
+ "id": "461112",
+ "title": "fixup → ubuntu/devel",
+ "source_branch": "fixup",
+ "target_branch": "ubuntu/devel",
+ "revision": "19fb982fce1515bd77909ca745e474b9e5df592c",
+ "base_revision": "ce70a4dfeeb427fda78cb3c1398c591a073009e6",
+ "description": null,
+ "commit_message": null,
+ "diffstat": {
+  "scripts/Dpkg/BuildProfiles.pm": [
+   2,
+   2
+  ]
+ },
+ "files": 1,
+ "added_lines": 2,
+ "removed_lines": 2,
+ "diff": "diff --git a/scripts/Dpkg/BuildProfiles.pm b/scripts/Dpkg/BuildProfiles.pm\nindex a96849c..4484eef 100644\n--- a/scripts/Dpkg/BuildProfiles.pm\n+++ b/scripts/Dpkg/BuildProfiles.pm\n@@ -83,8 +83,8 @@ sub set_build_profiles {\n     $cache_profiles = 1;\n     # This is called from dpkg-buildpackage.pl unconditionally. If no profile\n     # was passed from the command line, check the environment variable.\n-    if (!@profiles && Dpkg::Build::Env::has('DEB_BUILD_PROFILES')) {\n-        @profiles = split ' ', Dpkg::Build::Env::get('DEB_BUILD_PROFILES');\n+    if (!@profiles && Dpkg::BuildEnv::has('DEB_BUILD_PROFILES')) {\n+        @profiles = split ' ', Dpkg::BuildEnv::get('DEB_BUILD_PROFILES');\n     }\n     @build_profiles = @profiles;\n     run_vendor_hook('update-buildprofiles', \\@build_profiles);\n",
+ "diff_truncated": false
+}

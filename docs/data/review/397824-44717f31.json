@@ -1,0 +1,31 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~lucaskanashiro/ubuntu/+source/resource-agents/+git/resource-agents/+merge/397824",
+ "id": "397824",
+ "title": "Backport AWS agent with IMDSv2 support to Bionic. This is the upstream commit:",
+ "source_branch": "backport_aws_imdsv2_bionic",
+ "target_branch": "ubuntu/bionic-devel",
+ "revision": "f3cee28cb1d6c82c0eb931858775fde52f3e0e6a",
+ "base_revision": "0361c1b55169aadc53ea05912f9e261bfdf18f38",
+ "description": "Backport AWS agent with IMDSv2 support to Bionic. This is the upstream commit:\n\nhttps://github.com/ClusterLabs/resource-agents/commit/8f10d0eb1e33d38ab6e89015a903620c54edd7c1\n\nThe SRU bug description is still incomplete because we are going to ask AWS folks on how to test it properly, but this MP is for reviewing the packaging work.\n\nPPA:\n\nhttps://launchpad.net/~lucaskanashiro/+archive/ubuntu/ha-stack-aws\n\nautopkgtest:\n\nautopkgtest [12:18:08]: @@@@@@@@@@@@@@@@@@@@ summary\nIPaddr2              PASS\ncommand1             PASS\ncommand2             PASS\ncommand3             PASS\ncommand4             PASS\ncommand5             PASS\ncommand6             PASS\ncommand7             PASS\ncommand8             PASS\ncommand9             PASS\ncommand10            PASS\ncommand11            PASS\ncommand12            PASS\n",
+ "commit_message": null,
+ "diffstat": {
+  "debian/patches/series": [
+   1,
+   0
+  ],
+  "debian/patches/lp1915203-Backport-upstream-patch-to-add-support-for-IMDSv2-in.patch": [
+   59,
+   0
+  ],
+  "debian/changelog": [
+   7,
+   0
+  ]
+ },
+ "files": 3,
+ "added_lines": 67,
+ "removed_lines": 0,
+ "diff": "diff --git a/debian/changelog b/debian/changelog\nindex e72c0b2..603b19d 100644\n--- a/debian/changelog\n+++ b/debian/changelog\n@@ -1,3 +1,10 @@\n+resource-agents (1:4.1.0~rc1-1ubuntu1.4) bionic; urgency=medium\n+\n+  * Backport upstream patch to make AWS agents support IMDSv2 (LP: #1915203).\n+    - d/p/lp1915203-Backport-upstream-patch-to-add-support-for-IMDSv2-in.patch\n+\n+ -- Lucas Kanashiro <kanashiro@ubuntu.com>  Tue, 09 Feb 2021 18:49:35 -0300\n+\n resource-agents (1:4.1.0~rc1-1ubuntu1.3) bionic; urgency=medium\n \n   * Microsoft Azure HA Enablement: azure-lb (LP: #1895343)\ndiff --git a/debian/patches/lp1915203-Backport-upstream-patch-to-add-support-for-IMDSv2-in.patch b/debian/patches/lp1915203-Backport-upstream-patch-to-add-support-for-IMDSv2-in.patch\nnew file mode 100644\nindex 0000000..4fcd013\n--- /dev/null\n+++ b/debian/patches/lp1915203-Backport-upstream-patch-to-add-support-for-IMDSv2-in.patch\n@@ -0,0 +1,59 @@\n+From: Lucas Kanashiro <lucas.kanashiro@canonical.com>\n+Date: Tue, 9 Feb 2021 18:44:14 -0300\n+Subject: Backport upstream patch to add support for IMDSv2 in AWS agents\n+\n+The upstream does not apply cleanly because of the many changes made in\n+the codebase. To backport it I searched for all the curl calls in AWS\n+agents and replaced it by two calls: one to get the token and the\n+original one passing the acquired token as a HTTP header.\n+\n+Origin: upstream, https://github.com/ClusterLabs/resource-agents/commit/8f10d0eb1e33\n+Bug-Ubuntu: https://bugs.launchpad.net/ubuntu/+source/resource-agents/+bug/1915203\n+---\n+ heartbeat/aws-vpc-move-ip | 3 ++-\n+ heartbeat/awseip          | 3 ++-\n+ heartbeat/awsvip          | 3 ++-\n+ 3 files changed, 6 insertions(+), 3 deletions(-)\n+\n+diff --git a/heartbeat/aws-vpc-move-ip b/heartbeat/aws-vpc-move-ip\n+index 30ea106..c59f7d5 100755\n+--- a/heartbeat/aws-vpc-move-ip\n++++ b/heartbeat/aws-vpc-move-ip\n+@@ -139,7 +139,8 @@ ec2ip_validate() {\n+ \t\treturn $OCF_ERR_CONFIGURED\n+ \tfi\n+ \n+-\tEC2_INSTANCE_ID=\"$(curl -s http://169.254.169.254/latest/meta-data/instance-id)\"\n++\tTOKEN=$(curl -X PUT \"http://169.254.169.254/latest/api/token\" -H \"X-aws-ec2-metadata-token-ttl-seconds: 21600\")\n++\tEC2_INSTANCE_ID=$(curl -s http://169.254.169.254/latest/meta-data/instance-id -H \"X-aws-ec2-metadata-token: $TOKEN\")\n+ \n+ \tif [ -z \"${EC2_INSTANCE_ID}\" ]; then\n+ \t\tocf_exit_reason \"Instance ID not found. Is this a EC2 instance?\"\n+diff --git a/heartbeat/awseip b/heartbeat/awseip\n+index 6b5fc5f..7b93172 100755\n+--- a/heartbeat/awseip\n++++ b/heartbeat/awseip\n+@@ -215,7 +215,8 @@ AWSCLI=\"${OCF_RESKEY_awscli}\"\n+ ELASTIC_IP=\"${OCF_RESKEY_elastic_ip}\"\n+ ALLOCATION_ID=\"${OCF_RESKEY_allocation_id}\"\n+ PRIVATE_IP_ADDRESS=\"${OCF_RESKEY_private_ip_address}\"\n+-INSTANCE_ID=\"$(curl -s http://169.254.169.254/latest/meta-data/instance-id)\"\n++TOKEN=$(curl -X PUT \"http://169.254.169.254/latest/api/token\" -H \"X-aws-ec2-metadata-token-ttl-seconds: 21600\")\n++INSTANCE_ID=$(curl -s http://169.254.169.254/latest/meta-data/instance-id -H \"X-aws-ec2-metadata-token: $TOKEN\")\n+ NETWORK_ID=\"$($AWSCLI ec2 describe-instances --instance-id ${INSTANCE_ID} | grep -m 1 'eni' | awk -F'\"' '{print$4}')\"\n+ \n+ case $__OCF_ACTION in\n+diff --git a/heartbeat/awsvip b/heartbeat/awsvip\n+index f36ad45..c23b7cb 100755\n+--- a/heartbeat/awsvip\n++++ b/heartbeat/awsvip\n+@@ -188,7 +188,8 @@ esac\n+ \n+ AWSCLI=\"${OCF_RESKEY_awscli}\"\n+ SECONDARY_PRIVATE_IP=\"${OCF_RESKEY_secondary_private_ip}\"\n+-INSTANCE_ID=\"$(curl -s http://169.254.169.254/latest/meta-data/instance-id)\"\n++TOKEN=$(curl -X PUT \"http://169.254.169.254/latest/api/token\" -H \"X-aws-ec2-metadata-token-ttl-seconds: 21600\")\n++INSTANCE_ID=$(curl -s http://169.254.169.254/latest/meta-data/instance-id -H \"X-aws-ec2-metadata-token: $TOKEN\")\n+ NETWORK_ID=\"$($AWSCLI ec2 describe-instances --instance-id ${INSTANCE_ID} | grep -m 1 'eni' | awk -F'\"' '{print$4}')\"\n+ \n+ case $__OCF_ACTION in\ndiff --git a/debian/patches/series b/debian/patches/series\nindex e4a61f7..329e985 100644\n--- a/debian/patches/series\n+++ b/debian/patches/series\n@@ -11,3 +11,4 @@ lp1825250-ethmonitor-fix-is_interface-regression.patch\n lvm-fix-missing-dash.patch\n lp1895343-01-azure-lb-new-resource-agent.patch\n lp1895343-02-azure-lb-Dont-redirect-nc-listener-output-to-pidfile.patch\n+lp1915203-Backport-upstream-patch-to-add-support-for-IMDSv2-in.patch\n",
+ "diff_truncated": false
+}

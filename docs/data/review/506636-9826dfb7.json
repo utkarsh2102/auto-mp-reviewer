@@ -1,0 +1,39 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~juliank/ubuntu/+source/openssl/+git/openssl/+merge/506636",
+ "id": "506636",
+ "title": "upki-verify → ubuntu/devel",
+ "source_branch": "upki-verify",
+ "target_branch": "ubuntu/devel",
+ "revision": "b4196f52e0ce7096cc11dae973ee4abe66107c52",
+ "base_revision": "806ad0b07b2adf0419a73250fad62bd074fe174c",
+ "description": null,
+ "commit_message": null,
+ "diffstat": {
+  "debian/changelog": [
+   6,
+   0
+  ],
+  "debian/control": [
+   1,
+   1
+  ],
+  "debian/patches/series": [
+   1,
+   0
+  ],
+  "debian/patches/verify-upki.patch": [
+   48,
+   0
+  ],
+  "debian/rules": [
+   1,
+   0
+  ]
+ },
+ "files": 5,
+ "added_lines": 57,
+ "removed_lines": 1,
+ "diff": "diff --git a/debian/changelog b/debian/changelog\nindex 3f8f411..036c2f3 100644\n--- a/debian/changelog\n+++ b/debian/changelog\n@@ -1,3 +1,9 @@\n+openssl (4.0.1-1ubuntu5) stonking; urgency=medium\n+\n+  * Dynamically load upki as the default verifier if none has been set\n+\n+ -- Julian Andres Klode <juliank@ubuntu.com>  Mon, 15 Jun 2026 18:47:30 +0200\n+\n openssl (4.0.1-1ubuntu4) stonking; urgency=medium\n \n   * d/p/default-configuration-read-dropins-and-crypto-config.patch:\ndiff --git a/debian/control b/debian/control\nindex d181936..ab9de0e 100644\n--- a/debian/control\n+++ b/debian/control\n@@ -15,7 +15,7 @@ Package: openssl\n Architecture: any\n Multi-Arch: foreign\n Depends: ${shlibs:Depends}, ${perl:Depends}, ${misc:Depends}\n-Suggests: ca-certificates\n+Suggests: ca-certificates, libupki-openssl1, upki\n Description: Secure Sockets Layer toolkit - cryptographic utility\n  This package is part of the OpenSSL project's implementation of the SSL\n  and TLS cryptographic protocols for secure communication over the\ndiff --git a/debian/patches/series b/debian/patches/series\nindex 48dec08..56e1f84 100644\n--- a/debian/patches/series\n+++ b/debian/patches/series\n@@ -16,3 +16,4 @@ fips/test-Ensure-encoding-runs-with-the-correct-context-during.patch\n fips/two-defines-for-fips-in-libssl-dev-headers.patch\n fips/crypto-add-userspace-fips-mode-detection.patch\n fips/crypto-Fallback-to-default-provider-when-FIPS-provider.patch\n+verify-upki.patch\ndiff --git a/debian/patches/verify-upki.patch b/debian/patches/verify-upki.patch\nnew file mode 100644\nindex 0000000..4f64c6d\n--- /dev/null\n+++ b/debian/patches/verify-upki.patch\n@@ -0,0 +1,48 @@\n+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001\n+From: Julian Andres Klode <juliank@ubuntu.com>\n+Date: Jun, 15 2026 16:45:04 +0200\n+Subject: [PATCH] Verify upki by default\n+\n+Forwarded: not-needed\n+\n+--- a/ssl/ssl_cert.c\n++++ b/ssl/ssl_cert.c\n+@@ -27,6 +27,7 @@\n+ #include \"ssl_cert_table.h\"\n+ #include \"internal/thread_once.h\"\n+ #include \"internal/ssl_unwrap.h\"\n++#include <dlfcn.h>\n+ #ifndef OPENSSL_NO_POSIX_IO\n+ #include <sys/stat.h>\n+ #ifdef _WIN32\n+@@ -60,6 +61,21 @@ int SSL_get_ex_data_X509_STORE_CTX_idx(v\n+     return ssl_x509_store_ctx_idx;\n+ }\n+ \n++static void *upki_openssl = NULL;\n++static SSL_verify_cb upki_openssl_verify_callback = NULL;\n++\n++static CRYPTO_ONCE upki_openssl_once = CRYPTO_ONCE_STATIC_INIT;\n++\n++DEFINE_RUN_ONCE_STATIC(upki_openssl_init)\n++{\n++    upki_openssl = dlopen(\"/usr/lib/\" DEB_HOST_MULTIARCH \"/libupki_openssl.so.1\", RTLD_LAZY);\n++    if (upki_openssl != NULL) {\n++        upki_openssl_verify_callback =\n++            (SSL_verify_cb) dlsym(upki_openssl, \"upki_openssl_verify_callback\");\n++    }\n++    return upki_openssl != NULL && upki_openssl_verify_callback != NULL;\n++}\n++\n+ CERT *ssl_cert_new(size_t ssl_pkey_num)\n+ {\n+     CERT *ret = NULL;\n+@@ -499,6 +515,8 @@ static int ssl_verify_internal(SSL_CONNE\n+ \n+     if (s->verify_callback)\n+         X509_STORE_CTX_set_verify_cb(ctx, s->verify_callback);\n++    else if (RUN_ONCE(&upki_openssl_once, upki_openssl_init))\n++        X509_STORE_CTX_set_verify_cb(ctx, upki_openssl_verify_callback);\n+ \n+     if (sctx->app_verify_callback != NULL) {\n+         i = sctx->app_verify_callback(ctx, sctx->app_verify_arg);\ndiff --git a/debian/rules b/debian/rules\nindex 61ace2b..ef6efd7 100755\n--- a/debian/rules\n+++ b/debian/rules\n@@ -12,6 +12,7 @@ include /usr/share/dpkg/architecture.mk\n include /usr/share/dpkg/pkg-info.mk\n \n export DEB_BUILD_MAINT_OPTIONS = hardening=+all future=+lfs optimize=-lto\n+export DEB_CPPFLAGS_MAINT_APPEND = -DDEB_HOST_MULTIARCH=\\\"$(DEB_HOST_MULTIARCH)\\\"\n \n SHELL=/bin/bash\n \n",
+ "diff_truncated": false
+}

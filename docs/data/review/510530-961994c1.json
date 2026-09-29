@@ -1,0 +1,27 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~zgrigoryan/ubuntu/+source/update-notifier/+git/update-notifier/+merge/510530",
+ "id": "510530",
+ "title": "Remove the legacy Canonical Livepatch reboot-marker suppression from data/notify-reboot-required, the kernel post-install hook shipped by update-notifier-common.",
+ "source_branch": "livepatch-remove-marker-suppression",
+ "target_branch": "ubuntu/devel",
+ "revision": "833fafe1bab99618619e315265ad830fbcc2e8a3",
+ "base_revision": "d6e1bf360d3366ad7dd3baaa298e876a541325e2",
+ "description": "Remove the legacy Canonical Livepatch reboot-marker suppression from data/notify-reboot-required, the kernel post-install hook shipped by update-notifier-common.",
+ "commit_message": null,
+ "diffstat": {
+  "data/notify-reboot-required": [
+   0,
+   23
+  ],
+  "debian/changelog": [
+   7,
+   0
+  ]
+ },
+ "files": 2,
+ "added_lines": 7,
+ "removed_lines": 23,
+ "diff": "diff --git a/data/notify-reboot-required b/data/notify-reboot-required\nindex ed9985b..f2ecd7b 100644\n--- a/data/notify-reboot-required\n+++ b/data/notify-reboot-required\n@@ -22,29 +22,6 @@ if [ \"$0\" = \"/etc/kernel/postinst.d/update-notifier\" ]; then\n     DPKG_MAINTSCRIPT_PACKAGE=linux-base\n fi\n \n-KERNEL_UPGRADED=0\n-# Prefer showing the canonical-livepatch reboot message if one is required\n-if [ -f \"/snap/bin/canonical-livepatch\" ]; then\n-    # k-u-r returns 1 if livepatch isn't enabled or if a reboot isn't required\n-    kur_rc=$(/snap/bin/canonical-livepatch kernel-upgrade-required 2> /dev/null)\n-    if [ $? -eq 0 ]; then\n-        exit 0;\n-    elif [ $? -eq 1 ]; then\n-        # status returns 1 if livepatch isn't enabled\n-        status_rc=$(/snap/bin/canonical-livepatch status 2> /dev/null)\n-        if [ $? -eq 0 ]; then\n-            KERNEL_UPGRADED=1\n-        fi\n-    fi\n-fi\n-\n-# while a reboot isn't required for the new kernel it might be for another package\n-if [ $KERNEL_UPGRADED -eq 1 ]; then\n-    if [ \"$(echo $DPKG_MAINTSCRIPT_PACKAGE | cut -c1-5)\" = \"linux\" ]; then\n-        exit 0;\n-    fi\n-fi\n-\n # Wake the applet up\n echo \"*** $(eval_gettext \"System restart required\") ***\" > /var/run/reboot-required\n echo \"$DPKG_MAINTSCRIPT_PACKAGE\" >> /var/run/reboot-required.pkgs\ndiff --git a/debian/changelog b/debian/changelog\nindex 6b2260d..76892b4 100644\n--- a/debian/changelog\n+++ b/debian/changelog\n@@ -1,3 +1,10 @@\n+update-notifier (3.211ubuntu1) stonking; urgency=medium\n+\n+  * data/notify-reboot-required: Drop legacy Canonical Livepatch reboot-\n+    marker suppression.\n+\n+ -- Zara Grigoryan <zara.grigoryan@canonical.com>  Tue, 01 Sep 2026 06:37:14 +0000\n+\n update-notifier (3.211) stonking; urgency=medium\n \n   * data/update-motd-fsck-at-reboot: Fix script errors (LP: #1957863)\n",
+ "diff_truncated": false
+}

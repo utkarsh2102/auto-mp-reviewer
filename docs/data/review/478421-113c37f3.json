@@ -1,0 +1,31 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~hectorcao/ubuntu/+source/libvirt/+git/libvirt/+merge/478421",
+ "id": "478421",
+ "title": "Allow read access to /sys/devices/system/node for qemu-bridge-helper child process",
+ "source_branch": "lp2079869",
+ "target_branch": "ubuntu/devel",
+ "revision": "a57920c344156941997f607c8b0d7d3bf1f82933",
+ "base_revision": "50899cba59546ceec1101479e264c0988f7c9377",
+ "description": null,
+ "commit_message": "Allow read access to /sys/devices/system/node for qemu-bridge-helper child process\n\nhttps://bugs.launchpad.net/ubuntu/+source/libvirt/+bug/2079869",
+ "diffstat": {
+  "debian/changelog": [
+   7,
+   0
+  ],
+  "debian/patches/series": [
+   1,
+   0
+  ],
+  "debian/patches/ubuntu-aa/lp2079869-allow-access-for-bridge-helper-to-sys-devices-system.patch": [
+   32,
+   0
+  ]
+ },
+ "files": 3,
+ "added_lines": 40,
+ "removed_lines": 0,
+ "diff": "diff --git a/debian/changelog b/debian/changelog\nindex 0d9eeaa..a92a8a7 100644\n--- a/debian/changelog\n+++ b/debian/changelog\n@@ -1,3 +1,10 @@\n+libvirt (10.10.0-4ubuntu3) plucky; urgency=medium\n+\n+  * d/p/u/lp2079869-allow-access-for-bridge-helper-to-sys-devices-system.patch\n+    Allow access for bridge helper to sys node (LP: #2079869)\n+\n+ -- Hector Cao <hector.cao@canonical.com>  Mon, 03 Feb 2025 10:04:32 +0100\n+\n libvirt (10.10.0-4ubuntu2) plucky; urgency=medium\n \n   * d/p/u/virsysinfo-fix-RISC-V-detection.patch: Fix compiler macro to\ndiff --git a/debian/patches/series b/debian/patches/series\nindex d2f62be..1e07b47 100644\n--- a/debian/patches/series\n+++ b/debian/patches/series\n@@ -24,3 +24,4 @@ ubuntu-aa/0032-apparmor-libvirt-qemu-Allow-reading-charm-specific-c.patch\n ubuntu-aa/0033-UBUNTU-only-apparmor-for-kvm.powerpc-LP-1680384.patch\n ubuntu-aa/0034-apparmor-virt-aa-helper-access-for-snapped-nova.patch\n ubuntu-aa/lp-1815910-allow-vhost-hotplug.patch\n+ubuntu-aa/lp2079869-allow-access-for-bridge-helper-to-sys-devices-system.patch\ndiff --git a/debian/patches/ubuntu-aa/lp2079869-allow-access-for-bridge-helper-to-sys-devices-system.patch b/debian/patches/ubuntu-aa/lp2079869-allow-access-for-bridge-helper-to-sys-devices-system.patch\nnew file mode 100644\nindex 0000000..9ef1c25\n--- /dev/null\n+++ b/debian/patches/ubuntu-aa/lp2079869-allow-access-for-bridge-helper-to-sys-devices-system.patch\n@@ -0,0 +1,32 @@\n+Description: Allow acess for bridge-helper to sys devices node\n+\n+qemu-bridge-helper needs to read /sys/devices/system/node\n+that is not allowed in the apparmor profile\n+it does not make libvirtd fail but add an apparmor\n+audit message. This patch allows to remove this apparmor\n+warning\n+\n+Author: Hector Cao <hector.cao@canonical.com>\n+Bug-Ubuntu: https://launchpad.net/bugs/2079869\n+\n+---\n+ src/security/apparmor/usr.sbin.libvirtd.in | 3 +++\n+ 1 file changed, 3 insertions(+)\n+\n+diff --git a/src/security/apparmor/usr.sbin.libvirtd.in b/src/security/apparmor/usr.sbin.libvirtd.in\n+index 5fa5c7842..4de4a28bc 100644\n+--- a/src/security/apparmor/usr.sbin.libvirtd.in\n++++ b/src/security/apparmor/usr.sbin.libvirtd.in\n+@@ -137,6 +137,9 @@ profile libvirtd @sbindir@/libvirtd flags=(attach_disconnected) {\n+    /etc/qemu/** r,\n+    owner @{PROC}/*/status r,\n+ \n++   # for gathering information about available host resources\n++   /sys/devices/system/node/ r,\n++\n+    /usr/{lib,lib64,lib/qemu,libexec,libexec/qemu}/qemu-bridge-helper rmix,\n+   }\n+ \n+-- \n+2.43.0\n+\n",
+ "diff_truncated": false
+}

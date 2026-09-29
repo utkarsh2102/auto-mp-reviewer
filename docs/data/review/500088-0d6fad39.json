@@ -1,0 +1,55 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~bdrung/ubuntu/+source/multipath-tools/+git/multipath-tools/+merge/500088",
+ "id": "500088",
+ "title": "stop-renumbering-udev-rules → ubuntu/devel",
+ "source_branch": "stop-renumbering-udev-rules",
+ "target_branch": "ubuntu/devel",
+ "revision": "aceb71fae550ed1ad69c643d5b0efa6af52a49c8",
+ "base_revision": "3f943248b28cb4e8e7814a23f03e6ec16233332f",
+ "description": null,
+ "commit_message": null,
+ "diffstat": {
+  "debian/changelog": [
+   7,
+   0
+  ],
+  "debian/initramfs/hooks/multipath": [
+   4,
+   4
+  ],
+  "debian/kpartx-udeb.install": [
+   2,
+   2
+  ],
+  "debian/kpartx.install": [
+   2,
+   2
+  ],
+  "debian/multipath-tools.install": [
+   2,
+   2
+  ],
+  "debian/multipath-udeb.install": [
+   2,
+   2
+  ],
+  "dev/null": [
+   0,
+   47
+  ],
+  "debian/patches/series": [
+   0,
+   1
+  ],
+  "debian/tests/initramfs": [
+   1,
+   14
+  ]
+ },
+ "files": 9,
+ "added_lines": 20,
+ "removed_lines": 74,
+ "diff": "diff --git a/debian/changelog b/debian/changelog\nindex e14692e..3bdc76e 100644\n--- a/debian/changelog\n+++ b/debian/changelog\n@@ -1,3 +1,10 @@\n+multipath-tools (0.12.0-1ubuntu3) resolute; urgency=medium\n+\n+  * d/t/initramfs: drop determine extracted main cpio path dynamically\n+  * Stop renumbering and renaming upstream udev rules (LP: #2137190)\n+\n+ -- Benjamin Drung <bdrung@ubuntu.com>  Mon, 09 Feb 2026 23:38:41 +0100\n+\n multipath-tools (0.12.0-1ubuntu2) resolute; urgency=medium\n \n   * d/{rules,control}: enable testsuite (LP: #2135118)\ndiff --git a/debian/initramfs/hooks/multipath b/debian/initramfs/hooks/multipath\nindex 080f9df..ef6f6d6 100755\n--- a/debian/initramfs/hooks/multipath\n+++ b/debian/initramfs/hooks/multipath\n@@ -26,15 +26,15 @@ copy_exec /usr/lib/udev/dmsetup_env\n \n # udev: multipath\n copy_exec /usr/sbin/multipath\n-copy_file udev_rule /usr/lib/udev/rules.d/56-dm-mpath.rules\n-copy_file udev_rule /usr/lib/udev/rules.d/60-multipath.rules\n+copy_file udev_rule /usr/lib/udev/rules.d/11-dm-mpath.rules\n+copy_file udev_rule /usr/lib/udev/rules.d/56-multipath.rules\n \n # udev: kpartx\n copy_exec /usr/sbin/kpartx\n copy_exec /usr/bin/partx\n copy_exec /usr/lib/udev/kpartx_id\n-copy_file udev_rule /usr/lib/udev/rules.d/56-dm-parts.rules\n-copy_file udev_rule /usr/lib/udev/rules.d/60-kpartx.rules\n+copy_file udev_rule /usr/lib/udev/rules.d/11-dm-parts.rules\n+copy_file udev_rule /usr/lib/udev/rules.d/66-kpartx.rules\n copy_file udev_rule /usr/lib/udev/rules.d/68-del-part-nodes.rules\n \n # multipathd and libraries\ndiff --git a/debian/kpartx-udeb.install b/debian/kpartx-udeb.install\nindex dd911c5..1431b59 100644\n--- a/debian/kpartx-udeb.install\n+++ b/debian/kpartx-udeb.install\n@@ -1,5 +1,5 @@\n udeb/usr/lib/udev/kpartx_id usr/lib/udev/\n-udeb/usr/lib/udev/rules.d/56-dm-parts.rules usr/lib/udev/rules.d/\n-udeb/usr/lib/udev/rules.d/60-kpartx.rules usr/lib/udev/rules.d/\n+udeb/usr/lib/udev/rules.d/11-dm-parts.rules usr/lib/udev/rules.d/\n+udeb/usr/lib/udev/rules.d/66-kpartx.rules usr/lib/udev/rules.d/\n udeb/usr/lib/udev/rules.d/68-del-part-nodes.rules usr/lib/udev/rules.d/\n udeb/usr/sbin/kpartx usr/sbin/\ndiff --git a/debian/kpartx.install b/debian/kpartx.install\nindex 259e324..2318e11 100644\n--- a/debian/kpartx.install\n+++ b/debian/kpartx.install\n@@ -1,6 +1,6 @@\n deb/usr/lib/udev/kpartx_id usr/lib/udev/\n-deb/usr/lib/udev/rules.d/56-dm-parts.rules usr/lib/udev/rules.d/\n-deb/usr/lib/udev/rules.d/60-kpartx.rules usr/lib/udev/rules.d/\n+deb/usr/lib/udev/rules.d/11-dm-parts.rules usr/lib/udev/rules.d/\n+deb/usr/lib/udev/rules.d/66-kpartx.rules usr/lib/udev/rules.d/\n deb/usr/lib/udev/rules.d/68-del-part-nodes.rules usr/lib/udev/rules.d/\n deb/usr/sbin/kpartx usr/sbin/\n deb/usr/share/man/man8/kpartx.8* usr/share/man/man8/\ndiff --git a/debian/multipath-tools.install b/debian/multipath-tools.install\nindex 792942e..0724103 100644\n--- a/debian/multipath-tools.install\n+++ b/debian/multipath-tools.install\n@@ -3,8 +3,8 @@ deb/usr/lib/systemd/system/multipathd.service usr/lib/systemd/system/\n deb/usr/lib/systemd/system/multipathd.socket usr/lib/systemd/system/\n deb/usr/lib/systemd/system/multipathd-queueing.service usr/lib/systemd/system/\n deb/usr/lib/tmpfiles.d/multipath.conf usr/lib/tmpfiles.d/\n-deb/usr/lib/udev/rules.d/56-dm-mpath.rules usr/lib/udev/rules.d/\n-deb/usr/lib/udev/rules.d/60-multipath.rules usr/lib/udev/rules.d/\n+deb/usr/lib/udev/rules.d/11-dm-mpath.rules usr/lib/udev/rules.d/\n+deb/usr/lib/udev/rules.d/56-multipath.rules usr/lib/udev/rules.d/\n deb/usr/lib/udev/rules.d/99-z-dm-mpath-late.rules usr/lib/udev/rules.d/\n deb/usr/sbin/mpathpersist usr/sbin/\n deb/usr/sbin/multipath usr/sbin/\ndiff --git a/debian/multipath-udeb.install b/debian/multipath-udeb.install\nindex 1b488b8..9fa10a2 100644\n--- a/debian/multipath-udeb.install\n+++ b/debian/multipath-udeb.install\n@@ -4,8 +4,8 @@ udeb/usr/lib/libmpathcmd.so.* usr/lib/\n udeb/usr/lib/libmpathutil.so.* usr/lib/\n udeb/usr/lib/libmultipath.so.* usr/lib/\n udeb/usr/lib/multipath/ usr/lib/\n-udeb/usr/lib/udev/rules.d/56-dm-mpath.rules usr/lib/udev/rules.d/\n-udeb/usr/lib/udev/rules.d/60-multipath.rules usr/lib/udev/rules.d/\n+udeb/usr/lib/udev/rules.d/11-dm-mpath.rules usr/lib/udev/rules.d/\n+udeb/usr/lib/udev/rules.d/56-multipath.rules usr/lib/udev/rules.d/\n udeb/usr/lib/udev/rules.d/99-z-dm-mpath-late.rules usr/lib/udev/rules.d/\n udeb/usr/sbin/multipath usr/sbin/\n deb/etc/multipath.conf /etc/\ndiff --git a/debian/patches/0004-Debian-specific-priority-of-udev-rules.patch b/debian/patches/0004-Debian-specific-priority-of-udev-rules.patch\ndeleted file mode 100644\nindex a31d5ee..0000000\n--- a/debian/patches/0004-Debian-specific-priority-of-udev-rules.patch\n+++ /dev/null\n@@ -1,47 +0,0 @@\n-From: Chris Hofstaedtler <zeha@debian.org>\n-Date: Mon, 1 Jan 2024 15:35:18 +0100\n-Subject: Debian-specific priority of udev rules\n-\n-11-dm-*.rules supposedly should apply after dmsetup rules, but in Debian these\n-have priority 55 instead of 11.\n-Also for historic reasons, multipath.rules and kpartx.rules have a slightly\n-higher prio in Debian than upstream.\n-\n-Forwarded: no\n-Origin: vendor\n----\n- kpartx/Makefile    | 4 ++--\n- multipath/Makefile | 4 ++--\n- 2 files changed, 4 insertions(+), 4 deletions(-)\n-\n-diff --git a/kpartx/Makefile b/kpartx/Makefile\n-index 849fd36..d6dc3f5 100644\n---- a/kpartx/Makefile\n-+++ b/kpartx/Makefile\n-@@ -25,8 +25,8 @@ install: $(EXEC) $(EXEC).8 kpartx.rules\n- \t$(Q)$(INSTALL_PROGRAM) -d $(DESTDIR)$(libudevdir)\n- \t$(Q)$(INSTALL_PROGRAM) -m 755 kpartx_id $(DESTDIR)$(libudevdir)\n- \t$(Q)$(INSTALL_PROGRAM) -d $(DESTDIR)$(libudevdir)/rules.d\n--\t$(Q)$(INSTALL_PROGRAM) -m 644 dm-parts.rules $(DESTDIR)$(libudevdir)/rules.d/11-dm-parts.rules\n--\t$(Q)$(INSTALL_PROGRAM) -m 644 kpartx.rules $(DESTDIR)$(libudevdir)/rules.d/66-kpartx.rules\n-+\t$(Q)$(INSTALL_PROGRAM) -m 644 dm-parts.rules $(DESTDIR)$(libudevdir)/rules.d/56-dm-parts.rules\n-+\t$(Q)$(INSTALL_PROGRAM) -m 644 kpartx.rules $(DESTDIR)$(libudevdir)/rules.d/60-kpartx.rules\n- \t$(Q)$(INSTALL_PROGRAM) -m 644 del-part-nodes.rules $(DESTDIR)$(libudevdir)/rules.d/68-del-part-nodes.rules\n- \t$(Q)$(INSTALL_PROGRAM) -d $(DESTDIR)$(mandir)/man8\n- \t$(Q)$(INSTALL_PROGRAM) -m 644 $(EXEC).8 $(DESTDIR)$(mandir)/man8\n-diff --git a/multipath/Makefile b/multipath/Makefile\n-index 67fb5e6..3809553 100644\n---- a/multipath/Makefile\n-+++ b/multipath/Makefile\n-@@ -25,9 +25,9 @@ install:\n- \t$(Q)$(INSTALL_PROGRAM) -d $(DESTDIR)$(bindir)\n- \t$(Q)$(INSTALL_PROGRAM) -m 755 $(EXEC) $(DESTDIR)$(bindir)/\n- \t$(Q)$(INSTALL_PROGRAM) -d $(DESTDIR)$(udevrulesdir)\n--\t$(Q)$(INSTALL_PROGRAM) -m 644 11-dm-mpath.rules $(DESTDIR)$(udevrulesdir)\n-+\t$(Q)$(INSTALL_PROGRAM) -m 644 11-dm-mpath.rules $(DESTDIR)$(udevrulesdir)/56-dm-mpath.rules\n- \t$(Q)$(INSTALL_PROGRAM) -m 644 99-z-dm-mpath-late.rules $(DESTDIR)$(udevrulesdir)\n--\t$(Q)$(INSTALL_PROGRAM) -m 644 multipath.rules $(DESTDIR)$(udevrulesdir)/56-multipath.rules\n-+\t$(Q)$(INSTALL_PROGRAM) -m 644 multipath.rules $(DESTDIR)$(udevrulesdir)/60-multipath.rules\n- \t$(Q)$(INSTALL_PROGRAM) -d $(DESTDIR)$(tmpfilesdir)\n- \t$(Q)$(INSTALL_PROGRAM) -m 644 tmpfiles.conf $(DESTDIR)$(tmpfilesdir)/multipath.conf\n- \t$(Q)$(INSTALL_PROGRAM) -d $(DESTDIR)$(mandir)/man8\ndiff --git a/debian/patches/series b/debian/patches/series\nindex 3e065ad..2ea2436 100644\n--- a/debian/patches/series\n+++ b/debian/patches/series\n@@ -1,5 +1,4 @@\n enable-find-multipaths.patch\n 0001-Update-build-flags.patch\n 0003-kpartx-rules-use-Debian-specific-partx-path.patch\n-0004-Debian-specific-priority-of-udev-rules.patch\n testsuite-no-lto.patch\ndiff --git a/debian/tests/initramfs b/debian/tests/initramfs\nindex 557111e..5236c06 100755\n--- a/debian/tests/initramfs\n+++ b/debian/tests/initramfs\n@@ -11,18 +11,6 @@ find_file() {\n     fi\n }\n \n-find_main_cpio() {\n-    local basedir=\"$1\"\n-    for path in \"$basedir\" \"$basedir/main\" \"$basedir\"/cpio*; do\n-        if test -e \"$path/init\"; then\n-            echo \"$path\"\n-            return 0\n-        fi\n-    done\n-    echo \"Failed to find main cpio.\" >&2\n-    exit 1\n-}\n-\n update-initramfs -kall -u\n INITRDS=(/boot/initrd.img-*)\n \n@@ -40,9 +28,8 @@ find_file '*-dm-parts.rules'\n find_file '*-del-part-nodes.rules'\n find_file '*-kpartx.rules'\n \n-main_cpio=$(find_main_cpio initramfs)\n echo \"check multipath binary is executable\"\n-chroot \"$main_cpio\" /usr/sbin/multipath -h\n+chroot initramfs /usr/sbin/multipath -h\n \n echo \"check helper programs are installed in initramfs\"\n find_file 'grep'\n",
+ "diff_truncated": false
+}

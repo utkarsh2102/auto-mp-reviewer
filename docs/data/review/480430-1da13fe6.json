@@ -1,0 +1,23 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~p-pisati/britney/+git/hints-ubuntu/+merge/480430",
+ "id": "480430",
+ "title": "p-pisati-devel-flaky-systemd-oracle → devel",
+ "source_branch": "p-pisati-devel-flaky-systemd-oracle",
+ "target_branch": "devel",
+ "revision": "a4f09962f7cbebfb30251261e5459240e8558515",
+ "base_revision": "3d14f0e4230edb0c183a134b2f83f12f72f9fae7",
+ "description": null,
+ "commit_message": null,
+ "diffstat": {
+  "ubuntu-release": [
+   3,
+   0
+  ]
+ },
+ "files": 1,
+ "added_lines": 3,
+ "removed_lines": 0,
+ "diff": "diff --git a/ubuntu-release b/ubuntu-release\nindex 49834ae..591f3a5 100644\n--- a/ubuntu-release\n+++ b/ubuntu-release\n@@ -22,6 +22,9 @@ force-skiptest linux-meta-raspi/6.8.0-1002.2\n # for no reason.\n force-skiptest linux-meta-riscv/6.11.0-8.8.1\n \n+# flaky systemd autotest, skip it\n+force-skiptest linux-meta-oracle/6.12.0-1001.1\n+\n # regressed in release LP: #1860672\n force-badtest linux/all\n \n",
+ "diff_truncated": false
+}

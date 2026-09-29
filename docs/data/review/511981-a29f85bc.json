@@ -1,0 +1,23 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~seb128/ubuntu-archive-tools/+git/ubuntu-archive-tools/+merge/511981",
+ "id": "511981",
+ "title": "remove-package-closebug → main",
+ "source_branch": "remove-package-closebug",
+ "target_branch": "main",
+ "revision": "a4812a71f03a8da7245776d2baae581e28a9d465",
+ "base_revision": "3076a4cd715490f84341d1bd0784aff50311cc45",
+ "description": null,
+ "commit_message": null,
+ "diffstat": {
+  "remove-package": [
+   53,
+   3
+  ]
+ },
+ "files": 1,
+ "added_lines": 53,
+ "removed_lines": 3,
+ "diff": "diff --git a/remove-package b/remove-package\nindex 1f44a37..73111c5 100755\n--- a/remove-package\n+++ b/remove-package\n@@ -60,14 +60,49 @@ def find_all_removables(options, packages):\n                 sys.exit(1)\n \n \n+def close_bugs(options, packages, message):\n+    ubuntu = options.launchpad.distributions[\"ubuntu\"]\n+    for bug_num in options.close_bugs:\n+        try:\n+            bug = options.launchpad.bugs[bug_num]\n+        except KeyError:\n+            print(\"Cannot find LP: #%d\" % bug_num)\n+            continue\n+        if bug.duplicate_of is not None:\n+            bug = bug.duplicate_of\n+\n+        closed = False\n+        for task in bug.bug_tasks:\n+            target = task.target\n+            if target == ubuntu or (\n+                    getattr(target, \"name\", None) in packages and\n+                    getattr(target, \"distribution\", None) == ubuntu):\n+                if task.status != \"Fix Released\":\n+                    task.status = \"Fix Released\"\n+                    task.lp_save()\n+                    print(\"Closed LP: #%d (%s)\" % (bug_num, task.web_link))\n+                else:\n+                    print(\"LP: #%d (%s) already closed\" %\n+                          (bug_num, task.web_link))\n+                bug.newMessage(content=message)\n+                closed = True\n+                break\n+        if not closed:\n+            print(\"Cannot find any tasks on LP: #%d to close.\" % bug_num)\n+\n+\n def remove_package(options, packages):\n     removables = []\n+    output = [\"Removing packages from %s:\" % options.suite]\n \n-    print(\"Removing packages from %s:\" % options.suite)\n+    print(output[-1])\n     for removable, direct in find_all_removables(options, packages):\n         removables.append((removable, direct))\n-        print(\"\\t%s%s\" % (\"\" if direct else \"\\t\", removable.display_name))\n-    print(\"Comment: %s\" % options.removal_comment)\n+        line = \"\\t%s%s\" % (\"\" if direct else \"\\t\", removable.display_name)\n+        output.append(line)\n+        print(line)\n+    output.append(\"Comment: %s\" % options.removal_comment)\n+    print(output[-1])\n \n     if options.dry_run:\n         print(\"Dry run; no packages removed.\")\n@@ -86,6 +121,15 @@ def remove_package(options, packages):\n         print(\"%d %s successfully removed.\" %\n               (len(removals), \"package\" if len(removals) == 1 else \"packages\"))\n \n+        if options.close_bugs:\n+            if options.confirm_all:\n+                do_close = True\n+            else:\n+                do_close = YesNoQuestion().ask(\"Close bug(s)\", \"yes\") == \"yes\"\n+            if do_close:\n+                message = \"\\n\".join(output)\n+                close_bugs(options, packages, message)\n+\n \n def main():\n     parser = OptionParser(\n@@ -114,6 +158,12 @@ def main():\n         default=False, action=\"store_true\", help=\"remove binaries only\")\n     parser.add_option(\"-m\", \"--removal-comment\", help=\"removal comment\")\n     parser.add_option(\n+        \"-c\", \"--close-bug\", dest=\"close_bugs\", action=\"append\", type=\"int\",\n+        default=[],\n+        help=(\n+            \"Close Launchpad bug BUG as being fixed by this removal (may be \"\n+            \"given multiple times)\"))\n+    parser.add_option(\n         \"--skip-missing\", default=False, action=\"store_true\",\n         help=(\n             \"When a package cannot be removed, normally this script exits \"\n",
+ "diff_truncated": false
+}

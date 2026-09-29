@@ -1,0 +1,727 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~kajiya/ubuntu/+source/golang-1.25/+git/golang-1.25/+merge/511244",
+ "id": "511244",
+ "title": "lp2166409/1.25.12/resolute → ubuntu/resolute-devel",
+ "source_branch": "lp2166409/1.25.12/resolute",
+ "target_branch": "ubuntu/resolute-devel",
+ "revision": "cbce086bffb30bc6bf47914cdd01da857de10b0d",
+ "base_revision": "a6fe3a9f144abe0dbcf27c75caa524edd0186bcb",
+ "description": null,
+ "commit_message": null,
+ "diffstat": {
+  "VERSION": [
+   2,
+   2
+  ],
+  "debian/changelog": [
+   120,
+   0
+  ],
+  "debian/control": [
+   72,
+   56
+  ],
+  "debian/control.in": [
+   72,
+   56
+  ],
+  "debian/copyright": [
+   0,
+   4
+  ],
+  "debian/golang-X.Y-src.lintian-overrides": [
+   6,
+   31
+  ],
+  "debian/patches/0001-Skip-flaky-TestCrashDumpsAllThreads-on-mips64le.patch": [
+   2,
+   0
+  ],
+  "dev/null": [
+   0,
+   121
+  ],
+  "debian/patches/0005-Skip-TestTSAN-test-on-s390x.patch": [
+   1,
+   1
+  ],
+  "debian/patches/0005-Support-DEB_GOMINCOMPAT.patch": [
+   35,
+   0
+  ],
+  "debian/patches/series": [
+   1,
+   1
+  ],
+  "doc/godebug.md": [
+   5,
+   2
+  ],
+  "lib/fips140/certified.txt": [
+   1,
+   0
+  ],
+  "src/archive/tar/format.go": [
+   6,
+   0
+  ],
+  "src/archive/tar/reader.go": [
+   24,
+   4
+  ],
+  "src/archive/tar/reader_test.go": [
+   11,
+   0
+  ],
+  "src/cmd/cgo/internal/test/test.go": [
+   1,
+   1
+  ],
+  "src/cmd/compile/internal/loopvar/loopvar_test.go": [
+   60,
+   0
+  ],
+  "src/cmd/compile/internal/loopvar/testdata/range_esc_closure_linedir.go": [
+   24,
+   0
+  ],
+  "src/cmd/compile/internal/noder/writer.go": [
+   1,
+   1
+  ],
+  "src/cmd/compile/internal/ppc64/ssa.go": [
+   15,
+   4
+  ],
+  "src/cmd/compile/internal/ssa/_gen/AMD64.rules": [
+   2,
+   1
+  ],
+  "src/cmd/compile/internal/ssa/loopbce.go": [
+   31,
+   11
+  ],
+  "src/cmd/compile/internal/ssa/prove.go": [
+   0,
+   118
+  ],
+  "src/cmd/compile/internal/ssa/rewriteAMD64.go": [
+   4,
+   2
+  ],
+  "src/cmd/compile/internal/ssagen/ssa.go": [
+   14,
+   6
+  ],
+  "src/cmd/compile/internal/test/memoverlap_test.go": [
+   41,
+   0
+  ],
+  "src/cmd/compile/internal/typecheck/expr.go": [
+   0,
+   13
+  ],
+  "src/cmd/compile/internal/types2/builtins.go": [
+   2,
+   2
+  ],
+  "src/cmd/compile/internal/types2/issues_test.go": [
+   5,
+   1
+  ],
+  "src/cmd/compile/internal/types2/signature.go": [
+   4,
+   1
+  ],
+  "src/cmd/compile/internal/types2/under.go": [
+   1,
+   1
+  ],
+  "src/cmd/compile/internal/walk/complit.go": [
+   1,
+   5
+  ],
+  "src/cmd/dist/buildtool.go": [
+   1,
+   0
+  ],
+  "src/cmd/go.mod": [
+   1,
+   1
+  ],
+  "src/cmd/go.sum": [
+   2,
+   2
+  ],
+  "src/cmd/go/internal/bug/bug.go": [
+   3,
+   3
+  ],
+  "src/cmd/go/internal/cache/cache.go": [
+   31,
+   10
+  ],
+  "src/cmd/go/internal/modfetch/codehost/git_test.go": [
+   51,
+   0
+  ],
+  "src/cmd/go/internal/modfetch/fetch.go": [
+   14,
+   1
+  ],
+  "src/cmd/go/internal/modindex/read.go": [
+   2,
+   2
+  ],
+  "src/cmd/go/internal/test/test.go": [
+   62,
+   9
+  ],
+  "src/cmd/go/internal/vcweb/script.go": [
+   29,
+   0
+  ],
+  "src/cmd/go/internal/work/cover.go": [
+   1,
+   1
+  ],
+  "src/cmd/go/internal/work/exec.go": [
+   5,
+   4
+  ],
+  "src/cmd/go/internal/work/security.go": [
+   57,
+   0
+  ],
+  "src/cmd/go/proxy_test.go": [
+   17,
+   0
+  ],
+  "src/cmd/go/scriptconds_test.go": [
+   30,
+   0
+  ],
+  "src/cmd/go/testdata/mod/example.com_importcrypto_v1.0.0.txt": [
+   19,
+   0
+  ],
+  "src/cmd/go/testdata/script/README": [
+   2,
+   0
+  ],
+  "src/cmd/go/testdata/script/build_git_sha256_go_get_branch.txt": [
+   1,
+   0
+  ],
+  "src/cmd/go/testdata/script/build_git_sha256_moddep.txt": [
+   1,
+   0
+  ],
+  "src/cmd/go/testdata/script/cgo_bad_directives.txt": [
+   9,
+   0
+  ],
+  "src/cmd/go/testdata/script/cover_switch_toolchain.txt": [
+   12,
+   0
+  ],
+  "src/cmd/go/testdata/script/mod_download_git_bareRepository_sha256.txt": [
+   1,
+   0
+  ],
+  "src/cmd/go/testdata/script/mod_get_fips140_issue73649.txt": [
+   10,
+   0
+  ],
+  "src/cmd/go/testdata/script/mod_sum_absent.txt": [
+   17,
+   0
+  ],
+  "src/cmd/go/testdata/script/test_cache_coverpkg_bug.txt": [
+   134,
+   0
+  ],
+  "src/cmd/go/testdata/script/test_cache_coverpkg_no_profile.txt": [
+   80,
+   0
+  ],
+  "src/cmd/go/testdata/vcstest/git/gitrepo-sha256.txt": [
+   2,
+   0
+  ],
+  "src/cmd/internal/script/engine.go": [
+   3,
+   1
+  ],
+  "src/cmd/internal/testdir/testdir_test.go": [
+   11,
+   10
+  ],
+  "src/cmd/link/internal/ld/lib.go": [
+   42,
+   10
+  ],
+  "src/cmd/pack/pack.go": [
+   5,
+   0
+  ],
+  "src/cmd/pack/pack_test.go": [
+   44,
+   0
+  ],
+  "src/cmd/vendor/golang.org/x/sys/windows/zsyscall_windows.go": [
+   483,
+   483
+  ],
+  "src/cmd/vendor/modules.txt": [
+   1,
+   1
+  ],
+  "src/crypto/fips140/fips140.go": [
+   6,
+   0
+  ],
+  "src/crypto/tls/conn.go": [
+   7,
+   3
+  ],
+  "src/crypto/tls/handshake_client_tls13.go": [
+   2,
+   2
+  ],
+  "src/crypto/tls/handshake_messages.go": [
+   3,
+   1
+  ],
+  "src/crypto/tls/handshake_messages_test.go": [
+   95,
+   4
+  ],
+  "src/crypto/tls/handshake_server_tls13.go": [
+   2,
+   2
+  ],
+  "src/crypto/tls/handshake_test.go": [
+   48,
+   0
+  ],
+  "src/crypto/tls/tls_test.go": [
+   1,
+   0
+  ],
+  "src/crypto/x509/name_constraints_test.go": [
+   168,
+   0
+  ],
+  "src/crypto/x509/verify.go": [
+   52,
+   21
+  ],
+  "src/crypto/x509/verify_test.go": [
+   72,
+   72
+  ],
+  "src/go.mod": [
+   2,
+   2
+  ],
+  "src/go.sum": [
+   4,
+   4
+  ],
+  "src/go/build/build.go": [
+   1,
+   1
+  ],
+  "src/go/types/builtins.go": [
+   2,
+   2
+  ],
+  "src/go/types/issues_test.go": [
+   5,
+   1
+  ],
+  "src/go/types/signature.go": [
+   4,
+   1
+  ],
+  "src/go/types/under.go": [
+   1,
+   1
+  ],
+  "src/html/template/attr_string.go": [
+   3,
+   2
+  ],
+  "src/html/template/context.go": [
+   21,
+   1
+  ],
+  "src/html/template/element_string.go": [
+   3,
+   2
+  ],
+  "src/html/template/escape.go": [
+   16,
+   2
+  ],
+  "src/html/template/escape_test.go": [
+   94,
+   13
+  ],
+  "src/html/template/js.go": [
+   1,
+   0
+  ],
+  "src/html/template/state_string.go": [
+   5,
+   3
+  ],
+  "src/html/template/transition.go": [
+   43,
+   6
+  ],
+  "src/internal/godebugs/table.go": [
+   1,
+   0
+  ],
+  "src/internal/goroot/gc.go": [
+   3,
+   3
+  ],
+  "src/internal/poll/fstatat_unix.go": [
+   22,
+   0
+  ],
+  "src/internal/runtime/atomic/atomic_ppc64x.s": [
+   10,
+   0
+  ],
+  "src/internal/syscall/unix/at.go": [
+   0,
+   17
+  ],
+  "src/internal/syscall/unix/at_sysnum_linux.go": [
+   2,
+   1
+  ],
+  "src/internal/syscall/unix/fchmodat_linux.go": [
+   51,
+   0
+  ],
+  "src/internal/syscall/unix/fchmodat_other.go": [
+   29,
+   0
+  ],
+  "src/internal/syscall/unix/fchmodat_test.go": [
+   62,
+   0
+  ],
+  "src/internal/syscall/windows/at_windows.go": [
+   20,
+   3
+  ],
+  "src/internal/syscall/windows/at_windows_test.go": [
+   109,
+   0
+  ],
+  "src/internal/syscall/windows/registry/key.go": [
+   10,
+   2
+  ],
+  "src/internal/syscall/windows/registry/value.go": [
+   5,
+   1
+  ],
+  "src/internal/syscall/windows/registry/zsyscall_windows.go": [
+   7,
+   7
+  ],
+  "src/internal/syscall/windows/syscall_windows.go": [
+   4,
+   0
+  ],
+  "src/internal/syscall/windows/types_windows.go": [
+   82,
+   0
+  ],
+  "src/internal/syscall/windows/zsyscall_windows.go": [
+   90,
+   63
+  ],
+  "src/internal/types/testdata/fixedbugs/issue78163.go": [
+   11,
+   0
+  ],
+  "src/mime/encodedword.go": [
+   2,
+   2
+  ],
+  "src/mime/encodedword_test.go": [
+   4,
+   0
+  ],
+  "src/net/cgo_unix.go": [
+   4,
+   1
+  ],
+  "src/net/http/h2_bundle.go": [
+   3,
+   3
+  ],
+  "src/net/http/httputil/reverseproxy.go": [
+   14,
+   0
+  ],
+  "src/net/http/httputil/reverseproxy_test.go": [
+   6,
+   0
+  ],
+  "src/net/lookup_test.go": [
+   3,
+   2
+  ],
+  "src/net/lookup_windows.go": [
+   16,
+   3
+  ],
+  "src/net/mail/message.go": [
+   20,
+   9
+  ],
+  "src/net/mail/message_test.go": [
+   30,
+   0
+  ],
+  "src/net/smtp/smtp_test.go": [
+   51,
+   46
+  ],
+  "src/net/textproto/reader.go": [
+   7,
+   7
+  ],
+  "src/net/textproto/reader_test.go": [
+   4,
+   2
+  ],
+  "src/net/textproto/textproto.go": [
+   1,
+   1
+  ],
+  "src/net/url/url.go": [
+   4,
+   1
+  ],
+  "src/net/url/url_test.go": [
+   6,
+   0
+  ],
+  "src/os/dir_darwin.go": [
+   2,
+   2
+  ],
+  "src/os/dir_unix.go": [
+   2,
+   2
+  ],
+  "src/os/export_test.go": [
+   14,
+   1
+  ],
+  "src/os/file.go": [
+   0,
+   3
+  ],
+  "src/os/file_plan9.go": [
+   7,
+   0
+  ],
+  "src/os/file_posix.go": [
+   7,
+   0
+  ],
+  "src/os/file_unix.go": [
+   9,
+   5
+  ],
+  "src/os/os_test.go": [
+   50,
+   4
+  ],
+  "src/os/os_unix_test.go": [
+   3,
+   5
+  ],
+  "src/os/removeall_at.go": [
+   6,
+   2
+  ],
+  "src/os/removeall_test.go": [
+   34,
+   8
+  ],
+  "src/os/removeall_unix.go": [
+   0,
+   8
+  ],
+  "src/os/removeall_windows.go": [
+   0,
+   4
+  ],
+  "src/os/root.go": [
+   10,
+   8
+  ],
+  "src/os/root_js.go": [
+   5,
+   12
+  ],
+  "src/os/root_noopenat.go": [
+   5,
+   0
+  ],
+  "src/os/root_openat.go": [
+   130,
+   33
+  ],
+  "src/os/root_test.go": [
+   1513,
+   35
+  ],
+  "src/os/root_unix.go": [
+   26,
+   14
+  ],
+  "src/os/root_unix_test.go": [
+   2,
+   3
+  ],
+  "src/os/root_windows.go": [
+   41,
+   15
+  ],
+  "src/os/stat.go": [
+   3,
+   0
+  ],
+  "src/os/statat.go": [
+   24,
+   0
+  ],
+  "src/os/statat_other.go": [
+   12,
+   0
+  ],
+  "src/os/statat_unix.go": [
+   20,
+   0
+  ],
+  "src/runtime/export_test.go": [
+   14,
+   6
+  ],
+  "src/runtime/malloc.go": [
+   1,
+   53
+  ],
+  "src/runtime/mem.go": [
+   104,
+   9
+  ],
+  "src/runtime/metrics/doc.go": [
+   5,
+   0
+  ],
+  "src/runtime/netpoll_epoll.go": [
+   1,
+   1
+  ],
+  "src/runtime/race/README": [
+   9,
+   9
+  ],
+  "src/runtime/race/internal/amd64v1/race_darwin.patch": [
+   63,
+   0
+  ],
+  "src/runtime/race/internal/amd64v1/race_freebsd.patch": [
+   63,
+   0
+  ],
+  "src/runtime/race/internal/amd64v1/race_linux.patch": [
+   63,
+   0
+  ],
+  "src/runtime/race/internal/amd64v1/race_windows.patch": [
+   63,
+   0
+  ],
+  "src/runtime/race/internal/amd64v3/race_linux.patch": [
+   63,
+   0
+  ],
+  "src/runtime/race/race_darwin_arm64.patch": [
+   63,
+   0
+  ],
+  "src/runtime/race/race_linux_arm64.patch": [
+   63,
+   0
+  ],
+  "src/runtime/race/race_linux_loong64.patch": [
+   63,
+   0
+  ],
+  "src/runtime/race/race_linux_s390x.patch": [
+   63,
+   0
+  ],
+  "src/syscall/syscall_windows.go": [
+   5,
+   1
+  ],
+  "src/syscall/zsyscall_windows.go": [
+   149,
+   149
+  ],
+  "src/vendor/modules.txt": [
+   2,
+   2
+  ],
+  "test/codegen/slices.go": [
+   12,
+   0
+  ],
+  "test/fixedbugs/issue46234.go": [
+   1,
+   1
+  ],
+  "test/fixedbugs/issue77919.go": [
+   15,
+   0
+  ],
+  "test/fixedbugs/issue78641.go": [
+   25,
+   0
+  ],
+  "test/fixedbugs/issue79182.go": [
+   32,
+   0
+  ],
+  "test/fixedbugs/issue79186.go": [
+   67,
+   0
+  ],
+  "test/loopbce.go": [
+   28,
+   0
+  ]
+ },
+ "files": 177,
+ "added_lines": 6063,
+ "removed_lines": 1698,
+ "diff": "diff --git a/VERSION b/VERSION\nindex e1fa21e..4f9fe3b 100644\n--- a/VERSION\n+++ b/VERSION\n@@ -1,2 +1,2 @@\n-go1.25.7\n-time 2026-02-03T20:02:30Z\n+go1.25.12\n+time 2026-07-01T21:24:27Z\ndiff --git a/debian/changelog b/debian/changelog\nindex e2a5983..02a1a2f 100644\n--- a/debian/changelog\n+++ b/debian/changelog\n@@ -1,3 +1,123 @@\n+golang-1.25 (1.25.12-1~26.04.1) resolute; urgency=medium\n+\n+  * Backport from Stonking to Resolute (LP: #2166409)\n+\n+ -- Chloé Smith <kajiya@ubuntu.com>  Fri, 11 Sep 2026 18:47:18 +0100\n+\n+golang-1.25 (1.25.12-1) unstable; urgency=medium\n+\n+  * New upstream version 1.25.12\n+    - CVE-2026-39822\n+      os: properly handle trailing slashes in paths in Root\n+    - CVE-2026-42505\n+      crypto/tls: omit PSK in ECH outer client hello\n+  * Mark patch as Forwarded: not-needed\n+\n+ -- Dr. Tobias Quathamer <toddy@debian.org>  Tue, 07 Jul 2026 22:52:52 +0200\n+\n+golang-1.25 (1.25.11-1) unstable; urgency=medium\n+\n+  * New upstream version 1.25.11\n+    - CVE-2026-27145\n+      crypto/x509: split candidate hostname only once\n+    - CVE-2026-42507\n+      net/textproto: escape arbitrary input when including them in errors\n+    - CVE-2026-42504\n+      mime: avoid quadratic complexity in WordDecoder.DecodeHeader\n+\n+ -- Dr. Tobias Quathamer <toddy@debian.org>  Thu, 04 Jun 2026 14:23:02 +0200\n+\n+golang-1.25 (1.25.10-2) unstable; urgency=medium\n+\n+  * Support forcing a minimum go compatibility version for\n+    GODEBUG via DEB_GOMINCOMPAT.\n+    Thanks to Helmut Grohne <helmut@subdivi.de>\n+\n+ -- Dr. Tobias Quathamer <toddy@debian.org>  Thu, 21 May 2026 11:57:39 +0200\n+\n+golang-1.25 (1.25.10-1) unstable; urgency=medium\n+\n+  * New upstream version 1.25.10\n+    - CVE-2026-42501\n+      cmd/go: malicious module proxy can bypass checksum database\n+    - CVE-2026-39820\n+      Well-crafted inputs reaching ParseAddress, ParseAddressList, and\n+      ParseDate were able to trigger excessive CPU exhaustion and memory\n+      allocations.\n+    - CVE-2026-39823\n+      Vulnerability in which URLs were not correctly escaped inside of a\n+      <meta> tag's <content> attribute.\n+    - CVE-2026-33811\n+      When using LookupCNAME with the cgo DNS resolver, a very long\n+      CNAME response can trigger a double-free of C memory and a crash.\n+    - CVE-2026-39826\n+      If a trusted template author were to write a <script> tag\n+      containing an empty 'type' attribute or a 'type' attribute with an\n+      ASCII whitespace, the execution of the template would incorrectly\n+      escape any data passed into the <script> block.\n+    - CVE-2026-39817\n+      The \"go tool pack\" subcommand (usually used only by the compiler\n+      as an internal tool with known-good inputs) does not sanitize\n+      output filenames. Extracting a malicious archive file with the\n+      \"pack\" subcommand can write files to arbitrary locations on the\n+      filesystem.\n+    - CVE-2026-39819\n+      The \"go bug\" command writes to two files with predictable names in\n+      the system temporary directory (for example, \"/tmp\"). An attacker\n+      with access to the temporary directory can create a symlink in one\n+      of these names, causing \"go bug\" to overwrite the target of the\n+      symlink.\n+    - CVE-2026-42499\n+      Pathological inputs could cause DoS through consumePhrase when\n+      parsing an email address according to RFC 5322.\n+    - CVE-2026-39825\n+      ReverseProxy can forward queries containing parameters not visible\n+      to Rewrite functions.\n+  * Remove superfluous file pattern from d/copyright\n+  * Update lintian overrides\n+\n+ -- Dr. Tobias Quathamer <toddy@debian.org>  Thu, 07 May 2026 22:22:32 +0200\n+\n+golang-1.25 (1.25.9-1) unstable; urgency=medium\n+\n+  * New upstream version 1.25.9\n+    - Update Build-Depends on golang 1.25 or 1.24\n+    - CVE-2026-32280\n+      During chain building, the amount of work that is done is not\n+      correctly limited when a large number of intermediate certificates\n+      are passed in VerifyOptions.Intermediates, which can lead to a\n+      denial of service. This affects both direct users of crypto/x509\n+      and users of crypto/tls.\n+    - CVE-2026-32281\n+      Validating certificate chains which use policies is unexpectedly\n+      inefficient when certificates in the chain contain a very large\n+      number of policy mappings, possibly causing denial of service.\n+      This only affects validation of otherwise trusted certificate\n+      chains, issued by a root CA in the VerifyOptions.Roots CertPool,\n+      or in the system certificate pool.\n+  * Set Forwarded in patch headers\n+  * Remove Priority: optional from d/control\n+  * Remove Rules-Requires-Root from d/control\n+  * Update Standards-Version to 4.7.4\n+  * Use wrap-and-sort -astkb\n+  * Add myself as uploader, somehow I got involved again. :-)\n+\n+ -- Dr. Tobias Quathamer <toddy@debian.org>  Wed, 08 Apr 2026 11:31:44 +0200\n+\n+golang-1.25 (1.25.8-1) unstable; urgency=medium\n+\n+  * Update to 1.25.8 upstream release\n+    https://groups.google.com/g/golang-announce/c/EdhZqrQ98hk/m/41DopX_WAAAJ\n+    - CVE-2026-27142: html/template: URLs in meta content attribute actions\n+                      are not escaped\n+    - CVE-2026-25679: net/url: reject IPv6 literal not at start of host\n+    - CVE-2026-27139: os: FileInfo can escape from a Root\n+    (notably, CVE-2026-27137 and CVE-2026-27138 apply only to 1.26+)\n+  * Drop 0004-Replace-localhostCert-and-localhostKey.patch (obsolete via\n+    https://github.com/golang/go/commit/0c56fa28180c1281bb4934bb6779a72a3fb43f52)\n+\n+ -- Tianon Gravi <tianon@debian.org>  Sat, 07 Mar 2026 09:12:47 -0800\n+\n golang-1.25 (1.25.7-2) unstable; urgency=medium\n \n   * Team upload.\ndiff --git a/debian/control b/debian/control\nindex 6291060..cad3e1e 100644\n--- a/debian/control\n+++ b/debian/control\n@@ -4,33 +4,45 @@\n \n Source: golang-1.25\n Maintainer: Debian Go Compiler Team <team+go-compiler@tracker.debian.org>\n-Uploaders: Michael Stapelberg <stapelberg@debian.org>,\n-           Paul Tagliamonte <paultag@debian.org>,\n-           Tianon Gravi <tianon@debian.org>,\n-           Michael Hudson-Doyle <mwhudson@debian.org>,\n-           Anthony Fok <foka@debian.org>\n+Uploaders:\n+ Michael Stapelberg <stapelberg@debian.org>,\n+ Paul Tagliamonte <paultag@debian.org>,\n+ Tianon Gravi <tianon@debian.org>,\n+ Michael Hudson-Doyle <mwhudson@debian.org>,\n+ Anthony Fok <foka@debian.org>,\n+ Dr. Tobias Quathamer <toddy@debian.org>,\n Section: golang\n-Priority: optional\n-Build-Depends: debhelper-compat (= 13),\n-               binutils-gold [arm64],\n-               golang-1.24-go:native | golang-1.23-go:native | golang-1.22-go:native,\n-               netbase\n-Standards-Version: 4.6.2\n+Build-Depends:\n+ debhelper-compat (= 13),\n+ binutils-gold [arm64],\n+ golang-1.25-go:native | golang-1.24-go:native,\n+ netbase,\n+Standards-Version: 4.7.4\n Vcs-Browser: https://salsa.debian.org/go-team/compiler/golang/tree/golang-1.25\n Vcs-Git: https://salsa.debian.org/go-team/compiler/golang.git -b golang-1.25\n Homepage: https://go.dev/\n-Rules-Requires-Root: no\n \n Package: golang-1.25-go\n Architecture: amd64 arm64 armel armhf i386 loong64 mips mips64el mipsel ppc64 ppc64el riscv64 s390x\n-Depends: binutils-gold [arm64],\n-         golang-1.25-src (>= ${source:Version}),\n-         ${misc:Depends},\n-         ${perl:Depends},\n-         ${shlibs:Depends}\n-Recommends: g++, gcc, libc6-dev, pkgconf\n-Breaks: dh-golang (<< 1.43~)\n-Suggests: bzr | brz, ca-certificates, git, mercurial, subversion\n+Depends:\n+ binutils-gold [arm64],\n+ golang-1.25-src (>= ${source:Version}),\n+ ${misc:Depends},\n+ ${perl:Depends},\n+ ${shlibs:Depends},\n+Recommends:\n+ g++,\n+ gcc,\n+ libc6-dev,\n+ pkgconf,\n+Breaks:\n+ dh-golang (<< 1.43~),\n+Suggests:\n+ bzr | brz,\n+ ca-certificates,\n+ git,\n+ mercurial,\n+ subversion,\n Description: Go programming language compiler, linker, compiled stdlib\n  The Go programming language is an open source project to make programmers more\n  productive. Go is expressive, concise, clean, and efficient. Its concurrency\n@@ -47,25 +59,34 @@ Description: Go programming language compiler, linker, compiled stdlib\n  To use this version, instead of the default one provided by golang-go package,\n  add /usr/lib/go-1.25/bin/ to PATH, or invoke /usr/lib/go-1.25/bin/go directly.\n \n-Package: golang-1.25-src\n+Package: golang-1.25\n+Depends:\n+ golang-1.25-doc (>= ${source:Version}),\n+ golang-1.25-go (>= ${source:Version}),\n+ golang-1.25-src (>= ${source:Version}),\n+ ${misc:Depends},\n Architecture: all\n-Multi-Arch: foreign\n-Depends: ${misc:Depends}, ${shlibs:Depends}\n-Description: Go programming language - source files\n- The Go programming language is an open source project to make programmers more\n- productive. Go is expressive, concise, clean, and efficient. Its concurrency\n- mechanisms make it easy to write programs that get the most out of multicore\n- and networked machines, while its novel type system enables flexible and\n- modular program construction. Go compiles quickly to machine code yet has the\n- convenience of garbage collection and the power of run-time reflection. It's a\n- fast, statically typed, compiled language that feels like a dynamically typed,\n- interpreted language.\n+Description: Go programming language compiler - metapackage\n+ The Go programming language is an open source project to make\n+ programmers more productive. Go is expressive, concise, clean, and\n+ efficient. Its concurrency mechanisms make it easy to write programs\n+ that get the most out of multicore and networked machines, while its\n+ novel type system enables flexible and modular program construction.\n+ Go compiles quickly to machine code yet has the convenience of\n+ garbage collection and the power of run-time reflection. It's a\n+ fast, statically typed, compiled language that feels like a\n+ dynamically typed, interpreted language.\n  .\n- This package provides the Go programming language source files needed for\n- compilation.\n+ This package is a metapackage that, when installed, guarantees\n+ that (most of) a full Go development environment is installed.\n+ .\n+ To use this version, instead of the default one provided by golang-go\n+ package, add /usr/lib/go-1.25/bin/ to PATH, or invoke /usr/lib/go-1.25/bin/go\n+ directly.\n \n Package: golang-1.25-doc\n-Depends: ${misc:Depends}\n+Depends:\n+ ${misc:Depends},\n Architecture: all\n Multi-Arch: foreign\n Section: doc\n@@ -83,26 +104,21 @@ Description: Go programming language - documentation\n  This package provides the documentation for the Go programming\n  language.\n \n-Package: golang-1.25\n-Depends: golang-1.25-doc (>= ${source:Version}),\n-         golang-1.25-go (>= ${source:Version}),\n-         golang-1.25-src (>= ${source:Version}),\n-         ${misc:Depends}\n+Package: golang-1.25-src\n Architecture: all\n-Description: Go programming language compiler - metapackage\n- The Go programming language is an open source project to make\n- programmers more productive. Go is expressive, concise, clean, and\n- efficient. Its concurrency mechanisms make it easy to write programs\n- that get the most out of multicore and networked machines, while its\n- novel type system enables flexible and modular program construction.\n- Go compiles quickly to machine code yet has the convenience of\n- garbage collection and the power of run-time reflection. It's a\n- fast, statically typed, compiled language that feels like a\n- dynamically typed, interpreted language.\n- .\n- This package is a metapackage that, when installed, guarantees\n- that (most of) a full Go development environment is installed.\n+Multi-Arch: foreign\n+Depends:\n+ ${misc:Depends},\n+ ${shlibs:Depends},\n+Description: Go programming language - source files\n+ The Go programming language is an open source project to make programmers more\n+ productive. Go is expressive, concise, clean, and efficient. Its concurrency\n+ mechanisms make it easy to write programs that get the most out of multicore\n+ and networked machines, while its novel type system enables flexible and\n+ modular program construction. Go compiles quickly to machine code yet has the\n+ convenience of garbage collection and the power of run-time reflection. It's a\n+ fast, statically typed, compiled language that feels like a dynamically typed,\n+ interpreted language.\n  .\n- To use this version, instead of the default one provided by golang-go\n- package, add /usr/lib/go-1.25/bin/ to PATH, or invoke /usr/lib/go-1.25/bin/go\n- directly.\n+ This package provides the Go programming language source files needed for\n+ compilation.\ndiff --git a/debian/control.in b/debian/control.in\nindex a88a15c..74e1bf7 100644\n--- a/debian/control.in\n+++ b/debian/control.in\n@@ -1,32 +1,44 @@\n Source: golang-X.Y\n Maintainer: Debian Go Compiler Team <team+go-compiler@tracker.debian.org>\n-Uploaders: Michael Stapelberg <stapelberg@debian.org>,\n-           Paul Tagliamonte <paultag@debian.org>,\n-           Tianon Gravi <tianon@debian.org>,\n-           Michael Hudson-Doyle <mwhudson@debian.org>,\n-           Anthony Fok <foka@debian.org>\n+Uploaders:\n+ Michael Stapelberg <stapelberg@debian.org>,\n+ Paul Tagliamonte <paultag@debian.org>,\n+ Tianon Gravi <tianon@debian.org>,\n+ Michael Hudson-Doyle <mwhudson@debian.org>,\n+ Anthony Fok <foka@debian.org>,\n+ Dr. Tobias Quathamer <toddy@debian.org>,\n Section: golang\n-Priority: optional\n-Build-Depends: debhelper-compat (= 13),\n-               binutils-gold [arm64],\n-               golang-1.24-go:native | golang-1.23-go:native | golang-1.22-go:native,\n-               netbase\n-Standards-Version: 4.6.2\n+Build-Depends:\n+ debhelper-compat (= 13),\n+ binutils-gold [arm64],\n+ golang-1.25-go:native | golang-1.24-go:native,\n+ netbase,\n+Standards-Version: 4.7.4\n Vcs-Browser: https://salsa.debian.org/go-team/compiler/golang/tree/golang-X.Y\n Vcs-Git: https://salsa.debian.org/go-team/compiler/golang.git -b golang-X.Y\n Homepage: https://go.dev/\n-Rules-Requires-Root: no\n \n Package: golang-X.Y-go\n Architecture: amd64 arm64 armel armhf i386 loong64 mips mips64el mipsel ppc64 ppc64el riscv64 s390x\n-Depends: binutils-gold [arm64],\n-         golang-X.Y-src (>= ${source:Version}),\n-         ${misc:Depends},\n-         ${perl:Depends},\n-         ${shlibs:Depends}\n-Recommends: g++, gcc, libc6-dev, pkgconf\n-Breaks: dh-golang (<< 1.43~)\n-Suggests: bzr | brz, ca-certificates, git, mercurial, subversion\n+Depends:\n+ binutils-gold [arm64],\n+ golang-X.Y-src (>= ${source:Version}),\n+ ${misc:Depends},\n+ ${perl:Depends},\n+ ${shlibs:Depends},\n+Recommends:\n+ g++,\n+ gcc,\n+ libc6-dev,\n+ pkgconf,\n+Breaks:\n+ dh-golang (<< 1.43~),\n+Suggests:\n+ bzr | brz,\n+ ca-certificates,\n+ git,\n+ mercurial,\n+ subversion,\n Description: Go programming language compiler, linker, compiled stdlib\n  The Go programming language is an open source project to make programmers more\n  productive. Go is expressive, concise, clean, and efficient. Its concurrency\n@@ -43,25 +55,34 @@ Description: Go programming language compiler, linker, compiled stdlib\n  To use this version, instead of the default one provided by golang-go package,\n  add /usr/lib/go-X.Y/bin/ to PATH, or invoke /usr/lib/go-X.Y/bin/go directly.\n \n-Package: golang-X.Y-src\n+Package: golang-X.Y\n+Depends:\n+ golang-X.Y-doc (>= ${source:Version}),\n+ golang-X.Y-go (>= ${source:Version}),\n+ golang-X.Y-src (>= ${source:Version}),\n+ ${misc:Depends},\n Architecture: all\n-Multi-Arch: foreign\n-Depends: ${misc:Depends}, ${shlibs:Depends}\n-Description: Go programming language - source files\n- The Go programming language is an open source project to make programmers more\n- productive. Go is expressive, concise, clean, and efficient. Its concurrency\n- mechanisms make it easy to write programs that get the most out of multicore\n- and networked machines, while its novel type system enables flexible and\n- modular program construction. Go compiles quickly to machine code yet has the\n- convenience of garbage collection and the power of run-time reflection. It's a\n- fast, statically typed, compiled language that feels like a dynamically typed,\n- interpreted language.\n+Description: Go programming language compiler - metapackage\n+ The Go programming language is an open source project to make\n+ programmers more productive. Go is expressive, concise, clean, and\n+ efficient. Its concurrency mechanisms make it easy to write programs\n+ that get the most out of multicore and networked machines, while its\n+ novel type system enables flexible and modular program construction.\n+ Go compiles quickly to machine code yet has the convenience of\n+ garbage collection and the power of run-time reflection. It's a\n+ fast, statically typed, compiled language that feels like a\n+ dynamically typed, interpreted language.\n  .\n- This package provides the Go programming language source files needed for\n- compilation.\n+ This package is a metapackage that, when installed, guarantees\n+ that (most of) a full Go development environment is installed.\n+ .\n+ To use this version, instead of the default one provided by golang-go\n+ package, add /usr/lib/go-X.Y/bin/ to PATH, or invoke /usr/lib/go-X.Y/bin/go\n+ directly.\n \n Package: golang-X.Y-doc\n-Depends: ${misc:Depends}\n+Depends:\n+ ${misc:Depends},\n Architecture: all\n Multi-Arch: foreign\n Section: doc\n@@ -79,26 +100,21 @@ Description: Go programming language - documentation\n  This package provides the documentation for the Go programming\n  language.\n \n-Package: golang-X.Y\n-Depends: golang-X.Y-doc (>= ${source:Version}),\n-         golang-X.Y-go (>= ${source:Version}),\n-         golang-X.Y-src (>= ${source:Version}),\n-         ${misc:Depends}\n+Package: golang-X.Y-src\n Architecture: all\n-Description: Go programming language compiler - metapackage\n- The Go programming language is an open source project to make\n- programmers more productive. Go is expressive, concise, clean, and\n- efficient. Its concurrency mechanisms make it easy to write programs\n- that get the most out of multicore and networked machines, while its\n- novel type system enables flexible and modular program construction.\n- Go compiles quickly to machine code yet has the convenience of\n- garbage collection and the power of run-time reflection. It's a\n- fast, statically typed, compiled language that feels like a\n- dynamically typed, interpreted language.\n- .\n- This package is a metapackage that, when installed, guarantees\n- that (most of) a full Go development environment is installed.\n+Multi-Arch: foreign\n+Depends:\n+ ${misc:Depends},\n+ ${shlibs:Depends},\n+Description: Go programming language - source files\n+ The Go programming language is an open source project to make programmers more\n+ productive. Go is expressive, concise, clean, and efficient. Its concurrency\n+ mechanisms make it easy to write programs that get the most out of multicore\n+ and networked machines, while its novel type system enables flexible and\n+ modular program construction. Go compiles quickly to machine code yet has the\n+ convenience of garbage collection and the power of run-time reflection. It's a\n+ fast, statically typed, compiled language that feels like a dynamically typed,\n+ interpreted language.\n  .\n- To use this version, instead of the default one provided by golang-go\n- package, add /usr/lib/go-X.Y/bin/ to PATH, or invoke /usr/lib/go-X.Y/bin/go\n- directly.\n+ This package provides the Go programming language source files needed for\n+ compilation.\ndiff --git a/debian/copyright b/debian/copyright\nindex da0c0b5..f71929e 100644\n--- a/debian/copyright\n+++ b/debian/copyright\n@@ -192,10 +192,6 @@ Files: src/cmd/vendor/github.com/google/pprof/third_party/svgpan/svgpan.go\n Copyright: 2009-2017 Andrea Leofreddi <a.leofreddi@itcharm.com>\n License: BSD-3-clause-svgpan\n \n-Files: src/cmd/trace/static/*\n-Copyright: 2012 The Chromium Authors\n-License: BSD-3-clause\n-\n Files: debian/*\n Copyright: 2010 Ivan Wong <ivanwyc@gmail.com>\n            2010 Ondřej Surý <ondrej@debian.org>\ndiff --git a/debian/golang-X.Y-src.lintian-overrides b/debian/golang-X.Y-src.lintian-overrides\nindex 709c7d8..5a17229 100644\n--- a/debian/golang-X.Y-src.lintian-overrides\n+++ b/debian/golang-X.Y-src.lintian-overrides\n@@ -4,7 +4,6 @@ unpack-message-for-deb-data\n \n arch-dependent-file-in-usr-share [usr/share/go-X.Y/src/cmd/objdump/testdata/*]\n arch-dependent-file-in-usr-share [usr/share/go-X.Y/src/crypto/internal/boring/syso/*.syso]\n-arch-dependent-file-in-usr-share [usr/share/go-X.Y/src/debug/buildinfo/testdata/*]\n arch-dependent-file-in-usr-share [usr/share/go-X.Y/src/debug/dwarf/testdata/*]\n arch-dependent-file-in-usr-share [usr/share/go-X.Y/src/debug/elf/testdata/*]\n arch-dependent-file-in-usr-share [usr/share/go-X.Y/src/go/internal/gccgoimporter/testdata/*]\n@@ -13,7 +12,6 @@ arch-dependent-file-in-usr-share [usr/share/go-X.Y/src/runtime/pprof/testdata/*]\n arch-dependent-file-in-usr-share [usr/share/go-X.Y/src/runtime/race/*.syso]\n arch-independent-package-contains-binary-or-object [usr/share/go-X.Y/src/cmd/objdump/testdata/*]\n arch-independent-package-contains-binary-or-object [usr/share/go-X.Y/src/crypto/internal/boring/syso/*.syso]\n-arch-independent-package-contains-binary-or-object [usr/share/go-X.Y/src/debug/buildinfo/testdata/*]\n arch-independent-package-contains-binary-or-object [usr/share/go-X.Y/src/debug/dwarf/testdata/*]\n arch-independent-package-contains-binary-or-object [usr/share/go-X.Y/src/debug/elf/testdata/*]\n arch-independent-package-contains-binary-or-object [usr/share/go-X.Y/src/go/internal/gccgoimporter/testdata/*]\n@@ -23,52 +21,29 @@ arch-independent-package-contains-binary-or-object [usr/share/go-X.Y/src/runtime\n binary-with-bad-dynamic-table [usr/share/go-X.Y/src/debug/elf/testdata/*]\n broken-bz2 [usr/share/go-X.Y/src/compress/bzip2/testdata/*]\n broken-zip [usr/share/go-X.Y/src/archive/zip/testdata/*]\n-executable-not-elf-or-script [usr/share/go-X.Y/src/cmd/vendor/github.com/google/pprof/third_party/d3flamegraph/update.sh]\n+executable-not-elf-or-script [usr/share/go-X.Y/src/cmd/compile/profile.sh]\n national-encoding [usr/share/go-X.Y/src/fmt/fmt_test.go]\n no-code-sections [usr/share/go-X.Y/src/cmd/objdump/testdata/*]\n no-code-sections [usr/share/go-X.Y/src/go/internal/gcimporter/testdata/*]\n package-contains-documentation-outside-usr-share-doc\n+package-contains-eslint-config-file [usr/share/go-X.Y/src/cmd/vendor/golang.org/x/telemetry/.eslintrc.json]\n package-contains-vcs-control-file [usr/share/go-X.Y/src/cmd/vendor/github.com/ianlancetaylor/demangle/.gitignore]\n package-contains-vcs-control-file [usr/share/go-X.Y/src/cmd/vendor/golang.org/x/sys/unix/.gitignore]\n+package-contains-vcs-control-file [usr/share/go-X.Y/src/cmd/vendor/golang.org/x/telemetry/.gitattributes]\n+package-contains-vcs-control-file [usr/share/go-X.Y/src/cmd/vendor/golang.org/x/telemetry/.gitignore]\n portable-executable-missing-security-features ASLR DEP/NX [usr/share/go-X.Y/src/debug/dwarf/testdata/*]\n portable-executable-missing-security-features ASLR DEP/NX [usr/share/go-X.Y/src/debug/pe/testdata/*]\n+script-not-executable [usr/share/go-X.Y/src/cmd/vendor/golang.org/x/telemetry/npm]\n+script-not-executable [usr/share/go-X.Y/src/cmd/vendor/golang.org/x/telemetry/npx]\n shared-library-lacks-prerequisites [usr/share/go-X.Y/src/debug/elf/testdata/*]\n statically-linked-binary [usr/share/go-X.Y/src/debug/buildinfo/testdata/*]\n statically-linked-binary [usr/share/go-X.Y/src/debug/dwarf/testdata/*]\n statically-linked-binary [usr/share/go-X.Y/src/runtime/pprof/testdata/*]\n-undeclared-elf-prerequisites * [usr/share/go-X.Y/src/debug/buildinfo/testdata/*]\n undeclared-elf-prerequisites * [usr/share/go-X.Y/src/debug/dwarf/testdata/*]\n undeclared-elf-prerequisites * [usr/share/go-X.Y/src/debug/elf/testdata/*]\n unstripped-binary-or-object [usr/share/go-X.Y/src/crypto/internal/boring/syso/*.syso]\n-unstripped-binary-or-object [usr/share/go-X.Y/src/debug/buildinfo/testdata/*]\n unstripped-binary-or-object [usr/share/go-X.Y/src/debug/dwarf/testdata/*]\n unstripped-binary-or-object [usr/share/go-X.Y/src/debug/elf/testdata/*]\n unstripped-binary-or-object [usr/share/go-X.Y/src/runtime/pprof/testdata/*]\n unstripped-binary-or-object [usr/share/go-X.Y/src/runtime/race/*.syso]\n unstripped-static-library (_go_.o) [usr/share/go-X.Y/src/go/internal/gccgoimporter/testdata/*]\n-package-contains-eslint-config-file [usr/share/go-X.Y/src/cmd/vendor/golang.org/x/telemetry/.eslintrc.json]\n-\n-# old syntax for ftp-master\n-arch-dependent-file-in-usr-share usr/share/go-X.Y/src/cmd/objdump/testdata/*\n-arch-dependent-file-in-usr-share usr/share/go-X.Y/src/crypto/internal/boring/syso/*.syso\n-arch-dependent-file-in-usr-share usr/share/go-X.Y/src/crypto/internal/boring/syso/\n-arch-dependent-file-in-usr-share usr/share/go-X.Y/src/debug/buildinfo/testdata/*\n-arch-dependent-file-in-usr-share usr/share/go-X.Y/src/debug/dwarf/testdata/*\n-arch-dependent-file-in-usr-share usr/share/go-X.Y/src/debug/elf/*\n-arch-dependent-file-in-usr-share usr/share/go-X.Y/src/go/internal/gccgoimporter/testdata/*\n-arch-dependent-file-in-usr-share usr/share/go-X.Y/src/go/internal/gcimporter/testdata/*\n-arch-dependent-file-in-usr-share usr/share/go-X.Y/src/runtime/pprof/testdata/*\n-arch-dependent-file-in-usr-share usr/share/go-X.Y/src/runtime/race/*.syso\n-arch-independent-package-contains-binary-or-object usr/share/go-X.Y/src/cmd/objdump/testdata/*\n-arch-independent-package-contains-binary-or-object usr/share/go-X.Y/src/crypto/internal/boring/syso/*.syso\n-arch-independent-package-contains-binary-or-object usr/share/go-X.Y/src/debug/buildinfo/testdata/*\n-arch-independent-package-contains-binary-or-object usr/share/go-X.Y/src/debug/dwarf/testdata/*\n-arch-independent-package-contains-binary-or-object usr/share/go-X.Y/src/debug/elf/testdata/*\n-arch-independent-package-contains-binary-or-object usr/share/go-X.Y/src/go/internal/gccgoimporter/testdata/*\n-arch-independent-package-contains-binary-or-object usr/share/go-X.Y/src/go/internal/gcimporter/testdata/*\n-arch-independent-package-contains-binary-or-object usr/share/go-X.Y/src/runtime/pprof/testdata/*\n-arch-independent-package-contains-binary-or-object usr/share/go-X.Y/src/runtime/race/*.syso\n-binary-with-bad-dynamic-table usr/share/go-X.Y/src/debug/elf/testdata/*\n-statically-linked-binary usr/share/go-X.Y/src/debug/buildinfo/testdata/*\n-statically-linked-binary usr/share/go-X.Y/src/debug/dwarf/testdata/*\n-statically-linked-binary usr/share/go-X.Y/src/runtime/pprof/testdata/*\ndiff --git a/debian/patches/0001-Skip-flaky-TestCrashDumpsAllThreads-on-mips64le.patch b/debian/patches/0001-Skip-flaky-TestCrashDumpsAllThreads-on-mips64le.patch\nindex 2169264..1f98c54 100644\n--- a/debian/patches/0001-Skip-flaky-TestCrashDumpsAllThreads-on-mips64le.patch\n+++ b/debian/patches/0001-Skip-flaky-TestCrashDumpsAllThreads-on-mips64le.patch\n@@ -3,6 +3,8 @@ Date: Mon, 26 Feb 2024 17:03:06 +0800\n Subject: Skip flaky TestCrashDumpsAllThreads on mips64le\n \n crash_unix_test.go:145: found 3 instances of main.crashDumpsAllThreadsLoop; expected 4\n+\n+Forwarded: not-needed\n ---\n  src/runtime/crash_unix_test.go | 4 ++++\n  1 file changed, 4 insertions(+)\ndiff --git a/debian/patches/0004-Replace-localhostCert-and-localhostKey.patch b/debian/patches/0004-Replace-localhostCert-and-localhostKey.patch\ndeleted file mode 100644\nindex 459eae7..0000000\n--- a/debian/patches/0004-Replace-localhostCert-and-localhostKey.patch\n+++ /dev/null\n@@ -1,121 +0,0 @@\n-From: \"Dr. Tobias Quathamer\" <toddy@debian.org>\n-Date: Fri, 6 Feb 2026 14:06:33 +0100\n-Subject: Replace localhostCert and localhostKey.\n-\n-The previous certificate expired on 2026-03-18 19:27:54 UTC.\n-A new certificate can be generated by running this command\n-in the directory src/crypto/tls:\n-\n-$ go run generate_cert.go --rsa-bits 2048 --host 127.0.0.1,::1,example.com --ca --start-date \"Jan 1 00:00:00 1970\" --duration=1000000h\n-\n-This patch adds a newly generated certificate which expires\n-on 2084-01-29 16:00:00 UTC.\n-\n-Closes: #1127117\n----\n- src/net/smtp/smtp_test.go | 87 ++++++++++++++++++++++++-----------------------\n- 1 file changed, 44 insertions(+), 43 deletions(-)\n-\n-diff --git a/src/net/smtp/smtp_test.go b/src/net/smtp/smtp_test.go\n-index 427ed0f..c4aeae6 100644\n---- a/src/net/smtp/smtp_test.go\n-+++ b/src/net/smtp/smtp_test.go\n-@@ -1140,54 +1140,55 @@ func sendMail(hostPort string) error {\n- //\t\t--ca --start-date \"Jan 1 00:00:00 1970\" --duration=1000000h\n- var localhostCert = []byte(`\n- -----BEGIN CERTIFICATE-----\n--MIIDFDCCAfygAwIBAgIRAPV4ktbcY/mn0oRRjnGAGJgwDQYJKoZIhvcNAQELBQAw\n--EjEQMA4GA1UEChMHQWNtZSBDbzAeFw0yNTAzMTgxOTI3NTRaFw0yNjAzMTgxOTI3\n--NTRaMBIxEDAOBgNVBAoTB0FjbWUgQ28wggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAw\n--ggEKAoIBAQDbsEfk1bK7ozwZlcQM8rBUikC4gwnnw0J1PUlGDGu1Y84dKtulbdWj\n--yrh88D4fSdtmxFbXE7fhYUJTBmEHSUk9OLHh/Tr+nSC3SfH0I/9y6l9j9vVVYhYJ\n--C07Z1mZZKVb+gmbbB7LEavGMNaFHjvRJAwBX2TMDbXJceZ9jU/iihILkZbrbG40r\n--n1mctYVmcR3YqOzI/ynLje97FEvxtsg99OUjzzXyFMqfAl0J3Gc6tzvAER3N+ovK\n--nudsnMB5Y+InQHHmPeizG4mFyeBYesXNwX6cmI30c8KFiAlKHcsxjJsuoBZ3bSwv\n--vFdK2hnuCO05HEgCzAQKUlY6Q2F0xJblAgMBAAGjZTBjMA4GA1UdDwEB/wQEAwIF\n--oDATBgNVHSUEDDAKBggrBgEFBQcDATAMBgNVHRMBAf8EAjAAMC4GA1UdEQQnMCWC\n--C2V4YW1wbGUuY29thwR/AAABhxAAAAAAAAAAAAAAAAAAAAABMA0GCSqGSIb3DQEB\n--CwUAA4IBAQBnfO4lYRXR9AdMidpgdITqMEKJik8MvCkpQ+EKQLq3CIGXPt5lkHLs\n--ysbF9f3VxioKNYzkakJGVGyu51hqyhGqGQ4M7IpOBQkmY24IExWPVEk2wkIV+HTU\n--+oQVZOIrHF+s9IIFOIh3SIPIsXNvx7rUc5sgF4P+eAnAcv3o1zL7YjGJZ8e27Ai2\n--uF8iG/po/0Vd93OSB8Tj/Nvg99SSucy7nBYTreSdhUjZWRI0W1oYJX49/fhWljR9\n--8+f2GqUfLc7iCjcV3wxlfBqEKCdpjXsiqtsb1KrAx7AEOj7XfDjJjyCL4bshLp9x\n--PbV+kBFCN151iWYtfzhKEplrZFYNXlX2\n-+MIIDOTCCAiGgAwIBAgIQNa9+JgaO+xR8zZNBEpuWFzANBgkqhkiG9w0BAQsFADAS\n-+MRAwDgYDVQQKEwdBY21lIENvMCAXDTcwMDEwMTAwMDAwMFoYDzIwODQwMTI5MTYw\n-+MDAwWjASMRAwDgYDVQQKEwdBY21lIENvMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8A\n-+MIIBCgKCAQEA0m/AL3KP4t8K3izOO9HsoPcJh/Be5qX/oXPk5TZPUfAs7OQDFoFv\n-+TZ4LZXd46oNTzRRP/Mk5knMrwtkFLWX+eh7AnXmerUheN2zQ58EpgwN42B3tyk3g\n-+Msa0Rs/mG5gUqkUXAE0aKWqx5RjzDa8nKbxhKTtGJSMoyM3ZobTDhu2aZWXTVWjx\n-+68Mh/g5LhmPjVewYWu0wOFToHfP5K481CpMSHfpOHRxeXMuw7TWAW7jo7AjWebrc\n-+1VFaVjRhOwmpjuAOmlEXlNPQfz2cj9+YkUNPSL3hjYFKxWRf22AMmFAHn1fT4jOp\n-+XCuWnRbimd7St5DXgiWz3UKD5ekvFoklCQIDAQABo4GIMIGFMA4GA1UdDwEB/wQE\n-+AwICpDATBgNVHSUEDDAKBggrBgEFBQcDATAPBgNVHRMBAf8EBTADAQH/MB0GA1Ud\n-+DgQWBBRPNyX6AR3LoGGTVDy7+mh2QTPsvjAuBgNVHREEJzAlggtleGFtcGxlLmNv\n-+bYcEfwAAAYcQAAAAAAAAAAAAAAAAAAAAATANBgkqhkiG9w0BAQsFAAOCAQEAkMha\n-+P9Q59eoqz+lNwlFW5VIVK3aiEG6EA0clIy21qvhSrWEZ5E4bAc0FgYkvpVtnNUQa\n-+9KtyQJjhqIKIU2hyCyRDbc6yxZiaeKMGamB962+aioLmpPe6Ix/SRddTE9kyAWfc\n-+MyltZw9wErtTHHk5JOjuBAdsuTMs/AeUIXSgtjoMoWgbD3kgVoW6V84j0IFbJ5RS\n-+XTSF6CuKwy4MAlgROBjeqzj0dANlJwNadxHNjVtzZ/BsF20AX93dOKZgR9/Cu8Dl\n-+/ghKA8SiB0Er3RCGLnK8vr4MLt8r7C8SwEDs+ocd/n3Uw+Vv/0slTgXleOos1GpK\n-+o1i3NwuQ7fa3oKPL4g==\n- -----END CERTIFICATE-----`)\n- \n- // localhostKey is the private key for localhostCert.\n- var localhostKey = []byte(testingKey(`\n- -----BEGIN RSA TESTING KEY-----\n--MIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQDbsEfk1bK7ozwZ\n--lcQM8rBUikC4gwnnw0J1PUlGDGu1Y84dKtulbdWjyrh88D4fSdtmxFbXE7fhYUJT\n--BmEHSUk9OLHh/Tr+nSC3SfH0I/9y6l9j9vVVYhYJC07Z1mZZKVb+gmbbB7LEavGM\n--NaFHjvRJAwBX2TMDbXJceZ9jU/iihILkZbrbG40rn1mctYVmcR3YqOzI/ynLje97\n--FEvxtsg99OUjzzXyFMqfAl0J3Gc6tzvAER3N+ovKnudsnMB5Y+InQHHmPeizG4mF\n--yeBYesXNwX6cmI30c8KFiAlKHcsxjJsuoBZ3bSwvvFdK2hnuCO05HEgCzAQKUlY6\n--Q2F0xJblAgMBAAECggEACzZIOQraBB8M3G5rEtEZBDuJGZGgggpSXDrsQC22mouV\n--M6JiEuOT5Xfdagz10rF5h9lp6DCqsA8/bA7ViWJpYT1BQNwkdGWvC4Oz3EaxDRue\n--kjLCqyCmKMCBvfbmAtNsC/G6T5/pNQKTQNlk2YrXd1l2nUUpyBlAHq2bX52jwSGD\n--bFy5hyzSrzjeLpLUNZ56W/uXCvP0l6PAEvXRn/KG89XLZCtMBvVDMCfjIe77Q1U9\n--/XzIrnb67RzQwiDelvX+biMkBrjeYw/Gvdo9hNCOfbOZ+SpnfDOLEfAha/XPmr3+\n--5EeF4emeEhCODvfe7wy/4h1gHEG2N435S61DcV3gQQKBgQD92EJidwriPGDTUSM8\n--nJrPQ5xwPMKz5hWpfI0zxIYZyqA37eRC5Q9WD3rDbrEZiLCInFh+Ci899iLzEpFZ\n--dFQAUiRam+zFpDCQcGHr/uytRoTH/nxh2MrYPq8cA5ZGU6oMH+Yl4TynqJm2KN7e\n--0ocE07QjyK/9nIvEtdibEiFEwQKBgQDdjcgoqHaM49YJ4yxGpjuRdc5a3iuKzZU6\n--BON4GKqYQ9u/o8/NPaOSQ3vKhwzTjiEoOZImn+eX1cRP0ZskmQ+LyzsdVAHMDydz\n--9I23dbIywtCXGhKOJRwt9O++8ataWIxi1frjj6BcI+TzGl8LM2lYIfUHzVzfswwE\n--1EK8ikxnJQKBgBqPKvr0a54aJSNXBPHNjOEMuOyBXvnFpBSUpI17DXDbY4IWkOBy\n--6PTfL8AM79i1FYtlmFivphu8ihGWqsCKTFOwRH96ev5+3FnweD5h8M98Zl4qgUcX\n--kLmpbVboBSwcitkz6TejZl5AZLzLb+4uZtQZdmqcD9XgMDuHrz8iWXrBAoGBAMJO\n--Z34pCRfVddFkGF+5yMJw5FLTSLLKTJb+1JRuZad21BIF0+i3p25OmxHrUXd0zmWd\n--4CzZzt5eD3bFaOA3EOhUi/rTw2O44qwSjfuZUHiuXQw4RI+/wjAYAe+fud1ZjX3d\n--FtVfEI/etxvyQ+rp4vj1hxWZqVtThzXxBrqePBW1AoGBAOTC19rFQXtVf9A+8c/w\n--2ryAY2W9qNKe0xMivTAqau0Kdy2/2toJekR/5qOy3tOF7JasOgG+y3m3gLF47EFF\n--v75eW4FkiCFvsyl/qv4CO1eKnHlvkRoDsnMb+dA5czst58rO6BK40QvPqwXaSxj1\n--ee8ReNCDhC0Zidczajm63O1G\n-+MIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQDSb8Avco/i3wre\n-+LM470eyg9wmH8F7mpf+hc+TlNk9R8Czs5AMWgW9Nngtld3jqg1PNFE/8yTmScyvC\n-+2QUtZf56HsCdeZ6tSF43bNDnwSmDA3jYHe3KTeAyxrRGz+YbmBSqRRcATRoparHl\n-+GPMNrycpvGEpO0YlIyjIzdmhtMOG7ZplZdNVaPHrwyH+DkuGY+NV7Bha7TA4VOgd\n-+8/krjzUKkxId+k4dHF5cy7DtNYBbuOjsCNZ5utzVUVpWNGE7CamO4A6aUReU09B/\n-+PZyP35iRQ09IveGNgUrFZF/bYAyYUAefV9PiM6lcK5adFuKZ3tK3kNeCJbPdQoPl\n-+6S8WiSUJAgMBAAECggEAH6wNnSaNNOx0domAVb0L9BMSVmktY2IPFjX6+Kuipxay\n-+sEnGFDRRc/lqRjCD3Kn86iQZQNbpaRsX9kjTEGjmMuufemQUZ4i5k3Z3f7YRISSb\n-+4s0oXbc4W/QPrIu8WqFaVOE2q8cu/ZZPJYfKhx/6UTwG1J2U+mBvEj/3NjEeb5db\n-+yPAUu57y2XE2lIGZrjFfhp0b7lP779PVix4zDRv4uim0SifOvEWS2QUkwktWvdi+\n-+CQ8sExelHmyiOmqYNUYhfyeLiiFmY3CLiuLQlsKCU3fQH5RMY4lSU3WfrWDU/9hu\n-+Ub6hOwC2o4EGcipOT9NIKTT6xaO5BtkWvXMBowr6vQKBgQDYfKqJY+53Wft7Awsp\n-+UcmnCOCM/o0hRpCIHD2CEhWp3d3EjmBLkapN37VLUqflHgy1K9XXcj/JsbQebBKX\n-+EnqrnAttzXDyhK0rHse/h6wipvb5yNeNXuEq+4eqWOn8xAHqZ2oPNYro7k8vg/xs\n-+O+z0JnZxqtQWCkTHbkENiBQnbQKBgQD42GC4IW+eMzqvQrEC8yBo+v7nX+GUW30V\n-+cx4FszyEmTCLgmbTZDPAzv9RHxbZJFekT26Mv6KsrCSkoS/9VFO4ScLZ8hM9j5xk\n-+PClW/h2RBj15IVb5kBhnPpipXP80NIesy7q+fNCtejRBzDqMUgDy5TBu2AoGjuRx\n-+LnRllGJmjQKBgE+Rwrys1kFX+W7FN50ASrXyNVadWRIZ9ZWRi6n7K6s7uP89tXcR\n-+Gx90UhZVUxCLcvBEJF0DyR5BCosD/fE5AY2B1VGOaS06RsvKjHCBVWuHIs+8Wj3D\n-+2c8KlFqwQ5B8GpglWn4sl9n1fXVhda3yeK1kVbSBrWJMc+s5Qv/OPFohAoGAH7tP\n-+0gsJda3orNKfSdYA6wIeoRh75nQoJiUQzf9GF06FfzS4sfoUE2ER86E4Q6Y7ussa\n-+OL5zGvu0jH21ZeNr7ZMSUsJoq6/1bF6zktFCqeyWyCx1L8utIPU9eFNQg7KzHli4\n-+TnQSFB0CLuXBDYWjc1XAcFICLUXpYXlgBFgAmD0CgYBOPw/bINcuQR50FKqGSH8H\n-+Hg/6eBSf6BVoMQmS9FYKkr/qjYBmXs9O99Ak7HKT0xr56FNTDRtpMkLkJJJcHpif\n-+4odTUKveh5bpAh3q4mX0j2r3HAo341i8cNQHiuh7YQfqlriDW3ejChx1jvy2GV0G\n-+jU5Li19dcUhK+0KxTXl9tA==\n- -----END RSA TESTING KEY-----`))\n- \n- func testingKey(s string) string { return strings.ReplaceAll(s, \"TESTING KEY\", \"PRIVATE KEY\") }\ndiff --git a/debian/patches/0005-Skip-TestTSAN-test-on-s390x.patch b/debian/patches/0005-Skip-TestTSAN-test-on-s390x.patch\nindex 97334a5..33d00bd 100644\n--- a/debian/patches/0005-Skip-TestTSAN-test-on-s390x.patch\n+++ b/debian/patches/0005-Skip-TestTSAN-test-on-s390x.patch\n@@ -8,7 +8,7 @@ resolved, we disable the test to be able to build the\n golang package, so it can migrate to testing and\n fix lots of other bugs and CVEs.\n \n-See https://github.com/golang/go/issues/77289\n+Forwarded: https://github.com/golang/go/issues/77289\n ---\n  src/cmd/cgo/internal/testsanitizers/tsan_test.go | 4 +++-\n  1 file changed, 3 insertions(+), 1 deletion(-)\ndiff --git a/debian/patches/0005-Support-DEB_GOMINCOMPAT.patch b/debian/patches/0005-Support-DEB_GOMINCOMPAT.patch\nnew file mode 100644\nindex 0000000..274b173\n--- /dev/null\n+++ b/debian/patches/0005-Support-DEB_GOMINCOMPAT.patch\n@@ -0,0 +1,35 @@\n+From: Helmut Grohne <helmut@subdivi.de>\n+Date: Fri, 8 May 2026 11:20:27 +0200\n+Subject: Support DEB_GOMINCOMPAT\n+\n+Support forcing a minimum go compatibility version for GODEBUG via\n+DEB_GOMINCOMPAT.\n+\n+Forwarded: not-needed\n+---\n+ src/cmd/go/internal/load/godebug.go | 5 +++++\n+ 1 file changed, 5 insertions(+)\n+\n+diff --git a/src/cmd/go/internal/load/godebug.go b/src/cmd/go/internal/load/godebug.go\n+index 8ea8ffa..63e6cad 100644\n+--- a/src/cmd/go/internal/load/godebug.go\n++++ b/src/cmd/go/internal/load/godebug.go\n+@@ -10,6 +10,7 @@ import (\n+ \t\"go/build\"\n+ \t\"internal/godebugs\"\n+ \t\"maps\"\n++\t\"os\"\n+ \t\"sort\"\n+ \t\"strconv\"\n+ \t\"strings\"\n+@@ -60,6 +61,10 @@ func defaultGODEBUG(p *Package, directives, testDirectives, xtestDirectives []bu\n+ \t\t\tgoVersion = \"1.20\"\n+ \t\t}\n+ \t}\n++\tdebGoMinVer := os.Getenv(\"DEB_GOMINCOMPAT\")\n++\tif debGoMinVer != \"\" && gover.Compare(goVersion, debGoMinVer) < 0 {\n++\t\tgoVersion = debGoMinVer\n++\t}\n+ \n+ \tvar m map[string]string\n+ \ndiff --git a/debian/patches/series b/debian/patches/series\nindex 7651666..2d94f10 100644\n--- a/debian/patches/series\n+++ b/debian/patches/series\n@@ -1,5 +1,5 @@\n 0001-Skip-flaky-TestCrashDumpsAllThreads-on-mips64le.patch\n 0002-Skip-flaky-TestCrashDumpsAllThreads-on-s390x.patch\n 0003-Skip-TestAsan-on-riscv64.patch\n-0004-Replace-localhostCert-and-localhostKey.patch\n 0005-Skip-TestTSAN-test-on-s390x.patch\n+0005-Support-DEB_GOMINCOMPAT.patch\ndiff --git a/doc/godebug.md b/doc/godebug.md\nindex a6e64d1..54bec17 100644\n--- a/doc/godebug.md\n+++ b/doc/godebug.md\n@@ -133,9 +133,7 @@ are also treated as invalid.\n The defaults that will be compiled into a main package\n are reported by the command:\n \n-{{raw `\n \tgo list -f '{{.DefaultGODEBUG}}' my/main/package\n-`}}\n \n Only differences from the base Go toolchain defaults are reported.\n \n@@ -172,6 +170,11 @@ this setting and default was backported to Go 1.25.4 and Go 1.24.10.\n \n ### Go 1.25\n \n+Go 1.25.8 added a new `htmlmetacontenturlescape` setting that controls whether\n+html/template will escape URLs in the `url=` portion of the content attribute of\n+HTML meta tags. The default `htmlmetacontentescape=1` will cause URLs to be\n+escaped. Setting `htmlmetacontentescape=0` disables this behavior.\n+\n Go 1.25 added a new `decoratemappings` setting that controls whether the Go\n runtime annotates OS anonymous memory mappings with context about their\n purpose. These annotations appear in /proc/self/maps and /proc/self/smaps as\ndiff --git a/lib/fips140/certified.txt b/lib/fips140/certified.txt\nnew file mode 100644\nindex 0000000..efd3cab\n--- /dev/null\n+++ b/lib/fips140/certified.txt\n@@ -0,0 +1 @@\n+v1.0.0-c2097c7c\ndiff --git a/src/archive/tar/format.go b/src/archive/tar/format.go\nindex 9954b4d..32e58a9 100644\n--- a/src/archive/tar/format.go\n+++ b/src/archive/tar/format.go\n@@ -147,6 +147,12 @@ const (\n \t// Max length of a special file (PAX header, GNU long name or link).\n \t// This matches the limit used by libarchive.\n \tmaxSpecialFileSize = 1 << 20\n+\n+\t// Maximum number of sparse file entries.\n+\t// We should never actually hit this limit\n+\t// (every sparse encoding will first be limited by maxSpecialFileSize),\n+\t// but this adds an additional layer of defense.\n+\tmaxSparseFileEntries = 1 << 20\n )\n \n // blockPadding computes the number of bytes needed to pad offset up to the\ndiff --git a/src/archive/tar/reader.go b/src/archive/tar/reader.go\nindex 16ac2f5..f85b998 100644\n--- a/src/archive/tar/reader.go\n+++ b/src/archive/tar/reader.go\n@@ -490,7 +490,8 @@ func (tr *Reader) readOldGNUSparseMap(hdr *Header, blk *block) (sparseDatas, err\n \t}\n \ts := blk.toGNU().sparse()\n \tspd := make(sparseDatas, 0, s.maxEntries())\n-\tfor {\n+\ttotalSize := len(s)\n+\tfor totalSize < maxSpecialFileSize {\n \t\tfor i := 0; i < s.maxEntries(); i++ {\n \t\t\t// This termination condition is identical to GNU and BSD tar.\n \t\t\tif s.entry(i).offset()[0] == 0x00 {\n@@ -501,7 +502,11 @@ func (tr *Reader) readOldGNUSparseMap(hdr *Header, blk *block) (sparseDatas, err\n \t\t\tif p.err != nil {\n \t\t\t\treturn nil, p.err\n \t\t\t}\n-\t\t\tspd = append(spd, sparseEntry{Offset: offset, Length: length})\n+\t\t\tvar err error\n+\t\t\tspd, err = appendSparseEntry(spd, sparseEntry{Offset: offset, Length: length})\n+\t\t\tif err != nil {\n+\t\t\t\treturn nil, err\n+\t\t\t}\n \t\t}\n \n \t\tif s.isExtended()[0] > 0 {\n@@ -510,10 +515,12 @@ func (tr *Reader) readOldGNUSparseMap(hdr *Header, blk *block) (sparseDatas, err\n \t\t\t\treturn nil, err\n \t\t\t}\n \t\t\ts = blk.toSparse()\n+\t\t\ttotalSize += len(s)\n \t\t\tcontinue\n \t\t}\n \t\treturn spd, nil // Done\n \t}\n+\treturn nil, errSparseTooLong\n }\n \n // readGNUSparseMap1x0 reads the sparse map as stored in GNU's PAX sparse format\n@@ -586,7 +593,10 @@ func readGNUSparseMap1x0(r io.Reader) (sparseDatas, error) {\n \t\tif err1 != nil || err2 != nil {\n \t\t\treturn nil, ErrHeader\n \t\t}\n-\t\tspd = append(spd, sparseEntry{Offset: offset, Length: length})\n+\t\tspd, err = appendSparseEntry(spd, sparseEntry{Offset: offset, Length: length})\n+\t\tif err != nil {\n+\t\t\treturn nil, err\n+\t\t}\n \t}\n \treturn spd, nil\n }\n@@ -620,12 +630,22 @@ func readGNUSparseMap0x1(paxHdrs map[string]string) (sparseDatas, error) {\n \t\tif err1 != nil || err2 != nil {\n \t\t\treturn nil, ErrHeader\n \t\t}\n-\t\tspd = append(spd, sparseEntry{Offset: offset, Length: length})\n+\t\tspd, err = appendSparseEntry(spd, sparseEntry{Offset: offset, Length: length})\n+\t\tif err != nil {\n+\t\t\treturn nil, err\n+\t\t}\n \t\tsparseMap = sparseMap[2:]\n \t}\n \treturn spd, nil\n }\n \n+func appendSparseEntry(spd sparseDatas, ent sparseEntry) (sparseDatas, error) {\n+\tif len(spd) >= maxSparseFileEntries {\n+\t\treturn nil, errSparseTooLong\n+\t}\n+\treturn append(spd, ent), nil\n+}\n+\n // Read reads from the current file in the tar archive.\n // It returns (0, io.EOF) when it reaches the end of that file,\n // until [Next] is called to advance to the next file.\ndiff --git a/src/archive/tar/reader_test.go b/src/archive/tar/reader_test.go\nindex fca53da..49a71cb 100644\n--- a/src/archive/tar/reader_test.go\n+++ b/src/archive/tar/reader_test.go\n@@ -1133,6 +1133,17 @@ func TestReadOldGNUSparseMap(t *testing.T) {\n \t\tinput: makeInput(FormatGNU, \"\",\n \t\t\tmakeSparseStrings(sparseDatas{{10 << 30, 512}, {20 << 30, 512}})...),\n \t\twantMap: sparseDatas{{10 << 30, 512}, {20 << 30, 512}},\n+\t}, {\n+\t\tinput: makeInput(FormatGNU, \"\",\n+\t\t\tmakeSparseStrings(func() sparseDatas {\n+\t\t\t\tvar datas sparseDatas\n+\t\t\t\t// This is more than enough entries to exceed our limit.\n+\t\t\t\tfor i := range int64(1 << 20) {\n+\t\t\t\t\tdatas = append(datas, sparseEntry{i * 2, (i * 2) + 1})\n+\t\t\t\t}\n+\t\t\t\treturn datas\n+\t\t\t}())...),\n+\t\twantErr: errSparseTooLong,\n \t}}\n \n \tfor i, v := range vectors {\ndiff --git a/src/cmd/cgo/internal/test/test.go b/src/cmd/cgo/internal/test/test.go\nindex 844b2dd..fb4a825 100644\n--- a/src/cmd/cgo/internal/test/test.go\n+++ b/src/cmd/cgo/internal/test/test.go\n@@ -245,7 +245,7 @@ static void *thread(void *p) {\n \treturn NULL;\n }\n void testSendSIG() {\n-\tconst int N = 20;\n+\tenum { N = 20 };\n \tint i;\n \tpthread_t tid[N];\n \tfor (i = 0; i < N; i++) {\ndiff --git a/src/cmd/compile/internal/loopvar/loopvar_test.go b/src/cmd/compile/internal/loopvar/loopvar_test.go\nindex b19962f..90bddbb 100644\n--- a/src/cmd/compile/internal/loopvar/loopvar_test.go\n+++ b/src/cmd/compile/internal/loopvar/loopvar_test.go\n@@ -6,6 +6,7 @@ package loopvar_test\n \n import (\n \t\"internal/testenv\"\n+\t\"os\"\n \t\"os/exec\"\n \t\"path/filepath\"\n \t\"regexp\"\n@@ -381,3 +382,62 @@ func TestLoopVarVersionDisableGoBuild(t *testing.T) {\n \t\tt.Errorf(\"err=%v == nil\", err)\n \t}\n }\n+\n+// TestLoopVarLineDirective tests that loopvar version detection works correctly\n+// with line directives. This is a regression test for a bug where FileBase() was\n+// used instead of Base(), causing incorrect version lookup when line directives\n+// were present.\n+func TestLoopVarLineDirective(t *testing.T) {\n+\tswitch runtime.GOOS {\n+\tcase \"linux\", \"darwin\":\n+\tdefault:\n+\t\tt.Skipf(\"Slow test, usually avoid it, os=%s not linux or darwin\", runtime.GOOS)\n+\t}\n+\tswitch runtime.GOARCH {\n+\tcase \"amd64\", \"arm64\":\n+\tdefault:\n+\t\tt.Skipf(\"Slow test, usually avoid it, arch=%s not amd64 or arm64\", runtime.GOARCH)\n+\t}\n+\n+\ttestenv.MustHaveGoBuild(t)\n+\tgocmd := testenv.GoToolPath(t)\n+\ttmpdir := t.TempDir()\n+\toutput := filepath.Join(tmpdir, \"foo.exe\")\n+\n+\t// Create a go.mod file with Go 1.21 to test compatibility behavior.\n+\t// When building with a higher Go compiler, the loopvar should be created per-loop.\n+\tgomodPath := filepath.Join(tmpdir, \"go.mod\")\n+\tif err := os.WriteFile(gomodPath, []byte(\"module test\\n\\ngo 1.21\\n\"), 0644); err != nil {\n+\t\tt.Fatal(err)\n+\t}\n+\n+\t// Copy the test file (with line directive) to the temporary module\n+\ttestFile := \"range_esc_closure_linedir.go\"\n+\tsrcPath := filepath.Join(\"testdata\", testFile)\n+\tdstPath := filepath.Join(tmpdir, testFile)\n+\tsrc, err := os.ReadFile(srcPath)\n+\tif err != nil {\n+\t\tt.Fatal(err)\n+\t}\n+\tif err := os.WriteFile(dstPath, src, 0644); err != nil {\n+\t\tt.Fatal(err)\n+\t}\n+\n+\t// Build the module (not as a single file, so go.mod is respected)\n+\tcmd := testenv.Command(t, gocmd, \"build\", \"-o\", output, \".\")\n+\tcmd.Dir = tmpdir\n+\tb, err := cmd.CombinedOutput()\n+\tif err != nil {\n+\t\tt.Logf(\"build output: %s\", b)\n+\t\tt.Fatal(err)\n+\t}\n+\tt.Logf(\"build output: %s\", b)\n+\n+\tcmd = testenv.Command(t, output)\n+\tb, err = cmd.CombinedOutput()\n+\tt.Logf(\"run output: %s\", b)\n+\n+\tif err != nil {\n+\t\tt.Errorf(\"expected success (exit code 0), got: %v\", err)\n+\t}\n+}\ndiff --git a/src/cmd/compile/internal/loopvar/testdata/range_esc_closure_linedir.go b/src/cmd/compile/internal/loopvar/testdata/range_esc_closure_linedir.go\nnew file mode 100644\nindex 0000000..24823e8\n--- /dev/null\n+++ b/src/cmd/compile/internal/loopvar/testdata/range_esc_closure_linedir.go\n@@ -0,0 +1,24 @@\n+// Copyright 2026 The Go Authors. All rights reserved.\n+// Use of this source code is governed by a BSD-style\n+// license that can be found in the LICENSE file.\n+\n+//line range_esc_closure_linedir.go:5\n+package main\n+\n+import \"fmt\"\n+\n+var is []func() int\n+\n+func main() {\n+\tvar ints = []int{0, 0, 0}\n+\tfor i := range ints {\n+\t\tis = append(is, func() int { return i })\n+\t}\n+\n+\tfor _, f := range is {\n+\t\tfmt.Println(f())\n+\t\tif f() != 2 {\n+\t\t\tpanic(\"loop variable i: expected shared per-loop, but got distinct per-iteration\")\n+\t\t}\n+\t}\n+}\ndiff --git a/src/cmd/compile/internal/noder/writer.go b/src/cmd/compile/internal/noder/writer.go\nindex dd79c3e..de12793 100644\n--- a/src/cmd/compile/internal/noder/writer.go\n+++ b/src/cmd/compile/internal/noder/writer.go\n@@ -1560,7 +1560,7 @@ func (w *writer) forStmt(stmt *syntax.ForStmt) {\n \n func (w *writer) distinctVars(stmt *syntax.ForStmt) bool {\n \tlv := base.Debug.LoopVar\n-\tfileVersion := w.p.info.FileVersions[stmt.Pos().Base()]\n+\tfileVersion := w.p.info.FileVersions[stmt.Pos().FileBase()]\n \tis122 := fileVersion == \"\" || version.Compare(fileVersion, \"go1.22\") >= 0\n \n \t// Turning off loopvar for 1.22 is only possible with loopvarhash=qn\ndiff --git a/src/cmd/compile/internal/ppc64/ssa.go b/src/cmd/compile/internal/ppc64/ssa.go\nindex c1f2484..a81ef95 100644\n--- a/src/cmd/compile/internal/ppc64/ssa.go\n+++ b/src/cmd/compile/internal/ppc64/ssa.go\n@@ -134,6 +134,7 @@ func ssaGenValue(s *ssagen.State, v *ssa.Value) {\n \t\t// AND/OR\tRarg1, Rtmp\n \t\t// STBCCC/STWCCC Rtmp, (Rarg0)\n \t\t// BNE\t\t-3(PC)\n+\t\t// LWSYNC\n \t\tld := ppc64.ALBAR\n \t\tst := ppc64.ASTBCCC\n \t\tif v.Op == ssa.OpPPC64LoweredAtomicAnd32 || v.Op == ssa.OpPPC64LoweredAtomicOr32 {\n@@ -169,6 +170,10 @@ func ssaGenValue(s *ssagen.State, v *ssa.Value) {\n \t\tp3 := s.Prog(ppc64.ABNE)\n \t\tp3.To.Type = obj.TYPE_BRANCH\n \t\tp3.To.SetTarget(p)\n+\t\t// LWSYNC - Provide acquire ordering to pair with the\n+\t\t// release (pre-LWSYNC) above, making the operation\n+\t\t// sequentially consistent.\n+\t\ts.Prog(ppc64.ALWSYNC)\n \n \tcase ssa.OpPPC64LoweredAtomicAdd32,\n \t\tssa.OpPPC64LoweredAtomicAdd64:\n@@ -178,6 +183,7 @@ func ssaGenValue(s *ssagen.State, v *ssa.Value) {\n \t\t// STDCCC/STWCCC Rout, (Rarg0)\n \t\t// BNE         -3(PC)\n \t\t// MOVW\t\tRout,Rout (if Add32)\n+\t\t// LWSYNC\n \t\tld := ppc64.ALDAR\n \t\tst := ppc64.ASTDCCC\n \t\tif v.Op == ssa.OpPPC64LoweredAtomicAdd32 {\n@@ -187,10 +193,10 @@ func ssaGenValue(s *ssagen.State, v *ssa.Value) {\n \t\tr0 := v.Args[0].Reg()\n \t\tr1 := v.Args[1].Reg()\n \t\tout := v.Reg0()\n-\t\t// LWSYNC - Assuming shared data not write-through-required nor\n-\t\t// caching-inhibited. See Appendix B.2.2.2 in the ISA 2.07b.\n-\t\tplwsync := s.Prog(ppc64.ALWSYNC)\n-\t\tplwsync.To.Type = obj.TYPE_NONE\n+\t\t// LWSYNC - Provide acquire ordering to pair with the\n+\t\t// release (pre-LWSYNC) above, making the operation\n+\t\t// sequentially consistent.\n+\t\ts.Prog(ppc64.ALWSYNC)\n \t\t// LDAR or LWAR\n \t\tp := s.Prog(ld)\n \t\tp.From.Type = obj.TYPE_MEM\n@@ -222,6 +228,11 @@ func ssaGenValue(s *ssagen.State, v *ssa.Value) {\n \t\t\tp5.From.Type = obj.TYPE_REG\n \t\t\tp5.From.Reg = out\n \t\t}\n+\t\t// LWSYNC - Provide acquire ordering to pair with the\n+\t\t// release (pre-LWSYNC) above, making the operation\n+\t\t// sequentially consistent.\n+\t\tplwsync2 := s.Prog(ppc64.ALWSYNC)\n+\t\tplwsync2.To.Type = obj.TYPE_NONE\n \n \tcase ssa.OpPPC64LoweredAtomicExchange8,\n \t\tssa.OpPPC64LoweredAtomicExchange32,\ndiff --git a/src/cmd/compile/internal/ssa/_gen/AMD64.rules b/src/cmd/compile/internal/ssa/_gen/AMD64.rules\nindex d55dfe7..44c797d 100644\n--- a/src/cmd/compile/internal/ssa/_gen/AMD64.rules\n+++ b/src/cmd/compile/internal/ssa/_gen/AMD64.rules\n@@ -932,7 +932,8 @@\n (LEA(Q|L)2 [0] {s} (ADD(Q|L) x x) x) && s == nil => (SHL(Q|L)const [2] x)\n \n // (x + x) << 2 -> x << 3 and similar\n-(SHL(Q|L)const [c] (ADD(Q|L) x x))  => (SHL(Q|L)const [c+1] x)\n+(SHLQconst [c] (ADDQ x x)) && c < 63 => (SHLQconst [c+1] x)\n+(SHLLconst [c] (ADDL x x)) && c < 31 => (SHLLconst [c+1] x)\n \n // reverse ordering of compare instruction\n (SETL (InvertFlags x)) => (SETG x)\ndiff --git a/src/cmd/compile/internal/ssa/loopbce.go b/src/cmd/compile/internal/ssa/loopbce.go\nindex dd1f39d..a6b1e0d 100644\n--- a/src/cmd/compile/internal/ssa/loopbce.go\n+++ b/src/cmd/compile/internal/ssa/loopbce.go\n@@ -144,6 +144,12 @@ func findIndVar(f *Func) []indVar {\n \t\tif step == 0 {\n \t\t\tcontinue\n \t\t}\n+\t\t// step == minInt64 cannot be safely negated below, because -step\n+\t\t// overflows back to minInt64. The later underflow checks need a\n+\t\t// positive magnitude, so reject this case here.\n+\t\tif step == minSignedValue(ind.Type) {\n+\t\t\tcontinue\n+\t\t}\n \n \t\t// Increment sign must match comparison direction.\n \t\t// When incrementing, the termination comparison must be ind </<= limit.\n@@ -204,9 +210,11 @@ func findIndVar(f *Func) []indVar {\n \t\t\t\t\t\tif init.AuxInt > v {\n \t\t\t\t\t\t\treturn false\n \t\t\t\t\t\t}\n+\t\t\t\t\t\t// TODO(1.27): investigate passing a smaller-magnitude overflow limit to addU\n+\t\t\t\t\t\t// for addWillOverflow.\n \t\t\t\t\t\tv = addU(init.AuxInt, diff(v, init.AuxInt)/uint64(step)*uint64(step))\n \t\t\t\t\t}\n-\t\t\t\t\tif addWillOverflow(v, step) {\n+\t\t\t\t\tif addWillOverflow(v, step, maxSignedValue(ind.Type)) {\n \t\t\t\t\t\treturn false\n \t\t\t\t\t}\n \t\t\t\t\tif inclusive && v != limit.AuxInt || !inclusive && v+1 != limit.AuxInt {\n@@ -235,7 +243,7 @@ func findIndVar(f *Func) []indVar {\n \t\t\t\t// ind < knn - k cannot overflow if step is at most k+1\n \t\t\t\treturn step <= k+1 && k != maxSignedValue(limit.Type)\n \t\t\t} else { // step < 0\n-\t\t\t\tif limit.Op == OpConst64 {\n+\t\t\t\tif limit.isGenericIntConst() {\n \t\t\t\t\t// Figure out the actual smallest value.\n \t\t\t\t\tv := limit.AuxInt\n \t\t\t\t\tif !inclusive {\n@@ -249,9 +257,11 @@ func findIndVar(f *Func) []indVar {\n \t\t\t\t\t\tif init.AuxInt < v {\n \t\t\t\t\t\t\treturn false\n \t\t\t\t\t\t}\n+\t\t\t\t\t\t// TODO(1.27): investigate passing a smaller-magnitude underflow limit to subU\n+\t\t\t\t\t\t// for subWillUnderflow.\n \t\t\t\t\t\tv = subU(init.AuxInt, diff(init.AuxInt, v)/uint64(-step)*uint64(-step))\n \t\t\t\t\t}\n-\t\t\t\t\tif subWillUnderflow(v, -step) {\n+\t\t\t\t\tif subWillUnderflow(v, -step, minSignedValue(ind.Type)) {\n \t\t\t\t\t\treturn false\n \t\t\t\t\t}\n \t\t\t\t\tif inclusive && v != limit.AuxInt || !inclusive && v-1 != limit.AuxInt {\n@@ -313,14 +323,22 @@ func findIndVar(f *Func) []indVar {\n \treturn iv\n }\n \n-// addWillOverflow reports whether x+y would result in a value more than maxint.\n-func addWillOverflow(x, y int64) bool {\n-\treturn x+y < x\n+// subWillUnderflow checks if x - y underflows the min value.\n+// y must be positive.\n+func subWillUnderflow(x, y int64, min int64) bool {\n+\tif y < 0 {\n+\t\tbase.Fatalf(\"expecting positive value\")\n+\t}\n+\treturn x < min+y\n }\n \n-// subWillUnderflow reports whether x-y would result in a value less than minint.\n-func subWillUnderflow(x, y int64) bool {\n-\treturn x-y > x\n+// addWillOverflow checks if x + y overflows the max value.\n+// y must be positive.\n+func addWillOverflow(x, y int64, max int64) bool {\n+\tif y < 0 {\n+\t\tbase.Fatalf(\"expecting positive value\")\n+\t}\n+\treturn x > max-y\n }\n \n // diff returns x-y as a uint64. Requires x>=y.\n@@ -341,7 +359,8 @@ func addU(x int64, y uint64) int64 {\n \t\tx += 1\n \t\ty -= 1 << 63\n \t}\n-\tif addWillOverflow(x, int64(y)) {\n+\t// TODO(1.27): investigate passing a smaller-magnitude overflow limit in here.\n+\tif addWillOverflow(x, int64(y), maxSignedValue(types.Types[types.TINT64])) {\n \t\tbase.Fatalf(\"addU overflowed %d + %d\", x, y)\n \t}\n \treturn x + int64(y)\n@@ -357,7 +376,8 @@ func subU(x int64, y uint64) int64 {\n \t\tx -= 1\n \t\ty -= 1 << 63\n \t}\n-\tif subWillUnderflow(x, int64(y)) {\n+\t// TODO(1.27): investigate passing a smaller-magnitude underflow limit in here.\n+\tif subWillUnderflow(x, int64(y), minSignedValue(types.Types[types.TINT64])) {\n \t\tbase.Fatalf(\"subU underflowed %d - %d\", x, y)\n \t}\n \treturn x - int64(y)\ndiff --git a/src/cmd/compile/internal/ssa/prove.go b/src/cmd/compile/internal/ssa/prove.go\nindex 93bd525..1b69723 100644\n--- a/src/cmd/compile/internal/ssa/prove.go\n+++ b/src/cmd/compile/internal/ssa/prove.go\n@@ -1297,124 +1297,6 @@ func prove(f *Func) {\n \t\t\t// Since this induction variable is not used for anything but counting the iterations,\n \t\t\t// no point in putting it into the facts table.\n \t\t}\n-\n-\t\t// try to rewrite to a downward counting loop checking against start if the\n-\t\t// loop body does not depend on ind or nxt and end is known before the loop.\n-\t\t// This reduces pressure on the register allocator because this does not need\n-\t\t// to use end on each iteration anymore. We compare against the start constant instead.\n-\t\t// That means this code:\n-\t\t//\n-\t\t//\tloop:\n-\t\t//\t\tind = (Phi (Const [x]) nxt),\n-\t\t//\t\tif ind < end\n-\t\t//\t\tthen goto enter_loop\n-\t\t//\t\telse goto exit_loop\n-\t\t//\n-\t\t//\tenter_loop:\n-\t\t//\t\tdo something without using ind nor nxt\n-\t\t//\t\tnxt = inc + ind\n-\t\t//\t\tgoto loop\n-\t\t//\n-\t\t//\texit_loop:\n-\t\t//\n-\t\t// is rewritten to:\n-\t\t//\n-\t\t//\tloop:\n-\t\t//\t\tind = (Phi end nxt)\n-\t\t//\t\tif (Const [x]) < ind\n-\t\t//\t\tthen goto enter_loop\n-\t\t//\t\telse goto exit_loop\n-\t\t//\n-\t\t//\tenter_loop:\n-\t\t//\t\tdo something without using ind nor nxt\n-\t\t//\t\tnxt = ind - inc\n-\t\t//\t\tgoto loop\n-\t\t//\n-\t\t//\texit_loop:\n-\t\t//\n-\t\t// this is better because it only requires to keep ind then nxt alive while looping,\n-\t\t// while the original form keeps ind then nxt and end alive\n-\t\tstart, end := v.min, v.max\n-\t\tif v.flags&indVarCountDown != 0 {\n-\t\t\tstart, end = end, start\n-\t\t}\n-\n-\t\tif !start.isGenericIntConst() {\n-\t\t\t// if start is not a constant we would be winning nothing from inverting the loop\n-\t\t\tcontinue\n-\t\t}\n-\t\tif end.isGenericIntConst() {\n-\t\t\t// TODO: if both start and end are constants we should rewrite such that the comparison\n-\t\t\t// is against zero and nxt is ++ or -- operation\n-\t\t\t// That means:\n-\t\t\t//\tfor i := 2; i < 11; i += 2 {\n-\t\t\t// should be rewritten to:\n-\t\t\t//\tfor i := 5; 0 < i; i-- {\n-\t\t\tcontinue\n-\t\t}\n-\n-\t\tif end.Block == ind.Block {\n-\t\t\t// we can't rewrite loops where the condition depends on the loop body\n-\t\t\t// this simple check is forced to work because if this is true a Phi in ind.Block must exist\n-\t\t\tcontinue\n-\t\t}\n-\n-\t\tcheck := ind.Block.Controls[0]\n-\t\t// invert the check\n-\t\tcheck.Args[0], check.Args[1] = check.Args[1], check.Args[0]\n-\n-\t\t// swap start and end in the loop\n-\t\tfor i, v := range check.Args {\n-\t\t\tif v != end {\n-\t\t\t\tcontinue\n-\t\t\t}\n-\n-\t\t\tcheck.SetArg(i, start)\n-\t\t\tgoto replacedEnd\n-\t\t}\n-\t\tpanic(fmt.Sprintf(\"unreachable, ind: %v, start: %v, end: %v\", ind, start, end))\n-\treplacedEnd:\n-\n-\t\tfor i, v := range ind.Args {\n-\t\t\tif v != start {\n-\t\t\t\tcontinue\n-\t\t\t}\n-\n-\t\t\tind.SetArg(i, end)\n-\t\t\tgoto replacedStart\n-\t\t}\n-\t\tpanic(fmt.Sprintf(\"unreachable, ind: %v, start: %v, end: %v\", ind, start, end))\n-\treplacedStart:\n-\n-\t\tif nxt.Args[0] != ind {\n-\t\t\t// unlike additions subtractions are not commutative so be sure we get it right\n-\t\t\tnxt.Args[0], nxt.Args[1] = nxt.Args[1], nxt.Args[0]\n-\t\t}\n-\n-\t\tswitch nxt.Op {\n-\t\tcase OpAdd8:\n-\t\t\tnxt.Op = OpSub8\n-\t\tcase OpAdd16:\n-\t\t\tnxt.Op = OpSub16\n-\t\tcase OpAdd32:\n-\t\t\tnxt.Op = OpSub32\n-\t\tcase OpAdd64:\n-\t\t\tnxt.Op = OpSub64\n-\t\tcase OpSub8:\n-\t\t\tnxt.Op = OpAdd8\n-\t\tcase OpSub16:\n-\t\t\tnxt.Op = OpAdd16\n-\t\tcase OpSub32:\n-\t\t\tnxt.Op = OpAdd32\n-\t\tcase OpSub64:\n-\t\t\tnxt.Op = OpAdd64\n-\t\tdefault:\n-\t\t\tpanic(\"unreachable\")\n-\t\t}\n-\n-\t\tif f.pass.debug > 0 {\n-\t\t\tf.Warnl(ind.Pos, \"Inverted loop iteration\")\n-\t\t}\n \t}\n \n \tft := newFactsTable(f)\ndiff --git a/src/cmd/compile/internal/ssa/rewriteAMD64.go b/src/cmd/compile/internal/ssa/rewriteAMD64.go\nindex 3d7af5f..15d27e0 100644\n--- a/src/cmd/compile/internal/ssa/rewriteAMD64.go\n+++ b/src/cmd/compile/internal/ssa/rewriteAMD64.go\n@@ -20585,6 +20585,7 @@ func rewriteValueAMD64_OpAMD64SHLLconst(v *Value) bool {\n \t\treturn true\n \t}\n \t// match: (SHLLconst [c] (ADDL x x))\n+\t// cond: c < 31\n \t// result: (SHLLconst [c+1] x)\n \tfor {\n \t\tc := auxIntToInt8(v.AuxInt)\n@@ -20592,7 +20593,7 @@ func rewriteValueAMD64_OpAMD64SHLLconst(v *Value) bool {\n \t\t\tbreak\n \t\t}\n \t\tx := v_0.Args[1]\n-\t\tif x != v_0.Args[0] {\n+\t\tif x != v_0.Args[0] || !(c < 31) {\n \t\t\tbreak\n \t\t}\n \t\tv.reset(OpAMD64SHLLconst)\n@@ -20856,6 +20857,7 @@ func rewriteValueAMD64_OpAMD64SHLQconst(v *Value) bool {\n \t\treturn true\n \t}\n \t// match: (SHLQconst [c] (ADDQ x x))\n+\t// cond: c < 63\n \t// result: (SHLQconst [c+1] x)\n \tfor {\n \t\tc := auxIntToInt8(v.AuxInt)\n@@ -20863,7 +20865,7 @@ func rewriteValueAMD64_OpAMD64SHLQconst(v *Value) bool {\n \t\t\tbreak\n \t\t}\n \t\tx := v_0.Args[1]\n-\t\tif x != v_0.Args[0] {\n+\t\tif x != v_0.Args[0] || !(c < 63) {\n \t\t\tbreak\n \t\t}\n \t\tv.reset(OpAMD64SHLQconst)\ndiff --git a/src/cmd/compile/internal/ssagen/ssa.go b/src/cmd/compile/internal/ssagen/ssa.go\nindex 6ca299c..73bec2f 100644\n--- a/src/cmd/compile/internal/ssagen/ssa.go\n+++ b/src/cmd/compile/internal/ssagen/ssa.go\n@@ -1576,6 +1576,16 @@ func (s *state) stmtList(l ir.Nodes) {\n \t}\n }\n \n+func peelConvNop(n ir.Node) ir.Node {\n+\tif n == nil {\n+\t\treturn n\n+\t}\n+\tfor n.Op() == ir.OCONVNOP {\n+\t\tn = n.(*ir.ConvExpr).X\n+\t}\n+\treturn n\n+}\n+\n // stmt converts the statement n to SSA and adds it to s.\n func (s *state) stmt(n ir.Node) {\n \ts.pushLine(n.Pos())\n@@ -1751,12 +1761,10 @@ func (s *state) stmt(n ir.Node) {\n \t\t// arrays referenced are strictly smaller parts of the same base array.\n \t\t// If one side of the assignment is a full array, then partial overlap\n \t\t// can't happen. (The arrays are either disjoint or identical.)\n-\t\tmayOverlap := n.X.Op() == ir.ODEREF && (n.Y != nil && n.Y.Op() == ir.ODEREF)\n-\t\tif n.Y != nil && n.Y.Op() == ir.ODEREF {\n-\t\t\tp := n.Y.(*ir.StarExpr).X\n-\t\t\tfor p.Op() == ir.OCONVNOP {\n-\t\t\t\tp = p.(*ir.ConvExpr).X\n-\t\t\t}\n+\t\tny := peelConvNop(n.Y)\n+\t\tmayOverlap := n.X.Op() == ir.ODEREF && (n.Y != nil && ny.Op() == ir.ODEREF)\n+\t\tif ny != nil && ny.Op() == ir.ODEREF {\n+\t\t\tp := peelConvNop(ny.(*ir.StarExpr).X)\n \t\t\tif p.Op() == ir.OSPTR && p.(*ir.UnaryExpr).X.Type().IsString() {\n \t\t\t\t// Pointer fields of strings point to unmodifiable memory.\n \t\t\t\t// That memory can't overlap with the memory being written.\ndiff --git a/src/cmd/compile/internal/test/memoverlap_test.go b/src/cmd/compile/internal/test/memoverlap_test.go\nnew file mode 100644\nindex 0000000..c53288e\n--- /dev/null\n+++ b/src/cmd/compile/internal/test/memoverlap_test.go\n@@ -0,0 +1,41 @@\n+// Copyright 2026 The Go Authors. All rights reserved.\n+// Use of this source code is governed by a BSD-style\n+// license that can be found in the LICENSE file.\n+\n+package test\n+\n+import \"testing\"\n+\n+const arrFooSize = 96\n+\n+type arrFoo [arrFooSize]int\n+\n+//go:noinline\n+func badCopy(dst, src []int) {\n+\tp := (*[arrFooSize]int)(dst[:arrFooSize])\n+\tq := (*[arrFooSize]int)(src[:arrFooSize])\n+\t*p = arrFoo(*q)\n+}\n+\n+//go:noinline\n+func goodCopy(dst, src []int) {\n+\tp := (*[arrFooSize]int)(dst[:arrFooSize])\n+\tq := (*[arrFooSize]int)(src[:arrFooSize])\n+\t*p = *q\n+}\n+\n+func TestOverlapedMoveWithNoopIConv(t *testing.T) {\n+\th1 := make([]int, arrFooSize+1)\n+\th2 := make([]int, arrFooSize+1)\n+\tfor i := range arrFooSize + 1 {\n+\t\th1[i] = i\n+\t\th2[i] = i\n+\t}\n+\tbadCopy(h1[1:], h1[:arrFooSize])\n+\tgoodCopy(h2[1:], h2[:arrFooSize])\n+\tfor i := range arrFooSize + 1 {\n+\t\tif h1[i] != h2[i] {\n+\t\t\tt.Errorf(\"h1 and h2 differ at index %d, expect them to be the same\", i)\n+\t\t}\n+\t}\n+}\ndiff --git a/src/cmd/compile/internal/typecheck/expr.go b/src/cmd/compile/internal/typecheck/expr.go\nindex 44a69f0..7dc2963 100644\n--- a/src/cmd/compile/internal/typecheck/expr.go\n+++ b/src/cmd/compile/internal/typecheck/expr.go\n@@ -7,7 +7,6 @@ package typecheck\n import (\n \t\"fmt\"\n \t\"go/constant\"\n-\t\"go/token\"\n \t\"internal/types/errors\"\n \t\"strings\"\n \n@@ -826,18 +825,6 @@ func tcSliceHeader(n *ir.SliceHeaderExpr) ir.Node {\n \tn.Len = DefaultLit(Expr(n.Len), types.Types[types.TINT])\n \tn.Cap = DefaultLit(Expr(n.Cap), types.Types[types.TINT])\n \n-\tif ir.IsConst(n.Len, constant.Int) && ir.Int64Val(n.Len) < 0 {\n-\t\tbase.Fatalf(\"len for OSLICEHEADER must be non-negative\")\n-\t}\n-\n-\tif ir.IsConst(n.Cap, constant.Int) && ir.Int64Val(n.Cap) < 0 {\n-\t\tbase.Fatalf(\"cap for OSLICEHEADER must be non-negative\")\n-\t}\n-\n-\tif ir.IsConst(n.Len, constant.Int) && ir.IsConst(n.Cap, constant.Int) && constant.Compare(n.Len.Val(), token.GTR, n.Cap.Val()) {\n-\t\tbase.Fatalf(\"len larger than cap for OSLICEHEADER\")\n-\t}\n-\n \treturn n\n }\n \ndiff --git a/src/cmd/compile/internal/types2/builtins.go b/src/cmd/compile/internal/types2/builtins.go\nindex 4bb2135..3af6efc 100644\n--- a/src/cmd/compile/internal/types2/builtins.go\n+++ b/src/cmd/compile/internal/types2/builtins.go\n@@ -102,7 +102,7 @@ func (check *Checker) builtin(x *operand, call *syntax.CallExpr, id builtinId) (\n \t\t\t\t\tif s, _ := u.(*Slice); s != nil && Identical(s.elem, universeByte) {\n \t\t\t\t\t\treturn true\n \t\t\t\t\t}\n-\t\t\t\t\tif isString(u) {\n+\t\t\t\t\tif u != nil && isString(u) {\n \t\t\t\t\t\thasString = true\n \t\t\t\t\t\treturn true\n \t\t\t\t\t}\n@@ -372,7 +372,7 @@ func (check *Checker) builtin(x *operand, call *syntax.CallExpr, id builtinId) (\n \t\t\t\tif s, _ := u.(*Slice); s != nil && Identical(s.elem, universeByte) {\n \t\t\t\t\treturn true\n \t\t\t\t}\n-\t\t\t\tif isString(u) {\n+\t\t\t\tif u != nil && isString(u) {\n \t\t\t\t\treturn true\n \t\t\t\t}\n \t\t\t\tspecial = false\ndiff --git a/src/cmd/compile/internal/types2/issues_test.go b/src/cmd/compile/internal/types2/issues_test.go\nindex 8ddb399..d0b1f4e 100644\n--- a/src/cmd/compile/internal/types2/issues_test.go\n+++ b/src/cmd/compile/internal/types2/issues_test.go\n@@ -631,9 +631,13 @@ func TestIssue55030(t *testing.T) {\n \tmakeSig := func(typ Type, valid bool) {\n \t\tif !valid {\n \t\t\tdefer func() {\n-\t\t\t\tif recover() == nil {\n+\t\t\t\tr := recover()\n+\t\t\t\tif r == nil {\n \t\t\t\t\tpanic(\"NewSignatureType panic expected\")\n \t\t\t\t}\n+\t\t\t\tif _, ok := r.(string); !ok {\n+\t\t\t\t\tpanic(\"NewSignatureType string panic expected\")\n+\t\t\t\t}\n \t\t\t}()\n \t\t}\n \t\tpar := NewParam(nopos, nil, \"\", typ)\ndiff --git a/src/cmd/compile/internal/types2/signature.go b/src/cmd/compile/internal/types2/signature.go\nindex eaecb77..4e5ba19 100644\n--- a/src/cmd/compile/internal/types2/signature.go\n+++ b/src/cmd/compile/internal/types2/signature.go\n@@ -50,6 +50,9 @@ func NewSignatureType(recv *Var, recvTypeParams, typeParams []*TypeParam, params\n \t\tlast := params.At(n - 1).typ\n \t\tvar S *Slice\n \t\ttypeset(last, func(t, _ Type) bool {\n+\t\t\tif t == nil {\n+\t\t\t\treturn false\n+\t\t\t}\n \t\t\tvar s *Slice\n \t\t\tif isString(t) {\n \t\t\t\ts = NewSlice(universeByte)\n@@ -58,7 +61,7 @@ func NewSignatureType(recv *Var, recvTypeParams, typeParams []*TypeParam, params\n \t\t\t}\n \t\t\tif S == nil {\n \t\t\t\tS = s\n-\t\t\t} else if !Identical(S, s) {\n+\t\t\t} else if s == nil || !Identical(S, s) {\n \t\t\t\tS = nil\n \t\t\t\treturn false\n \t\t\t}\ndiff --git a/src/cmd/compile/internal/types2/under.go b/src/cmd/compile/internal/types2/under.go\nindex 9e5334b..5075add 100644\n--- a/src/cmd/compile/internal/types2/under.go\n+++ b/src/cmd/compile/internal/types2/under.go\n@@ -29,7 +29,7 @@ func underIs(typ Type, f func(Type) bool) bool {\n // typeset is an iterator over the (type/underlying type) pairs of the\n // specific type terms of the type set implied by t.\n // If t is a type parameter, the implied type set is the type set of t's constraint.\n-// In that case, if there are no specific terms, typeset calls yield with (nil, nil).\n+// In this case, if there are no specific terms, typeset calls yield with (nil, nil).\n // If t is not a type parameter, the implied type set consists of just t.\n // In any case, typeset is guaranteed to call yield at least once.\n func typeset(t Type, yield func(t, u Type) bool) {\ndiff --git a/src/cmd/compile/internal/walk/complit.go b/src/cmd/compile/internal/walk/complit.go\nindex 6452618..1bc4d42 100644\n--- a/src/cmd/compile/internal/walk/complit.go\n+++ b/src/cmd/compile/internal/walk/complit.go\n@@ -567,11 +567,7 @@ func anylit(n ir.Node, var_ ir.Node, init *ir.Nodes) {\n \t\t\t// lay out static data\n \t\t\tvstat := readonlystaticname(t)\n \n-\t\t\tctxt := inInitFunction\n-\t\t\tif n.Op() == ir.OARRAYLIT {\n-\t\t\t\tctxt = inNonInitFunction\n-\t\t\t}\n-\t\t\tfixedlit(ctxt, initKindStatic, n, vstat, init)\n+\t\t\tfixedlit(inInitFunction, initKindStatic, n, vstat, init)\n \n \t\t\t// copy static to var\n \t\t\tappendWalkStmt(init, ir.NewAssignStmt(base.Pos, var_, vstat))\ndiff --git a/src/cmd/dist/buildtool.go b/src/cmd/dist/buildtool.go\nindex 013b769..695fecd 100644\n--- a/src/cmd/dist/buildtool.go\n+++ b/src/cmd/dist/buildtool.go\n@@ -80,6 +80,7 @@ var bootstrapDirs = []string{\n \t\"internal/goroot\",\n \t\"internal/gover\",\n \t\"internal/goversion\",\n+\t\"internal/itoa\",\n \t// internal/lazyregexp is provided by Go 1.17, which permits it to\n \t// be imported by other packages in this list, but is not provided\n \t// by the Go 1.17 version of gccgo. It's on this list only to\ndiff --git a/src/cmd/go.mod b/src/cmd/go.mod\nindex 5624b81..7ebbeb6 100644\n--- a/src/cmd/go.mod\n+++ b/src/cmd/go.mod\n@@ -8,7 +8,7 @@ require (\n \tgolang.org/x/build v0.0.0-20250606033421-8c8ff6f34a83\n \tgolang.org/x/mod v0.25.0\n \tgolang.org/x/sync v0.15.0\n-\tgolang.org/x/sys v0.33.0\n+\tgolang.org/x/sys v0.33.1-0.20260225210015-e0c9f78de999\n \tgolang.org/x/telemetry v0.0.0-20250606142133-60998feb31a8\n \tgolang.org/x/term v0.32.0\n \tgolang.org/x/tools v0.34.0\ndiff --git a/src/cmd/go.sum b/src/cmd/go.sum\nindex d5d1553..8c5af37 100644\n--- a/src/cmd/go.sum\n+++ b/src/cmd/go.sum\n@@ -14,8 +14,8 @@ golang.org/x/mod v0.25.0 h1:n7a+ZbQKQA/Ysbyb0/6IbB1H/X41mKgbhfv7AfG/44w=\n golang.org/x/mod v0.25.0/go.mod h1:IXM97Txy2VM4PJ3gI61r1YEk/gAj6zAHN3AdZt6S9Ww=\n golang.org/x/sync v0.15.0 h1:KWH3jNZsfyT6xfAfKiz6MRNmd46ByHDYaZ7KSkCtdW8=\n golang.org/x/sync v0.15.0/go.mod h1:1dzgHSNfp02xaA81J2MS99Qcpr2w7fw1gpm99rleRqA=\n-golang.org/x/sys v0.33.0 h1:q3i8TbbEz+JRD9ywIRlyRAQbM0qF7hu24q3teo2hbuw=\n-golang.org/x/sys v0.33.0/go.mod h1:BJP2sWEmIv4KK5OTEluFJCKSidICx8ciO85XgH3Ak8k=\n+golang.org/x/sys v0.33.1-0.20260225210015-e0c9f78de999 h1:zHbjHDQXP8VenppS2avNVZ0NHy6ghl7dEp/JG/Iz5yI=\n+golang.org/x/sys v0.33.1-0.20260225210015-e0c9f78de999/go.mod h1:BJP2sWEmIv4KK5OTEluFJCKSidICx8ciO85XgH3Ak8k=\n golang.org/x/telemetry v0.0.0-20250606142133-60998feb31a8 h1:jBJ3nsFeGb1DzjhOg2ZgZTpnDnOZfHId7RNlBJUtkOM=\n golang.org/x/telemetry v0.0.0-20250606142133-60998feb31a8/go.mod h1:mUcjA5g0luJpMYCLjhH91f4t4RAUNp+zq9ZmUoqPD7M=\n golang.org/x/term v0.32.0 h1:DR4lr0TjUs3epypdhTOkMmuF5CDFJ/8pOnbzMZPQ7bg=\ndiff --git a/src/cmd/go/internal/bug/bug.go b/src/cmd/go/internal/bug/bug.go\nindex 4ff45d2..ce3083f 100644\n--- a/src/cmd/go/internal/bug/bug.go\n+++ b/src/cmd/go/internal/bug/bug.go\n@@ -182,14 +182,14 @@ func firstLine(buf []byte) []byte {\n // printGlibcVersion prints information about the glibc version.\n // It ignores failures.\n func printGlibcVersion(w io.Writer) {\n-\ttempdir := os.TempDir()\n-\tif tempdir == \"\" {\n+\ttempdir, err := os.MkdirTemp(\"\", \"\")\n+\tif err != nil {\n \t\treturn\n \t}\n \tsrc := []byte(`int main() {}`)\n \tsrcfile := filepath.Join(tempdir, \"go-bug.c\")\n \toutfile := filepath.Join(tempdir, \"go-bug\")\n-\terr := os.WriteFile(srcfile, src, 0644)\n+\terr = os.WriteFile(srcfile, src, 0644)\n \tif err != nil {\n \t\treturn\n \t}\ndiff --git a/src/cmd/go/internal/cache/cache.go b/src/cmd/go/internal/cache/cache.go\nindex 23cc531..67f8202 100644\n--- a/src/cmd/go/internal/cache/cache.go\n+++ b/src/cmd/go/internal/cache/cache.go\n@@ -385,13 +385,42 @@ func (c *DiskCache) Trim() error {\n \t// trim time is too far in the future, attempt the trim anyway. It's possible that\n \t// the cache was full when the corruption happened. Attempting a trim on\n \t// an empty cache is cheap, so there wouldn't be a big performance hit in that case.\n-\tif data, err := lockedfile.Read(filepath.Join(c.dir, \"trim.txt\")); err == nil {\n+\tskipTrim := func(data []byte) bool {\n \t\tif t, err := strconv.ParseInt(strings.TrimSpace(string(data)), 10, 64); err == nil {\n \t\t\tlastTrim := time.Unix(t, 0)\n \t\t\tif d := now.Sub(lastTrim); d < trimInterval && d > -mtimeInterval {\n-\t\t\t\treturn nil\n+\t\t\t\treturn true\n \t\t\t}\n \t\t}\n+\t\treturn false\n+\t}\n+\t// Check to see if we need a trim. Do this check separately from the lockedfile.Transform\n+\t// so that we can skip getting an exclusive lock in the common case.\n+\tif data, err := lockedfile.Read(filepath.Join(c.dir, \"trim.txt\")); err == nil {\n+\t\tif skipTrim(data) {\n+\t\t\treturn nil\n+\t\t}\n+\t}\n+\n+\terrFileChanged := errors.New(\"file changed\")\n+\n+\t// Write the new timestamp before we start trimming to reduce the chance that multiple invocations\n+\t// try to trim at the same time, causing contention in CI (#76314).\n+\terr := lockedfile.Transform(filepath.Join(c.dir, \"trim.txt\"), func(data []byte) ([]byte, error) {\n+\t\tif skipTrim(data) {\n+\t\t\t// The timestamp in the file no longer meets the criteria for us to\n+\t\t\t// do a trim. It must have been updated by another go command invocation\n+\t\t\t// since we last read it. Skip the trim.\n+\t\t\treturn nil, errFileChanged\n+\t\t}\n+\t\treturn fmt.Appendf(nil, \"%d\", now.Unix()), nil\n+\t})\n+\tif errors.Is(err, errors.ErrUnsupported) {\n+\t\treturn err\n+\t}\n+\tif errors.Is(err, errFileChanged) {\n+\t\t// Skip the trim because we don't need it anymore.\n+\t\treturn nil\n \t}\n \n \t// Trim each of the 256 subdirectories.\n@@ -403,14 +432,6 @@ func (c *DiskCache) Trim() error {\n \t\tc.trimSubdir(subdir, cutoff)\n \t}\n \n-\t// Ignore errors from here: if we don't write the complete timestamp, the\n-\t// cache will appear older than it is, and we'll trim it again next time.\n-\tvar b bytes.Buffer\n-\tfmt.Fprintf(&b, \"%d\", now.Unix())\n-\tif err := lockedfile.Write(filepath.Join(c.dir, \"trim.txt\"), &b, 0o666); err != nil {\n-\t\treturn err\n-\t}\n-\n \treturn nil\n }\n \ndiff --git a/src/cmd/go/internal/modfetch/codehost/git_test.go b/src/cmd/go/internal/modfetch/codehost/git_test.go\nindex e8884ab..ef01810 100644\n--- a/src/cmd/go/internal/modfetch/codehost/git_test.go\n+++ b/src/cmd/go/internal/modfetch/codehost/git_test.go\n@@ -16,14 +16,18 @@ import (\n \t\"io/fs\"\n \t\"log\"\n \t\"os\"\n+\t\"os/exec\"\n \t\"path\"\n \t\"path/filepath\"\n \t\"reflect\"\n+\t\"regexp\"\n \t\"runtime\"\n \t\"strings\"\n \t\"sync\"\n \t\"testing\"\n \t\"time\"\n+\n+\t\"golang.org/x/mod/semver\"\n )\n \n func TestMain(m *testing.M) {\n@@ -192,9 +196,29 @@ func testRepo(ctx context.Context, t *testing.T, remote string) (Repo, error) {\n \treturn NewRepo(ctx, vcsName, remote, false)\n }\n \n+var gitVersLineExtract = regexp.MustCompile(`git version\\s+([\\d.]+)`)\n+\n+func gitVersion(t testing.TB) string {\n+\tgitOut, runErr := exec.Command(\"git\", \"version\").CombinedOutput()\n+\tif runErr != nil {\n+\t\tt.Logf(\"failed to execute git version: %s\", runErr)\n+\t\treturn \"v0\"\n+\t}\n+\tmatches := gitVersLineExtract.FindSubmatch(gitOut)\n+\tif len(matches) < 2 {\n+\t\tt.Logf(\"git version extraction regexp did not match version line: %q\", gitOut)\n+\t\treturn \"v0\"\n+\t}\n+\treturn \"v\" + string(matches[1])\n+}\n+\n+const minGitSHA256Vers = \"v2.29\"\n+\n func TestTags(t *testing.T) {\n \tt.Parallel()\n \n+\tgitVers := gitVersion(t)\n+\n \ttype tagsTest struct {\n \t\trepo   string\n \t\tprefix string\n@@ -204,6 +228,9 @@ func TestTags(t *testing.T) {\n \trunTest := func(tt tagsTest) func(*testing.T) {\n \t\treturn func(t *testing.T) {\n \t\t\tt.Parallel()\n+\t\t\tif tt.repo == gitsha256repo && semver.Compare(gitVers, minGitSHA256Vers) < 0 {\n+\t\t\t\tt.Skipf(\"git version is too old (%+v); skipping git sha256 test\", gitVers)\n+\t\t\t}\n \t\t\tctx := testContext(t)\n \n \t\t\tr, err := testRepo(ctx, t, tt.repo)\n@@ -288,6 +315,8 @@ func TestTags(t *testing.T) {\n func TestLatest(t *testing.T) {\n \tt.Parallel()\n \n+\tgitVers := gitVersion(t)\n+\n \ttype latestTest struct {\n \t\trepo string\n \t\tinfo *RevInfo\n@@ -297,6 +326,10 @@ func TestLatest(t *testing.T) {\n \t\t\tt.Parallel()\n \t\t\tctx := testContext(t)\n \n+\t\t\tif tt.repo == gitsha256repo && semver.Compare(gitVers, minGitSHA256Vers) < 0 {\n+\t\t\t\tt.Skipf(\"git version is too old (%+v); skipping git sha256 test\", gitVers)\n+\t\t\t}\n+\n \t\t\tr, err := testRepo(ctx, t, tt.repo)\n \t\t\tif err != nil {\n \t\t\t\tt.Fatal(err)\n@@ -375,6 +408,8 @@ func TestLatest(t *testing.T) {\n func TestReadFile(t *testing.T) {\n \tt.Parallel()\n \n+\tgitVers := gitVersion(t)\n+\n \ttype readFileTest struct {\n \t\trepo string\n \t\trev  string\n@@ -387,6 +422,10 @@ func TestReadFile(t *testing.T) {\n \t\t\tt.Parallel()\n \t\t\tctx := testContext(t)\n \n+\t\t\tif tt.repo == gitsha256repo && semver.Compare(gitVers, minGitSHA256Vers) < 0 {\n+\t\t\t\tt.Skipf(\"git version is too old (%+v); skipping git sha256 test\", gitVers)\n+\t\t\t}\n+\n \t\t\tr, err := testRepo(ctx, t, tt.repo)\n \t\t\tif err != nil {\n \t\t\t\tt.Fatal(err)\n@@ -468,6 +507,8 @@ type zipFile struct {\n func TestReadZip(t *testing.T) {\n \tt.Parallel()\n \n+\tgitVers := gitVersion(t)\n+\n \ttype readZipTest struct {\n \t\trepo   string\n \t\trev    string\n@@ -480,6 +521,10 @@ func TestReadZip(t *testing.T) {\n \t\t\tt.Parallel()\n \t\t\tctx := testContext(t)\n \n+\t\t\tif tt.repo == gitsha256repo && semver.Compare(gitVers, minGitSHA256Vers) < 0 {\n+\t\t\t\tt.Skipf(\"git version is too old (%+v); skipping git sha256 test\", gitVers)\n+\t\t\t}\n+\n \t\t\tr, err := testRepo(ctx, t, tt.repo)\n \t\t\tif err != nil {\n \t\t\t\tt.Fatal(err)\n@@ -753,6 +798,8 @@ var hgmap = map[string]string{\n func TestStat(t *testing.T) {\n \tt.Parallel()\n \n+\tgitVers := gitVersion(t)\n+\n \ttype statTest struct {\n \t\trepo string\n \t\trev  string\n@@ -764,6 +811,10 @@ func TestStat(t *testing.T) {\n \t\t\tt.Parallel()\n \t\t\tctx := testContext(t)\n \n+\t\t\tif tt.repo == gitsha256repo && semver.Compare(gitVers, minGitSHA256Vers) < 0 {\n+\t\t\t\tt.Skipf(\"git version is too old (%+v); skipping git sha256 test\", gitVers)\n+\t\t\t}\n+\n \t\t\tr, err := testRepo(ctx, t, tt.repo)\n \t\t\tif err != nil {\n \t\t\t\tt.Fatal(err)\ndiff --git a/src/cmd/go/internal/modfetch/fetch.go b/src/cmd/go/internal/modfetch/fetch.go\nindex 5d310cc..41e02e7 100644\n--- a/src/cmd/go/internal/modfetch/fetch.go\n+++ b/src/cmd/go/internal/modfetch/fetch.go\n@@ -851,7 +851,7 @@ func checkSumDB(mod module.Version, h string) error {\n \t\t\treturn module.VersionError(modWithoutSuffix, fmt.Errorf(\"verifying %s: checksum mismatch\\n\\tdownloaded: %v\\n\\t%s: %v\"+sumdbMismatch, noun, h, db, line[len(prefix)-len(\"h1:\"):]))\n \t\t}\n \t}\n-\treturn nil\n+\treturn module.VersionError(modWithoutSuffix, fmt.Errorf(\"verifying %s: checksum missing from sumdb response\"+sumdbAbsent, noun))\n }\n \n // Sum returns the checksum for the downloaded copy of the given module,\n@@ -1062,6 +1062,19 @@ have intercepted the download attempt.\n For more information, see 'go help module-auth'.\n `\n \n+const sumdbAbsent = `\n+\n+SECURITY ERROR\n+This download does NOT match one reported by the checksum server.\n+The checksum server has provided checksums, but the checksums do\n+not contain an entry for the download.\n+The checksum server may be malfunctioning, or an attacker may have\n+intercepted the checksum request.\n+The download cannot be verified.\n+\n+For more information, see 'go help module-auth'.\n+`\n+\n const hashVersionMismatch = `\n \n SECURITY WARNING\ndiff --git a/src/cmd/go/internal/modindex/read.go b/src/cmd/go/internal/modindex/read.go\nindex d87fb06..3dc7f74 100644\n--- a/src/cmd/go/internal/modindex/read.go\n+++ b/src/cmd/go/internal/modindex/read.go\n@@ -680,7 +680,7 @@ func (rp *IndexPackage) Import(bctxt build.Context, mode build.ImportMode) (p *b\n // and otherwise falling back to internal/goroot.IsStandardPackage\n func IsStandardPackage(goroot_, compiler, path string) bool {\n \tif !enabled || compiler != \"gc\" {\n-\t\treturn goroot.IsStandardPackage(goroot_, compiler, path)\n+\t\treturn goroot.IsStandardPackage(fsys.ReadDir, goroot_, compiler, path)\n \t}\n \n \treldir := filepath.FromSlash(path) // relative dir path in module index for package\n@@ -695,7 +695,7 @@ func IsStandardPackage(goroot_, compiler, path string) bool {\n \t} else if errors.Is(err, ErrNotIndexed) {\n \t\t// Fall back because package isn't indexable. (Probably because\n \t\t// a file was modified recently)\n-\t\treturn goroot.IsStandardPackage(goroot_, compiler, path)\n+\t\treturn goroot.IsStandardPackage(fsys.ReadDir, goroot_, compiler, path)\n \t}\n \treturn false\n }\ndiff --git a/src/cmd/go/internal/test/test.go b/src/cmd/go/internal/test/test.go\nindex 6c4a6a5..5ba7a88 100644\n--- a/src/cmd/go/internal/test/test.go\n+++ b/src/cmd/go/internal/test/test.go\n@@ -1371,9 +1371,10 @@ type runTestActor struct {\n type runCache struct {\n \tdisableCache bool // cache should be disabled for this run\n \n-\tbuf *bytes.Buffer\n-\tid1 cache.ActionID\n-\tid2 cache.ActionID\n+\tbuf     *bytes.Buffer\n+\tid1     cache.ActionID\n+\tid2     cache.ActionID\n+\tcovMeta cache.ActionID // Hash of writeCoverMetaAct dependencies, for invalidating coverage profiles\n }\n \n func coverProfTempFile(a *work.Action) string {\n@@ -1765,6 +1766,33 @@ func (c *runCache) tryCacheWithID(b *work.Builder, a *work.Action, id string) bo\n \t\treturn false\n \t}\n \n+\t// If we are collecting coverage for out-of-band packages (-coverpkg),\n+\t// find the writeCoverMetaAct among the run action's dependencies and hash\n+\t// its deps to ensure the cache invalidates when covered packages change.\n+\t// Note: the run action's original deps may be wrapped inside a \"test barrier\"\n+\t// action, so we search both a.Deps and any barrier's deps.\n+\tif len(testCoverPkgs) != 0 {\n+\t\tsearchDeps := a.Deps\n+\t\tfor _, dep := range a.Deps {\n+\t\t\tif dep.Mode == \"test barrier\" {\n+\t\t\t\tsearchDeps = dep.Deps\n+\t\t\t\tbreak\n+\t\t\t}\n+\t\t}\n+\t\tfor _, dep := range searchDeps {\n+\t\t\tif dep.Mode == \"write coverage meta-data file\" {\n+\t\t\t\th := cache.NewHash(\"covermeta\")\n+\t\t\t\tfor _, metaDep := range dep.Deps {\n+\t\t\t\t\tif aid := metaDep.BuildActionID(); aid != \"\" {\n+\t\t\t\t\t\tfmt.Fprintf(h, \"dep %s\\n\", aid)\n+\t\t\t\t\t}\n+\t\t\t\t}\n+\t\t\t\tc.covMeta = h.Sum()\n+\t\t\t\tbreak\n+\t\t\t}\n+\t\t}\n+\t}\n+\n \tvar cacheArgs []string\n \tfor _, arg := range testArgs {\n \t\ti := strings.Index(arg, \"=\")\n@@ -1871,7 +1899,7 @@ func (c *runCache) tryCacheWithID(b *work.Builder, a *work.Action, id string) bo\n \t// Merge cached cover profile data to cover profile.\n \tif testCoverProfile != \"\" {\n \t\t// Specifically ignore entry as it will be the same as above.\n-\t\tcpData, _, err := cache.GetFile(cache.Default(), coverProfileAndInputKey(testID, testInputsID))\n+\t\tcpData, _, err := cache.GetFile(cache.Default(), coverProfileAndInputKey(testID, testInputsID, c.covMeta))\n \t\tif err != nil {\n \t\t\tif cache.DebugTest {\n \t\t\t\tfmt.Fprintf(os.Stderr, \"testcache: %s: cached cover profile missing: %v\\n\", a.Package.ImportPath, err)\n@@ -1879,6 +1907,18 @@ func (c *runCache) tryCacheWithID(b *work.Builder, a *work.Action, id string) bo\n \t\t\treturn false\n \t\t}\n \t\tmergeCoverProfile(cpData)\n+\t} else if c.covMeta != (cache.ActionID{}) {\n+\t\t// If we have a coverage metadata hash but no testCoverProfile, we're collecting\n+\t\t// coverage for out-of-band packages. Check if the coverage profile cache is still\n+\t\t// valid. If c.covMeta changed (meaning a covered package changed), the coverage\n+\t\t// profile cache will miss and we need to re-run the test.\n+\t\t_, _, err := cache.GetFile(cache.Default(), coverProfileAndInputKey(testID, testInputsID, c.covMeta))\n+\t\tif err != nil {\n+\t\t\tif cache.DebugTest {\n+\t\t\t\tfmt.Fprintf(os.Stderr, \"testcache: %s: coverage metadata changed, re-running test: %v\\n\", a.Package.ImportPath, err)\n+\t\t\t}\n+\t\t\treturn false\n+\t\t}\n \t}\n \n \tif len(data) == 0 || data[len(data)-1] != '\\n' {\n@@ -2069,9 +2109,15 @@ func testAndInputKey(testID, testInputsID cache.ActionID) cache.ActionID {\n \treturn cache.Subkey(testID, fmt.Sprintf(\"inputs:%x\", testInputsID))\n }\n \n-// coverProfileAndInputKey returns the \"coverprofile\" cache key for the pair (testID, testInputsID).\n-func coverProfileAndInputKey(testID, testInputsID cache.ActionID) cache.ActionID {\n-\treturn cache.Subkey(testAndInputKey(testID, testInputsID), \"coverprofile\")\n+// coverProfileAndInputKey returns the \"coverprofile\" cache key.\n+// If covMetaID is non-zero, it is included in the hash to ensure coverage profiles are invalidated\n+// when the coverage metadata changes (e.g., when source files in covered packages are modified).\n+func coverProfileAndInputKey(testID, testInputsID, covMetaID cache.ActionID) cache.ActionID {\n+\tkey := testAndInputKey(testID, testInputsID)\n+\tif covMetaID != (cache.ActionID{}) {\n+\t\tkey = cache.Subkey(key, fmt.Sprintf(\"coverdeps:%x\", covMetaID))\n+\t}\n+\treturn cache.Subkey(key, \"coverprofile\")\n }\n \n func (c *runCache) saveOutput(a *work.Action) {\n@@ -2112,7 +2158,11 @@ func (c *runCache) saveOutput(a *work.Action) {\n \t\tcache.PutNoVerify(cache.Default(), c.id1, bytes.NewReader(testlog))\n \t\tcache.PutNoVerify(cache.Default(), testAndInputKey(c.id1, testInputsID), bytes.NewReader(a.TestOutput.Bytes()))\n \t\tif coverProfile != nil {\n-\t\t\tcache.PutNoVerify(cache.Default(), coverProfileAndInputKey(c.id1, testInputsID), bytes.NewReader(coverProfile))\n+\t\t\tcache.PutNoVerify(cache.Default(), coverProfileAndInputKey(c.id1, testInputsID, c.covMeta), bytes.NewReader(coverProfile))\n+\t\t} else if c.covMeta != (cache.ActionID{}) {\n+\t\t\t// Write a sentinel so the else-if branch in tryCacheWithID can verify\n+\t\t\t// that the covMeta hash has not changed since the last run.\n+\t\t\tcache.PutNoVerify(cache.Default(), coverProfileAndInputKey(c.id1, testInputsID, c.covMeta), bytes.NewReader(nil))\n \t\t}\n \t}\n \tif c.id2 != (cache.ActionID{}) {\n@@ -2122,7 +2172,10 @@ func (c *runCache) saveOutput(a *work.Action) {\n \t\tcache.PutNoVerify(cache.Default(), c.id2, bytes.NewReader(testlog))\n \t\tcache.PutNoVerify(cache.Default(), testAndInputKey(c.id2, testInputsID), bytes.NewReader(a.TestOutput.Bytes()))\n \t\tif coverProfile != nil {\n-\t\t\tcache.PutNoVerify(cache.Default(), coverProfileAndInputKey(c.id2, testInputsID), bytes.NewReader(coverProfile))\n+\t\t\tcache.PutNoVerify(cache.Default(), coverProfileAndInputKey(c.id2, testInputsID, c.covMeta), bytes.NewReader(coverProfile))\n+\t\t} else if c.covMeta != (cache.ActionID{}) {\n+\t\t\t// Sentinel for covMeta validity; see comment in id1 block above.\n+\t\t\tcache.PutNoVerify(cache.Default(), coverProfileAndInputKey(c.id2, testInputsID, c.covMeta), bytes.NewReader(nil))\n \t\t}\n \t}\n }\ndiff --git a/src/cmd/go/internal/vcweb/script.go b/src/cmd/go/internal/vcweb/script.go\nindex 3342ab2..8fa00b2 100644\n--- a/src/cmd/go/internal/vcweb/script.go\n+++ b/src/cmd/go/internal/vcweb/script.go\n@@ -18,12 +18,14 @@ import (\n \t\"os\"\n \t\"os/exec\"\n \t\"path/filepath\"\n+\t\"regexp\"\n \t\"runtime\"\n \t\"strconv\"\n \t\"strings\"\n \t\"time\"\n \n \t\"golang.org/x/mod/module\"\n+\t\"golang.org/x/mod/semver\"\n \t\"golang.org/x/mod/zip\"\n )\n \n@@ -42,6 +44,7 @@ func newScriptEngine() *script.Engine {\n \t\treturn script.OnceCondition(summary, func() (bool, error) { return f(), nil })\n \t}\n \tadd(\"bzr\", lazyBool(\"the 'bzr' executable exists and provides the standard CLI\", hasWorkingBzr))\n+\tadd(\"git-sha256\", script.OnceCondition(\"the local 'git' version is recent enough to support sha256 object/commit hashes\", gitSupportsSHA256))\n \n \tinterrupt := func(cmd *exec.Cmd) error { return cmd.Process.Signal(os.Interrupt) }\n \tgracePeriod := 30 * time.Second // arbitrary\n@@ -394,3 +397,29 @@ func hasWorkingBzr() bool {\n \terr = exec.Command(bzr, \"help\").Run()\n \treturn err == nil\n }\n+\n+var gitVersLineExtract = regexp.MustCompile(`git version\\s+([\\d.]+)`)\n+\n+func gitVersion() (string, error) {\n+\tgitOut, runErr := exec.Command(\"git\", \"version\").CombinedOutput()\n+\tif runErr != nil {\n+\t\treturn \"v0\", fmt.Errorf(\"failed to execute git version: %w\", runErr)\n+\t}\n+\tmatches := gitVersLineExtract.FindSubmatch(gitOut)\n+\tif len(matches) < 2 {\n+\t\treturn \"v0\", fmt.Errorf(\"git version extraction regexp did not match version line: %q\", gitOut)\n+\t}\n+\treturn \"v\" + string(matches[1]), nil\n+}\n+\n+func hasAtLeastGitVersion(minVers string) (bool, error) {\n+\tgitVers, gitVersErr := gitVersion()\n+\tif gitVersErr != nil {\n+\t\treturn false, gitVersErr\n+\t}\n+\treturn semver.Compare(minVers, gitVers) <= 0, nil\n+}\n+\n+func gitSupportsSHA256() (bool, error) {\n+\treturn hasAtLeastGitVersion(\"v2.29\")\n+}\ndiff --git a/src/cmd/go/internal/work/cover.go b/src/cmd/go/internal/work/cover.go\nindex 62fcdb3..01dace9 100644\n--- a/src/cmd/go/internal/work/cover.go\n+++ b/src/cmd/go/internal/work/cover.go\n@@ -24,7 +24,7 @@ import (\n func (b *Builder) CovData(a *Action, cmdargs ...any) ([]byte, error) {\n \tcmdline := str.StringList(cmdargs...)\n \targs := append([]string{}, cfg.BuildToolexec...)\n-\targs = append(args, \"go\", \"tool\", \"covdata\")\n+\targs = append(args, filepath.Join(cfg.GOROOTbin, \"go\"), \"tool\", \"covdata\")\n \targs = append(args, cmdline...)\n \treturn b.Shell(a).runOut(a.Objdir, nil, args)\n }\ndiff --git a/src/cmd/go/internal/work/exec.go b/src/cmd/go/internal/work/exec.go\nindex 9d4429a..8c3bac5 100644\n--- a/src/cmd/go/internal/work/exec.go\n+++ b/src/cmd/go/internal/work/exec.go\n@@ -1637,10 +1637,7 @@ func (b *Builder) getPkgConfigFlags(a *Action) (cflags, ldflags []string, err er\n \t\t\t}\n \t\t}\n \n-\t\t// Running 'pkg-config' can cause execution of\n-\t\t// arbitrary code using flags that are not in\n-\t\t// the safelist.\n-\t\tif err := checkCompilerFlags(\"CFLAGS\", \"pkg-config --cflags\", pcflags); err != nil {\n+\t\tif err := checkPkgConfigFlags(\"\", \"pkg-config\", pcflags); err != nil {\n \t\t\treturn nil, nil, err\n \t\t}\n \n@@ -3234,6 +3231,10 @@ func (b *Builder) swigIntSize(objdir string) (intsize string, err error) {\n \n // Run SWIG on one SWIG input file.\n func (b *Builder) swigOne(a *Action, file, objdir string, pcCFLAGS []string, cxx bool, intgosize string) (outGo, outC string, err error) {\n+\tif strings.HasPrefix(file, \"cgo\") {\n+\t\treturn \"\", \"\", errors.New(\"SWIG file must not use prefix 'cgo'\")\n+\t}\n+\n \tp := a.Package\n \tsh := b.Shell(a)\n \ndiff --git a/src/cmd/go/internal/work/security.go b/src/cmd/go/internal/work/security.go\nindex 68d2706..f80b2bc 100644\n--- a/src/cmd/go/internal/work/security.go\n+++ b/src/cmd/go/internal/work/security.go\n@@ -254,6 +254,58 @@ var validLinkerFlagsWithNextArg = []string{\n \t\"-Wl,-undefined\",\n }\n \n+var validPkgConfigFlags = []*lazyregexp.Regexp{\n+\tre(`--atleast-pkgconfig-version=\\d+\\.\\d+\\.\\d+`),\n+\tre(`--atleast-version=\\d+\\.\\d+\\.\\d+`),\n+\tre(`--cflags-only-I`),\n+\tre(`--cflags`),\n+\tre(`--define-prefix`),\n+\tre(`--define-variable=[A-Za-z_][A-Za-z0-9_]*=[^@\\-]*`),\n+\tre(`--digraph`),\n+\tre(`--dont-define-prefix`),\n+\tre(`--dont-relocate-paths`),\n+\tre(`--dump-personality`),\n+\tre(`--env-only`),\n+\tre(`--errors-to-stdout`),\n+\tre(`--exact-version=\\d+\\.\\d+\\.\\d+`),\n+\tre(`--exists`),\n+\tre(`--fragment-filter=[A-Za-z_][a-zA-Z0-9_]*`),\n+\tre(`--ignore-conflicts`),\n+\tre(`--internal-cflags`),\n+\tre(`--keep-system-cflags`),\n+\tre(`--keep-system-libs`),\n+\tre(`--libs-only-l`),\n+\tre(`--libs-only-L`),\n+\tre(`--libs`),\n+\tre(`--list-all`),\n+\tre(`--list-package-names`),\n+\tre(`--max-version=\\d+\\.\\d+\\.\\d+`),\n+\tre(`--maximum-traverse-depth=[0-9]+`),\n+\tre(`--modversion`),\n+\tre(`--msvc-syntax`),\n+\tre(`--no-cache`),\n+\tre(`--no-provides`),\n+\tre(`--no-uninstalled`),\n+\tre(`--path`),\n+\tre(`--personality=(triplet|filename)`),\n+\tre(`--prefix-variable=[A-Za-z_][a-zA-Z0-9_]*`),\n+\tre(`--print-errors`),\n+\tre(`--print-provides`),\n+\tre(`--print-requires-private`),\n+\tre(`--print-requires`),\n+\tre(`--print-variables`),\n+\tre(`--pure`),\n+\tre(`--shared`),\n+\tre(`--short-errors`),\n+\tre(`--silence-errors`),\n+\tre(`--simulate`),\n+\tre(`--static`),\n+\tre(`--uninstalled`),\n+\tre(`--validate`),\n+\tre(`--variable=[A-Za-z_][a-zA-Z0-9_]*`),\n+\tre(`--with-path=[^@\\-].*`),\n+}\n+\n func checkCompilerFlags(name, source string, list []string) error {\n \tcheckOverrides := true\n \treturn checkFlags(name, source, list, nil, validCompilerFlags, validCompilerFlagsWithNextArg, checkOverrides)\n@@ -264,6 +316,11 @@ func checkLinkerFlags(name, source string, list []string) error {\n \treturn checkFlags(name, source, list, invalidLinkerFlags, validLinkerFlags, validLinkerFlagsWithNextArg, checkOverrides)\n }\n \n+func checkPkgConfigFlags(name, source string, list []string) error {\n+\tcheckOverrides := false\n+\treturn checkFlags(name, source, list, nil, validPkgConfigFlags, nil, checkOverrides)\n+}\n+\n // checkCompilerFlagsForInternalLink returns an error if 'list'\n // contains a flag or flags that may not be fully supported by\n // internal linking (meaning that we should punt the link to the\ndiff --git a/src/cmd/go/proxy_test.go b/src/cmd/go/proxy_test.go\nindex 5ff8136..2a8bace 100644\n--- a/src/cmd/go/proxy_test.go\n+++ b/src/cmd/go/proxy_test.go\n@@ -172,6 +172,23 @@ func proxyHandler(w http.ResponseWriter, r *http.Request) {\n \t\treturn\n \t}\n \n+\t// Request for $GOPROXY/sumdb-redirect/module@version:/lookup/...\n+\t// performs a lookup for module@version rather than the requested module.\n+\tif strings.HasPrefix(path, \"sumdb-redirect/\") {\n+\t\tredirect, rest, ok := strings.Cut(path[len(\"sumdb-redirect\"):], \":\")\n+\t\tif !ok {\n+\t\t\tw.WriteHeader(500)\n+\t\t\treturn\n+\t\t}\n+\t\tif strings.HasPrefix(rest, \"/lookup/\") {\n+\t\t\tr.URL.Path = \"/lookup\" + redirect\n+\t\t} else {\n+\t\t\tr.URL.Path = rest\n+\t\t}\n+\t\tsumdbServer.ServeHTTP(w, r)\n+\t\treturn\n+\t}\n+\n \t// Request for $GOPROXY/redirect/<count>/... goes to redirects.\n \tif strings.HasPrefix(path, \"redirect/\") {\n \t\tpath = path[len(\"redirect/\"):]\ndiff --git a/src/cmd/go/scriptconds_test.go b/src/cmd/go/scriptconds_test.go\nindex af9691a..4d7a9ac 100644\n--- a/src/cmd/go/scriptconds_test.go\n+++ b/src/cmd/go/scriptconds_test.go\n@@ -14,10 +14,13 @@ import (\n \t\"os\"\n \t\"os/exec\"\n \t\"path/filepath\"\n+\t\"regexp\"\n \t\"runtime\"\n \t\"runtime/debug\"\n \t\"sync\"\n \t\"testing\"\n+\n+\t\"golang.org/x/mod/semver\"\n )\n \n func scriptConditions(t *testing.T) map[string]script.Cond {\n@@ -41,6 +44,7 @@ func scriptConditions(t *testing.T) map[string]script.Cond {\n \tadd(\"case-sensitive\", script.OnceCondition(\"$WORK filesystem is case-sensitive\", isCaseSensitive))\n \tadd(\"cc\", script.PrefixCondition(\"go env CC = <suffix> (ignoring the go/env file)\", ccIs))\n \tadd(\"git\", lazyBool(\"the 'git' executable exists and provides the standard CLI\", hasWorkingGit))\n+\tadd(\"git-sha256\", script.OnceCondition(\"the local 'git' version is recent enough to support sha256 object/commit hashes\", gitSupportsSHA256))\n \tadd(\"net\", script.PrefixCondition(\"can connect to external network host <suffix>\", hasNet))\n \tadd(\"trimpath\", script.OnceCondition(\"test binary was built with -trimpath\", isTrimpath))\n \n@@ -153,6 +157,32 @@ func hasWorkingGit() bool {\n \treturn err == nil\n }\n \n+var gitVersLineExtract = regexp.MustCompile(`git version\\s+([\\d.]+)`)\n+\n+func gitVersion() (string, error) {\n+\tgitOut, runErr := exec.Command(\"git\", \"version\").CombinedOutput()\n+\tif runErr != nil {\n+\t\treturn \"v0\", fmt.Errorf(\"failed to execute git version: %w\", runErr)\n+\t}\n+\tmatches := gitVersLineExtract.FindSubmatch(gitOut)\n+\tif len(matches) < 2 {\n+\t\treturn \"v0\", fmt.Errorf(\"git version extraction regexp did not match version line: %q\", gitOut)\n+\t}\n+\treturn \"v\" + string(matches[1]), nil\n+}\n+\n+func hasAtLeastGitVersion(minVers string) (bool, error) {\n+\tgitVers, gitVersErr := gitVersion()\n+\tif gitVersErr != nil {\n+\t\treturn false, gitVersErr\n+\t}\n+\treturn semver.Compare(minVers, gitVers) <= 0, nil\n+}\n+\n+func gitSupportsSHA256() (bool, error) {\n+\treturn hasAtLeastGitVersion(\"v2.29\")\n+}\n+\n func hasWorkingBzr() bool {\n \tbzr, err := exec.LookPath(\"bzr\")\n \tif err != nil {\ndiff --git a/src/cmd/go/testdata/mod/example.com_importcrypto_v1.0.0.txt b/src/cmd/go/testdata/mod/example.com_importcrypto_v1.0.0.txt\nnew file mode 100644\nindex 0000000..0ca0f35\n--- /dev/null\n+++ b/src/cmd/go/testdata/mod/example.com_importcrypto_v1.0.0.txt\n@@ -0,0 +1,19 @@\n+example.com/importcrypto contains a package that imports crypto/sha256\n+It's used by the script test case mod_get_fips140_issue73649\n+\n+-- .info --\n+{\"Version\":\"v1.0.0\"}\n+-- .mod --\n+module example.com/importcrypto\n+\n+go 1.27\n+-- go.mod --\n+module example.com/importcrypto\n+\n+go 1.27\n+-- importcypto.go --\n+package p\n+\n+import _ \"crypto/sha256\"\n+\n+func main() {}\ndiff --git a/src/cmd/go/testdata/script/README b/src/cmd/go/testdata/script/README\nindex 7724bc1..2b5ab69 100644\n--- a/src/cmd/go/testdata/script/README\n+++ b/src/cmd/go/testdata/script/README\n@@ -399,6 +399,8 @@ The available conditions are:\n \tGOOS/GOARCH supports -fuzz with instrumentation\n [git]\n \tthe 'git' executable exists and provides the standard CLI\n+[git-sha256]\n+\tthe local 'git' version is recent enough to support sha256 object/commit hashes\n [go-builder]\n \tGO_BUILDER_NAME is non-empty\n [link]\ndiff --git a/src/cmd/go/testdata/script/build_git_sha256_go_get_branch.txt b/src/cmd/go/testdata/script/build_git_sha256_go_get_branch.txt\nindex fa5557b..1e71e25 100644\n--- a/src/cmd/go/testdata/script/build_git_sha256_go_get_branch.txt\n+++ b/src/cmd/go/testdata/script/build_git_sha256_go_get_branch.txt\n@@ -1,5 +1,6 @@\n [short] skip\n [!git] skip\n+[!git-sha256] skip\n \n env GOPRIVATE=vcs-test.golang.org\n \ndiff --git a/src/cmd/go/testdata/script/build_git_sha256_moddep.txt b/src/cmd/go/testdata/script/build_git_sha256_moddep.txt\nindex e5bf209..7048e8f 100644\n--- a/src/cmd/go/testdata/script/build_git_sha256_moddep.txt\n+++ b/src/cmd/go/testdata/script/build_git_sha256_moddep.txt\n@@ -1,5 +1,6 @@\n [short] skip\n [!git] skip\n+[!git-sha256] skip\n \n env GOPRIVATE=vcs-test.golang.org\n \ndiff --git a/src/cmd/go/testdata/script/cgo_bad_directives.txt b/src/cmd/go/testdata/script/cgo_bad_directives.txt\nindex 7d28171..0c64b6d 100644\n--- a/src/cmd/go/testdata/script/cgo_bad_directives.txt\n+++ b/src/cmd/go/testdata/script/cgo_bad_directives.txt\n@@ -45,6 +45,11 @@ cp y_pkgconfig_at_foo.txt y.go\n ! go build x\n stderr 'invalid pkg-config package name: @foo'\n \n+# Reject #cgo pkg-config: --log-file=/tmp/log\n+cp y_pkgconfig_log_file.txt y.go\n+! go build x\n+stderr 'invalid flag in pkg-config: --log-file=/tmp/log'\n+\n # Reject #cgo CFLAGS: @foo\n cp y_cflags_at_foo.txt y.go\n ! go build x\n@@ -108,6 +113,10 @@ import \"C\"\n package x\n // #cgo pkg-config: @foo\n import \"C\"\n+-- y_pkgconfig_log_file.txt --\n+package x\n+// #cgo pkg-config: --log-file=/tmp/log\n+import \"C\"\n -- y_cflags_at_foo.txt --\n package x\n // #cgo CFLAGS: @foo\ndiff --git a/src/cmd/go/testdata/script/cover_switch_toolchain.txt b/src/cmd/go/testdata/script/cover_switch_toolchain.txt\nnew file mode 100644\nindex 0000000..dace804\n--- /dev/null\n+++ b/src/cmd/go/testdata/script/cover_switch_toolchain.txt\n@@ -0,0 +1,12 @@\n+go test -cover -n ./...\n+[!GOOS:windows] stderr $GOROOT'/bin/go tool covdata'\n+[GOOS:windows] stderr '\\\\\\\\bin\\\\\\\\go\" tool covdata'\n+\n+-- go.mod --\n+module example.com/m\n+\n+go 1.25.0\n+-- m.go --\n+package main\n+\n+func main() {}\ndiff --git a/src/cmd/go/testdata/script/mod_download_git_bareRepository_sha256.txt b/src/cmd/go/testdata/script/mod_download_git_bareRepository_sha256.txt\nindex 9e8dc3c..2f391e2 100644\n--- a/src/cmd/go/testdata/script/mod_download_git_bareRepository_sha256.txt\n+++ b/src/cmd/go/testdata/script/mod_download_git_bareRepository_sha256.txt\n@@ -1,5 +1,6 @@\n [short] skip\n [!git] skip\n+[!git-sha256] skip\n \n # This is a git sha256-mode copy of mod_download_git_bareRepository\n \ndiff --git a/src/cmd/go/testdata/script/mod_get_fips140_issue73649.txt b/src/cmd/go/testdata/script/mod_get_fips140_issue73649.txt\nnew file mode 100644\nindex 0000000..f6904e2\n--- /dev/null\n+++ b/src/cmd/go/testdata/script/mod_get_fips140_issue73649.txt\n@@ -0,0 +1,10 @@\n+[GOEXPERIMENT:boringcrypto] skip\n+\n+env GOFIPS140=v1.0.0\n+env GOCACHE=$WORK/cache\n+go get example.com/importcrypto\n+\n+-- go.mod --\n+module m\n+\n+go 1.24\ndiff --git a/src/cmd/go/testdata/script/mod_sum_absent.txt b/src/cmd/go/testdata/script/mod_sum_absent.txt\nnew file mode 100644\nindex 0000000..c2dd814\n--- /dev/null\n+++ b/src/cmd/go/testdata/script/mod_sum_absent.txt\n@@ -0,0 +1,17 @@\n+# When the sumdb returns a response which does not\n+# include a sum for the requested module,\n+# we should report an error.\n+# Verifies CVE-2026-42501.\n+env sumdb=$GOSUMDB\n+env proxy=$GOPROXY\n+env GOPROXY GONOPROXY GOSUMDB GONOSUMDB\n+\n+# /sumdb-redirect/ causes the sumdb to return /lookup/ responses\n+# for rsc.io/quote@v1.0.0, not for the requested module.\n+env GOSUMDB=$sumdb' '$proxy/sumdb-redirect/rsc.io/quote@v1.0.0:\n+\n+! go get rsc.io/fortune@v1.0.0\n+stderr 'SECURITY ERROR'\n+! grep rsc.io go.sum\n+-- go.mod --\n+module m\ndiff --git a/src/cmd/go/testdata/script/test_cache_coverpkg_bug.txt b/src/cmd/go/testdata/script/test_cache_coverpkg_bug.txt\nnew file mode 100644\nindex 0000000..71cd3b3\n--- /dev/null\n+++ b/src/cmd/go/testdata/script/test_cache_coverpkg_bug.txt\n@@ -0,0 +1,134 @@\n+# Test for bug where cached coverage profiles with -coverpkg can contain\n+# outdated line references when source files are modified.\n+# This reproduces the issue where coverage data from cache may reference\n+# lines that no longer exist in the updated source files.\n+\n+[short] skip\n+[GODEBUG:gocacheverify=1] skip\n+\n+# We're testing cache behavior, so start with a clean GOCACHE.\n+env GOCACHE=$WORK/cache\n+\n+# Create a project structure with multiple packages\n+# proj/\n+#   some_func.go\n+#   some_func_test.go\n+#   sub/\n+#     sub.go\n+#     sub_test.go\n+#   sum/\n+#     sum.go\n+\n+# Switch to the proj directory\n+cd proj\n+\n+# Run tests with -coverpkg to collect coverage for all packages\n+go test -coverpkg=proj/... -coverprofile=cover1.out ./...\n+stdout 'coverage:'\n+\n+# Verify the first coverage profile exists and has expected content\n+exists cover1.out\n+grep -q 'proj/sub/sub.go:' cover1.out\n+\n+# Run again to ensure caching works\n+go test -coverpkg=proj/... -coverprofile=cover1_cached.out ./...\n+stdout '\\(cached\\)'\n+stdout 'coverage:'\n+\n+# Note: Due to the bug, cached coverage profiles may have duplicate entries.\n+# The duplicate entries are the entries for the previous file structure and the new file structure.\n+\n+# Now modify sub.go to change line structure - this will invalidate\n+# the cache for the sub package but not for the proj package.\n+cp ../sub_modified.go sub/sub.go\n+\n+# After modifying sub.go, we should not have both old and new line references.\n+go test -coverpkg=proj/... -coverprofile=cover2.out ./...\n+stdout 'coverage:'\n+\n+# With the bug present, we would see duplicate entries for the same lines.\n+# With the bug fixed, there should be no duplicate or stale entries in the coverage profile.\n+grep 'proj/sub/sub.go:' cover2.out\n+# The fix should ensure that only the new line format exists, not the old one\n+grep 'proj/sub/sub.go:3.24,4.35' cover2.out\n+# This should fail if the stale coverage line exists (the bug is present)\n+! grep 'proj/sub/sub.go:3.24,4.22' cover2.out\n+\n+-- proj/go.mod --\n+module proj\n+\n+go 1.21\n+\n+-- proj/some_func.go --\n+package proj\n+\n+import \"proj/sum\"\n+\n+func SomeFunc(a, b int) int {\n+\tif a == 0 && b == 0 {\n+\t\treturn 0\n+\t}\n+\treturn sum.Sum(a, b)\n+}\n+\n+-- proj/some_func_test.go --\n+package proj\n+\n+import (\n+\t\"testing\"\n+)\n+\n+func Test_SomeFunc(t *testing.T) {\n+\tt.Run(\"test1\", func(t *testing.T) {\n+\t\tresult := SomeFunc(1, 1)\n+\t\tif result != 2 {\n+\t\t\tt.Errorf(\"Expected 2, got %d\", result)\n+\t\t}\n+\t})\n+}\n+\n+-- proj/sub/sub.go --\n+package sub\n+\n+func Sub(a, b int) int {\n+\tif a == 0 && b == 0 {\n+\t\treturn 0\n+\t}\n+\treturn a - b\n+}\n+\n+-- proj/sub/sub_test.go --\n+package sub\n+\n+import (\n+\t\"testing\"\n+)\n+\n+func Test_Sub(t *testing.T) {\n+\tt.Run(\"test_sub1\", func(t *testing.T) {\n+\t\tresult := Sub(1, 1)\n+\t\tif result != 0 {\n+\t\t\tt.Errorf(\"Expected 0, got %d\", result)\n+\t\t}\n+\t})\n+}\n+\n+-- proj/sum/sum.go --\n+package sum\n+\n+func Sum(a, b int) int {\n+\tif a == 0 {\n+\t\treturn b\n+\t}\n+\treturn a + b\n+}\n+\n+-- sub_modified.go --\n+package sub\n+\n+func Sub(a, b int) int {\n+\tif a == 0 && b == 0 || a == -100 {\n+\t\treturn 0\n+\t}\n+\treturn a - b\n+}\ndiff --git a/src/cmd/go/testdata/script/test_cache_coverpkg_no_profile.txt b/src/cmd/go/testdata/script/test_cache_coverpkg_no_profile.txt\nnew file mode 100644\nindex 0000000..263400a\n--- /dev/null\n+++ b/src/cmd/go/testdata/script/test_cache_coverpkg_no_profile.txt\n@@ -0,0 +1,80 @@\n+# Test that the test cache is invalidated when -coverpkg dependencies change,\n+# even when -coverprofile is not specified. This exercises the else-if branch\n+# in tryCacheWithID that checks covMeta without a cover profile file.\n+\n+[short] skip\n+[GODEBUG:gocacheverify=1] skip\n+\n+# Start with a clean GOCACHE.\n+env GOCACHE=$WORK/cache\n+\n+cd proj\n+\n+# Run tests with -cover and -coverpkg but without -coverprofile.\n+go test -cover -coverpkg=proj/... ./...\n+stdout 'coverage:'\n+\n+# Run again — should be served from cache.\n+go test -cover -coverpkg=proj/... ./...\n+stdout '\\(cached\\)'\n+stdout 'coverage:'\n+\n+# Modify a covered package that is not directly under test.\n+cp ../sub_modified.go sub/sub.go\n+\n+# Run again — the cache must be invalidated because a covered package changed.\n+go test -cover -coverpkg=proj/... ./...\n+! stdout '\\(cached\\)'\n+stdout 'coverage:'\n+\n+-- proj/go.mod --\n+module proj\n+\n+go 1.21\n+\n+-- proj/main.go --\n+package proj\n+\n+import \"proj/sub\"\n+\n+func Add(a, b int) int {\n+\treturn sub.Sub(a, -b)\n+}\n+\n+-- proj/main_test.go --\n+package proj\n+\n+import \"testing\"\n+\n+func TestAdd(t *testing.T) {\n+\tif Add(1, 2) != 3 {\n+\t\tt.Fatal(\"expected 3\")\n+\t}\n+}\n+\n+-- proj/sub/sub.go --\n+package sub\n+\n+func Sub(a, b int) int {\n+\treturn a - b\n+}\n+\n+-- proj/sub/sub_test.go --\n+package sub\n+\n+import \"testing\"\n+\n+func TestSub(t *testing.T) {\n+\tif Sub(3, 1) != 2 {\n+\t\tt.Fatal(\"expected 2\")\n+\t}\n+}\n+\n+-- sub_modified.go --\n+package sub\n+\n+// Added a comment to change the source.\n+\n+func Sub(a, b int) int {\n+\treturn a - b\n+}\ndiff --git a/src/cmd/go/testdata/vcstest/git/gitrepo-sha256.txt b/src/cmd/go/testdata/vcstest/git/gitrepo-sha256.txt\nindex 81b9a71..a08e294 100644\n--- a/src/cmd/go/testdata/vcstest/git/gitrepo-sha256.txt\n+++ b/src/cmd/go/testdata/vcstest/git/gitrepo-sha256.txt\n@@ -1,3 +1,5 @@\n+[!git-sha256] skip\n+\n handle git\n \n # This is a sha256 version of gitrepo1.txt (which uses sha1 hashes)\ndiff --git a/src/cmd/internal/script/engine.go b/src/cmd/internal/script/engine.go\nindex ba82171..01b3960 100644\n--- a/src/cmd/internal/script/engine.go\n+++ b/src/cmd/internal/script/engine.go\n@@ -55,6 +55,8 @@ import (\n \t\"errors\"\n \t\"fmt\"\n \t\"io\"\n+\t\"maps\"\n+\t\"slices\"\n \t\"sort\"\n \t\"strings\"\n \t\"time\"\n@@ -526,7 +528,7 @@ func (e *Engine) conditionsActive(s *State, conds []condition) (bool, error) {\n \t\tif ok {\n \t\t\timpl = e.Conds[prefix]\n \t\t\tif impl == nil {\n-\t\t\t\treturn false, fmt.Errorf(\"unknown condition prefix %q\", prefix)\n+\t\t\t\treturn false, fmt.Errorf(\"unknown condition prefix %q; known: %v\", prefix, slices.Collect(maps.Keys(e.Conds)))\n \t\t\t}\n \t\t\tif !impl.Usage().Prefix {\n \t\t\t\treturn false, fmt.Errorf(\"condition %q cannot be used with a suffix\", prefix)\ndiff --git a/src/cmd/internal/testdir/testdir_test.go b/src/cmd/internal/testdir/testdir_test.go\nindex 483a9ec..529445a 100644\n--- a/src/cmd/internal/testdir/testdir_test.go\n+++ b/src/cmd/internal/testdir/testdir_test.go\n@@ -233,19 +233,23 @@ var stdlibImportcfgFile = sync.OnceValue(func() string {\n \treturn filename\n })\n \n-func linkFile(runcmd runCmd, goname string, importcfg string, ldflags []string) (err error) {\n+// linkFile links infile with the given importcfg and ldflags, writes to outfile.\n+// infile can be the name of an object file or a go source file.\n+func linkFile(runcmd runCmd, outfile, infile string, importcfg string, ldflags []string) (err error) {\n \tif importcfg == \"\" {\n \t\timportcfg = stdlibImportcfgFile()\n \t}\n-\tpfile := strings.ReplaceAll(goname, \".go\", \".o\")\n-\tcmd := []string{goTool, \"tool\", \"link\", \"-w\", \"-o\", \"a.exe\", \"-importcfg=\" + importcfg}\n+\tif strings.HasSuffix(infile, \".go\") {\n+\t\tinfile = infile[:len(infile)-3] + \".o\"\n+\t}\n+\tcmd := []string{goTool, \"tool\", \"link\", \"-s\", \"-w\", \"-buildid=test\", \"-o\", outfile, \"-importcfg=\" + importcfg}\n \tif *linkshared {\n \t\tcmd = append(cmd, \"-linkshared\", \"-installsuffix=dynlink\")\n \t}\n \tif ldflags != nil {\n \t\tcmd = append(cmd, ldflags...)\n \t}\n-\tcmd = append(cmd, pfile)\n+\tcmd = append(cmd, infile)\n \t_, err = runcmd(cmd...)\n \treturn\n }\n@@ -853,7 +857,7 @@ func (t test) run() error {\n \t\t\t}\n \n \t\t\tif i == len(pkgs)-1 {\n-\t\t\t\terr = linkFile(runcmd, pkg.files[0], importcfgfile, ldflags)\n+\t\t\t\terr = linkFile(runcmd, \"a.exe\", pkg.files[0], importcfgfile, ldflags)\n \t\t\t\tif err != nil {\n \t\t\t\t\treturn err\n \t\t\t\t}\n@@ -974,8 +978,7 @@ func (t test) run() error {\n \t\tif err != nil {\n \t\t\treturn err\n \t\t}\n-\t\tcmd = []string{goTool, \"tool\", \"link\", \"-importcfg=\" + stdlibImportcfgFile(), \"-o\", \"a.exe\", \"all.a\"}\n-\t\t_, err = runcmd(cmd...)\n+\t\terr = linkFile(runcmd, \"a.exe\", \"all.a\", stdlibImportcfgFile(), nil)\n \t\tif err != nil {\n \t\t\treturn err\n \t\t}\n@@ -1033,9 +1036,7 @@ func (t test) run() error {\n \t\t\t\treturn err\n \t\t\t}\n \t\t\texe := filepath.Join(tempDir, \"test.exe\")\n-\t\t\tcmd := []string{goTool, \"tool\", \"link\", \"-s\", \"-w\", \"-importcfg=\" + stdlibImportcfgFile()}\n-\t\t\tcmd = append(cmd, \"-o\", exe, pkg)\n-\t\t\tif _, err := runcmd(cmd...); err != nil {\n+\t\t\tif err := linkFile(runcmd, exe, pkg, stdlibImportcfgFile(), nil); err != nil {\n \t\t\t\treturn err\n \t\t\t}\n \t\t\tout, err = runcmd(append([]string{exe}, args...)...)\ndiff --git a/src/cmd/link/internal/ld/lib.go b/src/cmd/link/internal/ld/lib.go\nindex 7f22b6b..2e6a7f7 100644\n--- a/src/cmd/link/internal/ld/lib.go\n+++ b/src/cmd/link/internal/ld/lib.go\n@@ -1676,22 +1676,54 @@ func (ctxt *Link) hostlink() {\n \t\t}\n \n \t\tif ctxt.Arch.InFamily(sys.ARM64) && buildcfg.GOOS == \"linux\" {\n-\t\t\t// On ARM64, the GNU linker will fail with\n-\t\t\t// -znocopyreloc if it thinks a COPY relocation is\n-\t\t\t// required. Switch to gold.\n+\t\t\t// On ARM64, the GNU linker had issues with -znocopyreloc\n+\t\t\t// and COPY relocations. This was fixed in GNU ld 2.36+.\n \t\t\t// https://sourceware.org/bugzilla/show_bug.cgi?id=19962\n \t\t\t// https://go.dev/issue/22040\n-\t\t\taltLinker = \"gold\"\n+\t\t\t// And newer gold is deprecated, may lack new features/flags, or even missing\n \n-\t\t\t// If gold is not installed, gcc will silently switch\n-\t\t\t// back to ld.bfd. So we parse the version information\n-\t\t\t// and provide a useful error if gold is missing.\n+\t\t\t// If the default linker is GNU ld 2.35 or older, use gold\n+\t\t\tuseGold := false\n \t\t\tname, args := flagExtld[0], flagExtld[1:]\n-\t\t\targs = append(args, \"-fuse-ld=gold\", \"-Wl,--version\")\n+\t\t\targs = append(args, \"-Wl,--version\")\n \t\t\tcmd := exec.Command(name, args...)\n \t\t\tif out, err := cmd.CombinedOutput(); err == nil {\n-\t\t\t\tif !bytes.Contains(out, []byte(\"GNU gold\")) {\n-\t\t\t\t\tlog.Fatalf(\"ARM64 external linker must be gold (issue #15696, 22040), but is not: %s\", out)\n+\t\t\t\t// Parse version from output like \"GNU ld (GNU Binutils for Distro) 2.36.1\"\n+\t\t\t\tfor s := string(out); len(s) > 0; {\n+\t\t\t\t\tvar line string\n+\t\t\t\t\tif i := strings.IndexByte(s, '\\n'); i >= 0 {\n+\t\t\t\t\t\tline, s = s[:i+1], s[i+1:]\n+\t\t\t\t\t} else {\n+\t\t\t\t\t\tline, s = s, \"\"\n+\t\t\t\t\t}\n+\t\t\t\t\tif !strings.HasPrefix(line, \"GNU ld \") {\n+\t\t\t\t\t\tcontinue\n+\t\t\t\t\t}\n+\t\t\t\t\tfields := strings.Fields(line[len(\"GNU ld \"):])\n+\t\t\t\t\tvar major, minor int\n+\t\t\t\t\tif ret, err := fmt.Sscanf(fields[len(fields)-1], \"%d.%d\", &major, &minor); ret == 2 && err == nil {\n+\t\t\t\t\t\tif major == 2 && minor <= 35 {\n+\t\t\t\t\t\t\tuseGold = true\n+\t\t\t\t\t\t}\n+\t\t\t\t\t\tbreak\n+\t\t\t\t\t}\n+\t\t\t\t}\n+\t\t\t}\n+\n+\t\t\tif useGold {\n+\t\t\t\t// Use gold for older linkers\n+\t\t\t\taltLinker = \"gold\"\n+\n+\t\t\t\t// If gold is not installed, gcc will silently switch\n+\t\t\t\t// back to ld.bfd. So we parse the version information\n+\t\t\t\t// and provide a useful error if gold is missing.\n+\t\t\t\targs = flagExtld[1:]\n+\t\t\t\targs = append(args, \"-fuse-ld=gold\", \"-Wl,--version\")\n+\t\t\t\tcmd = exec.Command(name, args...)\n+\t\t\t\tif out, err := cmd.CombinedOutput(); err == nil {\n+\t\t\t\t\tif !bytes.Contains(out, []byte(\"GNU gold\")) {\n+\t\t\t\t\t\tlog.Fatalf(\"ARM64 external linker must be ld>=2.36 or gold (issue #15696, 22040), but is not: %s\", out)\n+\t\t\t\t\t}\n \t\t\t\t}\n \t\t\t}\n \t\t}\ndiff --git a/src/cmd/pack/pack.go b/src/cmd/pack/pack.go\nindex 4ac6ce9..e938299 100644\n--- a/src/cmd/pack/pack.go\n+++ b/src/cmd/pack/pack.go\n@@ -139,6 +139,11 @@ func openArchive(name string, mode int, files []string) *Archive {\n \tif err != nil {\n \t\tlog.Fatal(err)\n \t}\n+\tfor _, f := range a.Entries {\n+\t\tif !filepath.IsLocal(f.Name) || filepath.Base(f.Name) != f.Name {\n+\t\t\tlog.Fatalf(\"%q: invalid name\", f.Name)\n+\t\t}\n+\t}\n \treturn &Archive{\n \t\ta:        a,\n \t\tfiles:    files,\ndiff --git a/src/cmd/pack/pack_test.go b/src/cmd/pack/pack_test.go\nindex 2922ada..b46847b 100644\n--- a/src/cmd/pack/pack_test.go\n+++ b/src/cmd/pack/pack_test.go\n@@ -6,6 +6,7 @@ package main\n \n import (\n \t\"bufio\"\n+\t\"bytes\"\n \t\"cmd/internal/archive\"\n \t\"fmt\"\n \t\"internal/testenv\"\n@@ -382,6 +383,49 @@ func TestRWithNonexistentFile(t *testing.T) {\n \trun(packPath(t), \"r\", \"p.a\", \"p.o\") // should succeed\n }\n \n+func TestOutputPathSanitization(t *testing.T) {\n+\tdir := t.TempDir()\n+\n+\t// Create pack.a containing a file named \"longpathname\".\n+\t// Note that \"go tool pack\" requires that all files be at least 8 bytes long.\n+\tconst validPathName = \"longpathname\"\n+\tif err := os.WriteFile(dir+\"/\"+validPathName, make([]byte, 8), 0o666); err != nil {\n+\t\tt.Fatal(err)\n+\t}\n+\tdoRun(t, dir, packPath(t), \"grc\", \"pack.a\", validPathName)\n+\n+\t// Create evil.a from pack.a, replacing \"longpathname\" with \"out/pathname\".\n+\tb, err := os.ReadFile(dir + \"/pack.a\")\n+\tif err != nil {\n+\t\tt.Fatal(err)\n+\t}\n+\tidx := bytes.Index(b, []byte(validPathName))\n+\tif idx < 0 {\n+\t\tt.Fatalf(\"%v not found in pack.a\", validPathName)\n+\t}\n+\tcopy(b[idx:], \"out/\")\n+\tos.WriteFile(dir+\"/evil.a\", b, 0o666)\n+\n+\t// Extract evil.a. It should fail and not extract a file to /out.\n+\tos.Mkdir(dir+\"/out\", 0o777)\n+\n+\tcmd := testenv.Command(t, packPath(t), \"x\", \"evil.a\")\n+\tcmd.Dir = dir\n+\t_, err = cmd.CombinedOutput()\n+\tif err == nil {\n+\t\tt.Errorf(\"pack x evil.a: unexpected success\")\n+\t}\n+\n+\tents, err := os.ReadDir(dir + \"/out\")\n+\tif err != nil {\n+\t\tt.Error(err)\n+\t}\n+\tfor _, e := range ents {\n+\t\tt.Errorf(\"unexpected file in /out: %q\", e.Name())\n+\t}\n+\n+}\n+\n // doRun runs a program in a directory and returns the output.\n func doRun(t *testing.T, dir string, args ...string) string {\n \tcmd := testenv.Command(t, args[0], args[1:]...)\n",
+ "diff_truncated": true
+}

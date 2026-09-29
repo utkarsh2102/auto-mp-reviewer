@@ -1,0 +1,47 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~mfo/ubuntu/+source/liburing/+git/liburing/+merge/397393",
+ "id": "397393",
+ "title": "Merge liburing with debian unstable, version 0.7-3.",
+ "source_branch": "merge",
+ "target_branch": "debian/sid",
+ "revision": "4c24150a24f42452bb7df275a4616fd2da523b93",
+ "base_revision": "74d62ad3aef3139fa78ba6685bd65407adfd2fcb",
+ "description": null,
+ "commit_message": "Merge liburing with debian unstable, version 0.7-3.\n\nThere are updates to the test-related patches: now\nmore tests pass with 0.7-3 (than 0.6-3) on Hirsute.\n\nAutopkgtests PASS on amd64/arm64/ppc64el/s390x but\nnot on riscv64 (it doesn't run tests at the moment)\nnor on armhf (but it isn't a regression; the exact\nsame issues happen on 0.6-3ubuntu1 as well.)\n\nNote that the disable test set for s390x is larger\n(see d/p/disable-known-failures.patch), because it\nis the only arch hitting bind() assertion failures,\nbut this is not a regression either, it happens on\n0.6.3-ubuntu1; and some new tests just hit it too.",
+ "diffstat": {
+  "debian/patches/series": [
+   1,
+   0
+  ],
+  "debian/patches/disable-known-failures.patch": [
+   54,
+   0
+  ],
+  "debian/control": [
+   2,
+   1
+  ],
+  "debian/tests/test-build": [
+   9,
+   0
+  ],
+  "debian/rules": [
+   13,
+   1
+  ],
+  "debian/changelog": [
+   25,
+   0
+  ],
+  "debian/tests/control": [
+   1,
+   1
+  ]
+ },
+ "files": 7,
+ "added_lines": 105,
+ "removed_lines": 3,
+ "diff": "diff --git a/debian/changelog b/debian/changelog\nindex 4c0b433..a1c7645 100644\n--- a/debian/changelog\n+++ b/debian/changelog\n@@ -1,3 +1,22 @@\n+liburing (0.7-3ubuntu1) hirsute; urgency=medium\n+\n+  * Merge with Debian unstable. (LP: #1914145)\n+    Remaining changes:\n+    - Fix build and autopkgtest self tests (LP: 1878006).\n+      - d/rules: build time tests require root\n+      - d/rules: fix the DEB_GAIN_ROOT_CMD call to dh_auto_test\n+      - d/rules: test succeed now, stop passing || true\n+      - d/t/control: mark unit tests to need root and a VM\n+      - d/t/test-build: link tests fail in containers\n+      - d/p/disable-known-failures.patch: disable tests known to fail\n+  * Dropped changes:\n+    - d/t/test-build: io_uring-link no more exists as example, but link-cp does\n+      [in Debian 0.7-1]\n+  * Added changes:\n+    - d/t/test-build: io_uring-cp test fails in all archs\n+\n+ -- Mauricio Faria de Oliveira <mfo@canonical.com>  Wed, 03 Feb 2021 09:39:10 -0300\n+\n liburing (0.7-3) unstable; urgency=medium\n \n   * Switch to Standards-Version 4.5.1 (no changes needed).\n@@ -22,6 +41,12 @@ liburing (0.7-1) unstable; urgency=medium\n \n  -- Guillem Jover <guillem@debian.org>  Wed, 09 Sep 2020 04:26:54 +0200\n \n+liburing (0.6-3ubuntu1) groovy; urgency=medium\n+\n+  * Fix build and autopkgtest self tests (LP: #1878006).\n+\n+ -- Christian Ehrhardt <christian.ehrhardt@canonical.com>  Wed, 01 Jul 2020 11:09:38 +0200\n+\n liburing (0.6-3) unstable; urgency=medium\n \n   * Add dependencies on libc6-dev | libc-dev and linux-libc-dev (>= 5.1)\ndiff --git a/debian/control b/debian/control\nindex 0523828..14d1b7a 100644\n--- a/debian/control\n+++ b/debian/control\n@@ -1,7 +1,8 @@\n Source: liburing\n Section: libs\n Priority: optional\n-Maintainer: Guillem Jover <guillem@debian.org>\n+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>\n+XSBC-Original-Maintainer: Guillem Jover <guillem@debian.org>\n Vcs-Browser: https://git.hadrons.org/cgit/debian/pkgs/liburing.git\n Vcs-Git: https://git.hadrons.org/git/debian/pkgs/liburing.git\n Homepage: https://github.com/axboe/liburing\ndiff --git a/debian/patches/disable-known-failures.patch b/debian/patches/disable-known-failures.patch\nnew file mode 100644\nindex 0000000..ad5baa1\n--- /dev/null\n+++ b/debian/patches/disable-known-failures.patch\n@@ -0,0 +1,54 @@\n+Description: disable known test failures\n+ With the tests always failing they are worth nothing.\n+ Upstream has post 0.6 many test improvements/additions/fixes\n+ but while the situation will change not all will be resolved.\n+ .\n+ To make our testing worth the time let us disable the tests\n+ we know to fail in the test environment.\n+ .\n+ We don't want the source or examples or anything in the binary\n+ packages to carry this modification. Instead just patch this\n+ before the tests run.\n+ .\n+ Implementing this as a patch also will force us to re-evalaute\n+ this every release that modifies the test list as it won't apply\n+ then and thereby break the test.\n+ .\n+ UPDATE: 2021-02-01: mfo: simplify patch from modifying the list\n+ 'all_targets' to filter-out it based on the 'skip_targets' list\n+ for 0.7-3 as most tests are passing (poll-many fails everywhere,\n+ and s390x has assertion failures on bind() in 0.6-3ubuntu1 plus\n+ on new tests added in 0.7-3; sometimes fadvise fails.)\n+Forwarded: not-needed (Test environment specific)\n+Author: Christian Ehrhardt <christian.ehrhardt@canonical.com>\n+Author: Mauricio Faria de Oliveira <mfo@canonical.com>\n+Last-Update: 2021-02-01\n+\n+From 646bdd5553483bbfed279b4b583bf9bbd3d9cf4e Mon Sep 17 00:00:00 2001\n+From: Christian Ehrhardt <christian.ehrhardt@canonical.com>\n+Date: Tue, 30 Jun 2020 15:25:33 +0200\n+Subject: [PATCH] test/Makefile: disable known failing tests\n+\n+Signed-off-by: Christian Ehrhardt <christian.ehrhardt@canonical.com>\n+---\n+ test/Makefile | 28 ++++++++++++----------------\n+ 1 file changed, 12 insertions(+), 16 deletions(-)\n+\n+Index: liburing/test/Makefile\n+===================================================================\n+--- liburing.orig/test/Makefile\n++++ liburing/test/Makefile\n+@@ -41,6 +41,13 @@ ifdef CONFIG_HAVE_CXX\n+ all_targets += sq-full-cpp\n+ endif\n+ \n++skip_targets = poll-many fadvise\n++ifeq ($(shell uname -m),s390x)\n++# Assertion `bind(<skfd>, (struct sockaddr *) &addr, sizeof(addr)) != -1' failed.\n++skip_targets += 232c93d07b74-test socket-rw accept poll-link connect\n++endif\n++all_targets := $(filter-out $(skip_targets),$(all_targets))\n++\n+ all: $(all_targets)\n+ \n+ %: %.c\ndiff --git a/debian/patches/series b/debian/patches/series\nnew file mode 100644\nindex 0000000..b5f3749\n--- /dev/null\n+++ b/debian/patches/series\n@@ -0,0 +1 @@\n+disable-known-failures.patch\ndiff --git a/debian/rules b/debian/rules\nindex afea741..068c04d 100755\n--- a/debian/rules\n+++ b/debian/rules\n@@ -33,4 +33,16 @@ override_dh_auto_build:\n # XXX: The tests do not pass yet on Linux 5.5, and they are not being\n # skipped either.\n override_dh_auto_test:\n-\tdh_auto_test -- runtests || true\n+ifeq (,$(findstring nocheck,$(DEB_BUILD_OPTIONS)))\n+ ifeq ($(DEB_RULES_REQUIRES_ROOT),dpkg/target-subcommand)\n+  ifeq (,$(findstring fakeroot,$(DEB_GAIN_ROOT_CMD)))\n+\t$(DEB_GAIN_ROOT_CMD) dh_auto_test -- runtests || true\n+  else\n+\t@echo 'Warning: Tests require real root, not fakeroot.  Skipping.' >&2\n+  endif\n+ else ifeq (0,$(shell id -u))\n+\tdh_auto_test -- runtests\n+ else\n+\t@echo 'Warning: Tests require root.  Skipping.' >&2\n+ endif\n+endif\ndiff --git a/debian/tests/control b/debian/tests/control\nindex 794211a..6b93b33 100644\n--- a/debian/tests/control\n+++ b/debian/tests/control\n@@ -6,6 +6,6 @@ Depends:\n  liburing-dev,\n \n Tests: test-unit\n-Restrictions: flaky rw-build-tree\n+Restrictions: needs-root isolation-machine flaky rw-build-tree\n Depends:\n  build-essential,\ndiff --git a/debian/tests/test-build b/debian/tests/test-build\nold mode 100755\nnew mode 100644\nindex 5f620e8..9f2cddf\n--- a/debian/tests/test-build\n+++ b/debian/tests/test-build\n@@ -45,6 +45,15 @@ done\n \n # Two argument tests.\n for t in io_uring-cp link-cp ucontext-cp; do\n+\n+  # known to fail\n+  [ $t != io_uring-cp ] || continue\n+\n+  # known to fail in containers\n+  if systemd-detect-virt --container -q; then\n+    [ $t != link-cp ] || continue\n+  fi\n+\n   ./$t $t $t.new\n   cmp $t $t.new\n \n",
+ "diff_truncated": false
+}

@@ -1,0 +1,31 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~liushuyu-011/ubuntu/+source/rubygems-integration/+git/rubygems-integration/+merge/472239",
+ "id": "472239",
+ "title": "This MP migrates the Ruby package rubygems-integration to use the newer Minitest API.",
+ "source_branch": "ubuntu/devel",
+ "target_branch": "ubuntu/devel",
+ "revision": "9755080272985c58a09d6765322aa3b87f0dd0b3",
+ "base_revision": "2b1defab1aa42b1194d8f07a378ac6ab29670afc",
+ "description": "This MP migrates the Ruby package rubygems-integration to use the newer Minitest API.",
+ "commit_message": null,
+ "diffstat": {
+  "debian/changelog": [
+   7,
+   0
+  ],
+  "debian/patches/fix-ruby-3.3-minitest.patch": [
+   17,
+   0
+  ],
+  "debian/patches/series": [
+   1,
+   0
+  ]
+ },
+ "files": 3,
+ "added_lines": 25,
+ "removed_lines": 0,
+ "diff": "diff --git a/debian/changelog b/debian/changelog\nindex 00c3676..01612f1 100644\n--- a/debian/changelog\n+++ b/debian/changelog\n@@ -1,3 +1,10 @@\n+rubygems-integration (1.18ubuntu2) oracular; urgency=medium\n+\n+  * d/p/fix-ruby-3.3-minitest.patch: add a patch to migrate Ruby\n+    Minitest\n+\n+ -- Zixing Liu <zixing.liu@canonical.com>  Thu, 29 Aug 2024 13:34:16 -0600\n+\n rubygems-integration (1.18ubuntu1) oracular; urgency=medium\n \n   * d/control/tests: Define env var MT_COMPAT for compatibility\ndiff --git a/debian/patches/fix-ruby-3.3-minitest.patch b/debian/patches/fix-ruby-3.3-minitest.patch\nnew file mode 100644\nindex 0000000..12774f1\n--- /dev/null\n+++ b/debian/patches/fix-ruby-3.3-minitest.patch\n@@ -0,0 +1,17 @@\n+Description: Migrate Ruby tests to Minitest 5.x\n+Author: Zixing Liu <zixing.liu@canonical.com>\n+Forwarded: no\n+Last-Update: 2024-08-29\n+---\n+diff --git a/spec/rubygems_integration_spec.rb b/spec/rubygems_integration_spec.rb\n+index b3c00f9..17e0516 100644\n+--- a/spec/rubygems_integration_spec.rb\n++++ b/spec/rubygems_integration_spec.rb\n+@@ -1,6 +1,6 @@\n+ require 'minitest/autorun'\n+ \n+-class RubygemsIntegrationSpec < MiniTest::Spec\n++class RubygemsIntegrationSpec < Minitest::Spec\n+   ARCH = RbConfig::CONFIG['arch']\n+   RUBY_API_VERSION = RbConfig::CONFIG['ruby_version']\n+ \ndiff --git a/debian/patches/series b/debian/patches/series\nnew file mode 100644\nindex 0000000..e2b841c\n--- /dev/null\n+++ b/debian/patches/series\n@@ -0,0 +1 @@\n+fix-ruby-3.3-minitest.patch\n",
+ "diff_truncated": false
+}

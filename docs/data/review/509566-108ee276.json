@@ -1,0 +1,23 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~athos/ubuntu-archive-tools/+git/ubuntu-archive-tools/+merge/509566",
+ "id": "509566",
+ "title": "checkrdepends: add option for DEP8 reverse deps",
+ "source_branch": "checkrdepends-test-triggers",
+ "target_branch": "main",
+ "revision": "38d4623819be11da83d6d27561190c377892971f",
+ "base_revision": "a5659a2227416feb764fc697ba9d10517c39852e",
+ "description": "checkrdepends: add option for DEP8 reverse deps\n    \nThis is an initial (quite simple) implementation of DEP8 reverse dependencies support. It does not compute reverse dependencies expanded through the @recommends@ substvar.",
+ "commit_message": null,
+ "diffstat": {
+  "checkrdepends": [
+   27,
+   2
+  ]
+ },
+ "files": 1,
+ "added_lines": 27,
+ "removed_lines": 2,
+ "diff": "diff --git a/checkrdepends b/checkrdepends\nindex d38bc11..a0cdf96 100755\n--- a/checkrdepends\n+++ b/checkrdepends\n@@ -66,6 +66,9 @@ def parse_relation_packages(raw):\n             match = re_dep.match(dep.strip())\n             if match:\n                 dep_list.append(match.group(1))\n+            elif dep.strip() in ('@builddeps@'):\n+                #TODO: we also need to handle @recommends@ somehow\n+                dep_list.append(dep)\n         for dep in dep_list:\n             yield dep, dep_list\n \n@@ -94,15 +97,17 @@ def ports_arches(suite):\n         return ('arm64', 'armhf', 'ppc64el', 'riscv64', 's390x')\n \n \n-def read_sources(path):\n+def read_sources(path, opts):\n     ret = {\n         'binary': {},\n         'source': defaultdict(set),\n         'build_deps': defaultdict(set),\n+        'testsuite_triggers': defaultdict(set),\n     }\n     binary = ret['binary']\n     source = ret['source']\n     build_deps = ret['build_deps']\n+    testsuite_triggers = ret['testsuite_triggers']\n     for stanza in read_tag_file(path):\n         if 'binary' not in stanza:\n             continue\n@@ -117,6 +122,14 @@ def read_sources(path):\n             for depname, depwhy in parse_relation_packages(stanza[field]):\n                 build_deps.setdefault(depname, set())\n                 build_deps[depname].add((name, '|'.join(depwhy)))\n+        if opts.testsuite_triggers:\n+            if 'testsuite-triggers' in stanza:\n+                for depname, depwhy in parse_relation_packages(stanza['testsuite-triggers']):\n+                    if depname == '@builddeps@':\n+                        testsuite_triggers.update(build_deps)\n+                    else:\n+                        testsuite_triggers.setdefault(depname, set())\n+                        testsuite_triggers[depname].add((name, '|'.join(depwhy)))\n     return ret\n \n \n@@ -224,7 +237,7 @@ def search(opts, pkgs):\n         sources = {}\n         for comp in components:\n             comp_base = '%s/%s' % (pocket_base, comp)\n-            sources[comp] = read_sources('%s/source/Sources.gz' % comp_base)\n+            sources[comp] = read_sources('%s/source/Sources.gz' % comp_base, opts)\n \n         if opts.binary:\n             debs = pkgs\n@@ -257,6 +270,7 @@ def search(opts, pkgs):\n             di_comp_base = '%s/%s' % (pocket_base, di_comp)\n \n             build_deps = sources[comp]['build_deps']\n+            test_deps = sources[comp]['testsuite_triggers']\n             for deb in debs:\n                 if opts.directory is not None:\n                     out = open(os.path.join(opts.directory, deb), 'a')\n@@ -271,6 +285,15 @@ def search(opts, pkgs):\n                     for pkg, why in sorted(bdeps):\n                         print(pkg, why, file=out)\n \n+                # test dependencies\n+                if opts.testsuite_triggers:\n+                    tdeps = [(pkg, why) for (pkg, why) in test_deps.get(deb, []) if pkg not in src_ignores]\n+                    if tdeps:\n+                        print(\"-- %s%s/%s autopkgtest deps on %s:\" %\n+                              (opts.suite, pocket, comp, deb), file=out)\n+                        for pkg, why in sorted(tdeps):\n+                            print(pkg, why, file=out)\n+\n                 # binary dependencies\n                 for arch in arches:\n                     if arch not in packages[comp]:\n@@ -345,6 +368,8 @@ def main():\n     parser.add_argument('-V', '--vendor', dest='vendor',\n                       help='distro to check (default: %s; supported: ubuntu,debian)' % default_vendor,\n                       default=default_vendor)\n+    parser.add_argument('-t', '--testsuite-triggers', dest='testsuite_triggers', action='store_true',\n+                      help='also report autopkgtest dependencies')\n     args = parser.parse_args()\n \n     if 'CHECKRDEPENDS_PROFILE' in os.environ:\n",
+ "diff_truncated": false
+}

@@ -1,0 +1,23 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~ubuntu-core-dev/livecd-rootfs/+git/livecd-rootfs/+merge/449608",
+ "id": "449608",
+ "title": "Switch from xz to zstd compressed squashfs for faster boot",
+ "source_branch": "xnox/mksquashfs-zstd",
+ "target_branch": "ubuntu/master",
+ "revision": "14858a63a5541090b4ecb7c4b96dbe952b79b01a",
+ "base_revision": "13c3321bb821f85ec803c4ea2ed000f1df46a56a",
+ "description": null,
+ "commit_message": "Switch from xz to zstd compressed squashfs for faster boot",
+ "diffstat": {
+  "live-build/functions": [
+   2,
+   1
+  ]
+ },
+ "files": 1,
+ "added_lines": 2,
+ "removed_lines": 1,
+ "diff": "diff --git a/live-build/functions b/live-build/functions\nindex dea971d..347edd7 100644\n--- a/live-build/functions\n+++ b/live-build/functions\n@@ -339,7 +339,8 @@ create_squashfs() {\n     squashfs_file=\"$2\"\n     config_dir=\"$PWD/config\"\n     (cd $rootfs_dir &&\n-        mksquashfs . $squashfs_file -no-progress -xattrs -comp xz \\\n+        mksquashfs . $squashfs_file -no-progress -xattrs -comp zstd \\\n+            -Xcompression-level 19 \\\n             -ef \"$config_dir/squashfs-exclude-files\")\n \n }\n",
+ "diff_truncated": false
+}

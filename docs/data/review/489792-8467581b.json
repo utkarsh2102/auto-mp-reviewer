@@ -1,0 +1,23 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~dviererbe/britney/+git/hints-ubuntu/+merge/489792",
+ "id": "489792",
+ "title": "jammy-dotnet6-hint → jammy",
+ "source_branch": "jammy-dotnet6-hint",
+ "target_branch": "jammy",
+ "revision": "7d40684d19b311e583c7e0f4a8076de0e4971ea9",
+ "base_revision": "42ebb92eef81116458d71e024f8d13fe852a6d28",
+ "description": null,
+ "commit_message": null,
+ "diffstat": {
+  "ubuntu-sru": [
+   3,
+   0
+  ]
+ },
+ "files": 1,
+ "added_lines": 3,
+ "removed_lines": 0,
+ "diff": "diff --git a/ubuntu-sru b/ubuntu-sru\nindex 1162ba4..2610f76 100644\n--- a/ubuntu-sru\n+++ b/ubuntu-sru\n@@ -11,3 +11,6 @@ force-badtest gcc-9/9.5.0-1ubuntu1~22.04/armhf\n \n # sosreport is flaky on ppc64el (LP: #2038648 comment #58)\n force-badtest sosreport/4.7.2-0ubuntu1~22.04.2/ppc64el\n+\n+# dotnet6 tests contain false positives (LP: #2118896)\n+force-badtest dotnet6/6.0.136-0ubuntu1~22.04.1\n",
+ "diff_truncated": false
+}

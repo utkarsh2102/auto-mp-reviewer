@@ -1,0 +1,23 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~ssstr1pe/ubuntu-release-tools/+git/ubuntu-release-tools/+merge/489705",
+ "id": "489705",
+ "title": "Add retries to a urlopen call to not be annoyed after it's been running for a while :)",
+ "source_branch": "release-updates-urlopen-retries",
+ "target_branch": "main",
+ "revision": "5829fb43f3bb1a8311f4a22b962f463782716814",
+ "base_revision": "7b0b4bc10256207cf3cc20faa7bcc03f60b34950",
+ "description": "Add retries to a urlopen call to not be annoyed after it's been running for a while :)",
+ "commit_message": null,
+ "diffstat": {
+  "scripts-for-cards/release-updates.py": [
+   11,
+   2
+  ]
+ },
+ "files": 1,
+ "added_lines": 11,
+ "removed_lines": 2,
+ "diff": "diff --git a/scripts-for-cards/release-updates.py b/scripts-for-cards/release-updates.py\nindex 256bb7b..ad244c5 100755\n--- a/scripts-for-cards/release-updates.py\n+++ b/scripts-for-cards/release-updates.py\n@@ -16,9 +16,11 @@ from __future__ import print_function\n from contextlib import closing\n import re\n import sys\n+from time import sleep\n \n try:\n     from urllib.request import urlopen\n+    from urllib.error import HTTPError\n except ImportError:\n     from urllib2 import urlopen\n \n@@ -28,6 +30,8 @@ from launchpadlib.launchpad import Launchpad\n \n changes_re = re.compile(r\"lp:\\s+\\#\\d+(?:,\\s*\\#\\d+)*\", re.I)\n bug_re = re.compile(r\"\\#(\\d+)\")\n+url_open_retries = 30\n+url_open_initial_delay = 2\n \n if sys.version >= \"3\":\n     # Force encoding to UTF-8 even in non-UTF-8 locales.\n@@ -196,8 +200,13 @@ pubs.reverse()\n for pub in pubs:\n     changes_file_url = pub.changesFileUrl()\n     # print('', pub.component_name, pub.source_package_name, pub.source_package_version, pub.date_published, changes_file_url)\n-    with closing(urlopen(changes_file_url)) as changes_handle:\n-        changes = deb822.Changes(changes_handle.read())\n+    for retry in range(url_open_retries):\n+        try:\n+            with closing(urlopen(changes_file_url)) as changes_handle:\n+                changes = deb822.Changes(changes_handle.read())\n+            break\n+        except HTTPError:\n+            sleep(retry * url_open_initial_delay)\n     accum = \"\"\n     for line in changes[\"changes\"].splitlines():\n         if not line.startswith(\"  \"):\n",
+ "diff_truncated": false
+}

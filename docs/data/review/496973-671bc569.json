@@ -1,0 +1,43 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~bamf0/ubuntu/+source/efibootmgr/+git/efibootmgr/+merge/496973",
+ "id": "496973",
+ "title": "merge-lp2133493-resolute → debian/sid",
+ "source_branch": "merge-lp2133493-resolute",
+ "target_branch": "debian/sid",
+ "revision": "6586f8038ddad46197bed7bc434cb8586ba05dbe",
+ "base_revision": "c2a083be9a22fb3114ca78a53fb4380d173bffdc",
+ "description": null,
+ "commit_message": null,
+ "diffstat": {
+  ".gitignore": [
+   0,
+   1
+  ],
+  "debian/changelog": [
+   32,
+   0
+  ],
+  "debian/control": [
+   2,
+   1
+  ],
+  "debian/patches/fix-active-inactive-commands.patch": [
+   19,
+   0
+  ],
+  "debian/patches/series": [
+   1,
+   0
+  ],
+  "debian/rules": [
+   4,
+   0
+  ]
+ },
+ "files": 6,
+ "added_lines": 58,
+ "removed_lines": 2,
+ "diff": "diff --git a/.gitignore b/.gitignore\nindex e216036..b0dab6f 100644\n--- a/.gitignore\n+++ b/.gitignore\n@@ -1,7 +1,6 @@\n .*.sw?\n *.E\n *.o\n-*.patch\n *.S\n efibootmgr-*.tar.*\n core.*\ndiff --git a/debian/changelog b/debian/changelog\nindex 60f8916..a60e2f0 100644\n--- a/debian/changelog\n+++ b/debian/changelog\n@@ -1,3 +1,12 @@\n+efibootmgr (18-4ubuntu1) resolute; urgency=medium\n+\n+  * Merge with Debian unstable. Remaining changes:\n+    - d/.gitignore: Un-ignore patches\n+    - d/rules: Disable GCS linker warnings on arm64\n+    - d/p/fix-active-inactive-commands.patch: Patch active and inactive commands\n+\n+ -- Simon Johnsson <simon.johnsson@canonical.com>  Thu, 04 Dec 2025 10:53:37 +0100\n+\n efibootmgr (18-4) unstable; urgency=medium\n \n   * d/control: Build for exact same architectures as efivar\n@@ -20,6 +29,29 @@ efibootmgr (18-3) unstable; urgency=medium\n \n  -- Mario Limonciello <superm1@debian.org>  Mon, 18 Aug 2025 15:05:18 -0500\n \n+efibootmgr (18-2ubuntu3) resolute; urgency=medium\n+\n+  * d/rules: actually disable GCS linker warnings\n+\n+ -- Nick Rosbrook <enr0n@ubuntu.com>  Mon, 17 Nov 2025 10:24:01 -0500\n+\n+efibootmgr (18-2ubuntu2) resolute; urgency=medium\n+\n+  * d/rules: ignore GCS linker warnings on arm64\n+\n+ -- Nick Rosbrook <enr0n@ubuntu.com>  Mon, 17 Nov 2025 09:50:06 -0500\n+\n+efibootmgr (18-2ubuntu1) resolute; urgency=medium\n+\n+  [ Nick Rosbrook ]\n+  * debian/.gitignore: un-ignore patches\n+\n+  [ Tomohiro Masubuchi ]\n+  * Fixed that active and inactive commands cannot find any entries except\n+    last one (LP: #2112632)\n+\n+ -- Tomohiro Masubuchi <tomohiro.masubuchi@groove-x.com>  Mon, 20 Oct 2025 15:39:45 -0400\n+\n efibootmgr (18-2) unstable; urgency=medium\n \n   [ Chris Hofstaedtler ]\ndiff --git a/debian/control b/debian/control\nindex 6cca3f1..9205399 100644\n--- a/debian/control\n+++ b/debian/control\n@@ -1,7 +1,8 @@\n Source: efibootmgr\n Section: admin\n Priority: optional\n-Maintainer: Debian UEFI Maintainers <debian-efi@lists.debian.org>\n+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>\n+XSBC-Original-Maintainer: Debian UEFI Maintainers <debian-efi@lists.debian.org>\n Uploaders: Steve McIntyre <93sam@debian.org>, Mario Limonciello <mario.limonciello@dell.com>\n Build-Depends: debhelper-compat (= 13), pkgconf, libefivar-dev (>= 30), libefiboot-dev (>= 30), libpopt-dev\n Standards-Version: 4.7.2.0\ndiff --git a/debian/patches/fix-active-inactive-commands.patch b/debian/patches/fix-active-inactive-commands.patch\nnew file mode 100644\nindex 0000000..bed30e9\n--- /dev/null\n+++ b/debian/patches/fix-active-inactive-commands.patch\n@@ -0,0 +1,19 @@\n+Description: active and inactive commands cannot find any entries except last one\n+ [PATCH] Update efibootmgr.c\n+ get_entry: return entry if it was found before reaching the end of the list\n+Origin: upstream, https://github.com/rhboot/efibootmgr/commit/3eac27c5fccf93d2d6e634d6fe2a76d06708ec6e\n+Bug: https://github.com/rhboot/efibootmgr/issues/186\n+Bug-Ubuntu: https://bugs.launchpad.net/ubuntu/+source/efibootmgr/+bug/2112632\n+Last-Update: 2025-08-26\n+---\n+This patch header follows DEP-3: http://dep.debian.net/deps/dep3/\n+--- a/src/efibootmgr.c\n++++ b/src/efibootmgr.c\n+@@ -1192,6 +1192,7 @@ get_entry(list_t *entries, uint16_t num)\n+ \t\t\tentry = NULL;\n+ \t\t\tcontinue;\n+ \t\t}\n++\t\treturn entry;\n+ \t}\n+ \n+ \treturn entry;\ndiff --git a/debian/patches/series b/debian/patches/series\nindex 897ba25..77e1886 100644\n--- a/debian/patches/series\n+++ b/debian/patches/series\n@@ -1 +1,2 @@\n+fix-active-inactive-commands.patch\n 0001-Format-File-instead-of-just-File-.shim.efi-as-string.patch\ndiff --git a/debian/rules b/debian/rules\nindex 3dc9e98..3dd62af 100755\n--- a/debian/rules\n+++ b/debian/rules\n@@ -5,6 +5,10 @@\n export DH_VERBOSE=1\n export DH_OPTIONS=-v\n \n+ifeq ($(DEB_TARGET_ARCH),arm64)\n+export DEB_LDFLAGS_MAINT_APPEND=-Wl,-z,gcs-report-dynamic=none\n+endif\n+\n EFIDIR ?= $(shell dpkg-vendor --query vendor | awk '{ print tolower($$0) }')\n \n %:\n",
+ "diff_truncated": false
+}

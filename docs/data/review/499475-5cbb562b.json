@@ -1,0 +1,1619 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~kajiya/ubuntu/+source/google-osconfig-agent/+git/google-osconfig-agent/+merge/499475",
+ "id": "499475",
+ "title": "New upstream version 20251028.00",
+ "source_branch": "resolute-devel-to-20251028.00",
+ "target_branch": "ubuntu/resolute-devel",
+ "revision": "fcbcc56fcd521d37b18826b304fc0d018ed84497",
+ "base_revision": "ff5a8cf909abc20f9d85d89fcb761c69cbdebc7d",
+ "description": "Built locally using sbuild and have a PPA build here as well: https://launchpad.net/~kajiya/+archive/ubuntu/kajiya-google-osconfig-agent/+packages",
+ "commit_message": "New upstream version 20251028.00",
+ "diffstat": {
+  "CODEOWNERS": [
+   4,
+   0
+  ],
+  "agentconfig/agentconfig.go": [
+   30,
+   0
+  ],
+  "agentconfig/agentconfig_test.go": [
+   49,
+   9
+  ],
+  "agentendpoint/exec_task.go": [
+   5,
+   1
+  ],
+  "config/file.go": [
+   4,
+   1
+  ],
+  "debian/changelog": [
+   10,
+   0
+  ],
+  "debian/extra/vendor/cel.dev/expr/.gitattributes": [
+   2,
+   0
+  ],
+  "debian/extra/vendor/cel.dev/expr/.gitignore": [
+   2,
+   0
+  ],
+  "debian/extra/vendor/cloud.google.com/go/.gitignore": [
+   12,
+   0
+  ],
+  "debian/extra/vendor/cloud.google.com/go/auth/CHANGES.md": [
+   14,
+   0
+  ],
+  "debian/extra/vendor/cloud.google.com/go/auth/credentials/compute.go": [
+   18,
+   6
+  ],
+  "debian/extra/vendor/cloud.google.com/go/auth/credentials/detect.go": [
+   37,
+   0
+  ],
+  "debian/extra/vendor/cloud.google.com/go/auth/grpctransport/grpctransport.go": [
+   20,
+   5
+  ],
+  "debian/extra/vendor/cloud.google.com/go/auth/internal/transport/cba.go": [
+   24,
+   7
+  ],
+  "debian/extra/vendor/cloud.google.com/go/auth/internal/transport/transport.go": [
+   3,
+   2
+  ],
+  "debian/extra/vendor/cloud.google.com/go/auth/oauth2adapt/CHANGES.md": [
+   7,
+   0
+  ],
+  "debian/extra/vendor/github.com/BurntSushi/toml/.gitignore": [
+   2,
+   0
+  ],
+  "debian/extra/vendor/github.com/CycloneDX/cyclonedx-go/.gitignore": [
+   24,
+   0
+  ],
+  "debian/extra/vendor/github.com/Microsoft/go-winio/.gitattributes": [
+   1,
+   0
+  ],
+  "debian/extra/vendor/github.com/Microsoft/go-winio/.gitignore": [
+   10,
+   0
+  ],
+  "debian/extra/vendor/github.com/Microsoft/hcsshim/.gitattributes": [
+   3,
+   0
+  ],
+  "debian/extra/vendor/github.com/Microsoft/hcsshim/.gitignore": [
+   53,
+   0
+  ],
+  "debian/extra/vendor/github.com/anchore/go-struct-converter/.gitignore": [
+   30,
+   0
+  ],
+  "debian/extra/vendor/github.com/cncf/xds/go/udpa/annotations/migrate.pb.go": [
+   1,
+   1
+  ],
+  "debian/extra/vendor/github.com/cncf/xds/go/udpa/annotations/security.pb.go": [
+   1,
+   1
+  ],
+  "debian/extra/vendor/github.com/cncf/xds/go/udpa/annotations/sensitive.pb.go": [
+   1,
+   1
+  ],
+  "debian/extra/vendor/github.com/cncf/xds/go/udpa/annotations/status.pb.go": [
+   1,
+   1
+  ],
+  "debian/extra/vendor/github.com/cncf/xds/go/udpa/annotations/versioning.pb.go": [
+   1,
+   1
+  ],
+  "debian/extra/vendor/github.com/cncf/xds/go/udpa/type/v1/typed_struct.pb.go": [
+   1,
+   1
+  ],
+  "debian/extra/vendor/github.com/cncf/xds/go/xds/annotations/v3/migrate.pb.go": [
+   1,
+   1
+  ],
+  "debian/extra/vendor/github.com/cncf/xds/go/xds/annotations/v3/security.pb.go": [
+   1,
+   1
+  ],
+  "debian/extra/vendor/github.com/cncf/xds/go/xds/annotations/v3/sensitive.pb.go": [
+   1,
+   1
+  ],
+  "debian/extra/vendor/github.com/cncf/xds/go/xds/annotations/v3/status.pb.go": [
+   1,
+   1
+  ],
+  "debian/extra/vendor/github.com/cncf/xds/go/xds/annotations/v3/versioning.pb.go": [
+   1,
+   1
+  ],
+  "debian/extra/vendor/github.com/cncf/xds/go/xds/core/v3/authority.pb.go": [
+   1,
+   1
+  ],
+  "debian/extra/vendor/github.com/cncf/xds/go/xds/core/v3/cidr.pb.go": [
+   1,
+   1
+  ],
+  "debian/extra/vendor/github.com/cncf/xds/go/xds/core/v3/collection_entry.pb.go": [
+   1,
+   1
+  ],
+  "debian/extra/vendor/github.com/cncf/xds/go/xds/core/v3/context_params.pb.go": [
+   1,
+   1
+  ],
+  "debian/extra/vendor/github.com/cncf/xds/go/xds/core/v3/extension.pb.go": [
+   1,
+   1
+  ],
+  "debian/extra/vendor/github.com/cncf/xds/go/xds/core/v3/resource.pb.go": [
+   1,
+   1
+  ],
+  "debian/extra/vendor/github.com/cncf/xds/go/xds/core/v3/resource_locator.pb.go": [
+   1,
+   1
+  ],
+  "debian/extra/vendor/github.com/cncf/xds/go/xds/core/v3/resource_name.pb.go": [
+   1,
+   1
+  ],
+  "debian/extra/vendor/github.com/cncf/xds/go/xds/data/orca/v3/orca_load_report.pb.go": [
+   1,
+   1
+  ],
+  "debian/extra/vendor/github.com/cncf/xds/go/xds/service/orca/v3/orca.pb.go": [
+   1,
+   1
+  ],
+  "debian/extra/vendor/github.com/cncf/xds/go/xds/service/orca/v3/orca_grpc.pb.go": [
+   1,
+   1
+  ],
+  "debian/extra/vendor/github.com/cncf/xds/go/xds/type/matcher/v3/cel.pb.go": [
+   1,
+   1
+  ],
+  "debian/extra/vendor/github.com/cncf/xds/go/xds/type/matcher/v3/domain.pb.go": [
+   1,
+   1
+  ],
+  "debian/extra/vendor/github.com/cncf/xds/go/xds/type/matcher/v3/http_inputs.pb.go": [
+   1,
+   1
+  ],
+  "debian/extra/vendor/github.com/cncf/xds/go/xds/type/matcher/v3/ip.pb.go": [
+   1,
+   1
+  ],
+  "debian/extra/vendor/github.com/cncf/xds/go/xds/type/matcher/v3/matcher.pb.go": [
+   1,
+   1
+  ],
+  "debian/extra/vendor/github.com/cncf/xds/go/xds/type/matcher/v3/range.pb.go": [
+   1,
+   1
+  ],
+  "debian/extra/vendor/github.com/cncf/xds/go/xds/type/matcher/v3/regex.pb.go": [
+   1,
+   1
+  ],
+  "debian/extra/vendor/github.com/cncf/xds/go/xds/type/matcher/v3/string.pb.go": [
+   1,
+   1
+  ],
+  "debian/extra/vendor/github.com/cncf/xds/go/xds/type/v3/cel.pb.go": [
+   1,
+   1
+  ],
+  "debian/extra/vendor/github.com/cncf/xds/go/xds/type/v3/range.pb.go": [
+   1,
+   1
+  ],
+  "debian/extra/vendor/github.com/cncf/xds/go/xds/type/v3/typed_struct.pb.go": [
+   1,
+   1
+  ],
+  "debian/extra/vendor/github.com/containerd/containerd/.gitattributes": [
+   1,
+   0
+  ],
+  "debian/extra/vendor/github.com/containerd/containerd/.gitignore": [
+   10,
+   0
+  ],
+  "debian/extra/vendor/github.com/containerd/containerd/.mailmap": [
+   172,
+   0
+  ],
+  "debian/extra/vendor/github.com/containerd/fifo/.gitattributes": [
+   1,
+   0
+  ],
+  "debian/extra/vendor/github.com/containerd/fifo/.gitignore": [
+   2,
+   0
+  ],
+  "debian/extra/vendor/github.com/containerd/platforms/.gitattributes": [
+   1,
+   0
+  ],
+  "debian/extra/vendor/github.com/containerd/ttrpc/.gitattributes": [
+   1,
+   0
+  ],
+  "debian/extra/vendor/github.com/containerd/ttrpc/.gitignore": [
+   13,
+   0
+  ],
+  "debian/extra/vendor/github.com/containerd/typeurl/v2/.gitignore": [
+   2,
+   0
+  ],
+  "debian/extra/vendor/github.com/distribution/reference/.gitattributes": [
+   1,
+   0
+  ],
+  "debian/extra/vendor/github.com/distribution/reference/.gitignore": [
+   2,
+   0
+  ],
+  "debian/extra/vendor/github.com/docker/docker/AUTHORS": [
+   59,
+   2
+  ],
+  "debian/extra/vendor/github.com/docker/docker/api/README.md": [
+   42,
+   0
+  ],
+  "debian/extra/vendor/github.com/docker/docker/api/common.go": [
+   20,
+   0
+  ],
+  "debian/extra/vendor/github.com/docker/docker/api/swagger-gen.yaml": [
+   12,
+   0
+  ],
+  "debian/extra/vendor/github.com/docker/docker/api/swagger.yaml": [
+   13528,
+   0
+  ],
+  "debian/extra/vendor/github.com/docker/docker/api/types/blkiodev/blkio.go": [
+   23,
+   0
+  ],
+  "debian/extra/vendor/github.com/docker/docker/api/types/checkpoint/list.go": [
+   7,
+   0
+  ],
+  "debian/extra/vendor/github.com/docker/docker/api/types/checkpoint/options.go": [
+   19,
+   0
+  ],
+  "debian/extra/vendor/github.com/docker/docker/api/types/client.go": [
+   256,
+   0
+  ],
+  "debian/extra/vendor/github.com/docker/docker/api/types/common/id_response.go": [
+   13,
+   0
+  ],
+  "debian/extra/vendor/github.com/docker/docker/api/types/container/change_type.go": [
+   15,
+   0
+  ],
+  "debian/extra/vendor/github.com/docker/docker/api/types/container/change_types.go": [
+   23,
+   0
+  ],
+  "debian/extra/vendor/github.com/docker/docker/api/types/container/commit.go": [
+   7,
+   0
+  ],
+  "debian/extra/vendor/github.com/docker/docker/api/types/container/config.go": [
+   73,
+   0
+  ],
+  "debian/extra/vendor/github.com/docker/docker/api/types/container/container.go": [
+   188,
+   0
+  ],
+  "debian/extra/vendor/github.com/docker/docker/api/types/container/create_request.go": [
+   13,
+   0
+  ],
+  "debian/extra/vendor/github.com/docker/docker/api/types/container/create_response.go": [
+   19,
+   0
+  ],
+  "debian/extra/vendor/github.com/docker/docker/api/types/container/errors.go": [
+   9,
+   0
+  ],
+  "debian/extra/vendor/github.com/docker/docker/api/types/container/exec.go": [
+   51,
+   0
+  ],
+  "debian/extra/vendor/github.com/docker/docker/api/types/container/filesystem_change.go": [
+   19,
+   0
+  ],
+  "debian/extra/vendor/github.com/docker/docker/api/types/container/health.go": [
+   26,
+   0
+  ],
+  "debian/extra/vendor/github.com/docker/docker/api/types/container/hostconfig.go": [
+   501,
+   0
+  ],
+  "debian/extra/vendor/github.com/docker/docker/api/types/container/hostconfig_unix.go": [
+   45,
+   0
+  ],
+  "debian/extra/vendor/github.com/docker/docker/api/types/container/hostconfig_windows.go": [
+   47,
+   0
+  ],
+  "debian/extra/vendor/github.com/docker/docker/api/types/container/network_settings.go": [
+   56,
+   0
+  ],
+  "debian/extra/vendor/github.com/docker/docker/api/types/container/options.go": [
+   67,
+   0
+  ],
+  "debian/extra/vendor/github.com/docker/docker/api/types/container/port.go": [
+   23,
+   0
+  ],
+  "debian/extra/vendor/github.com/docker/docker/api/types/container/stats.go": [
+   177,
+   0
+  ],
+  "debian/extra/vendor/github.com/docker/docker/api/types/container/top_response.go": [
+   18,
+   0
+  ],
+  "debian/extra/vendor/github.com/docker/docker/api/types/container/update_response.go": [
+   14,
+   0
+  ],
+  "debian/extra/vendor/github.com/docker/docker/api/types/container/wait_exit_error.go": [
+   12,
+   0
+  ],
+  "debian/extra/vendor/github.com/docker/docker/api/types/container/wait_response.go": [
+   18,
+   0
+  ],
+  "debian/extra/vendor/github.com/docker/docker/api/types/container/waitcondition.go": [
+   22,
+   0
+  ],
+  "debian/extra/vendor/github.com/docker/docker/api/types/error_response.go": [
+   13,
+   0
+  ],
+  "debian/extra/vendor/github.com/docker/docker/api/types/error_response_ext.go": [
+   6,
+   0
+  ],
+  "debian/extra/vendor/github.com/docker/docker/api/types/events/events.go": [
+   135,
+   0
+  ],
+  "debian/extra/vendor/github.com/docker/docker/api/types/filters/errors.go": [
+   24,
+   0
+  ],
+  "debian/extra/vendor/github.com/docker/docker/api/types/filters/parse.go": [
+   336,
+   0
+  ],
+  "debian/extra/vendor/github.com/docker/docker/api/types/image/delete_response.go": [
+   15,
+   0
+  ],
+  "debian/extra/vendor/github.com/docker/docker/api/types/image/image.go": [
+   47,
+   0
+  ],
+  "debian/extra/vendor/github.com/docker/docker/api/types/image/image_history.go": [
+   36,
+   0
+  ],
+  "debian/extra/vendor/github.com/docker/docker/api/types/image/image_inspect.go": [
+   140,
+   0
+  ],
+  "debian/extra/vendor/github.com/docker/docker/api/types/image/manifest.go": [
+   99,
+   0
+  ],
+  "debian/extra/vendor/github.com/docker/docker/api/types/image/opts.go": [
+   116,
+   0
+  ],
+  "debian/extra/vendor/github.com/docker/docker/api/types/image/summary.go": [
+   101,
+   0
+  ],
+  "debian/extra/vendor/github.com/docker/docker/api/types/mount/mount.go": [
+   157,
+   0
+  ],
+  "debian/extra/vendor/github.com/docker/docker/api/types/network/create_response.go": [
+   19,
+   0
+  ],
+  "debian/extra/vendor/github.com/docker/docker/api/types/network/endpoint.go": [
+   153,
+   0
+  ],
+  "debian/extra/vendor/github.com/docker/docker/api/types/network/ipam.go": [
+   134,
+   0
+  ],
+  "debian/extra/vendor/github.com/docker/docker/api/types/network/network.go": [
+   168,
+   0
+  ],
+  "debian/extra/vendor/github.com/docker/docker/api/types/plugin.go": [
+   203,
+   0
+  ],
+  "debian/extra/vendor/github.com/docker/docker/api/types/plugin_device.go": [
+   25,
+   0
+  ],
+  "debian/extra/vendor/github.com/docker/docker/api/types/plugin_env.go": [
+   25,
+   0
+  ],
+  "debian/extra/vendor/github.com/docker/docker/api/types/plugin_interface_type.go": [
+   21,
+   0
+  ],
+  "debian/extra/vendor/github.com/docker/docker/api/types/plugin_mount.go": [
+   37,
+   0
+  ],
+  "debian/extra/vendor/github.com/docker/docker/api/types/plugin_responses.go": [
+   71,
+   0
+  ],
+  "debian/extra/vendor/github.com/docker/docker/api/types/registry/authconfig.go": [
+   109,
+   0
+  ],
+  "debian/extra/vendor/github.com/docker/docker/api/types/registry/authenticate.go": [
+   21,
+   0
+  ],
+  "debian/extra/vendor/github.com/docker/docker/api/types/registry/registry.go": [
+   116,
+   0
+  ],
+  "debian/extra/vendor/github.com/docker/docker/api/types/registry/search.go": [
+   48,
+   0
+  ],
+  "debian/extra/vendor/github.com/docker/docker/api/types/storage/driver_data.go": [
+   23,
+   0
+  ],
+  "debian/extra/vendor/github.com/docker/docker/api/types/strslice/strslice.go": [
+   30,
+   0
+  ],
+  "debian/extra/vendor/github.com/docker/docker/api/types/swarm/common.go": [
+   48,
+   0
+  ],
+  "debian/extra/vendor/github.com/docker/docker/api/types/swarm/config.go": [
+   46,
+   0
+  ],
+  "debian/extra/vendor/github.com/docker/docker/api/types/swarm/container.go": [
+   119,
+   0
+  ],
+  "debian/extra/vendor/github.com/docker/docker/api/types/swarm/network.go": [
+   121,
+   0
+  ],
+  "debian/extra/vendor/github.com/docker/docker/api/types/swarm/node.go": [
+   139,
+   0
+  ],
+  "debian/extra/vendor/github.com/docker/docker/api/types/swarm/runtime.go": [
+   27,
+   0
+  ],
+  "debian/extra/vendor/github.com/docker/docker/api/types/swarm/runtime/gen.go": [
+   3,
+   0
+  ],
+  "debian/extra/vendor/github.com/docker/docker/api/types/swarm/runtime/plugin.pb.go": [
+   808,
+   0
+  ],
+  "debian/extra/vendor/github.com/docker/docker/api/types/swarm/runtime/plugin.proto": [
+   19,
+   0
+  ],
+  "debian/extra/vendor/github.com/docker/docker/api/types/swarm/secret.go": [
+   50,
+   0
+  ],
+  "debian/extra/vendor/github.com/docker/docker/api/types/swarm/service.go": [
+   202,
+   0
+  ],
+  "debian/extra/vendor/github.com/docker/docker/api/types/swarm/service_create_response.go": [
+   20,
+   0
+  ],
+  "debian/extra/vendor/github.com/docker/docker/api/types/swarm/service_update_response.go": [
+   12,
+   0
+  ],
+  "debian/extra/vendor/github.com/docker/docker/api/types/swarm/swarm.go": [
+   237,
+   0
+  ],
+  "debian/extra/vendor/github.com/docker/docker/api/types/swarm/task.go": [
+   225,
+   0
+  ],
+  "debian/extra/vendor/github.com/docker/docker/api/types/system/info.go": [
+   153,
+   0
+  ],
+  "debian/extra/vendor/github.com/docker/docker/api/types/system/runtime.go": [
+   20,
+   0
+  ],
+  "debian/extra/vendor/github.com/docker/docker/api/types/system/security_opts.go": [
+   48,
+   0
+  ],
+  "debian/extra/vendor/github.com/docker/docker/api/types/time/timestamp.go": [
+   131,
+   0
+  ],
+  "debian/extra/vendor/github.com/docker/docker/api/types/types.go": [
+   179,
+   0
+  ],
+  "debian/extra/vendor/github.com/docker/docker/api/types/types_deprecated.go": [
+   115,
+   0
+  ],
+  "debian/extra/vendor/github.com/docker/docker/api/types/versions/compare.go": [
+   65,
+   0
+  ],
+  "debian/extra/vendor/github.com/docker/docker/api/types/volume/cluster_volume.go": [
+   420,
+   0
+  ],
+  "debian/extra/vendor/github.com/docker/docker/api/types/volume/create_options.go": [
+   29,
+   0
+  ],
+  "debian/extra/vendor/github.com/docker/docker/api/types/volume/list_response.go": [
+   18,
+   0
+  ],
+  "debian/extra/vendor/github.com/docker/docker/api/types/volume/options.go": [
+   15,
+   0
+  ],
+  "debian/extra/vendor/github.com/docker/docker/api/types/volume/volume.go": [
+   75,
+   0
+  ],
+  "debian/extra/vendor/github.com/docker/docker/api/types/volume/volume_update.go": [
+   7,
+   0
+  ],
+  "debian/extra/vendor/github.com/docker/docker/client/README.md": [
+   38,
+   0
+  ],
+  "debian/extra/vendor/github.com/docker/docker/client/build_cancel.go": [
+   16,
+   0
+  ],
+  "debian/extra/vendor/github.com/docker/docker/client/build_prune.go": [
+   56,
+   0
+  ],
+  "debian/extra/vendor/github.com/docker/docker/client/checkpoint.go": [
+   18,
+   0
+  ],
+  "debian/extra/vendor/github.com/docker/docker/client/checkpoint_create.go": [
+   19,
+   0
+  ],
+  "debian/extra/vendor/github.com/docker/docker/client/checkpoint_delete.go": [
+   25,
+   0
+  ],
+  "debian/extra/vendor/github.com/docker/docker/client/checkpoint_list.go": [
+   28,
+   0
+  ],
+  "debian/extra/vendor/github.com/docker/docker/client/client.go": [
+   474,
+   0
+  ],
+  "debian/extra/vendor/github.com/docker/docker/client/client_deprecated.go": [
+   27,
+   0
+  ],
+  "debian/extra/vendor/github.com/docker/docker/client/client_interfaces.go": [
+   236,
+   0
+  ],
+  "debian/extra/vendor/github.com/docker/docker/client/client_unix.go": [
+   7,
+   0
+  ],
+  "debian/extra/vendor/github.com/docker/docker/client/client_windows.go": [
+   5,
+   0
+  ],
+  "debian/extra/vendor/github.com/docker/docker/client/config_create.go": [
+   25,
+   0
+  ],
+  "debian/extra/vendor/github.com/docker/docker/client/config_inspect.go": [
+   37,
+   0
+  ],
+  "debian/extra/vendor/github.com/docker/docker/client/config_list.go": [
+   38,
+   0
+  ],
+  "debian/extra/vendor/github.com/docker/docker/client/config_remove.go": [
+   17,
+   0
+  ],
+  "debian/extra/vendor/github.com/docker/docker/client/config_update.go": [
+   24,
+   0
+  ],
+  "debian/extra/vendor/github.com/docker/docker/client/container_attach.go": [
+   65,
+   0
+  ],
+  "debian/extra/vendor/github.com/docker/docker/client/container_commit.go": [
+   60,
+   0
+  ],
+  "debian/extra/vendor/github.com/docker/docker/client/container_copy.go": [
+   104,
+   0
+  ],
+  "debian/extra/vendor/github.com/docker/docker/client/container_create.go": [
+   168,
+   0
+  ],
+  "debian/extra/vendor/github.com/docker/docker/client/container_diff.go": [
+   30,
+   0
+  ],
+  "debian/extra/vendor/github.com/docker/docker/client/container_exec.go": [
+   81,
+   0
+  ],
+  "debian/extra/vendor/github.com/docker/docker/client/container_export.go": [
+   24,
+   0
+  ],
+  "debian/extra/vendor/github.com/docker/docker/client/container_inspect.go": [
+   57,
+   0
+  ],
+  "debian/extra/vendor/github.com/docker/docker/client/container_kill.go": [
+   23,
+   0
+  ],
+  "debian/extra/vendor/github.com/docker/docker/client/container_list.go": [
+   56,
+   0
+  ],
+  "debian/extra/vendor/github.com/docker/docker/client/container_logs.go": [
+   85,
+   0
+  ],
+  "debian/extra/vendor/github.com/docker/docker/client/container_pause.go": [
+   15,
+   0
+  ],
+  "debian/extra/vendor/github.com/docker/docker/client/container_prune.go": [
+   35,
+   0
+  ],
+  "debian/extra/vendor/github.com/docker/docker/client/container_remove.go": [
+   32,
+   0
+  ],
+  "debian/extra/vendor/github.com/docker/docker/client/container_rename.go": [
+   20,
+   0
+  ],
+  "debian/extra/vendor/github.com/docker/docker/client/container_resize.go": [
+   38,
+   0
+  ],
+  "debian/extra/vendor/github.com/docker/docker/client/container_restart.go": [
+   41,
+   0
+  ],
+  "debian/extra/vendor/github.com/docker/docker/client/container_start.go": [
+   28,
+   0
+  ],
+  "debian/extra/vendor/github.com/docker/docker/client/container_stats.go": [
+   56,
+   0
+  ],
+  "debian/extra/vendor/github.com/docker/docker/client/container_stop.go": [
+   45,
+   0
+  ],
+  "debian/extra/vendor/github.com/docker/docker/client/container_top.go": [
+   33,
+   0
+  ],
+  "debian/extra/vendor/github.com/docker/docker/client/container_unpause.go": [
+   15,
+   0
+  ],
+  "debian/extra/vendor/github.com/docker/docker/client/container_update.go": [
+   26,
+   0
+  ],
+  "debian/extra/vendor/github.com/docker/docker/client/container_wait.go": [
+   122,
+   0
+  ],
+  "debian/extra/vendor/github.com/docker/docker/client/disk_usage.go": [
+   33,
+   0
+  ],
+  "debian/extra/vendor/github.com/docker/docker/client/distribution_inspect.go": [
+   39,
+   0
+  ],
+  "debian/extra/vendor/github.com/docker/docker/client/envvars.go": [
+   90,
+   0
+  ],
+  "debian/extra/vendor/github.com/docker/docker/client/errors.go": [
+   85,
+   0
+  ],
+  "debian/extra/vendor/github.com/docker/docker/client/events.go": [
+   100,
+   0
+  ],
+  "debian/extra/vendor/github.com/docker/docker/client/hijack.go": [
+   139,
+   0
+  ],
+  "debian/extra/vendor/github.com/docker/docker/client/image_build.go": [
+   182,
+   0
+  ],
+  "debian/extra/vendor/github.com/docker/docker/client/image_create.go": [
+   40,
+   0
+  ],
+  "debian/extra/vendor/github.com/docker/docker/client/image_history.go": [
+   56,
+   0
+  ],
+  "debian/extra/vendor/github.com/docker/docker/client/image_history_opts.go": [
+   19,
+   0
+  ],
+  "debian/extra/vendor/github.com/docker/docker/client/image_import.go": [
+   48,
+   0
+  ],
+  "debian/extra/vendor/github.com/docker/docker/client/image_inspect.go": [
+   65,
+   0
+  ],
+  "debian/extra/vendor/github.com/docker/docker/client/image_inspect_opts.go": [
+   50,
+   0
+  ],
+  "debian/extra/vendor/github.com/docker/docker/client/image_list.go": [
+   67,
+   0
+  ],
+  "debian/extra/vendor/github.com/docker/docker/client/image_load.go": [
+   54,
+   0
+  ],
+  "debian/extra/vendor/github.com/docker/docker/client/image_load_opts.go": [
+   41,
+   0
+  ],
+  "debian/extra/vendor/github.com/docker/docker/client/image_prune.go": [
+   35,
+   0
+  ],
+  "debian/extra/vendor/github.com/docker/docker/client/image_pull.go": [
+   64,
+   0
+  ],
+  "debian/extra/vendor/github.com/docker/docker/client/image_push.go": [
+   73,
+   0
+  ],
+  "debian/extra/vendor/github.com/docker/docker/client/image_remove.go": [
+   31,
+   0
+  ],
+  "debian/extra/vendor/github.com/docker/docker/client/image_save.go": [
+   41,
+   0
+  ],
+  "debian/extra/vendor/github.com/docker/docker/client/image_save_opts.go": [
+   33,
+   0
+  ],
+  "debian/extra/vendor/github.com/docker/docker/client/image_search.go": [
+   54,
+   0
+  ],
+  "debian/extra/vendor/github.com/docker/docker/client/image_tag.go": [
+   37,
+   0
+  ],
+  "debian/extra/vendor/github.com/docker/docker/client/info.go": [
+   26,
+   0
+  ],
+  "debian/extra/vendor/github.com/docker/docker/client/login.go": [
+   24,
+   0
+  ],
+  "debian/extra/vendor/github.com/docker/docker/client/network_connect.go": [
+   28,
+   0
+  ],
+  "debian/extra/vendor/github.com/docker/docker/client/network_create.go": [
+   40,
+   0
+  ],
+  "debian/extra/vendor/github.com/docker/docker/client/network_disconnect.go": [
+   28,
+   0
+  ],
+  "debian/extra/vendor/github.com/docker/docker/client/network_inspect.go": [
+   47,
+   0
+  ],
+  "debian/extra/vendor/github.com/docker/docker/client/network_list.go": [
+   32,
+   0
+  ],
+  "debian/extra/vendor/github.com/docker/docker/client/network_prune.go": [
+   35,
+   0
+  ],
+  "debian/extra/vendor/github.com/docker/docker/client/network_remove.go": [
+   14,
+   0
+  ],
+  "debian/extra/vendor/github.com/docker/docker/client/node_inspect.go": [
+   33,
+   0
+  ],
+  "debian/extra/vendor/github.com/docker/docker/client/node_list.go": [
+   35,
+   0
+  ],
+  "debian/extra/vendor/github.com/docker/docker/client/node_remove.go": [
+   25,
+   0
+  ],
+  "debian/extra/vendor/github.com/docker/docker/client/node_update.go": [
+   22,
+   0
+  ],
+  "debian/extra/vendor/github.com/docker/docker/client/options.go": [
+   240,
+   0
+  ],
+  "debian/extra/vendor/github.com/docker/docker/client/ping.go": [
+   80,
+   0
+  ],
+  "debian/extra/vendor/github.com/docker/docker/client/plugin_create.go": [
+   23,
+   0
+  ],
+  "debian/extra/vendor/github.com/docker/docker/client/plugin_disable.go": [
+   23,
+   0
+  ],
+  "debian/extra/vendor/github.com/docker/docker/client/plugin_enable.go": [
+   23,
+   0
+  ],
+  "debian/extra/vendor/github.com/docker/docker/client/plugin_inspect.go": [
+   32,
+   0
+  ],
+  "debian/extra/vendor/github.com/docker/docker/client/plugin_install.go": [
+   117,
+   0
+  ],
+  "debian/extra/vendor/github.com/docker/docker/client/plugin_list.go": [
+   33,
+   0
+  ],
+  "debian/extra/vendor/github.com/docker/docker/client/plugin_push.go": [
+   24,
+   0
+  ],
+  "debian/extra/vendor/github.com/docker/docker/client/plugin_remove.go": [
+   25,
+   0
+  ],
+  "debian/extra/vendor/github.com/docker/docker/client/plugin_set.go": [
+   17,
+   0
+  ],
+  "debian/extra/vendor/github.com/docker/docker/client/plugin_upgrade.go": [
+   47,
+   0
+  ],
+  "debian/extra/vendor/github.com/docker/docker/client/request.go": [
+   325,
+   0
+  ],
+  "debian/extra/vendor/github.com/docker/docker/client/secret_create.go": [
+   25,
+   0
+  ],
+  "debian/extra/vendor/github.com/docker/docker/client/secret_inspect.go": [
+   37,
+   0
+  ],
+  "debian/extra/vendor/github.com/docker/docker/client/secret_list.go": [
+   38,
+   0
+  ],
+  "debian/extra/vendor/github.com/docker/docker/client/secret_remove.go": [
+   17,
+   0
+  ],
+  "debian/extra/vendor/github.com/docker/docker/client/secret_update.go": [
+   24,
+   0
+  ],
+  "debian/extra/vendor/github.com/docker/docker/client/service_create.go": [
+   213,
+   0
+  ],
+  "debian/extra/vendor/github.com/docker/docker/client/service_inspect.go": [
+   39,
+   0
+  ],
+  "debian/extra/vendor/github.com/docker/docker/client/service_list.go": [
+   39,
+   0
+  ],
+  "debian/extra/vendor/github.com/docker/docker/client/service_logs.go": [
+   57,
+   0
+  ],
+  "debian/extra/vendor/github.com/docker/docker/client/service_remove.go": [
+   15,
+   0
+  ],
+  "debian/extra/vendor/github.com/docker/docker/client/service_update.go": [
+   90,
+   0
+  ],
+  "debian/extra/vendor/github.com/docker/docker/client/swarm_get_unlock_key.go": [
+   21,
+   0
+  ],
+  "debian/extra/vendor/github.com/docker/docker/client/swarm_init.go": [
+   21,
+   0
+  ],
+  "debian/extra/vendor/github.com/docker/docker/client/swarm_inspect.go": [
+   21,
+   0
+  ],
+  "debian/extra/vendor/github.com/docker/docker/client/swarm_join.go": [
+   14,
+   0
+  ],
+  "debian/extra/vendor/github.com/docker/docker/client/swarm_leave.go": [
+   17,
+   0
+  ],
+  "debian/extra/vendor/github.com/docker/docker/client/swarm_unlock.go": [
+   14,
+   0
+  ],
+  "debian/extra/vendor/github.com/docker/docker/client/swarm_update.go": [
+   21,
+   0
+  ],
+  "debian/extra/vendor/github.com/docker/docker/client/task_inspect.go": [
+   34,
+   0
+  ],
+  "debian/extra/vendor/github.com/docker/docker/client/task_list.go": [
+   35,
+   0
+  ],
+  "debian/extra/vendor/github.com/docker/docker/client/task_logs.go": [
+   51,
+   0
+  ],
+  "debian/extra/vendor/github.com/docker/docker/client/utils.go": [
+   96,
+   0
+  ],
+  "debian/extra/vendor/github.com/docker/docker/client/version.go": [
+   21,
+   0
+  ],
+  "debian/extra/vendor/github.com/docker/docker/client/volume_create.go": [
+   21,
+   0
+  ],
+  "debian/extra/vendor/github.com/docker/docker/client/volume_inspect.go": [
+   40,
+   0
+  ],
+  "debian/extra/vendor/github.com/docker/docker/client/volume_list.go": [
+   33,
+   0
+  ],
+  "debian/extra/vendor/github.com/docker/docker/client/volume_prune.go": [
+   35,
+   0
+  ],
+  "debian/extra/vendor/github.com/docker/docker/client/volume_remove.go": [
+   34,
+   0
+  ],
+  "debian/extra/vendor/github.com/docker/docker/client/volume_update.go": [
+   28,
+   0
+  ],
+  "debian/extra/vendor/github.com/docker/docker/errdefs/defs.go": [
+   69,
+   0
+  ],
+  "debian/extra/vendor/github.com/docker/docker/errdefs/doc.go": [
+   8,
+   0
+  ],
+  "debian/extra/vendor/github.com/docker/docker/errdefs/helpers.go": [
+   305,
+   0
+  ],
+  "debian/extra/vendor/github.com/docker/docker/errdefs/http_helpers.go": [
+   47,
+   0
+  ],
+  "debian/extra/vendor/github.com/docker/docker/errdefs/is.go": [
+   123,
+   0
+  ],
+  "debian/extra/vendor/github.com/docker/docker/internal/lazyregexp/lazyregexp.go": [
+   90,
+   0
+  ],
+  "debian/extra/vendor/github.com/docker/docker/internal/multierror/multierror.go": [
+   46,
+   0
+  ],
+  "debian/extra/vendor/github.com/docker/docker/pkg/homedir/homedir.go": [
+   0,
+   16
+  ],
+  "dev/null": [
+   0,
+   29
+  ],
+  "debian/extra/vendor/github.com/docker/go-connections/LICENSE": [
+   191,
+   0
+  ],
+  "debian/extra/vendor/github.com/docker/go-connections/nat/nat.go": [
+   237,
+   0
+  ],
+  "debian/extra/vendor/github.com/docker/go-connections/nat/parse.go": [
+   33,
+   0
+  ],
+  "debian/extra/vendor/github.com/docker/go-connections/nat/sort.go": [
+   96,
+   0
+  ],
+  "debian/extra/vendor/github.com/docker/go-connections/sockets/inmem_socket.go": [
+   81,
+   0
+  ],
+  "debian/extra/vendor/github.com/docker/go-connections/sockets/proxy.go": [
+   31,
+   0
+  ],
+  "debian/extra/vendor/github.com/docker/go-connections/sockets/sockets.go": [
+   66,
+   0
+  ],
+  "debian/extra/vendor/github.com/docker/go-connections/sockets/sockets_unix.go": [
+   18,
+   0
+  ],
+  "debian/extra/vendor/github.com/docker/go-connections/sockets/sockets_windows.go": [
+   23,
+   0
+  ],
+  "debian/extra/vendor/github.com/docker/go-connections/sockets/tcp_socket.go": [
+   22,
+   0
+  ],
+  "debian/extra/vendor/github.com/docker/go-connections/sockets/unix_socket.go": [
+   84,
+   0
+  ],
+  "debian/extra/vendor/github.com/docker/go-connections/sockets/unix_socket_unix.go": [
+   54,
+   0
+  ],
+  "debian/extra/vendor/github.com/docker/go-connections/sockets/unix_socket_windows.go": [
+   7,
+   0
+  ],
+  "debian/extra/vendor/github.com/docker/go-connections/tlsconfig/certpool.go": [
+   16,
+   0
+  ],
+  "debian/extra/vendor/github.com/docker/go-connections/tlsconfig/config.go": [
+   245,
+   0
+  ],
+  "debian/extra/vendor/github.com/docker/go-events/.gitignore": [
+   24,
+   0
+  ],
+  "debian/extra/vendor/github.com/docker/go-units/CONTRIBUTING.md": [
+   67,
+   0
+  ],
+  "debian/extra/vendor/github.com/docker/go-units/LICENSE": [
+   191,
+   0
+  ],
+  "debian/extra/vendor/github.com/docker/go-units/MAINTAINERS": [
+   46,
+   0
+  ],
+  "debian/extra/vendor/github.com/docker/go-units/README.md": [
+   16,
+   0
+  ],
+  "debian/extra/vendor/github.com/docker/go-units/circle.yml": [
+   11,
+   0
+  ],
+  "debian/extra/vendor/github.com/docker/go-units/duration.go": [
+   35,
+   0
+  ],
+  "debian/extra/vendor/github.com/docker/go-units/size.go": [
+   154,
+   0
+  ],
+  "debian/extra/vendor/github.com/docker/go-units/ulimit.go": [
+   123,
+   0
+  ],
+  "debian/extra/vendor/github.com/edsrzf/mmap-go/.gitignore": [
+   11,
+   0
+  ],
+  "debian/extra/vendor/github.com/envoyproxy/go-control-plane/envoy/admin/v3/certs.pb.go": [
+   1,
+   1
+  ],
+  "debian/extra/vendor/github.com/envoyproxy/go-control-plane/envoy/admin/v3/clusters.pb.go": [
+   1,
+   1
+  ],
+  "debian/extra/vendor/github.com/envoyproxy/go-control-plane/envoy/admin/v3/config_dump.pb.go": [
+   1,
+   1
+  ],
+  "debian/extra/vendor/github.com/envoyproxy/go-control-plane/envoy/admin/v3/config_dump_shared.pb.go": [
+   26,
+   21
+  ],
+  "debian/extra/vendor/github.com/envoyproxy/go-control-plane/envoy/admin/v3/init_dump.pb.go": [
+   1,
+   1
+  ],
+  "debian/extra/vendor/github.com/envoyproxy/go-control-plane/envoy/admin/v3/listeners.pb.go": [
+   1,
+   1
+  ],
+  "debian/extra/vendor/github.com/envoyproxy/go-control-plane/envoy/admin/v3/memory.pb.go": [
+   1,
+   1
+  ],
+  "debian/extra/vendor/github.com/envoyproxy/go-control-plane/envoy/admin/v3/metrics.pb.go": [
+   1,
+   1
+  ],
+  "debian/extra/vendor/github.com/envoyproxy/go-control-plane/envoy/admin/v3/mutex_stats.pb.go": [
+   1,
+   1
+  ],
+  "debian/extra/vendor/github.com/envoyproxy/go-control-plane/envoy/admin/v3/server_info.pb.go": [
+   115,
+   103
+  ],
+  "debian/extra/vendor/github.com/envoyproxy/go-control-plane/envoy/admin/v3/server_info.pb.validate.go": [
+   2,
+   0
+  ],
+  "debian/extra/vendor/github.com/envoyproxy/go-control-plane/envoy/admin/v3/server_info_vtproto.pb.go": [
+   15,
+   0
+  ],
+  "debian/extra/vendor/github.com/envoyproxy/go-control-plane/envoy/admin/v3/tap.pb.go": [
+   1,
+   1
+  ],
+  "debian/extra/vendor/github.com/envoyproxy/go-control-plane/envoy/annotations/deprecation.pb.go": [
+   1,
+   1
+  ],
+  "debian/extra/vendor/github.com/envoyproxy/go-control-plane/envoy/annotations/resource.pb.go": [
+   1,
+   1
+  ],
+  "debian/extra/vendor/github.com/envoyproxy/go-control-plane/envoy/config/accesslog/v3/accesslog.pb.go": [
+   1,
+   1
+  ],
+  "debian/extra/vendor/github.com/envoyproxy/go-control-plane/envoy/config/bootstrap/v3/bootstrap.pb.go": [
+   1,
+   1
+  ],
+  "debian/extra/vendor/github.com/envoyproxy/go-control-plane/envoy/config/cluster/v3/circuit_breaker.pb.go": [
+   1,
+   1
+  ],
+  "debian/extra/vendor/github.com/envoyproxy/go-control-plane/envoy/config/cluster/v3/cluster.pb.go": [
+   2,
+   1
+  ],
+  "debian/extra/vendor/github.com/envoyproxy/go-control-plane/envoy/config/cluster/v3/filter.pb.go": [
+   1,
+   1
+  ],
+  "debian/extra/vendor/github.com/envoyproxy/go-control-plane/envoy/config/cluster/v3/outlier_detection.pb.go": [
+   1,
+   1
+  ],
+  "debian/extra/vendor/github.com/envoyproxy/go-control-plane/envoy/config/common/matcher/v3/matcher.pb.go": [
+   1,
+   1
+  ],
+  "debian/extra/vendor/github.com/envoyproxy/go-control-plane/envoy/config/core/v3/address.pb.go": [
+   1,
+   1
+  ],
+  "debian/extra/vendor/github.com/envoyproxy/go-control-plane/envoy/config/core/v3/backoff.pb.go": [
+   1,
+   1
+  ],
+  "debian/extra/vendor/github.com/envoyproxy/go-control-plane/envoy/config/core/v3/base.pb.go": [
+   1,
+   1
+  ],
+  "debian/extra/vendor/github.com/envoyproxy/go-control-plane/envoy/config/core/v3/config_source.pb.go": [
+   1,
+   1
+  ],
+  "debian/extra/vendor/github.com/envoyproxy/go-control-plane/envoy/config/core/v3/event_service_config.pb.go": [
+   1,
+   1
+  ],
+  "debian/extra/vendor/github.com/envoyproxy/go-control-plane/envoy/config/core/v3/extension.pb.go": [
+   1,
+   1
+  ],
+  "debian/extra/vendor/github.com/envoyproxy/go-control-plane/envoy/config/core/v3/grpc_method_list.pb.go": [
+   1,
+   1
+  ],
+  "debian/extra/vendor/github.com/envoyproxy/go-control-plane/envoy/config/core/v3/grpc_service.pb.go": [
+   1,
+   1
+  ],
+  "debian/extra/vendor/github.com/envoyproxy/go-control-plane/envoy/config/core/v3/health_check.pb.go": [
+   7,
+   6
+  ],
+  "debian/extra/vendor/github.com/envoyproxy/go-control-plane/envoy/config/core/v3/http_service.pb.go": [
+   1,
+   1
+  ],
+  "debian/extra/vendor/github.com/envoyproxy/go-control-plane/envoy/config/core/v3/http_uri.pb.go": [
+   1,
+   1
+  ],
+  "debian/extra/vendor/github.com/envoyproxy/go-control-plane/envoy/config/core/v3/protocol.pb.go": [
+   98,
+   83
+  ],
+  "debian/extra/vendor/github.com/envoyproxy/go-control-plane/envoy/config/core/v3/protocol.pb.validate.go": [
+   29,
+   0
+  ],
+  "debian/extra/vendor/github.com/envoyproxy/go-control-plane/envoy/config/core/v3/protocol_vtproto.pb.go": [
+   16,
+   0
+  ],
+  "debian/extra/vendor/github.com/envoyproxy/go-control-plane/envoy/config/core/v3/proxy_protocol.pb.go": [
+   1,
+   1
+  ],
+  "debian/extra/vendor/github.com/envoyproxy/go-control-plane/envoy/config/core/v3/resolver.pb.go": [
+   1,
+   1
+  ],
+  "debian/extra/vendor/github.com/envoyproxy/go-control-plane/envoy/config/core/v3/socket_cmsg_headers.pb.go": [
+   1,
+   1
+  ],
+  "debian/extra/vendor/github.com/envoyproxy/go-control-plane/envoy/config/core/v3/socket_option.pb.go": [
+   1,
+   1
+  ],
+  "debian/extra/vendor/github.com/envoyproxy/go-control-plane/envoy/config/core/v3/substitution_format_string.pb.go": [
+   1,
+   1
+  ],
+  "debian/extra/vendor/github.com/envoyproxy/go-control-plane/envoy/config/core/v3/udp_socket_config.pb.go": [
+   1,
+   1
+  ],
+  "debian/extra/vendor/github.com/envoyproxy/go-control-plane/envoy/config/endpoint/v3/endpoint.pb.go": [
+   1,
+   1
+  ],
+  "debian/extra/vendor/github.com/envoyproxy/go-control-plane/envoy/config/endpoint/v3/endpoint_components.pb.go": [
+   1,
+   1
+  ],
+  "debian/extra/vendor/github.com/envoyproxy/go-control-plane/envoy/config/endpoint/v3/load_report.pb.go": [
+   1,
+   1
+  ],
+  "debian/extra/vendor/github.com/envoyproxy/go-control-plane/envoy/config/listener/v3/api_listener.pb.go": [
+   1,
+   1
+  ],
+  "debian/extra/vendor/github.com/envoyproxy/go-control-plane/envoy/config/listener/v3/listener.pb.go": [
+   1,
+   1
+  ],
+  "debian/extra/vendor/github.com/envoyproxy/go-control-plane/envoy/config/listener/v3/listener_components.pb.go": [
+   1,
+   1
+  ],
+  "debian/extra/vendor/github.com/envoyproxy/go-control-plane/envoy/config/listener/v3/quic_config.pb.go": [
+   1,
+   1
+  ],
+  "debian/extra/vendor/github.com/envoyproxy/go-control-plane/envoy/config/listener/v3/udp_listener_config.pb.go": [
+   1,
+   1
+  ],
+  "debian/extra/vendor/github.com/envoyproxy/go-control-plane/envoy/config/metrics/v3/metrics_service.pb.go": [
+   1,
+   1
+  ],
+  "debian/extra/vendor/github.com/envoyproxy/go-control-plane/envoy/config/metrics/v3/stats.pb.go": [
+   1,
+   1
+  ],
+  "debian/extra/vendor/github.com/envoyproxy/go-control-plane/envoy/config/overload/v3/overload.pb.go": [
+   1,
+   1
+  ],
+  "debian/extra/vendor/github.com/envoyproxy/go-control-plane/envoy/config/rbac/v3/rbac.pb.go": [
+   2,
+   1
+  ],
+  "debian/extra/vendor/github.com/envoyproxy/go-control-plane/envoy/config/route/v3/route.pb.go": [
+   1,
+   1
+  ],
+  "debian/extra/vendor/github.com/envoyproxy/go-control-plane/envoy/config/route/v3/route_components.pb.go": [
+   630,
+   480
+  ],
+  "debian/extra/vendor/github.com/envoyproxy/go-control-plane/envoy/config/route/v3/route_components.pb.validate.go": [
+   171,
+   0
+  ],
+  "debian/extra/vendor/github.com/envoyproxy/go-control-plane/envoy/config/route/v3/route_components_vtproto.pb.go": [
+   122,
+   0
+  ],
+  "debian/extra/vendor/github.com/envoyproxy/go-control-plane/envoy/config/route/v3/scoped_route.pb.go": [
+   1,
+   1
+  ],
+  "debian/extra/vendor/github.com/envoyproxy/go-control-plane/envoy/config/tap/v3/common.pb.go": [
+   1,
+   1
+  ],
+  "debian/extra/vendor/github.com/envoyproxy/go-control-plane/envoy/config/trace/v3/datadog.pb.go": [
+   1,
+   1
+  ],
+  "debian/extra/vendor/github.com/envoyproxy/go-control-plane/envoy/config/trace/v3/dynamic_ot.pb.go": [
+   1,
+   1
+  ],
+  "debian/extra/vendor/github.com/envoyproxy/go-control-plane/envoy/config/trace/v3/http_tracer.pb.go": [
+   1,
+   1
+  ],
+  "debian/extra/vendor/github.com/envoyproxy/go-control-plane/envoy/config/trace/v3/lightstep.pb.go": [
+   1,
+   1
+  ],
+  "debian/extra/vendor/github.com/envoyproxy/go-control-plane/envoy/config/trace/v3/opentelemetry.pb.go": [
+   1,
+   1
+  ],
+  "debian/extra/vendor/github.com/envoyproxy/go-control-plane/envoy/config/trace/v3/service.pb.go": [
+   1,
+   1
+  ],
+  "debian/extra/vendor/github.com/envoyproxy/go-control-plane/envoy/config/trace/v3/skywalking.pb.go": [
+   1,
+   1
+  ],
+  "debian/extra/vendor/github.com/envoyproxy/go-control-plane/envoy/config/trace/v3/trace.pb.go": [
+   1,
+   1
+  ],
+  "debian/extra/vendor/github.com/envoyproxy/go-control-plane/envoy/config/trace/v3/xray.pb.go": [
+   1,
+   1
+  ],
+  "debian/extra/vendor/github.com/envoyproxy/go-control-plane/envoy/config/trace/v3/zipkin.pb.go": [
+   1,
+   1
+  ],
+  "debian/extra/vendor/github.com/envoyproxy/go-control-plane/envoy/data/accesslog/v3/accesslog.pb.go": [
+   1,
+   1
+  ],
+  "debian/extra/vendor/github.com/envoyproxy/go-control-plane/envoy/extensions/clusters/aggregate/v3/cluster.pb.go": [
+   1,
+   1
+  ],
+  "debian/extra/vendor/github.com/envoyproxy/go-control-plane/envoy/extensions/filters/common/fault/v3/fault.pb.go": [
+   1,
+   1
+  ],
+  "debian/extra/vendor/github.com/envoyproxy/go-control-plane/envoy/extensions/filters/http/fault/v3/fault.pb.go": [
+   1,
+   1
+  ],
+  "debian/extra/vendor/github.com/envoyproxy/go-control-plane/envoy/extensions/filters/http/rbac/v3/rbac.pb.go": [
+   72,
+   69
+  ],
+  "debian/extra/vendor/github.com/envoyproxy/go-control-plane/envoy/extensions/filters/http/router/v3/router.pb.go": [
+   1,
+   1
+  ],
+  "debian/extra/vendor/github.com/envoyproxy/go-control-plane/envoy/extensions/filters/network/http_connection_manager/v3/http_connection_manager.pb.go": [
+   1,
+   1
+  ],
+  "debian/extra/vendor/github.com/envoyproxy/go-control-plane/envoy/extensions/load_balancing_policies/client_side_weighted_round_robin/v3/client_side_weighted_round_robin.pb.go": [
+   1,
+   1
+  ],
+  "debian/extra/vendor/github.com/envoyproxy/go-control-plane/envoy/extensions/load_balancing_policies/common/v3/common.pb.go": [
+   1,
+   1
+  ],
+  "debian/extra/vendor/github.com/envoyproxy/go-control-plane/envoy/extensions/load_balancing_policies/least_request/v3/least_request.pb.go": [
+   1,
+   1
+  ],
+  "debian/extra/vendor/github.com/envoyproxy/go-control-plane/envoy/extensions/load_balancing_policies/pick_first/v3/pick_first.pb.go": [
+   1,
+   1
+  ],
+  "debian/extra/vendor/github.com/envoyproxy/go-control-plane/envoy/extensions/load_balancing_policies/ring_hash/v3/ring_hash.pb.go": [
+   1,
+   1
+  ],
+  "debian/extra/vendor/github.com/envoyproxy/go-control-plane/envoy/extensions/load_balancing_policies/wrr_locality/v3/wrr_locality.pb.go": [
+   1,
+   1
+  ],
+  "debian/extra/vendor/github.com/envoyproxy/go-control-plane/envoy/extensions/rbac/audit_loggers/stream/v3/stream.pb.go": [
+   1,
+   1
+  ],
+  "debian/extra/vendor/github.com/envoyproxy/go-control-plane/envoy/extensions/transport_sockets/tls/v3/cert.pb.go": [
+   1,
+   1
+  ],
+  "debian/extra/vendor/github.com/envoyproxy/go-control-plane/envoy/extensions/transport_sockets/tls/v3/common.pb.go": [
+   1,
+   1
+  ],
+  "debian/extra/vendor/github.com/envoyproxy/go-control-plane/envoy/extensions/transport_sockets/tls/v3/secret.pb.go": [
+   1,
+   1
+  ],
+  "debian/extra/vendor/github.com/envoyproxy/go-control-plane/envoy/extensions/transport_sockets/tls/v3/tls.pb.go": [
+   1,
+   1
+  ],
+  "debian/extra/vendor/github.com/envoyproxy/go-control-plane/envoy/extensions/transport_sockets/tls/v3/tls_spiffe_validator_config.pb.go": [
+   46,
+   28
+  ]
+ },
+ "files": 989,
+ "added_lines": 74202,
+ "removed_lines": 7355,
+ "diff": "diff --git a/CODEOWNERS b/CODEOWNERS\nnew file mode 100644\nindex 0000000..d03f239\n--- /dev/null\n+++ b/CODEOWNERS\n@@ -0,0 +1,4 @@\n+@burov\n+@ekremenetskii\n+@paulinakania\n+@zoltak-g\ndiff --git a/agentconfig/agentconfig.go b/agentconfig/agentconfig.go\nindex 0df954a..99c4adf 100644\n--- a/agentconfig/agentconfig.go\n+++ b/agentconfig/agentconfig.go\n@@ -82,6 +82,9 @@ const (\n \n \tosConfigPollIntervalDefault = 10\n \tosConfigMetadataPollTimeout = 60\n+\n+\t// Default Google API domain\n+\tuniverseDomainDefault = \"googleapis.com\"\n )\n \n var (\n@@ -125,6 +128,7 @@ type config struct {\n \tzypperRepoFilePath      string\n \tyumRepoFilePath         string\n \tinstanceID              string\n+\tuniverseDomain          string\n \tnumericProjectID        int64\n \tosConfigPollInterval    int\n \tdebugEnabled            bool\n@@ -192,6 +196,7 @@ func parseBool(s string) bool {\n type metadataJSON struct {\n \tInstance instanceJSON\n \tProject  projectJSON\n+\tUniverse universeJSON\n }\n \n type instanceJSON struct {\n@@ -207,6 +212,10 @@ type projectJSON struct {\n \tNumericProjectID int64\n }\n \n+type universeJSON struct {\n+\tUniverseDomain string `json:\"universeDomain\"`\n+}\n+\n type attributesJSON struct {\n \tPollIntervalOld       *json.Number `json:\"os-config-poll-interval\"`\n \tPollInterval          *json.Number `json:\"osconfig-poll-interval\"`\n@@ -245,6 +254,8 @@ func createConfigFromMetadata(md metadataJSON) *config {\n \t\tinstanceZone:     old.instanceZone,\n \t\tinstanceName:     old.instanceName,\n \t\tinstanceID:       old.instanceID,\n+\n+\t\tuniverseDomain: universeDomainDefault,\n \t}\n \n \tif md.Project.ProjectID != \"\" {\n@@ -263,6 +274,10 @@ func createConfigFromMetadata(md metadataJSON) *config {\n \t\tc.instanceID = md.Instance.ID.String()\n \t}\n \n+\tif md.Universe.UniverseDomain != \"\" {\n+\t\tc.universeDomain = md.Universe.UniverseDomain\n+\t}\n+\n \t// Check project first then instance as instance metadata overrides project.\n \tswitch {\n \tcase md.Project.Attributes.InventoryEnabled != \"\":\n@@ -389,6 +404,11 @@ func setSVCEndpoint(md metadataJSON, c *config) {\n \tparts := strings.Split(c.instanceZone, \"/\")\n \tzone := parts[len(parts)-1]\n \tc.svcEndpoint = strings.ReplaceAll(c.svcEndpoint, \"{zone}\", zone)\n+\n+\t// Change hostname according to the universe domain\n+\tif c.universeDomain != universeDomainDefault {\n+\t\tc.svcEndpoint = strings.ReplaceAll(c.svcEndpoint, universeDomainDefault, c.universeDomain)\n+\t}\n }\n \n func setTraceGetInventory(md metadataJSON, c *config) {\n@@ -800,3 +820,13 @@ func DisableInventoryWrite() bool {\n func FreeOSMemory() bool {\n \treturn strings.EqualFold(freeOSMemory, \"true\") || freeOSMemory == \"1\"\n }\n+\n+// DisableCloudLogging returns true if universe domain is not equal to GDU domain.\n+func DisableCloudLogging() bool {\n+\treturn !strings.EqualFold(getAgentConfig().universeDomain, universeDomainDefault)\n+}\n+\n+// UniverseDomain is the cloud universe domain\n+func UniverseDomain() string {\n+\treturn getAgentConfig().universeDomain\n+}\ndiff --git a/agentconfig/agentconfig_test.go b/agentconfig/agentconfig_test.go\nindex dcf12a1..16a0d95 100644\n--- a/agentconfig/agentconfig_test.go\n+++ b/agentconfig/agentconfig_test.go\n@@ -224,10 +224,17 @@ func TestVersion(t *testing.T) {\n }\n \n func TestSvcEndpoint(t *testing.T) {\n+\tvar request int\n \tts := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {\n-\t\tw.Header().Set(\"Etag\", \"sametag\")\n-\t\t// we always get zone value in instance metadata.\n-\t\tfmt.Fprintln(w, `{\"instance\": {\"id\": 12345,\"name\": \"name\",\"zone\": \"fakezone\",\"attributes\": {\"osconfig-endpoint\": \"{zone}-dev.osconfig.googleapis.com\"}}}`)\n+\t\tswitch request {\n+\t\tcase 0:\n+\t\t\tw.Header().Set(\"Etag\", \"etag-0\")\n+\t\t\t// we always get zone value in instance metadata.\n+\t\t\tfmt.Fprintln(w, `{\"instance\": {\"id\": 12345,\"name\": \"name\",\"zone\": \"fakezone\",\"attributes\": {\"osconfig-endpoint\": \"{zone}-dev.osconfig.googleapis.com\"}}}`)\n+\t\tcase 1:\n+\t\t\tw.Header().Set(\"Etag\", \"etag-1\")\n+\t\t\tfmt.Fprintln(w, `{\"universe\": {\"universeDomain\": \"domain.com\"}, \"instance\": {\"id\": 12345,\"name\": \"name\",\"zone\": \"fakezone\",\"attributes\": {\"osconfig-endpoint\": \"{zone}-dev.osconfig.googleapis.com\"}}}`)\n+\t\t}\n \t}))\n \tdefer ts.Close()\n \n@@ -235,13 +242,15 @@ func TestSvcEndpoint(t *testing.T) {\n \t\tt.Fatalf(\"Error running os.Setenv: %v\", err)\n \t}\n \n-\tif err := WatchConfig(context.Background()); err != nil {\n-\t\tt.Fatalf(\"Error running SetConfig: %v\", err)\n-\t}\n+\tfor i, expectedSvcEndpoint := range []string{\"fakezone-dev.osconfig.googleapis.com\", \"fakezone-dev.osconfig.domain.com\"} {\n+\t\trequest = i\n+\t\tif err := WatchConfig(context.Background()); err != nil {\n+\t\t\tt.Fatalf(\"Error running SetConfig: %v\", err)\n+\t\t}\n \n-\texpectedSvcEndpoint := \"fakezone-dev.osconfig.googleapis.com\"\n-\tif SvcEndpoint() != expectedSvcEndpoint {\n-\t\tt.Errorf(\"Default endpoint: got(%s) != want(%s)\", SvcEndpoint(), expectedSvcEndpoint)\n+\t\tif SvcEndpoint() != expectedSvcEndpoint {\n+\t\t\tt.Errorf(\"Default endpoint: got(%s) != want(%s)\", SvcEndpoint(), expectedSvcEndpoint)\n+\t\t}\n \t}\n \n }\n@@ -261,3 +270,34 @@ func TestSetConfigError(t *testing.T) {\n \t\tt.Errorf(\"Unexpected output %+v\", err)\n \t}\n }\n+\n+func TestDisableCloudLogging(t *testing.T) {\n+\tvar request int\n+\tts := httptest.NewServer(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {\n+\t\tswitch request {\n+\t\tcase 0:\n+\t\t\tw.Header().Set(\"Etag\", \"etag-0\")\n+\t\t\tfmt.Fprintln(w, `{\"universe\":{\"universeDomain\": \"domain.com\"}}`)\n+\t\tcase 1:\n+\t\t\tw.Header().Set(\"Etag\", \"etag-1\")\n+\t\t\tfmt.Fprintln(w, `{\"instance\": {\"zone\": \"fake-zone\"}}`)\n+\t\t}\n+\t}))\n+\tdefer ts.Close()\n+\n+\tif err := os.Setenv(\"GCE_METADATA_HOST\", strings.Trim(ts.URL, \"http://\")); err != nil {\n+\t\tt.Fatalf(\"Error running os.Setenv: %v\", err)\n+\t}\n+\n+\tfor i, expectedDisableCloudLoggingValue := range []bool{true, false} {\n+\t\trequest = i\n+\t\tif err := WatchConfig(context.Background()); err != nil {\n+\t\t\tt.Fatalf(\"Error running SetConfig: %v\", err)\n+\t\t}\n+\n+\t\tif DisableCloudLogging() != expectedDisableCloudLoggingValue {\n+\t\t\tt.Errorf(\"DisableCloudLogging: got(%t) != want(%t)\", DisableCloudLogging(), expectedDisableCloudLoggingValue)\n+\t\t}\n+\t}\n+\n+}\ndiff --git a/agentendpoint/exec_task.go b/agentendpoint/exec_task.go\nindex d1ba202..eb7226d 100644\n--- a/agentendpoint/exec_task.go\n+++ b/agentendpoint/exec_task.go\n@@ -26,10 +26,13 @@ import (\n \t\"time\"\n \n \t\"cloud.google.com/go/storage\"\n+\t\"github.com/GoogleCloudPlatform/osconfig/agentconfig\"\n \t\"github.com/GoogleCloudPlatform/osconfig/clog\"\n \t\"github.com/GoogleCloudPlatform/osconfig/external\"\n \t\"github.com/GoogleCloudPlatform/osconfig/util\"\n \n+\t\"google.golang.org/api/option\"\n+\n \t\"cloud.google.com/go/osconfig/agentendpoint/apiv1/agentendpointpb\"\n )\n \n@@ -61,7 +64,8 @@ var run = func(cmd *exec.Cmd) ([]byte, error) {\n }\n \n func getGCSObject(ctx context.Context, bkt, obj string, gen int64) (string, error) {\n-\tcl, err := storage.NewClient(ctx)\n+\tcl, err := storage.NewClient(ctx, option.WithUniverseDomain(agentconfig.UniverseDomain()))\n+\n \tif err != nil {\n \t\treturn \"\", fmt.Errorf(\"error creating gcs client: %v\", err)\n \t}\ndiff --git a/config/file.go b/config/file.go\nindex 13ac077..0ca8dcf 100644\n--- a/config/file.go\n+++ b/config/file.go\n@@ -24,9 +24,12 @@ import (\n \t\"os\"\n \n \t\"cloud.google.com/go/storage\"\n+\t\"github.com/GoogleCloudPlatform/osconfig/agentconfig\"\n \t\"github.com/GoogleCloudPlatform/osconfig/external\"\n \t\"github.com/GoogleCloudPlatform/osconfig/util\"\n \n+\t\"google.golang.org/api/option\"\n+\n \t\"cloud.google.com/go/osconfig/agentendpoint/apiv1/agentendpointpb\"\n )\n \n@@ -43,7 +46,7 @@ func downloadFile(ctx context.Context, path string, perms os.FileMode, file *age\n \n \tswitch file.GetType().(type) {\n \tcase *agentendpointpb.OSPolicy_Resource_File_Gcs_:\n-\t\tclient, err := storage.NewClient(ctx)\n+\t\tclient, err := storage.NewClient(ctx, option.WithUniverseDomain(agentconfig.UniverseDomain()))\n \t\tif err != nil {\n \t\t\treturn \"\", fmt.Errorf(\"error creating gcs client: %v\", err)\n \t\t}\ndiff --git a/debian/changelog b/debian/changelog\nindex 51b54fa..679b586 100644\n--- a/debian/changelog\n+++ b/debian/changelog\n@@ -1,3 +1,13 @@\n+google-osconfig-agent (20251028.00-0ubuntu1) resolute; urgency=medium\n+\n+  * New version from upstream tag 20251028.00 (LP: #2139288)\n+    * Golang vendoring refresh\n+    * Upstream updated `policies/apt_test.go` which now makes\n+      d/p/0002-Edit-TestAptRepositories-for-signed-repos.patch redundant,\n+      so it's now dropped. Also refreshed d/p/0001-Disable-TestGetApt...\n+\n+ -- Chloé 'kajiya' Smith <chloe.smith@canonical.com>  Wed, 28 Jan 2026 14:57:31 +0000\n+\n google-osconfig-agent (20250701.00-0ubuntu2) resolute; urgency=medium\n \n   * No-change mass rebuild for Ubuntu 26.04 (LP: #2132257)\ndiff --git a/debian/extra/vendor/cel.dev/expr/.gitattributes b/debian/extra/vendor/cel.dev/expr/.gitattributes\nnew file mode 100644\nindex 0000000..3de1ec2\n--- /dev/null\n+++ b/debian/extra/vendor/cel.dev/expr/.gitattributes\n@@ -0,0 +1,2 @@\n+*.pb.go linguist-generated=true\n+*.pb.go -diff -merge\ndiff --git a/debian/extra/vendor/cel.dev/expr/.gitignore b/debian/extra/vendor/cel.dev/expr/.gitignore\nnew file mode 100644\nindex 0000000..0d4fed2\n--- /dev/null\n+++ b/debian/extra/vendor/cel.dev/expr/.gitignore\n@@ -0,0 +1,2 @@\n+bazel-*\n+MODULE.bazel.lock\ndiff --git a/debian/extra/vendor/cloud.google.com/go/.gitignore b/debian/extra/vendor/cloud.google.com/go/.gitignore\nnew file mode 100644\nindex 0000000..cc7e53b\n--- /dev/null\n+++ b/debian/extra/vendor/cloud.google.com/go/.gitignore\n@@ -0,0 +1,12 @@\n+# Editors\n+.idea\n+.vscode\n+*.swp\n+.history\n+\n+# Test files\n+*.test\n+coverage.txt\n+\n+# Other\n+.DS_Store\ndiff --git a/debian/extra/vendor/cloud.google.com/go/auth/CHANGES.md b/debian/extra/vendor/cloud.google.com/go/auth/CHANGES.md\nindex 466426c..500c34c 100644\n--- a/debian/extra/vendor/cloud.google.com/go/auth/CHANGES.md\n+++ b/debian/extra/vendor/cloud.google.com/go/auth/CHANGES.md\n@@ -1,5 +1,19 @@\n # Changelog\n \n+## [0.15.0](https://github.com/googleapis/google-cloud-go/compare/auth/v0.14.1...auth/v0.15.0) (2025-02-19)\n+\n+\n+### Features\n+\n+* **auth:** Add hard-bound token request to compute token provider. ([#11588](https://github.com/googleapis/google-cloud-go/issues/11588)) ([0e608bb](https://github.com/googleapis/google-cloud-go/commit/0e608bb5ac3d694c8ad36ca4340071d3a2c78699))\n+\n+## [0.14.1](https://github.com/googleapis/google-cloud-go/compare/auth/v0.14.0...auth/v0.14.1) (2025-01-24)\n+\n+\n+### Documentation\n+\n+* **auth:** Add warning about externally-provided credentials ([#11462](https://github.com/googleapis/google-cloud-go/issues/11462)) ([49fb6ff](https://github.com/googleapis/google-cloud-go/commit/49fb6ff4d754895f82c9c4d502fc7547d3b5a941))\n+\n ## [0.14.0](https://github.com/googleapis/google-cloud-go/compare/auth/v0.13.0...auth/v0.14.0) (2025-01-08)\n \n \ndiff --git a/debian/extra/vendor/cloud.google.com/go/auth/credentials/compute.go b/debian/extra/vendor/cloud.google.com/go/auth/credentials/compute.go\nindex 8afd047..e4a8078 100644\n--- a/debian/extra/vendor/cloud.google.com/go/auth/credentials/compute.go\n+++ b/debian/extra/vendor/cloud.google.com/go/auth/credentials/compute.go\n@@ -39,8 +39,9 @@ var (\n // uses the metadata service to retrieve tokens.\n func computeTokenProvider(opts *DetectOptions, client *metadata.Client) auth.TokenProvider {\n \treturn auth.NewCachedTokenProvider(&computeProvider{\n-\t\tscopes: opts.Scopes,\n-\t\tclient: client,\n+\t\tscopes:           opts.Scopes,\n+\t\tclient:           client,\n+\t\ttokenBindingType: opts.TokenBindingType,\n \t}, &auth.CachedTokenProviderOptions{\n \t\tExpireEarly:         opts.EarlyTokenRefresh,\n \t\tDisableAsyncRefresh: opts.DisableAsyncRefresh,\n@@ -49,8 +50,9 @@ func computeTokenProvider(opts *DetectOptions, client *metadata.Client) auth.Tok\n \n // computeProvider fetches tokens from the google cloud metadata service.\n type computeProvider struct {\n-\tscopes []string\n-\tclient *metadata.Client\n+\tscopes           []string\n+\tclient           *metadata.Client\n+\ttokenBindingType TokenBindingType\n }\n \n type metadataTokenResp struct {\n@@ -64,9 +66,19 @@ func (cs *computeProvider) Token(ctx context.Context) (*auth.Token, error) {\n \tif err != nil {\n \t\treturn nil, err\n \t}\n-\tif len(cs.scopes) > 0 {\n+\thasScopes := len(cs.scopes) > 0\n+\tif hasScopes || cs.tokenBindingType != NoBinding {\n \t\tv := url.Values{}\n-\t\tv.Set(\"scopes\", strings.Join(cs.scopes, \",\"))\n+\t\tif hasScopes {\n+\t\t\tv.Set(\"scopes\", strings.Join(cs.scopes, \",\"))\n+\t\t}\n+\t\tswitch cs.tokenBindingType {\n+\t\tcase MTLSHardBinding:\n+\t\t\tv.Set(\"transport\", \"mtls\")\n+\t\t\tv.Set(\"binding-enforcement\", \"on\")\n+\t\tcase ALTSHardBinding:\n+\t\t\tv.Set(\"transport\", \"alts\")\n+\t\t}\n \t\ttokenURI.RawQuery = v.Encode()\n \t}\n \ttokenJSON, err := cs.client.GetWithContext(ctx, tokenURI.String())\ndiff --git a/debian/extra/vendor/cloud.google.com/go/auth/credentials/detect.go b/debian/extra/vendor/cloud.google.com/go/auth/credentials/detect.go\nindex a1b5a93..d8f7d96 100644\n--- a/debian/extra/vendor/cloud.google.com/go/auth/credentials/detect.go\n+++ b/debian/extra/vendor/cloud.google.com/go/auth/credentials/detect.go\n@@ -51,6 +51,23 @@ var (\n \tallowOnGCECheck = true\n )\n \n+// TokenBindingType specifies the type of binding used when requesting a token\n+// whether to request a hard-bound token using mTLS or an instance identity\n+// bound token using ALTS.\n+type TokenBindingType int\n+\n+const (\n+\t// NoBinding specifies that requested tokens are not required to have a\n+\t// binding. This is the default option.\n+\tNoBinding TokenBindingType = iota\n+\t// MTLSHardBinding specifies that a hard-bound token should be requested\n+\t// using an mTLS with S2A channel.\n+\tMTLSHardBinding\n+\t// ALTSHardBinding specifies that an instance identity bound token should\n+\t// be requested using an ALTS channel.\n+\tALTSHardBinding\n+)\n+\n // OnGCE reports whether this process is running in Google Cloud.\n func OnGCE() bool {\n \t// TODO(codyoss): once all libs use this auth lib move metadata check here\n@@ -121,6 +138,10 @@ type DetectOptions struct {\n \t// https://www.googleapis.com/auth/cloud-platform. Required if Audience is\n \t// not provided.\n \tScopes []string\n+\t// TokenBindingType specifies the type of binding used when requesting a\n+\t// token whether to request a hard-bound token using mTLS or an instance\n+\t// identity bound token using ALTS. Optional.\n+\tTokenBindingType TokenBindingType\n \t// Audience that credentials tokens should have. Only applicable for 2LO\n \t// flows with service accounts. If specified, scopes should not be provided.\n \tAudience string\n@@ -149,10 +170,26 @@ type DetectOptions struct {\n \t// CredentialsFile overrides detection logic and sources a credential file\n \t// from the provided filepath. If provided, CredentialsJSON must not be.\n \t// Optional.\n+\t//\n+\t// Important: If you accept a credential configuration (credential\n+\t// JSON/File/Stream) from an external source for authentication to Google\n+\t// Cloud Platform, you must validate it before providing it to any Google\n+\t// API or library. Providing an unvalidated credential configuration to\n+\t// Google APIs can compromise the security of your systems and data. For\n+\t// more information, refer to [Validate credential configurations from\n+\t// external sources](https://cloud.google.com/docs/authentication/external/externally-sourced-credentials).\n \tCredentialsFile string\n \t// CredentialsJSON overrides detection logic and uses the JSON bytes as the\n \t// source for the credential. If provided, CredentialsFile must not be.\n \t// Optional.\n+\t//\n+\t// Important: If you accept a credential configuration (credential\n+\t// JSON/File/Stream) from an external source for authentication to Google\n+\t// Cloud Platform, you must validate it before providing it to any Google\n+\t// API or library. Providing an unvalidated credential configuration to\n+\t// Google APIs can compromise the security of your systems and data. For\n+\t// more information, refer to [Validate credential configurations from\n+\t// external sources](https://cloud.google.com/docs/authentication/external/externally-sourced-credentials).\n \tCredentialsJSON []byte\n \t// UseSelfSignedJWT directs service account based credentials to create a\n \t// self-signed JWT with the private key found in the file, skipping any\ndiff --git a/debian/extra/vendor/cloud.google.com/go/auth/grpctransport/grpctransport.go b/debian/extra/vendor/cloud.google.com/go/auth/grpctransport/grpctransport.go\nindex 95f2590..4610a48 100644\n--- a/debian/extra/vendor/cloud.google.com/go/auth/grpctransport/grpctransport.go\n+++ b/debian/extra/vendor/cloud.google.com/go/auth/grpctransport/grpctransport.go\n@@ -204,6 +204,10 @@ type InternalOptions struct {\n \tEnableDirectPathXds bool\n \t// EnableJWTWithScope specifies if scope can be used with self-signed JWT.\n \tEnableJWTWithScope bool\n+\t// AllowHardBoundTokens allows libraries to request a hard-bound token.\n+\t// Obtaining hard-bound tokens requires the connection to be established\n+\t// using either ALTS or mTLS with S2A.\n+\tAllowHardBoundTokens []string\n \t// DefaultAudience specifies a default audience to be used as the audience\n \t// field (\"aud\") for the JWT token authentication.\n \tDefaultAudience string\n@@ -262,13 +266,13 @@ func dial(ctx context.Context, secure bool, opts *Options) (*grpc.ClientConn, er\n \t\ttOpts.EnableDirectPath = io.EnableDirectPath\n \t\ttOpts.EnableDirectPathXds = io.EnableDirectPathXds\n \t}\n-\ttransportCreds, endpoint, err := transport.GetGRPCTransportCredsAndEndpoint(tOpts)\n+\ttransportCreds, err := transport.GetGRPCTransportCredsAndEndpoint(tOpts)\n \tif err != nil {\n \t\treturn nil, err\n \t}\n \n \tif !secure {\n-\t\ttransportCreds = grpcinsecure.NewCredentials()\n+\t\ttransportCreds.TransportCredentials = grpcinsecure.NewCredentials()\n \t}\n \n \t// Initialize gRPC dial options with transport-level security options.\n@@ -297,6 +301,18 @@ func dial(ctx context.Context, secure bool, opts *Options) (*grpc.ClientConn, er\n \t\tif opts.Credentials != nil {\n \t\t\tcreds = opts.Credentials\n \t\t} else {\n+\t\t\t// This condition is only met for non-DirectPath clients because\n+\t\t\t// TransportTypeMTLSS2A is used only when InternalOptions.EnableDirectPath\n+\t\t\t// is false.\n+\t\t\tif transportCreds.TransportType == transport.TransportTypeMTLSS2A {\n+\t\t\t\t// Check that the client allows requesting hard-bound token for the transport type mTLS using S2A.\n+\t\t\t\tfor _, ev := range opts.InternalOptions.AllowHardBoundTokens {\n+\t\t\t\t\tif ev == \"MTLS_S2A\" {\n+\t\t\t\t\t\topts.DetectOpts.TokenBindingType = credentials.MTLSHardBinding\n+\t\t\t\t\t\tbreak\n+\t\t\t\t\t}\n+\t\t\t\t}\n+\t\t\t}\n \t\t\tvar err error\n \t\t\tcreds, err = credentials.DetectDefault(opts.resolveDetectOptions())\n \t\t\tif err != nil {\n@@ -324,9 +340,8 @@ func dial(ctx context.Context, secure bool, opts *Options) (*grpc.ClientConn, er\n \t\t\t\tclientUniverseDomain: opts.UniverseDomain,\n \t\t\t}),\n \t\t)\n-\n \t\t// Attempt Direct Path\n-\t\tgrpcOpts, endpoint = configureDirectPath(grpcOpts, opts, endpoint, creds)\n+\t\tgrpcOpts, transportCreds.Endpoint = configureDirectPath(grpcOpts, opts, transportCreds.Endpoint, creds)\n \t}\n \n \t// Add tracing, but before the other options, so that clients can override the\n@@ -335,7 +350,7 @@ func dial(ctx context.Context, secure bool, opts *Options) (*grpc.ClientConn, er\n \tgrpcOpts = addOpenTelemetryStatsHandler(grpcOpts, opts)\n \tgrpcOpts = append(grpcOpts, opts.GRPCDialOpts...)\n \n-\treturn grpc.Dial(endpoint, grpcOpts...)\n+\treturn grpc.Dial(transportCreds.Endpoint, grpcOpts...)\n }\n \n // grpcKeyProvider satisfies https://pkg.go.dev/google.golang.org/grpc/credentials#PerRPCCredentials.\ndiff --git a/debian/extra/vendor/cloud.google.com/go/auth/internal/transport/cba.go b/debian/extra/vendor/cloud.google.com/go/auth/internal/transport/cba.go\nindex 2f922f7..b1f0fcf 100644\n--- a/debian/extra/vendor/cloud.google.com/go/auth/internal/transport/cba.go\n+++ b/debian/extra/vendor/cloud.google.com/go/auth/internal/transport/cba.go\n@@ -52,6 +52,16 @@ const (\n \tmtlsMDSKey  = \"/run/google-mds-mtls/client.key\"\n )\n \n+// Type represents the type of transport used.\n+type Type int\n+\n+const (\n+\t// TransportTypeUnknown represents an unknown transport type and is the default option.\n+\tTransportTypeUnknown Type = iota\n+\t// TransportTypeMTLSS2A represents the mTLS transport type using S2A.\n+\tTransportTypeMTLSS2A\n+)\n+\n // Options is a struct that is duplicated information from the individual\n // transport packages in order to avoid cyclic deps. It correlates 1:1 with\n // fields on httptransport.Options and grpctransport.Options.\n@@ -120,13 +130,20 @@ func fixScheme(baseURL string) string {\n \treturn baseURL\n }\n \n+// GRPCTransportCredentials embeds interface TransportCredentials with additional data.\n+type GRPCTransportCredentials struct {\n+\tcredentials.TransportCredentials\n+\tEndpoint      string\n+\tTransportType Type\n+}\n+\n // GetGRPCTransportCredsAndEndpoint returns an instance of\n // [google.golang.org/grpc/credentials.TransportCredentials], and the\n-// corresponding endpoint to use for GRPC client.\n-func GetGRPCTransportCredsAndEndpoint(opts *Options) (credentials.TransportCredentials, string, error) {\n+// corresponding endpoint and transport type to use for GRPC client.\n+func GetGRPCTransportCredsAndEndpoint(opts *Options) (*GRPCTransportCredentials, error) {\n \tconfig, err := getTransportConfig(opts)\n \tif err != nil {\n-\t\treturn nil, \"\", err\n+\t\treturn nil, err\n \t}\n \n \tdefaultTransportCreds := credentials.NewTLS(&tls.Config{\n@@ -144,13 +161,13 @@ func GetGRPCTransportCredsAndEndpoint(opts *Options) (credentials.TransportCrede\n \t\t\tif config.s2aAddress != \"\" {\n \t\t\t\ts2aAddr = config.s2aAddress\n \t\t\t} else {\n-\t\t\t\treturn defaultTransportCreds, config.endpoint, nil\n+\t\t\t\treturn &GRPCTransportCredentials{defaultTransportCreds, config.endpoint, TransportTypeUnknown}, nil\n \t\t\t}\n \t\t}\n \t} else if config.s2aAddress != \"\" {\n \t\ts2aAddr = config.s2aAddress\n \t} else {\n-\t\treturn defaultTransportCreds, config.endpoint, nil\n+\t\treturn &GRPCTransportCredentials{defaultTransportCreds, config.endpoint, TransportTypeUnknown}, nil\n \t}\n \n \tvar fallbackOpts *s2a.FallbackOptions\n@@ -168,9 +185,9 @@ func GetGRPCTransportCredsAndEndpoint(opts *Options) (credentials.TransportCrede\n \t})\n \tif err != nil {\n \t\t// Use default if we cannot initialize S2A client transport credentials.\n-\t\treturn defaultTransportCreds, config.endpoint, nil\n+\t\treturn &GRPCTransportCredentials{defaultTransportCreds, config.endpoint, TransportTypeUnknown}, nil\n \t}\n-\treturn s2aTransportCreds, config.s2aMTLSEndpoint, nil\n+\treturn &GRPCTransportCredentials{s2aTransportCreds, config.s2aMTLSEndpoint, TransportTypeMTLSS2A}, nil\n }\n \n // GetHTTPTransportConfig returns a client certificate source and a function for\ndiff --git a/debian/extra/vendor/cloud.google.com/go/auth/internal/transport/transport.go b/debian/extra/vendor/cloud.google.com/go/auth/internal/transport/transport.go\nindex 992ac40..5c8721e 100644\n--- a/debian/extra/vendor/cloud.google.com/go/auth/internal/transport/transport.go\n+++ b/debian/extra/vendor/cloud.google.com/go/auth/internal/transport/transport.go\n@@ -37,6 +37,7 @@ func CloneDetectOptions(oldDo *credentials.DetectOptions) *credentials.DetectOpt\n \t}\n \tnewDo := &credentials.DetectOptions{\n \t\t// Simple types\n+\t\tTokenBindingType:  oldDo.TokenBindingType,\n \t\tAudience:          oldDo.Audience,\n \t\tSubject:           oldDo.Subject,\n \t\tEarlyTokenRefresh: oldDo.EarlyTokenRefresh,\n@@ -46,8 +47,8 @@ func CloneDetectOptions(oldDo *credentials.DetectOptions) *credentials.DetectOpt\n \t\tUseSelfSignedJWT:  oldDo.UseSelfSignedJWT,\n \t\tUniverseDomain:    oldDo.UniverseDomain,\n \n-\t\t// These fields are are pointer types that we just want to use exactly\n-\t\t// as the user set, copy the ref\n+\t\t// These fields are pointer types that we just want to use exactly as\n+\t\t// the user set, copy the ref\n \t\tClient:             oldDo.Client,\n \t\tLogger:             oldDo.Logger,\n \t\tAuthHandlerOptions: oldDo.AuthHandlerOptions,\ndiff --git a/debian/extra/vendor/cloud.google.com/go/auth/oauth2adapt/CHANGES.md b/debian/extra/vendor/cloud.google.com/go/auth/oauth2adapt/CHANGES.md\nindex d9044f1..4271675 100644\n--- a/debian/extra/vendor/cloud.google.com/go/auth/oauth2adapt/CHANGES.md\n+++ b/debian/extra/vendor/cloud.google.com/go/auth/oauth2adapt/CHANGES.md\n@@ -1,5 +1,12 @@\n # Changelog\n \n+## [0.2.8](https://github.com/googleapis/google-cloud-go/compare/auth/oauth2adapt/v0.2.7...auth/oauth2adapt/v0.2.8) (2025-03-17)\n+\n+\n+### Bug Fixes\n+\n+* **auth/oauth2adapt:** Update golang.org/x/net to 0.37.0 ([1144978](https://github.com/googleapis/google-cloud-go/commit/11449782c7fb4896bf8b8b9cde8e7441c84fb2fd))\n+\n ## [0.2.7](https://github.com/googleapis/google-cloud-go/compare/auth/oauth2adapt/v0.2.6...auth/oauth2adapt/v0.2.7) (2025-01-09)\n \n \ndiff --git a/debian/extra/vendor/github.com/BurntSushi/toml/.gitignore b/debian/extra/vendor/github.com/BurntSushi/toml/.gitignore\nnew file mode 100644\nindex 0000000..fe79e3a\n--- /dev/null\n+++ b/debian/extra/vendor/github.com/BurntSushi/toml/.gitignore\n@@ -0,0 +1,2 @@\n+/toml.test\n+/toml-test\ndiff --git a/debian/extra/vendor/github.com/CycloneDX/cyclonedx-go/.gitignore b/debian/extra/vendor/github.com/CycloneDX/cyclonedx-go/.gitignore\nnew file mode 100644\nindex 0000000..2a81821\n--- /dev/null\n+++ b/debian/extra/vendor/github.com/CycloneDX/cyclonedx-go/.gitignore\n@@ -0,0 +1,24 @@\n+# Binaries for programs and plugins\n+*.exe\n+*.exe~\n+*.dll\n+*.so\n+*.dylib\n+\n+# Test binary, built with `go test -c`\n+*.test\n+\n+# Output of the go coverage tool, specifically when used with LiteIDE\n+*.out\n+\n+# Dependency directories (remove the comment below to include it)\n+# vendor/\n+\n+# IntelliJ / GoLand\n+.idea/*\n+!.idea/icon.svg\n+*.iml\n+\n+# SBOMs generated during CI\n+/bom.json\n+/bom.xml\ndiff --git a/debian/extra/vendor/github.com/Microsoft/go-winio/.gitattributes b/debian/extra/vendor/github.com/Microsoft/go-winio/.gitattributes\nnew file mode 100644\nindex 0000000..94f480d\n--- /dev/null\n+++ b/debian/extra/vendor/github.com/Microsoft/go-winio/.gitattributes\n@@ -0,0 +1 @@\n+* text=auto eol=lf\n\\ No newline at end of file\ndiff --git a/debian/extra/vendor/github.com/Microsoft/go-winio/.gitignore b/debian/extra/vendor/github.com/Microsoft/go-winio/.gitignore\nnew file mode 100644\nindex 0000000..815e206\n--- /dev/null\n+++ b/debian/extra/vendor/github.com/Microsoft/go-winio/.gitignore\n@@ -0,0 +1,10 @@\n+.vscode/\n+\n+*.exe\n+\n+# testing\n+testdata\n+\n+# go workspaces\n+go.work\n+go.work.sum\ndiff --git a/debian/extra/vendor/github.com/Microsoft/hcsshim/.gitattributes b/debian/extra/vendor/github.com/Microsoft/hcsshim/.gitattributes\nnew file mode 100644\nindex 0000000..dd0d09f\n--- /dev/null\n+++ b/debian/extra/vendor/github.com/Microsoft/hcsshim/.gitattributes\n@@ -0,0 +1,3 @@\n+* text=auto eol=lf\n+vendor/** -text\n+test/vendor/** -text\n\\ No newline at end of file\ndiff --git a/debian/extra/vendor/github.com/Microsoft/hcsshim/.gitignore b/debian/extra/vendor/github.com/Microsoft/hcsshim/.gitignore\nnew file mode 100644\nindex 0000000..74b68f0\n--- /dev/null\n+++ b/debian/extra/vendor/github.com/Microsoft/hcsshim/.gitignore\n@@ -0,0 +1,53 @@\n+# Binaries for programs and plugins\n+*.exe\n+*.dll\n+*.so\n+*.dylib\n+\n+# Ignore vscode setting files\n+.vscode/\n+.idea/\n+\n+# Test binary, build with `go test -c`\n+*.test\n+\n+# Output of the go coverage tool, specifically when used with LiteIDE\n+*.out\n+\n+# Project-local glide cache, RE: https://github.com/Masterminds/glide/issues/736\n+.glide/\n+\n+# Ignore gcs bin directory\n+service/bin/\n+service/pkg/\n+\n+*.img\n+*.vhd\n+*.tar.gz\n+*.tar\n+\n+# Make stuff\n+.rootfs-done\n+bin/*\n+rootfs/*\n+rootfs-conv/*\n+*.o\n+/build/\n+\n+deps/*\n+out/*\n+\n+# protobuf files\n+# only files at root of the repo, otherwise this will cause issues with vendoring\n+/protobuf/*\n+\n+# test results\n+test/results\n+\n+# go workspace files\n+go.work\n+go.work.sum\n+\n+# keys and related artifacts\n+*.pem\n+*.cose\ndiff --git a/debian/extra/vendor/github.com/anchore/go-struct-converter/.gitignore b/debian/extra/vendor/github.com/anchore/go-struct-converter/.gitignore\nnew file mode 100644\nindex 0000000..1edd832\n--- /dev/null\n+++ b/debian/extra/vendor/github.com/anchore/go-struct-converter/.gitignore\n@@ -0,0 +1,30 @@\n+# If you prefer the allow list template instead of the deny list, see community template:\n+# https://github.com/github/gitignore/blob/main/community/Golang/Go.AllowList.gitignore\n+#\n+# Binaries for programs and plugins\n+*.exe\n+*.exe~\n+*.dll\n+*.so\n+*.dylib\n+\n+# Test binary, built with `go test -c`\n+*.test\n+\n+# Output of the go coverage tool, specifically when used with LiteIDE\n+*.out\n+\n+# Dependency directories (remove the comment below to include it)\n+# vendor/\n+\n+# Go workspace file\n+go.work\n+\n+# tools\n+.tmp\n+\n+# test output\n+test/results\n+\n+# IDE project files\n+.idea\ndiff --git a/debian/extra/vendor/github.com/cncf/xds/go/udpa/annotations/migrate.pb.go b/debian/extra/vendor/github.com/cncf/xds/go/udpa/annotations/migrate.pb.go\nindex 0281b3e..3c751b6 100644\n--- a/debian/extra/vendor/github.com/cncf/xds/go/udpa/annotations/migrate.pb.go\n+++ b/debian/extra/vendor/github.com/cncf/xds/go/udpa/annotations/migrate.pb.go\n@@ -1,7 +1,7 @@\n // Code generated by protoc-gen-go. DO NOT EDIT.\n // versions:\n // \tprotoc-gen-go v1.33.0\n-// \tprotoc        v5.27.0--rc2\n+// \tprotoc        v5.29.1\n // source: udpa/annotations/migrate.proto\n \n package annotations\ndiff --git a/debian/extra/vendor/github.com/cncf/xds/go/udpa/annotations/security.pb.go b/debian/extra/vendor/github.com/cncf/xds/go/udpa/annotations/security.pb.go\nindex cf858bd..7c83399 100644\n--- a/debian/extra/vendor/github.com/cncf/xds/go/udpa/annotations/security.pb.go\n+++ b/debian/extra/vendor/github.com/cncf/xds/go/udpa/annotations/security.pb.go\n@@ -1,7 +1,7 @@\n // Code generated by protoc-gen-go. DO NOT EDIT.\n // versions:\n // \tprotoc-gen-go v1.33.0\n-// \tprotoc        v5.27.0--rc2\n+// \tprotoc        v5.29.1\n // source: udpa/annotations/security.proto\n \n package annotations\ndiff --git a/debian/extra/vendor/github.com/cncf/xds/go/udpa/annotations/sensitive.pb.go b/debian/extra/vendor/github.com/cncf/xds/go/udpa/annotations/sensitive.pb.go\nindex 2d5c78d..e2b1a59 100644\n--- a/debian/extra/vendor/github.com/cncf/xds/go/udpa/annotations/sensitive.pb.go\n+++ b/debian/extra/vendor/github.com/cncf/xds/go/udpa/annotations/sensitive.pb.go\n@@ -1,7 +1,7 @@\n // Code generated by protoc-gen-go. DO NOT EDIT.\n // versions:\n // \tprotoc-gen-go v1.33.0\n-// \tprotoc        v5.27.0--rc2\n+// \tprotoc        v5.29.1\n // source: udpa/annotations/sensitive.proto\n \n package annotations\ndiff --git a/debian/extra/vendor/github.com/cncf/xds/go/udpa/annotations/status.pb.go b/debian/extra/vendor/github.com/cncf/xds/go/udpa/annotations/status.pb.go\nindex c96818b..cf629f7 100644\n--- a/debian/extra/vendor/github.com/cncf/xds/go/udpa/annotations/status.pb.go\n+++ b/debian/extra/vendor/github.com/cncf/xds/go/udpa/annotations/status.pb.go\n@@ -1,7 +1,7 @@\n // Code generated by protoc-gen-go. DO NOT EDIT.\n // versions:\n // \tprotoc-gen-go v1.33.0\n-// \tprotoc        v5.27.0--rc2\n+// \tprotoc        v5.29.1\n // source: udpa/annotations/status.proto\n \n package annotations\ndiff --git a/debian/extra/vendor/github.com/cncf/xds/go/udpa/annotations/versioning.pb.go b/debian/extra/vendor/github.com/cncf/xds/go/udpa/annotations/versioning.pb.go\nindex b3ab9e3..8bd950f 100644\n--- a/debian/extra/vendor/github.com/cncf/xds/go/udpa/annotations/versioning.pb.go\n+++ b/debian/extra/vendor/github.com/cncf/xds/go/udpa/annotations/versioning.pb.go\n@@ -1,7 +1,7 @@\n // Code generated by protoc-gen-go. DO NOT EDIT.\n // versions:\n // \tprotoc-gen-go v1.33.0\n-// \tprotoc        v5.27.0--rc2\n+// \tprotoc        v5.29.1\n // source: udpa/annotations/versioning.proto\n \n package annotations\ndiff --git a/debian/extra/vendor/github.com/cncf/xds/go/udpa/type/v1/typed_struct.pb.go b/debian/extra/vendor/github.com/cncf/xds/go/udpa/type/v1/typed_struct.pb.go\nindex e8f23f7..8eb3b7b 100644\n--- a/debian/extra/vendor/github.com/cncf/xds/go/udpa/type/v1/typed_struct.pb.go\n+++ b/debian/extra/vendor/github.com/cncf/xds/go/udpa/type/v1/typed_struct.pb.go\n@@ -1,7 +1,7 @@\n // Code generated by protoc-gen-go. DO NOT EDIT.\n // versions:\n // \tprotoc-gen-go v1.33.0\n-// \tprotoc        v5.27.0--rc2\n+// \tprotoc        v5.29.1\n // source: udpa/type/v1/typed_struct.proto\n \n package v1\ndiff --git a/debian/extra/vendor/github.com/cncf/xds/go/xds/annotations/v3/migrate.pb.go b/debian/extra/vendor/github.com/cncf/xds/go/xds/annotations/v3/migrate.pb.go\nindex 705a71e..5211b83 100644\n--- a/debian/extra/vendor/github.com/cncf/xds/go/xds/annotations/v3/migrate.pb.go\n+++ b/debian/extra/vendor/github.com/cncf/xds/go/xds/annotations/v3/migrate.pb.go\n@@ -1,7 +1,7 @@\n // Code generated by protoc-gen-go. DO NOT EDIT.\n // versions:\n // \tprotoc-gen-go v1.33.0\n-// \tprotoc        v5.27.0--rc2\n+// \tprotoc        v5.29.1\n // source: xds/annotations/v3/migrate.proto\n \n package v3\ndiff --git a/debian/extra/vendor/github.com/cncf/xds/go/xds/annotations/v3/security.pb.go b/debian/extra/vendor/github.com/cncf/xds/go/xds/annotations/v3/security.pb.go\nindex 0278e51..14df890 100644\n--- a/debian/extra/vendor/github.com/cncf/xds/go/xds/annotations/v3/security.pb.go\n+++ b/debian/extra/vendor/github.com/cncf/xds/go/xds/annotations/v3/security.pb.go\n@@ -1,7 +1,7 @@\n // Code generated by protoc-gen-go. DO NOT EDIT.\n // versions:\n // \tprotoc-gen-go v1.33.0\n-// \tprotoc        v5.27.0--rc2\n+// \tprotoc        v5.29.1\n // source: xds/annotations/v3/security.proto\n \n package v3\ndiff --git a/debian/extra/vendor/github.com/cncf/xds/go/xds/annotations/v3/sensitive.pb.go b/debian/extra/vendor/github.com/cncf/xds/go/xds/annotations/v3/sensitive.pb.go\nindex 57161aa..042b66b 100644\n--- a/debian/extra/vendor/github.com/cncf/xds/go/xds/annotations/v3/sensitive.pb.go\n+++ b/debian/extra/vendor/github.com/cncf/xds/go/xds/annotations/v3/sensitive.pb.go\n@@ -1,7 +1,7 @@\n // Code generated by protoc-gen-go. DO NOT EDIT.\n // versions:\n // \tprotoc-gen-go v1.33.0\n-// \tprotoc        v5.27.0--rc2\n+// \tprotoc        v5.29.1\n // source: xds/annotations/v3/sensitive.proto\n \n package v3\ndiff --git a/debian/extra/vendor/github.com/cncf/xds/go/xds/annotations/v3/status.pb.go b/debian/extra/vendor/github.com/cncf/xds/go/xds/annotations/v3/status.pb.go\nindex 255d109..5d5975f 100644\n--- a/debian/extra/vendor/github.com/cncf/xds/go/xds/annotations/v3/status.pb.go\n+++ b/debian/extra/vendor/github.com/cncf/xds/go/xds/annotations/v3/status.pb.go\n@@ -1,7 +1,7 @@\n // Code generated by protoc-gen-go. DO NOT EDIT.\n // versions:\n // \tprotoc-gen-go v1.33.0\n-// \tprotoc        v5.27.0--rc2\n+// \tprotoc        v5.29.1\n // source: xds/annotations/v3/status.proto\n \n package v3\ndiff --git a/debian/extra/vendor/github.com/cncf/xds/go/xds/annotations/v3/versioning.pb.go b/debian/extra/vendor/github.com/cncf/xds/go/xds/annotations/v3/versioning.pb.go\nindex 2de032f..97edd76 100644\n--- a/debian/extra/vendor/github.com/cncf/xds/go/xds/annotations/v3/versioning.pb.go\n+++ b/debian/extra/vendor/github.com/cncf/xds/go/xds/annotations/v3/versioning.pb.go\n@@ -1,7 +1,7 @@\n // Code generated by protoc-gen-go. DO NOT EDIT.\n // versions:\n // \tprotoc-gen-go v1.33.0\n-// \tprotoc        v5.27.0--rc2\n+// \tprotoc        v5.29.1\n // source: xds/annotations/v3/versioning.proto\n \n package v3\ndiff --git a/debian/extra/vendor/github.com/cncf/xds/go/xds/core/v3/authority.pb.go b/debian/extra/vendor/github.com/cncf/xds/go/xds/core/v3/authority.pb.go\nindex 3058286..035b8c0 100644\n--- a/debian/extra/vendor/github.com/cncf/xds/go/xds/core/v3/authority.pb.go\n+++ b/debian/extra/vendor/github.com/cncf/xds/go/xds/core/v3/authority.pb.go\n@@ -1,7 +1,7 @@\n // Code generated by protoc-gen-go. DO NOT EDIT.\n // versions:\n // \tprotoc-gen-go v1.33.0\n-// \tprotoc        v5.27.0--rc2\n+// \tprotoc        v5.29.1\n // source: xds/core/v3/authority.proto\n \n package v3\ndiff --git a/debian/extra/vendor/github.com/cncf/xds/go/xds/core/v3/cidr.pb.go b/debian/extra/vendor/github.com/cncf/xds/go/xds/core/v3/cidr.pb.go\nindex 0e339b5..58c27d7 100644\n--- a/debian/extra/vendor/github.com/cncf/xds/go/xds/core/v3/cidr.pb.go\n+++ b/debian/extra/vendor/github.com/cncf/xds/go/xds/core/v3/cidr.pb.go\n@@ -1,7 +1,7 @@\n // Code generated by protoc-gen-go. DO NOT EDIT.\n // versions:\n // \tprotoc-gen-go v1.33.0\n-// \tprotoc        v5.27.0--rc2\n+// \tprotoc        v5.29.1\n // source: xds/core/v3/cidr.proto\n \n package v3\ndiff --git a/debian/extra/vendor/github.com/cncf/xds/go/xds/core/v3/collection_entry.pb.go b/debian/extra/vendor/github.com/cncf/xds/go/xds/core/v3/collection_entry.pb.go\nindex 0d45b96..f0b4c12 100644\n--- a/debian/extra/vendor/github.com/cncf/xds/go/xds/core/v3/collection_entry.pb.go\n+++ b/debian/extra/vendor/github.com/cncf/xds/go/xds/core/v3/collection_entry.pb.go\n@@ -1,7 +1,7 @@\n // Code generated by protoc-gen-go. DO NOT EDIT.\n // versions:\n // \tprotoc-gen-go v1.33.0\n-// \tprotoc        v5.27.0--rc2\n+// \tprotoc        v5.29.1\n // source: xds/core/v3/collection_entry.proto\n \n package v3\ndiff --git a/debian/extra/vendor/github.com/cncf/xds/go/xds/core/v3/context_params.pb.go b/debian/extra/vendor/github.com/cncf/xds/go/xds/core/v3/context_params.pb.go\nindex 714ab43..3e75637 100644\n--- a/debian/extra/vendor/github.com/cncf/xds/go/xds/core/v3/context_params.pb.go\n+++ b/debian/extra/vendor/github.com/cncf/xds/go/xds/core/v3/context_params.pb.go\n@@ -1,7 +1,7 @@\n // Code generated by protoc-gen-go. DO NOT EDIT.\n // versions:\n // \tprotoc-gen-go v1.33.0\n-// \tprotoc        v5.27.0--rc2\n+// \tprotoc        v5.29.1\n // source: xds/core/v3/context_params.proto\n \n package v3\ndiff --git a/debian/extra/vendor/github.com/cncf/xds/go/xds/core/v3/extension.pb.go b/debian/extra/vendor/github.com/cncf/xds/go/xds/core/v3/extension.pb.go\nindex be4ea10..7183e11 100644\n--- a/debian/extra/vendor/github.com/cncf/xds/go/xds/core/v3/extension.pb.go\n+++ b/debian/extra/vendor/github.com/cncf/xds/go/xds/core/v3/extension.pb.go\n@@ -1,7 +1,7 @@\n // Code generated by protoc-gen-go. DO NOT EDIT.\n // versions:\n // \tprotoc-gen-go v1.33.0\n-// \tprotoc        v5.27.0--rc2\n+// \tprotoc        v5.29.1\n // source: xds/core/v3/extension.proto\n \n package v3\ndiff --git a/debian/extra/vendor/github.com/cncf/xds/go/xds/core/v3/resource.pb.go b/debian/extra/vendor/github.com/cncf/xds/go/xds/core/v3/resource.pb.go\nindex 641e341..ced3bc3 100644\n--- a/debian/extra/vendor/github.com/cncf/xds/go/xds/core/v3/resource.pb.go\n+++ b/debian/extra/vendor/github.com/cncf/xds/go/xds/core/v3/resource.pb.go\n@@ -1,7 +1,7 @@\n // Code generated by protoc-gen-go. DO NOT EDIT.\n // versions:\n // \tprotoc-gen-go v1.33.0\n-// \tprotoc        v5.27.0--rc2\n+// \tprotoc        v5.29.1\n // source: xds/core/v3/resource.proto\n \n package v3\ndiff --git a/debian/extra/vendor/github.com/cncf/xds/go/xds/core/v3/resource_locator.pb.go b/debian/extra/vendor/github.com/cncf/xds/go/xds/core/v3/resource_locator.pb.go\nindex 3f99d4b..f469c18 100644\n--- a/debian/extra/vendor/github.com/cncf/xds/go/xds/core/v3/resource_locator.pb.go\n+++ b/debian/extra/vendor/github.com/cncf/xds/go/xds/core/v3/resource_locator.pb.go\n@@ -1,7 +1,7 @@\n // Code generated by protoc-gen-go. DO NOT EDIT.\n // versions:\n // \tprotoc-gen-go v1.33.0\n-// \tprotoc        v5.27.0--rc2\n+// \tprotoc        v5.29.1\n // source: xds/core/v3/resource_locator.proto\n \n package v3\ndiff --git a/debian/extra/vendor/github.com/cncf/xds/go/xds/core/v3/resource_name.pb.go b/debian/extra/vendor/github.com/cncf/xds/go/xds/core/v3/resource_name.pb.go\nindex 3d42818..65f65fd 100644\n--- a/debian/extra/vendor/github.com/cncf/xds/go/xds/core/v3/resource_name.pb.go\n+++ b/debian/extra/vendor/github.com/cncf/xds/go/xds/core/v3/resource_name.pb.go\n@@ -1,7 +1,7 @@\n // Code generated by protoc-gen-go. DO NOT EDIT.\n // versions:\n // \tprotoc-gen-go v1.33.0\n-// \tprotoc        v5.27.0--rc2\n+// \tprotoc        v5.29.1\n // source: xds/core/v3/resource_name.proto\n \n package v3\ndiff --git a/debian/extra/vendor/github.com/cncf/xds/go/xds/data/orca/v3/orca_load_report.pb.go b/debian/extra/vendor/github.com/cncf/xds/go/xds/data/orca/v3/orca_load_report.pb.go\nindex 7489933..f929ca6 100644\n--- a/debian/extra/vendor/github.com/cncf/xds/go/xds/data/orca/v3/orca_load_report.pb.go\n+++ b/debian/extra/vendor/github.com/cncf/xds/go/xds/data/orca/v3/orca_load_report.pb.go\n@@ -1,7 +1,7 @@\n // Code generated by protoc-gen-go. DO NOT EDIT.\n // versions:\n // \tprotoc-gen-go v1.33.0\n-// \tprotoc        v5.27.0--rc2\n+// \tprotoc        v5.29.1\n // source: xds/data/orca/v3/orca_load_report.proto\n \n package v3\ndiff --git a/debian/extra/vendor/github.com/cncf/xds/go/xds/service/orca/v3/orca.pb.go b/debian/extra/vendor/github.com/cncf/xds/go/xds/service/orca/v3/orca.pb.go\nindex 463f4ed..32e4a37 100644\n--- a/debian/extra/vendor/github.com/cncf/xds/go/xds/service/orca/v3/orca.pb.go\n+++ b/debian/extra/vendor/github.com/cncf/xds/go/xds/service/orca/v3/orca.pb.go\n@@ -1,7 +1,7 @@\n // Code generated by protoc-gen-go. DO NOT EDIT.\n // versions:\n // \tprotoc-gen-go v1.33.0\n-// \tprotoc        v5.27.0--rc2\n+// \tprotoc        v5.29.1\n // source: xds/service/orca/v3/orca.proto\n \n package v3\ndiff --git a/debian/extra/vendor/github.com/cncf/xds/go/xds/service/orca/v3/orca_grpc.pb.go b/debian/extra/vendor/github.com/cncf/xds/go/xds/service/orca/v3/orca_grpc.pb.go\nindex 6cecac1..8a92439 100644\n--- a/debian/extra/vendor/github.com/cncf/xds/go/xds/service/orca/v3/orca_grpc.pb.go\n+++ b/debian/extra/vendor/github.com/cncf/xds/go/xds/service/orca/v3/orca_grpc.pb.go\n@@ -1,7 +1,7 @@\n // Code generated by protoc-gen-go-grpc. DO NOT EDIT.\n // versions:\n // - protoc-gen-go-grpc v1.3.0\n-// - protoc             v5.27.0--rc2\n+// - protoc             v5.29.1\n // source: xds/service/orca/v3/orca.proto\n \n package v3\ndiff --git a/debian/extra/vendor/github.com/cncf/xds/go/xds/type/matcher/v3/cel.pb.go b/debian/extra/vendor/github.com/cncf/xds/go/xds/type/matcher/v3/cel.pb.go\nindex 7299227..1bd4aaf 100644\n--- a/debian/extra/vendor/github.com/cncf/xds/go/xds/type/matcher/v3/cel.pb.go\n+++ b/debian/extra/vendor/github.com/cncf/xds/go/xds/type/matcher/v3/cel.pb.go\n@@ -1,7 +1,7 @@\n // Code generated by protoc-gen-go. DO NOT EDIT.\n // versions:\n // \tprotoc-gen-go v1.33.0\n-// \tprotoc        v5.27.0--rc2\n+// \tprotoc        v5.29.1\n // source: xds/type/matcher/v3/cel.proto\n \n package v3\ndiff --git a/debian/extra/vendor/github.com/cncf/xds/go/xds/type/matcher/v3/domain.pb.go b/debian/extra/vendor/github.com/cncf/xds/go/xds/type/matcher/v3/domain.pb.go\nindex 5f72c8d..3053b35 100644\n--- a/debian/extra/vendor/github.com/cncf/xds/go/xds/type/matcher/v3/domain.pb.go\n+++ b/debian/extra/vendor/github.com/cncf/xds/go/xds/type/matcher/v3/domain.pb.go\n@@ -1,7 +1,7 @@\n // Code generated by protoc-gen-go. DO NOT EDIT.\n // versions:\n // \tprotoc-gen-go v1.33.0\n-// \tprotoc        v5.27.0--rc2\n+// \tprotoc        v5.29.1\n // source: xds/type/matcher/v3/domain.proto\n \n package v3\ndiff --git a/debian/extra/vendor/github.com/cncf/xds/go/xds/type/matcher/v3/http_inputs.pb.go b/debian/extra/vendor/github.com/cncf/xds/go/xds/type/matcher/v3/http_inputs.pb.go\nindex 4393bb7..eedcace 100644\n--- a/debian/extra/vendor/github.com/cncf/xds/go/xds/type/matcher/v3/http_inputs.pb.go\n+++ b/debian/extra/vendor/github.com/cncf/xds/go/xds/type/matcher/v3/http_inputs.pb.go\n@@ -1,7 +1,7 @@\n // Code generated by protoc-gen-go. DO NOT EDIT.\n // versions:\n // \tprotoc-gen-go v1.33.0\n-// \tprotoc        v5.27.0--rc2\n+// \tprotoc        v5.29.1\n // source: xds/type/matcher/v3/http_inputs.proto\n \n package v3\ndiff --git a/debian/extra/vendor/github.com/cncf/xds/go/xds/type/matcher/v3/ip.pb.go b/debian/extra/vendor/github.com/cncf/xds/go/xds/type/matcher/v3/ip.pb.go\nindex fdb6599..6facd7a 100644\n--- a/debian/extra/vendor/github.com/cncf/xds/go/xds/type/matcher/v3/ip.pb.go\n+++ b/debian/extra/vendor/github.com/cncf/xds/go/xds/type/matcher/v3/ip.pb.go\n@@ -1,7 +1,7 @@\n // Code generated by protoc-gen-go. DO NOT EDIT.\n // versions:\n // \tprotoc-gen-go v1.33.0\n-// \tprotoc        v5.27.0--rc2\n+// \tprotoc        v5.29.1\n // source: xds/type/matcher/v3/ip.proto\n \n package v3\ndiff --git a/debian/extra/vendor/github.com/cncf/xds/go/xds/type/matcher/v3/matcher.pb.go b/debian/extra/vendor/github.com/cncf/xds/go/xds/type/matcher/v3/matcher.pb.go\nindex d94b03b..ac8dd4f 100644\n--- a/debian/extra/vendor/github.com/cncf/xds/go/xds/type/matcher/v3/matcher.pb.go\n+++ b/debian/extra/vendor/github.com/cncf/xds/go/xds/type/matcher/v3/matcher.pb.go\n@@ -1,7 +1,7 @@\n // Code generated by protoc-gen-go. DO NOT EDIT.\n // versions:\n // \tprotoc-gen-go v1.33.0\n-// \tprotoc        v5.27.0--rc2\n+// \tprotoc        v5.29.1\n // source: xds/type/matcher/v3/matcher.proto\n \n package v3\ndiff --git a/debian/extra/vendor/github.com/cncf/xds/go/xds/type/matcher/v3/range.pb.go b/debian/extra/vendor/github.com/cncf/xds/go/xds/type/matcher/v3/range.pb.go\nindex 2861768..bc811ec 100644\n--- a/debian/extra/vendor/github.com/cncf/xds/go/xds/type/matcher/v3/range.pb.go\n+++ b/debian/extra/vendor/github.com/cncf/xds/go/xds/type/matcher/v3/range.pb.go\n@@ -1,7 +1,7 @@\n // Code generated by protoc-gen-go. DO NOT EDIT.\n // versions:\n // \tprotoc-gen-go v1.33.0\n-// \tprotoc        v5.27.0--rc2\n+// \tprotoc        v5.29.1\n // source: xds/type/matcher/v3/range.proto\n \n package v3\ndiff --git a/debian/extra/vendor/github.com/cncf/xds/go/xds/type/matcher/v3/regex.pb.go b/debian/extra/vendor/github.com/cncf/xds/go/xds/type/matcher/v3/regex.pb.go\nindex 3dcf303..c02ec2a 100644\n--- a/debian/extra/vendor/github.com/cncf/xds/go/xds/type/matcher/v3/regex.pb.go\n+++ b/debian/extra/vendor/github.com/cncf/xds/go/xds/type/matcher/v3/regex.pb.go\n@@ -1,7 +1,7 @@\n // Code generated by protoc-gen-go. DO NOT EDIT.\n // versions:\n // \tprotoc-gen-go v1.33.0\n-// \tprotoc        v5.27.0--rc2\n+// \tprotoc        v5.29.1\n // source: xds/type/matcher/v3/regex.proto\n \n package v3\ndiff --git a/debian/extra/vendor/github.com/cncf/xds/go/xds/type/matcher/v3/string.pb.go b/debian/extra/vendor/github.com/cncf/xds/go/xds/type/matcher/v3/string.pb.go\nindex f906791..79b70bc 100644\n--- a/debian/extra/vendor/github.com/cncf/xds/go/xds/type/matcher/v3/string.pb.go\n+++ b/debian/extra/vendor/github.com/cncf/xds/go/xds/type/matcher/v3/string.pb.go\n@@ -1,7 +1,7 @@\n // Code generated by protoc-gen-go. DO NOT EDIT.\n // versions:\n // \tprotoc-gen-go v1.33.0\n-// \tprotoc        v5.27.0--rc2\n+// \tprotoc        v5.29.1\n // source: xds/type/matcher/v3/string.proto\n \n package v3\ndiff --git a/debian/extra/vendor/github.com/cncf/xds/go/xds/type/v3/cel.pb.go b/debian/extra/vendor/github.com/cncf/xds/go/xds/type/v3/cel.pb.go\nindex c7d42d4..e298ffb 100644\n--- a/debian/extra/vendor/github.com/cncf/xds/go/xds/type/v3/cel.pb.go\n+++ b/debian/extra/vendor/github.com/cncf/xds/go/xds/type/v3/cel.pb.go\n@@ -1,7 +1,7 @@\n // Code generated by protoc-gen-go. DO NOT EDIT.\n // versions:\n // \tprotoc-gen-go v1.33.0\n-// \tprotoc        v5.27.0--rc2\n+// \tprotoc        v5.29.1\n // source: xds/type/v3/cel.proto\n \n package v3\ndiff --git a/debian/extra/vendor/github.com/cncf/xds/go/xds/type/v3/range.pb.go b/debian/extra/vendor/github.com/cncf/xds/go/xds/type/v3/range.pb.go\nindex ca9d3e1..c6f8bb9 100644\n--- a/debian/extra/vendor/github.com/cncf/xds/go/xds/type/v3/range.pb.go\n+++ b/debian/extra/vendor/github.com/cncf/xds/go/xds/type/v3/range.pb.go\n@@ -1,7 +1,7 @@\n // Code generated by protoc-gen-go. DO NOT EDIT.\n // versions:\n // \tprotoc-gen-go v1.33.0\n-// \tprotoc        v5.27.0--rc2\n+// \tprotoc        v5.29.1\n // source: xds/type/v3/range.proto\n \n package v3\ndiff --git a/debian/extra/vendor/github.com/cncf/xds/go/xds/type/v3/typed_struct.pb.go b/debian/extra/vendor/github.com/cncf/xds/go/xds/type/v3/typed_struct.pb.go\nindex 72ec85e..ba42cb0 100644\n--- a/debian/extra/vendor/github.com/cncf/xds/go/xds/type/v3/typed_struct.pb.go\n+++ b/debian/extra/vendor/github.com/cncf/xds/go/xds/type/v3/typed_struct.pb.go\n@@ -1,7 +1,7 @@\n // Code generated by protoc-gen-go. DO NOT EDIT.\n // versions:\n // \tprotoc-gen-go v1.33.0\n-// \tprotoc        v5.27.0--rc2\n+// \tprotoc        v5.29.1\n // source: xds/type/v3/typed_struct.proto\n \n package v3\ndiff --git a/debian/extra/vendor/github.com/containerd/containerd/.gitattributes b/debian/extra/vendor/github.com/containerd/containerd/.gitattributes\nnew file mode 100644\nindex 0000000..a0717e4\n--- /dev/null\n+++ b/debian/extra/vendor/github.com/containerd/containerd/.gitattributes\n@@ -0,0 +1 @@\n+*.go text eol=lf\n\\ No newline at end of file\ndiff --git a/debian/extra/vendor/github.com/containerd/containerd/.gitignore b/debian/extra/vendor/github.com/containerd/containerd/.gitignore\nnew file mode 100644\nindex 0000000..73ba2c6\n--- /dev/null\n+++ b/debian/extra/vendor/github.com/containerd/containerd/.gitignore\n@@ -0,0 +1,10 @@\n+/bin/\n+/man/\n+coverage.txt\n+profile.out\n+containerd.test\n+_site/\n+releases/*.tar.gz\n+releases/*.tar.gz.sha256sum\n+_output/\n+.vagrant/\ndiff --git a/debian/extra/vendor/github.com/containerd/containerd/.mailmap b/debian/extra/vendor/github.com/containerd/containerd/.mailmap\nnew file mode 100644\nindex 0000000..0da9d10\n--- /dev/null\n+++ b/debian/extra/vendor/github.com/containerd/containerd/.mailmap\n@@ -0,0 +1,172 @@\n+Abhinandan Prativadi <abhi@docker.com>\n+Abhinandan Prativadi <abhi@docker.com> <aprativadi@gmail.com>\n+Ace-Tang <aceapril@126.com>\n+Adam Korcz <adam@adalogics.com> <Adam@adalogics.com>\n+Akhil Mohan <akhilerm@gmail.com> <akhil.mohan@broadcom.com>\n+Aditi Sharma <adi.sky17@gmail.com> <sharmaad@vmware.com>\n+Akihiro Suda <akihiro.suda.cz@hco.ntt.co.jp> <suda.akihiro@lab.ntt.co.jp>\n+Akihiro Suda <akihiro.suda.cz@hco.ntt.co.jp> <suda.kyoto@gmail.com>\n+Allen Sun <shlallen1990@gmail.com> <allensun@AllenSundeMacBook-Pro.local>\n+Alexander Morozov <lk4d4math@gmail.com> <lk4d4@docker.com>\n+Antonio Ojea <antonio.ojea.garcia@gmail.com> <aojea@google.com>\n+Antonio Ojea <antonio.ojea.garcia@gmail.com> <aojea@redhat.com>\n+Amit Krishnan <krish.amit@gmail.com> <amit.krishnan@oracle.com>\n+Andrei Vagin <avagin@virtuozzo.com> <avagin@openvz.org>\n+Andrey Kolomentsev <andrey.kolomentsev@gmail.com>\n+Arnaud Porterie <icecrime@gmail.com>\n+Arnaud Porterie <icecrime@gmail.com> <arnaud.porterie@docker.com>\n+Bob Mader <swapdisk@users.noreply.github.com>\n+Boris Popovschi <zyqsempai@mail.ru>\n+Bowen Yan <loneybw@gmail.com>\n+Brent Baude <bbaude@redhat.com>\n+Cao Zhihao <caozhihao@163.com>\n+Cao Zhihao <caozhihao@163.com> <caozhihao.xd@bytedance.com>\n+Carlos Eduardo <me@carlosedp.com> <me@carlosedp.com>\n+chenxiaoyu <weixian.cxy@alibaba-inc.com>\n+Cory Bennett <cbennett@netflix.com>\n+Cristian Staretu <cristian.staretu@gmail.com>\n+Cristian Staretu <cristian.staretu@gmail.com> <unclejack@users.noreply.github.com>\n+Daniel Dao <dqminh89@gmail.com>\n+Derek McGowan <derek@mcg.dev> <derek@mcgstyle.net>\n+Edgar Lee <edgarl@netflix.com> <edgar.lee@docker.com>\n+Eric Ernst <eric@amperecomputing.com> <eric.ernst@intel.com>\n+Eric Lin <linxiulei@gmail.com> <exlin@google.com>\n+Eric Ren <renzhen.rz@linux.alibaba.com> <renzhen@linux.alibaba.com>\n+Eric Ren <renzhen.rz@linux.alibaba.com> <renzhen.rz@alibaba-linux.com>\n+Eric Ren <renzhen.rz@linux.alibaba.com> <renzhen.rz@alibaba-inc.com>\n+Fabian Hoffmann <extern.fabian.hoffmann@cariad.technology>\n+Fabian Hoffmann <extern.fabian.hoffmann@cariad.technology> <35104465+FabHof@users.noreply.github.com>\n+Fabiano Fidêncio <fidencio@redhat.com> <fabiano.fidencio@intel.com>\n+Fahed Dorgaa <fahed.dorgaa@gmail.com>\n+Frank Yang <yyb196@gmail.com>\n+Fupan Li <lifupan@gmail.com>\n+Fupan Li <lifupan@gmail.com> <fupan.lfp@antfin.com>\n+Fupan Li <lifupan@gmail.com> <fupan.lfp@antgroup.com>\n+Furkan Türkal <furkan.turkal@trendyol.com>\n+Georgia Panoutsakopoulou <gpanoutsak@gmail.com>\n+guodong <guodong9211@gmail.com>\n+Guangming Wang <guangming.wang@daocloud.io>\n+Haiyan Meng <haiyanmeng@google.com>\n+haoyun <yun.hao@daocloud.io>\n+Harry Zhang <harryz@hyper.sh> <harryzhang@zju.edu.cn>\n+Hu Shuai <hus.fnst@cn.fujitsu.com>\n+Hu Shuai <hus.fnst@cn.fujitsu.com> <hushuaiia@qq.com>\n+Iceber Gu <wei.cai-nat@daocloud.io> <caiwei95@hotmail.com>\n+Jaana Burcu Dogan <burcujdogan@gmail.com> <jbd@golang.org>\n+Jess Valarezo <valarezo.jessica@gmail.com>\n+Jess Valarezo <valarezo.jessica@gmail.com> <jessica.valarezo@docker.com>\n+Jian Liao <jliao@alauda.io>\n+Jian Liao <jliao@alauda.io> <liaojian@Dabllo.local>\n+Ji'an Liu <anthonyliu@zju.edu.cn>\n+Jie Zhang <iamkadisi@163.com>\n+Jiongchi Yu <jiongchiyu@gmail.com>\n+John Howard <github@lowenna.com>\n+John Howard <github@lowenna.com> <john.howard@microsoft.com>\n+John Howard <github@lowenna.com> <jhoward@microsoft.com>\n+John Howard <github@lowenna.com> <jhowardmsft@users.noreply.github.com>\n+Junyu Liu <ljyngup@gmail.com>\n+LongtaoZhang <DragonBillow@outlook.com>\n+Lorenz Brun <lorenz@brun.one> <lorenz@nexantic.com>\n+Luc Perkins <lucperkins@gmail.com>\n+James Sturtevant <jsturtevant@gmail.com> <jstur@microsoft.com>\n+Jiajun Jiang <levinxo@gmail.com>\n+Jin Dong <djdongjin95@gmail.com> <jin.dong@databricks.com>\n+Julien Balestra <julien.balestra@datadoghq.com>\n+Jun Lin Chen <webmaster@mc256.com> <1913688+mc256@users.noreply.github.com>\n+Justin Cormack <justin.cormack@docker.com> <justin@specialbusservice.com>\n+Justin Terry <juterry@microsoft.com>\n+Justin Terry <juterry@microsoft.com> <jterry75@users.noreply.github.com>\n+Kante <kerthcet@gmail.com>\n+Kazuyoshi Kato <kato.kazuyoshi@gmail.com> <katokazu@amazon.com>\n+Kazuyoshi Kato <kato.kazuyoshi@gmail.com> <kaz@fly.io>\n+Kenfe-Mickaël Laventure <mickael.laventure@gmail.com>\n+Kevin Kern <kaiwentan@harmonycloud.cn>\n+Kevin Parsons <kevpar@microsoft.com> <kevpar@users.noreply.github.com>\n+Kevin Xu <cming.xu@gmail.com>\n+Kirtana Ashok <Kirtana.Ashok@microsoft.com> <kiashok@microsoft.com>\n+Kitt Hsu <kitt.hsu@gmail.com>\n+Kohei Tokunaga <ktokunaga.mail@gmail.com>\n+Krasi Georgiev <krasi.root@gmail.com> <krasi@vip-consult.solutions>\n+Lantao Liu <lantaol@google.com>\n+Lantao Liu <lantaol@google.com> <taotaotheripper@gmail.com>\n+lengrongfu <1275177125@qq.com>\n+Li Yuxuan <liyuxuan04@baidu.com> <darfux@163.com>\n+Lifubang <lifubang@aliyun.com> <lifubang@acmcoder.com>\n+Lu Jingxiao <lujingxiao@huawei.com>\n+Maksym Pavlenko <pavlenko.maksym@gmail.com> <865334+mxpv@users.noreply.github.com>\n+Maksym Pavlenko <pavlenko.maksym@gmail.com> <makpav@amazon.com>\n+Maksym Pavlenko <pavlenko.maksym@gmail.com> <mxpv@apple.com>\n+Mario Hros <spam@k3a.me>\n+Mario Hros <spam@k3a.me> <root@k3a.me>\n+Mario Macias <mariomac@gmail.com> <mmacias@newrelic.com>\n+Mark Gordon <msg555@gmail.com>\n+Marvin Giessing <marvin.giessing@gmail.com>\n+Mathis Michel <mathis.michel@outlook.de>\n+Michael Crosby <crosbymichael@gmail.com> <michael@thepasture.io>\n+Michael Katsoulis <michaelkatsoulis88@gmail.com>\n+Mike Brown <brownwm@us.ibm.com> <mikebrow@users.noreply.github.com>\n+Mohammad Asif Siddiqui <mohammad.asif.siddiqui1@huawei.com>\n+Nabeel Rana <nabeelnrana@gmail.com>\n+Ng Yang <wssccc@qq.com>\n+Ning Li <ning.a.li@transwarp.io>\n+ningmingxiao <ning.mingxiao@zte.com.cn>\n+Nishchay Kumar <mrawesomenix@gmail.com>\n+Oliver Stenbom <oliver@stenbom.eu> <ostenbom@pivotal.io>\n+Phil Estes <estesp@gmail.com> <estesp@linux.vnet.ibm.com>\n+Phil Estes <estesp@gmail.com> <estesp@amazon.com>\n+Qian Zhang <cosmoer@qq.com>\n+Reid Li <reid.li@utexas.edu>\n+Robin Winkelewski <w9ncontact@gmail.com>\n+Ross Boucher <rboucher@gmail.com>\n+Ruediger Maass <ruediger.maass@de.ibm.com>\n+Rui Cao <ruicao@alauda.io> <ruicao@alauda.io>\n+Sakeven Jiang <jc5930@sina.cn>\n+Samuel Karp <me@samuelkarp.com> <samuelkarp@google.com>\n+Samuel Karp <me@samuelkarp.com> <skarp@amazon.com>\n+Seth Pellegrino <spellegrino@newrelic.com> <30441101+sethp-nr@users.noreply.github.com>\n+Shaobao Feng <shaobao.feng@huawei.com>\n+Shengbo Song <thomassong@tencent.com>\n+Shengjing Zhu <i@zhsj.me> <zhsj@debian.org>\n+Siddharth Yadav <sedflix@gmail.com>\n+SiYu Zhao <d.chaser.zsy@gmail.com>\n+Stefan Berger <stefanb@us.ibm.com> <stefanb@linux.ibm.com>\n+Stefan Berger <stefanb@us.ibm.com> <stefanb@linux.vnet.ibm.com>\n+Stephen J Day <stevvooe@gmail.com> <stephen.day@getcruise.com>\n+Stephen J Day <stevvooe@gmail.com> <stevvooe@users.noreply.github.com>\n+Stephen J Day <stevvooe@gmail.com> <stephen.day@docker.com>\n+Sudeesh John <sudeesh@linux.vnet.ibm.com>\n+Su Fei  <fesu@ebay.com> <fesu@ebay.com>\n+Su Xiaolin <linxxnil@126.com>\n+Takumasa Sakao <sakataku7@gmail.com> <tsakao@zlab.co.jp>\n+Ted Yu <yuzhihong@gmail.com>\n+Tõnis Tiigi <tonistiigi@gmail.com>\n+Tony Fang <nenghui.fang@gmail.com>\n+Tony Fang <nenghui.fang@gmail.com> <nhfang@amazon.com>\n+Wade Lee <weidonglee27@gmail.com>\n+Wade Lee <weidonglee27@gmail.com> <weidonglee29@gmail.com>\n+Wade Lee <weidonglee27@gmail.com> <21621232@zju.edu.cn>\n+wanglei <wllenyj@linux.alibaba.com>\n+wanglei <wllenyj@linux.alibaba.com> <wanglei01@alibaba-inc.com>\n+wangzhan <wang.zhan@smartx.com>\n+Wei Fu <fuweid89@gmail.com>\n+Wei Fu <fuweid89@gmail.com> <fhfuwei@163.com>\n+wen chen <wen.chen@daocloud.io>\n+Xiaodong Zhang <a4012017@sina.com>\n+Xuean Yan <yan.xuean@zte.com.cn>\n+Yang Yang <yang8518296@163.com>\n+Yue Zhang <zy675793960@yeah.net>\n+Yuxing Liu <starnop@163.com>\n+Zechun Chen <zechun.chen@daocloud.io>\n+zhang he <zhanghe9702@163.com>\n+Zhang Wei <zhangwei555@huawei.com>\n+zhangyadong <zhangyadong.0808@bytedance.com>\n+Zhenguang Zhu <zhengguang.zhu@daocloud.io>\n+Zhiyu Li <payall4u@qq.com>\n+Zhiyu Li <payall4u@qq.com> <404977848@qq.com>\n+Zhongming Chang<zhongming.chang@daocloud.io>\n+Zhoulin Xie <zhoulin.xie@daocloud.io>\n+Zhoulin Xie <zhoulin.xie@daocloud.io> <42261994+JoeWrightss@users.noreply.github.com>\n+zounengren <zouyee1989@gmail.com> <zounengren@cmss.chinamobile.com>\n+张潇 <xiaozhang0210@hotmail.com>\n+Kazuyoshi Kato <kaz@fly.io> <katokazu@amazon.com>\n+Andrey Epifanov <epifanov.andrey@gmail.com> <aepifanov@mirantis.com>\ndiff --git a/debian/extra/vendor/github.com/containerd/fifo/.gitattributes b/debian/extra/vendor/github.com/containerd/fifo/.gitattributes\nnew file mode 100644\nindex 0000000..d207b18\n--- /dev/null\n+++ b/debian/extra/vendor/github.com/containerd/fifo/.gitattributes\n@@ -0,0 +1 @@\n+*.go text eol=lf\ndiff --git a/debian/extra/vendor/github.com/containerd/fifo/.gitignore b/debian/extra/vendor/github.com/containerd/fifo/.gitignore\nnew file mode 100644\nindex 0000000..7f7bd6a\n--- /dev/null\n+++ b/debian/extra/vendor/github.com/containerd/fifo/.gitignore\n@@ -0,0 +1,2 @@\n+coverage.txt\n+vendor/\ndiff --git a/debian/extra/vendor/github.com/containerd/platforms/.gitattributes b/debian/extra/vendor/github.com/containerd/platforms/.gitattributes\nnew file mode 100644\nindex 0000000..a0717e4\n--- /dev/null\n+++ b/debian/extra/vendor/github.com/containerd/platforms/.gitattributes\n@@ -0,0 +1 @@\n+*.go text eol=lf\n\\ No newline at end of file\ndiff --git a/debian/extra/vendor/github.com/containerd/ttrpc/.gitattributes b/debian/extra/vendor/github.com/containerd/ttrpc/.gitattributes\nnew file mode 100644\nindex 0000000..d207b18\n--- /dev/null\n+++ b/debian/extra/vendor/github.com/containerd/ttrpc/.gitattributes\n@@ -0,0 +1 @@\n+*.go text eol=lf\ndiff --git a/debian/extra/vendor/github.com/containerd/ttrpc/.gitignore b/debian/extra/vendor/github.com/containerd/ttrpc/.gitignore\nnew file mode 100644\nindex 0000000..88ceb27\n--- /dev/null\n+++ b/debian/extra/vendor/github.com/containerd/ttrpc/.gitignore\n@@ -0,0 +1,13 @@\n+# Binaries for programs and plugins\n+/bin/\n+*.exe\n+*.dll\n+*.so\n+*.dylib\n+\n+# Test binary, build with `go test -c`\n+*.test\n+\n+# Output of the go coverage tool, specifically when used with LiteIDE\n+*.out\n+coverage.txt\ndiff --git a/debian/extra/vendor/github.com/containerd/typeurl/v2/.gitignore b/debian/extra/vendor/github.com/containerd/typeurl/v2/.gitignore\nnew file mode 100644\nindex 0000000..d538467\n--- /dev/null\n+++ b/debian/extra/vendor/github.com/containerd/typeurl/v2/.gitignore\n@@ -0,0 +1,2 @@\n+*.test\n+coverage.txt\ndiff --git a/debian/extra/vendor/github.com/distribution/reference/.gitattributes b/debian/extra/vendor/github.com/distribution/reference/.gitattributes\nnew file mode 100644\nindex 0000000..d207b18\n--- /dev/null\n+++ b/debian/extra/vendor/github.com/distribution/reference/.gitattributes\n@@ -0,0 +1 @@\n+*.go text eol=lf\ndiff --git a/debian/extra/vendor/github.com/distribution/reference/.gitignore b/debian/extra/vendor/github.com/distribution/reference/.gitignore\nnew file mode 100644\nindex 0000000..dc07e6b\n--- /dev/null\n+++ b/debian/extra/vendor/github.com/distribution/reference/.gitignore\n@@ -0,0 +1,2 @@\n+# Cover profiles\n+*.out\ndiff --git a/debian/extra/vendor/github.com/docker/docker/AUTHORS b/debian/extra/vendor/github.com/docker/docker/AUTHORS\nindex 48d04f9..88032de 100644\n--- a/debian/extra/vendor/github.com/docker/docker/AUTHORS\n+++ b/debian/extra/vendor/github.com/docker/docker/AUTHORS\n@@ -2,7 +2,9 @@\n # This file lists all contributors to the repository.\n # See hack/generate-authors.sh to make modifications.\n \n+7sunarni <710720732@qq.com>\n Aanand Prasad <aanand.prasad@gmail.com>\n+Aarni Koskela <akx@iki.fi>\n Aaron Davidson <aaron@databricks.com>\n Aaron Feng <aaron.feng@gmail.com>\n Aaron Hnatiw <aaron@griddio.com>\n@@ -10,6 +12,8 @@ Aaron Huslage <huslage@gmail.com>\n Aaron L. Xu <liker.xu@foxmail.com>\n Aaron Lehmann <alehmann@netflix.com>\n Aaron Welch <welch@packet.net>\n+Aaron Yoshitake <airandfingers@gmail.com>\n+Abdur Rehman <abdur_rehman@mentor.com>\n Abel Muiño <amuino@gmail.com>\n Abhijeet Kasurde <akasurde@redhat.com>\n Abhinandan Prativadi <aprativadi@gmail.com>\n@@ -23,9 +27,11 @@ Adam Avilla <aavilla@yp.com>\n Adam Dobrawy <naczelnik@jawnosc.tk>\n Adam Eijdenberg <adam.eijdenberg@gmail.com>\n Adam Kunk <adam.kunk@tiaa-cref.org>\n+Adam Lamers <adam.lamers@wmsdev.pl>\n Adam Miller <admiller@redhat.com>\n Adam Mills <adam@armills.info>\n Adam Pointer <adam.pointer@skybettingandgaming.com>\n+Adam Simon <adamsimon85100@gmail.com>\n Adam Singer <financeCoding@gmail.com>\n Adam Thornton <adam.thornton@maryville.com>\n Adam Walz <adam@adamwalz.net>\n@@ -62,6 +68,7 @@ alambike <alambike@gmail.com>\n Alan Hoyle <alan@alanhoyle.com>\n Alan Scherger <flyinprogrammer@gmail.com>\n Alan Thompson <cloojure@gmail.com>\n+Alano Terblanche <alano.terblanche@docker.com>\n Albert Callarisa <shark234@gmail.com>\n Albert Zhang <zhgwenming@gmail.com>\n Albin Kerouanton <albinker@gmail.com>\n@@ -117,6 +124,7 @@ amangoel <amangoel@gmail.com>\n Amen Belayneh <amenbelayneh@gmail.com>\n Ameya Gawde <agawde@mirantis.com>\n Amir Goldstein <amir73il@aquasec.com>\n+AmirBuddy <badinlu.amirhossein@gmail.com>\n Amit Bakshi <ambakshi@gmail.com>\n Amit Krishnan <amit.krishnan@oracle.com>\n Amit Shukla <amit.shukla@docker.com>\n@@ -141,6 +149,7 @@ Andreas Tiefenthaler <at@an-ti.eu>\n Andrei Gherzan <andrei@resin.io>\n Andrei Ushakov <aushakov@netflix.com>\n Andrei Vagin <avagin@gmail.com>\n+Andrew Baxter <423qpsxzhh8k3h@s.rendaw.me>\n Andrew C. Bodine <acbodine@us.ibm.com>\n Andrew Clay Shafer <andrewcshafer@gmail.com>\n Andrew Duckworth <grillopress@gmail.com>\n@@ -165,6 +174,7 @@ Andrey Kolomentsev <andrey.kolomentsev@docker.com>\n Andrey Petrov <andrey.petrov@shazow.net>\n Andrey Stolbovsky <andrey.stolbovsky@gmail.com>\n André Martins <aanm90@gmail.com>\n+Andrés Maldonado <maldonado@codelutin.com>\n Andy Chambers <anchambers@paypal.com>\n andy diller <dillera@gmail.com>\n Andy Goldstein <agoldste@redhat.com>\n@@ -193,6 +203,7 @@ Anton Löfgren <anton.lofgren@gmail.com>\n Anton Nikitin <anton.k.nikitin@gmail.com>\n Anton Polonskiy <anton.polonskiy@gmail.com>\n Anton Tiurin <noxiouz@yandex.ru>\n+Antonio Aguilar <antonio@zoftko.com>\n Antonio Murdaca <antonio.murdaca@gmail.com>\n Antonis Kalipetis <akalipetis@gmail.com>\n Antony Messerli <amesserl@rackspace.com>\n@@ -215,13 +226,13 @@ Artur Meyster <arthurfbi@yahoo.com>\n Arun Gupta <arun.gupta@gmail.com>\n Asad Saeeduddin <masaeedu@gmail.com>\n Asbjørn Enge <asbjorn@hanafjedle.net>\n+Ashly Mathew <ashly.mathew@sap.com>\n Austin Vazquez <macedonv@amazon.com>\n averagehuman <averagehuman@users.noreply.github.com>\n Avi Das <andas222@gmail.com>\n Avi Kivity <avi@scylladb.com>\n Avi Miller <avi.miller@oracle.com>\n Avi Vaid <avaid1996@gmail.com>\n-ayoshitake <airandfingers@gmail.com>\n Azat Khuyiyakhmetov <shadow_uz@mail.ru>\n Bao Yonglei <baoyonglei@huawei.com>\n Bardia Keyoumarsi <bkeyouma@ucsc.edu>\n@@ -316,6 +327,7 @@ Burke Libbey <burke@libbey.me>\n Byung Kang <byung.kang.ctr@amrdec.army.mil>\n Caleb Spare <cespare@gmail.com>\n Calen Pennington <cale@edx.org>\n+Calvin Liu <flycalvin@qq.com>\n Cameron Boehmer <cameron.boehmer@gmail.com>\n Cameron Sparr <gh@sparr.email>\n Cameron Spear <cameronspear@gmail.com>\n@@ -341,6 +353,7 @@ Chance Zibolski <chance.zibolski@gmail.com>\n Chander Govindarajan <chandergovind@gmail.com>\n Chanhun Jeong <keyolk@gmail.com>\n Chao Wang <wangchao.fnst@cn.fujitsu.com>\n+Charity Kathure <ckathure@microsoft.com>\n Charles Chan <charleswhchan@users.noreply.github.com>\n Charles Hooper <charles.hooper@dotcloud.com>\n Charles Law <claw@conduce.com>\n@@ -362,6 +375,7 @@ Chen Qiu <cheney-90@hotmail.com>\n Cheng-mean Liu <soccerl@microsoft.com>\n Chengfei Shang <cfshang@alauda.io>\n Chengguang Xu <cgxu519@gmx.com>\n+Chentianze <cmoman@126.com>\n Chenyang Yan <memory.yancy@gmail.com>\n chenyuzhu <chenyuzhi@oschina.cn>\n Chetan Birajdar <birajdar.chetan@gmail.com>\n@@ -409,6 +423,7 @@ Christopher Crone <christopher.crone@docker.com>\n Christopher Currie <codemonkey+github@gmail.com>\n Christopher Jones <tophj@linux.vnet.ibm.com>\n Christopher Latham <sudosurootdev@gmail.com>\n+Christopher Petito <chrisjpetito@gmail.com>\n Christopher Rigor <crigor@gmail.com>\n Christy Norman <christy@linux.vnet.ibm.com>\n Chun Chen <ramichen@tencent.com>\n@@ -474,6 +489,7 @@ Daniel Farrell <dfarrell@redhat.com>\n Daniel Garcia <daniel@danielgarcia.info>\n Daniel Gasienica <daniel@gasienica.ch>\n Daniel Grunwell <mwgrunny@gmail.com>\n+Daniel Guns <danbguns@gmail.com>\n Daniel Helfand <helfand.4@gmail.com>\n Daniel Hiltgen <daniel.hiltgen@docker.com>\n Daniel J Walsh <dwalsh@redhat.com>\n@@ -669,6 +685,7 @@ Erik Hollensbe <github@hollensbe.org>\n Erik Inge Bolsø <knan@redpill-linpro.com>\n Erik Kristensen <erik@erikkristensen.com>\n Erik Sipsma <erik@sipsma.dev>\n+Erik Sjölund <erik.sjolund@gmail.com>\n Erik St. Martin <alakriti@gmail.com>\n Erik Weathers <erikdw@gmail.com>\n Erno Hopearuoho <erno.hopearuoho@gmail.com>\n@@ -731,6 +748,7 @@ Feroz Salam <feroz.salam@sourcegraph.com>\n Ferran Rodenas <frodenas@gmail.com>\n Filipe Brandenburger <filbranden@google.com>\n Filipe Oliveira <contato@fmoliveira.com.br>\n+Filipe Pina <hzlu1ot0@duck.com>\n Flavio Castelli <fcastelli@suse.com>\n Flavio Crisciani <flavio.crisciani@docker.com>\n Florian <FWirtz@users.noreply.github.com>\n@@ -755,6 +773,7 @@ Frank Macreery <frank@macreery.com>\n Frank Rosquin <frank.rosquin+github@gmail.com>\n Frank Villaro-Dixon <frank.villarodixon@merkle.com>\n Frank Yang <yyb196@gmail.com>\n+François Scala <github@arcenik.net>\n Fred Lifton <fred.lifton@docker.com>\n Frederick F. Kautz IV <fkautz@redhat.com>\n Frederico F. de Oliveira <FreddieOliveira@users.noreply.github.com>\n@@ -775,6 +794,7 @@ Gabriel L. Somlo <gsomlo@gmail.com>\n Gabriel Linder <linder.gabriel@gmail.com>\n Gabriel Monroy <gabriel@opdemand.com>\n Gabriel Nicolas Avellaneda <avellaneda.gabriel@gmail.com>\n+Gabriel Tomitsuka <gabriel@tomitsuka.com>\n Gaetan de Villele <gdevillele@gmail.com>\n Galen Sampson <galen.sampson@gmail.com>\n Gang Qiao <qiaohai8866@gmail.com>\n@@ -789,7 +809,9 @@ GennadySpb <lipenkov@gmail.com>\n Geoff Levand <geoff@infradead.org>\n Geoffrey Bachelet <grosfrais@gmail.com>\n Geon Kim <geon0250@gmail.com>\n+George Adams <georgeadams1995@gmail.com>\n George Kontridze <george@bugsnag.com>\n+George Ma <mayangang@outlook.com>\n George MacRorie <gmacr31@gmail.com>\n George Xie <georgexsh@gmail.com>\n Georgi Hristozov <georgi@forkbomb.nl>\n@@ -816,6 +838,7 @@ Gopikannan Venugopalsamy <gopikannan.venugopalsamy@gmail.com>\n Gosuke Miyashita <gosukenator@gmail.com>\n Gou Rao <gou@portworx.com>\n Govinda Fichtner <govinda.fichtner@googlemail.com>\n+Grace Choi <grace.54109@gmail.com>\n Grant Millar <rid@cylo.io>\n Grant Reaber <grant.reaber@gmail.com>\n Graydon Hoare <graydon@pobox.com>\n@@ -875,6 +898,8 @@ Hsing-Yu (David) Chen <davidhsingyuchen@gmail.com>\n hsinko <21551195@zju.edu.cn>\n Hu Keping <hukeping@huawei.com>\n Hu Tao <hutao@cn.fujitsu.com>\n+Huajin Tong <fliterdashen@gmail.com>\n+huang-jl <1046678590@qq.com>\n HuanHuan Ye <logindaveye@gmail.com>\n Huanzhong Zhang <zhanghuanzhong90@gmail.com>\n Huayi Zhang <irachex@gmail.com>\n@@ -909,6 +934,7 @@ Illo Abdulrahim <abdulrahim.illo@nokia.com>\n Ilya Dmitrichenko <errordeveloper@gmail.com>\n Ilya Gusev <mail@igusev.ru>\n Ilya Khlopotov <ilya.khlopotov@gmail.com>\n+imalasong <2879499479@qq.com>\n imre Fitos <imre.fitos+github@gmail.com>\n inglesp <peter.inglesby@gmail.com>\n Ingo Gottwald <in.gottwald@gmail.com>\n@@ -926,6 +952,7 @@ J Bruni <joaohbruni@yahoo.com.br>\n J. Nunn <jbnunn@gmail.com>\n Jack Danger Canty <jackdanger@squareup.com>\n Jack Laxson <jackjrabbit@gmail.com>\n+Jack Walker <90711509+j2walker@users.noreply.github.com>\n Jacob Atzen <jacob@jacobatzen.dk>\n Jacob Edelman <edelman.jd@gmail.com>\n Jacob Tomlinson <jacob@tom.linson.uk>\n@@ -952,6 +979,7 @@ James Nugent <james@jen20.com>\n James Sanders <james3sanders@gmail.com>\n James Turnbull <james@lovedthanlost.net>\n James Watkins-Harvey <jwatkins@progi-media.com>\n+Jameson Hyde <jameson.hyde@docker.com>\n Jamie Hannaford <jamie@limetree.org>\n Jamshid Afshar <jafshar@yahoo.com>\n Jan Breig <git@pygos.space>\n@@ -969,6 +997,7 @@ Jannick Fahlbusch <git@jf-projects.de>\n Januar Wayong <januar@gmail.com>\n Jared Biel <jared.biel@bolderthinking.com>\n Jared Hocutt <jaredh@netapp.com>\n+Jaroslav Jindrak <dzejrou@gmail.com>\n Jaroslaw Zabiello <hipertracker@gmail.com>\n Jasmine Hegman <jasmine@jhegman.com>\n Jason A. Donenfeld <Jason@zx2c4.com>\n@@ -984,6 +1013,7 @@ Jason Shepherd <jason@jasonshepherd.net>\n Jason Smith <jasonrichardsmith@gmail.com>\n Jason Sommer <jsdirv@gmail.com>\n Jason Stangroome <jason@codeassassin.com>\n+Jasper Siepkes <siepkes@serviceplanet.nl>\n Javier Bassi <javierbassi@gmail.com>\n jaxgeller <jacksongeller@gmail.com>\n Jay <teguhwpurwanto@gmail.com>\n@@ -1012,6 +1042,7 @@ Jeffrey Bolle <jeffreybolle@gmail.com>\n Jeffrey Morgan <jmorganca@gmail.com>\n Jeffrey van Gogh <jvg@google.com>\n Jenny Gebske <jennifer@gebske.de>\n+Jeongseok Kang <piono623@naver.com>\n Jeremy Chambers <jeremy@thehipbot.com>\n Jeremy Grosser <jeremy@synack.me>\n Jeremy Huntwork <jhuntwork@lightcubesolutions.com>\n@@ -1029,6 +1060,7 @@ Jezeniel Zapanta <jpzapanta22@gmail.com>\n Jhon Honce <jhonce@redhat.com>\n Ji.Zhilong <zhilongji@gmail.com>\n Jian Liao <jliao@alauda.io>\n+Jian Zeng <anonymousknight96@gmail.com>\n Jian Zhang <zhangjian.fnst@cn.fujitsu.com>\n Jiang Jinyang <jjyruby@gmail.com>\n Jianyong Wu <jianyong.wu@arm.com>\n@@ -1046,13 +1078,16 @@ Jim Perrin <jperrin@centos.org>\n Jimmy Cuadra <jimmy@jimmycuadra.com>\n Jimmy Puckett <jimmy.puckett@spinen.com>\n Jimmy Song <rootsongjc@gmail.com>\n+jinjiadu <jinjiadu@aliyun.com>\n Jinsoo Park <cellpjs@gmail.com>\n Jintao Zhang <zhangjintao9020@gmail.com>\n Jiri Appl <jiria@microsoft.com>\n Jiri Popelka <jpopelka@redhat.com>\n Jiuyue Ma <majiuyue@huawei.com>\n Jiří Župka <jzupka@redhat.com>\n+jjimbo137 <115816493+jjimbo137@users.noreply.github.com>\n Joakim Roubert <joakim.roubert@axis.com>\n+Joan Grau <grautxo.dev@proton.me>\n Joao Fernandes <joao.fernandes@docker.com>\n Joao Trindade <trindade.joao@gmail.com>\n Joe Beda <joe.github@bedafamily.com>\n@@ -1093,6 +1128,7 @@ Jon Johnson <jonjohnson@google.com>\n Jon Surrell <jon.surrell@gmail.com>\n Jon Wedaman <jweede@gmail.com>\n Jonas Dohse <jonas@dohse.ch>\n+Jonas Geiler <git@jonasgeiler.com>\n Jonas Heinrich <Jonas@JonasHeinrich.com>\n Jonas Pfenniger <jonas@pfenniger.name>\n Jonathan A. Schweder <jonathanschweder@gmail.com>\n@@ -1136,6 +1172,7 @@ Josiah Kiehl <jkiehl@riotgames.com>\n José Tomás Albornoz <jojo@eljojo.net>\n Joyce Jang <mail@joycejang.com>\n JP <jpellerin@leapfrogonline.com>\n+JSchltggr <jschltggr@gmail.com>\n Julian Taylor <jtaylor.debian@googlemail.com>\n Julien Barbier <write0@gmail.com>\n Julien Bisconti <veggiemonk@users.noreply.github.com>\n@@ -1260,6 +1297,7 @@ Lakshan Perera <lakshan@laktek.com>\n Lalatendu Mohanty <lmohanty@redhat.com>\n Lance Chen <cyen0312@gmail.com>\n Lance Kinley <lkinley@loyaltymethods.com>\n+Lars Andringa <l.s.andringa@rug.nl>\n Lars Butler <Lars.Butler@gmail.com>\n Lars Kellogg-Stedman <lars@redhat.com>\n Lars R. Damerow <lars@pixar.com>\n@@ -1269,6 +1307,7 @@ Laura Brehm <laurabrehm@hey.com>\n Laura Frank <ljfrank@gmail.com>\n Laurent Bernaille <laurent.bernaille@datadoghq.com>\n Laurent Erignoux <lerignoux@gmail.com>\n+Laurent Goderre <laurent.goderre@docker.com>\n Laurie Voss <github@seldo.com>\n Leandro Motta Barros <lmb@stackedboxes.org>\n Leandro Siqueira <leandro.siqueira@gmail.com>\n@@ -1349,6 +1388,7 @@ Madhan Raj Mookkandy <MadhanRaj.Mookkandy@microsoft.com>\n Madhav Puri <madhav.puri@gmail.com>\n Madhu Venugopal <mavenugo@gmail.com>\n Mageee <fangpuyi@foxmail.com>\n+maggie44 <64841595+maggie44@users.noreply.github.com>\n Mahesh Tiyyagura <tmahesh@gmail.com>\n malnick <malnick@gmail..com>\n Malte Janduda <mail@janduda.net>\n@@ -1559,6 +1599,7 @@ Muayyad Alsadi <alsadi@gmail.com>\n Muhammad Zohaib Aslam <zohaibse011@gmail.com>\n Mustafa Akın <mustafa91@gmail.com>\n Muthukumar R <muthur@gmail.com>\n+Myeongjoon Kim <kimmj8409@gmail.com>\n Máximo Cuadros <mcuadros@gmail.com>\n Médi-Rémi Hashim <medimatrix@users.noreply.github.com>\n Nace Oroz <orkica@gmail.com>\n@@ -1573,6 +1614,7 @@ Natasha Jarus <linuxmercedes@gmail.com>\n Nate Brennand <nate.brennand@clever.com>\n Nate Eagleson <nate@nateeag.com>\n Nate Jones <nate@endot.org>\n+Nathan Baulch <nathan.baulch@gmail.com>\n Nathan Carlson <carl4403@umn.edu>\n Nathan Herald <me@nathanherald.com>\n Nathan Hsieh <hsieh.nathan@gmail.com>\n@@ -1635,6 +1677,7 @@ Nuutti Kotivuori <naked@iki.fi>\n nzwsch <hi@nzwsch.com>\n O.S. Tezer <ostezer@gmail.com>\n objectified <objectified@gmail.com>\n+Octol1ttle <l1ttleofficial@outlook.com>\n Odin Ugedal <odin@ugedal.com>\n Oguz Bilgic <fisyonet@gmail.com>\n Oh Jinkyun <tintypemolly@gmail.com>\n@@ -1666,6 +1709,7 @@ Patrick Böänziger <patrick.baenziger@bsi-software.com>\n Patrick Devine <patrick.devine@docker.com>\n Patrick Haas <patrickhaas@google.com>\n Patrick Hemmer <patrick.hemmer@gmail.com>\n+Patrick St. laurent <patrick@saint-laurent.us>\n Patrick Stapleton <github@gdi2290.com>\n Patrik Cyvoct <patrik@ptrk.io>\n pattichen <craftsbear@gmail.com>\n@@ -1742,6 +1786,7 @@ Pierre Carrier <pierre@meteor.com>\n Pierre Dal-Pra <dalpra.pierre@gmail.com>\n Pierre Wacrenier <pierre.wacrenier@gmail.com>\n Pierre-Alain RIVIERE <pariviere@ippon.fr>\n+pinglanlu <pinglanlu@outlook.com>\n Piotr Bogdan <ppbogdan@gmail.com>\n Piotr Karbowski <piotr.karbowski@protonmail.ch>\n Porjo <porjo38@yahoo.com.au>\n@@ -1769,6 +1814,7 @@ Quentin Tayssier <qtayssier@gmail.com>\n r0n22 <cameron.regan@gmail.com>\n Rachit Sharma <rachitsharma613@gmail.com>\n Radostin Stoyanov <rstoyanov1@gmail.com>\n+Rafael Fernández López <ereslibre@ereslibre.es>\n Rafal Jeczalik <rjeczalik@gmail.com>\n Rafe Colton <rafael.colton@gmail.com>\n Raghavendra K T <raghavendra.kt@linux.vnet.ibm.com>\n@@ -1835,7 +1881,7 @@ Robin Speekenbrink <robin@kingsquare.nl>\n Robin Thoni <robin@rthoni.com>\n robpc <rpcann@gmail.com>\n Rodolfo Carvalho <rhcarvalho@gmail.com>\n-Rodrigo Campos <rodrigo@kinvolk.io>\n+Rodrigo Campos <rodrigoca@microsoft.com>\n Rodrigo Vaz <rodrigo.vaz@gmail.com>\n Roel Van Nyen <roel.vannyen@gmail.com>\n Roger Peppe <rogpeppe@gmail.com>\n@@ -1871,6 +1917,7 @@ Royce Remer <royceremer@gmail.com>\n Rozhnov Alexandr <nox73@ya.ru>\n Rudolph Gottesheim <r.gottesheim@loot.at>\n Rui Cao <ruicao@alauda.io>\n+Rui JingAn <quiterace@gmail.com>\n Rui Lopes <rgl@ruilopes.com>\n Ruilin Li <liruilin4@huawei.com>\n Runshen Zhu <runshen.zhu@gmail.com>\n@@ -1967,11 +2014,13 @@ Sergey Evstifeev <sergey.evstifeev@gmail.com>\n Sergii Kabashniuk <skabashnyuk@codenvy.com>\n Sergio Lopez <slp@redhat.com>\n Serhat Gülçiçek <serhat25@gmail.com>\n+Serhii Nakon <serhii.n@thescimus.com>\n SeungUkLee <lsy931106@gmail.com>\n Sevki Hasirci <s@sevki.org>\n Shane Canon <scanon@lbl.gov>\n Shane da Silva <shane@dasilva.io>\n Shaun Kaasten <shaunk@gmail.com>\n+Shaun Thompson <shaun.thompson@docker.com>\n shaunol <shaunol@gmail.com>\n Shawn Landden <shawn@churchofgit.com>\n Shawn Siefkas <shawn.siefkas@meredith.com>\n@@ -1990,6 +2039,7 @@ Shijun Qin <qinshijun16@mails.ucas.ac.cn>\n Shishir Mahajan <shishir.mahajan@redhat.com>\n Shoubhik Bose <sbose78@gmail.com>\n Shourya Sarcar <shourya.sarcar@gmail.com>\n+Shreenidhi Shedi <shreenidhi.shedi@broadcom.com>\n Shu-Wai Chow <shu-wai.chow@seattlechildrens.org>\n shuai-z <zs.broccoli@gmail.com>\n Shukui Yang <yangshukui@huawei.com>\n@@ -2077,6 +2127,7 @@ Sébastien Stormacq <sebsto@users.noreply.github.com>\n Sören Tempel <soeren+git@soeren-tempel.net>\n Tabakhase <mail@tabakhase.com>\n Tadej Janež <tadej.j@nez.si>\n+Tadeusz Dudkiewicz <tadeusz.dudkiewicz@rtbhouse.com>\n Takuto Sato <tockn.jp@gmail.com>\n tang0th <tang0th@gmx.com>\n Tangi Colin <tangicolin@gmail.com>\n@@ -2084,6 +2135,7 @@ Tatsuki Sugiura <sugi@nemui.org>\n Tatsushi Inagaki <e29253@jp.ibm.com>\n Taylan Isikdemir <taylani@google.com>\n Taylor Jones <monitorjbl@gmail.com>\n+tcpdumppy <847462026@qq.com>\n Ted M. Young <tedyoung@gmail.com>\n Tehmasp Chaudhri <tehmasp@gmail.com>\n Tejaswini Duggaraju <naduggar@microsoft.com>\n@@ -2176,6 +2228,7 @@ Tomek Mańko <tomek.manko@railgun-solutions.com>\n Tommaso Visconti <tommaso.visconti@gmail.com>\n Tomoya Tabuchi <t@tomoyat1.com>\n Tomáš Hrčka <thrcka@redhat.com>\n+Tomáš Virtus <nechtom@gmail.com>\n tonic <tonicbupt@gmail.com>\n Tonny Xu <tonny.xu@gmail.com>\n Tony Abboud <tdabboud@hotmail.com>\n@@ -2220,6 +2273,7 @@ Victor I. Wood <viw@t2am.com>\n Victor Lyuboslavsky <victor@victoreda.com>\n Victor Marmol <vmarmol@google.com>\n Victor Palma <palma.victor@gmail.com>\n+Victor Toni <victor.toni@gmail.com>\n Victor Vieux <victor.vieux@docker.com>\n Victoria Bialas <victoria.bialas@docker.com>\n Vijaya Kumar K <vijayak@caviumnetworks.com>\n@@ -2253,6 +2307,7 @@ VladimirAus <v_roudakov@yahoo.com>\n Vladislav Kolesnikov <vkolesnikov@beget.ru>\n Vlastimil Zeman <vlastimil.zeman@diffblue.com>\n Vojtech Vitek (V-Teq) <vvitek@redhat.com>\n+voloder <110066198+voloder@users.noreply.github.com>\n Walter Leibbrandt <github@wrl.co.za>\n Walter Stanish <walter@pratyeka.org>\n Wang Chao <chao.wang@ucloud.cn>\n@@ -2270,6 +2325,7 @@ Wassim Dhif <wassimdhif@gmail.com>\n Wataru Ishida <ishida.wataru@lab.ntt.co.jp>\n Wayne Chang <wayne@neverfear.org>\n Wayne Song <wsong@docker.com>\n+weebney <weebney@gmail.com>\n Weerasak Chongnguluam <singpor@gmail.com>\n Wei Fu <fuweid89@gmail.com>\n Wei Wu <wuwei4455@gmail.com>\n@@ -2364,6 +2420,7 @@ You-Sheng Yang (楊有勝) <vicamo@gmail.com>\n youcai <omegacoleman@gmail.com>\n Youcef YEKHLEF <yyekhlef@gmail.com>\n Youfu Zhang <zhangyoufu@gmail.com>\n+YR Chen <stevapple@icloud.com>\n Yu Changchun <yuchangchun1@huawei.com>\n Yu Chengxia <yuchengxia@huawei.com>\n Yu Peng <yu.peng36@zte.com.cn>\ndiff --git a/debian/extra/vendor/github.com/docker/docker/api/README.md b/debian/extra/vendor/github.com/docker/docker/api/README.md\nnew file mode 100644\nindex 0000000..381f198\n--- /dev/null\n+++ b/debian/extra/vendor/github.com/docker/docker/api/README.md\n@@ -0,0 +1,42 @@\n+# Working on the Engine API\n+\n+The Engine API is an HTTP API used by the command-line client to communicate with the daemon. It can also be used by third-party software to control the daemon.\n+\n+It consists of various components in this repository:\n+\n+- `api/swagger.yaml` A Swagger definition of the API.\n+- `api/types/` Types shared by both the client and server, representing various objects, options, responses, etc. Most are written manually, but some are automatically generated from the Swagger definition. See [#27919](https://github.com/docker/docker/issues/27919) for progress on this.\n+- `cli/` The command-line client.\n+- `client/` The Go client used by the command-line client. It can also be used by third-party Go programs.\n+- `daemon/` The daemon, which serves the API.\n+\n+## Swagger definition\n+\n+The API is defined by the [Swagger](http://swagger.io/specification/) definition in `api/swagger.yaml`. This definition can be used to:\n+\n+1. Automatically generate documentation.\n+2. Automatically generate the Go server and client. (A work-in-progress.)\n+3. Provide a machine readable version of the API for introspecting what it can do, automatically generating clients for other languages, etc.\n+\n+## Updating the API documentation\n+\n+The API documentation is generated entirely from `api/swagger.yaml`. If you make updates to the API, edit this file to represent the change in the documentation.\n+\n+The file is split into two main sections:\n+\n+- `definitions`, which defines re-usable objects used in requests and responses\n+- `paths`, which defines the API endpoints (and some inline objects which don't need to be reusable)\n+\n+To make an edit, first look for the endpoint you want to edit under `paths`, then make the required edits. Endpoints may reference reusable objects with `$ref`, which can be found in the `definitions` section.\n+\n+There is hopefully enough example material in the file for you to copy a similar pattern from elsewhere in the file (e.g. adding new fields or endpoints), but for the full reference, see the [Swagger specification](https://github.com/docker/docker/issues/27919).\n+\n+`swagger.yaml` is validated by `hack/validate/swagger` to ensure it is a valid Swagger definition. This is useful when making edits to ensure you are doing the right thing.\n+\n+## Viewing the API documentation\n+\n+When you make edits to `swagger.yaml`, you may want to check the generated API documentation to ensure it renders correctly.\n+\n+Run `make swagger-docs` and a preview will be running at `http://localhost:9000`. Some of the styling may be incorrect, but you'll be able to ensure that it is generating the correct documentation.\n+\n+The production documentation is generated by vendoring `swagger.yaml` into [docker/docker.github.io](https://github.com/docker/docker.github.io).\ndiff --git a/debian/extra/vendor/github.com/docker/docker/api/common.go b/debian/extra/vendor/github.com/docker/docker/api/common.go\nnew file mode 100644\nindex 0000000..2c62cd4\n--- /dev/null\n+++ b/debian/extra/vendor/github.com/docker/docker/api/common.go\n@@ -0,0 +1,20 @@\n+package api // import \"github.com/docker/docker/api\"\n+\n+// Common constants for daemon and client.\n+const (\n+\t// DefaultVersion of the current REST API.\n+\tDefaultVersion = \"1.48\"\n+\n+\t// MinSupportedAPIVersion is the minimum API version that can be supported\n+\t// by the API server, specified as \"major.minor\". Note that the daemon\n+\t// may be configured with a different minimum API version, as returned\n+\t// in [github.com/docker/docker/api/types.Version.MinAPIVersion].\n+\t//\n+\t// API requests for API versions lower than the configured version produce\n+\t// an error.\n+\tMinSupportedAPIVersion = \"1.24\"\n+\n+\t// NoBaseImageSpecifier is the symbol used by the FROM\n+\t// command to specify that no base image is to be used.\n+\tNoBaseImageSpecifier = \"scratch\"\n+)\ndiff --git a/debian/extra/vendor/github.com/docker/docker/api/swagger-gen.yaml b/debian/extra/vendor/github.com/docker/docker/api/swagger-gen.yaml\nnew file mode 100644\nindex 0000000..f07a027\n--- /dev/null\n+++ b/debian/extra/vendor/github.com/docker/docker/api/swagger-gen.yaml\n@@ -0,0 +1,12 @@\n+\n+layout:\n+  models:\n+    - name: definition\n+      source: asset:model\n+      target: \"{{ joinFilePath .Target .ModelPackage }}\"\n+      file_name: \"{{ (snakize (pascalize .Name)) }}.go\"\n+  operations:\n+    - name: handler\n+      source: asset:serverOperation\n+      target: \"{{ joinFilePath .Target .APIPackage .Package }}\"\n+      file_name: \"{{ (snakize (pascalize .Name)) }}.go\"\n",
+ "diff_truncated": true
+}

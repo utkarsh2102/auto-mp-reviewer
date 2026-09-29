@@ -1,0 +1,23 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~ural/britney/+git/hints-ubuntu/+merge/505400",
+ "id": "505400",
+ "title": "unblock-openjdk-security → devel",
+ "source_branch": "unblock-openjdk-security",
+ "target_branch": "devel",
+ "revision": "e4c2b0b7567dda257f424f9340f2a0fa536278dd",
+ "base_revision": "6ab57c60e6ca896209fbd0652f9de1cfce3a300c",
+ "description": null,
+ "commit_message": null,
+ "diffstat": {
+  "ubuntu-release": [
+   3,
+   0
+  ]
+ },
+ "files": 1,
+ "added_lines": 3,
+ "removed_lines": 0,
+ "diff": "diff --git a/ubuntu-release b/ubuntu-release\nindex 761b00a..1027c49 100644\n--- a/ubuntu-release\n+++ b/ubuntu-release\n@@ -44,3 +44,6 @@ force-badtest gcc-snapshot/all\n # also regressed in Debian\n force-skiptest freebayes/1.3.9-2\n force-skiptest orange3/3.40.0-1build1\n+\n+# do not block security updates on failing tests due to autopkgtest infra issues\n+force-skiptest openjdk-8/8u492-ga~us2-0ubuntu2 openjdk-lts/11.0.31+11-1ubuntu2 openjdk-17/17.0.19+10-1 openjdk-21/21.0.11+10-1 openjdk-25/25.0.3+9-2 openjdk-26/26.0.1+8-2\n",
+ "diff_truncated": false
+}

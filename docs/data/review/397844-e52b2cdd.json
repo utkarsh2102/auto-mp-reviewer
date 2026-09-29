@@ -1,0 +1,35 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~lucaskanashiro/ubuntu/+source/fence-agents/+git/fence-agents/+merge/397844",
+ "id": "397844",
+ "title": "Backport fence_aws with IMDSv2 support to Groovy. This is the upstream commit:",
+ "source_branch": "backport_aws_imdsv2_groovy",
+ "target_branch": "ubuntu/groovy-devel",
+ "revision": "25e24d18d8123e8ecac817c35d75c2b47276b4cd",
+ "base_revision": "281400b73f834d51340d9745a2f05db15a6fcb48",
+ "description": "Backport fence_aws with IMDSv2 support to Groovy. This is the upstream commit:\n\nhttps://github.com/ClusterLabs/fence-agents/commit/c9f8890264e0257197b31124dbb26c1046475314\n\nThe SRU bug description is still incomplete because we are going to ask AWS folks on how to test it properly, but this MP is for reviewing the packaging work.\n\nPPA:\n\nhttps://launchpad.net/~lucaskanashiro/+archive/ubuntu/ha-stack-aws\n\nautopkgtest:\n\nautopkgtest [13:02:30]: @@@@@@@@@@@@@@@@@@@@ summary\nmetadata PASS\ndelay PASS\nfence-dummy PASS\nfence-aws SKIP exit status 77 and marked as skippable",
+ "commit_message": null,
+ "diffstat": {
+  "debian/patches/series": [
+   1,
+   0
+  ],
+  "debian/control": [
+   2,
+   1
+  ],
+  "debian/changelog": [
+   7,
+   0
+  ],
+  "debian/patches/fence_aws-add-support-for-IMDSv2.patch": [
+   42,
+   0
+  ]
+ },
+ "files": 4,
+ "added_lines": 52,
+ "removed_lines": 1,
+ "diff": "diff --git a/debian/changelog b/debian/changelog\nindex 20cd619..dc6c361 100644\n--- a/debian/changelog\n+++ b/debian/changelog\n@@ -1,3 +1,10 @@\n+fence-agents (4.6.0-1ubuntu0.1) groovy; urgency=medium\n+\n+  * Backport patch to make fence_aws support IMDSv2 (LP: #1915190).\n+    - d/p/fence_aws-add-support-for-IMDSv2.patch\n+\n+ -- Lucas Kanashiro <kanashiro@ubuntu.com>  Tue, 09 Feb 2021 16:14:17 -0300\n+\n fence-agents (4.6.0-1) unstable; urgency=medium\n \n   * New upstream version 4.6.0\ndiff --git a/debian/control b/debian/control\nindex 90528e8..6befa96 100644\n--- a/debian/control\n+++ b/debian/control\n@@ -1,7 +1,8 @@\n Source: fence-agents\n Section: admin\n Priority: optional\n-Maintainer: Debian HA Maintainers <debian-ha-maintainers@alioth-lists.debian.net>\n+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>\n+XSBC-Original-Maintainer: Debian HA Maintainers <debian-ha-maintainers@alioth-lists.debian.net>\n Uploaders: Adrian Vondendriesch <adrian.vondendriesch@credativ.de>,\n            Valentin Vidic <vvidic@debian.org>\n Build-Depends: autoconf,\ndiff --git a/debian/patches/fence_aws-add-support-for-IMDSv2.patch b/debian/patches/fence_aws-add-support-for-IMDSv2.patch\nnew file mode 100644\nindex 0000000..ec9b728\n--- /dev/null\n+++ b/debian/patches/fence_aws-add-support-for-IMDSv2.patch\n@@ -0,0 +1,42 @@\n+From: Oyvind Albrigtsen <oalbrigt@redhat.com>\n+Date: Fri, 13 Nov 2020 14:30:43 +0100\n+Subject: fence_aws: add support for IMDSv2\n+\n+Origin: upstream, https://github.com/ClusterLabs/fence-agents/commit/c9f8890264e0257197b31\n+Bug-Ubuntu: https://bugs.launchpad.net/ubuntu/+source/fence-agents/+bug/1915190\n+Reviewed-By: Lucas Kanashiro <kanashiro@ubuntu.com>\n+---\n+ agents/aws/fence_aws.py | 8 +++++---\n+ 1 file changed, 5 insertions(+), 3 deletions(-)\n+\n+diff --git a/agents/aws/fence_aws.py b/agents/aws/fence_aws.py\n+index 483a299..e2a2391 100644\n+--- a/agents/aws/fence_aws.py\n++++ b/agents/aws/fence_aws.py\n+@@ -3,12 +3,13 @@\n+ import sys, re\n+ import logging\n+ import atexit\n+-import requests\n+ sys.path.append(\"@FENCEAGENTSLIBDIR@\")\n+ from fencing import *\n+ from fencing import fail, fail_usage, run_delay, EC_STATUS, SyslogLibHandler\n+ \n++import requests\n+ import boto3\n++from requests import HTTPError\n+ from botocore.exceptions import ConnectionError, ClientError, EndpointConnectionError, NoRegionError\n+ \n+ logger = logging.getLogger(\"fence_aws\")\n+@@ -19,8 +20,9 @@ logging.getLogger('botocore.vendored').propagate = False\n+ \n+ def get_instance_id():\n+ \ttry:\n+-\t\tr = requests.get('http://169.254.169.254/latest/meta-data/instance-id')\n+-\t\treturn r.content.decode(\"UTF-8\")\n++\t\ttoken = requests.put('http://169.254.169.254/latest/api/token', headers={\"X-aws-ec2-metadata-token-ttl-seconds\" : \"21600\"}).content.decode(\"UTF-8\")\n++\t\tr = requests.get('http://169.254.169.254/latest/meta-data/instance-id', headers={\"X-aws-ec2-metadata-token\" : token}).content.decode(\"UTF-8\")\n++\t\treturn r\n+ \texcept HTTPError as http_err:\n+ \t\tlogger.error('HTTP error occurred while trying to access EC2 metadata server: %s', http_err)\n+ \texcept Exception as err:\ndiff --git a/debian/patches/series b/debian/patches/series\nindex 3ec598e..a21ade7 100644\n--- a/debian/patches/series\n+++ b/debian/patches/series\n@@ -1,2 +1,3 @@\n disable-network-access\n spelling\n+fence_aws-add-support-for-IMDSv2.patch\n",
+ "diff_truncated": false
+}

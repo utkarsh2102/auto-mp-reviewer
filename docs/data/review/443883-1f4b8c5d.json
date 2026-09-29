@@ -1,0 +1,27 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~lool/livecd-rootfs/+git/ubuntu/+merge/443883",
+ "id": "443883",
+ "title": "Add an override to provide local image definitions when working with livecd-rootfs, could also be helpful for Launchpad builds with custom image definitions.",
+ "source_branch": "ui-override-images-repo",
+ "target_branch": "ui-by-default",
+ "revision": "6235108dd04681678e3a0e2db5cfcd400e167003",
+ "base_revision": "0ca404dd1413c1452a0d0f9ea6b60b22ba1b3a02",
+ "description": null,
+ "commit_message": "Add an override to provide local image definitions when working with livecd-rootfs, could also be helpful for Launchpad builds with custom image definitions.\n\nFix ubuntu-image invocations to be prefixed with /snap/bin in case the deb is also installed.\n\nDefine expected tegra gadget name as done with rpi.",
+ "diffstat": {
+  "live-build/auto/config": [
+   5,
+   1
+  ],
+  "live-build/auto/build": [
+   2,
+   2
+  ]
+ },
+ "files": 2,
+ "added_lines": 7,
+ "removed_lines": 3,
+ "diff": "diff --git a/live-build/auto/build b/live-build/auto/build\nindex ee0f60e..49daae7 100755\n--- a/live-build/auto/build\n+++ b/live-build/auto/build\n@@ -97,7 +97,7 @@ if [ \"${IMAGEFORMAT:-}\" = \"ubuntu-image\" ]; then\n \t#  We could already do that, but then we'd still have to do the\n \t#  compressing for the core images.\n \tif [ \"$PROJECT\" = \"ubuntu-core\" ]; then\n-\t\tubuntu-image snap $UBUNTU_IMAGE_ARGS \\\n+\t\t/snap/bin/ubuntu-image snap $UBUNTU_IMAGE_ARGS \\\n \t\t\t-O output \"$PREFIX\".model-assertion\n \t\t# XXX: currently we only have one image generated, but really\n \t\t#  we should be supporting more than one for models that\n@@ -106,7 +106,7 @@ if [ \"${IMAGEFORMAT:-}\" = \"ubuntu-image\" ]; then\n \t\txz -0 -T4 \"$PREFIX\".img\n \t\tmv output/seed.manifest \"$PREFIX\".manifest\n \telse\n-\t\tubuntu-image classic $UBUNTU_IMAGE_ARGS \\\n+\t\t/snap/bin/ubuntu-image classic $UBUNTU_IMAGE_ARGS \\\n \t\t\t-O output \"$PREFIX\".yaml\n \t\t# Since the output of the ubuntu-image call can vary based on what\n \t\t# kind of an image we build, the safest bet is to 'export' all the\ndiff --git a/live-build/auto/config b/live-build/auto/config\nindex 62305f9..3907919 100755\n--- a/live-build/auto/config\n+++ b/live-build/auto/config\n@@ -415,6 +415,8 @@ case $IMAGEFORMAT in\n \t\t\t\tMODEL=pi3-arm64 ;;\n \t\t\tarmhf+cm3)\n \t\t\t\tMODEL=cm3 ;;\n+\t\t\tarm64+tegra)\n+\t\t\t\tMODEL=tegra ;;\n \t\t\tarm64+*)\n \t\t\t\tMODEL=pc-arm64 ;;\n \t\t\t*)\n@@ -512,7 +514,9 @@ case $IMAGEFORMAT in\n \t\t\t[ \"$IMAGE_PROJECT\" = \"ubuntu-cpc\" ] && IMAGE_PROJECT=\"ubuntu-server\"\n \t\t\tDEFINITION=\"$IMAGE_PROJECT-$MODEL.yaml\"\n \n-\t\t\tgit clone git://git.launchpad.net/ubuntu-images -b $SUITE image-definitions\n+\t\t\tLB_UBUNTU_IMAGES_REPO=\"${LB_UBUNTU_IMAGES_REPO:-git://git.launchpad.net/ubuntu-images}\"\n+\t\t\tLB_UBUNTU_IMAGES_BRANCH=\"${LB_UBUNTU_IMAGES_BRANCH:-$SUITE}\"\n+\t\t\tgit clone \"$LB_UBUNTU_IMAGES_REPO\" -b \"$LB_UBUNTU_IMAGES_BRANCH\" image-definitions\n \t\t\tcp image-definitions/$DEFINITION \"$PREFIX\".yaml\n \t\t\techo \"Configured ubuntu-image for the following image-definition:\"\n \t\t\tcat \"$PREFIX\".yaml\n",
+ "diff_truncated": false
+}

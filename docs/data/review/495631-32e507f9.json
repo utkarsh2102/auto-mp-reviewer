@@ -1,0 +1,35 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~ravi-sharma/ubuntu/+source/openssl/+git/openssl/+merge/495631",
+ "id": "495631",
+ "title": "noble-sru-2025-11 → ubuntu/noble-devel",
+ "source_branch": "noble-sru-2025-11",
+ "target_branch": "ubuntu/noble-devel",
+ "revision": "414b94e355c7529ab5d0dafc10592bbbcd6e1a9b",
+ "base_revision": "97af9732bcc295344e53986885ae27fa9e2fc407",
+ "description": null,
+ "commit_message": null,
+ "diffstat": {
+  "debian/changelog": [
+   11,
+   0
+  ],
+  "debian/patches/regex_match_ecp_nistp521-ppc64.patch": [
+   30,
+   0
+  ],
+  "debian/patches/series": [
+   1,
+   0
+  ],
+  "debian/rules": [
+   2,
+   2
+  ]
+ },
+ "files": 4,
+ "added_lines": 44,
+ "removed_lines": 2,
+ "diff": "diff --git a/debian/changelog b/debian/changelog\nindex 3db4266..bbef9f0 100644\n--- a/debian/changelog\n+++ b/debian/changelog\n@@ -1,3 +1,14 @@\n+openssl (3.0.13-0ubuntu3.7) noble; urgency=medium\n+\n+  [ Sebastian Andrzej Siewior ]\n+  * enables enable-ec_nistp_64_gcc_128 optimization on multiple 64-bit architectures (LP: #2130576).\n+\n+  * add patch regex_match_ecp_nistp521-ppc64.patch\n+    - fixes ppc64 build error when last uploaded version is an SRU\n+  * fix /usr/share/doc/openssl/ symlinks (LP: #2107167)\n+\n+ -- Ravi Kant Sharma <ravi.kant.sharma@canonical.com>  Thu, 06 Nov 2025 14:31:19 +0100\n+\n openssl (3.0.13-0ubuntu3.6) noble-security; urgency=medium\n \n   * SECURITY UPDATE: Out-of-bounds read & write in RFC 3211 KEK Unwrap\ndiff --git a/debian/patches/regex_match_ecp_nistp521-ppc64.patch b/debian/patches/regex_match_ecp_nistp521-ppc64.patch\nnew file mode 100644\nindex 0000000..601c45e\n--- /dev/null\n+++ b/debian/patches/regex_match_ecp_nistp521-ppc64.patch\n@@ -0,0 +1,30 @@\n+Description: match last filename for output in ecp_nistp521-ppc64.plA\n+\n+ ecp_nistp521-ppc64.pl matches the incorrect param for output instead of\n+ crypto/ec/ecp_nistp521-ppc64.s This leads to ecp_nistp521-ppc64.pl writing\n+ output to STDOUT instead of the file crypto/ec/ecp_nistp521-ppc64.s. The\n+ missing .s file leads Missing .s file leads to gcc erroring out and build\n+ failure.  Makefile generates command with crypto/ec/ecp_nistp521-ppc64.s as\n+ the last param. This page matches the last filename instead of first.\n+\n+Author: Ravi Kant Sharma <ravi.kant.sharma@canonical.com>\n+Bug-Ubuntu: https://launchpad.net/bugs/2130576\n+\n+---\n+Forwarded: https://github.com/openssl/openssl/pull/29417\n+Last-Update: 2025-12-17\n+\n+--- openssl-3.0.13.orig/crypto/ec/asm/ecp_nistp521-ppc64.pl\n++++ openssl-3.0.13/crypto/ec/asm/ecp_nistp521-ppc64.pl\n+@@ -19,7 +19,10 @@ use warnings;\n+ \n+ my $flavour = shift;\n+ my $output = \"\";\n+-while (($output=shift) && ($output!~/\\w[\\w\\-]*\\.\\w+$/)) {}\n++my $arg;\n++while ($arg = shift) {\n++    $output = $arg if $arg =~ /\\w[\\w\\-]*\\.\\w+$/;\n++}\n+ if (!$output) {\n+ \t$output = \"-\";\n+ }\ndiff --git a/debian/patches/series b/debian/patches/series\nindex ed87658..a40f0dc 100644\n--- a/debian/patches/series\n+++ b/debian/patches/series\n@@ -33,3 +33,4 @@ CVE-2024-6119.patch\n CVE-2024-9143.patch\n CVE-2024-13176.patch\n CVE-2025-9230.patch\n+regex_match_ecp_nistp521-ppc64.patch\ndiff --git a/debian/rules b/debian/rules\nindex a6eef69..8a69233 100755\n--- a/debian/rules\n+++ b/debian/rules\n@@ -40,7 +40,7 @@ else\n \tTESTSUITE_FLAGS =\n endif\n \n-ifeq ($(DEB_HOST_ARCH_CPU), amd64)\n+ifneq ($(filter amd64 arm64 ppc64el riscv64,$(DEB_HOST_ARCH_CPU)),)\n \tCONFARGS += enable-ec_nistp_64_gcc_128\n endif\n \n@@ -151,7 +151,7 @@ override_dh_compress:\n \t# symlink doc files\n \tfor p in openssl libssl-dev; do \\\n \t  for f in changelog.Debian.gz changelog.gz copyright; do \\\n-\t    ln -sf ../libssl3/$$f debian/$$p/usr/share/doc/$$p/$$f; \\\n+\t    ln -sf ../libssl3t64/$$f debian/$$p/usr/share/doc/$$p/$$f; \\\n \t  done; \\\n \tdone\n \n",
+ "diff_truncated": false
+}

@@ -1,0 +1,27 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~liushuyu-011/ubuntu/+source/krb5/+git/krb5/+merge/462899",
+ "id": "462899",
+ "title": "This MP corrects the dependencies of krb5-kdc so that it is installable after the 64-bit time_t transition.",
+ "source_branch": "ubuntu/devel",
+ "target_branch": "ubuntu/devel",
+ "revision": "e5864b4b5c4bbfebf23ae2267a71b4e298bc233a",
+ "base_revision": "99f90cea06c12431695315518f9b923cbbfa66d5",
+ "description": "This MP corrects the dependencies of krb5-kdc so that it is installable after the 64-bit time_t transition.",
+ "commit_message": null,
+ "diffstat": {
+  "debian/changelog": [
+   6,
+   0
+  ],
+  "debian/control": [
+   1,
+   1
+  ]
+ },
+ "files": 2,
+ "added_lines": 7,
+ "removed_lines": 1,
+ "diff": "diff --git a/debian/changelog b/debian/changelog\nindex f569a41..1fb54a8 100644\n--- a/debian/changelog\n+++ b/debian/changelog\n@@ -1,3 +1,9 @@\n+krb5 (1.20.1-5.1ubuntu1) noble; urgency=medium\n+\n+  * d/control: Change the krb5-kdc dependencies to use t64-suffixed libraries.\n+\n+ -- Zixing Liu <zixing.liu@canonical.com>  Thu, 21 Mar 2024 14:02:29 -0600\n+\n krb5 (1.20.1-5.1build3) noble; urgency=medium\n \n   * No-change rebuild against libcom-err2\ndiff --git a/debian/control b/debian/control\nindex c9633b9..b636edd 100644\n--- a/debian/control\n+++ b/debian/control\n@@ -54,7 +54,7 @@ Depends: krb5-config,\n          libkadm5srv-mit12,\n          libkdb5-10t64 (>= 1.13.1+dfsg-1),\n          libkrb5-3 (= ${binary:Version}),\n-         libverto-libev1 | libverto-libevent1,\n+         libverto-libev1t64 | libverto-libevent1t64,\n          lsb-base (>= 3.0-6),\n          ${misc:Depends},\n          ${shlibs:Depends}\n",
+ "diff_truncated": false
+}

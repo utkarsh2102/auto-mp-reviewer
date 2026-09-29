@@ -1,0 +1,1619 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~hectorcao/ubuntu/+source/libvirt-hwe/+git/libvirt-hwe/+merge/511423",
+ "id": "511423",
+ "title": "PPA: https://launchpad.net/~hectorcao/+archive/ubuntu/lp2164849",
+ "source_branch": "lp2166749-resolute",
+ "target_branch": "ubuntu/resolute-devel",
+ "revision": "20a9b2a4d9abb02104d755a1914f65d421de6d9b",
+ "base_revision": "4160411f9d2dc6f22cc2b0792c31582f208e277a",
+ "description": "PPA: https://launchpad.net/~hectorcao/+archive/ubuntu/lp2164849",
+ "commit_message": null,
+ "diffstat": {
+  "AUTHORS.rst": [
+   36,
+   8
+  ],
+  "NEWS.rst": [
+   488,
+   0
+  ],
+  "build-aux/syntax-check.mk": [
+   38,
+   0
+  ],
+  "debian/NEWS": [
+   22,
+   0
+  ],
+  "debian/arches.mk": [
+   1,
+   1
+  ],
+  "debian/changelog": [
+   238,
+   0
+  ],
+  "debian/control": [
+   206,
+   25
+  ],
+  "debian/control.in": [
+   200,
+   19
+  ],
+  "debian/hwe-helper/postrm-snippet": [
+   3,
+   0
+  ],
+  "debian/libvirt-common-hwe.install.in": [
+   29,
+   0
+  ],
+  "debian/libvirt-daemon-config-network-hwe.postinst.in": [
+   3,
+   0
+  ],
+  "debian/libvirt-daemon-driver-secret-hwe.install.in": [
+   9,
+   0
+  ],
+  "debian/libvirt-daemon-driver-secret.dirs": [
+   1,
+   0
+  ],
+  "debian/libvirt-daemon-hwe.lintian-overrides": [
+   3,
+   0
+  ],
+  "debian/libvirt-daemon-log-hwe.lintian-overrides": [
+   3,
+   0
+  ],
+  "debian/libvirt-l10n-hwe.install.in": [
+   4,
+   0
+  ],
+  "debian/libvirt0.symbols": [
+   3,
+   2
+  ],
+  "debian/patches/debian/Debianize-libvirt-guests.patch": [
+   2,
+   2
+  ],
+  "debian/patches/debian/Drop-inter-package-Also-lines-from-libvirtd.service.patch": [
+   2,
+   2
+  ],
+  "debian/patches/debian/Use-sensible-editor-by-default.patch": [
+   2,
+   2
+  ],
+  "debian/patches/series": [
+   17,
+   0
+  ],
+  "debian/patches/ubuntu/dnsmasq-as-priv-user": [
+   338,
+   0
+  ],
+  "debian/patches/ubuntu/swtpm-by-swtpm-user.patch": [
+   10,
+   0
+  ],
+  "debian/patches/ubuntu/x86-install-modules-load.d-file-to-load-msr-module.patch": [
+   147,
+   0
+  ],
+  "debian/rules": [
+   25,
+   2
+  ],
+  "debian/scripts/hwe-helper": [
+   229,
+   0
+  ],
+  "debian/tests/control": [
+   42,
+   0
+  ],
+  "docs/drvbhyve.rst": [
+   149,
+   3
+  ],
+  "docs/drvesx.rst": [
+   24,
+   0
+  ],
+  "docs/drvqemu.rst": [
+   1,
+   1
+  ],
+  "docs/drvsecret.rst": [
+   4,
+   0
+  ],
+  "docs/formatbackup.rst": [
+   2,
+   1
+  ],
+  "docs/formatcaps.rst": [
+   1,
+   1
+  ],
+  "docs/formatdomain.rst": [
+   247,
+   55
+  ],
+  "docs/formatdomaincaps.rst": [
+   115,
+   32
+  ],
+  "docs/formatnetwork.rst": [
+   6,
+   0
+  ],
+  "docs/formatstorage.rst": [
+   7,
+   0
+  ],
+  "docs/formatstorageencryption.rst": [
+   2,
+   4
+  ],
+  "docs/kbase/secureboot.rst": [
+   30,
+   16
+  ],
+  "docs/manpages/meson.build": [
+   1,
+   1
+  ],
+  "docs/manpages/virsh.rst": [
+   108,
+   20
+  ],
+  "docs/meson.build": [
+   1,
+   0
+  ],
+  "docs/secretencryption.rst": [
+   106,
+   0
+  ],
+  "docs/testing.rst": [
+   4,
+   4
+  ],
+  "docs/uri.rst": [
+   5,
+   0
+  ],
+  "examples/c/misc/event-test.c": [
+   69,
+   0
+  ],
+  "examples/c/misc/hellolibvirt.c": [
+   29,
+   2
+  ],
+  "include/libvirt/libvirt-domain-snapshot.h": [
+   1,
+   1
+  ],
+  "include/libvirt/libvirt-domain.h": [
+   361,
+   4
+  ],
+  "include/libvirt/libvirt-host.h": [
+   10,
+   0
+  ],
+  "include/libvirt/virterror.h": [
+   1,
+   0
+  ],
+  "libvirt.spec": [
+   32,
+   5
+  ],
+  "libvirt.spec.in": [
+   31,
+   4
+  ],
+  "meson.build": [
+   87,
+   57
+  ],
+  "meson_options.txt": [
+   2,
+   0
+  ],
+  "po/LINGUAS": [
+   1,
+   0
+  ],
+  "po/POTFILES": [
+   5,
+   1
+  ],
+  "po/cs.po": [
+   871,
+   566
+  ],
+  "po/el.po": [
+   27,
+   23
+  ],
+  "po/en_GB.po": [
+   58,
+   55
+  ],
+  "po/es.po": [
+   2957,
+   2803
+  ],
+  "po/ka.po": [
+   17,
+   15
+  ],
+  "po/ko.po": [
+   31,
+   34
+  ],
+  "po/libvirt.pot": [
+   7692,
+   6956
+  ],
+  "po/pt.po": [
+   17,
+   17
+  ],
+  "po/ro.po": [
+   2657,
+   1769
+  ],
+  "po/sr.po": [
+   13234,
+   12509
+  ],
+  "po/sv.po": [
+   12,
+   11
+  ],
+  "po/zh_CN.po": [
+   74,
+   75
+  ],
+  "po/zh_Hant.po": [
+   51640,
+   0
+  ],
+  "scripts/check-symfile.py": [
+   1,
+   1
+  ],
+  "scripts/dtrace2systemtap.py": [
+   2,
+   2
+  ],
+  "scripts/meson-warnings.py": [
+   7,
+   0
+  ],
+  "scripts/rpcgen/tests/meson.build": [
+   5,
+   1
+  ],
+  "scripts/rpcgen/tests/test_demo.c": [
+   10,
+   4
+  ],
+  "src/access/viraccessmanager.c": [
+   1,
+   5
+  ],
+  "src/access/viraccessmanager.h": [
+   1,
+   1
+  ],
+  "src/admin/libvirt-admin.c": [
+   1,
+   1
+  ],
+  "src/bhyve/bhyve.conf": [
+   5,
+   0
+  ],
+  "src/bhyve/bhyve_capabilities.c": [
+   31,
+   1
+  ],
+  "src/bhyve/bhyve_capabilities.h": [
+   3,
+   0
+  ],
+  "src/bhyve/bhyve_command.c": [
+   250,
+   21
+  ],
+  "src/bhyve/bhyve_conf.c": [
+   8,
+   0
+  ],
+  "src/bhyve/bhyve_device.c": [
+   47,
+   5
+  ],
+  "src/bhyve/bhyve_domain.c": [
+   210,
+   8
+  ],
+  "src/bhyve/bhyve_domain.h": [
+   15,
+   0
+  ],
+  "src/bhyve/bhyve_driver.c": [
+   1060,
+   12
+  ],
+  "src/bhyve/bhyve_monitor.c": [
+   3,
+   3
+  ],
+  "src/bhyve/bhyve_parse_command.c": [
+   2,
+   2
+  ],
+  "src/bhyve/bhyve_process.c": [
+   239,
+   38
+  ],
+  "src/bhyve/bhyve_process.h": [
+   6,
+   1
+  ],
+  "src/bhyve/bhyve_rctl.c": [
+   135,
+   0
+  ],
+  "src/bhyve/bhyve_rctl.h": [
+   32,
+   0
+  ],
+  "src/bhyve/bhyve_utils.h": [
+   2,
+   0
+  ],
+  "src/bhyve/libvirtd_bhyve.aug": [
+   2,
+   1
+  ],
+  "src/bhyve/meson.build": [
+   1,
+   0
+  ],
+  "src/bhyve/test_libvirtd_bhyve.aug.in": [
+   1,
+   0
+  ],
+  "src/ch/ch_driver.c": [
+   8,
+   3
+  ],
+  "src/ch/ch_process.c": [
+   1,
+   1
+  ],
+  "src/conf/capabilities.c": [
+   42,
+   0
+  ],
+  "src/conf/capabilities.h": [
+   6,
+   0
+  ],
+  "src/conf/cpu_conf.c": [
+   20,
+   0
+  ],
+  "src/conf/cpu_conf.h": [
+   3,
+   0
+  ],
+  "src/conf/device_conf.c": [
+   11,
+   0
+  ],
+  "src/conf/device_conf.h": [
+   1,
+   0
+  ],
+  "src/conf/domain_capabilities.c": [
+   26,
+   0
+  ],
+  "src/conf/domain_capabilities.h": [
+   15,
+   0
+  ],
+  "src/conf/domain_conf.c": [
+   825,
+   108
+  ],
+  "src/conf/domain_conf.h": [
+   87,
+   8
+  ],
+  "src/conf/domain_event.c": [
+   169,
+   4
+  ],
+  "src/conf/domain_event.h": [
+   23,
+   0
+  ],
+  "src/conf/domain_postparse.c": [
+   0,
+   19
+  ],
+  "src/conf/domain_validate.c": [
+   115,
+   64
+  ],
+  "src/conf/meson.build": [
+   1,
+   0
+  ],
+  "src/conf/network_conf.c": [
+   62,
+   49
+  ],
+  "src/conf/networkcommon_conf.c": [
+   35,
+   39
+  ],
+  "src/conf/node_device_conf.c": [
+   3,
+   0
+  ],
+  "src/conf/node_device_conf.h": [
+   1,
+   0
+  ],
+  "src/conf/schemas/basictypes.rng": [
+   36,
+   0
+  ],
+  "src/conf/schemas/capability.rng": [
+   27,
+   0
+  ],
+  "src/conf/schemas/domaincaps.rng": [
+   21,
+   0
+  ],
+  "src/conf/schemas/domaincommon.rng": [
+   178,
+   71
+  ],
+  "src/conf/schemas/networkcommon.rng": [
+   3,
+   1
+  ],
+  "src/conf/schemas/nodedev.rng": [
+   3,
+   0
+  ],
+  "src/conf/schemas/storagecommon.rng": [
+   5,
+   0
+  ],
+  "src/conf/snapshot_conf.c": [
+   2,
+   2
+  ],
+  "src/conf/storage_source_conf.c": [
+   10,
+   42
+  ],
+  "src/conf/storage_source_conf.h": [
+   6,
+   22
+  ],
+  "src/conf/virconftypes.h": [
+   4,
+   0
+  ],
+  "src/conf/virdomainfd.c": [
+   51,
+   0
+  ],
+  "src/conf/virdomainfd.h": [
+   26,
+   0
+  ],
+  "src/conf/virdomainjob.c": [
+   1,
+   4
+  ],
+  "src/conf/virsecretobj.c": [
+   147,
+   60
+  ],
+  "src/conf/virsecretobj.h": [
+   11,
+   3
+  ],
+  "src/conf/virstorageobj.c": [
+   37,
+   8
+  ],
+  "src/cpu/cpu.c": [
+   35,
+   14
+  ],
+  "src/cpu/cpu.h": [
+   12,
+   0
+  ],
+  "src/cpu/cpu_x86.c": [
+   53,
+   15
+  ],
+  "src/cpu/cpu_x86.h": [
+   4,
+   0
+  ],
+  "src/cpu_map/arm_Neoverse-V2.xml": [
+   6,
+   0
+  ],
+  "src/cpu_map/index.xml": [
+   11,
+   0
+  ],
+  "src/cpu_map/meson.build": [
+   11,
+   0
+  ],
+  "src/cpu_map/sync_qemu_models_i386.py": [
+   32,
+   3
+  ],
+  "src/cpu_map/x86_ClearwaterForest-v2.xml": [
+   197,
+   0
+  ],
+  "src/cpu_map/x86_ClearwaterForest-v3.xml": [
+   198,
+   0
+  ],
+  "src/cpu_map/x86_DiamondRapids-v1.xml": [
+   6,
+   0
+  ],
+  "src/cpu_map/x86_DiamondRapids.xml": [
+   248,
+   0
+  ],
+  "src/cpu_map/x86_GraniteRapids-v4.xml": [
+   210,
+   0
+  ],
+  "src/cpu_map/x86_GraniteRapids-v5.xml": [
+   211,
+   0
+  ],
+  "src/cpu_map/x86_SapphireRapids-v5.xml": [
+   202,
+   0
+  ],
+  "src/cpu_map/x86_SapphireRapids-v6.xml": [
+   203,
+   0
+  ],
+  "src/cpu_map/x86_SierraForest-v4.xml": [
+   190,
+   0
+  ],
+  "src/cpu_map/x86_SierraForest-v5.xml": [
+   191,
+   0
+  ],
+  "src/cpu_map/x86_features.xml": [
+   60,
+   0
+  ],
+  "src/datatypes.h": [
+   2,
+   0
+  ],
+  "src/driver-hypervisor.h": [
+   8,
+   0
+  ],
+  "src/esx/esx_driver.c": [
+   73,
+   25
+  ],
+  "src/esx/esx_stream.c": [
+   2,
+   2
+  ],
+  "src/esx/esx_util.c": [
+   21,
+   8
+  ],
+  "src/esx/esx_util.h": [
+   1,
+   0
+  ],
+  "src/esx/esx_vi.c": [
+   33,
+   6
+  ],
+  "src/esx/esx_vi.h": [
+   3,
+   0
+  ],
+  "src/hyperv/hyperv_driver.c": [
+   1232,
+   76
+  ],
+  "src/hyperv/hyperv_driver.h": [
+   14,
+   0
+  ],
+  "src/hyperv/hyperv_util.c": [
+   1,
+   1
+  ],
+  "src/hyperv/hyperv_wmi.c": [
+   233,
+   32
+  ],
+  "src/hyperv/hyperv_wmi.h": [
+   45,
+   11
+  ],
+  "src/hyperv/hyperv_wmi_generator.input": [
+   220,
+   0
+  ],
+  "src/hypervisor/domain_interface.c": [
+   1,
+   1
+  ],
+  "src/hypervisor/meson.build": [
+   7,
+   1
+  ],
+  "src/hypervisor/qemu_agent.c": [
+   86,
+   4
+  ],
+  "src/hypervisor/qemu_agent.h": [
+   7,
+   1
+  ],
+  "src/hypervisor/virhostdev.c": [
+   92,
+   63
+  ],
+  "src/interface/interface_backend_netcf.c": [
+   6,
+   6
+  ],
+  "src/internal.h": [
+   2,
+   0
+  ],
+  "src/libvirt-domain.c": [
+   136,
+   22
+  ],
+  "src/libvirt-host.c": [
+   2,
+   0
+  ],
+  "src/libvirt-qemu.c": [
+   16,
+   1
+  ],
+  "src/libvirt.c": [
+   1,
+   1
+  ],
+  "src/libvirt_logging.syms": [
+   7,
+   0
+  ],
+  "src/libvirt_private.syms": [
+   68,
+   14
+  ],
+  "src/libvirt_probes.d": [
+   6,
+   6
+  ],
+  "src/libvirt_public.syms": [
+   5,
+   0
+  ],
+  "src/libxl/libxl_conf.c": [
+   2,
+   3
+  ],
+  "src/libxl/libxl_domain.c": [
+   9,
+   0
+  ],
+  "src/libxl/xen_common.c": [
+   8,
+   4
+  ],
+  "src/libxl/xen_xl.c": [
+   3,
+   3
+  ],
+  "src/locking/libvirt_sanlock.aug": [
+   1,
+   0
+  ],
+  "src/locking/lock_driver_sanlock.c": [
+   76,
+   1
+  ],
+  "src/locking/sanlock.conf": [
+   28,
+   0
+  ],
+  "src/locking/test_libvirt_sanlock.aug.in": [
+   1,
+   0
+  ],
+  "src/lxc/lxc_domain.c": [
+   61,
+   0
+  ],
+  "src/lxc/lxc_domain.h": [
+   8,
+   0
+  ],
+  "src/lxc/lxc_driver.c": [
+   45,
+   30
+  ],
+  "src/lxc/lxc_native.c": [
+   1,
+   1
+  ],
+  "src/lxc/lxc_process.c": [
+   12,
+   4
+  ],
+  "src/meson.build": [
+   2,
+   5
+  ],
+  "src/network/bridge_driver.c": [
+   82,
+   28
+  ],
+  "src/network/bridge_driver.h": [
+   0,
+   15
+  ],
+  "src/network/bridge_driver_priv.h": [
+   31,
+   0
+  ],
+  "src/network/leaseshelper.c": [
+   7,
+   7
+  ],
+  "src/network/network_iptables.c": [
+   5,
+   5
+  ],
+  "src/network/network_nftables.c": [
+   12,
+   6
+  ],
+  "src/network/network_pf.c": [
+   14,
+   8
+  ],
+  "src/node_device/node_device_udev.c": [
+   6,
+   1
+  ],
+  "src/nwfilter/meson.build": [
+   1,
+   0
+  ],
+  "src/nwfilter/nwfilter_dhcpsnoop.c": [
+   1,
+   2
+  ],
+  "src/nwfilter/nwfilter_ebiptables_driver.c": [
+   203,
+   464
+  ],
+  "src/nwfilter/nwfilter_tech_driver.c": [
+   251,
+   0
+  ],
+  "src/nwfilter/nwfilter_tech_driver.h": [
+   48,
+   3
+  ],
+  "src/openvz/openvz_driver.c": [
+   9,
+   3
+  ],
+  "src/qemu/libvirtd_qemu.aug": [
+   3,
+   0
+  ],
+  "src/qemu/meson.build": [
+   2,
+   1
+  ],
+  "src/qemu/qemu.conf.in": [
+   17,
+   0
+  ],
+  "src/qemu/qemu_backup.c": [
+   45,
+   41
+  ],
+  "src/qemu/qemu_backup.h": [
+   1,
+   2
+  ],
+  "src/qemu/qemu_block.c": [
+   3,
+   4
+  ],
+  "src/qemu/qemu_capabilities.c": [
+   272,
+   80
+  ],
+  "src/qemu/qemu_capabilities.h": [
+   22,
+   3
+  ],
+  "src/qemu/qemu_capspriv.h": [
+   2,
+   3
+  ],
+  "src/qemu/qemu_cgroup.c": [
+   3,
+   0
+  ],
+  "src/qemu/qemu_checkpoint.c": [
+   0,
+   11
+  ],
+  "src/qemu/qemu_command.c": [
+   210,
+   123
+  ],
+  "src/qemu/qemu_command.h": [
+   4,
+   2
+  ],
+  "src/qemu/qemu_conf.c": [
+   52,
+   15
+  ],
+  "src/qemu/qemu_conf.h": [
+   11,
+   1
+  ],
+  "src/qemu/qemu_domain.c": [
+   224,
+   121
+  ],
+  "src/qemu/qemu_domain.h": [
+   35,
+   31
+  ],
+  "src/qemu/qemu_domain_address.c": [
+   4,
+   8
+  ],
+  "src/qemu/qemu_driver.c": [
+   1083,
+   579
+  ],
+  "src/qemu/qemu_driverpriv.h": [
+   27,
+   0
+  ],
+  "src/qemu/qemu_extdevice.c": [
+   14,
+   7
+  ],
+  "src/qemu/qemu_fd.c": [
+   35,
+   30
+  ],
+  "src/qemu/qemu_firmware.c": [
+   187,
+   18
+  ],
+  "src/qemu/qemu_firmware.h": [
+   3,
+   0
+  ],
+  "src/qemu/qemu_hotplug.c": [
+   223,
+   74
+  ],
+  "src/qemu/qemu_hotplug.h": [
+   4,
+   2
+  ],
+  "src/qemu/qemu_interface.c": [
+   1,
+   0
+  ],
+  "src/qemu/qemu_interop_config.c": [
+   2,
+   2
+  ],
+  "src/qemu/qemu_migration.c": [
+   174,
+   103
+  ],
+  "src/qemu/qemu_migration.h": [
+   5,
+   30
+  ],
+  "src/qemu/qemu_monitor.c": [
+   81,
+   86
+  ],
+  "src/qemu/qemu_monitor.h": [
+   42,
+   9
+  ],
+  "src/qemu/qemu_monitor_json.c": [
+   290,
+   78
+  ],
+  "src/qemu/qemu_monitor_json.h": [
+   22,
+   6
+  ],
+  "src/qemu/qemu_monitor_priv.h": [
+   3,
+   0
+  ],
+  "src/qemu/qemu_namespace.c": [
+   3,
+   0
+  ],
+  "src/qemu/qemu_nbdkit.c": [
+   11,
+   11
+  ],
+  "src/qemu/qemu_passt.c": [
+   27,
+   3
+  ],
+  "src/qemu/qemu_postparse.c": [
+   131,
+   19
+  ],
+  "src/qemu/qemu_process.c": [
+   430,
+   247
+  ],
+  "src/qemu/qemu_process.h": [
+   8,
+   10
+  ],
+  "src/qemu/qemu_processpriv.h": [
+   2,
+   0
+  ],
+  "src/qemu/qemu_saveimage.c": [
+   45,
+   13
+  ],
+  "src/qemu/qemu_saveimage.h": [
+   4,
+   2
+  ],
+  "src/qemu/qemu_security.c": [
+   10,
+   0
+  ],
+  "src/qemu/qemu_snapshot.c": [
+   53,
+   47
+  ],
+  "src/qemu/qemu_validate.c": [
+   260,
+   107
+  ],
+  "src/qemu/qemu_validate.h": [
+   1,
+   1
+  ],
+  "src/qemu/qemu_virtiofs.c": [
+   9,
+   10
+  ],
+  "src/qemu/qemu_virtiofs.h": [
+   0,
+   3
+  ],
+  "src/qemu/qemu_vnc.c": [
+   408,
+   0
+  ],
+  "src/qemu/qemu_vnc.h": [
+   50,
+   0
+  ],
+  "src/qemu/test_libvirtd_qemu.aug.in": [
+   3,
+   0
+  ],
+  "src/qemu/virtqemud.service.extra.in": [
+   4,
+   0
+  ],
+  "src/remote/libvirtd-secret.conf.in": [
+   7,
+   0
+  ],
+  "src/remote/libvirtd.service.in": [
+   4,
+   0
+  ],
+  "src/remote/meson.build": [
+   64,
+   50
+  ],
+  "src/remote/remote_daemon_dispatch.c": [
+   94,
+   0
+  ],
+  "src/remote/remote_daemon_stream.c": [
+   3,
+   2
+  ],
+  "src/remote/remote_driver.c": [
+   99,
+   7
+  ],
+  "src/remote/remote_protocol.x": [
+   45,
+   1
+  ],
+  "src/remote/remote_sockets.c": [
+   3,
+   4
+  ],
+  "src/remote_protocol-structs": [
+   31,
+   7
+  ],
+  "src/rpc/gendispatch.pl": [
+   2,
+   4
+  ],
+  "src/rpc/virnetclient.c": [
+   4,
+   2
+  ],
+  "src/rpc/virnetclientstream.c": [
+   4,
+   0
+  ],
+  "src/rpc/virnetlibsshsession.c": [
+   8,
+   8
+  ],
+  "src/rpc/virnetmessage.c": [
+   8,
+   2
+  ],
+  "src/rpc/virnetserverclient.c": [
+   2,
+   3
+  ],
+  "src/rpc/virnetsshsession.c": [
+   0,
+   7
+  ],
+  "src/rpc/virnettlsconfig.c": [
+   1,
+   1
+  ],
+  "src/rpc/virnettlscontext.c": [
+   1,
+   1
+  ],
+  "src/secret/libvirt_secrets.aug": [
+   40,
+   0
+  ],
+  "src/secret/meson.build": [
+   34,
+   0
+  ],
+  "src/secret/secret.conf.in": [
+   14,
+   0
+  ],
+  "src/secret/secret_config.c": [
+   180,
+   0
+  ],
+  "src/secret/secret_config.h": [
+   40,
+   0
+  ],
+  "src/secret/secret_driver.c": [
+   25,
+   4
+  ],
+  "src/secret/test_libvirt_secrets.aug.in": [
+   6,
+   0
+  ],
+  "src/secret/virt-secret-init-encryption.service.in": [
+   9,
+   0
+  ],
+  "src/secret/virtsecretd.service.extra.in": [
+   8,
+   0
+  ],
+  "src/security/apparmor/meson.build": [
+   4,
+   1
+  ],
+  "src/security/apparmor/usr.lib.libvirt.virt-aa-helper.in": [
+   1,
+   0
+  ],
+  "src/security/security_apparmor.c": [
+   34,
+   37
+  ],
+  "src/security/security_dac.c": [
+   77,
+   45
+  ],
+  "src/security/security_manager.c": [
+   22,
+   11
+  ],
+  "src/security/security_selinux.c": [
+   87,
+   60
+  ],
+  "src/security/security_stack.c": [
+   11,
+   23
+  ],
+  "src/security/virt-aa-helper.c": [
+   64,
+   20
+  ],
+  "src/storage/storage_backend_rbd.c": [
+   2,
+   2
+  ],
+  "src/storage/storage_backend_zfs.c": [
+   4,
+   3
+  ],
+  "src/storage/storage_driver.c": [
+   1,
+   0
+  ],
+  "src/storage/storage_util.c": [
+   3,
+   4
+  ],
+  "src/storage_file/storage_file_probe.c": [
+   7,
+   4
+  ],
+  "src/test/test_driver.c": [
+   17,
+   0
+  ],
+  "src/util/meson.build": [
+   1,
+   0
+  ],
+  "src/util/virarptable.c": [
+   87,
+   2
+  ],
+  "src/util/virauth.c": [
+   7,
+   1
+  ],
+  "src/util/virbitmap.c": [
+   1,
+   2
+  ],
+  "src/util/vircgroup.c": [
+   6,
+   4
+  ],
+  "src/util/vircgroup.h": [
+   10,
+   2
+  ],
+  "src/util/vircgroupbackend.h": [
+   2,
+   2
+  ],
+  "src/util/vircgroupv1.c": [
+   32,
+   6
+  ],
+  "src/util/vircgroupv2.c": [
+   96,
+   0
+  ],
+  "src/util/vircommand.c": [
+   57,
+   64
+  ],
+  "src/util/vircommand.h": [
+   0,
+   1
+  ],
+  "src/util/vircommandpriv.h": [
+   4,
+   0
+  ],
+  "src/util/vircrypto.c": [
+   125,
+   1
+  ],
+  "src/util/vircrypto.h": [
+   8,
+   0
+  ],
+  "src/util/virdaemon.c": [
+   3,
+   10
+  ],
+  "src/util/virerror.c": [
+   3,
+   0
+  ],
+  "src/util/virfdstream.c": [
+   33,
+   11
+  ],
+  "src/util/virfile.c": [
+   159,
+   20
+  ],
+  "src/util/virfile.h": [
+   1,
+   0
+  ],
+  "src/util/virfirewall.c": [
+   3,
+   8
+  ],
+  "src/util/virhostcpu.c": [
+   92,
+   25
+  ],
+  "src/util/virhostcpu.h": [
+   5,
+   4
+  ],
+  "src/util/virhostmem.c": [
+   25,
+   31
+  ],
+  "src/util/virhostmem.h": [
+   5,
+   6
+  ],
+  "src/util/viridentity.c": [
+   2,
+   2
+  ],
+  "src/util/viriommufd.c": [
+   121,
+   0
+  ],
+  "src/util/viriommufd.h": [
+   27,
+   0
+  ],
+  "src/util/virjson.c": [
+   26,
+   2
+  ],
+  "src/util/virjson.h": [
+   6,
+   0
+  ],
+  "src/util/virlease.c": [
+   2,
+   2
+  ],
+  "src/util/virlog.c": [
+   150,
+   83
+  ],
+  "src/util/virlog.h": [
+   2,
+   2
+  ],
+  "src/util/virnetdev.h": [
+   3,
+   2
+  ],
+  "src/util/virnetdevbandwidth.c": [
+   49,
+   23
+  ],
+  "src/util/virnetdevip.c": [
+   11,
+   7
+  ],
+  "src/util/virnetdevip.h": [
+   1,
+   1
+  ],
+  "src/util/virnetdevmacvlan.c": [
+   21,
+   19
+  ],
+  "src/util/virnetdevmacvlan.h": [
+   3,
+   1
+  ],
+  "src/util/virnetdevopenvswitch.c": [
+   5,
+   4
+  ],
+  "src/util/virnetdevtap.c": [
+   10,
+   5
+  ],
+  "src/util/virnodesuspend.c": [
+   1,
+   4
+  ],
+  "src/util/virnodesuspend.h": [
+   1,
+   2
+  ],
+  "src/util/virobject.c": [
+   29,
+   4
+  ],
+  "src/util/virpci.c": [
+   197,
+   12
+  ],
+  "src/util/virpci.h": [
+   4,
+   0
+  ],
+  "src/util/virpidfile.c": [
+   1,
+   3
+  ],
+  "src/util/virprobe.h": [
+   14,
+   0
+  ],
+  "src/util/virprocess.c": [
+   11,
+   11
+  ],
+  "src/util/virresctrl.c": [
+   149,
+   31
+  ],
+  "src/util/virresctrl.h": [
+   10,
+   2
+  ],
+  "src/util/virsocketaddr.c": [
+   61,
+   8
+  ],
+  "src/util/virsocketaddr.h": [
+   3,
+   2
+  ],
+  "src/util/virsystemd.c": [
+   4,
+   4
+  ],
+  "src/util/virtypedparam-public.c": [
+   35,
+   19
+  ],
+  "src/util/virtypedparam.c": [
+   157,
+   65
+  ],
+  "src/util/virtypedparam.h": [
+   19,
+   7
+  ],
+  "src/util/viruri.c": [
+   32,
+   0
+  ],
+  "src/util/viruri.h": [
+   2,
+   0
+  ],
+  "src/util/virusb.c": [
+   54,
+   106
+  ],
+  "src/util/virusb.h": [
+   9,
+   13
+  ],
+  "src/util/virutil.c": [
+   41,
+   18
+  ],
+  "src/util/virutil.h": [
+   3,
+   3
+  ],
+  "src/util/virxml.c": [
+   38,
+   22
+  ],
+  "src/vbox/vbox_XPCOMCGlue.c": [
+   1,
+   1
+  ],
+  "src/vbox/vbox_common.c": [
+   5,
+   4
+  ],
+  "src/vbox/vbox_storage.c": [
+   1,
+   1
+  ],
+  "src/vmx/vmx.c": [
+   107,
+   9
+  ],
+  "src/vz/vz_driver.c": [
+   9,
+   3
+  ],
+  "src/vz/vz_sdk.c": [
+   2,
+   4
+  ],
+  "tests/bhyvexml2argvdata/aarch64/bhyvexml2argv-base.args": [
+   1,
+   1
+  ],
+  "tests/bhyvexml2argvdata/aarch64/bhyvexml2argv-base.ldargs": [
+   1,
+   7
+  ],
+  "tests/bhyvexml2argvdata/aarch64/bhyvexml2argv-bootloader.args": [
+   0,
+   1
+  ],
+  "tests/bhyvexml2argvdata/aarch64/bhyvexml2argv-console.args": [
+   1,
+   1
+  ],
+  "tests/bhyvexml2argvdata/aarch64/bhyvexml2argv-console.ldargs": [
+   1,
+   7
+  ],
+  "tests/bhyvexml2argvdata/x86_64/bhyvexml2argv-2-virtio-console-mixed-addr.args": [
+   10,
+   0
+  ],
+  "tests/bhyvexml2argvdata/x86_64/bhyvexml2argv-2-virtio-console-mixed-addr.ldargs": [
+   4,
+   0
+  ],
+  "tests/bhyvexml2argvdata/x86_64/bhyvexml2argv-2-virtio-console-mixed-addr.xml": [
+   26,
+   0
+  ],
+  "tests/bhyvexml2argvdata/x86_64/bhyvexml2argv-acpiapic.args": [
+   0,
+   2
+  ],
+  "tests/bhyvexml2argvdata/x86_64/bhyvexml2argv-blkiotune-invalid-device.xml": [
+   32,
+   0
+  ],
+  "tests/bhyvexml2argvdata/x86_64/bhyvexml2argv-blkiotune-multiple-devices.xml": [
+   39,
+   0
+  ],
+  "tests/bhyvexml2argvdata/x86_64/bhyvexml2argv-blkiotune-weight.xml": [
+   33,
+   0
+  ],
+  "tests/bhyvexml2argvdata/x86_64/bhyvexml2argv-blkiotune.args": [
+   10,
+   0
+  ],
+  "tests/bhyvexml2argvdata/x86_64/bhyvexml2argv-blkiotune.ldargs": [
+   4,
+   0
+  ],
+  "tests/bhyvexml2argvdata/x86_64/bhyvexml2argv-blkiotune.xml": [
+   32,
+   0
+  ],
+  "tests/bhyvexml2argvdata/x86_64/bhyvexml2argv-memtune-unsupported-params.args": [
+   10,
+   0
+  ],
+  "tests/bhyvexml2argvdata/x86_64/bhyvexml2argv-memtune-unsupported-params.ldargs": [
+   4,
+   0
+  ],
+  "tests/bhyvexml2argvdata/x86_64/bhyvexml2argv-memtune-unsupported-params.xml": [
+   28,
+   0
+  ],
+  "tests/bhyvexml2argvdata/x86_64/bhyvexml2argv-memtune.args": [
+   10,
+   0
+  ],
+  "tests/bhyvexml2argvdata/x86_64/bhyvexml2argv-memtune.ldargs": [
+   4,
+   0
+  ],
+  "tests/bhyvexml2argvdata/x86_64/bhyvexml2argv-memtune.xml": [
+   26,
+   0
+  ],
+  "tests/bhyvexml2argvdata/x86_64/bhyvexml2argv-numa-empty-cpuset.xml": [
+   29,
+   0
+  ],
+  "tests/bhyvexml2argvdata/x86_64/bhyvexml2argv-numa-too-many-domains.xml": [
+   36,
+   0
+  ],
+  "tests/bhyvexml2argvdata/x86_64/bhyvexml2argv-numa.args": [
+   14,
+   0
+  ],
+  "tests/bhyvexml2argvdata/x86_64/bhyvexml2argv-numa.ldargs": [
+   1,
+   0
+  ]
+ },
+ "files": 2298,
+ "added_lines": 383723,
+ "removed_lines": 136603,
+ "diff": "diff --git a/AUTHORS.rst b/AUTHORS.rst\nindex 99f2c97..6bea3fa 100644\n--- a/AUTHORS.rst\n+++ b/AUTHORS.rst\n@@ -97,14 +97,16 @@ Patches have also been contributed by:\n \n * Aaron M. Brown <aaronmbr@linux.ibm.com>\n * Abhiram Tilak <atp.exp@gmail.com>\n-* Achill Gilgenast via Devel <devel@lists.libvirt.org>\n+* Achill Gilgenast <achill@achill.org>\n * Adam Julis <ajulis@redhat.com>\n * Adam Litke <agl@us.ibm.com>\n * Adam Walters <adam@pandorasboxen.com>\n * Adolfo Jayme Barrientos <fitoschido@gmail.com>\n * Adrian Brzezinski <adrian.brzezinski@eo.pl>\n * Akarshan Biswas <akarshan.biswas@gmail.com>\n+* Akash Kulhalli <akash.kulhalli@oracle.com>\n * Akihiko Odaki <akihiko.odaki@daynix.com>\n+* Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>\n * Alan Pevec <apevec@redhat.com>\n * Aleksandr Alekseev <alexander.alekseev@virtuozzo.com>\n * Aleksei Zakharov <zaharov@selectel.ru>\n@@ -118,6 +120,7 @@ Patches have also been contributed by:\n * Alexander Todorov <atodorov@otb.bg>\n * Alexander Vasilenko <kaperang07@gmail.com>\n * Alexandra Diupina <adiupina@astralinux.ru>\n+* Alexandr Semenikhin <alexandr2e78@gmail.com>\n * Alexey Dokuchaev <danfe@FreeBSD.org>\n * Alex Jia <ajia@redhat.com>\n * Alex Williamson <alex.williamson@redhat.com>\n@@ -162,6 +165,7 @@ Patches have also been contributed by:\n * Aron Griffis <aron.griffis@hp.com>\n * Artem Chernyshev <artem.chernyshev@red-soft.ru>\n * Artur Puzio <contact@puzio.waw.pl>\n+* Arun Menon <armenon@redhat.com>\n * Asad Saeed <asad.saeed@acidseed.com>\n * Ashish Mittal <Ashish.Mittal@veritas.com>\n * Ashish Mittal <ashmit602@gmail.com>\n@@ -173,6 +177,7 @@ Patches have also been contributed by:\n * Balázs Meskó <meskobalazs@mailbox.org>\n * Bamvor Jian Zhang <bamv2005@gmail.com>\n * Bamvor Jian Zhang <bjzhang@suse.com>\n+* Baptiste Daroussin <baptiste.daroussin@ovhcloud.com>\n * Barrett Schonefeld <bschoney@utexas.edu>\n * Bastian Germann <bastiangermann@fishpost.de>\n * Bastien Orivel <bastien.orivel@diateam.net>\n@@ -203,6 +208,8 @@ Patches have also been contributed by:\n * Bronek Kozicki <brok@incorrekt.com>\n * Brooks Swinnerton <bswinnerton@gmail.com>\n * Bruno Haible <bruno@clisp.org>\n+* Bruno Martins <ehanoc@protonmail.com>\n+* Bruno Renié <brutasse@users.noreply.github.com>\n * Bryan Kearney <bkearney@redhat.com>\n * Cao jin <caoj.fnst@cn.fujitsu.com>\n * caoxinhua <caoxinhua@huawei.com>\n@@ -264,6 +271,7 @@ Patches have also been contributed by:\n * Daniel Gollub <gollub@b1-systems.de>\n * Daniel Hansel <daniel.hansel@linux.vnet.ibm.com>\n * Daniel Henrique Barboza <dbarboza@ventanamicro.com>\n+* Daniel Hora <dhora@redhat.com>\n * Daniel J Walsh <dwalsh@redhat.com>\n * Daniel Letai <dani@letai.org.il>\n * Daniel Liu <srwx4096@gmail.com>\n@@ -341,14 +349,16 @@ Patches have also been contributed by:\n * Eli Qiao <liyong.qiao@intel.com>\n * Eli Qiao <taget@linux.vnet.ibm.com>\n * Elizaveta Tereshkina <etereshkina@astralinux.ru>\n+* Elizaveta Tereshkina <teryoshkina.ea@gmail.com>\n * Emilio Herrera <ehespinosa57@gmail.com>\n-* Enrique Llorente via Devel <devel@lists.libvirt.org>\n+* Enrique Llorente <ellorent@redhat.com>\n * Eric Blake <eblake@redhat.com>\n * Eric Farman <farman@linux.ibm.com>\n * Eric Farman <farman@linux.vnet.ibm.com>\n * Eric Garver <eric@garver.life>\n * Eric van Blokland <mail@ericvanblokland.nl>\n * Eric W. Biederman <ebiederm@xmission.com>\n+* Erik Huelsmann <ehuels@gmail.com>\n * Erik Skultety <eskultet@redhat.com>\n * Ersek Laszlo <lacos@caesar.elte.hu>\n * Ettore Atalan <atalanttore@googlemail.com>\n@@ -369,6 +379,7 @@ Patches have also been contributed by:\n * Félix Bouliane <felixbouliane@gmail.com>\n * Felix Geyer <debfx@fobos.de>\n * Felix Geyer <fgeyer@debian.org>\n+* Felix Huettner <felix.huettner@stackit.cloud>\n * Filip Alac <filipalac@gmail.com>\n * Fima Shevrin <efim.shevrin@virtuozzo.com>\n * Florian Vichot <florian.vichot@diateam.net>\n@@ -415,10 +426,10 @@ Patches have also been contributed by:\n * Halil Pasic <pasic@linux.ibm.com>\n * Han Cheng <hanc.fnst@cn.fujitsu.com>\n * Han Han <hhan@redhat.com>\n-* Han Han via Devel <devel@lists.libvirt.org>\n * Hao Liu <hliu@redhat.com>\n * Haonan Wang <hnwanga1@gmail.com>\n * Hao Peng <peng.hao2@zte.com.cn>\n+* Haorong Xu <haorongxu09@gmail.com>\n * Hao Wang <wanghao232@huawei.com>\n * Harikumar Rajkumar <harirajkumar230@gmail.com>\n * Harry Wei <harryxiyou@gmail.com>\n@@ -435,6 +446,7 @@ Patches have also been contributed by:\n * Henning Schild <henning.schild@siemens.com>\n * Henrik Persson E <henrik.e.persson@ericsson.com>\n * Hero Phương <herophuong93@gmail.com>\n+* HE WEI（ギカク） <skyexpoc@gmail.com>\n * hexin <hexin15@baidu.com>\n * Hiroki Narukawa <hnarukaw@yahoo-corp.jp>\n * Hongbin Lu <hongbin034@gmail.com>\n@@ -465,6 +477,7 @@ Patches have also been contributed by:\n * Ivan Kardykov <kardykov@tabit.pro>\n * Ivan Teterevkov <ivan.teterevkov@nutanix.com>\n * Jaak Ristioja <jaak@ristioja.ee>\n+* Jaehoon Kim <jhkim@linux.ibm.com>\n * Jakob Meng <jakobmeng@web.de>\n * Jakub Kuczys <me@jacken.men>\n * Jakub Palacky <jpalacky@redhat.com>\n@@ -493,6 +506,7 @@ Patches have also been contributed by:\n * Jean-Baptiste Rouault <jean-baptiste.rouault@diateam.net>\n * Jean-Louis Dupond <jean-louis@dupond.be>\n * Jean-Marc Liger <jean-marc.liger@parisdescartes.fr>\n+* Jedrzej Wasiukiewicz <jedrzej.wasiukiewicz@intel.com>\n * Jens Petersen <petersen@redhat.com>\n * Jens Schmidt <farblos@vodafonemail.de>\n * Jérémie Tarot <silopolis@gmail.com>\n@@ -511,7 +525,6 @@ Patches have also been contributed by:\n * Jie Wang <wangjie88@huawei.com>\n * JieWang <wangjie88@huawei.com>\n * Jim Fehlig <jfehlig@suse.com>\n-* Jim Fehlig via Devel <devel@lists.libvirt.org>\n * Jim Meyering <meyering@redhat.com>\n * Jim Paris <jim@jtan.com>\n * Jim Spentzos <jimspentzos2000@gmail.com>\n@@ -533,6 +546,7 @@ Patches have also been contributed by:\n * John Morrissey <jwm@horde.net>\n * John Williams <john.williams@petalogix.com>\n * Jonas Eriksson <jonas.j.eriksson@ericsson.com>\n+* Jonathan Davies <jonathan.davies@nutanix.com>\n * Jonathan Lebon <jlebon@redhat.com>\n * Jonathan Toppins <jtoppins@cumulusnetworks.com>\n * Jonathan Watt <jwatt@jwatt.org>\n@@ -540,6 +554,7 @@ Patches have also been contributed by:\n * Jonathon Jongsma <jjongsma@redhat.com>\n * Jon Kohler <jon@nutanix.com>\n * joo es <jonnyse@users.noreply.translate.fedoraproject.org>\n+* Jordan Petridis <jpetridis@gnome.org>\n * Josh Durgin <josh.durgin@inktank.com>\n * Josh Stone <jistone@redhat.com>\n * Jovanka Gulicoska <jovanka.gulicoska@gmail.com>\n@@ -565,7 +580,6 @@ Patches have also been contributed by:\n * Kiarie Kahurani <davidkiarie4@gmail.com>\n * Kim InSoo <simmon@nplob.com>\n * Kirill Shchetiniuk <kshcheti@redhat.com>\n-* Kirill Shchetiniuk via Devel <devel@lists.libvirt.org>\n * Klaus Ethgen <Klaus@Ethgen.de>\n * Koichi Murase <myoga.murase@gmail.com>\n * Konrad Rzeszutek Wilk <konrad@kernel.org>\n@@ -582,11 +596,13 @@ Patches have also been contributed by:\n * Lai Jiangshan <laijs@cn.fujitsu.com>\n * Laine Stump <laine@redhat.com>\n * LanceLiu <liu.lance.89@gmail.com>\n+* Languages add-on <noreply-addon-languages@weblate.org>\n * Laszlo Ersek <lersek@redhat.com>\n * Laura Hild <lsh@jlab.org>\n * Laurent Bigonville <bigon@bigon.be>\n * Laurent Léonard <laurent@open-minds.org>\n * lawrancejing <lawrancejing@gmail.com>\n+* Leander Kohler <leander.kohler@cyberus-technology.de>\n * Léane GRASSER <leane.grasser@proton.me>\n * Lee Yarwood <lyarwood@redhat.com>\n * Leigh Brown <leigh@solinno.co.uk>\n@@ -614,12 +630,15 @@ Patches have also been contributed by:\n * Li Zhang <zhlcindy@linux.vnet.ibm.com>\n * Lorin Hochstein <lorin@isi.edu>\n * Lubomir Rintel <lkundrak@v3.sk>\n+* Lucas Amaral <lucaaamaral@gmail.com>\n+* Lucas Kornicki <lucas.kornicki@nutanix.com>\n * Ludek Janda <ljanda@redhat.com>\n * Ludovic Beliveau <ludovic.beliveau@windriver.com>\n * Luiz Capitulino <lcapitulino@redhat.com>\n * Lukas Greve <please@refre.ch>\n * Lu Ke <nicelukas@hotmail.com>\n * Luke Yue <lukedyue@gmail.com>\n+* Luna Jernberg <droidbittin@gmail.com>\n * Luyao Huang <lhuang@redhat.com>\n * Luyao Zhong <luyao.zhong@intel.com>\n * lu zhipeng <luzhipeng@cestc.cn>\n@@ -671,6 +690,7 @@ Patches have also been contributed by:\n * Mauro S. M. Rodrigues <maurosr@linux.vnet.ibm.com>\n * Max Goodhart <c@chromakode.com>\n * Maxime Leroy <maxime.leroy@6wind.com>\n+* Maximilian Martin <maximilian_martin@gmx.de>\n * Maximilian Wilhelm <max@rfc2324.org>\n * Maxim Kozin <kolomaxes@gmail.com>\n * Maxim Nestratov <mnestratov@virtuozzo.com>\n@@ -682,6 +702,7 @@ Patches have also been contributed by:\n * Menno Lageman <menno.lageman@oracle.com>\n * Michael Ablassmeier <abi@grinser.de>\n * Michael Avdienko <whitearchey@gmail.com>\n+* Michael Bommarito <michael.bommarito@gmail.com>\n * Michael Chapman <mike@very.puzzling.org>\n * Michael Ellerman <michael@ellerman.id.au>\n * Michael R. Hines <mrhines@us.ibm.com>\n@@ -708,7 +729,6 @@ Patches have also been contributed by:\n * minglei.liu <minglei.liu@smartx.com>\n * Minoru Usui <usui@mxm.nes.nec.co.jp>\n * Miroslav Los <mirlos@cisco.com>\n-* Miroslav Los via Devel <devel@lists.libvirt.org>\n * Mooli Tayer <mtayer@redhat.com>\n * MORITA Kazutaka <morita.kazutaka@lab.ntt.co.jp>\n * Moshe Levi <moshele@mellanox.com>\n@@ -721,7 +741,6 @@ Patches have also been contributed by:\n * Narayana Murty N <nnmlinux@linux.ibm.com>\n * Natanael Copa <ncopa@alpinelinux.org>\n * Nathan Chen <nathanc@nvidia.com>\n-* Nathan Chen via Devel <devel@lists.libvirt.org>\n * Nathan <nathan95@live.it>\n * Neal Gompa <ngompa13@gmail.com>\n * Nehal J Wani <nehaljw.kkd1@gmail.com>\n@@ -739,11 +758,11 @@ Patches have also been contributed by:\n * Nico Pache <npache@redhat.com>\n * Niels de Vos <ndevos@redhat.com>\n * Nikolai Barybin <nikolai.barybin@virtuozzo.com>\n-* Nikolai Barybin via Devel <devel@lists.libvirt.org>\n * Nikolay Shirokovskiy <nshirokovskiy@openvz.org>\n * Nikolay Shirokovskiy <nshirokovskiy@virtuozzo.com>\n * Nikos Mavrogiannopoulos <nmav@redhat.com>\n * Nikunj A. Dadhania <nikunj@linux.vnet.ibm.com>\n+* Nimish Jain <unauthorizen@gmail.com>\n * ning.bo <ning.bo9@zte.com.cn>\n * Nishank Trivedi <nistrive@cisco.com>\n * Nishith Shah <nishithshah.2211@gmail.com>\n@@ -815,10 +834,12 @@ Patches have also been contributed by:\n * Pritesh Kothari <pritesh.kothari@sun.com>\n * Purna Pavan Chandra Aekkaladevi <paekkaladevi@linux.microsoft.com>\n * Purna Pavan Chandra <paekkaladevi@linux.microsoft.com>\n+* PUSHKARAJ PATIL <pushkaraj.patil@in.ibm.com>\n * QiangWei Zhang <zhang.qiangwei@zte.com.cn>\n * Qiao Nuohan <qiaonuohan@cn.fujitsu.com>\n * Qiaowei Ren <qiaowei.ren@intel.com>\n * Radoslaw Biernacki <radoslaw.biernacki@linaro.org>\n+* Radoslaw Smigielski <rsmigiel@redhat.com>\n * Radostin Stoyanov <rstoyanov1@gmail.com>\n * Radu Caragea <dmns_serp@yahoo.com>\n * Rafael Fonseca <r4f4rfs@gmail.com>\n@@ -904,6 +925,7 @@ Patches have also been contributed by:\n * shenjiatong <yshxxsjt715@gmail.com>\n * Shichangkuo <shi.changkuo@h3c.com>\n * Shi Lei <shi_lei@massclouds.com>\n+* shivanayak <shivanayak@gmail.com>\n * Shivangi Dhir <shivangi.dhir.02@gmail.com>\n * Shivaprasad G Bhat <sbhat@linux.vnet.ibm.com>\n * Shivaprasad G Bhat <shivaprasadbhat@gmail.com>\n@@ -922,6 +944,7 @@ Patches have also been contributed by:\n * Sławek Kapłoński <slawek@kaplonski.pl>\n * Soren Hansen <soren@linux2go.dk>\n * Spencer Shimko <sshimko@tresys.com>\n+* Srihari Parimi <sparimi@redhat.com>\n * Sri Ramanujam <sramanujam@datto.com>\n * Srivatsa S. Bhat <srivatsa.bhat@linux.vnet.ibm.com>\n * Stefan Bader <stefan.bader@canonical.com>\n@@ -944,12 +967,14 @@ Patches have also been contributed by:\n * Sukadev Bhattiprolu <sukadev@linux.vnet.ibm.com>\n * Sukrit Bhatnagar <skrtbhtngr@gmail.com>\n * Supriya Kannery <supriyak@linux.vnet.ibm.com>\n+* Surya Gupta <surygupt@redhat.com>\n * Suyang Chen <dawson0xff@gmail.com>\n * Swapnil Ingle <swapnil.ingle@nutanix.com>\n * Syed Humaid <syedhumaidbinharoon@gmail.com>\n * Szymon Scholz <szymonscholz@gmail.com>\n * Taisuke Yamada <tai@rakugaki.org>\n * Taizo ITO <taizo.ito@hde.co.jp>\n+* Takashi Kajinami <kajinamit@oss.nttdata.com>\n * Taku Izumi <izumi.taku@jp.fujitsu.com>\n * Tal Kain <tal.kain@ravellosystems.com>\n * Tang Chen <tangchen@cn.fujitsu.com>\n@@ -1024,6 +1049,7 @@ Patches have also been contributed by:\n * Weiwei Li <nuonuoli@tencent.com>\n * weiwei li <weiweili821@gmail.com>\n * Wen Congyang <wency@cn.fujitsu.com>\n+* Wesley Hershberger <wesley.hershberger@canonical.com>\n * Wido den Hollander <wido@widodh.nl>\n * Wieland Hoffmann <themineo@googlemail.com>\n * William Douglas <william.douglas@intel.com>\n@@ -1039,6 +1065,7 @@ Patches have also been contributed by:\n * Xianglai Li <lixianglai@loongson.cn>\n * Xian Han Yu <xhyubj@linux.vnet.ibm.com>\n * Xiao Feng Ren <renxiaof@linux.vnet.ibm.com>\n+* Xiaotian Feng <Xiaotian.Feng@amd.com>\n * Xing Lin <xinglin@cs.utah.edu>\n * xinhua.Cao <caoxinhua@huawei.com>\n * Xu Chao <xu.chao6@zte.com.cn>\n@@ -1108,6 +1135,7 @@ Patches have also been contributed by:\n * Анастасия Белова <abelova@astralinux.ru>\n * Дамјан Георгиевски <gdamjan@gmail.com>\n * Марк Коренберг <socketpair@gmail.com>\n+* Марко Костић (Marko Kostić) <marko.m.kostic@gmail.com>\n \n \n The libvirt logo was designed by Diana Fong\ndiff --git a/NEWS.rst b/NEWS.rst\nindex 4d15ef1..582495a 100644\n--- a/NEWS.rst\n+++ b/NEWS.rst\n@@ -8,6 +8,488 @@ the changes introduced by each of them.\n For a more fine-grained view, use the `git log`_.\n \n \n+v12.6.0 (2026-08-03)\n+====================\n+\n+* **New features**\n+\n+  * bhyve: implement ``virDomainRename()``\n+\n+    The bhyve driver now implements the ``virDomainRename()`` API\n+    for renaming of a domain (``virsh domrename``).\n+\n+  * build: Add option to control building libvirtd\n+\n+    Meson option ``libvirtd`` has been added to control building the monolithic\n+    libvirtd, independent from the stateful, daemon-based drivers.\n+\n+  * sanlock: Add option to check ownership of disk leases\n+\n+    The sanlock lock driver plugin now supports the ``check_disk_lease_owner``\n+    setting in sanlock.conf. When enabled, the sanlock plugin will check that\n+    leases are owned by the domain attempting to acquire them.\n+\n+* **Improvements**\n+\n+  * qemu: Add ``preserve-running`` action for ``<on_crash>``\n+\n+    Allow qemu VMs to be kept running after they notify that they've crashed.\n+    This is useful for guests that can take their own crash dump and reboot.\n+\n+\n+v12.5.0 (2026-07-01)\n+====================\n+\n+* **New features**\n+\n+  * bhyve: Extend the guest agent support\n+\n+    The bhyve driver now supports several APIs on top of the guest agent:\n+\n+     * Getting and setting guest OS SSH keys\n+     * Setting guest OS user's password\n+     * Getting and setting guest OS time\n+\n+    Additionally, domain rebooting and shutting down using the agent\n+    is now supported.\n+\n+  * bhyve: Support ``on_reboot`` and ``on_poweroff`` actions\n+\n+    The bhyve driver now respects the domain's\n+    ``on_reboot`` and ``on_poweroff`` actions.\n+\n+  * bhyve: Support populating SMBIOS fields\n+\n+    Add support for populating the SMBIOS fields as defined\n+    by the ``<sysinfo type='smbios'>`` section of the domain's XML.\n+\n+  * qemu: Add support for standalone VNC server\n+\n+    Starting with this release, libvirt might spawn a standalone\n+    qemu-vnc process instead of QEMU's built-in VNC server, for\n+    enhanced security.\n+\n+* **Improvements**\n+\n+  * Enable hyperv driver on RHEL\n+\n+    The spec file now enables the Hyper-V driver when building on\n+    Red Hat Enterprise Linux.\n+\n+  * remote: allow passing argv to the ext transport\n+\n+    The ext transport not only allows spawning a process (via the\n+    ``command`` attribute), but as of this release also\n+    specifying additional arguments to it, via ``argv``\n+    attribute.\n+\n+  * Introduce ``VIR_CONNECT_GET_DOMAIN_CAPABILITIES_SUPPORTED_CPU_FEATURES`` flag\n+\n+    Some CPU features may be enabled explicitly, but should not automatically\n+    become part of a host-model CPU and thus are not normally visible in domain\n+    capabilities. Users can now request such features to be shown in the\n+    host-model CPU in domain capabilities using the new flag. It is exposed as\n+    ``--supported-cpu-features`` option for ``virsh domcapabilities``.\n+\n+* **Bug fixes**\n+\n+  * Ensure proper shutdown ordering of ``virtlogd`` and ``virtlockd``\n+\n+    The logging and locking helper daemons now shutdown after the daemon running\n+    the ``qemu`` hypervisor driver since their services may be needed to shutdown\n+    the VMs run by the qemu driver.\n+\n+  * qemu: Record selected ``virtio`` video device model into the XML\n+\n+    The ``qemu`` driver may depending on platform and installed QEMU modules\n+    pick one of two distinct virtio video device types for the primary device.\n+\n+    The choice was not recorded in the XML and since the devices are incompatible\n+    it can cause failures on migration when the destination picks the wrong\n+    device. This version thus records the picked device both for running VMs\n+    on upgrade and for new devices to prevent this problem in the future.\n+\n+  * bhyve: Guest agent related fixes\n+\n+    A few bugs related to the guest agent communication are fixed, from\n+    not properly initializing an agent to crashing when the agent\n+    socket cannot be opened.\n+\n+  * Fix domain capabilities on AMD CPUs\n+\n+    QEMU 10.1 and newer does not automatically enable features from\n+    arch-capabilities MSR on AMD CPUs as they are specific for Intel CPUs and\n+    KVM is just emulating them on AMD. But advertising them on AMD CPUs can\n+    cause Windows guest OS to crash so they are hidden by default now. But the\n+    features are still supported and can be enabled explicitly, for example,\n+    when migrating existing domains. Libvirt now detects this scenario and\n+    properly shows the affected features as enabled in domain capabilities when\n+    requested by ``VIR_CONNECT_GET_DOMAIN_CAPABILITIES_SUPPORTED_CPU_FEATURES``\n+    flag.\n+\n+  * vmx: Properly show all 64 disks on a SCSI controller\n+\n+    Due to an off-by-one error a last, 64th disk was not shown in a domain XML,\n+    which is now fixed.\n+\n+\n+v12.4.0 (2026-06-01)\n+====================\n+\n+* **Removed features**\n+\n+  * qemu: Bump minimum version to QEMU-7.2\n+\n+    The minimal required version of QEMU was bumped to 7.2.0.\n+\n+* **New features**\n+\n+  * resctrl: Add energy monitoring via resctrl's PERF_PKG_MON\n+\n+    Add support for Linux kernel 7.0 feature - energy monitoring via resctrl.\n+    This allows to monitor per-VM energy consumption on supported platforms.\n+    Implemented via ``energytune`` element in ``cputune`` .\n+\n+  * Add channel lifecycle domain event\n+\n+    Add support for a new domain event which can be used to track the state of\n+    any virtio channel. It is similar to guest agent lifecycle event.\n+\n+  * bhyve: Add memory tuning support\n+\n+    The bhyve driver now allows setting a domain's memory hard limit using the\n+    following syntax::\n+\n+     <memtune>\n+       <hard_limit unit='G'>1</hard_limit>\n+     </memtune>\n+\n+    It also implements the ``virDomainGetMemoryParameters()`` and\n+    ``virDomainSetMemoryParameters()`` APIs for controlling\n+    the memory hard limit of a running domain.\n+\n+  * bhyve: Add virtio-console device support\n+\n+    Domain XML can now use ``virtio-console`` devices. Among other things,\n+    these devices can be used to configure a QEMU Guest Agent::\n+\n+     <devices>\n+       <channel type='unix'>\n+         <source mode='bind' path='/var/run/libvirt/bhyve/bhyve.agent'/>\n+         <target type='virtio' name='org.qemu.guest_agent.0'/>\n+         <address type='virtio-serial' controller='0' bus='0' port='1'/>\n+       </channel>\n+     </devices>\n+\n+    Additionally, the ``virDomainQemuAgentCommand()`` API which allows\n+    running arbitrary guest agent commands is now supported.\n+\n+    The ``virDomainGetHostname()`` API, used to query the hostname of a guest,\n+    now supports using the guest agent as a source of information.\n+\n+* **Improvements**\n+\n+  * vircgroupv2: Implement freezer controller\n+\n+    The CGroupV2 code now supports freezer controller which allows suspending\n+    and resuming of LXC domains.\n+\n+  * virnetdevbandwidth: Only clear qdisc for defined directions\n+\n+    Setting a QoS on a vNIC no longer leads to clearing (preconfigured) root\n+    queuing discipline ('qdisc`) in both directions (egress, ingress), only the\n+    affected one.\n+\n+* **Bug fixes**\n+\n+  * storage: ZFS: Fix incorrect volsize and refreservation on zvol creation\n+\n+    When creating a zvol, the ZFS driver listed all volumes in the pool and\n+    updated the new volume's size with data from the last volume in the list\n+    rather than the matching one. Now it correctly returns on valid one.\n+\n+  * esx/vmware: VMs are tracked under different UUIDs by default\n+\n+    The VMWare-related drivers were using allegedly unique IDs for domains, but\n+    it turned out they were not completely unique, even for the same host.  That\n+    caused an issue where a different domain could have been acted upon then\n+    requested.  Unfortunately, to make this work, the UUIDs of all\n+    VMWare-related domains will change from this release.  In order to use the\n+    pre-v12.4.0 behaviour there is a new URI query parameter ``legacy_uuid``\n+    which, if set to ``1``, will revert to the older way of working.\n+\n+  * virsh: Provide no auth callbacks for bash completer\n+\n+    The bash completer script calls virsh to provide completions. In some cases\n+    the underlying virsh might get stuck waiting on input (e.g. password for\n+    SSH session). Not anymore.\n+\n+  * virauth: Verify virConnectAuth::cb is set in virAuthGetPasswordPath()\n+\n+    A check was missing in ``virAuthGetPasswordPath()`` which might lead to\n+    crash of the client library when NULL callback was provided. This is now\n+    fixed.\n+\n+\n+v12.3.0 (2026-05-02)\n+====================\n+\n+* **New features**\n+\n+  * bhyve: Add blkiotune support\n+\n+    The bhyve driver now supports guest I/O throttling configuration::\n+\n+     <blkiotune>\n+       <device>\n+         <path>*</path>\n+         <read_iops_sec>20000</read_iops_sec>\n+         <write_iops_sec>20000</write_iops_sec>\n+         <read_bytes_sec>10000</read_bytes_sec>\n+         <write_bytes_sec>10000</write_bytes_sec>\n+       </device>\n+     </blkiotune>\n+\n+    It uses the ``rctl(4)`` framework to apply these limits.\n+\n+  * bhyve: Implement ``virDomainInterfaceAddresses()`` and ``virDomainGetHostname()``\n+\n+    The bhyve driver now implements APIs allowing to fetch address of\n+    VM's interfaces (accessible via ``virsh domifaddr``) and the hostname\n+    of the VM (``virsh domhostname``).\n+\n+  * hyperv: Implement ``virDomainGetGuestInfo()``\n+\n+    The hyperv driver now implements API for fetching guest information\n+    (``virsh guestinfo``).\n+\n+* **Improvements**\n+\n+  * security: Don't error out on security labels of type='none'\n+\n+    Previously, libvirt reported an error if a domain with seclabel of\n+    type='none' (meaning do not take this security model into account for this\n+    domain) was being started and the model wasn't available (for instance, in\n+    case of SELinux it was disabled at boot).\n+\n+  * Allow for multiple PCI root buses, not just for a single one numbered '0'\n+\n+    `virPCIDeviceReset()` and `virPCIDeviceIsBehindSwitchLackingACS()` no\n+    longer use a hardcoded check (e.g bus == 0 ) to determine if a device is\n+    attached to a \"root bus\". This allows for better support on more complex\n+    PCI topologies.\n+\n+  * Add mechanism to prevent accidental shrink of device with ``virsh blockresize``\n+\n+    A new flag ``VIR_DOMAIN_BLOCK_RESIZE_EXTEND`` was introduced which prevents\n+    accidental shrinking of the block device of the VM. The flag is exposed\n+    as ``virsh blockresize --extend``.\n+\n+  * Expose ``MemAvailable`` field from kernel's meminfo as ``VIR_NODE_MEMORY_STATS_AVAILABLE``\n+\n+* **Bug fixes**\n+\n+  * virnetdevmacvlan: Wait for udev to settle after creating macvtap\n+\n+    When starting a domain with a macvtap device (or when hotplugging one),\n+    libvirt creates the device and opens its ``/dev`` representation in order\n+    to set it according to the ``<interface/>`` XML (e.g. MAC address, queues,\n+    etc.). But if the system is under heavy load, it might happen that after\n+    the device creation the udev daemon was triggered, but did not have enough\n+    time to set the ``/dev`` representation fully. This may result in various\n+    misconfiguration or even failed ``open()``. Therefore, libvirt waits after\n+    device creation for udev daemon to settle down.\n+\n+  * apparmor: Don't drop macvtap devices from profile on blockjobs\n+\n+\n+v12.2.0 (2026-04-01)\n+====================\n+\n+* **Removed features**\n+\n+  * qemu: Stop advertising support for ``handle`` backend of 9p filesystems\n+\n+    QEMU removed the feature in the 4.0 release, but our capability XML\n+    still reported it.\n+\n+* **New features**\n+\n+  * qemu: Add support to configure IOMMUFD backend for whole VM\n+\n+    In addition to setting IOMMUFD backend for each device it is possible\n+    to use the new ``<iommufd>`` element to enable IOMMUFD backend for all\n+    host devices. Users can still change it per device.\n+\n+  * qemu: Add support to pass FD for IOMMUFD when starting VM\n+\n+    Management applications running unprivileged libvirt can open /dev/iommu\n+    and pass FD to libvirt in order to change locked memory accounting.\n+    This is done via new ``<iommufd>`` element.\n+\n+  * qemu: Add support for declaring that storage was zeroed for storage copy APIs\n+\n+    The qemu driver now can skip zeroing of the storage during\n+    ``virDomainBlockCopy`` or migration with non-shared storage with the\n+    appropriate flags. This can be used for storage technologies which lack\n+    efficient zeroing support.\n+\n+  * hyperv: Add basic snapshot functionality\n+\n+    The hyperv driver now implements the following libvirt APIs:\n+    ``virDomainDefineXMLFlags()``, ``virDomainSnapshotLookupByName()``,\n+    ``virDomainListAllSnapshots()``, ``virDomainSnapshotNum()``,\n+    ``virDomainSnapshotGetXMLDesc()``, ``virDomainSnapshotCurrent()``,\n+    ``virDomainHasCurrentSnapshot()``, ``virDomainSnapshotGetParent()``.\n+\n+* **Improvements**\n+\n+  * conf: support more than 255 vCPUs with amd-iommu\n+\n+    With 256 or more vCPUs libvirt previously required EIM enabled for all\n+    models of IOMMU. This is not valid for AMD model and validation was changed\n+    so that XTSup is required there. Additionally, it is automatically enabled\n+    if needed.\n+\n+  * Introduce VIR_CONNECT_GET_DOMAIN_CAPABILITIES_EXPAND_CPU_FEATURES flag\n+\n+    This new flag for virConnectGetDomainCapabilities can be used to request\n+    the host-model CPU definition to include all supported features (normally\n+    only extra features relative to the selected CPU model are listed).\n+\n+  * qemu: Add statistics for ``<dataStore>`` storage\n+\n+    The bulk statistics (``virsh domstats --block --backing``) now report also\n+    information about the ``<dataStore>`` if given disk uses this feature.\n+\n+  * hyperv: Hyper-V guests now report TPM device status in their domain xml\n+    definition.\n+\n+* **Bug fixes**\n+\n+  * qemu: Fix crash when attaching network inteface with hostdev network\n+\n+    Introduced in v12.1.0 by implementing IOMMUFD backend support for\n+    host devices.\n+\n+\n+v12.1.0 (2026-03-02)\n+====================\n+\n+* **New features**\n+\n+  * qemu: Advertise firmware features in domain capabilities XML\n+\n+    The contents of the ``<firmwareFeatures/>`` element can be used to determine\n+    ahead of time whether a firmware matching certain characteristics, for\n+    example Secure Boot support, is available for the selected architecture and\n+    machine type.\n+\n+  * qemu: Add support for uefi-vars device and firmware builds using it\n+\n+    This is particularly noteworthy for people running aarch64 VMs with the\n+    'virt' machine type, as it makes it finally possible to use Secure Boot\n+    with that combination.\n+\n+    In most cases, no special steps are needed to take advantage of this:\n+    assuming that you have installed a recent version of QEMU, as well as a\n+    build of edk2 that includes the necessary binaries, you can just `enable\n+    Secure Boot <kbase/secureboot.html>`__ as you normally would.\n+\n+    To explicitly request that the uefi-vars device is used even for scenarios\n+    where that would normally not be the case, it's enough to add an empty\n+    ``<varstore/>`` element in the domain XML. More details are available in\n+    the `guest firmware configuration <formatdomain.html#guest-firmware>`__\n+    section of the documentation.\n+\n+  * hyperv: improve API coverage for the hyperv driver\n+\n+    The `virDomainInterfaceAddresses()` and `virDomainGetBlockInfo()` APIs are\n+    now supported by the hyperv driver. In addition, the domain xml for hyperv\n+    domains will indicate via firmware features whether secure boot is enabled.\n+    It also honors these firmware features when creating new domains.\n+\n+  * bhyve: Add support for vCPU pinning configuration\n+\n+    Bhyve guests can now have vCPU pinning configured::\n+\n+     <cputune>\n+       <vcpupin vcpu=\"0\" cpuset=\"1,2,3\"/>\n+     </cputune>\n+\n+    Additionally, the ``domainGetVcpuPinInfo`` API is implemented for\n+    querying vCPU pinning information.\n+\n+  * qemu: Support block operation latency histograms\n+\n+    Libvirt now allows configuring qemu's block latency histogram collection\n+    as well as returns them via the bulk stats API.\n+\n+* **Improvements**\n+\n+  * Introduce granule attribute for virtio-iommu\n+\n+    In case when guest page size doesn't match the host page size (typically\n+    aarch64) the ``virtio-iommu`` needs to know the guest page size so it can\n+    allocate memory aligned to guest page size.\n+\n+  * Parse hyperv features even for host-model\n+\n+    Two releases ago, in v11.9.0 new ``host-model`` mode for Hyper-V\n+    enlightenments was introduced. Starting with this release, users can\n+    additionally override the defaults that are picked when domain is started\n+    and features are expanded.\n+\n+  * bhyve: Improve loader configuration for arm64 guests\n+\n+    If loader is not explicitly configured, use the loader\n+    from the ``sysutils/u-boot-bhyve-arm64`` port/package for the\n+    arm64 guests.\n+\n+* **Bug fixes**\n+\n+  * Fix build with remote driver disabled\n+\n+    Some parts of code were wrongly annotated as depended on remote driver.\n+    But they were used even from client side drivers. This is now fixed and\n+    libvirt builds properly even with remote driver disabled.\n+\n+  * Various fixes to libvirt-guests.sh\n+\n+    Firstly, the exit code of various commands was ignored (which may lead the\n+    script to wrongly determine persistent/transient domain state, for\n+    instance). Secondly, due to logical error, the script might have\n+    incorrectly asses state a domain is in.\n+\n+  * AppArmor: Ask for no deny rule for readonly disk elements\n+\n+    For read only disks, libvirt created an AppArmor profile which disallowed\n+    any future write rules. But when doing a blockcommit, libvirt needs to\n+    allow hypervisor to write to even readonly disks. The rule in the profile\n+    was changed so that future write rules can be added, temporarily.\n+\n+  * esx: Allow connecting to IPv6 server\n+\n+    Due to a bug in our code, if an IPv6 address was provided in connection\n+    URI, libvirt would fail to connect to VMWare server. This is now fixed.\n+\n+  * qemu: Use device alias if interface has no name\n+\n+    The ``virDomainInterfaceAddresses()`` API (or ``virsh domifaddr``) returns\n+    an array interfaces among with their addresses. But some interface names\n+    might be unknown, for instance if the API is told to parse host's ARP table\n+    then PCI assigned NICs or slirp/passt lack interface name. If that's the\n+    case, let the API return domain's ``<interface/>`` alias.\n+\n+  * bhyve: hyperv: Various memory leak fixes\n+\n+  * qemu: Fix failures when restoring save/managed-save images with upcoming qemu versions\n+\n+    Current git version of qemu would return an error when attempting to load\n+    an existing (managed) save image as we relied on deprecated features that\n+    were now removed.\n+\n+\n v12.0.0 (2026-01-15)\n ====================\n \n@@ -346,6 +828,12 @@ v11.7.0 (2025-09-01)\n     The bhyve driver now supports querying domain block, interface,\n     and memory statistics. Not all statistics fields are supported though.\n \n+  * storage: ZFS: Implement native volume resizing\n+\n+    The ZFS storage driver now supports ``resizeVol`` allowing online\n+    resizing of zvols via ``zfs set volsize``. Since ZFS is always\n+    thin-provisioned, resize is essentially a size limit change.\n+\n * **Improvements**\n \n   * bhyve: improve 'efi' configuration autofill\ndiff --git a/build-aux/syntax-check.mk b/build-aux/syntax-check.mk\nindex 4deaa70..a049c47 100644\n--- a/build-aux/syntax-check.mk\n+++ b/build-aux/syntax-check.mk\n@@ -389,6 +389,23 @@ sc_prohibit_unsigned_pid:\n \thalt='use signed type for pid values' \\\n \t  $(_sc_search_regexp)\n \n+sc_prohibit_g_autofree_const:\n+\t@prohibit='\\<g_auto(free|ptr)\\>.* const.* \\*[^*]' \\\n+\thalt='‘g_autofree’ discards ‘const’ qualifier from pointer target type' \\\n+\t  $(_sc_search_regexp)\n+\n+sc_prohibit_local_with_subshell:\n+\t@err=0; for f in $$($(VC_LIST_EXCEPT) | $(GREP) -E '\\.sh(\\.in)?$$'); do \\\n+\t  lines=$$( $(AWK) \\\n+\t  '/^\\s*(local|export|declare|readonly)\\s+.*=/ { nr=NR; c=1; next } \\\n+\t  /^\\s*$$/ { if (c) next } \\\n+\t  /\\$$\\?/ { if (c) { print nr; c=0; } next } \\\n+\t  { c=0 }' $$f ) ; \\\n+\t  for l in $$lines; do echo $$f:$$l 1>&2; err=1; done ; \\\n+\tdone; \\\n+\ttest $$err -eq 0 || { msg=\"Declare and assign separately to avoid masking return values\" $(_sc_say_and_exit) }\n+\n+\n # Many of the function names below came from this filter:\n # git grep -B2 '\\<_('|grep -E '\\.c- *[[:alpha:]_][[:alnum:]_]* ?\\(.*[,;]$' \\\n # |sed 's/.*\\.c-  *//'|perl -pe 's/ ?\\(.*//'|sort -u \\\n@@ -461,6 +478,14 @@ sc_prohibit_error_message_on_multiple_lines:\n \thalt='found error message on multiple lines' \\\n \t$(_sc_search_regexp)\n \n+# Disallow VIR_WARN and other messagess on multiple lines, except when\n+# they end with '\\n'.\n+sc_prohibit_warnings_on_multiple_lines:\n+\t@prohibit='VIR_WARN\\(\"[^\"]*\"$$' \\\n+    exclude='\\\\n\"$$' \\\n+\thalt='found error message on multiple lines' \\\n+\t$(_sc_search_regexp)\n+\n # Look for diagnostics that lack a % in the format string, except that we\n # allow VIR_ERROR to do this, and ignore functions that take a single\n # string rather than a format argument.\n@@ -1362,6 +1387,16 @@ sc_prohibit_inline_functions:\n \thalt='avoid inline functions in .c files' \\\n \t  $(_sc_search_regexp)\n \n+# glib's G_REGEX_OPTIMIZE instructs the PCRE library to use JIT optimization\n+# of the regexes, which requires executable memory to work. Security mechanisms\n+# such as SELinux may disallow it. glib gracefully falls back to un-optimized\n+# code. This check serves as a warning to not rely on G_REGEX_OPTIMIZE.\n+# Currently we avoid use of G_REGEX_OPTIMIZE anywhere.\n+sc_G_REGEX_OPTIMIZE:\n+\t@prohibit='G_REGEX_OPTIMIZE' \\\n+\texclude='see sc_G_REGEX_OPTIMIZE' \\\n+\thalt='Optimizations may not work everywhere. Read the warning in build-aux/syntax-check.mk' \\\n+\t  $(_sc_search_regexp)\n \n ## ---------- ##\n ## Exceptions ##\n@@ -1525,6 +1560,9 @@ exclude_file_name_regexp--sc_spacing-check = \\\n exclude_file_name_regexp--sc_prohibit_inline_functions = \\\n   ^src/storage_file/storage_source.*.c$$\n \n+exclude_file_name_regexp--sc_G_REGEX_OPTIMIZE = \\\n+\t^build-aux/syntax-check\\.mk$$\n+\n ## -------------- ##\n ## Implementation ##\n ## -------------- ##\ndiff --git a/debian/NEWS b/debian/NEWS\nindex 27e37bb..99a318d 100644\n--- a/debian/NEWS\n+++ b/debian/NEWS\n@@ -1,3 +1,25 @@\n+libvirt (12.6.0-1ubuntu1) stonking; urgency=medium\n+\n+  Ubuntu no longer uses UNIX socket group membership for access control\n+  when users connect to libvirtd through its sockets (e.g. via virsh).\n+  Instead, it now aligns with Debian and uses polkit for access control\n+  of connections coming from those sockets.\n+\n+  This change should be transparent for existing use cases, since all\n+  sudo users are still added to the libvirt group and are allowed to\n+  manage VMs through polkit.\n+\n+  On upgrade to the new version, users should migrate their existing\n+  configuration to the new configuration file\n+  /etc/libvirt/libvirtd.conf, carrying over any local changes.\n+\n+  Administrators who wish to preserve the previous group-based behaviour\n+  can restore it locally. Please refer to\n+  https://ubuntu.com/server/docs/how-to/virtualisation/libvirt/\n+  for more details and instructions.\n+\n+ -- Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>  Wed, 12 Aug 2026 00:00:00 +0000\n+\n libvirt (11.1.0-2) experimental; urgency=medium\n \n   As part of the big package reorganization that has been\ndiff --git a/debian/arches.mk b/debian/arches.mk\nindex a8001ce..8881807 100644\n--- a/debian/arches.mk\n+++ b/debian/arches.mk\n@@ -1,6 +1,6 @@\n ARCHES_CEPH = amd64 arm64 loong64 mips64el ppc64el riscv64 s390x\n ARCHES_GLUSTER = amd64 arm64 ia64 loong64 mips64el ppc64 ppc64el riscv64 s390x sparc64\n-ARCHES_QEMU = amd64 arm64 armel armhf i386 loong64 mips64el mipsel powerpc ppc64 ppc64el riscv64 s390x sparc64 x32\n+ARCHES_QEMU = amd64 arm64 loong64 mips64el ppc64 ppc64el riscv64 s390x sparc64\n ARCHES_XEN = amd64 arm64\n ARCHES_VBOX = amd64 i386\n ARCHES_DMIDECODE = amd64 arm64 armhf i386 riscv64 loong64 x32\ndiff --git a/debian/changelog b/debian/changelog\nindex 13f1a92..e4d785d 100644\n--- a/debian/changelog\n+++ b/debian/changelog\n@@ -1,3 +1,4 @@\n+<<<<<<< debian/changelog\n libvirt-hwe (12.0.0-1ubuntu5.3) resolute; urgency=medium\n \n   * d/p/u-aa/apparmor-Allow-vfio-ccw-hostdev-sysfs-access.patch:\n@@ -6,22 +7,259 @@ libvirt-hwe (12.0.0-1ubuntu5.3) resolute; urgency=medium\n  -- Hector Cao <hector.cao@canonical.com>  Wed, 19 Aug 2026 11:23:52 +0200\n \n libvirt-hwe (12.0.0-1ubuntu5.2) resolute; urgency=medium\n+=======\n+libvirt-hwe (12.6.0-1ubuntu2) stonking; urgency=medium\n+\n+  * d/{rules, hwe-helper/postrm-snippet}: add postrm hook to manage purge race\n+    condition between base/hwe stacks (LP: #2164849)\n+  * d/control.in: add version constraint for dependency on ubuntu-virt-hwe\n+  * d/*: remove generated maintscript files\n+\n+ -- Hector Cao <hector.cao@canonical.com>  Tue, 25 Aug 2026 12:13:58 +0200\n+\n+libvirt-hwe (12.6.0-1ubuntu1) stonking; urgency=medium\n+\n+  * Merge with src:libvirt (LP: #2153207). Remaining changes:\n+    - d/*: creation of hwe packages (LP 2143146)\n+  * New changes:\n+    - revert: d/{control,control.in}: add dependencies to -hwe components\n+      (LP 2143146)\n+\n+ -- Hector Cao <hector.cao@canonical.com>  Wed, 19 Aug 2026 11:10:20 +0200\n+\n+libvirt (12.6.0-1ubuntu1) stonking; urgency=medium\n+\n+  * Merge with Debian unstable (LP: #2153207). Remaining changes:\n+    - d/*(post|pre)(rm|inst), d/*.install: drop generated files\n+    - d/rules: set qemu-group to kvm (for compat with older ubuntu)\n+    - d/rules,d/libvirt-daemon-common.*: apport hook\n+    - autostart default bridged network (As upstream does, but not Debian).\n+      In addition to just enabling it our solution provides:\n+      + do not autostart if subnet is already taken (e.g. in guests).\n+      + iterate some alternative subnets before giving up\n+      + d/t/network: Test automatic virbr0 setup via autopkgtest.\n+    - d/libvirt-daemon-driver-qemu.postinst.in: add sudo users to libvirt group.\n+      This would allow sudo users to interact with libvirtd via unix sockets.\n+    - update README.Debian with Ubuntu changes\n+    - d/p/u/ubuntu_machine_type.patch: accept ubuntu types as pci440fx\n+    - fix autopkgtests (LP 1899180)\n+      + d/t/control, d/t/smoke-qemu-session: fixup smoke-qemu-session by making\n+        vmlinuz available and accessible (Debian bug 848314)\n+      + d/t/control: replace libvirt-daemon by libvirt-daemon-system as\n+        dependency of the test smoke-qemu-session\n+      + d/t/smoke-lxc: fix smoke-lxc by ignoring potential issues on destroy as\n+        long as the following undefine succeeds\n+      + d/t/smoke-lxc: use systemd instead of sysV to restart the service\n+      + d/t/control, d/t/smoke-lxc: retry service restart and skip test if\n+        failing; This was flaky on some release/architectures\n+      + d/t/smoke-lxc: retry check_domain being flaky on arm64\n+    - dnsmasq related enhancements\n+      + run dnsmasq as libvirt-dnsmasq (LP 1743718)\n+      + d/libvirt-daemon-config-network.postinst*: add libvirt-dnsmasq user\n+        and group\n+      + d/libvirt-daemon-config-network.postrm*: remove libvirt-dnsmasq user\n+        and group on purge\n+      + d/p/ubuntu/dnsmasq-as-priv-user: write dnsmasq config with user\n+        libvirt-dnsmasq and adapt the self tests to expect that config\n+      + Add dnsmasq configuration to work with system wide dnsmasq-base\n+    - d/p/u/set-default-machine-to-ubuntu.patch: to select default\n+      machine type correctly with newer qemu/libvirt\n+    - d/p/u/lp-1861125-ubuntu-models: recognize Ubuntu models for\n+      (LP 1861125) fixups\n+    - d/p/ubuntu/wait-for-qemu-kvm.patch: avoid hangs on startup (LP 1887592)\n+    - d/libvirt-daemon-common.libvirt-guests.default: shut guests down\n+      in parallel\n+    - apparmor Delta that is Ubuntu specific or yet to be upstreamed\n+      split into logical pieces. File names in debian/patches/ubuntu-aa/:\n+      + 0020-virt-aa-helper-ubuntu-storage-paths.patch:\n+        apparmor, virt-aa-helper: Allow various storage pools and image\n+        locations\n+      + 0029-appmor-libvirt-qemu-Add-9p-support.patch: appmor,\n+        libvirt-qemu: Add 9p support\n+      + 0032-apparmor-libvirt-qemu-Allow-reading-charm-specific-c.patch:\n+        apparmor, libvirt-qemu: Allow reading charm-specific ceph config\n+      + 0033-UBUNTU-only-apparmor-for-kvm.powerpc-LP-1680384.patch: allow\n+        commands executed by ubuntu only kvm wrapper on ppc64el\n+        (LP 1686621 LP 1680384 LP 1784023)\n+      + 0034-apparmor-virt-aa-helper-access-for-snapped-nova.patch:\n+        apparmor, virt-aa-helper: access for snapped nova\n+      + lp-1815910-allow-vhost-hotplug.patch: avoid apparmor issues\n+        with vhost-net/vhost-vsock/vhost-scsi hotplug (LP 1815910)\n+      + d/p/u-aa/lp2079869-*: allow access for bridge helper to sys node\n+        (LP 2079869)\n+      + Support both GNU and Rust coreutils paths in apparmor policy (LP 2123870)\n+        d/p/u-aa/lp2123870-apparmor-use-the-coreutils-tunable-for-coreutils.patch\n+      + d/p/u-aa/lp2144665-*: grant access to unix socket for QGSD\n+        (LP 2144665)\n+    - libvirt should not use user/group tss for swtpm (LP 1948880)\n+      + d/libvirt-daemon-system.postinst: modify ownership of swtpm logdir\n+      + d/libvirt-daemon-driver-qemu.sysusers: add swtpm user and group\n+      + d/p/u/swtpm-by-swtpm-user.patch: change default spawned swtpm processes\n+        to user swtpm and adapt expected self test result changes.\n+    - d/control: Demote passt to Suggests (from Recommends) for\n+      libvirt-daemon-driver-qemu, because passt is in universe.\n+    - d/control: Make libvirt-daemon Suggest (instead of Recommend)\n+      libvirt-daemon-plugin-sanlock, which is in universe.\n+    - default to qemu:///system libvirt URI (LP 2027838)\n+      On Ubuntu we always want to initialize the URI to qemu:///system,\n+      regardless if running as privileged daemon or not. This keeps backward\n+      compatibility with Ubuntu's default behavior, while still allowing users\n+      more flexibility in changing that default, through config files or\n+      environment variables.\n+      Redesign the solution by getting rid of the libvirt-uri.sh script used\n+      up until now to achieve the same behavior.\n+      + d/p/u/lp-2027838-conf-Default-to-qemu-system-libvirt-URI.patch\n+      + d/t/default-uri: add basic test for LIBVIRT_DEFAULT_URI handling\n+    - enable MSR kernel module load\n+      d/p/u/x86-install-modules-load.d-file-to-load-msr-module.patch\n+      d/arches.mk, d/libvirt-common.install.in, debian/libvirt-common.postinst.in\n+      (LP 2106791)\n+    - d/control: re-generate from d/control-in: we stop changing both files\n+      and eventually re-generate from d/control-in at built as intended.\n+    - d/{control,control.in}: add dependencies to -hwe components (LP 2143146)\n+  * New changes:\n+    - d/p/u-aa/lp2056441-allow-vfio-ccw-hostdev-sysfs-access.patch:\n+      Allow vfio-ccw hostdev sysfs access (LP: #2056441)\n+    - d/NEWS: add section about migration to polkit\n+  * Dropped changes:\n+    - d/control.in: Disable libssh2 support (universe dependency)\n+      [libssh2 is now in main]\n+    - 0031-virt-aa-helper-Ask-for-no-deny-rule-for-readonly-dis.patch:\n+      virt-aa-helper: Ask for no deny rule for readonly disk\n+      [Fixed in upstream 11.5.0]\n+    - Fix excessive memory allocation when physical_package_id is large\n+      (LP 2153530).\n+      + d/p/ubuntu/lp2153530-fix-max-socket-calculation.patch: compute socket\n+        count from unique package IDs instead of the maximum value.\n+      [Fixed in upstream 12.5.0]\n+    - Fix a logic bug to improve performance for some interface types when\n+      setting ingress-only QoS rules (LP 2155755)\n+      + d/p/ubuntu/lp2155755-split-virNetDevBandwidthClear-into-helpers.patch\n+      + d/p/ubuntu/lp2155755-only-clear-qdisc-for-defined-directions.patch\n+      [Fixed in upstream 12.5.0]\n+    - d/control.in: add libzfslinux-dev to build-deps\n+      [useless delta]\n+    - d/libvirt-daemon-system.postinst: create user/group swtpm if not present\n+      due to swtpm-tools (LP 1951975)\n+    - fix ubuntu users management for sudoers (LP 2142453)\n+      [squashed into the delta Allow-libvirt-group-to-access-the-socket]\n+    - d/libvirt-clients.conffiles: Remove libvirt-uri.sh profile.d script\n+      [Dropped after 26.04, part of default to qemu:///system libvirt URI]\n+    - d/l-d-config-network.{pre,post}inst.in: diversions for network config.\n+      [Dropped after 26.04, part of autostart default bridged network]\n+    - d/l-d-config-network.{pre,post}inst.in: retain non pkg owned network\n+      config.\n+      [Dropped after 26.04, part of autostart default bridged network]\n+    - d/control: Add Breaks/Replaces, to account for the move of configuration\n+      of the default bridged network to libvirt-daemon-config-network.\n+      (LP 2107448)\n+      [Dropped after 26.04, part of autostart default bridged network]\n+    - d/l-d-config-network.postinst: clear 'autostarted' state, to activate\n+      network on install (LP 2093864)\n+      [Dropped after 26.04, part of autostart default bridged network]\n+    - d/p/u/ovmf_paths.patch: adjust paths to secboot.fd UEFI\n+      Secure Boot enabled variants of the OVMF firmware and variable store for\n+      the paths where we ship these files in Ubuntu.\n+      [this is the legacy firmare discovery mechanism, json descriptors is\n+       now the de-facto mechanism, this delta can now be dropped]\n+    - d/p/u/Allow-libvirt-group-to-access-the-socket.patch: This is\n+      the group based access to libvirt functions as it was used in Ubuntu\n+      for quite a long time.\n+      + d/p/ubuntu/daemon-augeas-fix-expected.patch fix some related tests\n+        due to the group access change.\n+      + d/libvirt-daemon-driver-qemu.postinst*: add users in sudo to the libvirt\n+        group.\n+      [To align with Debian and upstreams recommended default on using polkit]\n+\n+ -- Hector Cao <hector.cao@canonical.com>  Wed, 19 Aug 2026 11:04:44 +0200\n+\n+libvirt (12.6.0-1) unstable; urgency=medium\n+\n+  * [542853e] New upstream version 12.6.0\n+\n+ -- Andrea Bolognani <eof@kiyuko.org>  Mon, 03 Aug 2026 22:02:12 +0200\n+\n+libvirt (12.5.0-1) unstable; urgency=medium\n+\n+  * [5942ad9] New upstream version 12.5.0\n+  * [e7bac77] control: Bump Standards-Version to 4.7.4\n+    - No changes needed\n+\n+ -- Andrea Bolognani <eof@kiyuko.org>  Fri, 03 Jul 2026 22:10:28 +0200\n+\n+libvirt (12.4.0-1) unstable; urgency=medium\n+\n+  * [cad230c] New upstream version 12.4.0\n+  * [f8de382] common: Add several CPU models\n+\n+ -- Andrea Bolognani <eof@kiyuko.org>  Sun, 14 Jun 2026 00:31:15 +0200\n+\n+libvirt (12.3.0-1) unstable; urgency=medium\n+\n+  [ Andrea Bolognani ]\n+  * [fc8fbe1] New upstream version 12.3.0\n+  * [3839c78] patches: Drop debian/Drop-handling-of-secret-encryption-[...]\n+    - The issue that was preventing us from enabling this\n+      functionality has been fixed upstream\n+  * [5267f7e] Add Multi-Arch field for packages that were missing it\n+\n+  [ Pino Toscano ]\n+  * [e64433c] Build libvirt-clients-qemu only on QEMU architectures\n+  * [f7c3ccd] Drop QEMU driver on 32bit architectures\n+    - No longer supported as host architectures starting with QEMU 11.0\n+    - Closes: #1134873\n+\n+ -- Andrea Bolognani <eof@kiyuko.org>  Sun, 10 May 2026 22:37:28 +0200\n+\n+libvirt (12.2.0-1) unstable; urgency=medium\n+\n+  * [9779e02] New upstream version 12.2.0\n+\n+ -- Andrea Bolognani <eof@kiyuko.org>  Sat, 18 Apr 2026 01:03:59 +0200\n+\n+libvirt (12.1.0-1) experimental; urgency=medium\n+\n+  * [6b2d3ee] New upstream version 12.1.0\n+    - Addresses various issues related to the interactions between\n+      AppArmor and snapshot handling\n+    - Closes: #932456\n+    - Closes: #1061725\n+    - Closes: #1093955\n+  * [8e9b871] patches: Add debian/Drop-handling-of-secret-encryption-[...]\n+    - The feature is implemented in a way that makes libvirtd\n+      completely unusable if the secret driver is not installed, so\n+      we're going to keep it disabled for the time being\n+\n+ -- Andrea Bolognani <eof@kiyuko.org>  Sun, 29 Mar 2026 22:33:37 +0200\n+\n+libvirt-hwe (12.0.0-1ubuntu7) stonking; urgency=medium\n+>>>>>>> debian/changelog\n \n   * Fix a logic bug to improve performance for some interface types when\n     setting ingress-only QoS rules (LP: #2155755)\n     - d/p/ubuntu/lp2155755-split-virNetDevBandwidthClear-into-helpers.patch\n     - d/p/ubuntu/lp2155755-only-clear-qdisc-for-defined-directions.patch\n \n+<<<<<<< debian/changelog\n  -- Wesley Hershberger <wesley.hershberger@canonical.com>  Wed, 24 Jun 2026 13:18:45 -0500\n \n libvirt-hwe (12.0.0-1ubuntu5.1) resolute; urgency=medium\n+=======\n+ -- Wesley Hershberger <wesley.hershberger@canonical.com>  Wed, 24 Jun 2026 13:19:48 -0500\n+\n+libvirt-hwe (12.0.0-1ubuntu6) stonking; urgency=medium\n+>>>>>>> debian/changelog\n \n   * Fix excessive memory allocation when physical_package_id is large\n     (LP: #2153530).\n     - d/p/ubuntu/lp2153530-fix-max-socket-calculation.patch: compute socket\n       count from unique package IDs instead of the maximum value.\n \n+<<<<<<< debian/changelog\n  -- Hector Cao <hector.cao@canonical.com>  Thu, 21 May 2026 15:49:24 +0200\n+=======\n+ -- Seyeong Kim <seyeong.kim@canonical.com>  Thu, 21 May 2026 09:03:30 +0000\n+>>>>>>> debian/changelog\n \n libvirt-hwe (12.0.0-1ubuntu5) resolute; urgency=medium\n \ndiff --git a/debian/control b/debian/control\nindex fcdd5da..03e8864 100644\n--- a/debian/control\n+++ b/debian/control\n@@ -53,18 +53,19 @@ Build-Depends:\n  po-debconf,\n  python3-docutils,\n  python3:native,\n- qemu-utils [amd64 arm64 armel armhf i386 loong64 mips64el mipsel powerpc ppc64 ppc64el riscv64 s390x sparc64 x32],\n+ qemu-utils [amd64 arm64 loong64 mips64el ppc64 ppc64el riscv64 s390x sparc64],\n  systemtap-sdt-dev [linux-any],\n  xsltproc,\n Vcs-Git: https://salsa.debian.org/libvirt-team/libvirt.git\n Vcs-Browser: https://salsa.debian.org/libvirt-team/libvirt\n Homepage: https://libvirt.org/\n-Standards-Version: 4.7.3\n+Standards-Version: 4.7.4\n Rules-Requires-Root: no\n \n Package: libvirt-clients-hwe\n Section: admin\n Architecture: any\n+Multi-Arch: no\n Depends:\n  libvirt-common (= ${binary:Version}),\n  libvirt0 (= ${binary:Version}),\n@@ -72,9 +73,13 @@ Depends:\n  sensible-utils,\n  ${misc:Depends},\n  ${shlibs:Depends},\n+<<<<<<< debian/control\n  ubuntu-virt-hwe,\n+=======\n+ ubuntu-virt-hwe (>= 1:11.0.3+ds-2ubuntu3~),\n+>>>>>>> debian/control\n Suggests:\n- libvirt-clients-qemu (= ${source:Version}) [amd64 arm64 armel armhf i386 loong64 mips64el mipsel powerpc ppc64 ppc64el riscv64 s390x sparc64 x32],\n+ libvirt-clients-qemu (= ${source:Version}) [amd64 arm64 loong64 mips64el ppc64 ppc64el riscv64 s390x sparc64],\n  libvirt-daemon (= ${binary:Version}) [linux-any],\n  libvirt-login-shell (= ${binary:Version}) [linux-any],\n Breaks:\n@@ -101,18 +106,21 @@ Description: virtualization library - clients\n \n Package: libvirt-clients-qemu-hwe\n Section: admin\n-Architecture: all\n+Architecture: amd64 arm64 loong64 mips64el ppc64 ppc64el riscv64 s390x sparc64\n+Multi-Arch: no\n Depends:\n- libvirt-common (<< ${source:Version}.1~),\n- libvirt-common (>= ${source:Version}),\n- libvirt0 (<< ${source:Version}.1~),\n- libvirt0 (>= ${source:Version}),\n+ libvirt-common (= ${binary:Version}),\n+ libvirt0 (= ${binary:Version}),\n  python3-cryptography,\n  python3-libvirt,\n  python3-lxml,\n  python3:any,\n  ${misc:Depends},\n+<<<<<<< debian/control\n  ubuntu-virt-hwe,\n+=======\n+ ubuntu-virt-hwe (>= 1:11.0.3+ds-2ubuntu3~),\n+>>>>>>> debian/control\n Replaces:\n  libvirt-clients-qemu,\n Provides:\n@@ -130,6 +138,7 @@ Description: virtualization library - clients (QEMU specific)\n Package: libvirt-daemon-hwe\n Section: admin\n Architecture: linux-any\n+Multi-Arch: no\n Depends:\n  libvirt-common (= ${binary:Version}),\n  libvirt-daemon-common (= ${binary:Version}),\n@@ -138,13 +147,17 @@ Depends:\n  logrotate,\n  ${misc:Depends},\n  ${shlibs:Depends},\n+<<<<<<< debian/control\n  ubuntu-virt-hwe,\n+=======\n+ ubuntu-virt-hwe (>= 1:11.0.3+ds-2ubuntu3~),\n+>>>>>>> debian/control\n Recommends:\n  libvirt-daemon-driver-interface (= ${binary:Version}),\n  libvirt-daemon-driver-network (= ${binary:Version}),\n  libvirt-daemon-driver-nodedev (= ${binary:Version}),\n  libvirt-daemon-driver-nwfilter (= ${binary:Version}),\n- libvirt-daemon-driver-qemu (= ${binary:Version}) [amd64 arm64 armel armhf i386 loong64 mips64el mipsel powerpc ppc64 ppc64el riscv64 s390x sparc64 x32],\n+ libvirt-daemon-driver-qemu (= ${binary:Version}) [amd64 arm64 loong64 mips64el ppc64 ppc64el riscv64 s390x sparc64],\n  libvirt-daemon-driver-secret (= ${binary:Version}),\n  libvirt-daemon-driver-storage (= ${binary:Version}),\n  libvirt-daemon-driver-storage-disk (= ${binary:Version}),\n@@ -196,6 +209,7 @@ Homepage: https://libvirt.org/daemons.html#monolithic-driver-daemon\n Package: libvirt-daemon-common-hwe\n Section: admin\n Architecture: linux-any\n+Multi-Arch: no\n Depends:\n  dmidecode [amd64 arm64 armhf i386 riscv64 loong64 x32],\n  gettext-base,\n@@ -207,7 +221,11 @@ Depends:\n  sensible-utils,\n  ${misc:Depends},\n  ${shlibs:Depends},\n+<<<<<<< debian/control\n  ubuntu-virt-hwe,\n+=======\n+ ubuntu-virt-hwe (>= 1:11.0.3+ds-2ubuntu3~),\n+>>>>>>> debian/control\n Recommends:\n  netcat-openbsd,\n Suggests:\n@@ -239,12 +257,17 @@ Description: virtualization daemon - common files\n Package: libvirt-daemon-log-hwe\n Section: admin\n Architecture: linux-any\n+Multi-Arch: no\n Depends:\n  libvirt-common (= ${binary:Version}),\n  libvirt0 (= ${binary:Version}),\n  ${misc:Depends},\n  ${shlibs:Depends},\n+<<<<<<< debian/control\n  ubuntu-virt-hwe,\n+=======\n+ ubuntu-virt-hwe (>= 1:11.0.3+ds-2ubuntu3~),\n+>>>>>>> debian/control\n Conflicts:\n  libvirt-daemon-system (<< 10.6.0-2~),\n Breaks:\n@@ -269,12 +292,17 @@ Homepage: https://libvirt.org/daemons.html#logging-daemon\n Package: libvirt-daemon-lock-hwe\n Section: admin\n Architecture: linux-any\n+Multi-Arch: no\n Depends:\n  libvirt-common (= ${binary:Version}),\n  libvirt0 (= ${binary:Version}),\n  ${misc:Depends},\n  ${shlibs:Depends},\n+<<<<<<< debian/control\n  ubuntu-virt-hwe,\n+=======\n+ ubuntu-virt-hwe (>= 1:11.0.3+ds-2ubuntu3~),\n+>>>>>>> debian/control\n Conflicts:\n  libvirt-daemon-system (<< 10.6.0-2~),\n Breaks:\n@@ -296,7 +324,7 @@ Homepage: https://libvirt.org/daemons.html#locking-daemon\n \n Package: libvirt-daemon-driver-qemu-hwe\n Section: admin\n-Architecture: amd64 arm64 armel armhf i386 loong64 mips64el mipsel powerpc ppc64 ppc64el riscv64 s390x sparc64 x32\n+Architecture: amd64 arm64 loong64 mips64el ppc64 ppc64el riscv64 s390x sparc64\n Multi-Arch: no\n Depends:\n  libvirt-common (= ${binary:Version}),\n@@ -307,7 +335,11 @@ Depends:\n  systemd-container | sysvinit-core,\n  ${misc:Depends},\n  ${shlibs:Depends},\n+<<<<<<< debian/control\n  ubuntu-virt-hwe,\n+=======\n+ ubuntu-virt-hwe (>= 1:11.0.3+ds-2ubuntu3~),\n+>>>>>>> debian/control\n Recommends:\n  swtpm,\n  swtpm-tools,\n@@ -350,7 +382,11 @@ Depends:\n  systemd-container | sysvinit-core,\n  ${misc:Depends},\n  ${shlibs:Depends},\n+<<<<<<< debian/control\n  ubuntu-virt-hwe,\n+=======\n+ ubuntu-virt-hwe (>= 1:11.0.3+ds-2ubuntu3~),\n+>>>>>>> debian/control\n Breaks:\n  libvirt-daemon (<< 6.9.0-2~),\n  libvirt-daemon-system (<< 10.6.0-2~),\n@@ -380,7 +416,11 @@ Depends:\n  libvirt0 (= ${binary:Version}),\n  ${misc:Depends},\n  ${shlibs:Depends},\n+<<<<<<< debian/control\n  ubuntu-virt-hwe,\n+=======\n+ ubuntu-virt-hwe (>= 1:11.0.3+ds-2ubuntu3~),\n+>>>>>>> debian/control\n Replaces:\n  libvirt-daemon-driver-vbox,\n Provides:\n@@ -406,7 +446,11 @@ Depends:\n  logrotate,\n  ${misc:Depends},\n  ${shlibs:Depends},\n+<<<<<<< debian/control\n  ubuntu-virt-hwe,\n+=======\n+ ubuntu-virt-hwe (>= 1:11.0.3+ds-2ubuntu3~),\n+>>>>>>> debian/control\n Enhances:\n  xen,\n Breaks:\n@@ -429,7 +473,7 @@ Homepage: https://libvirt.org/drvxen.html\n Package: libvirt-daemon-driver-storage-hwe\n Section: admin\n Architecture: linux-any\n-Multi-arch: no\n+Multi-Arch: no\n Depends:\n  libvirt-common (= ${binary:Version}),\n  libvirt-daemon (= ${binary:Version}),\n@@ -437,7 +481,11 @@ Depends:\n  mount,\n  ${misc:Depends},\n  ${shlibs:Depends},\n+<<<<<<< debian/control\n  ubuntu-virt-hwe,\n+=======\n+ ubuntu-virt-hwe (>= 1:11.0.3+ds-2ubuntu3~),\n+>>>>>>> debian/control\n Suggests:\n  nfs-common,\n Breaks:\n@@ -461,7 +509,7 @@ Homepage: https://libvirt.org/storage.html\n Package: libvirt-daemon-driver-storage-disk-hwe\n Section: admin\n Architecture: linux-any\n-Multi-arch: no\n+Multi-Arch: no\n Depends:\n  libvirt-common (= ${binary:Version}),\n  libvirt-daemon (= ${binary:Version}),\n@@ -470,7 +518,11 @@ Depends:\n  parted,\n  ${misc:Depends},\n  ${shlibs:Depends},\n+<<<<<<< debian/control\n  ubuntu-virt-hwe,\n+=======\n+ ubuntu-virt-hwe (>= 1:11.0.3+ds-2ubuntu3~),\n+>>>>>>> debian/control\n Breaks:\n  libvirt-daemon (<< 10.6.0-2~),\n Replaces:\n@@ -500,7 +552,11 @@ Depends:\n  libvirt0 (= ${binary:Version}),\n  ${misc:Depends},\n  ${shlibs:Depends},\n+<<<<<<< debian/control\n  ubuntu-virt-hwe,\n+=======\n+ ubuntu-virt-hwe (>= 1:11.0.3+ds-2ubuntu3~),\n+>>>>>>> debian/control\n Replaces:\n  libvirt-daemon-driver-storage-gluster,\n Provides:\n@@ -518,7 +574,7 @@ Homepage: https://libvirt.org/storage.html#gluster-pool\n Package: libvirt-daemon-driver-storage-iscsi-hwe\n Section: admin\n Architecture: linux-any\n-Multi-arch: no\n+Multi-Arch: no\n Depends:\n  libvirt-common (= ${binary:Version}),\n  libvirt-daemon (= ${binary:Version}),\n@@ -527,7 +583,11 @@ Depends:\n  open-iscsi,\n  ${misc:Depends},\n  ${shlibs:Depends},\n+<<<<<<< debian/control\n  ubuntu-virt-hwe,\n+=======\n+ ubuntu-virt-hwe (>= 1:11.0.3+ds-2ubuntu3~),\n+>>>>>>> debian/control\n Breaks:\n  libvirt-daemon (<< 10.6.0-2~),\n Replaces:\n@@ -556,7 +616,11 @@ Depends:\n  libvirt0 (= ${binary:Version}),\n  ${misc:Depends},\n  ${shlibs:Depends},\n+<<<<<<< debian/control\n  ubuntu-virt-hwe,\n+=======\n+ ubuntu-virt-hwe (>= 1:11.0.3+ds-2ubuntu3~),\n+>>>>>>> debian/control\n Recommends:\n  qemu-block-extra,\n Replaces:\n@@ -577,7 +641,7 @@ Homepage: https://libvirt.org/storage.html#iscsi-direct-pool\n Package: libvirt-daemon-driver-storage-logical-hwe\n Section: admin\n Architecture: linux-any\n-Multi-arch: no\n+Multi-Arch: no\n Depends:\n  libvirt-common (= ${binary:Version}),\n  libvirt-daemon (= ${binary:Version}),\n@@ -586,7 +650,11 @@ Depends:\n  lvm2,\n  ${misc:Depends},\n  ${shlibs:Depends},\n+<<<<<<< debian/control\n  ubuntu-virt-hwe,\n+=======\n+ ubuntu-virt-hwe (>= 1:11.0.3+ds-2ubuntu3~),\n+>>>>>>> debian/control\n Breaks:\n  libvirt-daemon (<< 10.6.0-2~),\n Replaces:\n@@ -608,7 +676,7 @@ Homepage: https://libvirt.org/storage.html#logical-volume-pool\n Package: libvirt-daemon-driver-storage-mpath-hwe\n Section: admin\n Architecture: linux-any\n-Multi-arch: no\n+Multi-Arch: no\n Depends:\n  libvirt-common (= ${binary:Version}),\n  libvirt-daemon (= ${binary:Version}),\n@@ -616,7 +684,11 @@ Depends:\n  libvirt0 (= ${binary:Version}),\n  ${misc:Depends},\n  ${shlibs:Depends},\n+<<<<<<< debian/control\n  ubuntu-virt-hwe,\n+=======\n+ ubuntu-virt-hwe (>= 1:11.0.3+ds-2ubuntu3~),\n+>>>>>>> debian/control\n Breaks:\n  libvirt-daemon (<< 10.6.0-2~),\n Replaces:\n@@ -645,7 +717,11 @@ Depends:\n  libvirt0 (= ${binary:Version}),\n  ${misc:Depends},\n  ${shlibs:Depends},\n+<<<<<<< debian/control\n  ubuntu-virt-hwe,\n+=======\n+ ubuntu-virt-hwe (>= 1:11.0.3+ds-2ubuntu3~),\n+>>>>>>> debian/control\n Replaces:\n  libvirt-daemon-driver-storage-rbd,\n Provides:\n@@ -663,7 +739,7 @@ Homepage: https://libvirt.org/storage.html#rbd-pool\n Package: libvirt-daemon-driver-storage-scsi-hwe\n Section: admin\n Architecture: linux-any\n-Multi-arch: no\n+Multi-Arch: no\n Depends:\n  libvirt-common (= ${binary:Version}),\n  libvirt-daemon (= ${binary:Version}),\n@@ -671,7 +747,11 @@ Depends:\n  libvirt0 (= ${binary:Version}),\n  ${misc:Depends},\n  ${shlibs:Depends},\n+<<<<<<< debian/control\n  ubuntu-virt-hwe,\n+=======\n+ ubuntu-virt-hwe (>= 1:11.0.3+ds-2ubuntu3~),\n+>>>>>>> debian/control\n Breaks:\n  libvirt-daemon (<< 10.6.0-2~),\n Replaces:\n@@ -700,7 +780,11 @@ Depends:\n  libvirt0 (= ${binary:Version}),\n  ${misc:Depends},\n  ${shlibs:Depends},\n+<<<<<<< debian/control\n  ubuntu-virt-hwe,\n+=======\n+ ubuntu-virt-hwe (>= 1:11.0.3+ds-2ubuntu3~),\n+>>>>>>> debian/control\n Recommends:\n  zfsutils,\n Replaces:\n@@ -720,7 +804,7 @@ Homepage: https://libvirt.org/storage.html#zfs-pool\n Package: libvirt-daemon-driver-network-hwe\n Section: admin\n Architecture: linux-any\n-Multi-arch: no\n+Multi-Arch: no\n Depends:\n  dnsmasq-base,\n  iptables | nftables,\n@@ -729,7 +813,11 @@ Depends:\n  libvirt0 (= ${binary:Version}),\n  ${misc:Depends},\n  ${shlibs:Depends},\n+<<<<<<< debian/control\n  ubuntu-virt-hwe,\n+=======\n+ ubuntu-virt-hwe (>= 1:11.0.3+ds-2ubuntu3~),\n+>>>>>>> debian/control\n Breaks:\n  libvirt-daemon (<< 10.6.0-2~),\n  libvirt-daemon-system (<< 10.6.0-2~),\n@@ -752,7 +840,7 @@ Homepage: https://libvirt.org/formatnetwork.html\n Package: libvirt-daemon-driver-nwfilter-hwe\n Section: admin\n Architecture: linux-any\n-Multi-arch: no\n+Multi-Arch: no\n Depends:\n  iptables,\n  libvirt-common (= ${binary:Version}),\n@@ -760,7 +848,11 @@ Depends:\n  libvirt0 (= ${binary:Version}),\n  ${misc:Depends},\n  ${shlibs:Depends},\n+<<<<<<< debian/control\n  ubuntu-virt-hwe,\n+=======\n+ ubuntu-virt-hwe (>= 1:11.0.3+ds-2ubuntu3~),\n+>>>>>>> debian/control\n Breaks:\n  libvirt-daemon (<< 10.6.0-2~),\n Replaces:\n@@ -781,14 +873,18 @@ Homepage: https://libvirt.org/formatnwfilter.html\n Package: libvirt-daemon-driver-interface-hwe\n Section: admin\n Architecture: linux-any\n-Multi-arch: no\n+Multi-Arch: no\n Depends:\n  libvirt-common (= ${binary:Version}),\n  libvirt-daemon (= ${binary:Version}),\n  libvirt0 (= ${binary:Version}),\n  ${misc:Depends},\n  ${shlibs:Depends},\n+<<<<<<< debian/control\n  ubuntu-virt-hwe,\n+=======\n+ ubuntu-virt-hwe (>= 1:11.0.3+ds-2ubuntu3~),\n+>>>>>>> debian/control\n Breaks:\n  libvirt-daemon (<< 10.6.0-2~),\n Replaces:\n@@ -808,7 +904,7 @@ Description: virtualization daemon - interface driver\n Package: libvirt-daemon-driver-nodedev-hwe\n Section: admin\n Architecture: linux-any\n-Multi-arch: no\n+Multi-Arch: no\n Depends:\n  libvirt-common (= ${binary:Version}),\n  libvirt-daemon (= ${binary:Version}),\n@@ -816,7 +912,11 @@ Depends:\n  mdevctl,\n  ${misc:Depends},\n  ${shlibs:Depends},\n+<<<<<<< debian/control\n  ubuntu-virt-hwe,\n+=======\n+ ubuntu-virt-hwe (>= 1:11.0.3+ds-2ubuntu3~),\n+>>>>>>> debian/control\n Breaks:\n  libvirt-daemon (<< 10.6.0-2~),\n Replaces:\n@@ -837,14 +937,18 @@ Homepage: https://libvirt.org/drvnodedev.html\n Package: libvirt-daemon-driver-secret-hwe\n Section: admin\n Architecture: linux-any\n-Multi-arch: no\n+Multi-Arch: no\n Depends:\n  libvirt-common (= ${binary:Version}),\n  libvirt-daemon (= ${binary:Version}),\n  libvirt0 (= ${binary:Version}),\n  ${misc:Depends},\n  ${shlibs:Depends},\n+<<<<<<< debian/control\n  ubuntu-virt-hwe,\n+=======\n+ ubuntu-virt-hwe (>= 1:11.0.3+ds-2ubuntu3~),\n+>>>>>>> debian/control\n Breaks:\n  libvirt-daemon (<< 10.6.0-2~),\n Replaces:\n@@ -865,14 +969,18 @@ Homepage: https://libvirt.org/drvsecret.html\n Package: libvirt-daemon-plugin-lockd-hwe\n Section: admin\n Architecture: linux-any\n-Multi-arch: no\n+Multi-Arch: no\n Depends:\n  libvirt-common (= ${binary:Version}),\n  libvirt-daemon-lock (= ${binary:Version}),\n  libvirt0 (= ${binary:Version}),\n  ${misc:Depends},\n  ${shlibs:Depends},\n+<<<<<<< debian/control\n  ubuntu-virt-hwe,\n+=======\n+ ubuntu-virt-hwe (>= 1:11.0.3+ds-2ubuntu3~),\n+>>>>>>> debian/control\n Recommends:\n  libvirt-daemon (= ${binary:Version}),\n Breaks:\n@@ -895,14 +1003,18 @@ Homepage: https://libvirt.org/kbase/locking-lockd.html\n Package: libvirt-daemon-plugin-sanlock-hwe\n Section: admin\n Architecture: linux-any\n-Multi-arch: no\n+Multi-Arch: no\n Depends:\n  augeas-tools,\n  libvirt-common (= ${binary:Version}),\n  libvirt0 (= ${binary:Version}),\n  ${misc:Depends},\n  ${shlibs:Depends},\n+<<<<<<< debian/control\n  ubuntu-virt-hwe,\n+=======\n+ ubuntu-virt-hwe (>= 1:11.0.3+ds-2ubuntu3~),\n+>>>>>>> debian/control\n Recommends:\n  libvirt-daemon (= ${binary:Version}),\n Breaks:\n@@ -926,7 +1038,8 @@ Homepage: https://libvirt.org/kbase/locking-sanlock.html\n \n Package: libvirt-daemon-system-hwe\n Section: admin\n-Architecture: amd64 arm64 armel armhf i386 loong64 mips64el mipsel powerpc ppc64 ppc64el riscv64 s390x sparc64 x32\n+Architecture: amd64 arm64 loong64 mips64el ppc64 ppc64el riscv64 s390x sparc64\n+Multi-Arch: foreign\n Depends:\n  libvirt-clients (= ${binary:Version}),\n  libvirt-common (= ${binary:Version}),\n@@ -937,13 +1050,17 @@ Depends:\n  libvirt-daemon-driver-network (= ${binary:Version}),\n  libvirt-daemon-driver-nodedev (= ${binary:Version}),\n  libvirt-daemon-driver-nwfilter (= ${binary:Version}),\n- libvirt-daemon-driver-qemu (= ${binary:Version}) [amd64 arm64 armel armhf i386 loong64 mips64el mipsel powerpc ppc64 ppc64el riscv64 s390x sparc64 x32],\n+ libvirt-daemon-driver-qemu (= ${binary:Version}) [amd64 arm64 loong64 mips64el ppc64 ppc64el riscv64 s390x sparc64],\n  libvirt-daemon-driver-secret (= ${binary:Version}),\n  libvirt-daemon-driver-storage (= ${binary:Version}),\n  libvirt-daemon-log (= ${binary:Version}),\n  libvirt0 (= ${binary:Version}),\n  ${misc:Depends},\n+<<<<<<< debian/control\n  ubuntu-virt-hwe,\n+=======\n+ ubuntu-virt-hwe (>= 1:11.0.3+ds-2ubuntu3~),\n+>>>>>>> debian/control\n Replaces:\n  libvirt-daemon-system,\n Provides:\n@@ -962,6 +1079,7 @@ Description: virtualization daemon - typical QEMU-based deployment\n Package: libvirt-daemon-config-network-hwe\n Section: admin\n Architecture: all\n+Multi-Arch: foreign\n Depends:\n  adduser,\n  libvirt-common (<< ${source:Version}.1~),\n@@ -971,13 +1089,20 @@ Depends:\n  libvirt0 (<< ${source:Version}.1~),\n  libvirt0 (>= ${source:Version}),\n  ${misc:Depends},\n+<<<<<<< debian/control\n  ubuntu-virt-hwe,\n+=======\n+ ubuntu-virt-hwe (>= 1:11.0.3+ds-2ubuntu3~),\n+>>>>>>> debian/control\n Breaks:\n  libvirt-daemon-system (<< 6.9.0-2~),\n  libvirt-daemon-driver-qemu (<< 11.0.0-2ubuntu9~),\n Replaces:\n  libvirt-daemon-system (<< 6.9.0-2~),\n+<<<<<<< debian/control\n  libvirt-daemon-driver-qemu (<< 11.0.0-2ubuntu9~),\n+=======\n+>>>>>>> debian/control\n  libvirt-daemon-config-network,\n Provides:\n  libvirt-daemon-config-network (= ${binary:Version}),\n@@ -993,6 +1118,7 @@ Description: virtualization daemon - configuration files (default network)\n Package: libvirt-daemon-config-nwfilter-hwe\n Section: admin\n Architecture: all\n+Multi-Arch: foreign\n Depends:\n  libvirt-common (<< ${source:Version}.1~),\n  libvirt-common (>= ${source:Version}),\n@@ -1001,7 +1127,11 @@ Depends:\n  libvirt0 (<< ${source:Version}.1~),\n  libvirt0 (>= ${source:Version}),\n  ${misc:Depends},\n+<<<<<<< debian/control\n  ubuntu-virt-hwe,\n+=======\n+ ubuntu-virt-hwe (>= 1:11.0.3+ds-2ubuntu3~),\n+>>>>>>> debian/control\n Breaks:\n  libvirt-daemon-system (<< 6.9.0-2~),\n Replaces:\n@@ -1025,7 +1155,11 @@ Depends:\n  libvirt-common (= ${binary:Version}),\n  ${misc:Depends},\n  ${shlibs:Depends},\n+<<<<<<< debian/control\n  ubuntu-virt-hwe,\n+=======\n+ ubuntu-virt-hwe (>= 1:11.0.3+ds-2ubuntu3~),\n+>>>>>>> debian/control\n Recommends:\n  libvirt-l10n (= ${source:Version}),\n Replaces:\n@@ -1047,7 +1181,11 @@ Multi-Arch: foreign\n Depends:\n  ${misc:Depends},\n  ${shlibs:Depends},\n+<<<<<<< debian/control\n  ubuntu-virt-hwe,\n+=======\n+ ubuntu-virt-hwe (>= 1:11.0.3+ds-2ubuntu3~),\n+>>>>>>> debian/control\n Breaks:\n  libvirt-clients (<< 10.6.0-2~),\n  libvirt-daemon-system (<< 10.6.0-2~),\n@@ -1078,7 +1216,11 @@ Depends:\n  libvirt0 (<< ${source:Version}.1~),\n  libvirt0 (>= ${source:Version}),\n  ${misc:Depends},\n+<<<<<<< debian/control\n  ubuntu-virt-hwe,\n+=======\n+ ubuntu-virt-hwe (>= 1:11.0.3+ds-2ubuntu3~),\n+>>>>>>> debian/control\n Breaks:\n  libvirt0 (<< 8.10.0-2~),\n Replaces:\n@@ -1101,7 +1243,11 @@ Architecture: all\n Multi-Arch: foreign\n Depends:\n  ${misc:Depends},\n+<<<<<<< debian/control\n  ubuntu-virt-hwe,\n+=======\n+ ubuntu-virt-hwe (>= 1:11.0.3+ds-2ubuntu3~),\n+>>>>>>> debian/control\n Replaces:\n  libvirt-doc,\n Provides:\n@@ -1123,7 +1269,11 @@ Depends:\n  libvirt-common (= ${binary:Version}),\n  libvirt0 (= ${binary:Version}),\n  ${misc:Depends},\n+<<<<<<< debian/control\n  ubuntu-virt-hwe,\n+=======\n+ ubuntu-virt-hwe (>= 1:11.0.3+ds-2ubuntu3~),\n+>>>>>>> debian/control\n Replaces:\n  libvirt-dev,\n Provides:\n@@ -1149,7 +1299,11 @@ Depends:\n  libvirt0 (= ${binary:Version}),\n  ${misc:Depends},\n  ${shlibs:Depends},\n+<<<<<<< debian/control\n  ubuntu-virt-hwe,\n+=======\n+ ubuntu-virt-hwe (>= 1:11.0.3+ds-2ubuntu3~),\n+>>>>>>> debian/control\n Replaces:\n  libnss-libvirt,\n Provides:\n@@ -1176,7 +1330,11 @@ Depends:\n  libvirt0 (= ${binary:Version}),\n  ${misc:Depends},\n  ${shlibs:Depends},\n+<<<<<<< debian/control\n  ubuntu-virt-hwe,\n+=======\n+ ubuntu-virt-hwe (>= 1:11.0.3+ds-2ubuntu3~),\n+>>>>>>> debian/control\n Replaces:\n  libvirt-ssh-proxy,\n Provides:\n@@ -1201,7 +1359,11 @@ Depends:\n  libvirt0 (= ${binary:Version}),\n  ${misc:Depends},\n  ${shlibs:Depends},\n+<<<<<<< debian/control\n  ubuntu-virt-hwe,\n+=======\n+ ubuntu-virt-hwe (>= 1:11.0.3+ds-2ubuntu3~),\n+>>>>>>> debian/control\n Replaces:\n  libvirt-wireshark,\n Provides:\n@@ -1218,13 +1380,18 @@ Description: virtualization library - Wireshark dissector\n Package: libvirt-login-shell-hwe\n Section: admin\n Architecture: linux-any\n+Multi-Arch: no\n Depends:\n  libvirt-common (= ${binary:Version}),\n  libvirt-daemon-driver-lxc (= ${binary:Version}),\n  libvirt0 (= ${binary:Version}),\n  ${misc:Depends},\n  ${shlibs:Depends},\n+<<<<<<< debian/control\n  ubuntu-virt-hwe,\n+=======\n+ ubuntu-virt-hwe (>= 1:11.0.3+ds-2ubuntu3~),\n+>>>>>>> debian/control\n Breaks:\n  libvirt-clients (<< 6.9.0-2~),\n Replaces:\n@@ -1245,13 +1412,18 @@ Description: isolate user sessions using LXC containers\n Package: libvirt-sanlock-hwe\n Section: admin\n Architecture: linux-any\n+Multi-Arch: no\n Depends:\n  libvirt-common (= ${binary:Version}),\n  libvirt-daemon-plugin-sanlock (= ${binary:Version}),\n  libvirt0 (= ${binary:Version}),\n  ${misc:Depends},\n  ${shlibs:Depends},\n+<<<<<<< debian/control\n  ubuntu-virt-hwe,\n+=======\n+ ubuntu-virt-hwe (>= 1:11.0.3+ds-2ubuntu3~),\n+>>>>>>> debian/control\n Replaces:\n  libvirt-sanlock,\n Provides:\n@@ -1271,7 +1443,11 @@ Depends:\n  libvirt0 (<< ${source:Version}.1~),\n  libvirt0 (>= ${source:Version}),\n  ${misc:Depends},\n+<<<<<<< debian/control\n  ubuntu-virt-hwe,\n+=======\n+ ubuntu-virt-hwe (>= 1:11.0.3+ds-2ubuntu3~),\n+>>>>>>> debian/control\n Replaces:\n  libvirt-daemon-system-systemd,\n Provides:\n@@ -1282,6 +1458,7 @@ Description: transitional dummy package\n Package: libvirt-daemon-system-sysv-hwe\n Section: admin\n Architecture: all\n+Multi-Arch: foreign\n Depends:\n  libvirt-common (<< ${source:Version}.1~),\n  libvirt-common (>= ${source:Version}),\n@@ -1290,7 +1467,11 @@ Depends:\n  libvirt0 (<< ${source:Version}.1~),\n  libvirt0 (>= ${source:Version}),\n  ${misc:Depends},\n+<<<<<<< debian/control\n  ubuntu-virt-hwe,\n+=======\n+ ubuntu-virt-hwe (>= 1:11.0.3+ds-2ubuntu3~),\n+>>>>>>> debian/control\n Replaces:\n  libvirt-daemon-system-sysv,\n Provides:\ndiff --git a/debian/control.in b/debian/control.in\nindex b518c02..d539482 100644\n--- a/debian/control.in\n+++ b/debian/control.in\n@@ -59,12 +59,13 @@ Build-Depends:\n Vcs-Git: https://salsa.debian.org/libvirt-team/libvirt.git\n Vcs-Browser: https://salsa.debian.org/libvirt-team/libvirt\n Homepage: https://libvirt.org/\n-Standards-Version: 4.7.3\n+Standards-Version: 4.7.4\n Rules-Requires-Root: no\n \n Package: libvirt-clients-hwe\n Section: admin\n Architecture: any\n+Multi-Arch: no\n Depends:\n  libvirt-common (= ${binary:Version}),\n  libvirt0 (= ${binary:Version}),\n@@ -72,7 +73,11 @@ Depends:\n  sensible-utils,\n  ${misc:Depends},\n  ${shlibs:Depends},\n+<<<<<<< debian/control.in\n  ubuntu-virt-hwe,\n+=======\n+ ubuntu-virt-hwe (>= 1:11.0.3+ds-2ubuntu3~),\n+>>>>>>> debian/control.in\n Suggests:\n  libvirt-clients-qemu (= ${source:Version}) [${ARCHES_QEMU}],\n  libvirt-daemon (= ${binary:Version}) [linux-any],\n@@ -97,18 +102,21 @@ Description: virtualization library - clients\n \n Package: libvirt-clients-qemu-hwe\n Section: admin\n-Architecture: all\n+Architecture: ${ARCHES_QEMU}\n+Multi-Arch: no\n Depends:\n- libvirt-common (<< ${source:Version}.1~),\n- libvirt-common (>= ${source:Version}),\n- libvirt0 (<< ${source:Version}.1~),\n- libvirt0 (>= ${source:Version}),\n+ libvirt-common (= ${binary:Version}),\n+ libvirt0 (= ${binary:Version}),\n  python3-cryptography,\n  python3-libvirt,\n  python3-lxml,\n  python3:any,\n  ${misc:Depends},\n+<<<<<<< debian/control.in\n  ubuntu-virt-hwe,\n+=======\n+ ubuntu-virt-hwe (>= 1:11.0.3+ds-2ubuntu3~),\n+>>>>>>> debian/control.in\n Replaces:\n  libvirt-clients-qemu,\n Provides:\n@@ -122,6 +130,7 @@ Description: virtualization library - clients (QEMU specific)\n Package: libvirt-daemon-hwe\n Section: admin\n Architecture: linux-any\n+Multi-Arch: no\n Depends:\n  libvirt-common (= ${binary:Version}),\n  libvirt-daemon-common (= ${binary:Version}),\n@@ -130,7 +139,11 @@ Depends:\n  logrotate,\n  ${misc:Depends},\n  ${shlibs:Depends},\n+<<<<<<< debian/control.in\n  ubuntu-virt-hwe,\n+=======\n+ ubuntu-virt-hwe (>= 1:11.0.3+ds-2ubuntu3~),\n+>>>>>>> debian/control.in\n Recommends:\n  libvirt-daemon-driver-interface (= ${binary:Version}),\n  libvirt-daemon-driver-network (= ${binary:Version}),\n@@ -184,6 +197,7 @@ Homepage: https://libvirt.org/daemons.html#monolithic-driver-daemon\n Package: libvirt-daemon-common-hwe\n Section: admin\n Architecture: linux-any\n+Multi-Arch: no\n Depends:\n  dmidecode [${ARCHES_DMIDECODE}],\n  gettext-base,\n@@ -195,7 +209,11 @@ Depends:\n  sensible-utils,\n  ${misc:Depends},\n  ${shlibs:Depends},\n+<<<<<<< debian/control.in\n  ubuntu-virt-hwe,\n+=======\n+ ubuntu-virt-hwe (>= 1:11.0.3+ds-2ubuntu3~),\n+>>>>>>> debian/control.in\n Recommends:\n  netcat-openbsd,\n Suggests:\n@@ -223,12 +241,17 @@ Description: virtualization daemon - common files\n Package: libvirt-daemon-log-hwe\n Section: admin\n Architecture: linux-any\n+Multi-Arch: no\n Depends:\n  libvirt-common (= ${binary:Version}),\n  libvirt0 (= ${binary:Version}),\n  ${misc:Depends},\n  ${shlibs:Depends},\n+<<<<<<< debian/control.in\n  ubuntu-virt-hwe,\n+=======\n+ ubuntu-virt-hwe (>= 1:11.0.3+ds-2ubuntu3~),\n+>>>>>>> debian/control.in\n Conflicts:\n  libvirt-daemon-system (<< 10.6.0-2~),\n Breaks:\n@@ -249,12 +272,17 @@ Homepage: https://libvirt.org/daemons.html#logging-daemon\n Package: libvirt-daemon-lock-hwe\n Section: admin\n Architecture: linux-any\n+Multi-Arch: no\n Depends:\n  libvirt-common (= ${binary:Version}),\n  libvirt0 (= ${binary:Version}),\n  ${misc:Depends},\n  ${shlibs:Depends},\n+<<<<<<< debian/control.in\n  ubuntu-virt-hwe,\n+=======\n+ ubuntu-virt-hwe (>= 1:11.0.3+ds-2ubuntu3~),\n+>>>>>>> debian/control.in\n Conflicts:\n  libvirt-daemon-system (<< 10.6.0-2~),\n Breaks:\n@@ -283,7 +311,11 @@ Depends:\n  systemd-container | sysvinit-core,\n  ${misc:Depends},\n  ${shlibs:Depends},\n+<<<<<<< debian/control.in\n  ubuntu-virt-hwe,\n+=======\n+ ubuntu-virt-hwe (>= 1:11.0.3+ds-2ubuntu3~),\n+>>>>>>> debian/control.in\n Recommends:\n  swtpm,\n  swtpm-tools,\n@@ -322,7 +354,11 @@ Depends:\n  systemd-container | sysvinit-core,\n  ${misc:Depends},\n  ${shlibs:Depends},\n+<<<<<<< debian/control.in\n  ubuntu-virt-hwe,\n+=======\n+ ubuntu-virt-hwe (>= 1:11.0.3+ds-2ubuntu3~),\n+>>>>>>> debian/control.in\n Breaks:\n  libvirt-daemon (<< 6.9.0-2~),\n  libvirt-daemon-system (<< 10.6.0-2~),\n@@ -348,7 +384,11 @@ Depends:\n  libvirt0 (= ${binary:Version}),\n  ${misc:Depends},\n  ${shlibs:Depends},\n+<<<<<<< debian/control.in\n  ubuntu-virt-hwe,\n+=======\n+ ubuntu-virt-hwe (>= 1:11.0.3+ds-2ubuntu3~),\n+>>>>>>> debian/control.in\n Replaces:\n  libvirt-daemon-driver-vbox,\n Provides:\n@@ -370,7 +410,11 @@ Depends:\n  logrotate,\n  ${misc:Depends},\n  ${shlibs:Depends},\n+<<<<<<< debian/control.in\n  ubuntu-virt-hwe,\n+=======\n+ ubuntu-virt-hwe (>= 1:11.0.3+ds-2ubuntu3~),\n+>>>>>>> debian/control.in\n Enhances:\n  xen,\n Breaks:\n@@ -389,7 +433,7 @@ Homepage: https://libvirt.org/drvxen.html\n Package: libvirt-daemon-driver-storage-hwe\n Section: admin\n Architecture: linux-any\n-Multi-arch: no\n+Multi-Arch: no\n Depends:\n  libvirt-common (= ${binary:Version}),\n  libvirt-daemon (= ${binary:Version}),\n@@ -397,7 +441,11 @@ Depends:\n  mount,\n  ${misc:Depends},\n  ${shlibs:Depends},\n+<<<<<<< debian/control.in\n  ubuntu-virt-hwe,\n+=======\n+ ubuntu-virt-hwe (>= 1:11.0.3+ds-2ubuntu3~),\n+>>>>>>> debian/control.in\n Suggests:\n  nfs-common,\n Breaks:\n@@ -417,7 +465,7 @@ Homepage: https://libvirt.org/storage.html\n Package: libvirt-daemon-driver-storage-disk-hwe\n Section: admin\n Architecture: linux-any\n-Multi-arch: no\n+Multi-Arch: no\n Depends:\n  libvirt-common (= ${binary:Version}),\n  libvirt-daemon (= ${binary:Version}),\n@@ -426,7 +474,11 @@ Depends:\n  parted,\n  ${misc:Depends},\n  ${shlibs:Depends},\n+<<<<<<< debian/control.in\n  ubuntu-virt-hwe,\n+=======\n+ ubuntu-virt-hwe (>= 1:11.0.3+ds-2ubuntu3~),\n+>>>>>>> debian/control.in\n Breaks:\n  libvirt-daemon (<< 10.6.0-2~),\n Replaces:\n@@ -452,7 +504,11 @@ Depends:\n  libvirt0 (= ${binary:Version}),\n  ${misc:Depends},\n  ${shlibs:Depends},\n+<<<<<<< debian/control.in\n  ubuntu-virt-hwe,\n+=======\n+ ubuntu-virt-hwe (>= 1:11.0.3+ds-2ubuntu3~),\n+>>>>>>> debian/control.in\n Replaces:\n  libvirt-daemon-driver-storage-gluster,\n Provides:\n@@ -466,7 +522,7 @@ Homepage: https://libvirt.org/storage.html#gluster-pool\n Package: libvirt-daemon-driver-storage-iscsi-hwe\n Section: admin\n Architecture: linux-any\n-Multi-arch: no\n+Multi-Arch: no\n Depends:\n  libvirt-common (= ${binary:Version}),\n  libvirt-daemon (= ${binary:Version}),\n@@ -475,7 +531,11 @@ Depends:\n  open-iscsi,\n  ${misc:Depends},\n  ${shlibs:Depends},\n+<<<<<<< debian/control.in\n  ubuntu-virt-hwe,\n+=======\n+ ubuntu-virt-hwe (>= 1:11.0.3+ds-2ubuntu3~),\n+>>>>>>> debian/control.in\n Breaks:\n  libvirt-daemon (<< 10.6.0-2~),\n Replaces:\n@@ -500,7 +560,11 @@ Depends:\n  libvirt0 (= ${binary:Version}),\n  ${misc:Depends},\n  ${shlibs:Depends},\n+<<<<<<< debian/control.in\n  ubuntu-virt-hwe,\n+=======\n+ ubuntu-virt-hwe (>= 1:11.0.3+ds-2ubuntu3~),\n+>>>>>>> debian/control.in\n Recommends:\n  qemu-block-extra,\n Replaces:\n@@ -517,7 +581,7 @@ Homepage: https://libvirt.org/storage.html#iscsi-direct-pool\n Package: libvirt-daemon-driver-storage-logical-hwe\n Section: admin\n Architecture: linux-any\n-Multi-arch: no\n+Multi-Arch: no\n Depends:\n  libvirt-common (= ${binary:Version}),\n  libvirt-daemon (= ${binary:Version}),\n@@ -526,7 +590,11 @@ Depends:\n  lvm2,\n  ${misc:Depends},\n  ${shlibs:Depends},\n+<<<<<<< debian/control.in\n  ubuntu-virt-hwe,\n+=======\n+ ubuntu-virt-hwe (>= 1:11.0.3+ds-2ubuntu3~),\n+>>>>>>> debian/control.in\n Breaks:\n  libvirt-daemon (<< 10.6.0-2~),\n Replaces:\n@@ -544,7 +612,7 @@ Homepage: https://libvirt.org/storage.html#logical-volume-pool\n Package: libvirt-daemon-driver-storage-mpath-hwe\n Section: admin\n Architecture: linux-any\n-Multi-arch: no\n+Multi-Arch: no\n Depends:\n  libvirt-common (= ${binary:Version}),\n  libvirt-daemon (= ${binary:Version}),\n@@ -552,7 +620,11 @@ Depends:\n  libvirt0 (= ${binary:Version}),\n  ${misc:Depends},\n  ${shlibs:Depends},\n+<<<<<<< debian/control.in\n  ubuntu-virt-hwe,\n+=======\n+ ubuntu-virt-hwe (>= 1:11.0.3+ds-2ubuntu3~),\n+>>>>>>> debian/control.in\n Breaks:\n  libvirt-daemon (<< 10.6.0-2~),\n Replaces:\n@@ -577,7 +649,11 @@ Depends:\n  libvirt0 (= ${binary:Version}),\n  ${misc:Depends},\n  ${shlibs:Depends},\n+<<<<<<< debian/control.in\n  ubuntu-virt-hwe,\n+=======\n+ ubuntu-virt-hwe (>= 1:11.0.3+ds-2ubuntu3~),\n+>>>>>>> debian/control.in\n Replaces:\n  libvirt-daemon-driver-storage-rbd,\n Provides:\n@@ -591,7 +667,7 @@ Homepage: https://libvirt.org/storage.html#rbd-pool\n Package: libvirt-daemon-driver-storage-scsi-hwe\n Section: admin\n Architecture: linux-any\n-Multi-arch: no\n+Multi-Arch: no\n Depends:\n  libvirt-common (= ${binary:Version}),\n  libvirt-daemon (= ${binary:Version}),\n@@ -599,7 +675,11 @@ Depends:\n  libvirt0 (= ${binary:Version}),\n  ${misc:Depends},\n  ${shlibs:Depends},\n+<<<<<<< debian/control.in\n  ubuntu-virt-hwe,\n+=======\n+ ubuntu-virt-hwe (>= 1:11.0.3+ds-2ubuntu3~),\n+>>>>>>> debian/control.in\n Breaks:\n  libvirt-daemon (<< 10.6.0-2~),\n Replaces:\n@@ -624,7 +704,11 @@ Depends:\n  libvirt0 (= ${binary:Version}),\n  ${misc:Depends},\n  ${shlibs:Depends},\n+<<<<<<< debian/control.in\n  ubuntu-virt-hwe,\n+=======\n+ ubuntu-virt-hwe (>= 1:11.0.3+ds-2ubuntu3~),\n+>>>>>>> debian/control.in\n Recommends:\n  zfsutils,\n Replaces:\n@@ -640,7 +724,7 @@ Homepage: https://libvirt.org/storage.html#zfs-pool\n Package: libvirt-daemon-driver-network-hwe\n Section: admin\n Architecture: linux-any\n-Multi-arch: no\n+Multi-Arch: no\n Depends:\n  dnsmasq-base,\n  iptables | nftables,\n@@ -649,7 +733,11 @@ Depends:\n  libvirt0 (= ${binary:Version}),\n  ${misc:Depends},\n  ${shlibs:Depends},\n+<<<<<<< debian/control.in\n  ubuntu-virt-hwe,\n+=======\n+ ubuntu-virt-hwe (>= 1:11.0.3+ds-2ubuntu3~),\n+>>>>>>> debian/control.in\n Breaks:\n  libvirt-daemon (<< 10.6.0-2~),\n  libvirt-daemon-system (<< 10.6.0-2~),\n@@ -668,7 +756,7 @@ Homepage: https://libvirt.org/formatnetwork.html\n Package: libvirt-daemon-driver-nwfilter-hwe\n Section: admin\n Architecture: linux-any\n-Multi-arch: no\n+Multi-Arch: no\n Depends:\n  iptables,\n  libvirt-common (= ${binary:Version}),\n@@ -676,7 +764,11 @@ Depends:\n  libvirt0 (= ${binary:Version}),\n  ${misc:Depends},\n  ${shlibs:Depends},\n+<<<<<<< debian/control.in\n  ubuntu-virt-hwe,\n+=======\n+ ubuntu-virt-hwe (>= 1:11.0.3+ds-2ubuntu3~),\n+>>>>>>> debian/control.in\n Breaks:\n  libvirt-daemon (<< 10.6.0-2~),\n Replaces:\n@@ -693,14 +785,18 @@ Homepage: https://libvirt.org/formatnwfilter.html\n Package: libvirt-daemon-driver-interface-hwe\n Section: admin\n Architecture: linux-any\n-Multi-arch: no\n+Multi-Arch: no\n Depends:\n  libvirt-common (= ${binary:Version}),\n  libvirt-daemon (= ${binary:Version}),\n  libvirt0 (= ${binary:Version}),\n  ${misc:Depends},\n  ${shlibs:Depends},\n+<<<<<<< debian/control.in\n  ubuntu-virt-hwe,\n+=======\n+ ubuntu-virt-hwe (>= 1:11.0.3+ds-2ubuntu3~),\n+>>>>>>> debian/control.in\n Breaks:\n  libvirt-daemon (<< 10.6.0-2~),\n Replaces:\n@@ -716,7 +812,7 @@ Description: virtualization daemon - interface driver\n Package: libvirt-daemon-driver-nodedev-hwe\n Section: admin\n Architecture: linux-any\n-Multi-arch: no\n+Multi-Arch: no\n Depends:\n  libvirt-common (= ${binary:Version}),\n  libvirt-daemon (= ${binary:Version}),\n@@ -724,7 +820,11 @@ Depends:\n  mdevctl,\n  ${misc:Depends},\n  ${shlibs:Depends},\n+<<<<<<< debian/control.in\n  ubuntu-virt-hwe,\n+=======\n+ ubuntu-virt-hwe (>= 1:11.0.3+ds-2ubuntu3~),\n+>>>>>>> debian/control.in\n Breaks:\n  libvirt-daemon (<< 10.6.0-2~),\n Replaces:\n@@ -741,14 +841,18 @@ Homepage: https://libvirt.org/drvnodedev.html\n Package: libvirt-daemon-driver-secret-hwe\n Section: admin\n Architecture: linux-any\n-Multi-arch: no\n+Multi-Arch: no\n Depends:\n  libvirt-common (= ${binary:Version}),\n  libvirt-daemon (= ${binary:Version}),\n  libvirt0 (= ${binary:Version}),\n  ${misc:Depends},\n  ${shlibs:Depends},\n+<<<<<<< debian/control.in\n  ubuntu-virt-hwe,\n+=======\n+ ubuntu-virt-hwe (>= 1:11.0.3+ds-2ubuntu3~),\n+>>>>>>> debian/control.in\n Breaks:\n  libvirt-daemon (<< 10.6.0-2~),\n Replaces:\n@@ -765,14 +869,18 @@ Homepage: https://libvirt.org/drvsecret.html\n Package: libvirt-daemon-plugin-lockd-hwe\n Section: admin\n Architecture: linux-any\n-Multi-arch: no\n+Multi-Arch: no\n Depends:\n  libvirt-common (= ${binary:Version}),\n  libvirt-daemon-lock (= ${binary:Version}),\n  libvirt0 (= ${binary:Version}),\n  ${misc:Depends},\n  ${shlibs:Depends},\n+<<<<<<< debian/control.in\n  ubuntu-virt-hwe,\n+=======\n+ ubuntu-virt-hwe (>= 1:11.0.3+ds-2ubuntu3~),\n+>>>>>>> debian/control.in\n Recommends:\n  libvirt-daemon (= ${binary:Version}),\n Breaks:\n@@ -791,14 +899,18 @@ Homepage: https://libvirt.org/kbase/locking-lockd.html\n Package: libvirt-daemon-plugin-sanlock-hwe\n Section: admin\n Architecture: linux-any\n-Multi-arch: no\n+Multi-Arch: no\n Depends:\n  augeas-tools,\n  libvirt-common (= ${binary:Version}),\n  libvirt0 (= ${binary:Version}),\n  ${misc:Depends},\n  ${shlibs:Depends},\n+<<<<<<< debian/control.in\n  ubuntu-virt-hwe,\n+=======\n+ ubuntu-virt-hwe (>= 1:11.0.3+ds-2ubuntu3~),\n+>>>>>>> debian/control.in\n Recommends:\n  libvirt-daemon (= ${binary:Version}),\n Breaks:\n@@ -819,6 +931,7 @@ Homepage: https://libvirt.org/kbase/locking-sanlock.html\n Package: libvirt-daemon-system-hwe\n Section: admin\n Architecture: ${ARCHES_QEMU}\n+Multi-Arch: foreign\n Depends:\n  libvirt-clients (= ${binary:Version}),\n  libvirt-common (= ${binary:Version}),\n@@ -835,7 +948,11 @@ Depends:\n  libvirt-daemon-log (= ${binary:Version}),\n  libvirt0 (= ${binary:Version}),\n  ${misc:Depends},\n+<<<<<<< debian/control.in\n  ubuntu-virt-hwe,\n+=======\n+ ubuntu-virt-hwe (>= 1:11.0.3+ds-2ubuntu3~),\n+>>>>>>> debian/control.in\n Replaces:\n  libvirt-daemon-system,\n Provides:\n@@ -850,6 +967,7 @@ Description: virtualization daemon - typical QEMU-based deployment\n Package: libvirt-daemon-config-network-hwe\n Section: admin\n Architecture: all\n+Multi-Arch: foreign\n Depends:\n  adduser,\n  libvirt-common (<< ${source:Version}.1~),\n@@ -859,13 +977,20 @@ Depends:\n  libvirt0 (<< ${source:Version}.1~),\n  libvirt0 (>= ${source:Version}),\n  ${misc:Depends},\n+<<<<<<< debian/control.in\n  ubuntu-virt-hwe,\n+=======\n+ ubuntu-virt-hwe (>= 1:11.0.3+ds-2ubuntu3~),\n+>>>>>>> debian/control.in\n Breaks:\n  libvirt-daemon-system (<< 6.9.0-2~),\n  libvirt-daemon-driver-qemu (<< 11.0.0-2ubuntu9~),\n Replaces:\n  libvirt-daemon-system (<< 6.9.0-2~),\n+<<<<<<< debian/control.in\n  libvirt-daemon-driver-qemu (<< 11.0.0-2ubuntu9~),\n+=======\n+>>>>>>> debian/control.in\n  libvirt-daemon-config-network,\n Provides:\n  libvirt-daemon-config-network (= ${binary:Version}),\n@@ -877,6 +1002,7 @@ Description: virtualization daemon - configuration files (default network)\n Package: libvirt-daemon-config-nwfilter-hwe\n Section: admin\n Architecture: all\n+Multi-Arch: foreign\n Depends:\n  libvirt-common (<< ${source:Version}.1~),\n  libvirt-common (>= ${source:Version}),\n@@ -885,7 +1011,11 @@ Depends:\n  libvirt0 (<< ${source:Version}.1~),\n  libvirt0 (>= ${source:Version}),\n  ${misc:Depends},\n+<<<<<<< debian/control.in\n  ubuntu-virt-hwe,\n+=======\n+ ubuntu-virt-hwe (>= 1:11.0.3+ds-2ubuntu3~),\n+>>>>>>> debian/control.in\n Breaks:\n  libvirt-daemon-system (<< 6.9.0-2~),\n Replaces:\n@@ -905,7 +1035,11 @@ Depends:\n  libvirt-common (= ${binary:Version}),\n  ${misc:Depends},\n  ${shlibs:Depends},\n+<<<<<<< debian/control.in\n  ubuntu-virt-hwe,\n+=======\n+ ubuntu-virt-hwe (>= 1:11.0.3+ds-2ubuntu3~),\n+>>>>>>> debian/control.in\n Recommends:\n  libvirt-l10n (= ${source:Version}),\n Replaces:\n@@ -923,7 +1057,11 @@ Multi-Arch: foreign\n Depends:\n  ${misc:Depends},\n  ${shlibs:Depends},\n+<<<<<<< debian/control.in\n  ubuntu-virt-hwe,\n+=======\n+ ubuntu-virt-hwe (>= 1:11.0.3+ds-2ubuntu3~),\n+>>>>>>> debian/control.in\n Breaks:\n  libvirt-clients (<< 10.6.0-2~),\n  libvirt-daemon-system (<< 10.6.0-2~),\n@@ -950,7 +1088,11 @@ Depends:\n  libvirt0 (<< ${source:Version}.1~),\n  libvirt0 (>= ${source:Version}),\n  ${misc:Depends},\n+<<<<<<< debian/control.in\n  ubuntu-virt-hwe,\n+=======\n+ ubuntu-virt-hwe (>= 1:11.0.3+ds-2ubuntu3~),\n+>>>>>>> debian/control.in\n Breaks:\n  libvirt0 (<< 8.10.0-2~),\n Replaces:\n@@ -969,7 +1111,11 @@ Architecture: all\n Multi-Arch: foreign\n Depends:\n  ${misc:Depends},\n+<<<<<<< debian/control.in\n  ubuntu-virt-hwe,\n+=======\n+ ubuntu-virt-hwe (>= 1:11.0.3+ds-2ubuntu3~),\n+>>>>>>> debian/control.in\n Replaces:\n  libvirt-doc,\n Provides:\n@@ -987,7 +1133,11 @@ Depends:\n  libvirt-common (= ${binary:Version}),\n  libvirt0 (= ${binary:Version}),\n  ${misc:Depends},\n+<<<<<<< debian/control.in\n  ubuntu-virt-hwe,\n+=======\n+ ubuntu-virt-hwe (>= 1:11.0.3+ds-2ubuntu3~),\n+>>>>>>> debian/control.in\n Replaces:\n  libvirt-dev,\n Provides:\n@@ -1009,7 +1159,11 @@ Depends:\n  libvirt0 (= ${binary:Version}),\n  ${misc:Depends},\n  ${shlibs:Depends},\n+<<<<<<< debian/control.in\n  ubuntu-virt-hwe,\n+=======\n+ ubuntu-virt-hwe (>= 1:11.0.3+ds-2ubuntu3~),\n+>>>>>>> debian/control.in\n Replaces:\n  libnss-libvirt,\n Provides:\n@@ -1032,7 +1186,11 @@ Depends:\n  libvirt0 (= ${binary:Version}),\n  ${misc:Depends},\n  ${shlibs:Depends},\n+<<<<<<< debian/control.in\n  ubuntu-virt-hwe,\n+=======\n+ ubuntu-virt-hwe (>= 1:11.0.3+ds-2ubuntu3~),\n+>>>>>>> debian/control.in\n Replaces:\n  libvirt-ssh-proxy,\n Provides:\n@@ -1053,7 +1211,11 @@ Depends:\n  libvirt0 (= ${binary:Version}),\n  ${misc:Depends},\n  ${shlibs:Depends},\n+<<<<<<< debian/control.in\n  ubuntu-virt-hwe,\n+=======\n+ ubuntu-virt-hwe (>= 1:11.0.3+ds-2ubuntu3~),\n+>>>>>>> debian/control.in\n Replaces:\n  libvirt-wireshark,\n Provides:\n@@ -1066,13 +1228,18 @@ Description: virtualization library - Wireshark dissector\n Package: libvirt-login-shell-hwe\n Section: admin\n Architecture: linux-any\n+Multi-Arch: no\n Depends:\n  libvirt-common (= ${binary:Version}),\n  libvirt-daemon-driver-lxc (= ${binary:Version}),\n  libvirt0 (= ${binary:Version}),\n  ${misc:Depends},\n  ${shlibs:Depends},\n+<<<<<<< debian/control.in\n  ubuntu-virt-hwe,\n+=======\n+ ubuntu-virt-hwe (>= 1:11.0.3+ds-2ubuntu3~),\n+>>>>>>> debian/control.in\n Breaks:\n  libvirt-clients (<< 6.9.0-2~),\n Replaces:\n@@ -1089,13 +1256,18 @@ Description: isolate user sessions using LXC containers\n Package: libvirt-sanlock-hwe\n Section: admin\n Architecture: linux-any\n+Multi-Arch: no\n Depends:\n  libvirt-common (= ${binary:Version}),\n  libvirt-daemon-plugin-sanlock (= ${binary:Version}),\n  libvirt0 (= ${binary:Version}),\n  ${misc:Depends},\n  ${shlibs:Depends},\n+<<<<<<< debian/control.in\n  ubuntu-virt-hwe,\n+=======\n+ ubuntu-virt-hwe (>= 1:11.0.3+ds-2ubuntu3~),\n+>>>>>>> debian/control.in\n Replaces:\n  libvirt-sanlock,\n Provides:\n@@ -1115,7 +1287,11 @@ Depends:\n  libvirt0 (<< ${source:Version}.1~),\n  libvirt0 (>= ${source:Version}),\n  ${misc:Depends},\n+<<<<<<< debian/control.in\n  ubuntu-virt-hwe,\n+=======\n+ ubuntu-virt-hwe (>= 1:11.0.3+ds-2ubuntu3~),\n+>>>>>>> debian/control.in\n Replaces:\n  libvirt-daemon-system-systemd,\n Provides:\n@@ -1126,6 +1302,7 @@ Description: transitional dummy package\n Package: libvirt-daemon-system-sysv-hwe\n Section: admin\n Architecture: all\n+Multi-Arch: foreign\n Depends:\n  libvirt-common (<< ${source:Version}.1~),\n  libvirt-common (>= ${source:Version}),\n@@ -1134,7 +1311,11 @@ Depends:\n  libvirt0 (<< ${source:Version}.1~),\n  libvirt0 (>= ${source:Version}),\n  ${misc:Depends},\n+<<<<<<< debian/control.in\n  ubuntu-virt-hwe,\n+=======\n+ ubuntu-virt-hwe (>= 1:11.0.3+ds-2ubuntu3~),\n+>>>>>>> debian/control.in\n Replaces:\n  libvirt-daemon-system-sysv,\n Provides:\ndiff --git a/debian/hwe-helper/postrm-snippet b/debian/hwe-helper/postrm-snippet\nnew file mode 100644\nindex 0000000..1b9da3c\n--- /dev/null\n+++ b/debian/hwe-helper/postrm-snippet\n@@ -0,0 +1,3 @@\n+if [ -f /usr/share/ubuntu-helper-virt-hwe/ubuntu_virt_postrm_hook ]; then\n+  . /usr/share/ubuntu-helper-virt-hwe/ubuntu_virt_postrm_hook\n+fi\ndiff --git a/debian/libvirt-common-hwe.install.in b/debian/libvirt-common-hwe.install.in\nindex 2f82955..940046a 100644\n--- a/debian/libvirt-common-hwe.install.in\n+++ b/debian/libvirt-common-hwe.install.in\n@@ -9,6 +9,10 @@ usr/share/libvirt/cpu_map/arm_Kunpeng-920.xml\n usr/share/libvirt/cpu_map/arm_Neoverse-N1.xml\n usr/share/libvirt/cpu_map/arm_Neoverse-N2.xml\n usr/share/libvirt/cpu_map/arm_Neoverse-V1.xml\n+<<<<<<< debian/libvirt-common-hwe.install.in\n+=======\n+usr/share/libvirt/cpu_map/arm_Neoverse-V2.xml\n+>>>>>>> debian/libvirt-common-hwe.install.in\n usr/share/libvirt/cpu_map/arm_Tengyun-S2500.xml\n usr/share/libvirt/cpu_map/arm_ThunderX299xx.xml\n usr/share/libvirt/cpu_map/arm_a64fx.xml\n@@ -45,6 +49,11 @@ usr/share/libvirt/cpu_map/x86_Cascadelake-Server-v4.xml\n usr/share/libvirt/cpu_map/x86_Cascadelake-Server-v5.xml\n usr/share/libvirt/cpu_map/x86_Cascadelake-Server.xml\n usr/share/libvirt/cpu_map/x86_ClearwaterForest-v1.xml\n+<<<<<<< debian/libvirt-common-hwe.install.in\n+=======\n+usr/share/libvirt/cpu_map/x86_ClearwaterForest-v2.xml\n+usr/share/libvirt/cpu_map/x86_ClearwaterForest-v3.xml\n+>>>>>>> debian/libvirt-common-hwe.install.in\n usr/share/libvirt/cpu_map/x86_ClearwaterForest.xml\n usr/share/libvirt/cpu_map/x86_Conroe-v1.xml\n usr/share/libvirt/cpu_map/x86_Conroe.xml\n@@ -58,6 +67,11 @@ usr/share/libvirt/cpu_map/x86_Denverton.xml\n usr/share/libvirt/cpu_map/x86_Dhyana-v1.xml\n usr/share/libvirt/cpu_map/x86_Dhyana-v2.xml\n usr/share/libvirt/cpu_map/x86_Dhyana.xml\n+<<<<<<< debian/libvirt-common-hwe.install.in\n+=======\n+usr/share/libvirt/cpu_map/x86_DiamondRapids-v1.xml\n+usr/share/libvirt/cpu_map/x86_DiamondRapids.xml\n+>>>>>>> debian/libvirt-common-hwe.install.in\n usr/share/libvirt/cpu_map/x86_EPYC-Genoa-v1.xml\n usr/share/libvirt/cpu_map/x86_EPYC-Genoa-v2.xml\n usr/share/libvirt/cpu_map/x86_EPYC-Genoa.xml\n@@ -83,6 +97,11 @@ usr/share/libvirt/cpu_map/x86_EPYC.xml\n usr/share/libvirt/cpu_map/x86_GraniteRapids-v1.xml\n usr/share/libvirt/cpu_map/x86_GraniteRapids-v2.xml\n usr/share/libvirt/cpu_map/x86_GraniteRapids-v3.xml\n+<<<<<<< debian/libvirt-common-hwe.install.in\n+=======\n+usr/share/libvirt/cpu_map/x86_GraniteRapids-v4.xml\n+usr/share/libvirt/cpu_map/x86_GraniteRapids-v5.xml\n+>>>>>>> debian/libvirt-common-hwe.install.in\n usr/share/libvirt/cpu_map/x86_GraniteRapids.xml\n usr/share/libvirt/cpu_map/x86_Haswell-IBRS.xml\n usr/share/libvirt/cpu_map/x86_Haswell-noTSX-IBRS.xml\n@@ -133,10 +152,20 @@ usr/share/libvirt/cpu_map/x86_SapphireRapids-v1.xml\n usr/share/libvirt/cpu_map/x86_SapphireRapids-v2.xml\n usr/share/libvirt/cpu_map/x86_SapphireRapids-v3.xml\n usr/share/libvirt/cpu_map/x86_SapphireRapids-v4.xml\n+<<<<<<< debian/libvirt-common-hwe.install.in\n+=======\n+usr/share/libvirt/cpu_map/x86_SapphireRapids-v5.xml\n+usr/share/libvirt/cpu_map/x86_SapphireRapids-v6.xml\n+>>>>>>> debian/libvirt-common-hwe.install.in\n usr/share/libvirt/cpu_map/x86_SapphireRapids.xml\n usr/share/libvirt/cpu_map/x86_SierraForest-v1.xml\n usr/share/libvirt/cpu_map/x86_SierraForest-v2.xml\n usr/share/libvirt/cpu_map/x86_SierraForest-v3.xml\n+<<<<<<< debian/libvirt-common-hwe.install.in\n+=======\n+usr/share/libvirt/cpu_map/x86_SierraForest-v4.xml\n+usr/share/libvirt/cpu_map/x86_SierraForest-v5.xml\n+>>>>>>> debian/libvirt-common-hwe.install.in\n usr/share/libvirt/cpu_map/x86_SierraForest.xml\n usr/share/libvirt/cpu_map/x86_Skylake-Client-IBRS.xml\n usr/share/libvirt/cpu_map/x86_Skylake-Client-noTSX-IBRS.xml\ndiff --git a/debian/libvirt-daemon-config-network-hwe.postinst.in b/debian/libvirt-daemon-config-network-hwe.postinst.in\nindex acad1d1..756a62f 100644\n--- a/debian/libvirt-daemon-config-network-hwe.postinst.in\n+++ b/debian/libvirt-daemon-config-network-hwe.postinst.in\n@@ -102,6 +102,7 @@ maybe_set_autostart()\n     echo \"Not enabling default network as no free network was found\"\n }\n \n+<<<<<<< debian/libvirt-daemon-config-network-hwe.postinst.in\n # begin-remove-after: released:26.04\n # Restore existing configuration files (some created by maintainer scripts from\n # templates) in (old < 11.0.0-2ubuntu8) libvirt-daemon-driver-qemu.postinst.\n@@ -112,6 +113,8 @@ if [ \"$1\" = configure ] || [ \"$1\" = abort-upgrade ]; then\n fi\n # end-remove-after\n \n+=======\n+>>>>>>> debian/libvirt-daemon-config-network-hwe.postinst.in\n case \"$1\" in\n     configure)\n         add_users_groups\ndiff --git a/debian/libvirt-daemon-driver-secret-hwe.install.in b/debian/libvirt-daemon-driver-secret-hwe.install.in\nindex 41e0105..211f617 100644\n--- a/debian/libvirt-daemon-driver-secret-hwe.install.in\n+++ b/debian/libvirt-daemon-driver-secret-hwe.install.in\n@@ -1 +1,10 @@\n+<<<<<<< debian/libvirt-daemon-driver-secret-hwe.install.in\n usr/lib/${DEB_HOST_MULTIARCH}/libvirt/connection-driver/libvirt_driver_secret.so\n+=======\n+etc/libvirt/secret.conf\n+usr/lib/${DEB_HOST_MULTIARCH}/libvirt/connection-driver/libvirt_driver_secret.so\n+usr/lib/systemd/system/libvirtd.service.d/10-secret.conf\n+usr/lib/systemd/system/virt-secret-init-encryption.service\n+usr/share/augeas/lenses/libvirt_secrets.aug\n+usr/share/augeas/lenses/tests/test_libvirt_secrets.aug\n+>>>>>>> debian/libvirt-daemon-driver-secret-hwe.install.in\ndiff --git a/debian/libvirt-daemon-driver-secret.dirs b/debian/libvirt-daemon-driver-secret.dirs\nnew file mode 100644\nindex 0000000..251b35b\n--- /dev/null\n+++ b/debian/libvirt-daemon-driver-secret.dirs\n@@ -0,0 +1 @@\n+var/lib/libvirt/secrets\ndiff --git a/debian/libvirt-daemon-hwe.lintian-overrides b/debian/libvirt-daemon-hwe.lintian-overrides\nindex ec9df94..1be6a1e 100644\n--- a/debian/libvirt-daemon-hwe.lintian-overrides\n+++ b/debian/libvirt-daemon-hwe.lintian-overrides\n@@ -1,7 +1,10 @@\n+<<<<<<< debian/libvirt-daemon-hwe.lintian-overrides\n # Lintian would like an explicit Pre-Depends on init-system-helpers (>= 1.54~)\n # to be declared, but we already know that any version of Debian we might want\n # to backport libvirt to has a newer version than that\n libvirt-daemon-hwe: skip-systemd-native-flag-missing-pre-depends *\n \n+=======\n+>>>>>>> debian/libvirt-daemon-hwe.lintian-overrides\n # Versioned conflicts are needed for DEP17 M7\n libvirt-daemon-hwe: conflicts-with-version libvirt-daemon-system-hwe *\ndiff --git a/debian/libvirt-daemon-log-hwe.lintian-overrides b/debian/libvirt-daemon-log-hwe.lintian-overrides\nindex f3589b0..ffbf299 100644\n--- a/debian/libvirt-daemon-log-hwe.lintian-overrides\n+++ b/debian/libvirt-daemon-log-hwe.lintian-overrides\n@@ -1,7 +1,10 @@\n+<<<<<<< debian/libvirt-daemon-log-hwe.lintian-overrides\n # Lintian would like an explicit Pre-Depends on init-system-helpers (>= 1.54~)\n # to be declared, but we already know that any version of Debian we might want\n # to backport libvirt to has a newer version than that\n libvirt-daemon-log-hwe: skip-systemd-native-flag-missing-pre-depends *\n \n+=======\n+>>>>>>> debian/libvirt-daemon-log-hwe.lintian-overrides\n # Versioned conflicts are needed for DEP17 M7\n libvirt-daemon-log-hwe: conflicts-with-version libvirt-daemon-system-hwe *\ndiff --git a/debian/libvirt-l10n-hwe.install.in b/debian/libvirt-l10n-hwe.install.in\nindex 83f97c8..563f8c0 100644\n--- a/debian/libvirt-l10n-hwe.install.in\n+++ b/debian/libvirt-l10n-hwe.install.in\n@@ -45,4 +45,8 @@ usr/share/locale/tr/LC_MESSAGES/libvirt.mo\n usr/share/locale/uk/LC_MESSAGES/libvirt.mo\n usr/share/locale/vi/LC_MESSAGES/libvirt.mo\n usr/share/locale/zh_CN/LC_MESSAGES/libvirt.mo\n+<<<<<<< debian/libvirt-l10n-hwe.install.in\n+=======\n+usr/share/locale/zh_Hant/LC_MESSAGES/libvirt.mo\n+>>>>>>> debian/libvirt-l10n-hwe.install.in\n usr/share/locale/zh_TW/LC_MESSAGES/libvirt.mo\ndiff --git a/debian/libvirt0.symbols b/debian/libvirt0.symbols\nindex 8689527..c964f1e 100644\n--- a/debian/libvirt0.symbols\n+++ b/debian/libvirt0.symbols\n@@ -102,7 +102,8 @@ libvirt.so.0 libvirt0 #MINVER#\n  *@LIBVIRT_10.1.0 10.1.0\n  *@LIBVIRT_10.2.0 10.2.0\n  *@LIBVIRT_11.2.0 11.2.0\n- *@LIBVIRT_PRIVATE_12.0.0 12.0.0\n+ *@LIBVIRT_12.5.0 12.5.0\n+ *@LIBVIRT_PRIVATE_12.6.0 12.6.0\n \n libvirt-qemu.so.0 libvirt0 #MINVER#\n  *@LIBVIRT_QEMU_0.8.3 0.8.3\n@@ -121,4 +122,4 @@ libvirt-admin.so.0 libvirt0 #MINVER#\n  *@LIBVIRT_ADMIN_3.0.0 3.0.0\n  *@LIBVIRT_ADMIN_8.6.0 8.9.0\n  *@LIBVIRT_ADMIN_11.2.0 11.2.0\n- *@LIBVIRT_ADMIN_PRIVATE_12.0.0 12.0.0\n+ *@LIBVIRT_ADMIN_PRIVATE_12.6.0 12.6.0\ndiff --git a/debian/patches/debian/Debianize-libvirt-guests.patch b/debian/patches/debian/Debianize-libvirt-guests.patch\nindex 5a801cb..ea9cc0d 100644\n--- a/debian/patches/debian/Debianize-libvirt-guests.patch\n+++ b/debian/patches/debian/Debianize-libvirt-guests.patch\n@@ -31,7 +31,7 @@ index 42dae28..69bc270 100644\n    Action taken on host shutdown\n  \n diff --git a/tools/libvirt-guests.sh.in b/tools/libvirt-guests.sh.in\n-index f2db128..e2a3744 100644\n+index 66a39b9..32b1921 100644\n --- a/tools/libvirt-guests.sh.in\n +++ b/tools/libvirt-guests.sh.in\n @@ -20,19 +20,19 @@ sysconfdir=\"@sysconfdir@\"\n@@ -60,7 +60,7 @@ index f2db128..e2a3744 100644\n  SHUTDOWN_TIMEOUT=300\n  PARALLEL_SHUTDOWN=0\n  START_DELAY=0\n-@@ -585,8 +585,7 @@ gueststatus() {\n+@@ -589,8 +589,7 @@ gueststatus() {\n  \n  # rh_status\n  # Display current status: whether saved state exists, and whether start\ndiff --git a/debian/patches/debian/Drop-inter-package-Also-lines-from-libvirtd.service.patch b/debian/patches/debian/Drop-inter-package-Also-lines-from-libvirtd.service.patch\nindex 439b979..b8e93d6 100644\n--- a/debian/patches/debian/Drop-inter-package-Also-lines-from-libvirtd.service.patch\n+++ b/debian/patches/debian/Drop-inter-package-Also-lines-from-libvirtd.service.patch\n@@ -23,10 +23,10 @@ Forwarded: not-needed\n  1 file changed, 2 deletions(-)\n \n diff --git a/src/remote/libvirtd.service.in b/src/remote/libvirtd.service.in\n-index b0a062e..073555e 100644\n+index f26494d..b854cb8 100644\n --- a/src/remote/libvirtd.service.in\n +++ b/src/remote/libvirtd.service.in\n-@@ -36,8 +36,6 @@ Restart=on-failure\n+@@ -40,8 +40,6 @@ Restart=on-failure\n  \n  [Install]\n  WantedBy=multi-user.target\ndiff --git a/debian/patches/debian/Use-sensible-editor-by-default.patch b/debian/patches/debian/Use-sensible-editor-by-default.patch\nindex 199b4ac..6d91560 100644\n--- a/debian/patches/debian/Use-sensible-editor-by-default.patch\n+++ b/debian/patches/debian/Use-sensible-editor-by-default.patch\n@@ -10,10 +10,10 @@ Forwarded: not-needed\n  1 file changed, 1 insertion(+), 1 deletion(-)\n \n diff --git a/tools/vsh.c b/tools/vsh.c\n-index 69d3930..5362f54 100644\n+index ccf2f21..52af2a0 100644\n --- a/tools/vsh.c\n +++ b/tools/vsh.c\n-@@ -2601,7 +2601,7 @@ vshEditWriteToTempFile(vshControl *ctl, const char *doc)\n+@@ -2604,7 +2604,7 @@ vshEditWriteToTempFile(vshControl *ctl, const char *doc)\n  \n  /* Hard-code default editor used as a fallback if not configured by\n   * VISUAL or EDITOR environment variables. */\ndiff --git a/debian/patches/series b/debian/patches/series\nindex 8324e4a..90c2fba 100644\n--- a/debian/patches/series\n+++ b/debian/patches/series\n@@ -3,23 +3,37 @@ debian/apparmor_profiles_local_include.patch\n debian/Use-sensible-editor-by-default.patch\n debian/Drop-inter-package-Also-lines-from-libvirtd.service.patch\n debian/sysusers.patch\n+<<<<<<< debian/patches/series\n debian/x86-install-modules-load.d-file-to-load-msr-module.patch\n \n ubuntu/Allow-libvirt-group-to-access-the-socket.patch\n ubuntu/daemon-augeas-fix-expected.patch\n+=======\n+\n+>>>>>>> debian/patches/series\n ubuntu/ubuntu_machine_type.patch\n ubuntu/set-default-machine-to-ubuntu.patch\n ubuntu/lp-1861125-ubuntu-models.patch\n ubuntu/dnsmasq-as-priv-user\n+<<<<<<< debian/patches/series\n ubuntu/ovmf_paths.patch\n ubuntu/wait-for-qemu-kvm.patch\n ubuntu/swtpm-by-swtpm-user.patch\n ubuntu/lp-2027838-conf-Default-to-qemu-system-libvirt-URI.patch\n+=======\n+ubuntu/wait-for-qemu-kvm.patch\n+ubuntu/swtpm-by-swtpm-user.patch\n+ubuntu/lp-2027838-conf-Default-to-qemu-system-libvirt-URI.patch\n+ubuntu/x86-install-modules-load.d-file-to-load-msr-module.patch\n+>>>>>>> debian/patches/series\n \n # Ubuntu Apparmor Changes\n ubuntu-aa/0020-virt-aa-helper-ubuntu-storage-paths.patch\n ubuntu-aa/0029-appmor-libvirt-qemu-Add-9p-support.patch\n+<<<<<<< debian/patches/series\n ubuntu-aa/0031-virt-aa-helper-Ask-for-no-deny-rule-for-readonly-dis.patch\n+=======\n+>>>>>>> debian/patches/series\n ubuntu-aa/0032-apparmor-libvirt-qemu-Allow-reading-charm-specific-c.patch\n ubuntu-aa/0033-UBUNTU-only-apparmor-for-kvm.powerpc-LP-1680384.patch\n ubuntu-aa/0034-apparmor-virt-aa-helper-access-for-snapped-nova.patch\n@@ -28,6 +42,9 @@ ubuntu-aa/lp2079869-allow-access-for-bridge-helper-to-sys-devices-system.patch\n ubuntu-aa/lp2123870-apparmor-use-the-coreutils-tunable-for-coreutils.patch\n ubuntu-aa/lp2144665-virt-aa-helper-grant-access-to-unix-socket-for-qgsd.patch\n ubuntu-aa/apparmor-Allow-vfio-ccw-hostdev-sysfs-access.patch\n+<<<<<<< debian/patches/series\n ubuntu/lp2153530-fix-max-socket-calculation.patch\n ubuntu/lp2155755-split-virNetDevBandwidthClear-into-helpers.patch\n ubuntu/lp2155755-only-clear-qdisc-for-defined-directions.patch\n+=======\n+>>>>>>> debian/patches/series\ndiff --git a/debian/patches/ubuntu/dnsmasq-as-priv-user b/debian/patches/ubuntu/dnsmasq-as-priv-user\nindex a6c8af4..6421bb0 100644\n--- a/debian/patches/ubuntu/dnsmasq-as-priv-user\n+++ b/debian/patches/ubuntu/dnsmasq-as-priv-user\n@@ -16,9 +16,54 @@ Abstract:\n  case, because there may be multiple dnsmasq daemons running, a separate\n  libvirt-dnsmasq user (the dnsmasq package itself runs the dnsmasq daemon under\n  a system user called unsurprisingly 'dnsmasq').\n+<<<<<<< debian/patches/ubuntu/dnsmasq-as-priv-user\n --- a/src/network/bridge_driver.c\n +++ b/src/network/bridge_driver.c\n @@ -1129,7 +1129,8 @@ networkDnsmasqConfContents(virNetworkObj\n+=======\n+---\n+ src/network/bridge_driver.c                                    | 3 ++-\n+ tests/networkxmlconfdata/bandwidth-network.conf                | 1 +\n+ tests/networkxmlconfdata/dhcp6-nat-network.conf                | 1 +\n+ tests/networkxmlconfdata/dhcp6-network.conf                    | 1 +\n+ tests/networkxmlconfdata/dhcp6host-routed-network.conf         | 1 +\n+ tests/networkxmlconfdata/dnsmasq-options.conf                  | 1 +\n+ tests/networkxmlconfdata/isolated-network.conf                 | 1 +\n+ tests/networkxmlconfdata/leasetime-hours.conf                  | 1 +\n+ tests/networkxmlconfdata/leasetime-infinite.conf               | 1 +\n+ tests/networkxmlconfdata/leasetime-minutes.conf                | 1 +\n+ tests/networkxmlconfdata/leasetime-seconds.conf                | 1 +\n+ tests/networkxmlconfdata/nat-network-dns-forward-plain.conf    | 1 +\n+ .../nat-network-dns-forwarder-no-resolv.conf                   | 1 +\n+ tests/networkxmlconfdata/nat-network-dns-forwarders.conf       | 1 +\n+ tests/networkxmlconfdata/nat-network-dns-hosts.conf            | 1 +\n+ tests/networkxmlconfdata/nat-network-dns-local-domain.conf     | 1 +\n+ .../networkxmlconfdata/nat-network-dns-srv-record-minimal.conf | 1 +\n+ tests/networkxmlconfdata/nat-network-dns-srv-record.conf       | 1 +\n+ tests/networkxmlconfdata/nat-network-dns-srv-records.conf      | 1 +\n+ tests/networkxmlconfdata/nat-network-dns-txt-record.conf       | 1 +\n+ tests/networkxmlconfdata/nat-network-explicit-flood.conf       | 1 +\n+ tests/networkxmlconfdata/nat-network-forward-nat-address.conf  | 1 +\n+ tests/networkxmlconfdata/nat-network-forward-nat-ipv6.conf     | 1 +\n+ .../networkxmlconfdata/nat-network-forward-nat-no-address.conf | 1 +\n+ tests/networkxmlconfdata/nat-network-mtu.conf                  | 1 +\n+ tests/networkxmlconfdata/nat-network-name-with-quotes.conf     | 1 +\n+ tests/networkxmlconfdata/nat-network.conf                      | 1 +\n+ tests/networkxmlconfdata/netboot-network.conf                  | 1 +\n+ tests/networkxmlconfdata/netboot-proxy-network.conf            | 1 +\n+ tests/networkxmlconfdata/netboot-tftp.conf                     | 1 +\n+ tests/networkxmlconfdata/open-network.conf                     | 1 +\n+ tests/networkxmlconfdata/ptr-domains-auto.conf                 | 1 +\n+ tests/networkxmlconfdata/routed-network.conf                   | 1 +\n+ tests/networkxmlconfdata/set-mtu.conf                          | 1 +\n+ 34 files changed, 35 insertions(+), 1 deletion(-)\n+\n+diff --git a/src/network/bridge_driver.c b/src/network/bridge_driver.c\n+index 4dc3e5424b..2316562826 100644\n+--- a/src/network/bridge_driver.c\n++++ b/src/network/bridge_driver.c\n+@@ -1187,7 +1187,8 @@ networkDnsmasqConfContents(virNetworkObj *obj,\n+>>>>>>> debian/patches/ubuntu/dnsmasq-as-priv-user\n                        \"##    virsh net-edit %s\\n\"\n                        \"## or other application using the libvirt API.\\n\"\n                        \"##\\n## dnsmasq conf file created by libvirt\\n\"\n@@ -28,8 +73,15 @@ Abstract:\n                        def->name);\n  \n      /* if dns is disabled, set its listening port to 0, which\n+<<<<<<< debian/patches/ubuntu/dnsmasq-as-priv-user\n --- a/tests/networkxml2confdata/dhcp6host-routed-network.conf\n +++ b/tests/networkxml2confdata/dhcp6host-routed-network.conf\n+=======\n+diff --git a/tests/networkxmlconfdata/bandwidth-network.conf b/tests/networkxmlconfdata/bandwidth-network.conf\n+index d45b23ad7a..6291b5926e 100644\n+--- a/tests/networkxmlconfdata/bandwidth-network.conf\n++++ b/tests/networkxmlconfdata/bandwidth-network.conf\n+>>>>>>> debian/patches/ubuntu/dnsmasq-as-priv-user\n @@ -5,6 +5,7 @@\n  ##\n  ## dnsmasq conf file created by libvirt\n@@ -38,8 +90,15 @@ Abstract:\n  except-interface=lo\n  bind-dynamic\n  interface=virbr1\n+<<<<<<< debian/patches/ubuntu/dnsmasq-as-priv-user\n --- a/tests/networkxml2confdata/dhcp6-nat-network.conf\n +++ b/tests/networkxml2confdata/dhcp6-nat-network.conf\n+=======\n+diff --git a/tests/networkxmlconfdata/dhcp6-nat-network.conf b/tests/networkxmlconfdata/dhcp6-nat-network.conf\n+index 536974e508..7df91b825e 100644\n+--- a/tests/networkxmlconfdata/dhcp6-nat-network.conf\n++++ b/tests/networkxmlconfdata/dhcp6-nat-network.conf\n+>>>>>>> debian/patches/ubuntu/dnsmasq-as-priv-user\n @@ -5,6 +5,7 @@\n  ##\n  ## dnsmasq conf file created by libvirt\n@@ -48,8 +107,15 @@ Abstract:\n  except-interface=lo\n  bind-dynamic\n  interface=virbr0\n+<<<<<<< debian/patches/ubuntu/dnsmasq-as-priv-user\n --- a/tests/networkxml2confdata/dhcp6-network.conf\n +++ b/tests/networkxml2confdata/dhcp6-network.conf\n+=======\n+diff --git a/tests/networkxmlconfdata/dhcp6-network.conf b/tests/networkxmlconfdata/dhcp6-network.conf\n+index 82706903b3..38f1690ceb 100644\n+--- a/tests/networkxmlconfdata/dhcp6-network.conf\n++++ b/tests/networkxmlconfdata/dhcp6-network.conf\n+>>>>>>> debian/patches/ubuntu/dnsmasq-as-priv-user\n @@ -5,6 +5,7 @@\n  ##\n  ## dnsmasq conf file created by libvirt\n@@ -58,8 +124,15 @@ Abstract:\n  domain=mynet\n  expand-hosts\n  except-interface=lo\n+<<<<<<< debian/patches/ubuntu/dnsmasq-as-priv-user\n --- a/tests/networkxml2confdata/isolated-network.conf\n +++ b/tests/networkxml2confdata/isolated-network.conf\n+=======\n+diff --git a/tests/networkxmlconfdata/dhcp6host-routed-network.conf b/tests/networkxmlconfdata/dhcp6host-routed-network.conf\n+index 87a1498809..e62211a56c 100644\n+--- a/tests/networkxmlconfdata/dhcp6host-routed-network.conf\n++++ b/tests/networkxmlconfdata/dhcp6host-routed-network.conf\n+>>>>>>> debian/patches/ubuntu/dnsmasq-as-priv-user\n @@ -5,6 +5,7 @@\n  ##\n  ## dnsmasq conf file created by libvirt\n@@ -67,9 +140,17 @@ Abstract:\n +user=libvirt-dnsmasq\n  except-interface=lo\n  bind-dynamic\n+<<<<<<< debian/patches/ubuntu/dnsmasq-as-priv-user\n  interface=virbr2\n --- a/tests/networkxml2confdata/nat-network.conf\n +++ b/tests/networkxml2confdata/nat-network.conf\n+=======\n+ interface=virbr1\n+diff --git a/tests/networkxmlconfdata/dnsmasq-options.conf b/tests/networkxmlconfdata/dnsmasq-options.conf\n+index 867f355c79..dfa4a54c25 100644\n+--- a/tests/networkxmlconfdata/dnsmasq-options.conf\n++++ b/tests/networkxmlconfdata/dnsmasq-options.conf\n+>>>>>>> debian/patches/ubuntu/dnsmasq-as-priv-user\n @@ -5,6 +5,7 @@\n  ##\n  ## dnsmasq conf file created by libvirt\n@@ -78,18 +159,35 @@ Abstract:\n  except-interface=lo\n  bind-dynamic\n  interface=virbr0\n+<<<<<<< debian/patches/ubuntu/dnsmasq-as-priv-user\n --- a/tests/networkxml2confdata/nat-network-dns-forwarders.conf\n +++ b/tests/networkxml2confdata/nat-network-dns-forwarders.conf\n+=======\n+diff --git a/tests/networkxmlconfdata/isolated-network.conf b/tests/networkxmlconfdata/isolated-network.conf\n+index ea66bb83e6..32b599b480 100644\n+--- a/tests/networkxmlconfdata/isolated-network.conf\n++++ b/tests/networkxmlconfdata/isolated-network.conf\n+>>>>>>> debian/patches/ubuntu/dnsmasq-as-priv-user\n @@ -5,6 +5,7 @@\n  ##\n  ## dnsmasq conf file created by libvirt\n  strict-order\n +user=libvirt-dnsmasq\n+<<<<<<< debian/patches/ubuntu/dnsmasq-as-priv-user\n  server=8.8.8.8\n  server=8.8.4.4\n  server=/example.com/192.168.1.1\n --- a/tests/networkxml2confdata/nat-network-dns-forward-plain.conf\n +++ b/tests/networkxml2confdata/nat-network-dns-forward-plain.conf\n+=======\n+ except-interface=lo\n+ bind-dynamic\n+ interface=virbr2\n+diff --git a/tests/networkxmlconfdata/leasetime-hours.conf b/tests/networkxmlconfdata/leasetime-hours.conf\n+index 1599d4633e..5d4f76a5c7 100644\n+--- a/tests/networkxmlconfdata/leasetime-hours.conf\n++++ b/tests/networkxmlconfdata/leasetime-hours.conf\n+>>>>>>> debian/patches/ubuntu/dnsmasq-as-priv-user\n @@ -5,6 +5,7 @@\n  ##\n  ## dnsmasq conf file created by libvirt\n@@ -98,18 +196,35 @@ Abstract:\n  except-interface=lo\n  bind-dynamic\n  interface=virbr0\n+<<<<<<< debian/patches/ubuntu/dnsmasq-as-priv-user\n --- a/tests/networkxml2confdata/nat-network-dns-hosts.conf\n +++ b/tests/networkxml2confdata/nat-network-dns-hosts.conf\n+=======\n+diff --git a/tests/networkxmlconfdata/leasetime-infinite.conf b/tests/networkxmlconfdata/leasetime-infinite.conf\n+index 883ced6ade..423b76ca9f 100644\n+--- a/tests/networkxmlconfdata/leasetime-infinite.conf\n++++ b/tests/networkxmlconfdata/leasetime-infinite.conf\n+>>>>>>> debian/patches/ubuntu/dnsmasq-as-priv-user\n @@ -5,6 +5,7 @@\n  ##\n  ## dnsmasq conf file created by libvirt\n  strict-order\n +user=libvirt-dnsmasq\n+<<<<<<< debian/patches/ubuntu/dnsmasq-as-priv-user\n  domain=example.com\n  expand-hosts\n  domain-needed\n --- a/tests/networkxml2confdata/nat-network-dns-srv-record.conf\n +++ b/tests/networkxml2confdata/nat-network-dns-srv-record.conf\n+=======\n+ except-interface=lo\n+ bind-dynamic\n+ interface=virbr0\n+diff --git a/tests/networkxmlconfdata/leasetime-minutes.conf b/tests/networkxmlconfdata/leasetime-minutes.conf\n+index c093501a35..0f474962e3 100644\n+--- a/tests/networkxmlconfdata/leasetime-minutes.conf\n++++ b/tests/networkxmlconfdata/leasetime-minutes.conf\n+>>>>>>> debian/patches/ubuntu/dnsmasq-as-priv-user\n @@ -5,6 +5,7 @@\n  ##\n  ## dnsmasq conf file created by libvirt\n@@ -118,8 +233,15 @@ Abstract:\n  except-interface=lo\n  bind-dynamic\n  interface=virbr0\n+<<<<<<< debian/patches/ubuntu/dnsmasq-as-priv-user\n --- a/tests/networkxml2confdata/nat-network-dns-srv-record-minimal.conf\n +++ b/tests/networkxml2confdata/nat-network-dns-srv-record-minimal.conf\n+=======\n+diff --git a/tests/networkxmlconfdata/leasetime-seconds.conf b/tests/networkxmlconfdata/leasetime-seconds.conf\n+index 8b2a81c308..f844f6409a 100644\n+--- a/tests/networkxmlconfdata/leasetime-seconds.conf\n++++ b/tests/networkxmlconfdata/leasetime-seconds.conf\n+>>>>>>> debian/patches/ubuntu/dnsmasq-as-priv-user\n @@ -5,6 +5,7 @@\n  ##\n  ## dnsmasq conf file created by libvirt\n@@ -128,8 +250,15 @@ Abstract:\n  except-interface=lo\n  bind-dynamic\n  interface=virbr0\n+<<<<<<< debian/patches/ubuntu/dnsmasq-as-priv-user\n --- a/tests/networkxml2confdata/nat-network-dns-txt-record.conf\n +++ b/tests/networkxml2confdata/nat-network-dns-txt-record.conf\n+=======\n+diff --git a/tests/networkxmlconfdata/nat-network-dns-forward-plain.conf b/tests/networkxmlconfdata/nat-network-dns-forward-plain.conf\n+index 9a000b8879..97c0435ca6 100644\n+--- a/tests/networkxmlconfdata/nat-network-dns-forward-plain.conf\n++++ b/tests/networkxmlconfdata/nat-network-dns-forward-plain.conf\n+>>>>>>> debian/patches/ubuntu/dnsmasq-as-priv-user\n @@ -5,6 +5,7 @@\n  ##\n  ## dnsmasq conf file created by libvirt\n@@ -138,38 +267,75 @@ Abstract:\n  except-interface=lo\n  bind-dynamic\n  interface=virbr0\n+<<<<<<< debian/patches/ubuntu/dnsmasq-as-priv-user\n --- a/tests/networkxml2confdata/netboot-network.conf\n +++ b/tests/networkxml2confdata/netboot-network.conf\n+=======\n+diff --git a/tests/networkxmlconfdata/nat-network-dns-forwarder-no-resolv.conf b/tests/networkxmlconfdata/nat-network-dns-forwarder-no-resolv.conf\n+index 52d000aa0f..d80b6f6d0f 100644\n+--- a/tests/networkxmlconfdata/nat-network-dns-forwarder-no-resolv.conf\n++++ b/tests/networkxmlconfdata/nat-network-dns-forwarder-no-resolv.conf\n+>>>>>>> debian/patches/ubuntu/dnsmasq-as-priv-user\n @@ -5,6 +5,7 @@\n  ##\n  ## dnsmasq conf file created by libvirt\n  strict-order\n +user=libvirt-dnsmasq\n+<<<<<<< debian/patches/ubuntu/dnsmasq-as-priv-user\n  domain=example.com\n  expand-hosts\n  except-interface=lo\n --- a/tests/networkxml2confdata/netboot-proxy-network.conf\n +++ b/tests/networkxml2confdata/netboot-proxy-network.conf\n+=======\n+ server=/example.com/192.168.1.1\n+ except-interface=lo\n+ bind-dynamic\n+diff --git a/tests/networkxmlconfdata/nat-network-dns-forwarders.conf b/tests/networkxmlconfdata/nat-network-dns-forwarders.conf\n+index fcaf7e70e8..7627ae6e7d 100644\n+--- a/tests/networkxmlconfdata/nat-network-dns-forwarders.conf\n++++ b/tests/networkxmlconfdata/nat-network-dns-forwarders.conf\n+>>>>>>> debian/patches/ubuntu/dnsmasq-as-priv-user\n @@ -5,6 +5,7 @@\n  ##\n  ## dnsmasq conf file created by libvirt\n  strict-order\n +user=libvirt-dnsmasq\n+<<<<<<< debian/patches/ubuntu/dnsmasq-as-priv-user\n  domain=example.com\n  expand-hosts\n  except-interface=lo\n --- a/tests/networkxml2confdata/routed-network.conf\n +++ b/tests/networkxml2confdata/routed-network.conf\n+=======\n+ server=8.8.8.8\n+ server=8.8.4.4\n+ server=/example.com/192.168.1.1\n+diff --git a/tests/networkxmlconfdata/nat-network-dns-hosts.conf b/tests/networkxmlconfdata/nat-network-dns-hosts.conf\n+index 021316f9c7..15b668aa0e 100644\n+--- a/tests/networkxmlconfdata/nat-network-dns-hosts.conf\n++++ b/tests/networkxmlconfdata/nat-network-dns-hosts.conf\n+>>>>>>> debian/patches/ubuntu/dnsmasq-as-priv-user\n @@ -5,6 +5,7 @@\n  ##\n  ## dnsmasq conf file created by libvirt\n  strict-order\n +user=libvirt-dnsmasq\n+<<<<<<< debian/patches/ubuntu/dnsmasq-as-priv-user\n  except-interface=lo\n  bind-dynamic\n  interface=virbr1\n --- a/tests/networkxml2confdata/nat-network-dns-local-domain.conf\n +++ b/tests/networkxml2confdata/nat-network-dns-local-domain.conf\n+=======\n+ domain=example.com\n+ expand-hosts\n+ domain-needed\n+diff --git a/tests/networkxmlconfdata/nat-network-dns-local-domain.conf b/tests/networkxmlconfdata/nat-network-dns-local-domain.conf\n+index 5f41b9186c..d48609b257 100644\n+--- a/tests/networkxmlconfdata/nat-network-dns-local-domain.conf\n++++ b/tests/networkxmlconfdata/nat-network-dns-local-domain.conf\n+>>>>>>> debian/patches/ubuntu/dnsmasq-as-priv-user\n @@ -5,6 +5,7 @@\n  ##\n  ## dnsmasq conf file created by libvirt\n@@ -178,8 +344,15 @@ Abstract:\n  local=/example.com/\n  domain=example.com\n  expand-hosts\n+<<<<<<< debian/patches/ubuntu/dnsmasq-as-priv-user\n --- a/tests/networkxml2confdata/nat-network-name-with-quotes.conf\n +++ b/tests/networkxml2confdata/nat-network-name-with-quotes.conf\n+=======\n+diff --git a/tests/networkxmlconfdata/nat-network-dns-srv-record-minimal.conf b/tests/networkxmlconfdata/nat-network-dns-srv-record-minimal.conf\n+index 4757f824da..7e7ed0eb33 100644\n+--- a/tests/networkxmlconfdata/nat-network-dns-srv-record-minimal.conf\n++++ b/tests/networkxmlconfdata/nat-network-dns-srv-record-minimal.conf\n+>>>>>>> debian/patches/ubuntu/dnsmasq-as-priv-user\n @@ -5,6 +5,7 @@\n  ##\n  ## dnsmasq conf file created by libvirt\n@@ -188,8 +361,15 @@ Abstract:\n  except-interface=lo\n  bind-dynamic\n  interface=virbr0\n+<<<<<<< debian/patches/ubuntu/dnsmasq-as-priv-user\n --- a/tests/networkxml2confdata/open-network.conf\n +++ b/tests/networkxml2confdata/open-network.conf\n+=======\n+diff --git a/tests/networkxmlconfdata/nat-network-dns-srv-record.conf b/tests/networkxmlconfdata/nat-network-dns-srv-record.conf\n+index c83148cc0a..690934b171 100644\n+--- a/tests/networkxmlconfdata/nat-network-dns-srv-record.conf\n++++ b/tests/networkxmlconfdata/nat-network-dns-srv-record.conf\n+>>>>>>> debian/patches/ubuntu/dnsmasq-as-priv-user\n @@ -5,6 +5,7 @@\n  ##\n  ## dnsmasq conf file created by libvirt\n@@ -197,39 +377,77 @@ Abstract:\n +user=libvirt-dnsmasq\n  except-interface=lo\n  bind-dynamic\n+<<<<<<< debian/patches/ubuntu/dnsmasq-as-priv-user\n  interface=virbr1\n --- a/tests/networkxml2confdata/ptr-domains-auto.conf\n +++ b/tests/networkxml2confdata/ptr-domains-auto.conf\n+=======\n+ interface=virbr0\n+diff --git a/tests/networkxmlconfdata/nat-network-dns-srv-records.conf b/tests/networkxmlconfdata/nat-network-dns-srv-records.conf\n+index b85eb85af3..be1263f92b 100644\n+--- a/tests/networkxmlconfdata/nat-network-dns-srv-records.conf\n++++ b/tests/networkxmlconfdata/nat-network-dns-srv-records.conf\n+>>>>>>> debian/patches/ubuntu/dnsmasq-as-priv-user\n @@ -5,6 +5,7 @@\n  ##\n  ## dnsmasq conf file created by libvirt\n  strict-order\n +user=libvirt-dnsmasq\n+<<<<<<< debian/patches/ubuntu/dnsmasq-as-priv-user\n  local=/122.168.192.in-addr.arpa/\n  local=/1.0.e.f.0.1.c.a.8.b.d.0.1.0.0.2.ip6.arpa/\n  except-interface=lo\n --- a/tests/networkxml2confdata/routed-network-no-dns.conf\n +++ b/tests/networkxml2confdata/routed-network-no-dns.conf\n+=======\n+ except-interface=lo\n+ bind-dynamic\n+ interface=virbr0\n+diff --git a/tests/networkxmlconfdata/nat-network-dns-txt-record.conf b/tests/networkxmlconfdata/nat-network-dns-txt-record.conf\n+index d9b981a6e5..ae1f4195d2 100644\n+--- a/tests/networkxmlconfdata/nat-network-dns-txt-record.conf\n++++ b/tests/networkxmlconfdata/nat-network-dns-txt-record.conf\n+>>>>>>> debian/patches/ubuntu/dnsmasq-as-priv-user\n @@ -5,6 +5,7 @@\n  ##\n  ## dnsmasq conf file created by libvirt\n  strict-order\n +user=libvirt-dnsmasq\n+<<<<<<< debian/patches/ubuntu/dnsmasq-as-priv-user\n  port=0\n  except-interface=lo\n  bind-dynamic\n --- a/tests/networkxml2confdata/nat-network-dns-forwarder-no-resolv.conf\n +++ b/tests/networkxml2confdata/nat-network-dns-forwarder-no-resolv.conf\n+=======\n+ except-interface=lo\n+ bind-dynamic\n+ interface=virbr0\n+diff --git a/tests/networkxmlconfdata/nat-network-explicit-flood.conf b/tests/networkxmlconfdata/nat-network-explicit-flood.conf\n+index 873a360acc..6c23f9a19f 100644\n+--- a/tests/networkxmlconfdata/nat-network-explicit-flood.conf\n++++ b/tests/networkxmlconfdata/nat-network-explicit-flood.conf\n+>>>>>>> debian/patches/ubuntu/dnsmasq-as-priv-user\n @@ -5,6 +5,7 @@\n  ##\n  ## dnsmasq conf file created by libvirt\n  strict-order\n +user=libvirt-dnsmasq\n+<<<<<<< debian/patches/ubuntu/dnsmasq-as-priv-user\n  server=/example.com/192.168.1.1\n  except-interface=lo\n  bind-dynamic\n --- a/tests/networkxml2confdata/nat-network-mtu.conf\n +++ b/tests/networkxml2confdata/nat-network-mtu.conf\n+=======\n+ except-interface=lo\n+ bind-dynamic\n+ interface=virbr0\n+diff --git a/tests/networkxmlconfdata/nat-network-forward-nat-address.conf b/tests/networkxmlconfdata/nat-network-forward-nat-address.conf\n+index 873a360acc..6c23f9a19f 100644\n+--- a/tests/networkxmlconfdata/nat-network-forward-nat-address.conf\n++++ b/tests/networkxmlconfdata/nat-network-forward-nat-address.conf\n+>>>>>>> debian/patches/ubuntu/dnsmasq-as-priv-user\n @@ -5,6 +5,7 @@\n  ##\n  ## dnsmasq conf file created by libvirt\n@@ -238,8 +456,15 @@ Abstract:\n  except-interface=lo\n  bind-dynamic\n  interface=virbr0\n+<<<<<<< debian/patches/ubuntu/dnsmasq-as-priv-user\n --- a/tests/networkxml2confdata/dnsmasq-options.conf\n +++ b/tests/networkxml2confdata/dnsmasq-options.conf\n+=======\n+diff --git a/tests/networkxmlconfdata/nat-network-forward-nat-ipv6.conf b/tests/networkxmlconfdata/nat-network-forward-nat-ipv6.conf\n+index 3627bbaf1d..fa6562d230 100644\n+--- a/tests/networkxmlconfdata/nat-network-forward-nat-ipv6.conf\n++++ b/tests/networkxmlconfdata/nat-network-forward-nat-ipv6.conf\n+>>>>>>> debian/patches/ubuntu/dnsmasq-as-priv-user\n @@ -5,6 +5,7 @@\n  ##\n  ## dnsmasq conf file created by libvirt\n@@ -248,8 +473,15 @@ Abstract:\n  except-interface=lo\n  bind-dynamic\n  interface=virbr0\n+<<<<<<< debian/patches/ubuntu/dnsmasq-as-priv-user\n --- a/tests/networkxml2confdata/leasetime-hours.conf\n +++ b/tests/networkxml2confdata/leasetime-hours.conf\n+=======\n+diff --git a/tests/networkxmlconfdata/nat-network-forward-nat-no-address.conf b/tests/networkxmlconfdata/nat-network-forward-nat-no-address.conf\n+index 873a360acc..6c23f9a19f 100644\n+--- a/tests/networkxmlconfdata/nat-network-forward-nat-no-address.conf\n++++ b/tests/networkxmlconfdata/nat-network-forward-nat-no-address.conf\n+>>>>>>> debian/patches/ubuntu/dnsmasq-as-priv-user\n @@ -5,6 +5,7 @@\n  ##\n  ## dnsmasq conf file created by libvirt\n@@ -258,8 +490,15 @@ Abstract:\n  except-interface=lo\n  bind-dynamic\n  interface=virbr0\n+<<<<<<< debian/patches/ubuntu/dnsmasq-as-priv-user\n --- a/tests/networkxml2confdata/leasetime-infinite.conf\n +++ b/tests/networkxml2confdata/leasetime-infinite.conf\n+=======\n+diff --git a/tests/networkxmlconfdata/nat-network-mtu.conf b/tests/networkxmlconfdata/nat-network-mtu.conf\n+index 1dd4754f2a..ffa5fe6ff7 100644\n+--- a/tests/networkxmlconfdata/nat-network-mtu.conf\n++++ b/tests/networkxmlconfdata/nat-network-mtu.conf\n+>>>>>>> debian/patches/ubuntu/dnsmasq-as-priv-user\n @@ -5,6 +5,7 @@\n  ##\n  ## dnsmasq conf file created by libvirt\n@@ -268,8 +507,15 @@ Abstract:\n  except-interface=lo\n  bind-dynamic\n  interface=virbr0\n+<<<<<<< debian/patches/ubuntu/dnsmasq-as-priv-user\n --- a/tests/networkxml2confdata/leasetime-minutes.conf\n +++ b/tests/networkxml2confdata/leasetime-minutes.conf\n+=======\n+diff --git a/tests/networkxmlconfdata/nat-network-name-with-quotes.conf b/tests/networkxmlconfdata/nat-network-name-with-quotes.conf\n+index 5c5ea7b48e..fa5d4ffe62 100644\n+--- a/tests/networkxmlconfdata/nat-network-name-with-quotes.conf\n++++ b/tests/networkxmlconfdata/nat-network-name-with-quotes.conf\n+>>>>>>> debian/patches/ubuntu/dnsmasq-as-priv-user\n @@ -5,6 +5,7 @@\n  ##\n  ## dnsmasq conf file created by libvirt\n@@ -278,8 +524,15 @@ Abstract:\n  except-interface=lo\n  bind-dynamic\n  interface=virbr0\n+<<<<<<< debian/patches/ubuntu/dnsmasq-as-priv-user\n --- a/tests/networkxml2confdata/leasetime-seconds.conf\n +++ b/tests/networkxml2confdata/leasetime-seconds.conf\n+=======\n+diff --git a/tests/networkxmlconfdata/nat-network.conf b/tests/networkxmlconfdata/nat-network.conf\n+index 873a360acc..6c23f9a19f 100644\n+--- a/tests/networkxmlconfdata/nat-network.conf\n++++ b/tests/networkxmlconfdata/nat-network.conf\n+>>>>>>> debian/patches/ubuntu/dnsmasq-as-priv-user\n @@ -5,6 +5,7 @@\n  ##\n  ## dnsmasq conf file created by libvirt\n@@ -288,8 +541,39 @@ Abstract:\n  except-interface=lo\n  bind-dynamic\n  interface=virbr0\n+<<<<<<< debian/patches/ubuntu/dnsmasq-as-priv-user\n --- a/tests/networkxml2confdata/netboot-tftp.conf\n +++ b/tests/networkxml2confdata/netboot-tftp.conf\n+=======\n+diff --git a/tests/networkxmlconfdata/netboot-network.conf b/tests/networkxmlconfdata/netboot-network.conf\n+index 32ef25b05f..caec6e6e24 100644\n+--- a/tests/networkxmlconfdata/netboot-network.conf\n++++ b/tests/networkxmlconfdata/netboot-network.conf\n+@@ -5,6 +5,7 @@\n+ ##\n+ ## dnsmasq conf file created by libvirt\n+ strict-order\n++user=libvirt-dnsmasq\n+ domain=example.com\n+ expand-hosts\n+ except-interface=lo\n+diff --git a/tests/networkxmlconfdata/netboot-proxy-network.conf b/tests/networkxmlconfdata/netboot-proxy-network.conf\n+index 280da323e2..ddd6445839 100644\n+--- a/tests/networkxmlconfdata/netboot-proxy-network.conf\n++++ b/tests/networkxmlconfdata/netboot-proxy-network.conf\n+@@ -5,6 +5,7 @@\n+ ##\n+ ## dnsmasq conf file created by libvirt\n+ strict-order\n++user=libvirt-dnsmasq\n+ domain=example.com\n+ expand-hosts\n+ except-interface=lo\n+diff --git a/tests/networkxmlconfdata/netboot-tftp.conf b/tests/networkxmlconfdata/netboot-tftp.conf\n+index 45615f3c33..f92809c6b7 100644\n+--- a/tests/networkxmlconfdata/netboot-tftp.conf\n++++ b/tests/networkxmlconfdata/netboot-tftp.conf\n+>>>>>>> debian/patches/ubuntu/dnsmasq-as-priv-user\n @@ -5,6 +5,7 @@\n  ##\n  ## dnsmasq conf file created by libvirt\n@@ -298,3 +582,57 @@ Abstract:\n  except-interface=lo\n  bind-dynamic\n  interface=virbr0\n+<<<<<<< debian/patches/ubuntu/dnsmasq-as-priv-user\n+=======\n+diff --git a/tests/networkxmlconfdata/open-network.conf b/tests/networkxmlconfdata/open-network.conf\n+index ff099847d4..0b221aa5a6 100644\n+--- a/tests/networkxmlconfdata/open-network.conf\n++++ b/tests/networkxmlconfdata/open-network.conf\n+@@ -5,6 +5,7 @@\n+ ##\n+ ## dnsmasq conf file created by libvirt\n+ strict-order\n++user=libvirt-dnsmasq\n+ except-interface=lo\n+ bind-dynamic\n+ interface=virbr1\n+diff --git a/tests/networkxmlconfdata/ptr-domains-auto.conf b/tests/networkxmlconfdata/ptr-domains-auto.conf\n+index 86701c4ddf..ddc0b43e1a 100644\n+--- a/tests/networkxmlconfdata/ptr-domains-auto.conf\n++++ b/tests/networkxmlconfdata/ptr-domains-auto.conf\n+@@ -5,6 +5,7 @@\n+ ##\n+ ## dnsmasq conf file created by libvirt\n+ strict-order\n++user=libvirt-dnsmasq\n+ local=/122.168.192.in-addr.arpa/\n+ local=/1.0.e.f.0.1.c.a.8.b.d.0.1.0.0.2.ip6.arpa/\n+ except-interface=lo\n+diff --git a/tests/networkxmlconfdata/routed-network.conf b/tests/networkxmlconfdata/routed-network.conf\n+index 970aa3cd35..caffaee2aa 100644\n+--- a/tests/networkxmlconfdata/routed-network.conf\n++++ b/tests/networkxmlconfdata/routed-network.conf\n+@@ -5,6 +5,7 @@\n+ ##\n+ ## dnsmasq conf file created by libvirt\n+ strict-order\n++user=libvirt-dnsmasq\n+ except-interface=lo\n+ bind-dynamic\n+ interface=virbr1\n+diff --git a/tests/networkxmlconfdata/set-mtu.conf b/tests/networkxmlconfdata/set-mtu.conf\n+index 011a288a5b..955f03db67 100644\n+--- a/tests/networkxmlconfdata/set-mtu.conf\n++++ b/tests/networkxmlconfdata/set-mtu.conf\n+@@ -5,6 +5,7 @@\n+ ##\n+ ## dnsmasq conf file created by libvirt\n+ strict-order\n++user=libvirt-dnsmasq\n+ except-interface=lo\n+ bind-dynamic\n+ interface=virbr2\n+-- \n+2.43.0\n+\n+>>>>>>> debian/patches/ubuntu/dnsmasq-as-priv-user\ndiff --git a/debian/patches/ubuntu/swtpm-by-swtpm-user.patch b/debian/patches/ubuntu/swtpm-by-swtpm-user.patch\nindex b929325..f540267 100644\n--- a/debian/patches/ubuntu/swtpm-by-swtpm-user.patch\n+++ b/debian/patches/ubuntu/swtpm-by-swtpm-user.patch\n@@ -8,7 +8,11 @@ Bug-Ubuntu: https://bugs.launchpad.net/bugs/1948880\n Last-Update: 2021-11-11\n --- a/src/qemu/qemu.conf.in\n +++ b/src/qemu/qemu.conf.in\n+<<<<<<< debian/patches/ubuntu/swtpm-by-swtpm-user.patch\n @@ -1095,11 +1095,14 @@\n+=======\n+@@ -1111,11 +1111,14 @@\n+>>>>>>> debian/patches/ubuntu/swtpm-by-swtpm-user.patch\n  \n  # User for the swtpm TPM Emulator\n  #\n@@ -29,9 +33,15 @@ Last-Update: 2021-11-11\n  # For debugging and testing purposes it's sometimes useful to be able to disable\n --- a/src/qemu/test_libvirtd_qemu.aug.in\n +++ b/src/qemu/test_libvirtd_qemu.aug.in\n+<<<<<<< debian/patches/ubuntu/swtpm-by-swtpm-user.patch\n @@ -130,8 +130,6 @@ module Test_libvirtd_qemu =\n  { \"slirp_helper\" = \"/usr/bin/slirp-helper\" }\n  { \"qemu_rdp\" = \"qemu-rdp\" }\n+=======\n+@@ -132,8 +132,6 @@\n+ { \"qemu_rdp\" = \"qemu-rdp\" }\n+ { \"qemu_vnc\" = \"qemu-vnc\" }\n+>>>>>>> debian/patches/ubuntu/swtpm-by-swtpm-user.patch\n  { \"dbus_daemon\" = \"dbus-daemon\" }\n -{ \"swtpm_user\" = \"tss\" }\n -{ \"swtpm_group\" = \"tss\" }\n",
+ "diff_truncated": true
+}

@@ -1,0 +1,35 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~charles05/ubuntu/+source/software-properties/+git/software-properties/+merge/497567",
+ "id": "497567",
+ "title": "remove-set-type-hints → ubuntu/devel",
+ "source_branch": "remove-set-type-hints",
+ "target_branch": "ubuntu/devel",
+ "revision": "f357e5c1033b84e8e8b279b82b2ebe005d51cb64",
+ "base_revision": "546bc26cdbf0ed9134c22eecf441e407f0727180",
+ "description": null,
+ "commit_message": null,
+ "diffstat": {
+  "debian/changelog": [
+   7,
+   0
+  ],
+  "debian/control": [
+   1,
+   0
+  ],
+  "softwareproperties/gtk/SoftwarePropertiesGtk.py": [
+   3,
+   2
+  ],
+  "softwareproperties/gtk/utils.py": [
+   60,
+   1
+  ]
+ },
+ "files": 4,
+ "added_lines": 71,
+ "removed_lines": 3,
+ "diff": "diff --git a/debian/changelog b/debian/changelog\nindex 9ff16f8..906d803 100644\n--- a/debian/changelog\n+++ b/debian/changelog\n@@ -1,3 +1,10 @@\n+software-properties (0.119) UNRELEASED; urgency=medium\n+\n+  * gtk: Add X11 fallback for dialog hinting\n+    (LP: #2136009).\n+\n+ -- Charles <charles05@canonical.com>  Mon, 15 Dec 2025 23:26:44 +0100\n+\n software-properties (0.118) resolute; urgency=medium\n \n   * cloudarchive.py: Enable support for the Gazpacho Ubuntu Cloud Archive on 24.04\ndiff --git a/debian/control b/debian/control\nindex 84b3f35..57a6b3e 100644\n--- a/debian/control\n+++ b/debian/control\n@@ -78,6 +78,7 @@ Architecture: all\n Depends: gir1.2-gtk-4.0,\n          gir1.2-adw-1,\n          libgtk3-perl,\n+         libx11-6,\n          python3,\n          python3-dateutil,\n          python3-distro-info,\ndiff --git a/softwareproperties/gtk/SoftwarePropertiesGtk.py b/softwareproperties/gtk/SoftwarePropertiesGtk.py\nindex 5412b0b..af658d6 100644\n--- a/softwareproperties/gtk/SoftwarePropertiesGtk.py\n+++ b/softwareproperties/gtk/SoftwarePropertiesGtk.py\n@@ -69,6 +69,7 @@ from softwareproperties.gtk.utils import (\n     get_ua_service_status,\n     current_distro,\n     is_current_distro_lts,\n+    maybe_hint_dialog_window,\n )\n \n from UbuntuDrivers import detect\n@@ -211,7 +212,7 @@ class SoftwarePropertiesGtk(SoftwareProperties, SimpleGtkbuilderApp):\n         self.button_drivers_control.connect(\"clicked\", self.on_detect_drivers_cancel_retry)\n \n         if parent:\n-            self.window_main.set_type_hint(Gdk.WindowTypeHint.DIALOG)\n+            maybe_hint_dialog_window(self.window_main)\n             try:\n                 self.window_main.set_transient_for(parent)\n             except:\n@@ -220,7 +221,7 @@ class SoftwarePropertiesGtk(SoftwareProperties, SimpleGtkbuilderApp):\n         # If externally called, reparent to external application.\n         self.options = options\n         if options and options.toplevel != None:\n-            self.window_main.set_type_hint(Gdk.WindowTypeHint.DIALOG)\n+            maybe_hint_dialog_window(self.window_main)\n             try:\n                 toplevel = Gdk.window_foreign_new(int(options.toplevel))\n             except AttributeError:\ndiff --git a/softwareproperties/gtk/utils.py b/softwareproperties/gtk/utils.py\nindex b7e0893..c16e156 100644\n--- a/softwareproperties/gtk/utils.py\n+++ b/softwareproperties/gtk/utils.py\n@@ -17,12 +17,13 @@\n # 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA\n \n import aptsources.distro\n+import ctypes\n from datetime import datetime\n import distro_info\n from functools import wraps\n import gi\n gi.require_version(\"Gtk\", \"4.0\")\n-from gi.repository import Gio, Gtk, GObject\n+from gi.repository import Gio, Gtk, Gdk, GdkX11, GObject\n import json\n import os\n import subprocess\n@@ -175,3 +176,61 @@ def retry(exceptions, tries=10, delay=0.1, backoff=2):\n         return f_retry  # true decorator\n \n     return deco_retry\n+\n+\n+def maybe_hint_dialog_window(window):\n+    \"\"\"\n+    Workaround for GTK4 removal of set_type_hint.\n+    Manually sets _NET_WM_WINDOW_TYPE_DIALOG on X11.\n+    See: https://discourse.gnome.org/t/replacing-gtk-window-set-type-hint-in-gtk4\n+    \"\"\"\n+    display = Gdk.Display.get_default()\n+    # Return early if we're not running on X11\n+    if not isinstance(display, GdkX11.X11Display):\n+        return\n+\n+    def _apply_x11_hint(win):\n+        native = win.get_native()\n+        surface = native.get_surface()\n+        xid = surface.get_xid()\n+\n+        # Load X11 (Allow this to raise OSError if missing, per review)\n+        libx11 = ctypes.CDLL(\"libX11.so.6\")\n+\n+        XA_ATOM = 4\n+        PropModeReplace = 0\n+        libx11.XOpenDisplay.restype = ctypes.c_void_p\n+        libx11.XInternAtom.argtypes = [ctypes.c_void_p, ctypes.c_char_p, ctypes.c_int]\n+        libx11.XInternAtom.restype = ctypes.c_ulong\n+\n+        # Open a new connection to avoid any pointer compatibility\n+        # issues between gi and ctypes.\n+        display_ptr = libx11.XOpenDisplay(None)\n+        if not display_ptr:\n+            return\n+\n+        try:\n+            atom_type = libx11.XInternAtom(display_ptr, b\"_NET_WM_WINDOW_TYPE\", 0)\n+            atom_dialog = libx11.XInternAtom(display_ptr, b\"_NET_WM_WINDOW_TYPE_DIALOG\", 0)\n+            data = (ctypes.c_ulong * 1)(atom_dialog)\n+\n+            # XChangeProperty(display, w, property, type, format, mode, data, nelements)\n+            libx11.XChangeProperty(\n+                display_ptr,\n+                xid,\n+                atom_type,\n+                XA_ATOM,\n+                32,\n+                PropModeReplace,\n+                ctypes.cast(data, ctypes.POINTER(ctypes.c_ubyte)),\n+                1\n+            )\n+            libx11.XFlush(display_ptr)\n+        finally:\n+            libx11.XCloseDisplay(display_ptr)\n+\n+    # Apply hints immediately if already realised, otherwise wait for signal\n+    if window.get_realized():\n+        _apply_x11_hint(window)\n+    else:\n+        window.connect('realize', _apply_x11_hint)\n",
+ "diff_truncated": false
+}

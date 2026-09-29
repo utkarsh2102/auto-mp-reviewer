@@ -1,0 +1,27 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~danilogondolfo/ubuntu/+source/netplan.io/+git/netplan.io/+merge/468419",
+ "id": "468419",
+ "title": "jammy_generator_postinst → ubuntu/jammy-devel",
+ "source_branch": "jammy_generator_postinst",
+ "target_branch": "ubuntu/jammy-devel",
+ "revision": "34655046fb4bb2e39c0ffefb2d4ed36f7726a97f",
+ "base_revision": "ebcfea0ff82b0c7193789ee39b3681d8c9e61786",
+ "description": null,
+ "commit_message": null,
+ "diffstat": {
+  "debian/changelog": [
+   8,
+   0
+  ],
+  "debian/netplan.io.postinst": [
+   5,
+   1
+  ]
+ },
+ "files": 2,
+ "added_lines": 13,
+ "removed_lines": 1,
+ "diff": "diff --git a/debian/changelog b/debian/changelog\nindex 5be3a01..612765f 100644\n--- a/debian/changelog\n+++ b/debian/changelog\n@@ -1,3 +1,11 @@\n+netplan.io (0.106.1-7ubuntu0.22.04.4) jammy; urgency=medium\n+\n+  * debian/netplan.io.postinst:\n+    Don't call the generator if no networkd configuration file exists.\n+    (LP: #2071333)\n+\n+ -- Danilo Egea Gondolfo <danilo.egea.gondolfo@canonical.com>  Fri, 28 Jun 2024 10:28:18 +0100\n+\n netplan.io (0.106.1-7ubuntu0.22.04.3) jammy-security; urgency=medium\n \n   * SECURITY UPDATE: weak permissions on secret files, command injection\ndiff --git a/debian/netplan.io.postinst b/debian/netplan.io.postinst\nindex 1758dff..f805c24 100644\n--- a/debian/netplan.io.postinst\n+++ b/debian/netplan.io.postinst\n@@ -3,8 +3,12 @@\n set -e\n \n # Calling the generator after installation to mitigate CVE-2022-4968\n+# We avoid calling the generator if the system doesn't have networkd files to be fixed (LP: #2071333)\n if [ \"$1\" = configure ]; then\n-    /usr/libexec/netplan/generate 2>/dev/null || echo \"WARNING: Netplan could not re-generate network configuration. Please run 'netplan generate' to see details.\"\n+    FILES=$(find /run/systemd/network/ -type f -regex \".*-netplan.*\\.\\(network\\|netdev\\)\" 2>/dev/null || true)\n+    if [ -n \"${FILES}\" ]; then\n+        /usr/libexec/netplan/generate 2>/dev/null || echo \"WARNING: Netplan could not re-generate network configuration. Please run 'netplan generate' to see details.\"\n+    fi\n fi\n \n #DEBHELPER#\n",
+ "diff_truncated": false
+}

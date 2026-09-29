@@ -1,0 +1,27 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~michal-maloszewski99/ubuntu/+source/sssd/+git/sssd/+merge/453061",
+ "id": "453061",
+ "title": "PPA: https://launchpad.net/~michal-maloszewski99/+archive/ubuntu/ppa-1999190-sssd/+packages",
+ "source_branch": "sssd-jammy-missing-lines-in-apparmor",
+ "target_branch": "ubuntu/jammy-devel",
+ "revision": "7de2b5191c1a818e97ee23ead4e40a7f229fdd44",
+ "base_revision": "2371f1eda6494364a67172b1c590a6aba785cdbf",
+ "description": "PPA: https://launchpad.net/~michal-maloszewski99/+archive/ubuntu/ppa-1999190-sssd/+packages",
+ "commit_message": null,
+ "diffstat": {
+  "debian/apparmor-profile": [
+   4,
+   1
+  ],
+  "debian/changelog": [
+   8,
+   0
+  ]
+ },
+ "files": 2,
+ "added_lines": 12,
+ "removed_lines": 1,
+ "diff": "diff --git a/debian/apparmor-profile b/debian/apparmor-profile\nindex fadfa6c..7491662 100644\n--- a/debian/apparmor-profile\n+++ b/debian/apparmor-profile\n@@ -4,6 +4,7 @@\n   #include <abstractions/base>\n   #include <abstractions/kerberosclient>\n   #include <abstractions/nameservice>\n+  #include <abstractions/openssl>\n   #include <abstractions/user-tmp>\n \n   capability chown,\n@@ -16,6 +17,7 @@\n   capability sys_resource,\n \n   @{PROC} r,\n+  @{PROC}/[0-9]*/cmdline r,\n   @{PROC}/[0-9]*/net/psched r,\n   @{PROC}/[0-9]*/status r,\n \n@@ -42,7 +44,7 @@\n   /var/lib/sss/* rw,\n   /var/lib/sss/db/* rwk,\n   /var/lib/sss/gpo_cache/* rw,\n-  /var/lib/sss/mc/* rw,\n+  /var/lib/sss/mc/* rwk,\n   /var/lib/sss/pipes/* rw,\n   /var/lib/sss/pipes/private/* rw,\n   /var/lib/sss/pubconf/* rw,\n@@ -53,6 +55,7 @@\n \n   /{,var/}run/sssd.pid rw,\n   /{,var/}run/systemd/notify w,\n+  /{,var/}run/systemd/users/* r,\n \n   # Site-specific additions and overrides. See local/README for details.\n   #include <local/usr.sbin.sssd>\ndiff --git a/debian/changelog b/debian/changelog\nindex d603b87..9a1976f 100644\n--- a/debian/changelog\n+++ b/debian/changelog\n@@ -1,3 +1,11 @@\n+sssd (2.6.3-1ubuntu3.3) jammy; urgency=medium\n+\n+  * d/apparmor-profile: Add some entries to apparmor-profile file\n+    to get rid of the extraneous ALLOWED messages visible in the\n+    /var/log/syslog. (LP: #1999190)\n+\n+ -- Michal Maloszewski <michal.maloszewski@canonical.com>  Fri, 06 Oct 2023 17:07:25 +0200\n+\n sssd (2.6.3-1ubuntu3.2) jammy; urgency=medium\n \n   * d/p/initialize-uid-gid-main-functions.patch: Initialize UID/GID\n",
+ "diff_truncated": false
+}

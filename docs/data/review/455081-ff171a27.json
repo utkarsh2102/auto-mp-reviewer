@@ -1,0 +1,39 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~mfo/ubuntu/+source/ubuntu-meta/+git/ubuntu-meta/+merge/455081",
+ "id": "455081",
+ "title": "lp2039328-noble → ubuntu/devel",
+ "source_branch": "lp2039328-noble",
+ "target_branch": "ubuntu/devel",
+ "revision": "757ddeea22f363db2295aeec9e35aa8b67ad542d",
+ "base_revision": "a27f727439ff2300dae01a8cfc79a8052756bf5a",
+ "description": null,
+ "commit_message": null,
+ "diffstat": {
+  "debian/changelog": [
+   14,
+   0
+  ],
+  "debootstrap-version": [
+   1,
+   1
+  ],
+  "desktop-minimal-recommends-arm64": [
+   3,
+   0
+  ],
+  "desktop-recommends-arm64": [
+   3,
+   0
+  ],
+  "update.cfg": [
+   3,
+   3
+  ]
+ },
+ "files": 5,
+ "added_lines": 24,
+ "removed_lines": 4,
+ "diff": "diff --git a/debian/changelog b/debian/changelog\nindex 792252e..94e3280 100644\n--- a/debian/changelog\n+++ b/debian/changelog\n@@ -1,3 +1,17 @@\n+ubuntu-meta (1.525) noble; urgency=medium\n+\n+  * update.cfg: update mantic -> noble.\n+  * debootstrap-version: bump the version.\n+  * Refreshed dependencies\n+  * Added flash-kernel to desktop-minimal-recommends [arm64], desktop-\n+    recommends [arm64]\n+  * Added protection-domain-mapper to desktop-minimal-recommends\n+    [arm64], desktop-recommends [arm64]\n+  * Added qrtr-tools to desktop-minimal-recommends [arm64], desktop-\n+    recommends [arm64]\n+\n+ -- Mauricio Faria de Oliveira <mfo@canonical.com>  Thu, 02 Nov 2023 15:04:18 -0300\n+\n ubuntu-meta (1.524) mantic; urgency=medium\n \n   * Refreshed dependencies\ndiff --git a/debootstrap-version b/debootstrap-version\nindex a758989..b628d38 100644\n--- a/debootstrap-version\n+++ b/debootstrap-version\n@@ -1 +1 @@\n-1.0.132ubuntu1\n+1.0.133ubuntu1\ndiff --git a/desktop-minimal-recommends-arm64 b/desktop-minimal-recommends-arm64\nindex 8d45bae..dbadbf9 100644\n--- a/desktop-minimal-recommends-arm64\n+++ b/desktop-minimal-recommends-arm64\n@@ -15,6 +15,7 @@ dirmngr\n eog\n evince\n firefox\n+flash-kernel\n fonts-liberation\n fonts-noto-cjk\n fonts-noto-color-emoji\n@@ -78,6 +79,8 @@ printer-driver-ptouch\n printer-driver-pxljr\n printer-driver-sag-gdi\n printer-driver-splix\n+protection-domain-mapper\n+qrtr-tools\n seahorse\n snapd\n speech-dispatcher\ndiff --git a/desktop-recommends-arm64 b/desktop-recommends-arm64\nindex 7335e5e..f481aab 100644\n--- a/desktop-recommends-arm64\n+++ b/desktop-recommends-arm64\n@@ -20,6 +20,7 @@ eog\n evince\n file-roller\n firefox\n+flash-kernel\n fonts-liberation\n fonts-noto-cjk\n fonts-noto-color-emoji\n@@ -93,6 +94,8 @@ printer-driver-ptouch\n printer-driver-pxljr\n printer-driver-sag-gdi\n printer-driver-splix\n+protection-domain-mapper\n+qrtr-tools\n remmina\n rhythmbox\n seahorse\ndiff --git a/update.cfg b/update.cfg\nindex c7c637c..0d29060 100644\n--- a/update.cfg\n+++ b/update.cfg\n@@ -1,7 +1,7 @@\n [DEFAULT]\n-dist: mantic\n+dist: noble\n \n-[mantic]\n+[noble]\n seeds: minimal standard cloud-minimal desktop-minimal desktop desktop-raspi server server-minimal server-raspi wsl\n architectures: amd64 armhf arm64 ppc64el riscv64 s390x\n seed_base: http://people.ubuntu.com/~ubuntu-archive/seeds/\n@@ -15,6 +15,6 @@ archive_base/riscv64: %(archive_base/ports)s\n archive_base/s390x: %(archive_base/ports)s\n components: main restricted\n \n-[mantic/vcs]\n+[noble/vcs]\n seed_base: https://git.launchpad.net/~ubuntu-core-dev/ubuntu-seeds/+git/\n seed_dist: ubuntu.%(dist)s\n",
+ "diff_truncated": false
+}

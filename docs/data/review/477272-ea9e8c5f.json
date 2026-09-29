@@ -1,0 +1,35 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~kajiya/ubuntu/+source/jq/+git/jq/+merge/477272",
+ "id": "477272",
+ "title": "feat: Add autopkgtests",
+ "source_branch": "ubuntu/plucky-devel-add-autopkgtests",
+ "target_branch": "ubuntu/plucky-devel",
+ "revision": "4e2dc1eb8a7de699b71b20395a0712793e82006e",
+ "base_revision": "aa5b6877eac10cd8bd13bd1c78a7d8f17fe81ce2",
+ "description": "* `sbuild -s --force-orig-source` output: https://pastebin.ubuntu.com/p/5fZ2N2Tbf6/\n\n* autopkgtest log: https://pastebin.ubuntu.com/p/99K2hNHpYV/",
+ "commit_message": "feat: Add autopkgtests\n\nUntil now jq did not have any valid autopkgtests. Now included are:\n    * make-check-test: validates that the `Makefile` can be correctly\n      created and then runs the build-time tests availble in `tests/`\n    * smoke-test (superficial): verifies a simple JSON echo can be prettified\n\n* Also updated d/ch",
+ "diffstat": {
+  "debian/changelog": [
+   9,
+   0
+  ],
+  "debian/tests/control": [
+   7,
+   0
+  ],
+  "debian/tests/make-check-test": [
+   30,
+   0
+  ],
+  "debian/tests/smoke-test": [
+   48,
+   0
+  ]
+ },
+ "files": 4,
+ "added_lines": 94,
+ "removed_lines": 0,
+ "diff": "diff --git a/debian/changelog b/debian/changelog\nindex cc784f6..e5158a6 100644\n--- a/debian/changelog\n+++ b/debian/changelog\n@@ -1,3 +1,12 @@\n+jq (1.7.1-3build2) plucky; urgency=medium\n+\n+  * Add autopkgtests\n+    * make-check-test: validates that the `Makefile` can be correctly\n+      created and then runs the build-time tests availble in `tests/`\n+    * smoke-test: verifies a simple JSON echo can be prettified\n+\n+ -- Chloé 'kajiya' Smith <chloe.smith@canonical.com>  Tue, 26 Nov 2024 17:03:36 +0000\n+\n jq (1.7.1-3build1) noble; urgency=medium\n \n   * No-change rebuild for CVE-2024-3094\ndiff --git a/debian/tests/control b/debian/tests/control\nnew file mode 100644\nindex 0000000..e2eb5df\n--- /dev/null\n+++ b/debian/tests/control\n@@ -0,0 +1,7 @@\n+Tests: make-check-test\n+Depends: @, @builddeps@, fakeroot, quilt\n+Restrictions: allow-stderr\n+\n+Tests: smoke-test\n+Depends: @, quilt\n+Restrictions: allow-stderr\ndiff --git a/debian/tests/make-check-test b/debian/tests/make-check-test\nnew file mode 100644\nindex 0000000..272e951\n--- /dev/null\n+++ b/debian/tests/make-check-test\n@@ -0,0 +1,30 @@\n+#!/bin/bash\n+set -ex\n+\n+QUILT_PATCHES=debian/patches quilt push -a -f -v || true\n+\n+# Copy the package source somewhere safe\n+source=${0%/*}/../..\n+build=$(mktemp -d --tmpdir=${AUTOPKGTEST_TMP})\n+cp -a ${source}/* ${build}/\n+cd ${build}\n+\n+# De-configure if needed\n+if [ -f debian/autoreconf.before ]; then\n+  dh_autoreconf_clean\n+fi\n+\n+# Reconfigure\n+dh_autoreconf\n+dh_auto_configure\n+\n+# Run the upstream tests\n+make check\n+\n+# Log the test output\n+if [ -f test/test-suite.log ]; then\n+  cat test/test-suite.log\n+fi\n+\n+QUILT_PATCHES=debian/patches quilt pop -a -v || true\n+rm -rf .pc/\n\\ No newline at end of file\ndiff --git a/debian/tests/smoke-test b/debian/tests/smoke-test\nnew file mode 100644\nindex 0000000..3dd6821\n--- /dev/null\n+++ b/debian/tests/smoke-test\n@@ -0,0 +1,48 @@\n+#!/bin/bash\n+set -ex\n+\n+# Test that simple operations like $(echo xyz | jq '.') are successful\n+\n+export LC_ALL=C.UTF-8\n+if [ \"${AUTOPKGTEST_TMP}\" = \"\" ] ; then\n+  AUTOPKGTEST_TMP=$(mktemp -d /tmp/${pkg}-test.XXXXXX)\n+  trap \"rm -rf ${AUTOPKGTEST_TMP}\" 0 INT QUIT ABRT PIPE TERM\n+fi\n+\n+QUILT_PATCHES=debian/patches quilt push -a -f -v || true\n+\n+EXPECTED='{\n+  \"Penguins\": {\n+    \"taxonomy\": {\n+      \"kingdom\": \"Animalia\",\n+      \"phylum\": \"Chordata\",\n+      \"class\": \"Aves\",\n+      \"order\": \"Sphenisciformes\",\n+      \"family\": \"Spheniscidae\",\n+      \"genus\": \"Aptenodytes\"\n+    },\n+    \"Famous entires\": [\n+      \"Tux\",\n+      \"Pingu\",\n+      \"Empoleon\",\n+      \"Eiscue\",\n+      \"Badtz-Maru\",\n+      \"Chilly Willy\",\n+      \"Skipper\",\n+      \"Kowalski\",\n+      \"Rico\",\n+      \"Private\",\n+      \"Gunter\",\n+      \"Pororo\",\n+      \"Wheezy\"\n+    ]\n+  }\n+}'\n+RESULT=$(echo '{\"Penguins\":{\"taxonomy\":{\"kingdom\":\"Animalia\",\"phylum\":\"Chordata\",\"class\":\"Aves\",\"order\":\"Sphenisciformes\",\"family\":\"Spheniscidae\",\"genus\":\"Aptenodytes\"}, \"Famous entires\":[\"Tux\", \"Pingu\", \"Empoleon\", \"Eiscue\", \"Badtz-Maru\", \"Chilly Willy\", \"Skipper\", \"Kowalski\", \"Rico\", \"Private\", \"Gunter\", \"Pororo\", \"Wheezy\"]}}' | jq '.')\n+\n+if [[ \"${RESULT}\" != \"${EXPECTED}\" ]] ; then\n+    false\n+fi\n+\n+QUILT_PATCHES=debian/patches quilt pop -a || true\n+rm -rf .pc/\n\\ No newline at end of file\n",
+ "diff_truncated": false
+}

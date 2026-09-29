@@ -1,0 +1,27 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~ravi-sharma/ubuntu/+source/openssl/+git/openssl/+merge/509257",
+ "id": "509257",
+ "title": "fix-2158026 → ubuntu/devel",
+ "source_branch": "fix-2158026",
+ "target_branch": "ubuntu/devel",
+ "revision": "e04da69d13137a5a211a2808ac8c9c419cc9967c",
+ "base_revision": "18ce79f5c5899175783801bef3fc1a3c01525239",
+ "description": null,
+ "commit_message": null,
+ "diffstat": {
+  "debian/changelog": [
+   9,
+   0
+  ],
+  "debian/control": [
+   5,
+   1
+  ]
+ },
+ "files": 2,
+ "added_lines": 14,
+ "removed_lines": 1,
+ "diff": "diff --git a/debian/changelog b/debian/changelog\nindex 30c3b0c..f193178 100644\n--- a/debian/changelog\n+++ b/debian/changelog\n@@ -1,3 +1,12 @@\n+openssl (4.0.1-1ubuntu2) stonking; urgency=medium\n+\n+  * Add Depends on libjitterentropy3-dev, zlib1g-dev, and libzstd-dev.\n+    libcrypto.pc declares these as static private dependencies\n+    (Libs.private) but libssl-dev did not pull them in, breaking static\n+    linking against libcrypto. (LP: #2158026)\n+\n+ -- Ravi Kant Sharma <ravi.kant.sharma@canonical.com>  Mon, 03 Aug 2026 16:49:15 +0200\n+\n openssl (4.0.1-1ubuntu1) stonking; urgency=medium\n \n   [ Ravi Kant Sharma ]\ndiff --git a/debian/control b/debian/control\nindex 3a0ec31..bb0b890 100644\n--- a/debian/control\n+++ b/debian/control\n@@ -88,7 +88,11 @@ Section: libdevel\n Architecture: any\n Multi-Arch: same\n Suggests: libssl-doc\n-Depends: libssl4 (= ${binary:Version}), ${misc:Depends}\n+Depends: libssl4 (= ${binary:Version}),\n+         libjitterentropy3-dev,\n+         zlib1g-dev,\n+         libzstd-dev,\n+         ${misc:Depends}\n Description: Secure Sockets Layer toolkit - development files\n  This package is part of the OpenSSL project's implementation of the SSL\n  and TLS cryptographic protocols for secure communication over the\n",
+ "diff_truncated": false
+}

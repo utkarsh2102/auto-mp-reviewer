@@ -1,0 +1,23 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~tchavadar/livecd-rootfs/+git/livecd-rootfs/+merge/464755",
+ "id": "464755",
+ "title": "# Proposal to have option to use debian package as a source of image-definitions",
+ "source_branch": "install-image-definitions-deb-option",
+ "target_branch": "ubuntu/master",
+ "revision": "1c80ee2b7d445019a2761729961b7c775184626a",
+ "base_revision": "e001491e47dd2c3ca64c187e9d271d1952f59291",
+ "description": "# Proposal to have option to use debian package as a source of image-definitions\n\nA bit of history here: https://code.launchpad.net/~tchavadar/livecd-rootfs/+git/livecd-rootfs/+merge/464550\n\nAs part of development efforts of enabling Ubuntu on new platforms, we are trying to follow the same standards as in generic image build infra. We see benefit of being able to use debian package for image definitions as this allows us to trigger livefs builds in private ppa with private information in our image definition files. Since the passing tokens around in livefs build is not clearly defined and as the discussions with Launchpad team in the past enlighten us on not using any sort of private key in livefs build infra. We think having an option to be able to use debian package as a source of image-definition would help us enable the Ubuntu in early stages of enablement projects. \n\nThis merge proposal allows us to use a metadata variable which will be set by livefs build.",
+ "commit_message": null,
+ "diffstat": {
+  "live-build/auto/config": [
+   10,
+   3
+  ]
+ },
+ "files": 1,
+ "added_lines": 10,
+ "removed_lines": 3,
+ "diff": "diff --git a/live-build/auto/config b/live-build/auto/config\nindex 5b0512e..3adb17a 100755\n--- a/live-build/auto/config\n+++ b/live-build/auto/config\n@@ -538,9 +538,16 @@ case $IMAGEFORMAT in\n \t\t\t\t\t;;\n \t\t\tesac\n \n-\t\t\tLB_UBUNTU_IMAGES_REPO=\"${LB_UBUNTU_IMAGES_REPO:-git://git.launchpad.net/ubuntu-images}\"\n-\t\t\tLB_UBUNTU_IMAGES_BRANCH=\"${LB_UBUNTU_IMAGES_BRANCH:-$SUITE}\"\n-\t\t\tgit clone \"$LB_UBUNTU_IMAGES_REPO\" -b \"$LB_UBUNTU_IMAGES_BRANCH\" image-definitions\n+\t\t\tif [ -z \"${LB_USE_UBUNTU_IMAGES_DEB:-}\" ]; then\n+\t\t\t\tLB_UBUNTU_IMAGES_REPO=\"${LB_UBUNTU_IMAGES_REPO:-git://git.launchpad.net/ubuntu-images}\"\n+\t\t\t\tLB_UBUNTU_IMAGES_BRANCH=\"${LB_UBUNTU_IMAGES_BRANCH:-$SUITE}\"\n+\t\t\t\tgit clone \"$LB_UBUNTU_IMAGES_REPO\" -b \"$LB_UBUNTU_IMAGES_BRANCH\" image-definitions\n+\t\t\telse\n+\t\t\t\techo \"Using $LB_USE_UBUNTU_IMAGES_DEB package instead of git repo..\"\n+\t\t\t\tsudo apt install \"$LB_USE_UBUNTU_IMAGES_DEB\" -y\n+\t\t\t\tcp -afr /usr/share/ubuntu-images image-definitions\n+\t\t\tfi\n+\n \t\t\tIMAGE_DEFINITION=\"image-definitions/$IMAGE_PROJECT-$MODEL.yaml\"\n \t\t\techo \"IMAGE_DEFINITION=$IMAGE_DEFINITION\" >> config/common\n \t\t\techo \"Configured ubuntu-image to use image definition file $IMAGE_DEFINITION which has the following contents:\"\n",
+ "diff_truncated": false
+}

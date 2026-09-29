@@ -1,0 +1,39 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~mwhudson/livecd-rootfs/+git/livecd-rootfs/+merge/507001",
+ "id": "507001",
+ "title": "cpc: declare vmx-11 in OVF for amd64-v3 VMware images (LP: #2157546)",
+ "source_branch": "fix-lp-2157546-ovf-vmx11",
+ "target_branch": "ubuntu/master",
+ "revision": "d2fdbcf7a77f055d9cd7f2be9d277d61635f66de",
+ "base_revision": "3f092378157f9b7a875ea30cb7d74107c2850de0",
+ "description": null,
+ "commit_message": "cpc: declare vmx-11 in OVF for amd64-v3 VMware images (LP: #2157546)\n\nThe amd64-v3 cloud image is built for the x86-64-v3 microarchitecture\nlevel, which requires AVX2. The OVA's OVF descriptor declared\n<vssd:VirtualSystemType>vmx-10</vssd:VirtualSystemType>, importing as\nVMware virtual hardware version 10 (ESXi 5.5). VMware only exposes AVX2\nto guests at hardware version 11 (ESXi 6.0) and later, so on import init\nhits an illegal instruction and the guest panics with \"Attempt to kill\ninit\" (exit 0x7f00) on VMware. Upgrading the VM's compatibility level\nafter import resolves it, confirming the hardware version is the cause.\n\nParameterise VirtualSystemType in both VMware OVF templates and have the\nvmdk-ova and vagrant hooks set it from ARCH_VARIANT: vmx-11 for amd64v3\nbuilds, vmx-10 otherwise so non-v3 images keep the wider compatibility of\nthe older hardware version. vmx-11 is the minimum version that exposes\nthe AVX2 feature x86-64-v3 depends on.\n\n",
+ "diffstat": {
+  "debian/changelog": [
+   8,
+   0
+  ],
+  "live-build/ubuntu-cpc/hooks.d/base/ovf/ubuntu-ova-v1-cloudcfg-vmdk.tmpl": [
+   1,
+   1
+  ],
+  "live-build/ubuntu-cpc/hooks.d/base/ovf/ubuntu-ova-v1-vmdk.tmpl": [
+   1,
+   1
+  ],
+  "live-build/ubuntu-cpc/hooks.d/base/vagrant.binary": [
+   15,
+   0
+  ],
+  "live-build/ubuntu-cpc/hooks.d/base/vmdk-ova-image.binary": [
+   15,
+   0
+  ]
+ },
+ "files": 5,
+ "added_lines": 40,
+ "removed_lines": 2,
+ "diff": "diff --git a/debian/changelog b/debian/changelog\nindex c4603e3..aaeacaf 100644\n--- a/debian/changelog\n+++ b/debian/changelog\n@@ -1,3 +1,11 @@\n+livecd-rootfs (26.10.3) UNRELEASED; urgency=medium\n+\n+  * amd64-v3 cloud OVA/Vagrant images: declare VMware virtual hardware\n+    version vmx-14 instead of vmx-10 so AVX2 is exposed to the guest on both\n+    Intel and AMD hosts, avoiding a kernel panic on boot. (LP: #2157546)\n+\n+ -- Michael Hudson-Doyle <michael.hudson@ubuntu.com>  Mon, 22 Jun 2026 05:35:22 +0000\n+\n livecd-rootfs (26.10.2) stonking; urgency=medium\n \n   [ Dan Bungert ]\ndiff --git a/live-build/ubuntu-cpc/hooks.d/base/ovf/ubuntu-ova-v1-cloudcfg-vmdk.tmpl b/live-build/ubuntu-cpc/hooks.d/base/ovf/ubuntu-ova-v1-cloudcfg-vmdk.tmpl\nindex f297561..1c27874 100644\n--- a/live-build/ubuntu-cpc/hooks.d/base/ovf/ubuntu-ova-v1-cloudcfg-vmdk.tmpl\n+++ b/live-build/ubuntu-cpc/hooks.d/base/ovf/ubuntu-ova-v1-cloudcfg-vmdk.tmpl\n@@ -60,7 +60,7 @@\n         <vssd:ElementName>Virtual Hardware Family</vssd:ElementName>\n         <vssd:InstanceID>0</vssd:InstanceID>\n         <vssd:VirtualSystemIdentifier>@@NAME@@</vssd:VirtualSystemIdentifier>\n-        <vssd:VirtualSystemType>vmx-10</vssd:VirtualSystemType>\n+        <vssd:VirtualSystemType>@@VIRTUAL_SYSTEM_TYPE@@</vssd:VirtualSystemType>\n       </System>\n       <Item>\n         <rasd:AllocationUnits>hertz * 10^6</rasd:AllocationUnits>\ndiff --git a/live-build/ubuntu-cpc/hooks.d/base/ovf/ubuntu-ova-v1-vmdk.tmpl b/live-build/ubuntu-cpc/hooks.d/base/ovf/ubuntu-ova-v1-vmdk.tmpl\nindex af2d0c1..c5198c2 100644\n--- a/live-build/ubuntu-cpc/hooks.d/base/ovf/ubuntu-ova-v1-vmdk.tmpl\n+++ b/live-build/ubuntu-cpc/hooks.d/base/ovf/ubuntu-ova-v1-vmdk.tmpl\n@@ -58,7 +58,7 @@\n         <vssd:ElementName>Virtual Hardware Family</vssd:ElementName>\n         <vssd:InstanceID>0</vssd:InstanceID>\n         <vssd:VirtualSystemIdentifier>@@NAME@@</vssd:VirtualSystemIdentifier>\n-        <vssd:VirtualSystemType>vmx-10</vssd:VirtualSystemType>\n+        <vssd:VirtualSystemType>@@VIRTUAL_SYSTEM_TYPE@@</vssd:VirtualSystemType>\n       </System>\n       <Item>\n         <rasd:AllocationUnits>hertz * 10^6</rasd:AllocationUnits>\ndiff --git a/live-build/ubuntu-cpc/hooks.d/base/vagrant.binary b/live-build/ubuntu-cpc/hooks.d/base/vagrant.binary\nindex 3c67992..337d0b0 100755\n--- a/live-build/ubuntu-cpc/hooks.d/base/vagrant.binary\n+++ b/live-build/ubuntu-cpc/hooks.d/base/vagrant.binary\n@@ -200,12 +200,27 @@ cdrom_size=$(du -b \"${cdrom_vmdk_f}\" | cut -f1)\n cdrom_capacity=$(qemu-img info \"${cdrom_vmdk_f}\" | awk '-F[\\( ]' '$1 ~ /virtual/ && $NF ~ /bytes.*/ {print$(NF-1)}')\n cdrom_sha256=$(sha256sum ${cdrom_vmdk_f} | cut -d' ' -f1)\n \n+# amd64-v3 images are built for the x86-64-v3 microarchitecture level, which\n+# requires AVX2. The hardware version VMware exposes AVX2 to guests at differs\n+# by CPU vendor: it enters the Intel EVC ladder at the Haswell baseline (ESXi\n+# 6.0 / vmx-11) but the AMD ladder only at the Zen baseline (ESXi 6.7 /\n+# vmx-14). The default vmx-10 (ESXi 5.5) therefore leaves init unable to run\n+# on either vendor and the guest panics with \"Attempt to kill init\". Declare\n+# vmx-14 for v3 builds so AVX2 is guaranteed on both Intel and AMD hosts,\n+# keeping the wider compatibility of vmx-10 for the baseline.\n+# (LP: #2157546)\n+virtual_system_type=\"vmx-10\"\n+if [ \"${ARCH_VARIANT:-}\" = \"amd64v3\" ]; then\n+    virtual_system_type=\"vmx-14\"\n+fi\n+\n # Populate the OVF template\n ovf=\"${box_d}/box.ovf\"\n cp ${my_d}/ovf/ubuntu-ova-v1-cloudcfg-vmdk.tmpl ${ovf}\n serial_stamp=$(date +%Y%m%d)\n sed -i \"${ovf}\" \\\n     -e \"s/@@NAME@@/${prefix}-${serial_stamp}/g\" \\\n+    -e \"s/@@VIRTUAL_SYSTEM_TYPE@@/${virtual_system_type}/g\" \\\n     -e \"s/@@FILENAME1@@/${vmdk_f##*/}/g\" \\\n     -e \"s/@@VMDK_FILE_SIZE@@/${vmdk_size}/g\" \\\n     -e \"s/@@VMDK_CAPACITY@@/${vmdk_capacity}/g\" \\\ndiff --git a/live-build/ubuntu-cpc/hooks.d/base/vmdk-ova-image.binary b/live-build/ubuntu-cpc/hooks.d/base/vmdk-ova-image.binary\nindex a827a8a..bb77384 100755\n--- a/live-build/ubuntu-cpc/hooks.d/base/vmdk-ova-image.binary\n+++ b/live-build/ubuntu-cpc/hooks.d/base/vmdk-ova-image.binary\n@@ -63,12 +63,27 @@ cp ${base_vmdk} ${vmdk_f}\n vmdk_size=$(du -b \"${vmdk_f}\" | cut -f1)\n vmdk_capacity=$(qemu-img info \"${vmdk_f}\" | awk '-F[\\( ]' '$1 ~ /virtual/ && $NF ~ /bytes.*/ {print$(NF-1)}')\n \n+# amd64-v3 images are built for the x86-64-v3 microarchitecture level, which\n+# requires AVX2. The hardware version VMware exposes AVX2 to guests at differs\n+# by CPU vendor: it enters the Intel EVC ladder at the Haswell baseline (ESXi\n+# 6.0 / vmx-11) but the AMD ladder only at the Zen baseline (ESXi 6.7 /\n+# vmx-14). The default vmx-10 (ESXi 5.5) therefore leaves init unable to run\n+# on either vendor and the guest panics with \"Attempt to kill init\". Declare\n+# vmx-14 for v3 builds so AVX2 is guaranteed on both Intel and AMD hosts,\n+# keeping the wider compatibility of vmx-10 for the baseline.\n+# (LP: #2157546)\n+virtual_system_type=\"vmx-10\"\n+if [ \"${ARCH_VARIANT:-}\" = \"amd64v3\" ]; then\n+    virtual_system_type=\"vmx-14\"\n+fi\n+\n # Populate the OVF template\n ovf=\"${scratch_d}/${prefix}.ovf\"\n cp ${my_d}/ovf/ubuntu-ova-v1-vmdk.tmpl ${ovf}\n serial_stamp=$(date +%Y%m%d)\n sed -i \"${ovf}\" \\\n     -e \"s/@@NAME@@/${prefix}-${serial_stamp}/g\" \\\n+    -e \"s/@@VIRTUAL_SYSTEM_TYPE@@/${virtual_system_type}/g\" \\\n \t-e \"s/@@FILENAME@@/${vmdk_f##*/}/g\" \\\n     -e \"s/@@VMDK_FILE_SIZE@@/${vmdk_size}/g\" \\\n     -e \"s/@@VMDK_CAPACITY@@/${vmdk_capacity}/g\" \\\n",
+ "diff_truncated": false
+}

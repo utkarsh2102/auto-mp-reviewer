@@ -1,0 +1,27 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~jawn-smith/ubuntu/+source/flash-kernel/+git/flash-kernel/+merge/429001",
+ "id": "429001",
+ "title": "When running in a chroot, flash-kernel should exit cleanly as it does when running in a container.",
+ "source_branch": "ubuntu/devel",
+ "target_branch": "ubuntu/devel",
+ "revision": "9e62118cf84dc20dd93283bdf0568384b660398d",
+ "base_revision": "bda688c42c9e6b680213dc6d5a6ac65c148d3e6b",
+ "description": "When running in a chroot, flash-kernel should exit cleanly as it does when running in a container.",
+ "commit_message": null,
+ "diffstat": {
+  "debian/changelog": [
+   7,
+   0
+  ],
+  "functions": [
+   2,
+   2
+  ]
+ },
+ "files": 2,
+ "added_lines": 9,
+ "removed_lines": 2,
+ "diff": "diff --git a/debian/changelog b/debian/changelog\nindex 4d70188..946a40a 100644\n--- a/debian/changelog\n+++ b/debian/changelog\n@@ -1,3 +1,10 @@\n+flash-kernel (3.106ubuntu7) kinetic; urgency=medium\n+\n+  * Change FK_FORCE_CONTAINER to FK_FORCE and cleanly exit if running\n+    in a chroot environment (LP: #1955353)\n+\n+ -- William 'jawn-smith' Wilson <jawn-smith@ubuntu.com>  Thu, 08 Sep 2022 09:16:55 -0500\n+\n flash-kernel (3.106ubuntu6) kinetic; urgency=medium\n \n   * Add support for the LicheeRV Dock (LP: #1987735)\ndiff --git a/functions b/functions\nindex 2e37e2f..3d6f5f9 100644\n--- a/functions\n+++ b/functions\n@@ -904,8 +904,8 @@ handle_dtb() {\n \n main() {\n # Do not run inside an LXC container unless explicitly asked\n-if [ \"$FK_FORCE_CONTAINER\" != \"yes\" ]; then\n-    if systemd-detect-virt --quiet --container; then\n+if [ \"$FK_FORCE\" != \"yes\" ]; then\n+    if systemd-detect-virt --quiet --container || systemd-detect-virt --quiet --chroot; then\n         exit 0\n     fi\n fi\n",
+ "diff_truncated": false
+}

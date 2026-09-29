@@ -1,0 +1,27 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~ssstr1pe/britney/+git/britney/+merge/476959",
+ "id": "476959",
+ "title": "Implementing a bit of optimisation, making britney not try to remove old NBS kernel packages from stable series.",
+ "source_branch": "NBS-kernel-packages",
+ "target_branch": "master",
+ "revision": "1c5f0e8d4ec6d1302414a68afcb62fbaebddc74a",
+ "base_revision": "2f3cbbbdf8aa1bfbfa1769a4d3060d9d04a54e8c",
+ "description": "Implementing a bit of optimisation, making britney not try to remove old NBS kernel packages from stable series.",
+ "commit_message": null,
+ "diffstat": {
+  "britney.py": [
+   3,
+   1
+  ],
+  "britney2/utils.py": [
+   7,
+   0
+  ]
+ },
+ "files": 2,
+ "added_lines": 10,
+ "removed_lines": 1,
+ "diff": "diff --git a/britney.py b/britney.py\nindex 8d8f427..a21a6f1 100755\n--- a/britney.py\n+++ b/britney.py\n@@ -229,7 +229,7 @@ from britney2.utils import (log_and_format_old_libraries,\n                             format_and_log_uninst, newly_uninst,\n                             write_excuses, write_heidi_delta,\n                             old_libraries, is_nuninst_asgood_generous,\n-                            clone_nuninst, compile_nuninst, parse_provides,\n+                            clone_nuninst, compile_nuninst, parse_provides, is_stable_release,\n                             MigrationConstraintException,\n                             )\n \n@@ -933,6 +933,8 @@ class Britney(object):\n             while worklist:\n                 comp = worklist.pop()\n                 comp_name = ' '.join(item.uvname for item in comp)\n+                if comp_name.startswith(\"-\") and comp_name[1:].startswith(\"linux-\") and is_stable_release(self.options.series):\n+                    continue\n                 output_logger.info(\"trying: %s\" % comp_name)\n                 with mm.start_transaction() as transaction:\n                     accepted = False\ndiff --git a/britney2/utils.py b/britney2/utils.py\nindex b48426e..a6eaf48 100644\n--- a/britney2/utils.py\n+++ b/britney2/utils.py\n@@ -33,6 +33,8 @@ from enum import Enum, unique\n from functools import partial\n from itertools import filterfalse, chain\n \n+import distro_info\n+\n import yaml\n \n from britney2 import SourcePackage, SuiteClass, PackageId\n@@ -44,6 +46,11 @@ class MigrationConstraintException(Exception):\n     pass\n \n \n+def is_stable_release(codename):\n+    udi = distro_info.UbuntuDistroInfo()\n+    return (codename in udi.supported()) and (codename != udi.devel())\n+\n+\n def ifilter_except(container, iterable=None):\n     \"\"\"Filter out elements in container\n \n",
+ "diff_truncated": false
+}

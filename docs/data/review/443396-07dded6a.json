@@ -1,0 +1,23 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~lool/ubuntu-images/+git/ubuntu-images/+merge/443396",
+ "id": "443396",
+ "title": "Set pocket to updates, default is release",
+ "source_branch": "missing-updates-pocket",
+ "target_branch": "lunar",
+ "revision": "20a0ce1c329fa88ac5e763e7d2f58fa81b8f6c44",
+ "base_revision": "a4d98a0f2819f7819f876241a0b821a68f6023ed",
+ "description": null,
+ "commit_message": "Set pocket to updates, default is release",
+ "diffstat": {
+  "ubuntu-server-pc-amd64.yaml": [
+   1,
+   0
+  ]
+ },
+ "files": 1,
+ "added_lines": 1,
+ "removed_lines": 0,
+ "diff": "diff --git a/ubuntu-server-pc-amd64.yaml b/ubuntu-server-pc-amd64.yaml\nindex dbc4207..65b0891 100644\n--- a/ubuntu-server-pc-amd64.yaml\n+++ b/ubuntu-server-pc-amd64.yaml\n@@ -10,6 +10,7 @@ gadget:\n   branch: classic\n   type: \"git\"\n rootfs:\n+  pocket: updates\n   components:\n     - main\n     - restricted\n",
+ "diff_truncated": false
+}

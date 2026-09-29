@@ -1,0 +1,23 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~mwhudson/ubuntu-cdimage/+git/ubuntu-cdimage-1/+merge/500275",
+ "id": "500275",
+ "title": "prefer the livefs build server ISO over running it through debian-cd",
+ "source_branch": "server-livefs-isos",
+ "target_branch": "main",
+ "revision": "6190a8eb23721eb47fb7c94370cbbe7f425ff2e9",
+ "base_revision": "c5ad485c30d259f288c7c3545224a2686e0e3a0d",
+ "description": "just an example of how to prefer the livefs-made ISO for a particular product once it has been tested.",
+ "commit_message": "prefer the livefs build server ISO over running it through debian-cd",
+ "diffstat": {
+  "lib/cdimage/build.py": [
+   29,
+   3
+  ]
+ },
+ "files": 1,
+ "added_lines": 29,
+ "removed_lines": 3,
+ "diff": "diff --git a/lib/cdimage/build.py b/lib/cdimage/build.py\nindex 8801438..508cafb 100644\n--- a/lib/cdimage/build.py\n+++ b/lib/cdimage/build.py\n@@ -18,6 +18,7 @@\n from __future__ import print_function\n \n import contextlib\n+import pathlib\n import os\n import shutil\n import signal\n@@ -158,9 +159,12 @@ def copy_artifact(\n     src = os.path.join(scratch_dir, \"live\", f\"{arch}.{suffix}\")\n     if os.path.exists(src):\n         osextras.ensuredir(output_dir)\n-        shutil.copy2(\n-            src, os.path.join(output_dir, f\"{output_basename}.{target_suffix}\")\n-        )\n+        target = os.path.join(output_dir, f\"{output_basename}.{target_suffix}\")\n+        root = pathlib.Path(config.root)\n+        src = pathlib.Path(src)\n+        target = pathlib.Path(target)\n+        logger.info(f\"Copying {src.relative_to(root)} to {target.relative_to(root)}\")\n+        shutil.copy2(src, target)\n     elif not missing_ok:\n         raise FileNotFoundError(src)\n     else:\n@@ -172,6 +176,11 @@ def copy_artifact(\n     return True\n \n \n+PREFER_ISO_PROJECTS = set([\n+    'ubuntu-server',\n+    ])\n+\n+\n def build_livecd_base(config, builds):\n     \"\"\"Copy an artifacts from the \"live\" directory to the \"output\" directory.\n \n@@ -228,6 +237,20 @@ def build_livecd_base(config, builds):\n             # XXX: I don't think we need the manifest for a mini iso\n             # copy_artifact(arch, \"mini-iso\", \"manifest\")\n \n+    if config.project in PREFER_ISO_PROJECTS and config.image_type == \"daily-live\":\n+        log_marker(\"Copying iso to debian-cd output directory\")\n+        publish_type = \"live-server\"\n+        for arch in config.arches:\n+            copy_artifact(\n+                config,\n+                arch,\n+                publish_type,\n+                \"iso\",\n+                target_suffix=\"raw\",\n+                ftype=\"ISO 9660 CD-ROM filesystem data\",\n+            )\n+        copy_artifact(config, arch, publish_type, \"manifest\")\n+\n     if config.project == \"ubuntu-wsl\" and config.image_type == \"daily-live\":\n         log_marker(\"Copying images to debian-cd output directory\")\n         publish_type = \"wsl\"\n@@ -428,6 +451,9 @@ def is_live_fs_only(config):\n         live_fs_only = True\n     elif config.subproject == \"wubi\":\n         live_fs_only = True\n+    elif config.series >= \"resolute\":\n+        if config.project in PREFER_ISO_PROJECTS and config.image_type == \"daily-live\":\n+            live_fs_only = True\n     return live_fs_only\n \n \n",
+ "diff_truncated": false
+}

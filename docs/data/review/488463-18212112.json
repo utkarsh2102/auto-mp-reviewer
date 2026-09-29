@@ -1,0 +1,1619 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~kajiya/ubuntu/+source/google-osconfig-agent/+git/google-osconfig-agent/+merge/488463",
+ "id": "488463",
+ "title": "[SRU] New upstream version 20250416.02",
+ "source_branch": "ubuntu/update-jammy-devel-20250416.02",
+ "target_branch": "ubuntu/jammy-devel",
+ "revision": "73c1c802a4341fa99d37edbd5237e44bc0f4abb5",
+ "base_revision": "300a0f4203077472709b82522ef1875211800def",
+ "description": "sbuild logs: https://pastebin.ubuntu.com/p/tHZ4tKtjGt/ (up to and including 73c1c80)\n\nPPA build may also be found here: https://launchpad.net/~kajiya/+archive/ubuntu/kajiya-google-osconfig-agent/+packages?field.name_filter=&field.status_filter=published&field.series_filter=jammy\n\n## FOR UTKARSH ##\nThis is the MP that edits the d/rules file (from my messages on MM :D) - the one that patches `go.mod` is here: https://code.launchpad.net/~kajiya/ubuntu/+source/google-osconfig-agent/+git/google-osconfig-agent/+merge/490908",
+ "commit_message": "[SRU] New upstream version 20250416.02",
+ "diffstat": {
+  "OWNERS": [
+   4,
+   3
+  ],
+  "agentendpoint/agentendpoint.go": [
+   3,
+   10
+  ],
+  "agentendpoint/config_task.go": [
+   6,
+   6
+  ],
+  "agentendpoint/exec_task.go": [
+   2,
+   2
+  ],
+  "agentendpoint/inventory.go": [
+   62,
+   2
+  ],
+  "agentendpoint/inventory_test.go": [
+   212,
+   24
+  ],
+  "agentendpoint/patch_task.go": [
+   23,
+   13
+  ],
+  "agentendpoint/task_state_test.go": [
+   17,
+   1
+  ],
+  "debian/changelog": [
+   19,
+   0
+  ],
+  "debian/extra/vendor/cel.dev/expr/.bazelversion": [
+   2,
+   0
+  ],
+  "debian/extra/vendor/cel.dev/expr/.gitattributes": [
+   2,
+   0
+  ],
+  "debian/extra/vendor/cel.dev/expr/.gitignore": [
+   2,
+   0
+  ],
+  "debian/extra/vendor/cel.dev/expr/BUILD.bazel": [
+   34,
+   0
+  ],
+  "debian/extra/vendor/cel.dev/expr/CODE_OF_CONDUCT.md": [
+   25,
+   0
+  ],
+  "debian/extra/vendor/cel.dev/expr/CONTRIBUTING.md": [
+   32,
+   0
+  ],
+  "debian/extra/vendor/cel.dev/expr/GOVERNANCE.md": [
+   43,
+   0
+  ],
+  "debian/extra/vendor/cel.dev/expr/LICENSE": [
+   1,
+   1
+  ],
+  "debian/extra/vendor/cel.dev/expr/MAINTAINERS.md": [
+   13,
+   0
+  ],
+  "debian/extra/vendor/cel.dev/expr/MODULE.bazel": [
+   70,
+   0
+  ],
+  "debian/extra/vendor/cel.dev/expr/README.md": [
+   71,
+   0
+  ],
+  "debian/extra/vendor/cel.dev/expr/WORKSPACE": [
+   145,
+   0
+  ],
+  "debian/extra/vendor/cel.dev/expr/WORKSPACE.bzlmod": [
+   0,
+   0
+  ],
+  "debian/extra/vendor/cel.dev/expr/checked.pb.go": [
+   1432,
+   0
+  ],
+  "debian/extra/vendor/cel.dev/expr/cloudbuild.yaml": [
+   9,
+   0
+  ],
+  "debian/extra/vendor/cel.dev/expr/eval.pb.go": [
+   490,
+   0
+  ],
+  "debian/extra/vendor/cel.dev/expr/explain.pb.go": [
+   236,
+   0
+  ],
+  "debian/extra/vendor/cel.dev/expr/regen_go_proto.sh": [
+   9,
+   0
+  ],
+  "debian/extra/vendor/cel.dev/expr/regen_go_proto_canonical_protos.sh": [
+   10,
+   0
+  ],
+  "debian/extra/vendor/cel.dev/expr/syntax.pb.go": [
+   1633,
+   0
+  ],
+  "debian/extra/vendor/cel.dev/expr/value.pb.go": [
+   653,
+   0
+  ],
+  "debian/extra/vendor/cloud.google.com/go/.gitignore": [
+   12,
+   0
+  ],
+  "debian/extra/vendor/cloud.google.com/go/.release-please-manifest-individual.json": [
+   13,
+   15
+  ],
+  "debian/extra/vendor/cloud.google.com/go/.release-please-manifest-submodules.json": [
+   151,
+   146
+  ],
+  "debian/extra/vendor/cloud.google.com/go/.release-please-manifest.json": [
+   1,
+   1
+  ],
+  "debian/extra/vendor/cloud.google.com/go/CHANGES.md": [
+   22,
+   0
+  ],
+  "debian/extra/vendor/cloud.google.com/go/README.md": [
+   12,
+   16
+  ],
+  "debian/extra/vendor/cloud.google.com/go/auth/CHANGES.md": [
+   206,
+   0
+  ],
+  "debian/extra/vendor/cloud.google.com/go/auth/README.md": [
+   39,
+   3
+  ],
+  "debian/extra/vendor/cloud.google.com/go/auth/auth.go": [
+   50,
+   23
+  ],
+  "debian/extra/vendor/cloud.google.com/go/auth/credentials/compute.go": [
+   8,
+   4
+  ],
+  "debian/extra/vendor/cloud.google.com/go/auth/credentials/detect.go": [
+   23,
+   6
+  ],
+  "debian/extra/vendor/cloud.google.com/go/auth/credentials/filetypes.go": [
+   17,
+   7
+  ],
+  "debian/extra/vendor/cloud.google.com/go/auth/credentials/internal/externalaccount/aws_provider.go": [
+   46,
+   62
+  ],
+  "debian/extra/vendor/cloud.google.com/go/auth/credentials/internal/externalaccount/externalaccount.go": [
+   64,
+   3
+  ],
+  "debian/extra/vendor/cloud.google.com/go/auth/credentials/internal/externalaccount/url_provider.go": [
+   11,
+   11
+  ],
+  "debian/extra/vendor/cloud.google.com/go/auth/credentials/internal/externalaccount/x509_provider.go": [
+   63,
+   0
+  ],
+  "debian/extra/vendor/cloud.google.com/go/auth/credentials/internal/externalaccountuser/externalaccountuser.go": [
+   5,
+   0
+  ],
+  "debian/extra/vendor/cloud.google.com/go/auth/credentials/internal/gdch/gdch.go": [
+   18,
+   9
+  ],
+  "debian/extra/vendor/cloud.google.com/go/auth/credentials/internal/impersonate/idtoken.go": [
+   105,
+   0
+  ],
+  "debian/extra/vendor/cloud.google.com/go/auth/credentials/internal/impersonate/impersonate.go": [
+   11,
+   6
+  ],
+  "debian/extra/vendor/cloud.google.com/go/auth/credentials/internal/stsexchange/sts_exchange.go": [
+   7,
+   7
+  ],
+  "debian/extra/vendor/cloud.google.com/go/auth/credentials/selfsignedjwt.go": [
+   14,
+   6
+  ],
+  "debian/extra/vendor/cloud.google.com/go/auth/grpctransport/directpath.go": [
+   8,
+   5
+  ],
+  "debian/extra/vendor/cloud.google.com/go/auth/grpctransport/grpctransport.go": [
+   75,
+   21
+  ],
+  "debian/extra/vendor/cloud.google.com/go/auth/httptransport/httptransport.go": [
+   25,
+   2
+  ],
+  "dev/null": [
+   0,
+   73
+  ],
+  "debian/extra/vendor/cloud.google.com/go/auth/httptransport/transport.go": [
+   51,
+   28
+  ],
+  "debian/extra/vendor/cloud.google.com/go/auth/internal/compute/compute.go": [
+   65,
+   0
+  ],
+  "debian/extra/vendor/cloud.google.com/go/auth/internal/compute/manufacturer.go": [
+   10,
+   7
+  ],
+  "debian/extra/vendor/cloud.google.com/go/auth/internal/compute/manufacturer_linux.go": [
+   7,
+   8
+  ],
+  "debian/extra/vendor/cloud.google.com/go/auth/internal/compute/manufacturer_windows.go": [
+   46,
+   0
+  ],
+  "debian/extra/vendor/cloud.google.com/go/auth/internal/credsfile/filetype.go": [
+   19,
+   11
+  ],
+  "debian/extra/vendor/cloud.google.com/go/auth/internal/internal.go": [
+   59,
+   18
+  ],
+  "debian/extra/vendor/cloud.google.com/go/auth/internal/jwt/jwt.go": [
+   2,
+   2
+  ],
+  "debian/extra/vendor/cloud.google.com/go/auth/internal/transport/cba.go": [
+   99,
+   29
+  ],
+  "debian/extra/vendor/cloud.google.com/go/auth/internal/transport/cert/default_cert.go": [
+   6,
+   3
+  ],
+  "debian/extra/vendor/cloud.google.com/go/auth/internal/transport/cert/enterprise_cert.go": [
+   3,
+   5
+  ],
+  "debian/extra/vendor/cloud.google.com/go/auth/internal/transport/cert/secureconnect_cert.go": [
+   5,
+   5
+  ],
+  "debian/extra/vendor/cloud.google.com/go/auth/internal/transport/cert/workload_cert.go": [
+   2,
+   5
+  ],
+  "debian/extra/vendor/cloud.google.com/go/auth/internal/transport/s2a.go": [
+   34,
+   76
+  ],
+  "debian/extra/vendor/cloud.google.com/go/auth/internal/transport/transport.go": [
+   7,
+   4
+  ],
+  "debian/extra/vendor/cloud.google.com/go/auth/oauth2adapt/CHANGES.md": [
+   35,
+   0
+  ],
+  "debian/extra/vendor/cloud.google.com/go/auth/oauth2adapt/oauth2adapt.go": [
+   41,
+   5
+  ],
+  "debian/extra/vendor/cloud.google.com/go/auth/threelegged.go": [
+   20,
+   12
+  ],
+  "debian/extra/vendor/cloud.google.com/go/compute/metadata/CHANGES.md": [
+   7,
+   0
+  ],
+  "debian/extra/vendor/cloud.google.com/go/compute/metadata/log.go": [
+   149,
+   0
+  ],
+  "debian/extra/vendor/cloud.google.com/go/compute/metadata/metadata.go": [
+   44,
+   11
+  ],
+  "debian/extra/vendor/cloud.google.com/go/debug.md": [
+   6,
+   16
+  ],
+  "debian/extra/vendor/cloud.google.com/go/doc.go": [
+   17,
+   22
+  ],
+  "debian/extra/vendor/cloud.google.com/go/go.work": [
+   6,
+   1
+  ],
+  "debian/extra/vendor/cloud.google.com/go/go.work.sum": [
+   21,
+   11
+  ],
+  "debian/extra/vendor/cloud.google.com/go/iam/CHANGES.md": [
+   57,
+   0
+  ],
+  "debian/extra/vendor/cloud.google.com/go/iam/apiv1/iampb/iam_policy.pb.go": [
+   12,
+   13
+  ],
+  "debian/extra/vendor/cloud.google.com/go/iam/apiv1/iampb/options.pb.go": [
+   4,
+   4
+  ],
+  "debian/extra/vendor/cloud.google.com/go/iam/apiv1/iampb/policy.pb.go": [
+   10,
+   10
+  ],
+  "debian/extra/vendor/cloud.google.com/go/internal/.repo-metadata-full.json": [
+   112,
+   12
+  ],
+  "debian/extra/vendor/cloud.google.com/go/internal/trace/trace.go": [
+   15,
+   193
+  ],
+  "debian/extra/vendor/cloud.google.com/go/logging/CHANGES.md": [
+   48,
+   0
+  ],
+  "debian/extra/vendor/cloud.google.com/go/logging/apiv2/auxiliary.go": [
+   30,
+   15
+  ],
+  "debian/extra/vendor/cloud.google.com/go/logging/apiv2/auxiliary_go123.go": [
+   88,
+   0
+  ],
+  "debian/extra/vendor/cloud.google.com/go/logging/apiv2/config_client.go": [
+   2443,
+   63
+  ],
+  "debian/extra/vendor/cloud.google.com/go/logging/apiv2/doc.go": [
+   2,
+   44
+  ],
+  "debian/extra/vendor/cloud.google.com/go/logging/apiv2/gapic_metadata.json": [
+   275,
+   0
+  ],
+  "debian/extra/vendor/cloud.google.com/go/logging/apiv2/helpers.go": [
+   105,
+   0
+  ],
+  "debian/extra/vendor/cloud.google.com/go/logging/apiv2/logging_client.go": [
+   707,
+   9
+  ],
+  "debian/extra/vendor/cloud.google.com/go/logging/apiv2/loggingpb/log_entry.pb.go": [
+   19,
+   77
+  ],
+  "debian/extra/vendor/cloud.google.com/go/logging/apiv2/loggingpb/logging.pb.go": [
+   54,
+   238
+  ],
+  "debian/extra/vendor/cloud.google.com/go/logging/apiv2/loggingpb/logging_config.pb.go": [
+   205,
+   907
+  ],
+  "debian/extra/vendor/cloud.google.com/go/logging/apiv2/loggingpb/logging_metrics.pb.go": [
+   30,
+   130
+  ],
+  "debian/extra/vendor/cloud.google.com/go/logging/apiv2/metrics_client.go": [
+   608,
+   9
+  ],
+  "debian/extra/vendor/cloud.google.com/go/logging/doc.go": [
+   29,
+   0
+  ],
+  "debian/extra/vendor/cloud.google.com/go/logging/internal/version.go": [
+   1,
+   1
+  ],
+  "debian/extra/vendor/cloud.google.com/go/logging/logging.go": [
+   41,
+   13
+  ],
+  "debian/extra/vendor/cloud.google.com/go/logging/resource.go": [
+   4,
+   1
+  ],
+  "debian/extra/vendor/cloud.google.com/go/longrunning/CHANGES.md": [
+   65,
+   0
+  ],
+  "debian/extra/vendor/cloud.google.com/go/longrunning/autogen/auxiliary.go": [
+   1,
+   1
+  ],
+  "debian/extra/vendor/cloud.google.com/go/longrunning/autogen/auxiliary_go123.go": [
+   15,
+   11
+  ],
+  "debian/extra/vendor/cloud.google.com/go/longrunning/autogen/doc.go": [
+   2,
+   40
+  ],
+  "debian/extra/vendor/cloud.google.com/go/longrunning/autogen/helpers.go": [
+   42,
+   0
+  ],
+  "debian/extra/vendor/cloud.google.com/go/longrunning/autogen/longrunningpb/operations.pb.go": [
+   50,
+   57
+  ],
+  "debian/extra/vendor/cloud.google.com/go/longrunning/autogen/operations_client.go": [
+   34,
+   42
+  ],
+  "debian/extra/vendor/cloud.google.com/go/monitoring/LICENSE": [
+   202,
+   0
+  ],
+  "debian/extra/vendor/cloud.google.com/go/monitoring/apiv3/v2/alert_policy_client.go": [
+   399,
+   0
+  ],
+  "debian/extra/vendor/cloud.google.com/go/monitoring/apiv3/v2/auxiliary.go": [
+   682,
+   0
+  ],
+  "debian/extra/vendor/cloud.google.com/go/monitoring/apiv3/v2/auxiliary_go123.go": [
+   112,
+   0
+  ],
+  "debian/extra/vendor/cloud.google.com/go/monitoring/apiv3/v2/doc.go": [
+   124,
+   0
+  ],
+  "debian/extra/vendor/cloud.google.com/go/monitoring/apiv3/v2/gapic_metadata.json": [
+   336,
+   0
+  ],
+  "debian/extra/vendor/cloud.google.com/go/monitoring/apiv3/v2/group_client.go": [
+   466,
+   0
+  ],
+  "debian/extra/vendor/cloud.google.com/go/monitoring/apiv3/v2/metric_client.go": [
+   578,
+   0
+  ],
+  "debian/extra/vendor/cloud.google.com/go/monitoring/apiv3/v2/monitoringpb/alert.pb.go": [
+   2432,
+   0
+  ],
+  "debian/extra/vendor/cloud.google.com/go/monitoring/apiv3/v2/monitoringpb/alert_service.pb.go": [
+   1045,
+   0
+  ],
+  "debian/extra/vendor/cloud.google.com/go/monitoring/apiv3/v2/monitoringpb/common.pb.go": [
+   1165,
+   0
+  ],
+  "debian/extra/vendor/cloud.google.com/go/monitoring/apiv3/v2/monitoringpb/dropped_labels.pb.go": [
+   197,
+   0
+  ],
+  "debian/extra/vendor/cloud.google.com/go/monitoring/apiv3/v2/monitoringpb/group.pb.go": [
+   265,
+   0
+  ],
+  "debian/extra/vendor/cloud.google.com/go/monitoring/apiv3/v2/monitoringpb/group_service.pb.go": [
+   1319,
+   0
+  ],
+  "debian/extra/vendor/cloud.google.com/go/monitoring/apiv3/v2/monitoringpb/metric.pb.go": [
+   1194,
+   0
+  ],
+  "debian/extra/vendor/cloud.google.com/go/monitoring/apiv3/v2/monitoringpb/metric_service.pb.go": [
+   2502,
+   0
+  ],
+  "debian/extra/vendor/cloud.google.com/go/monitoring/apiv3/v2/monitoringpb/mutation_record.pb.go": [
+   192,
+   0
+  ],
+  "debian/extra/vendor/cloud.google.com/go/monitoring/apiv3/v2/monitoringpb/notification.pb.go": [
+   647,
+   0
+  ],
+  "debian/extra/vendor/cloud.google.com/go/monitoring/apiv3/v2/monitoringpb/notification_service.pb.go": [
+   2002,
+   0
+  ],
+  "debian/extra/vendor/cloud.google.com/go/monitoring/apiv3/v2/monitoringpb/query_service.pb.go": [
+   212,
+   0
+  ],
+  "debian/extra/vendor/cloud.google.com/go/monitoring/apiv3/v2/monitoringpb/service.pb.go": [
+   3107,
+   0
+  ],
+  "debian/extra/vendor/cloud.google.com/go/monitoring/apiv3/v2/monitoringpb/service_service.pb.go": [
+   1796,
+   0
+  ],
+  "debian/extra/vendor/cloud.google.com/go/monitoring/apiv3/v2/monitoringpb/snooze.pb.go": [
+   315,
+   0
+  ],
+  "debian/extra/vendor/cloud.google.com/go/monitoring/apiv3/v2/monitoringpb/snooze_service.pb.go": [
+   867,
+   0
+  ],
+  "debian/extra/vendor/cloud.google.com/go/monitoring/apiv3/v2/monitoringpb/span_context.pb.go": [
+   188,
+   0
+  ],
+  "debian/extra/vendor/cloud.google.com/go/monitoring/apiv3/v2/monitoringpb/uptime.pb.go": [
+   2726,
+   0
+  ],
+  "debian/extra/vendor/cloud.google.com/go/monitoring/apiv3/v2/monitoringpb/uptime_service.pb.go": [
+   1226,
+   0
+  ],
+  "debian/extra/vendor/cloud.google.com/go/monitoring/apiv3/v2/notification_channel_client.go": [
+   618,
+   0
+  ],
+  "debian/extra/vendor/cloud.google.com/go/monitoring/apiv3/v2/query_client.go": [
+   233,
+   0
+  ],
+  "debian/extra/vendor/cloud.google.com/go/monitoring/apiv3/v2/service_monitoring_client.go": [
+   565,
+   0
+  ],
+  "debian/extra/vendor/cloud.google.com/go/monitoring/apiv3/v2/snooze_client.go": [
+   343,
+   0
+  ],
+  "debian/extra/vendor/cloud.google.com/go/monitoring/apiv3/v2/uptime_check_client.go": [
+   450,
+   0
+  ],
+  "debian/extra/vendor/cloud.google.com/go/monitoring/apiv3/v2/version.go": [
+   9,
+   12
+  ],
+  "debian/extra/vendor/cloud.google.com/go/monitoring/internal/version.go": [
+   4,
+   8
+  ],
+  "debian/extra/vendor/cloud.google.com/go/osconfig/agentendpoint/apiv1/agent_endpoint_client.go": [
+   11,
+   5
+  ],
+  "debian/extra/vendor/cloud.google.com/go/osconfig/agentendpoint/apiv1/agentendpointpb/agentendpoint.pb.go": [
+   49,
+   219
+  ],
+  "debian/extra/vendor/cloud.google.com/go/osconfig/agentendpoint/apiv1/agentendpointpb/config_common.pb.go": [
+   13,
+   57
+  ],
+  "debian/extra/vendor/cloud.google.com/go/osconfig/agentendpoint/apiv1/agentendpointpb/inventory.pb.go": [
+   41,
+   183
+  ],
+  "debian/extra/vendor/cloud.google.com/go/osconfig/agentendpoint/apiv1/agentendpointpb/os_policy.pb.go": [
+   85,
+   381
+  ],
+  "debian/extra/vendor/cloud.google.com/go/osconfig/agentendpoint/apiv1/agentendpointpb/patch_jobs.pb.go": [
+   41,
+   183
+  ],
+  "debian/extra/vendor/cloud.google.com/go/osconfig/agentendpoint/apiv1/agentendpointpb/tasks.pb.go": [
+   49,
+   219
+  ],
+  "debian/extra/vendor/cloud.google.com/go/osconfig/agentendpoint/apiv1/auxiliary_go123.go": [
+   7,
+   7
+  ],
+  "debian/extra/vendor/cloud.google.com/go/osconfig/agentendpoint/apiv1/doc.go": [
+   2,
+   28
+  ],
+  "debian/extra/vendor/cloud.google.com/go/osconfig/agentendpoint/apiv1/helpers.go": [
+   99,
+   0
+  ],
+  "debian/extra/vendor/cloud.google.com/go/osconfig/agentendpoint/apiv1beta/agent_endpoint_client.go": [
+   11,
+   5
+  ],
+  "debian/extra/vendor/cloud.google.com/go/osconfig/agentendpoint/apiv1beta/agentendpointpb/agentendpoint.pb.go": [
+   41,
+   183
+  ],
+  "debian/extra/vendor/cloud.google.com/go/osconfig/agentendpoint/apiv1beta/agentendpointpb/guest_policies.pb.go": [
+   93,
+   417
+  ],
+  "debian/extra/vendor/cloud.google.com/go/osconfig/agentendpoint/apiv1beta/agentendpointpb/patch_jobs.pb.go": [
+   41,
+   183
+  ],
+  "debian/extra/vendor/cloud.google.com/go/osconfig/agentendpoint/apiv1beta/agentendpointpb/tasks.pb.go": [
+   29,
+   129
+  ],
+  "debian/extra/vendor/cloud.google.com/go/osconfig/agentendpoint/apiv1beta/auxiliary_go123.go": [
+   7,
+   7
+  ],
+  "debian/extra/vendor/cloud.google.com/go/osconfig/agentendpoint/apiv1beta/doc.go": [
+   2,
+   40
+  ],
+  "debian/extra/vendor/cloud.google.com/go/osconfig/agentendpoint/apiv1beta/helpers.go": [
+   99,
+   0
+  ],
+  "debian/extra/vendor/cloud.google.com/go/osconfig/internal/version.go": [
+   1,
+   1
+  ],
+  "debian/extra/vendor/cloud.google.com/go/release-please-config-individual.json": [
+   0,
+   6
+  ],
+  "debian/extra/vendor/cloud.google.com/go/release-please-config-yoshi-submodules.json": [
+   9,
+   0
+  ],
+  "debian/extra/vendor/cloud.google.com/go/storage/CHANGES.md": [
+   89,
+   0
+  ],
+  "debian/extra/vendor/cloud.google.com/go/storage/bucket.go": [
+   6,
+   0
+  ],
+  "debian/extra/vendor/cloud.google.com/go/storage/client.go": [
+   3,
+   1
+  ],
+  "debian/extra/vendor/cloud.google.com/go/storage/doc.go": [
+   50,
+   15
+  ],
+  "debian/extra/vendor/cloud.google.com/go/storage/dynamic_delay.go": [
+   237,
+   0
+  ],
+  "debian/extra/vendor/cloud.google.com/go/storage/experimental/experimental.go": [
+   75,
+   0
+  ],
+  "debian/extra/vendor/cloud.google.com/go/storage/grpc_client.go": [
+   457,
+   377
+  ],
+  "debian/extra/vendor/cloud.google.com/go/storage/grpc_dp.go": [
+   7,
+   11
+  ],
+  "debian/extra/vendor/cloud.google.com/go/storage/grpc_metrics.go": [
+   281,
+   0
+  ],
+  "debian/extra/vendor/cloud.google.com/go/storage/hmac.go": [
+   5,
+   17
+  ],
+  "debian/extra/vendor/cloud.google.com/go/storage/http_client.go": [
+   114,
+   33
+  ],
+  "debian/extra/vendor/cloud.google.com/go/storage/internal/apiv2/auxiliary.go": [
+   2,
+   96
+  ],
+  "debian/extra/vendor/cloud.google.com/go/storage/internal/apiv2/auxiliary_go123.go": [
+   38,
+   0
+  ],
+  "debian/extra/vendor/cloud.google.com/go/storage/internal/apiv2/doc.go": [
+   9,
+   54
+  ],
+  "debian/extra/vendor/cloud.google.com/go/storage/internal/apiv2/gapic_metadata.json": [
+   0,
+   50
+  ],
+  "debian/extra/vendor/cloud.google.com/go/storage/internal/apiv2/helpers.go": [
+   48,
+   0
+  ],
+  "debian/extra/vendor/cloud.google.com/go/storage/internal/apiv2/storage_client.go": [
+   10,
+   525
+  ],
+  "debian/extra/vendor/cloud.google.com/go/storage/internal/apiv2/storagepb/storage.pb.go": [
+   1923,
+   3834
+  ],
+  "debian/extra/vendor/cloud.google.com/go/storage/internal/experimental.go": [
+   32,
+   0
+  ],
+  "debian/extra/vendor/cloud.google.com/go/storage/internal/version.go": [
+   1,
+   1
+  ],
+  "debian/extra/vendor/cloud.google.com/go/storage/invoke.go": [
+   16,
+   18
+  ],
+  "debian/extra/vendor/cloud.google.com/go/storage/notifications.go": [
+   3,
+   33
+  ],
+  "debian/extra/vendor/cloud.google.com/go/storage/option.go": [
+   150,
+   3
+  ],
+  "debian/extra/vendor/cloud.google.com/go/storage/reader.go": [
+   15,
+   1
+  ],
+  "debian/extra/vendor/cloud.google.com/go/storage/storage.go": [
+   62,
+   6
+  ],
+  "debian/extra/vendor/github.com/GoogleCloudPlatform/opentelemetry-operations-go/detectors/gcp/LICENSE": [
+   202,
+   0
+  ],
+  "debian/extra/vendor/github.com/GoogleCloudPlatform/opentelemetry-operations-go/detectors/gcp/README.md": [
+   3,
+   0
+  ],
+  "debian/extra/vendor/github.com/GoogleCloudPlatform/opentelemetry-operations-go/detectors/gcp/app_engine.go": [
+   78,
+   0
+  ],
+  "debian/extra/vendor/github.com/GoogleCloudPlatform/opentelemetry-operations-go/detectors/gcp/bms.go": [
+   55,
+   0
+  ],
+  "debian/extra/vendor/github.com/GoogleCloudPlatform/opentelemetry-operations-go/detectors/gcp/detector.go": [
+   101,
+   0
+  ],
+  "debian/extra/vendor/github.com/GoogleCloudPlatform/opentelemetry-operations-go/detectors/gcp/faas.go": [
+   106,
+   0
+  ],
+  "debian/extra/vendor/github.com/GoogleCloudPlatform/opentelemetry-operations-go/detectors/gcp/gce.go": [
+   117,
+   0
+  ],
+  "debian/extra/vendor/github.com/GoogleCloudPlatform/opentelemetry-operations-go/detectors/gcp/gke.go": [
+   78,
+   0
+  ],
+  "debian/extra/vendor/github.com/GoogleCloudPlatform/opentelemetry-operations-go/exporter/metric/LICENSE": [
+   202,
+   0
+  ],
+  "debian/extra/vendor/github.com/GoogleCloudPlatform/opentelemetry-operations-go/exporter/metric/README.md": [
+   44,
+   0
+  ],
+  "debian/extra/vendor/github.com/GoogleCloudPlatform/opentelemetry-operations-go/exporter/metric/cloudmonitoring.go": [
+   49,
+   0
+  ],
+  "debian/extra/vendor/github.com/GoogleCloudPlatform/opentelemetry-operations-go/exporter/metric/constants.go": [
+   97,
+   0
+  ],
+  "debian/extra/vendor/github.com/GoogleCloudPlatform/opentelemetry-operations-go/exporter/metric/error.go": [
+   14,
+   14
+  ],
+  "debian/extra/vendor/github.com/GoogleCloudPlatform/opentelemetry-operations-go/exporter/metric/metric.go": [
+   890,
+   0
+  ],
+  "debian/extra/vendor/github.com/GoogleCloudPlatform/opentelemetry-operations-go/exporter/metric/option.go": [
+   201,
+   0
+  ],
+  "debian/extra/vendor/github.com/GoogleCloudPlatform/opentelemetry-operations-go/exporter/metric/version.go": [
+   5,
+   5
+  ],
+  "debian/extra/vendor/github.com/GoogleCloudPlatform/opentelemetry-operations-go/internal/resourcemapping/LICENSE": [
+   202,
+   0
+  ],
+  "debian/extra/vendor/github.com/GoogleCloudPlatform/opentelemetry-operations-go/internal/resourcemapping/resourcemapping.go": [
+   285,
+   0
+  ],
+  "debian/extra/vendor/github.com/census-instrumentation/opencensus-proto/AUTHORS": [
+   1,
+   1
+  ],
+  "debian/extra/vendor/github.com/census-instrumentation/opencensus-proto/LICENSE": [
+   202,
+   0
+  ],
+  "debian/extra/vendor/github.com/census-instrumentation/opencensus-proto/gen-go/resource/v1/resource.pb.go": [
+   189,
+   0
+  ],
+  "debian/extra/vendor/github.com/census-instrumentation/opencensus-proto/gen-go/trace/v1/trace.pb.go": [
+   2235,
+   0
+  ],
+  "debian/extra/vendor/github.com/census-instrumentation/opencensus-proto/gen-go/trace/v1/trace_config.pb.go": [
+   555,
+   0
+  ],
+  "debian/extra/vendor/github.com/cespare/xxhash/v2/LICENSE.txt": [
+   22,
+   0
+  ],
+  "debian/extra/vendor/github.com/cespare/xxhash/v2/README.md": [
+   74,
+   0
+  ],
+  "debian/extra/vendor/github.com/cespare/xxhash/v2/testall.sh": [
+   10,
+   0
+  ],
+  "debian/extra/vendor/github.com/cespare/xxhash/v2/xxhash.go": [
+   243,
+   0
+  ],
+  "debian/extra/vendor/github.com/cespare/xxhash/v2/xxhash_amd64.s": [
+   209,
+   0
+  ],
+  "debian/extra/vendor/github.com/cespare/xxhash/v2/xxhash_arm64.s": [
+   183,
+   0
+  ],
+  "debian/extra/vendor/github.com/cespare/xxhash/v2/xxhash_asm.go": [
+   15,
+   0
+  ],
+  "debian/extra/vendor/github.com/cespare/xxhash/v2/xxhash_other.go": [
+   76,
+   0
+  ],
+  "debian/extra/vendor/github.com/cespare/xxhash/v2/xxhash_safe.go": [
+   16,
+   0
+  ],
+  "debian/extra/vendor/github.com/cespare/xxhash/v2/xxhash_unsafe.go": [
+   58,
+   0
+  ],
+  "debian/extra/vendor/github.com/cncf/xds/go/LICENSE": [
+   201,
+   0
+  ],
+  "debian/extra/vendor/github.com/cncf/xds/go/udpa/annotations/migrate.pb.go": [
+   411,
+   0
+  ],
+  "debian/extra/vendor/github.com/cncf/xds/go/udpa/annotations/migrate.pb.validate.go": [
+   350,
+   0
+  ],
+  "debian/extra/vendor/github.com/cncf/xds/go/udpa/annotations/security.pb.go": [
+   196,
+   0
+  ],
+  "debian/extra/vendor/github.com/cncf/xds/go/udpa/annotations/security.pb.validate.go": [
+   142,
+   0
+  ],
+  "debian/extra/vendor/github.com/cncf/xds/go/udpa/annotations/sensitive.pb.go": [
+   93,
+   0
+  ],
+  "debian/extra/vendor/github.com/cncf/xds/go/udpa/annotations/sensitive.pb.validate.go": [
+   36,
+   0
+  ],
+  "debian/extra/vendor/github.com/cncf/xds/go/udpa/annotations/status.pb.go": [
+   253,
+   0
+  ],
+  "debian/extra/vendor/github.com/cncf/xds/go/udpa/annotations/status.pb.validate.go": [
+   140,
+   0
+  ],
+  "debian/extra/vendor/github.com/cncf/xds/go/udpa/annotations/versioning.pb.go": [
+   179,
+   0
+  ],
+  "debian/extra/vendor/github.com/cncf/xds/go/udpa/annotations/versioning.pb.validate.go": [
+   140,
+   0
+  ],
+  "debian/extra/vendor/github.com/cncf/xds/go/udpa/type/v1/typed_struct.pb.go": [
+   164,
+   0
+  ],
+  "debian/extra/vendor/github.com/cncf/xds/go/udpa/type/v1/typed_struct.pb.validate.go": [
+   166,
+   0
+  ],
+  "debian/extra/vendor/github.com/cncf/xds/go/xds/annotations/v3/migrate.pb.go": [
+   412,
+   0
+  ],
+  "debian/extra/vendor/github.com/cncf/xds/go/xds/annotations/v3/migrate.pb.validate.go": [
+   350,
+   0
+  ],
+  "debian/extra/vendor/github.com/cncf/xds/go/xds/annotations/v3/security.pb.go": [
+   197,
+   0
+  ],
+  "debian/extra/vendor/github.com/cncf/xds/go/xds/annotations/v3/security.pb.validate.go": [
+   142,
+   0
+  ],
+  "debian/extra/vendor/github.com/cncf/xds/go/xds/annotations/v3/sensitive.pb.go": [
+   93,
+   0
+  ],
+  "debian/extra/vendor/github.com/cncf/xds/go/xds/annotations/v3/sensitive.pb.validate.go": [
+   36,
+   0
+  ],
+  "debian/extra/vendor/github.com/cncf/xds/go/xds/annotations/v3/status.pb.go": [
+   495,
+   0
+  ],
+  "debian/extra/vendor/github.com/cncf/xds/go/xds/annotations/v3/status.pb.validate.go": [
+   452,
+   0
+  ],
+  "debian/extra/vendor/github.com/cncf/xds/go/xds/annotations/v3/versioning.pb.go": [
+   179,
+   0
+  ],
+  "debian/extra/vendor/github.com/cncf/xds/go/xds/annotations/v3/versioning.pb.validate.go": [
+   140,
+   0
+  ],
+  "debian/extra/vendor/github.com/cncf/xds/go/xds/core/v3/authority.pb.go": [
+   153,
+   0
+  ],
+  "debian/extra/vendor/github.com/cncf/xds/go/xds/core/v3/authority.pb.validate.go": [
+   146,
+   0
+  ],
+  "debian/extra/vendor/github.com/cncf/xds/go/xds/core/v3/cidr.pb.go": [
+   172,
+   0
+  ],
+  "debian/extra/vendor/github.com/cncf/xds/go/xds/core/v3/cidr.pb.validate.go": [
+   161,
+   0
+  ],
+  "debian/extra/vendor/github.com/cncf/xds/go/xds/core/v3/collection_entry.pb.go": [
+   297,
+   0
+  ],
+  "debian/extra/vendor/github.com/cncf/xds/go/xds/core/v3/collection_entry.pb.validate.go": [
+   383,
+   0
+  ],
+  "debian/extra/vendor/github.com/cncf/xds/go/xds/core/v3/context_params.pb.go": [
+   160,
+   0
+  ],
+  "debian/extra/vendor/github.com/cncf/xds/go/xds/core/v3/context_params.pb.validate.go": [
+   138,
+   0
+  ],
+  "debian/extra/vendor/github.com/cncf/xds/go/xds/core/v3/extension.pb.go": [
+   167,
+   0
+  ],
+  "debian/extra/vendor/github.com/cncf/xds/go/xds/core/v3/extension.pb.validate.go": [
+   164,
+   0
+  ],
+  "debian/extra/vendor/github.com/cncf/xds/go/xds/core/v3/resource.pb.go": [
+   182,
+   0
+  ],
+  "debian/extra/vendor/github.com/cncf/xds/go/xds/core/v3/resource.pb.validate.go": [
+   195,
+   0
+  ],
+  "debian/extra/vendor/github.com/cncf/xds/go/xds/core/v3/resource_locator.pb.go": [
+   406,
+   0
+  ],
+  "debian/extra/vendor/github.com/cncf/xds/go/xds/core/v3/resource_locator.pb.validate.go": [
+   439,
+   0
+  ],
+  "debian/extra/vendor/github.com/cncf/xds/go/xds/core/v3/resource_name.pb.go": [
+   190,
+   0
+  ],
+  "debian/extra/vendor/github.com/cncf/xds/go/xds/core/v3/resource_name.pb.validate.go": [
+   179,
+   0
+  ],
+  "debian/extra/vendor/github.com/cncf/xds/go/xds/data/orca/v3/orca_load_report.pb.go": [
+   272,
+   0
+  ],
+  "debian/extra/vendor/github.com/cncf/xds/go/xds/data/orca/v3/orca_load_report.pb.validate.go": [
+   225,
+   0
+  ],
+  "debian/extra/vendor/github.com/cncf/xds/go/xds/service/orca/v3/orca.pb.go": [
+   182,
+   0
+  ],
+  "debian/extra/vendor/github.com/cncf/xds/go/xds/service/orca/v3/orca.pb.validate.go": [
+   167,
+   0
+  ],
+  "debian/extra/vendor/github.com/cncf/xds/go/xds/service/orca/v3/orca_grpc.pb.go": [
+   135,
+   0
+  ],
+  "debian/extra/vendor/github.com/cncf/xds/go/xds/type/matcher/v3/cel.pb.go": [
+   168,
+   0
+  ],
+  "debian/extra/vendor/github.com/cncf/xds/go/xds/type/matcher/v3/cel.pb.validate.go": [
+   177,
+   0
+  ],
+  "debian/extra/vendor/github.com/cncf/xds/go/xds/type/matcher/v3/domain.pb.go": [
+   242,
+   0
+  ],
+  "debian/extra/vendor/github.com/cncf/xds/go/xds/type/matcher/v3/domain.pb.validate.go": [
+   315,
+   0
+  ],
+  "debian/extra/vendor/github.com/cncf/xds/go/xds/type/matcher/v3/http_inputs.pb.go": [
+   140,
+   0
+  ],
+  "debian/extra/vendor/github.com/cncf/xds/go/xds/type/matcher/v3/http_inputs.pb.validate.go": [
+   139,
+   0
+  ],
+  "debian/extra/vendor/github.com/cncf/xds/go/xds/type/matcher/v3/ip.pb.go": [
+   256,
+   0
+  ],
+  "debian/extra/vendor/github.com/cncf/xds/go/xds/type/matcher/v3/ip.pb.validate.go": [
+   347,
+   0
+  ],
+  "debian/extra/vendor/github.com/cncf/xds/go/xds/type/matcher/v3/matcher.pb.go": [
+   1056,
+   0
+  ],
+  "debian/extra/vendor/github.com/cncf/xds/go/xds/type/matcher/v3/matcher.pb.validate.go": [
+   1913,
+   0
+  ],
+  "debian/extra/vendor/github.com/cncf/xds/go/xds/type/matcher/v3/range.pb.go": [
+   539,
+   0
+  ],
+  "debian/extra/vendor/github.com/cncf/xds/go/xds/type/matcher/v3/range.pb.validate.go": [
+   975,
+   0
+  ],
+  "debian/extra/vendor/github.com/cncf/xds/go/xds/type/matcher/v3/regex.pb.go": [
+   242,
+   0
+  ],
+  "debian/extra/vendor/github.com/cncf/xds/go/xds/type/matcher/v3/regex.pb.validate.go": [
+   317,
+   0
+  ],
+  "debian/extra/vendor/github.com/cncf/xds/go/xds/type/matcher/v3/string.pb.go": [
+   353,
+   0
+  ],
+  "debian/extra/vendor/github.com/cncf/xds/go/xds/type/matcher/v3/string.pb.validate.go": [
+   481,
+   0
+  ],
+  "debian/extra/vendor/github.com/cncf/xds/go/xds/type/v3/cel.pb.go": [
+   330,
+   0
+  ],
+  "debian/extra/vendor/github.com/cncf/xds/go/xds/type/v3/cel.pb.validate.go": [
+   450,
+   0
+  ],
+  "debian/extra/vendor/github.com/cncf/xds/go/xds/type/v3/range.pb.go": [
+   298,
+   0
+  ],
+  "debian/extra/vendor/github.com/cncf/xds/go/xds/type/v3/range.pb.validate.go": [
+   345,
+   0
+  ],
+  "debian/extra/vendor/github.com/cncf/xds/go/xds/type/v3/typed_struct.pb.go": [
+   163,
+   0
+  ],
+  "debian/extra/vendor/github.com/cncf/xds/go/xds/type/v3/typed_struct.pb.validate.go": [
+   166,
+   0
+  ],
+  "debian/extra/vendor/github.com/envoyproxy/go-control-plane/LICENSE": [
+   201,
+   0
+  ],
+  "debian/extra/vendor/github.com/envoyproxy/go-control-plane/envoy/admin/v3/certs.pb.go": [
+   607,
+   0
+  ],
+  "debian/extra/vendor/github.com/envoyproxy/go-control-plane/envoy/admin/v3/certs.pb.validate.go": [
+   870,
+   0
+  ],
+  "debian/extra/vendor/github.com/envoyproxy/go-control-plane/envoy/admin/v3/certs_vtproto.pb.go": [
+   504,
+   0
+  ],
+  "debian/extra/vendor/github.com/envoyproxy/go-control-plane/envoy/admin/v3/clusters.pb.go": [
+   744,
+   0
+  ],
+  "debian/extra/vendor/github.com/envoyproxy/go-control-plane/envoy/admin/v3/clusters.pb.validate.go": [
+   803,
+   0
+  ],
+  "debian/extra/vendor/github.com/envoyproxy/go-control-plane/envoy/admin/v3/clusters_vtproto.pb.go": [
+   656,
+   0
+  ],
+  "debian/extra/vendor/github.com/envoyproxy/go-control-plane/envoy/admin/v3/config_dump.pb.go": [
+   642,
+   0
+  ],
+  "debian/extra/vendor/github.com/envoyproxy/go-control-plane/envoy/admin/v3/config_dump.pb.validate.go": [
+   893,
+   0
+  ],
+  "debian/extra/vendor/github.com/envoyproxy/go-control-plane/envoy/admin/v3/config_dump_shared.pb.go": [
+   2242,
+   0
+  ],
+  "debian/extra/vendor/github.com/envoyproxy/go-control-plane/envoy/admin/v3/config_dump_shared.pb.validate.go": [
+   3435,
+   0
+  ],
+  "debian/extra/vendor/github.com/envoyproxy/go-control-plane/envoy/admin/v3/config_dump_shared_vtproto.pb.go": [
+   1715,
+   0
+  ],
+  "debian/extra/vendor/github.com/envoyproxy/go-control-plane/envoy/admin/v3/config_dump_vtproto.pb.go": [
+   466,
+   0
+  ],
+  "debian/extra/vendor/github.com/envoyproxy/go-control-plane/envoy/admin/v3/init_dump.pb.go": [
+   241,
+   0
+  ],
+  "debian/extra/vendor/github.com/envoyproxy/go-control-plane/envoy/admin/v3/init_dump.pb.validate.go": [
+   281,
+   0
+  ],
+  "debian/extra/vendor/github.com/envoyproxy/go-control-plane/envoy/admin/v3/init_dump_vtproto.pb.go": [
+   149,
+   0
+  ],
+  "debian/extra/vendor/github.com/envoyproxy/go-control-plane/envoy/admin/v3/listeners.pb.go": [
+   268,
+   0
+  ],
+  "debian/extra/vendor/github.com/envoyproxy/go-control-plane/envoy/admin/v3/listeners.pb.validate.go": [
+   335,
+   0
+  ],
+  "debian/extra/vendor/github.com/envoyproxy/go-control-plane/envoy/admin/v3/listeners_vtproto.pb.go": [
+   203,
+   0
+  ],
+  "debian/extra/vendor/github.com/envoyproxy/go-control-plane/envoy/admin/v3/memory.pb.go": [
+   228,
+   0
+  ],
+  "debian/extra/vendor/github.com/envoyproxy/go-control-plane/envoy/admin/v3/memory.pb.validate.go": [
+   147,
+   0
+  ],
+  "debian/extra/vendor/github.com/envoyproxy/go-control-plane/envoy/admin/v3/memory_vtproto.pb.go": [
+   110,
+   0
+  ],
+  "debian/extra/vendor/github.com/envoyproxy/go-control-plane/envoy/admin/v3/metrics.pb.go": [
+   234,
+   0
+  ],
+  "debian/extra/vendor/github.com/envoyproxy/go-control-plane/envoy/admin/v3/metrics.pb.validate.go": [
+   142,
+   0
+  ],
+  "debian/extra/vendor/github.com/envoyproxy/go-control-plane/envoy/admin/v3/metrics_vtproto.pb.go": [
+   89,
+   0
+  ],
+  "debian/extra/vendor/github.com/envoyproxy/go-control-plane/envoy/admin/v3/mutex_stats.pb.go": [
+   191,
+   0
+  ],
+  "debian/extra/vendor/github.com/envoyproxy/go-control-plane/envoy/admin/v3/mutex_stats.pb.validate.go": [
+   142,
+   0
+  ],
+  "debian/extra/vendor/github.com/envoyproxy/go-control-plane/envoy/admin/v3/mutex_stats_vtproto.pb.go": [
+   86,
+   0
+  ],
+  "debian/extra/vendor/github.com/envoyproxy/go-control-plane/envoy/admin/v3/server_info.pb.go": [
+   975,
+   0
+  ],
+  "debian/extra/vendor/github.com/envoyproxy/go-control-plane/envoy/admin/v3/server_info.pb.validate.go": [
+   509,
+   0
+  ],
+  "debian/extra/vendor/github.com/envoyproxy/go-control-plane/envoy/admin/v3/server_info_vtproto.pb.go": [
+   671,
+   0
+  ],
+  "debian/extra/vendor/github.com/envoyproxy/go-control-plane/envoy/admin/v3/tap.pb.go": [
+   182,
+   0
+  ],
+  "debian/extra/vendor/github.com/envoyproxy/go-control-plane/envoy/admin/v3/tap.pb.validate.go": [
+   187,
+   0
+  ],
+  "debian/extra/vendor/github.com/envoyproxy/go-control-plane/envoy/admin/v3/tap_vtproto.pb.go": [
+   106,
+   0
+  ],
+  "debian/extra/vendor/github.com/envoyproxy/go-control-plane/envoy/annotations/deprecation.pb.go": [
+   159,
+   0
+  ],
+  "debian/extra/vendor/github.com/envoyproxy/go-control-plane/envoy/annotations/deprecation.pb.validate.go": [
+   37,
+   0
+  ],
+  "debian/extra/vendor/github.com/envoyproxy/go-control-plane/envoy/annotations/resource.pb.go": [
+   179,
+   0
+  ],
+  "debian/extra/vendor/github.com/envoyproxy/go-control-plane/envoy/annotations/resource.pb.validate.go": [
+   141,
+   0
+  ],
+  "debian/extra/vendor/github.com/envoyproxy/go-control-plane/envoy/annotations/resource_vtproto.pb.go": [
+   73,
+   0
+  ],
+  "debian/extra/vendor/github.com/envoyproxy/go-control-plane/envoy/config/accesslog/v3/accesslog.pb.go": [
+   1924,
+   0
+  ],
+  "debian/extra/vendor/github.com/envoyproxy/go-control-plane/envoy/config/accesslog/v3/accesslog.pb.validate.go": [
+   2773,
+   0
+  ],
+  "debian/extra/vendor/github.com/envoyproxy/go-control-plane/envoy/config/accesslog/v3/accesslog_vtproto.pb.go": [
+   1751,
+   0
+  ],
+  "debian/extra/vendor/github.com/envoyproxy/go-control-plane/envoy/config/bootstrap/v3/bootstrap.pb.go": [
+   3310,
+   0
+  ],
+  "debian/extra/vendor/github.com/envoyproxy/go-control-plane/envoy/config/bootstrap/v3/bootstrap.pb.validate.go": [
+   4501,
+   0
+  ],
+  "debian/extra/vendor/github.com/envoyproxy/go-control-plane/envoy/config/bootstrap/v3/bootstrap_vtproto.pb.go": [
+   3128,
+   0
+  ],
+  "debian/extra/vendor/github.com/envoyproxy/go-control-plane/envoy/config/cluster/v3/circuit_breaker.pb.go": [
+   507,
+   0
+  ],
+  "debian/extra/vendor/github.com/envoyproxy/go-control-plane/envoy/config/cluster/v3/circuit_breaker.pb.validate.go": [
+   662,
+   0
+  ],
+  "debian/extra/vendor/github.com/envoyproxy/go-control-plane/envoy/config/cluster/v3/circuit_breaker_vtproto.pb.go": [
+   337,
+   0
+  ],
+  "debian/extra/vendor/github.com/envoyproxy/go-control-plane/envoy/config/cluster/v3/cluster.pb.go": [
+   4657,
+   0
+  ],
+  "debian/extra/vendor/github.com/envoyproxy/go-control-plane/envoy/config/cluster/v3/cluster.pb.validate.go": [
+   4971,
+   0
+  ],
+  "debian/extra/vendor/github.com/envoyproxy/go-control-plane/envoy/config/cluster/v3/cluster_vtproto.pb.go": [
+   3455,
+   0
+  ],
+  "debian/extra/vendor/github.com/envoyproxy/go-control-plane/envoy/config/cluster/v3/filter.pb.go": [
+   207,
+   0
+  ],
+  "debian/extra/vendor/github.com/envoyproxy/go-control-plane/envoy/config/cluster/v3/filter.pb.validate.go": [
+   204,
+   0
+  ],
+  "debian/extra/vendor/github.com/envoyproxy/go-control-plane/envoy/config/cluster/v3/filter_vtproto.pb.go": [
+   121,
+   0
+  ],
+  "debian/extra/vendor/github.com/envoyproxy/go-control-plane/envoy/config/cluster/v3/outlier_detection.pb.go": [
+   641,
+   0
+  ],
+  "debian/extra/vendor/github.com/envoyproxy/go-control-plane/envoy/config/cluster/v3/outlier_detection.pb.validate.go": [
+   717,
+   0
+  ],
+  "debian/extra/vendor/github.com/envoyproxy/go-control-plane/envoy/config/cluster/v3/outlier_detection_vtproto.pb.go": [
+   456,
+   0
+  ],
+  "debian/extra/vendor/github.com/envoyproxy/go-control-plane/envoy/config/common/matcher/v3/matcher.pb.go": [
+   1778,
+   0
+  ],
+  "debian/extra/vendor/github.com/envoyproxy/go-control-plane/envoy/config/common/matcher/v3/matcher.pb.validate.go": [
+   3044,
+   0
+  ],
+  "debian/extra/vendor/github.com/envoyproxy/go-control-plane/envoy/config/common/matcher/v3/matcher_vtproto.pb.go": [
+   2035,
+   0
+  ],
+  "debian/extra/vendor/github.com/envoyproxy/go-control-plane/envoy/config/core/v3/address.pb.go": [
+   1110,
+   0
+  ],
+  "debian/extra/vendor/github.com/envoyproxy/go-control-plane/envoy/config/core/v3/address.pb.validate.go": [
+   1479,
+   0
+  ],
+  "debian/extra/vendor/github.com/envoyproxy/go-control-plane/envoy/config/core/v3/address_vtproto.pb.go": [
+   859,
+   0
+  ],
+  "debian/extra/vendor/github.com/envoyproxy/go-control-plane/envoy/config/core/v3/backoff.pb.go": [
+   193,
+   0
+  ],
+  "debian/extra/vendor/github.com/envoyproxy/go-control-plane/envoy/config/core/v3/backoff.pb.validate.go": [
+   208,
+   0
+  ],
+  "debian/extra/vendor/github.com/envoyproxy/go-control-plane/envoy/config/core/v3/backoff_vtproto.pb.go": [
+   91,
+   0
+  ],
+  "debian/extra/vendor/github.com/envoyproxy/go-control-plane/envoy/config/core/v3/base.pb.go": [
+   3242,
+   0
+  ],
+  "debian/extra/vendor/github.com/envoyproxy/go-control-plane/envoy/config/core/v3/base.pb.validate.go": [
+   4164,
+   0
+  ],
+  "debian/extra/vendor/github.com/envoyproxy/go-control-plane/envoy/config/core/v3/base_vtproto.pb.go": [
+   2497,
+   0
+  ],
+  "debian/extra/vendor/github.com/envoyproxy/go-control-plane/envoy/config/core/v3/config_source.pb.go": [
+   1194,
+   0
+  ],
+  "debian/extra/vendor/github.com/envoyproxy/go-control-plane/envoy/config/core/v3/config_source.pb.validate.go": [
+   1345,
+   0
+  ],
+  "debian/extra/vendor/github.com/envoyproxy/go-control-plane/envoy/config/core/v3/config_source_vtproto.pb.go": [
+   831,
+   0
+  ],
+  "debian/extra/vendor/github.com/envoyproxy/go-control-plane/envoy/config/core/v3/event_service_config.pb.go": [
+   200,
+   0
+  ],
+  "debian/extra/vendor/github.com/envoyproxy/go-control-plane/envoy/config/core/v3/event_service_config.pb.validate.go": [
+   197,
+   0
+  ],
+  "debian/extra/vendor/github.com/envoyproxy/go-control-plane/envoy/config/core/v3/event_service_config_vtproto.pb.go": [
+   110,
+   0
+  ],
+  "debian/extra/vendor/github.com/envoyproxy/go-control-plane/envoy/config/core/v3/extension.pb.go": [
+   185,
+   0
+  ],
+  "debian/extra/vendor/github.com/envoyproxy/go-control-plane/envoy/config/core/v3/extension.pb.validate.go": [
+   165,
+   0
+  ],
+  "debian/extra/vendor/github.com/envoyproxy/go-control-plane/envoy/config/core/v3/extension_vtproto.pb.go": [
+   88,
+   0
+  ],
+  "debian/extra/vendor/github.com/envoyproxy/go-control-plane/envoy/config/core/v3/grpc_method_list.pb.go": [
+   246,
+   0
+  ],
+  "debian/extra/vendor/github.com/envoyproxy/go-control-plane/envoy/config/core/v3/grpc_method_list.pb.validate.go": [
+   295,
+   0
+  ],
+  "debian/extra/vendor/github.com/envoyproxy/go-control-plane/envoy/config/core/v3/grpc_method_list_vtproto.pb.go": [
+   149,
+   0
+  ],
+  "debian/extra/vendor/github.com/envoyproxy/go-control-plane/envoy/config/core/v3/grpc_service.pb.go": [
+   1814,
+   0
+  ],
+  "debian/extra/vendor/github.com/envoyproxy/go-control-plane/envoy/config/core/v3/grpc_service.pb.validate.go": [
+   2579,
+   0
+  ],
+  "debian/extra/vendor/github.com/envoyproxy/go-control-plane/envoy/config/core/v3/grpc_service_vtproto.pb.go": [
+   1648,
+   0
+  ],
+  "debian/extra/vendor/github.com/envoyproxy/go-control-plane/envoy/config/core/v3/health_check.pb.go": [
+   1705,
+   0
+  ],
+  "debian/extra/vendor/github.com/envoyproxy/go-control-plane/envoy/config/core/v3/health_check.pb.validate.go": [
+   2291,
+   0
+  ],
+  "debian/extra/vendor/github.com/envoyproxy/go-control-plane/envoy/config/core/v3/health_check_vtproto.pb.go": [
+   1384,
+   0
+  ],
+  "debian/extra/vendor/github.com/envoyproxy/go-control-plane/envoy/config/core/v3/http_service.pb.go": [
+   194,
+   0
+  ],
+  "debian/extra/vendor/github.com/envoyproxy/go-control-plane/envoy/config/core/v3/http_service.pb.validate.go": [
+   210,
+   0
+  ],
+  "debian/extra/vendor/github.com/envoyproxy/go-control-plane/envoy/config/core/v3/http_service_vtproto.pb.go": [
+   94,
+   0
+  ],
+  "debian/extra/vendor/github.com/envoyproxy/go-control-plane/envoy/config/core/v3/http_uri.pb.go": [
+   236,
+   0
+  ],
+  "debian/extra/vendor/github.com/envoyproxy/go-control-plane/envoy/config/core/v3/http_uri.pb.validate.go": [
+   228,
+   0
+  ],
+  "debian/extra/vendor/github.com/envoyproxy/go-control-plane/envoy/config/core/v3/http_uri_vtproto.pb.go": [
+   123,
+   0
+  ],
+  "debian/extra/vendor/github.com/envoyproxy/go-control-plane/envoy/config/core/v3/protocol.pb.go": [
+   2503,
+   0
+  ],
+  "debian/extra/vendor/github.com/envoyproxy/go-control-plane/envoy/config/core/v3/protocol.pb.validate.go": [
+   3059,
+   0
+  ],
+  "debian/extra/vendor/github.com/envoyproxy/go-control-plane/envoy/config/core/v3/protocol_vtproto.pb.go": [
+   1746,
+   0
+  ],
+  "debian/extra/vendor/github.com/envoyproxy/go-control-plane/envoy/config/core/v3/proxy_protocol.pb.go": [
+   370,
+   0
+  ],
+  "debian/extra/vendor/github.com/envoyproxy/go-control-plane/envoy/config/core/v3/proxy_protocol.pb.validate.go": [
+   291,
+   0
+  ],
+  "debian/extra/vendor/github.com/envoyproxy/go-control-plane/envoy/config/core/v3/proxy_protocol_vtproto.pb.go": [
+   162,
+   0
+  ],
+  "debian/extra/vendor/github.com/envoyproxy/go-control-plane/envoy/config/core/v3/resolver.pb.go": [
+   265,
+   0
+  ],
+  "debian/extra/vendor/github.com/envoyproxy/go-control-plane/envoy/config/core/v3/resolver.pb.validate.go": [
+   319,
+   0
+  ],
+  "debian/extra/vendor/github.com/envoyproxy/go-control-plane/envoy/config/core/v3/resolver_vtproto.pb.go": [
+   163,
+   0
+  ],
+  "debian/extra/vendor/github.com/envoyproxy/go-control-plane/envoy/config/core/v3/socket_cmsg_headers.pb.go": [
+   190,
+   0
+  ],
+  "debian/extra/vendor/github.com/envoyproxy/go-control-plane/envoy/config/core/v3/socket_cmsg_headers.pb.validate.go": [
+   199,
+   0
+  ],
+  "debian/extra/vendor/github.com/envoyproxy/go-control-plane/envoy/config/core/v3/socket_cmsg_headers_vtproto.pb.go": [
+   99,
+   0
+  ],
+  "debian/extra/vendor/github.com/envoyproxy/go-control-plane/envoy/config/core/v3/socket_option.pb.go": [
+   615,
+   0
+  ],
+  "debian/extra/vendor/github.com/envoyproxy/go-control-plane/envoy/config/core/v3/socket_option.pb.validate.go": [
+   728,
+   0
+  ],
+  "debian/extra/vendor/github.com/envoyproxy/go-control-plane/envoy/config/core/v3/socket_option_vtproto.pb.go": [
+   391,
+   0
+  ],
+  "debian/extra/vendor/github.com/envoyproxy/go-control-plane/envoy/config/core/v3/substitution_format_string.pb.go": [
+   439,
+   0
+  ],
+  "debian/extra/vendor/github.com/envoyproxy/go-control-plane/envoy/config/core/v3/substitution_format_string.pb.validate.go": [
+   445,
+   0
+  ]
+ },
+ "files": 1346,
+ "added_lines": 432030,
+ "removed_lines": 16554,
+ "diff": "diff --git a/OWNERS b/OWNERS\nindex 79be7d9..440a869 100644\n--- a/OWNERS\n+++ b/OWNERS\n@@ -3,7 +3,8 @@\n \n approvers:\n   - burov\n-  - michaljankowiak\n-  - paulinakania\n   - ekremenetskii\n-  - savijatv\n+  - paulinakania\n+  - savija-tv\n+  - zoltak-g\n+\ndiff --git a/agentendpoint/agentendpoint.go b/agentendpoint/agentendpoint.go\nindex 5fadf67..b95f32a 100644\n--- a/agentendpoint/agentendpoint.go\n+++ b/agentendpoint/agentendpoint.go\n@@ -16,10 +16,7 @@\n package agentendpoint\n \n import (\n-\t\"bytes\"\n \t\"context\"\n-\t\"crypto/sha256\"\n-\t\"encoding/hex\"\n \t\"errors\"\n \t\"fmt\"\n \t\"io\"\n@@ -39,7 +36,6 @@ import (\n \t\"google.golang.org/grpc/credentials\"\n \t\"google.golang.org/grpc/keepalive\"\n \t\"google.golang.org/grpc/status\"\n-\t\"google.golang.org/protobuf/proto\"\n \n \t\"cloud.google.com/go/osconfig/agentendpoint/apiv1/agentendpointpb\"\n )\n@@ -151,14 +147,11 @@ func (c *Client) reportInventory(ctx context.Context, inventory *agentendpointpb\n \t\treturn nil, err\n \t}\n \n-\thash := sha256.New()\n-\tb, err := proto.Marshal(inventory)\n+\tchecksum, err := computeStableFingerprint(ctx, inventory)\n \tif err != nil {\n-\t\treturn nil, err\n+\t\treturn nil, fmt.Errorf(\"unable to compute hash, err: %w\", err)\n \t}\n-\tio.Copy(hash, bytes.NewReader(b))\n \n-\tchecksum := hex.EncodeToString(hash.Sum(nil))\n \treq := &agentendpointpb.ReportInventoryRequest{InventoryChecksum: checksum}\n \tif reportFull {\n \t\treq = &agentendpointpb.ReportInventoryRequest{InventoryChecksum: checksum, Inventory: inventory}\n@@ -381,7 +374,7 @@ func (c *Client) WaitForTaskNotification(ctx context.Context) {\n \n \tclog.Debugf(ctx, \"Checking local state file for saved task.\")\n \tif err := c.loadTaskFromState(ctx); err != nil {\n-\t\tclog.Errorf(ctx, err.Error())\n+\t\tclog.Errorf(ctx, \"%v\", err.Error())\n \t}\n \n \tclog.Debugf(ctx, \"Setting up ReceiveTaskNotification stream watcher.\")\ndiff --git a/agentendpoint/config_task.go b/agentendpoint/config_task.go\nindex af3ffa7..f567e78 100644\n--- a/agentendpoint/config_task.go\n+++ b/agentendpoint/config_task.go\n@@ -95,7 +95,7 @@ func (c *configTask) handleErrorState(ctx context.Context, msg string, err error\n \t\treturn c.reportCompletedState(ctx, errServerCancel.Error(), agentendpointpb.ApplyConfigTaskOutput_CANCELLED)\n \t}\n \tmsg = fmt.Sprintf(\"%s: %v\", msg, err)\n-\tclog.Errorf(ctx, msg)\n+\tclog.Errorf(ctx, \"%v\", msg)\n \treturn c.reportCompletedState(ctx, msg, agentendpointpb.ApplyConfigTaskOutput_FAILED)\n }\n \n@@ -153,14 +153,14 @@ func validateConfigResource(ctx context.Context, res *resource, policyMR *config\n \t\toutcome = agentendpointpb.OSPolicyResourceConfigStep_FAILED\n \t\thasError = true\n \t\terrMessage = truncateMessage(fmt.Sprintf(\"Validate: resource %q error: %v\", configResource.GetId(), err), maxErrorMessage)\n-\t\tclog.Errorf(ctx, errMessage)\n+\t\tclog.Errorf(ctx, \"%v\", errMessage)\n \t} else {\n \t\t// Detect any resource conflicts within this policy.\n \t\tif err := detectPolicyConflicts(res.ManagedResources(), policyMR); err != nil {\n \t\t\toutcome = agentendpointpb.OSPolicyResourceConfigStep_FAILED\n \t\t\thasError = true\n \t\t\terrMessage = truncateMessage(fmt.Sprintf(\"Validate: resource conflict in policy: %v\", err), maxErrorMessage)\n-\t\t\tclog.Errorf(ctx, errMessage)\n+\t\t\tclog.Errorf(ctx, \"%v\", errMessage)\n \t\t} else {\n \t\t\tclog.Infof(ctx, \"Validate: resource %q validation successful.\", configResource.GetId())\n \t\t}\n@@ -187,7 +187,7 @@ func checkConfigResourceState(ctx context.Context, res *resource, rCompliance *a\n \t\toutcome = agentendpointpb.OSPolicyResourceConfigStep_FAILED\n \t\thasError = true\n \t\terrMessage = truncateMessage(fmt.Sprintf(\"Check state: resource %q error: %v\", configResource.GetId(), err), maxErrorMessage)\n-\t\tclog.Errorf(ctx, errMessage)\n+\t\tclog.Errorf(ctx, \"%v\", errMessage)\n \t} else if res.InDesiredState() {\n \t\tstate = agentendpointpb.OSPolicyComplianceState_COMPLIANT\n \t} else {\n@@ -220,7 +220,7 @@ func enforceConfigResourceState(ctx context.Context, res *resource, rCompliance \n \t\toutcome = agentendpointpb.OSPolicyResourceConfigStep_FAILED\n \t\thasError = true\n \t\terrMessage = truncateMessage(fmt.Sprintf(\"Enforce state: resource %q error: %v\", configResource.GetId(), err), maxErrorMessage)\n-\t\tclog.Errorf(ctx, errMessage)\n+\t\tclog.Errorf(ctx, \"%v\", errMessage)\n \t} else {\n \t\tclog.Infof(ctx, \"Enforce state: resource %q enforcement successful.\", configResource.GetId())\n \t}\n@@ -251,7 +251,7 @@ func postCheckConfigResourceState(ctx context.Context, res *resource, rComplianc\n \tif err != nil {\n \t\toutcome = agentendpointpb.OSPolicyResourceConfigStep_FAILED\n \t\terrMessage = truncateMessage(fmt.Sprintf(\"Check state post enforcement: resource %q error: %v\", configResource.GetId(), err), maxErrorMessage)\n-\t\tclog.Errorf(ctx, errMessage)\n+\t\tclog.Errorf(ctx, \"%v\", errMessage)\n \t} else if res.InDesiredState() {\n \t\tstate = agentendpointpb.OSPolicyComplianceState_COMPLIANT\n \t} else {\ndiff --git a/agentendpoint/exec_task.go b/agentendpoint/exec_task.go\nindex 7f77074..d1ba202 100644\n--- a/agentendpoint/exec_task.go\n+++ b/agentendpoint/exec_task.go\n@@ -167,7 +167,7 @@ func (e *execTask) run(ctx context.Context) error {\n \t\tlocalPath, err = getGCSObject(ctx, gcsObject.GetBucket(), gcsObject.GetObject(), gcsObject.GetGenerationNumber())\n \t\tif err != nil {\n \t\t\tmsg := fmt.Sprintf(\"Error downloading GCS object: %v\", err)\n-\t\t\tclog.Errorf(ctx, msg)\n+\t\t\tclog.Errorf(ctx, \"%v\", msg)\n \t\t\treturn e.reportCompletedState(ctx, msg, &agentendpointpb.ReportTaskCompleteRequest_ExecStepTaskOutput{\n \t\t\t\tExecStepTaskOutput: &agentendpointpb.ExecStepTaskOutput{\n \t\t\t\t\tState:    agentendpointpb.ExecStepTaskOutput_COMPLETED,\n@@ -207,7 +207,7 @@ func (e *execTask) run(ctx context.Context) error {\n \t}\n \tif err != nil {\n \t\tmsg := fmt.Sprintf(\"Error running ExecStepTask: %v\", err)\n-\t\tclog.Errorf(ctx, msg)\n+\t\tclog.Errorf(ctx, \"%v\", msg)\n \t\treturn e.reportCompletedState(ctx, msg, &agentendpointpb.ReportTaskCompleteRequest_ExecStepTaskOutput{\n \t\t\tExecStepTaskOutput: &agentendpointpb.ExecStepTaskOutput{\n \t\t\t\tState:    agentendpointpb.ExecStepTaskOutput_COMPLETED,\ndiff --git a/agentendpoint/inventory.go b/agentendpoint/inventory.go\nindex 7da3463..78a2fed 100644\n--- a/agentendpoint/inventory.go\n+++ b/agentendpoint/inventory.go\n@@ -1,9 +1,14 @@\n package agentendpoint\n \n import (\n+\t\"bytes\"\n \t\"context\"\n+\t\"crypto/sha256\"\n+\t\"encoding/hex\"\n \t\"fmt\"\n+\t\"io\"\n \t\"reflect\"\n+\t\"sort\"\n \t\"strings\"\n \t\"time\"\n \n@@ -13,6 +18,7 @@ import (\n \t\"github.com/GoogleCloudPlatform/osconfig/inventory\"\n \t\"github.com/GoogleCloudPlatform/osconfig/packages\"\n \t\"github.com/GoogleCloudPlatform/osconfig/retryutil\"\n+\t\"google.golang.org/protobuf/proto\"\n \t\"google.golang.org/protobuf/types/known/timestamppb\"\n \n \t\"cloud.google.com/go/osconfig/agentendpoint/apiv1/agentendpointpb\"\n@@ -159,13 +165,13 @@ func formatPackages(ctx context.Context, pkgs *packages.Packages, shortName stri\n \t}\n \tif pkgs.Rpm != nil {\n \t\ttemp := make([]*agentendpointpb.Inventory_SoftwarePackage, len(pkgs.Rpm))\n-\t\tif packages.YumExists {\n+\t\tif packages.YumExists || !packages.ZypperExists {\n \t\t\tfor i, pkg := range pkgs.Rpm {\n \t\t\t\ttemp[i] = &agentendpointpb.Inventory_SoftwarePackage{\n \t\t\t\t\tDetails: formatYumPackage(pkg),\n \t\t\t\t}\n \t\t\t}\n-\t\t} else if packages.ZypperExists {\n+\t\t} else {\n \t\t\tfor i, pkg := range pkgs.Rpm {\n \t\t\t\ttemp[i] = &agentendpointpb.Inventory_SoftwarePackage{\n \t\t\t\t\tDetails: formatZypperPackage(pkg),\n@@ -359,3 +365,57 @@ func formatWindowsApplication(pkg *packages.WindowsApplication) *agentendpointpb\n \t\t\tHelpLink:       pkg.HelpLink,\n \t\t}}\n }\n+\n+func computeFingerprint(ctx context.Context, inventory *agentendpointpb.Inventory) (string, error) {\n+\tfingerprint := sha256.New()\n+\tb, err := proto.Marshal(inventory)\n+\tif err != nil {\n+\t\treturn \"\", err\n+\t}\n+\tio.Copy(fingerprint, bytes.NewReader(b))\n+\n+\treturn hex.EncodeToString(fingerprint.Sum(nil)), nil\n+}\n+\n+func computeStableFingerprint(ctx context.Context, inventory *agentendpointpb.Inventory) (string, error) {\n+\tfingerprint := sha256.New()\n+\tb, err := proto.Marshal(inventory.GetOsInfo())\n+\tif err != nil {\n+\t\treturn \"\", err\n+\t}\n+\tio.Copy(fingerprint, bytes.NewReader(b))\n+\n+\tinstalledPackages := inventory.GetInstalledPackages()\n+\tavailablePackages := inventory.GetAvailablePackages()\n+\n+\tentries := make([]string, 0, len(installedPackages)+len(availablePackages))\n+\n+\tfor _, pkg := range installedPackages {\n+\t\tentries = append(entries, fingerprintForPackage(pkg))\n+\t}\n+\n+\tfor _, pkg := range availablePackages {\n+\t\tentries = append(entries, fingerprintForPackage(pkg))\n+\t}\n+\n+\tsort.Strings(entries)\n+\n+\tfor _, entry := range entries {\n+\t\tif _, err := io.WriteString(fingerprint, entry); err != nil {\n+\t\t\treturn \"\", err\n+\t\t}\n+\t}\n+\n+\treturn hex.EncodeToString(fingerprint.Sum(nil)), nil\n+}\n+\n+func fingerprintForPackage(pkg *agentendpointpb.Inventory_SoftwarePackage) string {\n+\t//Inventory_WindowsUpdatePackage struct contains repeated fields\n+\t//we should rely on fields that are stable and sufficient enough to uniquely identify the package.\n+\tif wua := pkg.GetWuaPackage(); wua != nil {\n+\t\treturn fmt.Sprintf(\"%s-%s-%d\", wua.GetTitle(), wua.GetUpdateId(), wua.GetRevisionNumber())\n+\t}\n+\n+\t// For all packages other then wua we can just rely on proto String() method.\n+\treturn pkg.String()\n+}\ndiff --git a/agentendpoint/inventory_test.go b/agentendpoint/inventory_test.go\nindex be22910..a606dff 100644\n--- a/agentendpoint/inventory_test.go\n+++ b/agentendpoint/inventory_test.go\n@@ -22,6 +22,7 @@ import (\n \t\"encoding/json\"\n \t\"fmt\"\n \t\"io\"\n+\t\"math/rand\"\n \t\"net/http\"\n \t\"net/http/httptest\"\n \t\"reflect\"\n@@ -114,10 +115,10 @@ func generateInventoryState() *inventory.InstanceInventory {\n \t\t\tWUA: []*packages.WUAPackage{{\n \t\t\t\tTitle:                    \"WUAInstalled\",\n \t\t\t\tDescription:              \"Description\",\n-\t\t\t\tCategories:               []string{\"Category\"},\n-\t\t\t\tCategoryIDs:              []string{\"CategoryID\"},\n-\t\t\t\tKBArticleIDs:             []string{\"KB\"},\n-\t\t\t\tMoreInfoURLs:             []string{\"MoreInfoURL\"},\n+\t\t\t\tCategories:               []string{\"Category1\", \"Category2\", \"Category3\", \"Category4\"},\n+\t\t\t\tCategoryIDs:              []string{\"CategoryID1\", \"CategoryID2\", \"CategoryID3\", \"CategoryID4\"},\n+\t\t\t\tKBArticleIDs:             []string{\"KB1\", \"KB2\", \"KB3\", \"KB4\"},\n+\t\t\t\tMoreInfoURLs:             []string{\"MoreInfoURL1\", \"MoreInfoURL2\", \"MoreInfoURL3\", \"MoreInfoURL4\"},\n \t\t\t\tSupportURL:               \"SupportURL\",\n \t\t\t\tUpdateID:                 \"UpdateID\",\n \t\t\t\tRevisionNumber:           1,\n@@ -134,12 +135,14 @@ func generateInventoryState() *inventory.InstanceInventory {\n \t\t\tPip:           []*packages.PkgInfo{{Name: \"PipPkgUpdate\", Arch: \"Arch\", Version: \"Version\"}},\n \t\t\tGooGet:        []*packages.PkgInfo{{Name: \"GooGetPkgUpdate\", Arch: \"Arch\", Version: \"Version\"}},\n \t\t\tWUA: []*packages.WUAPackage{{\n-\t\t\t\tTitle:                    \"WUAUpdate\",\n-\t\t\t\tDescription:              \"Description\",\n-\t\t\t\tCategories:               []string{\"Category\"},\n-\t\t\t\tCategoryIDs:              []string{\"CategoryID\"},\n-\t\t\t\tKBArticleIDs:             []string{\"KB\"},\n-\t\t\t\tMoreInfoURLs:             []string{\"MoreInfoURL\"},\n+\t\t\t\tTitle:       \"WUAUpdate\",\n+\t\t\t\tDescription: \"Description\",\n+\n+\t\t\t\tCategories:   []string{\"Category1\", \"Category2\", \"Category3\", \"Category4\"},\n+\t\t\t\tCategoryIDs:  []string{\"CategoryID1\", \"CategoryID2\", \"CategoryID3\", \"CategoryID4\"},\n+\t\t\t\tKBArticleIDs: []string{\"KB1\", \"KB2\", \"KB3\", \"KB4\"},\n+\t\t\t\tMoreInfoURLs: []string{\"MoreInfoURL1\", \"MoreInfoURL2\", \"MoreInfoURL3\", \"MoreInfoURL4\"},\n+\n \t\t\t\tSupportURL:               \"SupportURL\",\n \t\t\t\tUpdateID:                 \"UpdateID\",\n \t\t\t\tRevisionNumber:           1,\n@@ -229,12 +232,15 @@ func generateInventory() *agentendpointpb.Inventory {\n \t\t\t\t\tWuaPackage: &agentendpointpb.Inventory_WindowsUpdatePackage{\n \t\t\t\t\t\tTitle:       \"WUAInstalled\",\n \t\t\t\t\t\tDescription: \"Description\",\n-\t\t\t\t\t\tCategories: []*agentendpointpb.Inventory_WindowsUpdatePackage_WindowsUpdateCategory{{\n-\t\t\t\t\t\t\tId:   \"CategoryID\",\n-\t\t\t\t\t\t\tName: \"Category\"}},\n-\t\t\t\t\t\tKbArticleIds:             []string{\"KB\"},\n+\t\t\t\t\t\tCategories: []*agentendpointpb.Inventory_WindowsUpdatePackage_WindowsUpdateCategory{\n+\t\t\t\t\t\t\t{Id: \"CategoryID1\", Name: \"Category1\"},\n+\t\t\t\t\t\t\t{Id: \"CategoryID2\", Name: \"Category2\"},\n+\t\t\t\t\t\t\t{Id: \"CategoryID3\", Name: \"Category3\"},\n+\t\t\t\t\t\t\t{Id: \"CategoryID4\", Name: \"Category4\"},\n+\t\t\t\t\t\t},\n+\t\t\t\t\t\tKbArticleIds:             []string{\"KB1\", \"KB2\", \"KB3\", \"KB4\"},\n \t\t\t\t\t\tSupportUrl:               \"SupportURL\",\n-\t\t\t\t\t\tMoreInfoUrls:             []string{\"MoreInfoURL\"},\n+\t\t\t\t\t\tMoreInfoUrls:             []string{\"MoreInfoURL1\", \"MoreInfoURL2\", \"MoreInfoURL3\", \"MoreInfoURL4\"},\n \t\t\t\t\t\tUpdateId:                 \"UpdateID\",\n \t\t\t\t\t\tRevisionNumber:           1,\n \t\t\t\t\t\tLastDeploymentChangeTime: timestamppb.New(time.Date(2020, time.November, 10, 23, 0, 0, 0, time.UTC)),\n@@ -290,12 +296,16 @@ func generateInventory() *agentendpointpb.Inventory {\n \t\t\t\t\tWuaPackage: &agentendpointpb.Inventory_WindowsUpdatePackage{\n \t\t\t\t\t\tTitle:       \"WUAUpdate\",\n \t\t\t\t\t\tDescription: \"Description\",\n-\t\t\t\t\t\tCategories: []*agentendpointpb.Inventory_WindowsUpdatePackage_WindowsUpdateCategory{{\n-\t\t\t\t\t\t\tId:   \"CategoryID\",\n-\t\t\t\t\t\t\tName: \"Category\"}},\n-\t\t\t\t\t\tKbArticleIds:             []string{\"KB\"},\n+\t\t\t\t\t\tCategories: []*agentendpointpb.Inventory_WindowsUpdatePackage_WindowsUpdateCategory{\n+\n+\t\t\t\t\t\t\t{Id: \"CategoryID1\", Name: \"Category1\"},\n+\t\t\t\t\t\t\t{Id: \"CategoryID2\", Name: \"Category2\"},\n+\t\t\t\t\t\t\t{Id: \"CategoryID3\", Name: \"Category3\"},\n+\t\t\t\t\t\t\t{Id: \"CategoryID4\", Name: \"Category4\"},\n+\t\t\t\t\t\t},\n+\t\t\t\t\t\tKbArticleIds:             []string{\"KB1\", \"KB2\", \"KB3\", \"KB4\"},\n \t\t\t\t\t\tSupportUrl:               \"SupportURL\",\n-\t\t\t\t\t\tMoreInfoUrls:             []string{\"MoreInfoURL\"},\n+\t\t\t\t\t\tMoreInfoUrls:             []string{\"MoreInfoURL1\", \"MoreInfoURL2\", \"MoreInfoURL3\", \"MoreInfoURL4\"},\n \t\t\t\t\t\tUpdateId:                 \"UpdateID\",\n \t\t\t\t\t\tRevisionNumber:           1,\n \t\t\t\t\t\tLastDeploymentChangeTime: timestamppb.New(time.Time{})}}},\n@@ -434,7 +444,6 @@ func TestWrite(t *testing.T) {\n \n func TestReport(t *testing.T) {\n \tctx := context.Background()\n-\tpackages.YumExists = true\n \tsrv := &agentEndpointServiceInventoryTestServer{}\n \ttc, err := newTestClient(ctx, srv)\n \tif err != nil {\n@@ -448,8 +457,18 @@ func TestReport(t *testing.T) {\n \t\tinventoryState      *inventory.InstanceInventory\n \t\twantInventory       *agentendpointpb.Inventory\n \t}{\n-\t\t{\"ReportChecksumOnly\", false, generateInventoryState(), nil},\n-\t\t{\"ReportFullInventory\", true, generateInventoryState(), generateInventory()},\n+\t\t{\n+\t\t\tname:                \"ReportChecksumOnly\",\n+\t\t\treportFullInventory: false,\n+\t\t\tinventoryState:      generateInventoryState(),\n+\t\t\twantInventory:       nil,\n+\t\t},\n+\t\t{\n+\t\t\tname:                \"ReportFullInventory\",\n+\t\t\treportFullInventory: true,\n+\t\t\tinventoryState:      generateInventoryState(),\n+\t\t\twantInventory:       generateInventory(),\n+\t\t},\n \t}\n \n \tfor _, tt := range tests {\n@@ -458,9 +477,178 @@ func TestReport(t *testing.T) {\n \n \t\t\ttc.client.report(ctx, tt.inventoryState)\n \n-\t\t\tif diff := cmp.Diff(srv.lastReportInventoryRequest.Inventory, tt.wantInventory, protocmp.Transform()); diff != \"\" {\n+\t\t\tactualInventory := srv.lastReportInventoryRequest.Inventory\n+\t\t\tif diff := cmp.Diff(tt.wantInventory, actualInventory, protocmp.Transform()); diff != \"\" {\n \t\t\t\tt.Fatalf(\"ReportInventoryRequest.Inventory mismatch (-want +got):\\n%s\", diff)\n \t\t\t}\n \t\t})\n \t}\n }\n+\n+func Test_computeFingerprint_gotExpectedFingerprintFormat(t *testing.T) {\n+\tctx := context.Background()\n+\tfingerprint, err := computeFingerprint(ctx, generateInventory())\n+\tif err != nil {\n+\t\tt.Fatalf(\"unable to generate fingerprint, err - %s\", err)\n+\t}\n+\n+\tif !validFingerprint(fingerprint) {\n+\t\tt.Fatalf(\"got fingerprint %q in unexpected format\", fingerprint)\n+\t}\n+}\n+\n+func Test_computeFingerprint_fingerprintChangedAfterReshuffle(t *testing.T) {\n+\tctx := context.Background()\n+\tinventory := generateInventory()\n+\tinitialFingerprint, err := computeFingerprint(ctx, inventory)\n+\tif err != nil {\n+\t\tt.Fatalf(\"unable to generate initial fingerprint, err - %s\", err)\n+\t}\n+\n+\tinventoryPackagesMixer(time.Now().UnixNano())(inventory)\n+\n+\tfinalFingerprint, err := computeFingerprint(ctx, inventory)\n+\tif err != nil {\n+\t\tt.Fatalf(\"unable to generate final fingerprint, err - %s\", err)\n+\t}\n+\n+\tif initialFingerprint == finalFingerprint {\n+\t\tt.Errorf(\"unstable fingerprint is equal for different inventories\")\n+\t}\n+}\n+\n+func Test_computeStableFingerprint_fingerprintNotChangedAfterReshuffle(t *testing.T) {\n+\tctx := context.Background()\n+\tinventory := generateInventory()\n+\tinitialFingerprint, err := computeStableFingerprint(ctx, inventory)\n+\tif err != nil {\n+\t\tt.Fatalf(\"unable to generate initial fingerprint, err - %s\", err)\n+\t}\n+\n+\tinventoryPackagesMixer(time.Now().UnixNano())(inventory)\n+\n+\tfinalFingerprint, err := computeStableFingerprint(ctx, inventory)\n+\tif err != nil {\n+\t\tt.Fatalf(\"unable to generate final fingerprint, err - %s\", err)\n+\t}\n+\n+\tif initialFingerprint != finalFingerprint {\n+\t\tt.Errorf(\"stable fingerprint is not equal for inventory with different order\")\n+\t}\n+}\n+\n+func Test_computeStableFingerprint_fingerprintChangedAfterChanging(t *testing.T) {\n+\tctx := context.Background()\n+\tinventory := generateInventory()\n+\tinitialFingerprint, err := computeStableFingerprint(ctx, inventory)\n+\tif err != nil {\n+\t\tt.Fatalf(\"unable to generate initial fingerprint, err - %s\", err)\n+\t}\n+\n+\tinventory.AvailablePackages = nil\n+\n+\tfinalFingerprint, err := computeStableFingerprint(ctx, inventory)\n+\tif err != nil {\n+\t\tt.Fatalf(\"unable to generate final fingerprint, err - %s\", err)\n+\t}\n+\n+\tif initialFingerprint == finalFingerprint {\n+\t\tt.Errorf(\"stable fingerprint should not be equal if inventory is actually changed\")\n+\t}\n+}\n+\n+func validFingerprint(fingerprint string) bool {\n+\tif fingerprint == \"\" {\n+\t\treturn false\n+\t}\n+\n+\tif len(fingerprint) != 64 {\n+\t\treturn false\n+\t}\n+\n+\treturn true\n+}\n+\n+func Test_computeStableFingerprint_testFingerprintStability(t *testing.T) {\n+\tctx := context.Background()\n+\tinventory := generateInventory()\n+\n+\tmixer := inventoryPackagesMixer(time.Now().UnixNano())\n+\n+\tn := 100\n+\tfor i := 0; i < n; i++ {\n+\t\tt.Run(fmt.Sprintf(\"Run %d\", i), func(t *testing.T) {\n+\t\t\t// Compute initial fingerprints.\n+\t\t\tunstableFingerprintBefore, err := computeFingerprint(ctx, inventory)\n+\t\t\tif err != nil {\n+\t\t\t\tt.Errorf(\"unexpected error while calculating fingerprint, err %v\", err)\n+\t\t\t}\n+\t\t\tstableFingerprintBefore, err := computeStableFingerprint(ctx, inventory)\n+\t\t\tif err != nil {\n+\t\t\t\tt.Errorf(\"unexpected error while calculating fingerprint, err %v\", err)\n+\t\t\t}\n+\n+\t\t\t// Reorder pacakges in the inventory, that should change result of computeFingerprint\n+\t\t\t// and do not change the result of computeStableFingerptint.\n+\t\t\tmixer(inventory)\n+\n+\t\t\t// Generate new fingerprints after reshufling of the packages.\n+\t\t\tunstableFingerprintAfter, err := computeFingerprint(ctx, inventory)\n+\t\t\tif err != nil {\n+\t\t\t\tt.Errorf(\"unexpected error while calculating fingerprint, err %v\", err)\n+\t\t\t}\n+\t\t\tstableFingerprintAfter, err := computeStableFingerprint(ctx, inventory)\n+\t\t\tif err != nil {\n+\t\t\t\tt.Errorf(\"unexpected error while calculating fingerprint, err %v\", err)\n+\t\t\t}\n+\n+\t\t\t//Confirm that unstable fingerprint changed and stable fingerprint not.\n+\t\t\tif unstableFingerprintBefore == unstableFingerprintAfter {\n+\t\t\t\tt.Errorf(\"unstable fingerprint is equal for different inventories\")\n+\t\t\t}\n+\t\t\tif stableFingerprintBefore != stableFingerprintAfter {\n+\t\t\t\tt.Errorf(\"stable fingerprint is not equal for identical inventories\")\n+\t\t\t}\n+\t\t})\n+\n+\t}\n+}\n+\n+func inventoryPackagesMixer(source int64) func(inventory *agentendpointpb.Inventory) {\n+\tfmt.Printf(\"Inventory packages mixer initialized with source %d\\n\", source)\n+\n+\trng := rand.New(rand.NewSource(source))\n+\n+\treturn func(inventory *agentendpointpb.Inventory) {\n+\t\trng.Shuffle(len(inventory.InstalledPackages), func(i, j int) {\n+\t\t\tinventory.InstalledPackages[i], inventory.InstalledPackages[j] = inventory.InstalledPackages[j], inventory.InstalledPackages[i]\n+\t\t})\n+\n+\t\trng.Shuffle(len(inventory.AvailablePackages), func(i, j int) {\n+\t\t\tinventory.AvailablePackages[i], inventory.AvailablePackages[j] = inventory.AvailablePackages[j], inventory.AvailablePackages[i]\n+\t\t})\n+\n+\t}\n+}\n+\n+func Benchmark_computeFingerprint(b *testing.B) {\n+\tctx, inventory := context.Background(), generateInventory()\n+\n+\tfor i := 0; i < b.N; i++ {\n+\t\t_, err := computeFingerprint(ctx, inventory)\n+\t\tif err != nil {\n+\t\t\tb.Fatalf(\"unable to generate fingerprint, err - %s\", err)\n+\t\t}\n+\t}\n+}\n+\n+func Benchmark_computeStableFingerprint(b *testing.B) {\n+\tctx, inventory := context.Background(), generateInventory()\n+\n+\tfor i := 0; i < b.N; i++ {\n+\t\t_, err := computeStableFingerprint(ctx, inventory)\n+\t\tif err != nil {\n+\t\t\tb.Fatalf(\"unable to generate fingerprint, err - %s\", err)\n+\t\t}\n+\t}\n+}\ndiff --git a/agentendpoint/patch_task.go b/agentendpoint/patch_task.go\nindex d098b14..2b4134f 100644\n--- a/agentendpoint/patch_task.go\n+++ b/agentendpoint/patch_task.go\n@@ -34,9 +34,10 @@ func systemRebootRequired(ctx context.Context) (bool, error) {\n type patchStep string\n \n const (\n-\tprePatch  = \"PrePatch\"\n-\tpatching  = \"Patching\"\n-\tpostPatch = \"PostPatch\"\n+\tprePatch              = \"PrePatch\"\n+\tpatching              = \"Patching\"\n+\tpostPatch             = \"PostPatch\"\n+\ttotalRebootCountLimit = 5\n )\n \n type patchTask struct {\n@@ -45,11 +46,12 @@ type patchTask struct {\n \tlastProgressState map[agentendpointpb.ApplyPatchesTaskProgress_State]time.Time\n \tstate             *taskState\n \n-\tTaskID      string\n-\tTask        *applyPatchesTask\n-\tStartedAt   time.Time `json:\",omitempty\"`\n-\tPatchStep   patchStep `json:\",omitempty\"`\n-\tRebootCount int\n+\tTaskID               string\n+\tTask                 *applyPatchesTask\n+\tStartedAt            time.Time `json:\",omitempty\"`\n+\tPatchStep            patchStep `json:\",omitempty\"`\n+\tPrePatchRebootCount  int\n+\tPostPatchRebootCount int\n \n \t// TODO: add Attempts and track number of retries with backoff, jitter, etc.\n }\n@@ -98,7 +100,7 @@ func (r *patchTask) handleErrorState(ctx context.Context, msg string, err error)\n }\n \n func (r *patchTask) reportFailed(ctx context.Context, msg string) error {\n-\tclog.Errorf(ctx, msg)\n+\tclog.Errorf(ctx, \"%v\", msg)\n \treturn r.reportCompletedState(ctx, msg, &agentendpointpb.ReportTaskCompleteRequest_ApplyPatchesTaskOutput{\n \t\tApplyPatchesTaskOutput: &agentendpointpb.ApplyPatchesTaskOutput{State: agentendpointpb.ApplyPatchesTaskOutput_FAILED},\n \t})\n@@ -154,8 +156,6 @@ func (r *patchTask) reportContinuingState(ctx context.Context, patchState agente\n \treturn r.saveState()\n }\n \n-// TODO: Add MaxRebootCount so we don't loop endlessly.\n-\n func (r *patchTask) prePatchReboot(ctx context.Context) error {\n \treturn r.rebootIfNeeded(ctx, true)\n }\n@@ -167,7 +167,7 @@ func (r *patchTask) postPatchReboot(ctx context.Context) error {\n func (r *patchTask) rebootIfNeeded(ctx context.Context, prePatch bool) error {\n \tvar reboot bool\n \tvar err error\n-\tif r.Task.GetPatchConfig().GetRebootConfig() == agentendpointpb.PatchConfig_ALWAYS && !prePatch && r.RebootCount == 0 {\n+\tif r.Task.GetPatchConfig().GetRebootConfig() == agentendpointpb.PatchConfig_ALWAYS && !prePatch && r.PostPatchRebootCount == 0 {\n \t\treboot = true\n \t\tclog.Infof(ctx, \"PatchConfig RebootConfig set to %s.\", agentendpointpb.PatchConfig_ALWAYS)\n \t} else {\n@@ -177,6 +177,11 @@ func (r *patchTask) rebootIfNeeded(ctx context.Context, prePatch bool) error {\n \t\t}\n \t\tif reboot {\n \t\t\tclog.Infof(ctx, \"System indicates a reboot is required.\")\n+\t\t\ttotalRebootCount := r.PrePatchRebootCount + r.PostPatchRebootCount\n+\t\t\tif totalRebootCount >= totalRebootCountLimit {\n+\t\t\t\tclog.Infof(ctx, \"Detected abnormal number of reboots for a single patch task (%d). Not rebooting to prevent a possible boot loop\", totalRebootCount)\n+\t\t\t\treturn nil\n+\t\t\t}\n \t\t} else {\n \t\t\tclog.Infof(ctx, \"System indicates a reboot is not required.\")\n \t\t}\n@@ -200,7 +205,12 @@ func (r *patchTask) rebootIfNeeded(ctx context.Context, prePatch bool) error {\n \t\treturn nil\n \t}\n \n-\tr.RebootCount++\n+\tif prePatch {\n+\t\tr.PrePatchRebootCount++\n+\t} else {\n+\t\tr.PostPatchRebootCount++\n+\t}\n+\n \tif err := r.saveState(); err != nil {\n \t\treturn fmt.Errorf(\"error saving state: %v\", err)\n \t}\ndiff --git a/agentendpoint/task_state_test.go b/agentendpoint/task_state_test.go\nindex 2687ebb..0ac245f 100644\n--- a/agentendpoint/task_state_test.go\n+++ b/agentendpoint/task_state_test.go\n@@ -28,7 +28,7 @@ import (\n )\n \n var (\n-\ttestPatchTaskStateString = \"{\\\"PatchTask\\\":{\\\"TaskID\\\":\\\"foo\\\",\\\"Task\\\":{\\\"patchConfig\\\":{\\\"apt\\\":{\\\"type\\\":\\\"DIST\\\",\\\"excludes\\\":[\\\"foo\\\",\\\"bar\\\"],\\\"exclusivePackages\\\":[\\\"foo\\\",\\\"bar\\\"]},\\\"windowsUpdate\\\":{\\\"classifications\\\":[\\\"CRITICAL\\\",\\\"SECURITY\\\"],\\\"excludes\\\":[\\\"foo\\\",\\\"bar\\\"],\\\"exclusivePatches\\\":[\\\"foo\\\",\\\"bar\\\"]}}},\\\"StartedAt\\\":\\\"0001-01-01T00:00:00Z\\\",\\\"RebootCount\\\":0},\\\"Labels\\\":{\\\"foo\\\":\\\"bar\\\"}}\"\n+\ttestPatchTaskStateString = \"{\\\"PatchTask\\\":{\\\"TaskID\\\":\\\"foo\\\",\\\"Task\\\":{\\\"patchConfig\\\":{\\\"apt\\\":{\\\"type\\\":\\\"DIST\\\",\\\"excludes\\\":[\\\"foo\\\",\\\"bar\\\"],\\\"exclusivePackages\\\":[\\\"foo\\\",\\\"bar\\\"]},\\\"windowsUpdate\\\":{\\\"classifications\\\":[\\\"CRITICAL\\\",\\\"SECURITY\\\"],\\\"excludes\\\":[\\\"foo\\\",\\\"bar\\\"],\\\"exclusivePatches\\\":[\\\"foo\\\",\\\"bar\\\"]}}},\\\"StartedAt\\\":\\\"0001-01-01T00:00:00Z\\\",\\\"PrePatchRebootCount\\\":2,\\\"PostPatchRebootCount\\\":1},\\\"Labels\\\":{\\\"foo\\\":\\\"bar\\\"}}\"\n \ttestPatchTaskState       = &taskState{\n \t\tLabels: map[string]string{\"foo\": \"bar\"},\n \t\tPatchTask: &patchTask{\n@@ -41,6 +41,8 @@ var (\n \t\t\t\t\t},\n \t\t\t\t},\n \t\t\t},\n+\t\t\tPrePatchRebootCount:  2,\n+\t\t\tPostPatchRebootCount: 1,\n \t\t},\n \t}\n )\n@@ -83,6 +85,20 @@ func TestLoadState(t *testing.T) {\n \t\t\tfalse,\n \t\t\ttestPatchTaskState,\n \t\t},\n+\t\t{\n+\t\t\t\"IgnoresOldRebootFieldName\",\n+\t\t\t[]byte(\"{\\\"PatchTask\\\":{\\\"Task\\\":{},\\\"RebootCount\\\":1}}\"),\n+\t\t\tfalse,\n+\t\t\t&taskState{\n+\t\t\t\tPatchTask: &patchTask{\n+\t\t\t\t\tTask: &applyPatchesTask{\n+\t\t\t\t\t\t&agentendpointpb.ApplyPatchesTask{},\n+\t\t\t\t\t},\n+\t\t\t\t\tPrePatchRebootCount:  0,\n+\t\t\t\t\tPostPatchRebootCount: 0,\n+\t\t\t\t},\n+\t\t\t},\n+\t\t},\n \t}\n \tfor _, tt := range tests {\n \t\tt.Run(tt.name, func(t *testing.T) {\ndiff --git a/debian/changelog b/debian/changelog\nindex 08aa913..b331720 100644\n--- a/debian/changelog\n+++ b/debian/changelog\n@@ -1,3 +1,22 @@\n+google-osconfig-agent (20250416.02-0ubuntu1~22.04.0) jammy; urgency=medium\n+\n+  * Rebuild for Jammy (LP: #2113875).\n+    * d/rules edits:\n+      Added export GOTOOLCHAIN := local, export GOPROXY := off and\n+      export GOFLAGS := -mod=vendor to force local vendoring. This is because\n+      upstream now uses 1.22.7, but the most recent version available in\n+      jammy-updates is 1.22.2.\n+\n+ -- Chloé 'kajiya' Smith <chloe.smith@canonical.com>  Fri, 15 Aug 2025 15:40:44 +0100\n+\n+google-osconfig-agent (20250416.02-0ubuntu1) questing; urgency=medium\n+\n+  * New upstream version for upstream tag 20250416.02. (LP: #2113875)\n+    * Golang re-downloading and re-vendoring.\n+    * Edited d/watch to avail of pagination in the repo\n+\n+ -- Chloé 'kajiya' Smith <chloe.smith@canonical.com>  Tue, 10 Jun 2025 13:43:14 +0100\n+\n google-osconfig-agent (20250115.01-0ubuntu1~22.04.0) jammy; urgency=medium\n \n   * No change rebuild for Jammy Jellyfish. \ndiff --git a/debian/extra/vendor/cel.dev/expr/.bazelversion b/debian/extra/vendor/cel.dev/expr/.bazelversion\nnew file mode 100644\nindex 0000000..26bc914\n--- /dev/null\n+++ b/debian/extra/vendor/cel.dev/expr/.bazelversion\n@@ -0,0 +1,2 @@\n+7.0.1\n+# Keep this pinned version in parity with cel-go\ndiff --git a/debian/extra/vendor/cel.dev/expr/.gitattributes b/debian/extra/vendor/cel.dev/expr/.gitattributes\nnew file mode 100644\nindex 0000000..3de1ec2\n--- /dev/null\n+++ b/debian/extra/vendor/cel.dev/expr/.gitattributes\n@@ -0,0 +1,2 @@\n+*.pb.go linguist-generated=true\n+*.pb.go -diff -merge\ndiff --git a/debian/extra/vendor/cel.dev/expr/.gitignore b/debian/extra/vendor/cel.dev/expr/.gitignore\nnew file mode 100644\nindex 0000000..0d4fed2\n--- /dev/null\n+++ b/debian/extra/vendor/cel.dev/expr/.gitignore\n@@ -0,0 +1,2 @@\n+bazel-*\n+MODULE.bazel.lock\ndiff --git a/debian/extra/vendor/cel.dev/expr/BUILD.bazel b/debian/extra/vendor/cel.dev/expr/BUILD.bazel\nnew file mode 100644\nindex 0000000..37d8adc\n--- /dev/null\n+++ b/debian/extra/vendor/cel.dev/expr/BUILD.bazel\n@@ -0,0 +1,34 @@\n+load(\"@io_bazel_rules_go//go:def.bzl\", \"go_library\")\n+\n+package(default_visibility = [\"//visibility:public\"])\n+\n+licenses([\"notice\"])  # Apache 2.0\n+\n+go_library(\n+    name = \"expr\",\n+    srcs = [\n+        \"checked.pb.go\",\n+        \"eval.pb.go\",\n+        \"explain.pb.go\",\n+        \"syntax.pb.go\",\n+        \"value.pb.go\",\n+    ],\n+    importpath = \"cel.dev/expr\",\n+    visibility = [\"//visibility:public\"],\n+    deps = [\n+        \"@org_golang_google_genproto_googleapis_rpc//status:go_default_library\",\n+        \"@org_golang_google_protobuf//reflect/protoreflect\",\n+        \"@org_golang_google_protobuf//runtime/protoimpl\",\n+        \"@org_golang_google_protobuf//types/known/anypb\",\n+        \"@org_golang_google_protobuf//types/known/durationpb\",\n+        \"@org_golang_google_protobuf//types/known/emptypb\",\n+        \"@org_golang_google_protobuf//types/known/structpb\",\n+        \"@org_golang_google_protobuf//types/known/timestamppb\",\n+    ],\n+)\n+\n+alias(\n+    name = \"go_default_library\",\n+    actual = \":expr\",\n+    visibility = [\"//visibility:public\"],\n+)\ndiff --git a/debian/extra/vendor/cel.dev/expr/CODE_OF_CONDUCT.md b/debian/extra/vendor/cel.dev/expr/CODE_OF_CONDUCT.md\nnew file mode 100644\nindex 0000000..59908e2\n--- /dev/null\n+++ b/debian/extra/vendor/cel.dev/expr/CODE_OF_CONDUCT.md\n@@ -0,0 +1,25 @@\n+# Contributor Code of Conduct\n+## Version 0.1.1 (adapted from 0.3b-angular)\n+\n+As contributors and maintainers of the Common Expression Language\n+(CEL) project, we pledge to respect everyone who contributes by\n+posting issues, updating documentation, submitting pull requests,\n+providing feedback in comments, and any other activities.\n+\n+Communication through any of CEL's channels (GitHub, Gitter, IRC,\n+mailing lists, Google+, Twitter, etc.) must be constructive and never\n+resort to personal attacks, trolling, public or private harassment,\n+insults, or other unprofessional conduct.\n+\n+We promise to extend courtesy and respect to everyone involved in this\n+project regardless of gender, gender identity, sexual orientation,\n+disability, age, race, ethnicity, religion, or level of experience. We\n+expect anyone contributing to the project to do the same.\n+\n+If any member of the community violates this code of conduct, the\n+maintainers of the CEL project may take action, removing issues,\n+comments, and PRs or blocking accounts as deemed appropriate.\n+\n+If you are subject to or witness unacceptable behavior, or have any\n+other concerns, please email us at\n+[cel-conduct@google.com](mailto:cel-conduct@google.com).\ndiff --git a/debian/extra/vendor/cel.dev/expr/CONTRIBUTING.md b/debian/extra/vendor/cel.dev/expr/CONTRIBUTING.md\nnew file mode 100644\nindex 0000000..8f5fd5c\n--- /dev/null\n+++ b/debian/extra/vendor/cel.dev/expr/CONTRIBUTING.md\n@@ -0,0 +1,32 @@\n+# How to Contribute\n+\n+We'd love to accept your patches and contributions to this project. There are a\n+few guidelines you need to follow.\n+\n+## Contributor License Agreement\n+\n+Contributions to this project must be accompanied by a Contributor License\n+Agreement. You (or your employer) retain the copyright to your contribution,\n+this simply gives us permission to use and redistribute your contributions as\n+part of the project. Head over to <https://cla.developers.google.com/> to see\n+your current agreements on file or to sign a new one.\n+\n+You generally only need to submit a CLA once, so if you've already submitted one\n+(even if it was for a different project), you probably don't need to do it\n+again.\n+\n+## Code reviews\n+\n+All submissions, including submissions by project members, require review. We\n+use GitHub pull requests for this purpose. Consult\n+[GitHub Help](https://help.github.com/articles/about-pull-requests/) for more\n+information on using pull requests.\n+\n+## What to expect from maintainers\n+\n+Expect maintainers to respond to new issues or pull requests within a week.\n+For outstanding and ongoing issues and particularly for long-running\n+pull requests, expect the maintainers to review within a week of a\n+contributor asking for a new review. There is no commitment to resolution --\n+merging or closing a pull request, or fixing or closing an issue -- because some\n+issues will require more discussion than others.\ndiff --git a/debian/extra/vendor/cel.dev/expr/GOVERNANCE.md b/debian/extra/vendor/cel.dev/expr/GOVERNANCE.md\nnew file mode 100644\nindex 0000000..0a525bc\n--- /dev/null\n+++ b/debian/extra/vendor/cel.dev/expr/GOVERNANCE.md\n@@ -0,0 +1,43 @@\n+# Project Governance\n+\n+This document defines the governance process for the CEL language. CEL is\n+Google-developed, but openly governed. Major contributors to the CEL\n+specification and its corresponding implementations constitute the CEL\n+Language Council. New members may be added by a unanimous vote of the\n+Council.\n+\n+The MAINTAINERS.md file lists the members of the CEL Language Council, and\n+unofficially indicates the \"areas of expertise\" of each member with respect\n+to the publicly available CEL repos.\n+\n+## Code Changes\n+\n+Code changes must follow the standard pull request (PR) model documented in the\n+CONTRIBUTING.md for each CEL repo. All fixes and features must be reviewed by a\n+maintainer. The maintainer reserves the right to request that any feature\n+request (FR) or PR be reviewed by the language council.\n+\n+## Syntax and Semantic Changes\n+\n+Syntactic and semantic changes must be reviewed by the CEL Language Council.\n+Maintainers may also request language council review at their discretion.\n+\n+The review process is as follows:\n+\n+- Create a Feature Request in the CEL-Spec repo. The feature description will\n+  serve as an abstract for the detailed design document.\n+- Co-develop a design document with the Language Council.\n+- Once the proposer gives the design document approval, the document will be\n+  linked to the FR in the CEL-Spec repo and opened for comments to members of\n+  the cel-lang-discuss@googlegroups.com.\n+- The Language Council will review the design doc at the next council meeting\n+  (once every three weeks) and the council decision included in the document.\n+\n+If the proposal is approved, the spec will be updated by a maintainer (if\n+applicable) and a rationale will be included in the CEL-Spec wiki to ensure\n+future developers may follow CEL's growth and direction over time.\n+\n+Approved proposals may be implemented by the proposer or by the maintainers as\n+the parties see fit. At the discretion of the maintainer, changes from the\n+approved design are permitted during implementation if they improve the user\n+experience and clarity of the feature.\ndiff --git a/debian/extra/vendor/go.opencensus.io/LICENSE b/debian/extra/vendor/cel.dev/expr/LICENSE\nsimilarity index 100%\nrename from debian/extra/vendor/go.opencensus.io/LICENSE\nrename to debian/extra/vendor/cel.dev/expr/LICENSE\nindex 7a4a3ea..d645695 100644\n--- a/debian/extra/vendor/go.opencensus.io/LICENSE\n+++ b/debian/extra/vendor/cel.dev/expr/LICENSE\n@@ -199,4 +199,4 @@\n    distributed under the License is distributed on an \"AS IS\" BASIS,\n    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\n    See the License for the specific language governing permissions and\n-   limitations under the License.\n\\ No newline at end of file\n+   limitations under the License.\ndiff --git a/debian/extra/vendor/cel.dev/expr/MAINTAINERS.md b/debian/extra/vendor/cel.dev/expr/MAINTAINERS.md\nnew file mode 100644\nindex 0000000..1ed2eb8\n--- /dev/null\n+++ b/debian/extra/vendor/cel.dev/expr/MAINTAINERS.md\n@@ -0,0 +1,13 @@\n+# CEL Language Council\n+\n+| Name            | Company      | Area of Expertise |\n+|-----------------|--------------|-------------------|\n+| Alfred Fuller   | Facebook     | cel-cpp, cel-spec |\n+| Jim Larson      | Google       | cel-go, cel-spec  |\n+| Matthais Blume  | Google       | cel-spec          |\n+| Tristan Swadell | Google       | cel-go, cel-spec  |\n+\n+## Emeritus\n+\n+* Sanjay Ghemawat (Google)\n+* Wolfgang Grieskamp (Facebook)\ndiff --git a/debian/extra/vendor/cel.dev/expr/MODULE.bazel b/debian/extra/vendor/cel.dev/expr/MODULE.bazel\nnew file mode 100644\nindex 0000000..9794266\n--- /dev/null\n+++ b/debian/extra/vendor/cel.dev/expr/MODULE.bazel\n@@ -0,0 +1,70 @@\n+module(\n+    name = \"cel-spec\",\n+)\n+\n+bazel_dep(\n+    name = \"bazel_skylib\",\n+    version = \"1.7.1\",\n+)\n+bazel_dep(\n+    name = \"gazelle\",\n+    version = \"0.36.0\",\n+    repo_name = \"bazel_gazelle\",\n+)\n+bazel_dep(\n+    name = \"googleapis\",\n+    version = \"0.0.0-20240819-fe8ba054a\",\n+    repo_name = \"com_google_googleapis\",\n+)\n+bazel_dep(\n+    name = \"protobuf\",\n+    version = \"26.0\",\n+    repo_name = \"com_google_protobuf\",\n+)\n+bazel_dep(\n+    name = \"rules_cc\",\n+    version = \"0.0.9\",\n+)\n+bazel_dep(\n+    name = \"rules_go\",\n+    version = \"0.49.0\",\n+    repo_name = \"io_bazel_rules_go\",\n+)\n+bazel_dep(\n+    name = \"rules_java\",\n+    version = \"7.6.5\",\n+)\n+bazel_dep(\n+    name = \"rules_proto\",\n+    version = \"6.0.0\",\n+)\n+bazel_dep(\n+    name = \"rules_python\",\n+    version = \"0.35.0\",\n+)\n+\n+### PYTHON ###\n+python = use_extension(\"@rules_python//python/extensions:python.bzl\", \"python\")\n+python.toolchain(\n+    ignore_root_user_error = True,\n+    python_version = \"3.11\",\n+)\n+\n+switched_rules = use_extension(\"@com_google_googleapis//:extensions.bzl\", \"switched_rules\")\n+switched_rules.use_languages(\n+    cc = True,\n+    go = True,\n+    java = True,\n+)\n+use_repo(switched_rules, \"com_google_googleapis_imports\")\n+\n+go_sdk = use_extension(\"@io_bazel_rules_go//go:extensions.bzl\", \"go_sdk\")\n+go_sdk.download(version = \"1.21.1\")\n+\n+go_deps = use_extension(\"@bazel_gazelle//:extensions.bzl\", \"go_deps\")\n+go_deps.from_file(go_mod = \"//:go.mod\")\n+use_repo(\n+    go_deps,\n+    \"org_golang_google_genproto_googleapis_rpc\",\n+    \"org_golang_google_protobuf\",\n+)\ndiff --git a/debian/extra/vendor/cel.dev/expr/README.md b/debian/extra/vendor/cel.dev/expr/README.md\nnew file mode 100644\nindex 0000000..42d67f8\n--- /dev/null\n+++ b/debian/extra/vendor/cel.dev/expr/README.md\n@@ -0,0 +1,71 @@\n+# Common Expression Language\n+\n+The Common Expression Language (CEL) implements common semantics for expression\n+evaluation, enabling different applications to more easily interoperate.\n+\n+Key Applications\n+\n+*   Security policy: organizations have complex infrastructure and need common\n+    tooling to reason about the system as a whole\n+*   Protocols: expressions are a useful data type and require interoperability\n+    across programming languages and platforms.\n+\n+\n+Guiding philosophy:\n+\n+1.  Keep it small & fast.\n+    *   CEL evaluates in linear time, is mutation free, and not Turing-complete.\n+        This limitation is a feature of the language design, which allows the\n+        implementation to evaluate orders of magnitude faster than equivalently\n+        sandboxed JavaScript.\n+2.  Make it extensible.\n+    *   CEL is designed to be embedded in applications, and allows for\n+        extensibility via its context which allows for functions and data to be\n+        provided by the software that embeds it.\n+3.  Developer-friendly.\n+    *   The language is approachable to developers. The initial spec was based\n+        on the experience of developing Firebase Rules and usability testing\n+        many prior iterations.\n+    *   The library itself and accompanying toolings should be easy to adopt by\n+        teams that seek to integrate CEL into their platforms.\n+\n+The required components of a system that supports CEL are:\n+\n+*   The textual representation of an expression as written by a developer. It is\n+    of similar syntax to expressions in C/C++/Java/JavaScript\n+*   A representation of the program's abstract syntax tree (AST).\n+*   A compiler library that converts the textual representation to the binary\n+    representation. This can be done ahead of time (in the control plane) or\n+    just before evaluation (in the data plane).\n+*   A context containing one or more typed variables, often protobuf messages.\n+    Most use-cases will use `attribute_context.proto`\n+*   An evaluator library that takes the binary format in the context and\n+    produces a result, usually a Boolean.\n+\n+For use cases which require persistence or cross-process communcation, it is\n+highly recommended to serialize the type-checked expression as a protocol\n+buffer. The CEL team will maintains canonical protocol buffers for ASTs and\n+will keep these versions identical and wire-compatible in perpetuity:\n+\n+*  [CEL canonical](https://github.com/google/cel-spec/tree/master/proto/cel/expr)\n+*  [CEL v1alpha1](https://github.com/googleapis/googleapis/tree/master/google/api/expr/v1alpha1)\n+\n+\n+Example of boolean conditions and object construction:\n+\n+``` c\n+// Condition\n+account.balance >= transaction.withdrawal\n+    || (account.overdraftProtection\n+    && account.overdraftLimit >= transaction.withdrawal  - account.balance)\n+\n+// Object construction\n+common.GeoPoint{ latitude: 10.0, longitude: -5.5 }\n+```\n+\n+For more detail, see:\n+\n+*   [Introduction](doc/intro.md)\n+*   [Language Definition](doc/langdef.md)\n+\n+Released under the [Apache License](LICENSE).\ndiff --git a/debian/extra/vendor/cel.dev/expr/WORKSPACE b/debian/extra/vendor/cel.dev/expr/WORKSPACE\nnew file mode 100644\nindex 0000000..b6dc9ed\n--- /dev/null\n+++ b/debian/extra/vendor/cel.dev/expr/WORKSPACE\n@@ -0,0 +1,145 @@\n+load(\"@bazel_tools//tools/build_defs/repo:http.bzl\", \"http_archive\")\n+\n+http_archive(\n+    name = \"io_bazel_rules_go\",\n+    sha256 = \"099a9fb96a376ccbbb7d291ed4ecbdfd42f6bc822ab77ae6f1b5cb9e914e94fa\",\n+    urls = [\n+        \"https://mirror.bazel.build/github.com/bazelbuild/rules_go/releases/download/v0.35.0/rules_go-v0.35.0.zip\",\n+        \"https://github.com/bazelbuild/rules_go/releases/download/v0.35.0/rules_go-v0.35.0.zip\",\n+    ],\n+)\n+\n+http_archive(\n+    name = \"bazel_gazelle\",\n+    sha256 = \"ecba0f04f96b4960a5b250c8e8eeec42281035970aa8852dda73098274d14a1d\",\n+    urls = [\n+        \"https://mirror.bazel.build/github.com/bazelbuild/bazel-gazelle/releases/download/v0.29.0/bazel-gazelle-v0.29.0.tar.gz\",\n+        \"https://github.com/bazelbuild/bazel-gazelle/releases/download/v0.29.0/bazel-gazelle-v0.29.0.tar.gz\",\n+    ],\n+)\n+\n+http_archive(\n+    name = \"rules_proto\",\n+    sha256 = \"e017528fd1c91c5a33f15493e3a398181a9e821a804eb7ff5acdd1d2d6c2b18d\",\n+    strip_prefix = \"rules_proto-4.0.0-3.20.0\",\n+    urls = [\n+        \"https://github.com/bazelbuild/rules_proto/archive/refs/tags/4.0.0-3.20.0.tar.gz\",\n+    ],\n+)\n+\n+# googleapis as of 09/16/2024\n+http_archive(\n+    name = \"com_google_googleapis\",\n+    strip_prefix = \"googleapis-4082d5e51e8481f6ccc384cacd896f4e78f19dee\",\n+    sha256 = \"57319889d47578b3c89bf1b3f34888d796a8913d63b32d750a4cd12ed303c4e8\",\n+    urls = [\n+        \"https://github.com/googleapis/googleapis/archive/4082d5e51e8481f6ccc384cacd896f4e78f19dee.tar.gz\",\n+    ],\n+)\n+\n+# protobuf\n+http_archive(\n+    name = \"com_google_protobuf\",\n+    sha256 = \"8242327e5df8c80ba49e4165250b8f79a76bd11765facefaaecfca7747dc8da2\",\n+    strip_prefix = \"protobuf-3.21.5\",\n+    urls = [\"https://github.com/protocolbuffers/protobuf/archive/v3.21.5.zip\"],\n+)\n+\n+# googletest\n+http_archive(\n+     name = \"com_google_googletest\",\n+     urls = [\"https://github.com/google/googletest/archive/master.zip\"],\n+     strip_prefix = \"googletest-master\",\n+)\n+\n+# gflags\n+http_archive(\n+    name = \"com_github_gflags_gflags\",\n+    sha256 = \"6e16c8bc91b1310a44f3965e616383dbda48f83e8c1eaa2370a215057b00cabe\",\n+    strip_prefix = \"gflags-77592648e3f3be87d6c7123eb81cbad75f9aef5a\",\n+    urls = [\n+        \"https://mirror.bazel.build/github.com/gflags/gflags/archive/77592648e3f3be87d6c7123eb81cbad75f9aef5a.tar.gz\",\n+        \"https://github.com/gflags/gflags/archive/77592648e3f3be87d6c7123eb81cbad75f9aef5a.tar.gz\",\n+    ],\n+)\n+\n+# glog\n+http_archive(\n+    name = \"com_google_glog\",\n+    sha256 = \"1ee310e5d0a19b9d584a855000434bb724aa744745d5b8ab1855c85bff8a8e21\",\n+    strip_prefix = \"glog-028d37889a1e80e8a07da1b8945ac706259e5fd8\",\n+    urls = [\n+        \"https://mirror.bazel.build/github.com/google/glog/archive/028d37889a1e80e8a07da1b8945ac706259e5fd8.tar.gz\",\n+        \"https://github.com/google/glog/archive/028d37889a1e80e8a07da1b8945ac706259e5fd8.tar.gz\",\n+    ],\n+)\n+\n+# absl\n+http_archive(\n+    name = \"com_google_absl\",\n+    strip_prefix = \"abseil-cpp-master\",\n+    urls = [\"https://github.com/abseil/abseil-cpp/archive/master.zip\"],\n+)\n+\n+load(\"@io_bazel_rules_go//go:deps.bzl\", \"go_rules_dependencies\", \"go_register_toolchains\")\n+load(\"@bazel_gazelle//:deps.bzl\", \"gazelle_dependencies\", \"go_repository\")\n+load(\"@com_google_googleapis//:repository_rules.bzl\", \"switched_rules_by_language\")\n+load(\"@rules_proto//proto:repositories.bzl\", \"rules_proto_dependencies\", \"rules_proto_toolchains\")\n+load(\"@com_google_protobuf//:protobuf_deps.bzl\", \"protobuf_deps\")\n+\n+switched_rules_by_language(\n+    name = \"com_google_googleapis_imports\",\n+    cc = True,\n+)\n+\n+# Do *not* call *_dependencies(), etc, yet.  See comment at the end.\n+\n+# Generated Google APIs protos for Golang\n+# Generated Google APIs protos for Golang 08/26/2024\n+go_repository(\n+    name = \"org_golang_google_genproto_googleapis_api\",\n+    build_file_proto_mode = \"disable_global\",\n+    importpath = \"google.golang.org/genproto/googleapis/api\",\n+    sum = \"h1:YcyjlL1PRr2Q17/I0dPk2JmYS5CDXfcdb2Z3YRioEbw=\",\n+    version = \"v0.0.0-20240826202546-f6391c0de4c7\",\n+)\n+\n+# Generated Google APIs protos for Golang 08/26/2024\n+go_repository(\n+    name = \"org_golang_google_genproto_googleapis_rpc\",\n+    build_file_proto_mode = \"disable_global\",\n+    importpath = \"google.golang.org/genproto/googleapis/rpc\",\n+    sum = \"h1:2035KHhUv+EpyB+hWgJnaWKJOdX1E95w2S8Rr4uWKTs=\",\n+    version = \"v0.0.0-20240826202546-f6391c0de4c7\",\n+)\n+\n+# gRPC deps\n+go_repository(\n+    name = \"org_golang_google_grpc\",\n+    build_file_proto_mode = \"disable_global\",\n+    importpath = \"google.golang.org/grpc\",\n+    tag = \"v1.49.0\",\n+)\n+\n+go_repository(\n+    name = \"org_golang_x_net\",\n+    importpath = \"golang.org/x/net\",\n+    sum = \"h1:oWX7TPOiFAMXLq8o0ikBYfCJVlRHBcsciT5bXOrH628=\",\n+    version = \"v0.0.0-20190311183353-d8887717615a\",\n+)\n+\n+go_repository(\n+    name = \"org_golang_x_text\",\n+    importpath = \"golang.org/x/text\",\n+    sum = \"h1:tW2bmiBqwgJj/UpqtC8EpXEZVYOwU0yG4iWbprSVAcs=\",\n+    version = \"v0.3.2\",\n+)\n+\n+# Run the dependencies at the end.  These will silently try to import some\n+# of the above repositories but at different versions, so ours must come first.\n+go_rules_dependencies()\n+go_register_toolchains(version = \"1.19.1\")\n+gazelle_dependencies()\n+rules_proto_dependencies()\n+rules_proto_toolchains()\n+protobuf_deps()\ndiff --git a/debian/extra/vendor/cel.dev/expr/WORKSPACE.bzlmod b/debian/extra/vendor/cel.dev/expr/WORKSPACE.bzlmod\nnew file mode 100644\nindex 0000000..e69de29\n--- /dev/null\n+++ b/debian/extra/vendor/cel.dev/expr/WORKSPACE.bzlmod\ndiff --git a/debian/extra/vendor/cel.dev/expr/checked.pb.go b/debian/extra/vendor/cel.dev/expr/checked.pb.go\nnew file mode 100644\nindex 0000000..bb225c8\n--- /dev/null\n+++ b/debian/extra/vendor/cel.dev/expr/checked.pb.go\n@@ -0,0 +1,1432 @@\n+// Code generated by protoc-gen-go. DO NOT EDIT.\n+// versions:\n+// \tprotoc-gen-go v1.28.1\n+// \tprotoc        v3.21.5\n+// source: cel/expr/checked.proto\n+\n+package expr\n+\n+import (\n+\tprotoreflect \"google.golang.org/protobuf/reflect/protoreflect\"\n+\tprotoimpl \"google.golang.org/protobuf/runtime/protoimpl\"\n+\temptypb \"google.golang.org/protobuf/types/known/emptypb\"\n+\tstructpb \"google.golang.org/protobuf/types/known/structpb\"\n+\treflect \"reflect\"\n+\tsync \"sync\"\n+)\n+\n+const (\n+\t// Verify that this generated code is sufficiently up-to-date.\n+\t_ = protoimpl.EnforceVersion(20 - protoimpl.MinVersion)\n+\t// Verify that runtime/protoimpl is sufficiently up-to-date.\n+\t_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)\n+)\n+\n+type Type_PrimitiveType int32\n+\n+const (\n+\tType_PRIMITIVE_TYPE_UNSPECIFIED Type_PrimitiveType = 0\n+\tType_BOOL                       Type_PrimitiveType = 1\n+\tType_INT64                      Type_PrimitiveType = 2\n+\tType_UINT64                     Type_PrimitiveType = 3\n+\tType_DOUBLE                     Type_PrimitiveType = 4\n+\tType_STRING                     Type_PrimitiveType = 5\n+\tType_BYTES                      Type_PrimitiveType = 6\n+)\n+\n+// Enum value maps for Type_PrimitiveType.\n+var (\n+\tType_PrimitiveType_name = map[int32]string{\n+\t\t0: \"PRIMITIVE_TYPE_UNSPECIFIED\",\n+\t\t1: \"BOOL\",\n+\t\t2: \"INT64\",\n+\t\t3: \"UINT64\",\n+\t\t4: \"DOUBLE\",\n+\t\t5: \"STRING\",\n+\t\t6: \"BYTES\",\n+\t}\n+\tType_PrimitiveType_value = map[string]int32{\n+\t\t\"PRIMITIVE_TYPE_UNSPECIFIED\": 0,\n+\t\t\"BOOL\":                       1,\n+\t\t\"INT64\":                      2,\n+\t\t\"UINT64\":                     3,\n+\t\t\"DOUBLE\":                     4,\n+\t\t\"STRING\":                     5,\n+\t\t\"BYTES\":                      6,\n+\t}\n+)\n+\n+func (x Type_PrimitiveType) Enum() *Type_PrimitiveType {\n+\tp := new(Type_PrimitiveType)\n+\t*p = x\n+\treturn p\n+}\n+\n+func (x Type_PrimitiveType) String() string {\n+\treturn protoimpl.X.EnumStringOf(x.Descriptor(), protoreflect.EnumNumber(x))\n+}\n+\n+func (Type_PrimitiveType) Descriptor() protoreflect.EnumDescriptor {\n+\treturn file_cel_expr_checked_proto_enumTypes[0].Descriptor()\n+}\n+\n+func (Type_PrimitiveType) Type() protoreflect.EnumType {\n+\treturn &file_cel_expr_checked_proto_enumTypes[0]\n+}\n+\n+func (x Type_PrimitiveType) Number() protoreflect.EnumNumber {\n+\treturn protoreflect.EnumNumber(x)\n+}\n+\n+// Deprecated: Use Type_PrimitiveType.Descriptor instead.\n+func (Type_PrimitiveType) EnumDescriptor() ([]byte, []int) {\n+\treturn file_cel_expr_checked_proto_rawDescGZIP(), []int{1, 0}\n+}\n+\n+type Type_WellKnownType int32\n+\n+const (\n+\tType_WELL_KNOWN_TYPE_UNSPECIFIED Type_WellKnownType = 0\n+\tType_ANY                         Type_WellKnownType = 1\n+\tType_TIMESTAMP                   Type_WellKnownType = 2\n+\tType_DURATION                    Type_WellKnownType = 3\n+)\n+\n+// Enum value maps for Type_WellKnownType.\n+var (\n+\tType_WellKnownType_name = map[int32]string{\n+\t\t0: \"WELL_KNOWN_TYPE_UNSPECIFIED\",\n+\t\t1: \"ANY\",\n+\t\t2: \"TIMESTAMP\",\n+\t\t3: \"DURATION\",\n+\t}\n+\tType_WellKnownType_value = map[string]int32{\n+\t\t\"WELL_KNOWN_TYPE_UNSPECIFIED\": 0,\n+\t\t\"ANY\":                         1,\n+\t\t\"TIMESTAMP\":                   2,\n+\t\t\"DURATION\":                    3,\n+\t}\n+)\n+\n+func (x Type_WellKnownType) Enum() *Type_WellKnownType {\n+\tp := new(Type_WellKnownType)\n+\t*p = x\n+\treturn p\n+}\n+\n+func (x Type_WellKnownType) String() string {\n+\treturn protoimpl.X.EnumStringOf(x.Descriptor(), protoreflect.EnumNumber(x))\n+}\n+\n+func (Type_WellKnownType) Descriptor() protoreflect.EnumDescriptor {\n+\treturn file_cel_expr_checked_proto_enumTypes[1].Descriptor()\n+}\n+\n+func (Type_WellKnownType) Type() protoreflect.EnumType {\n+\treturn &file_cel_expr_checked_proto_enumTypes[1]\n+}\n+\n+func (x Type_WellKnownType) Number() protoreflect.EnumNumber {\n+\treturn protoreflect.EnumNumber(x)\n+}\n+\n+// Deprecated: Use Type_WellKnownType.Descriptor instead.\n+func (Type_WellKnownType) EnumDescriptor() ([]byte, []int) {\n+\treturn file_cel_expr_checked_proto_rawDescGZIP(), []int{1, 1}\n+}\n+\n+type CheckedExpr struct {\n+\tstate         protoimpl.MessageState\n+\tsizeCache     protoimpl.SizeCache\n+\tunknownFields protoimpl.UnknownFields\n+\n+\tReferenceMap map[int64]*Reference `protobuf:\"bytes,2,rep,name=reference_map,json=referenceMap,proto3\" json:\"reference_map,omitempty\" protobuf_key:\"varint,1,opt,name=key,proto3\" protobuf_val:\"bytes,2,opt,name=value,proto3\"`\n+\tTypeMap      map[int64]*Type      `protobuf:\"bytes,3,rep,name=type_map,json=typeMap,proto3\" json:\"type_map,omitempty\" protobuf_key:\"varint,1,opt,name=key,proto3\" protobuf_val:\"bytes,2,opt,name=value,proto3\"`\n+\tSourceInfo   *SourceInfo          `protobuf:\"bytes,5,opt,name=source_info,json=sourceInfo,proto3\" json:\"source_info,omitempty\"`\n+\tExprVersion  string               `protobuf:\"bytes,6,opt,name=expr_version,json=exprVersion,proto3\" json:\"expr_version,omitempty\"`\n+\tExpr         *Expr                `protobuf:\"bytes,4,opt,name=expr,proto3\" json:\"expr,omitempty\"`\n+}\n+\n+func (x *CheckedExpr) Reset() {\n+\t*x = CheckedExpr{}\n+\tif protoimpl.UnsafeEnabled {\n+\t\tmi := &file_cel_expr_checked_proto_msgTypes[0]\n+\t\tms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))\n+\t\tms.StoreMessageInfo(mi)\n+\t}\n+}\n+\n+func (x *CheckedExpr) String() string {\n+\treturn protoimpl.X.MessageStringOf(x)\n+}\n+\n+func (*CheckedExpr) ProtoMessage() {}\n+\n+func (x *CheckedExpr) ProtoReflect() protoreflect.Message {\n+\tmi := &file_cel_expr_checked_proto_msgTypes[0]\n+\tif protoimpl.UnsafeEnabled && x != nil {\n+\t\tms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))\n+\t\tif ms.LoadMessageInfo() == nil {\n+\t\t\tms.StoreMessageInfo(mi)\n+\t\t}\n+\t\treturn ms\n+\t}\n+\treturn mi.MessageOf(x)\n+}\n+\n+// Deprecated: Use CheckedExpr.ProtoReflect.Descriptor instead.\n+func (*CheckedExpr) Descriptor() ([]byte, []int) {\n+\treturn file_cel_expr_checked_proto_rawDescGZIP(), []int{0}\n+}\n+\n+func (x *CheckedExpr) GetReferenceMap() map[int64]*Reference {\n+\tif x != nil {\n+\t\treturn x.ReferenceMap\n+\t}\n+\treturn nil\n+}\n+\n+func (x *CheckedExpr) GetTypeMap() map[int64]*Type {\n+\tif x != nil {\n+\t\treturn x.TypeMap\n+\t}\n+\treturn nil\n+}\n+\n+func (x *CheckedExpr) GetSourceInfo() *SourceInfo {\n+\tif x != nil {\n+\t\treturn x.SourceInfo\n+\t}\n+\treturn nil\n+}\n+\n+func (x *CheckedExpr) GetExprVersion() string {\n+\tif x != nil {\n+\t\treturn x.ExprVersion\n+\t}\n+\treturn \"\"\n+}\n+\n+func (x *CheckedExpr) GetExpr() *Expr {\n+\tif x != nil {\n+\t\treturn x.Expr\n+\t}\n+\treturn nil\n+}\n+\n+type Type struct {\n+\tstate         protoimpl.MessageState\n+\tsizeCache     protoimpl.SizeCache\n+\tunknownFields protoimpl.UnknownFields\n+\n+\t// Types that are assignable to TypeKind:\n+\t//\n+\t//\t*Type_Dyn\n+\t//\t*Type_Null\n+\t//\t*Type_Primitive\n+\t//\t*Type_Wrapper\n+\t//\t*Type_WellKnown\n+\t//\t*Type_ListType_\n+\t//\t*Type_MapType_\n+\t//\t*Type_Function\n+\t//\t*Type_MessageType\n+\t//\t*Type_TypeParam\n+\t//\t*Type_Type\n+\t//\t*Type_Error\n+\t//\t*Type_AbstractType_\n+\tTypeKind isType_TypeKind `protobuf_oneof:\"type_kind\"`\n+}\n+\n+func (x *Type) Reset() {\n+\t*x = Type{}\n+\tif protoimpl.UnsafeEnabled {\n+\t\tmi := &file_cel_expr_checked_proto_msgTypes[1]\n+\t\tms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))\n+\t\tms.StoreMessageInfo(mi)\n+\t}\n+}\n+\n+func (x *Type) String() string {\n+\treturn protoimpl.X.MessageStringOf(x)\n+}\n+\n+func (*Type) ProtoMessage() {}\n+\n+func (x *Type) ProtoReflect() protoreflect.Message {\n+\tmi := &file_cel_expr_checked_proto_msgTypes[1]\n+\tif protoimpl.UnsafeEnabled && x != nil {\n+\t\tms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))\n+\t\tif ms.LoadMessageInfo() == nil {\n+\t\t\tms.StoreMessageInfo(mi)\n+\t\t}\n+\t\treturn ms\n+\t}\n+\treturn mi.MessageOf(x)\n+}\n+\n+// Deprecated: Use Type.ProtoReflect.Descriptor instead.\n+func (*Type) Descriptor() ([]byte, []int) {\n+\treturn file_cel_expr_checked_proto_rawDescGZIP(), []int{1}\n+}\n+\n+func (m *Type) GetTypeKind() isType_TypeKind {\n+\tif m != nil {\n+\t\treturn m.TypeKind\n+\t}\n+\treturn nil\n+}\n+\n+func (x *Type) GetDyn() *emptypb.Empty {\n+\tif x, ok := x.GetTypeKind().(*Type_Dyn); ok {\n+\t\treturn x.Dyn\n+\t}\n+\treturn nil\n+}\n+\n+func (x *Type) GetNull() structpb.NullValue {\n+\tif x, ok := x.GetTypeKind().(*Type_Null); ok {\n+\t\treturn x.Null\n+\t}\n+\treturn structpb.NullValue(0)\n+}\n+\n+func (x *Type) GetPrimitive() Type_PrimitiveType {\n+\tif x, ok := x.GetTypeKind().(*Type_Primitive); ok {\n+\t\treturn x.Primitive\n+\t}\n+\treturn Type_PRIMITIVE_TYPE_UNSPECIFIED\n+}\n+\n+func (x *Type) GetWrapper() Type_PrimitiveType {\n+\tif x, ok := x.GetTypeKind().(*Type_Wrapper); ok {\n+\t\treturn x.Wrapper\n+\t}\n+\treturn Type_PRIMITIVE_TYPE_UNSPECIFIED\n+}\n+\n+func (x *Type) GetWellKnown() Type_WellKnownType {\n+\tif x, ok := x.GetTypeKind().(*Type_WellKnown); ok {\n+\t\treturn x.WellKnown\n+\t}\n+\treturn Type_WELL_KNOWN_TYPE_UNSPECIFIED\n+}\n+\n+func (x *Type) GetListType() *Type_ListType {\n+\tif x, ok := x.GetTypeKind().(*Type_ListType_); ok {\n+\t\treturn x.ListType\n+\t}\n+\treturn nil\n+}\n+\n+func (x *Type) GetMapType() *Type_MapType {\n+\tif x, ok := x.GetTypeKind().(*Type_MapType_); ok {\n+\t\treturn x.MapType\n+\t}\n+\treturn nil\n+}\n+\n+func (x *Type) GetFunction() *Type_FunctionType {\n+\tif x, ok := x.GetTypeKind().(*Type_Function); ok {\n+\t\treturn x.Function\n+\t}\n+\treturn nil\n+}\n+\n+func (x *Type) GetMessageType() string {\n+\tif x, ok := x.GetTypeKind().(*Type_MessageType); ok {\n+\t\treturn x.MessageType\n+\t}\n+\treturn \"\"\n+}\n+\n+func (x *Type) GetTypeParam() string {\n+\tif x, ok := x.GetTypeKind().(*Type_TypeParam); ok {\n+\t\treturn x.TypeParam\n+\t}\n+\treturn \"\"\n+}\n+\n+func (x *Type) GetType() *Type {\n+\tif x, ok := x.GetTypeKind().(*Type_Type); ok {\n+\t\treturn x.Type\n+\t}\n+\treturn nil\n+}\n+\n+func (x *Type) GetError() *emptypb.Empty {\n+\tif x, ok := x.GetTypeKind().(*Type_Error); ok {\n+\t\treturn x.Error\n+\t}\n+\treturn nil\n+}\n+\n+func (x *Type) GetAbstractType() *Type_AbstractType {\n+\tif x, ok := x.GetTypeKind().(*Type_AbstractType_); ok {\n+\t\treturn x.AbstractType\n+\t}\n+\treturn nil\n+}\n+\n+type isType_TypeKind interface {\n+\tisType_TypeKind()\n+}\n+\n+type Type_Dyn struct {\n+\tDyn *emptypb.Empty `protobuf:\"bytes,1,opt,name=dyn,proto3,oneof\"`\n+}\n+\n+type Type_Null struct {\n+\tNull structpb.NullValue `protobuf:\"varint,2,opt,name=null,proto3,enum=google.protobuf.NullValue,oneof\"`\n+}\n+\n+type Type_Primitive struct {\n+\tPrimitive Type_PrimitiveType `protobuf:\"varint,3,opt,name=primitive,proto3,enum=cel.expr.Type_PrimitiveType,oneof\"`\n+}\n+\n+type Type_Wrapper struct {\n+\tWrapper Type_PrimitiveType `protobuf:\"varint,4,opt,name=wrapper,proto3,enum=cel.expr.Type_PrimitiveType,oneof\"`\n+}\n+\n+type Type_WellKnown struct {\n+\tWellKnown Type_WellKnownType `protobuf:\"varint,5,opt,name=well_known,json=wellKnown,proto3,enum=cel.expr.Type_WellKnownType,oneof\"`\n+}\n+\n+type Type_ListType_ struct {\n+\tListType *Type_ListType `protobuf:\"bytes,6,opt,name=list_type,json=listType,proto3,oneof\"`\n+}\n+\n+type Type_MapType_ struct {\n+\tMapType *Type_MapType `protobuf:\"bytes,7,opt,name=map_type,json=mapType,proto3,oneof\"`\n+}\n+\n+type Type_Function struct {\n+\tFunction *Type_FunctionType `protobuf:\"bytes,8,opt,name=function,proto3,oneof\"`\n+}\n+\n+type Type_MessageType struct {\n+\tMessageType string `protobuf:\"bytes,9,opt,name=message_type,json=messageType,proto3,oneof\"`\n+}\n+\n+type Type_TypeParam struct {\n+\tTypeParam string `protobuf:\"bytes,10,opt,name=type_param,json=typeParam,proto3,oneof\"`\n+}\n+\n+type Type_Type struct {\n+\tType *Type `protobuf:\"bytes,11,opt,name=type,proto3,oneof\"`\n+}\n+\n+type Type_Error struct {\n+\tError *emptypb.Empty `protobuf:\"bytes,12,opt,name=error,proto3,oneof\"`\n+}\n+\n+type Type_AbstractType_ struct {\n+\tAbstractType *Type_AbstractType `protobuf:\"bytes,14,opt,name=abstract_type,json=abstractType,proto3,oneof\"`\n+}\n+\n+func (*Type_Dyn) isType_TypeKind() {}\n+\n+func (*Type_Null) isType_TypeKind() {}\n+\n+func (*Type_Primitive) isType_TypeKind() {}\n+\n+func (*Type_Wrapper) isType_TypeKind() {}\n+\n+func (*Type_WellKnown) isType_TypeKind() {}\n+\n+func (*Type_ListType_) isType_TypeKind() {}\n+\n+func (*Type_MapType_) isType_TypeKind() {}\n+\n+func (*Type_Function) isType_TypeKind() {}\n+\n+func (*Type_MessageType) isType_TypeKind() {}\n+\n+func (*Type_TypeParam) isType_TypeKind() {}\n+\n+func (*Type_Type) isType_TypeKind() {}\n+\n+func (*Type_Error) isType_TypeKind() {}\n+\n+func (*Type_AbstractType_) isType_TypeKind() {}\n+\n+type Decl struct {\n+\tstate         protoimpl.MessageState\n+\tsizeCache     protoimpl.SizeCache\n+\tunknownFields protoimpl.UnknownFields\n+\n+\tName string `protobuf:\"bytes,1,opt,name=name,proto3\" json:\"name,omitempty\"`\n+\t// Types that are assignable to DeclKind:\n+\t//\n+\t//\t*Decl_Ident\n+\t//\t*Decl_Function\n+\tDeclKind isDecl_DeclKind `protobuf_oneof:\"decl_kind\"`\n+}\n+\n+func (x *Decl) Reset() {\n+\t*x = Decl{}\n+\tif protoimpl.UnsafeEnabled {\n+\t\tmi := &file_cel_expr_checked_proto_msgTypes[2]\n+\t\tms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))\n+\t\tms.StoreMessageInfo(mi)\n+\t}\n+}\n+\n+func (x *Decl) String() string {\n+\treturn protoimpl.X.MessageStringOf(x)\n+}\n+\n+func (*Decl) ProtoMessage() {}\n+\n+func (x *Decl) ProtoReflect() protoreflect.Message {\n+\tmi := &file_cel_expr_checked_proto_msgTypes[2]\n+\tif protoimpl.UnsafeEnabled && x != nil {\n+\t\tms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))\n+\t\tif ms.LoadMessageInfo() == nil {\n+\t\t\tms.StoreMessageInfo(mi)\n+\t\t}\n+\t\treturn ms\n+\t}\n+\treturn mi.MessageOf(x)\n+}\n+\n+// Deprecated: Use Decl.ProtoReflect.Descriptor instead.\n+func (*Decl) Descriptor() ([]byte, []int) {\n+\treturn file_cel_expr_checked_proto_rawDescGZIP(), []int{2}\n+}\n+\n+func (x *Decl) GetName() string {\n+\tif x != nil {\n+\t\treturn x.Name\n+\t}\n+\treturn \"\"\n+}\n+\n+func (m *Decl) GetDeclKind() isDecl_DeclKind {\n+\tif m != nil {\n+\t\treturn m.DeclKind\n+\t}\n+\treturn nil\n+}\n+\n+func (x *Decl) GetIdent() *Decl_IdentDecl {\n+\tif x, ok := x.GetDeclKind().(*Decl_Ident); ok {\n+\t\treturn x.Ident\n+\t}\n+\treturn nil\n+}\n+\n+func (x *Decl) GetFunction() *Decl_FunctionDecl {\n+\tif x, ok := x.GetDeclKind().(*Decl_Function); ok {\n+\t\treturn x.Function\n+\t}\n+\treturn nil\n+}\n+\n+type isDecl_DeclKind interface {\n+\tisDecl_DeclKind()\n+}\n+\n+type Decl_Ident struct {\n+\tIdent *Decl_IdentDecl `protobuf:\"bytes,2,opt,name=ident,proto3,oneof\"`\n+}\n+\n+type Decl_Function struct {\n+\tFunction *Decl_FunctionDecl `protobuf:\"bytes,3,opt,name=function,proto3,oneof\"`\n+}\n+\n+func (*Decl_Ident) isDecl_DeclKind() {}\n+\n+func (*Decl_Function) isDecl_DeclKind() {}\n+\n+type Reference struct {\n+\tstate         protoimpl.MessageState\n+\tsizeCache     protoimpl.SizeCache\n+\tunknownFields protoimpl.UnknownFields\n+\n+\tName       string    `protobuf:\"bytes,1,opt,name=name,proto3\" json:\"name,omitempty\"`\n+\tOverloadId []string  `protobuf:\"bytes,3,rep,name=overload_id,json=overloadId,proto3\" json:\"overload_id,omitempty\"`\n+\tValue      *Constant `protobuf:\"bytes,4,opt,name=value,proto3\" json:\"value,omitempty\"`\n+}\n+\n+func (x *Reference) Reset() {\n+\t*x = Reference{}\n+\tif protoimpl.UnsafeEnabled {\n+\t\tmi := &file_cel_expr_checked_proto_msgTypes[3]\n+\t\tms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))\n+\t\tms.StoreMessageInfo(mi)\n+\t}\n+}\n+\n+func (x *Reference) String() string {\n+\treturn protoimpl.X.MessageStringOf(x)\n+}\n+\n+func (*Reference) ProtoMessage() {}\n+\n+func (x *Reference) ProtoReflect() protoreflect.Message {\n+\tmi := &file_cel_expr_checked_proto_msgTypes[3]\n+\tif protoimpl.UnsafeEnabled && x != nil {\n+\t\tms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))\n+\t\tif ms.LoadMessageInfo() == nil {\n+\t\t\tms.StoreMessageInfo(mi)\n+\t\t}\n+\t\treturn ms\n+\t}\n+\treturn mi.MessageOf(x)\n+}\n+\n+// Deprecated: Use Reference.ProtoReflect.Descriptor instead.\n+func (*Reference) Descriptor() ([]byte, []int) {\n+\treturn file_cel_expr_checked_proto_rawDescGZIP(), []int{3}\n+}\n+\n+func (x *Reference) GetName() string {\n+\tif x != nil {\n+\t\treturn x.Name\n+\t}\n+\treturn \"\"\n+}\n+\n+func (x *Reference) GetOverloadId() []string {\n+\tif x != nil {\n+\t\treturn x.OverloadId\n+\t}\n+\treturn nil\n+}\n+\n+func (x *Reference) GetValue() *Constant {\n+\tif x != nil {\n+\t\treturn x.Value\n+\t}\n+\treturn nil\n+}\n+\n+type Type_ListType struct {\n+\tstate         protoimpl.MessageState\n+\tsizeCache     protoimpl.SizeCache\n+\tunknownFields protoimpl.UnknownFields\n+\n+\tElemType *Type `protobuf:\"bytes,1,opt,name=elem_type,json=elemType,proto3\" json:\"elem_type,omitempty\"`\n+}\n+\n+func (x *Type_ListType) Reset() {\n+\t*x = Type_ListType{}\n+\tif protoimpl.UnsafeEnabled {\n+\t\tmi := &file_cel_expr_checked_proto_msgTypes[6]\n+\t\tms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))\n+\t\tms.StoreMessageInfo(mi)\n+\t}\n+}\n+\n+func (x *Type_ListType) String() string {\n+\treturn protoimpl.X.MessageStringOf(x)\n+}\n+\n+func (*Type_ListType) ProtoMessage() {}\n+\n+func (x *Type_ListType) ProtoReflect() protoreflect.Message {\n+\tmi := &file_cel_expr_checked_proto_msgTypes[6]\n+\tif protoimpl.UnsafeEnabled && x != nil {\n+\t\tms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))\n+\t\tif ms.LoadMessageInfo() == nil {\n+\t\t\tms.StoreMessageInfo(mi)\n+\t\t}\n+\t\treturn ms\n+\t}\n+\treturn mi.MessageOf(x)\n+}\n+\n+// Deprecated: Use Type_ListType.ProtoReflect.Descriptor instead.\n+func (*Type_ListType) Descriptor() ([]byte, []int) {\n+\treturn file_cel_expr_checked_proto_rawDescGZIP(), []int{1, 0}\n+}\n+\n+func (x *Type_ListType) GetElemType() *Type {\n+\tif x != nil {\n+\t\treturn x.ElemType\n+\t}\n+\treturn nil\n+}\n+\n+type Type_MapType struct {\n+\tstate         protoimpl.MessageState\n+\tsizeCache     protoimpl.SizeCache\n+\tunknownFields protoimpl.UnknownFields\n+\n+\tKeyType   *Type `protobuf:\"bytes,1,opt,name=key_type,json=keyType,proto3\" json:\"key_type,omitempty\"`\n+\tValueType *Type `protobuf:\"bytes,2,opt,name=value_type,json=valueType,proto3\" json:\"value_type,omitempty\"`\n+}\n+\n+func (x *Type_MapType) Reset() {\n+\t*x = Type_MapType{}\n+\tif protoimpl.UnsafeEnabled {\n+\t\tmi := &file_cel_expr_checked_proto_msgTypes[7]\n+\t\tms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))\n+\t\tms.StoreMessageInfo(mi)\n+\t}\n+}\n+\n+func (x *Type_MapType) String() string {\n+\treturn protoimpl.X.MessageStringOf(x)\n+}\n+\n+func (*Type_MapType) ProtoMessage() {}\n+\n+func (x *Type_MapType) ProtoReflect() protoreflect.Message {\n+\tmi := &file_cel_expr_checked_proto_msgTypes[7]\n+\tif protoimpl.UnsafeEnabled && x != nil {\n+\t\tms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))\n+\t\tif ms.LoadMessageInfo() == nil {\n+\t\t\tms.StoreMessageInfo(mi)\n+\t\t}\n+\t\treturn ms\n+\t}\n+\treturn mi.MessageOf(x)\n+}\n+\n+// Deprecated: Use Type_MapType.ProtoReflect.Descriptor instead.\n+func (*Type_MapType) Descriptor() ([]byte, []int) {\n+\treturn file_cel_expr_checked_proto_rawDescGZIP(), []int{1, 1}\n+}\n+\n+func (x *Type_MapType) GetKeyType() *Type {\n+\tif x != nil {\n+\t\treturn x.KeyType\n+\t}\n+\treturn nil\n+}\n+\n+func (x *Type_MapType) GetValueType() *Type {\n+\tif x != nil {\n+\t\treturn x.ValueType\n+\t}\n+\treturn nil\n+}\n+\n+type Type_FunctionType struct {\n+\tstate         protoimpl.MessageState\n+\tsizeCache     protoimpl.SizeCache\n+\tunknownFields protoimpl.UnknownFields\n+\n+\tResultType *Type   `protobuf:\"bytes,1,opt,name=result_type,json=resultType,proto3\" json:\"result_type,omitempty\"`\n+\tArgTypes   []*Type `protobuf:\"bytes,2,rep,name=arg_types,json=argTypes,proto3\" json:\"arg_types,omitempty\"`\n+}\n+\n+func (x *Type_FunctionType) Reset() {\n+\t*x = Type_FunctionType{}\n+\tif protoimpl.UnsafeEnabled {\n+\t\tmi := &file_cel_expr_checked_proto_msgTypes[8]\n+\t\tms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))\n+\t\tms.StoreMessageInfo(mi)\n+\t}\n+}\n+\n+func (x *Type_FunctionType) String() string {\n+\treturn protoimpl.X.MessageStringOf(x)\n+}\n+\n+func (*Type_FunctionType) ProtoMessage() {}\n+\n+func (x *Type_FunctionType) ProtoReflect() protoreflect.Message {\n+\tmi := &file_cel_expr_checked_proto_msgTypes[8]\n+\tif protoimpl.UnsafeEnabled && x != nil {\n+\t\tms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))\n+\t\tif ms.LoadMessageInfo() == nil {\n+\t\t\tms.StoreMessageInfo(mi)\n+\t\t}\n+\t\treturn ms\n+\t}\n+\treturn mi.MessageOf(x)\n+}\n+\n+// Deprecated: Use Type_FunctionType.ProtoReflect.Descriptor instead.\n+func (*Type_FunctionType) Descriptor() ([]byte, []int) {\n+\treturn file_cel_expr_checked_proto_rawDescGZIP(), []int{1, 2}\n+}\n+\n+func (x *Type_FunctionType) GetResultType() *Type {\n+\tif x != nil {\n+\t\treturn x.ResultType\n+\t}\n+\treturn nil\n+}\n+\n+func (x *Type_FunctionType) GetArgTypes() []*Type {\n+\tif x != nil {\n+\t\treturn x.ArgTypes\n+\t}\n+\treturn nil\n+}\n+\n+type Type_AbstractType struct {\n+\tstate         protoimpl.MessageState\n+\tsizeCache     protoimpl.SizeCache\n+\tunknownFields protoimpl.UnknownFields\n+\n+\tName           string  `protobuf:\"bytes,1,opt,name=name,proto3\" json:\"name,omitempty\"`\n+\tParameterTypes []*Type `protobuf:\"bytes,2,rep,name=parameter_types,json=parameterTypes,proto3\" json:\"parameter_types,omitempty\"`\n+}\n+\n+func (x *Type_AbstractType) Reset() {\n+\t*x = Type_AbstractType{}\n+\tif protoimpl.UnsafeEnabled {\n+\t\tmi := &file_cel_expr_checked_proto_msgTypes[9]\n+\t\tms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))\n+\t\tms.StoreMessageInfo(mi)\n+\t}\n+}\n+\n+func (x *Type_AbstractType) String() string {\n+\treturn protoimpl.X.MessageStringOf(x)\n+}\n+\n+func (*Type_AbstractType) ProtoMessage() {}\n+\n+func (x *Type_AbstractType) ProtoReflect() protoreflect.Message {\n+\tmi := &file_cel_expr_checked_proto_msgTypes[9]\n+\tif protoimpl.UnsafeEnabled && x != nil {\n+\t\tms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))\n+\t\tif ms.LoadMessageInfo() == nil {\n+\t\t\tms.StoreMessageInfo(mi)\n+\t\t}\n+\t\treturn ms\n+\t}\n+\treturn mi.MessageOf(x)\n+}\n+\n+// Deprecated: Use Type_AbstractType.ProtoReflect.Descriptor instead.\n+func (*Type_AbstractType) Descriptor() ([]byte, []int) {\n+\treturn file_cel_expr_checked_proto_rawDescGZIP(), []int{1, 3}\n+}\n+\n+func (x *Type_AbstractType) GetName() string {\n+\tif x != nil {\n+\t\treturn x.Name\n+\t}\n+\treturn \"\"\n+}\n+\n+func (x *Type_AbstractType) GetParameterTypes() []*Type {\n+\tif x != nil {\n+\t\treturn x.ParameterTypes\n+\t}\n+\treturn nil\n+}\n+\n+type Decl_IdentDecl struct {\n+\tstate         protoimpl.MessageState\n+\tsizeCache     protoimpl.SizeCache\n+\tunknownFields protoimpl.UnknownFields\n+\n+\tType  *Type     `protobuf:\"bytes,1,opt,name=type,proto3\" json:\"type,omitempty\"`\n+\tValue *Constant `protobuf:\"bytes,2,opt,name=value,proto3\" json:\"value,omitempty\"`\n+\tDoc   string    `protobuf:\"bytes,3,opt,name=doc,proto3\" json:\"doc,omitempty\"`\n+}\n+\n+func (x *Decl_IdentDecl) Reset() {\n+\t*x = Decl_IdentDecl{}\n+\tif protoimpl.UnsafeEnabled {\n+\t\tmi := &file_cel_expr_checked_proto_msgTypes[10]\n+\t\tms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))\n+\t\tms.StoreMessageInfo(mi)\n+\t}\n+}\n+\n+func (x *Decl_IdentDecl) String() string {\n+\treturn protoimpl.X.MessageStringOf(x)\n+}\n+\n+func (*Decl_IdentDecl) ProtoMessage() {}\n+\n+func (x *Decl_IdentDecl) ProtoReflect() protoreflect.Message {\n+\tmi := &file_cel_expr_checked_proto_msgTypes[10]\n+\tif protoimpl.UnsafeEnabled && x != nil {\n+\t\tms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))\n+\t\tif ms.LoadMessageInfo() == nil {\n+\t\t\tms.StoreMessageInfo(mi)\n+\t\t}\n+\t\treturn ms\n+\t}\n+\treturn mi.MessageOf(x)\n+}\n+\n+// Deprecated: Use Decl_IdentDecl.ProtoReflect.Descriptor instead.\n+func (*Decl_IdentDecl) Descriptor() ([]byte, []int) {\n+\treturn file_cel_expr_checked_proto_rawDescGZIP(), []int{2, 0}\n+}\n+\n+func (x *Decl_IdentDecl) GetType() *Type {\n+\tif x != nil {\n+\t\treturn x.Type\n+\t}\n+\treturn nil\n+}\n+\n+func (x *Decl_IdentDecl) GetValue() *Constant {\n+\tif x != nil {\n+\t\treturn x.Value\n+\t}\n+\treturn nil\n+}\n+\n+func (x *Decl_IdentDecl) GetDoc() string {\n+\tif x != nil {\n+\t\treturn x.Doc\n+\t}\n+\treturn \"\"\n+}\n+\n+type Decl_FunctionDecl struct {\n+\tstate         protoimpl.MessageState\n+\tsizeCache     protoimpl.SizeCache\n+\tunknownFields protoimpl.UnknownFields\n+\n+\tOverloads []*Decl_FunctionDecl_Overload `protobuf:\"bytes,1,rep,name=overloads,proto3\" json:\"overloads,omitempty\"`\n+}\n+\n+func (x *Decl_FunctionDecl) Reset() {\n+\t*x = Decl_FunctionDecl{}\n+\tif protoimpl.UnsafeEnabled {\n+\t\tmi := &file_cel_expr_checked_proto_msgTypes[11]\n+\t\tms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))\n+\t\tms.StoreMessageInfo(mi)\n+\t}\n+}\n+\n+func (x *Decl_FunctionDecl) String() string {\n+\treturn protoimpl.X.MessageStringOf(x)\n+}\n+\n+func (*Decl_FunctionDecl) ProtoMessage() {}\n+\n+func (x *Decl_FunctionDecl) ProtoReflect() protoreflect.Message {\n+\tmi := &file_cel_expr_checked_proto_msgTypes[11]\n+\tif protoimpl.UnsafeEnabled && x != nil {\n+\t\tms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))\n+\t\tif ms.LoadMessageInfo() == nil {\n+\t\t\tms.StoreMessageInfo(mi)\n+\t\t}\n+\t\treturn ms\n+\t}\n+\treturn mi.MessageOf(x)\n+}\n+\n+// Deprecated: Use Decl_FunctionDecl.ProtoReflect.Descriptor instead.\n+func (*Decl_FunctionDecl) Descriptor() ([]byte, []int) {\n+\treturn file_cel_expr_checked_proto_rawDescGZIP(), []int{2, 1}\n+}\n+\n+func (x *Decl_FunctionDecl) GetOverloads() []*Decl_FunctionDecl_Overload {\n+\tif x != nil {\n+\t\treturn x.Overloads\n+\t}\n+\treturn nil\n+}\n+\n+type Decl_FunctionDecl_Overload struct {\n+\tstate         protoimpl.MessageState\n+\tsizeCache     protoimpl.SizeCache\n+\tunknownFields protoimpl.UnknownFields\n+\n+\tOverloadId         string   `protobuf:\"bytes,1,opt,name=overload_id,json=overloadId,proto3\" json:\"overload_id,omitempty\"`\n+\tParams             []*Type  `protobuf:\"bytes,2,rep,name=params,proto3\" json:\"params,omitempty\"`\n+\tTypeParams         []string `protobuf:\"bytes,3,rep,name=type_params,json=typeParams,proto3\" json:\"type_params,omitempty\"`\n+\tResultType         *Type    `protobuf:\"bytes,4,opt,name=result_type,json=resultType,proto3\" json:\"result_type,omitempty\"`\n+\tIsInstanceFunction bool     `protobuf:\"varint,5,opt,name=is_instance_function,json=isInstanceFunction,proto3\" json:\"is_instance_function,omitempty\"`\n+\tDoc                string   `protobuf:\"bytes,6,opt,name=doc,proto3\" json:\"doc,omitempty\"`\n+}\n+\n+func (x *Decl_FunctionDecl_Overload) Reset() {\n+\t*x = Decl_FunctionDecl_Overload{}\n+\tif protoimpl.UnsafeEnabled {\n+\t\tmi := &file_cel_expr_checked_proto_msgTypes[12]\n+\t\tms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))\n+\t\tms.StoreMessageInfo(mi)\n+\t}\n+}\n+\n+func (x *Decl_FunctionDecl_Overload) String() string {\n+\treturn protoimpl.X.MessageStringOf(x)\n+}\n+\n+func (*Decl_FunctionDecl_Overload) ProtoMessage() {}\n+\n+func (x *Decl_FunctionDecl_Overload) ProtoReflect() protoreflect.Message {\n+\tmi := &file_cel_expr_checked_proto_msgTypes[12]\n+\tif protoimpl.UnsafeEnabled && x != nil {\n+\t\tms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))\n+\t\tif ms.LoadMessageInfo() == nil {\n+\t\t\tms.StoreMessageInfo(mi)\n+\t\t}\n+\t\treturn ms\n+\t}\n+\treturn mi.MessageOf(x)\n+}\n+\n+// Deprecated: Use Decl_FunctionDecl_Overload.ProtoReflect.Descriptor instead.\n+func (*Decl_FunctionDecl_Overload) Descriptor() ([]byte, []int) {\n+\treturn file_cel_expr_checked_proto_rawDescGZIP(), []int{2, 1, 0}\n+}\n+\n+func (x *Decl_FunctionDecl_Overload) GetOverloadId() string {\n+\tif x != nil {\n+\t\treturn x.OverloadId\n+\t}\n+\treturn \"\"\n+}\n+\n+func (x *Decl_FunctionDecl_Overload) GetParams() []*Type {\n+\tif x != nil {\n+\t\treturn x.Params\n+\t}\n+\treturn nil\n+}\n+\n+func (x *Decl_FunctionDecl_Overload) GetTypeParams() []string {\n+\tif x != nil {\n+\t\treturn x.TypeParams\n+\t}\n+\treturn nil\n+}\n+\n+func (x *Decl_FunctionDecl_Overload) GetResultType() *Type {\n+\tif x != nil {\n+\t\treturn x.ResultType\n+\t}\n+\treturn nil\n+}\n+\n+func (x *Decl_FunctionDecl_Overload) GetIsInstanceFunction() bool {\n+\tif x != nil {\n+\t\treturn x.IsInstanceFunction\n+\t}\n+\treturn false\n+}\n+\n+func (x *Decl_FunctionDecl_Overload) GetDoc() string {\n+\tif x != nil {\n+\t\treturn x.Doc\n+\t}\n+\treturn \"\"\n+}\n+\n+var File_cel_expr_checked_proto protoreflect.FileDescriptor\n+\n+var file_cel_expr_checked_proto_rawDesc = []byte{\n+\t0x0a, 0x16, 0x63, 0x65, 0x6c, 0x2f, 0x65, 0x78, 0x70, 0x72, 0x2f, 0x63, 0x68, 0x65, 0x63, 0x6b,\n+\t0x65, 0x64, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x12, 0x08, 0x63, 0x65, 0x6c, 0x2e, 0x65, 0x78,\n+\t0x70, 0x72, 0x1a, 0x15, 0x63, 0x65, 0x6c, 0x2f, 0x65, 0x78, 0x70, 0x72, 0x2f, 0x73, 0x79, 0x6e,\n+\t0x74, 0x61, 0x78, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x1a, 0x1b, 0x67, 0x6f, 0x6f, 0x67, 0x6c,\n+\t0x65, 0x2f, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x62, 0x75, 0x66, 0x2f, 0x65, 0x6d, 0x70, 0x74, 0x79,\n+\t0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x1a, 0x1c, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2f, 0x70,\n+\t0x72, 0x6f, 0x74, 0x6f, 0x62, 0x75, 0x66, 0x2f, 0x73, 0x74, 0x72, 0x75, 0x63, 0x74, 0x2e, 0x70,\n+\t0x72, 0x6f, 0x74, 0x6f, 0x22, 0xba, 0x03, 0x0a, 0x0b, 0x43, 0x68, 0x65, 0x63, 0x6b, 0x65, 0x64,\n+\t0x45, 0x78, 0x70, 0x72, 0x12, 0x4c, 0x0a, 0x0d, 0x72, 0x65, 0x66, 0x65, 0x72, 0x65, 0x6e, 0x63,\n+\t0x65, 0x5f, 0x6d, 0x61, 0x70, 0x18, 0x02, 0x20, 0x03, 0x28, 0x0b, 0x32, 0x27, 0x2e, 0x63, 0x65,\n+\t0x6c, 0x2e, 0x65, 0x78, 0x70, 0x72, 0x2e, 0x43, 0x68, 0x65, 0x63, 0x6b, 0x65, 0x64, 0x45, 0x78,\n+\t0x70, 0x72, 0x2e, 0x52, 0x65, 0x66, 0x65, 0x72, 0x65, 0x6e, 0x63, 0x65, 0x4d, 0x61, 0x70, 0x45,\n+\t0x6e, 0x74, 0x72, 0x79, 0x52, 0x0c, 0x72, 0x65, 0x66, 0x65, 0x72, 0x65, 0x6e, 0x63, 0x65, 0x4d,\n+\t0x61, 0x70, 0x12, 0x3d, 0x0a, 0x08, 0x74, 0x79, 0x70, 0x65, 0x5f, 0x6d, 0x61, 0x70, 0x18, 0x03,\n+\t0x20, 0x03, 0x28, 0x0b, 0x32, 0x22, 0x2e, 0x63, 0x65, 0x6c, 0x2e, 0x65, 0x78, 0x70, 0x72, 0x2e,\n+\t0x43, 0x68, 0x65, 0x63, 0x6b, 0x65, 0x64, 0x45, 0x78, 0x70, 0x72, 0x2e, 0x54, 0x79, 0x70, 0x65,\n+\t0x4d, 0x61, 0x70, 0x45, 0x6e, 0x74, 0x72, 0x79, 0x52, 0x07, 0x74, 0x79, 0x70, 0x65, 0x4d, 0x61,\n+\t0x70, 0x12, 0x35, 0x0a, 0x0b, 0x73, 0x6f, 0x75, 0x72, 0x63, 0x65, 0x5f, 0x69, 0x6e, 0x66, 0x6f,\n+\t0x18, 0x05, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x14, 0x2e, 0x63, 0x65, 0x6c, 0x2e, 0x65, 0x78, 0x70,\n+\t0x72, 0x2e, 0x53, 0x6f, 0x75, 0x72, 0x63, 0x65, 0x49, 0x6e, 0x66, 0x6f, 0x52, 0x0a, 0x73, 0x6f,\n+\t0x75, 0x72, 0x63, 0x65, 0x49, 0x6e, 0x66, 0x6f, 0x12, 0x21, 0x0a, 0x0c, 0x65, 0x78, 0x70, 0x72,\n+\t0x5f, 0x76, 0x65, 0x72, 0x73, 0x69, 0x6f, 0x6e, 0x18, 0x06, 0x20, 0x01, 0x28, 0x09, 0x52, 0x0b,\n+\t0x65, 0x78, 0x70, 0x72, 0x56, 0x65, 0x72, 0x73, 0x69, 0x6f, 0x6e, 0x12, 0x22, 0x0a, 0x04, 0x65,\n+\t0x78, 0x70, 0x72, 0x18, 0x04, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x0e, 0x2e, 0x63, 0x65, 0x6c, 0x2e,\n+\t0x65, 0x78, 0x70, 0x72, 0x2e, 0x45, 0x78, 0x70, 0x72, 0x52, 0x04, 0x65, 0x78, 0x70, 0x72, 0x1a,\n+\t0x54, 0x0a, 0x11, 0x52, 0x65, 0x66, 0x65, 0x72, 0x65, 0x6e, 0x63, 0x65, 0x4d, 0x61, 0x70, 0x45,\n+\t0x6e, 0x74, 0x72, 0x79, 0x12, 0x10, 0x0a, 0x03, 0x6b, 0x65, 0x79, 0x18, 0x01, 0x20, 0x01, 0x28,\n+\t0x03, 0x52, 0x03, 0x6b, 0x65, 0x79, 0x12, 0x29, 0x0a, 0x05, 0x76, 0x61, 0x6c, 0x75, 0x65, 0x18,\n+\t0x02, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x13, 0x2e, 0x63, 0x65, 0x6c, 0x2e, 0x65, 0x78, 0x70, 0x72,\n+\t0x2e, 0x52, 0x65, 0x66, 0x65, 0x72, 0x65, 0x6e, 0x63, 0x65, 0x52, 0x05, 0x76, 0x61, 0x6c, 0x75,\n+\t0x65, 0x3a, 0x02, 0x38, 0x01, 0x1a, 0x4a, 0x0a, 0x0c, 0x54, 0x79, 0x70, 0x65, 0x4d, 0x61, 0x70,\n+\t0x45, 0x6e, 0x74, 0x72, 0x79, 0x12, 0x10, 0x0a, 0x03, 0x6b, 0x65, 0x79, 0x18, 0x01, 0x20, 0x01,\n+\t0x28, 0x03, 0x52, 0x03, 0x6b, 0x65, 0x79, 0x12, 0x24, 0x0a, 0x05, 0x76, 0x61, 0x6c, 0x75, 0x65,\n+\t0x18, 0x02, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x0e, 0x2e, 0x63, 0x65, 0x6c, 0x2e, 0x65, 0x78, 0x70,\n+\t0x72, 0x2e, 0x54, 0x79, 0x70, 0x65, 0x52, 0x05, 0x76, 0x61, 0x6c, 0x75, 0x65, 0x3a, 0x02, 0x38,\n+\t0x01, 0x22, 0xe6, 0x09, 0x0a, 0x04, 0x54, 0x79, 0x70, 0x65, 0x12, 0x2a, 0x0a, 0x03, 0x64, 0x79,\n+\t0x6e, 0x18, 0x01, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x16, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65,\n+\t0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x62, 0x75, 0x66, 0x2e, 0x45, 0x6d, 0x70, 0x74, 0x79, 0x48,\n+\t0x00, 0x52, 0x03, 0x64, 0x79, 0x6e, 0x12, 0x30, 0x0a, 0x04, 0x6e, 0x75, 0x6c, 0x6c, 0x18, 0x02,\n+\t0x20, 0x01, 0x28, 0x0e, 0x32, 0x1a, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x70, 0x72,\n+\t0x6f, 0x74, 0x6f, 0x62, 0x75, 0x66, 0x2e, 0x4e, 0x75, 0x6c, 0x6c, 0x56, 0x61, 0x6c, 0x75, 0x65,\n+\t0x48, 0x00, 0x52, 0x04, 0x6e, 0x75, 0x6c, 0x6c, 0x12, 0x3c, 0x0a, 0x09, 0x70, 0x72, 0x69, 0x6d,\n+\t0x69, 0x74, 0x69, 0x76, 0x65, 0x18, 0x03, 0x20, 0x01, 0x28, 0x0e, 0x32, 0x1c, 0x2e, 0x63, 0x65,\n+\t0x6c, 0x2e, 0x65, 0x78, 0x70, 0x72, 0x2e, 0x54, 0x79, 0x70, 0x65, 0x2e, 0x50, 0x72, 0x69, 0x6d,\n+\t0x69, 0x74, 0x69, 0x76, 0x65, 0x54, 0x79, 0x70, 0x65, 0x48, 0x00, 0x52, 0x09, 0x70, 0x72, 0x69,\n+\t0x6d, 0x69, 0x74, 0x69, 0x76, 0x65, 0x12, 0x38, 0x0a, 0x07, 0x77, 0x72, 0x61, 0x70, 0x70, 0x65,\n+\t0x72, 0x18, 0x04, 0x20, 0x01, 0x28, 0x0e, 0x32, 0x1c, 0x2e, 0x63, 0x65, 0x6c, 0x2e, 0x65, 0x78,\n+\t0x70, 0x72, 0x2e, 0x54, 0x79, 0x70, 0x65, 0x2e, 0x50, 0x72, 0x69, 0x6d, 0x69, 0x74, 0x69, 0x76,\n+\t0x65, 0x54, 0x79, 0x70, 0x65, 0x48, 0x00, 0x52, 0x07, 0x77, 0x72, 0x61, 0x70, 0x70, 0x65, 0x72,\n+\t0x12, 0x3d, 0x0a, 0x0a, 0x77, 0x65, 0x6c, 0x6c, 0x5f, 0x6b, 0x6e, 0x6f, 0x77, 0x6e, 0x18, 0x05,\n+\t0x20, 0x01, 0x28, 0x0e, 0x32, 0x1c, 0x2e, 0x63, 0x65, 0x6c, 0x2e, 0x65, 0x78, 0x70, 0x72, 0x2e,\n+\t0x54, 0x79, 0x70, 0x65, 0x2e, 0x57, 0x65, 0x6c, 0x6c, 0x4b, 0x6e, 0x6f, 0x77, 0x6e, 0x54, 0x79,\n+\t0x70, 0x65, 0x48, 0x00, 0x52, 0x09, 0x77, 0x65, 0x6c, 0x6c, 0x4b, 0x6e, 0x6f, 0x77, 0x6e, 0x12,\n+\t0x36, 0x0a, 0x09, 0x6c, 0x69, 0x73, 0x74, 0x5f, 0x74, 0x79, 0x70, 0x65, 0x18, 0x06, 0x20, 0x01,\n+\t0x28, 0x0b, 0x32, 0x17, 0x2e, 0x63, 0x65, 0x6c, 0x2e, 0x65, 0x78, 0x70, 0x72, 0x2e, 0x54, 0x79,\n+\t0x70, 0x65, 0x2e, 0x4c, 0x69, 0x73, 0x74, 0x54, 0x79, 0x70, 0x65, 0x48, 0x00, 0x52, 0x08, 0x6c,\n+\t0x69, 0x73, 0x74, 0x54, 0x79, 0x70, 0x65, 0x12, 0x33, 0x0a, 0x08, 0x6d, 0x61, 0x70, 0x5f, 0x74,\n+\t0x79, 0x70, 0x65, 0x18, 0x07, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x16, 0x2e, 0x63, 0x65, 0x6c, 0x2e,\n+\t0x65, 0x78, 0x70, 0x72, 0x2e, 0x54, 0x79, 0x70, 0x65, 0x2e, 0x4d, 0x61, 0x70, 0x54, 0x79, 0x70,\n+\t0x65, 0x48, 0x00, 0x52, 0x07, 0x6d, 0x61, 0x70, 0x54, 0x79, 0x70, 0x65, 0x12, 0x39, 0x0a, 0x08,\n+\t0x66, 0x75, 0x6e, 0x63, 0x74, 0x69, 0x6f, 0x6e, 0x18, 0x08, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x1b,\n+\t0x2e, 0x63, 0x65, 0x6c, 0x2e, 0x65, 0x78, 0x70, 0x72, 0x2e, 0x54, 0x79, 0x70, 0x65, 0x2e, 0x46,\n+\t0x75, 0x6e, 0x63, 0x74, 0x69, 0x6f, 0x6e, 0x54, 0x79, 0x70, 0x65, 0x48, 0x00, 0x52, 0x08, 0x66,\n+\t0x75, 0x6e, 0x63, 0x74, 0x69, 0x6f, 0x6e, 0x12, 0x23, 0x0a, 0x0c, 0x6d, 0x65, 0x73, 0x73, 0x61,\n+\t0x67, 0x65, 0x5f, 0x74, 0x79, 0x70, 0x65, 0x18, 0x09, 0x20, 0x01, 0x28, 0x09, 0x48, 0x00, 0x52,\n+\t0x0b, 0x6d, 0x65, 0x73, 0x73, 0x61, 0x67, 0x65, 0x54, 0x79, 0x70, 0x65, 0x12, 0x1f, 0x0a, 0x0a,\n+\t0x74, 0x79, 0x70, 0x65, 0x5f, 0x70, 0x61, 0x72, 0x61, 0x6d, 0x18, 0x0a, 0x20, 0x01, 0x28, 0x09,\n+\t0x48, 0x00, 0x52, 0x09, 0x74, 0x79, 0x70, 0x65, 0x50, 0x61, 0x72, 0x61, 0x6d, 0x12, 0x24, 0x0a,\n+\t0x04, 0x74, 0x79, 0x70, 0x65, 0x18, 0x0b, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x0e, 0x2e, 0x63, 0x65,\n+\t0x6c, 0x2e, 0x65, 0x78, 0x70, 0x72, 0x2e, 0x54, 0x79, 0x70, 0x65, 0x48, 0x00, 0x52, 0x04, 0x74,\n+\t0x79, 0x70, 0x65, 0x12, 0x2e, 0x0a, 0x05, 0x65, 0x72, 0x72, 0x6f, 0x72, 0x18, 0x0c, 0x20, 0x01,\n+\t0x28, 0x0b, 0x32, 0x16, 0x2e, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x70, 0x72, 0x6f, 0x74,\n+\t0x6f, 0x62, 0x75, 0x66, 0x2e, 0x45, 0x6d, 0x70, 0x74, 0x79, 0x48, 0x00, 0x52, 0x05, 0x65, 0x72,\n+\t0x72, 0x6f, 0x72, 0x12, 0x42, 0x0a, 0x0d, 0x61, 0x62, 0x73, 0x74, 0x72, 0x61, 0x63, 0x74, 0x5f,\n+\t0x74, 0x79, 0x70, 0x65, 0x18, 0x0e, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x1b, 0x2e, 0x63, 0x65, 0x6c,\n+\t0x2e, 0x65, 0x78, 0x70, 0x72, 0x2e, 0x54, 0x79, 0x70, 0x65, 0x2e, 0x41, 0x62, 0x73, 0x74, 0x72,\n+\t0x61, 0x63, 0x74, 0x54, 0x79, 0x70, 0x65, 0x48, 0x00, 0x52, 0x0c, 0x61, 0x62, 0x73, 0x74, 0x72,\n+\t0x61, 0x63, 0x74, 0x54, 0x79, 0x70, 0x65, 0x1a, 0x37, 0x0a, 0x08, 0x4c, 0x69, 0x73, 0x74, 0x54,\n+\t0x79, 0x70, 0x65, 0x12, 0x2b, 0x0a, 0x09, 0x65, 0x6c, 0x65, 0x6d, 0x5f, 0x74, 0x79, 0x70, 0x65,\n+\t0x18, 0x01, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x0e, 0x2e, 0x63, 0x65, 0x6c, 0x2e, 0x65, 0x78, 0x70,\n+\t0x72, 0x2e, 0x54, 0x79, 0x70, 0x65, 0x52, 0x08, 0x65, 0x6c, 0x65, 0x6d, 0x54, 0x79, 0x70, 0x65,\n+\t0x1a, 0x63, 0x0a, 0x07, 0x4d, 0x61, 0x70, 0x54, 0x79, 0x70, 0x65, 0x12, 0x29, 0x0a, 0x08, 0x6b,\n+\t0x65, 0x79, 0x5f, 0x74, 0x79, 0x70, 0x65, 0x18, 0x01, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x0e, 0x2e,\n+\t0x63, 0x65, 0x6c, 0x2e, 0x65, 0x78, 0x70, 0x72, 0x2e, 0x54, 0x79, 0x70, 0x65, 0x52, 0x07, 0x6b,\n+\t0x65, 0x79, 0x54, 0x79, 0x70, 0x65, 0x12, 0x2d, 0x0a, 0x0a, 0x76, 0x61, 0x6c, 0x75, 0x65, 0x5f,\n+\t0x74, 0x79, 0x70, 0x65, 0x18, 0x02, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x0e, 0x2e, 0x63, 0x65, 0x6c,\n+\t0x2e, 0x65, 0x78, 0x70, 0x72, 0x2e, 0x54, 0x79, 0x70, 0x65, 0x52, 0x09, 0x76, 0x61, 0x6c, 0x75,\n+\t0x65, 0x54, 0x79, 0x70, 0x65, 0x1a, 0x6c, 0x0a, 0x0c, 0x46, 0x75, 0x6e, 0x63, 0x74, 0x69, 0x6f,\n+\t0x6e, 0x54, 0x79, 0x70, 0x65, 0x12, 0x2f, 0x0a, 0x0b, 0x72, 0x65, 0x73, 0x75, 0x6c, 0x74, 0x5f,\n+\t0x74, 0x79, 0x70, 0x65, 0x18, 0x01, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x0e, 0x2e, 0x63, 0x65, 0x6c,\n+\t0x2e, 0x65, 0x78, 0x70, 0x72, 0x2e, 0x54, 0x79, 0x70, 0x65, 0x52, 0x0a, 0x72, 0x65, 0x73, 0x75,\n+\t0x6c, 0x74, 0x54, 0x79, 0x70, 0x65, 0x12, 0x2b, 0x0a, 0x09, 0x61, 0x72, 0x67, 0x5f, 0x74, 0x79,\n+\t0x70, 0x65, 0x73, 0x18, 0x02, 0x20, 0x03, 0x28, 0x0b, 0x32, 0x0e, 0x2e, 0x63, 0x65, 0x6c, 0x2e,\n+\t0x65, 0x78, 0x70, 0x72, 0x2e, 0x54, 0x79, 0x70, 0x65, 0x52, 0x08, 0x61, 0x72, 0x67, 0x54, 0x79,\n+\t0x70, 0x65, 0x73, 0x1a, 0x5b, 0x0a, 0x0c, 0x41, 0x62, 0x73, 0x74, 0x72, 0x61, 0x63, 0x74, 0x54,\n+\t0x79, 0x70, 0x65, 0x12, 0x12, 0x0a, 0x04, 0x6e, 0x61, 0x6d, 0x65, 0x18, 0x01, 0x20, 0x01, 0x28,\n+\t0x09, 0x52, 0x04, 0x6e, 0x61, 0x6d, 0x65, 0x12, 0x37, 0x0a, 0x0f, 0x70, 0x61, 0x72, 0x61, 0x6d,\n+\t0x65, 0x74, 0x65, 0x72, 0x5f, 0x74, 0x79, 0x70, 0x65, 0x73, 0x18, 0x02, 0x20, 0x03, 0x28, 0x0b,\n+\t0x32, 0x0e, 0x2e, 0x63, 0x65, 0x6c, 0x2e, 0x65, 0x78, 0x70, 0x72, 0x2e, 0x54, 0x79, 0x70, 0x65,\n+\t0x52, 0x0e, 0x70, 0x61, 0x72, 0x61, 0x6d, 0x65, 0x74, 0x65, 0x72, 0x54, 0x79, 0x70, 0x65, 0x73,\n+\t0x22, 0x73, 0x0a, 0x0d, 0x50, 0x72, 0x69, 0x6d, 0x69, 0x74, 0x69, 0x76, 0x65, 0x54, 0x79, 0x70,\n+\t0x65, 0x12, 0x1e, 0x0a, 0x1a, 0x50, 0x52, 0x49, 0x4d, 0x49, 0x54, 0x49, 0x56, 0x45, 0x5f, 0x54,\n+\t0x59, 0x50, 0x45, 0x5f, 0x55, 0x4e, 0x53, 0x50, 0x45, 0x43, 0x49, 0x46, 0x49, 0x45, 0x44, 0x10,\n+\t0x00, 0x12, 0x08, 0x0a, 0x04, 0x42, 0x4f, 0x4f, 0x4c, 0x10, 0x01, 0x12, 0x09, 0x0a, 0x05, 0x49,\n+\t0x4e, 0x54, 0x36, 0x34, 0x10, 0x02, 0x12, 0x0a, 0x0a, 0x06, 0x55, 0x49, 0x4e, 0x54, 0x36, 0x34,\n+\t0x10, 0x03, 0x12, 0x0a, 0x0a, 0x06, 0x44, 0x4f, 0x55, 0x42, 0x4c, 0x45, 0x10, 0x04, 0x12, 0x0a,\n+\t0x0a, 0x06, 0x53, 0x54, 0x52, 0x49, 0x4e, 0x47, 0x10, 0x05, 0x12, 0x09, 0x0a, 0x05, 0x42, 0x59,\n+\t0x54, 0x45, 0x53, 0x10, 0x06, 0x22, 0x56, 0x0a, 0x0d, 0x57, 0x65, 0x6c, 0x6c, 0x4b, 0x6e, 0x6f,\n+\t0x77, 0x6e, 0x54, 0x79, 0x70, 0x65, 0x12, 0x1f, 0x0a, 0x1b, 0x57, 0x45, 0x4c, 0x4c, 0x5f, 0x4b,\n+\t0x4e, 0x4f, 0x57, 0x4e, 0x5f, 0x54, 0x59, 0x50, 0x45, 0x5f, 0x55, 0x4e, 0x53, 0x50, 0x45, 0x43,\n+\t0x49, 0x46, 0x49, 0x45, 0x44, 0x10, 0x00, 0x12, 0x07, 0x0a, 0x03, 0x41, 0x4e, 0x59, 0x10, 0x01,\n+\t0x12, 0x0d, 0x0a, 0x09, 0x54, 0x49, 0x4d, 0x45, 0x53, 0x54, 0x41, 0x4d, 0x50, 0x10, 0x02, 0x12,\n+\t0x0c, 0x0a, 0x08, 0x44, 0x55, 0x52, 0x41, 0x54, 0x49, 0x4f, 0x4e, 0x10, 0x03, 0x42, 0x0b, 0x0a,\n+\t0x09, 0x74, 0x79, 0x70, 0x65, 0x5f, 0x6b, 0x69, 0x6e, 0x64, 0x22, 0xc2, 0x04, 0x0a, 0x04, 0x44,\n+\t0x65, 0x63, 0x6c, 0x12, 0x12, 0x0a, 0x04, 0x6e, 0x61, 0x6d, 0x65, 0x18, 0x01, 0x20, 0x01, 0x28,\n+\t0x09, 0x52, 0x04, 0x6e, 0x61, 0x6d, 0x65, 0x12, 0x30, 0x0a, 0x05, 0x69, 0x64, 0x65, 0x6e, 0x74,\n+\t0x18, 0x02, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x18, 0x2e, 0x63, 0x65, 0x6c, 0x2e, 0x65, 0x78, 0x70,\n+\t0x72, 0x2e, 0x44, 0x65, 0x63, 0x6c, 0x2e, 0x49, 0x64, 0x65, 0x6e, 0x74, 0x44, 0x65, 0x63, 0x6c,\n+\t0x48, 0x00, 0x52, 0x05, 0x69, 0x64, 0x65, 0x6e, 0x74, 0x12, 0x39, 0x0a, 0x08, 0x66, 0x75, 0x6e,\n+\t0x63, 0x74, 0x69, 0x6f, 0x6e, 0x18, 0x03, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x1b, 0x2e, 0x63, 0x65,\n+\t0x6c, 0x2e, 0x65, 0x78, 0x70, 0x72, 0x2e, 0x44, 0x65, 0x63, 0x6c, 0x2e, 0x46, 0x75, 0x6e, 0x63,\n+\t0x74, 0x69, 0x6f, 0x6e, 0x44, 0x65, 0x63, 0x6c, 0x48, 0x00, 0x52, 0x08, 0x66, 0x75, 0x6e, 0x63,\n+\t0x74, 0x69, 0x6f, 0x6e, 0x1a, 0x6b, 0x0a, 0x09, 0x49, 0x64, 0x65, 0x6e, 0x74, 0x44, 0x65, 0x63,\n+\t0x6c, 0x12, 0x22, 0x0a, 0x04, 0x74, 0x79, 0x70, 0x65, 0x18, 0x01, 0x20, 0x01, 0x28, 0x0b, 0x32,\n+\t0x0e, 0x2e, 0x63, 0x65, 0x6c, 0x2e, 0x65, 0x78, 0x70, 0x72, 0x2e, 0x54, 0x79, 0x70, 0x65, 0x52,\n+\t0x04, 0x74, 0x79, 0x70, 0x65, 0x12, 0x28, 0x0a, 0x05, 0x76, 0x61, 0x6c, 0x75, 0x65, 0x18, 0x02,\n+\t0x20, 0x01, 0x28, 0x0b, 0x32, 0x12, 0x2e, 0x63, 0x65, 0x6c, 0x2e, 0x65, 0x78, 0x70, 0x72, 0x2e,\n+\t0x43, 0x6f, 0x6e, 0x73, 0x74, 0x61, 0x6e, 0x74, 0x52, 0x05, 0x76, 0x61, 0x6c, 0x75, 0x65, 0x12,\n+\t0x10, 0x0a, 0x03, 0x64, 0x6f, 0x63, 0x18, 0x03, 0x20, 0x01, 0x28, 0x09, 0x52, 0x03, 0x64, 0x6f,\n+\t0x63, 0x1a, 0xbe, 0x02, 0x0a, 0x0c, 0x46, 0x75, 0x6e, 0x63, 0x74, 0x69, 0x6f, 0x6e, 0x44, 0x65,\n+\t0x63, 0x6c, 0x12, 0x42, 0x0a, 0x09, 0x6f, 0x76, 0x65, 0x72, 0x6c, 0x6f, 0x61, 0x64, 0x73, 0x18,\n+\t0x01, 0x20, 0x03, 0x28, 0x0b, 0x32, 0x24, 0x2e, 0x63, 0x65, 0x6c, 0x2e, 0x65, 0x78, 0x70, 0x72,\n+\t0x2e, 0x44, 0x65, 0x63, 0x6c, 0x2e, 0x46, 0x75, 0x6e, 0x63, 0x74, 0x69, 0x6f, 0x6e, 0x44, 0x65,\n+\t0x63, 0x6c, 0x2e, 0x4f, 0x76, 0x65, 0x72, 0x6c, 0x6f, 0x61, 0x64, 0x52, 0x09, 0x6f, 0x76, 0x65,\n+\t0x72, 0x6c, 0x6f, 0x61, 0x64, 0x73, 0x1a, 0xe9, 0x01, 0x0a, 0x08, 0x4f, 0x76, 0x65, 0x72, 0x6c,\n+\t0x6f, 0x61, 0x64, 0x12, 0x1f, 0x0a, 0x0b, 0x6f, 0x76, 0x65, 0x72, 0x6c, 0x6f, 0x61, 0x64, 0x5f,\n+\t0x69, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x0a, 0x6f, 0x76, 0x65, 0x72, 0x6c, 0x6f,\n+\t0x61, 0x64, 0x49, 0x64, 0x12, 0x26, 0x0a, 0x06, 0x70, 0x61, 0x72, 0x61, 0x6d, 0x73, 0x18, 0x02,\n+\t0x20, 0x03, 0x28, 0x0b, 0x32, 0x0e, 0x2e, 0x63, 0x65, 0x6c, 0x2e, 0x65, 0x78, 0x70, 0x72, 0x2e,\n+\t0x54, 0x79, 0x70, 0x65, 0x52, 0x06, 0x70, 0x61, 0x72, 0x61, 0x6d, 0x73, 0x12, 0x1f, 0x0a, 0x0b,\n+\t0x74, 0x79, 0x70, 0x65, 0x5f, 0x70, 0x61, 0x72, 0x61, 0x6d, 0x73, 0x18, 0x03, 0x20, 0x03, 0x28,\n+\t0x09, 0x52, 0x0a, 0x74, 0x79, 0x70, 0x65, 0x50, 0x61, 0x72, 0x61, 0x6d, 0x73, 0x12, 0x2f, 0x0a,\n+\t0x0b, 0x72, 0x65, 0x73, 0x75, 0x6c, 0x74, 0x5f, 0x74, 0x79, 0x70, 0x65, 0x18, 0x04, 0x20, 0x01,\n+\t0x28, 0x0b, 0x32, 0x0e, 0x2e, 0x63, 0x65, 0x6c, 0x2e, 0x65, 0x78, 0x70, 0x72, 0x2e, 0x54, 0x79,\n+\t0x70, 0x65, 0x52, 0x0a, 0x72, 0x65, 0x73, 0x75, 0x6c, 0x74, 0x54, 0x79, 0x70, 0x65, 0x12, 0x30,\n+\t0x0a, 0x14, 0x69, 0x73, 0x5f, 0x69, 0x6e, 0x73, 0x74, 0x61, 0x6e, 0x63, 0x65, 0x5f, 0x66, 0x75,\n+\t0x6e, 0x63, 0x74, 0x69, 0x6f, 0x6e, 0x18, 0x05, 0x20, 0x01, 0x28, 0x08, 0x52, 0x12, 0x69, 0x73,\n+\t0x49, 0x6e, 0x73, 0x74, 0x61, 0x6e, 0x63, 0x65, 0x46, 0x75, 0x6e, 0x63, 0x74, 0x69, 0x6f, 0x6e,\n+\t0x12, 0x10, 0x0a, 0x03, 0x64, 0x6f, 0x63, 0x18, 0x06, 0x20, 0x01, 0x28, 0x09, 0x52, 0x03, 0x64,\n+\t0x6f, 0x63, 0x42, 0x0b, 0x0a, 0x09, 0x64, 0x65, 0x63, 0x6c, 0x5f, 0x6b, 0x69, 0x6e, 0x64, 0x22,\n+\t0x6a, 0x0a, 0x09, 0x52, 0x65, 0x66, 0x65, 0x72, 0x65, 0x6e, 0x63, 0x65, 0x12, 0x12, 0x0a, 0x04,\n+\t0x6e, 0x61, 0x6d, 0x65, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x04, 0x6e, 0x61, 0x6d, 0x65,\n+\t0x12, 0x1f, 0x0a, 0x0b, 0x6f, 0x76, 0x65, 0x72, 0x6c, 0x6f, 0x61, 0x64, 0x5f, 0x69, 0x64, 0x18,\n+\t0x03, 0x20, 0x03, 0x28, 0x09, 0x52, 0x0a, 0x6f, 0x76, 0x65, 0x72, 0x6c, 0x6f, 0x61, 0x64, 0x49,\n+\t0x64, 0x12, 0x28, 0x0a, 0x05, 0x76, 0x61, 0x6c, 0x75, 0x65, 0x18, 0x04, 0x20, 0x01, 0x28, 0x0b,\n+\t0x32, 0x12, 0x2e, 0x63, 0x65, 0x6c, 0x2e, 0x65, 0x78, 0x70, 0x72, 0x2e, 0x43, 0x6f, 0x6e, 0x73,\n+\t0x74, 0x61, 0x6e, 0x74, 0x52, 0x05, 0x76, 0x61, 0x6c, 0x75, 0x65, 0x42, 0x2c, 0x0a, 0x0c, 0x64,\n+\t0x65, 0x76, 0x2e, 0x63, 0x65, 0x6c, 0x2e, 0x65, 0x78, 0x70, 0x72, 0x42, 0x09, 0x44, 0x65, 0x63,\n+\t0x6c, 0x50, 0x72, 0x6f, 0x74, 0x6f, 0x50, 0x01, 0x5a, 0x0c, 0x63, 0x65, 0x6c, 0x2e, 0x64, 0x65,\n+\t0x76, 0x2f, 0x65, 0x78, 0x70, 0x72, 0xf8, 0x01, 0x01, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74, 0x6f,\n+\t0x33,\n+}\n+\n+var (\n+\tfile_cel_expr_checked_proto_rawDescOnce sync.Once\n+\tfile_cel_expr_checked_proto_rawDescData = file_cel_expr_checked_proto_rawDesc\n+)\n+\n+func file_cel_expr_checked_proto_rawDescGZIP() []byte {\n+\tfile_cel_expr_checked_proto_rawDescOnce.Do(func() {\n+\t\tfile_cel_expr_checked_proto_rawDescData = protoimpl.X.CompressGZIP(file_cel_expr_checked_proto_rawDescData)\n+\t})\n+\treturn file_cel_expr_checked_proto_rawDescData\n+}\n+\n+var file_cel_expr_checked_proto_enumTypes = make([]protoimpl.EnumInfo, 2)\n+var file_cel_expr_checked_proto_msgTypes = make([]protoimpl.MessageInfo, 13)\n+var file_cel_expr_checked_proto_goTypes = []interface{}{\n+\t(Type_PrimitiveType)(0),            // 0: cel.expr.Type.PrimitiveType\n+\t(Type_WellKnownType)(0),            // 1: cel.expr.Type.WellKnownType\n+\t(*CheckedExpr)(nil),                // 2: cel.expr.CheckedExpr\n+\t(*Type)(nil),                       // 3: cel.expr.Type\n+\t(*Decl)(nil),                       // 4: cel.expr.Decl\n+\t(*Reference)(nil),                  // 5: cel.expr.Reference\n+\tnil,                                // 6: cel.expr.CheckedExpr.ReferenceMapEntry\n+\tnil,                                // 7: cel.expr.CheckedExpr.TypeMapEntry\n+\t(*Type_ListType)(nil),              // 8: cel.expr.Type.ListType\n+\t(*Type_MapType)(nil),               // 9: cel.expr.Type.MapType\n+\t(*Type_FunctionType)(nil),          // 10: cel.expr.Type.FunctionType\n+\t(*Type_AbstractType)(nil),          // 11: cel.expr.Type.AbstractType\n+\t(*Decl_IdentDecl)(nil),             // 12: cel.expr.Decl.IdentDecl\n+\t(*Decl_FunctionDecl)(nil),          // 13: cel.expr.Decl.FunctionDecl\n+\t(*Decl_FunctionDecl_Overload)(nil), // 14: cel.expr.Decl.FunctionDecl.Overload\n+\t(*SourceInfo)(nil),                 // 15: cel.expr.SourceInfo\n+\t(*Expr)(nil),                       // 16: cel.expr.Expr\n+\t(*emptypb.Empty)(nil),              // 17: google.protobuf.Empty\n+\t(structpb.NullValue)(0),            // 18: google.protobuf.NullValue\n+\t(*Constant)(nil),                   // 19: cel.expr.Constant\n+}\n+var file_cel_expr_checked_proto_depIdxs = []int32{\n+\t6,  // 0: cel.expr.CheckedExpr.reference_map:type_name -> cel.expr.CheckedExpr.ReferenceMapEntry\n+\t7,  // 1: cel.expr.CheckedExpr.type_map:type_name -> cel.expr.CheckedExpr.TypeMapEntry\n+\t15, // 2: cel.expr.CheckedExpr.source_info:type_name -> cel.expr.SourceInfo\n+\t16, // 3: cel.expr.CheckedExpr.expr:type_name -> cel.expr.Expr\n+\t17, // 4: cel.expr.Type.dyn:type_name -> google.protobuf.Empty\n+\t18, // 5: cel.expr.Type.null:type_name -> google.protobuf.NullValue\n+\t0,  // 6: cel.expr.Type.primitive:type_name -> cel.expr.Type.PrimitiveType\n+\t0,  // 7: cel.expr.Type.wrapper:type_name -> cel.expr.Type.PrimitiveType\n+\t1,  // 8: cel.expr.Type.well_known:type_name -> cel.expr.Type.WellKnownType\n+\t8,  // 9: cel.expr.Type.list_type:type_name -> cel.expr.Type.ListType\n+\t9,  // 10: cel.expr.Type.map_type:type_name -> cel.expr.Type.MapType\n+\t10, // 11: cel.expr.Type.function:type_name -> cel.expr.Type.FunctionType\n+\t3,  // 12: cel.expr.Type.type:type_name -> cel.expr.Type\n+\t17, // 13: cel.expr.Type.error:type_name -> google.protobuf.Empty\n+\t11, // 14: cel.expr.Type.abstract_type:type_name -> cel.expr.Type.AbstractType\n+\t12, // 15: cel.expr.Decl.ident:type_name -> cel.expr.Decl.IdentDecl\n+\t13, // 16: cel.expr.Decl.function:type_name -> cel.expr.Decl.FunctionDecl\n+\t19, // 17: cel.expr.Reference.value:type_name -> cel.expr.Constant\n+\t5,  // 18: cel.expr.CheckedExpr.ReferenceMapEntry.value:type_name -> cel.expr.Reference\n+\t3,  // 19: cel.expr.CheckedExpr.TypeMapEntry.value:type_name -> cel.expr.Type\n+\t3,  // 20: cel.expr.Type.ListType.elem_type:type_name -> cel.expr.Type\n+\t3,  // 21: cel.expr.Type.MapType.key_type:type_name -> cel.expr.Type\n+\t3,  // 22: cel.expr.Type.MapType.value_type:type_name -> cel.expr.Type\n+\t3,  // 23: cel.expr.Type.FunctionType.result_type:type_name -> cel.expr.Type\n+\t3,  // 24: cel.expr.Type.FunctionType.arg_types:type_name -> cel.expr.Type\n+\t3,  // 25: cel.expr.Type.AbstractType.parameter_types:type_name -> cel.expr.Type\n+\t3,  // 26: cel.expr.Decl.IdentDecl.type:type_name -> cel.expr.Type\n+\t19, // 27: cel.expr.Decl.IdentDecl.value:type_name -> cel.expr.Constant\n+\t14, // 28: cel.expr.Decl.FunctionDecl.overloads:type_name -> cel.expr.Decl.FunctionDecl.Overload\n+\t3,  // 29: cel.expr.Decl.FunctionDecl.Overload.params:type_name -> cel.expr.Type\n+\t3,  // 30: cel.expr.Decl.FunctionDecl.Overload.result_type:type_name -> cel.expr.Type\n+\t31, // [31:31] is the sub-list for method output_type\n+\t31, // [31:31] is the sub-list for method input_type\n+\t31, // [31:31] is the sub-list for extension type_name\n+\t31, // [31:31] is the sub-list for extension extendee\n+\t0,  // [0:31] is the sub-list for field type_name\n+}\n+\n+func init() { file_cel_expr_checked_proto_init() }\n+func file_cel_expr_checked_proto_init() {\n+\tif File_cel_expr_checked_proto != nil {\n+\t\treturn\n+\t}\n+\tfile_cel_expr_syntax_proto_init()\n+\tif !protoimpl.UnsafeEnabled {\n+\t\tfile_cel_expr_checked_proto_msgTypes[0].Exporter = func(v interface{}, i int) interface{} {\n+\t\t\tswitch v := v.(*CheckedExpr); i {\n+\t\t\tcase 0:\n+\t\t\t\treturn &v.state\n+\t\t\tcase 1:\n+\t\t\t\treturn &v.sizeCache\n+\t\t\tcase 2:\n+\t\t\t\treturn &v.unknownFields\n+\t\t\tdefault:\n+\t\t\t\treturn nil\n+\t\t\t}\n+\t\t}\n+\t\tfile_cel_expr_checked_proto_msgTypes[1].Exporter = func(v interface{}, i int) interface{} {\n+\t\t\tswitch v := v.(*Type); i {\n+\t\t\tcase 0:\n+\t\t\t\treturn &v.state\n+\t\t\tcase 1:\n+\t\t\t\treturn &v.sizeCache\n+\t\t\tcase 2:\n+\t\t\t\treturn &v.unknownFields\n+\t\t\tdefault:\n+\t\t\t\treturn nil\n+\t\t\t}\n+\t\t}\n+\t\tfile_cel_expr_checked_proto_msgTypes[2].Exporter = func(v interface{}, i int) interface{} {\n+\t\t\tswitch v := v.(*Decl); i {\n+\t\t\tcase 0:\n+\t\t\t\treturn &v.state\n+\t\t\tcase 1:\n+\t\t\t\treturn &v.sizeCache\n+\t\t\tcase 2:\n+\t\t\t\treturn &v.unknownFields\n+\t\t\tdefault:\n+\t\t\t\treturn nil\n+\t\t\t}\n+\t\t}\n+\t\tfile_cel_expr_checked_proto_msgTypes[3].Exporter = func(v interface{}, i int) interface{} {\n+\t\t\tswitch v := v.(*Reference); i {\n+\t\t\tcase 0:\n+\t\t\t\treturn &v.state\n+\t\t\tcase 1:\n+\t\t\t\treturn &v.sizeCache\n+\t\t\tcase 2:\n+\t\t\t\treturn &v.unknownFields\n+\t\t\tdefault:\n+\t\t\t\treturn nil\n+\t\t\t}\n+\t\t}\n+\t\tfile_cel_expr_checked_proto_msgTypes[6].Exporter = func(v interface{}, i int) interface{} {\n+\t\t\tswitch v := v.(*Type_ListType); i {\n+\t\t\tcase 0:\n+\t\t\t\treturn &v.state\n+\t\t\tcase 1:\n+\t\t\t\treturn &v.sizeCache\n+\t\t\tcase 2:\n+\t\t\t\treturn &v.unknownFields\n+\t\t\tdefault:\n+\t\t\t\treturn nil\n+\t\t\t}\n+\t\t}\n+\t\tfile_cel_expr_checked_proto_msgTypes[7].Exporter = func(v interface{}, i int) interface{} {\n+\t\t\tswitch v := v.(*Type_MapType); i {\n+\t\t\tcase 0:\n+\t\t\t\treturn &v.state\n+\t\t\tcase 1:\n+\t\t\t\treturn &v.sizeCache\n+\t\t\tcase 2:\n+\t\t\t\treturn &v.unknownFields\n+\t\t\tdefault:\n+\t\t\t\treturn nil\n+\t\t\t}\n+\t\t}\n+\t\tfile_cel_expr_checked_proto_msgTypes[8].Exporter = func(v interface{}, i int) interface{} {\n+\t\t\tswitch v := v.(*Type_FunctionType); i {\n+\t\t\tcase 0:\n+\t\t\t\treturn &v.state\n+\t\t\tcase 1:\n+\t\t\t\treturn &v.sizeCache\n+\t\t\tcase 2:\n+\t\t\t\treturn &v.unknownFields\n+\t\t\tdefault:\n+\t\t\t\treturn nil\n+\t\t\t}\n+\t\t}\n+\t\tfile_cel_expr_checked_proto_msgTypes[9].Exporter = func(v interface{}, i int) interface{} {\n+\t\t\tswitch v := v.(*Type_AbstractType); i {\n+\t\t\tcase 0:\n+\t\t\t\treturn &v.state\n+\t\t\tcase 1:\n+\t\t\t\treturn &v.sizeCache\n+\t\t\tcase 2:\n+\t\t\t\treturn &v.unknownFields\n+\t\t\tdefault:\n+\t\t\t\treturn nil\n+\t\t\t}\n+\t\t}\n+\t\tfile_cel_expr_checked_proto_msgTypes[10].Exporter = func(v interface{}, i int) interface{} {\n+\t\t\tswitch v := v.(*Decl_IdentDecl); i {\n+\t\t\tcase 0:\n+\t\t\t\treturn &v.state\n+\t\t\tcase 1:\n+\t\t\t\treturn &v.sizeCache\n+\t\t\tcase 2:\n+\t\t\t\treturn &v.unknownFields\n+\t\t\tdefault:\n+\t\t\t\treturn nil\n+\t\t\t}\n+\t\t}\n+\t\tfile_cel_expr_checked_proto_msgTypes[11].Exporter = func(v interface{}, i int) interface{} {\n+\t\t\tswitch v := v.(*Decl_FunctionDecl); i {\n+\t\t\tcase 0:\n+\t\t\t\treturn &v.state\n+\t\t\tcase 1:\n+\t\t\t\treturn &v.sizeCache\n+\t\t\tcase 2:\n+\t\t\t\treturn &v.unknownFields\n+\t\t\tdefault:\n+\t\t\t\treturn nil\n+\t\t\t}\n+\t\t}\n+\t\tfile_cel_expr_checked_proto_msgTypes[12].Exporter = func(v interface{}, i int) interface{} {\n+\t\t\tswitch v := v.(*Decl_FunctionDecl_Overload); i {\n+\t\t\tcase 0:\n+\t\t\t\treturn &v.state\n+\t\t\tcase 1:\n+\t\t\t\treturn &v.sizeCache\n+\t\t\tcase 2:\n+\t\t\t\treturn &v.unknownFields\n+\t\t\tdefault:\n+\t\t\t\treturn nil\n+\t\t\t}\n+\t\t}\n+\t}\n+\tfile_cel_expr_checked_proto_msgTypes[1].OneofWrappers = []interface{}{\n+\t\t(*Type_Dyn)(nil),\n+\t\t(*Type_Null)(nil),\n+\t\t(*Type_Primitive)(nil),\n+\t\t(*Type_Wrapper)(nil),\n+\t\t(*Type_WellKnown)(nil),\n+\t\t(*Type_ListType_)(nil),\n+\t\t(*Type_MapType_)(nil),\n+\t\t(*Type_Function)(nil),\n+\t\t(*Type_MessageType)(nil),\n+\t\t(*Type_TypeParam)(nil),\n+\t\t(*Type_Type)(nil),\n+\t\t(*Type_Error)(nil),\n+\t\t(*Type_AbstractType_)(nil),\n+\t}\n+\tfile_cel_expr_checked_proto_msgTypes[2].OneofWrappers = []interface{}{\n+\t\t(*Decl_Ident)(nil),\n+\t\t(*Decl_Function)(nil),\n+\t}\n+\ttype x struct{}\n+\tout := protoimpl.TypeBuilder{\n+\t\tFile: protoimpl.DescBuilder{\n+\t\t\tGoPackagePath: reflect.TypeOf(x{}).PkgPath(),\n+\t\t\tRawDescriptor: file_cel_expr_checked_proto_rawDesc,\n+\t\t\tNumEnums:      2,\n+\t\t\tNumMessages:   13,\n+\t\t\tNumExtensions: 0,\n+\t\t\tNumServices:   0,\n+\t\t},\n+\t\tGoTypes:           file_cel_expr_checked_proto_goTypes,\n+\t\tDependencyIndexes: file_cel_expr_checked_proto_depIdxs,\n+\t\tEnumInfos:         file_cel_expr_checked_proto_enumTypes,\n+\t\tMessageInfos:      file_cel_expr_checked_proto_msgTypes,\n+\t}.Build()\n+\tFile_cel_expr_checked_proto = out.File\n+\tfile_cel_expr_checked_proto_rawDesc = nil\n+\tfile_cel_expr_checked_proto_goTypes = nil\n+\tfile_cel_expr_checked_proto_depIdxs = nil\n+}\ndiff --git a/debian/extra/vendor/cel.dev/expr/cloudbuild.yaml b/debian/extra/vendor/cel.dev/expr/cloudbuild.yaml\nnew file mode 100644\nindex 0000000..c40881f\n--- /dev/null\n+++ b/debian/extra/vendor/cel.dev/expr/cloudbuild.yaml\n@@ -0,0 +1,9 @@\n+steps:\n+- name: 'gcr.io/cloud-builders/bazel:7.0.1'\n+  entrypoint: bazel\n+  args: ['build', '...']\n+  id: bazel-build\n+  waitFor: ['-']\n+timeout: 15m\n+options:\n+  machineType: 'N1_HIGHCPU_32'\ndiff --git a/debian/extra/vendor/cel.dev/expr/eval.pb.go b/debian/extra/vendor/cel.dev/expr/eval.pb.go\nnew file mode 100644\nindex 0000000..8f651f9\n--- /dev/null\n+++ b/debian/extra/vendor/cel.dev/expr/eval.pb.go\n@@ -0,0 +1,490 @@\n+// Code generated by protoc-gen-go. DO NOT EDIT.\n+// versions:\n+// \tprotoc-gen-go v1.28.1\n+// \tprotoc        v3.21.5\n+// source: cel/expr/eval.proto\n+\n+package expr\n+\n+import (\n+\tstatus \"google.golang.org/genproto/googleapis/rpc/status\"\n+\tprotoreflect \"google.golang.org/protobuf/reflect/protoreflect\"\n+\tprotoimpl \"google.golang.org/protobuf/runtime/protoimpl\"\n+\treflect \"reflect\"\n+\tsync \"sync\"\n+)\n+\n+const (\n+\t// Verify that this generated code is sufficiently up-to-date.\n+\t_ = protoimpl.EnforceVersion(20 - protoimpl.MinVersion)\n+\t// Verify that runtime/protoimpl is sufficiently up-to-date.\n+\t_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)\n+)\n+\n+type EvalState struct {\n+\tstate         protoimpl.MessageState\n+\tsizeCache     protoimpl.SizeCache\n+\tunknownFields protoimpl.UnknownFields\n+\n+\tValues  []*ExprValue        `protobuf:\"bytes,1,rep,name=values,proto3\" json:\"values,omitempty\"`\n+\tResults []*EvalState_Result `protobuf:\"bytes,3,rep,name=results,proto3\" json:\"results,omitempty\"`\n+}\n+\n+func (x *EvalState) Reset() {\n+\t*x = EvalState{}\n+\tif protoimpl.UnsafeEnabled {\n+\t\tmi := &file_cel_expr_eval_proto_msgTypes[0]\n+\t\tms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))\n+\t\tms.StoreMessageInfo(mi)\n+\t}\n+}\n+\n+func (x *EvalState) String() string {\n+\treturn protoimpl.X.MessageStringOf(x)\n+}\n+\n+func (*EvalState) ProtoMessage() {}\n+\n+func (x *EvalState) ProtoReflect() protoreflect.Message {\n+\tmi := &file_cel_expr_eval_proto_msgTypes[0]\n+\tif protoimpl.UnsafeEnabled && x != nil {\n+\t\tms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))\n+\t\tif ms.LoadMessageInfo() == nil {\n+\t\t\tms.StoreMessageInfo(mi)\n+\t\t}\n+\t\treturn ms\n+\t}\n+\treturn mi.MessageOf(x)\n+}\n+\n+// Deprecated: Use EvalState.ProtoReflect.Descriptor instead.\n+func (*EvalState) Descriptor() ([]byte, []int) {\n+\treturn file_cel_expr_eval_proto_rawDescGZIP(), []int{0}\n+}\n+\n+func (x *EvalState) GetValues() []*ExprValue {\n+\tif x != nil {\n+\t\treturn x.Values\n+\t}\n+\treturn nil\n+}\n+\n+func (x *EvalState) GetResults() []*EvalState_Result {\n+\tif x != nil {\n+\t\treturn x.Results\n+\t}\n+\treturn nil\n+}\n+\n+type ExprValue struct {\n+\tstate         protoimpl.MessageState\n+\tsizeCache     protoimpl.SizeCache\n+\tunknownFields protoimpl.UnknownFields\n+\n+\t// Types that are assignable to Kind:\n+\t//\n+\t//\t*ExprValue_Value\n+\t//\t*ExprValue_Error\n+\t//\t*ExprValue_Unknown\n+\tKind isExprValue_Kind `protobuf_oneof:\"kind\"`\n+}\n+\n+func (x *ExprValue) Reset() {\n+\t*x = ExprValue{}\n+\tif protoimpl.UnsafeEnabled {\n+\t\tmi := &file_cel_expr_eval_proto_msgTypes[1]\n+\t\tms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))\n+\t\tms.StoreMessageInfo(mi)\n+\t}\n+}\n+\n+func (x *ExprValue) String() string {\n+\treturn protoimpl.X.MessageStringOf(x)\n+}\n+\n+func (*ExprValue) ProtoMessage() {}\n+\n+func (x *ExprValue) ProtoReflect() protoreflect.Message {\n+\tmi := &file_cel_expr_eval_proto_msgTypes[1]\n+\tif protoimpl.UnsafeEnabled && x != nil {\n+\t\tms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))\n+\t\tif ms.LoadMessageInfo() == nil {\n+\t\t\tms.StoreMessageInfo(mi)\n+\t\t}\n+\t\treturn ms\n+\t}\n+\treturn mi.MessageOf(x)\n+}\n+\n+// Deprecated: Use ExprValue.ProtoReflect.Descriptor instead.\n+func (*ExprValue) Descriptor() ([]byte, []int) {\n+\treturn file_cel_expr_eval_proto_rawDescGZIP(), []int{1}\n+}\n+\n+func (m *ExprValue) GetKind() isExprValue_Kind {\n+\tif m != nil {\n+\t\treturn m.Kind\n+\t}\n+\treturn nil\n+}\n+\n+func (x *ExprValue) GetValue() *Value {\n+\tif x, ok := x.GetKind().(*ExprValue_Value); ok {\n+\t\treturn x.Value\n+\t}\n+\treturn nil\n+}\n+\n+func (x *ExprValue) GetError() *ErrorSet {\n+\tif x, ok := x.GetKind().(*ExprValue_Error); ok {\n+\t\treturn x.Error\n+\t}\n+\treturn nil\n+}\n+\n+func (x *ExprValue) GetUnknown() *UnknownSet {\n+\tif x, ok := x.GetKind().(*ExprValue_Unknown); ok {\n+\t\treturn x.Unknown\n+\t}\n+\treturn nil\n+}\n+\n+type isExprValue_Kind interface {\n+\tisExprValue_Kind()\n+}\n+\n+type ExprValue_Value struct {\n+\tValue *Value `protobuf:\"bytes,1,opt,name=value,proto3,oneof\"`\n+}\n+\n+type ExprValue_Error struct {\n+\tError *ErrorSet `protobuf:\"bytes,2,opt,name=error,proto3,oneof\"`\n+}\n+\n+type ExprValue_Unknown struct {\n+\tUnknown *UnknownSet `protobuf:\"bytes,3,opt,name=unknown,proto3,oneof\"`\n+}\n+\n+func (*ExprValue_Value) isExprValue_Kind() {}\n+\n+func (*ExprValue_Error) isExprValue_Kind() {}\n+\n+func (*ExprValue_Unknown) isExprValue_Kind() {}\n+\n+type ErrorSet struct {\n+\tstate         protoimpl.MessageState\n+\tsizeCache     protoimpl.SizeCache\n+\tunknownFields protoimpl.UnknownFields\n+\n+\tErrors []*status.Status `protobuf:\"bytes,1,rep,name=errors,proto3\" json:\"errors,omitempty\"`\n+}\n+\n+func (x *ErrorSet) Reset() {\n+\t*x = ErrorSet{}\n+\tif protoimpl.UnsafeEnabled {\n+\t\tmi := &file_cel_expr_eval_proto_msgTypes[2]\n+\t\tms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))\n+\t\tms.StoreMessageInfo(mi)\n+\t}\n+}\n+\n+func (x *ErrorSet) String() string {\n+\treturn protoimpl.X.MessageStringOf(x)\n+}\n+\n+func (*ErrorSet) ProtoMessage() {}\n+\n+func (x *ErrorSet) ProtoReflect() protoreflect.Message {\n+\tmi := &file_cel_expr_eval_proto_msgTypes[2]\n+\tif protoimpl.UnsafeEnabled && x != nil {\n+\t\tms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))\n+\t\tif ms.LoadMessageInfo() == nil {\n+\t\t\tms.StoreMessageInfo(mi)\n+\t\t}\n+\t\treturn ms\n+\t}\n+\treturn mi.MessageOf(x)\n+}\n+\n+// Deprecated: Use ErrorSet.ProtoReflect.Descriptor instead.\n+func (*ErrorSet) Descriptor() ([]byte, []int) {\n+\treturn file_cel_expr_eval_proto_rawDescGZIP(), []int{2}\n+}\n+\n+func (x *ErrorSet) GetErrors() []*status.Status {\n+\tif x != nil {\n+\t\treturn x.Errors\n+\t}\n+\treturn nil\n+}\n+\n+type UnknownSet struct {\n+\tstate         protoimpl.MessageState\n+\tsizeCache     protoimpl.SizeCache\n+\tunknownFields protoimpl.UnknownFields\n+\n+\tExprs []int64 `protobuf:\"varint,1,rep,packed,name=exprs,proto3\" json:\"exprs,omitempty\"`\n+}\n+\n+func (x *UnknownSet) Reset() {\n+\t*x = UnknownSet{}\n+\tif protoimpl.UnsafeEnabled {\n+\t\tmi := &file_cel_expr_eval_proto_msgTypes[3]\n+\t\tms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))\n+\t\tms.StoreMessageInfo(mi)\n+\t}\n+}\n+\n+func (x *UnknownSet) String() string {\n+\treturn protoimpl.X.MessageStringOf(x)\n+}\n+\n+func (*UnknownSet) ProtoMessage() {}\n+\n+func (x *UnknownSet) ProtoReflect() protoreflect.Message {\n+\tmi := &file_cel_expr_eval_proto_msgTypes[3]\n+\tif protoimpl.UnsafeEnabled && x != nil {\n+\t\tms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))\n+\t\tif ms.LoadMessageInfo() == nil {\n+\t\t\tms.StoreMessageInfo(mi)\n+\t\t}\n+\t\treturn ms\n+\t}\n+\treturn mi.MessageOf(x)\n+}\n+\n+// Deprecated: Use UnknownSet.ProtoReflect.Descriptor instead.\n+func (*UnknownSet) Descriptor() ([]byte, []int) {\n+\treturn file_cel_expr_eval_proto_rawDescGZIP(), []int{3}\n+}\n+\n+func (x *UnknownSet) GetExprs() []int64 {\n+\tif x != nil {\n+\t\treturn x.Exprs\n+\t}\n+\treturn nil\n+}\n+\n+type EvalState_Result struct {\n+\tstate         protoimpl.MessageState\n+\tsizeCache     protoimpl.SizeCache\n+\tunknownFields protoimpl.UnknownFields\n+\n+\tExpr  int64 `protobuf:\"varint,1,opt,name=expr,proto3\" json:\"expr,omitempty\"`\n+\tValue int64 `protobuf:\"varint,2,opt,name=value,proto3\" json:\"value,omitempty\"`\n+}\n+\n+func (x *EvalState_Result) Reset() {\n+\t*x = EvalState_Result{}\n+\tif protoimpl.UnsafeEnabled {\n+\t\tmi := &file_cel_expr_eval_proto_msgTypes[4]\n+\t\tms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))\n+\t\tms.StoreMessageInfo(mi)\n+\t}\n+}\n+\n+func (x *EvalState_Result) String() string {\n+\treturn protoimpl.X.MessageStringOf(x)\n+}\n+\n+func (*EvalState_Result) ProtoMessage() {}\n+\n+func (x *EvalState_Result) ProtoReflect() protoreflect.Message {\n+\tmi := &file_cel_expr_eval_proto_msgTypes[4]\n+\tif protoimpl.UnsafeEnabled && x != nil {\n+\t\tms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))\n+\t\tif ms.LoadMessageInfo() == nil {\n+\t\t\tms.StoreMessageInfo(mi)\n+\t\t}\n+\t\treturn ms\n+\t}\n+\treturn mi.MessageOf(x)\n+}\n+\n+// Deprecated: Use EvalState_Result.ProtoReflect.Descriptor instead.\n+func (*EvalState_Result) Descriptor() ([]byte, []int) {\n+\treturn file_cel_expr_eval_proto_rawDescGZIP(), []int{0, 0}\n+}\n+\n+func (x *EvalState_Result) GetExpr() int64 {\n+\tif x != nil {\n+\t\treturn x.Expr\n+\t}\n+\treturn 0\n+}\n+\n+func (x *EvalState_Result) GetValue() int64 {\n+\tif x != nil {\n+\t\treturn x.Value\n+\t}\n+\treturn 0\n+}\n+\n+var File_cel_expr_eval_proto protoreflect.FileDescriptor\n+\n+var file_cel_expr_eval_proto_rawDesc = []byte{\n+\t0x0a, 0x13, 0x63, 0x65, 0x6c, 0x2f, 0x65, 0x78, 0x70, 0x72, 0x2f, 0x65, 0x76, 0x61, 0x6c, 0x2e,\n+\t0x70, 0x72, 0x6f, 0x74, 0x6f, 0x12, 0x08, 0x63, 0x65, 0x6c, 0x2e, 0x65, 0x78, 0x70, 0x72, 0x1a,\n+\t0x14, 0x63, 0x65, 0x6c, 0x2f, 0x65, 0x78, 0x70, 0x72, 0x2f, 0x76, 0x61, 0x6c, 0x75, 0x65, 0x2e,\n+\t0x70, 0x72, 0x6f, 0x74, 0x6f, 0x1a, 0x17, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2f, 0x72, 0x70,\n+\t0x63, 0x2f, 0x73, 0x74, 0x61, 0x74, 0x75, 0x73, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x22, 0xa2,\n+\t0x01, 0x0a, 0x09, 0x45, 0x76, 0x61, 0x6c, 0x53, 0x74, 0x61, 0x74, 0x65, 0x12, 0x2b, 0x0a, 0x06,\n+\t0x76, 0x61, 0x6c, 0x75, 0x65, 0x73, 0x18, 0x01, 0x20, 0x03, 0x28, 0x0b, 0x32, 0x13, 0x2e, 0x63,\n+\t0x65, 0x6c, 0x2e, 0x65, 0x78, 0x70, 0x72, 0x2e, 0x45, 0x78, 0x70, 0x72, 0x56, 0x61, 0x6c, 0x75,\n+\t0x65, 0x52, 0x06, 0x76, 0x61, 0x6c, 0x75, 0x65, 0x73, 0x12, 0x34, 0x0a, 0x07, 0x72, 0x65, 0x73,\n+\t0x75, 0x6c, 0x74, 0x73, 0x18, 0x03, 0x20, 0x03, 0x28, 0x0b, 0x32, 0x1a, 0x2e, 0x63, 0x65, 0x6c,\n+\t0x2e, 0x65, 0x78, 0x70, 0x72, 0x2e, 0x45, 0x76, 0x61, 0x6c, 0x53, 0x74, 0x61, 0x74, 0x65, 0x2e,\n+\t0x52, 0x65, 0x73, 0x75, 0x6c, 0x74, 0x52, 0x07, 0x72, 0x65, 0x73, 0x75, 0x6c, 0x74, 0x73, 0x1a,\n+\t0x32, 0x0a, 0x06, 0x52, 0x65, 0x73, 0x75, 0x6c, 0x74, 0x12, 0x12, 0x0a, 0x04, 0x65, 0x78, 0x70,\n+\t0x72, 0x18, 0x01, 0x20, 0x01, 0x28, 0x03, 0x52, 0x04, 0x65, 0x78, 0x70, 0x72, 0x12, 0x14, 0x0a,\n+\t0x05, 0x76, 0x61, 0x6c, 0x75, 0x65, 0x18, 0x02, 0x20, 0x01, 0x28, 0x03, 0x52, 0x05, 0x76, 0x61,\n+\t0x6c, 0x75, 0x65, 0x22, 0x9a, 0x01, 0x0a, 0x09, 0x45, 0x78, 0x70, 0x72, 0x56, 0x61, 0x6c, 0x75,\n+\t0x65, 0x12, 0x27, 0x0a, 0x05, 0x76, 0x61, 0x6c, 0x75, 0x65, 0x18, 0x01, 0x20, 0x01, 0x28, 0x0b,\n+\t0x32, 0x0f, 0x2e, 0x63, 0x65, 0x6c, 0x2e, 0x65, 0x78, 0x70, 0x72, 0x2e, 0x56, 0x61, 0x6c, 0x75,\n+\t0x65, 0x48, 0x00, 0x52, 0x05, 0x76, 0x61, 0x6c, 0x75, 0x65, 0x12, 0x2a, 0x0a, 0x05, 0x65, 0x72,\n+\t0x72, 0x6f, 0x72, 0x18, 0x02, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x12, 0x2e, 0x63, 0x65, 0x6c, 0x2e,\n+\t0x65, 0x78, 0x70, 0x72, 0x2e, 0x45, 0x72, 0x72, 0x6f, 0x72, 0x53, 0x65, 0x74, 0x48, 0x00, 0x52,\n+\t0x05, 0x65, 0x72, 0x72, 0x6f, 0x72, 0x12, 0x30, 0x0a, 0x07, 0x75, 0x6e, 0x6b, 0x6e, 0x6f, 0x77,\n+\t0x6e, 0x18, 0x03, 0x20, 0x01, 0x28, 0x0b, 0x32, 0x14, 0x2e, 0x63, 0x65, 0x6c, 0x2e, 0x65, 0x78,\n+\t0x70, 0x72, 0x2e, 0x55, 0x6e, 0x6b, 0x6e, 0x6f, 0x77, 0x6e, 0x53, 0x65, 0x74, 0x48, 0x00, 0x52,\n+\t0x07, 0x75, 0x6e, 0x6b, 0x6e, 0x6f, 0x77, 0x6e, 0x42, 0x06, 0x0a, 0x04, 0x6b, 0x69, 0x6e, 0x64,\n+\t0x22, 0x36, 0x0a, 0x08, 0x45, 0x72, 0x72, 0x6f, 0x72, 0x53, 0x65, 0x74, 0x12, 0x2a, 0x0a, 0x06,\n+\t0x65, 0x72, 0x72, 0x6f, 0x72, 0x73, 0x18, 0x01, 0x20, 0x03, 0x28, 0x0b, 0x32, 0x12, 0x2e, 0x67,\n+\t0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2e, 0x72, 0x70, 0x63, 0x2e, 0x53, 0x74, 0x61, 0x74, 0x75, 0x73,\n+\t0x52, 0x06, 0x65, 0x72, 0x72, 0x6f, 0x72, 0x73, 0x22, 0x22, 0x0a, 0x0a, 0x55, 0x6e, 0x6b, 0x6e,\n+\t0x6f, 0x77, 0x6e, 0x53, 0x65, 0x74, 0x12, 0x14, 0x0a, 0x05, 0x65, 0x78, 0x70, 0x72, 0x73, 0x18,\n+\t0x01, 0x20, 0x03, 0x28, 0x03, 0x52, 0x05, 0x65, 0x78, 0x70, 0x72, 0x73, 0x42, 0x2c, 0x0a, 0x0c,\n+\t0x64, 0x65, 0x76, 0x2e, 0x63, 0x65, 0x6c, 0x2e, 0x65, 0x78, 0x70, 0x72, 0x42, 0x09, 0x45, 0x76,\n+\t0x61, 0x6c, 0x50, 0x72, 0x6f, 0x74, 0x6f, 0x50, 0x01, 0x5a, 0x0c, 0x63, 0x65, 0x6c, 0x2e, 0x64,\n+\t0x65, 0x76, 0x2f, 0x65, 0x78, 0x70, 0x72, 0xf8, 0x01, 0x01, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74,\n+\t0x6f, 0x33,\n+}\n+\n+var (\n+\tfile_cel_expr_eval_proto_rawDescOnce sync.Once\n+\tfile_cel_expr_eval_proto_rawDescData = file_cel_expr_eval_proto_rawDesc\n+)\n+\n+func file_cel_expr_eval_proto_rawDescGZIP() []byte {\n+\tfile_cel_expr_eval_proto_rawDescOnce.Do(func() {\n+\t\tfile_cel_expr_eval_proto_rawDescData = protoimpl.X.CompressGZIP(file_cel_expr_eval_proto_rawDescData)\n+\t})\n+\treturn file_cel_expr_eval_proto_rawDescData\n+}\n+\n+var file_cel_expr_eval_proto_msgTypes = make([]protoimpl.MessageInfo, 5)\n+var file_cel_expr_eval_proto_goTypes = []interface{}{\n+\t(*EvalState)(nil),        // 0: cel.expr.EvalState\n+\t(*ExprValue)(nil),        // 1: cel.expr.ExprValue\n+\t(*ErrorSet)(nil),         // 2: cel.expr.ErrorSet\n+\t(*UnknownSet)(nil),       // 3: cel.expr.UnknownSet\n+\t(*EvalState_Result)(nil), // 4: cel.expr.EvalState.Result\n+\t(*Value)(nil),            // 5: cel.expr.Value\n+\t(*status.Status)(nil),    // 6: google.rpc.Status\n+}\n+var file_cel_expr_eval_proto_depIdxs = []int32{\n+\t1, // 0: cel.expr.EvalState.values:type_name -> cel.expr.ExprValue\n+\t4, // 1: cel.expr.EvalState.results:type_name -> cel.expr.EvalState.Result\n+\t5, // 2: cel.expr.ExprValue.value:type_name -> cel.expr.Value\n+\t2, // 3: cel.expr.ExprValue.error:type_name -> cel.expr.ErrorSet\n+\t3, // 4: cel.expr.ExprValue.unknown:type_name -> cel.expr.UnknownSet\n+\t6, // 5: cel.expr.ErrorSet.errors:type_name -> google.rpc.Status\n+\t6, // [6:6] is the sub-list for method output_type\n+\t6, // [6:6] is the sub-list for method input_type\n+\t6, // [6:6] is the sub-list for extension type_name\n+\t6, // [6:6] is the sub-list for extension extendee\n+\t0, // [0:6] is the sub-list for field type_name\n+}\n+\n+func init() { file_cel_expr_eval_proto_init() }\n+func file_cel_expr_eval_proto_init() {\n+\tif File_cel_expr_eval_proto != nil {\n+\t\treturn\n+\t}\n+\tfile_cel_expr_value_proto_init()\n+\tif !protoimpl.UnsafeEnabled {\n+\t\tfile_cel_expr_eval_proto_msgTypes[0].Exporter = func(v interface{}, i int) interface{} {\n+\t\t\tswitch v := v.(*EvalState); i {\n+\t\t\tcase 0:\n+\t\t\t\treturn &v.state\n+\t\t\tcase 1:\n+\t\t\t\treturn &v.sizeCache\n+\t\t\tcase 2:\n+\t\t\t\treturn &v.unknownFields\n+\t\t\tdefault:\n+\t\t\t\treturn nil\n+\t\t\t}\n+\t\t}\n+\t\tfile_cel_expr_eval_proto_msgTypes[1].Exporter = func(v interface{}, i int) interface{} {\n+\t\t\tswitch v := v.(*ExprValue); i {\n+\t\t\tcase 0:\n+\t\t\t\treturn &v.state\n+\t\t\tcase 1:\n+\t\t\t\treturn &v.sizeCache\n+\t\t\tcase 2:\n+\t\t\t\treturn &v.unknownFields\n+\t\t\tdefault:\n+\t\t\t\treturn nil\n+\t\t\t}\n+\t\t}\n+\t\tfile_cel_expr_eval_proto_msgTypes[2].Exporter = func(v interface{}, i int) interface{} {\n+\t\t\tswitch v := v.(*ErrorSet); i {\n+\t\t\tcase 0:\n+\t\t\t\treturn &v.state\n+\t\t\tcase 1:\n+\t\t\t\treturn &v.sizeCache\n+\t\t\tcase 2:\n+\t\t\t\treturn &v.unknownFields\n+\t\t\tdefault:\n+\t\t\t\treturn nil\n+\t\t\t}\n+\t\t}\n+\t\tfile_cel_expr_eval_proto_msgTypes[3].Exporter = func(v interface{}, i int) interface{} {\n+\t\t\tswitch v := v.(*UnknownSet); i {\n+\t\t\tcase 0:\n+\t\t\t\treturn &v.state\n+\t\t\tcase 1:\n+\t\t\t\treturn &v.sizeCache\n+\t\t\tcase 2:\n+\t\t\t\treturn &v.unknownFields\n+\t\t\tdefault:\n+\t\t\t\treturn nil\n+\t\t\t}\n+\t\t}\n+\t\tfile_cel_expr_eval_proto_msgTypes[4].Exporter = func(v interface{}, i int) interface{} {\n+\t\t\tswitch v := v.(*EvalState_Result); i {\n+\t\t\tcase 0:\n+\t\t\t\treturn &v.state\n+\t\t\tcase 1:\n+\t\t\t\treturn &v.sizeCache\n+\t\t\tcase 2:\n+\t\t\t\treturn &v.unknownFields\n+\t\t\tdefault:\n+\t\t\t\treturn nil\n+\t\t\t}\n+\t\t}\n+\t}\n+\tfile_cel_expr_eval_proto_msgTypes[1].OneofWrappers = []interface{}{\n+\t\t(*ExprValue_Value)(nil),\n+\t\t(*ExprValue_Error)(nil),\n+\t\t(*ExprValue_Unknown)(nil),\n+\t}\n+\ttype x struct{}\n+\tout := protoimpl.TypeBuilder{\n+\t\tFile: protoimpl.DescBuilder{\n+\t\t\tGoPackagePath: reflect.TypeOf(x{}).PkgPath(),\n+\t\t\tRawDescriptor: file_cel_expr_eval_proto_rawDesc,\n+\t\t\tNumEnums:      0,\n+\t\t\tNumMessages:   5,\n+\t\t\tNumExtensions: 0,\n+\t\t\tNumServices:   0,\n+\t\t},\n+\t\tGoTypes:           file_cel_expr_eval_proto_goTypes,\n+\t\tDependencyIndexes: file_cel_expr_eval_proto_depIdxs,\n+\t\tMessageInfos:      file_cel_expr_eval_proto_msgTypes,\n+\t}.Build()\n+\tFile_cel_expr_eval_proto = out.File\n+\tfile_cel_expr_eval_proto_rawDesc = nil\n+\tfile_cel_expr_eval_proto_goTypes = nil\n+\tfile_cel_expr_eval_proto_depIdxs = nil\n+}\ndiff --git a/debian/extra/vendor/cel.dev/expr/explain.pb.go b/debian/extra/vendor/cel.dev/expr/explain.pb.go\nnew file mode 100644\nindex 0000000..79fd544\n--- /dev/null\n+++ b/debian/extra/vendor/cel.dev/expr/explain.pb.go\n@@ -0,0 +1,236 @@\n+// Code generated by protoc-gen-go. DO NOT EDIT.\n+// versions:\n+// \tprotoc-gen-go v1.28.1\n+// \tprotoc        v3.21.5\n+// source: cel/expr/explain.proto\n+\n+package expr\n+\n+import (\n+\tprotoreflect \"google.golang.org/protobuf/reflect/protoreflect\"\n+\tprotoimpl \"google.golang.org/protobuf/runtime/protoimpl\"\n+\treflect \"reflect\"\n+\tsync \"sync\"\n+)\n+\n+const (\n+\t// Verify that this generated code is sufficiently up-to-date.\n+\t_ = protoimpl.EnforceVersion(20 - protoimpl.MinVersion)\n+\t// Verify that runtime/protoimpl is sufficiently up-to-date.\n+\t_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)\n+)\n+\n+// Deprecated: Do not use.\n+type Explain struct {\n+\tstate         protoimpl.MessageState\n+\tsizeCache     protoimpl.SizeCache\n+\tunknownFields protoimpl.UnknownFields\n+\n+\tValues    []*Value            `protobuf:\"bytes,1,rep,name=values,proto3\" json:\"values,omitempty\"`\n+\tExprSteps []*Explain_ExprStep `protobuf:\"bytes,2,rep,name=expr_steps,json=exprSteps,proto3\" json:\"expr_steps,omitempty\"`\n+}\n+\n+func (x *Explain) Reset() {\n+\t*x = Explain{}\n+\tif protoimpl.UnsafeEnabled {\n+\t\tmi := &file_cel_expr_explain_proto_msgTypes[0]\n+\t\tms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))\n+\t\tms.StoreMessageInfo(mi)\n+\t}\n+}\n+\n+func (x *Explain) String() string {\n+\treturn protoimpl.X.MessageStringOf(x)\n+}\n+\n+func (*Explain) ProtoMessage() {}\n+\n+func (x *Explain) ProtoReflect() protoreflect.Message {\n+\tmi := &file_cel_expr_explain_proto_msgTypes[0]\n+\tif protoimpl.UnsafeEnabled && x != nil {\n+\t\tms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))\n+\t\tif ms.LoadMessageInfo() == nil {\n+\t\t\tms.StoreMessageInfo(mi)\n+\t\t}\n+\t\treturn ms\n+\t}\n+\treturn mi.MessageOf(x)\n+}\n+\n+// Deprecated: Use Explain.ProtoReflect.Descriptor instead.\n+func (*Explain) Descriptor() ([]byte, []int) {\n+\treturn file_cel_expr_explain_proto_rawDescGZIP(), []int{0}\n+}\n+\n+func (x *Explain) GetValues() []*Value {\n+\tif x != nil {\n+\t\treturn x.Values\n+\t}\n+\treturn nil\n+}\n+\n+func (x *Explain) GetExprSteps() []*Explain_ExprStep {\n+\tif x != nil {\n+\t\treturn x.ExprSteps\n+\t}\n+\treturn nil\n+}\n+\n+type Explain_ExprStep struct {\n+\tstate         protoimpl.MessageState\n+\tsizeCache     protoimpl.SizeCache\n+\tunknownFields protoimpl.UnknownFields\n+\n+\tId         int64 `protobuf:\"varint,1,opt,name=id,proto3\" json:\"id,omitempty\"`\n+\tValueIndex int32 `protobuf:\"varint,2,opt,name=value_index,json=valueIndex,proto3\" json:\"value_index,omitempty\"`\n+}\n+\n+func (x *Explain_ExprStep) Reset() {\n+\t*x = Explain_ExprStep{}\n+\tif protoimpl.UnsafeEnabled {\n+\t\tmi := &file_cel_expr_explain_proto_msgTypes[1]\n+\t\tms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))\n+\t\tms.StoreMessageInfo(mi)\n+\t}\n+}\n+\n+func (x *Explain_ExprStep) String() string {\n+\treturn protoimpl.X.MessageStringOf(x)\n+}\n+\n+func (*Explain_ExprStep) ProtoMessage() {}\n+\n+func (x *Explain_ExprStep) ProtoReflect() protoreflect.Message {\n+\tmi := &file_cel_expr_explain_proto_msgTypes[1]\n+\tif protoimpl.UnsafeEnabled && x != nil {\n+\t\tms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))\n+\t\tif ms.LoadMessageInfo() == nil {\n+\t\t\tms.StoreMessageInfo(mi)\n+\t\t}\n+\t\treturn ms\n+\t}\n+\treturn mi.MessageOf(x)\n+}\n+\n+// Deprecated: Use Explain_ExprStep.ProtoReflect.Descriptor instead.\n+func (*Explain_ExprStep) Descriptor() ([]byte, []int) {\n+\treturn file_cel_expr_explain_proto_rawDescGZIP(), []int{0, 0}\n+}\n+\n+func (x *Explain_ExprStep) GetId() int64 {\n+\tif x != nil {\n+\t\treturn x.Id\n+\t}\n+\treturn 0\n+}\n+\n+func (x *Explain_ExprStep) GetValueIndex() int32 {\n+\tif x != nil {\n+\t\treturn x.ValueIndex\n+\t}\n+\treturn 0\n+}\n+\n+var File_cel_expr_explain_proto protoreflect.FileDescriptor\n+\n+var file_cel_expr_explain_proto_rawDesc = []byte{\n+\t0x0a, 0x16, 0x63, 0x65, 0x6c, 0x2f, 0x65, 0x78, 0x70, 0x72, 0x2f, 0x65, 0x78, 0x70, 0x6c, 0x61,\n+\t0x69, 0x6e, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x12, 0x08, 0x63, 0x65, 0x6c, 0x2e, 0x65, 0x78,\n+\t0x70, 0x72, 0x1a, 0x14, 0x63, 0x65, 0x6c, 0x2f, 0x65, 0x78, 0x70, 0x72, 0x2f, 0x76, 0x61, 0x6c,\n+\t0x75, 0x65, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x22, 0xae, 0x01, 0x0a, 0x07, 0x45, 0x78, 0x70,\n+\t0x6c, 0x61, 0x69, 0x6e, 0x12, 0x27, 0x0a, 0x06, 0x76, 0x61, 0x6c, 0x75, 0x65, 0x73, 0x18, 0x01,\n+\t0x20, 0x03, 0x28, 0x0b, 0x32, 0x0f, 0x2e, 0x63, 0x65, 0x6c, 0x2e, 0x65, 0x78, 0x70, 0x72, 0x2e,\n+\t0x56, 0x61, 0x6c, 0x75, 0x65, 0x52, 0x06, 0x76, 0x61, 0x6c, 0x75, 0x65, 0x73, 0x12, 0x39, 0x0a,\n+\t0x0a, 0x65, 0x78, 0x70, 0x72, 0x5f, 0x73, 0x74, 0x65, 0x70, 0x73, 0x18, 0x02, 0x20, 0x03, 0x28,\n+\t0x0b, 0x32, 0x1a, 0x2e, 0x63, 0x65, 0x6c, 0x2e, 0x65, 0x78, 0x70, 0x72, 0x2e, 0x45, 0x78, 0x70,\n+\t0x6c, 0x61, 0x69, 0x6e, 0x2e, 0x45, 0x78, 0x70, 0x72, 0x53, 0x74, 0x65, 0x70, 0x52, 0x09, 0x65,\n+\t0x78, 0x70, 0x72, 0x53, 0x74, 0x65, 0x70, 0x73, 0x1a, 0x3b, 0x0a, 0x08, 0x45, 0x78, 0x70, 0x72,\n+\t0x53, 0x74, 0x65, 0x70, 0x12, 0x0e, 0x0a, 0x02, 0x69, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x03,\n+\t0x52, 0x02, 0x69, 0x64, 0x12, 0x1f, 0x0a, 0x0b, 0x76, 0x61, 0x6c, 0x75, 0x65, 0x5f, 0x69, 0x6e,\n+\t0x64, 0x65, 0x78, 0x18, 0x02, 0x20, 0x01, 0x28, 0x05, 0x52, 0x0a, 0x76, 0x61, 0x6c, 0x75, 0x65,\n+\t0x49, 0x6e, 0x64, 0x65, 0x78, 0x3a, 0x02, 0x18, 0x01, 0x42, 0x2f, 0x0a, 0x0c, 0x64, 0x65, 0x76,\n+\t0x2e, 0x63, 0x65, 0x6c, 0x2e, 0x65, 0x78, 0x70, 0x72, 0x42, 0x0c, 0x45, 0x78, 0x70, 0x6c, 0x61,\n+\t0x69, 0x6e, 0x50, 0x72, 0x6f, 0x74, 0x6f, 0x50, 0x01, 0x5a, 0x0c, 0x63, 0x65, 0x6c, 0x2e, 0x64,\n+\t0x65, 0x76, 0x2f, 0x65, 0x78, 0x70, 0x72, 0xf8, 0x01, 0x01, 0x62, 0x06, 0x70, 0x72, 0x6f, 0x74,\n+\t0x6f, 0x33,\n+}\n+\n+var (\n+\tfile_cel_expr_explain_proto_rawDescOnce sync.Once\n+\tfile_cel_expr_explain_proto_rawDescData = file_cel_expr_explain_proto_rawDesc\n+)\n+\n+func file_cel_expr_explain_proto_rawDescGZIP() []byte {\n+\tfile_cel_expr_explain_proto_rawDescOnce.Do(func() {\n+\t\tfile_cel_expr_explain_proto_rawDescData = protoimpl.X.CompressGZIP(file_cel_expr_explain_proto_rawDescData)\n+\t})\n+\treturn file_cel_expr_explain_proto_rawDescData\n+}\n+\n+var file_cel_expr_explain_proto_msgTypes = make([]protoimpl.MessageInfo, 2)\n+var file_cel_expr_explain_proto_goTypes = []interface{}{\n+\t(*Explain)(nil),          // 0: cel.expr.Explain\n+\t(*Explain_ExprStep)(nil), // 1: cel.expr.Explain.ExprStep\n+\t(*Value)(nil),            // 2: cel.expr.Value\n+}\n+var file_cel_expr_explain_proto_depIdxs = []int32{\n+\t2, // 0: cel.expr.Explain.values:type_name -> cel.expr.Value\n+\t1, // 1: cel.expr.Explain.expr_steps:type_name -> cel.expr.Explain.ExprStep\n+\t2, // [2:2] is the sub-list for method output_type\n+\t2, // [2:2] is the sub-list for method input_type\n+\t2, // [2:2] is the sub-list for extension type_name\n+\t2, // [2:2] is the sub-list for extension extendee\n+\t0, // [0:2] is the sub-list for field type_name\n+}\n+\n+func init() { file_cel_expr_explain_proto_init() }\n+func file_cel_expr_explain_proto_init() {\n+\tif File_cel_expr_explain_proto != nil {\n+\t\treturn\n+\t}\n+\tfile_cel_expr_value_proto_init()\n+\tif !protoimpl.UnsafeEnabled {\n+\t\tfile_cel_expr_explain_proto_msgTypes[0].Exporter = func(v interface{}, i int) interface{} {\n+\t\t\tswitch v := v.(*Explain); i {\n+\t\t\tcase 0:\n+\t\t\t\treturn &v.state\n+\t\t\tcase 1:\n+\t\t\t\treturn &v.sizeCache\n+\t\t\tcase 2:\n+\t\t\t\treturn &v.unknownFields\n+\t\t\tdefault:\n+\t\t\t\treturn nil\n+\t\t\t}\n+\t\t}\n+\t\tfile_cel_expr_explain_proto_msgTypes[1].Exporter = func(v interface{}, i int) interface{} {\n+\t\t\tswitch v := v.(*Explain_ExprStep); i {\n+\t\t\tcase 0:\n+\t\t\t\treturn &v.state\n+\t\t\tcase 1:\n+\t\t\t\treturn &v.sizeCache\n+\t\t\tcase 2:\n+\t\t\t\treturn &v.unknownFields\n+\t\t\tdefault:\n+\t\t\t\treturn nil\n+\t\t\t}\n+\t\t}\n+\t}\n+\ttype x struct{}\n+\tout := protoimpl.TypeBuilder{\n+\t\tFile: protoimpl.DescBuilder{\n+\t\t\tGoPackagePath: reflect.TypeOf(x{}).PkgPath(),\n+\t\t\tRawDescriptor: file_cel_expr_explain_proto_rawDesc,\n+\t\t\tNumEnums:      0,\n+\t\t\tNumMessages:   2,\n+\t\t\tNumExtensions: 0,\n+\t\t\tNumServices:   0,\n+\t\t},\n+\t\tGoTypes:           file_cel_expr_explain_proto_goTypes,\n+\t\tDependencyIndexes: file_cel_expr_explain_proto_depIdxs,\n+\t\tMessageInfos:      file_cel_expr_explain_proto_msgTypes,\n+\t}.Build()\n+\tFile_cel_expr_explain_proto = out.File\n+\tfile_cel_expr_explain_proto_rawDesc = nil\n+\tfile_cel_expr_explain_proto_goTypes = nil\n+\tfile_cel_expr_explain_proto_depIdxs = nil\n+}\ndiff --git a/debian/extra/vendor/cel.dev/expr/regen_go_proto.sh b/debian/extra/vendor/cel.dev/expr/regen_go_proto.sh\nnew file mode 100644\nindex 0000000..fdcbb3c\n--- /dev/null\n+++ b/debian/extra/vendor/cel.dev/expr/regen_go_proto.sh\n@@ -0,0 +1,9 @@\n+#!/bin/sh\n+bazel build //proto/cel/expr/conformance/...\n+files=($(bazel aquery 'kind(proto, //proto/cel/expr/conformance/...)' | grep Outputs | grep \"[.]pb[.]go\" | sed 's/Outputs: \\[//' | sed 's/\\]//' | tr \",\" \"\\n\"))\n+for src in ${files[@]};\n+do\n+  dst=$(echo $src | sed 's/\\(.*\\/cel.dev\\/expr\\/\\(.*\\)\\)/\\2/')\n+  echo \"copying $dst\"\n+  $(cp $src $dst)\n+done\ndiff --git a/debian/extra/vendor/cel.dev/expr/regen_go_proto_canonical_protos.sh b/debian/extra/vendor/cel.dev/expr/regen_go_proto_canonical_protos.sh\nnew file mode 100644\nindex 0000000..9a13479\n--- /dev/null\n+++ b/debian/extra/vendor/cel.dev/expr/regen_go_proto_canonical_protos.sh\n@@ -0,0 +1,10 @@\n+#!/usr/bin/env bash\n+bazel build //proto/cel/expr:all\n+\n+rm -vf ./*.pb.go\n+\n+files=( $(bazel cquery //proto/cel/expr:expr_go_proto --output=starlark --starlark:expr=\"'\\n'.join([f.path for f in target.output_groups.go_generated_srcs.to_list()])\") )\n+for src in \"${files[@]}\";\n+do\n+  cp -v \"${src}\" ./\n+done\n",
+ "diff_truncated": true
+}

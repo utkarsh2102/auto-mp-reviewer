@@ -1,0 +1,31 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~michal-maloszewski99/ubuntu/+source/frr/+git/frr/+merge/450054",
+ "id": "450054",
+ "title": "PPA: https://launchpad.net/~michal-maloszewski99/+archive/ubuntu/ppa-frr-jammy-lp1959896",
+ "source_branch": "jammy-resolve-strncmp-warnings",
+ "target_branch": "ubuntu/jammy-devel",
+ "revision": "0cf84e1f68967eef814805950918592780aa5b40",
+ "base_revision": "41e82f83cd0143c3d055552894fdf7672b431eac",
+ "description": "PPA: https://launchpad.net/~michal-maloszewski99/+archive/ubuntu/ppa-frr-jammy-lp1959896",
+ "commit_message": null,
+ "diffstat": {
+  "debian/changelog": [
+   8,
+   0
+  ],
+  "debian/patches/resolve-strncmp-warnings.patch": [
+   40,
+   0
+  ],
+  "debian/patches/series": [
+   1,
+   0
+  ]
+ },
+ "files": 3,
+ "added_lines": 49,
+ "removed_lines": 0,
+ "diff": "diff --git a/debian/changelog b/debian/changelog\nindex fef9ee7..edec9d4 100644\n--- a/debian/changelog\n+++ b/debian/changelog\n@@ -1,3 +1,11 @@\n+frr (8.1-1ubuntu1.5) jammy; urgency=medium\n+\n+  * d/p/resolve-strncmp-warnings.patch: Fix the strncmp warning by\n+    getting rid of the sizeof operator that determines the size of\n+    the data structure. (LP: #1959896)\n+\n+ -- Michal Maloszewski <michal.maloszewski@canonical.com>  Thu, 24 Aug 2023 13:52:20 +0200\n+\n frr (8.1-1ubuntu1.4) jammy-security; urgency=medium\n \n   * SECURITY UPDATE: denial of service via bgp_attr_psid_sub()\ndiff --git a/debian/patches/resolve-strncmp-warnings.patch b/debian/patches/resolve-strncmp-warnings.patch\nnew file mode 100644\nindex 0000000..5c122d2\n--- /dev/null\n+++ b/debian/patches/resolve-strncmp-warnings.patch\n@@ -0,0 +1,40 @@\n+From c975f1a5e405f7a74d45519862388cd9ea8ce782 Mon Sep 17 00:00:00 2001\n+From: Quentin Young <qlyoung@nvidia.com>\n+Date: Wed, 2 Feb 2022 16:34:03 -0500\n+Subject: [PATCH] bgpd: strncmp -> strcmp in community hash foo\n+\n+buffers are null terminated\n+\n+Origin: upstream, https://github.com/FRRouting/frr/pull/10485/commits/c975f1a5e405f7a74d45519862388cd9ea8ce782\n+Bug: https://github.com/FRRouting/frr/issues/10484\n+Bug-Ubuntu: https://bugs.launchpad.net/ubuntu/+source/frr/+bug/1959896\n+Last-Update: 2023-08-24\n+---\n+ bgpd/bgp_community_alias.c | 7 ++-----\n+ 1 file changed, 2 insertions(+), 5 deletions(-)\n+\n+diff --git a/bgpd/bgp_community_alias.c b/bgpd/bgp_community_alias.c\n+index 793f3ac9ac1c..2c86efb5a028 100644\n+--- a/bgpd/bgp_community_alias.c\n++++ b/bgpd/bgp_community_alias.c\n+@@ -40,9 +40,7 @@ static bool bgp_ca_community_hash_cmp(const void *p1, const void *p2)\n+ \tconst struct community_alias *ca1 = p1;\n+ \tconst struct community_alias *ca2 = p2;\n+ \n+-\treturn (strncmp(ca1->community, ca2->community,\n+-\t\t\tsizeof(struct community_alias))\n+-\t\t== 0);\n++\treturn (strcmp(ca1->community, ca2->community) == 0);\n+ }\n+ \n+ static unsigned int bgp_ca_alias_hash_key(const void *p)\n+@@ -57,8 +55,7 @@ static bool bgp_ca_alias_hash_cmp(const void *p1, const void *p2)\n+ \tconst struct community_alias *ca1 = p1;\n+ \tconst struct community_alias *ca2 = p2;\n+ \n+-\treturn (strncmp(ca1->alias, ca2->alias, sizeof(struct community_alias))\n+-\t\t== 0);\n++\treturn (strcmp(ca1->alias, ca2->alias) == 0);\n+ }\n+ \n+ static void *bgp_community_alias_alloc(void *p)\ndiff --git a/debian/patches/series b/debian/patches/series\nindex 27231b6..bbdbc38 100644\n--- a/debian/patches/series\n+++ b/debian/patches/series\n@@ -6,3 +6,4 @@ disable_isisd_fuzz_test.patch\n CVE-2022-37032.patch\n CVE-2022-37035.patch\n CVE-2023-31490.patch\n+resolve-strncmp-warnings.patch\n",
+ "diff_truncated": false
+}

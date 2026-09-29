@@ -1,0 +1,1155 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~bryce/ubuntu/+source/open-vm-tools/+git/open-vm-tools/+merge/454555",
+ "id": "454555",
+ "title": "The diff here is large due to it being a backport of a full release.  You may need to review from the commandline.",
+ "source_branch": "ubuntu/jammy-devel",
+ "target_branch": "ubuntu/jammy-devel",
+ "revision": "befd3dbe923db251795aae5e864a3f590b43739b",
+ "base_revision": "cfbeb837a16788e89371a579502bbc045dbfa512",
+ "description": "The diff here is large due to it being a backport of a full release.  You may need to review from the commandline.\n\nFortunately, this is a straight backport; all our changes are included in debian or upstream, so patches were dropped, and this should be effectively equivalent to a sync.  I've attempted to backport the new release onto the respective -update branches to preserve git and changelog history.\n\nThere are a couple bugs I'm tracking, namely LP: #1999945, which is merely cosmetic, and LP: #2039206, which affects only mantic since it's an issue with a change in the \"util-linux-extra\" package which isn't present in lunar or jammy.\n\nI've filled in the SRU/MRE text on the bug; it's pretty boilerplate at this point but I freshened up the wording compared with previous MREs (e.g. LP: #1975767 and LP: #1868012)\n\nThere are no autopkgtests for this package.\n\nBug:  LP: #2028420\nPPA:  https://launchpad.net/~bryce/+archive/ubuntu/open-vm-tools-mre-lp2028420\n",
+ "commit_message": null,
+ "diffstat": {
+  "README.md": [
+   1,
+   0
+  ],
+  "ReleaseNotes.md": [
+   78,
+   24
+  ],
+  "debian/changelog": [
+   45,
+   0
+  ],
+  "dev/null": [
+   0,
+   183
+  ],
+  "debian/patches/debian/scsi-udev-rule": [
+   5,
+   0
+  ],
+  "debian/patches/series": [
+   0,
+   3
+  ],
+  "debian/patches/use-debian-pam": [
+   5,
+   0
+  ],
+  "open-vm-tools/AUTHORS": [
+   6,
+   0
+  ],
+  "open-vm-tools/ChangeLog": [
+   1764,
+   60
+  ],
+  "open-vm-tools/Makefile.am": [
+   2,
+   1
+  ],
+  "open-vm-tools/checkvm/checkvm.c": [
+   1,
+   1
+  ],
+  "open-vm-tools/configure.ac": [
+   29,
+   17
+  ],
+  "open-vm-tools/hgfsclient/hgfsclient.c": [
+   1,
+   1
+  ],
+  "open-vm-tools/lib/Makefile.am": [
+   3,
+   4
+  ],
+  "open-vm-tools/lib/asyncsocket/asyncSocketBase.c": [
+   3,
+   2
+  ],
+  "open-vm-tools/lib/asyncsocket/asyncSocketInterface.c": [
+   43,
+   1
+  ],
+  "open-vm-tools/lib/asyncsocket/asyncSocketVTable.h": [
+   2,
+   1
+  ],
+  "open-vm-tools/lib/asyncsocket/asyncsocket.c": [
+   233,
+   103
+  ],
+  "open-vm-tools/lib/dataMap/dataMap.c": [
+   4,
+   4
+  ],
+  "open-vm-tools/lib/dynxdr/dynxdr.c": [
+   3,
+   3
+  ],
+  "open-vm-tools/lib/file/file.c": [
+   30,
+   11
+  ],
+  "open-vm-tools/lib/file/fileLockPrimitive.c": [
+   4,
+   3
+  ],
+  "open-vm-tools/lib/file/filePosix.c": [
+   236,
+   38
+  ],
+  "open-vm-tools/lib/file/fileTempPosix.c": [
+   101,
+   6
+  ],
+  "open-vm-tools/lib/foundryMsg/foundryMsg.c": [
+   8,
+   6
+  ],
+  "open-vm-tools/lib/globalConfig/globalConfig.c": [
+   1,
+   1
+  ],
+  "open-vm-tools/lib/guestApp/guestApp.c": [
+   13,
+   2
+  ],
+  "open-vm-tools/lib/guestStoreClientHelper/guestStoreClient.c": [
+   1,
+   1
+  ],
+  "open-vm-tools/lib/hgfs/cpName.c": [
+   1,
+   1
+  ],
+  "open-vm-tools/lib/hgfs/hgfsEscape.c": [
+   1,
+   1
+  ],
+  "open-vm-tools/lib/hgfs/hgfsUtil.c": [
+   1,
+   1
+  ],
+  "open-vm-tools/lib/hgfsServer/hgfsServer.c": [
+   52,
+   7
+  ],
+  "open-vm-tools/lib/hgfsServer/hgfsServerLinux.c": [
+   12,
+   19
+  ],
+  "open-vm-tools/lib/hgfsServer/hgfsServerOplockMonitor.c": [
+   1,
+   1
+  ],
+  "open-vm-tools/lib/include/asyncsocket.h": [
+   13,
+   1
+  ],
+  "open-vm-tools/lib/include/backdoor_def.h": [
+   21,
+   50
+  ],
+  "open-vm-tools/lib/include/buildNumber.h": [
+   6,
+   6
+  ],
+  "open-vm-tools/lib/include/compat/compat_stdarg.h": [
+   6,
+   3
+  ],
+  "open-vm-tools/lib/include/conf.h": [
+   22,
+   12
+  ],
+  "open-vm-tools/lib/include/config.h": [
+   1,
+   3
+  ],
+  "open-vm-tools/lib/include/deployPkg/deployPkgFormat.h": [
+   1,
+   1
+  ],
+  "open-vm-tools/lib/include/deployPkg/linuxDeployment.h": [
+   1,
+   1
+  ],
+  "open-vm-tools/lib/include/file.h": [
+   10,
+   1
+  ],
+  "open-vm-tools/lib/include/fileIO.h": [
+   2,
+   2
+  ],
+  "open-vm-tools/lib/include/ghIntegrationCommon.h": [
+   19,
+   2
+  ],
+  "open-vm-tools/lib/include/glibUtils.h": [
+   1,
+   1
+  ],
+  "open-vm-tools/lib/include/globalConfig.h": [
+   3,
+   2
+  ],
+  "open-vm-tools/lib/include/guestStoreClient.h": [
+   1,
+   1
+  ],
+  "open-vm-tools/lib/include/guestStoreConst.h": [
+   1,
+   1
+  ],
+  "open-vm-tools/lib/include/guestStoreDefs.h": [
+   1,
+   1
+  ],
+  "open-vm-tools/lib/include/guest_msg_def.h": [
+   1,
+   1
+  ],
+  "open-vm-tools/lib/include/guest_os.h": [
+   36,
+   13
+  ],
+  "open-vm-tools/lib/include/guest_os_tables.h": [
+   17,
+   4
+  ],
+  "open-vm-tools/lib/include/hgfsServer.h": [
+   2,
+   2
+  ],
+  "open-vm-tools/lib/include/hostinfo.h": [
+   2,
+   2
+  ],
+  "open-vm-tools/lib/include/iovector.h": [
+   4,
+   3
+  ],
+  "open-vm-tools/lib/include/log.h": [
+   12,
+   8
+  ],
+  "open-vm-tools/lib/include/loglevel_user.h": [
+   1,
+   1
+  ],
+  "open-vm-tools/lib/include/loglevel_userVars.h": [
+   3,
+   3
+  ],
+  "open-vm-tools/lib/include/mutexRankLib.h": [
+   5,
+   3
+  ],
+  "open-vm-tools/lib/include/nicInfo.h": [
+   1,
+   1
+  ],
+  "open-vm-tools/lib/include/panic.h": [
+   1,
+   2
+  ],
+  "open-vm-tools/lib/include/sha1.h": [
+   0,
+   17
+  ],
+  "open-vm-tools/lib/include/sslDirect.h": [
+   1,
+   3
+  ],
+  "open-vm-tools/lib/include/str.h": [
+   2,
+   1
+  ],
+  "open-vm-tools/lib/include/strutil.h": [
+   1,
+   1
+  ],
+  "open-vm-tools/lib/include/su.h": [
+   3,
+   2
+  ],
+  "open-vm-tools/lib/include/syncDriver.h": [
+   3,
+   2
+  ],
+  "open-vm-tools/lib/include/system.h": [
+   2,
+   1
+  ],
+  "open-vm-tools/lib/include/tracer.hh": [
+   1,
+   1
+  ],
+  "open-vm-tools/lib/include/vixCommands.h": [
+   20,
+   14
+  ],
+  "open-vm-tools/lib/include/vixOpenSource.h": [
+   1,
+   1
+  ],
+  "open-vm-tools/lib/include/vmGuestAppMonitorLib.h": [
+   1,
+   1
+  ],
+  "open-vm-tools/lib/include/vmGuestLib.h": [
+   1,
+   1
+  ],
+  "open-vm-tools/lib/include/vm_api.h": [
+   1,
+   1
+  ],
+  "open-vm-tools/lib/include/vm_atomic.h": [
+   313,
+   161
+  ],
+  "open-vm-tools/lib/include/vm_atomic_arm64_begin.h": [
+   71,
+   14
+  ],
+  "open-vm-tools/lib/include/vm_atomic_arm64_end.h": [
+   3,
+   0
+  ],
+  "open-vm-tools/lib/include/vm_basic_asm.h": [
+   10,
+   4
+  ],
+  "open-vm-tools/lib/include/vm_basic_asm_arm64.h": [
+   134,
+   126
+  ],
+  "open-vm-tools/lib/include/vm_basic_asm_x86.h": [
+   8,
+   4
+  ],
+  "open-vm-tools/lib/include/vm_basic_asm_x86_64.h": [
+   8,
+   4
+  ],
+  "open-vm-tools/lib/include/vm_basic_defs.h": [
+   47,
+   29
+  ],
+  "open-vm-tools/lib/include/vm_basic_types.h": [
+   12,
+   14
+  ],
+  "open-vm-tools/lib/include/vm_device_version.h": [
+   28,
+   6
+  ],
+  "open-vm-tools/lib/include/vm_legal.h": [
+   2,
+   2
+  ],
+  "open-vm-tools/lib/include/vm_product_versions.h": [
+   57,
+   41
+  ],
+  "open-vm-tools/lib/include/vm_tools_version.h": [
+   39,
+   4
+  ],
+  "open-vm-tools/lib/include/vm_valgrind.h": [
+   1,
+   1
+  ],
+  "open-vm-tools/lib/include/vmfs.h": [
+   1,
+   1
+  ],
+  "open-vm-tools/lib/include/vmk_exports.h": [
+   20,
+   34
+  ],
+  "open-vm-tools/lib/include/vmware/guestrpc/capabilities.h": [
+   4,
+   2
+  ],
+  "open-vm-tools/lib/include/vmware/guestrpc/containerInfo.h": [
+   1,
+   1
+  ],
+  "open-vm-tools/lib/include/vmware/guestrpc/tclodefs.h": [
+   1,
+   1
+  ],
+  "open-vm-tools/lib/include/vmware/tools/gdp.h": [
+   1,
+   1
+  ],
+  "open-vm-tools/lib/include/vmware/tools/guestStore.h": [
+   1,
+   1
+  ],
+  "open-vm-tools/lib/include/vmware/tools/guestStoreClientLib.h": [
+   1,
+   1
+  ],
+  "open-vm-tools/lib/include/vmware/tools/log.h": [
+   1,
+   1
+  ],
+  "open-vm-tools/lib/include/vmware/tools/plugin.h": [
+   1,
+   1
+  ],
+  "open-vm-tools/lib/include/x86_basic_defs.h": [
+   5,
+   1
+  ],
+  "open-vm-tools/lib/include/x86cpuid.h": [
+   190,
+   35
+  ],
+  "open-vm-tools/lib/misc/base64.c": [
+   2,
+   0
+  ],
+  "open-vm-tools/lib/misc/codesetOld.c": [
+   11,
+   19
+  ],
+  "open-vm-tools/lib/misc/hashTable.c": [
+   7,
+   1
+  ],
+  "open-vm-tools/lib/misc/hostinfo.c": [
+   0,
+   38
+  ],
+  "open-vm-tools/lib/misc/hostinfoHV.c": [
+   0,
+   29
+  ],
+  "open-vm-tools/lib/misc/hostinfoInt.h": [
+   3,
+   1
+  ],
+  "open-vm-tools/lib/misc/hostinfoPosix.c": [
+   243,
+   84
+  ],
+  "open-vm-tools/lib/misc/idLinux.c": [
+   18,
+   5
+  ],
+  "open-vm-tools/lib/misc/jsonUTF8.c": [
+   1,
+   1
+  ],
+  "open-vm-tools/lib/misc/strutil.c": [
+   1,
+   1
+  ],
+  "open-vm-tools/lib/misc/timeutil.c": [
+   1,
+   1
+  ],
+  "open-vm-tools/lib/misc/util_misc.c": [
+   2,
+   2
+  ],
+  "open-vm-tools/lib/misc/vthreadBase.c": [
+   4,
+   2
+  ],
+  "open-vm-tools/lib/nicInfo/nicInfo.c": [
+   1,
+   1
+  ],
+  "open-vm-tools/lib/nicInfo/nicInfoInt.h": [
+   1,
+   1
+  ],
+  "open-vm-tools/lib/nicInfo/nicInfoPosix.c": [
+   1,
+   1
+  ],
+  "open-vm-tools/lib/panic/panic.c": [
+   18,
+   76
+  ],
+  "open-vm-tools/lib/poll/poll.c": [
+   97,
+   78
+  ],
+  "open-vm-tools/lib/pollGtk/pollGtk.c": [
+   1,
+   1
+  ],
+  "open-vm-tools/lib/procMgr/procMgrPosix.c": [
+   1,
+   1
+  ],
+  "open-vm-tools/lib/rpcChannel/simpleSocket.c": [
+   31,
+   4
+  ],
+  "open-vm-tools/lib/rpcIn/rpcin.c": [
+   7,
+   2
+  ],
+  "open-vm-tools/lib/rpcVmx/rpcvmx.c": [
+   5,
+   1
+  ],
+  "open-vm-tools/lib/slashProc/net.c": [
+   2,
+   2
+  ],
+  "open-vm-tools/lib/string/str.c": [
+   2,
+   4
+  ],
+  "open-vm-tools/lib/syncDriver/nullDriver.c": [
+   6,
+   4
+  ],
+  "open-vm-tools/lib/syncDriver/syncDriverInt.h": [
+   9,
+   5
+  ],
+  "open-vm-tools/lib/syncDriver/syncDriverLinux.c": [
+   112,
+   19
+  ],
+  "open-vm-tools/lib/syncDriver/syncDriverPosix.c": [
+   4,
+   3
+  ],
+  "open-vm-tools/lib/syncDriver/vmSyncDriver.c": [
+   6,
+   4
+  ],
+  "open-vm-tools/lib/user/util.c": [
+   3,
+   3
+  ],
+  "open-vm-tools/lib/vmCheck/vmcheck.c": [
+   4,
+   1
+  ],
+  "open-vm-tools/lib/wiper/wiperPosix.c": [
+   4,
+   26
+  ],
+  "open-vm-tools/libDeployPkg/Makefile.am": [
+   3,
+   4
+  ],
+  "open-vm-tools/libDeployPkg/linuxDeployment.c": [
+   2,
+   2
+  ],
+  "open-vm-tools/libDeployPkg/processPosix.c": [
+   1,
+   1
+  ],
+  "open-vm-tools/libappmonitor/Makefile.am": [
+   3,
+   5
+  ],
+  "open-vm-tools/libguestStoreClient/Makefile.am": [
+   2,
+   2
+  ],
+  "open-vm-tools/libguestStoreClient/guestStoreClientLib.c": [
+   1,
+   1
+  ],
+  "open-vm-tools/libguestStoreClient/guestStoreClientLibInt.h": [
+   1,
+   1
+  ],
+  "open-vm-tools/libguestStoreClient/gueststoreclientlib_version.h": [
+   1,
+   1
+  ],
+  "open-vm-tools/libguestlib/Makefile.am": [
+   3,
+   5
+  ],
+  "open-vm-tools/libguestlib/vmGuestLib.c": [
+   4,
+   4
+  ],
+  "open-vm-tools/libhgfs/Makefile.am": [
+   2,
+   2
+  ],
+  "open-vm-tools/libvmtools/Makefile.am": [
+   2,
+   2
+  ],
+  "open-vm-tools/libvmtools/vmtoolsConfig.c": [
+   1,
+   1
+  ],
+  "open-vm-tools/libvmtools/vmtoolsLog.c": [
+   1,
+   1
+  ],
+  "open-vm-tools/modules/freebsd/shared/compat_freebsd.h": [
+   1,
+   6
+  ],
+  "open-vm-tools/modules/freebsd/shared/compat_mount.h": [
+   1,
+   6
+  ],
+  "open-vm-tools/modules/freebsd/shared/compat_priv.h": [
+   1,
+   5
+  ],
+  "open-vm-tools/modules/freebsd/shared/compat_vop.h": [
+   4,
+   21
+  ],
+  "open-vm-tools/modules/freebsd/vmblock/Makefile": [
+   2,
+   3
+  ],
+  "open-vm-tools/modules/freebsd/vmblock/subr.c": [
+   9,
+   6
+  ],
+  "open-vm-tools/modules/freebsd/vmblock/vfsops.c": [
+   9,
+   34
+  ],
+  "open-vm-tools/modules/freebsd/vmblock/vnops.c": [
+   1,
+   16
+  ],
+  "open-vm-tools/modules/freebsd/vmmemctl/Makefile": [
+   2,
+   3
+  ],
+  "open-vm-tools/modules/freebsd/vmmemctl/os.c": [
+   11,
+   49
+  ],
+  "open-vm-tools/modules/shared/vmmemctl/kernelStubs.h": [
+   2,
+   2
+  ],
+  "open-vm-tools/modules/shared/vmxnet/vmxnet3_defs.h": [
+   4,
+   11
+  ],
+  "open-vm-tools/modules/solaris/vmhgfs/hgfsState.h": [
+   2,
+   2
+  ],
+  "open-vm-tools/modules/solaris/vmhgfs/kernelStubs.h": [
+   2,
+   2
+  ],
+  "open-vm-tools/modules/solaris/vmhgfs/vnode.c": [
+   3,
+   3
+  ],
+  "open-vm-tools/namespacetool/namespacetool.c": [
+   1,
+   1
+  ],
+  "open-vm-tools/scripts/common/statechange.sh": [
+   2,
+   2
+  ],
+  "open-vm-tools/scripts/common/vm-support": [
+   1,
+   1
+  ],
+  "open-vm-tools/scripts/freebsd/network": [
+   2,
+   2
+  ],
+  "open-vm-tools/scripts/linux/network": [
+   6,
+   6
+  ],
+  "open-vm-tools/services/plugins/Makefile.am": [
+   11,
+   6
+  ],
+  "open-vm-tools/services/plugins/appInfo/appInfo.c": [
+   15,
+   14
+  ],
+  "open-vm-tools/services/plugins/componentMgr/componentMgr.c": [
+   1,
+   1
+  ],
+  "open-vm-tools/services/plugins/componentMgr/componentMgrInstallAction.c": [
+   42,
+   33
+  ],
+  "open-vm-tools/services/plugins/componentMgr/componentMgrInstallManager.c": [
+   4,
+   4
+  ],
+  "open-vm-tools/services/plugins/componentMgr/componentMgrPlugin.h": [
+   27,
+   16
+  ],
+  "open-vm-tools/services/plugins/componentMgr/componentMgrUtil.c": [
+   4,
+   3
+  ],
+  "open-vm-tools/services/plugins/componentMgr/svtminion.sh": [
+   692,
+   347
+  ],
+  "open-vm-tools/services/plugins/containerInfo/Makefile.am": [
+   5,
+   5
+  ],
+  "open-vm-tools/services/plugins/containerInfo/containerInfo.c": [
+   1,
+   1
+  ],
+  "open-vm-tools/services/plugins/containerInfo/containerInfoInt.h": [
+   1,
+   1
+  ],
+  "open-vm-tools/services/plugins/containerInfo/containerInfo_docker.c": [
+   1,
+   1
+  ],
+  "open-vm-tools/services/plugins/containerInfo/containerInfo_grpc.cc": [
+   1,
+   1
+  ],
+  "open-vm-tools/services/plugins/desktopEvents/x11Lock.c": [
+   2,
+   2
+  ],
+  "open-vm-tools/services/plugins/dndcp/copyPasteCompatX11.c": [
+   2,
+   2
+  ],
+  "open-vm-tools/services/plugins/dndcp/copyPasteUIX11.cpp": [
+   1,
+   1
+  ],
+  "open-vm-tools/services/plugins/dndcp/copyPasteUIX11.h": [
+   1,
+   1
+  ],
+  "open-vm-tools/services/plugins/dndcp/dnd/dndCommon.c": [
+   3,
+   1
+  ],
+  "open-vm-tools/services/plugins/dndcp/dnd/dndMsg.c": [
+   2,
+   2
+  ],
+  "open-vm-tools/services/plugins/dndcp/dnd/dndMsg.h": [
+   2,
+   2
+  ],
+  "open-vm-tools/services/plugins/dndcp/dndGuest/dndCPTransportGuestRpc.hpp": [
+   1,
+   1
+  ],
+  "open-vm-tools/services/plugins/dndcp/dndUIX11.cpp": [
+   1,
+   1
+  ],
+  "open-vm-tools/services/plugins/dndcp/dndcp.cpp": [
+   1,
+   1
+  ],
+  "open-vm-tools/services/plugins/dndcp/stringxx/autoCPtr.hh": [
+   1,
+   1
+  ],
+  "open-vm-tools/services/plugins/dndcp/stringxx/string.cc": [
+   28,
+   1
+  ],
+  "open-vm-tools/services/plugins/dndcp/stringxx/string.hh": [
+   3,
+   0
+  ],
+  "open-vm-tools/services/plugins/dndcp/stringxx/ubstr_t.hh": [
+   1,
+   1
+  ],
+  "open-vm-tools/services/plugins/gdp/gdpPlugin.c": [
+   1,
+   1
+  ],
+  "open-vm-tools/services/plugins/guestInfo/guestInfoServer.c": [
+   6,
+   4
+  ],
+  "open-vm-tools/services/plugins/guestInfo/perfMonLinux.c": [
+   1,
+   1
+  ],
+  "open-vm-tools/services/plugins/guestStore/guestStorePlugin.c": [
+   14,
+   18
+  ],
+  "open-vm-tools/services/plugins/hgfsServer/hgfsPlugin.c": [
+   2,
+   2
+  ],
+  "open-vm-tools/services/plugins/powerOps/powerOps.c": [
+   5,
+   3
+  ],
+  "open-vm-tools/services/plugins/resolutionSet/resolutionCommon.c": [
+   1,
+   1
+  ],
+  "open-vm-tools/services/plugins/resolutionSet/resolutionRandR12.c": [
+   7,
+   7
+  ],
+  "open-vm-tools/services/plugins/resolutionSet/resolutionX11.c": [
+   1,
+   1
+  ],
+  "open-vm-tools/services/plugins/serviceDiscovery/serviceDiscovery.c": [
+   27,
+   25
+  ],
+  "open-vm-tools/services/plugins/serviceDiscovery/serviceDiscoveryInt.h": [
+   8,
+   1
+  ],
+  "open-vm-tools/services/plugins/serviceDiscovery/serviceDiscoveryPosix.c": [
+   5,
+   3
+  ],
+  "open-vm-tools/services/plugins/timeSync/Makefile.am": [
+   3,
+   1
+  ],
+  "open-vm-tools/services/plugins/timeSync/timeInfo.c": [
+   313,
+   0
+  ],
+  "open-vm-tools/services/plugins/timeSync/timeInfo.h": [
+   33,
+   0
+  ],
+  "open-vm-tools/services/plugins/timeSync/timeSync.c": [
+   11,
+   1
+  ],
+  "open-vm-tools/services/plugins/vix/foundryToolsDaemon.c": [
+   12,
+   2
+  ],
+  "open-vm-tools/services/plugins/vix/vixPlugin.c": [
+   28,
+   2
+  ],
+  "open-vm-tools/services/plugins/vix/vixTools.c": [
+   192,
+   178
+  ],
+  "open-vm-tools/services/plugins/vix/vixToolsEnvVars.c": [
+   1,
+   1
+  ],
+  "open-vm-tools/services/plugins/vix/vixToolsInt.h": [
+   4,
+   1
+  ],
+  "open-vm-tools/services/plugins/vmbackup/nullProvider.c": [
+   1,
+   1
+  ],
+  "open-vm-tools/services/plugins/vmbackup/stateMachine.c": [
+   8,
+   4
+  ],
+  "open-vm-tools/services/plugins/vmbackup/syncDriverOps.c": [
+   3,
+   2
+  ],
+  "open-vm-tools/services/plugins/vmbackup/vmBackupInt.h": [
+   12,
+   7
+  ],
+  "open-vm-tools/services/vmtoolsd/cmdLine.c": [
+   1,
+   1
+  ],
+  "open-vm-tools/services/vmtoolsd/mainLoop.c": [
+   33,
+   25
+  ],
+  "open-vm-tools/services/vmtoolsd/mainPosix.c": [
+   1,
+   1
+  ],
+  "open-vm-tools/services/vmtoolsd/toolsCoreInt.h": [
+   3,
+   2
+  ],
+  "open-vm-tools/tests/Makefile.am": [
+   10,
+   4
+  ],
+  "open-vm-tools/toolbox/l10n/de.vmsg": [
+   1,
+   1
+  ],
+  "open-vm-tools/toolbox/l10n/en.vmsg": [
+   1,
+   1
+  ],
+  "open-vm-tools/toolbox/l10n/es.vmsg": [
+   1,
+   1
+  ],
+  "open-vm-tools/toolbox/l10n/fr.vmsg": [
+   1,
+   1
+  ],
+  "open-vm-tools/toolbox/l10n/it.vmsg": [
+   1,
+   1
+  ],
+  "open-vm-tools/toolbox/l10n/ja.vmsg": [
+   1,
+   1
+  ],
+  "open-vm-tools/toolbox/l10n/ko.vmsg": [
+   1,
+   1
+  ],
+  "open-vm-tools/toolbox/l10n/zh_CN.vmsg": [
+   1,
+   1
+  ],
+  "open-vm-tools/toolbox/toolbox-cmd.c": [
+   1,
+   1
+  ],
+  "open-vm-tools/toolbox/toolboxCmdInt.h": [
+   1,
+   1
+  ],
+  "open-vm-tools/toolbox/toolboxcmd-config.c": [
+   1,
+   1
+  ],
+  "open-vm-tools/toolbox/toolboxcmd-globalconf.c": [
+   1,
+   1
+  ],
+  "open-vm-tools/toolbox/toolboxcmd-gueststore.c": [
+   1,
+   1
+  ],
+  "open-vm-tools/toolbox/toolboxcmd-info.c": [
+   1,
+   1
+  ],
+  "open-vm-tools/toolbox/toolboxcmd-logging.c": [
+   5,
+   5
+  ],
+  "open-vm-tools/toolbox/toolboxcmd-scripts.c": [
+   1,
+   1
+  ],
+  "open-vm-tools/tools.conf": [
+   56,
+   23
+  ],
+  "open-vm-tools/vgauth/Makefile.am": [
+   1,
+   1
+  ],
+  "open-vm-tools/vgauth/cli/l10n/de.vmsg": [
+   1,
+   1
+  ],
+  "open-vm-tools/vgauth/cli/l10n/es.vmsg": [
+   1,
+   1
+  ],
+  "open-vm-tools/vgauth/cli/l10n/fr.vmsg": [
+   1,
+   1
+  ],
+  "open-vm-tools/vgauth/cli/l10n/ja.vmsg": [
+   1,
+   1
+  ],
+  "open-vm-tools/vgauth/cli/l10n/ko.vmsg": [
+   1,
+   1
+  ],
+  "open-vm-tools/vgauth/cli/l10n/zh_CN.vmsg": [
+   1,
+   1
+  ],
+  "open-vm-tools/vgauth/cli/l10n/zh_TW.vmsg": [
+   1,
+   1
+  ],
+  "open-vm-tools/vgauth/common/VGAuthProto.h": [
+   12,
+   1
+  ],
+  "open-vm-tools/vgauth/common/certverify.c": [
+   1,
+   1
+  ],
+  "open-vm-tools/vgauth/common/usercheck.c": [
+   3,
+   8
+  ],
+  "open-vm-tools/vgauth/common/vmxlog.c": [
+   1,
+   1
+  ],
+  "open-vm-tools/vgauth/common/vmxrpc.c": [
+   19,
+   4
+  ],
+  "open-vm-tools/vgauth/common/vmxrpc.h": [
+   1,
+   1
+  ],
+  "open-vm-tools/vgauth/lib/Makefile.am": [
+   2,
+   2
+  ],
+  "open-vm-tools/vgauth/lib/VGAuthInt.h": [
+   6,
+   1
+  ],
+  "open-vm-tools/vgauth/lib/alias.c": [
+   2,
+   2
+  ],
+  "open-vm-tools/vgauth/lib/auth.c": [
+   16,
+   2
+  ],
+  "open-vm-tools/vgauth/lib/common.c": [
+   2,
+   2
+  ],
+  "open-vm-tools/vgauth/lib/netPosix.c": [
+   1,
+   1
+  ],
+  "open-vm-tools/vgauth/lib/proto.c": [
+   9,
+   7
+  ],
+  "open-vm-tools/vgauth/public/VGAuthAuthentication.h": [
+   3,
+   1
+  ],
+  "open-vm-tools/vgauth/serviceImpl/alias.c": [
+   8,
+   8
+  ],
+  "open-vm-tools/vgauth/serviceImpl/filePosix.c": [
+   2,
+   2
+  ],
+  "open-vm-tools/vgauth/serviceImpl/netPosix.c": [
+   1,
+   1
+  ],
+  "open-vm-tools/vgauth/serviceImpl/proto.c": [
+   25,
+   6
+  ],
+  "open-vm-tools/vgauth/serviceImpl/saml-xml-security-c.cpp": [
+   28,
+   11
+  ],
+  "open-vm-tools/vgauth/serviceImpl/saml-xmlsec1.c": [
+   128,
+   20
+  ],
+  "open-vm-tools/vgauth/serviceImpl/samlInt.hpp": [
+   2,
+   1
+  ],
+  "open-vm-tools/vgauth/serviceImpl/serviceInt.h": [
+   12,
+   1
+  ],
+  "open-vm-tools/vgauthImport/vgauthImport.c": [
+   1,
+   1
+  ],
+  "open-vm-tools/vmblock-fuse/fsops.c": [
+   1,
+   1
+  ],
+  "open-vm-tools/vmblock-fuse/fsops.h": [
+   1,
+   1
+  ],
+  "open-vm-tools/vmblock-fuse/main.c": [
+   1,
+   1
+  ],
+  "open-vm-tools/vmblockmounter/vmblockmounter.c": [
+   2,
+   2
+  ],
+  "open-vm-tools/vmhgfs-fuse/config.c": [
+   1,
+   1
+  ],
+  "open-vm-tools/vmhgfs-fuse/dir.c": [
+   1,
+   1
+  ],
+  "open-vm-tools/vmhgfs-fuse/file.c": [
+   2,
+   2
+  ],
+  "open-vm-tools/vmhgfs-fuse/main.c": [
+   1,
+   1
+  ],
+  "open-vm-tools/vmhgfs-fuse/module.h": [
+   1,
+   1
+  ],
+  "open-vm-tools/vmhgfs-fuse/request.c": [
+   2,
+   2
+  ],
+  "open-vm-tools/xferlogs/xferlogs.c": [
+   1,
+   1
+  ]
+ },
+ "files": 284,
+ "added_lines": 6566,
+ "removed_lines": 2707,
+ "diff": "diff --git a/README.md b/README.md\nindex 5d57212..c9b84e2 100644\n--- a/README.md\n+++ b/README.md\n@@ -241,3 +241,4 @@ Please send an email to one of these mailing lists based on the nature of your q\n - Development related questions : open-vm-tools-devel@lists.sourceforge.net\n - Miscellaneous questions: open-vm-tools-discuss@lists.sourceforge.net\n - General project announcements: open-vm-tools-announce@lists.sourceforge.net\n+\ndiff --git a/ReleaseNotes.md b/ReleaseNotes.md\nindex bdb0c7d..c7dd4ca 100644\n--- a/ReleaseNotes.md\n+++ b/ReleaseNotes.md\n@@ -1,8 +1,8 @@\n-#                      open-vm-tools 12.1.5 Release Notes\n+#                      open-vm-tools 12.3.0 Release Notes\n \n-Updated on: 29th NOV 2022\n+Updated on: 31 August 2023\n \n-open-vm-tools | 29th NOV 2022 | Build 20735119\n+open-vm-tools | 31 AUGUST 2023 | Build 22234872\n \n Check back for additions and updates to these release notes.\n \n@@ -10,27 +10,35 @@ Check back for additions and updates to these release notes.\n \n The release notes cover the following topics:\n \n-* [What's New](#whatsnew) \n-* [Internationalization](#i18n) \n-* [End of Feature Support Notice](#endoffeaturesupport) \n-* [Guest Operating System Customization Support](#guestop) \n-* [Interoperability Matrix](#interop) \n-* [Resolved Issues](#resolvedissues) \n-* [Known Issues](#knownissues)\n+- [open-vm-tools 12.3.0 Release Notes](#open-vm-tools-1230-release-notes)\n+\t- [What's in the Release Notes](#whats-in-the-release-notes)\n+\t- [What's New](#whats-new)\n+\t- [End of Feature Support Notice](#end-of-feature-support-notice)\n+\t- [Internationalization](#internationalization)\n+\t- [Guest Operating System Customization Support](#guest-operating-system-customization-support)\n+\t- [Interoperability Matrix](#interoperability-matrix)\n+\t- [ Resolved Issues](#-resolved-issues)\n+\t- [Known Issues](#known-issues)\n \n ## <a id=\"whatsnew\" name=\"whatsnew\"></a>What's New\n \n-There are no new features in the open-vm-tools 12.1.5 release.  This is primarily a maintenance release that addresses a few critical problems.\n+This release resolves CVE-2023-20900. For more information on this vulnerability and its impact on VMware products, see https://www.vmware.com/security/advisories/VMSA-2023-0019.html.\n \n *   Please see the [Resolved Issues](#resolvedissues) and [Known Issues](#knownissues) sections below.\n \n-*   A complete list of the granular changes in the open-vm-tools 12.1.5 release is available at:\n+*   A complete list of the granular changes in the open-vm-tools 12.3.0 release is available at:\n \n-    [open-vm-tools ChangeLog](https://github.com/vmware/open-vm-tools/blob/stable-12.1.5/open-vm-tools/ChangeLog)\n+    [open-vm-tools ChangeLog](https://github.com/vmware/open-vm-tools/blob/stable-12.3.0/open-vm-tools/ChangeLog)\n+\n+## <a id=\"endsupport\" name=\"endsupport\"></a>End of Feature Support Notice\n+\n+*   Deprecated: Using \"xml-security-c\" and \"xerces-c\" to build the VMware Guest Authentication Service (VGAuth)\n+\n+    Starting with open-vm-tools 12.4.0, and going forward, the VGAuth service build will require the \"xmlsec1\" and \"libxml2\" development and runtime packages.  If still using the \"xml-security-c\" and \"xerces-c\" open source projects to build open-vm-tools, now is the time to plan for the change.  The open-vm-tools 12.3.x series will be the last version that can use \"xml-security-c\" and \"xerces-c\".\n \n ## <a id=\"i18n\" name=\"i18n\"></a>Internationalization\n \n-open-vm-tools 12.1.5 is available in the following languages:\n+open-vm-tools 12.3.0 is available in the following languages:\n \n * English\n * French\n@@ -42,29 +50,76 @@ open-vm-tools 12.1.5 is available in the following languages:\n * Simplified Chinese\n * Traditional Chinese\n \n+## <a id=\"guestop\" name=\"guestop\"></a>Guest Operating System Customization Support\n+\n+The [Guest OS Customization Support Matrix](http://partnerweb.vmware.com/programs/guestOS/guest-os-customization-matrix.pdf) provides details about the guest operating systems supported for customization.\n+\n ## <a id=\"interop\" name=\"interop\"></a>Interoperability Matrix\n \n The [VMware Product Interoperability Matrix](http://partnerweb.vmware.com/comp_guide2/sim/interop_matrix.php) provides details about the compatibility of current and earlier versions of VMware Products. \n \n ## <a id=\"resolvedissues\" name =\"resolvedissues\"></a> Resolved Issues\n \n+*   **This release resolves CVE-2023-20900.**\n+\n+    For more information on this vulnerability and its impact on VMware products, see https://www.vmware.com/security/advisories/VMSA-2023-0019.html.\n+\n+*   **Linux quiesced snapshot: \"SyncDriver: failed to freeze '_filesystem_'\"**\n+\n+    The open-vm-tools 12.2.0 release had an update to the Linux quiesced snapshot operation that would avoid starting a quiesced snapshot if a filesystem had already been frozen by another process.  See the [Resolved Issues](https://github.com/vmware/open-vm-tools/blob/stable-12.2.0/ReleaseNotes.md#-resolved-issues) section in the open-vm-tools 12.2.0 Release Notes.   That fix may have been backported into earlier versions of open-vm-tools by Linux vendors.  \n+\n+    It is possible that filesystems are being frozen in custom pre-freeze scripts to control the order in which those specific filesystems are to be frozen.  The vmtoolsd process **must be informed** of all such filesystems with the help of \"excludedFileSystems\" setting of tools.conf.\n+\n+    ```\n+    [vmbackup]\n+\n+    excludedFileSystems=/opt/data,/opt/app/project-*,...\n+    ```\n+\n+    A temporary workaround is available (starting from open-vm-tools 12.3.0) for system administrators to quickly allow a quiescing operation to succeed until the \"excludedFileSystems\" list can be configured.  Note, if another process thaws the file system while a quiescing snapshot operation is ongoing, the snapshot may be compromised.  Once the \"excludedFileSystems\" list is configured this setting MUST be unset (or set to false).\n+\n+    ```\n+    [vmbackup]\n+\n+    ignoreFrozenFileSystems = true\n+    ```\n+\n+    This workaround is provided in the source file changes in \n+\n+        https://github.com/vmware/open-vm-tools/commit/60c3a80ddc2b400366ed05169e16a6bed6501da2\n+\n+    and at Linux vendors' discretion, may be backported to earlier versions of open-vm-tools.\n+\n *   **A number of Coverity reported issues have been addressed.**\n \n-*   **The deployPkg plugin may prematurely reboot the guest VM before cloud-init has completed user data setup.**\n+*   **Component Manager / salt-minion: New InstallStatus \"UNMANAGED\".**\n \n-    If both the Perl based Linux customization script and cloud-init run when the guest VM boots, the deployPkg plugin may reboot the guest before cloud-init has finished.  The deployPkg plugin has been updated to wait for a running cloud-init process to finish before the guest VM reboot is initiated.\n+    Salt-minion added support for \"ExternalInstall\" (106) to indicate an older version of salt-minion is installed on the vm and cannot be managed by the svtminion.* scripts.  The Component Manager will track that as \"UNMANAGED\" and take no action.\n \n-    This issue is fixed in this release.\n+*   **The following pull requests and issues have been addressed**\n \n-*   **A SIGSEGV may be encountered when a non-quiesing snapshot times out.**\n+    * Add antrea and calico interface pattern to GUESTINFO_DEFAULT_IFACE_EXCLUDES\n \n-    This issue is fixed in this release.\n+      [Issue #638](https://github.com/vmware/open-vm-tools/issues/638)  \n+      [Pull request #639](https://github.com/vmware/open-vm-tools/pull/639)\n \n-*   **Unwanted vmtoolsd service error message if not on a VMware hypervisor.**\n+    * Invalid argument with \"\\\\\" in Linux username (Active Directory user)\n \n-    When open-vm-tools comes preinstalled in a base Linux release, the vmtoolsd services are started automatically at system start and desktop login.  If running on physical hardware or in a non-VMware hypervisor, the services will emit an error message to the Systemd's logging service before stopping.\n+      [Issue #641](https://github.com/vmware/open-vm-tools/issues/641)\n \n-    This issue is fixed in this release.\n+    * Improve POSIX guest identification\n+\n+      [Issue #647](https://github.com/vmware/open-vm-tools/issues/647)  \n+      [Issue #648](https://github.com/vmware/open-vm-tools/issues/648)\n+\n+    * Remove appUtil library which depends on deprecated \"gdk-pixbuf-xlib\"\n+\n+      [Issue #658](https://github.com/vmware/open-vm-tools/issues/658)\n+\n+    * Fix build problems with grpc\n+\n+      [Pull request #664](https://github.com/vmware/open-vm-tools/pull/664)  \n+      [Issue #676](https://github.com/vmware/open-vm-tools/issues/676)\n \n ## <a id=\"knownissues\" name=\"knownissues\"></a>Known Issues\n \n@@ -79,5 +134,4 @@ The [VMware Product Interoperability Matrix](http://partnerweb.vmware.com/comp_\n \n     If the VM is powered on, disable and enable the **Shared Folders** feature from the interface. For resolving the issue permanently, edit **/etc/fstab** and add an entry to mount the Shared Folders automatically on boot.  For example, add the line:\n \n-    <tt>vmhgfs-fuse   /mnt/hgfs    fuse    defaults,allow_other    0    0</tt>\n-\n+    <tt>vmhgfs-fuse   /mnt/hgfs    fuse    defaults,allow_other    0    0</tt>\n\\ No newline at end of file\ndiff --git a/debian/changelog b/debian/changelog\nindex 97bfa02..e259b7c 100644\n--- a/debian/changelog\n+++ b/debian/changelog\n@@ -1,3 +1,48 @@\n+open-vm-tools (2:12.3.0-1~ubuntu0.22.04.1) jammy; urgency=medium\n+\n+  * Backport recent open-vm-tools release v12.3.0.\n+    No remaining Ubuntu delta compared with 2:12.3.0-1.\n+    (LP: #2028420)\n+  * Dropped:\n+    - d/p/CVE-2023-20900.patch: SAML token signature bypass vulnerability\n+      [included in upstream 12.3.0]\n+    - d/p/CVE-2023-20867.patch: authentication bypass vulnerability\n+      [included in upstream 12.2.5]\n+\n+ -- Bryce Harrington <bryce@canonical.com>  Wed, 25 Oct 2023 23:33:44 +0000\n+\n+open-vm-tools (2:12.3.0-1) unstable; urgency=high\n+\n+  * [4ed4be4] New upstream version 12.3.0\n+    (Closes: #1050972)\n+    CVE-2023-20900\n+    Adressing this CVE also Closes: #1050970\n+    There are no new features in the open-vm-tools 12.3.0 release. This is\n+    primarily a maintenance release, details can be found at\n+    https://github.com/vmware/open-vm-tools/blob/stable-12.3.0/ReleaseNotes.md\n+  * [779d338] drop d/p/debian/grpc_1.51: no more needed\n+\n+ -- Christian Ehrhardt <christian.ehrhardt@canonical.com>  Wed, 06 Sep 2023 09:00:51 +0200\n+\n+open-vm-tools (2:12.2.5-1) unstable; urgency=medium\n+\n+  * [8c0c33f] New upstream version 12.2.5\n+    (Closes: #1037546)\n+    CVE-2023-20867\n+  * [232810e] d/p/*: add DEP-3 patch headers\n+\n+ -- Christian Ehrhardt <christian.ehrhardt@canonical.com>  Tue, 11 Jul 2023 13:22:07 +0200\n+\n+open-vm-tools (2:12.2.0-1) unstable; urgency=medium\n+\n+  * [bebda7c] New upstream version 12.2.0\n+    (Closes: #1032607)\n+  * [d266aa7] Add libabsl-dev as explicit build-dependency.\n+    Not needed in Debian, but let's support the Deepin package maintainer.\n+    (Closes: #1032305)\n+\n+ -- Bernd Zeimetz <bzed@debian.org>  Tue, 14 Mar 2023 19:12:00 +0100\n+\n open-vm-tools (2:12.1.5-3~ubuntu0.22.04.3) jammy-security; urgency=medium\n \n   * SECURITY UPDATE: SAML token signature bypass vulnerability\ndiff --git a/debian/patches/CVE-2023-20867.patch b/debian/patches/CVE-2023-20867.patch\ndeleted file mode 100644\nindex 1872623..0000000\n--- a/debian/patches/CVE-2023-20867.patch\n+++ /dev/null\n@@ -1,151 +0,0 @@\n-From 3028cdd4c0b2461b904cbe5a5868c8e591aa0941 Mon Sep 17 00:00:00 2001\n-From: John Wolfe <jwolfe@vmware.com>\n-Date: Mon, 8 May 2023 19:04:57 -0700\n-Subject: [PATCH] Remove some dead code.\n-\n-Address CVE-2023-20867.\n-Remove some authentication types which were deprecated long\n-ago and are no longer in use. These are dead code.\n----\n- open-vm-tools/services/plugins/vix/vixTools.c | 102 --------------------------\n- 1 file changed, 102 deletions(-)\n-\n---- open-vm-tools-12.1.5.orig/open-vm-tools/services/plugins/vix/vixTools.c\n-+++ open-vm-tools-12.1.5/open-vm-tools/services/plugins/vix/vixTools.c\n-@@ -254,8 +254,6 @@ char *gImpersonatedUsername = NULL;\n- #define  VIX_TOOLS_CONFIG_API_AUTHENTICATION          \"Authentication\"\n- #define  VIX_TOOLS_CONFIG_AUTHTYPE_AGENTS             \"InfrastructureAgents\"\n- \n--#define VIX_TOOLS_CONFIG_INFRA_AGENT_DISABLED_DEFAULT  TRUE\n--\n- /*\n-  * The switch that controls all APIs\n-  */\n-@@ -730,9 +728,6 @@ VixError GuestAuthSAMLAuthenticateAndImp\n- \n- void GuestAuthUnimpersonate();\n- \n--static Bool VixToolsCheckIfAuthenticationTypeEnabled(GKeyFile *confDictRef,\n--                                                     const char *typeName);\n--\n- #if SUPPORT_VGAUTH\n- \n- VGAuthError TheVGAuthContext(VGAuthContext **ctx);\n-@@ -7913,29 +7908,6 @@ VixToolsImpersonateUser(VixCommandReques\n-                                           userToken);\n-       break;\n-    }\n--   case VIX_USER_CREDENTIAL_ROOT:\n--   {\n--      if ((requestMsg->requestFlags & VIX_REQUESTMSG_HAS_HASHED_SHARED_SECRET) &&\n--          !VixToolsCheckIfAuthenticationTypeEnabled(gConfDictRef,\n--                                            VIX_TOOLS_CONFIG_AUTHTYPE_AGENTS)) {\n--          /*\n--           * Don't accept hashed shared secret if disabled.\n--           */\n--          g_message(\"%s: Requested authentication type has been disabled.\\n\",\n--                    __FUNCTION__);\n--          err = VIX_E_GUEST_AUTHTYPE_DISABLED;\n--          goto done;\n--      }\n--   }\n--   // fall through\n--\n--   case VIX_USER_CREDENTIAL_CONSOLE_USER:\n--      err = VixToolsImpersonateUserImplEx(NULL,\n--                                          credentialType,\n--                                          NULL,\n--                                          loadUserProfile,\n--                                          userToken);\n--      break;\n-    case VIX_USER_CREDENTIAL_NAME_PASSWORD:\n-    case VIX_USER_CREDENTIAL_NAME_PASSWORD_OBFUSCATED:\n-    case VIX_USER_CREDENTIAL_NAMED_INTERACTIVE_USER:\n-@@ -8105,36 +8077,6 @@ VixToolsImpersonateUserImplEx(char const\n-       }\n- \n-       /*\n--       * If the VMX asks to be root, then we allow them.\n--       * The VMX will make sure that only it will pass this value in,\n--       * and only when the VM and host are configured to allow this.\n--       */\n--      if ((VIX_USER_CREDENTIAL_ROOT == credentialType)\n--            && (thisProcessRunsAsRoot)) {\n--         *userToken = PROCESS_CREATOR_USER_TOKEN;\n--\n--         gImpersonatedUsername = Util_SafeStrdup(\"_ROOT_\");\n--         err = VIX_OK;\n--         goto quit;\n--      }\n--\n--      /*\n--       * If the VMX asks to be root, then we allow them.\n--       * The VMX will make sure that only it will pass this value in,\n--       * and only when the VM and host are configured to allow this.\n--       *\n--       * XXX This has been deprecated XXX\n--       */\n--      if ((VIX_USER_CREDENTIAL_CONSOLE_USER == credentialType)\n--            && ((allowConsoleUserOps) || !(thisProcessRunsAsRoot))) {\n--         *userToken = PROCESS_CREATOR_USER_TOKEN;\n--\n--         gImpersonatedUsername = Util_SafeStrdup(\"_CONSOLE_USER_NAME_\");\n--         err = VIX_OK;\n--         goto quit;\n--      }\n--\n--      /*\n-        * If the VMX asks us to run commands in the context of the current\n-        * user, make sure that the user who requested the command is the\n-        * same as the current user.\n-@@ -10814,50 +10756,6 @@ VixToolsCheckIfVixCommandEnabled(int opc\n- }\n- \n- \n--/*\n-- *-----------------------------------------------------------------------------\n-- *\n-- * VixToolsCheckIfAuthenticationTypeEnabled --\n-- *\n-- *    Checks to see if a given authentication type has been\n-- *    disabled via the tools configuration.\n-- *\n-- * Return value:\n-- *    TRUE if enabled, FALSE otherwise.\n-- *\n-- * Side effects:\n-- *    None\n-- *\n-- *-----------------------------------------------------------------------------\n-- */\n--\n--static Bool\n--VixToolsCheckIfAuthenticationTypeEnabled(GKeyFile *confDictRef,     // IN\n--                                         const char *typeName)      // IN\n--{\n--   char authnDisabledName[64]; // Authentication.<AuthenticationType>.disabled\n--   gboolean disabled;\n--\n--   Str_Snprintf(authnDisabledName, sizeof(authnDisabledName),\n--                VIX_TOOLS_CONFIG_API_AUTHENTICATION \".%s.disabled\",\n--                typeName);\n--\n--   ASSERT(confDictRef != NULL);\n--\n--   /*\n--    * XXX Skip doing the strcmp() to verify the auth type since we only\n--    * have the one typeName (VIX_TOOLS_CONFIG_AUTHTYPE_AGENTS), and default\n--    * it to VIX_TOOLS_CONFIG_INFRA_AGENT_DISABLED_DEFAULT.\n--    */\n--   disabled = VMTools_ConfigGetBoolean(confDictRef,\n--                                       VIX_TOOLS_CONFIG_API_GROUPNAME,\n--                                       authnDisabledName,\n--                                       VIX_TOOLS_CONFIG_INFRA_AGENT_DISABLED_DEFAULT);\n--\n--   return !disabled;\n--}\n--\n--\n- /*\n-  *-----------------------------------------------------------------------------\n-  *\ndiff --git a/debian/patches/CVE-2023-20900.patch b/debian/patches/CVE-2023-20900.patch\ndeleted file mode 100644\nindex 9db09ae..0000000\n--- a/debian/patches/CVE-2023-20900.patch\n+++ /dev/null\n@@ -1,27 +0,0 @@\n-From 74b6d0d9000eda1a2c8f31c40c725fb0b8520b16 Mon Sep 17 00:00:00 2001\n-From: Katy Feng <fkaty@vmware.com>\n-Date: Fri, 25 Aug 2023 11:58:48 -0700\n-Subject: [PATCH] Allow only X509 certs to verify the SAML token signature.\n-\n----\n- open-vm-tools/vgauth/serviceImpl/saml-xmlsec1.c | 9 ++++++++-\n- 1 file changed, 8 insertions(+), 1 deletion(-)\n-\n---- a/open-vm-tools/vgauth/serviceImpl/saml-xmlsec1.c\n-+++ b/open-vm-tools/vgauth/serviceImpl/saml-xmlsec1.c\n-@@ -1335,7 +1335,14 @@ VerifySignature(xmlDocPtr doc,\n-     */\n-    bRet = RegisterID(xmlDocGetRootElement(doc), \"ID\");\n-    if (bRet == FALSE) {\n--      g_warning(\"failed to register ID\\n\");\n-+      g_warning(\"Failed to register ID\\n\");\n-+      goto done;\n-+   }\n-+\n-+   /* Use only X509 certs to validate the signature */\n-+   if (xmlSecPtrListAdd(&(dsigCtx->keyInfoReadCtx.enabledKeyData),\n-+                        BAD_CAST xmlSecKeyDataX509Id) < 0) {\n-+      g_warning(\"Failed to limit allowed key data\\n\");\n-       goto done;\n-    }\n- \ndiff --git a/debian/patches/debian/grpc_1.51 b/debian/patches/debian/grpc_1.51\ndeleted file mode 100644\nindex 3f22581..0000000\n--- a/debian/patches/debian/grpc_1.51\n+++ /dev/null\n@@ -1,13 +0,0 @@\n-Index: pkg-open-vm-tools/open-vm-tools/services/plugins/containerInfo/Makefile.am\n-===================================================================\n---- pkg-open-vm-tools.orig/open-vm-tools/services/plugins/containerInfo/Makefile.am\n-+++ pkg-open-vm-tools/open-vm-tools/services/plugins/containerInfo/Makefile.am\n-@@ -63,6 +63,8 @@ libcontainerInfo_la_SOURCES += container\n- libcontainerInfo_la_CPPFLAGS += @GRPC_CPPFLAGS@\n- libcontainerInfo_la_LDFLAGS += -lprotobuf\n- libcontainerInfo_la_LDFLAGS += -lgrpc++\n-+libcontainerInfo_la_LDFLAGS += -lgpr\n-+libcontainerInfo_la_LDFLAGS += -labsl_synchronization\n- \n- tasks.grpc.pb.cc containers.grpc.pb.cc: %.grpc.pb.cc : %.proto %.pb.cc\n- \t$(PROTOC) -I. -I$(GOGO_PROTOPATH) \\\ndiff --git a/debian/patches/debian/scsi-udev-rule b/debian/patches/debian/scsi-udev-rule\nindex e816e28..6e9e946 100644\n--- a/debian/patches/debian/scsi-udev-rule\n+++ b/debian/patches/debian/scsi-udev-rule\n@@ -1,3 +1,8 @@\n+Description: Fix scsi timeout setting error on debian stretch\n+Forwarded: no\n+Author: Shota Aratono <aratono@utari.me>\n+Last-Update: 2020-01-16\n+\n Index: pkg-open-vm-tools/open-vm-tools/udev/99-vmware-scsi-udev.rules\n ===================================================================\n --- pkg-open-vm-tools.orig/open-vm-tools/udev/99-vmware-scsi-udev.rules\ndiff --git a/debian/patches/series b/debian/patches/series\nindex ca2f823..1661073 100644\n--- a/debian/patches/series\n+++ b/debian/patches/series\n@@ -1,5 +1,2 @@\n use-debian-pam\n debian/scsi-udev-rule\n-debian/grpc_1.51\n-CVE-2023-20867.patch\n-CVE-2023-20900.patch\ndiff --git a/debian/patches/use-debian-pam b/debian/patches/use-debian-pam\nindex ab00e00..f63c0c8 100644\n--- a/debian/patches/use-debian-pam\n+++ b/debian/patches/use-debian-pam\n@@ -1,3 +1,8 @@\n+Description: Use upstream pam file for Debian\n+Forwarded: not-needed\n+Author: Bernd Zeimetz <bernd@bzed.de>\n+Last-Update: 2022-04-25\n+\n Index: pkg-open-vm-tools/open-vm-tools/services/vmtoolsd/Makefile.am\n ===================================================================\n --- pkg-open-vm-tools.orig/open-vm-tools/services/vmtoolsd/Makefile.am\ndiff --git a/open-vm-tools/AUTHORS b/open-vm-tools/AUTHORS\nindex 3adc18b..156f5cc 100644\n--- a/open-vm-tools/AUTHORS\n+++ b/open-vm-tools/AUTHORS\n@@ -85,3 +85,9 @@ Bartosz Brachaczek Make HgfsConvertFromNtTimeNsec aware of 64-bit time_t on i386\n \n Bernd Zeimetz   Fix building containerinfo plugin on i386\n                 - https://github.com/vmware/open-vm-tools/pull/588\n+\n+Dirk Mueller    Detect the proto files for containerd grpc client on SUSE like systems\n+                - https://github.com/vmware/open-vm-tools/pull/626\n+\n+Jan Engelhardt  Fix build problems with grpc (at least) 1.54\n+                - https://github.com/vmware/open-vm-tools/pull/664\ndiff --git a/open-vm-tools/ChangeLog b/open-vm-tools/ChangeLog\nindex f539f8e..5d3e9d7 100644\n--- a/open-vm-tools/ChangeLog\n+++ b/open-vm-tools/ChangeLog\n@@ -1,35 +1,1382 @@\n-commit 0c740b5ffaacd814f402aba924e55dc8ea033b62\n+commit 4fe4b1be1d7139aa571a6431f26904e6f0b77883\n+Author: Katy Feng <fkaty@vmware.com>\n+Date:   Thu Aug 31 07:32:27 2023 -0700\n+\n+    =================================================\n+      open-vm-tools 12.3.0 released at this point.\n+    =================================================\n+    \n+    Update of the ChangeLog with the final changes in preparation for\n+    the open-vm-tools 12.3.0 release.\n+\n+commit 93e8fb7c1e4423493337661b1b8d39f09a4bbc9d\n+Author: Katy Feng <fkaty@vmware.com>\n+Date:   Thu Aug 31 07:26:02 2023 -0700\n+\n+    open-vm-tools 12.3.0 Release Notes.\n+\n+commit 2e0e2d7d9da0e2def013558e583465ebd07d2589\n+Author: Katy Feng <fkaty@vmware.com>\n+Date:   Tue Aug 29 07:26:13 2023 -0700\n+\n+    Preparing for the open-vm-tools 12.3.0 release.\n+    Syncing the tools version, build number and product build number with\n+    the internal official build of VMware Tools / open-vm-tools 12.3.0.\n+\n+commit 7eed1add1249a815763d597adf6d78eda170e3c4\n+Author: Katy Feng <fkaty@vmware.com>\n+Date:   Fri Aug 25 12:04:52 2023 -0700\n+\n+    Update of the ChangeLog with granular push from the 12.3.0 tools\n+    product branch.\n+\n+commit 74b6d0d9000eda1a2c8f31c40c725fb0b8520b16\n+Author: Katy Feng <fkaty@vmware.com>\n+Date:   Fri Aug 25 11:58:48 2023 -0700\n+\n+    Allow only X509 certs to verify the SAML token signature.\n+\n+commit d089aa2d835f93e9c4ce988596a4754a0de68a24\n+Author: Katy Feng <fkaty@vmware.com>\n+Date:   Fri Aug 25 11:58:48 2023 -0700\n+\n+    Change to common source file not applicable to open-vm-tools.\n+\n+commit 8681def032026c3cdef872e34bf18e7934ff0145\n+Author: Katy Feng <fkaty@vmware.com>\n+Date:   Fri Aug 25 11:58:48 2023 -0700\n+\n+    Change to common source file not applicable to open-vm-tools.\n+\n+commit 8e2c1ae33923b700cd26a8e17c2d74bb355d39dd\n+Author: Katy Feng <fkaty@vmware.com>\n+Date:   Fri Aug 25 11:58:48 2023 -0700\n+\n+    Change to common source file not applicable to open-vm-tools.\n+\n+commit 96cd002a39a3ec1fd97f1773fb6e8a6ac7dad919\n+Author: Katy Feng <fkaty@vmware.com>\n+Date:   Fri Aug 25 11:58:47 2023 -0700\n+\n+    Changes to common source files not applicable to open-vm-tools.\n+\n+commit 641e13fc05118ff8215f9461df424e277cba73dc\n+Author: Katy Feng <fkaty@vmware.com>\n+Date:   Fri Aug 25 11:58:47 2023 -0700\n+\n+    Changes to common source files not applicable to open-vm-tools.\n+\n+commit 52e164c04beb853179f3429d69623f988485402d\n+Author: Katy Feng <fkaty@vmware.com>\n+Date:   Fri Aug 25 11:58:47 2023 -0700\n+\n+    Changes to common source files not applicable to open-vm-tools.\n+\n+commit 106c96ed660c89262ba71d32becaf3137622160d\n+Author: Katy Feng <fkaty@vmware.com>\n+Date:   Fri Aug 25 11:58:47 2023 -0700\n+\n+    Change to common header file not applicable to open-vm-tools.\n+\n+commit 75507219d4c87c4e3c805059242f3fb1a8b999b4\n+Author: Katy Feng <fkaty@vmware.com>\n+Date:   Fri Aug 25 11:58:47 2023 -0700\n+\n+    Allow pre-Windows 2000 style user logon for Linux Guests.\n+    \n+    With this change, applications that requires user/password type\n+    authentication/authorization (done by VGAuth service) for guestOps\n+    can now use pre-windows 2000 style user logon for Linux Guests too.\n+    \n+    Github Issue: https://github.com/vmware/open-vm-tools/issues/641\n+\n+commit 9fdd875b81dded9d33b844ad1fcb2e5d0bd67c65\n+Author: Katy Feng <fkaty@vmware.com>\n+Date:   Fri Aug 25 11:58:47 2023 -0700\n+\n+    Changes to common source files not applicable to open-vm-tools.\n+\n+commit 1335787e74fc86752984c81ea7b0bd1b0065ce89\n+Author: Katy Feng <fkaty@vmware.com>\n+Date:   Fri Aug 25 11:57:15 2023 -0700\n+\n+    ChangeLog update of Aug. 25, 2023.\n+\n+commit 518a77a39a30d39c4397d2533bae57880f44ec6e\n+Author: Katy Feng <fkaty@vmware.com>\n+Date:   Fri Aug 25 11:51:12 2023 -0700\n+\n+    ====================================================================\n+    The \"stable-12.3.x\" branch was created from the \"devel\" branch here.\n+    ====================================================================\n+    \n+    Update ChangeLog with the granular push of Aug. 22, 2023.\n+    - plus ChangeLog update of Apr. 24, 2023.\n+\n+commit 14dfd9c00b5321bafc012f678ef1cd2129e03a73\n+Author: Katy Feng <fkaty@vmware.com>\n+Date:   Tue Aug 22 15:51:19 2023 -0700\n+\n+    Fix build problems with grpc\n+    \n+    Updating Makefiles to put -l specifiers into LIBADD and not LDFLAGS.\n+    Use the grpc++ pkgconfig (.pc file) if it exists to retrieve flags\n+    and libraries for linking.\n+    \n+    Pull request: https://github.com/vmware/open-vm-tools/pull/664\n+\n+commit 6584bcaa8c25da5ef0f20c7f6a17e6b173a25f2d\n+Author: Katy Feng <fkaty@vmware.com>\n+Date:   Tue Aug 22 15:51:19 2023 -0700\n+\n+    Change to common source file not applicable to open-vm-tools.\n+\n+commit a1f318dfb992cfee9555a747207fce6721313e2c\n+Author: Katy Feng <fkaty@vmware.com>\n+Date:   Tue Aug 22 15:51:19 2023 -0700\n+\n+    Changes to common source files not applicable to open-vm-tools.\n+\n+commit f584dca10f4cc7e0a0733ac5dc8844aac65af7ae\n+Author: Katy Feng <fkaty@vmware.com>\n+Date:   Tue Aug 22 15:37:45 2023 -0700\n+\n+    Enable hostVerfied SAML token feature in Tools.\n+\n+commit 4463b84006034879cb1d8cba8ae43f9509c6d0ac\n+Author: Katy Feng <fkaty@vmware.com>\n+Date:   Tue Aug 22 11:11:43 2023 -0700\n+\n+    Change to common header file not applicable to open-vm-tools.\n+\n+commit 6430649b834da00a81410f7c1d87ca4e67409ada\n+Author: Katy Feng <fkaty@vmware.com>\n+Date:   Tue Aug 22 11:11:43 2023 -0700\n+\n+    Changes to common header files not applicable to open-vm-tools.\n+\n+commit 6489b7c0bc4d8fb603cf11ff4605a5d2a975daa8\n+Author: Katy Feng <fkaty@vmware.com>\n+Date:   Tue Aug 22 11:11:43 2023 -0700\n+\n+    Change to common source file not applicable to open-vm-tools.\n+\n+commit 447f17dfb33a69a43a6d4ad1b5e486a6b20a6f77\n+Author: Katy Feng <fkaty@vmware.com>\n+Date:   Tue Aug 22 11:11:43 2023 -0700\n+\n+    Change to common header file not applicable to open-vm-tools.\n+\n+commit dfc6ee8aa66b3bfcdefe8020639f2b2ef03c215d\n+Author: Katy Feng <fkaty@vmware.com>\n+Date:   Tue Aug 22 11:11:43 2023 -0700\n+\n+    Changes to common header files not applicable to open-vm-tools.\n+\n+commit 859849c55f34a777e6ac2a4e38aab30028b5207a\n+Author: Katy Feng <fkaty@vmware.com>\n+Date:   Tue Aug 22 11:11:42 2023 -0700\n+\n+    Change to common source file not applicable to open-vm-tools.\n+\n+commit 759613baeb1377708123772be1fe70da341b1707\n+Author: Katy Feng <fkaty@vmware.com>\n+Date:   Tue Aug 22 11:11:42 2023 -0700\n+\n+    Change to common header file not applicable to open-vm-tools.\n+\n+commit 972d10eab23dda4d219f919685fbcd2651a57165\n+Author: Katy Feng <fkaty@vmware.com>\n+Date:   Tue Aug 22 11:11:42 2023 -0700\n+\n+    Change to common header file not applicable to open-vm-tools.\n+\n+commit 6852459279251412d01b073de977c1848119918c\n+Author: Katy Feng <fkaty@vmware.com>\n+Date:   Tue Aug 22 11:11:42 2023 -0700\n+\n+    Change to common header file not applicable to open-vm-tools.\n+\n+commit 8a3103cfb7d68f7e501c16f8ddb4cc998a68ad20\n+Author: Katy Feng <fkaty@vmware.com>\n+Date:   Tue Aug 22 11:11:42 2023 -0700\n+\n+    Changes to common header files not applicable to open-vm-tools.\n+\n+commit 8047bc8787d3bf04748fb3435c1731cc03f30405\n+Author: Katy Feng <fkaty@vmware.com>\n+Date:   Tue Aug 22 11:11:42 2023 -0700\n+\n+    Fix VThreadBase_ForgetSelf using wrong format specifier for VThread_CurID.\n+\n+commit c3eb0c034c53a80d92acbdc1cb8699c4d9a724df\n+Author: Katy Feng <fkaty@vmware.com>\n+Date:   Tue Aug 22 11:11:42 2023 -0700\n+\n+    Change to common source file not applicable to open-vm-tools.\n+\n+commit 1a27960f1761ad9f9e5bb7e5eb952f51e2fa0a60\n+Author: Katy Feng <fkaty@vmware.com>\n+Date:   Tue Aug 22 11:11:42 2023 -0700\n+\n+    Change to common header file not applicable to open-vm-tools.\n+\n+commit 901511c7de7a1d870725eeeb5f660f8728dd119d\n+Author: Katy Feng <fkaty@vmware.com>\n+Date:   Tue Aug 22 11:11:42 2023 -0700\n+\n+    Change to common header file not applicable to open-vm-tools.\n+\n+commit 8205b35f6b29c10a6e12616785f65c18b0c5204b\n+Author: Katy Feng <fkaty@vmware.com>\n+Date:   Tue Aug 22 11:11:42 2023 -0700\n+\n+    Changes to common header files not applicable to open-vm-tools.\n+\n+commit 17543c6584bdd41ff75d1ea85b4cf61c7b39f65e\n+Author: Katy Feng <fkaty@vmware.com>\n+Date:   Tue Aug 22 11:11:42 2023 -0700\n+\n+    Change to common source file not applicable to open-vm-tools.\n+\n+commit 89831b1c249ba89d683d74b3624efe77ad3f3e53\n+Author: Katy Feng <fkaty@vmware.com>\n+Date:   Tue Aug 22 11:11:42 2023 -0700\n+\n+    svtminion scripts v1.6 fixes for salt-minion release 3006.0\n+    \n+    Fix output of getent group, so don't make noise on Linux.\n+\n+commit eabbaf9bca1320b45fb7ad46cf48f5fbf49e958f\n+Author: Katy Feng <fkaty@vmware.com>\n+Date:   Tue Aug 22 11:11:42 2023 -0700\n+\n+    Change to common header file not applicable to open-vm-tools.\n+\n+commit 60c3a80ddc2b400366ed05169e16a6bed6501da2\n+Author: Katy Feng <fkaty@vmware.com>\n+Date:   Tue Aug 22 11:11:42 2023 -0700\n+\n+    Provide alternate method to allow (expected) pre-frozen filesystems\n+    when taking a quiesced snapshot.\n+    \n+    Effective with open-vm-tools 12.2.0, Linux quiesced snapshots will fail if\n+    any filesystem(s) have been prefrozen by other than the vmtoolsd process.\n+    This has been done to assure that filesystems are inactive while the\n+    snapshots are being taken. Some existing prefreeze scripts may be freezing\n+    some filesystem(s). In these cases, the vmtoolsd process must be informed of\n+    anticipated pre-frozen filesystems by providing an \"excludedFileSystem\" list in\n+    the [vmbackup] section of the tools.conf file.\n+    \n+    This change provides a new switch in the tools.conf file to allow pre-frozen\n+    filesystems to be encountered and accepted when doing a quiesced snapshot\n+    operation. With the default value of \"false\", the \"ignoreFrozenFileSystems\"\n+    can be configured with a setting of \"true\" to notify the quiesced snapshot\n+    operation that pre-frozen filesystems are allowed.\n+\n+commit baf812a3d942e9f1a6fe9774ddc5e514b976f059\n+Author: Katy Feng <fkaty@vmware.com>\n+Date:   Tue Aug 22 11:11:42 2023 -0700\n+\n+    Change to common header file not applicable to open-vm-tools.\n+\n+commit b3c23d050ffab46ae24d6fc8e98851a07863dd2a\n+Author: Katy Feng <fkaty@vmware.com>\n+Date:   Tue Aug 22 11:11:42 2023 -0700\n+\n+    Change to common header file not applicable to open-vm-tools.\n+\n+commit 99ee819329e6b1b51affcf15673c2020bfe4e059\n+Author: Katy Feng <fkaty@vmware.com>\n+Date:   Tue Aug 22 11:11:42 2023 -0700\n+\n+    Change to common header file not applicable to open-vm-tools.\n+\n+commit dcc090563d12ba436c7137bb3861b2966fc372cd\n+Author: Katy Feng <fkaty@vmware.com>\n+Date:   Tue Aug 22 11:11:42 2023 -0700\n+\n+    Change to common source file not applicable to open-vm-tools.\n+\n+commit c0116f300bfe2d37919fb333d63fd401dc228e5b\n+Author: Katy Feng <fkaty@vmware.com>\n+Date:   Tue Aug 22 11:11:42 2023 -0700\n+\n+    Change to common header file not applicable to open-vm-tools.\n+\n+commit 3f4dd03d969efe60c6c77002a3b8c8ddfd325ab3\n+Author: Katy Feng <fkaty@vmware.com>\n+Date:   Tue Aug 22 11:11:42 2023 -0700\n+\n+    Change to common source file not applicable to open-vm-tools.\n+\n+commit 6aa05e8959408d0981c18ed8dfc29513b71c98a8\n+Author: Katy Feng <fkaty@vmware.com>\n+Date:   Tue Aug 22 11:11:42 2023 -0700\n+\n+    Change to common header file not applicable to open-vm-tools.\n+\n+commit f6c27bbe691ba06f535d9b5d5dbabd4d4d5e3b1b\n+Author: Katy Feng <fkaty@vmware.com>\n+Date:   Tue Aug 22 11:11:41 2023 -0700\n+\n+    Change to common header file not applicable to open-vm-tools.\n+\n+commit 01d4788e191d1a846dbe7220442e25bba2cb545c\n+Author: Katy Feng <fkaty@vmware.com>\n+Date:   Tue Aug 22 11:11:41 2023 -0700\n+\n+    Change to common header file not applicable to open-vm-tools.\n+\n+commit 9d8054800e10cabeed6911a5b8ac85d612565fe6\n+Author: Katy Feng <fkaty@vmware.com>\n+Date:   Tue Aug 22 11:11:41 2023 -0700\n+\n+    Change to common header file not applicable to open-vm-tools.\n+\n+commit 0bc0f8e68339c1bae63e9d8734d4d10c8d4b5fa9\n+Author: Katy Feng <fkaty@vmware.com>\n+Date:   Tue Aug 22 11:11:41 2023 -0700\n+\n+    Change to common header file not applicable to open-vm-tools.\n+\n+commit 549f04fabbba57a33b8983e02064e216b8393485\n+Author: Katy Feng <fkaty@vmware.com>\n+Date:   Tue Aug 22 11:11:41 2023 -0700\n+\n+    Changes to common header files not applicable to open-vm-tools.\n+\n+commit 508933ad4fb97cde6d19544d13005c88eaa9362f\n+Author: Katy Feng <fkaty@vmware.com>\n+Date:   Tue Aug 22 11:11:41 2023 -0700\n+\n+    Change to common header file not applicable to open-vm-tools.\n+\n+commit 9f1c97526ba6414bfbc342fcf0f8a83118dbee8d\n+Author: Katy Feng <fkaty@vmware.com>\n+Date:   Tue Aug 22 11:11:41 2023 -0700\n+\n+    Change to common header file not applicable to open-vm-tools.\n+\n+commit 016fa52e6bcbf868a08b5dbac0fdb8f19ab14c9a\n+Author: Katy Feng <fkaty@vmware.com>\n+Date:   Tue Aug 22 11:11:41 2023 -0700\n+\n+    Removing appUtil library from open-vm-tools.\n+    \n+    Several Linux distributions have deprecated the use of gdk-pixbuf-xlib library\n+    and many may follow suit in future. Remove the appUtil library, which was\n+    required by Unity but is no longer supported on Linux guests.\n+    \n+    Github Issue: https://github.com/vmware/open-vm-tools/issues/658\n+\n+commit 55d4f25e7ad27b77268bf5f2d61e75336890dacc\n+Author: Katy Feng <fkaty@vmware.com>\n+Date:   Tue Aug 22 11:11:41 2023 -0700\n+\n+    Changes to common source files not applicable to open-vm-tools.\n+\n+commit 2a770fead82a86a8b67107c40fa8e5986fd39416\n+Author: Katy Feng <fkaty@vmware.com>\n+Date:   Tue Aug 22 11:11:41 2023 -0700\n+\n+    Change to common source file not applicable to open-vm-tools.\n+\n+commit bea8dba7af41c6988a76bf6cbc47efd1d35761f3\n+Author: Katy Feng <fkaty@vmware.com>\n+Date:   Tue Aug 22 11:11:41 2023 -0700\n+\n+    Remove some dead code.\n+\n+commit 3a897d916ed6e69ebcede282ee36757808ee29af\n+Author: Katy Feng <fkaty@vmware.com>\n+Date:   Tue Aug 22 11:11:41 2023 -0700\n+\n+    svtminion scripts update for salt 3006 release\n+    \n+    Scripts Ver. 1.5, support for status 106 code feature.\n+\n+commit 5cf3023cf9981a97cd65f3600d03dc4714b4cc5e\n+Author: Katy Feng <fkaty@vmware.com>\n+Date:   Tue Aug 22 11:11:41 2023 -0700\n+\n+    Change to common header file not applicable to open-vm-tools.\n+\n+commit 8b940e736ed25a7e7bad47a476f6e0db154620aa\n+Author: Katy Feng <fkaty@vmware.com>\n+Date:   Tue Aug 22 11:11:41 2023 -0700\n+\n+    Change to common header file not applicable to open-vm-tools.\n+\n+commit eb771586d88bd46fc38853b4f63cc01262a168b1\n+Author: Katy Feng <fkaty@vmware.com>\n+Date:   Tue Aug 22 11:11:41 2023 -0700\n+\n+    Introduce the new CAP_HOST_VERIFIED_SAML_TOKEN capability.\n+\n+commit 2793302b6d4bcd427a6e4b70263b4ce8069fdd00\n+Author: Katy Feng <fkaty@vmware.com>\n+Date:   Tue Aug 22 11:11:41 2023 -0700\n+\n+    Change to common source file not applicable to open-vm-tools.\n+\n+commit 0b24b9b517c939059535aae8bfcd2ad70acaced1\n+Author: Katy Feng <fkaty@vmware.com>\n+Date:   Tue Aug 22 11:11:41 2023 -0700\n+\n+    Modify the comment for the CONFNAME_DEPLOYPKG_PROCESSTIMEOUT value range.\n+\n+commit a353e69b9438ca149a185a2249d076c951d945fe\n+Author: Katy Feng <fkaty@vmware.com>\n+Date:   Thu Jun 1 10:22:47 2023 -0700\n+\n+    Copyright symbol updates.\n+\n+commit a15a0bda093255eadb3768fb845b96a185ac6af9\n+Author: Katy Feng <fkaty@vmware.com>\n+Date:   Mon Apr 24 12:46:20 2023 -0700\n+\n+    Update ChangeLog with the granular push of Apr 24, 2023.\n+    - plus ChangeLog update of Apr 6, 2023.\n+\n+commit b4ecba012795fd6e227a36f9da43ae390f8ac121\n+Author: Katy Feng <fkaty@vmware.com>\n+Date:   Mon Apr 24 12:30:14 2023 -0700\n+\n+    Change to common header file not applicable to open-vm-tools.\n+\n+commit a5eb9f3ce90f3c9ac79673db7e21486fcc8b434d\n+Author: Katy Feng <fkaty@vmware.com>\n+Date:   Mon Apr 24 12:30:14 2023 -0700\n+\n+    Change to common header file not applicable to open-vm-tools.\n+\n+commit 5321737607c4779936ea7d1ca4eb7cc02f0ba452\n+Author: Katy Feng <fkaty@vmware.com>\n+Date:   Mon Apr 24 12:30:14 2023 -0700\n+\n+    Change to common header file not applicable to open-vm-tools.\n+\n+commit 68b465af17e333d04776fc606088fc39b2a3dcdc\n+Author: Katy Feng <fkaty@vmware.com>\n+Date:   Mon Apr 24 12:30:14 2023 -0700\n+\n+    Changes to common header files not applicable to open-vm-tools.\n+\n+commit 68107d0bd5e7f900c2af5946ef560fdcd5454534\n+Author: Katy Feng <fkaty@vmware.com>\n+Date:   Mon Apr 24 12:30:14 2023 -0700\n+\n+    Change to common header file not applicable to open-vm-tools.\n+\n+commit 27ea45d66f2358c1dcc8400a600f5e4ed8a419a1\n+Author: Katy Feng <fkaty@vmware.com>\n+Date:   Mon Apr 24 12:30:14 2023 -0700\n+\n+    Change to common header file not applicable to open-vm-tools.\n+\n+commit 8c7bbf28197c254d6859ac6727ab88355b2cb7f8\n+Author: Katy Feng <fkaty@vmware.com>\n+Date:   Mon Apr 24 12:30:14 2023 -0700\n+\n+    Change to common header file not applicable to open-vm-tools.\n+\n+commit c66fb5c9ec87167f82d8b72c611a2df35af514a9\n+Author: Katy Feng <fkaty@vmware.com>\n+Date:   Mon Apr 24 12:30:14 2023 -0700\n+\n+    Change to common source file not applicable to open-vm-tools.\n+\n+commit 0fb50371215f5a6924103309980e565eebff08a6\n+Author: Katy Feng <fkaty@vmware.com>\n+Date:   Mon Apr 24 12:30:14 2023 -0700\n+\n+    Change to common header file not applicable to open-vm-tools at this time.\n+\n+commit a480533a0a2bbeb9701f305cf3f78278e1279347\n+Author: Katy Feng <fkaty@vmware.com>\n+Date:   Mon Apr 24 12:30:14 2023 -0700\n+\n+    Change to common header file not applicable to open-vm-tools.\n+\n+commit 87eb9ad7ed9ded840ac577cad2c027c3eaf9b49f\n+Author: Katy Feng <fkaty@vmware.com>\n+Date:   Thu Apr 6 11:36:37 2023 -0700\n+\n+    Update ChangeLog with the granular push of Apr 6, 2023.\n+    - plus ChangeLog update of Mar 24, 2023.\n+\n+commit 0c15d1214d340893719c9eaaee7a071318bd7399\n+Author: Katy Feng <fkaty@vmware.com>\n+Date:   Thu Apr 6 11:33:31 2023 -0700\n+\n+    Correct missed 2023 copyright update.\n+\n+commit 41f7e48c7570673bf84938bdf243dd78ad66c608\n+Author: Katy Feng <fkaty@vmware.com>\n+Date:   Thu Apr 6 11:27:41 2023 -0700\n+\n+    Update the AUTHORS file in open-vm-tools.\n+\n+commit 377f82a668c6c02a3fa15ad3f2da3a5b7849f39a\n+Author: Katy Feng <fkaty@vmware.com>\n+Date:   Thu Apr 6 11:27:41 2023 -0700\n+\n+    Changes to common header files not applicable to open-vm-tools.\n+\n+commit d65cdcb30a38f8de7f127f9b6c8bf78e8c987b98\n+Author: Katy Feng <fkaty@vmware.com>\n+Date:   Thu Apr 6 11:27:41 2023 -0700\n+\n+    Changes to common source files not applicable to open-vm-tools.\n+\n+commit 06081ea162cb73754b9bcb6574db78cba6db5aa7\n+Author: Katy Feng <fkaty@vmware.com>\n+Date:   Thu Apr 6 11:27:41 2023 -0700\n+\n+    Change to common header file not applicable to open-vm-tools.\n+\n+commit 215d87b455bc630f33c22f67d362a6e530fdd1db\n+Author: Katy Feng <fkaty@vmware.com>\n+Date:   Thu Apr 6 11:27:41 2023 -0700\n+\n+    Change to common header file not applicable to open-vm-tools.\n+\n+commit 0365b80e3a5c67ecedd3dcc312e425ef4b2ec9dc\n+Author: Katy Feng <fkaty@vmware.com>\n+Date:   Thu Apr 6 11:27:41 2023 -0700\n+\n+    Changes to common source files not applicable to open-vm-tools.\n+\n+commit 9c861f7feade19ef863a46f5ddd59c44d98a7b83\n+Author: Katy Feng <fkaty@vmware.com>\n+Date:   Thu Apr 6 11:27:41 2023 -0700\n+\n+    Changes to common header files not applicable to open-vm-tools.\n+\n+commit 8ee7744f7716467185c2a7abda8776ea10387f5f\n+Author: Katy Feng <fkaty@vmware.com>\n+Date:   Thu Apr 6 11:27:41 2023 -0700\n+\n+    Change to common header file not applicable to open-vm-tools.\n+\n+commit 241b8eefe7090086a8fc8bab5b9504578731eaf1\n+Author: Katy Feng <fkaty@vmware.com>\n+Date:   Thu Apr 6 11:27:41 2023 -0700\n+\n+    Change to common header file not applicable to open-vm-tools.\n+\n+commit 3a16728979d86ed78009817f1940a3ddc40b9103\n+Author: Katy Feng <fkaty@vmware.com>\n+Date:   Thu Apr 6 11:27:41 2023 -0700\n+\n+    Improve POSIX guest identification\n+\n+    Many Linux distros do not provide LSB information.  Instead,\n+    they rely exclusively on the the os-release standard information.\n+\n+    We previously used a ranking system that rates the LSB data\n+    (if present) against the os-release data (if present).\n+    With the LSB data install much more rare than before, perform\n+    a quick check for the LSB before attempting expensive operations.\n+\n+    This is in response to these GitHub issues:\n+\n+    https://github.com/vmware/open-vm-tools/issues/647\n+    https://github.com/vmware/open-vm-tools/issues/648\n+\n+    Note that we cannot look just for the os-release data.  In older\n+    Linux releases, there are mistakes or differences between the\n+    os-release and LSB data.  We must continue to do what we do now\n+    or risk changing the identification of older releases.\n+\n+    This optimization is very effective.\n+\n+commit b9da6af8a561b911c6d59cfffb5b96cd5af3b6f7\n+Author: Katy Feng <fkaty@vmware.com>\n+Date:   Fri Mar 24 13:48:17 2023 -0700\n+\n+    Update ChangeLog with the granular push of Mar 24, 2023.\n+    - plus ChangeLog update of Mar 6, 2023.\n+\n+commit dfe0aa7ef53ea6051d31cc69f406e746e8d0f80c\n+Author: Katy Feng <fkaty@vmware.com>\n+Date:   Fri Mar 24 13:29:28 2023 -0700\n+\n+    Change to common source file not applicable to open-vm-tools.\n+\n+commit 5e28e7e7577b35c585d4c45e053a162615bdbb1b\n+Author: Katy Feng <fkaty@vmware.com>\n+Date:   Fri Mar 24 13:29:28 2023 -0700\n+\n+    Change to common header file not applicable to open-vm-tools.\n+\n+commit 2a9a730985ff05bcb808e68e4526856bb77a4c17\n+Author: Katy Feng <fkaty@vmware.com>\n+Date:   Fri Mar 24 13:29:28 2023 -0700\n+\n+    Change to common header file not applicable to open-vm-tools.\n+\n+commit acff74d7fa4e4f3bb70c575a287cac2762cfdaec\n+Author: Katy Feng <fkaty@vmware.com>\n+Date:   Fri Mar 24 13:29:28 2023 -0700\n+\n+    Record the usage of VMware Tools version 12.2.5 in vm_tools_version.h\n+    \n+    Adding tools TOOLS_VERSION_BANDSAW_UPDATE1 for 12.2.5 into the\n+    vm_tools_version.h header file.\n+\n+commit c30e8e66dcc41fd6e869c3a87d712ab29a90df8a\n+Author: Katy Feng <fkaty@vmware.com>\n+Date:   Fri Mar 24 13:29:28 2023 -0700\n+\n+    Record the GA release of VMware Tools 12.2.0.\n+    \n+    Adding the \"_RELEASE\" suffix to the tools 12.2.0 tagname in vm_tools_version.h.\n+\n+commit a1a29b2358c8ca022d5116ee199c02337ec6a4a9\n+Author: Katy Feng <fkaty@vmware.com>\n+Date:   Fri Mar 24 13:29:28 2023 -0700\n+\n+    Add UNMANAGED InstallStatus value for components\n+    \n+    The UNMANAGED InstallStatus is returned from components operations to indicate\n+    that the component is installed (detected) but is not to be managed by the\n+    Component Manager.  The Component Manager will not take actions (except\n+    checkStatus) until the UNMANAGED status for the component gets resolved\n+    (externally).\n+    \n+    The Salt Minion (salt_minion) component returns code 106 (\"ExternalInstall\")\n+    is equivalent to UNMANAGED.\n+\n+commit 62dc9fe959f8cc6fee64a716cc1de2dee0f0d0ef\n+Author: Katy Feng <fkaty@vmware.com>\n+Date:   Fri Mar 24 13:29:28 2023 -0700\n+\n+    lib/file: Fix timetools breakage to use memset\n+    \n+    GCC bug (https://gcc.gnu.org/bugzilla/show_bug.cgi?id=53119) wrongly\n+    complains about using the zero initializer in some circumstances.\n+\n+commit f26fad0849a5107018bbcc0b4687b460432e6d3c\n+Author: Katy Feng <fkaty@vmware.com>\n+Date:   Fri Mar 24 13:29:28 2023 -0700\n+\n+    Change to common source files not applicable to open-vm-tools.\n+\n+commit ab7a609bd52b57e74946a58f9a989845128555d3\n+Author: Katy Feng <fkaty@vmware.com>\n+Date:   Fri Mar 24 13:29:28 2023 -0700\n+\n+    Change to common header file not applicable to open-vm-tools.\n+\n+commit 12cc8ad99a9cd8faaf990d03010d511d50f88ee2\n+Author: Katy Feng <fkaty@vmware.com>\n+Date:   Fri Mar 24 13:29:28 2023 -0700\n+\n+    Change to common header file not applicable to open-vm-tools.\n+\n+commit 425df45b9551383ec393d44926782f3d64603d83\n+Author: Katy Feng <fkaty@vmware.com>\n+Date:   Fri Mar 24 13:29:28 2023 -0700\n+\n+    Change to common header file not applicable to open-vm-tools.\n+\n+commit e0cec2ba3f7fcf0958077d6209a58951f5a6d275\n+Author: Katy Feng <fkaty@vmware.com>\n+Date:   Mon Mar 6 10:42:40 2023 -0800\n+\n+    Update Changelog with the granular push of Mar 6, 2023.\n+    - plus ChangeLog update of Feb 23, 2023.\n+\n+commit 813d8531e739f6a12a4e3c92f18786e10f46eacc\n+Author: Katy Feng <fkaty@vmware.com>\n+Date:   Mon Mar 6 10:32:39 2023 -0800\n+\n+    Add antrea and calico interface pattern to GUESTINFO_DEFAULT_IFACE_EXCLUDES.\n+    \n+    Since k8s are more popular nowadays and their CNI also has IPs for pods,\n+    we should also exclude the IP assigned by popular CNI.\n+    \n+    Fixes issue: https://github.com/vmware/open-vm-tools/issues/638\n+    \n+    Pull request: https://github.com/vmware/open-vm-tools/pull/639\n+\n+commit b822932f2b0ea864fdc85005e6ed7bf34c4b2a75\n+Author: Katy Feng <fkaty@vmware.com>\n+Date:   Mon Mar 6 10:32:39 2023 -0800\n+\n+    Change to common source files not applicable to open-vm-tools.\n+\n+commit 11141b784b66a941a98cb8d781125837bbcb267b\n+Author: Katy Feng <fkaty@vmware.com>\n+Date:   Mon Mar 6 10:32:39 2023 -0800\n+\n+    Change to common header file not applicable to open-vm-tools.\n+\n+commit 43cab44867c952b67255d92acfda43bb89ce7cbf\n+Author: Katy Feng <fkaty@vmware.com>\n+Date:   Thu Feb 23 11:55:53 2023 -0800\n+\n+    Update Changelog with the granular push of Feb 23, 2023.\n+    - plus ChangeLog update of Feb 3, 2023.\n+\n+commit a9e42290898d7077f73cda7fceeab046f0164388\n+Author: Katy Feng <fkaty@vmware.com>\n+Date:   Thu Feb 23 11:52:12 2023 -0800\n+\n+    Correct missed 2023 copyright update.\n+\n+commit e4d5478f95dc0e38b4e152278b30e49960784be9\n+Author: Katy Feng <fkaty@vmware.com>\n+Date:   Thu Feb 23 11:27:13 2023 -0800\n+\n+    lib/file: Improve File_SetTimes\n+    \n+    There is a new system call for setting times that removes race conditions.\n+    Use it when it is available.\n+\n+commit 2e8ac3a7963a5ba98808c2b0748773140da6be86\n+Author: Katy Feng <fkaty@vmware.com>\n+Date:   Thu Feb 23 11:27:13 2023 -0800\n+\n+    Change to common header file not applicable to open-vm-tools.\n+\n+commit 7173a629c81bd6acf45cb07dbb169fda5ab73adf\n+Author: Katy Feng <fkaty@vmware.com>\n+Date:   Thu Feb 23 11:27:13 2023 -0800\n+\n+    Change to common source file not applicable to open-vm-tools.\n+\n+commit 202c4939446da2e251ded55a9566c54d0d9f655a\n+Author: Katy Feng <fkaty@vmware.com>\n+Date:   Thu Feb 23 11:27:13 2023 -0800\n+\n+    Inclusive terminology - \"sanity check\"\n+    Address uses of the term \"sanity check\" in some files used by open-vm-tools.\n+\n+commit e530a014e677213e5660106c75eddb72d151016b\n+Author: Katy Feng <fkaty@vmware.com>\n+Date:   Thu Feb 23 11:27:13 2023 -0800\n+\n+    Change to common header file not applicable to open-vm-tools.\n+\n+commit 076aa3f0276010daaae95a95b2c3d4aea56b55bd\n+Author: Katy Feng <fkaty@vmware.com>\n+Date:   Thu Feb 23 11:27:13 2023 -0800\n+\n+    Remove SSL_NewContext() declaration from sslDirect.h\n+\n+commit 8d7402b5b309275a4ef0c609966afed086d91e13\n+Author: Katy Feng <fkaty@vmware.com>\n+Date:   Thu Feb 23 11:27:13 2023 -0800\n+\n+    Change to common header file not applicable to open-vm-tools.\n+\n+commit 7ab29ed5a2ec3b80f0d5e69a437e48e667bca8ec\n+Author: Katy Feng <fkaty@vmware.com>\n+Date:   Thu Feb 23 11:27:13 2023 -0800\n+\n+    Change to common header file not applicable to open-vm-tools.\n+\n+commit 6927da94f892ce3a9acae9cb297842c4f7852b16\n+Author: Katy Feng <fkaty@vmware.com>\n+Date:   Thu Feb 23 11:27:13 2023 -0800\n+\n+    Change to common source file not applicable to open-vm-tools.\n+\n+commit 355ea8ce3cd4b5038fb79e0a6ca10777ec4fdf79\n+Author: Katy Feng <fkaty@vmware.com>\n+Date:   Thu Feb 23 11:27:13 2023 -0800\n+\n+    Change to common header file not applicable to open-vm-tools.\n+\n+commit 62b3b42fa69fc7a7fc8fdda9d1a8cd158244c819\n+Author: Katy Feng <fkaty@vmware.com>\n+Date:   Thu Feb 23 11:27:13 2023 -0800\n+\n+    Change to common source file not applicable to open-vm-tools.\n+\n+commit 830e9031f64d614c7bfe0acab022a9c33da9da2a\n+Author: Katy Feng <fkaty@vmware.com>\n+Date:   Fri Feb 3 09:57:46 2023 -0800\n+\n+    ChangeLog update of Feb. 3, 2023.\n+\n+commit 632a516d8c4b64025ed0f7b0ee890ebb36a99a15\n+Author: Katy Feng <fkaty@vmware.com>\n+Date:   Fri Feb 3 09:41:08 2023 -0800\n+\n+    Change to common header file not applicable to open-vm-tools.\n+\n+commit d0346245ddb589e8d35e02650321682987c60f09\n+Author: Katy Feng <fkaty@vmware.com>\n+Date:   Fri Feb 3 09:41:08 2023 -0800\n+\n+    Change to common header file not applicable to open-vm-tools.\n+\n+commit b2acb8fb61dd2b3888ee58e78313ee29581c41fb\n+Author: Katy Feng <fkaty@vmware.com>\n+Date:   Fri Feb 3 09:41:08 2023 -0800\n+\n+    Change to common header file not applicable to open-vm-tools.\n+\n+commit 33b542fff5ecb78a0f1da4a005b09d11853f7026\n+Author: Katy Feng <fkaty@vmware.com>\n+Date:   Fri Feb 3 09:41:08 2023 -0800\n+\n+    Change to common source file not applicable to open-vm-tools.\n+\n+commit 007203173890d75171db2c450bcaf37eb23c6a1d\n+Author: Katy Feng <fkaty@vmware.com>\n+Date:   Fri Feb 3 09:41:08 2023 -0800\n+\n+    Change to common header file not applicable to open-vm-tools.\n+\n+commit e470e09b81a417e9f0c123793e3b4f0bfc1cd0cc\n+Author: Katy Feng <fkaty@vmware.com>\n+Date:   Fri Feb 3 09:41:08 2023 -0800\n+\n+    Change to common header file not applicable to open-vm-tools.\n+\n+commit b40e6808fd6bb6483cef741cd80c3ab58f4094c8\n+Author: Katy Feng <fkaty@vmware.com>\n+Date:   Fri Feb 3 09:41:08 2023 -0800\n+\n+    Change to common header file not applicable to open-vm-tools.\n+\n+commit 58580a5d5bd3f8a0661408031dca52ac5c70183a\n+Author: Katy Feng <fkaty@vmware.com>\n+Date:   Fri Feb 3 09:41:08 2023 -0800\n+\n+    Change to common header file not applicable to open-vm-tools.\n+\n+commit 82379efe344790ee4ab58927a194a55d6931bc3d\n+Author: Katy Feng <fkaty@vmware.com>\n+Date:   Fri Feb 3 09:41:08 2023 -0800\n+\n+    Inclusive terminology - \"sanity check\"\n+    \n+    \"sanity check\" clean-up:\n+    \n+    - Rename functions:\n+     - ./scripts/linux/network -> Renamed \"sanity_check\" to \"confidence_check\".\n+     - ./vgauth/lib/proto.c -> Renamed \"Proto_SanityCheckReply\" to\n+                                         \"Proto_ConfidenceCheckReply\".\n+    \n+    - Replace \"sanity check\" with \"confidence check\" in comments.\n+\n+commit 556f27f7011927d27283923b6b86dd446fd2ff17\n+Author: Katy Feng <fkaty@vmware.com>\n+Date:   Fri Feb 3 09:41:08 2023 -0800\n+\n+    Bump the VMware Tools version to 12.3.0 in the \"devel\" branch.\n+    \n+    Setting the development VMware Tools version to 12.3.0.\n+    Adding the tag \"BANDSAW\" to the 12.2.0 version.\n+\n+commit 3232ed80db1af22c9906d78d12804681dc23fbfd\n+Author: Katy Feng <fkaty@vmware.com>\n+Date:   Fri Feb 3 09:41:08 2023 -0800\n+\n+    Change to common header file not applicable to open-vm-tools.\n+\n+commit afc98393dfefae36bb26c9018b9d6e2d149688ad\n+Author: Katy Feng <fkaty@vmware.com>\n+Date:   Fri Feb 3 09:41:08 2023 -0800\n+\n+    Change to common header file not applicable to open-vm-tools.\n+\n+commit 486ca6223aad2474e356b0651476db53d4917a49\n+Author: Katy Feng <fkaty@vmware.com>\n+Date:   Fri Feb 3 09:41:08 2023 -0800\n+\n+    Changes to common header files not applicable to open-vm-tools.\n+\n+commit 3bc128aa58770d400de28f899cd867804f8aefb3\n+Author: Katy Feng <fkaty@vmware.com>\n+Date:   Tue Jan 17 19:32:04 2023 -0800\n+\n+    ChangeLog update of Jan. 17, 2023.\n+\n+commit 512af95b8788f5784126368462866eb0e4d76524\n+Author: Katy Feng <fkaty@vmware.com>\n+Date:   Tue Jan 17 19:22:16 2023 -0800\n+\n+    ====================================================================\n+    The \"stable-12.2.x\" branch was created from the \"devel\" branch here.\n+    ====================================================================\n+\n+    Update ChangeLog with the granular push of Jan. 17, 2023.\n+    - plus ChangeLog update of Dec 31, 2022.\n+\n+commit 891f1f654a6d2bffb270d6f3c7e69caec431d860\n+Author: Katy Feng <fkaty@vmware.com>\n+Date:   Tue Jan 17 19:15:28 2023 -0800\n+\n+    Correct missed 2023 copyright update.\n+\n+commit 9d458c53a7a656d4d1ba3a28d090cce82ac4af0e\n+Author: Katy Feng <fkaty@vmware.com>\n+Date:   Tue Jan 17 19:08:33 2023 -0800\n+\n+    Track Linux filesystem id (FSID) for quiesced (frozen) filesystems\n+    \n+    Tracking the filesystem FSID along with each file descriptor (FD)\n+    as the ioctl FIFREEZE is done.  An EBUSY could be seen because of\n+    an attempt to freeze the same superblock more than once depending\n+    on the OS configuration (e.g. usage of bind mounts).  An EBUSY could\n+    also mean another process has locked or frozen that filesystem.\n+    \n+    When an EBUSY is received, the filesyste FSID is checked against the\n+    list of filesystems that have already be quiesced.  If not previously\n+    seen, a warning that the filesystem is controlled by another process\n+    is logged and the quiesced snapshot request will be rejected.\n+\n+commit 193200d3ce31461f876f4779ced3ca5c85f32459\n+Author: Katy Feng <fkaty@vmware.com>\n+Date:   Tue Jan 17 19:08:33 2023 -0800\n+\n+    Salt-Minion 1.4 copyright and license updates.\n+\n+commit c3d2d7a23ad0deac57bf53667ebe5d14c24d53c2\n+Author: Katy Feng <fkaty@vmware.com>\n+Date:   Tue Jan 17 19:08:33 2023 -0800\n+\n+    Change to common header file not applicable to open-vm-tools.\n+\n+commit ebd466b5a4f55e68486cc0e747ee6b76a4f171f1\n+Author: Katy Feng <fkaty@vmware.com>\n+Date:   Tue Jan 17 19:08:33 2023 -0800\n+\n+    backdoor_def.h: Update the Arm specific comment to be arm64 only.\n+\n+commit 998ff379939defc09834ae55fea450ee61f46ca9\n+Author: Katy Feng <fkaty@vmware.com>\n+Date:   Tue Jan 17 19:08:33 2023 -0800\n+\n+    FreeBSD: Support newer releases and code clean-up for earlier versions.\n+    \n+    Changes to allow open-vm-tools and drivers to be compiled for newer\n+    FreeBSD releases and clean-up/remove code for earlier FreeBSD\n+    releases that are no longer supported by the FreeBSD Foundation.\n+    - remove old FreeBSD version support.\n+    - trap SIGBUS while VmCheckSafe().\n+    - fix build on recent versions.\n+    - fix build after 1400043\n+    - fix build after 1400051.\n+    - replace deprecated NO_MAN by MK_MAN=no.\n+    \n+    Pull request: https://github.com/vmware/open-vm-tools/pull/584\n+\n+commit ab1728ebe46703624f151d09a65a100ccd514891\n+Author: Katy Feng <fkaty@vmware.com>\n+Date:   Tue Jan 17 19:08:33 2023 -0800\n+\n+    Change to common header file not applicable to open-vm-tools.\n+\n+commit aad49df92c53aa561c4a23507ef4617c09a449ba\n+Author: Katy Feng <fkaty@vmware.com>\n+Date:   Tue Jan 17 19:08:33 2023 -0800\n+\n+    Change to common header file not applicable to open-vm-tools.\n+\n+commit 739cc1b828c1e23daca46a61b105391e8f271bb2\n+Author: Katy Feng <fkaty@vmware.com>\n+Date:   Tue Jan 17 19:08:33 2023 -0800\n+\n+    Change to common header file not applicable to open-vm-tools.\n+\n+commit 0ab6ba968e040f0b72e564338c6ea2b52bcb9e7c\n+Author: John Wolfe <jwolfe@vmware.com>\n+Date:   Sat Dec 31 22:42:11 2022 -0800\n+\n+    Update Changelog with the granular push of Dec 31, 2022.\n+    - plus ChangeLog update of Dec 22, 2022.\n+\n+commit 301cea5522870a746112cd6d634a04c465dcf7cc\n+Author: John Wolfe <jwolfe@vmware.com>\n+Date:   Sat Dec 31 22:13:07 2022 -0800\n+\n+    open-vm-tools SUSE: Detect the proto files for the containerd grpc client\n+    \n+    On SUSE systems, the Go src'es are installed in a different location,\n+    namely /usr/share/go/1.18/contrib/src.\n+    Extend the config checks to detect that location.\n+    \n+    OVT pull request: https://github.com/vmware/open-vm-tools/pull/626\n+\n+commit f749bd5b0647c7bdf8aa46ca035e070b5def352e\n+Author: John Wolfe <jwolfe@vmware.com>\n+Date:   Sat Dec 31 22:13:07 2022 -0800\n+\n+    Add missing error codes for AsyncSocket_GetGenericError()\n+    \n+    AsyncSocket_GetGenericError() returns ETIMEDOUT or ECONNREFUSED\n+    errors when they are encountered.  Added cross-platform #defines that\n+    represent these codes.\n+\n+commit df63ef8559535bc57dfb5cecff7944074aca33e4\n+Author: John Wolfe <jwolfe@vmware.com>\n+Date:   Sat Dec 31 22:13:07 2022 -0800\n+\n+    Common header file change not applicable to open-vm-tools.\n+\n+commit 11d107a07440c8cd97f4a3c34b8664a2089812ac\n+Author: John Wolfe <jwolfe@vmware.com>\n+Date:   Sat Dec 31 22:13:07 2022 -0800\n+\n+    Changes to common source files not directly applicable to open-vm-tools.\n+\n+commit 47a5bd3bd87f00e9e39cd3641028940eecbb315a\n+Author: Katy Feng <fkaty@vmware.com>\n+Date:   Thu Dec 22 16:37:51 2022 -0800\n+\n+    Update Changelog with the granular push of Dec 22, 2022.\n+    - plus ChangeLog update of Nov 29, 2022.\n+\n+commit 082f7f784b28452058ac6a6529f289144b5694d9\n+Author: Katy Feng <fkaty@vmware.com>\n+Date:   Thu Dec 22 16:25:51 2022 -0800\n+\n+    Inclusive terminology - \"sanity check\"\n+    \n+    Partial \"sanity check\" clean-up:\n+    - Change comments from \"sanity check\" to \"confidence check\"\n+\n+commit 63a35ed428b16baedc4cea0d666ac1b8d762de2e\n+Author: Katy Feng <fkaty@vmware.com>\n+Date:   Thu Dec 22 16:25:51 2022 -0800\n+\n+    Powerops plugin:  Enhance logging and response message when a previous\n+    powerops script is still running.\n+\n+commit 91e8725d65565b4b3452085a2e9db6e3f0bb1dcf\n+Author: Katy Feng <fkaty@vmware.com>\n+Date:   Thu Dec 22 16:25:51 2022 -0800\n+\n+    lib/panic: Remove Panic_GetCoreFileName and Panic_SetCoreFileName.\n+    \n+    Panic_[GS]etCoreFileName have been dead code for a very long time.\n+    \n+    This change removes them, along with the underlying panicState.coreDumpFile\n+    field.  Also, do some reformatting and tidy a few comments.\n+\n+commit f2d8ed1e924818d9611db104a5a259290e53f68f\n+Author: Katy Feng <fkaty@vmware.com>\n+Date:   Thu Dec 22 16:25:50 2022 -0800\n+\n+    Common header file change not applicable to open-vm-tools.\n+\n+commit bd63d8029852af847383f19cd13d62adcabaabaf\n+Author: Katy Feng <fkaty@vmware.com>\n+Date:   Thu Dec 22 16:25:50 2022 -0800\n+\n+    Source file changes not directly applicable to open-vm-tools.\n+    \n+    Minor cleanup in a couple of Makefile.am files.\n+\n+commit 4a2332747dc9e95e7b93d2b6d28b1d7fd474e3f2\n+Author: Katy Feng <fkaty@vmware.com>\n+Date:   Thu Dec 22 16:25:50 2022 -0800\n+\n+    Linux guest identification: Make the code more robust\n+    \n+    Additional clean up.\n+\n+commit 049e37fef87a515c69471e7682ed5c3274942cf0\n+Author: Katy Feng <fkaty@vmware.com>\n+Date:   Thu Dec 22 16:25:50 2022 -0800\n+\n+    Common header file change not applicable to open-vm-tools.\n+\n+commit 264c9c4cd4d8fbd06abaa3dc9266e4e16d2380d2\n+Author: Katy Feng <fkaty@vmware.com>\n+Date:   Thu Dec 22 16:25:50 2022 -0800\n+\n+    Inclusive terminology - \"disabled\"\n+    \n+    Partial \"disabled\" clean-up:\n+    - Change comments from \"disable(d)\" to \"deactivate(d)\"\n+    - Change comments from \"enable\" to \"activate\" for grammar consistency\n+\n+commit 4f884c52df4d03246e40715d771a23a9af17436e\n+Author: Katy Feng <fkaty@vmware.com>\n+Date:   Thu Dec 22 16:25:50 2022 -0800\n+\n+    Linux guest identification: Make the code more robust.\n+    \n+    The code to read and parse the os-release data isn't doing a good job\n+    of protecting the tools daemon. Fixed this.\n+     - do not depend on sscanf.\n+     - bound the size of parameters;\n+     - better checking for syntax errors.\n+\n+commit 1f1a34edda47b37d3bd7040b9f2080f8dcb23275\n+Author: Katy Feng <fkaty@vmware.com>\n+Date:   Thu Dec 22 16:25:50 2022 -0800\n+\n+    Silence ComponentMgr logs for a missing support file.\n+    \n+    Components managed by the componentMgr plugin are often optional.\n+    The missing component script file is a normal condition.\n+    Silenced the logs by changing the message level from g_info to g_debug.\n+\n+commit 422205fcad59a9202a06b65fe28e9ced1d3b1a3b\n+Author: Katy Feng <fkaty@vmware.com>\n+Date:   Thu Dec 22 16:25:50 2022 -0800\n+\n+    Limit the number of RPC vsocket connect() retries for ECONNRESET errors.\n+    \n+    If a guest VM has been configured with 'guest_rpc.rpci.usevsocket = \"FALSE\"'\n+    to work around a problem in ESXi 6.0 ot 6.5 (KB 2149941), that guest VM\n+    may experience high CPU usage on open-vm-tools 12.1.0 and 12.1.5.\n+\n+commit 4e278d12ea1ad9b541de94791065bf4658ed781d\n+Author: Katy Feng <fkaty@vmware.com>\n+Date:   Thu Dec 22 16:25:50 2022 -0800\n+\n+    Change to common header file not applicable to open-vm-tools.\n+\n+commit a7da31373c5bb21d647a22c240a204645fa5f9ef\n+Author: Katy Feng <fkaty@vmware.com>\n+Date:   Thu Dec 22 16:25:50 2022 -0800\n+\n+    [TimeInfo] Handle notifications and get updates\n+    \n+    TimeInfo, which is part of TimeSync plugin, can be\n+    used to query, set, subscribe, and receive updates for\n+    time-related information from the host when guest is\n+    using precisionclock to consume time from the host.\n+    Previous changes laid foundation to subscribe and\n+    unsubscribe for TimeInfo updates in open-vm-tools during\n+    init/shutdown.\n+    \n+    When open-vm-tools subscribes for TimeInfo updates, VMX\n+    will send a notification GuestRPC to tools if and\n+    when the timing properties change. This change\n+    adds support to handle such GuestRPCs from VMX.\n+    The handler for the GuestRPC is pretty straightforward\n+    for now: it queues an async task that simply gets\n+    all updates and logs them.\n+\n+commit 4ab39d04ddde473a9698660a545c356aa5614dcb\n+Author: Katy Feng <fkaty@vmware.com>\n+Date:   Thu Dec 22 16:25:50 2022 -0800\n+\n+    Change to common header file not applicable to open-vm-tools.\n+\n+commit 0b2992f6718150d7c04ce4268e071033d4222e45\n+Author: Katy Feng <fkaty@vmware.com>\n+Date:   Thu Dec 22 16:25:50 2022 -0800\n+\n+    Limit retry if the VMX RESETs a vsock connection\n+    \n+    If guest_rpc.rpci.usevsocket = \"FALSE\" is set, a vsock\n+    connect() will always fail with RESET. This confused code that\n+    thought it could only happen for secure sockets when they\n+    were quickly re-used.\n+    \n+    Limit retry, and only for secure connections.\n+\n+commit 3cfb89bd45978bababef56404e33da7e645b0b5a\n+Author: Katy Feng <fkaty@vmware.com>\n+Date:   Thu Dec 22 16:25:50 2022 -0800\n+\n+    [TimeInfo] Subscribe/unsubscribe to notifications during init/shutdown\n+    \n+    This change adds support for subscribing to time info notifications\n+    when this feature is enabled in the tools. As a result VMX will\n+    send time info notifications to the tools when host timing\n+    properties change. The change adds support to perform subscribe/\n+    unsubscribe GuestRPCs from tools. Note that, handling of notification\n+    (received from VMX) will be implemented in the next change.\n+\n+commit a23ac6dc590374f3b990f4d220ec59d1c3d82195\n+Author: Katy Feng <fkaty@vmware.com>\n+Date:   Thu Dec 22 16:25:50 2022 -0800\n+\n+    Change to common header file not applicable to open-vm-tools.\n+\n+commit 70c64efdedfc4b6772fe540f502113b8b58d6aad\n+Author: Katy Feng <fkaty@vmware.com>\n+Date:   Thu Dec 22 16:25:50 2022 -0800\n+\n+    Change to common header file not applicable to open-vm-tools.\n+\n+commit 11d8bddccab30dea8c33ab8fb895b599ea6b8419\n+Author: Katy Feng <fkaty@vmware.com>\n+Date:   Thu Dec 22 16:25:50 2022 -0800\n+\n+    Change to common header file not applicable to open-vm-tools.\n+\n+commit 4e5ff11a5927ebf711656d30166914725fd811f9\n+Author: Katy Feng <fkaty@vmware.com>\n+Date:   Thu Dec 22 16:25:50 2022 -0800\n+\n+    [TimeInfo] Introduce TimeInfo in TimeSync plugin\n+    \n+    This change lays a foundation for upcoming changes to\n+    support TimeInfo feature in open-vm-tools. TimeInfo feature\n+    is introduced as part of TimeSync plugin and can be\n+    used to query, set, subscribe, and receive updates for\n+    time-related information from the host when guest is\n+    using precisionclock to consume time from the host.\n+    \n+    This change simply adds a new file and basic init/shutdown\n+    routines which are called as part of TimeSync plugin\n+    load/unload. The change also introduces a config option\n+    to enable/disable this feature (default is off). The\n+    feature is Linux-only for now.\n+    \n+    Upcoming changes will add support for subscribing and\n+    receiving TimeInfo updates.\n+\n+commit 042b463ba64d527345c0a6048915d1b9a6a3402c\n+Author: Katy Feng <fkaty@vmware.com>\n+Date:   Thu Dec 22 16:25:50 2022 -0800\n+\n+    Change to common header file not applicable to open-vm-tools.\n+\n+commit 6c4e9964f58d94b31fda5bcc54c976959dd4f339\n+Author: Katy Feng <fkaty@vmware.com>\n+Date:   Thu Dec 22 16:25:50 2022 -0800\n+\n+    Inclusive language - \"disabled\"\n+    \n+    Use “deactivated” instead of “disabled” in some files used by open-vm-tools.\n+\n+commit e85f51de2849566e8dd08f035474bfc626a17d8d\n+Author: Katy Feng <fkaty@vmware.com>\n+Date:   Thu Dec 22 16:25:49 2022 -0800\n+\n+    Enhance the guest identification code for Linux\n+    \n+    The Linux guest identification code is enhanced to return two\n+    additional fields (when a distro makes them available):\n+    \n+    1) The VERSION field\n+    \n+    This field sometimes contains additional information not\n+    found in other fields. For instance, on SLES, this provides\n+    the patch level information.\n+    \n+    2) The CPE_NAME field\n+    \n+    This is the NIST Common Platform Enumeration Specification\n+    string. If present, this may provide information in a\n+    standardized form.\n+\n+commit 569c595128322339d1435d6a745243d2d7aec860\n+Author: Katy Feng <fkaty@vmware.com>\n+Date:   Tue Nov 29 12:22:44 2022 -0800\n+\n+    Update Changelog with the granular push of Nov 29, 2022.\n+     - plus ChangeLog update of Nov 4, 2022.\n+\n+commit e058df3ebf6aa0b4cd1b15f1f55ac4d56f09c5ed\n+Author: Katy Feng <fkaty@vmware.com>\n+Date:   Tue Nov 29 12:11:43 2022 -0800\n+\n+    Change to common header file not applicable to open-vm-tools.\n+\n+commit 136de61dd7c2a473ca926e2df1800c6d76aa5da0\n+Author: Katy Feng <fkaty@vmware.com>\n+Date:   Tue Nov 29 12:11:43 2022 -0800\n+\n+    Change to common header file not applicable to open-vm-tools.\n+\n+commit 6208fe0c286f45c70c621c15bdf90e935a5a56ee\n+Author: Katy Feng <fkaty@vmware.com>\n+Date:   Tue Nov 29 12:11:43 2022 -0800\n+\n+    Change to common header file not applicable to open-vm-tools.\n+\n+commit 7a94ee4524da9c794a68d6b2e7106d719209d93e\n+Author: Katy Feng <fkaty@vmware.com>\n+Date:   Tue Nov 29 12:11:42 2022 -0800\n+\n+    Change to common header file not applicable to open-vm-tools.\n+\n+commit 5405d130aba6724ba671cf5d3ff8b250147d624c\n+Author: John Wolfe <jwolfe@vmware.com>\n+Date:   Fri Nov 4 11:58:14 2022 -0700\n+\n+    Update Changelog with the granular push of Nov 4, 2022.\n+     - plus ChangeLog update of Oct 21, 2022.\n+\n+commit bf074c36924f28b3f36f88aa4bed0337a0b695be\n+Author: John Wolfe <jwolfe@vmware.com>\n+Date:   Fri Nov 4 11:45:05 2022 -0700\n+\n+    Add explanatory comments for Coverity false positives.\n+    \n+    Add comments for two memory leak false positives reported by a\n+    Coverity scan of open-vm-tools.   Don't annotate since the\n+    annotations can't be made specified to the leaked variable, so\n+    that if an actual leak were introduced in the future an annotation\n+    would cause it to be reported as a false positive.\n+    \n+    For the same reason, replace a leaked storage annotation added\n+    previously with an explanatory comment.\n+\n+commit b85ab7a63a97d9b7258df73638c76f9b7c149a4f\n+Author: John Wolfe <jwolfe@vmware.com>\n+Date:   Fri Nov 4 11:45:05 2022 -0700\n+\n+    Change to common header file not applicable to open-vm-tools.\n+\n+commit da618bbbdaa6341c478d548a7d951250c571ad8e\n+Author: John Wolfe <jwolfe@vmware.com>\n+Date:   Fri Nov 4 11:45:05 2022 -0700\n+\n+    Changes to common source files not applicable to open-vm-tools.\n+\n+commit f5eb126149dccb3172a90e772f6d5471a6c2c435\n+Author: John Wolfe <jwolfe@vmware.com>\n+Date:   Fri Nov 4 11:45:05 2022 -0700\n+\n+    Change to common source file not applicable to open-vm-tools.\n+\n+commit d88dcf561315a316c1e2efda6a96ec22e2183306\n Author: John Wolfe <jwolfe@vmware.com>\n-Date:   Tue Nov 29 13:11:04 2022 -0800\n+Date:   Fri Oct 21 12:11:07 2022 -0700\n \n-    Update the ReleaseNotes.md for the 12.1.5 open-vm-tools release.\n+    Update ChangeLog with the granular push of Oct 21, 2022.\n+     - plus ChangeLog update of Oct 12, 2022.\n \n-commit 8958c3e0fa4b1f5ed4cb0ee98a967ddd73cd03ff\n+commit 3e1154b1e260982a47f66a9c807b7613ced95f59\n Author: John Wolfe <jwolfe@vmware.com>\n-Date:   Tue Nov 29 13:07:17 2022 -0800\n+Date:   Fri Oct 21 11:39:49 2022 -0700\n \n-    Prepare for the open-vm-tools 12.1.5 release.\n-    - Update the tools version in the configure.ac.   Update the build numbers\n-      buldNumber.h.\n+    Common header file change not applicable to open-vm-tools.\n \n-commit 864ffc76c53e0523b08dad1d1a82a36f75e6f06c\n+commit 6d934775155d5b1ee000056319290780e4e79b80\n Author: John Wolfe <jwolfe@vmware.com>\n-Date:   Thu Nov 10 12:10:55 2022 -0800\n+Date:   Fri Oct 21 11:39:49 2022 -0700\n \n-    Update the ChangeLog file with the changes in the 12.1.5 open-vm-tools release.\n-     - plus the ChangeLog update of Aug. 23, 2022\n+    Fix a regression caused by the previous guestOps ListFiles() change.\n+    \n+    If maxResults is 0, return an empty file list plus\n+    the remaining number of files.\n \n-commit a205236af862e732c774a5c2b77b700ccfc73f25\n+commit 3c7bcfc3a3ca1e8a4d80b2eded28cb36535717f0\n Author: John Wolfe <jwolfe@vmware.com>\n-Date:   Thu Nov 10 12:01:14 2022 -0800\n+Date:   Fri Oct 21 11:39:49 2022 -0700\n \n     Fix printf format type found by Coverity scan.\n     \n     printf format should be using %zu to print a size_t value.\n \n-commit 0a5d9821a6a82ab773d41b7ae9afe9dc8cccff30\n+commit f56f1573158d0d5c1962202fba4a4aa8d0bfa35e\n Author: John Wolfe <jwolfe@vmware.com>\n-Date:   Thu Nov 10 12:01:14 2022 -0800\n+Date:   Fri Oct 21 11:39:49 2022 -0700\n+\n+    Common header file change not applicable to open-vm-tools.\n+\n+commit 40c74575b37430a2e30dbdd149b5de8c45978949\n+Author: John Wolfe <jwolfe@vmware.com>\n+Date:   Fri Oct 21 11:39:49 2022 -0700\n \n     Avoid a vmtoolsd service error message if not on a VMware hypervisor.\n     \n@@ -41,32 +1388,184 @@ Date:   Thu Nov 10 12:01:14 2022 -0800\n     \n     This change removes the unwanted error message.\n \n-commit bb64ec6aa24c123bb25d1c48a4c126efa4fda5bf\n+commit c1ba736f18d35d5b1e149aa43a902cb2a69927f3\n+Author: John Wolfe <jwolfe@vmware.com>\n+Date:   Fri Oct 21 11:39:49 2022 -0700\n+\n+    Common header file change not applicable to open-vm-tools.\n+\n+commit 6224a7616e26fd816772a82e100674ffdd87cf9f\n+Author: John Wolfe <jwolfe@vmware.com>\n+Date:   Fri Oct 21 11:39:49 2022 -0700\n+\n+    Common header file change not applicable to open-vm-tools.\n+\n+commit 6ec06e4a6482872421a87367814849f340bfb1a8\n+Author: John Wolfe <jwolfe@vmware.com>\n+Date:   Wed Oct 12 13:21:25 2022 -0700\n+\n+    Update ChangeLog with the granular push of Oct 12, 2022.\n+     - plus ChangeLog update of Sep 21, 2022.\n+\n+commit 7909b89d2d847f416257932e3c6ef96085a69ad4\n+Author: John Wolfe <jwolfe@vmware.com>\n+Date:   Wed Oct 12 13:04:00 2022 -0700\n+\n+    Add missed 2022 copyright change.\n+\n+commit cb762155088e5f56535d1f8990718d8880d165ff\n+Author: John Wolfe <jwolfe@vmware.com>\n+Date:   Wed Oct 12 12:40:37 2022 -0700\n+\n+    Common header file change not applicable to open-vm-tools.\n+\n+commit 51a5cca0c77ea4f246e5a411727221fcf70f240e\n+Author: John Wolfe <jwolfe@vmware.com>\n+Date:   Wed Oct 12 12:40:37 2022 -0700\n+\n+    Common header file change not applicable to open-vm-tools.\n+\n+commit 70a10365ba86e871710551d54e565ba6b8b3f4eb\n+Author: John Wolfe <jwolfe@vmware.com>\n+Date:   Wed Oct 12 12:40:37 2022 -0700\n+\n+    Common header file change not applicable to open-vm-tools.\n+\n+commit 7645e6cd7e3e8f13a862ce3489ea04bad3a26bf2\n+Author: John Wolfe <jwolfe@vmware.com>\n+Date:   Wed Oct 12 12:40:37 2022 -0700\n+\n+    Update the guestOps to handle some edge cases.\n+    \n+    When File_GetSize() fails or returns a -1 indicating the user does not\n+    have access permissions:\n+     1) Skip the file in the output of the ListFiles() request.\n+     2) Fail an InitiateFileTransferFromGuest operation.\n+    \n+    Properly handle the hostd request offset value returned in a ListFiles()\n+    guest operation when the results are truncated.\n+\n+commit 2f759e610c5ceabe420df9f678d23474dd423df4\n+Author: John Wolfe <jwolfe@vmware.com>\n+Date:   Wed Oct 12 12:40:37 2022 -0700\n+\n+    Move deployPkgFormat.h to lib/include/deployPkg.\n+\n+commit 90445a78a9d34da3b651fcc9ca7e967d8c397fda\n+Author: John Wolfe <jwolfe@vmware.com>\n+Date:   Wed Oct 12 12:40:37 2022 -0700\n+\n+    Changes to common header files not applicable to open-vm-tools.\n+\n+commit 7ac0e26580dcc2e2e1311ab16fb937da2a2e4e72\n+Author: John Wolfe <jwolfe@vmware.com>\n+Date:   Wed Oct 12 12:40:36 2022 -0700\n+\n+    Inclusive terminology - \"rule of thumb\"\n+    \n+    Update bora/lib/public/fileIO.h to use \"general rule\" instead\n+    of \"rule of thumb\".\n+\n+commit 521eecf6eb591c7ef6106f9f44eee728c14a5795\n+Author: John Wolfe <jwolfe@vmware.com>\n+Date:   Wed Oct 12 12:40:36 2022 -0700\n+\n+    Common header file change not applicable to open-vm-tools.\n+\n+commit 83e3f82592ae15cc2d213591693d5684a8c88b5f\n+Author: John Wolfe <jwolfe@vmware.com>\n+Date:   Wed Oct 12 12:40:36 2022 -0700\n+\n+    Common header file change not applicable to open-vm-tools.\n+\n+commit 2a7556c850fae76f830a1805f4dfbdf9f49e3899\n+Author: John Wolfe <jwolfe@vmware.com>\n+Date:   Wed Sep 21 11:18:00 2022 -0700\n+\n+    Update ChangeLog with the granular push of Sep 21, 2022.\n+     - plus ChangeLog update of Sep 13, 2022.\n+\n+commit ce6d6d1abd652c766de597120b5a19c65a9a2f3f\n+Author: John Wolfe <jwolfe@vmware.com>\n+Date:   Wed Sep 21 10:53:28 2022 -0700\n+\n+    Common header file change not applicable to open-vm-tools.\n+\n+commit c0002b9761a0fc18e363d1e414f9330d1acab950\n Author: John Wolfe <jwolfe@vmware.com>\n-Date:   Thu Nov 10 12:01:14 2022 -0800\n+Date:   Wed Sep 21 10:53:28 2022 -0700\n \n     Add an example of a new deployPkg/wait-cloudinit-timeout setting to tools.conf.\n \n-commit cd995a58b07a91d7804d9fdec5545a5fe11e9db9\n+commit e210b4f0b28f7411ea2e45d4304725d0679481d2\n Author: John Wolfe <jwolfe@vmware.com>\n-Date:   Thu Nov 10 12:01:14 2022 -0800\n+Date:   Wed Sep 21 10:53:28 2022 -0700\n \n-    Make Linux perl based customization work with the cloud-init workflow.\n+    Inclusive terminology - \"suffer\"\n     \n-    To resolve issues seen where users want to set a vm's networking\n-    and apply cloud-init userdata together before the vm is booted, the\n-    deployPkg plugin has been modified to wait for cloud-init\n-    execution to finish.  This allows cloud-init to finish execution\n-    completely before the customization process triggers a reboot\n-    of the guest.\n+    Update bora/public/backdoor_def.h to not use \"suffer\".\n+\n+commit 045cc568c053096ca2d5e142787ab039c03ba654\n+Author: John Wolfe <jwolfe@vmware.com>\n+Date:   Wed Sep 21 10:53:28 2022 -0700\n+\n+    Change to common header file not applicable to open-vm-tools.\n+\n+commit 1d13616f84f10e836cb589a1bab62d8ae3331c7d\n+Author: John Wolfe <jwolfe@vmware.com>\n+Date:   Wed Sep 21 10:53:28 2022 -0700\n+\n+    Change to common header file not applicable to open-vm-tools.\n+\n+commit 7d4360383274807b488fcdf16ca6844ad27891a8\n+Author: John Wolfe <jwolfe@vmware.com>\n+Date:   Wed Sep 21 10:53:28 2022 -0700\n+\n+    Change to common header file not applicable to open-vm-tools.\n+\n+commit 7ec8864176d51356ea5bdb6713496d1770aff2ba\n+Author: John Wolfe <jwolfe@vmware.com>\n+Date:   Wed Sep 21 10:53:28 2022 -0700\n+\n+    Common header file change not applicable to open-vm-tools.\n+\n+commit e49ffc8d24257a4c1568e3a36d1f001a16b9d4cc\n+Author: John Wolfe <jwolfe@vmware.com>\n+Date:   Wed Sep 21 10:53:28 2022 -0700\n+\n+    Change to common header file not applicable to open-vm-tools.\n+\n+commit e873df9b63d4b16239f15dd0a4abfc7c1375e936\n+Author: John Wolfe <jwolfe@vmware.com>\n+Date:   Wed Sep 21 10:53:28 2022 -0700\n+\n+    Change to common source file not applicable to open-vm-tools.\n+\n+commit b5329468f4c2115d57ccfff54d0b4e9c703df33e\n+Author: John Wolfe <jwolfe@vmware.com>\n+Date:   Tue Sep 13 11:04:06 2022 -0700\n+\n+    Update ChangeLog with the granular push of Sep 13, 2022.\n+     - plus ChangeLog update of Sep 8, 2022.\n+\n+commit ab5b5fa4453fd1e1998d8571cab30b2b590053ba\n+Author: John Wolfe <jwolfe@vmware.com>\n+Date:   Tue Sep 13 10:54:06 2022 -0700\n+\n+    Add missed 2022 copyright.\n+\n+commit 7de3c1c208596a6dfaa967d9bb3b58d7f77c8671\n+Author: John Wolfe <jwolfe@vmware.com>\n+Date:   Tue Sep 13 10:31:15 2022 -0700\n+\n+    Record the usage of open-vm-tools version 12.1.5.\n     \n-    This change is solely in the deployPkg plugin side, so a user can get\n-    this change by upgrading their open-vm-tools in the guest/template.\n-    Crossport of change 10318445 and 10330918 from main to vmtools-prod-cpd.\n+    Update bora/public/vm_tools_version.h with an entry that associates\n+    version 12.1.5 with the tag TOOLS_VERSION_MITER_SAW_UPDATE1.\n \n-commit f7009c53afdab9a9507257c77bfeb30d8baaac8c\n+commit abd63f3785f8e4ec5384f55021b070be22c7cf8f\n Author: John Wolfe <jwolfe@vmware.com>\n-Date:   Thu Nov 10 12:01:14 2022 -0800\n+Date:   Tue Sep 13 10:31:15 2022 -0700\n \n     Add a null undo function to the vmbackup null provider.\n     \n@@ -83,56 +1582,261 @@ Date:   Thu Nov 10 12:01:14 2022 -0800\n     has no other effect.  currentOpName is set to the calling\n     function name, e.g. __FUNCTION__.\n \n-commit db9cb277841ddd56e2665fd29e3ee8c6f37fe233\n+commit 42437c1131ee990737986d3fd5248bd17ec3e5ff\n+Author: John Wolfe <jwolfe@vmware.com>\n+Date:   Tue Sep 13 10:31:15 2022 -0700\n+\n+    Change to common header file not applicable to open-vm-tools.\n+\n+commit f1e30c3cb3b698a91de4966206350df2e08be128\n+Author: John Wolfe <jwolfe@vmware.com>\n+Date:   Tue Sep 13 10:31:15 2022 -0700\n+\n+    Changes to common source files not applicable to open-vm-tools.\n+\n+commit 484ab8d8443ac6dd42f2ba7aabae4a7b44eda2e3\n+Author: John Wolfe <jwolfe@vmware.com>\n+Date:   Tue Sep 13 10:31:15 2022 -0700\n+\n+    Common header file change not applicable to open-vm-tools.\n+\n+commit 8b98bd41def988342c16a870a4e7e880885dc81d\n+Author: John Wolfe <jwolfe@vmware.com>\n+Date:   Tue Sep 13 10:31:15 2022 -0700\n+\n+    Common header file change not applicable to open-vm-tools.\n+\n+commit 6d0cf2442fb9ec26be9528952e871c35019a1854\n+Author: John Wolfe <jwolfe@vmware.com>\n+Date:   Tue Sep 13 10:31:15 2022 -0700\n+\n+    Common header file change not applicable to open-vm-tools.\n+\n+commit 064033a0ea74599d93f2a9988e0331efbe8f981f\n+Author: John Wolfe <jwolfe@vmware.com>\n+Date:   Tue Sep 13 10:31:14 2022 -0700\n+\n+    [deployPkg] Increase the maximum timeout for cloud-init execution to complete.\n+\n+commit f3979ace5779c481073004968d6d9787d24c1096\n+Author: John Wolfe <jwolfe@vmware.com>\n+Date:   Tue Sep 13 10:31:14 2022 -0700\n+\n+    Record the use of VMware Tools version 10.3.26 in vm_tools_version.h\n+    \n+    Tracking the use of 10.3.26 for TOOLS_VERSION_JACKHAMMER_PATCH13.\n+\n+commit 22f7f76e19c906890f5cd35bde1a43ae90e77f79\n+Author: John Wolfe <jwolfe@vmware.com>\n+Date:   Tue Sep 13 10:31:14 2022 -0700\n+\n+    Make Linux perl based customization work with the cloud-init workflow.\n+    \n+    To resolve issues seen where users want to set a vm's networking\n+    and apply cloud-init userdata together before the vm is booted, the\n+    deployPkg plugin has been modified to wait for cloud-init\n+    execution to finish.  This allows cloud-init to finish execution\n+    completely before the customization process triggers a reboot\n+    of the guest.\n+    \n+    This change is solely in the deployPkg plugin side, so a user can get\n+    this change by upgrading their open-vm-tools in the guest/template.\n+\n+commit 15e8c9828bcef3eb41e7655b0f18c575dc495b25\n+Author: John Wolfe <jwolfe@vmware.com>\n+Date:   Tue Sep 13 10:31:14 2022 -0700\n+\n+    Common header file change not applicable to open-vm-tools.\n+\n+commit a2cb7be60dbaa2b632872b37e187570a92fe6b2a\n+Author: John Wolfe <jwolfe@vmware.com>\n+Date:   Tue Sep 13 10:31:14 2022 -0700\n+\n+    Common header file change not applicable to open-vm-tools.\n+\n+commit 1dbbb6e91e5388a88fe063d61d0cbb9602fb75a1\n Author: John Wolfe <jwolfe@vmware.com>\n-Date:   Thu Nov 10 12:01:14 2022 -0800\n+Date:   Tue Sep 13 10:31:14 2022 -0700\n \n-    Prepare tools builds on vmtools-prod-cpd for the 12.1.5 update release.\n+    Address Coverity issues.\n+    \n+    base64.c\n+    - buffer overrun (out); false positive\n     \n-    - Bump the tools version to 12.1.5.\n+    hashTable.c\n+    - expression always false; false positive\n \n-commit 6f5e4b13647b40a45c196dad76b1cb39cc6690b9\n+commit 587be32ec29a3665e30f7509d3d3c8f8ada505e7\n Author: John Wolfe <jwolfe@vmware.com>\n-Date:   Tue Aug 23 14:59:44 2022 -0700\n+Date:   Thu Sep 8 14:57:36 2022 -0700\n \n-    Update of the ChangeLog with the \"open-vm-tools 12.1.0\" release point marker.\n+    Update ChangeLog with the granular push of Sep 8, 2022.\n+      - plus ChangeLog update of Aug 21, 2022.\n \n-commit 196eee046dc54358275ee5130cd189cd686efb27\n+commit 29b92ada5842c2b9d1cde7dbc9dafb69d6a18b96\n Author: John Wolfe <jwolfe@vmware.com>\n-Date:   Tue Aug 23 14:52:28 2022 -0700\n+Date:   Thu Sep 8 14:51:40 2022 -0700\n \n-      =================================================\n-        open-vm-tools 12.1.0 released at this point.\n-      =================================================\n-    Update of the ChangeLog with the final changes in preparation for\n-    the open-vm-tools 12.1.0 release.\n+    Change to common source file not applicable to open-vm-tools.\n+\n+commit 775671dc79aa47d82df2ad43e63e18d215625510\n+Author: John Wolfe <jwolfe@vmware.com>\n+Date:   Thu Sep 8 14:51:40 2022 -0700\n+\n+    Common header file change not applicable to open-vm-tools.\n \n-commit 296bffe04df602705d223d78633877ddd2f2cb9c\n+commit 95b78cf63ea7dc37b6d9bd5b0f37cd074359ed0f\n Author: John Wolfe <jwolfe@vmware.com>\n-Date:   Tue Aug 23 12:44:30 2022 -0700\n+Date:   Thu Sep 8 14:51:40 2022 -0700\n \n-    Open-vm-tools 12.1.0 Release Notes\n+    Changes to common header files not applicable to open-vm-tools.\n \n-commit 6914f15d59bd917dfa0dad04a6cc26632c03f5ba\n+commit 8fa7eef2d27971753d9d6d1dd4fd5bd1a7a3dd17\n Author: John Wolfe <jwolfe@vmware.com>\n-Date:   Mon Aug 22 09:16:36 2022 -0700\n+Date:   Thu Sep 8 14:51:40 2022 -0700\n \n-    Preparing for the open-vm-tools 12.1.0 release.\n+    [dnd] Coverity Fixes\n     \n-    Syncing the tools version, build number and product build number with\n-    the internal official build of VMware Tools / open-vm-tools 12.1.0.\n+    dndCommon.c\n+    - truncating time value; false positive\n+\n+commit 900e24d53bca579d8ad6b12687daf670fb7fe5a6\n+Author: John Wolfe <jwolfe@vmware.com>\n+Date:   Thu Sep 8 14:51:40 2022 -0700\n+\n+    [asyncsocket] Coverity Fixes\n+    \n+    asyncsocket.c\n+    - dereferencing null pointer (asock); false positive.\n+\n+commit 8aa0bc98bf2986b47800dd7eaf544e7e800a075e\n+Author: John Wolfe <jwolfe@vmware.com>\n+Date:   Thu Sep 8 14:51:40 2022 -0700\n+\n+    Change to common header file not applicable to open-vm-tools.\n+\n+commit d3a4f33d29db6050ca84f504c9d3a557484e4a7d\n+Author: John Wolfe <jwolfe@vmware.com>\n+Date:   Thu Sep 8 14:51:40 2022 -0700\n+\n+    Common header file change not applicable to open-vm=tools.\n+\n+commit bdca47456a592040474b21ad0db40f820dcc87f9\n+Author: John Wolfe <jwolfe@vmware.com>\n+Date:   Thu Sep 8 14:51:40 2022 -0700\n+\n+    Common header file change not applicable to open-vm-tools.\n+\n+commit 2875dd33aa494879103b9bf6a635781a99c1292a\n+Author: John Wolfe <jwolfe@vmware.com>\n+Date:   Thu Sep 8 14:51:40 2022 -0700\n+\n+    lib/rpcin/rpcin.c: Address issues reported by Coverity.\n+\n+commit bbf4831bcfdb90428dae3aeee2304e5e16f7c7a9\n+Author: John Wolfe <jwolfe@vmware.com>\n+Date:   Thu Sep 8 14:51:40 2022 -0700\n+\n+    Change to common source file not applicable to open-vm-tools.\n+\n+commit d379cf84e479c11f4c3b470130a27f22005ab56d\n+Author: John Wolfe <jwolfe@vmware.com>\n+Date:   Thu Sep 8 14:51:40 2022 -0700\n+\n+    Change to common header file not applicable to open-vm-tools.\n+\n+commit 8a8bcb4ad1773fd62ad5a8bee352bf6ed34946a6\n+Author: John Wolfe <jwolfe@vmware.com>\n+Date:   Thu Sep 8 14:51:39 2022 -0700\n+\n+    Move HostinfoProcessQuery() from hostinfo.c into hostinfoPosix.c.\n+\n+commit c6de70b61177943130040563243ba6f671a0556e\n+Author: John Wolfe <jwolfe@vmware.com>\n+Date:   Thu Sep 8 14:51:39 2022 -0700\n+\n+    L10n drop for open-vm-tools 12.1.0.\n+\n+commit b6c4eca1f575a6f116a3ce9e1bbb6e99dd134d33\n+Author: John Wolfe <jwolfe@vmware.com>\n+Date:   Thu Sep 8 14:51:39 2022 -0700\n+\n+    Common header file change not applicable to open-vm-tools.\n+\n+commit 53f331ccbbbc57eeaf4dfc51c94ec6f3e9a31a65\n+Author: John Wolfe <jwolfe@vmware.com>\n+Date:   Thu Sep 8 14:51:39 2022 -0700\n+\n+    Common header file change not applicable to open-vm-tools.\n+\n+commit 662eb2af666ca75532777ac28a11e29df1a6b413\n+Author: John Wolfe <jwolfe@vmware.com>\n+Date:   Thu Sep 8 14:51:39 2022 -0700\n \n-commit 8825496ceca35e28cc74721b9e25f094f1ae5f2b\n+    lib/file: Speed up FileSimpleRandom.\n+    \n+    Also remove potential lock rank violations.\n+\n+commit db405bfe35567f1cafaff49c623d1f5568baea58\n+Author: John Wolfe <jwolfe@vmware.com>\n+Date:   Thu Sep 8 14:51:39 2022 -0700\n+\n+    Bump the open-vm-tools version to 12.2.0 in the \"devel\" branch.\n+    \n+    Setting the development open-vm-tools version to 12.2.0.\n+    Adding the tag name \"MITER_SAW_RELEASE\" to tools version 12.1.0\n+\n+commit 366096f02bbaa95e057ed89a5de5c05a1168d23c\n+Author: John Wolfe <jwolfe@vmware.com>\n+Date:   Thu Sep 8 14:51:39 2022 -0700\n+\n+    Record the use of VMware Tools version 12.0.6 for an express patch.\n+    \n+    Adding the use of version 12.0.6 to lib/include/vm_tools_version.h.\n+\n+commit 948eb98761b2662bceda35791a3be420391ebec3\n+Author: John Wolfe <jwolfe@vmware.com>\n+Date:   Thu Sep 8 14:51:39 2022 -0700\n+\n+    Common header file change not applicable to open-vm-tools.\n+\n+commit 7066a131959f212a71e678f7538159b5f421ffc1\n+Author: John Wolfe <jwolfe@vmware.com>\n+Date:   Thu Sep 8 14:51:39 2022 -0700\n+\n+    Common header file change not applicable to open-vm-tools.\n+\n+commit a2299e2022718f7fd833714a2252252c07249745\n+Author: John Wolfe <jwolfe@vmware.com>\n+Date:   Thu Sep 8 14:51:39 2022 -0700\n+\n+    lib/file: Clarify why File_GetSize opens and closes the file.\n+    \n+    Spell out what's going on.\n+\n+commit d1f0cb0906d3a479fd3a3320ea202d96134fb16d\n+Author: John Wolfe <jwolfe@vmware.com>\n+Date:   Thu Sep 8 14:51:39 2022 -0700\n+\n+    Common header file change not applicable to open-vm-tools.\n+\n+commit 3f426fb27d85e71e10bb3264f622fdca0d1f8cd7\n+Author: John Wolfe <jwolfe@vmware.com>\n+Date:   Thu Sep 8 14:51:39 2022 -0700\n+\n+    Common header file change not applicable to open-vm-tools.\n+\n+commit 7991ed9acfe0917bc8642a48e7db82db5c779277\n Author: John Wolfe <jwolfe@vmware.com>\n-Date:   Sun Aug 21 13:16:01 2022 -0700\n+Date:   Thu Sep 8 14:51:39 2022 -0700\n \n-    Update of the ChangeLog with granular push from the 12.1.0 tools product branch.\n+    Changes to common header files not applicable to open-vm-tools.\n \n-commit 4a41aee3900ddec7d84b919e26e85e9a9b623cd5\n+commit 365db99d442774c49234ae157fc4373d0bb6c4f8\n Author: John Wolfe <jwolfe@vmware.com>\n-Date:   Sun Aug 21 13:00:18 2022 -0700\n+Date:   Thu Sep 8 14:51:39 2022 -0700\n \n-    VMTools 12.1.0 L10n drop.\n+    Common source file changes not applicable to open-vm-tools.\n \n commit 732bb7a3287ebdb2be079f364da4b0ea6a4c08bd\n Author: John Wolfe <jwolfe@vmware.com>\ndiff --git a/open-vm-tools/Makefile.am b/open-vm-tools/Makefile.am\nindex 3029679..3ad409e 100644\n--- a/open-vm-tools/Makefile.am\n+++ b/open-vm-tools/Makefile.am\n@@ -1,5 +1,5 @@\n ################################################################################\n-### Copyright (c) 2007-2021 VMware, Inc.  All rights reserved.\n+### Copyright (c) 2007-2021,2023 VMware, Inc.  All rights reserved.\n ###\n ### Top-level Makefile for building the VMware OSS Tools.\n ###\n@@ -71,6 +71,7 @@ if HAVE_UDEV\n    SUBDIRS += vmwgfxctrl\n endif\n \n+\n install-data-local:\n \t$(INSTALL) -d $(DESTDIR)/etc/vmware-tools/\n \t$(INSTALL) -m 644 $(srcdir)/tools.conf $(DESTDIR)/etc/vmware-tools/tools.conf.example\ndiff --git a/open-vm-tools/checkvm/checkvm.c b/open-vm-tools/checkvm/checkvm.c\nindex 164e19b..0115be7 100644\n--- a/open-vm-tools/checkvm/checkvm.c\n+++ b/open-vm-tools/checkvm/checkvm.c\n@@ -1,5 +1,5 @@\n /*********************************************************\n- * Copyright (C) 2007-2020 VMware, Inc. All rights reserved.\n+ * Copyright (c) 2007-2020 VMware, Inc. All rights reserved.\n  *\n  * This program is free software; you can redistribute it and/or modify it\n  * under the terms of the GNU Lesser General Public License as published\ndiff --git a/open-vm-tools/configure.ac b/open-vm-tools/configure.ac\nindex c133add..2d60c72 100644\n--- a/open-vm-tools/configure.ac\n+++ b/open-vm-tools/configure.ac\n@@ -1,5 +1,5 @@\n ################################################################################\n-### Copyright (c) 2007-2022 VMware, Inc.  All rights reserved.\n+### Copyright (c) 2007-2023 VMware, Inc.  All rights reserved.\n ###\n ### Configure script for building the VMware OSS Tools.\n ###\n@@ -35,10 +35,10 @@\n ### Initialization\n ###\n \n-TOOLS_VERSION=\"12.1.5\"\n+TOOLS_VERSION=\"12.3.0\"\n AC_INIT(\n    [open-vm-tools],\n-   [12.1.5],\n+   [12.3.0],\n    [open-vm-tools-devel@lists.sourceforge.net])\n \n # In order to make this configure script auto-detect situations where\n@@ -720,16 +720,26 @@ AC_DEFUN([AC_VMW_CONTAINERINFO_MSG],[\n                       [1.3.2],\n                       [grpc++/grpc++.h],\n                       [],\n-                      [],\n+                      [PKG_CHECK_MODULES([grpcxx], [grpc++ >= 1.3.2])],\n                       [AC_VMW_CONTAINERINFO_MSG([\"grpc++ >= 1.3.2\"])])\n \n #\n # proto files needed by containerd grpc client.\n #\n-   shared_prefix=/usr/share/gocode/src/github.com\n+# Installation location varies between Linux vendors.\n+#   Canonical, Ubuntu and Debian: in /usr/share/gocode/src\n+#   openSUSE/SUSE: in /usr/share/go/<version>/contrib/src\n+#\n+   for d in /usr/share/gocode/src /usr/share/go/1.*/contrib/src; do\n+       if test -d \"$d\"/github.com; then\n+           src_prefix=\"$d\"\n+           break\n+       fi\n+   done\n+   shared_prefix=$src_prefix/github.com\n    AC_SUBST(TYPES_DIR, github.com/containerd/containerd/api/types)\n    AC_SUBST(TASKS_PROTOPATH, $shared_prefix/containerd/containerd/api/services/tasks/v1)\n-   AC_SUBST(DEP_PROTOPATH, /usr/share/gocode/src)\n+   AC_SUBST(DEP_PROTOPATH, $src_prefix)\n    AC_SUBST(CONTAINERD_PROTOPATH, $shared_prefix/containerd/containerd/api/services/containers/v1)\n    AC_SUBST(GOGO_PROTOPATH, $shared_prefix/gogo/protobuf)\n    AC_CHECK_FILE([${CONTAINERD_PROTOPATH}/containers.proto],\n@@ -1055,16 +1065,6 @@ else\n       have_xcomposite=\"yes\"\n    fi\n \n-   AC_VMW_CHECK_LIB([gdk_pixbuf_xlib-2.0],\n-                    [GDK_PIXBUF_XLIB2],\n-                    [gdk-pixbuf-xlib-2.0],\n-                    [],\n-                    [2.21.0],\n-                    [gdk-pixbuf-xlib/gdk-pixbuf-xlib.h],\n-                    [gdk_pixbuf_xlib_init],\n-                    [],\n-                    [AC_MSG_ERROR([gdk-pixbuf-xlib-2.0 not found. Please configure without X11 (using --without-x) or install the gdk-pixbuf-xlib-2.0 devel package.])])\n-\n    # Check whether we have gtk+ 3.0.\n    if test \"$with_gtk3\" != \"no\"; then\n       # gdk_display_get_default_group (added in gtk+ 2.4.0) is function currently\n@@ -1829,7 +1829,6 @@ AC_SUBST([UDEVRULESDIR])\n AC_CONFIG_FILES([                      \\\n    Makefile                            \\\n    lib/Makefile                        \\\n-   lib/appUtil/Makefile                \\\n    lib/auth/Makefile                   \\\n    lib/backdoor/Makefile               \\\n    lib/asyncsocket/Makefile            \\\n@@ -1939,6 +1938,19 @@ AC_CONFIG_FILES([                      \\\n    libappmonitor/appmonitor.pc         \\\n ])\n \n+\n+\n+\n+\n+\n+\n+AM_CONDITIONAL([VMTOOLS_FS_VGAUTH_HOST_VERIFICATION],[true])\n+if test \"$enable_vgauth\" = \"yes\"; then\n+   echo \"Enabling vgauth host verification\"\n+   CPPFLAGS=\"$CPPFLAGS -DVMTOOLS_FS_VGAUTH_HOST_VERIFICATION\"\n+fi\n+\n+\n ###\n ### Output\n ###\ndiff --git a/open-vm-tools/hgfsclient/hgfsclient.c b/open-vm-tools/hgfsclient/hgfsclient.c\nindex c311833..3bbe763 100644\n--- a/open-vm-tools/hgfsclient/hgfsclient.c\n+++ b/open-vm-tools/hgfsclient/hgfsclient.c\n@@ -1,5 +1,5 @@\n /*********************************************************\n- * Copyright (C) 2006-2019,2021 VMware, Inc. All rights reserved.\n+ * Copyright (c) 2006-2019,2021 VMware, Inc. All rights reserved.\n  *\n  * This program is free software; you can redistribute it and/or modify it\n  * under the terms of the GNU Lesser General Public License as published\ndiff --git a/open-vm-tools/lib/Makefile.am b/open-vm-tools/lib/Makefile.am\nindex 523e723..e37422c 100644\n--- a/open-vm-tools/lib/Makefile.am\n+++ b/open-vm-tools/lib/Makefile.am\n@@ -1,5 +1,5 @@\n ################################################################################\n-### Copyright (c) 2007-2016,2020-2021 VMware, Inc.  All rights reserved.\n+### Copyright (c) 2007-2016,2020-2023 VMware, Inc.  All rights reserved.\n ###\n ### This program is free software; you can redistribute it and/or modify\n ### it under the terms of version 2 of the GNU General Public License as\n@@ -17,9 +17,6 @@\n \n SUBDIRS =\n SUBDIRS += guestRpc\n-if HAVE_X11\n-   SUBDIRS += appUtil\n-endif\n SUBDIRS += auth\n SUBDIRS += backdoor\n if HAVE_VSOCK\n@@ -77,3 +74,5 @@ SUBDIRS += vmCheck\n SUBDIRS += vmSignal\n SUBDIRS += wiper\n SUBDIRS += xdg\n+\n+\ndiff --git a/open-vm-tools/lib/appUtil/Makefile.am b/open-vm-tools/lib/appUtil/Makefile.am\ndeleted file mode 100644\nindex 69ae235..0000000\n--- a/open-vm-tools/lib/appUtil/Makefile.am\n+++ /dev/null\n@@ -1,27 +0,0 @@\n-################################################################################\n-### Copyright (C) 2008-2016,2020 VMware, Inc.  All rights reserved.\n-###\n-### This program is free software; you can redistribute it and/or modify\n-### it under the terms of version 2 of the GNU General Public License as\n-### published by the Free Software Foundation.\n-###\n-### This program is distributed in the hope that it will be useful,\n-### but WITHOUT ANY WARRANTY; without even the implied warranty of\n-### MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\n-### GNU General Public License for more details.\n-###\n-### You should have received a copy of the GNU General Public License\n-### along with this program; if not, write to the Free Software\n-### Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA\n-################################################################################\n-\n-noinst_LTLIBRARIES = libAppUtil.la\n-\n-libAppUtil_la_SOURCES =\n-libAppUtil_la_SOURCES += appUtil.c\n-libAppUtil_la_SOURCES += appUtilX11.c\n-\n-AM_CFLAGS =\n-AM_CFLAGS += @GTK_CPPFLAGS@\n-AM_CFLAGS += @GDK_PIXBUF_XLIB2_CPPFLAGS@\n-\ndiff --git a/open-vm-tools/lib/appUtil/appUtil.c b/open-vm-tools/lib/appUtil/appUtil.c\ndeleted file mode 100644\nindex 56ef037..0000000\n--- a/open-vm-tools/lib/appUtil/appUtil.c\n+++ /dev/null\n@@ -1,83 +0,0 @@\n-/*********************************************************\n- * Copyright (C) 2008-2019 VMware, Inc. All rights reserved.\n- *\n- * This program is free software; you can redistribute it and/or modify it\n- * under the terms of the GNU Lesser General Public License as published\n- * by the Free Software Foundation version 2.1 and no later version.\n- *\n- * This program is distributed in the hope that it will be useful, but\n- * WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY\n- * or FITNESS FOR A PARTICULAR PURPOSE.  See the Lesser GNU General Public\n- * License for more details.\n- *\n- * You should have received a copy of the GNU Lesser General Public License\n- * along with this program; if not, write to the Free Software Foundation, Inc.,\n- * 51 Franklin St, Fifth Floor, Boston, MA  02110-1301 USA.\n- *\n- *********************************************************/\n-\n-/*\n- * appUtil.c --\n- *\n- *    Utility functions for guest applications.\n- */\n-\n-\n-#include <stdlib.h>\n-#include <string.h>\n-\n-#include \"appUtil.h\"\n-#include \"debug.h\"\n-#include \"rpcout.h\"\n-#include \"str.h\"\n-\n-\n-/*\n- *----------------------------------------------------------------------------\n- *\n- * AppUtil_SendGuestCaps --\n- *\n- *     Send a list of guest capabilities to the host.\n- *\n- * Results:\n- *     None.\n- *\n- * Side effects:\n- *     None.\n- *\n- *----------------------------------------------------------------------------\n- */\n-\n-void\n-AppUtil_SendGuestCaps(const GuestCapabilities *caps, // IN: array of capabilities\n-                      size_t numCaps,                // IN: number of capabilities\n-                      Bool enabled)                  // IN: capabilities status\n-{\n-   char *capsStr;\n-   size_t capIdx;\n-\n-   ASSERT(caps);\n-   ASSERT(numCaps > 0);\n-\n-   capsStr = strdup(GUEST_CAP_FEATURES);\n-   for (capIdx = 0; capIdx < numCaps; capIdx++) {\n-      char *capsTemp;\n-      if (!capsStr) {\n-         Debug(\"%s: Not enough memory to create capabilities string\\n\", __FUNCTION__);\n-         return;\n-      }\n-      capsTemp = Str_Asprintf(NULL,\n-                              \"%s %d=%d\",\n-                              capsStr,\n-                              caps[capIdx],\n-                              (int)enabled);\n-      free(capsStr);\n-      capsStr = capsTemp;\n-   }\n-\n-   if (!RpcOut_sendOne(NULL, NULL, capsStr)) {\n-      Debug(\"%s: could not set capabilities: older vmx?\\n\", __FUNCTION__);\n-   }\n-\n-   free(capsStr);\n-}\ndiff --git a/open-vm-tools/lib/appUtil/appUtilX11.c b/open-vm-tools/lib/appUtil/appUtilX11.c\ndeleted file mode 100644\nindex c08ead8..0000000\n--- a/open-vm-tools/lib/appUtil/appUtilX11.c\n+++ /dev/null\n@@ -1,838 +0,0 @@\n-/*********************************************************\n- * Copyright (C) 2008-2019,2022 VMware, Inc. All rights reserved.\n- *\n- * This program is free software; you can redistribute it and/or modify it\n- * under the terms of the GNU Lesser General Public License as published\n- * by the Free Software Foundation version 2.1 and no later version.\n- *\n- * This program is distributed in the hope that it will be useful, but\n- * WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY\n- * or FITNESS FOR A PARTICULAR PURPOSE.  See the Lesser GNU General Public\n- * License for more details.\n- *\n- * You should have received a copy of the GNU Lesser General Public License\n- * along with this program; if not, write to the Free Software Foundation, Inc.,\n- * 51 Franklin St, Fifth Floor, Boston, MA  02110-1301 USA.\n- *\n- *********************************************************/\n-\n-/*\n- * appUtilX11.c --\n- *\n- *    Utility functions to retrieve application icons.\n- */\n-\n-#define _GNU_SOURCE 1\n-#include <stdlib.h>\n-#include <string.h>\n-#include <unistd.h>\n-\n-#include \"vmware.h\"\n-#include \"str.h\"\n-#include \"posix.h\"\n-#include \"debug.h\"\n-\n-#include <libgen.h>\n-#include <glib.h>\n-#include <gtk/gtk.h>\n-#include <gdk/gdkx.h>\n-#include <X11/Xlib.h>\n-#include <X11/Xatom.h>\n-#include <gdk-pixbuf-xlib/gdk-pixbuf-xlib.h>\n-\n-#if GTK_MAJOR_VERSION < 2\n-#error \"Gtk 2.0 or 3.0 is required\"\n-#endif\n-\n-\n-/*\n- *-----------------------------------------------------------------------------\n- *\n- * AppUtilIconThemeReallyHasIcon --\n- *\n- *      Utility function to detect whether an icon is really available. This is necessary\n- *      because sometimes gtk_icon_theme_has_icon() lies to us...\n- *\n- * Results:\n- *      TRUE if the icon theme really has a usable icon, FALSE otherwise.\n- *\n- * Side effects:\n- *      None.\n- *\n- *-----------------------------------------------------------------------------\n- */\n-\n-static Bool\n-AppUtilIconThemeReallyHasIcon(GtkIconTheme *iconTheme, // IN\n-                              const char *iconName)    // IN\n-{\n-   gint *iconSizes;\n-   Bool retval;\n-\n-   if (!gtk_icon_theme_has_icon(iconTheme, iconName)) {\n-      return FALSE;\n-   }\n-\n-   iconSizes = gtk_icon_theme_get_icon_sizes(iconTheme, iconName);\n-   retval = iconSizes && iconSizes[0];\n-   g_free(iconSizes);\n-\n-   return retval;\n-}\n-\n-\n-/*\n- *-----------------------------------------------------------------------------\n- *\n- * AppUtilCollectNamedIcons --\n- *\n- *      Tries to find icons with a particular name (which may be a full filesystem path,\n- *      a filename with extension, or just an abstract app name).\n- *\n- * Results:\n- *      None.\n- *\n- * Side effects:\n- *      May add icons into 'pixbufs'\n- *\n- *-----------------------------------------------------------------------------\n- */\n-\n-static void\n-AppUtilCollectNamedIcons(GPtrArray *pixbufs,   // IN/OUT\n-                         const char *iconName) // IN\n-{\n-   char *myIconName = NULL;\n-   char *baseIconName;\n-   /*\n-    * Use the GtkIconTheme to track down any available icons for this app.\n-    */\n-   GtkIconTheme *iconTheme = NULL;\n-   char *ctmp2;\n-   Bool foundItInTheme = FALSE; // Did we find this icon in the GtkIconTheme?\n-   Bool foundItInFile = FALSE;  // Did we find this icon directly in a file?\n-   static const char *extraIconPaths[] = {\n-      \"/usr/share/icons\",\n-      \"/usr/share/pixmaps\",\n-      \"/usr/local/share/pixmaps\",\n-      \"/usr/local/share/icons\",\n-      \"/opt/kde3/share/icons\",\n-      \"/opt/kde3/share/pixmaps\",\n-      \"/opt/kde4/share/icons\",\n-      \"/opt/kde4/share/pixmaps\",\n-      \"/opt/gnome/share/icons\",\n-      \"/opt/gnome/share/pixmaps\"\n-   };\n-   int iconNameLen;\n-\n-   ASSERT(iconName);\n-\n-   Debug(\"Collecting icons named %s\\n\", iconName);\n-\n-   iconNameLen = strlen(iconName) + 1;\n-   baseIconName = g_alloca(iconNameLen); // We need to modify the name sometimes\n-   Str_Strcpy(baseIconName, iconName, iconNameLen);\n-\n-   ctmp2 = strrchr(baseIconName, '.');\n-   if (*baseIconName != '/' && ctmp2 && strlen(ctmp2) <= 5) {\n-      /*\n-       * If it's a plain filename that we could possibly feed into GtkIconTheme as an\n-       * icon ID, trim the file extension to turn it into an icon ID string and make\n-       * GtkIconTheme happy.\n-       */\n-      *ctmp2 = '\\0';\n-   }\n-\n-   iconTheme = gtk_icon_theme_get_default();\n-   g_object_ref(G_OBJECT(iconTheme));\n-   foundItInTheme = AppUtilIconThemeReallyHasIcon(iconTheme, baseIconName);\n-\n-   if (!foundItInTheme) {\n-      /*\n-       * Try looking for it as a non-GtkIconTheme managed file, to deal with older\n-       * systems.\n-       */\n-      if (iconName[0] != '/') {\n-         gchar *iconSearchName;\n-         gsize iconSearchNameSize;\n-         gboolean triedOtherExts = FALSE;\n-\n-         char *ctmp2;\n-         int i;\n-\n-         static const char *iconExtensions[] = {\n-            \"\",         // MUST be first entry.\n-            \".png\",\n-            \".xpm\",\n-            \".gif\",\n-            \".svg\",\n-         };\n-\n-         /*\n-          * Make a local copy of iconName in case we need to search for icons with\n-          * alternate extensions.\n-          */\n-         iconSearchNameSize = strlen(iconName) + 1;\n-         iconSearchName = g_alloca(iconSearchNameSize);\n-\n-         /* Ignore return, returns length of the source string */\n-         /* coverity[check_return] */\n-         g_strlcpy(iconSearchName, iconName, iconSearchNameSize);\n-\n-         myIconName = NULL;\n-\n-         ctmp2 = g_alloca(PATH_MAX);\n-tryingOtherExts:\n-         for (i = 0; !myIconName && i < ARRAYSIZE(extraIconPaths); i++) {\n-            int j;\n-\n-            if (!extraIconPaths[i]) {\n-               continue;\n-            }\n-\n-            /*\n-             * Per Desktop Entry Specification and Icon Theme Specification, I don't\n-             * believe that the iconName, unless it's an absolute path, should include\n-             * the file extension.\n-             *\n-             * However, empirical evidence shows that -many- applications ignore that\n-             * and may specify an icon of, for example, \"foo.png\".  We'll also handle\n-             * those special cases here.\n-             */\n-            for (j = 0; !myIconName && j < ARRAYSIZE(iconExtensions); j++) {\n-               g_snprintf(ctmp2, PATH_MAX, \"%s/%s%s\", extraIconPaths[i], iconSearchName,\n-                          iconExtensions[j]);\n-               if (!g_file_test(ctmp2, G_FILE_TEST_EXISTS)) {\n-                  continue;\n-               }\n-\n-               if (j != 0) {\n-                  /*\n-                   * Case 1:  We located an icon by appending an image extension to\n-                   * IconName.  Success!\n-                   */\n-                  myIconName = ctmp2;           // Will break \"i\" loop.\n-                  foundItInFile = TRUE;\n-                  break;\n-               } else {\n-                  /*\n-                   * Case 2:  We found an icon without appending an extension.  Verify\n-                   * that the filename contains a valid image extension.\n-                   */\n-                  int k;\n-                  char *ctmpext = strrchr(ctmp2, '.');\n-                  for (k = 1; ctmpext && k < ARRAYSIZE(iconExtensions); k++) {\n-                     if (strcmp(ctmpext, iconExtensions[k]) == 0) {\n-                        myIconName = ctmp2;     // Will break \"i\" loop.\n-                        foundItInFile = TRUE;\n-                        break;\n-                     }\n-                  }\n-               }\n-            }\n-         }\n-\n-         /*\n-          * No dice.  But we won't give up hope just yet!  In some cases, icon-foo.png\n-          * may not exist while icon-foo.xpm does.  (Ex: Ubuntu 8.04's hwtest.)  We'll\n-          * try once more by searching for an icon with an alternate extension.\n-          */\n-         if (!foundItInFile && !triedOtherExts) {\n-            int extIndex;\n-\n-            triedOtherExts = TRUE;\n-\n-            /*\n-             * Look to see if iconSearchName contains any of the known extensions\n-             * listed above.  If so, chop it off, then reattempt the search.\n-             */\n-            for (extIndex = 1; extIndex < ARRAYSIZE(iconExtensions); extIndex++) {\n-               if (g_str_has_suffix(iconSearchName, iconExtensions[extIndex])) {\n-                  gchar *extension;\n-                  extension = g_strrstr(iconSearchName, iconExtensions[extIndex]);\n-                  *extension = '\\0';\n-                  goto tryingOtherExts;\n-               }\n-            }\n-         }\n-      } else {\n-         myIconName = g_alloca(iconNameLen + 1);\n-         Str_Strcpy(myIconName, iconName, iconNameLen);\n-         foundItInFile = TRUE;\n-      }\n-   }\n-\n-   if (!foundItInTheme && !foundItInFile) {\n-      /*\n-       * Try looking through some auxiliary icon themes.\n-       */\n-      int i;\n-      static const char *extraThemes[] = {\n-         /*\n-          * Some other icon themes to try.\n-          */\n-         \"hicolor\",\n-         \"Bluecurve\",\n-         \"HighContrast-SVG\",\n-         \"HighContrastLargePrint\",\n-         \"crystalsvg\",\n-         \"slick\",\n-         NULL\n-      };\n-      g_object_unref(G_OBJECT(iconTheme));\n-      iconTheme = gtk_icon_theme_new();\n-      for (i = 0; i < ARRAYSIZE(extraIconPaths); i++) {\n-         if (extraIconPaths[i]) {\n-            if (g_file_test(extraIconPaths[i], G_FILE_TEST_EXISTS)) {\n-               gtk_icon_theme_append_search_path(iconTheme, extraIconPaths[i]);\n-            } else {\n-               extraIconPaths[i] = NULL;\n-            }\n-         }\n-      }\n-\n-      for (i = 0; extraThemes[i]; i++) {\n-         gtk_icon_theme_set_custom_theme(iconTheme, extraThemes[i]);\n-         foundItInTheme = AppUtilIconThemeReallyHasIcon(iconTheme, baseIconName);\n-         if (foundItInTheme) {\n-            break;\n-         }\n-      }\n-   }\n-\n-   if (foundItInTheme) {\n-      /*\n-       * If we know this icon can be loaded via GtkIconTheme, do so.\n-       */\n-      gint *iconSizes;\n-      int i;\n-      Bool needToUseScalable;\n-\n-      iconSizes = gtk_icon_theme_get_icon_sizes(iconTheme, baseIconName);\n-      Debug(\"Loading icon %s from iconTheme\\n\", baseIconName);\n-\n-      ASSERT(iconSizes);\n-      needToUseScalable = (iconSizes[0] == -1 && iconSizes[1] == 0);\n-\n-      /*\n-       * Before we try to actually dump the icons out to the host, count how many we\n-       * actually can load.\n-       */\n-      for (i = 0; iconSizes[i]; i++) {\n-         GdkPixbuf *pixbuf;\n-         GtkIconInfo *iconInfo;\n-         gint thisSize;\n-\n-         thisSize = iconSizes[i];\n-         if (thisSize == -1 && !needToUseScalable) {\n-            continue; // Skip scalable icons if we have prerendered versions\n-         }\n-\n-         if (thisSize == -1) {\n-            thisSize = 64; // Render SVG icons to 64x64\n-         }\n-\n-         iconInfo = gtk_icon_theme_lookup_icon(iconTheme, baseIconName, thisSize, 0);\n-\n-         if (!iconInfo) {\n-            Debug(\"Couldn't find %s icon for size %d\\n\", baseIconName, thisSize);\n-            continue;\n-         }\n-\n-         pixbuf = gtk_icon_info_load_icon(iconInfo, NULL);\n-\n-         if (!pixbuf) {\n-#if GTK_MAJOR_VERSION == 3\n-G_GNUC_BEGIN_IGNORE_DEPRECATIONS\n-#endif\n-            pixbuf = gtk_icon_info_get_builtin_pixbuf(iconInfo);\n-#if GTK_MAJOR_VERSION == 3\n-G_GNUC_END_IGNORE_DEPRECATIONS\n-#endif\n-         }\n-\n-         if (pixbuf) {\n-            g_ptr_array_add(pixbufs, pixbuf);\n-         } else {\n-            Debug(\"WARNING: Not even a built-in pixbuf for icon %s\\n\", baseIconName);\n-         }\n-#if GTK_MAJOR_VERSION == 3\n-         if (iconInfo) {\n-            g_object_unref(iconInfo);\n-         }\n-#else\n-\t gtk_icon_info_free(iconInfo);\n-#endif\n-      }\n-\n-      g_free(iconSizes);\n-\n-   } else if (foundItInFile && myIconName && myIconName[0] == '/') {\n-      GdkPixbuf *pixbuf;\n-      Debug(\"Loading icon %s from file\\n\", myIconName);\n-      pixbuf = gdk_pixbuf_new_from_file(myIconName, NULL);\n-      if (pixbuf) {\n-         g_ptr_array_add(pixbufs, pixbuf);\n-      }\n-   }\n-\n-   if (iconTheme) {\n-      g_object_unref(G_OBJECT(iconTheme));\n-   }\n-}\n-\n-\n-/*\n- *-----------------------------------------------------------------------------\n- *\n- * AppUtilComparePixbufSizes --\n- *\n- *      Compares two GdkPixbufs to sort them by image dimensions\n- *\n- * Results:\n- *      -1 if A is larger than B, 0 if equal, 1 if A is smaller than B\n- *\n- * Side effects:\n- *      None.\n- *\n- *-----------------------------------------------------------------------------\n- */\n-\n-static gint\n-AppUtilComparePixbufSizes(gconstpointer a, // IN\n-                          gconstpointer b) // IN\n-{\n-   GdkPixbuf *pba;\n-   GdkPixbuf *pbb;\n-   int asize;\n-   int bsize;\n-\n-   if (a && !b) {\n-      return -1;\n-   } else if (!a && b) {\n-      return 1;\n-   } else if (!a && !b) {\n-      return 0;\n-   }\n-\n-   pba = GDK_PIXBUF(*(gconstpointer *)a);\n-   asize = gdk_pixbuf_get_width(pba) * gdk_pixbuf_get_height(pba);\n-\n-   pbb = GDK_PIXBUF(*(gconstpointer *)b);\n-   bsize = gdk_pixbuf_get_width(pbb) * gdk_pixbuf_get_height(pbb);\n-\n-   if (asize > bsize) {\n-      return -1;\n-   } else if (asize < bsize) {\n-      return 1;\n-   }\n-\n-   return 0;\n-}\n-\n-\n-/*\n- *-----------------------------------------------------------------------------\n- *\n- * AppUtil_CollectIconArray --\n- *\n- *      Given a variety of information about an application (its icon name, X window ID,\n- *      etc.), return an array of GdkPixbufs that represent the icons for that\n- *      application.\n- *\n- * Results:\n- *      GPtrArray of GdkPixbufs, or NULL on failure. The returned array may have zero\n- *      elements. The array will be sorted by icon size, largest to smallest.\n- *\n- * Side effects:\n- *      Caller becomes owner of the array and pixbufs that are allocated during this\n- *      function.\n- *\n- *-----------------------------------------------------------------------------\n- */\n-\n-GPtrArray *\n-AppUtil_CollectIconArray(const char *iconName,        // IN\n-                         unsigned long windowID)      // IN\n-{\n-   GPtrArray *pixbufs;\n-\n-   pixbufs = g_ptr_array_new();\n-\n-   if (iconName) {\n-      AppUtilCollectNamedIcons(pixbufs, iconName);\n-   }\n-\n-   if (!pixbufs->len && windowID != None) {\n-      /*\n-       * Try loading the icon from the X Window's _NET_WM_ICON/WM_HINTS property.\n-       */\n-      Display *dpy;\n-      XWMHints *wmh;\n-      Atom actualType = None;\n-      int actualFormat;\n-      unsigned long nitems = 0;\n-      unsigned long bytesLeft;\n-      XID *value;\n-      XTextProperty wmIconName;\n-\n-      dpy = gdk_x11_get_default_xdisplay();\n-      XGetWindowProperty(dpy, windowID, XInternAtom(dpy, \"_NET_WM_ICON\", FALSE),\n-                         0, LONG_MAX, False, XA_CARDINAL,\n-                         &actualType, &actualFormat, &nitems,\n-                         &bytesLeft, (unsigned char **)&value);\n-\n-      if (nitems) {\n-         /*\n-          * _NET_WM_ICON: Transform ARGB data into pixbufs...\n-          */\n-         int i;\n-\n-         for (i = 0; i < nitems; ) {\n-            GdkPixbuf *pixbuf;\n-            int width;\n-            int height;\n-\n-            ASSERT((nitems - i) >= 2);\n-            width = value[i];\n-            height = value[i + 1];\n-            i += 2;\n-            pixbuf = gdk_pixbuf_new(GDK_COLORSPACE_RGB, TRUE, 8, width, height);\n-            if (pixbuf) {\n-               int x;\n-               int y;\n-               int rowstride = gdk_pixbuf_get_rowstride(pixbuf);\n-               guchar *pixels = gdk_pixbuf_get_pixels(pixbuf);\n-\n-               for (y = 0; y < height; y++) {\n-                  for (x = 0; x < width && i < nitems; x++, i++) {\n-                     guchar *pixel = &pixels[y * rowstride + x * 4];\n-                     XID currentValue = value[i];\n-\n-                     /*\n-                      * Input data: BGRA data (high byte is A, low byte is B -\n-                      * freedesktop calls this ARGB, but that's not correct).\n-                      *\n-                      * Output data: RGBA data.\n-                      */\n-                     *pixel = (currentValue >> 16) & 0xFF;\n-                     *(pixel + 1) = (currentValue >> 8) & 0xFF;\n-                     *(pixel + 2) = currentValue & 0xFF;\n-                     *(pixel + 3) = (currentValue >> 24) & 0xFF;\n-                  }\n-               }\n-\n-               g_ptr_array_add(pixbufs, pixbuf);\n-            } else {\n-               Debug(\"gdk_pixbuf_new failed when decoding _NET_WM_ICON\\n\");\n-               break;\n-            }\n-         }\n-         XFree(value);\n-      }\n-      nitems = 0;\n-      if (!pixbufs->len &&\n-          XGetWindowProperty(dpy, windowID, XInternAtom(dpy, \"_NET_WM_ICON_NAME\", FALSE),\n-                             0, LONG_MAX, False, XInternAtom(dpy, \"UTF8_STRING\", FALSE),\n-                             &actualType, &actualFormat, &nitems,\n-                             &bytesLeft, (unsigned char **)&value) == Success\n-          && nitems) {\n-         /*\n-          * _NET_WM_ICON_NAME\n-          */\n-         AppUtilCollectNamedIcons(pixbufs, (char *)value);\n-         XFree(value);\n-      }\n-\n-      if (!pixbufs->len && XGetWMIconName(dpy, windowID, &wmIconName)) {\n-         /*\n-          * WM_ICON_NAME\n-          */\n-         AppUtilCollectNamedIcons(pixbufs, wmIconName.value);\n-         XFree(wmIconName.value);\n-      }\n-\n-      if (!pixbufs->len && (wmh = XGetWMHints(dpy, windowID))) {\n-         /*\n-          * WM_HINTS\n-          */\n-         if (wmh->flags & IconPixmapHint) {\n-            Window dummyWin;\n-            int x;\n-            int y;\n-            unsigned int width;\n-            unsigned int height;\n-            unsigned int border;\n-            unsigned int depth;\n-            GdkPixbuf *pixbuf = NULL;\n-\n-            if (XGetGeometry(dpy, wmh->icon_pixmap, &dummyWin,\n-                             &x, &y, &width, &height, &border, &depth)) {\n-\n-               pixbuf = gdk_pixbuf_new(GDK_COLORSPACE_RGB, TRUE, 8, width, height);\n-\n-               if (!gdk_pixbuf_xlib_get_from_drawable (pixbuf, wmh->icon_pixmap,\n-                                                       DefaultColormap(dpy, 0),\n-                                                       DefaultVisual(dpy, 0),\n-                                                       0, 0, 0, 0, width, height)) {\n-                  g_object_unref(G_OBJECT(pixbuf));\n-                  pixbuf = NULL;\n-               }\n-\n-               if (pixbuf && (wmh->flags & IconMaskHint)) {\n-                  /*\n-                   * Apply the X bitmap mask.\n-                   */\n-                  GdkPixbuf *pixbuf_mask;\n-\n-                  pixbuf_mask =\n-                     gdk_pixbuf_xlib_get_from_drawable(pixbuf,\n-                                                       wmh->icon_mask,\n-                                                       DefaultColormap(dpy, 0),\n-                                                       DefaultVisual(dpy, 0),\n-                                                       0, 0, 0, 0,\n-                                                       width, height);\n-                  if (pixbuf_mask) {\n-                     int x;\n-                     int y;\n-                     int rowstride;\n-                     int rowstride_mask;\n-                     guchar *pixels;\n-                     guchar *pixels_mask;\n-                     int depth_mask;\n-                     int n_channels_mask;\n-\n-                     pixels = gdk_pixbuf_get_pixels(pixbuf);\n-                     pixels_mask = gdk_pixbuf_get_pixels(pixbuf_mask);\n-                     rowstride = gdk_pixbuf_get_rowstride(pixbuf);\n-                     rowstride_mask = gdk_pixbuf_get_rowstride(pixbuf_mask);\n-                     depth_mask = gdk_pixbuf_get_bits_per_sample(pixbuf_mask);\n-                     ASSERT(gdk_pixbuf_get_bits_per_sample(pixbuf) == 8);\n-                     n_channels_mask = gdk_pixbuf_get_n_channels(pixbuf_mask);\n-\n-                     for (y = 0; y < height; y++) {\n-                        guchar *thisrow_mask = pixels_mask + y * rowstride_mask;\n-                        guchar *thisrow = pixels + y * rowstride;\n-                        for (x = 0; x < width; x++) {\n-                           guchar newAlpha = 0xFF;\n-                           switch(depth_mask) {\n-                           case 1:\n-                              newAlpha = thisrow_mask[x * n_channels_mask / 8];\n-                              newAlpha >>= (x % 8);\n-                              newAlpha = newAlpha ? 0xFF : 0;\n-                              break;\n-                           case 8:\n-                              /*\n-                               * For some reason, gdk-pixbuf-xlib turns a monochrome\n-                               * bitmap into 0/1 values in the blue channel of an RGBA\n-                               * pixmap.\n-                               */\n-                              newAlpha = (thisrow_mask[x * n_channels_mask + 2])\n-                                 ? 0xFF : 0;\n-                              break;\n-                           default:\n-                              NOT_REACHED();\n-                              break;\n-                           }\n-\n-                           thisrow[x * 4 + 3] = newAlpha;\n-                        }\n-                     }\n-                  }\n-               }\n-\n-               if (pixbuf) {\n-                  g_ptr_array_add(pixbufs, pixbuf);\n-               }\n-            }\n-         }\n-\n-         XFree(wmh);\n-      }\n-\n-      if (!pixbufs->len) {\n-         /*\n-          * Last resort - try using the WM_CLASS as an icon name\n-          */\n-\n-         XClassHint hints;\n-\n-         if (XGetClassHint(dpy, windowID, &hints)) {\n-            if (hints.res_name) {\n-               AppUtilCollectNamedIcons(pixbufs, hints.res_name);\n-            }\n-\n-            XFree(hints.res_name);\n-            XFree(hints.res_class);\n-         }\n-      }\n-   }\n-\n-   /*\n-    * In order to make it easy for AppUtil users to pick the icon they want, we sort them\n-    * largest-to-smallest.\n-    */\n-   g_ptr_array_sort(pixbufs, AppUtilComparePixbufSizes);\n-\n-   if (!pixbufs->len) {\n-      Debug(\"WARNING: No icons found for %s / %#lx\\n\", iconName, windowID);\n-   }\n-\n-   return pixbufs;\n-}\n-\n-\n-/*\n- *-----------------------------------------------------------------------------\n- *\n- * AppUtil_FreeIconArray --\n- *\n- *      Frees the result of AppUtil_CollectIconArray\n- *\n- * Results:\n- *      None.\n- *\n- * Side effects:\n- *      Array and its contents are destroyed\n- *\n- *-----------------------------------------------------------------------------\n- */\n-\n-void\n-AppUtil_FreeIconArray(GPtrArray *pixbufs) // IN\n-{\n-   int i;\n-\n-   if (!pixbufs) {\n-      return;\n-   }\n-\n-   for (i = 0; i < pixbufs->len; i++) {\n-      g_object_unref(G_OBJECT(g_ptr_array_index(pixbufs, i)));\n-   }\n-\n-   g_ptr_array_free(pixbufs, TRUE);\n-}\n-/*\n- *-----------------------------------------------------------------------------\n- *\n- * AppUtil_AppIsSkippable --\n- *\n- *      Can an executable be ignored for the purposes of determining the path to run an\n- *      app with? Usually true for interpreters and the like, for which the script path\n- *      should be used instead.\n- *\n- * Results:\n- *      TRUE if the app should be ignored, FALSE otherwise.\n- *\n- * Side effects:\n- *      None.\n- *\n- *-----------------------------------------------------------------------------\n- */\n-\n-Bool\n-AppUtil_AppIsSkippable(const char *appName)\n-{\n-   static const char *skipAppsList[] = {\n-      \"python\",\n-      \"python2.5\",\n-      \"python2.4\",\n-      \"python2.3\",\n-      \"python2.2\",\n-      \"perl\",\n-      \"sh\",\n-      \"bash\",\n-   };\n-   char cbuf[PATH_MAX];\n-   int i;\n-   char *ctmp;\n-\n-   Str_Strcpy(cbuf, appName, sizeof cbuf);\n-   ctmp = basename(cbuf);\n-\n-   for (i = 0; i < ARRAYSIZE(skipAppsList); i++) {\n-      if (!strcmp(ctmp, skipAppsList[i])) {\n-         return TRUE;\n-      }\n-   }\n-\n-   return FALSE;\n-}\n-\n-\n-/*\n- *-----------------------------------------------------------------------------\n- *\n- * AppUtil_CanonicalizeAppName --\n- *\n- *      Turns the app name (or path) into a full path for the executable.\n- *\n- * Results:\n- *      Path, or NULL if not available\n- *\n- * Side effects:\n- *      Allocated memory is returned\n- *\n- *-----------------------------------------------------------------------------\n- */\n-\n-char *\n-AppUtil_CanonicalizeAppName(const char *appName, // IN\n-                            const char *cwd)     // IN\n-{\n-   char *ctmp;\n-   ASSERT(appName);\n-\n-   if (appName[0] == '/') {\n-      ctmp = g_strdup(appName);\n-      goto exit;\n-   }\n-\n-   ctmp = g_find_program_in_path(appName);\n-   if (ctmp) {\n-      goto exit;\n-   }\n-\n-   /*\n-    * It's probably safe to assume that cwd is an absolute path (at the time of\n-    * writing, it is derived from /proc), but let's check to be sure.\n-    */\n-   if (cwd && cwd[0] == '/') {\n-\n-      /* Don't add any unnecessary path separators. */\n-      char *cbuf = Str_Asprintf(NULL, \"%s%s%s\", cwd,\n-                                cwd[strlen(cwd) - 1] == '/' ? \"\" : \"/\",\n-                                appName);\n-      if (cbuf) {\n-         ctmp = Posix_RealPath(cbuf);\n-         free(cbuf);\n-      }\n-   }\n-\n- exit:\n-   return ctmp;\n-}\n-\n-\n-/*\n- *-----------------------------------------------------------------------------\n- *\n- * AppUtil_Init --\n- *\n- *      Initializes the AppUtil library for subsequent use.\n- *\n- * Results:\n- *      None.\n- *\n- * Side effects:\n- *      Internal state is initialized. Currently this is just gdk-pixbuf-xlib.\n- *\n- *-----------------------------------------------------------------------------\n- */\n-\n-void\n-AppUtil_Init(void)\n-{\n-   gdk_pixbuf_xlib_init(gdk_x11_get_default_xdisplay(), 0);\n-}\ndiff --git a/open-vm-tools/lib/asyncsocket/asyncSocketBase.c b/open-vm-tools/lib/asyncsocket/asyncSocketBase.c\nindex f8e0cbb..6d9674b 100644\n--- a/open-vm-tools/lib/asyncsocket/asyncSocketBase.c\n+++ b/open-vm-tools/lib/asyncsocket/asyncSocketBase.c\n@@ -1,5 +1,5 @@\n /*********************************************************\n- * Copyright (C) 2016-2021 VMware, Inc. All rights reserved.\n+ * Copyright (C) 2016-2022 VMware, Inc. All rights reserved.\n  *\n  * This program is free software; you can redistribute it and/or modify it\n  * under the terms of the GNU Lesser General Public License as published\n@@ -627,7 +627,8 @@ AsyncSocketSetRecvBuf(AsyncSocket *asock,  // IN:\n       return ASOCKERR_INVAL;\n    }\n \n-   if (AsyncSocketGetState(asock) != AsyncSocketConnected) {\n+   if (AsyncSocketGetState(asock) != AsyncSocketConnected &&\n+       AsyncSocketGetState(asock) != AsyncSocketConnectedRdOnly) {\n       ASOCKWARN(asock, \"recv called but state is not connected!\\n\");\n       return ASOCKERR_NOTCONNECTED;\n    }\ndiff --git a/open-vm-tools/lib/asyncsocket/asyncSocketInterface.c b/open-vm-tools/lib/asyncsocket/asyncSocketInterface.c\nindex 8a532b3..93d1de6 100644\n--- a/open-vm-tools/lib/asyncsocket/asyncSocketInterface.c\n+++ b/open-vm-tools/lib/asyncsocket/asyncSocketInterface.c\n@@ -1,5 +1,5 @@\n /*********************************************************\n- * Copyright (C) 2016-2021 VMware, Inc. All rights reserved.\n+ * Copyright (C) 2016-2022 VMware, Inc. All rights reserved.\n  *\n  * This program is free software; you can redistribute it and/or modify it\n  * under the terms of the GNU Lesser General Public License as published\n@@ -1260,6 +1260,48 @@ AsyncSocket_Close(AsyncSocket *asock)         // IN\n \n \n /*\n+ *----------------------------------------------------------------------------\n+ *\n+ * AsyncSocket_CloseWrite --\n+ *\n+ *      Close the write side of AsyncSocket, and leave the read side open. This\n+ *      can be used to implement a shutdown(SHUT_WR...) equivalent.\n+ *\n+ *      This function is meant to be called after the socket has been connected\n+ *      If no error, pending send is flushed the same way as AsyncSocket_Close,\n+ *      and then the socket enters half-closed state, disallowing further send.\n+ *\n+ *      Like AsyncSocket_Close, it's safe to call at any time, but it could err\n+ *      when the socket is not connected. Unlike Close, read side of the socket\n+ *      is left intact, and the the socket is not released.\n+ *\n+ *      If the socket is already closed, it returns success.\n+ *\n+ * Results:\n+ *      ASOCKERR_*.\n+ *\n+ * Side effects:\n+ *      Send is not permitted after this call.\n+ *\n+ *----------------------------------------------------------------------------\n+ */\n+\n+int\n+AsyncSocket_CloseWrite(AsyncSocket *asock)         // IN\n+{\n+   int ret;\n+   if (VALID(asock, closeWrite)) {\n+      AsyncSocketLock(asock);\n+      ret = VT(asock)->closeWrite(asock);\n+      AsyncSocketUnlock(asock);\n+   } else {\n+      ret = ASOCKERR_INVAL;\n+   }\n+   return ret;\n+}\n+\n+\n+/*\n  *-----------------------------------------------------------------------------\n  *\n  * AsyncSocket_CancelRecv --\ndiff --git a/open-vm-tools/lib/asyncsocket/asyncSocketVTable.h b/open-vm-tools/lib/asyncsocket/asyncSocketVTable.h\nindex c068ff5..4c2e4fa 100644\n--- a/open-vm-tools/lib/asyncsocket/asyncSocketVTable.h\n+++ b/open-vm-tools/lib/asyncsocket/asyncSocketVTable.h\n@@ -1,5 +1,5 @@\n /*********************************************************\n- * Copyright (C) 2011,2014-2017,2019-2022 VMware, Inc. All rights reserved.\n+ * Copyright (c) 2011,2014-2017,2019-2022 VMware, Inc. All rights reserved.\n  *\n  * This program is free software; you can redistribute it and/or modify it\n  * under the terms of the GNU Lesser General Public License as published\n@@ -109,6 +109,7 @@ typedef struct AsyncSocketVTable {\n    int (*getNetworkStats)(AsyncSocket *asock,\n                           AsyncSocketNetworkStats *stats);\n    int (*close)(AsyncSocket *asock);\n+   int (*closeWrite)(AsyncSocket *asock);\n    int (*cancelRecv)(AsyncSocket *asock, int *partialRecvd, void **recvBuf,\n                      void **recvFn, Bool cancelOnSend);\n    int (*cancelCbForClose)(AsyncSocket *asock);\n",
+ "diff_truncated": true
+}

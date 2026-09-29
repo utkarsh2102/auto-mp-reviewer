@@ -1,0 +1,31 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~liushuyu-011/ubuntu/+source/llvm-toolchain-18/+git/llvm-toolchain-18/+merge/466901",
+ "id": "466901",
+ "title": "This merge proposal makes the clang compiler driver behave more like GCC when requesting debug symbol generation.",
+ "source_branch": "ubuntu/devel",
+ "target_branch": "ubuntu/devel",
+ "revision": "6a2ec293d88dc2225de443a5bbdbfe0f10bc52b7",
+ "base_revision": "c37294eeb7f50788dde487f1fea8376afa24eb22",
+ "description": "This merge proposal makes the clang compiler driver behave more like GCC when requesting debug symbol generation.\n\nGCC shipped in Ubuntu will record command-line switches in the debug symbols; the patch included in this change will make clang do the same.",
+ "commit_message": null,
+ "diffstat": {
+  "debian/changelog": [
+   7,
+   0
+  ],
+  "debian/patches/clang-record-gcc-switches-by-default.patch": [
+   22,
+   0
+  ],
+  "debian/patches/series": [
+   1,
+   0
+  ]
+ },
+ "files": 3,
+ "added_lines": 30,
+ "removed_lines": 0,
+ "diff": "diff --git a/debian/changelog b/debian/changelog\nindex bbfbc31..f18dd33 100644\n--- a/debian/changelog\n+++ b/debian/changelog\n@@ -1,3 +1,10 @@\n+llvm-toolchain-18 (1:18.1.6-1ubuntu1) oracular; urgency=medium\n+\n+  * d/p/clang-record-gcc-switches-by-default.patch: add a patch to force clang\n+    record gcc switches by default\n+\n+ -- Zixing Liu <zixing.liu@canonical.com>  Tue, 04 Jun 2024 16:44:07 -0600\n+\n llvm-toolchain-18 (1:18.1.6-1) unstable; urgency=medium\n \n   * New upstream release\ndiff --git a/debian/patches/clang-record-gcc-switches-by-default.patch b/debian/patches/clang-record-gcc-switches-by-default.patch\nnew file mode 100644\nindex 0000000..e97a167\n--- /dev/null\n+++ b/debian/patches/clang-record-gcc-switches-by-default.patch\n@@ -0,0 +1,22 @@\n+Description: Record GCC-style command-line switches by default\n+ This makes Clang default behaviour more like GCC where if debug\n+ symbol generation is enabled, the command-line switches data\n+ will be stored inside the debug symbols.\n+Author: Zixing Liu <zixing.liu@canonical.com>\n+Forwarded: no\n+Last-Update: 2024-06-04\n+---\n+This patch header follows DEP-3: http://dep.debian.net/deps/dep3/\n+Index: llvm-toolchain-18-18.1.6/clang/lib/Driver/ToolChains/Clang.cpp\n+===================================================================\n+--- llvm-toolchain-18-18.1.6.orig/clang/lib/Driver/ToolChains/Clang.cpp\n++++ llvm-toolchain-18-18.1.6/clang/lib/Driver/ToolChains/Clang.cpp\n+@@ -7390,7 +7390,7 @@ void Clang::ConstructJob(Compilation &C,\n+   // By default, -gno-record-gcc-switches is set on and no recording.\n+   auto GRecordSwitches =\n+       Args.hasFlag(options::OPT_grecord_command_line,\n+-                   options::OPT_gno_record_command_line, false);\n++                   options::OPT_gno_record_command_line, true);\n+   auto FRecordSwitches =\n+       Args.hasFlag(options::OPT_frecord_command_line,\n+                    options::OPT_fno_record_command_line, false);\ndiff --git a/debian/patches/series b/debian/patches/series\nindex 20e2454..8892db2 100644\n--- a/debian/patches/series\n+++ b/debian/patches/series\n@@ -151,3 +151,4 @@ arm32-defaults.diff\n mips/D154390-pre-R6.diff\n libsanitizer-timebits.diff\n ubuntu-releases.patch\n+clang-record-gcc-switches-by-default.patch\n",
+ "diff_truncated": false
+}

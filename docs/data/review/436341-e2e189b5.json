@@ -1,0 +1,23 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~xnox/ubuntu-release-tools/+git/ubuntu-release-tools/+merge/436341",
+ "id": "436341",
+ "title": "Allow dry-run without Jira credentials or Jira library.",
+ "source_branch": "jiraless-dry-run",
+ "target_branch": "main",
+ "revision": "c1e2340770ba694b7f0626b24fd0341a303fd7da",
+ "base_revision": "60d00e1f689fa5950ba435f2b4e6e82d00b95bf8",
+ "description": null,
+ "commit_message": "Allow dry-run without Jira credentials or Jira library.",
+ "diffstat": {
+  "generate-milestone-jira-cards": [
+   13,
+   12
+  ]
+ },
+ "files": 1,
+ "added_lines": 13,
+ "removed_lines": 12,
+ "diff": "diff --git a/generate-milestone-jira-cards b/generate-milestone-jira-cards\nindex 4e2b178..d2cd5f7 100755\n--- a/generate-milestone-jira-cards\n+++ b/generate-milestone-jira-cards\n@@ -36,8 +36,6 @@ from datetime import date, timedelta\n import argparse\n import yaml\n \n-from jira import JIRA\n-\n \n JIRA_URL = 'https://warthogs.atlassian.net'\n \n@@ -63,9 +61,11 @@ def create_milestone(milestone, template_file, release_date,\n \n     milestone_release = date.fromisoformat(release_date)\n \n-    jira = JIRA(basic_auth=(jira_credentials['jira_user'],\n-                            jira_credentials['jira_token']),\n-                server=JIRA_URL)\n+    if not dry_run:\n+        from jira import JIRA\n+        jira = JIRA(basic_auth=(jira_credentials['jira_user'],\n+                                jira_credentials['jira_token']),\n+                    server=JIRA_URL)\n \n     milestone_data = {\n         'project': jira_project,\n@@ -155,13 +155,14 @@ if __name__ == '__main__':\n     args = parser.parse_args()\n \n     jira_credentials = {}\n-    with open(args.credentials) as fp:\n-        jira_credentials = yaml.safe_load(fp)\n-\n-    if ('jira_user' not in jira_credentials or\n-            'jira_token' not in jira_credentials):\n-        print(f'Missing JIRA credentials (looked in {args.credentials})!')\n-        sys.exit(1)\n+    if not args.dry_run:\n+        with open(args.credentials) as fp:\n+            jira_credentials = yaml.safe_load(fp)\n+\n+        if ('jira_user' not in jira_credentials or\n+                'jira_token' not in jira_credentials):\n+            print(f'Missing JIRA credentials (looked in {args.credentials})!')\n+            sys.exit(1)\n \n     create_milestone(args.milestone, args.template, args.release_date,\n                      args.jira_project, jira_credentials, args.dry_run,\n",
+ "diff_truncated": false
+}

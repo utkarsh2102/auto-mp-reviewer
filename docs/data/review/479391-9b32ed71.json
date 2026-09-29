@@ -1,0 +1,31 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~mirespace/ubuntu/+source/dnsmasq/+git/dnsmasq/+merge/479391",
+ "id": "479391",
+ "title": "Hello team,",
+ "source_branch": "lp2026757-jammy-ironic-fix",
+ "target_branch": "ubuntu/jammy-devel",
+ "revision": "0ff82a643f4c4bac898b334e541e69a307c50fdf",
+ "base_revision": "d93230e4e50bbd229dcb3892b74872d9db112b63",
+ "description": "Hello team,\n\nppa for this is:\n\nppa:mirespace/dnsmasq\nhttps://launchpad.net/~mirespace/+archive/ubuntu/dnsmasq\n\nThis is the same fix that for Plucky, Oracular and Debian (now in sync with Debian after they accept our submitted patch [2]). The ironic community already tested the package when I prepared it in that ppa just fro trying [3]\n\nSRU paperwork is in place.\n\nTests OK:\n  - dnsmasq: jammy/dnsmasq/2.90-0ubuntu0.22.04.2+ppa1 [amd64]\n    + ✅ dnsmasq on jammy for amd64   @ 15.01.25 13:36:15\n      • Log: https://autopkgtest.ubuntu.com/results/autopkgtest-jammy-mirespace-dnsmasq/jammy/amd64/d/dnsmasq/20250115_133615_a4e9e@/log.gz\n  - dnsmasq: jammy/dnsmasq/2.90-0ubuntu0.22.04.2+ppa1 [arm64]\n    + ✅ dnsmasq on jammy for arm64   @ 15.01.25 09:45:07\n      • Log: https://autopkgtest.ubuntu.com/results/autopkgtest-jammy-mirespace-dnsmasq/jammy/arm64/d/dnsmasq/20250115_094507_09cd1@/log.gz\n  - dnsmasq: jammy/dnsmasq/2.90-0ubuntu0.22.04.2+ppa1 [armhf]\n    + ✅ dnsmasq on jammy for armhf   @ 15.01.25 09:45:46\n      • Log: https://autopkgtest.ubuntu.com/results/autopkgtest-jammy-mirespace-dnsmasq/jammy/armhf/d/dnsmasq/20250115_094546_cbb1e@/log.gz\n  - dnsmasq: jammy/dnsmasq/2.90-0ubuntu0.22.04.2+ppa1 [ppc64el]\n    + ✅ dnsmasq on jammy for ppc64el @ 15.01.25 09:46:37\n      • Log: https://autopkgtest.ubuntu.com/results/autopkgtest-jammy-mirespace-dnsmasq/jammy/ppc64el/d/dnsmasq/20250115_094637_7a0c8@/log.gz\n  - dnsmasq: jammy/dnsmasq/2.90-0ubuntu0.22.04.2+ppa1 [s390x]\n    + ✅ dnsmasq on jammy for s390x   @ 15.01.25 09:44:02\n      • Log: https://autopkgtest.ubuntu.com/results/autopkgtest-jammy-mirespace-dnsmasq/jammy/s390x/d/dnsmasq/20250115_094402_b60d0@/log.gz\n\nUpgrading/Removal/Installation OK:\n\n#upgrade\nroot@JOKE:~# apt list --upgradable\nListing... Done\ndnsmasq-base/jammy 2.90-0ubuntu0.22.04.2+ppa1 amd64 [upgradable from: 2.90-0ubuntu0.22.04.1]\ndnsmasq/jammy 2.90-0ubuntu0.22.04.2+ppa1 all [upgradable from: 2.90-0ubuntu0.22.04.1]\n\nroot@JOKE:~# apt list --upgradable\nListing... Done\ndnsmasq-base/jammy 2.90-0ubuntu0.22.04.2+ppa1 amd64 [upgradable from: 2.90-0ubuntu0.22.04.1]\ndnsmasq/jammy 2.90-0ubuntu0.22.04.2+ppa1 all [upgradable from: 2.90-0ubuntu0.22.04.1]\n\n#removal\nroot@JOKE:~# dpkg -l dnsmasq |grep dnsmasq\nun  dnsmasq        <none>       <none>       (no description available)installation\n\n#installation\nroot@JOKE:~# dpkg -l dnsmasq |grep dnsmasq\nii  dnsmasq        2.90-0ubuntu0.22.04.2+ppa1 all          Small caching DNS proxy and DHCP/TFTP server\n\n[1] https://code.launchpad.net/~mirespace/ubuntu/+source/dnsmasq/+git/dnsmasq/+merge/478238\n[2] https://launchpad.net/debian/+source/dnsmasq/2.90-7\n[3] https://bugs.launchpad.net/ironic/+bug/2026757/comments/48",
+ "commit_message": null,
+ "diffstat": {
+  "debian/changelog": [
+   7,
+   0
+  ],
+  "debian/patches/0001-fix-crash-when-reloading-DHCP-config-on-SIGHUP.patch": [
+   42,
+   0
+  ],
+  "debian/patches/series": [
+   1,
+   0
+  ]
+ },
+ "files": 3,
+ "added_lines": 50,
+ "removed_lines": 0,
+ "diff": "diff --git a/debian/changelog b/debian/changelog\nindex 745fef9..81a39bf 100644\n--- a/debian/changelog\n+++ b/debian/changelog\n@@ -1,3 +1,10 @@\n+dnsmasq (2.90-0ubuntu0.22.04.2) jammy; urgency=medium\n+\n+  * d/p/0001-fix-crash-when-reloading-DHCP-config-on-SIGHUP.patch:\n+    Fix crash when reloading DHCP config on SIGHUP (LP: #2026757).\n+\n+ -- Miriam España Acebal <miriam.espana@canonical.com>  Wed, 09 Oct 2024 15:11:11 +0200\n+\n dnsmasq (2.90-0ubuntu0.22.04.1) jammy-security; urgency=medium\n \n   * Updated to 2.90 to fix multiple security issues.\ndiff --git a/debian/patches/0001-fix-crash-when-reloading-DHCP-config-on-SIGHUP.patch b/debian/patches/0001-fix-crash-when-reloading-DHCP-config-on-SIGHUP.patch\nnew file mode 100644\nindex 0000000..dcaf01a\n--- /dev/null\n+++ b/debian/patches/0001-fix-crash-when-reloading-DHCP-config-on-SIGHUP.patch\n@@ -0,0 +1,42 @@\n+From f006be7842104a9f86fbf419326b7aad08ade61d Mon Sep 17 00:00:00 2001\n+From: Simon Kelley <simon@thekelleys.org.uk>\n+Date: Fri, 4 Oct 2024 16:59:14 +0100\n+Subject: [PATCH] Fix crash when reloading DHCP config on SIGHUP.\n+ Confusion in the code to free old DHCP configuration when it's\n+ being reloaded causes invalid pointers to be followed and a crash.\n+ .\n+ https://lists.thekelleys.org.uk/pipermail/dnsmasq-discuss/2024q4/017764.html\n+ has a more complete explanation of the problem.\n+Origin: https://thekelleys.org.uk/gitweb/?p=dnsmasq.git;a=commitdiff;h=f006be7842104a9f86fbf419326b7aad08ade61d\n+Bug-Ubuntu: https://bugs.launchpad.net/ubuntu/jammy/+source/dnsmasq/+bug/2026757\n+Fordwarded: not-needed\n+---\n+ src/option.c | 10 ++++++++--\n+ 1 file changed, 8 insertions(+), 2 deletions(-)\n+\n+--- a/src/option.c\n++++ b/src/option.c\n+@@ -1336,7 +1336,7 @@\n+ \n+ /* Parse one or more tag:s before parameters.\n+  * Moves arg to the end of tags. */\n+-static struct dhcp_netid * dhcp_tags(char **arg)\n++static struct dhcp_netid *dhcp_tags(char **arg)\n+ {\n+   struct dhcp_netid *id = NULL;\n+ \n+@@ -1360,7 +1360,13 @@\n+     {\n+       struct dhcp_netid_list *tmplist = netid;\n+       netid = netid->next;\n+-      dhcp_netid_free(tmplist->list);\n++      /* Note: don't use dhcp_netid_free() here, since that \n++\t frees a list linked on netid->next. Where a netid_list\n++\t is used that's because the the ->next pointers in the\n++\t netids are being used to temporarily construct \n++\t a list of valid tags. */\n++      free(tmplist->list->net);\n++      free(tmplist->list);\n+       free(tmplist);\n+     }\n+ }\ndiff --git a/debian/patches/series b/debian/patches/series\nnew file mode 100644\nindex 0000000..5a27862\n--- /dev/null\n+++ b/debian/patches/series\n@@ -0,0 +1 @@\n+0001-fix-crash-when-reloading-DHCP-config-on-SIGHUP.patch\n",
+ "diff_truncated": false
+}

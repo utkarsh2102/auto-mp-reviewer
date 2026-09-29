@@ -1,0 +1,867 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~jj/ubuntu/+source/haproxy/+git/haproxy/+merge/512096",
+ "id": "512096",
+ "title": "resolute fix for bug 2153485",
+ "source_branch": "lp2153485-backport-3.2-resolute",
+ "target_branch": "ubuntu/resolute-devel",
+ "revision": "f0fe76e01443cb3dbfb2bf98cdafeab12a9d73bd",
+ "base_revision": "08a0bf8098a400a25fbaa7abe5c8eb40f2339336",
+ "description": "resolute fix for bug 2153485\nppa:  https://launchpad.net/~jj/+archive/ubuntu/lp2153485-haproxy-backport",
+ "commit_message": null,
+ "diffstat": {
+  ".github/matrix.py": [
+   44,
+   29
+  ],
+  ".github/workflows/windows.yml": [
+   1,
+   0
+  ],
+  "CHANGELOG": [
+   652,
+   0
+  ],
+  "Makefile": [
+   8,
+   2
+  ],
+  "SUBVERS": [
+   1,
+   1
+  ],
+  "VERDATE": [
+   2,
+   2
+  ],
+  "VERSION": [
+   1,
+   1
+  ],
+  "addons/51degrees/51d.c": [
+   13,
+   1
+  ],
+  "addons/51degrees/dummy/v4hash/hash/hash.h": [
+   1,
+   2
+  ],
+  "addons/deviceatlas/da.c": [
+   37,
+   14
+  ],
+  "addons/ot/src/parser.c": [
+   2,
+   6
+  ],
+  "addons/promex/service-prometheus.c": [
+   58,
+   31
+  ],
+  "addons/wurfl/wurfl.c": [
+   2,
+   0
+  ],
+  "debian/changelog": [
+   32,
+   0
+  ],
+  "dev/null": [
+   0,
+   33
+  ],
+  "debian/patches/series": [
+   0,
+   7
+  ],
+  "dev/gdb/libs-from-core.c": [
+   162,
+   0
+  ],
+  "dev/gdb/pm-from-core.c": [
+   141,
+   0
+  ],
+  "dev/term_events/term_events.c": [
+   4,
+   4
+  ],
+  "doc/configuration.txt": [
+   315,
+   83
+  ],
+  "doc/internals/mworker.md": [
+   40,
+   5
+  ],
+  "doc/lua-api/index.rst": [
+   2,
+   2
+  ],
+  "doc/proxy-protocol.txt": [
+   4,
+   1
+  ],
+  "doc/regression-testing.txt": [
+   1,
+   1
+  ],
+  "include/haproxy/acme-t.h": [
+   1,
+   0
+  ],
+  "include/haproxy/action-t.h": [
+   2,
+   1
+  ],
+  "include/haproxy/backend-t.h": [
+   1,
+   0
+  ],
+  "include/haproxy/bug.h": [
+   2,
+   0
+  ],
+  "include/haproxy/connection-t.h": [
+   5,
+   3
+  ],
+  "include/haproxy/errors.h": [
+   2,
+   0
+  ],
+  "include/haproxy/fcgi-app-t.h": [
+   1,
+   0
+  ],
+  "include/haproxy/global-t.h": [
+   1,
+   1
+  ],
+  "include/haproxy/global.h": [
+   4,
+   0
+  ],
+  "include/haproxy/h1.h": [
+   2,
+   3
+  ],
+  "include/haproxy/h1_htx-t.h": [
+   21,
+   0
+  ],
+  "include/haproxy/h1_htx.h": [
+   3,
+   2
+  ],
+  "include/haproxy/h2.h": [
+   3,
+   1
+  ],
+  "include/haproxy/hpack-enc.h": [
+   12,
+   10
+  ],
+  "include/haproxy/hpack-tbl.h": [
+   1,
+   1
+  ],
+  "include/haproxy/http.h": [
+   50,
+   0
+  ],
+  "include/haproxy/htx-t.h": [
+   3,
+   1
+  ],
+  "include/haproxy/htx.h": [
+   19,
+   4
+  ],
+  "include/haproxy/mux_h2-t.h": [
+   1,
+   0
+  ],
+  "include/haproxy/mux_quic.h": [
+   9,
+   3
+  ],
+  "include/haproxy/peers-t.h": [
+   1,
+   1
+  ],
+  "include/haproxy/port_range-t.h": [
+   1,
+   0
+  ],
+  "include/haproxy/port_range.h": [
+   22,
+   0
+  ],
+  "include/haproxy/protobuf.h": [
+   68,
+   54
+  ],
+  "include/haproxy/qmux_http.h": [
+   1,
+   0
+  ],
+  "include/haproxy/qpack-t.h": [
+   8,
+   0
+  ],
+  "include/haproxy/qpack-tbl.h": [
+   10,
+   4
+  ],
+  "include/haproxy/quic_cid.h": [
+   9,
+   18
+  ],
+  "include/haproxy/receiver-t.h": [
+   2,
+   1
+  ],
+  "include/haproxy/sample.h": [
+   12,
+   7
+  ],
+  "include/haproxy/sc_strm.h": [
+   2,
+   25
+  ],
+  "include/haproxy/server-t.h": [
+   4,
+   2
+  ],
+  "include/haproxy/server.h": [
+   29,
+   0
+  ],
+  "include/haproxy/spoe.h": [
+   1,
+   1
+  ],
+  "include/haproxy/ssl_crtlist.h": [
+   1,
+   0
+  ],
+  "include/haproxy/ssl_ocsp-t.h": [
+   1,
+   1
+  ],
+  "include/haproxy/ssl_sock-t.h": [
+   3,
+   0
+  ],
+  "include/haproxy/ssl_sock.h": [
+   2,
+   1
+  ],
+  "include/haproxy/stats-proxy.h": [
+   4,
+   0
+  ],
+  "include/haproxy/stconn-t.h": [
+   6,
+   4
+  ],
+  "include/haproxy/stconn.h": [
+   1,
+   1
+  ],
+  "include/haproxy/stream-t.h": [
+   1,
+   0
+  ],
+  "include/haproxy/stream.h": [
+   27,
+   0
+  ],
+  "include/haproxy/task-t.h": [
+   18,
+   13
+  ],
+  "include/haproxy/task.h": [
+   20,
+   0
+  ],
+  "include/haproxy/tools.h": [
+   54,
+   29
+  ],
+  "include/import/slz.h": [
+   12,
+   9
+  ],
+  "reg-tests/cache/vary.vtc": [
+   108,
+   0
+  ],
+  "reg-tests/converter/bytes.vtc": [
+   7,
+   0
+  ],
+  "reg-tests/converter/has_ctl.vtc": [
+   162,
+   0
+  ],
+  "reg-tests/http-messaging/h1_authority_fragment_char.vtc": [
+   72,
+   0
+  ],
+  "reg-tests/http-messaging/h1_host_normalization.vtc": [
+   38,
+   0
+  ],
+  "reg-tests/http-messaging/http-ntlm.vtc": [
+   55,
+   0
+  ],
+  "reg-tests/http-messaging/websocket.vtc": [
+   14,
+   1
+  ],
+  "reg-tests/jwt/jws_verify.vtc": [
+   1,
+   1
+  ],
+  "reg-tests/protobuf/nested_and_flat.vtc": [
+   93,
+   0
+  ],
+  "reg-tests/sample_fetches/tlvs.vtc": [
+   24,
+   2
+  ],
+  "reg-tests/server/cli_delete_dynamic_server.vtc": [
+   2,
+   2
+  ],
+  "reg-tests/server/cli_set_fqdn.vtc": [
+   1,
+   1
+  ],
+  "reg-tests/ssl/show_ssl_sni_filter.vtc": [
+   76,
+   0
+  ],
+  "reg-tests/ssl/ssl_dh.vtc": [
+   4,
+   2
+  ],
+  "reg-tests/ssl/ssl_generate_certificate.vtc": [
+   2,
+   2
+  ],
+  "scripts/build-vtest.sh": [
+   7,
+   4
+  ],
+  "scripts/git-show-backports": [
+   37,
+   4
+  ],
+  "src/acl.c": [
+   3,
+   2
+  ],
+  "src/acme.c": [
+   167,
+   83
+  ],
+  "src/activity.c": [
+   8,
+   2
+  ],
+  "src/applet.c": [
+   25,
+   12
+  ],
+  "src/auth.c": [
+   22,
+   6
+  ],
+  "src/backend.c": [
+   41,
+   26
+  ],
+  "src/base64.c": [
+   3,
+   0
+  ],
+  "src/cache.c": [
+   83,
+   24
+  ],
+  "src/cfgcond.c": [
+   10,
+   4
+  ],
+  "src/cfgdiag.c": [
+   46,
+   28
+  ],
+  "src/cfgparse-global.c": [
+   15,
+   4
+  ],
+  "src/cfgparse-listen.c": [
+   15,
+   8
+  ],
+  "src/cfgparse-quic.c": [
+   3,
+   3
+  ],
+  "src/cfgparse-ssl.c": [
+   41,
+   5
+  ],
+  "src/cfgparse.c": [
+   18,
+   1
+  ],
+  "src/check.c": [
+   23,
+   3
+  ],
+  "src/cli.c": [
+   85,
+   19
+  ],
+  "src/connection.c": [
+   14,
+   3
+  ],
+  "src/cpu_topo.c": [
+   27,
+   14
+  ],
+  "src/debug.c": [
+   5,
+   1
+  ],
+  "src/dict.c": [
+   17,
+   10
+  ],
+  "src/dns.c": [
+   12,
+   3
+  ],
+  "src/errors.c": [
+   21,
+   3
+  ],
+  "src/fcgi-app.c": [
+   10,
+   2
+  ],
+  "src/fcgi.c": [
+   2,
+   2
+  ],
+  "src/fd.c": [
+   25,
+   15
+  ],
+  "src/filters.c": [
+   12,
+   1
+  ],
+  "src/flt_bwlim.c": [
+   5,
+   0
+  ],
+  "src/flt_http_comp.c": [
+   2,
+   27
+  ],
+  "src/flt_spoe.c": [
+   30,
+   2
+  ],
+  "src/flt_trace.c": [
+   1,
+   1
+  ],
+  "src/h1.c": [
+   69,
+   13
+  ],
+  "src/h1_htx.c": [
+   43,
+   16
+  ],
+  "src/h2.c": [
+   32,
+   6
+  ],
+  "src/h3.c": [
+   71,
+   10
+  ],
+  "src/haproxy.c": [
+   48,
+   12
+  ],
+  "src/hlua.c": [
+   76,
+   13
+  ],
+  "src/hlua_fcn.c": [
+   44,
+   14
+  ],
+  "src/hpack-dec.c": [
+   16,
+   11
+  ],
+  "src/hpack-tbl.c": [
+   2,
+   0
+  ],
+  "src/hq_interop.c": [
+   24,
+   0
+  ],
+  "src/http.c": [
+   12,
+   5
+  ],
+  "src/http_act.c": [
+   28,
+   9
+  ],
+  "src/http_ana.c": [
+   111,
+   41
+  ],
+  "src/http_client.c": [
+   7,
+   5
+  ],
+  "src/http_conv.c": [
+   4,
+   1
+  ],
+  "src/http_ext.c": [
+   1,
+   1
+  ],
+  "src/http_fetch.c": [
+   35,
+   10
+  ],
+  "src/http_htx.c": [
+   34,
+   33
+  ],
+  "src/http_rules.c": [
+   8,
+   7
+  ],
+  "src/htx.c": [
+   108,
+   11
+  ],
+  "src/jws.c": [
+   9,
+   6
+  ],
+  "src/jwt.c": [
+   13,
+   4
+  ],
+  "src/lb_chash.c": [
+   33,
+   10
+  ],
+  "src/lb_fwlc.c": [
+   1,
+   1
+  ],
+  "src/listener.c": [
+   7,
+   1
+  ],
+  "src/log.c": [
+   45,
+   21
+  ],
+  "src/map.c": [
+   43,
+   13
+  ],
+  "src/mjson.c": [
+   21,
+   22
+  ],
+  "src/mqtt.c": [
+   8,
+   7
+  ],
+  "src/mux_fcgi.c": [
+   82,
+   31
+  ],
+  "src/mux_h1.c": [
+   136,
+   88
+  ],
+  "src/mux_h2.c": [
+   332,
+   66
+  ],
+  "src/mux_quic.c": [
+   76,
+   53
+  ],
+  "src/mux_spop.c": [
+   6,
+   5
+  ],
+  "src/mworker.c": [
+   131,
+   44
+  ],
+  "src/ncbmbuf.c": [
+   2,
+   0
+  ],
+  "src/pattern.c": [
+   8,
+   2
+  ],
+  "src/payload.c": [
+   31,
+   6
+  ],
+  "src/peers.c": [
+   29,
+   7
+  ],
+  "src/proto_sockpair.c": [
+   9,
+   9
+  ],
+  "src/proto_tcp.c": [
+   2,
+   2
+  ],
+  "src/proto_udp.c": [
+   2,
+   2
+  ],
+  "src/proxy.c": [
+   39,
+   5
+  ],
+  "src/qmux_http.c": [
+   23,
+   2
+  ],
+  "src/qpack-dec.c": [
+   54,
+   36
+  ],
+  "src/qpack-enc.c": [
+   1,
+   2
+  ],
+  "src/qpack-tbl.c": [
+   3,
+   0
+  ],
+  "src/queue.c": [
+   1,
+   1
+  ],
+  "src/quic_ack.c": [
+   1,
+   1
+  ],
+  "src/quic_cc_bbr.c": [
+   2,
+   1
+  ],
+  "src/quic_cc_cubic.c": [
+   4,
+   0
+  ],
+  "src/quic_cid.c": [
+   107,
+   44
+  ],
+  "src/quic_conn.c": [
+   71,
+   28
+  ],
+  "src/quic_frame.c": [
+   21,
+   4
+  ],
+  "src/quic_rx.c": [
+   71,
+   24
+  ],
+  "src/quic_sock.c": [
+   9,
+   1
+  ],
+  "src/quic_ssl.c": [
+   16,
+   10
+  ],
+  "src/quic_token.c": [
+   5,
+   0
+  ],
+  "src/quic_tp.c": [
+   8,
+   9
+  ],
+  "src/quic_trace.c": [
+   3,
+   0
+  ],
+  "src/quic_tx.c": [
+   5,
+   2
+  ],
+  "src/raw_sock.c": [
+   30,
+   3
+  ],
+  "src/resolvers.c": [
+   73,
+   43
+  ],
+  "src/sample.c": [
+   126,
+   47
+  ],
+  "src/server.c": [
+   82,
+   55
+  ],
+  "src/session.c": [
+   12,
+   3
+  ],
+  "src/shctx.c": [
+   13,
+   21
+  ],
+  "src/sink.c": [
+   38,
+   14
+  ],
+  "src/slz.c": [
+   192,
+   53
+  ],
+  "src/sock.c": [
+   19,
+   7
+  ],
+  "src/sock_inet.c": [
+   16,
+   10
+  ],
+  "src/sock_unix.c": [
+   1,
+   7
+  ],
+  "src/ssl_ckch.c": [
+   7,
+   6
+  ],
+  "src/ssl_clienthello.c": [
+   11,
+   6
+  ],
+  "src/ssl_crtlist.c": [
+   7,
+   0
+  ],
+  "src/ssl_gencert.c": [
+   60,
+   8
+  ],
+  "src/ssl_ocsp.c": [
+   47,
+   10
+  ],
+  "src/ssl_sample.c": [
+   15,
+   3
+  ],
+  "src/ssl_sock.c": [
+   344,
+   73
+  ],
+  "src/ssl_trace.c": [
+   4,
+   2
+  ],
+  "src/ssl_utils.c": [
+   34,
+   0
+  ],
+  "src/stats-html.c": [
+   24,
+   1
+  ],
+  "src/stats-proxy.c": [
+   38,
+   23
+  ],
+  "src/stconn.c": [
+   48,
+   5
+  ],
+  "src/stick_table.c": [
+   17,
+   3
+  ],
+  "src/stream.c": [
+   20,
+   11
+  ],
+  "src/task.c": [
+   24,
+   17
+  ],
+  "src/tcp_rules.c": [
+   28,
+   13
+  ],
+  "src/tcpcheck.c": [
+   74,
+   38
+  ],
+  "src/thread.c": [
+   6,
+   3
+  ],
+  "src/tools.c": [
+   329,
+   32
+  ],
+  "src/trace.c": [
+   1,
+   1
+  ],
+  "src/vars.c": [
+   6,
+   7
+  ]
+ },
+ "files": 212,
+ "added_lines": 7469,
+ "removed_lines": 2072,
+ "diff": "diff --git a/.github/matrix.py b/.github/matrix.py\nindex 9b8c2d7..10b0c16 100755\n--- a/.github/matrix.py\n+++ b/.github/matrix.py\n@@ -12,6 +12,7 @@ import functools\n import json\n import re\n import sys\n+import urllib.error\n import urllib.request\n from os import environ\n from packaging import version\n@@ -19,9 +20,10 @@ from packaging import version\n #\n # this CI is used for both development and stable branches of HAProxy\n #\n-# naming convention used, if branch name matches:\n+# naming convention used, if branch/tag name matches:\n #\n #   \"haproxy-\" - stable branches\n+#   \"vX.Y.Z\"   - release tags\n #   otherwise  - development branch (i.e. \"latest\" ssl variants, \"latest\" github images)\n #\n \n@@ -32,13 +34,24 @@ def get_all_github_tags(url):\n     headers = {}\n     if environ.get(\"GITHUB_TOKEN\") is not None:\n         headers[\"Authorization\"] = \"token {}\".format(environ.get(\"GITHUB_TOKEN\"))\n-    request = urllib.request.Request(url, headers=headers)\n-    try:\n-        tags = urllib.request.urlopen(request)\n-    except:\n-        return None\n-    tags = json.loads(tags.read().decode(\"utf-8\"))\n-    return [tag['name'] for tag in tags]\n+    all_tags = []\n+    page = 1\n+    sep = \"&\" if \"?\" in url else \"?\"\n+    while True:\n+        paginated_url = \"{}{}per_page=100&page={}\".format(url, sep, page)\n+        request = urllib.request.Request(paginated_url, headers=headers)\n+        try:\n+            response = urllib.request.urlopen(request)\n+        except urllib.error.URLError:\n+            return all_tags if all_tags else None\n+        tags = json.loads(response.read().decode(\"utf-8\"))\n+        if not tags:\n+            break\n+        all_tags.extend([tag['name'] for tag in tags])\n+        if len(tags) < 100:\n+            break\n+        page += 1\n+    return all_tags if all_tags else None\n \n @functools.lru_cache(5)\n def determine_latest_openssl(ssl):\n@@ -64,6 +77,8 @@ def determine_latest_aws_lc(ssl):\n     if not tags:\n         return \"AWS_LC_VERSION=failed_to_detect\"\n     valid_tags = list(filter(aws_lc_version_valid, tags))\n+    if not valid_tags:\n+        return \"AWS_LC_VERSION=failed_to_detect\"\n     latest_tag = max(valid_tags, key=aws_lc_version_string_to_num)\n     return \"AWS_LC_VERSION={}\".format(latest_tag[1:])\n \n@@ -75,11 +90,12 @@ def aws_lc_fips_version_valid(version_string):\n \n @functools.lru_cache(5)\n def determine_latest_aws_lc_fips(ssl):\n-    # the AWS-LC-FIPS tags are at the end of the list, so let's get a lot\n-    tags = get_all_github_tags(\"https://api.github.com/repos/aws/aws-lc/tags?per_page=200\")\n+    tags = get_all_github_tags(\"https://api.github.com/repos/aws/aws-lc/tags\")\n     if not tags:\n         return \"AWS_LC_FIPS_VERSION=failed_to_detect\"\n     valid_tags = list(filter(aws_lc_fips_version_valid, tags))\n+    if not valid_tags:\n+        return \"AWS_LC_FIPS_VERSION=failed_to_detect\"\n     latest_tag = max(valid_tags, key=aws_lc_fips_version_string_to_num)\n     return \"AWS_LC_FIPS_VERSION={}\".format(latest_tag[12:])\n \n@@ -120,11 +136,13 @@ def clean_compression(compression):\n def main(ref_name):\n     print(\"Generating matrix for branch '{}'.\".format(ref_name))\n \n+    is_stable = \"haproxy-\" in ref_name or re.match(r'^v\\d+\\.\\d+\\.\\d+$', ref_name)\n+\n     matrix = []\n \n     # Ubuntu\n \n-    if \"haproxy-\" in ref_name:\n+    if is_stable:\n         os = \"ubuntu-24.04\" # stable branch\n     else:\n         os = \"ubuntu-24.04\" # development branch\n@@ -225,7 +243,7 @@ def main(ref_name):\n             # \"BORINGSSL=yes\",\n         ]\n \n-        if \"haproxy-\" not in ref_name: # development branch\n+        if not is_stable: # development branch\n             ssl_versions = ssl_versions + [\n                 \"OPENSSL_VERSION=latest\",\n                 \"LIBRESSL_VERSION=latest\",\n@@ -265,24 +283,21 @@ def main(ref_name):\n                 }\n             )\n \n-    # macOS\n+    # macOS on dev branches\n+    if \"haproxy-\" not in ref_name:\n+        os = \"macos-26\"     # development branch\n \n-    if \"haproxy-\" in ref_name:\n-        os = \"macos-13\"     # stable branch\n-    else:\n-        os = \"macos-15\"     # development branch\n-\n-    TARGET = \"osx\"\n-    for CC in [\"clang\"]:\n-        matrix.append(\n-            {\n-                \"name\": \"{}, {}, no features\".format(os, CC),\n-                \"os\": os,\n-                \"TARGET\": TARGET,\n-                \"CC\": CC,\n-                \"FLAGS\": [],\n-            }\n-        )\n+        TARGET = \"osx\"\n+        for CC in [\"clang\"]:\n+            matrix.append(\n+                {\n+                    \"name\": \"{}, {}, no features\".format(os, CC),\n+                    \"os\": os,\n+                    \"TARGET\": TARGET,\n+                    \"CC\": CC,\n+                    \"FLAGS\": [],\n+                }\n+            )\n \n     # Print matrix\n \ndiff --git a/.github/workflows/windows.yml b/.github/workflows/windows.yml\nindex 29ad16f..a51bd81 100644\n--- a/.github/workflows/windows.yml\n+++ b/.github/workflows/windows.yml\n@@ -18,6 +18,7 @@ jobs:\n   msys2:\n     name: ${{ matrix.name }}\n     runs-on: ${{ matrix.os }}\n+    if: ${{ github.repository_owner == 'haproxy' || github.event_name == 'workflow_dispatch' }}\n     defaults:\n       run:\n         shell: msys2 {0}\ndiff --git a/CHANGELOG b/CHANGELOG\nindex b7cc0e4..2e4de91 100644\n--- a/CHANGELOG\n+++ b/CHANGELOG\n@@ -1,6 +1,658 @@\n ChangeLog :\n ===========\n \n+2026/08/27 : 3.2.23\n+    - BUG/MINOR: cli: use the current argument to parse the FD spec in \"show fd\"\n+    - BUG/MEDIUM: filter: Disable auto-close on channel during TCP payload filtering\n+    - BUG/MINOR: server: check strdup return value on server ID\n+    - BUG/MINOR: proxy: fix default-server leak on post-parsing cleanup\n+    - BUG/MEDIUM: hpack: encode long methods and schemes using the long form\n+    - BUG/MINOR: hlua: use a local buffer to format the socket addresses\n+    - BUG/MEDIUM: spoe: clear the applet pointer when the applet fails to start\n+    - BUG/MINOR: mux-fcgi: don't call fcgi_strm_destroy() on a NULL stream\n+    - BUG/MEDIUM: http-ana: don't crash on \"keep-query\" in a response redirect\n+    - BUG/MEDIUM: stick-tables: use the same bucket for string keys with a NUL\n+    - BUG/MEDIUM: sock: bound the recvmsg() length when receiving old sockets\n+    - BUG/MEDIUM: http-ana: check the cookie rewrite result before moving the offsets\n+    - BUG/MINOR: mux-fcgi: sanitize the STDERR records before logging them\n+    - MINOR: log/tools: fix ambiguous comments for some log encoding helpers\n+    - BUG/MEDIUM: log: always reserve room for trailing 0 when using CBOR encoding helpers\n+    - BUG/MEDIUM: acme: don't delete a NULL token from the map\n+    - BUG/MINOR: ssl: reject server certificate names containing a NUL byte\n+    - BUG/MINOR: acme: restrict the permissions of the generated account key\n+    - BUG/MEDIUM: ssl: require a full-length AEAD tag when decrypting with AES-GCM\n+    - BUG/MINOR: connection: reserve the whole CRC32C TLV before saving its pointer\n+    - BUG/MEDIUM: session: don't release a reversed connection twice on error\n+    - BUG/MINOR: lb-chash: bound the walk when the saved cursor changed tree\n+    - BUG/MINOR: debug: only dump the trace once in __BUG_ON_ONCE()\n+    - BUG/MINOR: mux-h2: strip the userinfo when deriving :authority for a server\n+    - BUG/MEDIUM: quic: prevent out-of-bound read on wrapping CRYPTO content\n+    - BUG/MEDIUM: lua: resume Channel:send() from the unsent part of the string\n+    - BUG/MEDIUM: hlua_fcn: ensure systematic bref cleanup for patref list iterator\n+    - DOC: config: clarify req.ssl_sni\n+    - BUG/MEDIUM: cache: retain the primary or secondary entry only when detaching its row\n+    - BUG/MEDIUM: cache: do not release an entry under the cache read lock\n+    - BUG/MINOR: ssl: reject an embedded NUL in the ssl_*_dn(entry) fetches\n+    - BUG/MINOR: ssl: reject an embedded NUL in the full-DN ssl_*_dn() fetches\n+    - BUG/MINOR: quic: avoid a division by zero in the BBR pacing interval\n+    - BUG/MINOR: server: fix off-by-one error when parsing and copying source port range\n+    - BUG/MEDIUM: http: fix authority parsing for absolute-form URI with empty path\n+    - BUG/MEDIUM: bwlim: fix a stick-table entry leak in shared mode\n+    - BUG/MINOR: payload: fix handshake length off-by-4 in ssl_hello_sni/alpn\n+    - BUG/MINOR: spoe: check snprintf() return value in spoe_set_var/spoe_unset_var\n+    - BUG/MINOR: qpack: missing shift count check in qpack_get_varint() (UB)\n+    - BUG/MINOR: log: fix double-free error when error in parse_loger occurs\n+    - BUG/MINOR: conn: Do not check 'sess_el' list on frontend connections in __trace_enabled\n+    - BUG/MINOR: ssl: Fix leak of X509_NAME in traces\n+    - BUG/MINOR: ssl: release the previous client cert reference at depth > 0\n+    - BUG/MEDIUM: ssl: Fix unprotected 'ssl_sock_choose_sni_ctx' calls\n+    - BUG/MEDIUM: ssl: enforce tune.ssl.lifetime across TLS1.3 session renewals\n+    - BUG/MINOR: ssl: apply tune.ssl.lifetime to TLS1.3 sessions on BoringSSL/AWS-LC\n+    - BUILD: ssl: disable the TLS1.3 session timeout clamp on wolfSSL\n+    - BUG/MEDIUM: ssl: isolate TLS session resumption per X509 server certificate\n+    - BUG/MINOR: ssl: isolate TLS session resumption per crt-list filter\n+    - BUG/MEDIUM: ssl: isolate TLS session resumption per authentication policy\n+    - BUILD: ssl: avoid a potential null-dereference warning on OpenSSL 1.0.2\n+    - BUG/MINOR: ssl/cli: fix frontend-not-found detection in 'show ssl sni -f'\n+    - BUG/MINOR: resolvers: accept fields at the response boundary\n+    - BUG/MEDIUM: mux-fcgi: check the room left before appending the index\n+    - BUG/MINOR: wurfl: fix memory leak of information list and patch strings at deinit\n+    - BUG/MINOR: config: Check buffer pool creation for failures\n+    - BUG/MINOR: acme: NULL check on my_strndup()\n+    - BUG/MINOR: ot: removed dead code in flt_ot_parse_cfg_str()\n+    - BUG/MINOR: http-fetch: fix smp_fetch_hdr_ip()'s handling of brackets for IPv6\n+    - BUG/MINOR: http-fetch: make http_first_req() check for HTTP first\n+    - BUG/MINOR: http-act: set-status() must check the response message, not the request\n+    - BUG/MINOR: tools: fix memory leak in env_expand() error path\n+    - BUG/MINOR: auth: free user groups on error paths in userlist_postinit()\n+    - BUG/MEDIUM: tools: make string encoding possible to fail instead of truncating\n+    - BUG/MINOR: cfgcond: make KQUEUE check for GTUNE_USE_KQUEUE not GTUNE_USE_EPOLL\n+    - BUG/MINOR: mqtt: connack parser returns MQTT_NEED_MORE_DATA on unknown property\n+    - BUG/MINOR: mqtt: connect parser uses wrong bit field for TOPIC_ALIAS_MAXIMUM\n+    - BUG/MINOR: mqtt: connack parser uses wrong bit for SUBSCRIPTION_IDENTIFIERS_AVAILABLE\n+    - BUG/MINOR: mqtt: fix PUBLISH flags validation that want all bits to be set\n+    - BUG/MINOR: mux-h2: harden h2_dump_h2s_info() against potentially null h2s->sd\n+    - BUG/MEDIUM: mux-h1: close the connection on a short content-length\n+    - MEDIUM: mux-h2: don't report EOM on a short content-length message\n+    - BUG/MEDIUM: connection: fix an infinite loop in the fc_pp_tlv() fetch\n+    - BUG/MEDIUM: sink: do not hold the sft lock around ring_dispatch_messages()\n+    - MINOR: sample: add new converter has_ctl() to detect control characters\n+    - REGTESTS: converters: use connection: close in the has_ctl() test\n+    - BUG/MEDIUM: cache: ignore cache on redundant origin/referer\n+    - BUG/MINOR: fcgi-app: allow explicit filter declaration with non-cache/non-compression filters\n+    - BUG/MINOR: flt-http-comp: Don't read next block to detect end of data\n+    - BUG/MEDIUM: sink: initialize the settings of the implicit log server\n+    - BUG/MEDIUM: sink: do not create one implicit ring per logger copy\n+\n+2026/07/29 : 3.2.22\n+    - BUG/MEDIUM: h3: fix parser desync on error with multiple frames\n+    - BUG/MINOR: mux_quic: prevent multiple STOP_SENDING emission per stream\n+    - BUG/MEDIUM: fd: Fix a deadlock when closing other tgroups fds\n+    - BUG/MINOR: sample: Fix a possible underflow on be2hex for large chunk size\n+    - BUG/MINOR: stream: Fix custom timeouts initialization when setting backend\n+    - BUG/MINOR: stream: Fix custom max-retries initialization when setting backend\n+    - BUG/MINOR: http-conv: Make url-dec failed if no space for trailing null byte\n+    - BUG/MINOR: hlua: Apply socket timeout on server side only\n+    - REORG: stconn: Move sc_chk_rcv() from sc_strm.h to stconn.c\n+    - BUG/MEDIUM: applet: Reenable reads in applet context if requesting a connection\n+    - MINOR: stats: factor the proxy vs scope check into its own function\n+    - BUG/MEDIUM: stats: subject \"stats admin\" accesses to \"stats scope\" filtering\n+    - BUG/MINOR: shctx: fix shctx_row_data_get() when offset exceeds a block\n+    - MINOR: shctx: clamp shctx_row_data_get() reads against the offset\n+    - BUG/MEDIUM: cache: reattach the row when a secondary entry is incomplete\n+    - BUG/MEDIUM: stats: Ensure that Origin is valid on POSTs\n+    - DOC: stats: Document that stats admin is vulnerable to a CSRF attack\n+    - BUG/MEDIUM: ssl-gencert: Don't forget to free memory when done\n+    - BUG/MEDIUM: protobuf: adjust sample size capacity after pointer shift\n+    - BUG/MEDIUM: protobuf: fix nested path bypass in field lookup\n+    - BUG/MINOR: ssl: fix proxy lookup for show ssl sni\n+    - REGTESTS: protobuf: add regression test for nested vs flat paths\n+    - BUG/MINOR: mux-h1: Don't delay send if message with c-l was fully sent\n+    - BUG/MEDIUM: sample: Adjust sample size capacity after pointer shift for bytes()\n+    - BUG/MEDIUM: sample: Adjust sample size capacity after pointer shift for ltrim()\n+    - BUG/MINOR: sample: Fix bytes() when length it greater than remaining data\n+    - BUG/MEDIUM: proxy: protect \"show servers ...\" against server deletion\n+    - BUG/MINOR: resolvers: do not index resolvers names in the proxies\n+    - REORG: h1-htx: Move h1 headers map in h1-htx\n+    - BUG/MEDIUM: mux-h1: Always adjust case for all outgoing headers as expected\n+    - BUG/MINOR: http-htx: fix the length moved when removing a header value\n+    - BUG/MEDIUM: http-fetch: don't parse a non-HTTP check buffer as an HTX message\n+    - BUG/MEDIUM: http-fetch: reject a negative capture id in capture.{req,res}.hdr\n+    - BUG/MINOR: http: fix an out-of-bounds read in http_get_host_port() on empty host\n+    - BUG/MINOR: http-htx: check the trash allocation in http_scheme_based_normalize()\n+    - BUG/MINOR: h1: report the right error position on authority/host mismatch\n+    - BUG/MINOR: h2: don't use a block pointer to roll back a partial HTX conversion\n+    - BUG/MINOR: http-ana: fix a one-byte over-read in the client-side cookie parser\n+    - BUG/MINOR: http-act: fix a double free of the regex on a rule parsing error\n+    - BUG/MINOR: http-act: fix a double free of the map reference on a parsing error\n+    - BUG/MINOR: http-act: restore the response buffer state in the early-hint action\n+    - BUG/MINOR: http-act: reject a negative capture id in the capture actions\n+    - BUG/MINOR: http-htx: check the strdup() of the \"lf-string\" http reply argument\n+    - BUG/MINOR: htx: Perform raw copy for messages of same size in htx_copy_msg()\n+    - BUG/MINOR: htx: Transfer HTX_FL_EOM flag on success in htx_append_msg()\n+    - BUG/MINOR: http-rules: fix release of a failed \"set-cookie-fmt\" redirect rule\n+    - BUG/MINOR: slz: do not read past the end of the input around the match loop\n+    - CLEANUP: slz: fix the documented worst case size of flush() and finish()\n+    - BUG/MINOR: slz: use the exact switch cost for the last literals of a block\n+    - BUG/MEDIUM: slz: bound the bits wasted by the 9-bit literals\n+    - BUG/MINOR: slz: do not append a block to an already finished stream\n+    - BUG/MINOR: slz: fix the adler32 accumulators signedness on 32-bit\n+    - BUG/MINOR: slz: avoid undefined shifts when building the word byte by byte\n+    - CLEANUP: slz: clarify that the size promise applies to the stream, not to a call\n+    - BUG/MEDIUM: peers: check the available room before encoding dict values\n+    - BUG/MEDIUM: sample: reject the deprecated protobuf group wire types\n+    - BUG/MAJOR: ssl/ocsp: lock the OCSP response around reads in the stapling callback\n+    - MEDIUM: stream: Introduce stream_set_srv_target()\n+    - BUG/MEDIUM: server: Properly check for streams before deletion\n+    - MINOR: server: improve parsing error for server-template\n+    - BUG/MINOR: server: duplicate server alt_proto in srv_settings_cpy()\n+    - BUG/MINOR: server: fix check reuse-pool in srv_settings_cpy()\n+\n+2026/07/03 : 3.2.21\n+    - BUG/MEDIUM: mux_quic: fix memory leak of rx app_buf on stream free\n+    - BUG/MINOR: sample: set SMP_F_CONST on srv_name fetch\n+    - BUG/MEDIUM: servers: Use a refcount for port_range and free it properly\n+    - BUG/MINOR: tools: fix invalid character detection in strl2ic()\n+    - BUG/MAJOR: htx: Don't swap buffers for empty HTX message with an error\n+    - BUG/MINOR: http-htx: Don't by-pass HTX API when merging cookie values\n+\n+2026/06/26 : 3.2.20\n+    - BUG/MEDIUM: mux_quic: adjust qcc_is_dead() to account detached streams\n+    - BUG/MEDIUM: dict: hold read lock while incrementing refcount in dict_insert\n+    - MINOR: htx: Add htx_move_blks() to move blocks from a message to another\n+    - BUG/MEDIUM: applet: Fix transfer of HTX data to the applet\n+    - REGTESTS: Don't try to use real nameservers for testcases\n+    - BUILD: 51d.c: cleanup, fix preprocessor ifdefs\n+    - BUG/MINOR: backend: correct parameter value validation in get_server_ph_post()\n+    - BUG/MINOR: config/dns: properly fail on duplicate nameserver name detection\n+    - BUG/MEDIUM: dns: fix long loops in additional records parse on name failure\n+    - BUG/MEDIUM: resolvers: fix name compression pointer validation in resolv_read_name()\n+    - BUG/MEDIUM: dns: fix memory leak of sockaddr in dns_session_init() error path\n+    - CLEANUP: proxy: fix tiny mistakes in parse error messages\n+    - BUG/MINOR: servers: use proper source of pool_conn_name in srv_settings_cpy()\n+    - BUG/MEDIUM: server/cli: unlock server lock on failure in cli_parse_set_server\n+    - BUG/MINOR: resolvers: fix dangling list pointer in resolvers_new() error paths\n+    - BUG/MINOR: dns: fix dangling dgram pointer on dns_dgram_init() failure path\n+    - BUG/MINOR: resolvers: report the expression error in the do-resolve() action parser\n+    - BUG/MINOR: resolvers: fix leaked dgram and dns_ring struct in parse_resolve_conf()\n+    - BUG/MINOR: session/trace: use distinct flags for SESS_EV_END and _ERR\n+    - BUG/MINOR: check: properly report errno in chk_report_conn_err()\n+    - BUG/MINOR: jwt: fix possible memory leak in convert_ecdsa_sig() error path\n+    - DOC: config: further clarify that resolvers \"default\" exists\n+    - BUG/MINOR: jws: fix OpenSSL 3.0 version check from > to >=\n+    - BUG/MINOR: jws: Add missing return value check (EVP_PKEY_get_bn_param)\n+    - BUG/MINOR: httpclient-cli: Destroy http-client context if failing to start it\n+    - BUG/MEDIUM: h1: Skip all h2c values from Upgrade headers during parsing\n+    - BUG/MINOR: h1: Don't mask websocket protocol if multiple protocols used\n+    - BUG/MINOR: backend: fix balance hash calculation when using hash-type none\n+    - BUG/MINOR: server: Properly handle init-state value during haproxy startup\n+    - BUG/MINOR: ocsp: Manage date too far away in the future\n+    - BUG/MEDIUM: applet: Properly handle receives of size 0\n+    - BUG/MEDIUM: resolvers: Fix test on dn label size in resolv_dn_label_to_str()\n+    - BUG/MEDIUM: ssl-gencert: Unlock LRU cache if failing to generate certificate\n+    - BUG/MINOR: quic: fix ODCID lookup from derived value\n+    - BUG/MEDIUM: dict: hold lock while decrementing refcount in dict_entry_unref\n+    - BUG/MINOR: tcpchecks: Limit parsing of agent-check reply to the buffer\n+    - BUG/MEDIUM: hlua: Fix integer underflow when receiving line from lua cosocket\n+    - BUG/MEDIUM: log-forward: make sure the month is unsigned\n+    - BUG/MEDIUM: tcpcheck/spoe: bound the SPOP error code to valid values\n+    - BUG/MEDIUM: cache: fix a refcount leak for missed secondary entries\n+    - BUG/MINOR: resolvers: fix room for trailing zero in resolv_dn_label_to_str()\n+    - BUG/MINOR: resolvers: fix risk of appending garbage past the domain name\n+    - BUG/MINOR: mux-h2: validate HEADERS frame length before reading stream dep\n+    - BUG/MINOR: log: look for the end of priority before the end of the buffer\n+    - BUG/MINOR: dict: fix refcount race on insert collision\n+    - BUG/MINOR: init: use more than ha_random64() for the cluster secret\n+    - BUG/MINOR: sample: limit the be2hex converter's chunk size\n+    - BUG/MEDIUM: h1: drop headers whose names contain invalid chars\n+    - BUG/MEDIUM: h1: limit status codes to 3 digits by default\n+    - BUG/MEDIUM: cache: always verify the primary hash in get_secondary_entry()\n+    - BUG/MINOR: cache: also recognize directives in the form \"token=\"\n+    - BUG/MINOR: resolvers: relax size checks in authority record parsing\n+    - BUG/MINOR: http-fetch: check against the whole token in get_http_auth()\n+    - BUG/MEDIUM: acme: protect against risk of null-deref on connection failure\n+    - BUG/MINOR: http-ext: always check remaining data when reading rfc7239 nodeport\n+    - BUG/MINOR: base64: return empty string for empty input in base64dec()\n+    - BUG/MINOR: payload: fix the handshake length bounds check smp_client_hello_parse()\n+    - BUG/MINOR: ssl-hello: make use of the null-terminated servername\n+    - BUG/MINOR: resolvers: switch to a better PRNG for query IDs\n+    - BUG/MINOR: addons/51d: NUL-terminate headers before passing them to Trie API\n+    - BUG/MEDIUM: h3: reject client push stream\n+    - BUG/MINOR: h3: reject client CANCEL_PUSH frame\n+    - BUG/MEDIUM: auth: fix unconfigured password NULL deref\n+    - BUG/MINOR: hlua: prevent Lua from passing CR/LF/NUL in HTTP headers\n+    - BUG/MINOR: quic: reject packet too short for HP decryption\n+    - BUG/MEDIUM: mux-fcgi: reject stream ID 0 for application records\n+    - MINOR: http: Add function to remove all occurrences of a value in a header\n+    - MINOR: h1: Add  a H1M flag to specify a non-empty 'Upgrade:' header was parsed\n+    - BUG/MEDIUM: h1-htx: Sanitize parsing to properly handle upgrade requests\n+    - BUG/MINOR: mux-fcgi: Use relative offset to compute contig data in demux buf\n+    - BUG/MINOR: mux-spop: Use relative offset to compute contig data in demux buf\n+    - BUG/MINOR: tcpcheck: Check LDAP response to not read more data than available\n+    - BUG/MINOR: ssl-gencert: validate SNI characters to prevent SAN certificate injection\n+    - BUG/MEDIUM: cpu-topo: Enforce thread-hard-limit on policy\n+    - Revert \"BUG/MEDIUM: dns: fix long loops in additional records parse on name failure\"\n+    - BUG/MINOR: qpack: Fix index calculation in debug functions\n+    - BUG/MINOR: qpack: fix potential null-pointer dereference in qpack_dht_insert()\n+    - CLEANUP: qpack: fix copy-paste typo in value Huffman debug string\n+    - BUG/MINOR: qpack: fix sign bit mask in qpack_decode_fs_pfx()\n+    - CLEANUP: qpack: fix copy-paste typo in value Huffman debug string for WLN\n+    - BUG/MINOR: qpack: fix huff_dec() error handling in qpack_decode_fs()\n+    - CLEANUP: qpack: move encoded macros to qpack-t.h to avoid duplication\n+    - BUG/MEDIUM: quic: handle ECONNREFUSED on RX side\n+    - BUG/MINOR: mux-h2: Count padding for connection flow control on error path\n+    - BUG/MINOR: quic: fix ack range node pool_free call passing wrong pointer type\n+    - BUG/MEDIUM: quic: reset cwnd in slow_start on persistent congestion (cubic)\n+    - BUG/MEDIUM: quic: reset consecutive_losses on exit from recovery period (cubic)\n+    - BUG/MINOR: quic: update drs->lost before calling on_ack_recv\n+    - BUG/MINOR: threads: set at least grp_max when mtpg is too small\n+    - BUG/MINOR: cache: fix cache tree iteration\n+    - BUG/MEDIUM: resolvers: Wait a bit before calling the xprt prepare_srv\n+    - BUG/MINOR: cache: Fix copy of value when parsing maxage\n+    - BUG/MEDIUM: mux-h1: Dup connection/upgrade value to parse it when making headers\n+    - BUG/MINOR: applet: Commit changes into input buffer after sending HTX data\n+    - BUG/MINOR: mux-spop: Fix possible off-by-one OOB read in spop_get_varint()\n+    - BUG/MEDIUM: leastconn: Unlock the write lock on allocation failure\n+    - BUG/MINOR: tasks: Increase the right niced_task counter\n+    - BUG/MINOR: http-act: Properly handle final evaluation in pause action\n+    - BUG/MEDIUM: vars: Properly eval set-var-fmt action for emtpy log-format string\n+    - BUG/MEDIUM: check: Skip tcpcheck post-config for external checks\n+    - MINOR: check: Don't dump buffers state in check traces for external checks\n+    - BUG/MEDIUM: mux_quic: prevent risk of infinite loop on recv\n+    - BUG/MINOR: mux_quic: do not interrupt recv on error/incomplete data\n+    - CLEANUP: sessions: simplify the sess_priv_conns pool name\n+    - BUG/MINOR: acl: report \"ACL\" not \"map\" in ACL ID lookup failures\n+    - BUG/MEDIUM: checks: Dequeue checks on purge\n+    - BUG/MINOR: quic: fix Initial length value in sent packets\n+    - MINOR: errors: add ha_diag_notice() to report diag-level notifications\n+    - BUG/MINOR: cpu-topo: use ha_diag_notice() to report thread creations\n+    - BUG/MINOR: http-ana: Remove a debugging memset on redirect\n+    - BUG/MEDIUM: http-ana: Don't ignore L7 retry errors\n+    - BUG/MINOR: mux-h1: Properly resolve file path for 'h1-case-adjust-file'\n+    - BUG/MEDIUM: ssl: Don't free the early data buffer too early\n+    - BUG/MINOR: hpack-tbl: add missing NULL check after hpack_dht_defrag()\n+    - BUG/MEDIUM: mux_quic: fix freeze transfer after QCS rxbuf realign\n+    - BUG/MEDIUM: mux-fcgi: fix uint16_t overflow in drl += drp\n+    - BUG/MINOR: server: fix add server with consistent hash balancing\n+    - BUG/MINOR: hq-interop: reject too big content\n+    - BUG/MINOR: hq-interop: prevent reset if missing content-length\n+    - DOC: lua: remove incorrect init tags\n+    - BUG/MEDIUM: mux-fcgi: Truly drain outgoing HTX data when the stream is closed\n+    - BUG/MEDIUM: mux-h2: Truly drain outgoing HTX data when the stream is closed\n+    - BUG/MEDIUM: mux-spop: Truly drain outgoing data when the stream is closed\n+    - BUG/MEDIUM: mux-quic: Drain the given amount of data in qcs_http_reset_buf()\n+    - BUG/MINOR: mux_quic: refresh timeout only if I/O performed\n+\n+2026/05/11 : 3.2.19\n+    - BUG/MEDIUM: mux-h2: Properly consume padding for DATA frames\n+    - Revert \"BUG/MEDIUM: cli: fix master CLI connection slot leak on client disconnect\"\n+    - Revert \"BUG/MINOR: mux-h2: condition the processing of 8441 extension to global setting\"\n+    - BUG/MEDIUM: mux-h2: fix the detection of the ext connect support\n+    - BUG/MEDIUM: stick-table: properly check permissions on CLI's set/clear cmd\n+    - BUG/MEDIUM: servers: Only requeue servers if they are up\n+    - BUG/MINOR: cfgparse-listen: do not emit extraneous line in rule order warnings\n+    - BUG/MEDIUM: tasks: Keep the TASK_RUNNING flag until queued\n+\n+2026/05/06 : 3.2.18\n+    - BUG/MINOR: sink: do not free existing sinks on allocation error\n+    - BUG/MINOR: vars: make parse_store() return error on var_set() failure\n+    - BUG/MINOR: vars: don't store the variable twice with set-var-fmt\n+    - BUG/MINOR: vars: only print first invalid char in fill_desc()\n+    - BUG/MINOR: hpack: validate idx > 0 in hpack_valid_idx()\n+    - BUG/MEDIUM: cli: fix master CLI connection slot leak on client disconnect\n+    - BUG/MINOR: acl: fix a possible arg corruption in smp_fetch_acl_parse()\n+    - BUG/MINOR: map: do not leak a map descriptor on load error\n+    - CLEANUP: map/cli: fix some map-related help messages\n+    - BUG/MINOR: pattern: release the reference on failure to load from file\n+    - BUG/MEDIUM: mux-h2: fix the body_len to check when parsing request trailers\n+    - BUG/MAJOR: mux-h2: preset MSGF_BODY_CL on H2_SF_DATA_CLEN in h2c_dec_hdrs()\n+    - BUG/MINOR: dns: always validate the source address in responses\n+    - BUG/MINOR: tcpcheck: Properly report error for http health-checks\n+    - BUG/MINOR: resolvers: Free new requester on error when linking a resolution\n+    - BUG/MINOR: resolvers: Free opts on parse error in resolv_parse_do_resolve()\n+    - REGTESTS: add a regtest to validate various NTLM transitions\n+    - BUG/MEDIUM: mworker/cli: fix user and operator permission via @@<pid> in master CLI\n+    - BUG/MINOR: mworker/cli: check ci_insert() return value in pcli_parse_request()\n+    - DOC: acme: document missing acme-vars and provider-name keywords\n+    - REGTESTS: http-messaging: always send RFC8441 client settings to use ext connect\n+    - BUG/MINOR: h2: add decoding for :protocol in traces\n+    - BUG/MINOR: mux-h2: condition the processing of 8441 extension to global setting\n+    - MINOR: mux-h2: add a new message flag to indicate ext connect support\n+    - BUG/MINOR: h2: only accept :protocol with extended CONNECT\n+    - BUG/MINOR: acme: contact mail should be optional, don't pass ToS bool\n+    - BUG/MINOR: http-fetch: Fix http_auth_bearer() when custom header is used\n+    - BUG/MEDIUM: h1_htx: Remove reverved block on error during contig chunks parsing\n+    - BUG/MINOR: tools: read_line_to_trash() handle empty files without \\n\n+    - BUG/MAJOR: http: forbid comma character in authority value\n+    - BUG/MEDIUM: h1: Enforce the authority validation during H1 request parsing\n+\n+2026/04/30 : 3.2.17\n+    - BUG/MINOR: tcpcheck: Allow connection reuse without prior traffic\n+    - BUG/MINOR: ssl: fix memory leaks on realloc failure in ssl_ckch.c\n+    - DOC: config: Fix log-format example with last rule expressions\n+    - BUG/MINOR: tools: my_memspn/my_memcspn wrong cast causing incorrect byte reading\n+    - BUG/MINOR: tools: fix memory leak in indent_msg() on out of memory\n+    - BUG/MINOR: tools: free previously allocated strings on strdup failure in backup_env()\n+    - BUG/MINOR: sample: fix memory leak in check_when_cond() when ACL is not found\n+    - BUG/MINOR: sample: fix NULL strm dereference in sample_conv_when\n+    - BUG/MINOR: peers: fix logical \"and\" when checking for local in PEER_APP_ST_STARTING\n+    - BUG/MINOR: peers: fix wrong flag reported twice for dump_flags\n+    - BUG/MEDIUM: mux_h1: fix stack buffer overflow in h1_append_chunk_size()\n+    - BUG/MINOR: http_ana: use scf to report term_evts in http_wait_for_request()\n+    - BUILD: 51d: fix bool definition on dummy lib v4\n+    - BUG/MAJOR: http-htx: Store new host in a chunk for scheme-based normalization\n+    - BUG/MEDIUM: http-htx: Don't use data from HTX message to update authority\n+    - BUG/MEDIUM: http-htx: Loop on full host value during scheme based normalization\n+    - BUG/MAJOR: mux-h1: Deal with true 64-bits integer to emit chunks size\n+    - BUG/MEDIUM: tasks: Do not loop in task_schedule() if a task is running\n+    - BUG/MINOR: fix various typos and spelling mistakes in user-visible messages\n+    - BUG/MINOR: payload: validate minimum keyshare_len in smp_fetch_ssl_keyshare_groups\n+    - BUG/MINOR: payload: prevent integer overflow in distcc token parsing\n+    - BUG/MEDIUM: mux-fcgi: Properly handle full buffer for FCGI_PARAM record\n+    - BUG/MINOR: http-htx: Don't normalize emtpy path for OPTIONS requests\n+    - BUG/MEDIUM: acme: fix segfault on newOrder with empty authorizations\n+    - BUG/MINOR: acme: skip auth/challenge steps when newOrder returns a certificate\n+\n+2026/04/23 : 3.2.16\n+    - BUG/MINOR: mworker: fix sort order of mworker_proc in 'show proc'\n+    - BUG/MINOR: sock: adjust accept() error messages for ENFILE and ENOMEM\n+    - BUG/MINOR: qpack: fix 62-bit overflow and 1-byte OOB reads in decoding\n+    - MEDIUM: sched: do not run a same task multiple times in series\n+    - MINOR: sched: do not requeue a tasklet into the current queue\n+    - MINOR: sched: do not punish self-waking tasklets anymore\n+    - MEDIUM: sched: do not punish self-waking tasklets if TASK_WOKEN_ANY\n+    - MEDIUM: sched: change scheduler budgets to lower TL_BULK\n+    - MINOR: mux-h2: assign a limited frames processing budget\n+    - BUILD: sched: fix leftover of debugging test in single-run changes\n+    - BUG/MEDIUM: acme: fix multiple resource leaks in acme_x509_req()\n+    - BUG/MINOR: acme: leak of ext_san upon insertion error\n+    - BUG/MINOR: acme: wrong error when checking for duplicate section\n+    - BUG/MINOR: acme/cli: wrong argument check in 'acme renew'\n+    - Revert \"BUG/MEDIUM: mux-h2: make sure to always report pending errors to the stream\"\n+    - DOC: config: Add missing 'status-code' param for 'http-check expect' directive\n+    - DOC: config: Reorder params for 'tcp-check expect' directive\n+    - BUG/MINOR: acme: acme_ctx_destroy() leaks auth->dns\n+    - BUG/MINOR: acme: wrong labels logic always memprintf errmsg\n+    - BUG/MINOR: acme: fix incorrect number of arguments allowed in config\n+    - BUG/MEDIUM: spoe: Acquire context buffer in applet before consuming a frame\n+    - MINOR: ncbmbuf: improve itbmap_next() code\n+    - BUG/MINOR: acme: free() DER buffer on a2base64url error path\n+    - BUG/MINOR: acme: replace atol with len-bounded __strl2uic() for retry-after\n+    - BUG/MINOR: acme/cli: fix argument check and error in 'acme challenge_ready'\n+    - BUILD: tools: potential null pointer dereference in dl_collect_libs_cb\n+    - BUG/MINOR: acme: permission checks on the CLI\n+    - BUG/MINOR: config: Properly test warnif_misplaced_* return values\n+    - BUG/MINOR: http-ana: Only consider client abort for abortonclose\n+    - BUG/MEDIUM: acme: skip doing challenge if it is already valid\n+    - BUG/MINOR: acme: fix task allocation leaked upon error\n+    - CI: github: fix tag listing by implementing proper API pagination\n+    - BUG/MINOR: quic: close conn on packet reception with incompatible frame\n+    - BUG/MINOR: stconn: Always declare the SC created from healthchecks as a back SC\n+    - MINOR: stconn: flag the stream endpoint descriptor when the app has started\n+    - MINOR: mux-h2: report glitches on early RST_STREAM\n+    - SCRIPTS: git-show-backports: list new commits and how to review them with -L\n+    - BUG/MEDIUM: ssl/cli: tls-keys commands warn when accessed without admin level\n+    - BUG/MEDIUM: ssl/ocsp: ocsp commands warn when accessed without admin level\n+    - BUG/MEDIUM: map/cli: map/acl commands warn when accessed without admin level\n+    - BUG/MEDIUM: mux-h1: Don't set MSG_MORE on bodyless responses forwarded to client\n+    - BUG/MINOR: tcpcheck: Remove unexpected flag on tcpcheck rules for httchck option\n+    - BUG/MINOR: tcpcheck: Don't enable http_needed when parsing HTTP samples\n+    - BUG/MINOR: tcpcheck: Use tcpcheck context for expressions parsing\n+    - BUG/MINOR: quic: fix documentation for transport params decoding\n+    - BUG/MINOR: cfgcond: properly set the error pointer on evaluation error\n+    - BUG/MINOR: cfgcond: always set the error string on openssl_version checks\n+    - BUG/MINOR: cfgcond: fail cleanly on missing argument for \"feature\"\n+    - DOC: config: fix ambiguous info in log-steps directive description\n+    - BUG/MEDIUM: mux-h1: Disable 0-copy forwarding when draining the request\n+    - BUG/MINOR: http-act: fix a typo in the \"pause\" action error message\n+    - BUG/MEDIUM: payload: validate SNI name_len in req.ssl_sni\n+    - BUG/MEDIUM: jwt: fix heap overflow in ECDSA signature DER conversion\n+    - BUG: hlua: fix stack overflow in httpclient headers conversion\n+    - BUG/MINOR: hlua: fix stack overflow in httpclient headers conversion\n+    - BUG/MINOR: hlua: fix format-string vulnerability in Patref error path\n+    - BUG/MINOR: peers: fix OOB heap write in dictionary cache update\n+    - BUG/MAJOR: slz: always make sure to limit fixed output to less than worst case literals\n+    - BUG/MINOR: resolvers: fix memory leak on AAAA additional records\n+    - BUG/MINOR: spoe: fix pointer arithmetic overflow in spoe_decode_buffer()\n+    - BUG/MEDIUM: samples: Fix handling of SMP_T_METH samples\n+    - BUG/MINOR: sample: fix info leak in regsub when exp_replace fails\n+    - BUG/MEDIUM: mux-fcgi: prevent record-length truncation with large bufsize\n+    - BUG/MINOR: hlua: fix use-after-free of HTTP reason string\n+    - BUG/MINOR: ot: fixed wrong NULL check in flt_ot_parse_cfg_group()\n+    - BUG/MINOR: log: Fix error message when using unavailable fetch in logfmt\n+    - BUG/MEDIUM: cli: Properly handle too big payload on a command line\n+    - BUG/MEDIUM: htx: Fix function used to change part of a block value when defrag\n+    - BUG/MEDIUM: htx: Don't count delta twice when block value is replaced\n+    - BUG/MINOR: acme: don't pass NULL into format string\n+    - BUG/MEDIUM: peers: trash of expired entries delayed after fullresync\n+    - BUG/MEDIUM: mux-h2: ignore conn->owner when deciding if a connection is dead\n+    - BUG/MINOR: task: fix uninitialised read in run_tasks_from_lists()\n+    - BUG/MINOR: log: consider format expression dependencies to decide when to log\n+    - MINOR: sample: make RQ/RS stats available everywhere\n+    - BUG/MINOR: sample: adjust dependencies for channel output bytes counters\n+    - BUG/MAJOR: sched: protect task->expire on 32-bit platforms\n+    - reg-tests/ssl/ssl_dh.vtc: fix syntax error\n+    - REGTESTS: ssl: mark ssl_dh.vtc as broken\n+    - BUG/MINOR: mux-h2: count a protocol error when failing to parse a trailer\n+    - BUG/MINOR: mux-h2: count a proto error when rejecting a stream on parsing error\n+    - BUG/MEDIUM: tasks: Make sure we don't schedule a task already running\n+    - BUG/MINOR: h2: make tune.h2.log-errors actually work\n+    - BUG/MINOR: h2: Don't look at the exclusive bit for PRIORITY frame\n+    - BUG/MINOR: H2: Don't forget to free shared_rx_bufs on failure\n+    - BUG/MINOR: log: also wait for the response when logging response headers\n+    - BUG/MINOR: mux-h1: Fix condition to send null-chunk for bodyless message\n+    - BUG/MINOR: mux-h1: Fix test to skip trailers from chunked messages\n+    - REGTESTS: Never reuse server connection in jwt/jws_verify.vtc\n+    - REGTESTS: Never reuse server connection in server/cli_delete_dynamic_server.vtc\n+    - SCRIPTS: build-vtest: allow to set a TMPDIR and a DESTDIR\n+    - CI: VTest build with git clone + cache\n+    - CI: github: only enable OS X on development branches\n+    - BUG/MINOR: compression: properly disable request when setting response\n+    - BUG/MINOR: debug: properly mark the entire libs archive read-only\n+    - BUG/MAJOR: mux-h2: detect incomplete transfers on HEADERS frames as well\n+    - BUG/MEDIUM: mux-h1: Force close mode for bodyless message announcing a C-L\n+\n+2026/03/19 : 3.2.15\n+    - BUG/MINOR: mworker: don't set the PROC_O_LEAVING flag on master process\n+    - BUG/MINOR: tcpcheck: Fix typo in error error message for `http-check expect`\n+    - BUG/MINOR: jws: fix memory leak in jws_b64_signature\n+    - DOC: configuration: http-check expect example typo\n+    - DOC/CLEANUP: config: update mentions of the old \"Global parameters\" section\n+    - BUG/MINOR: mworker: always stop the receiving listener\n+    - BUG/MINOR: memprof: avoid a small memory leak in \"show profiling\"\n+    - MINOR: tools: extend the pointer hashing code to ease manipulations\n+    - MINOR: memprof: attempt different retry slots for different hashes on collision\n+    - BUG/MINOR: mworker: only match worker processes when looking for unspawned proc\n+    - BUG/MINOR: mworker: fix typo &= instead of & in proc list serialization\n+    - BUG/MINOR: mworker: set a timeout on the worker socketpair read at startup\n+    - BUG/MINOR: mworker: avoid passing NULL version in proc list serialization\n+    - BUG/MINOR: sockpair: set FD_CLOEXEC on fd received via SCM_RIGHTS\n+    - BUG/MINOR: spoe: Properly switch SPOE filter to WAITING_ACK state\n+    - BUG/MEDIUM: spoe: Properly abort processing on client abort\n+    - BUG/MINOR: h2/h3: Only test number of trailers inserted in HTX message\n+    - MINOR: htx: Add function to truncate all blocks after a specific block\n+    - BUG/MINOR: h2/h3: Never insert partial headers/trailers in an HTX message\n+    - BUG/MINOR: http-ana: Swap L7 buffer with request buffer by hand\n+    - BUG/MINOR: proxy: do not forget to validate quic-initial rules\n+    - BUG/MINOR: stream: Fix crash in stream dump if the current rule has no keyword\n+    - BUG/MINOR: mjson: make mystrtod() length-aware to prevent out-of-bounds reads\n+    - BUG/MINOR: spoe: Fix condition to abort processing on client abort\n+    - BUILD: spoe: Remove unsused variable\n+    - DEV: gdb: add a utility to find the post-mortem address from a core\n+    - MINOR: tools: add a function to create a tar file header\n+    - MINOR: tools: add a function to load a file into a tar archive\n+    - MINOR: config: support explicit \"on\" and \"off\" for \"set-dumpable\"\n+    - MINOR: debug: read all libs in memory when set-dumpable=libs\n+    - DEV: gdb: add a new utility to extract libs from a core dump: libs-from-core\n+    - MINOR: debug: copy debug symbols from /usr/lib/debug when present\n+    - MINOR: debug: opportunistically load libthread_db.so.1 with set-dumpable=libs\n+    - BUG/MINOR: mworker: don't try to access an initializing process\n+    - BUG/MEDIUM: peers: enforce check on incoming table key type\n+    - BUG/MINOR: mux-h2: properly ignore R bit in GOAWAY stream ID\n+    - BUG/MINOR: mux-h2: properly ignore R bit in WINDOW_UPDATE increments\n+    - BUG/MAJOR: h3: check body size with content-length on empty FIN\n+    - BUG/MEDIUM: h3: reject unaligned frames except DATA\n+    - MINOR: mworker/cli: extract worker \"show proc\" row printer\n+    - BUG/MINOR: mworker/cli: fix show proc pagination losing entries on resume\n+    - CI: github: treat vX.Y.Z release tags as stable like haproxy-* branches\n+\n+2026/03/09 : 3.2.14\n+    - MINOR: mux-h2: also count glitches on invalid trailers\n+    - MINOR: mux-h2: add a new setting, \"tune.h2.log-errors\" to tweak error logging\n+    - BUG/MEDIUM: mux-h2: make sure to always report pending errors to the stream\n+    - BUG/MINOR: promex: fix server iteration when last server is deleted\n+    - BUG/MEDIUM: stream: Handle TASK_WOKEN_RES as a stream event\n+    - BUG/MEDIUM: hpack: correctly deal with too large decoded numbers\n+    - BUG/MAJOR: qpack: unchecked length passed to huffman decoder\n+    - BUG/MINOR: qpack: fix 1-byte OOB read in qpack_decode_fs_pfx()\n+    - BUG/MEDIUM: qpack: correctly deal with too large decoded numbers\n+    - BUG/MINOR: h1-htx: Be sure that H1 response version starts by \"HTTP/\"\n+    - DEBUG: stream: Display the currently running rule in stream dump\n+    - MINOR: filters: Set last_entity when a filter fails on stream_start callback\n+    - BUG/MAJOR: fcgi: Fix param decoding by properly checking its size\n+    - BUG/MAJOR: resolvers: Properly lowered the names found in DNS response\n+    - BUG/MEDIUM: mux-fcgi: Use a safe loop to resume each stream eligible for sending\n+    - BUG/MINOR: ssl-sample: Fix sample_conv_sha2() by checking EVP_Digest* failures\n+    - BUG/MINOR: backend: Don't get proto to use for webscoket if there is no server\n+    - SCRIPTS: git-show-backports: hide the common ancestor warning in quiet mode\n+    - SCRIPTS: git-show-backports: add a restart-from-last option\n+\n+2026/02/19 : 3.2.13\n+    - DOC: internals: addd mworker V3 internals\n+    - DOC: proxy-proto: underline the packed attribute for struct pp2_tlv_ssl\n+    - BUG/MINOR: deviceatlas: add missing return on error in config parsers\n+    - BUG/MINOR: deviceatlas: add NULL checks on strdup() results in config parsers\n+    - BUG/MEDIUM: deviceatlas: fix resource leaks on init error paths\n+    - BUG/MINOR: deviceatlas: fix off-by-one in da_haproxy_conv()\n+    - BUG/MINOR: deviceatlas: fix cookie vlen using wrong length after extraction\n+    - BUG/MINOR: deviceatlas: fix double-checked locking race in checkinst\n+    - BUG/MINOR: deviceatlas: fix resource leak on hot-reload compile failure\n+    - BUG/MINOR: deviceatlas: fix deinit to only finalize when initialized\n+    - BUG/MINOR: deviceatlas: set cache_size on hot-reloaded atlas instance\n+    - BUG/MINOR: ssl: lack crtlist_dup_ssl_conf() declaration\n+    - BUG/MINOR: ssl: double-free on error path w/ ssl-f-use parser\n+    - BUG/MINOR: ssl: fix leak in ssl-f-use parser upon error\n+    - BUG/MINOR: ssl: clarify ssl-f-use errors in post-section parsing\n+    - BUG/MINOR: ssl: error with ssl-f-use when no \"crt\"\n+    - BUG/MAJOR: Revert \"MEDIUM: mux-quic: add BUG_ON if sending on locally closed QCS\"\n+    - BUG/MEDIUM: h3: reject frontend CONNECT as currently not implemented\n+    - BUG/MEDIUM: mux-h2/quic: Stop sending via fast-forward if stream is closed\n+    - BUG/MEDIUM: mux-h1: Stop sending vi fast-forward for unexpected states\n+    - BUG/MEDIUM: applet: Fix test on shut flags for legacy applets (v2)\n+    - DEV: term-events: Fix hanshake events decoding\n+    - BUG/MINOR: flt-trace: Properly compute length of the first DATA block\n+    - CLEANUP: compression: Remove unused static buffers\n+    - BUG/MINOR: http-ana: Stop to wait for body on client error/abort\n+    - MINOR: stconn: Add missing SC_FL_NO_FASTFWD flag in sc_show_flags\n+    - CI: vtest: move the vtest2 URL to vinyl-cache.org\n+    - CI: github: disable windows.yml by default on unofficials repo\n+    - CLEANUP: mux-h1: Remove unneeded null check\n+\n+2026/02/12 : 3.2.12\n+    - MINOR: rawsock: introduce CO_RFL_TRY_HARDER to detect closures on complete reads\n+    - MEDIUM: ssl: don't always process pending handshakes on closed connections\n+    - BUG/MAJOR: applet: Don't call I/O handler if the applet was shut\n+    - BUG/MEDIUM: applet: Fix test on shut flags for legacy applets\n+    - DOC: internals: cleanup few typos in master-worker documentation\n+    - BUG/MEDIUM: threads: Atomically set TH_FL_SLEEPING and clr FL_NOTIFIED\n+    - CLEANUP: haproxy: fix bad line wrapping in run_poll_loop()\n+    - BUG/MINOR: cpu-topo: count cores not cpus to distinguish core types\n+    - BUG/MEDIUM: lb-chash: always properly initialize lb_nodes with dynamic servers\n+    - DOC: config: mention the limitation on server id range for consistent hash\n+    - BUG/MINOR: config: Fix setting of alt_proto\n+    - BUG/MINOR: startup: fix allocation error message of progname string\n+    - BUG/MINOR: startup: handle a possible strdup() failure\n+    - BUG/MAJOR: quic: reject invalid token\n+    - BUG/MAJOR: quic: fix parsing frame type\n+\n+2026/01/29 : 3.2.11\n+    - BUG/MEDIUM: http-ana: Properly detect client abort when forwarding response (v2)\n+    - BUG/MEDIUM: stconn: Don't report abort from SC if read0 was already received\n+    - BUG/MINOR: sock-inet: ignore conntrack for transparent sockets on Linux\n+    - MINOR: ssl: Add a function to hash SNIs\n+    - MINOR: ssl: Store hash of the SNI for cached TLS sessions\n+    - MINOR: ssl: Compare hashes instead of SNIs when a session is cached\n+    - MINOR: connection/ssl: Store the SNI hash value in the connection itself\n+    - MEDIUM: tcpcheck/backend: Get the connection SNI before initializing SSL ctx\n+    - BUG/MEDIUM: ssl: Don't reuse TLS session if the connection's SNI differs\n+    - MEDIUM: ssl/server: No longer store the SNI of cached TLS sessions\n+    - MINOR: connections: Add a new CO_FL_SSL_NO_CACHED_INFO flag\n+    - BUG/MEDIUM: ssl: Don't resume session for check connections\n+    - BUG/MINOR: backend: fix the conn_retries check for TFO\n+    - BUG/MINOR: backend: inspect request not response buffer to check for TFO\n+    - DOC: config: fix the length attribute name for stick tables of type binary / string\n+    - BUG/MEDIUM: mworker: can't use signals after a failed reload\n+    - BUILD: ssl: strchr definition changed in C23\n+    - BUILD: tools: memchr definition changed in C23\n+    - BUG/MINOR: cfgparse: wrong section name upon error\n+    - BUILD: sockpair: fix build issue on macOS related to variable-length arrays\n+    - BUG/MINOR: cli/stick-tables: argument to \"show table\" is optional\n+    - REGTESTS: ssl: Fix reg-tests curve check\n+    - MINOR: cfgparse: remove duplicate \"force-persist\" in common kw list\n+    - BUG/MINOR: hlua_fcn: fix broken yield for Patref:add_bulk()\n+    - BUG/MINOR: hlua_fcn: ensure Patref:add_bulk() is given a table object before using it\n+    - BUG/MEDIUM: quic: fix ACK ECN frame parsing\n+    - BUG/MINOR: http_act: fix deinit performed on uninitialized lf_expr in release_http_map()\n+    - BUG/MINOR: proxy: free persist_rules\n+    - BUG/MINOR: cfgparse: fix \"default\" prefix parsing\n+    - BUG/MEDIUM: promex: server iteration may rely on stale server\n+    - BUG/MEDIUM: log: parsing log-forward options may result in segfault\n+    - BUG/MEDIUM: ssl: fix error path on generate-certificates\n+    - BUG/MEDIUM: ssl: fix generate-certificates option when SNI greater than 64bytes\n+    - BUG/MEDIUM: mux-quic: prevent BUG_ON() on aborted uni stream close\n+    - REGTESTS: ssl: fix generate-certificates w/ LibreSSL\n+    - BUG/MINOR: proxy: fix deinit crash on defaults with duplicate name\n+    - BUG/MEDIUM: hlua: fix invalid lua_pcall() usage in hlua_traceback()\n+    - BUG/MINOR: hlua: consume error object if ignored after a failing lua_pcall()\n+    - BUG/MINOR: promex: Detach promex from the server on error dump its metrics dump\n+    - BUG/MEDIUM: mux-h1: Skip UNUSED htx block when formating the start line\n+    - MINOR: ssl: allow to disable certificate compression\n+    - BUG/MINOR: ssl: fix error message of tune.ssl.certificate-compression\n+    - CLEANUP: mworker/cli: remove useless variable\n+    - BUG/MINOR: mworker/cli: 'show proc' is limited by buffer size\n+    - BUG/MINOR: mworker/cli: fix show proc pagination using reload counter\n+    - BUG/MEDIUM: mux-h2: synchronize all conditions to create a new backend stream\n+    - MINOR: hlua: Add support for lua 5.5\n+    - DOC: reg-tests: update VTest upstream link in the starting guide\n+    - BUG/MINOR: config: check capture pool creations for failures\n+    - BUG/MEDIUM: debug: only dump Lua state when panicking\n+\n+2025/12/18 : 3.2.10\n+    - BUG/MEDIUM: mworker/listener: ambiguous use of RX_F_INHERITED with shards\n+    - BUG/MEDIUM: h1-htx: Don't set HTX_FL_EOM flag on 1xx informational messages\n+    - BUG/MINOR: http-ana: Reset analyse_exp date after 'wait-for-body' action\n+    - BUG/MEDIUM: applet: Fix conditions to detect spinning loop with the new API\n+    - BUG/MEDIUM: cli: State the cli have no more data to deliver if it yields\n+    - BUG/MINOR: acme: handle multiple auth with the same name\n+    - BUG/MINOR: acme: prevent creating map entries with dns-01\n+    - BUG/MINOR: acme: better challenge_ready processing\n+    - BUG/MINOR: acme: warning ‘ctx’ may be used uninitialized\n+    - BUG/MINOR: acme: fix ha_alert() call\n+    - BUG/MINOR: jwt: Missing \"case\" in switch statement\n+    - BUG/MEDIUM: connection: fix \"bc_settings_streams_limit\" typo\n+    - DOC: config: mention clearer that the cache's total-max-size is mandatory\n+    - DOC: config: reorder the cache section's keywords\n+    - BUG/MINOR: quic/ssl: crash in ClientHello callback ssl traces\n+    - MINOR: quic: Add useful debugging traces in qc_idle_timer_do_rearm()\n+    - BUG/MINOR: ssl: Don't allow to set NULL sni\n+    - BUG/MEDIUM: http-ana: Don't close server connection on read0 in TUNNEL mode\n+    - DOC: config: Fix description of the spop mode\n+    - DOC: config: Improve spop mode documentation\n+    - MINOR: h2/trace: emit a trace of the received RST_STREAM type\n+    - MINOR: hlua: emit a log instead of an alert for aborted actions due to unavailable yield\n+    - BUG/MEDIUM: quic: support some ciphersuites and curves related options\n+    - BUG/MINOR: cfgparse-listen: update err_code for fatal error on proxy directive\n+    - MEDIUM: h1: Immediately try to read data for frontend\n+    - MEDIUM: mux-h2: do not needlessly refrain from sending data early\n+    - MINOR: mux-h2: extract the code to send preface+settings into its own function\n+    - BUG/MINOR: mux-h2: send the preface along with the first request if needed\n+    - MINOR: cfgdiag: adjust diag on servers\n+    - BUG/MINOR: check: only try connection reuse for http-check rulesets\n+    - MINOR: quic: adjust CID conn tree alloc in qc_new_conn()\n+    - MINOR: quic: split CID alloc/generation function\n+    - BUG/MEDIUM: quic: handle collision on CID generation\n+    - BUG/MEDIUM: quic: Don't try to use hystart if not implemented\n+\n 2025/11/21 : 3.2.9\n     - MINOR: ssl/sample: expose ssl_*c_curve for AWS-LC\n     - Revert \"BUG/MEDIUM: connections: permit to permanently remove an idle conn\"\ndiff --git a/Makefile b/Makefile\nindex 71a82dd..28a58e2 100644\n--- a/Makefile\n+++ b/Makefile\n@@ -1034,7 +1034,7 @@ IGNORE_OPTS=help install install-man install-doc install-bin \\\n \tuninstall clean tags cscope tar git-tar version update-version \\\n \topts reg-tests reg-tests-help unit-tests admin/halog/halog dev/flags/flags \\\n \tdev/haring/haring dev/ncpu/ncpu dev/poll/poll dev/tcploop/tcploop \\\n-\tdev/term_events/term_events\n+\tdev/term_events/term_events dev/gdb/pm-from-core dev/gdb/libs-from-core\n \n ifneq ($(TARGET),)\n ifeq ($(filter $(firstword $(MAKECMDGOALS)),$(IGNORE_OPTS)),)\n@@ -1065,6 +1065,12 @@ admin/dyncookie/dyncookie: admin/dyncookie/dyncookie.o\n dev/flags/flags: dev/flags/flags.o\n \t$(cmd_LD) $(ARCH_FLAGS) $(LDFLAGS) -o $@ $^ $(LDOPTS)\n \n+dev/gdb/libs-from-core: dev/gdb/libs-from-core.o\n+\t$(cmd_LD) $(ARCH_FLAGS) $(LDFLAGS) -o $@ $^ $(LDOPTS)\n+\n+dev/gdb/pm-from-core: dev/gdb/pm-from-core.o\n+\t$(cmd_LD) $(ARCH_FLAGS) $(LDFLAGS) -o $@ $^ $(LDOPTS)\n+\n dev/haring/haring: dev/haring/haring.o\n \t$(cmd_LD) $(ARCH_FLAGS) $(LDFLAGS) -o $@ $^ $(LDOPTS)\n \n@@ -1158,7 +1164,7 @@ distclean: clean\n \t$(Q)rm -f admin/dyncookie/dyncookie\n \t$(Q)rm -f dev/haring/haring dev/ncpu/ncpu{,.so} dev/poll/poll dev/tcploop/tcploop\n \t$(Q)rm -f dev/hpack/decode dev/hpack/gen-enc dev/hpack/gen-rht\n-\t$(Q)rm -f dev/qpack/decode\n+\t$(Q)rm -f dev/qpack/decode dev/gdb/pm-from-core dev/gdb/libs-from-core\n \n tags:\n \t$(Q)find src include \\( -name '*.c' -o -name '*.h' \\) -print0 | \\\ndiff --git a/SUBVERS b/SUBVERS\nindex 8a8ee3a..27f8d93 100644\n--- a/SUBVERS\n+++ b/SUBVERS\n@@ -1,2 +1,2 @@\n--1704369\n+-1feef49\n \ndiff --git a/VERDATE b/VERDATE\nindex a96863c..f198c7d 100644\n--- a/VERDATE\n+++ b/VERDATE\n@@ -1,2 +1,2 @@\n-2025-11-21 07:44:17 +0100\n-2025/11/21\n+2026-08-27 16:32:30 +0200\n+2026/08/27\ndiff --git a/VERSION b/VERSION\nindex e650c01..6b6eace 100644\n--- a/VERSION\n+++ b/VERSION\n@@ -1 +1 @@\n-3.2.9\n+3.2.23\ndiff --git a/addons/51degrees/51d.c b/addons/51degrees/51d.c\nindex a23b468..5642e9e 100644\n--- a/addons/51degrees/51d.c\n+++ b/addons/51degrees/51d.c\n@@ -303,6 +303,7 @@ static void _51d_init_device_offsets(fiftyoneDegreesDeviceOffsets *offsets) {\n \n static void _51d_set_device_offsets(struct sample *smp, fiftyoneDegreesDeviceOffsets *offsets)\n {\n+\tstruct buffer *temp = get_trash_chunk();\n \tstruct channel *chn;\n \tstruct htx *htx;\n \tstruct http_hdr_ctx ctx;\n@@ -324,7 +325,15 @@ static void _51d_set_device_offsets(struct sample *smp, fiftyoneDegreesDeviceOff\n \n \t\tif (http_find_header(htx, name, &ctx, 1)) {\n \t\t\t(offsets->firstOffset + offsets->size)->httpHeaderOffset = *(global_51degrees.header_offsets + i);\n-\t\t\t(offsets->firstOffset + offsets->size)->deviceOffset = fiftyoneDegreesGetDeviceOffset(&global_51degrees.data_set, ctx.value.ptr);\n+\t\t\t/* Copy value into trash and NUL-terminate before passing to the\n+\t\t\t * 51Degrees Trie API, which expects a C string.\n+\t\t\t */\n+\t\t\tif (ctx.value.len >= temp->size)\n+\t\t\t\tcontinue;\n+\t\t\tmemcpy(temp->area, ctx.value.ptr, ctx.value.len);\n+\t\t\ttemp->area[ctx.value.len] = '\\0';\n+\t\t\ttemp->data = ctx.value.len + 1;\n+\t\t\t(offsets->firstOffset + offsets->size)->deviceOffset = fiftyoneDegreesGetDeviceOffset(&global_51degrees.data_set, temp->area);\n \t\t\toffsets->size++;\n \t\t}\n \t}\n@@ -550,6 +559,8 @@ static void _51d_process_match(const struct arg *args, struct sample *smp)\n \tchar valuesBuffer[1024];\n #endif\n \n+#if defined(FIFTYONEDEGREES_H_PATTERN_INCLUDED) || defined(FIFTYONEDEGREES_H_TRIE_INCLUDED) || defined(FIFTYONE_DEGREES_HASH_INCLUDED)\n+\n \tchar no_data[] = \"NoData\";  /* response when no data could be found */\n \tstruct buffer *temp = get_trash_chunk();\n \tint i = 0, found;\n@@ -636,6 +647,7 @@ static void _51d_process_match(const struct arg *args, struct sample *smp)\n \tsmp->data.u.str.area = temp->area;\n \tsmp->data.u.str.data = temp->data;\n }\n+#endif\n \n /* Sets the sample data as a constant string. This ensures that the\n  * string will be processed correctly.\ndiff --git a/addons/51degrees/dummy/v4hash/hash/hash.h b/addons/51degrees/dummy/v4hash/hash/hash.h\nindex 5d04d17..5b114d2 100644\n--- a/addons/51degrees/dummy/v4hash/hash/hash.h\n+++ b/addons/51degrees/dummy/v4hash/hash/hash.h\n@@ -40,8 +40,7 @@\n #include <stdlib.h>\n #include <inttypes.h>\n \n-typedef int bool;\n-enum { false, true };\n+#include <stdbool.h>\n \n typedef unsigned char byte;\n \ndiff --git a/addons/deviceatlas/da.c b/addons/deviceatlas/da.c\nindex 417fbf2..676d422 100644\n--- a/addons/deviceatlas/da.c\n+++ b/addons/deviceatlas/da.c\n@@ -57,6 +57,10 @@ static int da_json_file(char **args, int section_type, struct proxy *curpx,\n \t\treturn -1;\n \t}\n \tglobal_deviceatlas.jsonpath = strdup(args[1]);\n+\tif (unlikely(global_deviceatlas.jsonpath == NULL)) {\n+\t\tmemprintf(err, \"deviceatlas json file : out of memory.\\n\");\n+\t\treturn -1;\n+\t}\n \treturn 0;\n }\n \n@@ -73,6 +77,7 @@ static int da_log_level(char **args, int section_type, struct proxy *curpx,\n \tloglevel = atol(args[1]);\n \tif (loglevel < 0 || loglevel > 3) {\n \t\tmemprintf(err, \"deviceatlas log level : expects a log level between 0 and 3, %s given.\\n\", args[1]);\n+\t\treturn -1;\n \t} else {\n \t\tglobal_deviceatlas.loglevel = (da_severity_t)loglevel;\n \t}\n@@ -101,6 +106,10 @@ static int da_properties_cookie(char **args, int section_type, struct proxy *cur\n \t\treturn -1;\n \t} else {\n \t\tglobal_deviceatlas.cookiename = strdup(args[1]);\n+\t\tif (unlikely(global_deviceatlas.cookiename == NULL)) {\n+\t\t\tmemprintf(err, \"deviceatlas cookie name : out of memory.\\n\");\n+\t\t\treturn -1;\n+\t\t}\n \t}\n \tglobal_deviceatlas.cookienamelen = strlen(global_deviceatlas.cookiename);\n \treturn 0;\n@@ -119,6 +128,7 @@ static int da_cache_size(char **args, int section_type, struct proxy *curpx,\n     cachesize = atol(args[1]);\n     if (cachesize < 0 || cachesize > DA_CACHE_MAX) {\n         memprintf(err, \"deviceatlas cache size : expects a cache size between 0 and %d, %s given.\\n\", DA_CACHE_MAX, args[1]);\n+\treturn -1;\n     } else {\n #ifdef APINOCACHE\n         fprintf(stdout, \"deviceatlas cache size : no-op, its support is disabled.\\n\");\n@@ -180,6 +190,8 @@ static int init_deviceatlas(void)\n \t\tif (status != DA_OK) {\n \t\t\tha_alert(\"deviceatlas : '%s' json file is invalid.\\n\",\n \t\t\t\t global_deviceatlas.jsonpath);\n+\t\t\tfree(global_deviceatlas.atlasimgptr);\n+\t\t\tda_fini();\n \t\t\terr_code |= ERR_ALERT | ERR_FATAL;\n \t\t\tgoto out;\n \t\t}\n@@ -189,6 +201,8 @@ static int init_deviceatlas(void)\n \n \t\tif (status != DA_OK) {\n \t\t\tha_alert(\"deviceatlas : data could not be compiled.\\n\");\n+\t\t\tfree(global_deviceatlas.atlasimgptr);\n+\t\t\tda_fini();\n \t\t\terr_code |= ERR_ALERT | ERR_FATAL;\n \t\t\tgoto out;\n \t\t}\n@@ -197,6 +211,14 @@ static int init_deviceatlas(void)\n \n \t\tif (global_deviceatlas.cookiename == 0) {\n \t\t\tglobal_deviceatlas.cookiename = strdup(DA_COOKIENAME_DEFAULT);\n+\t\t\tif (unlikely(global_deviceatlas.cookiename == NULL)) {\n+\t\t\t\tha_alert(\"deviceatlas : out of memory.\\n\");\n+\t\t\t\tda_atlas_close(&global_deviceatlas.atlas);\n+\t\t\t\tfree(global_deviceatlas.atlasimgptr);\n+\t\t\t\tda_fini();\n+\t\t\t\terr_code |= ERR_ALERT | ERR_FATAL;\n+\t\t\t\tgoto out;\n+\t\t\t}\n \t\t\tglobal_deviceatlas.cookienamelen = strlen(global_deviceatlas.cookiename);\n \t\t}\n \n@@ -231,15 +253,13 @@ static void deinit_deviceatlas(void)\n \t\tfree(global_deviceatlas.cookiename);\n \t\tda_atlas_close(&global_deviceatlas.atlas);\n \t\tfree(global_deviceatlas.atlasimgptr);\n+\t\tda_fini();\n \t}\n \n \tif (global_deviceatlas.atlasfd != -1) {\n \t\tmunmap(global_deviceatlas.atlasmap, ATLASTOKSZ);\n \t\tclose(global_deviceatlas.atlasfd);\n-\t\tshm_unlink(ATLASMAPNM);\n \t}\n-\n-\tda_fini();\n }\n \n static void da_haproxy_checkinst(void)\n@@ -258,6 +278,10 @@ static void da_haproxy_checkinst(void)\n             da_property_decl_t extraprops[1] = {{NULL, 0}};\n #ifdef USE_THREAD\n             HA_SPIN_LOCK(OTHER_LOCK, &dadwsch_lock);\n+            if (base[0] == 0) {\n+                HA_SPIN_UNLOCK(OTHER_LOCK, &dadwsch_lock);\n+                return;\n+            }\n #endif\n             strlcpy2(atlasp, base + sizeof(char), sizeof(atlasp));\n             jsonp = fopen(atlasp, \"r\");\n@@ -275,6 +299,7 @@ static void da_haproxy_checkinst(void)\n             fclose(jsonp);\n             if (status == DA_OK) {\n                 if (da_atlas_open(&inst, extraprops, cnew, atlassz) == DA_OK) {\n+                    inst.config.cache_size = global_deviceatlas.cachesize;\n                     da_atlas_close(&global_deviceatlas.atlas);\n                     free(global_deviceatlas.atlasimgptr);\n                     global_deviceatlas.atlasimgptr = cnew;\n@@ -286,6 +311,8 @@ static void da_haproxy_checkinst(void)\n                     ha_alert(\"deviceatlas : instance update failed.\\n\");\n                     free(cnew);\n                 }\n+            } else {\n+                free(cnew);\n             }\n #ifdef USE_THREAD\n             HA_SPIN_UNLOCK(OTHER_LOCK, &dadwsch_lock);\n@@ -371,8 +398,7 @@ static int da_haproxy_conv(const struct arg *args, struct sample *smp, void *pri\n {\n \tda_deviceinfo_t devinfo;\n \tda_status_t status;\n-\tconst char *useragent;\n-\tchar useragentbuf[1024] = { 0 };\n+\tchar useragentbuf[1024];\n \tint i;\n \n \tif (global_deviceatlas.daset == 0 || smp->data.u.str.data == 0) {\n@@ -381,14 +407,12 @@ static int da_haproxy_conv(const struct arg *args, struct sample *smp, void *pri\n \n \tda_haproxy_checkinst();\n \n-\ti = smp->data.u.str.data > sizeof(useragentbuf) ? sizeof(useragentbuf) : smp->data.u.str.data;\n-\tmemcpy(useragentbuf, smp->data.u.str.area, i - 1);\n-\tuseragentbuf[i - 1] = 0;\n-\n-\tuseragent = (const char *)useragentbuf;\n+\ti = smp->data.u.str.data > sizeof(useragentbuf) - 1 ? sizeof(useragentbuf) - 1 : smp->data.u.str.data;\n+\tmemcpy(useragentbuf, smp->data.u.str.area, i);\n+\tuseragentbuf[i] = 0;\n \n \tstatus = da_search(&global_deviceatlas.atlas, &devinfo,\n-\t\tglobal_deviceatlas.useragentid, useragent, 0);\n+\t\tglobal_deviceatlas.useragentid, useragentbuf, 0);\n \n \treturn status != DA_OK ? 0 : da_haproxy(args, smp, &devinfo);\n }\n@@ -445,13 +469,12 @@ static int da_haproxy_fetch(const struct arg *args, struct sample *smp, const ch\n \n \t\tmemcpy(hbuf, n.ptr, n.len);\n \t\thbuf[n.len] = 0;\n-\t\tpval = v.ptr;\n-\t\tvlen = v.len;\n \t\tevid = -1;\n \t\ti = v.len > sizeof(tval) - 1 ? sizeof(tval) - 1 : v.len;\n \t\tmemcpy(tval, v.ptr, i);\n \t\ttval[i] = 0;\n \t\tpval = tval;\n+\t\tvlen = i;\n \n \t\tif (strcasecmp(hbuf, \"Accept-Language\") == 0) {\n \t\t\tevid = da_atlas_accept_language_evidence_id(&global_deviceatlas.atlas);\n@@ -469,7 +492,7 @@ static int da_haproxy_fetch(const struct arg *args, struct sample *smp, const ch\n \t\t\t\tcontinue;\n \t\t\t}\n \n-\t\t\tvlen -= global_deviceatlas.cookienamelen - 1;\n+\t\t\tvlen = pl;\n \t\t\tpval = p;\n \t\t\tevid = da_atlas_clientprop_evidence_id(&global_deviceatlas.atlas);\n \t\t} else {\ndiff --git a/addons/ot/src/parser.c b/addons/ot/src/parser.c\nindex 0f8fc54..c59a184 100644\n--- a/addons/ot/src/parser.c\n+++ b/addons/ot/src/parser.c\n@@ -359,8 +359,7 @@ static int flt_ot_parse_cfg_sample(const char *file, int linenum, char **args, s\n  */\n static int flt_ot_parse_cfg_str(const char *file, int linenum, char **args, struct list *head, char **err)\n {\n-\tstruct flt_ot_conf_str *str = NULL;\n-\tint                     i, retval = ERR_NONE;\n+\tint i, retval = ERR_NONE;\n \n \tFLT_OT_FUNC(\"\\\"%s\\\", %d, %p, %p, %p:%p\", file, linenum, args, head, FLT_OT_DPTR_ARGS(err));\n \n@@ -368,9 +367,6 @@ static int flt_ot_parse_cfg_str(const char *file, int linenum, char **args, stru\n \t\tif (flt_ot_conf_str_init(args[i], linenum, head, err) == NULL)\n \t\t\tretval |= ERR_ABORT | ERR_ALERT;\n \n-\tif (retval & ERR_CODE)\n-\t\tflt_ot_conf_str_free(&str);\n-\n \tFLT_OT_RETURN_INT(retval);\n }\n \n@@ -644,7 +640,7 @@ static int flt_ot_parse_cfg_group(const char *file, int linenum, char **args, in\n \n \tif (pdata->keyword == FLT_OT_PARSE_GROUP_ID) {\n \t\tflt_ot_current_group = flt_ot_conf_group_init(args[1], linenum, &(flt_ot_current_config->groups), &err);\n-\t\tif (flt_ot_current_config == NULL)\n+\t\tif (flt_ot_current_group == NULL)\n \t\t\tretval |= ERR_ABORT | ERR_ALERT;\n \t}\n \telse if (pdata->keyword == FLT_OT_PARSE_GROUP_SCOPES) {\ndiff --git a/addons/promex/service-prometheus.c b/addons/promex/service-prometheus.c\nindex 7c42905..3358c47 100644\n--- a/addons/promex/service-prometheus.c\n+++ b/addons/promex/service-prometheus.c\n@@ -82,6 +82,7 @@ struct promex_ctx {\n \tunsigned field_num;        /* current field number (ST_I_PX_* etc) */\n \tunsigned mod_field_num;    /* first field number of the current module (ST_I_PX_* etc) */\n \tint obj_state;             /* current state among PROMEX_{FRONT|BACK|SRV|LI}_STATE_* */\n+\tstruct watcher srv_watch;  /* watcher to automatically update next pointer */\n \tstruct list modules;       /* list of promex modules to export */\n \tstruct eb_root filters;    /* list of filters to apply on metrics name */\n };\n@@ -1231,9 +1232,6 @@ static int promex_dump_srv_metrics(struct appctx *appctx, struct htx *htx)\n \t\tif (promex_filter_metric(appctx, prefix, name))\n \t\t\tcontinue;\n \n-\t\tif (!px)\n-\t\t\tpx = proxies_list;\n-\n \t\twhile (px) {\n \t\t\tstruct promex_label labels[PROMEX_MAX_LABELS-1] = {};\n \t\t\tenum promex_mt_type type;\n@@ -1253,15 +1251,12 @@ static int promex_dump_srv_metrics(struct appctx *appctx, struct htx *htx)\n \t\t\tif ((px->flags & PR_FL_DISABLED) || px->uuid <= 0 || !(px->cap & PR_CAP_BE))\n \t\t\t\tgoto next_px;\n \n-\t\t\tif (!sv)\n-\t\t\t\tsv = px->srv;\n-\n \t\t\twhile (sv) {\n \t\t\t\tlabels[lb_idx].name  = ist(\"server\");\n \t\t\t\tlabels[lb_idx].value = ist2(sv->id, strlen(sv->id));\n \n \t\t\t\tif (!stats_fill_sv_line(px, sv, 0, stats, ST_I_PX_MAX, &(ctx->field_num)))\n-\t\t\t\t\treturn -1;\n+\t\t\t\t\tgoto error;\n \n \t\t\t\tif ((ctx->flags & PROMEX_FL_NO_MAINT_SRV) && (sv->cur_admin & SRV_ADMF_MAINT))\n \t\t\t\t\tgoto next_sv;\n@@ -1406,13 +1401,27 @@ static int promex_dump_srv_metrics(struct appctx *appctx, struct htx *htx)\n \t\t\t\t\t\t    &val, labels, &out, max))\n \t\t\t\t\tgoto full;\n \t\t\t  next_sv:\n-\t\t\t\tsv = sv->next;\n+\t\t\t\tsv = watcher_next(&ctx->srv_watch, sv->next);\n \t\t\t}\n \n \t\t  next_px:\n+\t\t\twatcher_detach(&ctx->srv_watch);\n \t\t\tpx = px->next;\n+\t\t\tif (px) {\n+\t\t\t\t/* Update ctx.p[1] via watcher. */\n+\t\t\t\twatcher_attach(&ctx->srv_watch, px->srv);\n+\t\t\t\tsv = ctx->p[1];\n+\t\t\t}\n \t\t}\n \t\tctx->flags |= PROMEX_FL_METRIC_HDR;\n+\n+\t\t/* Prepare a new iteration for the next stat column. */\n+\t\tpx = proxies_list;\n+\t\tif (likely(px)) {\n+\t\t\t/* Update ctx.p[1] via watcher. */\n+\t\t\twatcher_attach(&ctx->srv_watch, px->srv);\n+\t\t\tsv = ctx->p[1];\n+\t\t}\n \t}\n \n \t/* Skip extra counters */\n@@ -1437,9 +1446,6 @@ static int promex_dump_srv_metrics(struct appctx *appctx, struct htx *htx)\n \t\t\tif (promex_filter_metric(appctx, prefix, name))\n \t\t\t\tcontinue;\n \n-\t\t\tif (!px)\n-\t\t\t\tpx = proxies_list;\n-\n \t\t\twhile (px) {\n \t\t\t\tstruct promex_label labels[PROMEX_MAX_LABELS-1] = {};\n \t\t\t\tstruct promex_metric metric;\n@@ -1460,9 +1466,6 @@ static int promex_dump_srv_metrics(struct appctx *appctx, struct htx *htx)\n \t\t\t\tif ((px->flags & PR_FL_DISABLED) || px->uuid <= 0 || !(px->cap & PR_CAP_BE))\n \t\t\t\t\tgoto next_px2;\n \n-\t\t\t\tif (!sv)\n-\t\t\t\t\tsv = px->srv;\n-\n \t\t\t\twhile (sv) {\n \t\t\t\t\tlabels[lb_idx].name  = ist(\"server\");\n \t\t\t\t\tlabels[lb_idx].value = ist2(sv->id, strlen(sv->id));\n@@ -1476,7 +1479,7 @@ static int promex_dump_srv_metrics(struct appctx *appctx, struct htx *htx)\n \n \t\t\t\t\tcounters = EXTRA_COUNTERS_GET(sv->extra_counters, mod);\n \t\t\t\t\tif (!mod->fill_stats(counters, stats + ctx->field_num, &ctx->mod_field_num))\n-\t\t\t\t\t\treturn -1;\n+\t\t\t\t\t\tgoto error;\n \n \t\t\t\t\tval = stats[ctx->field_num + ctx->mod_field_num];\n \t\t\t\t\tmetric.type = ((val.type == FN_GAUGE) ? PROMEX_MT_GAUGE : PROMEX_MT_COUNTER);\n@@ -1486,43 +1489,60 @@ static int promex_dump_srv_metrics(struct appctx *appctx, struct htx *htx)\n \t\t\t\t\t\tgoto full;\n \n \t\t\t\t  next_sv2:\n-\t\t\t\t\tsv = sv->next;\n+\t\t\t\t\tsv = watcher_next(&ctx->srv_watch, sv->next);\n \t\t\t\t}\n \n \t\t\t  next_px2:\n+\t\t\t\twatcher_detach(&ctx->srv_watch);\n \t\t\t\tpx = px->next;\n+\t\t\t\tif (px) {\n+\t\t\t\t\t/* Update ctx.p[1] via watcher. */\n+\t\t\t\t\twatcher_attach(&ctx->srv_watch, px->srv);\n+\t\t\t\t\tsv = ctx->p[1];\n+\t\t\t\t}\n \t\t\t}\n \t\t\tctx->flags |= PROMEX_FL_METRIC_HDR;\n+\n+\t\t\t/* Prepare a new iteration for the next stat column. */\n+\t\t\tpx = proxies_list;\n+\t\t\tif (likely(px)) {\n+\t\t\t\t/* Update ctx.p[1] via watcher. */\n+\t\t\t\twatcher_attach(&ctx->srv_watch, px->srv);\n+\t\t\t\tsv = ctx->p[1];\n+\t\t\t}\n \t\t}\n \n \t\tctx->field_num += mod->stats_count;\n \t\tctx->mod_field_num = 0;\n \t}\n \n-\tpx = NULL;\n-\tsv = NULL;\n-\tmod = NULL;\n-\n   end:\n+\tif (ret) {\n+\t\twatcher_detach(&ctx->srv_watch);\n+\t\tpx = NULL;\n+\t\tmod = NULL;\n+\t}\n+\n \tif (out.len) {\n \t\tif (!htx_add_data_atonce(htx, out))\n \t\t\treturn -1; /* Unexpected and unrecoverable error */\n \t\tchannel_add_input(chn, out.len);\n \t}\n \n-\t/* Decrement server refcount if it was saved through ctx.p[1]. */\n-\tsrv_drop(ctx->p[1]);\n-\tif (sv)\n-\t\tsrv_take(sv);\n-\n-\t/* Save pointers (0=current proxy, 1=current server, 2=current stats module) of the current context */\n+\t/* Save pointers of the current context for dump resumption :\n+\t * 0=current proxy, 1=current server, 2=current stats module\n+\t * Note that p[1] is already automatically updated via srv_watch.\n+\t */\n \tctx->p[0] = px;\n-\tctx->p[1] = sv;\n \tctx->p[2] = mod;\n \treturn ret;\n   full:\n \tret = 0;\n \tgoto end;\n+\n+  error:\n+\twatcher_detach(&ctx->srv_watch);\n+\treturn -1;\n }\n \n /* Dump metrics of module <mod>. It returns 1 on success, 0 if <out> is full and\n@@ -1764,6 +1784,14 @@ static int promex_dump_metrics(struct appctx *appctx, struct stconn *sc, struct \n \t\t\tctx->field_num = ST_I_PX_PXNAME;\n \t\t\tctx->mod_field_num = 0;\n \t\t\tappctx->st1 = PROMEX_DUMPER_SRV;\n+\n+\t\t\tif (ctx->flags & PROMEX_FL_SCOPE_SERVER) {\n+\t\t\t\tctx->p[0] = proxies_list;\n+\t\t\t\tif (likely(proxies_list)) {\n+\t\t\t\t\t/* Update ctx.p[1] via watcher. */\n+\t\t\t\t\twatcher_attach(&ctx->srv_watch, proxies_list->srv);\n+\t\t\t\t}\n+\t\t\t}\n \t\t\t__fallthrough;\n \n \t\tcase PROMEX_DUMPER_SRV:\n@@ -2042,6 +2070,7 @@ static int promex_appctx_init(struct appctx *appctx)\n \tLIST_INIT(&ctx->modules);\n \tctx->filters = EB_ROOT;\n \tappctx->st0 = PROMEX_ST_INIT;\n+\twatcher_init(&ctx->srv_watch, &ctx->p[1], offsetof(struct server, watcher_list));\n \treturn 0;\n }\n \n@@ -2055,10 +2084,8 @@ static void promex_appctx_release(struct appctx *appctx)\n \tstruct promex_metric_filter *flt;\n         struct eb32_node *node, *next;\n \n-\tif (appctx->st1 == PROMEX_DUMPER_SRV) {\n-\t\tstruct server *srv = objt_server(ctx->p[1]);\n-\t\tsrv_drop(srv);\n-\t}\n+\tif (appctx->st1 == PROMEX_DUMPER_SRV)\n+\t\twatcher_detach(&ctx->srv_watch);\n \n \tlist_for_each_entry_safe(ref, back, &ctx->modules, list) {\n \t\tLIST_DELETE(&ref->list);\ndiff --git a/addons/wurfl/wurfl.c b/addons/wurfl/wurfl.c\nindex 4df6473..31a61c4 100644\n--- a/addons/wurfl/wurfl.c\n+++ b/addons/wurfl/wurfl.c\n@@ -413,11 +413,13 @@ static void ha_wurfl_deinit(void)\n \n \tlist_for_each_entry_safe(wi, wi2, &global_wurfl.information_list, list) {\n \t\tLIST_DELETE(&wi->list);\n+\t\tfree(wi->data.name);\n \t\tfree(wi);\n \t}\n \n \tlist_for_each_entry_safe(wp, wp2, &global_wurfl.patch_file_list, list) {\n \t\tLIST_DELETE(&wp->list);\n+\t\tfree(wp->patch_file_path);\n \t\tfree(wp);\n \t}\n \ndiff --git a/debian/changelog b/debian/changelog\nindex e80a9fa..d1168bb 100644\n--- a/debian/changelog\n+++ b/debian/changelog\n@@ -1,3 +1,35 @@\n+haproxy (3.2.23-0ubuntu0.26.04.1) resolute; urgency=medium\n+\n+  * New upstream version (LP: #2153485):\n+    Major bugs fixed:\n+    - ssl/ocsp: lock the OCSP response around reads in the stapling callback\n+    - htx: Don't swap buffers for empty HTX message with an error\n+    - mux-h2: preset MSGF_BODY_CL on H2_SF_DATA_CLEN in h2c_dec_hdrs()\n+    - http: forbid comma character in authority value\n+    - http-htx: Store new host in a chunk for scheme-based normalization\n+    - mux-h1: Deal with true 64-bits integer to emit chunks size\n+    - slz: always make sure to limit fixed output to less than worst case literals\n+    - sched: protect task->expire on 32-bit platforms\n+    - mux-h2: detect incomplete transfers on HEADERS frames as well\n+    - h3: check body size with content-length on empty FIN\n+    - qpack: unchecked length passed to huffman decoder\n+    - fcgi: Fix param decoding by properly checking its size\n+    - resolvers: Properly lowered the names found in DNS response\n+    - Revert \"MEDIUM: mux-quic: add BUG_ON if sending on locally closed QCS\"\n+    - applet: Don't call I/O handler if the applet was shut\n+    - quic: reject invalid token\n+    - quic: fix parsing frame type\n+  * Dropped changes:\n+    - d/p/CVE-2026-26080: removed [upstream in 3.2.12]\n+    - d/p/CVE-2026-26081: removed [upstream in 3.2.12]\n+    - d/p/quic-fix-1: removed [upstream in 3.2.13]\n+    - d/p/quic-fix-2: removed [upstream in 3.2.13]\n+    - d/p/CVE-2026-33555: removed [upstream in 3.2.15]\n+    - d/p/CVE-2026-55203: removed [upstream in 3.2.20]\n+    - d/p/CVE-2026-55204: removed [upstream in 3.2.20]\n+\n+ -- Jonas Jelten <jj@ubuntu.com>  Thu, 24 Sep 2026 15:18:56 +0200\n+\n haproxy (3.2.9-1ubuntu2.2) resolute-security; urgency=medium\n \n   * SECURITY UPDATE: overflow in FCGI demux record length field\ndiff --git a/debian/patches/CVE-2026-26080.patch b/debian/patches/CVE-2026-26080.patch\ndeleted file mode 100644\nindex a656e69..0000000\n--- a/debian/patches/CVE-2026-26080.patch\n+++ /dev/null\n@@ -1,47 +0,0 @@\n-From 5bb098ce8a656ec5711b4de3e4c87f12b216e7a1 Mon Sep 17 00:00:00 2001\n-From: Amaury Denoyelle <adenoyelle@haproxy.com>\n-Date: Mon, 9 Feb 2026 09:09:33 +0100\n-Subject: [PATCH] BUG/MAJOR: quic: fix parsing frame type\n-\n-QUIC frame type is encoded as a varint. Initially, haproxy parsed it as\n-a single byte, which was enough to cover frames defined in RFC9000.\n-\n-The code has been extended recently to support multi-bytes encoded\n-value, in anticipation of QUIC frames extension support. However, there\n-was no check on the varint format. This is interpreted erroneously as a\n-PADDING frame as this serves as the initial value. Thus the rest of the\n-packet is incorrectly handled, with various resulting effects, including\n-infinite loops and/or crashes.\n-\n-This patch fixes this by checking the return value of quic_dec_int(). If\n-varint cannot be parsed, the connection is immediately closed.\n-\n-This issue is assigned to CVE-2026-26080 report.\n-\n-This must be backported up to 3.2.\n-\n-Reported-by: Asim Viladi Oglu Manizada <manizada@pm.me>\n-(cherry picked from commit 8e16fd2cf14bbf0468de553744507ddd845e3434)\n-Signed-off-by: Amaury Denoyelle <adenoyelle@haproxy.com>\n-(cherry picked from commit 64408355e4d3d2c3e0332c30a3a491ad50b5702b)\n-Signed-off-by: Amaury Denoyelle <adenoyelle@haproxy.com>\n----\n- src/quic_frame.c |    7 ++++++-\n- 1 file changed, 6 insertions(+), 1 deletion(-)\n-\n---- a/src/quic_frame.c\n-+++ b/src/quic_frame.c\n-@@ -1162,7 +1162,12 @@ int qc_parse_frm(struct quic_frame *frm,\n- \t\tgoto leave;\n- \t}\n- \n--\tquic_dec_int(&frm->type, pos, end);\n-+\tif (!quic_dec_int(&frm->type, pos, end)) {\n-+\t\tTRACE_ERROR(\"malformed frame type\", QUIC_EV_CONN_PRSFRM, qc);\n-+\t\tquic_set_connection_close(qc, quic_err_transport(QC_ERR_FRAME_ENCODING_ERROR));\n-+\t\tgoto leave;\n-+\t}\n-+\n- \tif (!quic_frame_type_is_known(frm->type)) {\n- \t\t/* RFC 9000 12.4. Frames and Frame Types\n- \t\t *\ndiff --git a/debian/patches/CVE-2026-26081.patch b/debian/patches/CVE-2026-26081.patch\ndeleted file mode 100644\nindex ed8b123..0000000\n--- a/debian/patches/CVE-2026-26081.patch\n+++ /dev/null\n@@ -1,48 +0,0 @@\n-From 4765277f4f915baac2d57db63538ff0a59966deb Mon Sep 17 00:00:00 2001\n-From: Amaury Denoyelle <adenoyelle@haproxy.com>\n-Date: Mon, 9 Feb 2026 09:04:13 +0100\n-Subject: [PATCH] BUG/MAJOR: quic: reject invalid token\n-\n-Token parsing code on INITIAL packet for the NEW_TOKEN format is not\n-robust enough and may even crash on some rare malformed packets.\n-\n-This patch fixes this by adding a check on the expected length of the\n-received token. The packet is now rejected if the token does not match\n-QUIC_TOKEN_LEN. This check is legitimate as haproxy should only parse\n-tokens emitted by itself.\n-\n-This issue has been introduced with the implementation of NEW_TOKEN\n-tokens parsing required for 0-RTT support.\n-\n-This issue is assigned to CVE-2026-26081 report.\n-\n-This must be backported up to 3.0.\n-\n-Reported-by: Asim Viladi Oglu Manizada <manizada@pm.me>\n-(cherry picked from commit 4aa974f949d223bed1562a528f025f87aeb05b5c)\n-Signed-off-by: Amaury Denoyelle <adenoyelle@haproxy.com>\n-(cherry picked from commit b9b182bc5a934f4b7032a2a2b7e1307cd0baf120)\n-Signed-off-by: Amaury Denoyelle <adenoyelle@haproxy.com>\n----\n- src/quic_token.c |    5 +++++\n- 1 file changed, 5 insertions(+)\n-\n-diff --git a/src/quic_token.c b/src/quic_token.c\n-index 4f33447..9c1d69c 100644\n---- a/src/quic_token.c\n-+++ b/src/quic_token.c\n-@@ -129,6 +129,11 @@ int quic_token_check(struct quic_rx_packet *pkt,\n- \t\tgoto err;\n- \t}\n- \n-+\tif (tokenlen != QUIC_TOKEN_LEN) {\n-+\t\tTRACE_ERROR(\"invalid token length\", QUIC_EV_CONN_LPKT, qc);\n-+\t\tgoto err;\n-+\t}\n-+\n- \t/* Generate the AAD. */\n- \taadlen = ipaddrcpy(aad, &dgram->saddr);\n- \trand = token + tokenlen - QUIC_TOKEN_RAND_DLEN;\n--- \n-1.7.10.4\n-\ndiff --git a/debian/patches/CVE-2026-33555.patch b/debian/patches/CVE-2026-33555.patch\ndeleted file mode 100644\nindex 3ae397f..0000000\n--- a/debian/patches/CVE-2026-33555.patch\n+++ /dev/null\n@@ -1,53 +0,0 @@\n-From 7ab4ae974c434e62896b3c68b7b485b9dceb7a25 Mon Sep 17 00:00:00 2001\n-From: Amaury Denoyelle <adenoyelle@haproxy.com>\n-Date: Wed, 18 Mar 2026 09:24:32 +0100\n-Subject: [PATCH] BUG/MAJOR: h3: check body size with content-length on empty\n- FIN\n-\n-In QUIC, a STREAM frame may be received with no data but with FIN bit\n-set. This situation is tedious to handle and haproxy parsing code has\n-changed several times to deal with this situation. Now, H3 and H09\n-layers parsing code are skipped in favor of the shared function\n-qcs_http_handle_standalone_fin() used to handle the HTX EOM emission.\n-\n-However, this shortcut bypasses an important HTTP/3 validation check on\n-the received body size vs the announced content-length header. Under\n-some conditions, this could cause a desynchronization with the backend\n-server which could be exploited for request smuggling.\n-\n-Fix HTTP/3 parsing code by adding a call to h3_check_body_size() prior\n-to qcs_http_handle_standalone_fin() if content-length header has been\n-found. If the body size is incorrect, the stream is immediately resetted\n-with H3_MESSAGE_ERROR code and the error is forwarded to the stream\n-layer.\n-\n-Thanks to Martino Spagnuolo for his detailed report on this issue and\n-for having contacting us about it via the security mailing list.\n-\n-This must be backported up to 2.6.\n-\n-(cherry picked from commit 05a295441c621089ffa4318daf0dbca2dd756a84)\n-Signed-off-by: Amaury Denoyelle <adenoyelle@haproxy.com>\n-(cherry picked from commit 18e450ab412fb9397da36f226db8eed31ab590b6)\n-Signed-off-by: Amaury Denoyelle <adenoyelle@haproxy.com>\n----\n- src/h3.c |    8 ++++++++\n- 1 file changed, 8 insertions(+)\n-\n---- a/src/h3.c\n-+++ b/src/h3.c\n-@@ -1443,6 +1443,14 @@ static ssize_t h3_rcv_buf(struct qcs *qc\n- \n- \tif (!b_data(b) && fin && quic_stream_is_bidi(qcs->id)) {\n- \t\tTRACE_PROTO(\"received FIN without data\", H3_EV_RX_FRAME, qcs->qcc->conn, qcs);\n-+\n-+\t\t/* FIN received, ensure body length is conform to any content-length header. */\n-+\t\tif ((h3s->flags & H3_SF_HAVE_CLEN) && h3_check_body_size(qcs, 1)) {\n-+\t\t\tqcc_abort_stream_read(qcs);\n-+\t\t\tqcc_reset_stream(qcs, h3s->err);\n-+\t\t\tgoto done;\n-+\t\t}\n-+\n- \t\tif (qcs_http_handle_standalone_fin(qcs)) {\n- \t\t\tTRACE_ERROR(\"cannot set EOM\", H3_EV_RX_FRAME, qcs->qcc->conn, qcs);\n- \t\t\tqcc_set_error(qcs->qcc, H3_ERR_INTERNAL_ERROR, 1);\ndiff --git a/debian/patches/CVE-2026-55203.patch b/debian/patches/CVE-2026-55203.patch\ndeleted file mode 100644\nindex c644118..0000000\n--- a/debian/patches/CVE-2026-55203.patch\n+++ /dev/null\n@@ -1,37 +0,0 @@\n-From 5985276735777634d8c85f1d73bb7764aab0d6dd Mon Sep 17 00:00:00 2001\n-From: Tristan Madani <tristan@talencesecurity.com>\n-Date: Tue, 16 Jun 2026 10:46:03 +0200\n-Subject: [PATCH] BUG/MEDIUM: mux-fcgi: fix uint16_t overflow in drl += drp\n-\n-The FCGI demux record length field (drl) is uint16_t. In the\n-ignore_record path, the expression \"fconn->drl += fconn->drp\" overflows\n-to 0 when contentLength=65535 and paddingLength>=1. This causes the\n-state machine to consider the record complete without consuming any\n-buffer data. The remaining buffer contents are then parsed as new FCGI\n-record headers.\n-\n-The same drl+=drp pattern at lines 2382/2418/2475 is not affected\n-because drl is guaranteed to be 0 at those points (all content bytes\n-are consumed before reaching end_transfer).\n-\n-Widen drl from uint16_t to uint32_t so that the addition of drp\n-(uint8_t, max 255) cannot overflow.\n-\n-Reported-by: Tristan (@TristanInSec)\n----\n- src/mux_fcgi.c | 2 +-\n- 1 file changed, 1 insertion(+), 1 deletion(-)\n-\n-diff --git a/src/mux_fcgi.c b/src/mux_fcgi.c\n-index c956b58add56..8d81ff8499de 100644\n---- a/src/mux_fcgi.c\n-+++ b/src/mux_fcgi.c\n-@@ -54,7 +54,7 @@ struct fcgi_conn {\n- \tuint32_t flags;                      /* Connection flags: FCGI_CF_* */\n- \n- \tint16_t  dsi;                        /* dmux stream ID (<0 = idle ) */\n--\tuint16_t drl;                        /* demux record length (if dsi >= 0) */\n-+\tuint32_t drl;                        /* demux record length (if dsi >= 0) */\n- \tuint8_t  drt;                        /* demux record type (if dsi >= 0) */\n- \tuint8_t  drp;                        /* demux record padding (if dsi >= 0) */\n- \ndiff --git a/debian/patches/CVE-2026-55204.patch b/debian/patches/CVE-2026-55204.patch\ndeleted file mode 100644\nindex 0ee1064..0000000\n--- a/debian/patches/CVE-2026-55204.patch\n+++ /dev/null\n@@ -1,37 +0,0 @@\n-From 9a6d1fe3f00d86ab4ea6ea6ea0a5d48fc058a513 Mon Sep 17 00:00:00 2001\n-From: Tristan Madani <tristan@talencesecurity.com>\n-Date: Tue, 16 Jun 2026 10:42:10 +0200\n-Subject: [PATCH] BUG/MINOR: hpack-tbl: add missing NULL check after\n- hpack_dht_defrag()\n-\n-hpack_dht_insert() has three call sites for hpack_dht_defrag(). Two of\n-them (lines 293 and 306) correctly check for a NULL return and bail out\n-with -1. The third (line 353, data-space defrag path) assigns the return\n-value to dht and immediately dereferences it without a NULL check.\n-\n-When pool_head_hpack_tbl is exhausted, hpack_dht_alloc() returns NULL,\n-hpack_dht_defrag() propagates it, and line 354 dereferences NULL+0x0a\n-(offsetof wrap), crashing the worker with SIGSEGV.\n-\n-Add a NULL check consistent with the two other call sites.\n-\n-This must be backported to all stable versions.\n-\n-Reported-by: Tristan (@TristanInSec)\n----\n- src/hpack-tbl.c | 2 ++\n- 1 file changed, 2 insertions(+)\n-\n-diff --git a/src/hpack-tbl.c b/src/hpack-tbl.c\n-index 990d2f7ddf93..92a6f4435510 100644\n---- a/src/hpack-tbl.c\n-+++ b/src/hpack-tbl.c\n-@@ -351,6 +351,8 @@ int hpack_dht_insert(struct hpack_dht *dht, struct ist name, struct ist value)\n- \telse {\n- \t\t/* need to defragment the table before inserting upfront */\n- \t\tdht = hpack_dht_defrag(dht);\n-+\t\tif (!dht)\n-+\t\t\treturn -1;\n- \t\twrap = dht->wrap + 1;\n- \t\thead = dht->head + 1;\n- \t\tdht->dte[head].addr = dht->dte[dht->front].addr - (name.len + value.len);\ndiff --git a/debian/patches/quic-fix-1.patch b/debian/patches/quic-fix-1.patch\ndeleted file mode 100644\nindex e9419b0..0000000\n--- a/debian/patches/quic-fix-1.patch\n+++ /dev/null\n@@ -1,105 +0,0 @@\n-Backport of:\n-\n-From f3003d1508985b0863d594d82c953b13c87a3280 Mon Sep 17 00:00:00 2001\n-From: Amaury Denoyelle <adenoyelle@haproxy.com>\n-Date: Mon, 16 Feb 2026 16:41:50 +0100\n-Subject: [PATCH] BUG/MAJOR: Revert \"MEDIUM: mux-quic: add BUG_ON if sending on\n- locally closed QCS\"\n-\n-This reverts commit 235e8f1afd7e9753a26051b30c47ecc398ccfd12.\n-\n-Prior to the above commit, snd_buf callback for QUIC MUX was able to\n-deal with data even after stream closure. The excess was simply\n-discarded, as no STREAM frame can be emitted after FIN/RESET_STREAM.\n-This code was later removed and replaced by a BUG_ON() to ensure snd_buf\n-is never called after stream closure.\n-\n-However, this approach is too strict. Indeed, there is nothing in the\n-haproxy stream architecture which forbids this scheduling, in part\n-because QUIC MUX is the sole responsible of the stream closure. As such,\n-it is preferable to revert to the old code to prevent any triggering of\n-a BUG_ON() failure.\n-\n-Note that nego_ff does not implement data draining if called after\n-stream closure. This will be done in a future patch.\n-\n-Thanks to Mike Walker for his investigation on the subject.\n-\n-This must be backported up to 2.8.\n----\n- include/haproxy/qmux_http.h |  1 +\n- src/mux_quic.c              | 12 ++++++------\n- src/qmux_http.c             | 20 ++++++++++++++++++++\n- 3 files changed, 27 insertions(+), 6 deletions(-)\n-\n---- a/include/haproxy/qmux_http.h\n-+++ b/include/haproxy/qmux_http.h\n-@@ -13,6 +13,7 @@ int qcs_http_handle_standalone_fin(struc\n- \n- size_t qcs_http_snd_buf(struct qcs *qcs, struct buffer *buf, size_t count,\n-                         char *fin);\n-+size_t qcs_http_reset_buf(struct qcs *qcs, struct buffer *buf, size_t count);\n- \n- #endif /* USE_QUIC */\n- \n---- a/src/mux_quic.c\n-+++ b/src/mux_quic.c\n-@@ -3732,9 +3732,6 @@ static size_t qmux_strm_snd_buf(struct s\n- \n- \tTRACE_ENTER(QMUX_EV_STRM_SEND, qcs->qcc->conn, qcs);\n- \n--\t/* Sending forbidden if QCS is locally closed (FIN or RESET_STREAM sent). */\n--\tBUG_ON(qcs_is_close_local(qcs) || (qcs->flags & QC_SF_TO_RESET));\n--\n- \t/* stream layer has been detached so no transfer must occur after. */\n- \tBUG_ON_HOT(qcs->flags & QC_SF_DETACH);\n- \n-@@ -3745,6 +3742,12 @@ static size_t qmux_strm_snd_buf(struct s\n- \t\tgoto end;\n- \t}\n- \n-+\t/* Cannot emit data after FIN/RESET_STREAM, drain extra payload. */\n-+\tif (qcs_is_close_local(qcs) || (qcs->flags & QC_SF_TO_RESET)) {\n-+\t\tret = qcs_http_reset_buf(qcs, buf, count);\n-+\t\tgoto end;\n-+\t}\n-+\n- \tif (LIST_INLIST(&qcs->el_buf)) {\n- \t\tTRACE_DEVEL(\"leaving on no buf avail\", QMUX_EV_STRM_SEND, qcs->qcc->conn, qcs);\n- \t\tgoto end;\n-@@ -3800,9 +3803,6 @@ static size_t qmux_strm_nego_ff(struct s\n- \n- \tTRACE_ENTER(QMUX_EV_STRM_SEND, qcs->qcc->conn, qcs);\n- \n--\t/* Sending forbidden if QCS is locally closed (FIN or RESET_STREAM sent). */\n--\tBUG_ON(qcs_is_close_local(qcs) || (qcs->flags & QC_SF_TO_RESET));\n--\n- \t/* stream layer has been detached so no transfer must occur after. */\n- \tBUG_ON_HOT(qcs->flags & QC_SF_DETACH);\n- \n---- a/src/qmux_http.c\n-+++ b/src/qmux_http.c\n-@@ -113,3 +113,23 @@ size_t qcs_http_snd_buf(struct qcs *qcs,\n- \n- \treturn ret;\n- }\n-+\n-+/* QUIC MUX snd_buf reset. HTX data stored in <buf> of length <count> will be\n-+ * cleared. This can be used when data should not be transmitted any longer.\n-+ *\n-+ * Return the size in bytes of cleared data.\n-+ */\n-+size_t qcs_http_reset_buf(struct qcs *qcs, struct buffer *buf, size_t count)\n-+{\n-+\tstruct htx *htx;\n-+\n-+\tTRACE_ENTER(QMUX_EV_STRM_SEND, qcs->qcc->conn, qcs);\n-+\n-+\thtx = htx_from_buf(buf);\n-+\thtx_reset(htx);\n-+\thtx_to_buf(htx, buf);\n-+\n-+\tTRACE_LEAVE(QMUX_EV_STRM_SEND, qcs->qcc->conn, qcs);\n-+\n-+\treturn count;\n-+}\ndiff --git a/debian/patches/quic-fix-2.patch b/debian/patches/quic-fix-2.patch\ndeleted file mode 100644\nindex 2afda59..0000000\n--- a/debian/patches/quic-fix-2.patch\n+++ /dev/null\n@@ -1,33 +0,0 @@\n-From 4c275c7d17605a1c1a0bc16e251a4a27cc102308 Mon Sep 17 00:00:00 2001\n-From: Amaury Denoyelle <adenoyelle@haproxy.com>\n-Date: Mon, 16 Feb 2026 16:33:41 +0100\n-Subject: [PATCH] BUG/MEDIUM: h3: reject frontend CONNECT as currently not\n- implemented\n-\n-HTTP/3 CONNECT transcoding is not properly implemented on the frontend\n-side. Neither tunnel mode of application nor extended connect are\n-currently functional.\n-\n-Clarify this situation by rejecting any CONNETC attempts on the frontend\n-side. The stream is thus now closed via a RESET_STREAM with error code\n-REQUEST_REJECTED.\n-\n-This should be backported to every stable versions.\n----\n- src/h3.c | 5 +++++\n- 1 file changed, 5 insertions(+)\n-\n---- a/src/h3.c\n-+++ b/src/h3.c\n-@@ -737,6 +737,11 @@ static ssize_t h3_headers_to_htx(struct\n- \t\t\tgoto out;\n- \t\t}\n- \t}\n-+\telse {\n-+\t\th3s->err = H3_ERR_REQUEST_REJECTED;\n-+\t\tlen = -1;\n-+\t\tgoto out;\n-+\t}\n- \n- \tflags |= HTX_SL_F_VER_11;\n- \tflags |= HTX_SL_F_XFER_LEN;\ndiff --git a/debian/patches/series b/debian/patches/series\nindex dbbf685..156b4f5 100644\n--- a/debian/patches/series\n+++ b/debian/patches/series\n@@ -6,10 +6,3 @@ cross.patch\n \n # applied during the build process:\n # debianize-dconv.patch\n-CVE-2026-26080.patch\n-CVE-2026-26081.patch\n-quic-fix-1.patch\n-quic-fix-2.patch\n-CVE-2026-33555.patch\n-CVE-2026-55203.patch\n-CVE-2026-55204.patch\ndiff --git a/dev/gdb/libs-from-core.c b/dev/gdb/libs-from-core.c\nnew file mode 100644\nindex 0000000..9da8561\n--- /dev/null\n+++ b/dev/gdb/libs-from-core.c\n@@ -0,0 +1,162 @@\n+/*\n+ * Extracts the libs archives from a core dump\n+ *\n+ * Copyright (C) 2026 Willy Tarreau <w@1wt.eu>\n+ *\n+ * Permission is hereby granted, free of charge, to any person obtaining\n+ * a copy of this software and associated documentation files (the\n+ * \"Software\"), to deal in the Software without restriction, including\n+ * without limitation the rights to use, copy, modify, merge, publish,\n+ * distribute, sublicense, and/or sell copies of the Software, and to\n+ * permit persons to whom the Software is furnished to do so, subject to\n+ * the following conditions:\n+ *\n+ * The above copyright notice and this permission notice shall be\n+ * included in all copies or substantial portions of the Software.\n+ *\n+ * THE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND,\n+ * EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES\n+ * OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND\n+ * NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT\n+ * HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,\n+ * WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING\n+ * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR\n+ * OTHER DEALINGS IN THE SOFTWARE.\n+ */\n+\n+/* Note: builds with no option under glibc, and can be built as a minimal\n+ * uploadable static executable using nolibc as well:\n+    gcc -o libs-from-core -nostdinc -nostdlib -s -Os -static -fno-ident \\\n+        -fno-exceptions -fno-asynchronous-unwind-tables -fno-unwind-tables \\\n+        -Wl,--gc-sections,--orphan-handling=discard,-znoseparate-code \\\n+        -I /path/to/nolibc-sysroot/include libs-from-core.c\n+ */\n+#define _GNU_SOURCE\n+#include <sys/mman.h>\n+#include <sys/stat.h>\n+#include <elf.h>\n+#include <fcntl.h>\n+#include <stdint.h>\n+#include <stdio.h>\n+#include <stdlib.h>\n+#include <string.h>\n+#include <unistd.h>\n+\n+void usage(const char *progname)\n+{\n+\tconst char *slash = strrchr(progname, '/');\n+\n+\tif (slash)\n+\t\tprogname = slash + 1;\n+\n+\tfprintf(stderr,\n+\t        \"Usage: %s [-q] <core_file>\\n\"\n+\t        \"Locate a libs archive from an haproxy core dump and dump it to stdout.\\n\"\n+\t        \"Arguments:\\n\"\n+\t        \"    -q            Query mode: only report offset and length, do not dump\\n\"\n+\t        \"    core_file     Core dump produced by haproxy\\n\",\n+\t        progname);\n+}\n+\n+int main(int argc, char **argv)\n+{\n+\tElf64_Ehdr *ehdr;\n+\tElf64_Phdr *phdr;\n+\tstruct stat st;\n+\tuint8_t *mem;\n+\tint i, fd;\n+\tconst char *fname;\n+\tint quiet = 0;\n+\tint arg;\n+\n+\tfor (arg = 1; arg < argc; arg++) {\n+\t\tif (*argv[arg] != '-')\n+\t\t\tbreak;\n+\n+\t\tif (strcmp(argv[arg], \"-q\") == 0)\n+\t\t\tquiet = 1;\n+\t\telse if (strcmp(argv[arg], \"--\") == 0) {\n+\t\t\targ++;\n+\t\t\tbreak;\n+\t\t}\n+\t}\n+\n+\tif (arg < argc) {\n+\t\tfname = argv[arg];\n+\t} else {\n+\t\tusage(argv[0]);\n+\t\texit(1);\n+\t}\n+\n+\tfd = open(fname, O_RDONLY);\n+\n+\t/* Let's just map the core dump as an ELF header */\n+\tfstat(fd, &st);\n+\tmem = mmap(NULL, st.st_size, PROT_READ, MAP_PRIVATE, fd, 0);\n+\tif (mem == MAP_FAILED) {\n+\t\tperror(\"mmap()\");\n+\t\texit(1);\n+\t}\n+\n+\t/* get the program headers */\n+\tehdr = (Elf64_Ehdr *)mem;\n+\n+\t/* check that it's really a core. Should be \"\\x7fELF\" */\n+\tif (memcmp(ehdr->e_ident, ELFMAG, SELFMAG) != 0) {\n+\t\tfprintf(stderr, \"ELF magic not found.\\n\");\n+\t\texit(1);\n+\t}\n+\n+\tif (ehdr->e_ident[EI_CLASS] != ELFCLASS64) {\n+\t\tfprintf(stderr, \"Only 64-bit ELF supported.\\n\");\n+\t\texit(1);\n+\t}\n+\n+\tif (ehdr->e_type != ET_CORE) {\n+\t\tfprintf(stderr, \"ELF type %d, not a core dump.\\n\", ehdr->e_type);\n+\t\texit(1);\n+\t}\n+\n+\t/* OK we can safely go with program headers */\n+\tphdr = (Elf64_Phdr *)(mem + ehdr->e_phoff);\n+\n+\tfor (i = 0; i < ehdr->e_phnum; i++) {\n+\t\tuint64_t size   = phdr[i].p_filesz;\n+\t\tuint64_t offset = phdr[i].p_offset;\n+\t\tint ret = 0;\n+\n+\t\tif (phdr[i].p_type != PT_LOAD)\n+\t\t\tcontinue;\n+\n+\t\t//fprintf(stderr, \"Scanning segment %d...\\n\", ehdr->e_phnum);\n+\t\t//fprintf(stderr, \"\\r%-5d: off=%lx va=%lx sz=%lx     \", i, (long)offset, (long)phdr[i].p_vaddr, (long)size);\n+\t\tif (!size)\n+\t\t\tcontinue;\n+\n+\t\tif (size < 512) // minimum for a tar header\n+\t\t\tcontinue;\n+\n+\t\t/* tar magic */\n+\t\tif (memcmp(mem + offset + 257, \"ustar\\0\"\"00\", 8) != 0)\n+\t\t\tcontinue;\n+\n+\t\t/* uid, gid */\n+\t\tif (memcmp(mem + offset + 108, \"0000000\\0\"\"0000000\\0\", 16) != 0)\n+\t\t\tcontinue;\n+\n+\t\t/* link name */\n+\t\tif (memcmp(mem + offset + 157, \"haproxy-libs-dump\\0\", 18) != 0)\n+\t\t\tcontinue;\n+\n+\t\t/* OK that's really it */\n+\n+\t\tif (quiet)\n+\t\t\tprintf(\"offset=%#lx size=%#lx\\n\", offset, size);\n+\t\telse\n+\t\t\tret = (write(1, mem + offset, size) == size) ? 0 : 1;\n+\t\treturn ret;\n+\t}\n+\t//fprintf(stderr, \"\\r%75s\\n\", \"\\r\");\n+\tfprintf(stderr, \"libs archive not found. Was 'set-dumpable' set to 'libs' ?\\n\");\n+\treturn 1;\n+}\ndiff --git a/dev/gdb/pm-from-core.c b/dev/gdb/pm-from-core.c\nnew file mode 100644\nindex 0000000..397d1ef\n--- /dev/null\n+++ b/dev/gdb/pm-from-core.c\n@@ -0,0 +1,141 @@\n+/*\n+ * Find the post-mortem offset from a core dump\n+ *\n+ * Copyright (C) 2026 Willy Tarreau <w@1wt.eu>\n+ *\n+ * Permission is hereby granted, free of charge, to any person obtaining\n+ * a copy of this software and associated documentation files (the\n+ * \"Software\"), to deal in the Software without restriction, including\n+ * without limitation the rights to use, copy, modify, merge, publish,\n+ * distribute, sublicense, and/or sell copies of the Software, and to\n+ * permit persons to whom the Software is furnished to do so, subject to\n+ * the following conditions:\n+ *\n+ * The above copyright notice and this permission notice shall be\n+ * included in all copies or substantial portions of the Software.\n+ *\n+ * THE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND,\n+ * EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES\n+ * OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND\n+ * NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT\n+ * HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,\n+ * WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING\n+ * FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR\n+ * OTHER DEALINGS IN THE SOFTWARE.\n+ */\n+\n+/* Note: builds with no option under glibc, and can be built as a minimal\n+ * uploadable static executable using nolibc as well:\n+    gcc -o pm-from-core -nostdinc -nostdlib -s -Os -static -fno-ident \\\n+        -fno-exceptions -fno-asynchronous-unwind-tables -fno-unwind-tables \\\n+        -Wl,--gc-sections,--orphan-handling=discard,-znoseparate-code \\\n+        -I /path/to/nolibc-sysroot/include pm-from-core.c\n+ */\n+#define _GNU_SOURCE\n+#include <sys/mman.h>\n+#include <sys/stat.h>\n+#include <elf.h>\n+#include <fcntl.h>\n+#include <stdint.h>\n+#include <stdio.h>\n+#include <stdlib.h>\n+#include <string.h>\n+\n+#if defined(__GLIBC__)\n+#  define my_memmem memmem\n+#else\n+void *my_memmem(const void *haystack, size_t haystacklen,\n+                const void *needle, size_t needlelen)\n+{\n+\twhile (haystacklen >= needlelen) {\n+\t\tif (!memcmp(haystack, needle, needlelen))\n+\t\t\treturn (void*)haystack;\n+\t\thaystack++;\n+\t\thaystacklen--;\n+\t}\n+\treturn NULL;\n+}\n+#endif\n+\n+#define MAGIC \"POST-MORTEM STARTS HERE+7654321\\0\"\n+\n+int main(int argc, char **argv)\n+{\n+\tElf64_Ehdr *ehdr;\n+\tElf64_Phdr *phdr;\n+\tstruct stat st;\n+\tuint8_t *mem;\n+\tint i, fd;\n+\n+\tif (argc < 2) {\n+\t\tprintf(\"Usage: %s <core_file>\\n\", argv[0]);\n+\t\texit(1);\n+\t}\n+\n+\tfd = open(argv[1], O_RDONLY);\n+\n+\t/* Let's just map the core dump as an ELF header */\n+\tfstat(fd, &st);\n+\tmem = mmap(NULL, st.st_size, PROT_READ, MAP_PRIVATE, fd, 0);\n+\tif (mem == MAP_FAILED) {\n+\t\tperror(\"mmap()\");\n+\t\texit(1);\n+\t}\n+\n+\t/* get the program headers */\n+\tehdr = (Elf64_Ehdr *)mem;\n+\n+\t/* check that it's really a core. Should be \"\\x7fELF\" */\n+\tif (memcmp(ehdr->e_ident, ELFMAG, SELFMAG) != 0) {\n+\t\tfprintf(stderr, \"ELF magic not found.\\n\");\n+\t\texit(1);\n+\t}\n+\n+\tif (ehdr->e_ident[EI_CLASS] != ELFCLASS64) {\n+\t\tfprintf(stderr, \"Only 64-bit ELF supported.\\n\");\n+\t\texit(1);\n+\t}\n+\n+\tif (ehdr->e_type != ET_CORE) {\n+\t\tfprintf(stderr, \"ELF type %d, not a core dump.\\n\", ehdr->e_type);\n+\t\texit(1);\n+\t}\n+\n+\t/* OK we can safely go with program headers */\n+\tphdr = (Elf64_Phdr *)(mem + ehdr->e_phoff);\n+\n+\tfor (i = 0; i < ehdr->e_phnum; i++) {\n+\t\tuint64_t size   = phdr[i].p_filesz;\n+\t\tuint64_t offset = phdr[i].p_offset;\n+\t\tuint64_t vaddr  = phdr[i].p_vaddr;\n+\t\tuint64_t found_ofs;\n+\t\tuint8_t *found;\n+\n+\t\tif (phdr[i].p_type != PT_LOAD)\n+\t\t\tcontinue;\n+\n+\t\t//printf(\"Scanning segment %d...\\n\", ehdr->e_phnum);\n+\t\t//printf(\"\\r%-5d: off=%lx va=%lx sz=%lx     \", i, (long)offset, (long)vaddr, (long)size);\n+\t\tif (!size)\n+\t\t\tcontinue;\n+\n+\t\tif (size >= 1048576) // don't scan large segments\n+\t\t\tcontinue;\n+\n+\t\tfound = my_memmem(mem + offset, size, MAGIC, sizeof(MAGIC) - 1);\n+\t\tif (!found)\n+\t\t\tcontinue;\n+\n+\t\tfound_ofs = found - (mem + offset);\n+\n+\t\tprintf(\"Found post-mortem magic in segment %d:\\n\", i);\n+\t\tprintf(\"  Core File Offset: 0x%lx (0x%lx + 0x%lx)\\n\", offset + found_ofs, offset, found_ofs);\n+\t\tprintf(\"  Runtime VAddr:    0x%lx (0x%lx + 0x%lx)\\n\", vaddr + found_ofs, vaddr, found_ofs);\n+\t\tprintf(\"  Segment Size:     0x%lx\\n\", size);\n+\t\tprintf(\"\\nIn gdb, copy-paste this line:\\n\\n   pm_init 0x%lx\\n\\n\", vaddr + found_ofs);\n+\t\treturn 0;\n+\t}\n+\t//printf(\"\\r%75s\\n\", \"\\r\");\n+\tprintf(\"post-mortem magic not found\\n\");\n+\treturn 1;\n+}\ndiff --git a/dev/term_events/term_events.c b/dev/term_events/term_events.c\nindex 417793f..e3eaf14 100644\n--- a/dev/term_events/term_events.c\n+++ b/dev/term_events/term_events.c\n@@ -30,10 +30,10 @@ static const char *tevt_fd_types[16] = {\n };\n \n static const char *tevt_hs_types[16] = {\n-\t[ 0] = \"-\",       [ 1] = \"-\", [ 2] = \"-\", [ 3] = \"rcv_err\",\n-\t[ 4] = \"snd_err\", [ 5] = \"-\", [ 6] = \"-\", [ 7] = \"-\",\n-\t[ 8] = \"-\",       [ 9] = \"-\", [10] = \"-\", [11] = \"-\",\n-\t[12] = \"-\",       [13] = \"-\", [14] = \"-\", [15] = \"-\",\n+\t[ 0] = \"-\",       [ 1] = \"-\",               [ 2] = \"-\",                 [ 3] = \"-\",\n+\t[ 4] = \"snd_err\", [ 5] = \"truncated_shutr\", [ 6] = \"truncated_rcv_err\", [ 7] = \"-\",\n+\t[ 8] = \"-\",       [ 9] = \"-\",               [10] = \"-\",                 [11] = \"-\",\n+\t[12] = \"-\",       [13] = \"-\",               [14] = \"-\",                 [15] = \"-\",\n };\n \n static const char *tevt_xprt_types[16] = {\n",
+ "diff_truncated": true
+}

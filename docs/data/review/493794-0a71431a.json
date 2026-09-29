@@ -1,0 +1,23 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~ssstr1pe/ubuntu/+source/ubuntu-release-upgrader/+git/ubuntu-release-upgrader/+merge/493794",
+ "id": "493794",
+ "title": "gnome-42 → ubuntu/devel",
+ "source_branch": "gnome-42",
+ "target_branch": "ubuntu/devel",
+ "revision": "04a0e3d360c4fd2a49d31d149c19b141d4ff2a2b",
+ "base_revision": "ad2171d9378607297eb19429b2043787f3c814c7",
+ "description": null,
+ "commit_message": null,
+ "diffstat": {
+  "DistUpgrade/deb2snap.json": [
+   1,
+   1
+  ]
+ },
+ "files": 1,
+ "added_lines": 1,
+ "removed_lines": 1,
+ "diff": "diff --git a/DistUpgrade/deb2snap.json b/DistUpgrade/deb2snap.json\nindex 5cc9bfa..c58ccd5 100644\n--- a/DistUpgrade/deb2snap.json\n+++ b/DistUpgrade/deb2snap.json\n@@ -12,7 +12,7 @@\n             \"from_channel\": \"1/stable/ubuntu-{FROM_VERSION}\",\n             \"to_channel\": \"1/stable/ubuntu-{TO_VERSION}\"\n         },\n-        \"gnome-46-2404\": {\n+        \"gnome-42-2204\": {\n             \"metapkg\": \"ubuntu-desktop\",\n             \"force_switch\": true\n         },\n",
+ "diff_truncated": false
+}

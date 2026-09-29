@@ -1,0 +1,35 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~seyeongkim/ubuntu/+source/memcached/+git/memcached/+merge/508949",
+ "id": "508949",
+ "title": "lp2161693-noble → ubuntu/noble-devel",
+ "source_branch": "lp2161693-noble",
+ "target_branch": "ubuntu/noble-devel",
+ "revision": "144951b33c320c4c2462d8cd59ed6ddb4a9cfc32",
+ "base_revision": "0249779c516de00fc7b758e953bb3c17849681bf",
+ "description": null,
+ "commit_message": null,
+ "diffstat": {
+  "debian/changelog": [
+   11,
+   0
+  ],
+  "debian/patches/lp2161693-0-fix-lru-crawler-buffer-overflow-on-idle-client.patch": [
+   56,
+   0
+  ],
+  "debian/patches/lp2161693-1-fix-lru-crawler-unlock-of-unlocked-mutex.patch": [
+   31,
+   0
+  ],
+  "debian/patches/series": [
+   2,
+   0
+  ]
+ },
+ "files": 4,
+ "added_lines": 100,
+ "removed_lines": 0,
+ "diff": "diff --git a/debian/changelog b/debian/changelog\nindex f3ed141..4dc6a86 100644\n--- a/debian/changelog\n+++ b/debian/changelog\n@@ -1,3 +1,14 @@\n+memcached (1.6.24-1ubuntu0.2) noble; urgency=medium\n+\n+  * Fix out-of-bounds heap write in the LRU crawler dump path when an\n+    idle client stalls reading a dump (LP: #2161693):\n+    - d/p/lp2161693-0-fix-lru-crawler-buffer-overflow-on-idle-client.patch:\n+      backport 7eeac6e9, retry on poll() timeout instead of a false flush.\n+    - d/p/lp2161693-1-fix-lru-crawler-unlock-of-unlocked-mutex.patch:\n+      backport ea35f44, lock lru_locks[i] before lru_crawler_class_done().\n+\n+ -- Seyeong Kim <seyeong.kim@canonical.com>  Fri, 24 Jul 2026 03:09:54 +0000\n+\n memcached (1.6.24-1ubuntu0.1) noble-security; urgency=medium\n \n   * SECURITY UPDATE: SASL password timing side-channel\ndiff --git a/debian/patches/lp2161693-0-fix-lru-crawler-buffer-overflow-on-idle-client.patch b/debian/patches/lp2161693-0-fix-lru-crawler-buffer-overflow-on-idle-client.patch\nnew file mode 100644\nindex 0000000..1cdb561\n--- /dev/null\n+++ b/debian/patches/lp2161693-0-fix-lru-crawler-buffer-overflow-on-idle-client.patch\n@@ -0,0 +1,56 @@\n+Description: crawler: fix buffer overflow on idle client\n+ memcached's LRU crawler dump path (lru_crawler_write() in crawler.c) treated a\n+ poll() timeout on the client socket as a successful flush (\"if (ret == 0)\n+ return 0;\"). When a client starts a dump (lru_crawler metadump all / mgdump)\n+ and then stops reading, the kernel send buffer fills, poll() times out, and the\n+ crawler thread keeps appending crawler output past the end of the fixed 128 KB\n+ heap buffer -- an out-of-bounds heap write that can crash the server. Add a\n+ ~30 minute backstop (1800 x 1000 ms) that retries the timed-out client and then\n+ disconnects it, and move \"sent += total\" inside the write-success branch so a\n+ persistent EAGAIN cannot underflow the unsigned counter.\n+Origin: upstream, https://github.com/memcached/memcached/commit/7eeac6e9a9945aa68298aff379cea5ab3817af7c\n+Bug-Ubuntu: https://bugs.launchpad.net/bugs/2161693\n+Applied-Upstream: 1.6.44\n+Last-Update: 2026-07-24\n+Index: memcached-1.6.24/crawler.c\n+===================================================================\n+--- memcached-1.6.24.orig/crawler.c\n++++ memcached-1.6.24/crawler.c\n+@@ -347,6 +347,10 @@ static int lru_crawler_write(crawler_cli\n+ \n+     if (c->c == NULL) return -1;\n+     if (data_size == 0) return 0;\n++    // a long backstop so clients can't hang forever.\n++    // continually timed out stuff used to blow up memory and crash so this is\n++    // just to avoid replacing one problem with another.\n++    int tries = 1800;\n+ \n+     while (sent < data_size) {\n+         int ret = poll(to_poll, 1, 1000);\n+@@ -356,7 +360,14 @@ static int lru_crawler_write(crawler_cli\n+             return -1;\n+         }\n+ \n+-        if (ret == 0) return 0;\n++        // Timed out, retry for a while.\n++        if (ret == 0) {\n++            if (--tries == 0) {\n++                lru_crawler_close_client(c);\n++                return -1;\n++            }\n++            continue;\n++        }\n+ \n+         // check if socket was closed on us.\n+         if (to_poll[0].revents & POLLIN) {\n+@@ -383,8 +394,9 @@ static int lru_crawler_write(crawler_cli\n+             } else if (total == 0) {\n+                 lru_crawler_close_client(c);\n+                 return -1;\n++            } else {\n++                sent += total;\n+             }\n+-            sent += total;\n+         }\n+     } // while\n+ \ndiff --git a/debian/patches/lp2161693-1-fix-lru-crawler-unlock-of-unlocked-mutex.patch b/debian/patches/lp2161693-1-fix-lru-crawler-unlock-of-unlocked-mutex.patch\nnew file mode 100644\nindex 0000000..00bcbd4\n--- /dev/null\n+++ b/debian/patches/lp2161693-1-fix-lru-crawler-unlock-of-unlocked-mutex.patch\n@@ -0,0 +1,31 @@\n+Description: crawler: fix potential unlock of unlocked mutex\n+ lru_crawler_class_done() ends by unlocking lru_locks[i]; two early-fail paths in\n+ item_crawler_thread() called it without holding that lock (unlock of an unlocked\n+ mutex plus an unlink under no lock). This path was largely unreachable until the\n+ idle-client backstop in the previous patch makes lru_crawler_write() return -1,\n+ so both fixes belong together. Take lru_locks[i] before lru_crawler_class_done()\n+ on those two paths.\n+Origin: upstream, https://github.com/memcached/memcached/commit/ea35f441f265b4aef3f7753aa5cbb87d99859123\n+Bug-Ubuntu: https://bugs.launchpad.net/bugs/2161693\n+Applied-Upstream: 1.6.44\n+Last-Update: 2026-07-24\n+Index: memcached-1.6.24/crawler.c\n+===================================================================\n+--- memcached-1.6.24.orig/crawler.c\n++++ memcached-1.6.24/crawler.c\n+@@ -522,11 +522,15 @@ static void *item_crawler_thread(void *a\n+                 if (c->buflen - c->bufused < LRU_CRAWLER_MINBUFSPACE) {\n+                     int ret = lru_crawler_write(c);\n+                     if (ret != 0) {\n++                        // Must be locked to unlink crawler.\n++                        pthread_mutex_lock(&lru_locks[i]);\n+                         lru_crawler_class_done(i);\n+                         continue;\n+                     }\n+                 }\n+             } else if (active_crawler_mod.mod->needs_client) {\n++                // Must be locked to unlink crawler.\n++                pthread_mutex_lock(&lru_locks[i]);\n+                 lru_crawler_class_done(i);\n+                 continue;\n+             }\ndiff --git a/debian/patches/series b/debian/patches/series\nindex 2fce807..7ee5647 100644\n--- a/debian/patches/series\n+++ b/debian/patches/series\n@@ -4,3 +4,5 @@\n 0005-Source-etc-default-memcached-in-etc-init.d-memcached.patch\n 0006-restore-systemd-sandboxing.patch\n CVE-2026-4778x.patch\n+lp2161693-0-fix-lru-crawler-buffer-overflow-on-idle-client.patch\n+lp2161693-1-fix-lru-crawler-unlock-of-unlocked-mutex.patch\n",
+ "diff_truncated": false
+}

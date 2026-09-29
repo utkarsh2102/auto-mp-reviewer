@@ -1,0 +1,35 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~allenab/livecd-rootfs/+git/livecd-rootfs/+merge/511837",
+ "id": "511837",
+ "title": "The binary hook that installs udev for buildd builds  now fails (because the hook does not mount /proc). But using a binary hook to install a package that ends up in every artifact is obtuse; so just add udev to the list of packages in auto/config and delete the hook (and the redundant installation of udev in 52-linux-virtual-image.binary). (LP: #2165421)",
+ "source_branch": "lp-2165421-resolute-fix",
+ "target_branch": "ubuntu/resolute",
+ "revision": "bc0b8a168c87442ad8ded32d7e14a0b7bb34568e",
+ "base_revision": "75deba82fdc58f5679f88b21ef08759b9494d4da",
+ "description": "Backport of 5d43ef14befe061861d6ed67946a20891279fc90 from the development series to ubuntu/resolute.\n\nThe fix deletes the hook, seeds udev via add_package install udev in auto/config so it is installed in the chroot stage where proc is mounted, and drops the udev from 52-linux-virtual-image.binary.\n\nLocal testing info:\nTested by running an Ubuntu build for a buildd image using bartender locally which was successful\n\nRelated info:\nLP: #2165421, MP #511182",
+ "commit_message": "The binary hook that installs udev for buildd builds  now fails (because the hook does not mount /proc). But using a binary hook to install a package that ends up in every artifact is obtuse; so just add udev to the list of packages in auto/config and delete the hook (and the redundant installation of udev in 52-linux-virtual-image.binary). (LP: #2165421)",
+ "diffstat": {
+  "debian/changelog": [
+   10,
+   0
+  ],
+  "live-build/auto/config": [
+   3,
+   0
+  ],
+  "dev/null": [
+   0,
+   12
+  ],
+  "live-build/buildd/hooks/52-linux-virtual-image.binary": [
+   1,
+   1
+  ]
+ },
+ "files": 4,
+ "added_lines": 14,
+ "removed_lines": 13,
+ "diff": "diff --git a/debian/changelog b/debian/changelog\nindex 759de7b..7d5a35e 100644\n--- a/debian/changelog\n+++ b/debian/changelog\n@@ -1,3 +1,13 @@\n+livecd-rootfs (26.04.37) UNRELEASED; urgency=medium\n+\n+  * The binary hook that installs udev for buildd builds  now fails (because\n+    the hook does not mount /proc). But using a binary hook to install a\n+    package that ends up in every artifact is obtuse; so just add udev to the\n+    list of packages in auto/config and delete the hook (and the redundant\n+    installation of udev in 52-linux-virtual-image.binary). (LP: #2165421)\n+\n+ -- Allen Abraham <allen.abraham@canonical.com>  Tue, 22 Sep 2026 10:17:10 -0400\n+\n livecd-rootfs (26.04.36) resolute; urgency=medium\n \n   * Update SEEDMIRROR default to use static-reports.u.c instead of\ndiff --git a/live-build/auto/config b/live-build/auto/config\nindex 66ea075..7ee071e 100755\n--- a/live-build/auto/config\n+++ b/live-build/auto/config\n@@ -1303,6 +1303,9 @@ case $SUBPROJECT in\n \t\tadd_package install gpg-agent\n \t\tadd_package install fakeroot\n \t\tadd_package install build-essential\n+\t\t# Brought in by ubuntu-cloud-minimal in regular lxd image\n+\t\t# builds, needed for network device configuration.\n+\t\tadd_package install udev\n \t\t# Needed for LXD-based builds.\n \t\tadd_package install init\n \t\t# Needed for bootable buildd systems which don't get injected\ndiff --git a/live-build/buildd/hooks/03-network.binary b/live-build/buildd/hooks/03-network.binary\ndeleted file mode 100755\nindex 9d841bf..0000000\n--- a/live-build/buildd/hooks/03-network.binary\n+++ /dev/null\n@@ -1,12 +0,0 @@\n-#!/bin/bash -eux\n-\n-. config/functions\n-\n-chroot_dir=chroot\n-\n-# Networking interface configuration relies udev.\n-# In normal LXD images, it's a transitive depends of ubuntu-cloud-minimal\n-# seed, which isn't present in buildd images.\n-chroot \"$chroot_dir\"  apt-get -y update\n-env DEBIAN_FRONTEND=noninteractive chroot \"$chroot_dir\"  apt-get -y install udev\n-chroot \"$chroot_dir\"  apt-get -y clean\ndiff --git a/live-build/buildd/hooks/52-linux-virtual-image.binary b/live-build/buildd/hooks/52-linux-virtual-image.binary\nindex b5a00db..f1ed534 100755\n--- a/live-build/buildd/hooks/52-linux-virtual-image.binary\n+++ b/live-build/buildd/hooks/52-linux-virtual-image.binary\n@@ -51,7 +51,7 @@ env DEBIAN_FRONTEND=noninteractive chroot \"$mount_d\" apt-get \\\n # Install dependencies\n env DEBIAN_FRONTEND=noninteractive chroot \"$mount_d\" apt-get \\\n     install -y lsb-release locales dracut busybox-initramfs \\\n-               udev dbus netplan.io cloud-init openssh-server sudo snapd \\\n+               dbus netplan.io cloud-init openssh-server sudo snapd \\\n                lxd-agent-loader\n \n # Install a kernel\n",
+ "diff_truncated": false
+}

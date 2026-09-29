@@ -1,0 +1,35 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~cjwatson/ubuntu-archive-tools/+git/ubuntu-archive-tools/+merge/411081",
+ "id": "411081",
+ "title": "Fix \"W605 invalid escape sequence\" flake8 warnings",
+ "source_branch": "flake8-W605",
+ "target_branch": "main",
+ "revision": "0dbb075ddc91220db1309ebb7c505bba20721487",
+ "base_revision": "a70796d33394bbcb02b1475513a9ac55c36e18df",
+ "description": null,
+ "commit_message": "Fix \"W605 invalid escape sequence\" flake8 warnings",
+ "diffstat": {
+  "kernel_workflow.py": [
+   1,
+   1
+  ],
+  "publish-image-set": [
+   9,
+   9
+  ],
+  "sru-review": [
+   3,
+   3
+  ],
+  "queuediff": [
+   4,
+   4
+  ]
+ },
+ "files": 4,
+ "added_lines": 17,
+ "removed_lines": 17,
+ "diff": "diff --git a/kernel_workflow.py b/kernel_workflow.py\nindex a211776..8f5a8f8 100644\n--- a/kernel_workflow.py\n+++ b/kernel_workflow.py\n@@ -46,7 +46,7 @@ def process_sru_bug(lp, bugnum, task_callback, source_callback, context=None):\n     \"\"\"\n     package_re = re.compile(\n         (r'^%subuntu/(?P<release>[0-9a-z.-]+)/'\n-         + '\\+source/(?P<package>[a-z0-9.-]+)$') % str(lp._root_uri))\n+         r'\\+source/(?P<package>[a-z0-9.-]+)$') % str(lp._root_uri))\n     workflow_re = re.compile(\n         r'^%skernel-sru-workflow/(?P<subtask>.*)' % str(lp._root_uri))\n     prep_re = re.compile(r'prepare-package(?P<subpackage>.*)')\ndiff --git a/publish-image-set b/publish-image-set\nindex e9669c3..4f1c3bc 100755\n--- a/publish-image-set\n+++ b/publish-image-set\n@@ -40,21 +40,21 @@ import sys\n # See isotracker.py for setup instructions.\n from isotracker import ISOTracker\n \n-milestone_name_re = re.compile('(Alpha|Beta|RC|Final|Pre-release)(?: (\\d))?')\n-stable_name_re = re.compile('(Xenial|Bionic|Focal) (16|18|20)\\.04\\.\\d+')\n+milestone_name_re = re.compile(r'(Alpha|Beta|RC|Final|Pre-release)(?: (\\d))?')\n+stable_name_re = re.compile(r'(Xenial|Bionic|Focal) (16|18|20)\\.04\\.\\d+')\n \n # do not warn about not being able to handle those\n ignore_product_re = re.compile(\n     'Netboot |Upgrade |Server EC2|Server Windows Azure|line-through|Ubuntu WSL')\n # this identifies known builds\n product_re = re.compile(\n-    '((?:|u|lu|ku|edu|xu|myth)buntu(?: studio|kylin| kylin| gnome| mate| budgie| next)?) '\n-    '(alternate|desktop|dvd|server(?: subiquity)?|mobile|base|active|wubi)(?: preinstalled)? '\n-    '(i386|amd64$|amd64\\+mac|armel$|armel\\+dove|armel\\+omap$|armel\\+omap4|'\n-    'armel\\+ac100|armel\\+mx5|armhf$|armhf\\+omap$|armhf\\+omap4|armhf\\+ac100|'\n-    'armhf\\+mx5|armhf\\+nexus7|armhf\\+raspi$|armhf\\+raspi2|armhf\\+raspi3|'\n-    'arm64$|arm64\\+raspi$|arm64\\+raspi3|powerpc|ppc64el|s390x|riscv64$|'\n-    'riscv64\\+unleashed|riscv64\\+unmatched)', re.I)\n+    r'((?:|u|lu|ku|edu|xu|myth)buntu(?: studio|kylin| kylin| gnome| mate| budgie| next)?) '\n+    r'(alternate|desktop|dvd|server(?: subiquity)?|mobile|base|active|wubi)(?: preinstalled)? '\n+    r'(i386|amd64$|amd64\\+mac|armel$|armel\\+dove|armel\\+omap$|armel\\+omap4|'\n+    r'armel\\+ac100|armel\\+mx5|armhf$|armhf\\+omap$|armhf\\+omap4|armhf\\+ac100|'\n+    r'armhf\\+mx5|armhf\\+nexus7|armhf\\+raspi$|armhf\\+raspi2|armhf\\+raspi3|'\n+    r'arm64$|arm64\\+raspi$|arm64\\+raspi3|powerpc|ppc64el|s390x|riscv64$|'\n+    r'riscv64\\+unleashed|riscv64\\+unmatched)', re.I)\n \n # map an image type from the ISO tracker to a source directory for\n # publish-release\ndiff --git a/queuediff b/queuediff\nindex 5719464..cc7c731 100755\n--- a/queuediff\n+++ b/queuediff\n@@ -98,11 +98,11 @@ def from_queue(sourcepkg, release):\n     '''\n     oops_re = re.compile('class=\"oopsid\">(OOPS[a-zA-Z0-9-]+)<')\n     changes_re = re.compile(\n-        'href=\"(http://launchpadlibrarian.net/\\d+/%s_[^\"]+_source.changes)\"' %\n+        r'href=\"(http://launchpadlibrarian.net/\\d+/%s_[^\"]+_source.changes)\"' %\n         re.escape(quote(sourcepkg)))\n     debdiff_re = re.compile(\n-        'href=\"(http://launchpadlibrarian.net/'\n-        '\\d+/%s_[^\"_]+_[^_\"]+\\.diff\\.gz)\">\\s*diff from' %\n+        r'href=\"(http://launchpadlibrarian.net/'\n+        r'\\d+/%s_[^\"_]+_[^_\"]+\\.diff\\.gz)\">\\s*diff from' %\n         re.escape(quote(sourcepkg)))\n \n     queue_html = urlopen(queue_url % release).read()\n@@ -141,7 +141,7 @@ def from_ppa(sourcepkg, release, user, ppaname):\n         'href=\"(https://launchpad.net/[^ \"]+/%s_[^\"]+_source.changes)\"' %\n         re.escape(quote(sourcepkg)))\n     sourcepub_re = re.compile(\n-        'href=\"(\\+sourcepub/\\d+/\\+listing-archive-extra)\"')\n+        r'href=\"(\\+sourcepub/\\d+/\\+listing-archive-extra)\"')\n     #debdiff_re = re.compile(\n     #    'href=\"(https://launchpad.net/.[^ \"]+.diff.gz)\">diff from')\n \ndiff --git a/sru-review b/sru-review\nindex 0f55d5d..2682727 100755\n--- a/sru-review\n+++ b/sru-review\n@@ -217,8 +217,8 @@ def from_queue(options, archive, sourcepkg, series, version=None):\n             else:\n                 re_version = '[^_\"]+'\n             debdiff_re = re.compile(\n-                'href=\"(http://launchpadlibrarian.net/'\n-                '\\d+/%s_[^\"_]+_%s\\.diff\\.gz)\">\\s*diff from' %\n+                r'href=\"(http://launchpadlibrarian.net/'\n+                r'\\d+/%s_[^\"_]+_%s\\.diff\\.gz)\">\\s*diff from' %\n                 (re.escape(sourcepkg), re_version))\n \n             queue_html = urlopen(queue_url).read().decode('utf-8')\n@@ -250,7 +250,7 @@ def from_ppa(options, sourcepkg, user, ppaname):\n         'href=\"(https://launchpad.net/[^ \"]+/%s_[^\"]+_source.changes)\"' %\n         re.escape(sourcepkg))\n     sourcepub_re = re.compile(\n-        'href=\"(\\+sourcepub/\\d+/\\+listing-archive-extra)\"')\n+        r'href=\"(\\+sourcepub/\\d+/\\+listing-archive-extra)\"')\n     #debdiff_re = re.compile(\n     #    'href=\"(https://launchpad.net/.[^ \"]+.diff.gz)\">diff from')\n \n",
+ "diff_truncated": false
+}

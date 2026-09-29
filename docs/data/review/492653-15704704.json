@@ -1,0 +1,31 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~hectorcao/ubuntu/+source/libvirt/+git/libvirt/+merge/492653",
+ "id": "492653",
+ "title": "lp2120278-plucky → ubuntu/plucky-devel",
+ "source_branch": "lp2120278-plucky",
+ "target_branch": "ubuntu/plucky-devel",
+ "revision": "d406101e03080752f48f7934eec67f77f1fef0bc",
+ "base_revision": "5807120b941b8e2f4aea69e4ab4338965f0839fd",
+ "description": null,
+ "commit_message": null,
+ "diffstat": {
+  "debian/changelog": [
+   7,
+   0
+  ],
+  "debian/patches/series": [
+   1,
+   0
+  ],
+  "debian/patches/ubuntu-aa/lp2120278-virt-aa-helper-Avoid-duplicate-when-append-rule.patch": [
+   59,
+   0
+  ]
+ },
+ "files": 3,
+ "added_lines": 67,
+ "removed_lines": 0,
+ "diff": "diff --git a/debian/changelog b/debian/changelog\nindex 271948d..acc2092 100644\n--- a/debian/changelog\n+++ b/debian/changelog\n@@ -1,3 +1,10 @@\n+libvirt (11.0.0-2ubuntu6.3) plucky; urgency=medium\n+\n+  * d/p/u-aa/lp2079869-* : virt-aa-helper: Avoid duplicate when append rule\n+    (LP: #2120278)\n+\n+ -- Hector Cao <hector.cao@canonical.com>  Wed, 17 Sep 2025 01:13:17 +0200\n+\n libvirt (11.0.0-2ubuntu6.2) plucky; urgency=medium\n \n   * l-d-config-network.postinst: clear 'autostarted' state, to activate\ndiff --git a/debian/patches/series b/debian/patches/series\nindex d4294f1..6bdac62 100644\n--- a/debian/patches/series\n+++ b/debian/patches/series\n@@ -29,3 +29,4 @@ ubuntu-aa/0034-apparmor-virt-aa-helper-access-for-snapped-nova.patch\n ubuntu-aa/lp-1815910-allow-vhost-hotplug.patch\n ubuntu-aa/lp2079869-allow-access-for-bridge-helper-to-sys-devices-system.patch\n ubuntu-aa/lp-2100024-Allow-SGX-if-configured.patch\n+ubuntu-aa/lp2120278-virt-aa-helper-Avoid-duplicate-when-append-rule.patch\ndiff --git a/debian/patches/ubuntu-aa/lp2120278-virt-aa-helper-Avoid-duplicate-when-append-rule.patch b/debian/patches/ubuntu-aa/lp2120278-virt-aa-helper-Avoid-duplicate-when-append-rule.patch\nnew file mode 100644\nindex 0000000..6e5cc21\n--- /dev/null\n+++ b/debian/patches/ubuntu-aa/lp2120278-virt-aa-helper-Avoid-duplicate-when-append-rule.patch\n@@ -0,0 +1,59 @@\n+From: Hector Cao <hector.cao@canonical.com>\n+Subject: virt-aa-helper: Avoid duplicate when append rule\n+\n+when a device is dynamically attached to a VM, and it needs a special\n+system access for apparmor, libvirt calls virt-aa-helper (with argument -F)\n+to append a new rule to the apparmor profile of the VM. virt-aa-helper does\n+not check for duplicate and blindly appends the rule to the profile. since\n+there is no rule removal when a device is detached, this can make the profile\n+grow in size if a big number of attach/detach operations are done and the\n+profile might hit the size limit and futur attach operations might dysfunction\n+because no rule can be added into the apparmor profile.\n+\n+this patch tries to mitigate this issue by doing a duplicate check\n+when rules are appended into the profile. this fix does not guarantee\n+the absence of duplicates but should be enough to prevent the profile\n+to grow significantly in size and reach its size limit.\n+\n+Signed-off-by: Hector CAO <hector.cao@canonical.com>\n+Signed-off-by: Michal Privoznik <mprivozn@redhat.com>\n+Reviewed-by: Michal Privoznik <mprivozn@redhat.com>\n+\n+Origin: upstream, https://github.com/libvirt/libvirt/commit/291dbefd074378df6b541fc1c19d3504279e069b\n+Bug-Ubuntu: https://bugs.launchpad.net/ubuntu/+bug/2120278\n+\n+---\n+ src/security/virt-aa-helper.c | 15 +++++++++++++--\n+ 1 file changed, 13 insertions(+), 2 deletions(-)\n+\n+diff --git a/src/security/virt-aa-helper.c b/src/security/virt-aa-helper.c\n+index b662d971cb..8a297d4b54 100644\n+--- a/src/security/virt-aa-helper.c\n++++ b/src/security/virt-aa-helper.c\n+@@ -208,10 +208,21 @@ update_include_file(const char *include_file, const char *included_files,\n+             return -1;\n+     }\n+ \n+-    if (append && virFileExists(include_file))\n++    if (append && existing) {\n++        /* Duplicate check: include_files might contain multiple rules\n++         * the best is to check for each rule (separated by \\n) but\n++         * it might be overkilled, just do the check for the whole\n++         * include_files.\n++         * Most of the time, include_files contains only one rule\n++         * so this check is OK to avoid the overflow of the profile\n++         * duplicates might still exist though.\n++         */\n++        if (strstr(existing, included_files) != NULL)\n++            return 0;\n+         pcontent = g_strdup_printf(\"%s%s\", existing, included_files);\n+-    else\n++    } else {\n+         pcontent = g_strdup_printf(\"%s%s\", warning, included_files);\n++    }\n+ \n+     plen = strlen(pcontent);\n+     if (plen > MAX_FILE_LEN) {\n+-- \n+2.45.2\n+\n",
+ "diff_truncated": false
+}

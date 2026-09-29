@@ -1,0 +1,23 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~juliank/ubuntu-archive-tools/+git/ubuntu-archive-tools/+merge/443357",
+ "id": "443357",
+ "title": "uefi-release → main",
+ "source_branch": "uefi-release",
+ "target_branch": "main",
+ "revision": "31ad2d87b3fd793bd5295c517c72c7c3e1c69fe0",
+ "base_revision": "c639407aba8e52e2de3de500e11f4dc8bd1e304d",
+ "description": null,
+ "commit_message": null,
+ "diffstat": {
+  "uefi-release": [
+   46,
+   0
+  ]
+ },
+ "files": 1,
+ "added_lines": 46,
+ "removed_lines": 0,
+ "diff": "diff --git a/uefi-release b/uefi-release\nnew file mode 100755\nindex 0000000..1e26bb6\n--- /dev/null\n+++ b/uefi-release\n@@ -0,0 +1,46 @@\n+#!/bin/sh\n+\n+set -e\n+\n+build=\"ppa:ubuntu-uefi-team/ubuntu/ppa\"\n+proposed=\"ppa:ubuntu-uefi-team/ubuntu/proposed\"\n+proposed_public=\"ppa:ubuntu-uefi-team/ubuntu/proposed-public\"\n+\n+\n+run() {\n+    echo \"+ $@\"\n+    \"$@\"\n+}\n+\n+case \"$1\" in \n+    unembargo)\n+        shift\n+        for packagesuite in \"$@\"; do\n+            package=${packagesuite%/*}\n+            suite=${packagesuite#*/}\n+            run ./copy-package --unembargo -b --from $proposed --to $proposed_public $package --suite $suite\n+        done\n+        ;;\n+    promote-to-devel)\n+        shift\n+        for packagesuite in \"$@\"; do\n+            package=${packagesuite%/*}\n+            suite=${packagesuite#*/}\n+            run ./copy-package -b --from $proposed_public --to ubuntu $package --to-suite devel-proposed --from-suite $suite\n+        done\n+        ;;\n+    promote-to-primary)\n+        shift\n+        for packagesuite in \"$@\"; do\n+            package=${packagesuite%/*}\n+            suite=${packagesuite#*/}\n+            run ./copy-package -b --from $proposed_public --to ubuntu $package --to-suite $suite-proposed --from-suite $suite\n+        done\n+        ;;\n+    *)\n+        echo \"E: Unknown action $1\" >&2\n+        echo \"Usage: $0 [unembargo|promote-to-primary|promote-to-devel] package/suite...\" >&2\n+        exit 1\n+        ;;\n+esac\n+\n",
+ "diff_truncated": false
+}

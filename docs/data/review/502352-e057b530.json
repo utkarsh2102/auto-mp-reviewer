@@ -1,0 +1,43 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~gboutry/ubuntu/+source/python-ldap/+git/python-ldap/+merge/502352",
+ "id": "502352",
+ "title": "merge-lp2144841-resolute → debian/sid",
+ "source_branch": "merge-lp2144841-resolute",
+ "target_branch": "debian/sid",
+ "revision": "a40fc3419941322c303f2ec7b843993470890482",
+ "base_revision": "f21677313ff7c91ee026ad7051e8ff3097e38f1a",
+ "description": null,
+ "commit_message": null,
+ "diffstat": {
+  "debian/changelog": [
+   17,
+   0
+  ],
+  "debian/control": [
+   2,
+   1
+  ],
+  "debian/tests/apparmor.sh": [
+   58,
+   0
+  ],
+  "debian/tests/control": [
+   1,
+   0
+  ],
+  "debian/tests/startserver": [
+   4,
+   0
+  ],
+  "debian/tests/upstream": [
+   4,
+   0
+  ]
+ },
+ "files": 6,
+ "added_lines": 86,
+ "removed_lines": 1,
+ "diff": "diff --git a/debian/changelog b/debian/changelog\nindex 6df5b1d..0d35593 100644\n--- a/debian/changelog\n+++ b/debian/changelog\n@@ -1,3 +1,20 @@\n+python-ldap (3.4.5-1ubuntu1) resolute; urgency=medium\n+\n+  * Merge from Debian unstable (LP: #2144841). Remaining changes:\n+    - d/t/apparmor.sh: add apparmor helper script that allows slapd write\n+      access to test directories; ignore apparmor control failures on\n+      Ubuntu+armhf (LP: #2008393).\n+    - d/t/startserver, d/t/upstream: source apparmor.sh and call\n+      apparmor_setup for slapd test directory access (LP: #2130351).\n+    - d/t/control: add needs-sudo restriction for apparmor commands.\n+  * Drop Changes (included in new upstream version 3.4.5):\n+    - CVE-2025-61911.patch: sanitization bypass in\n+      ldap.filter.escape_filter_chars.\n+    - CVE-2025-61912.patch: improper encoding of output and improper null\n+      termination.\n+\n+ -- Guillaume Boutry <guillaume.boutry@canonical.com>  Fri, 20 Mar 2026 11:40:45 +0100\n+\n python-ldap (3.4.5-1) unstable; urgency=medium\n \n   * New upstream version 3.4.5\ndiff --git a/debian/control b/debian/control\nindex 6fc89f5..979ed33 100644\n--- a/debian/control\n+++ b/debian/control\n@@ -1,7 +1,8 @@\n Source: python-ldap\n Section: python\n Priority: optional\n-Maintainer: Debian Python Team <team+python@tracker.debian.org>\n+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>\n+XSBC-Original-Maintainer: Debian Python Team <team+python@tracker.debian.org>\n Uploaders:\n  Willem van den Akker <wvdakker@wilsoft.nl>,\n  Michael Fladischer <fladi@debian.org>,\ndiff --git a/debian/tests/apparmor.sh b/debian/tests/apparmor.sh\nnew file mode 100644\nindex 0000000..7840386\n--- /dev/null\n+++ b/debian/tests/apparmor.sh\n@@ -0,0 +1,58 @@\n+# apparmor profile adjustments during testing\n+\n+if command -v aa-enabled > /dev/null; then\n+\tapparmor_enabled=$(test \"$(aa-enabled)\" = \"Yes\" && echo true || echo false)\n+else\n+\tapparmor_enabled=false\n+fi\n+\n+_apparmor_check() {\n+\t# allow command to fail if running on Ubuntu-armhf (due to LP: #2008393)\n+\t\"$@\" && return 0\n+\t_ret=$?\n+\n+\tif [ \"$(dpkg-vendor --query Vendor)-$(dpkg --print-architecture)\" = \"Ubuntu-armhf\" ]; then\n+\t\techo \"WARNING: failed to perform apparmor command: $*\" >&2\n+\t\techo \"On armhf and Ubuntu DEP8 infrastructure, this is not a fatal error.\" >&2\n+\t\techo \"See LP: #2008393 for details.\" >&2\n+\t\treturn 0\n+\tfi\n+\n+\techo \"apparmor command failed: $*\" >&2\n+\texit $_ret\n+}\n+\n+_apparmor_cleanup() {\n+\tif [ \"$apparmor_enabled\" = true ]; then\n+\t\techo \"reverting apparmor adjustments...\"\n+\t\tsudo rm /etc/apparmor.d/local/usr.sbin.slapd\n+\n+\t\tif [ -f /etc/apparmor.d/local/usr.sbin.slapd.bak ]; then\n+\t\t\tsudo mv /etc/apparmor.d/local/usr.sbin.slapd.bak /etc/apparmor.d/local/usr.sbin.slapd\n+\t\tfi\n+\n+\t\t_apparmor_check sudo apparmor_parser -W -T -r /etc/apparmor.d/usr.sbin.slapd\n+\tfi\n+}\n+\n+apparmor_setup() {\n+\t# if apparmor is used, allow access to test directory\n+\tif [ \"$apparmor_enabled\" = true ]; then\n+\t\t_apparmor_allowdir=$1\n+\t\tif [ -z \"$_apparmor_allowdir\" ]; then\n+\t\t\techo \"no directory to allow given to apparmor_setup\"\n+\t\t\texit 1\n+\t\tfi\n+\t\ttrap \"_apparmor_cleanup\" EXIT\n+\n+\t\tif [ -f /etc/apparmor.d/local/usr.sbin.slapd ]; then\n+\t\t\tsudo mv /etc/apparmor.d/local/usr.sbin.slapd /etc/apparmor.d/local/usr.sbin.slapd.bak\n+\t\tfi\n+\n+\t\t# this directory is like /etc/slapd\n+\t\techo \"allowing $_apparmor_allowdir in apparmor...\"\n+\t\techo \"$_apparmor_allowdir/** kwr,\" | sudo tee -a /etc/apparmor.d/local/usr.sbin.slapd\n+\n+\t\t_apparmor_check sudo apparmor_parser -W -T -r /etc/apparmor.d/usr.sbin.slapd\n+\tfi\n+}\ndiff --git a/debian/tests/control b/debian/tests/control\nindex acc61ac..d12bef3 100644\n--- a/debian/tests/control\n+++ b/debian/tests/control\n@@ -9,3 +9,4 @@ Depends:\n  @builddeps@,\n Restrictions:\n  allow-stderr,\n+ needs-sudo,\ndiff --git a/debian/tests/startserver b/debian/tests/startserver\nindex 17f0ed3..3259dec 100644\n--- a/debian/tests/startserver\n+++ b/debian/tests/startserver\n@@ -2,6 +2,10 @@\n \n set -e\n \n+. debian/tests/apparmor.sh\n+\n+apparmor_setup ${AUTOPKGTEST_TMP}\n+\n cd ${AUTOPKGTEST_TMP}\n for p in $(py3versions -s); do\n     $p -c \"import slapdtest; server = slapdtest.SlapdObject(); server.start(); assert server.port > 0 and server.port < 65536; server.stop()\"\ndiff --git a/debian/tests/upstream b/debian/tests/upstream\nindex ec5712b..c8e1513 100644\n--- a/debian/tests/upstream\n+++ b/debian/tests/upstream\n@@ -2,6 +2,10 @@\n \n set -e\n \n+. debian/tests/apparmor.sh\n+\n+apparmor_setup ${AUTOPKGTEST_TMP}\n+\n cp -r Tests ${AUTOPKGTEST_TMP}\n cd ${AUTOPKGTEST_TMP}\n for p in $(py3versions -s); do\n",
+ "diff_truncated": false
+}

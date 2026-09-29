@@ -1,0 +1,23 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~k-ubuntu-s/ubuntu/+source/ubiquity/+git/ubiquity/+merge/495820",
+ "id": "495820",
+ "title": "Forget saved Wifi connections created during OEM installation. This did show Wifi connection to end-users after the initial setup, including Wifi passwords.",
+ "source_branch": "fix/forget-oem-wifi",
+ "target_branch": "ubuntu/devel",
+ "revision": "e055dd14f114acc321ab4eea4b4661f1040821b9",
+ "base_revision": "f5f88590c32e75181953bca04e79c9d6d616d06a",
+ "description": "Forget saved Wifi connections created during OEM installation. This did show Wifi connection to end-users after the initial setup, including Wifi passwords.",
+ "commit_message": null,
+ "diffstat": {
+  "bin/oem-config-prepare": [
+   2,
+   1
+  ]
+ },
+ "files": 1,
+ "added_lines": 2,
+ "removed_lines": 1,
+ "diff": "diff --git a/bin/oem-config-prepare b/bin/oem-config-prepare\nindex fba5680..e633819 100755\n--- a/bin/oem-config-prepare\n+++ b/bin/oem-config-prepare\n@@ -26,7 +26,8 @@ if [ \"$(id -u)\" = 0 ]; then\n \trm -f /etc/NetworkManager/system-connections/*\n \n \t# Potentially sensitive.\n-\trm -f /home/oem/.ssh/known_hosts\n+\trm -f /home/oem/.ssh/known_hosts \\\n+\t      /etc/netplan/90-*.yaml\n \n \tcp -a /usr/lib/oem-config/oem-config.service /lib/systemd/system\n \tcp -a /usr/lib/oem-config/oem-config.target /lib/systemd/system\n",
+ "diff_truncated": false
+}

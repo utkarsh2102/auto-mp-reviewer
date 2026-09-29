@@ -1,0 +1,27 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~xnox/britney/+git/britney2-ubuntu/+merge/398270",
+ "id": "398270",
+ "title": "suiteloader: add configuration option whether to load udebs.",
+ "source_branch": "ignore-di",
+ "target_branch": "master",
+ "revision": "abc3c9d21f66547fcda4c94876cf9d2bb73c099d",
+ "base_revision": "a3da16e7714f032f264a1cd8817f98d102815731",
+ "description": "Redone as a new config option.",
+ "commit_message": "suiteloader: add configuration option whether to load udebs.\n\nudebs do not have symbol versioned shlibdeps, thus it means that when\nthere is glibc in proposed, any packages built in proposed get a udeb\ndepends on the strictly higher version of glibc in proposed. This\nleads to entaglement of the $world with glibc transition. Similar\nstory with glib, openssl, etc.\n\nBy setting the new configuration option to HAS_UDEBS = no, one can\nmake suiteloader not look at udebs, and thus use britney even when\ninstallability of udebs is not required.",
+ "diffstat": {
+  "britney2/inputs/suiteloader.py": [
+   17,
+   12
+  ],
+  "britney.conf": [
+   3,
+   0
+  ]
+ },
+ "files": 2,
+ "added_lines": 20,
+ "removed_lines": 12,
+ "diff": "diff --git a/britney.conf b/britney.conf\nindex 74ecd4b..62403bd 100644\n--- a/britney.conf\n+++ b/britney.conf\n@@ -44,6 +44,9 @@ BREAK_ARCHES      =\n # if you're in this list, you are a new architecture\n NEW_ARCHES        =\n \n+# should udebs be looked at?\n+HAS_UDEBS         = yes\n+\n # priorities and delays\n MINDAYS_LOW       = 0\n MINDAYS_MEDIUM    = 0\ndiff --git a/britney2/inputs/suiteloader.py b/britney2/inputs/suiteloader.py\nindex 964f239..14e7462 100644\n--- a/britney2/inputs/suiteloader.py\n+++ b/britney2/inputs/suiteloader.py\n@@ -316,6 +316,10 @@ class DebMirrorLikeSuiteContentLoader(SuiteContentLoader):\n             pkg = get_field('Package')\n             version = get_field('Version')\n             section = get_field('Section')\n+            if getattr(self._base_config, 'has_udebs', 'yes') != 'yes':\n+                filename = get_field('Filename')\n+                if filename.endswith('.udeb'):\n+                    continue\n \n             # There may be multiple versions of any arch:all packages\n             # (in unstable) if some architectures have out-of-date\n@@ -489,22 +493,23 @@ class DebMirrorLikeSuiteContentLoader(SuiteContentLoader):\n                                             binary_dir,\n                                             'Packages')\n                     filename = possibly_compressed(filename)\n-                    udeb_filename = os.path.join(basedir,\n-                                                 component,\n-                                                 \"debian-installer\",\n-                                                 binary_dir,\n-                                                 \"Packages\")\n-                    # We assume the udeb Packages file is present if the\n-                    # regular one is present\n-                    udeb_filename = possibly_compressed(udeb_filename)\n                     self._read_packages_file(filename,\n                                              arch,\n                                              suite.sources,\n                                              packages)\n-                    self._read_packages_file(udeb_filename,\n-                                             arch,\n-                                             suite.sources,\n-                                             packages)\n+                    if getattr(self._base_config, 'has_udebs', 'yes') == 'yes':\n+                        udeb_filename = os.path.join(basedir,\n+                                                     component,\n+                                                     \"debian-installer\",\n+                                                     binary_dir,\n+                                                     \"Packages\")\n+                        # We assume the udeb Packages file is present if the\n+                        # regular one is present\n+                        udeb_filename = possibly_compressed(udeb_filename)\n+                        self._read_packages_file(udeb_filename,\n+                                                 arch,\n+                                                 suite.sources,\n+                                                 packages)\n                 # create provides\n                 provides = create_provides_map(packages)\n                 binaries[arch] = packages\n",
+ "diff_truncated": false
+}

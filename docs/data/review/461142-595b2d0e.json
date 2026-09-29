@@ -1,0 +1,23 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~upils/britney/+git/hints-ubuntu/+merge/461142",
+ "id": "461142",
+ "title": "force-badtest armhf tests for python-tornado",
+ "source_branch": "python-tornado-flaky-tests",
+ "target_branch": "devel",
+ "revision": "1527958a37f2b9960df01458a5a1639d56009219",
+ "base_revision": "e197d33cc8db4164d6644ffffcceee7adff0067c",
+ "description": "The SimpleHTTPSClientTestCase.test_request_timeout test is flaky apparently due to a timeout while establishing the SSL connection.\n\nTest logs show it can pass, but after retrying several times without success, I think a hint maybe better suited.\n\nI did not notice this issue on other architectures. ",
+ "commit_message": "force-badtest armhf tests for python-tornado",
+ "diffstat": {
+  "ubuntu-release": [
+   4,
+   0
+  ]
+ },
+ "files": 1,
+ "added_lines": 4,
+ "removed_lines": 0,
+ "diff": "diff --git a/ubuntu-release b/ubuntu-release\nindex d3d6e27..613f352 100644\n--- a/ubuntu-release\n+++ b/ubuntu-release\n@@ -81,3 +81,7 @@ force-skiptest apt/2.7.12\n # dpkg already running, some fail to connect to servers like exim4, datefudge\n # has a hilarious off-by-one-second error.\n force-skiptest glibc/2.39-0ubuntu2\n+\n+# The SimpleHTTPSClientTestCase.test_request_timeout test is flaky apparently due to a\n+# timeout while establishing the SSL connection.\n+force-badtest python-tornado/all/armhf\n",
+ "diff_truncated": false
+}

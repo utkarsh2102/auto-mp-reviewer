@@ -1,0 +1,27 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~philroche/ubuntu/+source/google-guest-agent/+git/google-guest-agent/+merge/442648",
+ "id": "442648",
+ "title": "fix: Add --no-stop-on-upgrade for upgrade path",
+ "source_branch": "feature/ubuntu/mantic-devel-no-start-services-on-upgrade",
+ "target_branch": "ubuntu/mantic-devel",
+ "revision": "b91792d99f9d125428de4cc8b98187d7db3b6825",
+ "base_revision": "bed86f74fa68a6a692037f1aa12e93c3ff277cb0",
+ "description": null,
+ "commit_message": "fix: Add --no-stop-on-upgrade for upgrade path\n\n* debian/rules: Add --no-stop-on-upgrade for upgrade path for\n  google-startup-scripts.service google-shutdown-scripts.service\n  to enforce no stop of these service on package upgrade.\n  This has the desired side-effect of not stopping, starting or\n  restarting the services as a part of the upgrade.\n  Previously an upgrade of the google-guest-agent package would\n  restart google-startup-scripts.service and\n  google-shutdown-scripts.service which was unexpected and\n  if google-shutdown-scripts was performing destructive actions\n  then this could cause issues.\n\n  This also removes the confusingly named `--no-restart-on-upgrade`\n  option which actually does result in a service restart via the\n  service to being stopped in the prerm script and started again in\n  the postinst script (LP: #2019089)",
+ "diffstat": {
+  "debian/changelog": [
+   10,
+   0
+  ],
+  "debian/rules": [
+   1,
+   1
+  ]
+ },
+ "files": 2,
+ "added_lines": 11,
+ "removed_lines": 1,
+ "diff": "diff --git a/debian/changelog b/debian/changelog\nindex f166009..6414aa6 100644\n--- a/debian/changelog\n+++ b/debian/changelog\n@@ -1,3 +1,13 @@\n+google-guest-agent (20230426.00-0ubuntu2) mantic; urgency=medium\n+\n+    * debian/rules: Add --no-stop-on-upgrade for upgrade path for\n+      google-startup-scripts.service google-shutdown-scripts.service\n+      to enforce no stop of these service on package upgrade.\n+      This has the desired side-effect of not stopping, starting or\n+      restarting the services as a part of the upgrade (LP: #2019089)\n+\n+ -- Phil Roche <phil.roche@canonical.com>  Fri, 12 May 2023 13:01:49 +0100\n+\n google-guest-agent (20230426.00-0ubuntu1) mantic; urgency=medium\n \n   * New upstream version 20230426.00. (LP: #2018272)\ndiff --git a/debian/rules b/debian/rules\nindex c455868..acde0ad 100755\n--- a/debian/rules\n+++ b/debian/rules\n@@ -17,7 +17,7 @@ override_dh_auto_install:\n \n override_dh_installsystemd:\n \tdh_installsystemd google-guest-agent.service\n-\tdh_installsystemd --no-start --no-restart-after-upgrade google-startup-scripts.service google-shutdown-scripts.service\n+\tdh_installsystemd --no-start --no-stop-on-upgrade google-startup-scripts.service google-shutdown-scripts.service\n \n override_dh_clean:\n \tdh_clean vendor/\n",
+ "diff_truncated": false
+}

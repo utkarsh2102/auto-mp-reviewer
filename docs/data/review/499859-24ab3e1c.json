@@ -1,0 +1,31 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~vicamo/ubuntu/+source/libcamera/+git/libcamera/+merge/499859",
+ "id": "499859",
+ "title": "* pipeline: simple: Enable simple pipelinehandler with SoftISP on Intel IPU7 (LP: #2139494)",
+ "source_branch": "bug-2139494/intel-ipu7/questing-mp",
+ "target_branch": "ubuntu/questing-devel",
+ "revision": "21202f1900adc84c6f231fbf712e144afbb03b49",
+ "base_revision": "cff0d4614b5ff0c9feda97b161e323f45e82bdfd",
+ "description": null,
+ "commit_message": "* pipeline: simple: Enable simple pipelinehandler with SoftISP on Intel IPU7 (LP: #2139494)",
+ "diffstat": {
+  "debian/changelog": [
+   7,
+   0
+  ],
+  "debian/patches/pipeline-simple-Enable-simple-pipelinehandler-with-SoftIS.patch": [
+   41,
+   0
+  ],
+  "debian/patches/series": [
+   1,
+   0
+  ]
+ },
+ "files": 3,
+ "added_lines": 49,
+ "removed_lines": 0,
+ "diff": "diff --git a/debian/changelog b/debian/changelog\nindex d469fa2..7152679 100644\n--- a/debian/changelog\n+++ b/debian/changelog\n@@ -1,3 +1,10 @@\n+libcamera (0.5.0-1ubuntu5) questing; urgency=medium\n+\n+  * pipeline: simple: Enable simple pipelinehandler with SoftISP on Intel IPU7\n+    (LP: #2139494)\n+\n+ -- You-Sheng Yang <vicamo@gmail.com>  Sat, 31 Jan 2026 22:38:36 +0800\n+\n libcamera (0.5.0-1ubuntu4) questing; urgency=medium\n \n   * Rebuild against libpisp\ndiff --git a/debian/patches/pipeline-simple-Enable-simple-pipelinehandler-with-SoftIS.patch b/debian/patches/pipeline-simple-Enable-simple-pipelinehandler-with-SoftIS.patch\nnew file mode 100644\nindex 0000000..ab813ca\n--- /dev/null\n+++ b/debian/patches/pipeline-simple-Enable-simple-pipelinehandler-with-SoftIS.patch\n@@ -0,0 +1,41 @@\n+From: Hans de Goede <hansg@kernel.org>\n+Date: Fri, 29 Aug 2025 18:04:25 +0200\n+Subject: pipeline: simple: Enable simple pipelinehandler with SoftISP on\n+ Intel IPU7\n+\n+Enable the simple pipelinehandler with SoftISP on Intel IPU7 machines.\n+\n+This has been successfully tested with the IPU7 CSI2 receiver driver in\n+drivers/media/staging in kernel version 6.17-rc# on a Lenovo ThinkPad X1\n+Carbon Gen 13 (Lunar Lake, ov08x40 sensor).\n+\n+On this specific laptop a couple of kernel patches which are pending\n+upstream are necessary on top of 6.17-rc#:\n+\n+https://lore.kernel.org/linux-usb/20250809102326.6032-1-hansg@kernel.org/\n+https://lore.kernel.org/linux-acpi/20250829142748.21089-1-hansg@kernel.org/\n+\n+Tested-by: Hans de Goede <hansg@kernel.org> # Lenovo ThinkPad Carbon X1 Gen 13\n+Signed-off-by: Hans de Goede <hansg@kernel.org>\n+Reviewed-by: Kieran Bingham <kieran.bingham@ideasonboard.com>\n+Reviewed-by: Paul Elder <paul.elder@ideasonboard.com>\n+Signed-off-by: Kieran Bingham <kieran.bingham@ideasonboard.com>\n+Bug-Ubuntu: https://bugs.launchpad.net/bugs/2139494\n+Origin: upstream, https://github.com/raspberrypi/libcamera/commit/473e2dc89323863e47fbe5c210581e7cc891dedd\n+Signed-off-by: You-Sheng Yang <vicamo@gmail.com>\n+---\n+ src/libcamera/pipeline/simple/simple.cpp | 1 +\n+ 1 file changed, 1 insertion(+)\n+\n+diff --git a/src/libcamera/pipeline/simple/simple.cpp b/src/libcamera/pipeline/simple/simple.cpp\n+index 4323472..b15f5d4 100644\n+--- a/src/libcamera/pipeline/simple/simple.cpp\n++++ b/src/libcamera/pipeline/simple/simple.cpp\n+@@ -252,6 +252,7 @@ static const SimplePipelineInfo supportedDevices[] = {\n+ \t{ \"dcmipp\", {}, false },\n+ \t{ \"imx7-csi\", { { \"pxp\", 1 } }, false },\n+ \t{ \"intel-ipu6\", {}, true },\n++\t{ \"intel-ipu7\", {}, true },\n+ \t{ \"j721e-csi2rx\", {}, true },\n+ \t{ \"mtk-seninf\", { { \"mtk-mdp\", 3 } }, false },\n+ \t{ \"mxc-isi\", {}, false },\ndiff --git a/debian/patches/series b/debian/patches/series\nindex 70d2f7f..c7df7f8 100644\n--- a/debian/patches/series\n+++ b/debian/patches/series\n@@ -3,3 +3,4 @@ skip_failing_tests.patch\n Disable_libunwind_integration.patch\n add_syncmode_and_tensors.patch\n fix_pisp_cfe_entities.patch\n+pipeline-simple-Enable-simple-pipelinehandler-with-SoftIS.patch\n",
+ "diff_truncated": false
+}

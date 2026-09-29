@@ -1,0 +1,27 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~ravi-sharma/ubuntu/+source/openssl/+git/openssl/+merge/496882",
+ "id": "496882",
+ "title": "jammy-sru-2025-11 → ubuntu/jammy-devel",
+ "source_branch": "jammy-sru-2025-11",
+ "target_branch": "ubuntu/jammy-devel",
+ "revision": "74f6f7548399f3f63280fa1bb4965747ef0d15bb",
+ "base_revision": "9f35e44a29878fe83cd9841db77f1e3dd10e6330",
+ "description": null,
+ "commit_message": null,
+ "diffstat": {
+  "debian/changelog": [
+   7,
+   0
+  ],
+  "debian/rules": [
+   1,
+   1
+  ]
+ },
+ "files": 2,
+ "added_lines": 8,
+ "removed_lines": 1,
+ "diff": "diff --git a/debian/changelog b/debian/changelog\nindex 85b19d7..bec2908 100644\n--- a/debian/changelog\n+++ b/debian/changelog\n@@ -1,3 +1,10 @@\n+openssl (3.0.2-0ubuntu1.21) jammy; urgency=medium\n+\n+  [ Sebastian Andrzej Siewior ]\n+  * enables enable-ec_nistp_64_gcc_128 optimization on multiple 64-bit architectures (LP: #2130576).\n+\n+ -- Ravi Kant Sharma <ravi.kant.sharma@canonical.com>  Wed, 03 Dec 2025 15:57:45 +0100\n+\n openssl (3.0.2-0ubuntu1.20) jammy-security; urgency=medium\n \n   * SECURITY UPDATE: Out-of-bounds read & write in RFC 3211 KEK Unwrap\ndiff --git a/debian/rules b/debian/rules\nindex 85a2979..d30e1d9 100755\n--- a/debian/rules\n+++ b/debian/rules\n@@ -41,7 +41,7 @@ else\n \tTESTSUITE_FLAGS =\n endif\n \n-ifeq ($(DEB_HOST_ARCH_CPU), amd64)\n+ifneq ($(filter amd64 arm64 ppc64el riscv64,$(DEB_HOST_ARCH_CPU)),)\n \tCONFARGS += enable-ec_nistp_64_gcc_128\n endif\n \n",
+ "diff_truncated": false
+}

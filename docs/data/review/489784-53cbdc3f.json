@@ -1,0 +1,23 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~juliank/britney/+git/britney2-ubuntu/+merge/489784",
+ "id": "489784",
+ "title": "master → master",
+ "source_branch": "master",
+ "target_branch": "master",
+ "revision": "6fb3390976e74f8a5d722016b1cba5e312712cac",
+ "base_revision": "3bbf1d5866c6755467cbe0482dbbc09a6d8eba45",
+ "description": null,
+ "commit_message": null,
+ "diffstat": {
+  "run-local.sh": [
+   63,
+   0
+  ]
+ },
+ "files": 1,
+ "added_lines": 63,
+ "removed_lines": 0,
+ "diff": "diff --git a/run-local.sh b/run-local.sh\nnew file mode 100644\nindex 0000000..62fbfb4\n--- /dev/null\n+++ b/run-local.sh\n@@ -0,0 +1,63 @@\n+#!/bin/sh\n+#\n+# Script to locally run britney1 and britney2 for Ubuntu\n+#\n+# You can pass it additional options for britney1 such a\n+#\n+#   hints_git    To download hints\n+#   blocks       To download block bugs\n+#   excuse_bugs  To download bugs labelled excuses\n+#\n+# Determine our countainer run time\n+cr=docker\n+if command -v podman >/dev/null; then\n+    cr=podman\n+fi\n+\n+# Disable ADT, you could also set it to dry-run\n+sed 's#ADT_ENABLE.*=.*yes.*#ADT_ENABLE = no#' britney.conf -i\n+\n+# Create and/or update the mirror\n+mkdir -p dists output\n+for src in rsync://archive.ubuntu.com/ubuntu/ rsync://ports.ubuntu.com/ubuntu-ports/; do\n+    rsync -aP  \"$src/dists/$(distro-info --devel)*\" dists/  --exclude=by-hash --include=\"*/\"  --include=Release --include='Packages.gz' --include='Sources.gz' --exclude=\"*\"\n+done\n+\n+# Build a image to run britney in\n+# This is convenient due to layer caching, if the files are up-to-date there is nothing to do\n+$cr build -f - --tag britney << EOF\n+TAG britney\n+FROM ubuntu:noble\n+ENV DEBIAN_FRONTEND=noninteractive\n+\n+# Install the britney dependencies\n+RUN apt update && apt install git brz procmail python3-apt python3-yaml rsync distro-info -y\n+\n+# Create the necessary directories for britney1 to run britney2\n+RUN mkdir -p /home/ubuntu-archive/proposed-migration/code/b{1,2} && \\\n+    mkdir -p /home/ubuntu-archive/mirror && \\\n+    mkdir -p /home/ubuntu-archive/proposed-migration/data/$(distro-info --devel)-proposed/state && \\\n+    mkdir -p /home/ubuntu-archive/proposed-migration/data/$(distro-info --devel)/state && \\\n+    mkdir -p /home/ubuntu-archive/proposed-migration/var/lock && \\\n+    mkdir -p /home/ubuntu-archive/proposed-migration/var/data\n+\n+# Needs to be readable but is not used\n+RUN touch /home/ubuntu-archive/proposed-migration/amqp-password.txt\n+# This contains the list of block bugs, but we don't want block bugs, so skip them\n+RUN touch /home/ubuntu-archive/proposed-migration/data/$(distro-info --devel)-proposed/Blocks\n+\n+# For some reason this is a symlink that I can't quite figure out\n+RUN ln -s ../data /home/ubuntu-archive/proposed-migration/var/data-b2\n+\n+WORKDIR /home/ubuntu-archive/proposed-migration\n+\n+# Add hints_git 'blocks' and 'excuse_bugs' if you have the time\n+ENTRYPOINT [\"/home/ubuntu-archive/proposed-migration/code/b1/britney\" ,\"pkglists\", \"run\"]\n+EOF\n+\n+# Run the image\n+$cr run -v ../britney1-ubuntu:/home/ubuntu-archive/proposed-migration/code/b1 \\\n+                                                          -v .:/home/ubuntu-archive/proposed-migration/code/b2 \\\n+                                                          -v $PWD/dists:/home/ubuntu-archive/mirror/ubuntu/dists \\\n+                                                          -v $PWD/output:/home/ubuntu-archive/proposed-migration/output \\\n+                                                          --rm -it britney \"$@\"\n",
+ "diff_truncated": false
+}

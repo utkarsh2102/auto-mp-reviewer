@@ -1,0 +1,31 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~xypron/ubuntu/+source/ubuntu-release-upgrader/+git/ubuntu-release-upgrader/+merge/482570",
+ "id": "482570",
+ "title": "lp-2101845 → ubuntu/devel",
+ "source_branch": "lp-2101845",
+ "target_branch": "ubuntu/devel",
+ "revision": "c37b42ec2b3b87ea8ff5959d8201971c3f57df3d",
+ "base_revision": "746784cad26244c7ea96164dcf03d044c4a75149",
+ "description": null,
+ "commit_message": null,
+ "diffstat": {
+  "debian/changelog": [
+   7,
+   0
+  ],
+  "debian/tests/control": [
+   1,
+   0
+  ],
+  "tests/test_end_of_life.py": [
+   13,
+   0
+  ]
+ },
+ "files": 3,
+ "added_lines": 21,
+ "removed_lines": 0,
+ "diff": "diff --git a/debian/changelog b/debian/changelog\nindex 565088c..f5c99df 100644\n--- a/debian/changelog\n+++ b/debian/changelog\n@@ -1,5 +1,6 @@\n ubuntu-release-upgrader (1:25.04.9) plucky; urgency=medium\n \n+<<<<<<< debian/changelog\n   [ Heinrich Schuchardt ]\n   * tests/test_end_of_life: add missing import platform (LP: #2101845)\n \n@@ -8,6 +9,12 @@ ubuntu-release-upgrader (1:25.04.9) plucky; urgency=medium\n   * Run pre-build.sh: updating mirrors and translations.\n \n  -- Nick Rosbrook <enr0n@ubuntu.com>  Mon, 10 Mar 2025 16:11:55 -0400\n+=======\n+  * Add missing 'import platform' in test/test_end_of_life\n+    (LP: #2101845)\n+\n+ -- Heinrich Schuchardt <heinrich.schuchardt@canonical.com>  Mon, 10 Mar 2025 15:40:11 +0100\n+>>>>>>> debian/changelog\n \n ubuntu-release-upgrader (1:25.04.8) plucky; urgency=medium\n \ndiff --git a/debian/tests/control b/debian/tests/control\nindex e688c22..46789cc 100644\n--- a/debian/tests/control\n+++ b/debian/tests/control\n@@ -2,6 +2,7 @@ Tests: nose-tests\n Depends: gir1.2-webkit2-4.1,\n          pycodestyle,\n          python3-apport,\n+         python3-gi,\n          python3-mock,\n          python3-nose,\n          xvfb,\ndiff --git a/tests/test_end_of_life.py b/tests/test_end_of_life.py\nindex 9ea322d..194e58e 100644\n--- a/tests/test_end_of_life.py\n+++ b/tests/test_end_of_life.py\n@@ -1,5 +1,15 @@\n #!/usr/bin/python3\n \n+<<<<<<< tests/test_end_of_life.py\n+=======\n+import gi\n+\n+gi.require_version('Gtk', '3.0')\n+from gi.repository import Gtk, GLib\n+from mock import patch\n+\n+import mock\n+>>>>>>> tests/test_end_of_life.py\n import os\n import platform\n import subprocess\n@@ -25,9 +35,11 @@ class TestDistroEndOfLife(unittest.TestCase):\n             update-manager when it detects that the running\n             distribution is no longer supported\n         \"\"\"\n+\n         def _nag_dialog_close_helper(checker):\n             # this helper is called to close the checker\n             checker.close()\n+\n         # ----\n         try:\n             from check_new_release_gtk import CheckNewReleaseGtk\n@@ -67,5 +79,6 @@ class TestDistroEndOfLife(unittest.TestCase):\n \n if __name__ == \"__main__\":\n     import logging\n+\n     logging.basicConfig(level=logging.DEBUG)\n     unittest.main()\n",
+ "diff_truncated": false
+}

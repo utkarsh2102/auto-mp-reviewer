@@ -1,0 +1,23 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~xnox/britney/+git/hints-ubuntu/+merge/407970",
+ "id": "407970",
+ "title": "# Currently raspi arm64 kernel fails to boot in scalingstack making it",
+ "source_branch": "devel",
+ "target_branch": "devel",
+ "revision": "5adbc02f60e48cddc61de36cce27221575c48b3e",
+ "base_revision": "25a76c7923b19a55d8f700d9d53d46239b1430f9",
+ "description": null,
+ "commit_message": "# Currently raspi arm64 kernel fails to boot in scalingstack making it\n# impossible to run ADT dkms tests. Multiple IS tickets are filed to\n# get access to scalingstack to investigate failures as well as\n# requests to upgrade arm64 scalingstack qemu. kernel-testing already\n# unblocked this kernel & NBS has been cleaned up thus it is ready to\n# migrate to impish-release.\nforce-skiptest linux-meta-raspi/5.13.0.1006.12",
+ "diffstat": {
+  "ubuntu-release": [
+   8,
+   0
+  ]
+ },
+ "files": 1,
+ "added_lines": 8,
+ "removed_lines": 0,
+ "diff": "diff --git a/ubuntu-release b/ubuntu-release\nindex fc1ef11..57b9d35 100644\n--- a/ubuntu-release\n+++ b/ubuntu-release\n@@ -11796,3 +11796,11 @@ force-badtest systemd/248.3-1ubuntu1/armhf\n \n # armhf autopkgtest images can't currently use ping, hint for glibc migration\n force-reset-test r-cran-sys/3.4-1/armhf\n+\n+# Currently raspi arm64 kernel fails to boot in scalingstack making it\n+# impossible to run ADT dkms tests. Multiple IS tickets are filed to\n+# get access to scalingstack to investigate failures as well as\n+# requests to upgrade arm64 scalingstack qemu. kernel-testing already\n+# unblocked this kernel & NBS has been cleaned up thus it is ready to\n+# migrate to impish-release.\n+force-skiptest linux-meta-raspi/5.13.0.1006.12\n",
+ "diff_truncated": false
+}

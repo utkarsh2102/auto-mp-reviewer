@@ -1,0 +1,27 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~xnox/britney/+git/britney2-ubuntu/+merge/445460",
+ "id": "445460",
+ "title": "force-skiptest: allow '/all' version specifier",
+ "source_branch": "force-skiptest-all",
+ "target_branch": "master",
+ "revision": "6be2106caac9b4661fa1f8369a3f28c7b379e8b4",
+ "base_revision": "008fc3c065d69be17f96f4ea0011d4b8a424a06d",
+ "description": null,
+ "commit_message": "force-skiptest: allow '/all' version specifier\n\nCurrently many kernels produce arch-all packages, and they seem to\ntrigger tests for many packages (hardcoded list + all dkms) on all\narches, even for kernels that do not exist on a given arch, or cannot\nbe tested.\n\nAt the moment this leads to a lot of test requests that are\nimpossible.\n\nAdd ability to specify a hint to prevent wiating on such\nresults. Specifically we currently need:\n\nforce-skiptest linux-meta-raspi/all\nforce-skiptest linux-meta-riscv/all\nforce-skiptest linux-meta-starfive/all\n",
+ "diffstat": {
+  "tests/test_autopkgtest.py": [
+   26,
+   0
+  ],
+  "britney2/policies/autopkgtest.py": [
+   2,
+   1
+  ]
+ },
+ "files": 2,
+ "added_lines": 28,
+ "removed_lines": 1,
+ "diff": "diff --git a/britney2/policies/autopkgtest.py b/britney2/policies/autopkgtest.py\nindex 546a03c..6606270 100644\n--- a/britney2/policies/autopkgtest.py\n+++ b/britney2/policies/autopkgtest.py\n@@ -510,7 +510,8 @@ class AutopkgtestPolicy(BasePolicy):\n \n         if verdict != PolicyVerdict.PASS:\n             # check for force-skiptest hint\n-            hints = self.hints.search('force-skiptest', package=source_name, version=source_data_srcdist.version)\n+            hints = self.hints.search('force-skiptest', package=source_name, version=source_data_srcdist.version) +  \\\n+                self.hints.search('force-skiptest', package=source_name, version='all')\n             if hints:\n                 excuse.addreason('skiptest')\n                 excuse.addinfo(\"Should wait for tests relating to %s %s, but forced by %s\" %\ndiff --git a/tests/test_autopkgtest.py b/tests/test_autopkgtest.py\nindex 5c7bb72..825225a 100644\n--- a/tests/test_autopkgtest.py\n+++ b/tests/test_autopkgtest.py\n@@ -2056,6 +2056,32 @@ class AT(TestAutopkgtestBase):\n                        ('excuses', 'Should wait for tests relating to green 2, but forced by autopkgtest')]\n              })\n \n+    def test_hint_force_skiptest_versionall(self):\n+        '''force-skiptest hint'''\n+\n+        self.data.add_default_packages(green=False)\n+\n+        self.create_hint('autopkgtest', 'force-skiptest green/all')\n+\n+        # regression of green, darkgreen ok, lightgreen running\n+        self.set_results({'autopkgtest-testing': {\n+            'testing/i386/g/green/20150101_100000@': (0, 'green 1', tr('passedbefore/1')),\n+            'testing/i386/g/green/20150101_100200@': (4, 'green 2', tr('green/2')),\n+            'testing/i386/d/darkgreen/20150101_100000@': (0, 'darkgreen 1', tr('green/2')),\n+            'testing/amd64/d/darkgreen/20150101_100000@': (0, 'darkgreen 1', tr('green/2')),\n+        }})\n+        self.run_it(\n+            [('libgreen1', {'Version': '2', 'Source': 'green', 'Depends': 'libc6'}, 'autopkgtest')],\n+            {'green': (True, {'green/2': {'amd64': 'RUNNING-ALWAYSFAIL', 'i386': 'REGRESSION'},\n+                              'lightgreen': {'amd64': 'RUNNING-ALWAYSFAIL', 'i386': 'RUNNING-ALWAYSFAIL'},\n+                              'darkgreen/1': {'amd64': 'PASS', 'i386': 'PASS'},\n+                              }),\n+             },\n+            {'green': [('old-version', '1'), ('new-version', '2'),\n+                       ('reason', 'skiptest'),\n+                       ('excuses', 'Should wait for tests relating to green 2, but forced by autopkgtest')]\n+             })\n+\n     def test_hint_force_skiptest_different_version(self):\n         '''force-skiptest hint with non-matching version'''\n \n",
+ "diff_truncated": false
+}

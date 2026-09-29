@@ -1,0 +1,23 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~olivier-martin/ubuntu/+source/pam-pkcs11/+git/pam-pkcs11/+merge/436857",
+ "id": "436857",
+ "title": "Before seeing Paul Wolneykie changes https://github.com/OpenSC/pam_pkcs11/commit/75fe90e29b35593a6a07ffc77b7f26bd611bf5a0, I wrote an almost similar changes. So I kept Paul's changes to ease its integration in debian/pam-pkcs11:master.",
+ "source_branch": "fix-with-ssl3",
+ "target_branch": "ubuntu/devel",
+ "revision": "124eaf07d485c731d382d116a0693018879120ac",
+ "base_revision": "72ea617fbc76be6142e7562cc309083fbc94c094",
+ "description": "Before seeing Paul Wolneykie changes https://github.com/OpenSC/pam_pkcs11/commit/75fe90e29b35593a6a07ffc77b7f26bd611bf5a0, I wrote an almost similar changes. So I kept Paul's changes to ease its integration in debian/pam-pkcs11:master.\n\nThis issue has been seen while using it on Ubuntu 22.04 (failed with segfault).\n\nThe package has been rebuilt with libssl3: http://changelogs.ubuntu.com/changelogs/pool/universe/p/pam-pkcs11/pam-pkcs11_0.6.11-4build2/changelog - that's why I added the #if OPENSSL_VERSION_NUMBER < 0x30000000L to support different Debian-based distribution.",
+ "commit_message": null,
+ "diffstat": {
+  "src/common/cert_vfy.c": [
+   12,
+   0
+  ]
+ },
+ "files": 1,
+ "added_lines": 12,
+ "removed_lines": 0,
+ "diff": "diff --git a/src/common/cert_vfy.c b/src/common/cert_vfy.c\nindex ffdb76e..d8acbb0 100644\n--- a/src/common/cert_vfy.c\n+++ b/src/common/cert_vfy.c\n@@ -521,8 +521,20 @@ int verify_signature(X509 * x509, unsigned char *data, int data_length,\n   if (EVP_PKEY_base_id(pubkey) == EVP_PKEY_EC) {\n     rs_len = *signature_length / 2;\n     ec_sig = ECDSA_SIG_new();\n+\n+#if OPENSSL_VERSION_NUMBER < 0x30000000L\n     BN_bin2bn(*signature, rs_len, ECDSA_SIG_get0_r(ec_sig));\n     BN_bin2bn(*signature + rs_len, rs_len, ECDSA_SIG_get0_s(ec_sig));\n+#else\n+    BIGNUM *r = BN_bin2bn(*signature, rs_len, NULL);\n+    BIGNUM *s = BN_bin2bn(*signature + rs_len, rs_len, NULL);\n+\n+    rv = ECDSA_SIG_set0(ec_sig, r, s);\n+    if (rv != 1) {\n+      set_error(\"ECDSA_SIG_set0() failed.\");\n+      return -1;\n+    }\n+#endif\n     *signature_length = i2d_ECDSA_SIG(ec_sig, &p);\n     free(*signature);\n     *signature = malloc(*signature_length);\n",
+ "diff_truncated": false
+}

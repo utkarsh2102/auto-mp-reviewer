@@ -1,0 +1,23 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~isidroas/ubuntu/+source/command-not-found/+git/command-not-found/+merge/461375",
+ "id": "461375",
+ "title": "Add Homepage key to debian/control",
+ "source_branch": "homepage",
+ "target_branch": "ubuntu/devel",
+ "revision": "11d004a19310f206496b29a07d88fccf52bc3bf0",
+ "base_revision": "e5b0028190026fd6970a2ef18e4a5319bd4d0d1b",
+ "description": "Add Homepage key to debian/control\n\nThis will be shown in `apt show` command\n",
+ "commit_message": "Add Homepage key to debian/control\n\nThis will be shown in `apt show` command\n",
+ "diffstat": {
+  "debian/control": [
+   1,
+   0
+  ]
+ },
+ "files": 1,
+ "added_lines": 1,
+ "removed_lines": 0,
+ "diff": "diff --git a/debian/control b/debian/control\nindex daff7c5..ce57a93 100644\n--- a/debian/control\n+++ b/debian/control\n@@ -14,6 +14,7 @@ Build-Depends: debhelper-compat (= 11),\n Standards-Version: 4.6.0\n Vcs-Git: https://git.launchpad.net/ubuntu/+source/command-not-found \n Vcs-Browser: https://code.launchpad.net/ubuntu/+source/command-not-found\n+Homepage: https://launchpad.net/ubuntu/+source/command-not-found\n \n Package: command-not-found\n Architecture: all\n",
+ "diff_truncated": false
+}

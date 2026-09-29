@@ -1,0 +1,31 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~michal-maloszewski99/ubuntu/+source/iotop/+git/iotop/+merge/444488",
+ "id": "444488",
+ "title": "PPA: https://launchpad.net/~michal-maloszewski99/+archive/ubuntu/lp-1982727-jammy-kernel-ppa",
+ "source_branch": "ubuntu/jammy-devel",
+ "target_branch": "ubuntu/jammy-devel",
+ "revision": "070a3c7fb7fca29b0544f7c24af10b13903a6fdc",
+ "base_revision": "bf475fef2e8a15feb755f82c887df232bd508cec",
+ "description": "PPA: https://launchpad.net/~michal-maloszewski99/+archive/ubuntu/lp-1982727-jammy-kernel-ppa",
+ "commit_message": null,
+ "diffstat": {
+  "debian/patches/series": [
+   1,
+   0
+  ],
+  "debian/patches/lp1982727-config_task_delay_acct.patch": [
+   75,
+   0
+  ],
+  "debian/changelog": [
+   8,
+   0
+  ]
+ },
+ "files": 3,
+ "added_lines": 84,
+ "removed_lines": 0,
+ "diff": "diff --git a/debian/changelog b/debian/changelog\nindex 6e03788..76172b6 100644\n--- a/debian/changelog\n+++ b/debian/changelog\n@@ -1,3 +1,11 @@\n+iotop (0.6-24-g733f3f8-1.1ubuntu0.1) jammy; urgency=medium\n+\n+  * d/p/lp1982727-config_task_delay_acct.patch: Fix the not valid\n+    data coming from iotop by detecting the kernel.task_delayacct\n+    sysctl value. (LP: #1982727)\n+\n+ -- Michal Maloszewski <michal.maloszewski@canonical.com>  Fri, 09 Jun 2023 11:25:54 +0200\n+\n iotop (0.6-24-g733f3f8-1.1build2) jammy; urgency=high\n \n   * No change rebuild for ppc64el baseline bump.\ndiff --git a/debian/patches/lp1982727-config_task_delay_acct.patch b/debian/patches/lp1982727-config_task_delay_acct.patch\nnew file mode 100644\nindex 0000000..cb3d7d5\n--- /dev/null\n+++ b/debian/patches/lp1982727-config_task_delay_acct.patch\n@@ -0,0 +1,75 @@\n+From ab35334d374e588bec12d201fb8869c536f0545d Mon Sep 17 00:00:00 2001\n+From: Paul Wise <pabs3@bonedaddy.net>\n+Date: Sat, 2 Oct 2021 12:13:16 +0800\n+Subject: [PATCH] Detect the kernel.task_delayacct sysctl value\n+\n+If you have ever turned on the kernel.task_delayacct sysctl for the current\n+Linux boot, then the heuristic that iotop uses to find out if swapin/io are\n+available, gives a false negative, so the sysctl has to be checked too now.\n+\n+Origin: upstream, https://repo.or.cz/iotop.git/commit/ab35334d374e588bec12d201fb8869c536f0545d\n+Bug-Ubuntu: https://bugs.launchpad.net/ubuntu/+source/iotop/+bug/1982727\n+Last-Update: 2023-06-09\n+---\n+ iotop/data.py |  8 ++++++++\n+ iotop/ui.py   | 14 +++++++++++---\n+ 2 files changed, 19 insertions(+), 3 deletions(-)\n+\n+--- a/iotop/data.py\n++++ b/iotop/data.py\n+@@ -471,3 +471,11 @@\n+ \n+     def clear(self):\n+         self.processes = {}\n++\n++\n++def sysctl_task_delayacct():\n++    try:\n++        with open('/proc/sys/kernel/task_delayacct') as f:\n++            return bool(int(f.read().strip()))\n++    except FileNotFoundError:\n++        return None\n+--- a/iotop/ui.py\n++++ b/iotop/ui.py\n+@@ -43,7 +43,7 @@\n+ \n+ from collections import OrderedDict\n+ \n+-from iotop.data import find_uids, TaskStatsNetlink, ProcessList, Stats\n++from iotop.data import find_uids, TaskStatsNetlink, ProcessList, Stats, sysctl_task_delayacct\n+ from iotop.data import ThreadInfo\n+ from iotop.version import VERSION\n+ from iotop import ioprio\n+@@ -421,7 +421,7 @@\n+         def format(p):\n+             stats = format_stats(self.options, p, self.process_list.duration)\n+             io_delay, swapin_delay, read_bytes, write_bytes = stats\n+-            if Stats.has_blkio_delay_total:\n++            if self.has_swapin_io:\n+                 delay_stats = '%7s %7s ' % (swapin_delay, io_delay)\n+             else:\n+                 delay_stats = ' ?unavailable?  '\n+@@ -473,6 +473,14 @@\n+             pid += 'TID'\n+         titles = [pid, '  PRIO', '  USER', '     DISK READ', '  DISK WRITE',\n+                   '  SWAPIN', '      IO', '    COMMAND']\n++        self.has_swapin_io = Stats.has_blkio_delay_total\n++        if self.has_swapin_io:\n++            # Linux kernels without the sysctl return None and\n++            # iotop just uses the heuristic for those versions.\n++            # Linux kernels with the sysctl return True or False\n++            # and iotop then uses the sysctl value instead.\n++            if sysctl_task_delayacct() == False:\n++                self.has_swapin_io = False\n+         lines = self.get_data()\n+         if self.options.time:\n+             titles = ['    TIME'] + titles\n+@@ -491,7 +499,7 @@\n+         else:\n+             self.win.erase()\n+ \n+-            if Stats.has_blkio_delay_total:\n++            if self.has_swapin_io:\n+                 status_msg = None\n+             else:\n+                 status_msg = ('CONFIG_TASK_DELAY_ACCT not enabled in kernel, '\ndiff --git a/debian/patches/series b/debian/patches/series\nnew file mode 100644\nindex 0000000..9b35470\n--- /dev/null\n+++ b/debian/patches/series\n@@ -0,0 +1 @@\n+lp1982727-config_task_delay_acct.patch\n",
+ "diff_truncated": false
+}

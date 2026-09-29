@@ -1,0 +1,31 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~levihackerman-102/ubuntu/+source/golang-1.25/+git/golang-1.25/+merge/502159",
+ "id": "502159",
+ "title": "questing-bp → ubuntu/devel",
+ "source_branch": "questing-bp",
+ "target_branch": "ubuntu/devel",
+ "revision": "fd48f6cefefd9cb1fb716de39b47d3ce37557729",
+ "base_revision": "a6fe3a9f144abe0dbcf27c75caa524edd0186bcb",
+ "description": null,
+ "commit_message": null,
+ "diffstat": {
+  "debian/changelog": [
+   6,
+   0
+  ],
+  "debian/control": [
+   2,
+   1
+  ],
+  "debian/control.in": [
+   2,
+   1
+  ]
+ },
+ "files": 3,
+ "added_lines": 10,
+ "removed_lines": 2,
+ "diff": "diff --git a/debian/changelog b/debian/changelog\nindex e2a5983..697fc52 100644\n--- a/debian/changelog\n+++ b/debian/changelog\n@@ -1,3 +1,9 @@\n+golang-1.25 (1.25.7-2~25.10.1) questing; urgency=medium\n+\n+  * Backport to Questing (LP: #2139254)\n+\n+ -- Anshul Singh <anshul.singh@canonical.com>  Wed, 18 Mar 2026 06:48:20 +0000\n+\n golang-1.25 (1.25.7-2) unstable; urgency=medium\n \n   * Team upload.\ndiff --git a/debian/control b/debian/control\nindex 6291060..5d8b6b9 100644\n--- a/debian/control\n+++ b/debian/control\n@@ -3,7 +3,8 @@\n #\n \n Source: golang-1.25\n-Maintainer: Debian Go Compiler Team <team+go-compiler@tracker.debian.org>\n+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>\n+XSBC-Original-Maintainer: Debian Go Compiler Team <team+go-compiler@tracker.debian.org>\n Uploaders: Michael Stapelberg <stapelberg@debian.org>,\n            Paul Tagliamonte <paultag@debian.org>,\n            Tianon Gravi <tianon@debian.org>,\ndiff --git a/debian/control.in b/debian/control.in\nindex a88a15c..b05d266 100644\n--- a/debian/control.in\n+++ b/debian/control.in\n@@ -1,5 +1,6 @@\n Source: golang-X.Y\n-Maintainer: Debian Go Compiler Team <team+go-compiler@tracker.debian.org>\n+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>\n+XSBC-Original-Maintainer: Debian Go Compiler Team <team+go-compiler@tracker.debian.org>\n Uploaders: Michael Stapelberg <stapelberg@debian.org>,\n            Paul Tagliamonte <paultag@debian.org>,\n            Tianon Gravi <tianon@debian.org>,\n",
+ "diff_truncated": false
+}

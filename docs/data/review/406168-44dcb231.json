@@ -1,0 +1,31 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~lucaskanashiro/ubuntu/+source/crmsh/+git/crmsh/+merge/406168",
+ "id": "406168",
+ "title": "Merge version 4.2.1-2 from Debian. This new version allows us to drop some patches applied by upstream.",
+ "source_branch": "merge-impish",
+ "target_branch": "debian/sid",
+ "revision": "11e427bad712384e56388f6932240c576c11ea32",
+ "base_revision": "80b279f08c133be7721ca9d6fc6609e2576bec79",
+ "description": "Merge version 4.2.1-2 from Debian. This new version allows us to drop some patches applied by upstream.\n\nPPA with the proposed package:\n\nhttps://launchpad.net/~lucaskanashiro/+archive/ubuntu/ha-stack\n\nautopkgtest is still happy:\n\nautopkgtest [11:52:26]: @@@@@@@@@@@@@@@@@@@@ summary\ncommand1             PASS\ncommand2             PASS\ncommand3             PASS\nutils.sh             PASS\ntestsuite.sh         PASS\npacemaker-basic-resource.sh PASS\npacemaker-node-status.sh PASS\npacemaker-cluster-init.sh PASS\n",
+ "commit_message": null,
+ "diffstat": {
+  "debian/tests/pacemaker-node-status.sh": [
+   1,
+   1
+  ],
+  "debian/control": [
+   2,
+   1
+  ],
+  "debian/changelog": [
+   49,
+   0
+  ]
+ },
+ "files": 3,
+ "added_lines": 52,
+ "removed_lines": 2,
+ "diff": "diff --git a/debian/changelog b/debian/changelog\nindex 4b4e405..77929a7 100644\n--- a/debian/changelog\n+++ b/debian/changelog\n@@ -1,3 +1,21 @@\n+crmsh (4.2.1-2ubuntu1) impish; urgency=medium\n+\n+  * Merge with Debian unstable. Remaining changes:\n+    - d/t/pacemaker-node-status.sh: Use the output of \"uname -n\" instead\n+      of \"node1\" as the pacemaker node name.\n+  * Dropped:\n+    - Upstream patches with post release fixes\n+      + [997f62d6] Fix: hb_report: disable dump all tasks stack into dmesg\n+      + [cce28254] Fix: crmsh.spec: using mktemp to create tmp file\n+      + [e098387e] Fix: bootstrap: use csync2 '-f' option correctly\n+      + [669f13b5] Fix: bootstrap: Change condition to add stonith-sbd resource\n+      + [ca1f0a7f] Fix: ui_resource: refresh <Tab> should complete resource\n+        first\n+      + [78ce77e4] Low: hb_report: Fix collecting of binary data\n+      [Applied by upstream in version 4.2.1]\n+\n+ -- Lucas Kanashiro <kanashiro@ubuntu.com>  Fri, 23 Jul 2021 09:38:52 -0300\n+\n crmsh (4.2.1-2) unstable; urgency=medium\n \n   * d/patches: include fix for CVE-2020-35459 (Closes: #985376)\n@@ -15,6 +33,25 @@ crmsh (4.2.1-1) unstable; urgency=medium\n \n  -- Valentin Vidic <vvidic@debian.org>  Wed, 03 Feb 2021 22:05:33 +0100\n \n+crmsh (4.2.0-4ubuntu2) impish; urgency=medium\n+\n+  * d/t/pacemaker-node-status.sh: Use the output of \"uname -n\" instead\n+    of \"node1\" as the pacemaker node name.\n+\n+ -- Sergio Durigan Junior <sergio.durigan@canonical.com>  Wed, 07 Jul 2021 16:44:57 -0400\n+\n+crmsh (4.2.0-4ubuntu1) hirsute; urgency=medium\n+\n+  * Merge with Debian; remaining changes:\n+    - [997f62d6] Fix: hb_report: disable dump all tasks stack into dmesg\n+    - [cce28254] Fix: crmsh.spec: using mktemp to create tmp file\n+    - [e098387e] Fix: bootstrap: use csync2 '-f' option correctly\n+    - [669f13b5] Fix: bootstrap: Change condition to add stonith-sbd resource\n+    - [ca1f0a7f] Fix: ui_resource: refresh <Tab> should complete resource first\n+    - [78ce77e4] Low: hb_report: Fix collecting of binary data\n+\n+ -- Matthias Klose <doko@ubuntu.com>  Sun, 29 Nov 2020 13:55:19 +0100\n+\n crmsh (4.2.0-4) unstable; urgency=medium\n \n   * d/patches: fix flaky autopkgtest (Closes: #972619)\n@@ -23,6 +60,18 @@ crmsh (4.2.0-4) unstable; urgency=medium\n \n  -- Valentin Vidic <vvidic@debian.org>  Wed, 21 Oct 2020 20:42:26 +0200\n \n+crmsh (4.2.0-3ubuntu1) groovy; urgency=medium\n+\n+  * Fixes before release: (LP: #1895728)\n+    - [997f62d6] Fix: hb_report: disable dump all tasks stack into dmesg\n+    - [cce28254] Fix: crmsh.spec: using mktemp to create tmp file\n+    - [e098387e] Fix: bootstrap: use csync2 '-f' option correctly\n+    - [669f13b5] Fix: bootstrap: Change condition to add stonith-sbd resource\n+    - [ca1f0a7f] Fix: ui_resource: refresh <Tab> should complete resource first\n+    - [78ce77e4] Low: hb_report: Fix collecting of binary data\n+\n+ -- Rafael David Tinoco <rafaeldtinoco@ubuntu.com>  Wed, 16 Sep 2020 03:41:38 +0000\n+\n crmsh (4.2.0-3) unstable; urgency=medium\n \n   [ Debian Janitor ]\ndiff --git a/debian/control b/debian/control\nindex 7d33cab..a515731 100644\n--- a/debian/control\n+++ b/debian/control\n@@ -1,7 +1,8 @@\n Source: crmsh\n Section: admin\n Priority: optional\n-Maintainer: Debian HA Maintainers <debian-ha-maintainers@lists.alioth.debian.org>\n+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>\n+XSBC-Original-Maintainer: Debian HA Maintainers <debian-ha-maintainers@lists.alioth.debian.org>\n Uploaders:\n  Richard B Winters <rik@mmogp.com>,\n  Adrian Vondendriesch <adrian.vondendriesch@credativ.de>,\ndiff --git a/debian/tests/pacemaker-node-status.sh b/debian/tests/pacemaker-node-status.sh\nindex 5b2eaaf..ed45038 100755\n--- a/debian/tests/pacemaker-node-status.sh\n+++ b/debian/tests/pacemaker-node-status.sh\n@@ -4,7 +4,7 @@ set -ex\n \n DAEMON_TIMEOUT=60\n CRM_TIMEOUT=5\n-NODE=node1\n+NODE=\"$(uname -n)\"\n \n # https://bugs.launchpad.net/bugs/1828228\n ulimit -H -l unlimited 2>/dev/null || {\n",
+ "diff_truncated": false
+}

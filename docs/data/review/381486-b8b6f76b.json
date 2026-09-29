@@ -1,0 +1,27 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~mwhudson/ubuntu/+source/apport/+git/apport/+merge/381486",
+ "id": "381486",
+ "title": "subiquity-hook → ubuntu/focal-proposed",
+ "source_branch": "subiquity-hook",
+ "target_branch": "ubuntu/focal-proposed",
+ "revision": "dc4922c37577d5dfb19dfb8ffe82b28c4c5b1800",
+ "base_revision": "0cf82a4a5aee5277052a767321034f3ed8aa243e",
+ "description": null,
+ "commit_message": null,
+ "diffstat": {
+  "debian/changelog": [
+   7,
+   0
+  ],
+  "data/package-hooks/subiquity.py": [
+   42,
+   0
+  ]
+ },
+ "files": 2,
+ "added_lines": 49,
+ "removed_lines": 0,
+ "diff": "diff --git a/data/package-hooks/subiquity.py b/data/package-hooks/subiquity.py\nnew file mode 100644\nindex 0000000..caffe28\n--- /dev/null\n+++ b/data/package-hooks/subiquity.py\n@@ -0,0 +1,42 @@\n+'''\n+Send reports about subiquity to the correct Launchpad project.\n+\n+'''\n+import os\n+\n+from apport import hookutils\n+\n+\n+def add_info(report, ui):\n+    # TODO: read the version from the log file?\n+    logfile = os.path.realpath('/var/log/installer/subiquity-debug.log')\n+    revision = 'unknown'\n+    if os.path.exists(logfile):\n+        hookutils.attach_file(report, 'logfile', 'InstallerLog')\n+        with open(logfile) as fp:\n+            first_line = logfile.readline()\n+        marker = 'Starting Subiquity revision'\n+        if marker in first_line:\n+            revision = first_line.split(marker)[1].strip()\n+    report['Package'] = 'subiquity ({})'.format(revision)\n+    report['SourcePackage'] = 'subiquity'\n+    # rewrite this section so the report goes to the project in Launchpad\n+    report['CrashDB'] = '''{\n+       \"impl\": \"launchpad\",\n+       \"project\": \"subiquity\",\n+       \"bug_pattern_url\": \"http://people.canonical.com/~ubuntu-archive/bugpatterns/bugpatterns.xml\"\n+    }'''\n+\n+    # add in subiquity stuff\n+    hookutils.attach_file_if_exists(\n+        report,\n+        '/var/log/installer/subiquity-curtin-install.conf',\n+        'CurtinConfig')\n+    hookutils.attach_file_if_exists(\n+        report,\n+        '/var/log/installer/curtin-install.log',\n+        'CurtinLog')\n+    hookutils.attach_file_if_exists(\n+        report,\n+        '/var/log/installer/block/probe-data.json',\n+        'ProbeData')\ndiff --git a/debian/changelog b/debian/changelog\nindex 09efa81..5246552 100644\n--- a/debian/changelog\n+++ b/debian/changelog\n@@ -1,3 +1,10 @@\n+apport (2.20.11-0ubuntu22) UNRELEASED; urgency=medium\n+\n+  * Add a package hook to allow subiquity problems to be reported from the\n+    installed system. \n+\n+ -- Michael Hudson-Doyle <michael.hudson@ubuntu.com>  Wed, 01 Apr 2020 16:24:54 +1300\n+\n apport (2.20.11-0ubuntu21) focal; urgency=medium\n \n   [ Brian Murray ]\n",
+ "diff_truncated": false
+}

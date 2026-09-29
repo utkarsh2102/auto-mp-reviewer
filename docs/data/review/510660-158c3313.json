@@ -1,0 +1,31 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~bamf0/ubuntu/+source/rust-sudo-rs/+git/rust-sudo-rs/+merge/510660",
+ "id": "510660",
+ "title": "This merge proposal will introduce the empty transitional \"sudo\" binary package to sudo-rs with the intention of allowing the current sudo source package to be demoted into universe. This transitional package acts as an upgrade for the previous sudo binary package.",
+ "source_branch": "stonking-lp2153145-demote-sudo",
+ "target_branch": "ubuntu/devel",
+ "revision": "eaaa49788e43887bb8da9e3991e0fe8534883577",
+ "base_revision": "e2d323d1eca552e236b2332eb0d4b3d8b19b5b00",
+ "description": "This merge proposal will introduce the empty transitional \"sudo\" binary package to sudo-rs with the intention of allowing the current sudo source package to be demoted into universe. This transitional package acts as an upgrade for the previous sudo binary package.\n\nAdditionally, it makes sudo-rs provide the \"sudo\" virtual package such that it can satisfy packages that declare \"Depends: sudo\".\n\nPPA: https://launchpad.net/~bamf0/+archive/ubuntu/stonking-sudo-universe-transition\nPPA with all dependencies on sudo: https://launchpad.net/~bamf0/+archive/ubuntu/stonking-sudo-universe-transition-depends-sudo\n\nRelated MP: https://code.launchpad.net/~bamf0/ubuntu/+source/sudo/+git/sudo/+merge/510662",
+ "commit_message": null,
+ "diffstat": {
+  "debian/changelog": [
+   12,
+   0
+  ],
+  "debian/control": [
+   15,
+   1
+  ],
+  "debian/rules": [
+   7,
+   0
+  ]
+ },
+ "files": 3,
+ "added_lines": 34,
+ "removed_lines": 1,
+ "diff": "diff --git a/debian/changelog b/debian/changelog\nindex 19a1cfb..47d513e 100644\n--- a/debian/changelog\n+++ b/debian/changelog\n@@ -1,3 +1,15 @@\n+rust-sudo-rs (0.2.14-1ubuntu3) stonking; urgency=medium\n+\n+  * Prepare for transition of sudo to universe (LP: #2153145):\n+    - d/control:\n+      + Add empty transitional sudo binary package with Depends on\n+        sudo-rs and sudo.ws\n+      + Add Provides sudo to sudo-rs\n+    - d/rules: Manually set version of transitional sudo binary package\n+      to allow for upgrading from the old sudo package\n+\n+ -- Simon Johnsson <simon.johnsson@canonical.com>  Tue, 01 Sep 2026 15:27:09 +0200\n+\n rust-sudo-rs (0.2.14-1ubuntu2) stonking; urgency=medium\n \n   * d/t/04-getroot-sssd: Fix test by restarting slapd with systemd\ndiff --git a/debian/control b/debian/control\nindex b4c4bf3..c6343cd 100644\n--- a/debian/control\n+++ b/debian/control\n@@ -35,7 +35,8 @@ Recommends:\n Suggests:\n  ${cargo:Suggests}\n Provides:\n- ${cargo:Provides}\n+ ${cargo:Provides},\n+ sudo\n Built-Using: ${cargo:Built-Using}\n Static-Built-Using: ${cargo:Static-Built-Using}\n Description: Rust-based sudo and su implementations\n@@ -47,3 +48,16 @@ Description: Rust-based sudo and su implementations\n  While it aims to be a drop-in replacement for most common sudo use cases,\n  there are differences in functionality and design. Users should be aware\n  of these differences and consult the project's documentation for specifics.\n+\n+Package: sudo\n+Architecture: all\n+Section: oldlibs\n+Depends:\n+  ${misc:Depends},\n+  sudo-rs (>= 0.2.14-1ubuntu3) | sudo.ws (>= 1.9.17p2-7ubuntu4)\n+Multi-Arch: foreign\n+Description: Transitional package for sudo replacements\n+ Transitional package to migrate installations from sudo to sudo-rs\n+ or sudo.ws.\n+ .\n+ This can be safely removed.\ndiff --git a/debian/rules b/debian/rules\nindex c0ec0fd..83ef958 100755\n--- a/debian/rules\n+++ b/debian/rules\n@@ -7,6 +7,9 @@ endif\n export SUDO_RS_VERSION := $(shell dpkg-parsechangelog -S Version)\n UPSTREAM_VERSION := $(shell dpkg-parsechangelog -S Version|cut -d- -f1)\n \n+# Use for the transitional sudo package\n+SUDO_WS_VERSION := 1.9.17p2-7ubuntu3\n+\n # Vendoring setup\n # NOTE: debian/tests/cargo-test needs to be updated in case of\n # vendor directory change as it is hardcoded there\n@@ -89,3 +92,7 @@ override_dh_auto_clean:\n \trm -f *.1 *.8\n \tdh_auto_clean\n \n+override_dh_gencontrol:\n+\t# Bump the version for sudo so that upgrades are possible\n+\tdh_gencontrol -psudo -- -v$(SUDO_WS_VERSION)+$(SUDO_RS_VERSION)\n+\tdh_gencontrol --remaining-packages -- -Vcoreutils:Version=$(SUDO_WS_VERSION)+$(SUDO_RS_VERSION)\n",
+ "diff_truncated": false
+}

@@ -1,0 +1,31 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~codyshepherd/livecd-rootfs/+git/livecd-rootfs/+merge/398900",
+ "id": "398900",
+ "title": "Add grub config to buildd images to enable use with lxd vms",
+ "source_branch": "buildd/hide-grub-menu-xx",
+ "target_branch": "ubuntu/xenial",
+ "revision": "4529ed9b1cd58bfc8d37567fe69892c4e850741d",
+ "base_revision": "172e00ebcd83bc8334882cec84a55a48523b54a8",
+ "description": null,
+ "commit_message": "Add grub config to buildd images to enable use with lxd vms",
+ "diffstat": {
+  "COPYING": [
+   1,
+   0
+  ],
+  "debian/changelog": [
+   9,
+   0
+  ],
+  "live-build/buildd/hooks/02-disk-image-uefi.binary": [
+   10,
+   0
+  ]
+ },
+ "files": 3,
+ "added_lines": 20,
+ "removed_lines": 0,
+ "diff": "diff --git a/COPYING b/COPYING\nindex d511905..e327a99 100644\n--- a/COPYING\n+++ b/COPYING\n@@ -8,6 +8,7 @@\n \n \t\t\t    Preamble\n \n+\n   The licenses for most software are designed to take away your\n freedom to share and change it.  By contrast, the GNU General Public\n License is intended to guarantee your freedom to share and change free\ndiff --git a/debian/changelog b/debian/changelog\nindex 6024d69..36041d8 100644\n--- a/debian/changelog\n+++ b/debian/changelog\n@@ -1,3 +1,4 @@\n+<<<<<<< debian/changelog\n livecd-rootfs (2.408.70) xenial; urgency=medium\n \n   * Mark grub-pc-bin as manual install to avoid autoremoval (LP: #2045418)\n@@ -22,6 +23,14 @@ livecd-rootfs (2.408.68) xenial; urgency=medium\n     have read access on it.\n \n  -- Robert C Jennings <robert.jennings@canonical.com>  Sat, 10 Apr 2021 05:28:29 -0500\n+=======\n+livecd-rootfs (2.408.68) UNRELEASED; urgency=medium\n+\n+  * Add grub config to produce console output to allow buildd vm images to\n+    produce console output in lxd vms (LP: #1915571)\n+\n+ -- Cody Shepherd <cody.shepherd@canonical.com>  Mon, 01 Mar 2021 09:11:15 -0800\n+>>>>>>> debian/changelog\n \n livecd-rootfs (2.408.67) xenial; urgency=medium\n \ndiff --git a/live-build/buildd/hooks/02-disk-image-uefi.binary b/live-build/buildd/hooks/02-disk-image-uefi.binary\nindex 7baa228..366a2df 100755\n--- a/live-build/buildd/hooks/02-disk-image-uefi.binary\n+++ b/live-build/buildd/hooks/02-disk-image-uefi.binary\n@@ -126,6 +126,16 @@ EOF\n         chroot mountpoint grub-install --target=i386-pc \"${loop_device}\"\n     fi\n \n+    cat > mountpoint/etc/default/grub.d/50-builddimg-settings.cfg << EOF\n+GRUB_DEFAULT=0\n+GRUB_HIDDEN_TIMEOUT=0.1\n+GRUB_HIDDEN_TIMEOUT_QUIET=true\n+GRUB_TIMEOUT=0.1\n+GRUB_CMDLINE_LINUX_DEFAULT=\"console=ttyS0\"\n+GRUB_RECORDFAIL_TIMEOUT=0\n+GRUB_TERMINAL=console\n+EOF\n+\n     divert_grub mountpoint\n     chroot mountpoint update-grub\n     replace_grub_root_with_label mountpoint\n",
+ "diff_truncated": false
+}

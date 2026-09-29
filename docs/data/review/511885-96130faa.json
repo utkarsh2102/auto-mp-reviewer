@@ -1,0 +1,31 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~levihackerman-102/ubuntu/+source/golang-1.25/+git/golang-1.25/+merge/511885",
+ "id": "511885",
+ "title": "Backport golang-1.25 1.25.14-1 to noble (LP: #2166409).",
+ "source_branch": "lp2166409/1.25.14/noble",
+ "target_branch": "ubuntu/devel",
+ "revision": "190a5136c8f25f299f0d21d729413af3a5231e6f",
+ "base_revision": "4d26bafcfa1bfc4024d400571ec204969864d23c",
+ "description": "Backport golang-1.25 1.25.14-1 to noble (LP: #2166409).\n\nBuild-Depends adjusted to prefer golang-1.24-go as the bootstrap toolchain (golang-1.25 does not exist in noble). go1.25.14 bootstraps fine from golang-1.24 (minBootstrap = go1.22.6).",
+ "commit_message": null,
+ "diffstat": {
+  "debian/changelog": [
+   8,
+   0
+  ],
+  "debian/control": [
+   1,
+   1
+  ],
+  "debian/control.in": [
+   1,
+   1
+  ]
+ },
+ "files": 3,
+ "added_lines": 10,
+ "removed_lines": 2,
+ "diff": "diff --git a/debian/changelog b/debian/changelog\nindex 2749b92..3f5454c 100644\n--- a/debian/changelog\n+++ b/debian/changelog\n@@ -1,3 +1,11 @@\n+golang-1.25 (1.25.14-1~24.04.1) noble; urgency=medium\n+\n+  * Backport golang-1.25 1.25.14-1 to noble (LP: #2166409).\n+    - Adjust Build-Depends to prefer golang-1.24-go as the bootstrap\n+      toolchain, as golang-1.25 is not available in noble.\n+\n+ -- Anshul Singh <anshul.singh@canonical.com>  Wed, 23 Sep 2026 13:53:29 +0530\n+\n golang-1.25 (1.25.14-1) unstable; urgency=medium\n \n   * New upstream version 1.25.14\ndiff --git a/debian/control b/debian/control\nindex cad3e1e..7e64d35 100644\n--- a/debian/control\n+++ b/debian/control\n@@ -15,7 +15,7 @@ Section: golang\n Build-Depends:\n  debhelper-compat (= 13),\n  binutils-gold [arm64],\n- golang-1.25-go:native | golang-1.24-go:native,\n+ golang-1.24-go:native | golang-1.25-go:native,\n  netbase,\n Standards-Version: 4.7.4\n Vcs-Browser: https://salsa.debian.org/go-team/compiler/golang/tree/golang-1.25\ndiff --git a/debian/control.in b/debian/control.in\nindex 74e1bf7..b1af37e 100644\n--- a/debian/control.in\n+++ b/debian/control.in\n@@ -11,7 +11,7 @@ Section: golang\n Build-Depends:\n  debhelper-compat (= 13),\n  binutils-gold [arm64],\n- golang-1.25-go:native | golang-1.24-go:native,\n+ golang-1.24-go:native | golang-1.25-go:native,\n  netbase,\n Standards-Version: 4.7.4\n Vcs-Browser: https://salsa.debian.org/go-team/compiler/golang/tree/golang-X.Y\n",
+ "diff_truncated": false
+}

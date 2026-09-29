@@ -1,0 +1,27 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~tsimonq2/ubuntu/+source/livecd-rootfs/+git/livecd-rootfs/+merge/427786",
+ "id": "427786",
+ "title": "Manually blacklist DKMS modules for Ubuntu Studio builds (LP: #1983521).",
+ "source_branch": "ubuntu/jammy-proposed",
+ "target_branch": "ubuntu/jammy-proposed",
+ "revision": "a3fa0a90a18e158bc182a4b88a7a0cae8c1160ea",
+ "base_revision": "61266f0d5af3e94143badb4aaa1170f216a2b211",
+ "description": null,
+ "commit_message": "Manually blacklist DKMS modules for Ubuntu Studio builds (LP: #1983521).",
+ "diffstat": {
+  "live-build/auto/config": [
+   12,
+   0
+  ],
+  "debian/changelog": [
+   6,
+   0
+  ]
+ },
+ "files": 2,
+ "added_lines": 18,
+ "removed_lines": 0,
+ "diff": "diff --git a/debian/changelog b/debian/changelog\nindex 138a94f..996a5d9 100644\n--- a/debian/changelog\n+++ b/debian/changelog\n@@ -1,3 +1,9 @@\n+livecd-rootfs (2.765.8) jammy; urgency=medium\n+\n+  * Manually blacklist DKMS modules for Ubuntu Studio builds (LP: #1983521).\n+\n+ -- Simon Quigley <tsimonq2@ubuntu.com>  Wed, 03 Aug 2022 18:46:23 -0500\n+\n livecd-rootfs (2.765.7) jammy; urgency=medium\n \n   * Install wpasupplicant by default as for now, most of the RISC-V boards\ndiff --git a/live-build/auto/config b/live-build/auto/config\nindex 862bb55..8e594f9 100755\n--- a/live-build/auto/config\n+++ b/live-build/auto/config\n@@ -1297,6 +1297,18 @@ exit 0\n EOF\n fi\n \n+if [ \"$PROJECT\" = \"ubuntustudio-dvd\" ]; then\n+        cat > config/hooks/100-ubuntustudio-dkms.chroot <<EOF\n+#!/bin/bash\n+set -e\n+\n+env DEBIAN_FRONTEND=noninteractive \\\n+       apt-get -y autoremove --purge v4l2loopback-dkms v4l2loopback-utils\n+\n+EOF\n+fi\n+chmod +x config/hooks/100-ubuntustudio-dkms.chroot\n+\n if $BINARY_REMOVE_LINUX; then\n \tcat > config/binary_rootfs/excludes << EOF\n boot/vmlinu?-*\n",
+ "diff_truncated": false
+}

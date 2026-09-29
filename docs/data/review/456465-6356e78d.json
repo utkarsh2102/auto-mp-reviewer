@@ -1,0 +1,23 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~waveform/ubuntu-images/+git/ubuntu-images/+merge/456465",
+ "id": "456465",
+ "title": "prepare-package → noble",
+ "source_branch": "prepare-package",
+ "target_branch": "noble",
+ "revision": "764fecbed872266f20b6c5214bf854b76a9b7341",
+ "base_revision": "2175aa5330f14c7a2053a6bca6507fa7289675f6",
+ "description": null,
+ "commit_message": null,
+ "diffstat": {
+  "ubuntu-pi-arm64.yaml": [
+   1,
+   8
+  ]
+ },
+ "files": 1,
+ "added_lines": 1,
+ "removed_lines": 8,
+ "diff": "diff --git a/ubuntu-pi-arm64.yaml b/ubuntu-pi-arm64.yaml\nindex ed877cb..f521cac 100644\n--- a/ubuntu-pi-arm64.yaml\n+++ b/ubuntu-pi-arm64.yaml\n@@ -49,6 +49,7 @@ customization:\n   extra-packages:\n     - name: oem-config-gtk\n     - name: oem-config\n+    - name: oem-config-prepare\n     - name: ubiquity-frontend-gtk\n     - name: language-pack-en-base\n     - name: oem-config-slideshow-ubuntu\n@@ -66,14 +67,6 @@ customization:\n       mount-options: \"defaults\"\n       dump: false\n       fsck-order: 1\n-# FIXME: Temporarily, we also need to make sure that for desktop pi images\n-#  we actually run oem-config-prepare before first boot. Otherwise we won't\n-#  be able to boot into oem-config properly.\n-#  This should be done via a package postinst ideally, so this manual\n-#  customization should be only temporary.\n-  manual:\n-    execute:\n-      - path: \"/usr/sbin/oem-config-prepare\"\n artifacts:\n   img:\n     - name: ubuntu-24.04-preinstalled-desktop-arm64+raspi.img\n",
+ "diff_truncated": false
+}

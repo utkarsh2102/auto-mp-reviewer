@@ -1,0 +1,23 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~dbungert/britney/+git/hints-ubuntu/+merge/407860",
+ "id": "407860",
+ "title": "remove reset-test rust-{openssl,curl}-sys",
+ "source_branch": "remove-rust-openssl-sys",
+ "target_branch": "devel",
+ "revision": "747d6656cecf140f3e5b963fd0c96e962453b714",
+ "base_revision": "e19e7773216e04420e35a698489bd1fd5046974c",
+ "description": null,
+ "commit_message": "remove reset-test rust-{openssl,curl}-sys\n    \nNewer gcc-11 addresses the issue.",
+ "diffstat": {
+  "ubuntu-release": [
+   0,
+   3
+  ]
+ },
+ "files": 1,
+ "added_lines": 0,
+ "removed_lines": 3,
+ "diff": "diff --git a/ubuntu-release b/ubuntu-release\nindex 0ce735c..3b4a9bc 100644\n--- a/ubuntu-release\n+++ b/ubuntu-release\n@@ -514,9 +514,6 @@ force-reset-test rust-debcargo/2.4.4-1/s390x\n force-reset-test rust-debcargo/2.4.4-1/armhf\n ## allowed to regress in Debian/testing, don't hold up the transition here\n force-reset-test rust-glib/0.8.2-1\n-## LP: #1941920 for rust-openssl-sys and all that build-depend on it\n-force-reset-test rust-openssl-sys/0.9.55-2/armhf\n-force-reset-test rust-curl-sys/0.4.36-1/armhf\n ## choices are failing autopkgtest or uninstallability/removal, and rust-ryu has reverse-dependencies\n force-reset-test rust-ryu/1.0.2-1\n ##\n",
+ "diff_truncated": false
+}

@@ -1,0 +1,31 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~zhsj/ubuntu/+source/containerd/+git/containerd/+merge/470704",
+ "id": "470704",
+ "title": "go1.23 → ubuntu/devel",
+ "source_branch": "go1.23",
+ "target_branch": "ubuntu/devel",
+ "revision": "18488bbc44f195a4fd2e89936b71820de62ef9cb",
+ "base_revision": "9a6214fc882a56f944c8e1d00fff5defb5b7dd7a",
+ "description": null,
+ "commit_message": null,
+ "diffstat": {
+  "debian/changelog": [
+   6,
+   0
+  ],
+  "debian/patches/0011-Fix-TestNewBinaryIOCleanup.patch": [
+   57,
+   0
+  ],
+  "debian/patches/series": [
+   1,
+   0
+  ]
+ },
+ "files": 3,
+ "added_lines": 64,
+ "removed_lines": 0,
+ "diff": "diff --git a/debian/changelog b/debian/changelog\nindex a852b11..779cace 100644\n--- a/debian/changelog\n+++ b/debian/changelog\n@@ -1,3 +1,9 @@\n+containerd (1.6.24~ds1-1ubuntu2) oracular; urgency=medium\n+\n+  * Backport fix for TestNewBinaryIOCleanup with Go1.23 (LP: #2076166)\n+\n+ -- Shengjing Zhu <shengjing.zhu@canonical.com>  Tue, 06 Aug 2024 18:39:52 +0800\n+\n containerd (1.6.24~ds1-1ubuntu1) noble; urgency=medium\n \n   * Merge with Debian unstable (LP: #2040374). Remaining changes:\ndiff --git a/debian/patches/0011-Fix-TestNewBinaryIOCleanup.patch b/debian/patches/0011-Fix-TestNewBinaryIOCleanup.patch\nnew file mode 100644\nindex 0000000..29dad3e\n--- /dev/null\n+++ b/debian/patches/0011-Fix-TestNewBinaryIOCleanup.patch\n@@ -0,0 +1,57 @@\n+From: Mauri de Souza Meneguzzo <mauri870@gmail.com>\n+Date: Sat, 15 Jun 2024 20:15:20 -0300\n+Subject: Fix TestNewBinaryIOCleanup\n+\n+Combines the fix from https://github.com/containerd/containerd/commit/f0aecaa2\n+and https://github.com/containerd/containerd/pull/10562\n+\n+Bug-Ubuntu: https://launchpad.net/bugs/2076166\n+---\n+ pkg/process/io_test.go | 26 ++++++++++++++++++++++++++\n+ 1 file changed, 26 insertions(+)\n+\n+diff --git a/pkg/process/io_test.go b/pkg/process/io_test.go\n+index 7c7574e..b5cc4fa 100644\n+--- a/pkg/process/io_test.go\n++++ b/pkg/process/io_test.go\n+@@ -21,8 +21,10 @@ package process\n+ \n+ import (\n+ \t\"context\"\n++\t\"fmt\"\n+ \t\"net/url\"\n+ \t\"os\"\n++\t\"strings\"\n+ \t\"testing\"\n+ \n+ \t\"github.com/containerd/containerd/namespaces\"\n+@@ -69,5 +71,29 @@ func TestNewBinaryIOCleanup(t *testing.T) {\n+ func descriptorCount(t *testing.T) int {\n+ \tt.Helper()\n+ \tfiles, _ := os.ReadDir(\"/proc/self/fd\")\n++\n++\t// Go 1.23 introduced a new internal file descriptor type \"pidfd\"\n++\t// that we don't want to count towards the total file descriptors in\n++\t// use by the process. This retains the behavior of previous Go\n++\t// versions.\n++\t// See https://go.dev/issues/62654.\n++\t//\n++\t// Once the proposal to check for internal file descriptors is\n++\t// accepted, we can use that instead to detect internal fds in use\n++\t// by the Go runtime.\n++\t// See https://go.dev/issues/67639.\n++\tfor i, file := range files {\n++\t\tsym, err := os.Readlink(fmt.Sprintf(\"/proc/self/fd/%s\", file.Name()))\n++\t\tif err != nil {\n++\t\t\t// ignore fds that cannot be followed.\n++\t\t\tcontinue\n++\t\t}\n++\n++\t\tif strings.Contains(sym, \"pidfd\") {\n++\t\t\t// Either pidfd:[70517] or anon_inode:[pidfd] (on Linux 5.4)\n++\t\t\tfiles = append(files[:i], files[i+1:]...)\n++\t\t}\n++\t}\n++\n+ \treturn len(files)\n+ }\ndiff --git a/debian/patches/series b/debian/patches/series\nindex 93d05eb..6c60844 100644\n--- a/debian/patches/series\n+++ b/debian/patches/series\n@@ -8,3 +8,4 @@\n 0008-Add-Debian-specific-CNI-bin-dir-to-ctr-run-command.patch\n 0009-seccomp-apparmor-add-go-noinline.patch\n 0010-sys-unprivileged-user-can-adjust-oom-scroe-when-init.patch\n+0011-Fix-TestNewBinaryIOCleanup.patch\n",
+ "diff_truncated": false
+}

@@ -1,0 +1,779 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~bamf0/ubuntu/+source/rust-sudo-rs/+git/rust-sudo-rs/+merge/501820",
+ "id": "501820",
+ "title": "This merge proposal will bump rust-sudo-rs to version 0.2.13, solving a few bugs, as well as natively providing the pwfeedback default enablement. Additionally, it will allow the TAB character to revert the behavior to \"no-echo\".",
+ "source_branch": "package-0.2.13",
+ "target_branch": "ubuntu/devel",
+ "revision": "db8405f99a7a562de0ddde344938fbfca8d1b669",
+ "base_revision": "5b10a9ae3de7347d6e46835f0b82d70e778b0724",
+ "description": "This merge proposal will bump rust-sudo-rs to version 0.2.13, solving a few bugs, as well as natively providing the pwfeedback default enablement. Additionally, it will allow the TAB character to revert the behavior to \"no-echo\".\n\nPPA: https://launchpad.net/~bamf0/+archive/ubuntu/rust-sudo-rs-0-2-13\n\n----\n\nautopkgtest:\n\n* Results:\n  - rust-sudo-rs: resolute/rust-sudo-rs/0.2.13-0ubuntu1~resolute2 [amd64]\n    + ✅ rust-sudo-rs on resolute for amd64   @ 12.03.26 10:01:21\n      • Log: https://autopkgtest.ubuntu.com/results/autopkgtest-resolute-bamf0-rust-sudo-rs-0-2-13/resolute/amd64/r/rust-sudo-rs/20260312_100121_af20f@/log.gz\n  - rust-sudo-rs: resolute/rust-sudo-rs/0.2.13-0ubuntu1~resolute2 [arm64]\n    + ✅ rust-sudo-rs on resolute for arm64   @ 12.03.26 09:44:54\n      • Log: https://autopkgtest.ubuntu.com/results/autopkgtest-resolute-bamf0-rust-sudo-rs-0-2-13/resolute/arm64/r/rust-sudo-rs/20260312_094454_e41da@/log.gz\n  - rust-sudo-rs: resolute/rust-sudo-rs/0.2.13-0ubuntu1~resolute2 [armhf]\n    + ✅ rust-sudo-rs on resolute for armhf   @ 12.03.26 09:43:57\n      • Log: https://autopkgtest.ubuntu.com/results/autopkgtest-resolute-bamf0-rust-sudo-rs-0-2-13/resolute/armhf/r/rust-sudo-rs/20260312_094357_8e5b2@/log.gz\n  - rust-sudo-rs: resolute/rust-sudo-rs/0.2.13-0ubuntu1~resolute2 [i386]\n    + ✅ rust-sudo-rs on resolute for i386    @ 12.03.26 10:05:33\n      • Log: https://autopkgtest.ubuntu.com/results/autopkgtest-resolute-bamf0-rust-sudo-rs-0-2-13/resolute/i386/r/rust-sudo-rs/20260312_100533_da09b@/log.gz\n  - rust-sudo-rs: resolute/rust-sudo-rs/0.2.13-0ubuntu1~resolute2 [ppc64el]\n    + ✅ rust-sudo-rs on resolute for ppc64el @ 12.03.26 09:40:44\n      • Log: https://autopkgtest.ubuntu.com/results/autopkgtest-resolute-bamf0-rust-sudo-rs-0-2-13/resolute/ppc64el/r/rust-sudo-rs/20260312_094044_93754@/log.gz\n  - rust-sudo-rs: resolute/rust-sudo-rs/0.2.13-0ubuntu1~resolute2 [s390x]\n    + ✅ rust-sudo-rs on resolute for s390x   @ 12.03.26 09:48:20\n      • Log: https://autopkgtest.ubuntu.com/results/autopkgtest-resolute-bamf0-rust-sudo-rs-0-2-13/resolute/s390x/r/rust-sudo-rs/20260312_094820_6ffe4@/log.gz\n",
+ "commit_message": null,
+ "diffstat": {
+  ".cargo_vcs_info.json": [
+   1,
+   1
+  ],
+  ".github/dependabot.yml": [
+   2,
+   0
+  ],
+  ".github/workflows/ci.yaml": [
+   46,
+   12
+  ],
+  ".github/workflows/publish-crates-io.yml": [
+   2,
+   0
+  ],
+  ".github/workflows/release.yml": [
+   7,
+   3
+  ],
+  ".github/workflows/zizmor.yml": [
+   24,
+   0
+  ],
+  "CHANGELOG.md": [
+   31,
+   2
+  ],
+  "COPYRIGHT": [
+   1,
+   1
+  ],
+  "Cargo.lock": [
+   4,
+   4
+  ],
+  "Cargo.toml": [
+   3,
+   3
+  ],
+  "Cargo.toml.orig": [
+   3,
+   3
+  ],
+  "FAQ.md": [
+   69,
+   24
+  ],
+  "LICENSE-MIT": [
+   1,
+   2
+  ],
+  "README.md": [
+   10,
+   7
+  ],
+  "debian/changelog": [
+   22,
+   0
+  ],
+  "debian/control": [
+   1,
+   1
+  ],
+  "dev/null": [
+   0,
+   20
+  ],
+  "debian/patches/disable-broken-tests.patch": [
+   2,
+   2
+  ],
+  "debian/patches/fix-toggle-pwfeedback-tab.patch": [
+   21,
+   0
+  ],
+  "debian/patches/series": [
+   1,
+   2
+  ],
+  "debian/rules": [
+   4,
+   2
+  ],
+  "docs/man/su.1.man": [
+   1,
+   1
+  ],
+  "docs/man/su.1.md": [
+   1,
+   1
+  ],
+  "docs/man/sudo.8.man": [
+   1,
+   1
+  ],
+  "docs/man/sudo.8.md": [
+   1,
+   1
+  ],
+  "docs/man/sudoers.5.man": [
+   12,
+   9
+  ],
+  "docs/man/sudoers.5.md": [
+   5,
+   5
+  ],
+  "docs/man/visudo.8.man": [
+   1,
+   1
+  ],
+  "docs/man/visudo.8.md": [
+   1,
+   1
+  ],
+  "po/de.po": [
+   1,
+   1
+  ],
+  "po/es.po": [
+   1,
+   1
+  ],
+  "po/fr.po": [
+   1,
+   1
+  ],
+  "po/fy.po": [
+   1,
+   1
+  ],
+  "po/it.po": [
+   1,
+   1
+  ],
+  "po/nl.po": [
+   1,
+   1
+  ],
+  "po/pl.po": [
+   607,
+   0
+  ],
+  "po/ro.po": [
+   1,
+   1
+  ],
+  "po/sudo-rs.pot": [
+   81,
+   68
+  ],
+  "rust-vendor/glob/.cargo_vcs_info.json": [
+   6,
+   0
+  ],
+  "rust-vendor/glob/.github/dependabot.yml": [
+   13,
+   0
+  ],
+  "rust-vendor/glob/.github/workflows/publish.yml": [
+   27,
+   0
+  ],
+  "rust-vendor/glob/.github/workflows/rust.yml": [
+   99,
+   0
+  ],
+  "rust-vendor/glob/Cargo.toml.orig": [
+   18,
+   0
+  ],
+  "rust-vendor/libc/.cargo-checksum.json": [
+   1,
+   1
+  ],
+  "rust-vendor/libc/.cargo_vcs_info.json": [
+   6,
+   0
+  ],
+  "rust-vendor/libc/.editorconfig": [
+   7,
+   0
+  ],
+  "rust-vendor/libc/.git-blame-ignore-revs": [
+   6,
+   0
+  ],
+  "rust-vendor/libc/.release-plz.toml": [
+   49,
+   0
+  ],
+  "rust-vendor/libc/.rustfmt.toml": [
+   6,
+   0
+  ],
+  "rust-vendor/libc/CHANGELOG.md": [
+   61,
+   0
+  ],
+  "rust-vendor/libc/Cargo.lock": [
+   1,
+   1
+  ],
+  "rust-vendor/libc/Cargo.toml": [
+   75,
+   51
+  ],
+  "rust-vendor/libc/Cargo.toml.orig": [
+   218,
+   0
+  ],
+  "rust-vendor/libc/LICENSE-MIT": [
+   1,
+   1
+  ],
+  "rust-vendor/libc/build.rs": [
+   3,
+   3
+  ],
+  "rust-vendor/libc/src/fuchsia/mod.rs": [
+   14,
+   10
+  ],
+  "rust-vendor/libc/src/hermit.rs": [
+   1,
+   0
+  ],
+  "rust-vendor/libc/src/lib.rs": [
+   1,
+   0
+  ],
+  "rust-vendor/libc/src/macros.rs": [
+   63,
+   71
+  ],
+  "rust-vendor/libc/src/new/linux_uapi/linux/can.rs": [
+   1,
+   0
+  ],
+  "rust-vendor/libc/src/new/linux_uapi/linux/can/error.rs": [
+   73,
+   0
+  ],
+  "rust-vendor/libc/src/new/linux_uapi/linux/mod.rs": [
+   1,
+   0
+  ],
+  "rust-vendor/libc/src/new/linux_uapi/linux/pidfd.rs": [
+   59,
+   0
+  ],
+  "rust-vendor/libc/src/new/mod.rs": [
+   6,
+   2
+  ],
+  "rust-vendor/libc/src/new/netbsd/sys/file.rs": [
+   16,
+   0
+  ],
+  "rust-vendor/libc/src/new/netbsd/sys/mod.rs": [
+   2,
+   0
+  ],
+  "rust-vendor/libc/src/new/netbsd/sys/socket.rs": [
+   44,
+   0
+  ],
+  "rust-vendor/libc/src/new/qurt/dlfcn.rs": [
+   26,
+   0
+  ],
+  "rust-vendor/libc/src/new/qurt/fcntl.rs": [
+   4,
+   1
+  ],
+  "rust-vendor/libc/src/new/qurt/mod.rs": [
+   226,
+   14
+  ],
+  "rust-vendor/libc/src/new/qurt/pthread.rs": [
+   1,
+   22
+  ],
+  "rust-vendor/libc/src/new/qurt/signal.rs": [
+   54,
+   4
+  ],
+  "rust-vendor/libc/src/new/qurt/stdio.rs": [
+   0,
+   5
+  ],
+  "rust-vendor/libc/src/new/qurt/sys/mman.rs": [
+   55,
+   0
+  ],
+  "rust-vendor/libc/src/new/qurt/sys/mod.rs": [
+   2,
+   0
+  ],
+  "rust-vendor/libc/src/new/qurt/sys/sched.rs": [
+   24,
+   0
+  ],
+  "rust-vendor/libc/src/new/qurt/sys/stat.rs": [
+   0,
+   6
+  ],
+  "rust-vendor/libc/src/new/qurt/time.rs": [
+   4,
+   22
+  ],
+  "rust-vendor/libc/src/new/qurt/unistd.rs": [
+   210,
+   20
+  ],
+  "rust-vendor/libc/src/qurt/mod.rs": [
+   9,
+   325
+  ],
+  "rust-vendor/libc/src/solid/mod.rs": [
+   1,
+   0
+  ],
+  "rust-vendor/libc/src/switch.rs": [
+   1,
+   0
+  ],
+  "rust-vendor/libc/src/teeos/mod.rs": [
+   2,
+   0
+  ],
+  "rust-vendor/libc/src/trusty.rs": [
+   1,
+   0
+  ],
+  "rust-vendor/libc/src/types.rs": [
+   2,
+   2
+  ],
+  "rust-vendor/libc/src/unix/aix/mod.rs": [
+   11,
+   20
+  ],
+  "rust-vendor/libc/src/unix/aix/powerpc64.rs": [
+   6,
+   6
+  ],
+  "rust-vendor/libc/src/unix/bsd/apple/b64/mod.rs": [
+   1,
+   0
+  ],
+  "rust-vendor/libc/src/unix/bsd/apple/mod.rs": [
+   15,
+   0
+  ],
+  "rust-vendor/libc/src/unix/bsd/freebsdlike/dragonfly/mod.rs": [
+   4,
+   4
+  ],
+  "rust-vendor/libc/src/unix/bsd/freebsdlike/freebsd/mod.rs": [
+   3,
+   3
+  ],
+  "rust-vendor/libc/src/unix/bsd/freebsdlike/mod.rs": [
+   14,
+   0
+  ],
+  "rust-vendor/libc/src/unix/bsd/mod.rs": [
+   0,
+   14
+  ],
+  "rust-vendor/libc/src/unix/bsd/netbsdlike/mod.rs": [
+   6,
+   0
+  ],
+  "rust-vendor/libc/src/unix/bsd/netbsdlike/netbsd/mod.rs": [
+   46,
+   7
+  ],
+  "rust-vendor/libc/src/unix/bsd/netbsdlike/openbsd/mod.rs": [
+   133,
+   1
+  ],
+  "rust-vendor/libc/src/unix/cygwin/mod.rs": [
+   2,
+   2
+  ],
+  "rust-vendor/libc/src/unix/haiku/mod.rs": [
+   1,
+   1
+  ],
+  "rust-vendor/libc/src/unix/haiku/x86_64.rs": [
+   2,
+   2
+  ],
+  "rust-vendor/libc/src/unix/hurd/mod.rs": [
+   7,
+   6
+  ],
+  "rust-vendor/libc/src/unix/linux_like/android/mod.rs": [
+   2,
+   0
+  ],
+  "rust-vendor/libc/src/unix/linux_like/linux/gnu/mod.rs": [
+   4,
+   0
+  ],
+  "rust-vendor/libc/src/unix/linux_like/linux/mod.rs": [
+   22,
+   46
+  ],
+  "rust-vendor/libc/src/unix/linux_like/linux/musl/b32/arm/mod.rs": [
+   16,
+   13
+  ],
+  "rust-vendor/libc/src/unix/linux_like/linux/musl/b32/hexagon.rs": [
+   12,
+   13
+  ],
+  "rust-vendor/libc/src/unix/linux_like/linux/musl/b32/mips/mod.rs": [
+   25,
+   16
+  ],
+  "rust-vendor/libc/src/unix/linux_like/linux/musl/b32/powerpc.rs": [
+   16,
+   13
+  ],
+  "rust-vendor/libc/src/unix/linux_like/linux/musl/b32/riscv32/mod.rs": [
+   12,
+   15
+  ],
+  "rust-vendor/libc/src/unix/linux_like/linux/musl/b32/x86/mod.rs": [
+   10,
+   13
+  ],
+  "rust-vendor/libc/src/unix/linux_like/linux/musl/b64/aarch64/mod.rs": [
+   0,
+   15
+  ],
+  "rust-vendor/libc/src/unix/linux_like/linux/musl/b64/loongarch64/mod.rs": [
+   0,
+   15
+  ],
+  "rust-vendor/libc/src/unix/linux_like/linux/musl/b64/mips64.rs": [
+   0,
+   15
+  ],
+  "rust-vendor/libc/src/unix/linux_like/linux/musl/b64/powerpc64.rs": [
+   0,
+   15
+  ],
+  "rust-vendor/libc/src/unix/linux_like/linux/musl/b64/riscv64/mod.rs": [
+   0,
+   15
+  ],
+  "rust-vendor/libc/src/unix/linux_like/linux/musl/b64/s390x.rs": [
+   0,
+   15
+  ],
+  "rust-vendor/libc/src/unix/linux_like/linux/musl/b64/wasm32/mod.rs": [
+   0,
+   15
+  ],
+  "rust-vendor/libc/src/unix/linux_like/linux/musl/b64/x86_64/mod.rs": [
+   9,
+   15
+  ],
+  "rust-vendor/libc/src/unix/mod.rs": [
+   89,
+   11
+  ],
+  "rust-vendor/libc/src/unix/newlib/arm/mod.rs": [
+   1,
+   1
+  ],
+  "rust-vendor/libc/src/unix/newlib/espidf/mod.rs": [
+   2,
+   0
+  ],
+  "rust-vendor/libc/src/unix/newlib/horizon/mod.rs": [
+   1,
+   1
+  ],
+  "rust-vendor/libc/src/unix/newlib/vita/mod.rs": [
+   3,
+   3
+  ],
+  "rust-vendor/libc/src/unix/nto/mod.rs": [
+   23,
+   6
+  ],
+  "rust-vendor/libc/src/unix/redox/mod.rs": [
+   47,
+   5
+  ],
+  "rust-vendor/libc/src/unix/solarish/illumos.rs": [
+   2,
+   0
+  ],
+  "rust-vendor/libc/src/vxworks/mod.rs": [
+   53,
+   7
+  ],
+  "rust-vendor/libc/src/wasi/mod.rs": [
+   2,
+   0
+  ],
+  "rust-vendor/libc/src/windows/mod.rs": [
+   2,
+   0
+  ],
+  "src/apparmor.rs": [
+   2,
+   2
+  ],
+  "src/common/command.rs": [
+   32,
+   19
+  ],
+  "src/common/context.rs": [
+   6,
+   5
+  ],
+  "src/common/error.rs": [
+   11,
+   2
+  ],
+  "src/common/mod.rs": [
+   24,
+   0
+  ],
+  "src/common/resolve.rs": [
+   5,
+   5
+  ],
+  "src/cutils/mod.rs": [
+   10,
+   10
+  ],
+  "src/defaults/mod.rs": [
+   14,
+   2
+  ],
+  "src/defaults/settings_dsl.rs": [
+   0,
+   3
+  ],
+  "src/exec/event.rs": [
+   1,
+   1
+  ],
+  "src/exec/mod.rs": [
+   18,
+   13
+  ],
+  "src/exec/no_pty.rs": [
+   6,
+   6
+  ],
+  "src/exec/noexec.rs": [
+   24,
+   30
+  ],
+  "src/exec/use_pty/backchannel.rs": [
+   8,
+   12
+  ],
+  "src/exec/use_pty/monitor.rs": [
+   13,
+   14
+  ],
+  "src/exec/use_pty/parent.rs": [
+   8,
+   9
+  ],
+  "src/gettext/mod.rs": [
+   20,
+   9
+  ],
+  "src/log/mod.rs": [
+   0,
+   5
+  ],
+  "src/log/syslog.rs": [
+   1,
+   2
+  ],
+  "src/macros.rs": [
+   0,
+   12
+  ],
+  "src/pam/askpass.rs": [
+   1,
+   1
+  ],
+  "src/pam/converse.rs": [
+   10,
+   7
+  ],
+  "src/pam/error.rs": [
+   1,
+   1
+  ],
+  "src/pam/mod.rs": [
+   4,
+   8
+  ],
+  "src/pam/rpassword.rs": [
+   219,
+   79
+  ],
+  "src/pam/sys_linuxpam.rs": [
+   13,
+   13
+  ],
+  "src/pam/sys_openpam.rs": [
+   13,
+   13
+  ],
+  "src/su/cli.rs": [
+   11,
+   11
+  ],
+  "src/su/context.rs": [
+   2,
+   2
+  ],
+  "src/su/mod.rs": [
+   3,
+   12
+  ],
+  "src/sudo/cli/mod.rs": [
+   51,
+   25
+  ],
+  "src/sudo/cli/tests.rs": [
+   3,
+   1
+  ],
+  "src/sudo/diagnostic.rs": [
+   7,
+   4
+  ],
+  "src/sudo/edit.rs": [
+   16,
+   11
+  ],
+  "src/sudo/env/environment.rs": [
+   16,
+   17
+  ],
+  "src/sudo/env/tests.rs": [
+   1,
+   1
+  ],
+  "src/sudo/mod.rs": [
+   14,
+   10
+  ],
+  "src/sudo/pipeline.rs": [
+   3,
+   12
+  ],
+  "src/sudo/pipeline/edit.rs": [
+   11,
+   17
+  ],
+  "src/sudo/pipeline/list.rs": [
+   22,
+   13
+  ],
+  "src/sudoers/ast.rs": [
+   40,
+   19
+  ],
+  "src/sudoers/char_stream.rs": [
+   7,
+   7
+  ],
+  "src/sudoers/entry.rs": [
+   20,
+   7
+  ],
+  "src/sudoers/mod.rs": [
+   24,
+   11
+  ],
+  "src/sudoers/policy.rs": [
+   12,
+   12
+  ],
+  "src/sudoers/test/mod.rs": [
+   40,
+   12
+  ],
+  "src/sudoers/tokens.rs": [
+   47,
+   8
+  ],
+  "src/system/audit.rs": [
+   74,
+   29
+  ],
+  "src/system/file/mod.rs": [
+   0,
+   2
+  ],
+  "src/system/file/tmpdir.rs": [
+   1,
+   1
+  ],
+  "src/system/interface.rs": [
+   4,
+   4
+  ],
+  "src/system/mod.rs": [
+   11,
+   28
+  ],
+  "src/system/signal/handler.rs": [
+   3,
+   1
+  ],
+  "src/system/signal/mod.rs": [
+   14,
+   2
+  ],
+  "src/system/signal/set.rs": [
+   21,
+   1
+  ],
+  "src/system/signal/state.rs": [
+   1,
+   1
+  ],
+  "src/system/signal/stream.rs": [
+   2,
+   1
+  ],
+  "src/system/term/mod.rs": [
+   2,
+   2
+  ],
+  "src/system/term/user_term.rs": [
+   6,
+   5
+  ],
+  "src/system/timestamp.rs": [
+   15,
+   6
+  ],
+  "src/system/wait.rs": [
+   3,
+   1
+  ],
+  "src/visudo/mod.rs": [
+   25,
+   24
+  ]
+ },
+ "files": 190,
+ "added_lines": 4073,
+ "removed_lines": 1697,
+ "diff": "diff --git a/.cargo_vcs_info.json b/.cargo_vcs_info.json\nindex e9caa7a..c81ec62 100644\n--- a/.cargo_vcs_info.json\n+++ b/.cargo_vcs_info.json\n@@ -1,6 +1,6 @@\n {\n   \"git\": {\n-    \"sha1\": \"f3500295822c575194cb56820a3e74fdc6a060f5\"\n+    \"sha1\": \"965cd7b99b04faf55819606178a5e8233cfd8b9e\"\n   },\n   \"path_in_vcs\": \"\"\n }\n\\ No newline at end of file\ndiff --git a/.github/dependabot.yml b/.github/dependabot.yml\nindex a76e083..a50c778 100644\n--- a/.github/dependabot.yml\n+++ b/.github/dependabot.yml\n@@ -5,3 +5,5 @@ updates:\n   schedule:\n     interval: monthly\n   open-pull-requests-limit: 10\n+  cooldown:\n+    default-days: 7\ndiff --git a/.github/workflows/ci.yaml b/.github/workflows/ci.yaml\nindex 3723fda..65f8348 100644\n--- a/.github/workflows/ci.yaml\n+++ b/.github/workflows/ci.yaml\n@@ -1,6 +1,6 @@\n name: CI\n \n-permissions: read-all\n+permissions: {}\n \n on:\n   push:\n@@ -19,6 +19,8 @@ jobs:\n       CI: true\n     steps:\n       - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2\n+        with:\n+          persist-credentials: false\n \n       - name: set up docker buildx\n         run: docker buildx create --name builder --use\n@@ -55,6 +57,8 @@ jobs:\n       updated: ${{ steps.filter.outputs.test-framework }}\n     steps:\n       - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2\n+        with:\n+          persist-credentials: false\n \n       - uses: dorny/paths-filter@de90cc6fb38fc0963ad72b210f1f284cd68cea36 # v3.0.2\n         id: filter\n@@ -71,6 +75,8 @@ jobs:\n       CI: true\n     steps:\n       - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2\n+        with:\n+          persist-credentials: false\n \n       - name: set up docker buildx\n         run: docker buildx create --name builder --use\n@@ -101,6 +107,8 @@ jobs:\n       CI: true\n     steps:\n       - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2\n+        with:\n+          persist-credentials: false\n \n       - name: set up docker buildx\n         run: docker buildx create --name builder --use\n@@ -149,6 +157,8 @@ jobs:\n \n     steps:\n       - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2\n+        with:\n+          persist-credentials: false\n \n       - name: Rust Cache\n         uses: Swatinem/rust-cache@779680da715d629ac1d338a641029a2f4372abb5 # v2.8.2\n@@ -178,6 +188,8 @@ jobs:\n \n     steps:\n       - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2\n+        with:\n+          persist-credentials: false\n \n       - name: Correct permissions\n         run: sudo chmod -R 755 /usr/share\n@@ -186,7 +198,7 @@ jobs:\n         run: rustup component add llvm-tools\n \n       - name: Add cargo-llvm-cov\n-        uses: taiki-e/install-action@cc33365ec7e3350bc47bf935f247582cc6f68344 # v2.65.12\n+        uses: taiki-e/install-action@68675c5a5f1a6950c3975d33f3ae0ef155e5bf3d # v2.68.15\n         with:\n           tool: cargo-llvm-cov\n \n@@ -214,6 +226,8 @@ jobs:\n \n     steps:\n       - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2\n+        with:\n+          persist-credentials: false\n \n       - name: Correct permissions\n         run: sudo chmod -R 755 /usr/share\n@@ -245,12 +259,14 @@ jobs:\n \n     steps:\n       - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2\n+        with:\n+          persist-credentials: false\n \n       - name: Correct permissions\n         run: sudo chmod -R 755 /usr/share\n \n-      - name: Install rust 1.70\n-        run: rustup override set 1.70\n+      - name: Install rust 1.85\n+        run: rustup override set 1.85\n \n       - name: Install dependencies\n         run: |\n@@ -266,12 +282,17 @@ jobs:\n       - name: Run tests\n         run: cargo test --workspace --all-targets --release\n \n+      - name: Check test framework\n+        run: cd test-framework && cargo check --workspace --all-targets\n+\n   build-and-test-fedora:\n     runs-on: ubuntu-latest\n     container: fedora:latest\n \n     steps:\n       - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2\n+        with:\n+          persist-credentials: false\n \n       - name: Install dependencies\n         run: |\n@@ -297,6 +318,8 @@ jobs:\n \n     steps:\n       - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2\n+        with:\n+          persist-credentials: false\n \n       - name: Install dependencies\n         run: |\n@@ -324,6 +347,8 @@ jobs:\n \n     steps:\n       - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2\n+        with:\n+          persist-credentials: false\n \n       - name: Correct permissions\n         run: sudo chmod -R 755 /usr/share\n@@ -353,6 +378,8 @@ jobs:\n \n     steps:\n       - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2\n+        with:\n+          persist-credentials: false\n \n       - name: Install nightly rust and miri\n         run: |\n@@ -360,11 +387,6 @@ jobs:\n           rustup override set nightly\n           rustup component add miri\n \n-      - name: Install dependencies\n-        run: |\n-          sudo apt update\n-          sudo apt install libpam0g-dev\n-\n       - name: Register rust problem matcher\n         run: echo \"::add-matcher::.github/problem-matchers/rust.json\"\n \n@@ -376,6 +398,8 @@ jobs:\n \n     steps:\n       - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2\n+        with:\n+          persist-credentials: false\n \n       - name: Install dependencies\n         run: |\n@@ -383,9 +407,9 @@ jobs:\n           sudo apt install libpam0g-dev\n \n       - name: Install rust-bindgen\n-        uses: taiki-e/install-action@cc33365ec7e3350bc47bf935f247582cc6f68344 # v2.65.12\n+        uses: taiki-e/install-action@68675c5a5f1a6950c3975d33f3ae0ef155e5bf3d # v2.68.15\n         with:\n-          tool: bindgen-cli@0.70.1\n+          tool: bindgen-cli@0.72.1\n \n       - name: Install cargo-minify\n         run: cargo install --locked --git https://github.com/tweedegolf/cargo-minify cargo-minify\n@@ -402,6 +426,8 @@ jobs:\n       RUSTDOCFLAGS: \"-D warnings\"\n     steps:\n       - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2\n+        with:\n+          persist-credentials: false\n \n       - name: Run rustfmt\n         run: |\n@@ -415,6 +441,8 @@ jobs:\n       RUSTDOCFLAGS: \"-D warnings\"\n     steps:\n       - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2\n+        with:\n+          persist-credentials: false\n \n       - name: Register rust problem matcher\n         run: echo \"::add-matcher::.github/problem-matchers/rust.json\"\n@@ -429,6 +457,8 @@ jobs:\n       RUSTDOCFLAGS: \"-D warnings\"\n     steps:\n       - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2\n+        with:\n+          persist-credentials: false\n \n       - name: Register rust problem matcher\n         run: echo \"::add-matcher::.github/problem-matchers/rust.json\"\n@@ -453,6 +483,8 @@ jobs:\n     runs-on: ubuntu-latest\n     steps:\n       - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2\n+        with:\n+          persist-credentials: false\n \n       - name: Install gettext\n         run: |\n@@ -470,9 +502,11 @@ jobs:\n     runs-on: ubuntu-latest\n     steps:\n       - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2\n+        with:\n+          persist-credentials: false\n \n       - name: Install cargo-audit\n-        uses: taiki-e/install-action@cc33365ec7e3350bc47bf935f247582cc6f68344 # v2.65.12\n+        uses: taiki-e/install-action@68675c5a5f1a6950c3975d33f3ae0ef155e5bf3d # v2.68.15\n         with:\n           tool: cargo-audit\n \ndiff --git a/.github/workflows/publish-crates-io.yml b/.github/workflows/publish-crates-io.yml\nindex 564fc63..c69018b 100644\n--- a/.github/workflows/publish-crates-io.yml\n+++ b/.github/workflows/publish-crates-io.yml\n@@ -14,6 +14,8 @@ jobs:\n \n     steps:\n     - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2\n+      with:\n+        persist-credentials: false\n \n     - uses: rust-lang/crates-io-auth-action@b7e9a28eded4986ec6b1fa40eeee8f8f165559ec # v1.0.3\n       id: auth\ndiff --git a/.github/workflows/release.yml b/.github/workflows/release.yml\nindex cbb552c..873074f 100644\n--- a/.github/workflows/release.yml\n+++ b/.github/workflows/release.yml\n@@ -8,10 +8,12 @@ on:\n jobs:\n   build:\n     runs-on: ubuntu-24.04\n-    permissions: read-all\n+    permissions: {}\n \n     steps:\n       - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2\n+        with:\n+          persist-credentials: false\n \n       - name: Sanity checks\n         run: |\n@@ -28,7 +30,7 @@ jobs:\n \n       # Upload the built tarballs first before comparing checksums to help with debugging.\n       - name: Upload artifacts\n-        uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f # v6.0.0\n+        uses: actions/upload-artifact@bbbca2ddaa5d8feaa63e36b76fdaad77386f024f # v7.0.0\n         with:\n           name: release_files\n           path: |\n@@ -54,9 +56,11 @@ jobs:\n \n     steps:\n       - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2\n+        with:\n+          persist-credentials: false\n \n       - name: Download artifacts\n-        uses: actions/download-artifact@37930b1c2abaa49bbe596cd826c3c89aef350131 # v7.0.0\n+        uses: actions/download-artifact@70fc10c6e5e1ce46ad2ea6f2b72d43f7d47b13c3 # v8.0.0\n         with:\n           name: release_files\n           path: release_files\ndiff --git a/.github/workflows/zizmor.yml b/.github/workflows/zizmor.yml\nnew file mode 100644\nindex 0000000..c782955\n--- /dev/null\n+++ b/.github/workflows/zizmor.yml\n@@ -0,0 +1,24 @@\n+name: GitHub Actions Security Analysis with zizmor 🌈\n+\n+on:\n+  push:\n+    branches: [\"main\"]\n+  pull_request:\n+    branches: [\"**\"]\n+\n+permissions: {}\n+\n+jobs:\n+  zizmor:\n+    name: Run zizmor 🌈\n+    runs-on: ubuntu-latest\n+    permissions:\n+      security-events: write # Required for upload-sarif (used by zizmor-action) to upload SARIF files.\n+    steps:\n+      - name: Checkout repository\n+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2\n+        with:\n+          persist-credentials: false\n+\n+      - name: Run zizmor 🌈\n+        uses: zizmorcore/zizmor-action@0dce2577a4760a2749d8cfb7a84b7d5585ebcb7d # v0.5.0\ndiff --git a/CHANGELOG.md b/CHANGELOG.md\nindex eb3dcf6..a1ea894 100644\n--- a/CHANGELOG.md\n+++ b/CHANGELOG.md\n@@ -1,6 +1,35 @@\n # Changelog\n \n-## [0.2.12] - 2025-02-09\n+## [0.2.13] - 2026-03-10\n+\n+### Added\n+- In `pwfeedback` mode, pressing TAB will turn off the visual feedback (#1487)\n+- To allow specifying partial arguments (such as subcommands) in /etc/sudoers\n+  rules, a standalone `*` as the last argument can now be used to denote \"zero\n+  or more following arguments\". Attempts to use wildcards in other positions\n+  will now result in an explicit parse error with `visudo`. (#1455)\n+- A Polish translation of the command line interface\n+\n+### Changed\n+- `Defaults pwfeedback` is now on by default! (#1300)\n+- UX improvements in the password prompt: it can be suspended/resumed (#1499),\n+  and backspace supports multibyte characters (#1451)\n+- sudoedit now also checks ACLs for misconfigurations (#1477)\n+- Better error message if sudo-rs is being run in a container that has\n+  `no_new_privs` enabled. (#1164)\n+- IPv4-like hostnames in `/etc/sudoers` are now explicitly rejected (#1466)\n+- sudo-rs now requires at least Rust 1.85 to compile\n+\n+### Fixed\n+- When using `-i / --login`, the HOME, SHELL, USER and LOGNAME are now always\n+  set to the target user, even if they are part of the `env_keep` list. (#1335)\n+- Arguments in `SUDO_EDITOR` were not supported (#1491)\n+- `sudo --bell` did not work with PAM fingerprint module (#1180)\n+- Host-specific `Defaults` could result in an erroneous parse error (#1468)\n+- Command arguments containing non-UTF8 characters were rejected (#1413)\n+- `lecture` setting is now correctly ignored (#1481)\n+\n+## [0.2.12] - 2026-02-09\n \n ### Added\n - Support for `-b / --background` to run commands in the background\n@@ -40,7 +69,7 @@\n - Mistakes in the man pages (#1338, #1362, #1387)\n - Better error message when /etc/sudoers contains regular expressions (#1352)\n - Better error message when /etc/sudoers is missing (#1368)\n-- Redirecting input/output to another TTY was not recognised as redirection;\n+- Redirecting input/output to another TTY was not recognized as redirection;\n   this fix originated from Todd Miller's sudo (#1380)\n \n ## [0.2.10] - 2025-11-10\ndiff --git a/COPYRIGHT b/COPYRIGHT\nindex 7cac736..44585a8 100644\n--- a/COPYRIGHT\n+++ b/COPYRIGHT\n@@ -1,4 +1,4 @@\n-Copyright (c) 2022-2025 Trifecta Tech Foundation and contributors\n+Copyright (c) 2022-2026 Trifecta Tech Foundation and contributors\n Copyright (c) 1994-1996, 1998-2024 Todd C. Miller <Todd.Miller@sudo.ws>\n \n Except as otherwise noted (below and/or in individual files), sudo-rs is\ndiff --git a/Cargo.lock b/Cargo.lock\nindex 52763a7..c46e7a9 100644\n--- a/Cargo.lock\n+++ b/Cargo.lock\n@@ -1,6 +1,6 @@\n # This file is automatically @generated by Cargo.\n # It is not intended for manual editing.\n-version = 3\n+version = 4\n \n [[package]]\n name = \"glob\"\n@@ -10,13 +10,13 @@ checksum = \"0cc23270f6e1808e30a928bdc84dea0b9b4136a8bc82338574f23baf47bbd280\"\n \n [[package]]\n name = \"libc\"\n-version = \"0.2.180\"\n+version = \"0.2.183\"\n source = \"registry+https://github.com/rust-lang/crates.io-index\"\n-checksum = \"bcc35a38544a891a5f7c865aca548a982ccb3b8650a5b06d0fd33a10283c56fc\"\n+checksum = \"b5b646652bf6661599e1da8901b3b9522896f01e736bad5f723fe7a3a27f899d\"\n \n [[package]]\n name = \"sudo-rs\"\n-version = \"0.2.12\"\n+version = \"0.2.13\"\n dependencies = [\n  \"glob\",\n  \"libc\",\ndiff --git a/Cargo.toml b/Cargo.toml\nindex abb03b0..4250ad0 100644\n--- a/Cargo.toml\n+++ b/Cargo.toml\n@@ -10,10 +10,10 @@\n # See Cargo.toml.orig for the original contents.\n \n [package]\n-edition = \"2021\"\n-rust-version = \"1.70\"\n+edition = \"2024\"\n+rust-version = \"1.85\"\n name = \"sudo-rs\"\n-version = \"0.2.12\"\n+version = \"0.2.13\"\n build = false\n exclude = [\n     \"audit\",\ndiff --git a/Cargo.toml.orig b/Cargo.toml.orig\nindex 4ab0eca..dafda88 100644\n--- a/Cargo.toml.orig\n+++ b/Cargo.toml.orig\n@@ -1,16 +1,16 @@\n [package]\n name = \"sudo-rs\"\n description = \"A memory safe implementation of sudo and su.\"\n-version = \"0.2.12\"\n+version = \"0.2.13\"\n license = \"Apache-2.0 OR MIT\"\n-edition = \"2021\"\n+edition = \"2024\"\n repository = \"https://github.com/trifectatechfoundation/sudo-rs\"\n homepage = \"https://github.com/trifectatechfoundation/sudo-rs\"\n publish = true\n categories = [\"command-line-interface\"]\n exclude = [\"audit\", \"proofs\", \"util\"]\n \n-rust-version = \"1.70\"\n+rust-version = \"1.85\"\n \n default-run = \"sudo\"\n \ndiff --git a/FAQ.md b/FAQ.md\nindex b2594c5..5e3015d 100644\n--- a/FAQ.md\n+++ b/FAQ.md\n@@ -1,5 +1,30 @@\n # Frequently Asked Questions\n \n+This document attempts to answer common questions about the sudo-rs project.\n+\n+- [Who is behind sudo-rs?](#who-is-behind-sudo-rs)\n+- [I don't like the command name 'sudo-rs'?](#i-dont-like-the-command-name-sudo-rs)\n+- [What will I notice if I start using sudo-rs?](#what-will-i-notice-if-i-start-using-sudo-rs)\n+- [What is the advantage of rewriting sudo in Rust?](#what-is-the-advantage-of-rewriting-sudo-in-rust)\n+- [Why are you replacing a battle-tested utility?](#why-are-you-replacing-a-battle-tested-utility)\n+- [Why did you change *X*?](#why-did-you-change-x)\n+- [If I do `grep unsafe` why do I find hundreds of occurrences?](#if-i-do-grep-unsafe-why-do-i-find-hundreds-of-occurrences)\n+- [Why did you get rid of the GNU license?](#why-did-you-get-rid-of-the-gnu-license)\n+- [What operating systems does sudo-rs support?](#what-operating-systems-does-sudo-rs-support)\n+- [Why doesn't sudo-rs insult me when I mistype my password?](#why-doesnt-sudo-rs-insult-me-when-i-mistype-my-password)\n+- [Comparisons with other tools](#comparisons-with-other-tools)\n+  - [What about doas?](#what-about-doas)\n+  - [What about run0?](#what-about-run0)\n+- [Are there actual memory safety vulnerabilities in the original sudo?](#are-there-actual-memory-safety-vulnerabilities-in-the-original-sudo)\n+- [Are there fewer bugs in sudo-rs?](#are-there-fewer-bugs-in-sudo-rs)\n+- [Has sudo-rs been audited?](#has-sudo-rs-been-audited)\n+- [Is there a reason to not switch to sudo-rs?](#is-there-a-reason-to-not-switch-to-sudo-rs)\n+- [What is the \"test framework\" all about?](#what-is-the-test-framework-all-about)\n+- [How is the original sudo developer involved in your project?](#how-is-the-original-sudo-developer-involved-in-your-project)\n+- [How did sudo-rs development affect original sudo?](#how-did-sudo-rs-development-affect-original-sudo)\n+- [Do you participate in a bug bounty program?](#do-you-participate-in-a-bug-bounty-program)\n+- [Can I contribute to sudo-rs?](#can-i-contribute-to-sudo-rs)\n+\n ## Who is behind sudo-rs?\n \n Sudo-rs was originally started as a project by [ISRG](https://www.memorysafety.org), run by [Tweede golf](https://www.tweedegolf.com) and [Ferrous Systems](https://www.ferrous-systems.de). At this point in time it is owned and maintained by the non-profit [Trifecta Tech Foundation](https://trifectatech.org).\n@@ -20,7 +45,7 @@ We don't either!\n \n \"sudo-rs\" is the name of the project, which aims to provide an implementation of the `sudo` command written in Rust. End-users shouldn't *need* to be concerned about what programming language their tools are written in (although there is nothing wrong with taking an interest, of course!). Ideally, your Linux distribution will allow you to easily switch between `sudo` implementations, just as easily as you can switch between `vi` or `awk` implementations.\n \n-But because for such a long time, `sudo` has been considered a core utility, Linux distributions are still catching up---the amount of work that they have to do to accomodate having multiple sudo options shouldn't be underestimated. And so for the initial versions, many have chosen to rename the command \"sudo-rs\" to avoid a packaging problem.\n+But because for such a long time, `sudo` has been considered a core utility, Linux distributions are still catching up---the amount of work that they have to do to accommodate having multiple sudo options shouldn't be underestimated. And so for the initial versions, many have chosen to rename the command \"sudo-rs\" to avoid a packaging problem.\n \n If you are annoyed by this, do let your voice be heard to the maintainers of the sudo-rs package for your distribution! And be patient---maintaining packages for Linux distributions is largely a volunteer job, and since sudo-rs is a new tool it's only logical that distributions take a conservative approach.\n \n@@ -30,7 +55,7 @@ In most cases, not that much. Your password prompt will look differently.\n \n In other cases, if you have crafted a very specialized configuration, you may notice that some features are missing. This can be by design (e.g. we do not want sudo-rs to send email, or initiate any form of network connection), or simply an oversight. This should not happen with default configurations, so if this happens to you, you should have good chance of diagnosing the change necessary.\n \n-If you think we are missing a feature that is not on our roadmap, or that we should prioritise higher, *do* file a feature request on our GitHub page!\n+If you think we are missing a feature that is not on our roadmap, or that we should prioritize higher, *do* file a feature request on our GitHub page!\n \n ## What is the advantage of rewriting sudo in Rust?\n \n@@ -38,37 +63,50 @@ The reasons that were mentioned in the [blog post](https://tweedegolf.nl/en/blog\n \n 1. Obviously, better memory safety. In C a programmer needs to pay attention at every turn to check that memory is being used correctly. The Rust programming language helps the programmer avoid mistakes by tracking data allocation \"at compile time\". On top of that, it performs runtime checks to prevent the worst possible outcome in case mistakes do happen.\n \n-2. Rust can be used as a systems language, like C, but it also facilitates programming at a much higher level of abstraction. For example, parts of the business logic of sudo-rs are implemented using `enum` types, and evaluated by chaining Rust \"iterators\" together. And of course our entire code base leans into the ease-of-use offered by `Option` and `Result` types. To achieve the same thing in C, a programmer would need to explicitly implement the logic underpinning those concept themselves. (Which is what you will find that original sudo has done---and that added complexity is where bugs can thrive).\n+2. Rust can be used as a systems language, like C, but it also facilitates programming at a much higher level of abstraction. For example, parts of the business logic of sudo-rs are implemented using `enum` types, and evaluated by chaining Rust \"iterators\" together. And of course our entire code base leans into the ease-of-use offered by `Option` and `Result` types. To achieve the same thing in C, a programmer would need to explicitly implement the logic underpinning those concept themselves. (Which is what you will find that original sudo has done---and this added complexity is where bugs can thrive).\n \n-3. A rewrite is also a good time for a rethink. As in every realistic piece of software, there are many many code paths in original sudo [that are seldom exercised](https://www.stratascale.com/vulnerability-alert-CVE-2025-32463-sudo-chroot) in normal usage. Bugs can lurk there as well, undiscovered for years until someone takes a look. But, if some code paths are seldomly executed, why include them at all? This of course is the lesson that OpenBSD's `doas` teaches us.\n+3. A rewrite is also a good time for a rethink. As in every realistic piece of software, there are many many code paths in original sudo [that are seldom exercised](https://www.stratascale.com/vulnerability-alert-CVE-2025-32463-sudo-chroot) in normal usage. Bugs can lurk there as well, undiscovered for years until someone takes a look. But, if some code paths are seldom executed, why include them at all? This of course is the lesson that OpenBSD's `doas` teaches us.\n \n ## Why are you replacing a battle-tested utility?\n \n-Even though some people like to say that original sudo is \"battle tested\", that is only true for the most common usage scenarios. You can also say that COBOL is battle tested technology. And since sudo-rs is in fact a derived work of 'original' sudo, we also benefit from the \"battle tested\"-ness of the original. For example, we have [studied the past CVE's](https://github.com/trifectatechfoundation/sudo-rs/blob/main/docs/sudo-cve.md) so we don't fall prey to them.\n+Even though some people like to say that original sudo is \"battle tested\", that is only true for the most common usage scenarios. You can also say that COBOL is battle tested technology. And since sudo-rs is in fact a derived work of 'original' sudo, we also benefit from the \"battle tested\"-ness of the original. For example, we have [studied the past CVEs](https://github.com/trifectatechfoundation/sudo-rs/blob/main/docs/sudo-cve.md) so we don't fall prey to them.\n \n What is correct to say is that the maintainer of sudo, Todd Miller, has been battle tested. He has had the job of maintaining sudo for many years now, either in his spare time or in time graciously donated by his employer. Many millions of people (including tech giants) benefit from this.\n \n+## Why did you change *X*?\n+\n+The aim is to be a drop-in replacement for common use cases, not an exact clone of Todd Miller's sudo. Historical precedence\n+in itself is not enough of a reason to prevent changes.\n+\n+From the start, we haven't implemented features/settings we think should be deprecated or don't actually solve a problem (such as `require_tty`), and have made things the out-of-the-box default if they were enabled in all common packaged versions of sudo, for example `use_pty` and `env_reset`. The criteria we use to evaluate features are documented [here](CONTRIBUTING.md).\n+\n+We also listen to user feedback. Unsurprisingly, most enhancement requests were about the parts that users interact with the most, for example `--askpass`, `--bell`, `pwfeedback`, `passwd_timeout` and `SUDO_PROMPT` features. Some of these were actually contributed to the sudo-rs project by others. For these features you can find the discussion on our issue tracker.\n+\n+And if you can't find it, feel free to open an issue!\n+\n+Note that original sudo also changes things much more frequently than people think. For example, a quick scan through the git history of plugins/sudoers/defaults.c shows: [sudo-project/sudo@6a1fe42](https://github.com/sudo-project/sudo/commit/6a1fe42), [sudo-project/sudo@fce45b2](https://github.com/sudo-project/sudo/commit/fce45b2), [sudo-project/sudo@894daa8](https://github.com/sudo-project/sudo/commit/894daa8), [sudo-project/sudo@85fef8b](https://github.com/sudo-project/sudo/commit/85fef8b) (this one adds an option to allow a user to revert behaviour that changed in an earlier release), [sudo-project/sudo@df8f066](https://github.com/sudo-project/sudo/commit/df8f066), [sudo-project/sudo@278a8ba](https://github.com/sudo-project/sudo/commit/278a8ba). Particularly, in 2023 Todd Miller [enabled `use_pty` by default](https://github.com/sudo-project/sudo/issues/258) in sudo, which was a major change as it directly impacts how programs are executed.\n+\n ## If I do `grep unsafe` why do I find hundreds of occurrences?\n \n Because they are necessary.\n \n The `unsafe` keyword is part of Rust's memory safety design. The most important thing it allows is dereferencing \"raw pointers\", and calling other functions marked as \"unsafe\", such as those found in the C library. Because sudo-rs is a system utility, it needs to interface with the operating system and system libraries, which are written in C. Most of the `unsafe` code in sudo-rs lives at those seams. A prime example of this is the `setuid()` function itself---without which it would be really hard to write sudo.\n \n-Also note that about half of our `unsafe` blocks happens in unit test code---to test our \"unsafe parts\". For the other half, every usage of `unsafe` is accompanied by a `SAFETY` specification, every one of which has been vetted by at least two sudo-rs team members.\n+Also note that about half of our `unsafe` blocks happen in unit test code---to test our \"unsafe parts\". For the other half, every usage of `unsafe` is accompanied by a `SAFETY` specification, each of which has been vetted by at least two sudo-rs team members.\n \n-Finally, wherever it was possible, we use [Miri](https://github.com/rust-lang/miri) to test our `unsafe` blocks to be sure we didn't create any so-called \"undefined behaviour\".\n+Finally, wherever possible, we use [Miri](https://github.com/rust-lang/miri) to test our `unsafe` blocks to be sure we didn't create any so-called \"undefined behaviour\".\n \n We have seen some attempts at 'myth busting' Rust code by counting the number of times `unsafe` occurs. But that is mistaking the forest for the trees. Of course we understand the criticism: sudo-rs is a new program and needs to prove itself. But we are not spreading myths about sudo-rs having \"memory safety-by-design\" at its core.\n \n-At the very least, a few hundred lines of well-documented `unsafe` code is still less than hundreds of thousands of them.\n+At the very least, a few hundred lines of well-documented `unsafe` code is still less than hundreds of thousands.\n \n ## Why did you get rid of the GNU license?\n \n We didn't.\n \n-sudo is not a GNU tool but a cross-platform software project maintained by Todd Miller. It existed long before the GNU project did. It is licensed under the OpenBSD license, which is functionally equivalent to the MIT license that one can choose for sudo-rs.\n+sudo is not a GNU tool but a cross-platform software project maintained by Todd Miller. He is not affiliated with the GNU project, but with OpenBSD. It is licensed under the OpenBSD license, which is functionally equivalent to the MIT license that one can choose for sudo-rs. Early on [sudo did contain GPL-licensed parts](https://www.sudo.ws/about/history/#root-group-sudo), but these were removed by 1999.\n \n-The reason Trifecta Tech Foundation keeps sudo-rs under the MIT+Apache 2.0 dual license is simply this: it is the most common in the Rust ecosystem, and it is exactly as permissive as original sudo towards end-users. In fact, requiring that external contributors also agree with distribution under Apache 2.0 actually makes sudo-rs a tiny bit more tightly licensed.\n+The reason Trifecta Tech Foundation keeps sudo-rs under the MIT+Apache 2.0 dual license is simply this: it is the most common in the Rust ecosystem, and it is exactly as permissive as the OpenBSD license towards end-users. In fact, requiring that external contributors also agree with distribution under Apache 2.0 actually makes sudo-rs a tiny bit more tightly licensed.\n \n We understand the objections that some people may have when a piece of software that falls under the GPL gets re-implemented under a more permissive license. It also wouldn't make good engineering sense for sudo-rs to use a more permissive license than Todd Miller uses, because it would mean we wouldn't be able to consult his source code. \n \n@@ -112,21 +150,21 @@ On Linux, it is available as the OpenDoas port, which requires quite a bit of gl\n > There are fewer eyes on random `doas` ports, just because `sudo` had a vulnerability\n > does not mean random doas ports are more secure if they are not reviewed.\n \n-OpenDoas also has one unresolved CVE related to TTY hijacking for 2 years (https://nvd.nist.gov/vuln/search/results?query=opendoas) for which a remedy isn't easy (https://github.com/Duncaen/OpenDoas/issues/106). This is an attack scenario that sudo-rs, like sudo, util-linux's su and systemd's run0 have remedies for (and have had to spent substantial effort in \"getting things right\"). It's also clear that *at the time of writing* OpenDoas is not that actively maintained (https://github.com/Duncaen/OpenDoas/pull/124).\n+OpenDoas has also had one unresolved CVE related to TTY hijacking for 2 years (https://nvd.nist.gov/vuln/search/results?query=opendoas) for which a remedy isn't easy (https://github.com/Duncaen/OpenDoas/issues/106). This is an attack scenario that sudo-rs, like sudo, util-linux's su and systemd's run0 have remedies for (and have had to spend substantial effort in \"getting things right\"). It's also clear that *at the time of writing* OpenDoas is not that actively maintained (https://github.com/Duncaen/OpenDoas/pull/124).\n \n-That being said, we admire the minimalist approach exemplified by doas, and this is expressed by what we internally call our \"Berlin Criteria\" in our contributing guidelines.\n+That being said, we admire the minimalist approach exemplified by doas, and this is expressed by what we internally call our \"Berlin Criteria\" in our [contributing guidelines](CONTRIBUTING.md).\n \n-If we zoom in on a line-for-line comparison, how does sudo-rs compare to OpenDoas' ~5000 lines of C code? sudo-rs is around 40.000 lines of Rust code. Of those, 25.000 lines are test code, which leaves around 15.000 lines of production code. Of those, less than 350 are \"unsafe\". If we compare both to original sudo, we find that it contains over 180.000 lines of C. So on this spectrum, it is much closer to doas than to original sudo.\n+If we zoom in on a line-for-line comparison, how does sudo-rs compare to OpenDoas' ~5000 lines of C code? sudo-rs is around 40.000 lines of Rust code. Of those, 25.000 lines are test code, which leaves around 15.000 lines of production code. Of those, less than 350 are \"unsafe\". If we compare both to original sudo, we find that it contains over 180.000 lines of C. So on this spectrum, sudo-rs is much closer to doas than to original sudo.\n \n On a more practical side, as with run0, switching to doas would require users to rewrite their sudoers configurations to doas configurations. That might be possible in many cases, but not all.\n \n-This is not say that *you* should not use OpenDoas. TTY hijacking attack might not be relevant for you (for example, because you disabled the feature that allows it in the Linux kernel), and you may need the tiny footprint or prefer the simpler configuration file. But OpenDoas (at least in its current form) isn't a solution for everybody.\n+This is not to say that *you* should not use OpenDoas. TTY hijacking attack might not be relevant for you (for example, because you disabled the feature that allows it in the Linux kernel), and you may need the tiny footprint or prefer the simpler configuration file. But OpenDoas (at least in its current form) isn't a solution for everybody.\n \n ### What about run0?\n \n Run0 is a tool added to systemd in version 256 which serves a similar purpose to sudo/sudo-rs. Its main aim is to offer controlled privilege escalation without requiring the SUID flag on binaries, by merely functioning as a convenient interface to functionality that was already present in systemd. It is controlled by a security policy implemented through polkit.\n \n-Having had the experience of writing a SUID program, we can definitely say that we see advantages to that approach. Since systemd is a security-critical component anway, there is something to be said to let it handle privilege escalation as well.\n+Having had the experience of writing a SUID program, we can definitely say that we see advantages to that approach. Since systemd is a security-critical component anyway, there is something to be said to let it handle privilege escalation as well.\n \n However, there are still some trade-offs. \n \n@@ -136,6 +174,8 @@ However, there are still some trade-offs.\n \n - sudo-rs can more easily be ported to other platforms -- see our port for FreeBSD.\n \n+- run0 does not have `sudoedit`\n+\n ## Are there actual memory safety vulnerabilities in the original sudo?\n \n Serious vulnerabilities in sudo are listed by the developer of C-based sudo, Todd Miller, on https://www.sudo.ws/security/advisories/. The first page lists several memory safety vulnerabilities (anything that says “buffer overflow”, “heap overflow\" or “double free”). One of the oldest ones we know of is from 2001, published in Phrack https://phrack.org/issues/57/8 under the whimsical name “Vudo”, which quite dramatically showed an attacker gaining full access on a system that it only had limited access to.\n@@ -146,9 +186,9 @@ Now, the fine point here of course is: \"Baron Samedit” was discovered by secur\n \n Also, consider this: the bug behind “Baron Samedit” was present in sudo between 2011 and 2021. That’s a long time. So it’s quite possible that someone already knew it existed before 2021, but simply didn’t tell anybody else.\n \n-Beyond sudo, a [memory safety vulnerability](https://nvd.nist.gov/vuln/detail/cve-2021-4034) was also discovered in `pkexec`, another sudo-like progam.\n+Beyond sudo, a [memory safety vulnerability](https://nvd.nist.gov/vuln/detail/cve-2021-4034) was also discovered in `pkexec`, another sudo-like program.\n \n-Note that in real-world attacks, sudo vulnerabilities would usually be combined with exploits in other software. For example, it may be possible to gain limited access on a machine by using an exploit in a webserver. If that machine then has a seriously vulnerable outdated sudo on it that allows an attacker to turn that limited access into full access, what may look like a minor bug in a webserver can turn into a nightmare. I.e. memory safety bugs in sudo have the potential to dramatically amplify the impact of bugs in other pieces of software.\n+Note that in real-world attacks, sudo vulnerabilities would usually be combined with exploits in other software. For example, it may be possible to gain limited access on a machine by using an exploit in a web server. If that machine then has a seriously vulnerable outdated sudo on it that allows an attacker to turn that limited access into full access, what may look like a minor bug in a webserver can turn into a nightmare. I.e. memory safety bugs in sudo have the potential to dramatically amplify the impact of bugs in other pieces of software.\n \n ## Are there fewer bugs in sudo-rs?\n \n@@ -158,11 +198,11 @@ On the one hand: we are a newer project, so we are likely to have messed up at s\n \n On the other hand, we have found several bugs in original sudo while we were implementing sudo-rs, and through our compliance testing framework we can clearly see that original sudo also is still actively introducing and fixing bugs.\n \n-Most of the bugs we are talking about here as so small that no ordinary user will ever encounter them. Many of the more noticeable bugs have already been discovered by early adopters of sudo-rs, who have been sending in bug reports for over two years.\n+Most of the bugs we are talking about here are so small that no ordinary user will ever encounter them. Many of the more noticeable bugs have already been discovered by early adopters of sudo-rs, who have been sending in bug reports for over two years.\n \n This is all talking about simple *bugs*. For vulnerabilities, we dare to give a bolder answer. Sudo-rs uses a memory safe-by-design approach with the aim of dramatically lowering the risk of a memory safety bug. For original sudo, this risk is only reduced compared to other C projects because it has been around for a long time. We expect the probability of a memory safety vulnerability to be discovered in sudo-rs to be dramatically small---especially because we know which parts of the code they could be hiding in. And to this day, none have been found.\n \n-For non-memory safety related vulnerabilities, we rely on our reduced feature set. Two recent CVE's in original sudo, [CVE-2025-32463](https://www.sudo.ws/security/advisories/chroot_bug/) and [ CVE-2025-32462](https://www.sudo.ws/security/advisories/host_any/) did not affect sudo-rs because of this reason. Secondly, because Rust allows describing the \"business logic\" in a more humanly readable way than C, it would also have been highly unlikely that we would have been suspectible to [CVE-2023-22809](https://www.sudo.ws/security/advisories/sudoedit_any/).\n+For non-memory safety related vulnerabilities, we rely on our reduced feature set. Two recent CVEs in original sudo, [CVE-2025-32463](https://www.sudo.ws/security/advisories/chroot_bug/) and [ CVE-2025-32462](https://www.sudo.ws/security/advisories/host_any/) did not affect sudo-rs because of this reason. Secondly, because Rust allows describing the \"business logic\" in a more humanly readable way than C, it would also have been highly unlikely that we would have been susceptible to [CVE-2023-22809](https://www.sudo.ws/security/advisories/sudoedit_any/).\n \n ## Has sudo-rs been audited?\n \n@@ -176,7 +216,7 @@ Certainly. There are features that sudo-rs doesn't support (such as sending mail\n \n There may also be socio-economic reasons. If you are operating in a highly conservative environment, that may also be a reason why you might prefer sudo: it has a lot of history behind it and is widely accepted. If you're the sysadmin that installed sudo on every workstation in your organization, you're unlikely to be blamed if a vulnerability is discovered.\n \n-The good news is, original sudo is still being maintained. All sudo-rs is does is give you more freedom to choose which implementation of sudo to use. Freedom is good.\n+The good news is, original sudo is still being maintained. All sudo-rs does is give you more freedom to choose which implementation of sudo to use. Freedom is good.\n \n ## What is the \"test framework\" all about?\n \n@@ -188,16 +228,18 @@ For details you can read the blog by sudo-rs engineer Jorge Aparicio: https://fe\n \n ## How is the original sudo developer involved in your project?\n \n-Todd Miller is not part of the sudo-rs team, but he has collaborated with us and has frequently served as an advisor. For example, whenever we discovered behaviour\n+Todd Miller is not part of the sudo-rs team, but he has collaborated with us and has frequently served as an adviser. For example, whenever we discovered behaviour\n in original sudo and were not sure whether to copy this or not, he would [chime in](https://github.com/trifectatechfoundation/sudo-rs/issues/427#issuecomment-1589619556)\n with useful advice.\n \n-We have collaborated on vulnerabilities that required mitigations from both of us, for example around our three advisories, as well as \n-[CVE-2023-42465](https://www.packetlabs.net/posts/sudo-command-is-vulnerable-to-rowhammer/) and [CVE-2023-2002](https://www.cve.org/CVERecord?id=CVE-2023-2002)). He has also [fixed a bug](https://github.com/trifectatechfoundation/sudo-rs/pull/1017) in the FreeBSD port of sudo-rs.\n+We have collaborated on vulnerabilities that required mitigations from both of us, for example around our three of our advisories, as well as \n+[CVE-2023-42465](https://www.packetlabs.net/posts/sudo-command-is-vulnerable-to-rowhammer/) and [CVE-2023-2002](https://www.cve.org/CVERecord?id=CVE-2023-2002). He has also [fixed a bug](https://github.com/trifectatechfoundation/sudo-rs/pull/1017) in the FreeBSD port of sudo-rs.\n \n ## How did sudo-rs development affect original sudo?\n \n-During the development of our testing framework, we exercised some code paths in original sudo that were rarely used, and (not surprisingly), several bugs were discovered that way; most of which had a no or only a slight security impact. This also furthered the harmonization between sudo-rs and sudo on their common feature set.\n+During the development of our testing framework, we exercised some code paths in original sudo that were rarely used, and (not surprisingly), several bugs were discovered that way; most of which had a no or only a slight security impact.\n+We reported these to Todd who promptly fixed them.\n+This also furthered the harmonization between sudo-rs and sudo on their common feature set.\n \n Bugs fixed in sudo 1.9.14:\n \n@@ -227,6 +269,9 @@ Bugs fixed in sudo 1.9.18:\n \n * https://github.com/sudo-project/sudo/commit/12724d1b73d6d7dd3197ceadefdd9e600fcda537\n * https://github.com/sudo-project/sudo/commit/e2a2982153a39eb793adfc9f2a8524adfdae8c6f\n+* https://github.com/sudo-project/sudo/commit/526677d016c451e032041b9487051b881839844c\n+* https://github.com/sudo-project/sudo/commit/bcbaca6f69c68a9c249fed96514889a9cc886048\n+* https://github.com/sudo-project/sudo/commit/59f6eceb17ca1996260881f2128a339dd2e7ed3d\n \n Time permitting, we would also like to contribute our improvements to the Linux seccomp-based `NOEXEC` mechanism back to the sudo project.\n \ndiff --git a/LICENSE-MIT b/LICENSE-MIT\nindex 1b38e04..b3f5869 100644\n--- a/LICENSE-MIT\n+++ b/LICENSE-MIT\n@@ -1,5 +1,4 @@\n-Copyright (c) 2022-2025 Trifecta Tech Foundation\n-and contributors\n+Copyright (c) 2022-2026 Trifecta Tech Foundation and contributors\n Copyright (c) 1994-1996, 1998-2024 Todd C. Miller\n \n Permission is hereby granted, free of charge, to any\ndiff --git a/README.md b/README.md\nindex 34d6e79..1adaaf9 100644\n--- a/README.md\n+++ b/README.md\n@@ -4,9 +4,10 @@ A safety oriented and memory safe implementation of sudo and su written in Rust.\n \n ## Status of this project\n \n-Sudo-rs is being developed further; features you might expect from original sudo\n-may still be unimplemented or not planned. If there is an important one you need,\n-please request it using the issue tracker. If you encounter any usability bugs,\n+Sudo-rs is being actively maintained; features you might expect from original sudo\n+may still be unimplemented or not planned. Also note our [frequently asked questions](FAQ.md).\n+\n+If there is an important one you need, please request it using the issue tracker. If you encounter any usability bugs,\n also please report them on the [issue tracker](https://github.com/trifectatechfoundation/sudo-rs/issues).\n Suspected vulnerabilities can be reported on our [security page](https://github.com/trifectatechfoundation/sudo-rs/security).\n \n@@ -99,11 +100,11 @@ We currently only offer these for x86-64 Linux systems.\n We recommend installing sudo-rs and su-rs in your `/usr/local` hierarchy so it does not affect the integrity of the package\n manager of your Linux distribution. You can achieve this using the commands:\n ```sh\n-sudo tar -C /usr/local -xvf sudo-0.2.12.tar.gz\n+sudo tar -C /usr/local -xvf sudo-0.2.13.tar.gz\n ```\n and for su-rs:\n ```sh\n-sudo tar -C /usr/local -xvf su-0.2.12.tar.gz\n+sudo tar -C /usr/local -xvf su-0.2.13.tar.gz\n ```\n This will install sudo-rs and su-rs in `/usr/local/bin` using the usual commands `sudo`, `visudo`, `sudoedit` and `su`. Please double check\n that in your default `PATH`, the folders `/usr/local/bin` and `/usr/local/sbin` have priority over `/usr/bin` and `/usr/sbin`.\n@@ -135,7 +136,7 @@ If you **don't** have Todd Miller's `sudo` installed, you also have to make sure\n \n ### Building from source\n \n-Sudo-rs is written in Rust. The minimum required Rust version is 1.70. If your\n+Sudo-rs is written in Rust. The minimum required Rust version is 1.85. If your\n Linux distribution does not package that version (or a later one), you can always\n install the most recent version through [rustup]. You also need the C development\n files for PAM (`libpam0g-dev` on Debian, `pam-devel` on Fedora).\n@@ -198,6 +199,7 @@ Exceptions to the above, with respect to your `/etc/sudoers` configuration:\n * `use_pty` is enabled by default, but can be disabled.\n * `env_reset` is ignored --- this is always enabled.\n * `visiblepw` is ignored --- this is always disabled.\n+* `pwfeedback` is enabled by default, but can be disabled.\n * `verifypw` is ignored --- this is always set to `all` (the default)\n * the (NO)PASSWD tag on the \"list\" pseudocommand will determine whether a password\n   is required for the `sudo -U --list` command, instead of `listpw`.\n@@ -220,8 +222,9 @@ Some other notable restrictions to be aware of:\n * sudo-rs will not include the sendmail support of original sudo.\n * The sudoers file must be valid UTF-8.\n * To prevent a common configuration mistake in the sudoers file, wildcards\n-  are not supported in *argument positions* for a command.\n+  are only supported in *argument positions* for a command as the final argument.\n   E.g., `%sudoers ALL = /sbin/fsck*` will allow `sudo fsck` and `sudo fsck_exfat` as expected,\n+  and `%sudoers ALL = /sbin/service ntp *` will allow a user to control the `ntp` service.\n   but `%sudoers ALL = /bin/rm *.txt` will not allow an operator to run `sudo rm README.txt`,\n   nor `sudo rm -rf /home .txt`, as with original sudo.\n \ndiff --git a/debian/changelog b/debian/changelog\nindex 5f535ab..41780e4 100644\n--- a/debian/changelog\n+++ b/debian/changelog\n@@ -1,3 +1,25 @@\n+rust-sudo-rs (0.2.13-0ubuntu1) resolute; urgency=medium\n+\n+  * New upstream version (LP: #2143916)\n+  * Fixes:\n+    - Merge from upstream \"Add error messages on wildcards and accept a 'final'\n+      wildcard #1463\" (LP: #2143125)\n+    - sudo-rs does not show the entire version string on Ubuntu (LP: #2142449)\n+  * Drop patches:\n+    - enable-pwfeedback-by-default.patch: Upstream enabled pwfeedback by\n+      default in 0.2.13.\n+    - correct-backspace-for-multibyte-characters.patch: Upstream fixed\n+      backspace.\n+  * Refresh patches:\n+    - disable-broken-tests.patch\n+  * New patches:\n+    - fix-toggle-pwfeedback-tab.patch: Add a patch to fix toggling pwfeedback\n+      with the TAB key, thanks Marc Schoolderman.\n+  * Skip tests:\n+    - traverse_secure_open_negative\n+\n+ -- Simon Johnsson <simon.johnsson@canonical.com>  Wed, 11 Mar 2026 14:27:00 +0100\n+\n rust-sudo-rs (0.2.12-0ubuntu1) resolute; urgency=medium\n \n   * New upstream version (LP: #2141927)\ndiff --git a/debian/control b/debian/control\nindex 27ab253..012c6c2 100644\n--- a/debian/control\n+++ b/debian/control\n@@ -6,7 +6,7 @@ Build-Depends: debhelper-compat (= 13),\n                libpam-dev,\n                pandoc [!i386]\n Build-Depends-Arch: cargo:native, libstd-rust-dev, rustc:native (>= 1.70)\n-XS-Vendored-Sources-Rust: glob@0.3.3, libc@0.2.180\n+XS-Vendored-Sources-Rust: glob@0.3.3, libc@0.2.183\n Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>\n XSBC-Original-Maintainer: Debian Rust Maintainers <pkg-rust-maintainers@alioth-lists.debian.net>\n Uploaders: Sylvestre Ledru <sylvestre@debian.org>\ndiff --git a/debian/patches/correct-backspace-for-multibyte-characters.patch b/debian/patches/correct-backspace-for-multibyte-characters.patch\ndeleted file mode 100644\nindex b887f3e..0000000\n--- a/debian/patches/correct-backspace-for-multibyte-characters.patch\n+++ /dev/null\n@@ -1,177 +0,0 @@\n-Description: Correct backspace for multibyte characters\n-\n- Since we use a very low-level password entry we need to take care of\n- backspaces, kill characters, etc; but also this. This function conservatively\n- only deals with UTF8 (and non-UTF8 sequences will simply continue to be seen as\n- individual bytes).\n-\n- This same behaviour is in ogsudo; if we agree on this fix I'll attempt to\n- contribute it back there as well.\n-\n- Note that the fix does not use the current locale, since the encoding that a\n- password arrives in is determined by the terminal the user has than the local\n- LC_CTYPE setting. And normally a mismatch between that is noticeable, but not\n- so much in the password prompt since that is silent.\n-\n- So the solution is that the multibyte detection is heuristic in the sense that:\n-\n-     Correct UTF8 input will be handled correctly. All likely single-byte input\n-     will be handled correctly (e.g. påsswørd if it is in ISO8859-1), except if\n-     it contains mojibake such as pÈ§sswÃ¸rd (but then the most likely intent\n-     of the user was to indeed pȧsswørd) Output that mixes Latin1 and non-UTF8:\n-     the heuristic doesn't look at the count bits of the UTF8 lead byte; we\n-     could add that but at the same time, in this scenario someone deserves to\n-     have unpredictable behaviour when typing backspace on the password prompt.\n-     I believe the only other relevant multibyte encoding is EUC, but that is,\n-     afaict, really on its way out. But we could add support for that encoding\n-     format in the similar way if needed.\n-\n-Author: Marc Schoolderman <marc@tweedegolf.com>\n-\n----\n-Origin: upstream, commit: b39ab065b8ef5420846aac6e626975e1ba8e38f9\n-Forwarded: not-needed\n-Applied-Upstream: https://github.com/trifectatechfoundation/sudo-rs/commit/b39ab065b8ef5420846aac6e626975e1ba8e38f9\n-Last-Update: 2026-02-16\n-\n---- rust-sudo-rs-0.2.12.orig/src/pam/rpassword.rs\n-+++ rust-sudo-rs-0.2.12/src/pam/rpassword.rs\n-@@ -91,37 +91,75 @@ pub(super) enum Hidden<T> {\n-     WithFeedback(T),\n- }\n- \n-+/// Heuristically determine the length of the final (potentially incomplete) UTF8 sequence\n-+fn last_char_size(slice: &[u8]) -> usize {\n-+    let start = |byte| byte & 0b1100_0000 == 0b1100_0000;\n-+    let trail = |byte| byte & 0b1100_0000 == 0b1000_0000;\n-+\n-+    match slice {\n-+        [] => 0,\n-+        [.., a, b] if start(a) && trail(b) => 2,\n-+        [.., a, b, c] if start(a) && [b, c].into_iter().all(trail) => 3,\n-+        [.., a, b, c, d] if start(a) && [b, c, d].into_iter().all(trail) => 4,\n-+        _ => 1,\n-+    }\n-+}\n-+\n- /// Reads a password from the given file descriptor while optionally showing feedback to the user.\n- fn read_unbuffered(\n-     source: &mut dyn io::Read,\n-     sink: &mut dyn io::Write,\n-     hide_input: &Hidden<HiddenInput>,\n- ) -> PamResult<PamBuffer> {\n--    struct ExitGuard<'a> {\n--        pw_len: usize,\n--        feedback: bool,\n-+    struct Bullets<'a> {\n-+        visible_len: Option<usize>,\n-         sink: &'a mut dyn io::Write,\n-     }\n- \n-+    const BULLET: &[u8] = b\"*\";\n-+\n-+    impl Bullets<'_> {\n-+        fn push(&mut self) {\n-+            if let Some(ref mut len) = self.visible_len {\n-+                let _ = self.sink.write(BULLET);\n-+                *len += 1;\n-+            }\n-+        }\n-+\n-+        fn pop(&mut self) {\n-+            match self.visible_len {\n-+                Some(ref mut len) if *len > 0 => {\n-+                    erase_feedback(self.sink, 1);\n-+                    *len -= 1;\n-+                }\n-+                _ => {}\n-+            }\n-+        }\n-+\n-+        fn clear(&mut self) {\n-+            if let Some(ref mut len) = self.visible_len {\n-+                erase_feedback(self.sink, *len);\n-+                *len = 0;\n-+            }\n-+        }\n-+    }\n-+\n-     // Ensure we erase the password feedback no matter how we exit read_unbuffered\n--    impl Drop for ExitGuard<'_> {\n-+    impl Drop for Bullets<'_> {\n-         fn drop(&mut self) {\n--            if self.feedback {\n--                erase_feedback(self.sink, self.pw_len);\n--            }\n-+            self.clear();\n-             let _ = self.sink.write(b\"\\n\");\n-         }\n-     }\n- \n--    let mut password = PamBuffer::default();\n--    let mut state = ExitGuard {\n--        pw_len: 0,\n--        feedback: matches!(hide_input, Hidden::WithFeedback(_)),\n-+    let mut feedback = Bullets {\n-+        visible_len: matches!(hide_input, Hidden::WithFeedback(_)).then_some(0),\n-         sink,\n-     };\n- \n--    // invariant: the amount of nonzero-bytes in the buffer correspond\n--    // with the amount of asterisks on the terminal (both tracked in `pw_len`)\n-+    let mut password = PamBuffer::default();\n-+    let mut pw_len = 0;\n-+\n-     #[allow(clippy::unbuffered_bytes)]\n-     for read_byte in source.bytes() {\n-         let read_byte = read_byte.map_err(|err| match err {\n-@@ -139,38 +177,33 @@ fn read_unbuffered(\n-             }\n- \n-             if read_byte == input.term_orig.c_cc[VERASE] {\n--                if state.pw_len > 0 {\n--                    if let Hidden::WithFeedback(_) = hide_input {\n--                        erase_feedback(state.sink, 1);\n--                    }\n--                    password[state.pw_len - 1] = 0;\n--                    state.pw_len -= 1;\n--                }\n-+                feedback.pop();\n-+                let chunk = last_char_size(&password[..pw_len]);\n-+                password[pw_len - chunk..pw_len].fill(0);\n-+                pw_len -= chunk;\n-                 continue;\n-             }\n- \n-             if read_byte == input.term_orig.c_cc[VKILL] {\n--                if let Hidden::WithFeedback(_) = hide_input {\n--                    erase_feedback(state.sink, state.pw_len);\n--                }\n-+                feedback.clear();\n-                 password.fill(0);\n--                state.pw_len = 0;\n-+                pw_len = 0;\n-                 continue;\n-             }\n-         }\n- \n--        if let Some(dest) = password.get_mut(state.pw_len) {\n-+        if let Some(dest) = password.get_mut(pw_len) {\n-             *dest = read_byte;\n--            state.pw_len += 1;\n--            if let Hidden::WithFeedback(_) = hide_input {\n--                let _ = state.sink.write(b\"*\");\n-+            pw_len += 1;\n-+            if last_char_size(&password[..pw_len]) == 1 {\n-+                feedback.push();\n-             }\n-         } else {\n-             return Err(PamError::IncorrectPasswordAttempt);\n-         }\n-     }\n- \n--    if state.pw_len == 0 {\n-+    if pw_len == 0 {\n-         // In case of EOF or Ctrl-D we don't want to ask for a password a second\n-         // time, so return an error.\n-         Err(PamError::NoPasswordProvided)\ndiff --git a/debian/patches/disable-broken-tests.patch b/debian/patches/disable-broken-tests.patch\nindex 1f98f25..45bc055 100644\n--- a/debian/patches/disable-broken-tests.patch\n+++ b/debian/patches/disable-broken-tests.patch\n@@ -1,7 +1,7 @@\n --- a/src/system/audit.rs\n +++ b/src/system/audit.rs\n-@@ -355,7 +355,8 @@\n-         assert!(traversed_secure_open(\"/bin/hello.txt\", &user).is_err());\n+@@ -418,7 +418,8 @@ mod test {\n+         assert!(traversed_secure_open(\"/bin/hello.txt\", &user, &user, &user.group()).is_err());\n      }\n  \n -    #[test]\ndiff --git a/debian/patches/enable-pwfeedback-by-default.patch b/debian/patches/enable-pwfeedback-by-default.patch\ndeleted file mode 100644\nindex 62db799..0000000\n--- a/debian/patches/enable-pwfeedback-by-default.patch\n+++ /dev/null\n@@ -1,94 +0,0 @@\n-Description: Enable pwfeedback by default\n- Change the default so that asterisks are shown when entering passwords.\n- It is still possibly to disable the asterisks by explicitly turning \n- `pwfeedback` off.\n-\n- This fixes a major UX pain point for new users. Security is theoretically\n- worse since password lengths are exposed to people watching your screen, but\n- this is an infinitesimal benefit far outweighed by the UX issue. Outside of\n- sudo/login no other password entry interfaces omit asterisks\n- (including others on Linux).\n-\n-Author: Tim Hutt <tdhutt@gmail.com>\n-\n----\n-Origin: upstream, commit: fb51e41919c25e3b178c4f994e668a5fc80136ee\n-Bug: https://github.com/trifectatechfoundation/sudo-rs/issues/1300\n-Forwarded: not-needed\n-Last-Update: 2026-02-16\n-\n---- rust-sudo-rs-0.2.12.orig/README.md\n-+++ rust-sudo-rs-0.2.12/README.md\n-@@ -198,6 +198,7 @@ Exceptions to the above, with respect to\n- * `use_pty` is enabled by default, but can be disabled.\n- * `env_reset` is ignored --- this is always enabled.\n- * `visiblepw` is ignored --- this is always disabled.\n-+* `pwfeedback` is enabled by default, but can be disabled.\n- * `verifypw` is ignored --- this is always set to `all` (the default)\n- * the (NO)PASSWD tag on the \"list\" pseudocommand will determine whether a password\n-   is required for the `sudo -U --list` command, instead of `listpw`.\n---- rust-sudo-rs-0.2.12.orig/docs/man/sudoers.5.man\n-+++ rust-sudo-rs-0.2.12/docs/man/sudoers.5.man\n-@@ -763,7 +763,7 @@ When pwfeedback is set, sudo will provid\n- presses a key.\n- Note that this does have a security impact as an onlooker may be able to\n- determine the length of the password being entered.\n--This flag is off by default.\n-+This flag is on by default.\n- .RE\n- .IP \\[bu] 2\n- rootpw\n---- rust-sudo-rs-0.2.12.orig/docs/man/sudoers.5.md\n-+++ rust-sudo-rs-0.2.12/docs/man/sudoers.5.md\n-@@ -384,7 +384,7 @@ sudo's behavior can be modified by Defau\n- \n- * pwfeedback\n- \n--  By default, sudo reads the password like most other Unix programs, by turning off echo until the user hits the return (or enter) key.  Some users become confused by this as it appears to them that sudo has hung at this point.  When pwfeedback is set, sudo will provide visual feedback when the user presses a key.  Note that this does have a security impact as an onlooker may be able to determine the length of the password being entered.  This flag is off by default.\n-+  By default, sudo reads the password like most other Unix programs, by turning off echo until the user hits the return (or enter) key.  Some users become confused by this as it appears to them that sudo has hung at this point.  When pwfeedback is set, sudo will provide visual feedback when the user presses a key.  Note that this does have a security impact as an onlooker may be able to determine the length of the password being entered.  This flag is on by default.\n- \n- * rootpw\n- \n---- rust-sudo-rs-0.2.12.orig/src/defaults/mod.rs\n-+++ rust-sudo-rs-0.2.12/src/defaults/mod.rs\n-@@ -39,7 +39,7 @@ defaults! {\n-     match_group_by_gid        = false  #ignored\n-     use_pty                   = true\n-     visiblepw                 = false  #ignored\n--    pwfeedback                = false\n-+    pwfeedback                = true\n-     rootpw                    = false\n-     targetpw                  = false\n-     noexec                    = false\n---- rust-sudo-rs-0.2.12.orig/src/sudoers/policy.rs\n-+++ rust-sudo-rs-0.2.12/src/sudoers/policy.rs\n-@@ -198,7 +198,7 @@ mod test {\n-                 allowed_attempts: 3,\n-                 prior_validity: Duration::from_secs(15 * 60),\n-                 credential: AuthenticatingUser::InvokingUser,\n--                pwfeedback: false,\n-+                pwfeedback: true,\n-                 noninteractive_auth: false,\n-                 password_timeout: Some(Duration::from_secs(300)),\n-             },\n-@@ -216,7 +216,7 @@ mod test {\n-                 allowed_attempts: 3,\n-                 prior_validity: Duration::from_secs(15 * 60),\n-                 credential: AuthenticatingUser::InvokingUser,\n--                pwfeedback: false,\n-+                pwfeedback: true,\n-                 noninteractive_auth: false,\n-                 password_timeout: Some(Duration::from_secs(300)),\n-             },\n---- rust-sudo-rs-0.2.12.orig/src/system/audit.rs\n-+++ rust-sudo-rs-0.2.12/src/system/audit.rs\n-@@ -374,8 +374,7 @@ mod test {\n-         assert!(traversed_secure_open(\"/bin/hello.txt\", &user).is_err());\n-     }\n- \n--    // Debian: this makes assumptions that are note valid in autopkgtest context\n--    #[allow(dead_code)]\n-+    #[test]\n-     fn test_traverse_secure_open_positive() {\n-         use crate::common::resolve::CurrentUser;\n-         use crate::system::{GroupId, UserId};\ndiff --git a/debian/patches/fix-toggle-pwfeedback-tab.patch b/debian/patches/fix-toggle-pwfeedback-tab.patch\nnew file mode 100644\nindex 0000000..898400e\n--- /dev/null\n+++ b/debian/patches/fix-toggle-pwfeedback-tab.patch\n@@ -0,0 +1,21 @@\n+Description: Fix TAB behaviour in prompt\n+ Sadly the 'no echo' semi-hidden feature would require TAB+backspace since the\n+ TAB is still registered as a password character.\n+Author: Marc Schoolderman <marc@tweedegolf.com>\n+---\n+Origin: upstream, commit: 483b9a5\n+Forwarded: not-needed\n+Applied-Upstream: commit: 483b9a5\n+Reviewed-By: Simon Johnsson <simon.johnsson@canonical.com>\n+Last-Update: 2026-03-11\n+\n+--- a/src/pam/rpassword.rs\n++++ b/src/pam/rpassword.rs\n+@@ -263,6 +263,7 @@ fn read_unbuffered(\n+             if read_byte == b'\\t' && feedback.visible_len.take().is_some() {\n+                 feedback.clear();\n+                 let _ = feedback.sink.write(b\"(no echo)\");\n++                continue;\n+             }\n+         }\n+\ndiff --git a/debian/patches/series b/debian/patches/series\nindex 0246927..a009c14 100644\n--- a/debian/patches/series\n+++ b/debian/patches/series\n@@ -1,3 +1,2 @@\n disable-broken-tests.patch\n-enable-pwfeedback-by-default.patch\n-correct-backspace-for-multibyte-characters.patch\n+fix-toggle-pwfeedback-tab.patch\ndiff --git a/debian/rules b/debian/rules\nindex 5989fb2..0f7a5f1 100755\n--- a/debian/rules\n+++ b/debian/rules\n@@ -1,5 +1,6 @@\n #!/usr/bin/make -f\n \n+export SUDO_RS_VERSION := $(shell dpkg-parsechangelog -S Version)\n UPSTREAM_VERSION := $(shell dpkg-parsechangelog -S Version|cut -d- -f1)\n \n # Vendoring setup\n@@ -33,7 +34,8 @@ vendor-tarball: vendor-tarball-quick-check vendor-deps\n \ttar --sort=name --mtime=@0 --owner=0 --group=0 --numeric-owner --pax-option=exthdr.name=%d/PaxHeaders/%f,delete=atime,delete=ctime -caf ../$(VENDOR_TARBALL) $(CARGO_VENDOR_DIR)\n \n override_dh_auto_test:\n-\tCARGO_HOME=$(CURDIR)/debian/cargo_home cargo test --features=pam-login,apparmor,sudoedit -- --skip test_build_run_context --skip test_traverse_secure_open_positive\n+\tCARGO_HOME=$(CURDIR)/debian/cargo_home cargo test --features=pam-login,apparmor,sudoedit,gettext -- --skip test_build_run_context --skip test_traverse_secure_open_positive \\\n+\t\t--skip test_traverse_secure_open_negative\n \n ifeq ($(DEB_HOST_ARCH),i386)\n override_dh_installman:\n@@ -49,7 +51,7 @@ endif\n \n override_dh_auto_install:\n \t# /usr/bin/{su,sudo,visudo} are already used, install into /usr/lib/cargo/bin\n-\tDEB_CARGO_INSTALL_PREFIX=/usr/lib/cargo dh_auto_install -O--buildsystem=cargo -- --features=pam-login,apparmor,sudoedit\n+\tDEB_CARGO_INSTALL_PREFIX=/usr/lib/cargo dh_auto_install -O--buildsystem=cargo -- --features=pam-login,apparmor,sudoedit,gettext\n \n execute_after_dh_fixperms:\n \tchmod 4755 debian/sudo-rs/usr/lib/cargo/bin/sudo\ndiff --git a/docs/man/su.1.man b/docs/man/su.1.man\nindex bace605..f95a720 100644\n--- a/docs/man/su.1.man\n+++ b/docs/man/su.1.man\n@@ -1,6 +1,6 @@\n .\\\" Automatically generated by Pandoc 3.6.3\n .\\\"\n-.TH \"SU\" \"1\" \"\" \"sudo\\-rs 0.2.12\" \"sudo\\-rs\"\n+.TH \"SU\" \"1\" \"\" \"sudo\\-rs 0.2.13\" \"sudo\\-rs\"\n .SH NAME\n \\f[CR]su\\f[R] \\- run a shell or command as another user\n .SH SYNOPSIS\ndiff --git a/docs/man/su.1.md b/docs/man/su.1.md\nindex 14e3243..328ff07 100644\n--- a/docs/man/su.1.md\n+++ b/docs/man/su.1.md\n@@ -1,5 +1,5 @@\n ---\n-title: SU(1) sudo-rs 0.2.12 | sudo-rs\n+title: SU(1) sudo-rs 0.2.13 | sudo-rs\n ---\n \n # NAME\ndiff --git a/docs/man/sudo.8.man b/docs/man/sudo.8.man\nindex 883278f..92485aa 100644\n--- a/docs/man/sudo.8.man\n+++ b/docs/man/sudo.8.man\n@@ -1,6 +1,6 @@\n .\\\" Automatically generated by Pandoc 3.6.3\n .\\\"\n-.TH \"SUDO\" \"8\" \"\" \"sudo\\-rs 0.2.12\" \"sudo\\-rs\"\n+.TH \"SUDO\" \"8\" \"\" \"sudo\\-rs 0.2.13\" \"sudo\\-rs\"\n .SH NAME\n \\f[CR]sudo\\f[R], \\f[CR]sudoedit\\f[R] \\- execute a command as another\n user\ndiff --git a/docs/man/sudo.8.md b/docs/man/sudo.8.md\nindex 1d0579d..dc44ee4 100644\n--- a/docs/man/sudo.8.md\n+++ b/docs/man/sudo.8.md\n@@ -1,5 +1,5 @@\n ---\n-title: SUDO(8) sudo-rs 0.2.12 | sudo-rs\n+title: SUDO(8) sudo-rs 0.2.13 | sudo-rs\n ---\n \n # NAME\ndiff --git a/docs/man/sudoers.5.man b/docs/man/sudoers.5.man\nindex 0bf45b0..f88df20 100644\n--- a/docs/man/sudoers.5.man\n+++ b/docs/man/sudoers.5.man\n@@ -1,6 +1,6 @@\n .\\\" Automatically generated by Pandoc 3.6.3\n .\\\"\n-.TH \"SUDOERS\" \"5\" \"\" \"sudo\\-rs 0.2.12\" \"sudo\\-rs\"\n+.TH \"SUDOERS\" \"5\" \"\" \"sudo\\-rs 0.2.13\" \"sudo\\-rs\"\n .SH NAME\n \\f[CR]sudoers\\f[R] \\- sudo\\-compatible security configuration\n .SH DESCRIPTION\n@@ -242,7 +242,7 @@ Again, the value of an item may be negated with the `!' operator.\n                Cmnd \\[aq],\\[aq] Cmnd_List\n \n  command name ::= file name |\n-                  file name args |\n+                  file name args [\\[aq]*\\[aq]] |\n                   file name \\[aq]\\[dq]\\[dq]\\[aq]\n \n  Cmnd ::= \\[aq]!\\[aq]* command name |\n@@ -258,10 +258,12 @@ A command name is a fully qualified file name which may include\n shell\\-style wildcards (see the Wildcards section below).\n A simple file name allows the user to run the command with any arguments\n they wish.\n-However, you may also specify command line arguments (which in sudo\\-rs\n-may \\f[I]not\\f[R] include wildcards).\n-Alternately, you can specify \\[lq]\\[rq] to indicate that the command may\n-only be run without command line arguments.\n+However, you may also specify command line arguments that have to be\n+used, in which case the command line has to match exactly.\n+You can use the special argument \\[lq]\\[rq] to indicate that the command\n+may only be run \\f[I]without\\f[R] command line arguments, or the\n+argument \\[cq]*\\[cq] to match any trailing arguments.\n+You cannot use wildcards inside the argument list.\n A directory is a fully qualified path name ending in a `/'.\n When you specify a directory in a Cmnd_List, the user will be able to\n run any file within that directory (but not in any sub\\-directories\n@@ -592,6 +594,8 @@ characters within a range.\n Wildcards in command line arguments are not supported\\[em]using these in\n original versions of sudo was usually a sign of mis\\-configuration and\n consequently sudo\\-rs simply forbids using them.\n+The only supported use is \\[cq]*\\[cq] as the final argument to indicate\n+\\[lq]zero or more subsequent arguments\\[rq] as noted above.\n .SS Including other files from within sudoers\n It is possible to include other sudoers files from within the sudoers\n file currently being parsed using the \\f[I]\\[at]include\\f[R] and\n@@ -761,9 +765,8 @@ Some users become confused by this as it appears to them that sudo has\n hung at this point.\n When pwfeedback is set, sudo will provide visual feedback when the user\n presses a key.\n-Note that this does have a security impact as an onlooker may be able to\n-determine the length of the password being entered.\n-This flag is off by default.\n+Feedback can always be turned off by using the TAB key.\n+This flag is on by default.\n .RE\n .IP \\[bu] 2\n rootpw\ndiff --git a/docs/man/sudoers.5.md b/docs/man/sudoers.5.md\nindex 03ffc6a..eb06638 100644\n--- a/docs/man/sudoers.5.md\n+++ b/docs/man/sudoers.5.md\n@@ -1,5 +1,5 @@\n ---\n-title: SUDOERS(5) sudo-rs 0.2.12 | sudo-rs\n+title: SUDOERS(5) sudo-rs 0.2.13 | sudo-rs\n ---\n \n # NAME\n@@ -139,7 +139,7 @@ A Host_List is made up of one or more host names.  Again, the value of an item m\n                    Cmnd ',' Cmnd_List\n \n      command name ::= file name |\n-                      file name args |\n+                      file name args ['*'] |\n                       file name '\"\"'\n \n      Cmnd ::= '!'* command name |\n@@ -148,7 +148,7 @@ A Host_List is made up of one or more host names.  Again, the value of an item m\n               '!'* \"list\"\n               '!'* \"sudoedit\" [file name]\n \n-A Cmnd_List is a list of one or more command names, directories, and other aliases.  A command name is a fully qualified file name which may include shell-style wildcards (see the Wildcards section below).  A simple file name allows the user to run the command with any arguments they wish.  However, you may also specify command line arguments (which in sudo-rs may *not* include wildcards). Alternately, you can specify \"\" to indicate that the command may only be run without command line arguments.  A directory is a fully qualified path name ending in a ‘/’.  When you specify a directory in a Cmnd_List, the user will be able to run any file within that directory (but not in any sub-directories therein).\n+A Cmnd_List is a list of one or more command names, directories, and other aliases.  A command name is a fully qualified file name which may include shell-style wildcards (see the Wildcards section below).  A simple file name allows the user to run the command with any arguments they wish.  However, you may also specify command line arguments that have to be used, in which case the command line has to match exactly. You can use the special argument \"\" to indicate that the command may only be run *without* command line arguments, or the argument ‘*’ to match any trailing arguments. You cannot use wildcards inside the argument list.  A directory is a fully qualified path name ending in a ‘/’.  When you specify a directory in a Cmnd_List, the user will be able to run any file within that directory (but not in any sub-directories therein).\n \n If a Cmnd has associated command line arguments, then the arguments in the Cmnd must match exactly those given by the user on the command line.\n Note that the following characters must be escaped with a ‘\\\\’ if they are used in command arguments: ‘,’, ‘:’, ‘=’, ‘\\\\’.\n@@ -319,7 +319,7 @@ sudo allows shell-style wildcards (aka meta or glob characters) to be used in ho\n \n Note that these are not regular expressions.  Unlike a regular expression there is no way to match one or more characters within a range.\n \n-Wildcards in command line arguments are not supported---using these in original versions of sudo was usually a sign of mis-configuration and consequently sudo-rs simply forbids using them.\n+Wildcards in command line arguments are not supported---using these in original versions of sudo was usually a sign of mis-configuration and consequently sudo-rs simply forbids using them. The only supported use is ‘*’ as the final argument to indicate \"zero or more subsequent arguments\" as noted above.\n \n ## Including other files from within sudoers\n \n@@ -384,7 +384,7 @@ sudo's behavior can be modified by Default_Entry lines, as explained earlier.  A\n \n * pwfeedback\n \n-  By default, sudo reads the password like most other Unix programs, by turning off echo until the user hits the return (or enter) key.  Some users become confused by this as it appears to them that sudo has hung at this point.  When pwfeedback is set, sudo will provide visual feedback when the user presses a key.  Note that this does have a security impact as an onlooker may be able to determine the length of the password being entered.  This flag is off by default.\n+  By default, sudo reads the password like most other Unix programs, by turning off echo until the user hits the return (or enter) key.  Some users become confused by this as it appears to them that sudo has hung at this point.  When pwfeedback is set, sudo will provide visual feedback when the user presses a key.  Feedback can always be turned off by using the TAB key.  This flag is on by default.\n \n * rootpw\n \ndiff --git a/docs/man/visudo.8.man b/docs/man/visudo.8.man\nindex 877e5a6..aeaf14b 100644\n--- a/docs/man/visudo.8.man\n+++ b/docs/man/visudo.8.man\n@@ -1,6 +1,6 @@\n .\\\" Automatically generated by Pandoc 3.6.3\n .\\\"\n-.TH \"VISUDO\" \"8\" \"\" \"sudo\\-rs 0.2.12\" \"sudo\\-rs\"\n+.TH \"VISUDO\" \"8\" \"\" \"sudo\\-rs 0.2.13\" \"sudo\\-rs\"\n .SH NAME\n \\f[CR]visudo\\f[R] \\- safely edit the sudoers file\n .SH SYNOPSIS\ndiff --git a/docs/man/visudo.8.md b/docs/man/visudo.8.md\nindex e674c07..8503417 100644\n--- a/docs/man/visudo.8.md\n+++ b/docs/man/visudo.8.md\n@@ -1,5 +1,5 @@\n ---\n-title: VISUDO(8) sudo-rs 0.2.12 | sudo-rs\n+title: VISUDO(8) sudo-rs 0.2.13 | sudo-rs\n ---\n \n # NAME\ndiff --git a/po/de.po b/po/de.po\nindex 2e72415..d0fd671 100644\n--- a/po/de.po\n+++ b/po/de.po\n@@ -4,7 +4,7 @@\n #\n msgid \"\"\n msgstr \"\"\n-\"Project-Id-Version: sudo-rs 0.2.10\\n\"\n+\"Project-Id-Version: sudo-rs 0.2.12\\n\"\n \"Report-Msgid-Bugs-To: https://github.com/trifectatechfoundation/sudo-rs/\"\n \"issues\\n\"\n \"POT-Creation-Date: 2025-12-08 17:30+0100\\n\"\ndiff --git a/po/es.po b/po/es.po\nindex 5d5e880..ac01de0 100644\n--- a/po/es.po\n+++ b/po/es.po\n@@ -4,7 +4,7 @@\n #\n msgid \"\"\n msgstr \"\"\n-\"Project-Id-Version: sudo-rs 0.2.10\\n\"\n+\"Project-Id-Version: sudo-rs 0.2.12\\n\"\n \"Report-Msgid-Bugs-To: https://github.com/trifectatechfoundation/sudo-rs/\"\n \"issues\\n\"\n \"POT-Creation-Date: 2025-12-08 17:30+0100\\n\"\ndiff --git a/po/fr.po b/po/fr.po\nindex 6fce19a..f012287 100644\n--- a/po/fr.po\n+++ b/po/fr.po\n@@ -4,7 +4,7 @@\n #\n msgid \"\"\n msgstr \"\"\n-\"Project-Id-Version: sudo-rs 0.2.10\\n\"\n+\"Project-Id-Version: sudo-rs 0.2.12\\n\"\n \"Report-Msgid-Bugs-To: https://github.com/trifectatechfoundation/sudo-rs/\"\n \"issues\\n\"\n \"POT-Creation-Date: 2025-12-08 17:30+0100\\n\"\ndiff --git a/po/fy.po b/po/fy.po\nindex b74dcba..1542aaf 100644\n--- a/po/fy.po\n+++ b/po/fy.po\n@@ -4,7 +4,7 @@\n #\n msgid \"\"\n msgstr \"\"\n-\"Project-Id-Version: sudo-rs 0.2.10\\n\"\n+\"Project-Id-Version: sudo-rs 0.2.12\\n\"\n \"Report-Msgid-Bugs-To: https://github.com/trifectatechfoundation/sudo-rs/\"\n \"issues\\n\"\n \"POT-Creation-Date: 2025-12-08 17:30+0100\\n\"\ndiff --git a/po/it.po b/po/it.po\nindex aef8718..3460379 100644\n--- a/po/it.po\n+++ b/po/it.po\n@@ -4,7 +4,7 @@\n #\n msgid \"\"\n msgstr \"\"\n-\"Project-Id-Version: sudo-rs 0.2.10\\n\"\n+\"Project-Id-Version: sudo-rs 0.2.12\\n\"\n \"Report-Msgid-Bugs-To: https://github.com/trifectatechfoundation/sudo-rs/\"\n \"issues\\n\"\n \"POT-Creation-Date: 2025-12-08 17:30+0100\\n\"\ndiff --git a/po/nl.po b/po/nl.po\nindex 1b48b60..6fc10b6 100644\n--- a/po/nl.po\n+++ b/po/nl.po\n@@ -4,7 +4,7 @@\n #\n msgid \"\"\n msgstr \"\"\n-\"Project-Id-Version: sudo-rs 0.2.10\\n\"\n+\"Project-Id-Version: sudo-rs 0.2.12\\n\"\n \"Report-Msgid-Bugs-To: https://github.com/trifectatechfoundation/sudo-rs/issues\\n\"\n \"POT-Creation-Date: 2025-12-08 17:30+0100\\n\"\n \"PO-Revision-Date: 2025-12-24 11:15+0100\\n\"\ndiff --git a/po/pl.po b/po/pl.po\nnew file mode 100644\nindex 0000000..0ae33ab\n--- /dev/null\n+++ b/po/pl.po\n@@ -0,0 +1,607 @@\n+# Translation template file for sudo-rs\n+# Copyright (C) 2025 Trifecta Tech Foundation\n+# This file is distributed under the same license as the sudo-rs package.\n+#\n+msgid \"\"\n+msgstr \"\"\n+\"Project-Id-Version: sudo-rs 0.2.12\\n\"\n+\"Report-Msgid-Bugs-To: https://github.com/trifectatechfoundation/sudo-rs/\"\n+\"issues\\n\"\n+\"POT-Creation-Date: 2026-02-11 08:11+0100\\n\"\n+\"PO-Revision-Date: 2026-02-11 09:36+0100\\n\"\n+\"Last-Translator: Nmrawe\\n\"\n+\"Language-Team: Polish\\n\"\n+\"Language: pl\\n\"\n+\"MIME-Version: 1.0\\n\"\n+\"Content-Type: text/plain; charset=UTF-8\\n\"\n+\"Content-Transfer-Encoding: 8bit\\n\"\n+\"X-Generator: Poedit 3.8\\n\"\n+\"X-Poedit-SourceCharset: UTF-8\\n\"\n+\n+#. TRANSLATORS: This is a well-known quote, try to preserve it in translation.\n+#: src/common/error.rs:80\n+#, rust-format\n+msgid \"I'm sorry {user}. I'm afraid I can't do that\"\n+msgstr \"Przepraszam, {user}. Obawiam się, że nie mogę tego zrobić\"\n+\n+#: src/sudoers/entry/verbose.rs:33\n+msgid \"Commands:\"\n+msgstr \"Polecenia:\"\n+\n+#: src/sudoers/entry/verbose.rs:46\n+msgid \"Sudoers entry:\"\n+msgstr \"Wpis sudoers:\"\n+\n+#. TRANSLATORS: This is sudo-specific jargon.\n+#: src/sudoers/entry/verbose.rs:54\n+msgid \"RunAsUsers\"\n+msgstr \"RunAs-użytkownicy\"\n+\n+#. TRANSLATORS: This is sudo-specific jargon.\n+#: src/sudoers/entry/verbose.rs:64\n+msgid \"RunAsGroups\"\n+msgstr \"RunAs-grupy\"\n+\n+#: src/sudoers/entry/verbose.rs:70\n+msgid \"Options\"\n+msgstr \"Opcje\"\n+\n+#. TRANSLATORS: This is sudo-specific jargon.\n+#: src/sudoers/entry/verbose.rs:79\n+msgid \"Cwd\"\n+msgstr \"Cwd\"\n+\n+#: src/pam/askpass.rs:55\n+#, rust-format\n+msgid \"Failed to run askpass program {path}: {error}\"\n+msgstr \"Nie udało się uruchomić programu pytającego o hasło {path}: {error}\"\n+\n+#: src/pam/error.rs:211 src/common/error.rs:127 src/common/error.rs:134\n+msgid \"Unexpected null character in input\"\n+msgstr \"Nieoczekiwany znak null w danych wejściowych\"\n+\n+#: src/pam/error.rs:212\n+msgid \"Could not read input data as UTF-8 string\"\n+msgstr \"Nie można odczytać danych wejściowych w postaci ciągu UTF-8\"\n+\n+#: src/pam/error.rs:214\n+msgid \"Account validation failure, is your account locked?\"\n+msgstr \"Błąd weryfikacji konta. Czy to konto zostało zablokowane?\"\n+\n+#: src/pam/error.rs:219\n+msgid \"Account or password is expired, reset your password and try again\"\n+msgstr \"Konto lub hasło wygasło. Zresetuj hasło i spróbuj ponownie\"\n+\n+#: src/pam/error.rs:223\n+msgid \"Password expired, contact your system administrator\"\n+msgstr \"Hasło wygasło, skontaktuj się z administratorem systemu\"\n+\n+#: src/pam/error.rs:225\n+#, rust-format\n+msgid \"PAM error: {error}\"\n+msgstr \"Błąd PAM: {error}\"\n+\n+#: src/pam/error.rs:226 src/common/error.rs:107\n+#, rust-format\n+msgid \"IO error: {error}\"\n+msgstr \"Błąd wejścia-wyjścia: {error}\"\n+\n+#: src/pam/error.rs:227\n+msgid \"A terminal is required to authenticate\"\n+msgstr \"Terminal jest wymagany do uwierzytelnienia\"\n+\n+#: src/pam/error.rs:231\n+msgid \"It was not possible to get a list of environment variables\"\n+msgstr \"Nie udało się uzyskać listy zmiennych środowiskowych\"\n+\n+#: src/pam/error.rs:234\n+msgid \"Interaction is required\"\n+msgstr \"Wymagana jest interakcja\"\n+\n+#: src/pam/error.rs:236\n+msgid \"Authentication required but not attempted\"\n+msgstr \"Wymagane uwierzytelnienie, ale nie zostało podjęte\"\n+\n+#: src/pam/error.rs:239\n+msgid \"Incorrect authentication attempt\"\n+msgstr \"Nieprawidłowa próba uwierzytelnienia\"\n+\n+#: src/pam/error.rs:241\n+msgid \"timed out\"\n+msgstr \"upłynął limit czasu\"\n+\n+#: src/pam/error.rs:245\n+#, rust-format\n+msgid \"Sorry, user {user} is not allowed to authenticate as {other_user}.\"\n+msgstr \"\"\n+\"Niestety, użytkownik {user} nie ma uprawnień do uwierzytelnienia się jako \"\n+\"{other_user}.\"\n+\n+#: src/pam/error.rs:251\n+msgid \"No askpass program specified in SUDO_ASKPASS\"\n+msgstr \"Nie określono programu pytającego o hasło w SUDO_ASKPASS\"\n+\n+#: src/pam/error.rs:256\n+#, rust-format\n+msgid \"Askpass program '{path}' is not an absolute path\"\n+msgstr \"Program pytający o hasło „{path}” nie jest ścieżką absolutną\"\n+\n+#: src/pam/mod.rs:86\n+msgid \"authenticate\"\n+msgstr \"uwierzytelnij\"\n+\n+#: src/pam/converse.rs:147\n+msgid \"input needed\"\n+msgstr \"potrzebne dane wejściowe\"\n+\n+#: src/system/audit.rs:147\n+#, rust-format\n+msgid \"{path} must be owned by root\"\n+msgstr \"{path} musi być własnością roota\"\n+\n+#: src/system/audit.rs:152\n+#, rust-format\n+msgid \"{path} cannot be group-writable\"\n+msgstr \"{path} nie może być zapisywalna przez grupę\"\n+\n+#: src/system/audit.rs:157\n+#, rust-format\n+msgid \"{path} cannot be world-writable\"\n+msgstr \"{path} nie może być zapisywalna przez wszystkich\"\n+\n+#: src/system/audit.rs:198\n+#, rust-format\n+msgid \"{path} has no valid parent directory\"\n+msgstr \"{path} nie ma prawidłowego katalogu nadrzędnego\"\n+\n+#: src/system/audit.rs:266\n+msgid \"invalid path\"\n+msgstr \"nieprawidłowa ścieżka\"\n+\n+#: src/system/audit.rs:274\n+msgid \"path must be absolute\"\n+msgstr \"ścieżka musi być absolutna\"\n+\n+#: src/system/audit.rs:290\n+msgid \"cannot open a file in a path writable by the user\"\n+msgstr \"\"\n+\"nie można otworzyć pliku w ścieżce, do której użytkownik ma możliwość zapisu\"\n+\n+#: src/system/audit.rs:308\n+msgid \"error in provided path\"\n+msgstr \"błąd w podanej ścieżce\"\n+\n+#: src/common/error.rs:51\n+#, rust-format\n+msgid \"\"\n+\"Sorry, user {user} is not allowed to execute '{command}' as {other_user} on \"\n+\"{hostname}.\"\n+msgstr \"\"\n+\"Niestety, użytkownik {user} nie ma uprawnień do wykonywania polecenia \"\n+\"„{command}” jako {other_user} na {hostname}.\"\n+\n+#: src/common/error.rs:60\n+#, rust-format\n+msgid \"Sorry, user {user} may not run {command} on {hostname}.\"\n+msgstr \"\"\n+\"Niestety, użytkownik {user} nie może uruchomić {command} na {hostname}.\"\n+\n+#: src/common/error.rs:68\n+msgid \"sudo must be owned by uid 0 and have the setuid bit set\"\n+msgstr \"sudo musi być własnością uid 0 i mieć ustawiony bit setuid\"\n+\n+#: src/common/error.rs:71\n+#, rust-format\n+msgid \"'{path}': command not found\"\n+msgstr \"„{path}”: nie znaleziono polecenia\"\n+\n+#: src/common/error.rs:74\n+#, rust-format\n+msgid \"'{path}': invalid command\"\n+msgstr \"„{path}”: nieprawidłowe polecenie\"\n+\n+#: src/common/error.rs:76\n+#, rust-format\n+msgid \"user '{user}' not found\"\n+msgstr \"nie znaleziono użytkownika „{user}”\"\n+\n+#: src/common/error.rs:77\n+#, rust-format\n+msgid \"group '{group}' not found\"\n+msgstr \"nie znaleziono grupy „{group}”\"\n+\n+#: src/common/error.rs:82\n+msgid \"interactive authentication is required\"\n+msgstr \"wymagane jest uwierzytelnianie interaktywne\"\n+\n+#: src/common/error.rs:86\n+msgid \"you are not allowed to set the following environment variables:\"\n+msgstr \"nie możesz ustawić następujących zmiennych środowiskowych:\"\n+\n+#: src/common/error.rs:102\n+#, rust-format\n+msgid \"cannot execute '{path}': {error}\"\n+msgstr \"nie można wykonać „{path}”: {error}\"\n+\n+#: src/common/error.rs:113\n+#, rust-format\n+msgid \"maximum {num} incorrect authentication attempts\"\n+msgstr \"maksimum nieudanych prób uwierzytelnienia: {num}\"\n+\n+#: src/common/error.rs:119\n+#, rust-format\n+msgid \"you are not allowed to use '--chdir {path}' with '{command}'\"\n+msgstr \"nie możesz używać „--chdir {path}” z „{command}”\"\n+\n+#: src/common/error.rs:141\n+#, rust-format\n+msgid \"unable to change AppArmor profile to {profile}: {error}\"\n+msgstr \"nie można zmienić profilu AppArmor na {profile}: {error}\"\n+\n+#: src/sudo/pam.rs:127\n+msgid \"Authentication failed, try again.\"\n+msgstr \"Uwierzytelnianie się nie powiodło. Spróbuj ponownie.\"\n+\n+#: src/exec/mod.rs:154\n+#, rust-format\n+msgid \"unable to change directory to {path}: {error}\"\n+msgstr \"nie można zmienić katalogu na {path}: {error}\"\n+\n+#: src/sudo/edit.rs:46\n+#, rust-format\n+msgid \"failed to read metadata for {path}: {error}\"\n+msgstr \"nie udało się odczytać metadanych dla {path}: {error}\"\n+\n+#: src/sudo/edit.rs:55\n+#, rust-format\n+msgid \"file {path} is not a regular file\"\n+msgstr \"plik {path} nie jest zwykłym plikiem\"\n+\n+#: src/sudo/edit.rs:64\n+#, rust-format\n+msgid \"failed to lock {path}: {error}\"\n+msgstr \"nie udało się zablokować {path}: {error}\"\n+\n+#: src/sudo/edit.rs:77\n+#, rust-format\n+msgid \"failed to read {path}: {error}\"\n+msgstr \"nie udało się odczytać {path}: {error}\"\n+\n+#: src/sudo/edit.rs:144\n+#, rust-format\n+msgid \"{path} unchanged\"\n+msgstr \"{path} niezmieniono\"\n+\n+#: src/sudo/edit.rs:164\n+#, rust-format\n+msgid \"failed to write {path}: {error}\"\n+msgstr \"nie udało się zapisać {path}: {error}\"\n+\n+#: src/sudo/edit.rs:183\n+#, rust-format\n+msgid \"failed to remove temporary directory {path}: {error}\"\n+msgstr \"nie udało się usunąć katalogu tymczasowego {path}: {error}\"\n+\n+#: src/sudo/edit.rs:195\n+#, rust-format\n+msgid \"{error}\"\n+msgstr \"{error}\"\n+\n+#: src/sudo/edit.rs:213\n+#, rust-format\n+msgid \"failed to create temporary directory: {error}\"\n+msgstr \"nie udało się utworzyć katalogu tymczasowego: {error}\"\n+\n+#: src/sudo/edit.rs:221\n+#, rust-format\n+msgid \"failed to create temporary directory {path}: {error}\"\n+msgstr \"nie udało się utworzyć katalogu tymczasowego {path}: {error}\"\n+\n+#: src/sudo/edit.rs:235\n+#, rust-format\n+msgid \"failed to create temporary file {path}: {error}\"\n+msgstr \"nie udało się utworzyć pliku tymczasowego {path}: {error}\"\n+\n+#: src/sudo/edit.rs:244\n+#, rust-format\n+msgid \"failed to write to temporary file {path}: {error}\"\n+msgstr \"nie udało się zapisać do pliku tymczasowego {path}: {error}\"\n+\n+#: src/sudo/edit.rs:263\n+#, rust-format\n+msgid \"failed to run editor {path}: {error}\"\n+msgstr \"nie udało się uruchomić edytora {path}: {error}\"\n+\n+#: src/sudo/edit.rs:284\n+#, rust-format\n+msgid \"failed to read from temporary file {path}: {error}\"\n+msgstr \"nie udało się odczytać pliku tymczasowego {path}: {error}\"\n+\n+#: src/sudo/edit.rs:293\n+#, rust-format\n+msgid \"failed to remove temporary file {path}: {error}\"\n+msgstr \"nie udało się usunąć pliku tymczasowego {path}: {error}\"\n+\n+#. TRANSLATORS: the initial letters of 'yes' and 'no' responses, in that order\n+#: src/sudo/edit.rs:302\n+msgid \"yn\"\n+msgstr \"tn\"\n+\n+#: src/sudo/edit.rs:306\n+#, rust-format\n+msgid \"sudoedit: truncate {path} to zero? (y/n) [n] \"\n+msgstr \"sudoedit: skrócić {path} do zera? (t/n) [n] \"\n+\n+#: src/sudo/edit.rs:319\n+#, rust-format\n+msgid \"not overwriting {path}\"\n+msgstr \"bez nadpisywania {path}\"\n+\n+#: src/sudo/edit.rs:323 src/sudo/edit.rs:332\n+#, rust-format\n+msgid \"failed to write data to parent: {error}\"\n+msgstr \"nie udało się zapisać danych do nadrzędnego: {error}\"\n+\n+#: src/sudo/pipeline/edit.rs:36\n+#, rust-format\n+msgid \"{path}: editing symbolic links is not permitted\"\n+msgstr \"{path}: edycja dowiązań symbolicznych jest niedozwolona\"\n+\n+#: src/sudo/pipeline/edit.rs:41\n+#, rust-format\n+msgid \"error opening {path}: {error}\"\n+msgstr \"błąd otwierania ścieżki {path}: {error}\"\n+\n+#: src/sudo/pipeline/edit.rs:45\n+#, rust-format\n+msgid \"invalid path: {path}\"\n+msgstr \"nieprawidłowa ścieżka: {path}\"\n+\n+#: src/sudo/pipeline/edit.rs:50\n+msgid \"please address the problems and try again\"\n+msgstr \"rozwiąż problem i spróbuj ponownie\"\n+\n+#: src/sudo/pipeline/list.rs:43\n+#, rust-format\n+msgid \"User {user} may run the following commands on {hostname}:\"\n+msgstr \"Użytkownik {user} może uruchomić następujące polecenia na {hostname}:\"\n+\n+#: src/sudo/pipeline/list.rs:58\n+#, rust-format\n+msgid \"User {user} is not allowed to run sudo on {hostname}.\"\n+msgstr \"Użytkownik {user} nie ma uprawnień do uruchamiania sudo na {hostname}.\"\n+\n+#: src/sudo/cli/help_edit.rs:3\n+msgid \"\"\n+\"usage: sudoedit -h | -V\\n\"\n+\"usage: sudoedit [-BknS] [-p prompt] [-g group] [-u user] file ...\"\n+msgstr \"\"\n+\"użycie: sudoedit -h | -V\\n\"\n+\"użycie: sudoedit [-BknS] [-p monit] [-g grupa] [-u użytkownik] plik ...\"\n+\n+#: src/sudo/cli/help_edit.rs:10\n+msgid \"sudoedit - edit files as another user\"\n+msgstr \"sudoedit - edytuj pliki jako inny użytkownik\"\n+\n+#: src/sudo/cli/help_edit.rs:15\n+msgid \"\"\n+\"Options:\\n\"\n+\"  -B, --bell                    ring bell when prompting\\n\"\n+\"  -g, --group=group             run command as the specified group name or \"\n+\"ID\\n\"\n+\"  -h, --help                    display help message and exit\\n\"\n+\"  -k, --reset-timestamp         invalidate timestamp file\\n\"\n+\"  -n, --non-interactive         non-interactive mode, no prompts are used\\n\"\n+\"  -p, --prompt=prompt           use the specified password prompt\\n\"\n+\"  -S, --stdin                   read password from standard input\\n\"\n+\"  -u, --user=user               run command (or edit file) as specified \"\n+\"user\\n\"\n+\"                                name or ID\\n\"\n+\"  -V, --version                 display version information and exit\\n\"\n+\"  --                            stop processing command line arguments\"\n+msgstr \"\"\n+\"Opcje:\\n\"\n+\"  -B, --bell                    włącza dzwonek podczas monitowania\\n\"\n+\"  -g, --group=grupa             uruchamia polecenie z podaną nazwą lub \"\n+\"identyfikatorem grupy\\n\"\n+\"  -h, --help                    wyświetla komunikat pomocy i kończy \"\n+\"działanie\\n\"\n+\"  -k, --reset-timestamp         unieważnia plik znacznika czasu\\n\"\n+\"  -n, --non-interactive         tryb nieinteraktywny, bez monitów\\n\"\n+\"  -p, --prompt=monit            używa podanego monitu o hasło\\n\"\n+\"  -S, --stdin                   odczytaje hasło ze standardowego wejścia\\n\"\n+\"  -u, --user=użytkownik         uruchamia polecenie (lub edytuje plik) \"\n+\"z podaną nazwą lub identyfikatorem użytkownika\\n\"\n+\"  -V, --version                 wyświetla informacje o wersji i kończy \"\n+\"działanie\\n\"\n+\"  --                            kończy przetwarzanie argumentów wiersza \"\n+\"poleceń\"\n+\n+#: src/sudo/cli/mod.rs:152 src/sudo/cli/mod.rs:217 src/sudo/cli/mod.rs:289\n+#: src/sudo/cli/mod.rs:378 src/sudo/cli/mod.rs:391 src/sudo/cli/mod.rs:797\n+#, rust-format\n+msgid \"{context} cannot be used together with {option}\"\n+msgstr \"{context} nie może być używany łącznie z {option}\"\n+\n+#: src/sudo/cli/mod.rs:226\n+msgid \"must specify at least one file path\"\n+msgstr \"należy określić co najmniej jedną ścieżkę do pliku\"\n+\n+#: src/sudo/cli/mod.rs:301\n+#, rust-format\n+msgid \"'{option}' flag must be accompanied by a command\"\n+msgstr \"flaga „{option}” musi być połączona z poleceniem\"\n+\n+#: src/sudo/cli/mod.rs:387\n+msgid \"command (positional argument)\"\n+msgstr \"polecenie (argument pozycyjny)\"\n+\n+#: src/sudo/cli/mod.rs:402\n+msgid \"expected one of: --login, --shell, a command as a positional argument\"\n+msgstr \"\"\n+\"oczekiwano jednego z: --login, --shell, polecenie jako argument pozycyjny\"\n+\n+#: src/sudo/cli/mod.rs:534\n+#, rust-format\n+msgid \"'{option}' does not take any arguments\"\n+msgstr \"„{option}” nie przyjmuje żadnych argumentów\"\n+\n+#: src/sudo/cli/mod.rs:543 src/sudo/cli/mod.rs:571\n+#, rust-format\n+msgid \"'{option}' expects an argument\"\n+msgstr \"„{option}” oczekuje argumentu\"\n+\n+#: src/sudo/cli/mod.rs:561\n+msgid \"invalid option '='\"\n+msgstr \"nieprawidłowa opcja „=”\"\n+\n+#: src/sudo/cli/mod.rs:614\n+msgid \"\"\n+\"expected one of these actions: --help, --version, --remove-timestamp, --\"\n+\"validate, --list, --edit, --login, --shell, a command as a positional \"\n+\"argument, --reset-timestamp\"\n+msgstr \"\"\n+\"oczekiwano jednego z następujących działań: --help, --version, --remove-\"\n+\"timestamp, --validate, --list, --edit, --login, --shell, polecenie jako \"\n+\"argument pozycyjny, --reset-timestamp\"\n+\n+#: src/sudo/cli/mod.rs:654\n+#, rust-format\n+msgid \"preserving the entire environment is not supported, '{flag}' is ignored\"\n+msgstr \"\"\n+\"zachowywanie całego środowiska nie jest obsługiwane, „{flag}” jest ignorowana\"\n+\n+#: src/sudo/cli/mod.rs:698 src/sudo/cli/mod.rs:727\n+msgid \"invalid option provided\"\n+msgstr \"podano nieprawidłową opcję\"\n+\n+#: src/sudo/cli/mod.rs:745\n+msgid \"sudoedit doesn't need to be run via sudo\"\n+msgstr \"sudoedit nie musi być uruchamiany przez sudo\"\n+\n+#: src/sudo/cli/mod.rs:849\n+msgid \"command\"\n+msgstr \"polecenie\"\n+\n+#: src/sudo/cli/mod.rs:850\n+msgid \"environment variable\"\n+msgstr \"zmienna środowiskowa\"\n+\n+#: src/sudo/cli/help.rs:13\n+msgid \"sudo - run commands as another user\"\n+msgstr \"sudo - uruchamiaj polecenia jako inny użytkownik\"\n+\n+#: src/sudo/pipeline.rs:32\n+#, rust-format\n+msgid \"\"\n+\"sudoers file not found: {path}\\n\"\n+\"\\n\"\n+\"The sudoers file is required for sudo-rs to function. Please ensure:\\n\"\n+\"- The file exists at the expected location\\n\"\n+\"- You have the necessary permissions to read it\\n\"\n+\"- If setting up sudo-rs for the first time, create a sudoers file with \"\n+\"appropriate permissions\\n\"\n+\"\\n\"\n+\"For more information, see the sudo-rs documentation.\"\n+msgstr \"\"\n+\"Nie znaleziono pliku sudoers: {path}\\n\"\n+\"\\n\"\n+\"Plik sudoers jest wymagany do działania sudo-rs. Upewnij się, że:\\n\"\n+\"- plik znajduje się w oczekiwanej lokalizacji,\\n\"\n+\"- masz niezbędne uprawnienia do jego odczytu,\\n\"\n+\"- jeśli konfigurujesz sudo-rs po raz pierwszy, utwórz plik sudoers \"\n+\"z odpowiednimi uprawnieniami.\\n\"\n+\"\\n\"\n+\"Więcej informacji znajdziesz w dokumentacji sudo-rs.\"\n+\n+#: src/sudo/pipeline.rs:43\n+#, rust-format\n+msgid \"invalid configuration: {error}\"\n+msgstr \"nieprawidłowa konfiguracja: {error}\"\n+\n+#: src/sudo/cli/help.rs:3\n+msgid \"\"\n+\"usage: sudo -h | -K | -k | -V\\n\"\n+\"usage: sudo [-ABbknS] [-p prompt] [-D directory] [-g group] [-u user] [-i | \"\n+\"-s] [command [arg ...]]\\n\"\n+\"usage: sudo -v [-ABknS] [-p prompt] [-g group] [-u user]\\n\"\n+\"usage: sudo -l [-ABknS] [-p prompt] [-U user] [-g group] [-u user] [command \"\n+\"[arg ...]]\\n\"\n+\"usage: sudo -e [-ABknS] [-p prompt] [-D directory] [-g group] [-u user] \"\n+\"file ...\"\n+msgstr \"\"\n+\"użycie: sudo -h | -K | -k | -V\\n\"\n+\"użycie: sudo [-ABbknS] [-p monit] [-D katalog] [-g grupa] [-u użytkownik] [-\"\n+\"i | -s] [polecenie [arg ...]]\\n\"\n+\"użycie: sudo -v [-ABknS] [-p monit] [-g grupa] [-u użytkownik]\\n\"\n+\"użycie: sudo -l [-ABknS] [-p monit] [-U użytkownik] [-g grupa] [-u \"\n+\"użytkownik] [polecenie [arg ...]]\\n\"\n+\"użycie: sudo -e [-ABknS] [-p monit] [-D katalog] [-g grupa] [-u użytkownik] \"\n+\"plik ...\"\n+\n+#: src/sudo/cli/help.rs:17\n+msgid \"\"\n+\"Options:\\n\"\n+\"  -A, --askpass                 use a helper program for password prompting\\n\"\n+\"  -b, --background              run command in the background\\n\"\n+\"  -B, --bell                    ring bell when prompting\\n\"\n+\"  -D, --chdir=directory         change the working directory before running \"\n+\"command\\n\"\n+\"  -e, --edit                    edit files instead of running a command\\n\"\n+\"  -g, --group=group             run command as the specified group name or \"\n+\"ID\\n\"\n+\"  -h, --help                    display help message and exit\\n\"\n+\"  -i, --login                   run login shell as the target user; a \"\n+\"command may also be specified\\n\"\n+\"  -K, --remove-timestamp        remove timestamp file completely\\n\"\n+\"  -k, --reset-timestamp         invalidate timestamp file\\n\"\n+\"  -l, --list                    list user's privileges or check a specific \"\n+\"command; use twice for longer format\\n\"\n+\"  -n, --non-interactive         non-interactive mode, no prompts are used\\n\"\n+\"  -p, --prompt=prompt           use the specified password prompt\\n\"\n+\"  -S, --stdin                   read password from standard input\\n\"\n+\"  -s, --shell                   run shell as the target user; a command may \"\n+\"also be specified\\n\"\n+\"  -U, --other-user=user         in list mode, display privileges for user\\n\"\n+\"  -u, --user=user               run command (or edit file) as specified user \"\n+\"name or ID\\n\"\n+\"  -V, --version                 display version information and exit\\n\"\n+\"  -v, --validate                update user's timestamp without running a \"\n+\"command\\n\"\n+\"      --preserve-env=list       preserve specific environment variables\\n\"\n+\"  --                            stop processing command line arguments\"\n+msgstr \"\"\n+\"Opcje:\\n\"\n+\"  -A, --askpass                 używa programu pomocniczego do wyświetlania \"\n+\"monitu o hasło\\n\"\n+\"  -b, --background              uruchamia polecenie w tle\\n\"\n+\"  -B, --bell                    włącza dzwonek podczas monitowania\\n\"\n+\"  -D, --chdir=katalog           zmienia katalog roboczy przed uruchomieniem \"\n+\"polecenia\\n\"\n+\"  -e, --edit                    edytuje pliki zamiast uruchamiania \"\n+\"polecenia\\n\"\n+\"  -g, --group=grupa             uruchamia polecenie jako określoną nazwę \"\n+\"grupy lub identyfikator\\n\"\n+\"  -h, --help                    wyświetla komunikat pomocy i kończy\\n\"\n+\"  -i, --login                   uruchamia powłokę logowania jako użytkownik \"\n+\"docelowy; może również określić polecenie\\n\"\n+\"  -K, --remove-timestamp        całkowicie usuwa plik znacznika czasu\\n\"\n+\"  -k, --reset-timestamp         unieważnia plik znacznika czasu\\n\"\n+\"  -l, --list                    wyświetla uprawnienia użytkownika lub \"\n+\"sprawdza określone polecenie; dwukrotne użycie uzyskuje dłuższy format\\n\"\n+\"  -n, --non-interactive         nie wyświetla żadnych monitów w trybie \"\n+\"nieinteraktywnym\\n\"\n+\"  -p, --prompt=monit            używa natychmiast określonego hasła\\n\"\n+\"  -S, --stdin                   odczytuje hasło ze standardowego wejścia\\n\"\n+\"  -s, --shell                   uruchamia powłokę jako użytkownik docelowy; \"\n+\"może również określić polecenie\\n\"\n+\"  -U, --other-user=użytkownik   wyświetla uprawnienia użytkowników w trybie \"\n+\"listy\\n\"\n+\"  -u, --user=użytkownik         uruchamia polecenie (lub edytuje plik) jako \"\n+\"określoną nazwę użytkownika lub identyfikator\\n\"\n+\"  -V, --version                 wyświetla informacje o wersji i kończy\\n\"\n+\"  -v, --validate                aktualizuje znacznik czasu użytkownika bez \"\n+\"uruchamiania polecenia\\n\"\n+\"      --preserve-env=lista      zachowuje określone zmienne środowiskowe\\n\"\n+\"  --                            zatrzymaje przetwarzanie argumentów wiersza \"\n+\"poleceń\"\ndiff --git a/po/ro.po b/po/ro.po\nindex 2cce365..b690a97 100644\n--- a/po/ro.po\n+++ b/po/ro.po\n@@ -4,7 +4,7 @@\n #\n msgid \"\"\n msgstr \"\"\n-\"Project-Id-Version: sudo-rs 0.2.10\\n\"\n+\"Project-Id-Version: sudo-rs 0.2.12\\n\"\n \"Report-Msgid-Bugs-To: https://github.com/trifectatechfoundation/sudo-rs/\"\n \"issues\\n\"\n \"POT-Creation-Date: 2025-12-08 17:30+0100\\n\"\ndiff --git a/po/sudo-rs.pot b/po/sudo-rs.pot\nindex 4a0c105..685371e 100644\n--- a/po/sudo-rs.pot\n+++ b/po/sudo-rs.pot\n@@ -4,10 +4,10 @@\n #\n msgid \"\"\n msgstr \"\"\n-\"Project-Id-Version: sudo-rs 0.2.10\\n\"\n+\"Project-Id-Version: sudo-rs 0.2.13\\n\"\n \"Report-Msgid-Bugs-To: https://github.com/trifectatechfoundation/sudo-rs/\"\n \"issues\\n\"\n-\"POT-Creation-Date: 2025-12-08 17:30+0100\\n\"\n+\"POT-Creation-Date: 2026-10-03 17:30+0100\\n\"\n \"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\\n\"\n \"Last-Translator: FULL NAME <EMAIL@ADDRESS>\\n\"\n \"Language-Team: LANGUAGE <LL@li.org>\\n\"\n@@ -17,7 +17,7 @@ msgstr \"\"\n \"Content-Transfer-Encoding: 8bit\\n\"\n \n #. TRANSLATORS: This is a well-known quote, try to preserve it in translation.\n-#: src/common/error.rs:80\n+#: src/common/error.rs:89\n #, rust-format\n msgid \"I'm sorry {user}. I'm afraid I can't do that\"\n msgstr \"\"\n@@ -54,7 +54,7 @@ msgstr \"\"\n msgid \"Failed to run askpass program {path}: {error}\"\n msgstr \"\"\n \n-#: src/pam/error.rs:211 src/common/error.rs:127 src/common/error.rs:134\n+#: src/pam/error.rs:211 src/common/error.rs:136 src/common/error.rs:143\n msgid \"Unexpected null character in input\"\n msgstr \"\"\n \n@@ -79,7 +79,7 @@ msgstr \"\"\n msgid \"PAM error: {error}\"\n msgstr \"\"\n \n-#: src/pam/error.rs:226 src/common/error.rs:107\n+#: src/pam/error.rs:226 src/common/error.rs:116\n #, rust-format\n msgid \"IO error: {error}\"\n msgstr \"\"\n@@ -126,106 +126,106 @@ msgstr \"\"\n msgid \"authenticate\"\n msgstr \"\"\n \n-#: src/pam/converse.rs:147\n+#: src/pam/converse.rs:153\n msgid \"input needed\"\n msgstr \"\"\n \n-#: src/system/audit.rs:147\n+#: src/system/audit.rs:155\n #, rust-format\n msgid \"{path} must be owned by root\"\n msgstr \"\"\n \n-#: src/system/audit.rs:152\n+#: src/system/audit.rs:160\n #, rust-format\n msgid \"{path} cannot be group-writable\"\n msgstr \"\"\n \n-#: src/system/audit.rs:157\n+#: src/system/audit.rs:165\n #, rust-format\n msgid \"{path} cannot be world-writable\"\n msgstr \"\"\n \n-#: src/system/audit.rs:198\n+#: src/system/audit.rs:206\n #, rust-format\n msgid \"{path} has no valid parent directory\"\n msgstr \"\"\n \n-#: src/system/audit.rs:266\n+#: src/system/audit.rs:285\n msgid \"invalid path\"\n msgstr \"\"\n \n-#: src/system/audit.rs:274\n+#: src/system/audit.rs:293\n msgid \"path must be absolute\"\n msgstr \"\"\n \n-#: src/system/audit.rs:290\n+#: src/system/audit.rs:305 src/system/audit.rs:329\n msgid \"cannot open a file in a path writable by the user\"\n msgstr \"\"\n \n-#: src/system/audit.rs:308\n+#: src/system/audit.rs:347\n msgid \"error in provided path\"\n msgstr \"\"\n \n-#: src/common/error.rs:51\n+#: src/common/error.rs:52\n #, rust-format\n msgid \"\"\n \"Sorry, user {user} is not allowed to execute '{command}' as {other_user} on \"\n \"{hostname}.\"\n msgstr \"\"\n \n-#: src/common/error.rs:60\n+#: src/common/error.rs:61\n #, rust-format\n msgid \"Sorry, user {user} may not run {command} on {hostname}.\"\n msgstr \"\"\n \n-#: src/common/error.rs:68\n+#: src/common/error.rs:69\n msgid \"sudo must be owned by uid 0 and have the setuid bit set\"\n msgstr \"\"\n \n-#: src/common/error.rs:71\n+#: src/common/error.rs:80\n #, rust-format\n msgid \"'{path}': command not found\"\n msgstr \"\"\n \n-#: src/common/error.rs:74\n+#: src/common/error.rs:83\n #, rust-format\n msgid \"'{path}': invalid command\"\n msgstr \"\"\n \n-#: src/common/error.rs:76\n+#: src/common/error.rs:85\n #, rust-format\n msgid \"user '{user}' not found\"\n msgstr \"\"\n \n-#: src/common/error.rs:77\n+#: src/common/error.rs:86\n #, rust-format\n msgid \"group '{group}' not found\"\n msgstr \"\"\n \n-#: src/common/error.rs:82\n+#: src/common/error.rs:91\n msgid \"interactive authentication is required\"\n msgstr \"\"\n \n-#: src/common/error.rs:86\n+#: src/common/error.rs:95\n msgid \"you are not allowed to set the following environment variables:\"\n msgstr \"\"\n \n-#: src/common/error.rs:102\n+#: src/common/error.rs:111\n #, rust-format\n msgid \"cannot execute '{path}': {error}\"\n msgstr \"\"\n \n-#: src/common/error.rs:113\n+#: src/common/error.rs:122\n #, rust-format\n msgid \"maximum {num} incorrect authentication attempts\"\n msgstr \"\"\n \n-#: src/common/error.rs:119\n+#: src/common/error.rs:128\n #, rust-format\n msgid \"you are not allowed to use '--chdir {path}' with '{command}'\"\n msgstr \"\"\n \n-#: src/common/error.rs:141\n+#: src/common/error.rs:150\n #, rust-format\n msgid \"unable to change AppArmor profile to {profile}: {error}\"\n msgstr \"\"\n@@ -239,7 +239,7 @@ msgstr \"\"\n msgid \"unable to change directory to {path}: {error}\"\n msgstr \"\"\n \n-#: src/sudo/edit.rs:46\n+#: src/sudo/edit.rs:47\n #, rust-format\n msgid \"failed to read metadata for {path}: {error}\"\n msgstr \"\"\n@@ -249,116 +249,116 @@ msgstr \"\"\n msgid \"file {path} is not a regular file\"\n msgstr \"\"\n \n-#: src/sudo/edit.rs:64\n+#: src/sudo/edit.rs:65\n #, rust-format\n msgid \"failed to lock {path}: {error}\"\n msgstr \"\"\n \n-#: src/sudo/edit.rs:77\n+#: src/sudo/edit.rs:78\n #, rust-format\n msgid \"failed to read {path}: {error}\"\n msgstr \"\"\n \n-#: src/sudo/edit.rs:144\n+#: src/sudo/edit.rs:145\n #, rust-format\n msgid \"{path} unchanged\"\n msgstr \"\"\n \n-#: src/sudo/edit.rs:164\n+#: src/sudo/edit.rs:165\n #, rust-format\n msgid \"failed to write {path}: {error}\"\n msgstr \"\"\n \n-#: src/sudo/edit.rs:183\n+#: src/sudo/edit.rs:184\n #, rust-format\n msgid \"failed to remove temporary directory {path}: {error}\"\n msgstr \"\"\n \n-#: src/sudo/edit.rs:195\n+#: src/sudo/edit.rs:196\n #, rust-format\n msgid \"{error}\"\n msgstr \"\"\n \n-#: src/sudo/edit.rs:213\n+#: src/sudo/edit.rs:217\n #, rust-format\n msgid \"failed to create temporary directory: {error}\"\n msgstr \"\"\n \n-#: src/sudo/edit.rs:221\n+#: src/sudo/edit.rs:225\n #, rust-format\n msgid \"failed to create temporary directory {path}: {error}\"\n msgstr \"\"\n \n-#: src/sudo/edit.rs:235\n+#: src/sudo/edit.rs:239\n #, rust-format\n msgid \"failed to create temporary file {path}: {error}\"\n msgstr \"\"\n \n-#: src/sudo/edit.rs:244\n+#: src/sudo/edit.rs:248\n #, rust-format\n msgid \"failed to write to temporary file {path}: {error}\"\n msgstr \"\"\n \n-#: src/sudo/edit.rs:263\n+#: src/sudo/edit.rs:268\n #, rust-format\n msgid \"failed to run editor {path}: {error}\"\n msgstr \"\"\n \n-#: src/sudo/edit.rs:284\n+#: src/sudo/edit.rs:289\n #, rust-format\n msgid \"failed to read from temporary file {path}: {error}\"\n msgstr \"\"\n \n-#: src/sudo/edit.rs:293\n+#: src/sudo/edit.rs:298\n #, rust-format\n msgid \"failed to remove temporary file {path}: {error}\"\n msgstr \"\"\n \n #. TRANSLATORS: the initial letters of 'yes' and 'no' responses, in that order\n-#: src/sudo/edit.rs:302\n+#: src/sudo/edit.rs:307\n msgid \"yn\"\n msgstr \"\"\n \n-#: src/sudo/edit.rs:306\n+#: src/sudo/edit.rs:311\n #, rust-format\n msgid \"sudoedit: truncate {path} to zero? (y/n) [n] \"\n msgstr \"\"\n \n-#: src/sudo/edit.rs:319\n+#: src/sudo/edit.rs:324\n #, rust-format\n msgid \"not overwriting {path}\"\n msgstr \"\"\n \n-#: src/sudo/edit.rs:323 src/sudo/edit.rs:332\n+#: src/sudo/edit.rs:328 src/sudo/edit.rs:337\n #, rust-format\n msgid \"failed to write data to parent: {error}\"\n msgstr \"\"\n \n-#: src/sudo/pipeline/edit.rs:36\n+#: src/sudo/pipeline/edit.rs:33\n #, rust-format\n msgid \"{path}: editing symbolic links is not permitted\"\n msgstr \"\"\n \n-#: src/sudo/pipeline/edit.rs:41\n+#: src/sudo/pipeline/edit.rs:39\n #, rust-format\n msgid \"error opening {path}: {error}\"\n msgstr \"\"\n \n-#: src/sudo/pipeline/edit.rs:45\n+#: src/sudo/pipeline/edit.rs:46\n #, rust-format\n msgid \"invalid path: {path}\"\n msgstr \"\"\n \n-#: src/sudo/pipeline/edit.rs:50\n+#: src/sudo/pipeline/edit.rs:51\n msgid \"please address the problems and try again\"\n msgstr \"\"\n \n-#: src/sudo/pipeline/list.rs:43\n+#: src/sudo/pipeline/list.rs:48\n #, rust-format\n msgid \"User {user} may run the following commands on {hostname}:\"\n msgstr \"\"\n \n-#: src/sudo/pipeline/list.rs:58\n+#: src/sudo/pipeline/list.rs:63\n #, rust-format\n msgid \"User {user} is not allowed to run sudo on {hostname}.\"\n msgstr \"\"\n@@ -391,68 +391,68 @@ msgid \"\"\n \"  --                            stop processing command line arguments\"\n msgstr \"\"\n \n-#: src/sudo/cli/mod.rs:152 src/sudo/cli/mod.rs:217 src/sudo/cli/mod.rs:289\n-#: src/sudo/cli/mod.rs:378 src/sudo/cli/mod.rs:391 src/sudo/cli/mod.rs:797\n+#: src/sudo/cli/mod.rs:153 src/sudo/cli/mod.rs:218 src/sudo/cli/mod.rs:290\n+#: src/sudo/cli/mod.rs:379 src/sudo/cli/mod.rs:392 src/sudo/cli/mod.rs:823\n #, rust-format\n msgid \"{context} cannot be used together with {option}\"\n msgstr \"\"\n \n-#: src/sudo/cli/mod.rs:226\n+#: src/sudo/cli/mod.rs:227\n msgid \"must specify at least one file path\"\n msgstr \"\"\n \n-#: src/sudo/cli/mod.rs:301\n+#: src/sudo/cli/mod.rs:302\n #, rust-format\n msgid \"'{option}' flag must be accompanied by a command\"\n msgstr \"\"\n \n-#: src/sudo/cli/mod.rs:387\n+#: src/sudo/cli/mod.rs:388\n msgid \"command (positional argument)\"\n msgstr \"\"\n \n-#: src/sudo/cli/mod.rs:402\n+#: src/sudo/cli/mod.rs:403\n msgid \"expected one of: --login, --shell, a command as a positional argument\"\n msgstr \"\"\n \n-#: src/sudo/cli/mod.rs:534\n+#: src/sudo/cli/mod.rs:544\n #, rust-format\n msgid \"'{option}' does not take any arguments\"\n msgstr \"\"\n \n-#: src/sudo/cli/mod.rs:543 src/sudo/cli/mod.rs:571\n+#: src/sudo/cli/mod.rs:556 src/sudo/cli/mod.rs:589\n #, rust-format\n msgid \"'{option}' expects an argument\"\n msgstr \"\"\n \n-#: src/sudo/cli/mod.rs:561\n+#: src/sudo/cli/mod.rs:577\n msgid \"invalid option '='\"\n msgstr \"\"\n \n-#: src/sudo/cli/mod.rs:614\n+#: src/sudo/cli/mod.rs:632\n msgid \"\"\n \"expected one of these actions: --help, --version, --remove-timestamp, --\"\n \"validate, --list, --edit, --login, --shell, a command as a positional \"\n \"argument, --reset-timestamp\"\n msgstr \"\"\n \n-#: src/sudo/cli/mod.rs:654\n+#: src/sudo/cli/mod.rs:672\n #, rust-format\n msgid \"preserving the entire environment is not supported, '{flag}' is ignored\"\n msgstr \"\"\n \n-#: src/sudo/cli/mod.rs:698 src/sudo/cli/mod.rs:727\n+#: src/sudo/cli/mod.rs:716 src/sudo/cli/mod.rs:745\n msgid \"invalid option provided\"\n msgstr \"\"\n \n-#: src/sudo/cli/mod.rs:745\n+#: src/sudo/cli/mod.rs:763\n msgid \"sudoedit doesn't need to be run via sudo\"\n msgstr \"\"\n \n-#: src/sudo/cli/mod.rs:849\n+#: src/sudo/cli/mod.rs:875\n msgid \"command\"\n msgstr \"\"\n \n-#: src/sudo/cli/mod.rs:850\n+#: src/sudo/cli/mod.rs:876\n msgid \"environment variable\"\n msgstr \"\"\n \n@@ -460,7 +460,7 @@ msgstr \"\"\n msgid \"sudo - run commands as another user\"\n msgstr \"\"\n \n-#: src/sudo/pipeline.rs:32\n+#: src/sudo/pipeline.rs:30\n #, rust-format\n msgid \"\"\n \"sudoers file not found: {path}\\n\"\n@@ -474,7 +474,7 @@ msgid \"\"\n \"For more information, see the sudo-rs documentation.\"\n msgstr \"\"\n \n-#: src/sudo/pipeline.rs:43\n+#: src/sudo/pipeline.rs:41\n #, rust-format\n msgid \"invalid configuration: {error}\"\n msgstr \"\"\n@@ -523,3 +523,16 @@ msgid \"\"\n \"      --preserve-env=list       preserve specific environment variables\\n\"\n \"  --                            stop processing command line arguments\"\n msgstr \"\"\n+\n+#: src/common/error.rs:74\n+msgid \"\"\n+\"The \\\"no new privileges\\\" flag is set, which prevents sudo from running as \"\n+\"root.\\n\"\n+\"If sudo is running in a container, you may need to adjust the container \"\n+\"configuration to disable the flag.\"\n+msgstr \"\"\n+\n+#: src/sudo/cli/mod.rs:505\n+#, rust-format\n+msgid \"argument '{arg}' is not valid UTF-8\"\n+msgstr \"\"\ndiff --git a/rust-vendor/glob/.cargo_vcs_info.json b/rust-vendor/glob/.cargo_vcs_info.json\nnew file mode 100644\nindex 0000000..195cd9f\n--- /dev/null\n+++ b/rust-vendor/glob/.cargo_vcs_info.json\n@@ -0,0 +1,6 @@\n+{\n+  \"git\": {\n+    \"sha1\": \"952da299a3a98893805133ec852ab29877e64e98\"\n+  },\n+  \"path_in_vcs\": \"\"\n+}\n\\ No newline at end of file\ndiff --git a/rust-vendor/glob/.github/dependabot.yml b/rust-vendor/glob/.github/dependabot.yml\nnew file mode 100644\nindex 0000000..de97070\n--- /dev/null\n+++ b/rust-vendor/glob/.github/dependabot.yml\n@@ -0,0 +1,13 @@\n+version: 2\n+updates:\n+  - package-ecosystem: \"cargo\"\n+    directory: \"/\"\n+    schedule:\n+      interval: \"monthly\"\n+    open-pull-requests-limit: 10\n+    ignore:\n+      - dependency-name: \"tempdir\"\n+  - package-ecosystem: \"github-actions\"\n+    directory: \"/\"\n+    schedule:\n+      interval: \"monthly\"\ndiff --git a/rust-vendor/glob/.github/workflows/publish.yml b/rust-vendor/glob/.github/workflows/publish.yml\nnew file mode 100644\nindex 0000000..e715c61\n--- /dev/null\n+++ b/rust-vendor/glob/.github/workflows/publish.yml\n@@ -0,0 +1,27 @@\n+name: Release-plz\n+\n+permissions:\n+  pull-requests: write\n+  contents: write\n+\n+on:\n+  push:\n+    branches:\n+      - master\n+\n+jobs:\n+  release-plz:\n+    name: Release-plz\n+    runs-on: ubuntu-latest\n+    steps:\n+      - name: Checkout repository\n+        uses: actions/checkout@v4\n+        with:\n+          fetch-depth: 0\n+      - name: Install Rust (rustup)\n+        run: rustup update nightly --no-self-update && rustup default nightly\n+      - name: Run release-plz\n+        uses: MarcoIeni/release-plz-action@v0.5\n+        env:\n+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}\n+          CARGO_REGISTRY_TOKEN: ${{ secrets.CARGO_REGISTRY_TOKEN }}\ndiff --git a/rust-vendor/glob/.github/workflows/rust.yml b/rust-vendor/glob/.github/workflows/rust.yml\nnew file mode 100644\nindex 0000000..e16d2a9\n--- /dev/null\n+++ b/rust-vendor/glob/.github/workflows/rust.yml\n@@ -0,0 +1,99 @@\n+name: CI\n+\n+env:\n+  CARGO_TERM_VERBOSE: true\n+  RUSTDOCFLAGS: -Dwarnings\n+  RUSTFLAGS: -Dwarnings\n+\n+on:\n+  pull_request:\n+  push:\n+    branches:\n+      - master\n+\n+jobs:\n+  test:\n+    name: Tests\n+    runs-on: ${{ matrix.os }}\n+    strategy:\n+      matrix:\n+        channel:\n+          - stable\n+          - nightly\n+          - 1.63.0 # MSRV of test dependencies\n+        os:\n+          - macos-13 # x86 MacOS\n+          - macos-15 # Arm MacOS\n+          - windows-2025\n+          - ubuntu-24.04\n+        include:\n+          - channel: beta\n+            os: ubuntu-24.04\n+\n+    steps:\n+    - name: Checkout repository\n+      uses: actions/checkout@v4\n+\n+    - name: Update rust\n+      run: |\n+        rustup default ${{ matrix.channel }}\n+        rustup update --no-self-update\n+\n+    - run: cargo test --all\n+\n+  clippy:\n+    name: Clippy\n+    runs-on: ubuntu-24.04\n+    steps:\n+    - name: Checkout repository\n+      uses: actions/checkout@v4\n+\n+    - name: Update rust\n+      run: |\n+        # use beta since it gives us near-latest fixes but isn't as volatile as nightly\n+        rustup default beta\n+        rustup component add clippy\n+        rustup update --no-self-update\n+    - run: cargo clippy --all -- -Aclippy::while_let_loop\n+\n+  msrv:\n+    name: Check building with the MSRV\n+    runs-on: ubuntu-24.04\n+    steps:\n+    - name: Checkout repository\n+      uses: actions/checkout@v4\n+\n+    - name: Update rust\n+      run: |\n+        rustup default 1.63.0\n+        rustup update --no-self-update\n+\n+    - run: cargo build\n+\n+  rustfmt:\n+    name: Rustfmt\n+    runs-on: ubuntu-latest\n+    steps:\n+    - uses: actions/checkout@master\n+    - name: Install Rust\n+      run: |\n+        rustup default nightly\n+        rustup update --no-self-update\n+        rustup component add rustfmt\n+    - run: cargo fmt -- --check\n+\n+  success:\n+    needs:\n+      - test\n+      - clippy\n+      - msrv\n+      - rustfmt\n+    runs-on: ubuntu-latest\n+    # GitHub branch protection is exceedingly silly and treats \"jobs skipped because a dependency\n+    # failed\" as success. So we have to do some contortions to ensure the job fails if any of its\n+    # dependencies fails.\n+    if: always() # make sure this is never \"skipped\"\n+    steps:\n+      # Manually check the status of all dependencies. `if: failure()` does not work.\n+      - name: check if any dependency failed\n+        run: jq --exit-status 'all(.result == \"success\")' <<< '${{ toJson(needs) }}'\ndiff --git a/rust-vendor/glob/Cargo.toml.orig b/rust-vendor/glob/Cargo.toml.orig\nnew file mode 100644\nindex 0000000..a36a0d9\n--- /dev/null\n+++ b/rust-vendor/glob/Cargo.toml.orig\n@@ -0,0 +1,18 @@\n+[package]\n+name = \"glob\"\n+version = \"0.3.3\"\n+authors = [\"The Rust Project Developers\"]\n+license = \"MIT OR Apache-2.0\"\n+homepage = \"https://github.com/rust-lang/glob\"\n+repository = \"https://github.com/rust-lang/glob\"\n+documentation = \"https://docs.rs/glob\"\n+description = \"\"\"\n+Support for matching file paths against Unix shell style patterns.\n+\"\"\"\n+categories = [\"filesystem\"]\n+rust-version = \"1.63.0\"\n+\n+[dev-dependencies]\n+# FIXME: This should be replaced by `tempfile`\n+tempdir = \"0.3\"\n+doc-comment = \"0.3\"\ndiff --git a/rust-vendor/libc/.cargo-checksum.json b/rust-vendor/libc/.cargo-checksum.json\nindex 2492254..a7b3361 100644\n--- a/rust-vendor/libc/.cargo-checksum.json\n+++ b/rust-vendor/libc/.cargo-checksum.json\n@@ -1 +1 @@\n-{\"files\":{},\"package\":\"bcc35a38544a891a5f7c865aca548a982ccb3b8650a5b06d0fd33a10283c56fc\"}\n\\ No newline at end of file\n+{\"files\":{},\"package\":\"b5b646652bf6661599e1da8901b3b9522896f01e736bad5f723fe7a3a27f899d\"}\n\\ No newline at end of file\ndiff --git a/rust-vendor/libc/.cargo_vcs_info.json b/rust-vendor/libc/.cargo_vcs_info.json\nnew file mode 100644\nindex 0000000..6ad3b76\n--- /dev/null\n+++ b/rust-vendor/libc/.cargo_vcs_info.json\n@@ -0,0 +1,6 @@\n+{\n+  \"git\": {\n+    \"sha1\": \"5660e6fc058d1c6c27788e3ea2bc7d3e79d3c22d\"\n+  },\n+  \"path_in_vcs\": \"\"\n+}\n\\ No newline at end of file\ndiff --git a/rust-vendor/libc/.editorconfig b/rust-vendor/libc/.editorconfig\nnew file mode 100644\nindex 0000000..155c990\n--- /dev/null\n+++ b/rust-vendor/libc/.editorconfig\n@@ -0,0 +1,7 @@\n+[*.sh]\n+# See https://github.com/mvdan/sh/blob/master/cmd/shfmt/shfmt.1.scd#examples\n+indent_style = space\n+indent_size = 4\n+\n+switch_case_indent = true\n+space_redirects = true\ndiff --git a/rust-vendor/libc/.git-blame-ignore-revs b/rust-vendor/libc/.git-blame-ignore-revs\nnew file mode 100644\nindex 0000000..d358a2c\n--- /dev/null\n+++ b/rust-vendor/libc/.git-blame-ignore-revs\n@@ -0,0 +1,6 @@\n+# Format macro bodies\n+50f26e08e146b7e9c7d1af9614486eba327d1e31\n+\n+# Automated changes related to the 2021 edition upgrade\n+643182f7da26cedb09349b8bb3735c2e58ba24e6\n+108310db03e7db35ef48a902d9ce9a88ab8f9b77\ndiff --git a/rust-vendor/libc/.release-plz.toml b/rust-vendor/libc/.release-plz.toml\nnew file mode 100644\nindex 0000000..6442af5\n--- /dev/null\n+++ b/rust-vendor/libc/.release-plz.toml\n@@ -0,0 +1,49 @@\n+[workspace]\n+git_release_name = \"{{ version }}\"\n+git_tag_name = \"{{ version }}\"\n+\n+[changelog]\n+body = \"\"\"\n+## [{{ version | trim_start_matches(pat=\"v\") }}]\\\n+    {%- if release_link -%}\\\n+        ({{ release_link }})\\\n+    {% endif %} \\\n+    - {{ timestamp | date(format=\"%Y-%m-%d\") }}\n+{% for group, commits in commits | group_by(attribute=\"group\") %}\n+### {{ group | upper_first }}\n+    {% for commit in commits %}\n+        - {% if commit.scope -%}{{ commit.scope | upper_first }}: {% endif %}\n+        {%- if commit.breaking %}[**breaking**] {% endif %}\n+        {{- commit.message }}\n+        {%- if commit.links %} ([{{ commit.links.1.text }}]({{ commit.links.1.href }})){% endif -%}\n+    {% endfor %}\n+{% endfor %}\n+{%- if github -%}\n+{% if github.contributors | filter(attribute=\"is_first_time\", value=true) | length != 0 %}\n+  ## New Contributors ❤️\n+{% endif %}\\\n+{% for contributor in github.contributors | filter(attribute=\"is_first_time\", value=true) %}\n+  * @{{ contributor.username }} made their first contribution\n+    {%- if contributor.pr_number %} in \\\n+      [#{{ contributor.pr_number }}]({{ self::remote_url() }}/pull/{{ contributor.pr_number }}) \\\n+    {%- endif %}\n+{%- endfor -%}\n+{%- endif %}\n+\"\"\"\n+\n+commit_parsers = [\n+  { message = '(?i)^(\\w+: )?feat', group = \"added\" },\n+  { message = '(?i)^(\\w+: )?add', group = \"added\" },\n+  { message = '(?i)^(\\w+: )?change', group = \"changed\" },\n+  { message = '(?i)^(\\w+: )?cleanup', group = \"cleanup\" },\n+  { message = '(?i)^(\\w+: )?deprecate', group = \"deprecated\" },\n+  { message = '(?i)^(\\w+: )?remove', group = \"removed\" },\n+  { message = '(?i)^(\\w+: )?fix', group = \"fixed\" },\n+  { message = '(?i)^(\\w+: )?fix', group = \"fixed\" },\n+  { message = '^.*', group = \"other\" },\n+]\n+\n+link_parsers = [\n+    # Extract backport patterns\n+    { pattern = '\\(backport <.*/(\\d+)>\\)', text = \"#$1\", href = \"https://github.com/rust-lang/libc/pull/$1\"}\n+]\ndiff --git a/rust-vendor/libc/.rustfmt.toml b/rust-vendor/libc/.rustfmt.toml\nnew file mode 100644\nindex 0000000..42e6cff\n--- /dev/null\n+++ b/rust-vendor/libc/.rustfmt.toml\n@@ -0,0 +1,6 @@\n+edition = \"2021\"\n+error_on_line_overflow = true\n+group_imports = \"StdExternalCrate\"\n+imports_granularity = \"Module\"\n+# This crate gets large lists of reexports. Use vertical to reduce conflicts.\n+imports_layout = \"Vertical\"\ndiff --git a/rust-vendor/libc/CHANGELOG.md b/rust-vendor/libc/CHANGELOG.md\nindex 405c075..39117da 100644\n--- a/rust-vendor/libc/CHANGELOG.md\n+++ b/rust-vendor/libc/CHANGELOG.md\n@@ -1,5 +1,66 @@\n # Changelog\n \n+## [0.2.183](https://github.com/rust-lang/libc/compare/0.2.182...0.2.183) - 2026-03-08\n+\n+### Added\n+\n+- ESP-IDF: Add `SOMAXCONN` ([#4993](https://github.com/rust-lang/libc/pull/4993))\n+- Linux: Add `name_to_handle_at` and `open_by_handle_at` ([#4988](https://github.com/rust-lang/libc/pull/4988))\n+- NetBSD: Add `kinfo_file`, `kinfo_pcb`, and related constants ([#4985](https://github.com/rust-lang/libc/pull/4985))\n+- OpenBSD: Add `kinfo_file` and related constants ([#4991](https://github.com/rust-lang/libc/pull/4991))\n+- VxWorks: Add additional structs and defines ([#5003](https://github.com/rust-lang/libc/pull/5003))\n+- Various: Implement `Default` for `timeval` and `timespec` ([#4976](https://github.com/rust-lang/libc/pull/4976))\n+\n+### Fixed\n+\n+- Hexagon musl: Enable unstable 64-bit `time_t` support and `musl_v1_2_3` ([#4992](https://github.com/rust-lang/libc/pull/4992))\n+- Nintendo Switch: Fix target support ([#4982](https://github.com/rust-lang/libc/pull/4982))\n+- OpenBSD: Wrap an unused field in `Padding` ([#4997](https://github.com/rust-lang/libc/pull/4997))\n+- Redox: Change `sigaction.sa_flags` to `c_int` ([#4986](https://github.com/rust-lang/libc/pull/4986))\n+- Redox: Fix `blkcnt_t` type ([#4994](https://github.com/rust-lang/libc/pull/4994))\n+\n+## [0.2.182](https://github.com/rust-lang/libc/compare/0.2.181...0.2.182) - 2026-02-13\n+\n+### Added\n+\n+- Android, Linux: Add `tgkill` ([#4970](https://github.com/rust-lang/libc/pull/4970))\n+- Redox: Add `RENAME_NOREPLACE` ([#4968](https://github.com/rust-lang/libc/pull/4968))\n+- Redox: Add `renameat2` ([#4968](https://github.com/rust-lang/libc/pull/4968))\n+\n+\n+## [0.2.181](https://github.com/rust-lang/libc/compare/0.2.180...0.2.181) - 2026-02-09\n+\n+### Added\n+\n+- Apple: Add `MADV_ZERO` ([#4924](https://github.com/rust-lang/libc/pull/4924))\n+- Redox: Add `makedev`, `major`, and `minor` ([#4928](https://github.com/rust-lang/libc/pull/4928))\n+- GLibc: Add `PTRACE_SET_SYSCALL_INFO` ([#4933](https://github.com/rust-lang/libc/pull/4933))\n+- OpenBSD: Add more kqueue related constants for ([#4945](https://github.com/rust-lang/libc/pull/4945))\n+- Linux: add CAN error types ([#4944](https://github.com/rust-lang/libc/pull/4944))\n+- OpenBSD: Add siginfo_t::si_status ([#4946](https://github.com/rust-lang/libc/pull/4946))\n+- QNX NTO: Add `max_align_t` ([#4927](https://github.com/rust-lang/libc/pull/4927))\n+- Illumos: Add `_CS_PATH` ([#4956](https://github.com/rust-lang/libc/pull/4956))\n+- OpenBSD: add `ppoll` ([#4957](https://github.com/rust-lang/libc/pull/4957))\n+\n+### Fixed\n+\n+- **breaking**: Redox: Fix the type of dev_t ([#4928](https://github.com/rust-lang/libc/pull/4928))\n+- AIX: Change 'tv_nsec' of 'struct timespec' to type 'c_long' ([#4931](https://github.com/rust-lang/libc/pull/4931))\n+- AIX: Use 'struct st_timespec' in 'struct stat{,64}' ([#4931](https://github.com/rust-lang/libc/pull/4931))\n+- Glibc: Link old version of `tc{g,s}etattr` ([#4938](https://github.com/rust-lang/libc/pull/4938))\n+- Glibc: Link the correct version of `cf{g,s}et{i,o}speed` on mips{32,64}r6 ([#4938](https://github.com/rust-lang/libc/pull/4938))\n+- OpenBSD: Fix constness of tm.tm_zone ([#4948](https://github.com/rust-lang/libc/pull/4948))\n+- OpenBSD: Fix the definition of `ptrace_thread_state` ([#4947](https://github.com/rust-lang/libc/pull/4947))\n+- QuRT: Fix type visibility and defs ([#4932](https://github.com/rust-lang/libc/pull/4932))\n+- Redox: Fix values for `PTHREAD_MUTEX_{NORMAL, RECURSIVE}` ([#4943](https://github.com/rust-lang/libc/pull/4943))\n+- Various: Mark additional fields as private padding ([#4922](https://github.com/rust-lang/libc/pull/4922))\n+\n+### Changed\n+\n+- Fuchsia: Update `SO_*` constants ([#4937](https://github.com/rust-lang/libc/pull/4937))\n+- Revert \"musl: convert inline timespecs to timespec\" (resolves build issues on targets only supported by Musl 1.2.3+ ) ([#4958](https://github.com/rust-lang/libc/pull/4958))\n+\n+\n ## [0.2.180](https://github.com/rust-lang/libc/compare/0.2.179...0.2.180) - 2026-01-08\n \n ### Added\ndiff --git a/rust-vendor/libc/Cargo.lock b/rust-vendor/libc/Cargo.lock\nindex ede1d7a..e07feee 100644\n--- a/rust-vendor/libc/Cargo.lock\n+++ b/rust-vendor/libc/Cargo.lock\n@@ -4,7 +4,7 @@ version = 3\n \n [[package]]\n name = \"libc\"\n-version = \"0.2.180\"\n+version = \"0.2.183\"\n dependencies = [\n  \"rustc-std-workspace-core\",\n ]\ndiff --git a/rust-vendor/libc/Cargo.toml b/rust-vendor/libc/Cargo.toml\nindex b5f9a54..e006bc7 100644\n--- a/rust-vendor/libc/Cargo.toml\n+++ b/rust-vendor/libc/Cargo.toml\n@@ -13,7 +13,7 @@\n edition = \"2021\"\n rust-version = \"1.63\"\n name = \"libc\"\n-version = \"0.2.180\"\n+version = \"0.2.183\"\n authors = [\"The Rust Project Developers\"]\n build = \"build.rs\"\n exclude = [\n@@ -50,42 +50,89 @@ features = [\"extra_traits\"]\n default-target = \"x86_64-unknown-linux-gnu\"\n targets = [\n     \"aarch64-apple-darwin\",\n-    \"aarch64-apple-ios\",\n-    \"aarch64-linux-android\",\n     \"aarch64-pc-windows-msvc\",\n-    \"aarch64-unknown-freebsd\",\n-    \"aarch64-unknown-fuchsia\",\n-    \"aarch64-unknown-hermit\",\n     \"aarch64-unknown-linux-gnu\",\n+    \"i686-pc-windows-msvc\",\n+    \"i686-unknown-linux-gnu\",\n+    \"x86_64-pc-windows-gnu\",\n+    \"x86_64-pc-windows-msvc\",\n+    \"x86_64-unknown-linux-gnu\",\n+    \"aarch64-pc-windows-gnullvm\",\n     \"aarch64-unknown-linux-musl\",\n-    \"aarch64-unknown-netbsd\",\n-    \"aarch64-unknown-openbsd\",\n-    \"aarch64-wrs-vxworks\",\n-    \"arm-linux-androideabi\",\n+    \"aarch64-unknown-linux-ohos\",\n     \"arm-unknown-linux-gnueabi\",\n     \"arm-unknown-linux-gnueabihf\",\n+    \"armv7-unknown-linux-gnueabihf\",\n+    \"armv7-unknown-linux-ohos\",\n+    \"i686-pc-windows-gnu\",\n+    \"loongarch64-unknown-linux-gnu\",\n+    \"loongarch64-unknown-linux-musl\",\n+    \"powerpc-unknown-linux-gnu\",\n+    \"powerpc64-unknown-linux-gnu\",\n+    \"powerpc64le-unknown-linux-gnu\",\n+    \"powerpc64le-unknown-linux-musl\",\n+    \"riscv64gc-unknown-linux-gnu\",\n+    \"s390x-unknown-linux-gnu\",\n+    \"sparcv9-sun-solaris\",\n+    \"x86_64-apple-darwin\",\n+    \"x86_64-pc-solaris\",\n+    \"x86_64-pc-windows-gnullvm\",\n+    \"x86_64-unknown-freebsd\",\n+    \"x86_64-unknown-illumos\",\n+    \"x86_64-unknown-linux-musl\",\n+    \"x86_64-unknown-linux-ohos\",\n+    \"x86_64-unknown-netbsd\",\n+    \"aarch64-apple-ios\",\n+    \"aarch64-apple-tvos\",\n+    \"aarch64-apple-visionos\",\n+    \"aarch64-apple-watchos\",\n+    \"aarch64-linux-android\",\n+    \"aarch64-unknown-fuchsia\",\n+    \"arm-linux-androideabi\",\n     \"arm-unknown-linux-musleabi\",\n     \"arm-unknown-linux-musleabihf\",\n-    \"armebv7r-none-eabi\",\n-    \"armebv7r-none-eabihf\",\n+    \"arm64ec-pc-windows-msvc\",\n     \"armv5te-unknown-linux-gnueabi\",\n     \"armv5te-unknown-linux-musleabi\",\n     \"armv7-linux-androideabi\",\n-    \"armv7-unknown-linux-gnueabihf\",\n     \"armv7-unknown-linux-musleabihf\",\n-    \"armv7-wrs-vxworks-eabihf\",\n-    \"armv7r-none-eabi\",\n-    \"armv7r-none-eabihf\",\n     \"i586-unknown-linux-gnu\",\n     \"i586-unknown-linux-musl\",\n     \"i686-linux-android\",\n-    \"i686-pc-windows-gnu\",\n-    \"i686-pc-windows-msvc\",\n-    \"i686-pc-windows-msvc\",\n     \"i686-unknown-freebsd\",\n-    \"i686-unknown-haiku\",\n-    \"i686-unknown-linux-gnu\",\n     \"i686-unknown-linux-musl\",\n+    \"nvptx64-nvidia-cuda\",\n+    \"riscv64gc-unknown-linux-musl\",\n+    \"sparc64-unknown-linux-gnu\",\n+    \"thumbv7neon-linux-androideabi\",\n+    \"thumbv7neon-unknown-linux-gnueabihf\",\n+    \"wasm32-unknown-emscripten\",\n+    \"wasm32-unknown-unknown\",\n+    \"wasm32-wasip1\",\n+    \"wasm32-wasip2\",\n+    \"x86_64-fortanix-unknown-sgx\",\n+    \"x86_64-linux-android\",\n+    \"x86_64-unknown-fuchsia\",\n+    \"x86_64-unknown-linux-gnux32\",\n+    \"x86_64-unknown-redox\",\n+    \"aarch64-unknown-freebsd\",\n+    \"aarch64-unknown-hermit\",\n+    \"aarch64-unknown-illumos\",\n+    \"aarch64-unknown-netbsd\",\n+    \"aarch64-unknown-nto-qnx800\",\n+    \"aarch64-unknown-openbsd\",\n+    \"aarch64-unknown-redox\",\n+    \"aarch64-wrs-vxworks\",\n+    \"aarch64_be-unknown-linux-gnu\",\n+    \"aarch64_be-unknown-linux-musl\",\n+    \"armebv7r-none-eabi\",\n+    \"armebv7r-none-eabihf\",\n+    \"armv7-linux-androideabi\",\n+    \"armv7-wrs-vxworks-eabihf\",\n+    \"armv7r-none-eabi\",\n+    \"armv7r-none-eabihf\",\n+    \"hexagon-unknown-linux-musl\",\n+    \"i686-unknown-haiku\",\n     \"i686-unknown-netbsd\",\n     \"i686-unknown-openbsd\",\n     \"i686-wrs-vxworks\",\n@@ -98,8 +145,6 @@ targets = [\n     \"mipsel-sony-psp\",\n     \"mipsel-unknown-linux-gnu\",\n     \"mipsel-unknown-linux-musl\",\n-    \"nvptx64-nvidia-cuda\",\n-    \"powerpc-unknown-linux-gnu\",\n     \"powerpc-unknown-linux-gnuspe\",\n     \"powerpc-unknown-netbsd\",\n     \"powerpc-wrs-vxworks\",\n@@ -107,55 +152,34 @@ targets = [\n     \"powerpc64-ibm-aix\",\n     \"powerpc64-unknown-freebsd\",\n     \"powerpc64-unknown-linux-gnu\",\n+    \"powerpc64-unknown-linux-musl\",\n     \"powerpc64-wrs-vxworks\",\n-    \"powerpc64le-unknown-linux-gnu\",\n-    \"powerpc64le-unknown-linux-musl\",\n-    \"riscv32gc-unknown-linux-gnu\",\n+    \"riscv32-wrs-vxworks\",\n+    \"riscv32gc-unknown-linux-musl\",\n     \"riscv32i-unknown-none-elf\",\n     \"riscv32imac-unknown-none-elf\",\n     \"riscv32imc-unknown-none-elf\",\n-    \"riscv32-wrs-vxworks\",\n+    \"riscv64-wrs-vxworks\",\n     \"riscv64gc-unknown-freebsd\",\n     \"riscv64gc-unknown-hermit\",\n-    \"riscv64gc-unknown-linux-gnu\",\n-    \"riscv64gc-unknown-linux-musl\",\n     \"riscv64gc-unknown-none-elf\",\n     \"riscv64imac-unknown-none-elf\",\n-    \"riscv64-wrs-vxworks\",\n-    \"s390x-unknown-linux-gnu\",\n     \"s390x-unknown-linux-musl\",\n     \"sparc-unknown-linux-gnu\",\n-    \"sparc64-unknown-linux-gnu\",\n     \"sparc64-unknown-netbsd\",\n-    \"sparcv9-sun-solaris\",\n     \"thumbv6m-none-eabi\",\n     \"thumbv7em-none-eabi\",\n     \"thumbv7em-none-eabihf\",\n     \"thumbv7m-none-eabi\",\n-    \"thumbv7neon-linux-androideabi\",\n-    \"thumbv7neon-unknown-linux-gnueabihf\",\n-    \"wasm32-unknown-emscripten\",\n-    \"wasm32-unknown-unknown\",\n-    \"x86_64-apple-darwin\",\n+    \"wasm32-wasip3\",\n     \"x86_64-apple-ios\",\n-    \"x86_64-fortanix-unknown-sgx\",\n-    \"x86_64-linux-android\",\n-    \"x86_64-pc-solaris\",\n-    \"x86_64-pc-windows-gnu\",\n-    \"x86_64-pc-windows-msvc\",\n+    \"x86_64-pc-cygwin\",\n     \"x86_64-unknown-dragonfly\",\n-    \"x86_64-unknown-freebsd\",\n-    \"x86_64-unknown-fuchsia\",\n     \"x86_64-unknown-haiku\",\n     \"x86_64-unknown-hermit\",\n-    \"x86_64-unknown-illumos\",\n+    \"x86_64-unknown-hurd-gnu\",\n     \"x86_64-unknown-l4re-uclibc\",\n-    \"x86_64-unknown-linux-gnu\",\n-    \"x86_64-unknown-linux-gnux32\",\n-    \"x86_64-unknown-linux-musl\",\n-    \"x86_64-unknown-netbsd\",\n     \"x86_64-unknown-openbsd\",\n-    \"x86_64-unknown-redox\",\n     \"x86_64-wrs-vxworks\",\n ]\n cargo-args = [\"-Zbuild-std=core\"]\n",
+ "diff_truncated": true
+}

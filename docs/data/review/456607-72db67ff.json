@@ -1,0 +1,23 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~xnox/ubuntu-archive-tools/+git/ubuntu-archive-tools/+merge/456607",
+ "id": "456607",
+ "title": "sru-release: mimick britney when releasing packages to release & updates pockets",
+ "source_branch": "sru-release-use-move",
+ "target_branch": "main",
+ "revision": "8b48b7aa5e0c81716dfcf70ba061a8c957b11b4f",
+ "base_revision": "56ce504be1af2ec0eca2a64c9d31161c11db3813",
+ "description": null,
+ "commit_message": "sru-release: mimick britney when releasing packages to release & updates pockets\n\nWhen britney releases packages from proposed to updates, it uses move\noperation to also delete packages from proposed. Ensure that\nsru-release uses the same flag. This removes the need to later execute\n`remove-package -y -m \"moved to -updates\" -s mantic-proposed -e\n2.2.6-1ubuntu1.2 firmware-sof`. Note additional copies to devel & to\nsecurity will continue to work by version number as well. Or should be\nexecuted as copies from -updates to -security & devel.\n",
+ "diffstat": {
+  "sru-release": [
+   3,
+   3
+  ]
+ },
+ "files": 1,
+ "added_lines": 3,
+ "removed_lines": 3,
+ "diff": "diff --git a/sru-release b/sru-release\nindex 5295372..036ac84 100755\n--- a/sru-release\n+++ b/sru-release\n@@ -312,7 +312,7 @@ def release_packages(options, packages):\n             else:\n                 if options.release:\n                     # -proposed -> release\n-                    copy(to_pocket='Release', to_series=release)\n+                    copy(to_pocket='Release', to_series=release, move=True)\n                     print('Copied to %s' % release)\n                 else:\n                     # -proposed -> -updates\n@@ -324,11 +324,11 @@ def release_packages(options, packages):\n                             # instead of doing direct pocket copies.\n                             packages_to_britney[pkg] = versions['proposed']\n                         else:\n-                            copy(to_pocket='Updates', to_series=release,\n+                            copy(to_pocket='Updates', to_series=release, move=True,\n                                  phased_update_percentage=options.percentage)\n                             print('Copied to %s-updates' % release)\n                     else:\n-                        copy(to_pocket='Updates', to_series=release)\n+                        copy(to_pocket='Updates', to_series=release, move=True)\n                         print('Copied to %s-updates' % release)\n \n             # -proposed -> -security\n",
+ "diff_truncated": false
+}

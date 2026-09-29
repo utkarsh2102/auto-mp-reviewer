@@ -1,0 +1,31 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~ack/ubuntu/+source/maas/+git/maas/+merge/384013",
+ "id": "384013",
+ "title": "Install snap from the 2.7/stable/ubuntu-$release channel by default.",
+ "source_branch": "snap-channel-2.7-default",
+ "target_branch": "ubuntu/focal-devel",
+ "revision": "84aff9b0cbc7108faaf743ecf28b77be7ac8a42e",
+ "base_revision": "8d80ee734908963e11c7db8a12be1802716c50f1",
+ "description": null,
+ "commit_message": "Install snap from the 2.7/stable/ubuntu-$release channel by default.\n\n- If currently installed maas is newer than 2.7, install from matching track.\n- Rename maas/snap-track debconf var to maas/snap-channel (as the /ubuntu-$release is no longer appended)\n- Fix wrong display of \"MAAS not currently set up\" message\n- No-op when upgrading from a previous version of the transitional deb.\n",
+ "diffstat": {
+  "debian/maas.preinst": [
+   42,
+   26
+  ],
+  "debian/changelog": [
+   13,
+   0
+  ],
+  "debian/maas.templates": [
+   1,
+   3
+  ]
+ },
+ "files": 3,
+ "added_lines": 56,
+ "removed_lines": 29,
+ "diff": "diff --git a/debian/changelog b/debian/changelog\nindex ca80f42..4809cde 100644\n--- a/debian/changelog\n+++ b/debian/changelog\n@@ -1,3 +1,16 @@\n+maas (1:0.7) focal; urgency=medium\n+\n+  * When a track is not specified, default to 2.7/stable. If MAAS deb\n+    version is higher than 2.7, pick the same track. LP: #1878769\n+  * Fix issue where \"MAAS not currently set up\" notice shows even when the\n+    snap is configured.\n+  * No-op when upgrading from a transitional deb, as migration already\n+    happened.\n+  * Rename \"get_snap_mode\" to \"snap_mode\".\n+  * Rename DEFAULT_SNAP_* variables to align with snap terminology.\n+\n+ -- Alberto Donato <alberto.donato@canonical.com>  Wed, 06 May 2020 13:48:50 +0200\n+\n maas (1:0.6) focal; urgency=medium\n \n   * Fix snapd version check for default track support\ndiff --git a/debian/maas.preinst b/debian/maas.preinst\nindex 2279230..a1ae4ea 100755\n--- a/debian/maas.preinst\n+++ b/debian/maas.preinst\n@@ -1,8 +1,7 @@\n #!/bin/bash -e\n \n-DEFAULT_UBUNTU_RELEASE=\"20.04\"\n-DEFAULT_SNAP_VERSION=\"2.7\"\n-DEFAULT_SNAP_TRACK=\"stable\"\n+DEFAULT_SNAP_TRACK=\"2.7\"\n+DEFAULT_SNAP_RISK=\"stable\"\n \n SNAP_COMMON=\"/var/snap/maas/common\"\n \n@@ -12,6 +11,20 @@ error_exit() {\n     exit 1\n }\n \n+os_release() {\n+    # shellcheck disable=SC1091\n+    (. /etc/os-release && echo \"$VERSION_ID\")\n+}\n+\n+maas_version() {\n+    # only return major.minor version\n+    dpkg-query -W -f'${Version}\\n' maas-common 2>/dev/null | cut -d. -f1,2\n+}\n+\n+is_version() {\n+    dpkg --compare-versions \"$@\"\n+}\n+\n is_deb_installed() {\n     dpkg-query -W -f'${Status}\\n' \"$1\" 2>/dev/null | grep -q ^install\n }\n@@ -20,19 +33,13 @@ is_snap_installed() {\n     snap list \"$1\" >/dev/null 2>&1\n }\n \n-get_snap_mode() {\n-    local snap_mode\n-    snap_mode=$(cat \"$SNAP_COMMON/snap_mode\" 2>/dev/null || true)\n-    if [ -z \"$snap_mode\" ]; then\n-        snap_mode=\"none\"\n+snap_mode() {\n+    local mode\n+    mode=$(cat \"$SNAP_COMMON/snap_mode\" 2>/dev/null || true)\n+    if [ -z \"$mode\" ]; then\n+        mode=\"none\"\n     fi\n-    echo \"$snap_mode\"\n-}\n-\n-snapd_has_default_track_support() {\n-    local version\n-    version=$(snap version | awk '$1 == \"snapd\" { print $2; }')\n-    dpkg --compare-versions \"$version\" \">=\" \"2.44\"\n+    echo \"$mode\"\n }\n \n ensure_snap_not_installed() {\n@@ -94,18 +101,17 @@ install_snap() {\n     db_input medium maas/snap-track || true\n     db_go || true\n     db_get maas/snap-track\n-    local track=\"$RET\"\n-    if [ -z \"$track\" ]; then\n-        track=\"$DEFAULT_SNAP_TRACK\"\n-        snapd_has_default_track_support || track=\"$DEFAULT_SNAP_VERSION/$track\"\n-    fi\n-\n-    local release=\"$DEFAULT_UBUNTU_RELEASE\"\n-    if [ -e \"/etc/os-release\" ]; then\n-        release=$(. /etc/os-release && echo \"$VERSION_ID\")\n+    local channel=\"$RET\"\n+    if [ -z \"$channel\" ]; then\n+        local track\n+        track=\"$(maas_version)\"\n+        if [ -z \"$track\" ] || is_version \"$track\" \"<<\" \"$DEFAULT_SNAP_TRACK\"; then\n+            track=\"$DEFAULT_SNAP_TRACK\"\n+        fi\n+        channel=\"$track/$DEFAULT_SNAP_RISK/ubuntu-$(os_release)\"\n     fi\n \n-    snap install maas --channel=\"${track}/ubuntu-${release}\"\n+    snap install maas --channel=\"$channel\"\n }\n \n migrate_to_snap() {\n@@ -121,7 +127,9 @@ preserve_db() {\n \n notify_if_not_setup() {\n     # only show the notice if MAAS is not setup\n-    [ \"$(get_snap_mode)\" != \"none\" ] || return 0\n+    if [ \"$(snap_mode)\" != \"none\" ]; then\n+        return 0\n+    fi\n     db_input high maas/snap-needs-setup || true\n     db_go || true\n }\n@@ -134,12 +142,20 @@ case \"$1\" in\n         ;;\n     install|upgrade)\n         # only perform tasks in these cases\n+        old_version=\"$2\"\n         ;;\n     *)\n         error_exit \"preinst called with unknown argument: $1\"\n         ;;\n esac\n \n+if [[ \"$old_version\" = 1:* ]]; then\n+    # upgrading from a transitional snap, nothing to do as migration already\n+    # happened\n+    exit 0\n+fi\n+\n+# shellcheck disable=SC1091\n . /usr/share/debconf/confmodule\n \n ensure_snap_not_installed\ndiff --git a/debian/maas.templates b/debian/maas.templates\nindex f81df06..b260d66 100644\n--- a/debian/maas.templates\n+++ b/debian/maas.templates\n@@ -1,10 +1,8 @@\n Template: maas/snap-track\n Type: string\n-_Description: Track for the MAAS snap:\n+_Description: Channel for the MAAS snap:\n  This can be specified just as a track name (e.g. \"2.7\", \"latest\", ...) or include\n  a risk as well (e.g. \"latest/candidate\").\n- .\n- If not specified \"stable\" will be used.\n \n Template: maas/snap-no-connectivity\n Type: select\n",
+ "diff_truncated": false
+}

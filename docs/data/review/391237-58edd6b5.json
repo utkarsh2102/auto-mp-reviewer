@@ -1,0 +1,31 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~halves/ubuntu/+source/sudo/+git/sudo/+merge/391237",
+ "id": "391237",
+ "title": "lp1895757 → ubuntu/bionic-devel",
+ "source_branch": "lp1895757",
+ "target_branch": "ubuntu/bionic-devel",
+ "revision": "802f9d8c1f9a570f33c5221779e28b66b21af607",
+ "base_revision": "ad65a1e4175ed04b5ca20175b0213d32d8a18265",
+ "description": null,
+ "commit_message": null,
+ "diffstat": {
+  "debian/patches/0001-In-pty_close-close-the-slave-and-remove-any-events-a.patch": [
+   78,
+   0
+  ],
+  "debian/changelog": [
+   7,
+   0
+  ],
+  "debian/patches/series": [
+   1,
+   0
+  ]
+ },
+ "files": 3,
+ "added_lines": 86,
+ "removed_lines": 0,
+ "diff": "diff --git a/debian/changelog b/debian/changelog\nindex 23f3972..6055a4a 100644\n--- a/debian/changelog\n+++ b/debian/changelog\n@@ -1,3 +1,10 @@\n+sudo (1.8.21p2-3ubuntu1.3) bionic; urgency=medium\n+\n+  * d/p/0001-In-pty_close-close-the-slave-and-remove-any-events-a.patch:\n+    - fix sudo hangs when IO logging is enabled (LP: #1895757)\n+\n+ -- Heitor Alves de Siqueira <halves@canonical.com>  Wed, 23 Sep 2020 14:59:35 +0000\n+\n sudo (1.8.21p2-3ubuntu1.2) bionic-security; urgency=medium\n \n   * SECURITY UPDATE: buffer overflow in sudo when pwfeedback is enabled\ndiff --git a/debian/patches/0001-In-pty_close-close-the-slave-and-remove-any-events-a.patch b/debian/patches/0001-In-pty_close-close-the-slave-and-remove-any-events-a.patch\nnew file mode 100644\nindex 0000000..3a884be\n--- /dev/null\n+++ b/debian/patches/0001-In-pty_close-close-the-slave-and-remove-any-events-a.patch\n@@ -0,0 +1,78 @@\n+From c4523c6c798464e6a4bdf03d715d04d90c8114d5 Mon Sep 17 00:00:00 2001\n+From: Heitor Alves de Siqueira <halves@canonical.com>\n+Date: Wed, 23 Sep 2020 11:23:43 -0300\n+Subject: [PATCH] In pty_close() close the slave and remove any events associated\n+\n+with it.  Fixes a potential hang when performing the final flush\n+on non-BSD systems.\n+\n+Origin: backport, https://github.com/sudo-project/sudo/commit/4df454310dae\n+Bug-ubuntu: https://bugs.launchpad.net/bugs/1895757\n+---\n+ src/exec_pty.c | 20 ++++++++++++++++++--\n+ 1 file changed, 18 insertions(+), 2 deletions(-)\n+\n+Index: sudo/src/exec_pty.c\n+===================================================================\n+--- sudo.orig/src/exec_pty.c\n++++ sudo/src/exec_pty.c\n+@@ -680,12 +680,19 @@ io_buf_new(int rfd, int wfd,\n+ }\n+ \n+ static void\n+-pty_close(struct command_status *cstat)\n++pty_close(struct sudo_event_base *evbase, struct command_status *cstat)\n+ {\n+     struct io_buffer *iob;\n+     int n;\n+     debug_decl(pty_close, SUDO_DEBUG_EXEC);\n+ \n++    /* Close the pty slave first so reads from the master don't block. */\n++    if (io_fds[SFD_SLAVE] != -1) {\n++\tev_free_by_fd(evbase, io_fds[SFD_SLAVE]);\n++\tclose(io_fds[SFD_SLAVE]);\n++\tio_fds[SFD_SLAVE] = -1;\n++    }\n++\n+     /* Flush any remaining output (the plugin already got it). */\n+     if (io_fds[SFD_USERTTY] != -1) {\n+ \tn = fcntl(io_fds[SFD_USERTTY], F_GETFL, 0);\n+@@ -713,6 +720,11 @@ pty_close(struct command_status *cstat)\n+     /* Update utmp */\n+     if (utmp_user != NULL)\n+ \tutmp_logout(slavename, cstat->type == CMD_WSTATUS ? cstat->val : 0);\n++\n++    /* Close pty master. */\n++    if (io_fds[SFD_MASTER] != -1)\n++\tclose(io_fds[SFD_MASTER]);\n++\n+     debug_return;\n+ }\n+ \n+@@ -1409,7 +1421,7 @@ exec_pty(struct command_details *details\n+     }\n+ \n+     /* Flush any remaining output, free I/O bufs and events, do logout. */\n+-    pty_close(cstat);\n++    pty_close(ec.evbase, cstat);\n+ \n+     /* Free things up. */\n+     free_exec_closure_pty(&ec);\n+@@ -1509,6 +1521,8 @@ del_io_events(bool nonblocking)\n+ \t    }\n+ \t}\n+     }\n++    sudo_debug_printf(SUDO_DEBUG_INFO,\n++\t\"%s: flushing remaining I/O buffers (nonblocking)\", __func__);\n+     (void) sudo_ev_loop(evbase, SUDO_EVLOOP_NONBLOCK);\n+ \n+     /*\n+@@ -1534,6 +1548,8 @@ del_io_events(bool nonblocking)\n+ \t\t}\n+ \t    }\n+ \t}\n++\tsudo_debug_printf(SUDO_DEBUG_INFO,\n++\t    \"%s: flushing remaining write buffers (blocking)\", __func__);\n+ \t(void) sudo_ev_loop(evbase, 0);\n+      \n+ \t/* We should now have flushed all write buffers. */\ndiff --git a/debian/patches/series b/debian/patches/series\nindex dfbedfc..64115a9 100644\n--- a/debian/patches/series\n+++ b/debian/patches/series\n@@ -5,3 +5,4 @@ keep_home_by_default.patch\n CVE-2019-14287.patch\n CVE-2019-14287-2.patch\n CVE-2019-18634.patch\n+0001-In-pty_close-close-the-slave-and-remove-any-events-a.patch\n",
+ "diff_truncated": false
+}

@@ -1,0 +1,23 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~adombeck/ubuntu/+source/apport/+git/apport/+merge/471619",
+ "id": "471619",
+ "title": "Make label in Gtk.MessageDialog selectable",
+ "source_branch": "selectable-message-dialog",
+ "target_branch": "ubuntu/devel",
+ "revision": "1f30b457ed3ce1daccef95e8b15ff612070e8a92",
+ "base_revision": "6cd58137cb92a9260f3761ef61fa6132a7dec358",
+ "description": null,
+ "commit_message": "Make label in Gtk.MessageDialog selectable\n    \nTo allow users to copy parts of the text, for example the GitHub\nverification code.",
+ "diffstat": {
+  "gtk/apport-gtk": [
+   4,
+   0
+  ]
+ },
+ "files": 1,
+ "added_lines": 4,
+ "removed_lines": 0,
+ "diff": "diff --git a/gtk/apport-gtk b/gtk/apport-gtk\nindex 5e9c3b1..ac4fd39 100755\n--- a/gtk/apport-gtk\n+++ b/gtk/apport-gtk\n@@ -423,6 +423,10 @@ class GTKUserInterface(apport.ui.UserInterface):\n         else:\n             # work around gnome #620579\n             self.md.set_property(\"text\", text)\n+        # Make the label in the message area selectable to allow users\n+        # to copy the text (to allow them to copy the GitHub\n+        # verification code, for example)\n+        self.md.get_message_area().get_children()[0].set_selectable(True)\n         self.md.set_title(title)\n         result = self.md.run()\n         self.md.hide()\n",
+ "diff_truncated": false
+}

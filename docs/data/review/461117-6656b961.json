@@ -1,0 +1,1619 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~calvinmwadime/ubuntu/+source/walinuxagent/+git/walinuxagent/+merge/461117",
+ "id": "461117",
+ "title": "jammy-2.9.1.1 → ubuntu/jammy-devel",
+ "source_branch": "jammy-2.9.1.1",
+ "target_branch": "ubuntu/jammy-devel",
+ "revision": "1e50ab6f3ab613dca30c5ef61fc30d1ac6b7cd02",
+ "base_revision": "b38254eb35aebfb435d500d0e4b09a4a1668f803",
+ "description": null,
+ "commit_message": null,
+ "diffstat": {
+  "dev/null": [
+   0,
+   29
+  ],
+  ".github/PULL_REQUEST_TEMPLATE.md": [
+   1,
+   2
+  ],
+  ".github/codecov.yml": [
+   2,
+   0
+  ],
+  ".github/workflows/ci_pr.yml": [
+   128,
+   0
+  ],
+  ".gitignore": [
+   1,
+   2
+  ],
+  "CODEOWNERS": [
+   3,
+   1
+  ],
+  "README.md": [
+   110,
+   33
+  ],
+  "SECURITY.md": [
+   41,
+   0
+  ],
+  "azurelinuxagent/agent.py": [
+   203,
+   66
+  ],
+  "azurelinuxagent/common/AgentGlobals.py": [
+   39,
+   0
+  ],
+  "azurelinuxagent/common/agent_supported_feature.py": [
+   122,
+   0
+  ],
+  "azurelinuxagent/common/cgroup.py": [
+   208,
+   77
+  ],
+  "azurelinuxagent/common/cgroupapi.py": [
+   214,
+   429
+  ],
+  "azurelinuxagent/common/cgroupconfigurator.py": [
+   1000,
+   118
+  ],
+  "azurelinuxagent/common/cgroupstelemetry.py": [
+   25,
+   265
+  ],
+  "azurelinuxagent/common/conf.py": [
+   272,
+   21
+  ],
+  "azurelinuxagent/common/datacontract.py": [
+   4,
+   2
+  ],
+  "azurelinuxagent/common/dhcp.py": [
+   14,
+   11
+  ],
+  "azurelinuxagent/common/event.py": [
+   286,
+   112
+  ],
+  "azurelinuxagent/common/exception.py": [
+   72,
+   18
+  ],
+  "azurelinuxagent/common/future.py": [
+   91,
+   15
+  ],
+  "azurelinuxagent/common/interfaces.py": [
+   49,
+   0
+  ],
+  "azurelinuxagent/common/logcollector.py": [
+   401,
+   0
+  ],
+  "azurelinuxagent/common/logcollector_manifests.py": [
+   122,
+   0
+  ],
+  "azurelinuxagent/common/logger.py": [
+   35,
+   7
+  ],
+  "azurelinuxagent/common/osutil/alpine.py": [
+   2,
+   2
+  ],
+  "azurelinuxagent/common/osutil/arch.py": [
+   9,
+   2
+  ],
+  "azurelinuxagent/common/osutil/bigip.py": [
+   31,
+   30
+  ],
+  "azurelinuxagent/common/osutil/clearlinux.py": [
+   28,
+   16
+  ],
+  "azurelinuxagent/common/osutil/coreos.py": [
+   9,
+   3
+  ],
+  "azurelinuxagent/common/osutil/debian.py": [
+   13,
+   13
+  ],
+  "azurelinuxagent/common/osutil/default.py": [
+   441,
+   315
+  ],
+  "azurelinuxagent/common/osutil/devuan.py": [
+   52,
+   0
+  ],
+  "azurelinuxagent/common/osutil/factory.py": [
+   60,
+   33
+  ],
+  "azurelinuxagent/common/osutil/fedora.py": [
+   77,
+   0
+  ],
+  "azurelinuxagent/common/osutil/freebsd.py": [
+   43,
+   33
+  ],
+  "azurelinuxagent/common/osutil/gaia.py": [
+   29,
+   17
+  ],
+  "azurelinuxagent/common/osutil/iosxe.py": [
+   19,
+   7
+  ],
+  "azurelinuxagent/common/osutil/mariner.py": [
+   69,
+   0
+  ],
+  "azurelinuxagent/common/osutil/nsbsd.py": [
+   28,
+   26
+  ],
+  "azurelinuxagent/common/osutil/openbsd.py": [
+   16,
+   19
+  ],
+  "azurelinuxagent/common/osutil/openwrt.py": [
+   14,
+   13
+  ],
+  "azurelinuxagent/common/osutil/photonos.py": [
+   65,
+   0
+  ],
+  "azurelinuxagent/common/osutil/redhat.py": [
+   45,
+   16
+  ],
+  "azurelinuxagent/common/osutil/suse.py": [
+   93,
+   36
+  ],
+  "azurelinuxagent/common/osutil/systemd.py": [
+   86,
+   0
+  ],
+  "azurelinuxagent/common/osutil/ubuntu.py": [
+   32,
+   16
+  ],
+  "azurelinuxagent/common/persist_firewall_rules.py": [
+   338,
+   0
+  ],
+  "azurelinuxagent/common/protocol/__init__.py": [
+   0,
+   5
+  ],
+  "azurelinuxagent/common/protocol/extensions_goal_state.py": [
+   244,
+   0
+  ],
+  "azurelinuxagent/common/protocol/extensions_goal_state_factory.py": [
+   36,
+   0
+  ],
+  "azurelinuxagent/common/protocol/extensions_goal_state_from_extensions_config.py": [
+   571,
+   0
+  ],
+  "azurelinuxagent/common/protocol/extensions_goal_state_from_vm_settings.py": [
+   583,
+   0
+  ],
+  "azurelinuxagent/common/protocol/goal_state.py": [
+   705,
+   0
+  ],
+  "azurelinuxagent/common/protocol/hostplugin.py": [
+   371,
+   38
+  ],
+  "azurelinuxagent/common/protocol/imds.py": [
+   30,
+   14
+  ],
+  "azurelinuxagent/common/protocol/metadata_server_migration_util.py": [
+   79,
+   0
+  ],
+  "azurelinuxagent/common/protocol/ovfenv.py": [
+   7,
+   6
+  ],
+  "azurelinuxagent/common/protocol/restapi.py": [
+   165,
+   91
+  ],
+  "azurelinuxagent/common/protocol/util.py": [
+   109,
+   159
+  ],
+  "azurelinuxagent/common/protocol/wire.py": [
+   516,
+   1095
+  ],
+  "azurelinuxagent/common/rdma.py": [
+   199,
+   56
+  ],
+  "azurelinuxagent/common/singletonperthread.py": [
+   30,
+   0
+  ],
+  "azurelinuxagent/common/telemetryevent.py": [
+   72,
+   3
+  ],
+  "azurelinuxagent/common/utils/archive.py": [
+   204,
+   111
+  ],
+  "azurelinuxagent/common/utils/cryptutil.py": [
+   28,
+   25
+  ],
+  "azurelinuxagent/common/utils/extensionprocessutil.py": [
+   31,
+   7
+  ],
+  "azurelinuxagent/common/utils/fileutil.py": [
+   9,
+   7
+  ],
+  "azurelinuxagent/common/utils/flexible_version.py": [
+   29,
+   9
+  ],
+  "azurelinuxagent/common/utils/networkutil.py": [
+   172,
+   3
+  ],
+  "azurelinuxagent/common/utils/restutil.py": [
+   153,
+   56
+  ],
+  "azurelinuxagent/common/utils/shellutil.py": [
+   260,
+   57
+  ],
+  "azurelinuxagent/common/utils/textutil.py": [
+   63,
+   10
+  ],
+  "azurelinuxagent/common/utils/timeutil.py": [
+   39,
+   0
+  ],
+  "azurelinuxagent/common/version.py": [
+   102,
+   31
+  ],
+  "azurelinuxagent/daemon/main.py": [
+   36,
+   22
+  ],
+  "azurelinuxagent/daemon/resourcedisk/default.py": [
+   13,
+   12
+  ],
+  "azurelinuxagent/daemon/resourcedisk/factory.py": [
+   3,
+   7
+  ],
+  "azurelinuxagent/daemon/resourcedisk/freebsd.py": [
+   1,
+   1
+  ],
+  "azurelinuxagent/daemon/resourcedisk/openwrt.py": [
+   2,
+   2
+  ],
+  "azurelinuxagent/daemon/scvmm.py": [
+   3,
+   3
+  ],
+  "azurelinuxagent/ga/collect_logs.py": [
+   353,
+   0
+  ],
+  "azurelinuxagent/ga/collect_telemetry_events.py": [
+   586,
+   0
+  ],
+  "azurelinuxagent/ga/env.py": [
+   177,
+   123
+  ],
+  "azurelinuxagent/ga/exthandlers.py": [
+   1493,
+   645
+  ],
+  "azurelinuxagent/ga/monitor.py": [
+   249,
+   450
+  ],
+  "azurelinuxagent/ga/periodic_operation.py": [
+   81,
+   0
+  ],
+  "azurelinuxagent/ga/remoteaccess.py": [
+   81,
+   90
+  ],
+  "azurelinuxagent/ga/send_telemetry_events.py": [
+   164,
+   0
+  ],
+  "azurelinuxagent/ga/update.py": [
+   1089,
+   380
+  ],
+  "azurelinuxagent/pa/deprovision/arch.py": [
+   1,
+   1
+  ],
+  "azurelinuxagent/pa/deprovision/clearlinux.py": [
+   4,
+   2
+  ],
+  "azurelinuxagent/pa/deprovision/coreos.py": [
+   1,
+   1
+  ],
+  "azurelinuxagent/pa/deprovision/default.py": [
+   55,
+   17
+  ],
+  "azurelinuxagent/pa/deprovision/factory.py": [
+   5,
+   8
+  ],
+  "azurelinuxagent/pa/deprovision/ubuntu.py": [
+   2,
+   2
+  ],
+  "azurelinuxagent/pa/provision/cloudinit.py": [
+   33,
+   91
+  ],
+  "azurelinuxagent/pa/provision/cloudinitdetect.py": [
+   72,
+   0
+  ],
+  "azurelinuxagent/pa/provision/default.py": [
+   28,
+   42
+  ],
+  "azurelinuxagent/pa/provision/factory.py": [
+   3,
+   3
+  ],
+  "azurelinuxagent/pa/rdma/centos.py": [
+   6,
+   6
+  ],
+  "azurelinuxagent/pa/rdma/factory.py": [
+   9,
+   7
+  ],
+  "azurelinuxagent/pa/rdma/suse.py": [
+   12,
+   3
+  ],
+  "azurelinuxagent/pa/rdma/ubuntu.py": [
+   14,
+   14
+  ],
+  "bin/py3/waagent": [
+   53,
+   0
+  ],
+  "bin/waagent": [
+   5,
+   1
+  ],
+  "bin/waagent2.0": [
+   5,
+   1
+  ],
+  "ci/2.7.pylintrc": [
+   42,
+   0
+  ],
+  "ci/3.6.pylintrc": [
+   40,
+   0
+  ],
+  "ci/nosetests.sh": [
+   25,
+   0
+  ],
+  "config/66-azure-storage.rules": [
+   23,
+   17
+  ],
+  "config/alpine/waagent.conf": [
+   4,
+   11
+  ],
+  "config/arch/waagent.conf": [
+   4,
+   6
+  ],
+  "config/bigip/waagent.conf": [
+   3,
+   10
+  ],
+  "config/clearlinux/waagent.conf": [
+   3,
+   5
+  ],
+  "config/coreos/waagent.conf": [
+   4,
+   11
+  ],
+  "config/debian/waagent.conf": [
+   10,
+   11
+  ],
+  "config/devuan/waagent.conf": [
+   130,
+   0
+  ],
+  "config/freebsd/waagent.conf": [
+   6,
+   13
+  ],
+  "config/gaia/waagent.conf": [
+   4,
+   6
+  ],
+  "config/iosxe/waagent.conf": [
+   4,
+   6
+  ],
+  "config/mariner/waagent.conf": [
+   88,
+   0
+  ],
+  "config/nsbsd/waagent.conf": [
+   4,
+   6
+  ],
+  "config/openbsd/waagent.conf": [
+   4,
+   6
+  ],
+  "config/photonos/waagent.conf": [
+   80,
+   0
+  ],
+  "config/suse/waagent.conf": [
+   12,
+   8
+  ],
+  "config/ubuntu/waagent.conf": [
+   10,
+   11
+  ],
+  "config/waagent.conf": [
+   26,
+   10
+  ],
+  "debian/changelog": [
+   29,
+   0
+  ],
+  "debian/control": [
+   11,
+   4
+  ],
+  "debian/docs": [
+   0,
+   1
+  ],
+  "debian/install": [
+   3,
+   3
+  ],
+  "debian/patches/disable_udev_overrides.patch": [
+   16,
+   0
+  ],
+  "debian/patches/fix_cgroup_v2_mounting_and_systemd_process.patch": [
+   232,
+   0
+  ],
+  "debian/patches/fix_systemd_networkd_lease_file_path": [
+   66,
+   0
+  ],
+  "debian/patches/series": [
+   3,
+   2
+  ],
+  "debian/patches/update_dhcp_client_ubuntu_supported_versions.patch": [
+   39,
+   0
+  ],
+  "debian/rules": [
+   9,
+   12
+  ],
+  "debian/walinuxagent.manpages": [
+   1,
+   0
+  ],
+  "debian/watch": [
+   4,
+   3
+  ],
+  "init/azure-vmextensions.slice": [
+   7,
+   0
+  ],
+  "init/azure.slice": [
+   4,
+   0
+  ],
+  "init/devuan/default/walinuxagent": [
+   2,
+   0
+  ],
+  "init/devuan/walinuxagent": [
+   344,
+   0
+  ],
+  "init/mariner/waagent.service": [
+   16,
+   0
+  ],
+  "init/photonos/waagent.service": [
+   16,
+   0
+  ],
+  "init/redhat/py2/waagent.service": [
+   19,
+   0
+  ],
+  "init/redhat/waagent.service": [
+   19,
+   0
+  ],
+  "init/sles/waagent.service": [
+   16,
+   0
+  ],
+  "init/ubuntu/walinuxagent.service": [
+   3,
+   0
+  ],
+  "makepkg.py": [
+   66,
+   51
+  ],
+  "setup.py": [
+   143,
+   60
+  ],
+  "test-requirements.txt": [
+   19,
+   3
+  ],
+  "tests/common/dhcp/test_dhcp.py": [
+   27,
+   14
+  ],
+  "tests/common/mock_cgroup_environment.py": [
+   122,
+   0
+  ],
+  "tests/common/mock_command.py": [
+   17,
+   0
+  ],
+  "tests/common/mock_environment.py": [
+   168,
+   0
+  ],
+  "tests/common/osutil/test_alpine.py": [
+   3,
+   2
+  ],
+  "tests/common/osutil/test_arch.py": [
+   3,
+   2
+  ],
+  "tests/common/osutil/test_bigip.py": [
+   20,
+   21
+  ],
+  "tests/common/osutil/test_clearlinux.py": [
+   3,
+   2
+  ],
+  "tests/common/osutil/test_coreos.py": [
+   3,
+   2
+  ],
+  "tests/common/osutil/test_default.py": [
+   429,
+   316
+  ],
+  "tests/common/osutil/test_default_osutil.py": [
+   3,
+   162
+  ],
+  "tests/common/osutil/test_factory.py": [
+   144,
+   69
+  ],
+  "tests/common/osutil/test_freebsd.py": [
+   8,
+   7
+  ],
+  "tests/common/osutil/test_nsbsd.py": [
+   12,
+   11
+  ],
+  "tests/common/osutil/test_openbsd.py": [
+   3,
+   2
+  ],
+  "tests/common/osutil/test_openwrt.py": [
+   3,
+   2
+  ],
+  "tests/common/osutil/test_photonos.py": [
+   37,
+   0
+  ],
+  "tests/common/osutil/test_redhat.py": [
+   3,
+   2
+  ],
+  "tests/common/osutil/test_suse.py": [
+   3,
+   2
+  ],
+  "tests/common/osutil/test_ubuntu.py": [
+   1,
+   1
+  ],
+  "tests/common/test_agent_supported_feature.py": [
+   55,
+   0
+  ],
+  "tests/common/test_cgroupapi.py": [
+   130,
+   548
+  ],
+  "tests/common/test_cgroupconfigurator.py": [
+   973,
+   261
+  ],
+  "tests/common/test_cgroups.py": [
+   62,
+   82
+  ],
+  "tests/common/test_cgroupstelemetry.py": [
+   120,
+   406
+  ],
+  "tests/common/test_conf.py": [
+   28,
+   53
+  ],
+  "tests/common/test_errorstate.py": [
+   2,
+   1
+  ],
+  "tests/common/test_event.py": [
+   583,
+   314
+  ],
+  "tests/common/test_logcollector.py": [
+   477,
+   0
+  ],
+  "tests/common/test_logger.py": [
+   45,
+   45
+  ],
+  "tests/common/test_persist_firewall_rules.py": [
+   416,
+   0
+  ],
+  "tests/common/test_singletonperthread.py": [
+   164,
+   0
+  ],
+  "tests/common/test_telemetryevent.py": [
+   20,
+   19
+  ],
+  "tests/common/test_version.py": [
+   80,
+   36
+  ],
+  "tests/daemon/test_daemon.py": [
+   15,
+   14
+  ],
+  "tests/daemon/test_resourcedisk.py": [
+   5,
+   5
+  ],
+  "tests/data/cgroups/cpu.stat": [
+   3,
+   0
+  ],
+  "tests/data/cgroups/cpu.stat_t0": [
+   3,
+   0
+  ],
+  "tests/data/cgroups/cpu.stat_t1": [
+   3,
+   0
+  ],
+  "tests/data/cgroups/cpuacct.stat": [
+   2,
+   0
+  ],
+  "tests/data/cgroups/memory_mount/memory.stat": [
+   36,
+   0
+  ],
+  "tests/data/cgroups/missing_memory_counters/memory.stat": [
+   34,
+   0
+  ],
+  "tests/data/cgroups/proc_pid_cgroup": [
+   13,
+   0
+  ],
+  "tests/data/cgroups/proc_self_cgroup": [
+   13,
+   0
+  ],
+  "tests/data/cgroups/sys_fs_cgroup_unified_cgroup.controllers": [
+   7,
+   0
+  ],
+  "tests/data/cloud-init/set-hostname": [
+   4,
+   0
+  ],
+  "tests/data/events/custom_script_1.tld": [
+   30,
+   0
+  ],
+  "tests/data/events/custom_script_2.tld": [
+   30,
+   0
+  ],
+  "tests/data/events/custom_script_extra_parameters.tld": [
+   66,
+   0
+  ],
+  "tests/data/events/custom_script_invalid_json.tld": [
+   30,
+   0
+  ],
+  "tests/data/events/custom_script_no_read_access.tld": [
+   30,
+   0
+  ],
+  "tests/data/events/custom_script_nonascii_characters.tld": [
+   30,
+   0
+  ],
+  "tests/data/events/event_with_callstack.waagent.tld": [
+   1,
+   0
+  ],
+  "tests/data/events/extension_events/different_cases/1591918616.json": [
+   22,
+   0
+  ],
+  "tests/data/events/extension_events/empty_message/1592350454.json": [
+   24,
+   0
+  ],
+  "tests/data/events/extension_events/extra_parameters/1592273009.json": [
+   35,
+   0
+  ],
+  "tests/data/events/extension_events/int_type/1519934744.json": [
+   10,
+   0
+  ],
+  "tests/data/events/extension_events/large_messages/1591921510.json": [
+   12,
+   0
+  ],
+  "tests/data/events/extension_events/malformed_files/1592008079.json": [
+   13,
+   0
+  ],
+  "tests/data/events/extension_events/malformed_files/1594857360.tld": [
+   11,
+   0
+  ],
+  "tests/data/events/extension_events/malformed_files/bad_json_files/1591816395.json": [
+   3,
+   0
+  ],
+  "tests/data/events/extension_events/malformed_files/bad_name_file.json": [
+   24,
+   0
+  ],
+  "tests/data/events/extension_events/missing_parameters/1592273793.json": [
+   74,
+   0
+  ],
+  "tests/data/events/extension_events/mix_files/1591835369.json": [
+   3,
+   0
+  ],
+  "tests/data/events/extension_events/mix_files/1591835848.json": [
+   85,
+   0
+  ],
+  "tests/data/events/extension_events/mix_files/1591835859.json": [
+   11,
+   0
+  ],
+  "tests/data/events/extension_events/special_chars/1591918939.json": [
+   10,
+   0
+  ],
+  "tests/data/events/extension_events/well_formed_files/1591905451.json": [
+   82,
+   0
+  ],
+  "tests/data/events/extension_events/well_formed_files/1592355539.json": [
+   72,
+   0
+  ],
+  "tests/data/events/extension_events/well_formed_files/9999999999.json": [
+   82,
+   0
+  ],
+  "tests/data/events/legacy_agent.tld": [
+   66,
+   0
+  ],
+  "tests/data/events/legacy_agent_no_timestamp.tld": [
+   62,
+   0
+  ],
+  "tests/data/ext/event_from_agent.json": [
+   119,
+   1
+  ],
+  "tests/data/ext/event_from_extension.xml": [
+   9,
+   6
+  ],
+  "tests/data/ext/sample-status-invalid-format-emptykey-line7.json": [
+   37,
+   0
+  ],
+  "tests/data/ext/sample-status-invalid-json-format.json": [
+   37,
+   0
+  ],
+  "tests/data/ext/sample-status-invalid-status-no-status-status-key.json": [
+   35,
+   0
+  ],
+  "tests/data/ext/sample-status-very-large-multiple-substatuses.json": [
+   408,
+   0
+  ],
+  "tests/data/ext/sample-status-very-large.json": [
+   39,
+   0
+  ],
+  "tests/data/ext/sample-status.json": [
+   36,
+   0
+  ],
+  "tests/data/ext/sample_ext-1.3.0/python.sh": [
+   11,
+   0
+  ],
+  "tests/data/ext/sample_ext-1.3.0/sample.py": [
+   82,
+   23
+  ],
+  "tests/data/hostgaplugin/ext_conf-empty_depends_on.xml": [
+   56,
+   0
+  ],
+  "tests/data/hostgaplugin/ext_conf-invalid_blob_type.xml": [
+   94,
+   0
+  ],
+  "tests/data/hostgaplugin/ext_conf-no_status_upload_blob.xml": [
+   39,
+   0
+  ],
+  "tests/data/hostgaplugin/ext_conf-requested_version.xml": [
+   148,
+   0
+  ],
+  "tests/data/hostgaplugin/ext_conf.xml": [
+   146,
+   0
+  ],
+  "tests/data/hostgaplugin/in_vm_artifacts_profile.json": [
+   1,
+   0
+  ],
+  "tests/data/hostgaplugin/vm_settings-difference_in_required_features.json": [
+   201,
+   0
+  ],
+  "tests/data/hostgaplugin/vm_settings-empty_depends_on.json": [
+   69,
+   0
+  ],
+  "tests/data/hostgaplugin/vm_settings-fabric-no_thumbprints.json": [
+   192,
+   0
+  ],
+  "tests/data/hostgaplugin/vm_settings-invalid_blob_type.json": [
+   104,
+   0
+  ],
+  "tests/data/hostgaplugin/vm_settings-missing_cert.json": [
+   68,
+   0
+  ],
+  "tests/data/hostgaplugin/vm_settings-no_manifests.json": [
+   73,
+   0
+  ],
+  "tests/data/hostgaplugin/vm_settings-no_status_upload_blob.json": [
+   66,
+   0
+  ],
+  "tests/data/hostgaplugin/vm_settings-out-of-sync.json": [
+   66,
+   0
+  ],
+  "tests/data/hostgaplugin/vm_settings-parse_error.json": [
+   72,
+   0
+  ],
+  "tests/data/hostgaplugin/vm_settings-requested_version.json": [
+   141,
+   0
+  ],
+  "tests/data/hostgaplugin/vm_settings-unsupported_version.json": [
+   72,
+   0
+  ],
+  "tests/data/hostgaplugin/vm_settings.json": [
+   201,
+   0
+  ],
+  "tests/data/init/azure-vmextensions.slice": [
+   6,
+   0
+  ],
+  "tests/data/init/azure-walinuxagent-logcollector.slice": [
+   9,
+   0
+  ],
+  "tests/data/init/azure.slice": [
+   4,
+   0
+  ],
+  "tests/data/init/walinuxagent.service": [
+   23,
+   0
+  ],
+  "tests/data/init/walinuxagent.service.previous": [
+   20,
+   0
+  ],
+  "tests/data/init/walinuxagent.service_system-slice": [
+   23,
+   0
+  ],
+  "tests/data/test_waagent.conf": [
+   6,
+   5
+  ],
+  "tests/data/wire/certs-2.xml": [
+   85,
+   0
+  ],
+  "tests/data/wire/certs.xml": [
+   80,
+   76
+  ],
+  "tests/data/wire/certs_no_format_specified.xml": [
+   78,
+   74
+  ],
+  "tests/data/wire/ext_conf-no_gs_metadata.xml": [
+   27,
+   0
+  ],
+  "tests/data/wire/ext_conf.xml": [
+   7,
+   5
+  ],
+  "tests/data/wire/ext_conf_additional_locations.xml": [
+   34,
+   0
+  ],
+  "tests/data/wire/ext_conf_aks_extension.xml": [
+   70,
+   0
+  ],
+  "tests/data/wire/ext_conf_autoupgrade.xml": [
+   9,
+   7
+  ],
+  "tests/data/wire/ext_conf_autoupgrade_internalversion.xml": [
+   9,
+   7
+  ],
+  "tests/data/wire/ext_conf_dependencies_with_empty_settings.xml": [
+   33,
+   0
+  ],
+  "tests/data/wire/ext_conf_in_vm_artifacts_profile.xml": [
+   29,
+   0
+  ],
+  "tests/data/wire/ext_conf_in_vm_empty_artifacts_profile.xml": [
+   29,
+   0
+  ],
+  "tests/data/wire/ext_conf_in_vm_metadata.xml": [
+   29,
+   0
+  ],
+  "tests/data/wire/ext_conf_internalversion.xml": [
+   9,
+   7
+  ],
+  "tests/data/wire/ext_conf_invalid_and_valid_handlers.xml": [
+   35,
+   0
+  ],
+  "tests/data/wire/ext_conf_invalid_vm_metadata.xml": [
+   29,
+   0
+  ],
+  "tests/data/wire/ext_conf_missing_family.xml": [
+   15,
+   14
+  ],
+  "tests/data/wire/ext_conf_missing_requested_version.xml": [
+   39,
+   0
+  ],
+  "tests/data/wire/ext_conf_multiple_extensions.xml": [
+   13,
+   32
+  ],
+  "tests/data/wire/ext_conf_no_extensions-block_blob.xml": [
+   13,
+   0
+  ],
+  "tests/data/wire/ext_conf_no_extensions-no_status_blob.xml": [
+   12,
+   0
+  ],
+  "tests/data/wire/ext_conf_no_extensions-page_blob.xml": [
+   25,
+   0
+  ],
+  "tests/data/wire/ext_conf_no_public.xml": [
+   25,
+   24
+  ],
+  "tests/data/wire/ext_conf_no_settings.xml": [
+   24,
+   23
+  ],
+  "tests/data/wire/ext_conf_requested_version.xml": [
+   29,
+   0
+  ],
+  "tests/data/wire/ext_conf_required_features.xml": [
+   41,
+   0
+  ],
+  "tests/data/wire/ext_conf_sequencing.xml": [
+   9,
+   7
+  ],
+  "tests/data/wire/ext_conf_settings_case_mismatch.xml": [
+   57,
+   0
+  ],
+  "tests/data/wire/ext_conf_upgradeguid.xml": [
+   7,
+   5
+  ],
+  "tests/data/wire/ga_manifest.xml": [
+   10,
+   31
+  ],
+  "tests/data/wire/ga_manifest_no_upgrade.xml": [
+   21,
+   21
+  ],
+  "tests/data/wire/goal_state.xml": [
+   7,
+   7
+  ],
+  "tests/data/wire/goal_state_no_certs.xml": [
+   27,
+   0
+  ],
+  "tests/data/wire/goal_state_no_ext.xml": [
+   6,
+   5
+  ],
+  "tests/data/wire/goal_state_noop.xml": [
+   14,
+   0
+  ],
+  "tests/data/wire/goal_state_remote_access.xml": [
+   9,
+   8
+  ],
+  "tests/data/wire/in_vm_artifacts_profile.json": [
+   1,
+   0
+  ],
+  "tests/data/wire/invalid_config/ext_conf_multiple_depends_on_for_single_handler.xml": [
+   45,
+   0
+  ],
+  "tests/data/wire/invalid_config/ext_conf_multiple_runtime_settings_same_plugin.xml": [
+   31,
+   0
+  ],
+  "tests/data/wire/invalid_config/ext_conf_multiple_settings_for_same_handler.xml": [
+   33,
+   0
+  ],
+  "tests/data/wire/invalid_config/ext_conf_plugin_settings_version_mismatch.xml": [
+   31,
+   0
+  ],
+  "tests/data/wire/invalid_config/ext_conf_single_and_multi_config_settings_same_plugin.xml": [
+   31,
+   0
+  ],
+  "tests/data/wire/manifest.xml": [
+   16,
+   16
+  ],
+  "tests/data/wire/manifest_deletion.xml": [
+   1,
+   1
+  ],
+  "tests/data/wire/multi-config/ext_conf_mc_disabled_extensions.xml": [
+   84,
+   0
+  ],
+  "tests/data/wire/multi-config/ext_conf_mc_update_extensions.xml": [
+   75,
+   0
+  ],
+  "tests/data/wire/multi-config/ext_conf_multi_config_no_dependencies.xml": [
+   75,
+   0
+  ],
+  "tests/data/wire/multi-config/ext_conf_with_disabled_multi_config.xml": [
+   129,
+   0
+  ],
+  "tests/data/wire/multi-config/ext_conf_with_multi_config.xml": [
+   131,
+   0
+  ],
+  "tests/data/wire/multi-config/ext_conf_with_multi_config_dependencies.xml": [
+   99,
+   0
+  ],
+  "tests/data/wire/trans_cert": [
+   17,
+   17
+  ],
+  "tests/data/wire/trans_prv": [
+   26,
+   26
+  ],
+  "tests/data/wire/trans_pub": [
+   7,
+   7
+  ],
+  "tests/distro/test_resourceDisk.py": [
+   1,
+   1
+  ],
+  "tests/distro/test_scvmm.py": [
+   6,
+   5
+  ],
+  "tests/ga/extension_emulator.py": [
+   373,
+   0
+  ],
+  "tests/ga/mocks.py": [
+   119,
+   0
+  ],
+  "tests/ga/test_collect_logs.py": [
+   239,
+   0
+  ],
+  "tests/ga/test_collect_telemetry_events.py": [
+   576,
+   0
+  ],
+  "tests/ga/test_env.py": [
+   50,
+   50
+  ],
+  "tests/ga/test_extension.py": [
+   2088,
+   1355
+  ],
+  "tests/ga/test_exthandlers.py": [
+   283,
+   108
+  ],
+  "tests/ga/test_exthandlers_download_extension.py": [
+   116,
+   58
+  ],
+  "tests/ga/test_exthandlers_exthandlerinstance.py": [
+   10,
+   12
+  ],
+  "tests/ga/test_monitor.py": [
+   155,
+   1141
+  ],
+  "tests/ga/test_multi_config_extension.py": [
+   1229,
+   0
+  ],
+  "tests/ga/test_periodic_operation.py": [
+   156,
+   0
+  ],
+  "tests/ga/test_remoteaccess.py": [
+   41,
+   49
+  ],
+  "tests/ga/test_remoteaccess_handler.py": [
+   429,
+   446
+  ],
+  "tests/ga/test_report_status.py": [
+   119,
+   0
+  ],
+  "tests/ga/test_send_telemetry_events.py": [
+   430,
+   0
+  ],
+  "tests/ga/test_update.py": [
+   1913,
+   733
+  ],
+  "tests/pa/test_deprovision.py": [
+   4,
+   4
+  ],
+  "tests/pa/test_provision.py": [
+   34,
+   27
+  ],
+  "tests/protocol/HttpRequestPredicates.py": [
+   101,
+   0
+  ],
+  "tests/protocol/mocks.py": [
+   167,
+   0
+  ],
+  "tests/protocol/mockwiredata.py": [
+   260,
+   47
+  ],
+  "tests/protocol/test_datacontract.py": [
+   5,
+   5
+  ],
+  "tests/protocol/test_extensions_goal_state_from_extensions_config.py": [
+   62,
+   0
+  ],
+  "tests/protocol/test_extensions_goal_state_from_vm_settings.py": [
+   156,
+   0
+  ],
+  "tests/protocol/test_goal_state.py": [
+   545,
+   0
+  ],
+  "tests/protocol/test_healthservice.py": [
+   1,
+   1
+  ],
+  "tests/protocol/test_hostplugin.py": [
+   620,
+   445
+  ],
+  "tests/protocol/test_image_info_matcher.py": [
+   2,
+   1
+  ],
+  "tests/protocol/test_imds.py": [
+   49,
+   46
+  ],
+  "tests/protocol/test_metadata_server_migration_util.py": [
+   134,
+   0
+  ],
+  "tests/protocol/test_protocol_util.py": [
+   208,
+   85
+  ],
+  "tests/protocol/test_wire.py": [
+   864,
+   934
+  ],
+  "tests/test_agent.py": [
+   154,
+   17
+  ],
+  "tests/tools.py": [
+   87,
+   86
+  ],
+  "tests/utils/cgroups_tools.py": [
+   1,
+   2
+  ],
+  "tests/utils/event_logger_tools.py": [
+   65,
+   0
+  ],
+  "tests/utils/miscellaneous_tools.py": [
+   62,
+   0
+  ],
+  "tests/utils/test_archive.py": [
+   123,
+   179
+  ],
+  "tests/utils/test_crypt_util.py": [
+   2,
+   7
+  ],
+  "tests/utils/test_extension_process_util.py": [
+   103,
+   54
+  ],
+  "tests/utils/test_file_util.py": [
+   19,
+   20
+  ],
+  "tests/utils/test_flexible_version.py": [
+   21,
+   19
+  ],
+  "tests/utils/test_network_util.py": [
+   36,
+   1
+  ],
+  "tests/utils/test_rest_util.py": [
+   74,
+   55
+  ],
+  "tests/utils/test_shell_util.py": [
+   337,
+   70
+  ],
+  "tests/utils/test_text_util.py": [
+   32,
+   14
+  ],
+  "tests_e2e/orchestrator/docker/Dockerfile": [
+   85,
+   0
+  ],
+  "tests_e2e/orchestrator/lib/agent_junit.py": [
+   66,
+   0
+  ],
+  "tests_e2e/orchestrator/lib/agent_test_loader.py": [
+   257,
+   0
+  ],
+  "tests_e2e/orchestrator/lib/agent_test_suite.py": [
+   645,
+   0
+  ],
+  "tests_e2e/orchestrator/lib/agent_test_suite_combinator.py": [
+   249,
+   0
+  ],
+  "tests_e2e/orchestrator/runbook.yml": [
+   142,
+   0
+  ],
+  "tests_e2e/orchestrator/sample_runbooks/existing_vm.yml": [
+   143,
+   0
+  ],
+  "tests_e2e/orchestrator/sample_runbooks/local_machine/hello_world.py": [
+   32,
+   0
+  ],
+  "tests_e2e/orchestrator/sample_runbooks/local_machine/local.yml": [
+   32,
+   0
+  ],
+  "tests_e2e/orchestrator/scripts/check-agent-log.py": [
+   49,
+   0
+  ],
+  "tests_e2e/orchestrator/scripts/collect-logs": [
+   34,
+   0
+  ],
+  "tests_e2e/orchestrator/scripts/get-agent-bin-path": [
+   56,
+   0
+  ],
+  "tests_e2e/orchestrator/scripts/get-agent-modules-path": [
+   37,
+   0
+  ],
+  "tests_e2e/orchestrator/scripts/get-agent-python": [
+   59,
+   0
+  ],
+  "tests_e2e/orchestrator/scripts/install-agent": [
+   137,
+   0
+  ],
+  "tests_e2e/orchestrator/scripts/install-tools": [
+   135,
+   0
+  ],
+  "tests_e2e/orchestrator/scripts/uncompress.py": [
+   33,
+   0
+  ],
+  "tests_e2e/orchestrator/scripts/unzip.py": [
+   36,
+   0
+  ],
+  "tests_e2e/pipeline/pipeline-cleanup.yml": [
+   58,
+   0
+  ],
+  "tests_e2e/pipeline/pipeline.yml": [
+   119,
+   0
+  ],
+  "tests_e2e/pipeline/scripts/execute_tests.sh": [
+   120,
+   0
+  ],
+  "tests_e2e/test_suites/agent_bvt.yml": [
+   8,
+   0
+  ],
+  "tests_e2e/test_suites/fail.yml": [
+   5,
+   0
+  ],
+  "tests_e2e/test_suites/images.yml": [
+   94,
+   0
+  ],
+  "tests_e2e/test_suites/pass.yml": [
+   4,
+   0
+  ],
+  "tests_e2e/tests/bvts/extension_operations.py": [
+   94,
+   0
+  ],
+  "tests_e2e/tests/bvts/run_command.py": [
+   94,
+   0
+  ],
+  "tests_e2e/tests/bvts/vm_access.py": [
+   79,
+   0
+  ],
+  "tests_e2e/tests/error_test.py": [
+   32,
+   0
+  ],
+  "tests_e2e/tests/fail_test.py": [
+   33,
+   0
+  ],
+  "tests_e2e/tests/lib/agent_log.py": [
+   446,
+   0
+  ],
+  "tests_e2e/tests/lib/agent_test.py": [
+   66,
+   0
+  ],
+  "tests_e2e/tests/lib/agent_test_context.py": [
+   164,
+   0
+  ],
+  "tests_e2e/tests/lib/identifiers.py": [
+   63,
+   0
+  ],
+  "tests_e2e/tests/lib/logging.py": [
+   155,
+   0
+  ],
+  "tests_e2e/tests/lib/retry.py": [
+   59,
+   0
+  ],
+  "tests_e2e/tests/lib/shell.py": [
+   56,
+   0
+  ],
+  "tests_e2e/tests/lib/ssh_client.py": [
+   85,
+   0
+  ]
+ },
+ "files": 403,
+ "added_lines": 43001,
+ "removed_lines": 14731,
+ "diff": "diff --git a/.flake8 b/.flake8\ndeleted file mode 100644\nindex 63303c3..0000000\n--- a/.flake8\n+++ /dev/null\n@@ -1,32 +0,0 @@\n-#\n-# The project did not use flake8 since inception so there are a number\n-# of time-consuming flake8-identified improvements that are just a lot\n-# of busy work.  Each of these should be disabled and code cleaned up.\n-#\n-# W503: Line break occurred before a binary operator\n-# W504: Line break occurred after a binary operator\n-# E126: Continuation line over-indented for hanging indent\n-# E127: Continuation line over-indented for visual indent\n-# E128: Continuation line under-indented for visual indent\n-# E201: Whitespace after '('\n-# E202: Whitespace before ')'\n-# E203: Whitespace before ':'\n-# E221: Multiple spaces before operator\n-# E225: Missing whitespace around operator\n-# E226: Missing whitespace around arithmetic operator\n-# E231: Missing whitespace after ',', ';', or ':'\n-# E261: At least two spaces before inline comment\n-# E265: Block comment should start with '# '\n-# E302: Expected 2 blank lines, found 0\n-# E501: Line too long (xx > yy characters)\n-# E502: The backslash is redundant between brackets\n-# F401: Module imported but unused\n-# F403: 'from module import *' used; unable to detect undefined names\n-# F405: Name may be undefined, or defined from star imports: module\n-#\n-\n-[flake8]\n-ignore = W503,W504,E126,E127,E128,E201,E202,E203,E221,E225,E226,E231,E261,E265,E302,E501,E502,F401,F403,F405\n-exclude = .git,__pycache__,docs/source/conf.py,old,build,dist,tests\n-max-complexity = 30\n-max-line-length = 120\n\\ No newline at end of file\ndiff --git a/.github/PULL_REQUEST_TEMPLATE.md b/.github/PULL_REQUEST_TEMPLATE.md\nindex edfa1e6..fdcc07c 100644\n--- a/.github/PULL_REQUEST_TEMPLATE.md\n+++ b/.github/PULL_REQUEST_TEMPLATE.md\n@@ -14,9 +14,8 @@ This will expedite the process of getting your pull request merged and avoid ext\n ### PR information\n - [ ] The title of the PR is clear and informative.\n - [ ] There are a small number of commits, each of which has an informative message. This means that previously merged commits do not appear in the history of the PR. For information on cleaning up the commits in your pull request, [see this page](https://github.com/Azure/azure-powershell/blob/master/documentation/development-docs/cleaning-up-commits.md).\n-- [ ] Except for special cases involving multiple contributors, the PR is started from a fork of the main repository, not a branch.\n - [ ] If applicable, the PR references the bug/issue that it fixes in the description.\n-- [ ] New Unit tests were added for the changes made and Travis.CI is passing.\n+- [ ] New Unit tests were added for the changes made\n \n ### Quality of Code and Contribution Guidelines\n - [ ] I have read the [contribution guidelines](https://github.com/Azure/WALinuxAgent/blob/master/.github/CONTRIBUTING.md).\n\\ No newline at end of file\ndiff --git a/.github/codecov.yml b/.github/codecov.yml\nnew file mode 100644\nindex 0000000..77707aa\n--- /dev/null\n+++ b/.github/codecov.yml\n@@ -0,0 +1,2 @@\n+github_checks:\n+    annotations: false\ndiff --git a/.github/workflows/ci_pr.yml b/.github/workflows/ci_pr.yml\nnew file mode 100644\nindex 0000000..e559268\n--- /dev/null\n+++ b/.github/workflows/ci_pr.yml\n@@ -0,0 +1,128 @@\n+name: CI Unit tests\n+\n+on:\n+  push:\n+    branches: [ \"*\" ]\n+  pull_request:\n+    branches: [ \"*\" ]\n+  workflow_dispatch:\n+\n+jobs:\n+  test-legacy-python-versions:\n+    \n+    strategy:\n+      fail-fast: false\n+      matrix:\n+        include:\n+          - python-version: 2.6\n+          - python-version: 3.4\n+\n+    name: \"Python ${{ matrix.python-version }} Unit Tests\"\n+    runs-on: ubuntu-20.04\n+    container:\n+      image: ubuntu:16.04\n+      volumes:\n+        - /home/waagent:/home/waagent\n+    defaults:\n+      run:\n+        shell: bash -l {0}\n+\n+    env:\n+      NOSEOPTS: \"--verbose\"\n+\n+    steps:\n+    - uses: actions/checkout@v3\n+\n+    - name: Install Python ${{ matrix.python-version }}\n+      run: |\n+        apt-get update\n+        apt-get install -y curl bzip2 sudo python3\n+        curl https://dcrdata.blob.core.windows.net/python/python-${{ matrix.python-version }}.tar.bz2 -o python-${{ matrix.python-version }}.tar.bz2\n+        sudo tar xjvf python-${{ matrix.python-version }}.tar.bz2 --directory /\n+\n+    - name: Test with nosetests\n+      run: |\n+        if [[ ${{ matrix.python-version }} == 2.6 ]]; then\n+          source /home/waagent/virtualenv/python2.6.9/bin/activate\n+        else\n+          source /home/waagent/virtualenv/python3.4.8/bin/activate\n+        fi\n+        ./ci/nosetests.sh\n+        exit $?\n+\n+  test-current-python-versions:\n+\n+    strategy:\n+      fail-fast: false\n+      matrix:\n+        include:\n+\n+          - python-version: 2.7\n+            PYLINTOPTS: \"--rcfile=ci/2.7.pylintrc --ignore=tests_e2e,makepkg.py\"\n+\n+          - python-version: 3.5\n+            PYLINTOPTS: \"--rcfile=ci/3.6.pylintrc --ignore=tests_e2e,makepkg.py\"\n+\n+          - python-version: 3.6\n+            PYLINTOPTS: \"--rcfile=ci/3.6.pylintrc --ignore=tests_e2e\"\n+\n+          - python-version: 3.7\n+            PYLINTOPTS: \"--rcfile=ci/3.6.pylintrc --ignore=tests_e2e\"\n+\n+          - python-version: 3.8\n+            PYLINTOPTS: \"--rcfile=ci/3.6.pylintrc --ignore=tests_e2e\"\n+\n+          - python-version: 3.9\n+            PYLINTOPTS: \"--rcfile=ci/3.6.pylintrc\"\n+            additional-nose-opts: \"--with-coverage --cover-erase --cover-inclusive --cover-branches --cover-package=azurelinuxagent\"\n+\n+    name: \"Python ${{ matrix.python-version }} Unit Tests\"\n+    runs-on: ubuntu-20.04\n+\n+    env:\n+      PYLINTOPTS: ${{ matrix.PYLINTOPTS }}\n+      PYLINTFILES: \"azurelinuxagent setup.py makepkg.py tests tests_e2e\"\n+      NOSEOPTS: \"--with-timer ${{ matrix.additional-nose-opts }}\"\n+      PYTHON_VERSION: ${{ matrix.python-version }}\n+\n+    steps:\n+\n+    - name: Checkout WALinuxAgent repo\n+      uses: actions/checkout@v3\n+\n+    - name: Setup Python ${{ matrix.python-version }}\n+      uses: actions/setup-python@v4\n+      with:\n+        python-version: ${{ matrix.python-version }}\n+\n+    - name: Install dependencies\n+      id: install-dependencies\n+      run: |\n+        sudo env \"PATH=$PATH\" python -m pip install --upgrade pip\n+        sudo env \"PATH=$PATH\" pip install -r requirements.txt\n+        sudo env \"PATH=$PATH\" pip install -r test-requirements.txt\n+\n+    - name: Run pylint\n+      run: |\n+        pylint $PYLINTOPTS --jobs=0 $PYLINTFILES\n+\n+    - name: Test with nosetests\n+      if: success() || (failure() && steps.install-dependencies.outcome == 'success')\n+      run: |\n+        ./ci/nosetests.sh\n+        exit $?\n+\n+    - name: Compile Coverage\n+      if: matrix.python-version == 3.9\n+      run: |\n+        echo looking for coverage files :\n+        ls -alh | grep -i coverage\n+        sudo env \"PATH=$PATH\" coverage combine coverage.*.data\n+        sudo env \"PATH=$PATH\" coverage xml\n+        sudo env \"PATH=$PATH\" coverage report\n+\n+    - name: Upload Coverage\n+      if: matrix.python-version == 3.9\n+      uses: codecov/codecov-action@v2\n+      with:\n+        file: ./coverage.xml\n\\ No newline at end of file\ndiff --git a/.gitignore b/.gitignore\nindex 0a31340..fd64d33 100644\n--- a/.gitignore\n+++ b/.gitignore\n@@ -17,8 +17,6 @@ develop-eggs/\n dist/\n downloads/\n eggs/\n-lib/\n-lib64/\n parts/\n sdist/\n var/\n@@ -92,3 +90,4 @@ ENV/\n \n # pyenv\n .python-version\n+.vscode/\ndiff --git a/.travis.yml b/.travis.yml\ndeleted file mode 100644\nindex fa672d3..0000000\n--- a/.travis.yml\n+++ /dev/null\n@@ -1,43 +0,0 @@\n----\n-os: linux\n-dist: xenial\n-language: python\n-env:\n-  - NOSEOPTS=\"--verbose\" SETUPOPTS=\"\"\n-  # Add SETUPOPTS=\"check flake8\" to enable flake8 checks\n-\n-matrix:\n-  # exclude the default \"python\" build - we're being specific here...\n-  exclude:\n-    - python:\n-      env:\n-        - NOSEOPTS=\"\" SETUPOPTS=\"check flake8\"\n-\n-  include:\n-    - python: 2.6\n-      dist: trusty\n-      env:\n-        - NOSEOPTS=\"--verbose\" SETUPOPTS=\"\"\n-    - python: 2.7\n-    - python: 3.4\n-    - python: 3.6\n-    - python: 3.7\n-      env:\n-        - >-\n-          NOSEOPTS=\"--verbose --with-coverage --cover-inclusive\n-          --cover-min-percentage=60 --cover-branches\n-          --cover-package=azurelinuxagent --cover-xml\"\n-          SETUPOPTS=\"\"\n-\n-install:\n-  - pip install -r requirements.txt\n-  - pip install -r test-requirements.txt\n-\n-script:\n-  # future: - pylint setup.py makepkg.py azurelinuxagent/\n-  - nosetests $NOSEOPTS --attr '!requires_sudo' tests\n-  - sudo env \"PATH=$PATH\" nosetests $NOSEOPTS --verbose --attr 'requires_sudo' tests\n-  - if [ ! -z \"$SETUPOPTS\" ]; then /usr/bin/env python setup.py $SETUPOPTS; fi\n-\n-after_success:\n-  - if [[ $TRAVIS_PYTHON_VERSION == 3.7 ]]; then codecov; fi\n\\ No newline at end of file\ndiff --git a/CODEOWNERS b/CODEOWNERS\nindex a8f2d5d..8707e60 100644\n--- a/CODEOWNERS\n+++ b/CODEOWNERS\n@@ -1,3 +1,4 @@\n+1\n # See https://help.github.com/articles/about-codeowners/\n # for more info about CODEOWNERS file\n \n@@ -9,6 +10,7 @@\n # when there are requests for changes in the provisioning agent. For any\n # questions, please feel free to reach out to thstring@microsoft.com.\n /azurelinuxagent/pa/ @trstringer @anhvoms\n+/tests/pa/ @trstringer @anhvoms\n \n #\n # RDMA\n@@ -19,4 +21,4 @@\n #\n # Linux Agent team\n #\n-* @narrieta @vrdmr @pgombar @larohra\n+* @narrieta @ZhidongPeng @nagworld9 @maddieford\ndiff --git a/Changelog b/Changelog\ndeleted file mode 100644\nindex da68890..0000000\n--- a/Changelog\n+++ /dev/null\n@@ -1,38 +0,0 @@\n-WALinuxAgent                                                          Changelog\n-|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||\n-\n-Refer to releases WALinuxAgent release page: https://github.com/Azure/WALinuxAgent/releases for detailed changelog after v2.2.0\n-\n-12 August 2016, v2.1.6\n-   . Improved RDMA support\n-   . Extension state migration\n-   . Alpine Linux support\n-   . Fixes for #347, #351, #353\n-\n-15 July 2016, v2.1.5\n-   . Goal state processing extension\n-   . Multi-nic improvements\n-   . Bug fixes for #145, #141, #133, #116, #187, #169, #104, #127, #163,\n-    #190, #185, #174\n-\n-09 Mar 2016, WALinuxAgent 2.1.4\n-   . Add support for FreeBSD\n-   . Fix a bug for internal extension version resolving\n-\n-29 Jan 2016, WALinuxAgent 2.1.3\n-   . Fixed endpoint probing for Azure Stack\n-   . Multiple fixes for extension handling\n-\n-07 Dec 2015, WALinuxAgent 2.1.2\n-   . Multiple fixes for extension handling and provisioning\n-\n-07 Aug 2015, WALinuxAgent 2.1.1\n-   . Support python3\n-   . Fixed bugs for metadata protocol\n-   . Fixed a few pylint warnings\n-   . Enabled travis-ci\n-\n-|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||\n-01 Jul 2015, WALinuxAgent 2.1.0\n-   . Divide waagent into different modules\n-\ndiff --git a/README.md b/README.md\nindex 0069d46..ae6a851 100644\n--- a/README.md\n+++ b/README.md\n@@ -1,31 +1,15 @@\n+\n # Microsoft Azure Linux Agent\n \n-## Develop branch status\n-\n-[![Travis CI](https://travis-ci.org/Azure/WALinuxAgent.svg?branch=develop)](https://travis-ci.org/Azure/WALinuxAgent/branches)\n-[![CodeCov](https://codecov.io/gh/Azure/WALinusAgent/branch/develop/graph/badge.svg)](https://codecov.io/gh/Azure/WALinuxAgent/branch/develop)\n-\n-Each badge below represents our basic validation tests for an image, which are executed several times each day. These include provisioning, user account, disk, extension and networking scenarios.\n-\n-Note: These badges represent testing to our develop branch which might not be stable. For a stable build please use master branch instead. \n-\n-Image | Status |\n-------|--------|\n-Canonical UbuntuServer 14.04.5-LTS|![badge](https://dcrbadges.blob.core.windows.net/scenarios/Canonical_UbuntuServer_14.04.5-LTS__agent--bvt.svg)\n-Canonical UbuntuServer 14.04.5-DAILY-LTS|![badge](https://dcrbadges.blob.core.windows.net/scenarios/Canonical_UbuntuServer_14.04.5-DAILY-LTS__agent--bvt.svg)\n-Canonical UbuntuServer 16.04-LTS|![badge](https://dcrbadges.blob.core.windows.net/scenarios/Canonical_UbuntuServer_16.04-LTS__agent--bvt.svg)\n-Canonical UbuntuServer 16.04-DAILY-LTS|![badge](https://dcrbadges.blob.core.windows.net/scenarios/Canonical_UbuntuServer_16.04-DAILY-LTS__agent--bvt.svg)\n-Canonical UbuntuServer 18.04-LTS|![badge](https://dcrbadges.blob.core.windows.net/scenarios/Canonical_UbuntuServer_18.04-LTS__agent--bvt.svg)\n-Canonical UbuntuServer 18.04-DAILY-LTS|![badge](https://dcrbadges.blob.core.windows.net/scenarios/Canonical_UbuntuServer_18.04-DAILY-LTS__agent--bvt.svg)\n-Credativ Debian 8|![badge](https://dcrbadges.blob.core.windows.net/scenarios/Credativ_Debian_8__agent--bvt.svg)\n-Credativ Debian 8-DAILY|![badge](https://dcrbadges.blob.core.windows.net/scenarios/Credativ_Debian_8-DAILY__agent--bvt.svg)\n-Credativ Debian 9|![badge](https://dcrbadges.blob.core.windows.net/scenarios/Credativ_Debian_9__agent--bvt.svg)\n-Credativ Debian 9-DAILY|![badge](https://dcrbadges.blob.core.windows.net/scenarios/Credativ_Debian_9-DAILY__agent--bvt.svg)\n-OpenLogic CentOS 6.9|![badge](https://dcrbadges.blob.core.windows.net/scenarios/OpenLogic_CentOS_6.9__agent--bvt.svg)\n-OpenLogic CentOS 7.4|![badge](https://dcrbadges.blob.core.windows.net/scenarios/OpenLogic_CentOS_7.4__agent--bvt.svg)\n-RedHat RHEL 6.9|![badge](https://dcrbadges.blob.core.windows.net/scenarios/RedHat_RHEL_6.9__agent--bvt.svg)\n-RedHat RHEL 7-RAW|![badge](https://dcrbadges.blob.core.windows.net/scenarios/RedHat_RHEL_7-RAW__agent--bvt.svg)\n-SUSE SLES 12-SP3|![badge](https://dcrbadges.blob.core.windows.net/scenarios/SUSE_SLES_12-SP3__agent--bvt.svg)\n+## Linux distributions support\n+\n+Our daily automation tests most of the [Linux distributions supported by Azure](https://docs.microsoft.com/en-us/azure/virtual-machines/linux/endorsed-distros); the Agent can be\n+used on other distributions as well, but development, testing and support for those are done by the open source community.\n+\n+Testing is done using the develop branch, which can be unstable. For a stable build please use the master branch instead.\n+\n+[![CodeCov](https://codecov.io/gh/Azure/WALinuxAgent/branch/develop/graph/badge.svg)](https://codecov.io/gh/Azure/WALinuxAgent/branch/develop)\n+\n \n ## Introduction\n \n@@ -49,7 +33,6 @@ functionality for Linux IaaS deployments:\n \n * Kernel\n   * Configure virtual NUMA (disable for kernel <2.6.37)\n-  * Consume Hyper-V entropy for /dev/random\n   * Configure SCSI timeouts for the root device (which could be remote)\n \n * Diagnostics\n@@ -79,13 +62,15 @@ The agent will use an HTTP proxy if provided via the `http_proxy` (for `http` re\n `https_proxy` (for `https` requests) environment variables. The `HttpProxy.Host` and\n `HttpProxy.Port` configuration variables (see below), if used, will override the environment\n settings. Due to limitations of Python, the agent *does not* support HTTP proxies requiring\n-authentication.\n+authentication. Note that when the agent service is managed by systemd, environment variables \n+such as `http_proxy` and `https_proxy` should be defined using one the mechanisms provided by \n+systemd (e.g. by using Environment or EnvironmentFile in the service file).\n \n ## Requirements\n \n The following systems have been tested and are known to work with the Azure\n Linux Agent.  Please note that this list may differ from the official list\n-of supported systems on the Microsoft Azure Platform as described [here](http://support.microsoft.com/kb/2805216).\n+of supported systems on the Microsoft Azure Platform as described [here](https://docs.microsoft.com/en-us/azure/virtual-machines/linux/endorsed-distros).\n \n Waagent depends on some system packages in order to function properly:\n \n@@ -109,6 +94,12 @@ For more advanced installation options, such as installing to custom locations o\n     sudo python setup.py install --register-service\n ```\n \n+For Python 3, use:\n+\n+```bash\n+    sudo python3 setup.py install --register-service\n+```\n+\n You can view more installation options by running:\n \n ```bash\n@@ -177,6 +168,8 @@ For CoreOS, use:\n \n `-start`: Run waagent as a background process\n \n+`-collect-logs [-full]`: Runs the log collector utility that collects relevant agent logs for debugging and stores them in the agent folder on disk. Exact location will be shown when run. Use flag `-full` for more exhaustive log collection. \n+\n ## Configuration\n \n A configuration file (/etc/waagent.conf) controls the actions of waagent. Blank lines and lines whose first character is a `#` are ignored (end-of-line comments are *not* supported).\n@@ -185,6 +178,7 @@ A sample configuration file is shown below:\n \n ```yml\n Extensions.Enabled=y\n+Extensions.GoalStatePeriod=6\n Provisioning.Agent=auto\n Provisioning.DeleteRootPassword=n\n Provisioning.RegenerateSshHostKeyPair=y\n@@ -202,6 +196,8 @@ ResourceDisk.EnableSwap=n\n ResourceDisk.EnableSwapEncryption=n\n ResourceDisk.SwapSizeMB=0\n Logs.Verbose=n\n+Logs.Collect=y\n+Logs.CollectPeriod=3600\n OS.AllowHTTP=n\n OS.RootDeviceScsiTimeout=300\n OS.EnableFIPS=n\n@@ -210,8 +206,6 @@ OS.SshClientAliveInterval=180\n OS.SshDir=/etc/ssh\n HttpProxy.Host=None\n HttpProxy.Port=None\n-CGroups.EnforceLimits=y\n-CGroups.Excluded=customscript,runcommand\n ```\n \n The various configuration options are described in detail below. Configuration\n@@ -238,6 +232,32 @@ without the agent. In order to do that, the `provisionVMAgent` flag must be set \n provisioning time, via whichever API is being used. We will provide more details on\n this on our wiki when it is generally available. \n \n+#### __Extensions.GoalStatePeriod__\n+\n+_Type: Integer_  \n+_Default: 6_\n+\n+How often to poll for new goal states (in seconds) and report the status of the VM\n+and extensions. Goal states describe the desired state of the extensions on the VM.\n+\n+_Note_: setting up this parameter to more than a few minutes can make the state of\n+the VM be reported as unresponsive/unavailable on the Azure portal. Also, this \n+setting affects how fast the agent starts executing extensions. \n+\n+#### __AutoUpdate.Enabled__\n+\n+_Type: Boolean_  \n+_Default: y_\n+\n+Enables auto-update of the Extension Handler. The Extension Handler is responsible \n+for managing extensions and reporting VM status. The core functionality of the agent\n+is contained in the Extension Handler, and we encourage users to enable this option \n+in order to maintain an up to date version.\n+\n+On most distros the default value is 'y'.\n+\n+For more information on the agent version, see our [FAQ](https://github.com/Azure/WALinuxAgent/wiki/FAQ#what-does-goal-state-agent-mean-in-waagent---version-output).\n+\n #### __Provisioning.Agent__\n \n _Type: String_\n@@ -261,7 +281,22 @@ _Note_: This configuration option has been removed and has no effect. waagent\n now auto-detects cloud-init as a provisioning agent (with an option to override\n with `Provisioning.Agent`).\n \n-#### __Provisioning.UseCloudInit__ (*removed in 2.2.45*)\n+#### __Provisioning.MonitorHostName__\n+\n+_Type: Boolean_ \n+_Default: n_\n+\n+Monitor host name changes and publish changes via DHCP requests.\n+\n+#### __Provisioning.MonitorHostNamePeriod__\n+\n+_Type: Integer_ \n+_Default: 30_\n+\n+How often to monitor host name changes (in seconds). This setting is ignored if\n+MonitorHostName is not set.\n+\n+#### __Provisioning.UseCloudInit__\n \n _Type: Boolean_ \n _Default: n_\n@@ -397,7 +432,7 @@ system swap space.\n _Type: Boolean_  \n _Default: n_\n \n-If set, the swap file (/swapfile) is mounted as an encrypted filesystem.\n+If set, the swap file (/swapfile) is mounted as an encrypted filesystem (flag supported only on FreeBSD.)\n \n #### __ResourceDisk.SwapSizeMB__\n \n@@ -414,6 +449,25 @@ _Default: n_\n If set, log verbosity is boosted. Waagent logs to /var/log/waagent.log and\n leverages the system logrotate functionality to rotate logs.\n \n+\n+#### __Logs.Collect__\n+\n+_Type: Boolean_  \n+_Default: y_\n+\n+If set, agent logs will be periodically collected and uploaded to a secure location for improved supportability.\n+\n+NOTE: This feature relies on the agent's resource usage features (cgroups); this flag will not take effect on any distro not supported.\n+\n+#### __Logs.CollectPeriod__\n+\n+_Type: Integer_  \n+_Default: 3600_\n+\n+This configures how frequently to collect and upload logs. Default is each hour.\n+\n+NOTE: This only takes effect if the Logs.Collect option is enabled.\n+\n #### __OS.AllowHTTP__\n \n _Type: Boolean_  \n@@ -442,6 +496,14 @@ OpenSSL commands. This signals OpenSSL to use any installed FIPS-compliant libra\n Note that the agent itself has no FIPS-specific code. _If no FIPS-compliant certificates are\n installed, then enabling this option will cause all OpenSSL commands to fail._\n \n+#### __OS.MonitorDhcpClientRestartPeriod__\n+\n+_Type: Integer_\n+_Default: 30_\n+\n+The agent monitor restarts of the DHCP client and restores network rules when it happens. This\n+setting determines how often (in seconds) to monitor for restarts.\n+\n #### __OS.RootDeviceScsiTimeout__\n \n _Type: Integer_  \n@@ -450,6 +512,14 @@ _Default: 300_\n This configures the SCSI timeout in seconds on the root device. If not set, the\n system defaults are used.\n \n+#### __OS.RootDeviceScsiTimeoutPeriod__\n+\n+_Type: Integer_  \n+_Default: 30_\n+\n+How often to set the SCSI timeout on the root device (in seconds). This setting is\n+ignored if RootDeviceScsiTimeout is not set.\n+\n #### __OS.OpensslPath__\n \n _Type: String_  \n@@ -458,6 +528,13 @@ _Default: None_\n This can be used to specify an alternate path for the openssl binary to use for\n cryptographic operations.\n \n+#### __OS.RemovePersistentNetRulesPeriod__\n+_Type: Integer_  \n+_Default: 30_\n+\n+How often to remove the udev rules for persistent network interface names (75-persistent-net-generator.rules\n+and /etc/udev/rules.d/70-persistent-net.rules) (in seconds) \n+\n #### __OS.SshClientAliveInterval__\n \n _Type: Integer_  \ndiff --git a/SECURITY.md b/SECURITY.md\nnew file mode 100644\nindex 0000000..e138ec5\n--- /dev/null\n+++ b/SECURITY.md\n@@ -0,0 +1,41 @@\n+<!-- BEGIN MICROSOFT SECURITY.MD V0.0.8 BLOCK -->\n+\n+## Security\n+\n+Microsoft takes the security of our software products and services seriously, which includes all source code repositories managed through our GitHub organizations, which include [Microsoft](https://github.com/microsoft), [Azure](https://github.com/Azure), [DotNet](https://github.com/dotnet), [AspNet](https://github.com/aspnet), [Xamarin](https://github.com/xamarin), and [our GitHub organizations](https://opensource.microsoft.com/).\n+\n+If you believe you have found a security vulnerability in any Microsoft-owned repository that meets [Microsoft's definition of a security vulnerability](https://aka.ms/opensource/security/definition), please report it to us as described below.\n+\n+## Reporting Security Issues\n+\n+**Please do not report security vulnerabilities through public GitHub issues.**\n+\n+Instead, please report them to the Microsoft Security Response Center (MSRC) at [https://msrc.microsoft.com/create-report](https://aka.ms/opensource/security/create-report).\n+\n+If you prefer to submit without logging in, send email to [secure@microsoft.com](mailto:secure@microsoft.com).  If possible, encrypt your message with our PGP key; please download it from the [Microsoft Security Response Center PGP Key page](https://aka.ms/opensource/security/pgpkey).\n+\n+You should receive a response within 24 hours. If for some reason you do not, please follow up via email to ensure we received your original message. Additional information can be found at [microsoft.com/msrc](https://aka.ms/opensource/security/msrc). \n+\n+Please include the requested information listed below (as much as you can provide) to help us better understand the nature and scope of the possible issue:\n+\n+  * Type of issue (e.g. buffer overflow, SQL injection, cross-site scripting, etc.)\n+  * Full paths of source file(s) related to the manifestation of the issue\n+  * The location of the affected source code (tag/branch/commit or direct URL)\n+  * Any special configuration required to reproduce the issue\n+  * Step-by-step instructions to reproduce the issue\n+  * Proof-of-concept or exploit code (if possible)\n+  * Impact of the issue, including how an attacker might exploit the issue\n+\n+This information will help us triage your report more quickly.\n+\n+If you are reporting for a bug bounty, more complete reports can contribute to a higher bounty award. Please visit our [Microsoft Bug Bounty Program](https://aka.ms/opensource/security/bounty) page for more details about our active programs.\n+\n+## Preferred Languages\n+\n+We prefer all communications to be in English.\n+\n+## Policy\n+\n+Microsoft follows the principle of [Coordinated Vulnerability Disclosure](https://aka.ms/opensource/security/cvd).\n+\n+<!-- END MICROSOFT SECURITY.MD BLOCK -->\ndiff --git a/azurelinuxagent/agent.py b/azurelinuxagent/agent.py\nindex 6e65084..8c30348 100644\n--- a/azurelinuxagent/agent.py\n+++ b/azurelinuxagent/agent.py\n@@ -24,21 +24,47 @@ Module agent\n from __future__ import print_function\n \n import os\n-import sys\n import re\n import subprocess\n+import sys\n import threading\n-import traceback\n+from azurelinuxagent.common import cgroupconfigurator, logcollector\n+from azurelinuxagent.common.cgroupapi import SystemdCgroupsApi\n \n-import azurelinuxagent.common.logger as logger\n-import azurelinuxagent.common.event as event\n import azurelinuxagent.common.conf as conf\n-from azurelinuxagent.common.version import AGENT_NAME, AGENT_LONG_VERSION, \\\n-                                     DISTRO_NAME, DISTRO_VERSION, \\\n-                                     PY_VERSION_MAJOR, PY_VERSION_MINOR, \\\n-                                     PY_VERSION_MICRO, GOAL_STATE_AGENT_VERSION\n+import azurelinuxagent.common.event as event\n+import azurelinuxagent.common.logger as logger\n+from azurelinuxagent.common.future import ustr\n+from azurelinuxagent.common.logcollector import LogCollector, OUTPUT_RESULTS_FILE_PATH\n from azurelinuxagent.common.osutil import get_osutil\n-from azurelinuxagent.common.utils import fileutil\n+from azurelinuxagent.common.utils import fileutil, textutil\n+from azurelinuxagent.common.utils.flexible_version import FlexibleVersion\n+from azurelinuxagent.common.utils.networkutil import AddFirewallRules\n+from azurelinuxagent.common.version import AGENT_NAME, AGENT_LONG_VERSION, AGENT_VERSION, \\\n+    DISTRO_NAME, DISTRO_VERSION, \\\n+    PY_VERSION_MAJOR, PY_VERSION_MINOR, \\\n+    PY_VERSION_MICRO, GOAL_STATE_AGENT_VERSION, \\\n+    get_daemon_version, set_daemon_version\n+from azurelinuxagent.ga.collect_logs import CollectLogsHandler, get_log_collector_monitor_handler\n+from azurelinuxagent.pa.provision.default import ProvisionHandler\n+\n+\n+class AgentCommands(object):\n+    \"\"\"\n+    This is the list of all commands that the Linux Guest Agent supports\n+    \"\"\"\n+    DeprovisionUser = \"deprovision+user\"\n+    Deprovision = \"deprovision\"\n+    Daemon = \"daemon\"\n+    Start = \"start\"\n+    RegisterService = \"register-service\"\n+    RunExthandlers = \"run-exthandlers\"\n+    Version = \"version\"\n+    ShowConfig = \"show-configuration\"\n+    Help = \"help\"\n+    CollectLogs = \"collect-logs\"\n+    SetupFirewall = \"setup-firewall\"\n+    Provision = \"provision\"\n \n \n class Agent(object):\n@@ -49,24 +75,24 @@ class Agent(object):\n         self.conf_file_path = conf_file_path\n         self.osutil = get_osutil()\n \n-        #Init stdout log\n+        # Init stdout log\n         level = logger.LogLevel.VERBOSE if verbose else logger.LogLevel.INFO\n         logger.add_logger_appender(logger.AppenderType.STDOUT, level)\n \n-        #Init config\n+        # Init config\n         conf_file_path = self.conf_file_path \\\n                 if self.conf_file_path is not None \\\n                     else self.osutil.get_agent_conf_file_path()\n         conf.load_conf_from_file(conf_file_path)\n \n-        #Init log\n+        # Init log\n         verbose = verbose or conf.get_logs_verbose()\n         level = logger.LogLevel.VERBOSE if verbose else logger.LogLevel.INFO\n-        logger.add_logger_appender(logger.AppenderType.FILE, level,\n-                                 path=\"/var/log/waagent.log\")\n-        if conf.get_logs_console():\n-            logger.add_logger_appender(logger.AppenderType.CONSOLE, level,\n-                    path=\"/dev/console\")\n+        logger.add_logger_appender(logger.AppenderType.FILE, level, path=conf.get_agent_log_file())\n+\n+        # echo the log to /dev/console if the machine will be provisioned\n+        if conf.get_logs_console() and not ProvisionHandler.is_provisioned():\n+            self.__add_console_appender(level)\n \n         if event.send_logs_to_telemetry():\n             logger.add_logger_appender(logger.AppenderType.TELEMETRY,\n@@ -84,22 +110,30 @@ class Agent(object):\n                 \"Exception occurred while creating extension \"\n                 \"log directory {0}: {1}\".format(ext_log_dir, e))\n \n-        #Init event reporter\n+        # Init event reporter\n+        # Note that the reporter is not fully initialized here yet. Some telemetry fields are filled with data\n+        # originating from the goal state or IMDS, which requires a WireProtocol instance. Once a protocol\n+        # has been established, those fields must be explicitly initialized using\n+        # initialize_event_logger_vminfo_common_parameters(). Any events created before that initialization\n+        # will contain dummy values on those fields.\n         event.init_event_status(conf.get_lib_dir())\n-        event_dir = os.path.join(conf.get_lib_dir(), \"events\")\n+        event_dir = os.path.join(conf.get_lib_dir(), event.EVENTS_DIRECTORY)\n         event.init_event_logger(event_dir)\n         event.enable_unhandled_err_dump(\"WALA\")\n \n+    def __add_console_appender(self, level):\n+        logger.add_logger_appender(logger.AppenderType.CONSOLE, level, path=\"/dev/console\")\n+\n     def daemon(self):\n         \"\"\"\n         Run agent daemon\n         \"\"\"\n+        set_daemon_version(AGENT_VERSION)\n         logger.set_prefix(\"Daemon\")\n         threading.current_thread().setName(\"Daemon\")\n         child_args = None \\\n             if self.conf_file_path is None \\\n                 else \"-configuration-path:{0}\".format(self.conf_file_path)\n-\n         from azurelinuxagent.daemon import get_daemon_handler\n         daemon_handler = get_daemon_handler()\n         daemon_handler.run(child_args=child_args)\n@@ -137,6 +171,21 @@ class Agent(object):\n         \"\"\"\n         logger.set_prefix(\"ExtHandler\")\n         threading.current_thread().setName(\"ExtHandler\")\n+\n+        #\n+        # Agents < 2.2.53 used to echo the log to the console. Since the extension handler could have been started by\n+        # one of those daemons, output a message indicating that output to the console will stop, otherwise users\n+        # may think that the agent died if they noticed that output to the console stops abruptly.\n+        #\n+        # Feel free to remove this code if telemetry shows there are no more agents <= 2.2.53 in the field.\n+        #\n+        if conf.get_logs_console() and get_daemon_version() < FlexibleVersion(\"2.2.53\"):\n+            self.__add_console_appender(logger.LogLevel.INFO)\n+            try:\n+                logger.info(u\"The agent will now check for updates and then will process extensions. Output to /dev/console will be suspended during those operations.\")\n+            finally:\n+                logger.disable_console_output()\n+\n         from azurelinuxagent.ga.update import get_update_handler\n         update_handler = get_update_handler()\n         update_handler.run(debug)\n@@ -146,91 +195,175 @@ class Agent(object):\n         for k in sorted(configuration.keys()):\n             print(\"{0} = {1}\".format(k, configuration[k]))\n \n+    def collect_logs(self, is_full_mode):\n+        logger.set_prefix(\"LogCollector\")\n+\n+        if is_full_mode:\n+            logger.info(\"Running log collector mode full\")\n+        else:\n+            logger.info(\"Running log collector mode normal\")\n+\n+        # Check the cgroups unit\n+        cpu_cgroup_path, memory_cgroup_path, log_collector_monitor = None, None, None\n+        if CollectLogsHandler.should_validate_cgroups():\n+            cgroups_api = SystemdCgroupsApi()\n+            cpu_cgroup_path, memory_cgroup_path = cgroups_api.get_process_cgroup_paths(\"self\")\n \n-def main(args=[]):\n+            cpu_slice_matches = (cgroupconfigurator.LOGCOLLECTOR_SLICE in cpu_cgroup_path)\n+            memory_slice_matches = (cgroupconfigurator.LOGCOLLECTOR_SLICE in memory_cgroup_path)\n+\n+            if not cpu_slice_matches or not memory_slice_matches:\n+                logger.info(\"The Log Collector process is not in the proper cgroups:\")\n+                if not cpu_slice_matches:\n+                    logger.info(\"\\tunexpected cpu slice\")\n+                if not memory_slice_matches:\n+                    logger.info(\"\\tunexpected memory slice\")\n+\n+                sys.exit(logcollector.INVALID_CGROUPS_ERRCODE)\n+\n+        try:\n+            log_collector = LogCollector(is_full_mode, cpu_cgroup_path, memory_cgroup_path)\n+            log_collector_monitor = get_log_collector_monitor_handler(log_collector.cgroups)\n+            log_collector_monitor.run()\n+            archive = log_collector.collect_logs_and_get_archive()\n+            logger.info(\"Log collection successfully completed. Archive can be found at {0} \"\n+                  \"and detailed log output can be found at {1}\".format(archive, OUTPUT_RESULTS_FILE_PATH))\n+        except Exception as e:\n+            logger.error(\"Log collection completed unsuccessfully. Error: {0}\".format(ustr(e)))\n+            logger.info(\"Detailed log output can be found at {0}\".format(OUTPUT_RESULTS_FILE_PATH))\n+            sys.exit(1)\n+        finally:\n+            if log_collector_monitor is not None:\n+                log_collector_monitor.stop()\n+\n+    @staticmethod\n+    def setup_firewall(firewall_metadata):\n+\n+        print(\"Setting up firewall for the WALinux Agent with args: {0}\".format(firewall_metadata))\n+        try:\n+            AddFirewallRules.add_iptables_rules(firewall_metadata['wait'], firewall_metadata['dst_ip'],\n+                                                firewall_metadata['uid'])\n+            print(\"Successfully set the firewall rules\")\n+        except Exception as error:\n+            print(\"Unable to add firewall rules. Error: {0}\".format(ustr(error)))\n+            sys.exit(1)\n+\n+\n+def main(args=None):\n     \"\"\"\n     Parse command line arguments, exit with usage() on error.\n     Invoke different methods according to different command\n     \"\"\"\n+    if args is None:\n+        args = []\n     if len(args) <= 0:\n         args = sys.argv[1:]\n-    command, force, verbose, debug, conf_file_path = parse_args(args)\n-    if command == \"version\":\n+    command, force, verbose, debug, conf_file_path, log_collector_full_mode, firewall_metadata = parse_args(args)\n+    if command == AgentCommands.Version:\n         version()\n-    elif command == \"help\":\n+    elif command == AgentCommands.Help:\n         print(usage())\n-    elif command == \"start\":\n+    elif command == AgentCommands.Start:\n         start(conf_file_path=conf_file_path)\n     else:\n         try:\n             agent = Agent(verbose, conf_file_path=conf_file_path)\n-            if command == \"deprovision+user\":\n+            if command == AgentCommands.DeprovisionUser:\n                 agent.deprovision(force, deluser=True)\n-            elif command == \"deprovision\":\n+            elif command == AgentCommands.Deprovision:\n                 agent.deprovision(force, deluser=False)\n-            elif command == \"provision\":\n+            elif command == AgentCommands.Provision:\n                 agent.provision()\n-            elif command == \"register-service\":\n+            elif command == AgentCommands.RegisterService:\n                 agent.register_service()\n-            elif command == \"daemon\":\n+            elif command == AgentCommands.Daemon:\n                 agent.daemon()\n-            elif command == \"run-exthandlers\":\n+            elif command == AgentCommands.RunExthandlers:\n                 agent.run_exthandlers(debug)\n-            elif command == \"show-configuration\":\n+            elif command == AgentCommands.ShowConfig:\n                 agent.show_configuration()\n-        except Exception:\n+            elif command == AgentCommands.CollectLogs:\n+                agent.collect_logs(log_collector_full_mode)\n+            elif command == AgentCommands.SetupFirewall:\n+                agent.setup_firewall(firewall_metadata)\n+        except Exception as e:\n             logger.error(u\"Failed to run '{0}': {1}\",\n                          command,\n-                         traceback.format_exc())\n+                         textutil.format_exception(e))\n+\n \n def parse_args(sys_args):\n     \"\"\"\n     Parse command line arguments\n     \"\"\"\n-    cmd = \"help\"\n+    cmd = AgentCommands.Help\n     force = False\n     verbose = False\n     debug = False\n     conf_file_path = None\n-    for a in sys_args:\n-        m = re.match(\"^(?:[-/]*)configuration-path:([\\w/\\.\\-_]+)\", a)\n+    log_collector_full_mode = False\n+    firewall_metadata = {\n+        \"dst_ip\": None,\n+        \"uid\": None,\n+        \"wait\": \"\"\n+    }\n+\n+    regex_cmd_format = \"^([-/]*){0}\"\n+\n+    for arg in sys_args:\n+        if arg == \"\":\n+            # Don't parse an empty parameter\n+            continue\n+        m = re.match(\"^(?:[-/]*)configuration-path:([\\w/\\.\\-_]+)\", arg)  # pylint: disable=W1401\n         if not m is None:\n             conf_file_path = m.group(1)\n             if not os.path.exists(conf_file_path):\n                 print(\"Error: Configuration file {0} does not exist\".format(\n                         conf_file_path), file=sys.stderr)\n-                usage()\n+                print(usage())\n                 sys.exit(1)\n-        \n-        elif re.match(\"^([-/]*)deprovision\\\\+user\", a):\n-            cmd = \"deprovision+user\"\n-        elif re.match(\"^([-/]*)deprovision\", a):\n-            cmd = \"deprovision\"\n-        elif re.match(\"^([-/]*)daemon\", a):\n-            cmd = \"daemon\"\n-        elif re.match(\"^([-/]*)start\", a):\n-            cmd = \"start\"\n-        elif re.match(\"^([-/]*)register-service\", a):\n-            cmd = \"register-service\"\n-        elif re.match(\"^([-/]*)run-exthandlers\", a):\n-            cmd = \"run-exthandlers\"\n-        elif re.match(\"^([-/]*)version\", a):\n-            cmd = \"version\"\n-        elif re.match(\"^([-/]*)verbose\", a):\n+        elif re.match(\"^([-/]*)deprovision\\\\+user\", arg):\n+            cmd = AgentCommands.DeprovisionUser\n+        elif re.match(regex_cmd_format.format(AgentCommands.Deprovision), arg):\n+            cmd = AgentCommands.Deprovision\n+        elif re.match(regex_cmd_format.format(AgentCommands.Daemon), arg):\n+            cmd = AgentCommands.Daemon\n+        elif re.match(regex_cmd_format.format(AgentCommands.Start), arg):\n+            cmd = AgentCommands.Start\n+        elif re.match(regex_cmd_format.format(AgentCommands.RegisterService), arg):\n+            cmd = AgentCommands.RegisterService\n+        elif re.match(regex_cmd_format.format(AgentCommands.RunExthandlers), arg):\n+            cmd = AgentCommands.RunExthandlers\n+        elif re.match(regex_cmd_format.format(AgentCommands.Version), arg):\n+            cmd = AgentCommands.Version\n+        elif re.match(regex_cmd_format.format(\"verbose\"), arg):\n             verbose = True\n-        elif re.match(\"^([-/]*)debug\", a):\n+        elif re.match(regex_cmd_format.format(\"debug\"), arg):\n             debug = True\n-        elif re.match(\"^([-/]*)force\", a):\n+        elif re.match(regex_cmd_format.format(\"force\"), arg):\n             force = True\n-        elif re.match(\"^([-/]*)show-configuration\", a):\n-            cmd = \"show-configuration\"\n-        elif re.match(\"^([-/]*)(help|usage|\\\\?)\", a):\n-            cmd = \"help\"\n+        elif re.match(regex_cmd_format.format(AgentCommands.ShowConfig), arg):\n+            cmd = AgentCommands.ShowConfig\n+        elif re.match(\"^([-/]*)(help|usage|\\\\?)\", arg):\n+            cmd = AgentCommands.Help\n+        elif re.match(regex_cmd_format.format(AgentCommands.CollectLogs), arg):\n+            cmd = AgentCommands.CollectLogs\n+        elif re.match(regex_cmd_format.format(\"full\"), arg):\n+            log_collector_full_mode = True\n+        elif re.match(regex_cmd_format.format(AgentCommands.SetupFirewall), arg):\n+            cmd = AgentCommands.SetupFirewall\n+        elif re.match(regex_cmd_format.format(\"dst_ip=(?P<dst_ip>[\\\\d.]{7,})\"), arg):\n+            firewall_metadata['dst_ip'] = re.match(regex_cmd_format.format(\"dst_ip=(?P<dst_ip>[\\\\d.]{7,})\"), arg).group(\n+                'dst_ip')\n+        elif re.match(regex_cmd_format.format(\"uid=(?P<uid>[\\\\d]+)\"), arg):\n+            firewall_metadata['uid'] = re.match(regex_cmd_format.format(\"uid=(?P<uid>[\\\\d]+)\"), arg).group('uid')\n+        elif re.match(regex_cmd_format.format(\"(w|wait)$\"), arg):\n+            firewall_metadata['wait'] = \"-w\"\n         else:\n-            cmd = \"help\"\n+            cmd = AgentCommands.Help\n             break\n \n-    return cmd, force, verbose, debug, conf_file_path\n+    return cmd, force, verbose, debug, conf_file_path, log_collector_full_mode, firewall_metadata\n \n \n def version():\n@@ -245,29 +378,33 @@ def version():\n                                        PY_VERSION_MICRO))\n     print(\"Goal state agent: {0}\".format(GOAL_STATE_AGENT_VERSION))\n \n+\n def usage():\n     \"\"\"\n     Return agent usage message\n     \"\"\"\n     s  = \"\\n\"\n     s += (\"usage: {0} [-verbose] [-force] [-help] \"\n-           \"-configuration-path:<path to configuration file>\"\n+           \"-configuration-path:<path to configuration file>\" \n            \"-deprovision[+user]|-register-service|-version|-daemon|-start|\"\n-           \"-run-exthandlers|-show-configuration]\"\n+           \"-run-exthandlers|-show-configuration|-collect-logs [-full]|-setup-firewall [-dst_ip=<IP> -uid=<UID> [-w/--wait]]\"\n            \"\").format(sys.argv[0])\n     s += \"\\n\"\n     return s\n \n+\n def start(conf_file_path=None):\n     \"\"\"\n     Start agent daemon in a background process and set stdout/stderr to\n     /dev/null\n     \"\"\"\n-    devnull = open(os.devnull, 'w')\n     args = [sys.argv[0], '-daemon']\n     if conf_file_path is not None:\n         args.append('-configuration-path:{0}'.format(conf_file_path))\n-    subprocess.Popen(args, stdout=devnull, stderr=devnull)\n+\n+    with open(os.devnull, 'w') as devnull:\n+        subprocess.Popen(args, stdout=devnull, stderr=devnull)\n+\n \n if __name__ == '__main__' :\n     main()\ndiff --git a/azurelinuxagent/common/AgentGlobals.py b/azurelinuxagent/common/AgentGlobals.py\nnew file mode 100644\nindex 0000000..dbfda92\n--- /dev/null\n+++ b/azurelinuxagent/common/AgentGlobals.py\n@@ -0,0 +1,39 @@\n+# Microsoft Azure Linux Agent\n+#\n+# Copyright 2020 Microsoft Corporation\n+#\n+# Licensed under the Apache License, Version 2.0 (the \"License\");\n+# you may not use this file except in compliance with the License.\n+# You may obtain a copy of the License at\n+#\n+#     http://www.apache.org/licenses/LICENSE-2.0\n+#\n+# Unless required by applicable law or agreed to in writing, software\n+# distributed under the License is distributed on an \"AS IS\" BASIS,\n+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\n+# See the License for the specific language governing permissions and\n+# limitations under the License.\n+#\n+# Requires Python 2.6+ and Openssl 1.0+\n+\n+\n+class AgentGlobals(object):\n+    \"\"\"\n+    This class is used for setting AgentGlobals which can be used all throughout the Agent.\n+    \"\"\"\n+\n+    GUID_ZERO = \"00000000-0000-0000-0000-000000000000\"\n+\n+    #\n+    # Some modules (e.g. telemetry) require an up-to-date container ID. We update this variable each time we\n+    # fetch the goal state.\n+    #\n+    _container_id = GUID_ZERO\n+\n+    @staticmethod\n+    def get_container_id():\n+        return AgentGlobals._container_id\n+\n+    @staticmethod\n+    def update_container_id(container_id):\n+        AgentGlobals._container_id = container_id\ndiff --git a/azurelinuxagent/common/agent_supported_feature.py b/azurelinuxagent/common/agent_supported_feature.py\nnew file mode 100644\nindex 0000000..d7f93e2\n--- /dev/null\n+++ b/azurelinuxagent/common/agent_supported_feature.py\n@@ -0,0 +1,122 @@\n+# Copyright 2018 Microsoft Corporation\n+#\n+# Licensed under the Apache License, Version 2.0 (the \"License\");\n+# you may not use this file except in compliance with the License.\n+# You may obtain a copy of the License at\n+#\n+#     http://www.apache.org/licenses/LICENSE-2.0\n+#\n+# Unless required by applicable law or agreed to in writing, software\n+# distributed under the License is distributed on an \"AS IS\" BASIS,\n+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\n+# See the License for the specific language governing permissions and\n+# limitations under the License.\n+#\n+# Requires Python 2.6+ and Openssl 1.0+\n+#\n+\n+\n+class SupportedFeatureNames(object):\n+    \"\"\"\n+    Enum for defining the Feature Names for all features that we the agent supports\n+    \"\"\"\n+    MultiConfig = \"MultipleExtensionsPerHandler\"\n+    ExtensionTelemetryPipeline = \"ExtensionTelemetryPipeline\"\n+    FastTrack = \"FastTrack\"\n+\n+\n+class AgentSupportedFeature(object):\n+    \"\"\"\n+    Interface for defining all features that the Linux Guest Agent supports and reports their if supported back to CRP\n+    \"\"\"\n+\n+    def __init__(self, name, version=\"1.0\", supported=False):\n+        self.__name = name\n+        self.__version = version\n+        self.__supported = supported\n+\n+    @property\n+    def name(self):\n+        return self.__name\n+\n+    @property\n+    def version(self):\n+        return self.__version\n+\n+    @property\n+    def is_supported(self):\n+        return self.__supported\n+\n+\n+class _MultiConfigFeature(AgentSupportedFeature):\n+\n+    __NAME = SupportedFeatureNames.MultiConfig\n+    __VERSION = \"1.0\"\n+    __SUPPORTED = True\n+\n+    def __init__(self):\n+        super(_MultiConfigFeature, self).__init__(name=_MultiConfigFeature.__NAME,\n+                                                  version=_MultiConfigFeature.__VERSION,\n+                                                  supported=_MultiConfigFeature.__SUPPORTED)\n+\n+\n+class _ETPFeature(AgentSupportedFeature):\n+\n+    __NAME = SupportedFeatureNames.ExtensionTelemetryPipeline\n+    __VERSION = \"1.0\"\n+    __SUPPORTED = True\n+\n+    def __init__(self):\n+        super(_ETPFeature, self).__init__(name=self.__NAME,\n+                                          version=self.__VERSION,\n+                                          supported=self.__SUPPORTED)\n+\n+\n+# This is the list of features that Agent supports and we advertise to CRP\n+__CRP_ADVERTISED_FEATURES = {\n+    SupportedFeatureNames.MultiConfig: _MultiConfigFeature()\n+}\n+\n+\n+# This is the list of features that Agent supports and we advertise to Extensions\n+__EXTENSION_ADVERTISED_FEATURES = {\n+    SupportedFeatureNames.ExtensionTelemetryPipeline: _ETPFeature()\n+}\n+\n+\n+def get_supported_feature_by_name(feature_name):\n+    if feature_name in __CRP_ADVERTISED_FEATURES:\n+        return __CRP_ADVERTISED_FEATURES[feature_name]\n+\n+    if feature_name in __EXTENSION_ADVERTISED_FEATURES:\n+        return __EXTENSION_ADVERTISED_FEATURES[feature_name]\n+\n+    raise NotImplementedError(\"Feature with Name: {0} not found\".format(feature_name))\n+\n+\n+def get_agent_supported_features_list_for_crp():\n+    \"\"\"\n+    List of features that the GuestAgent currently supports (like FastTrack, MultiConfig, etc).\n+    We need to send this list as part of Status reporting to inform CRP of all the features the agent supports.\n+    :return: Dict containing all CRP supported features with the key as their names and the AgentFeature object as\n+             the value if they are supported by the Agent\n+        Eg: {\n+                MultipleExtensionsPerHandler: _MultiConfigFeature()\n+            }\n+    \"\"\"\n+\n+    return dict((name, feature) for name, feature in __CRP_ADVERTISED_FEATURES.items() if feature.is_supported)\n+\n+\n+def get_agent_supported_features_list_for_extensions():\n+    \"\"\"\n+    List of features that the GuestAgent currently supports (like Extension Telemetry Pipeline, etc) needed by Extensions.\n+    We need to send this list as environment variables when calling extension commands to inform Extensions of all the\n+    features the agent supports.\n+    :return: Dict containing all Extension supported features with the key as their names and the AgentFeature object as\n+             the value if the feature is supported by the Agent.\n+        Eg: {\n+                CRPSupportedFeatureNames.ExtensionTelemetryPipeline: _ETPFeature()\n+            }\n+    \"\"\"\n+    return dict((name, feature) for name, feature in __EXTENSION_ADVERTISED_FEATURES.items() if feature.is_supported)\ndiff --git a/azurelinuxagent/common/cgroup.py b/azurelinuxagent/common/cgroup.py\nindex 2ad70c1..b2bf32f 100644\n--- a/azurelinuxagent/common/cgroup.py\n+++ b/azurelinuxagent/common/cgroup.py\n@@ -13,47 +13,94 @@\n # limitations under the License.\n #\n # Requires Python 2.6+ and Openssl 1.0+\n+\n import errno\n import os\n import re\n+from datetime import timedelta\n \n-from azurelinuxagent.common import logger\n+from azurelinuxagent.common import logger, conf\n from azurelinuxagent.common.exception import CGroupsException\n from azurelinuxagent.common.future import ustr\n from azurelinuxagent.common.osutil import get_osutil\n from azurelinuxagent.common.utils import fileutil\n \n-re_user_system_times = re.compile(r'user (\\d+)\\nsystem (\\d+)\\n')\n+_REPORT_EVERY_HOUR = timedelta(hours=1)\n+_DEFAULT_REPORT_PERIOD = timedelta(seconds=conf.get_cgroup_check_period())\n \n+AGENT_NAME_TELEMETRY = \"walinuxagent.service\"  # Name used for telemetry; it needs to be consistent even if the name of the service changes\n+AGENT_LOG_COLLECTOR = \"azure-walinuxagent-logcollector\"\n \n-class CGroupContollers(object):\n-    CPU = \"cpu\"\n-    MEMORY = \"memory\"\n \n+class CounterNotFound(Exception):\n+    pass\n \n-class CGroup(object):\n-    @staticmethod\n-    def create(cgroup_path, controller, extension_name):\n-        \"\"\"\n-        Factory method to create the correct CGroup.\n-        \"\"\"\n-        if controller == CGroupContollers.CPU:\n-            return CpuCgroup(extension_name, cgroup_path)\n-        if controller == CGroupContollers.MEMORY:\n-            return MemoryCgroup(extension_name, cgroup_path)\n-        raise CGroupsException('CGroup controller {0} is not supported'.format(controller))\n \n-    def __init__(self, name, cgroup_path, controller_type):\n+class MetricValue(object):\n+\n+    \"\"\"\n+    Class for defining all the required metric fields to send telemetry.\n+    \"\"\"\n+\n+    def __init__(self, category, counter, instance, value, report_period=_DEFAULT_REPORT_PERIOD):\n+        self._category = category\n+        self._counter = counter\n+        self._instance = instance\n+        self._value = value\n+        self._report_period = report_period\n+\n+    @property\n+    def category(self):\n+        return self._category\n+\n+    @property\n+    def counter(self):\n+        return self._counter\n+\n+    @property\n+    def instance(self):\n+        return self._instance\n+\n+    @property\n+    def value(self):\n+        return self._value\n+\n+    @property\n+    def report_period(self):\n+        return self._report_period\n+\n+\n+class MetricsCategory(object):\n+    MEMORY_CATEGORY = \"Memory\"\n+    CPU_CATEGORY = \"CPU\"\n+\n+\n+class MetricsCounter(object):\n+    PROCESSOR_PERCENT_TIME = \"% Processor Time\"\n+    TOTAL_MEM_USAGE = \"Total Memory Usage\"\n+    MAX_MEM_USAGE = \"Max Memory Usage\"\n+    THROTTLED_TIME = \"Throttled Time\"\n+    SWAP_MEM_USAGE = \"Swap Memory Usage\"\n+    AVAILABLE_MEM = \"Available MBytes\"\n+    USED_MEM = \"Used MBytes\"\n+\n+\n+re_user_system_times = re.compile(r'user (\\d+)\\nsystem (\\d+)\\n')\n+\n+\n+class CGroup(object):\n+    def __init__(self, name, cgroup_path):\n         \"\"\"\n         Initialize _data collection for the Memory controller\n         :param: name: Name of the CGroup\n         :param: cgroup_path: Path of the controller\n-        :param: controller_type:\n         :return:\n         \"\"\"\n         self.name = name\n         self.path = cgroup_path\n-        self.controller = controller_type\n+\n+    def __str__(self):\n+        return \"{0} [{1}]\".format(self.name, self.path)\n \n     def _get_cgroup_file(self, file_name):\n         return os.path.join(self.path, file_name)\n@@ -89,7 +136,7 @@ class CGroup(object):\n             logger.error(\"File {0} is empty but should not be\".format(parameter_filename))\n             raise CGroupsException(\"File {0} is empty but should not be\".format(parameter_filename))\n         except Exception as e:\n-            if isinstance(e, (IOError, OSError)) and e.errno == errno.ENOENT:\n+            if isinstance(e, (IOError, OSError)) and e.errno == errno.ENOENT:  # pylint: disable=E1101\n                 raise e\n             parameter_filename = self._get_cgroup_file(parameter_name)\n             raise CGroupsException(\"Exception while attempting to read {0}\".format(parameter_filename), e)\n@@ -114,42 +161,26 @@ class CGroup(object):\n                                  ' Internal error: {1}'.format(self.path, ustr(e)))\n         return False\n \n-    def get_tracked_processes(self):\n+    def get_tracked_metrics(self, **_):\n         \"\"\"\n-        :return: List of Str (Pids). Will return an empty string if we couldn't fetch any tracked processes.\n+        Retrieves the current value of the metrics tracked for this cgroup and returns them as an array.\n+\n+        Note: Agent won't track the metrics if the current cpu ticks less than previous value and returns empty array.\n         \"\"\"\n-        procs = []\n-        try:\n-            procs = self._get_parameters(\"cgroup.procs\")\n-        except (IOError, OSError) as e:\n-            if e.errno == errno.ENOENT:\n-                # only suppressing file not found exceptions.\n-                pass\n-            else:\n-                logger.periodic_warn(logger.EVERY_HALF_HOUR,\n-                                     'Could not get list of procs from \"cgroup.procs\" file in the cgroup: {0}.'\n-                                     ' Internal error: {1}'.format(self.path, ustr(e)))\n-        except CGroupsException as e:\n-            logger.periodic_warn(logger.EVERY_HALF_HOUR,\n-                                 'Could not get list of tasks from \"cgroup.procs\" file in the cgroup: {0}.'\n-                                 ' Internal error: {1}'.format(self.path, ustr(e)))\n-        return procs\n+        raise NotImplementedError()\n \n \n class CpuCgroup(CGroup):\n     def __init__(self, name, cgroup_path):\n-        super(CpuCgroup, self).__init__(name, cgroup_path, CGroupContollers.CPU)\n+        super(CpuCgroup, self).__init__(name, cgroup_path)\n \n         self._osutil = get_osutil()\n         self._previous_cgroup_cpu = None\n         self._previous_system_cpu = None\n         self._current_cgroup_cpu = None\n         self._current_system_cpu = None\n-\n-    def __str__(self):\n-        return \"cgroup: Name: {0}, cgroup_path: {1}; Controller: {2}\".format(\n-            self.name, self.path, self.controller\n-        )\n+        self._previous_throttled_time = None\n+        self._current_throttled_time = None\n \n     def _get_cpu_ticks(self, allow_no_such_file_or_directory_error=False):\n         \"\"\"\n@@ -159,24 +190,54 @@ class CpuCgroup(CGroup):\n         returns 0; this is useful when the function can be called before the cgroup has been created.\n         \"\"\"\n         try:\n-            cpu_stat = self._get_file_contents('cpuacct.stat')\n+            cpuacct_stat = self._get_file_contents('cpuacct.stat')\n         except Exception as e:\n-            if not isinstance(e, (IOError, OSError)) or e.errno != errno.ENOENT:\n+            if not isinstance(e, (IOError, OSError)) or e.errno != errno.ENOENT:  # pylint: disable=E1101\n                 raise CGroupsException(\"Failed to read cpuacct.stat: {0}\".format(ustr(e)))\n             if not allow_no_such_file_or_directory_error:\n                 raise e\n-            cpu_stat = None\n+            cpuacct_stat = None\n \n         cpu_ticks = 0\n \n-        if cpu_stat is not None:\n-            match = re_user_system_times.match(cpu_stat)\n+        if cpuacct_stat is not None:\n+            #\n+            # Sample file:\n+            #     # cat /sys/fs/cgroup/cpuacct/azure.slice/walinuxagent.service/cpuacct.stat\n+            #     user 10190\n+            #     system 3160\n+            #\n+            match = re_user_system_times.match(cpuacct_stat)\n             if not match:\n-                raise CGroupsException(\"The contents of {0} are invalid: {1}\".format(self._get_cgroup_file('cpuacct.stat'), cpu_stat))\n+                raise CGroupsException(\n+                    \"The contents of {0} are invalid: {1}\".format(self._get_cgroup_file('cpuacct.stat'), cpuacct_stat))\n             cpu_ticks = int(match.groups()[0]) + int(match.groups()[1])\n \n         return cpu_ticks\n \n+    def get_throttled_time(self):\n+        try:\n+            with open(os.path.join(self.path, 'cpu.stat')) as cpu_stat:\n+                #\n+                # Sample file:\n+                #\n+                #   # cat /sys/fs/cgroup/cpuacct/azure.slice/walinuxagent.service/cpu.stat\n+                #   nr_periods  51660\n+                #   nr_throttled 19461\n+                #   throttled_time 1529590856339\n+                #\n+                for line in cpu_stat:\n+                    match = re.match(r'throttled_time\\s+(\\d+)', line)\n+                    if match is not None:\n+                        return int(match.groups()[0])\n+                raise Exception(\"Cannot find throttled_time\")\n+        except (IOError, OSError) as e:\n+            if e.errno == errno.ENOENT:\n+                return 0\n+            raise CGroupsException(\"Failed to read cpu.stat: {0}\".format(ustr(e)))\n+        except Exception as e:\n+            raise CGroupsException(\"Failed to read cpu.stat: {0}\".format(ustr(e)))\n+\n     def _cpu_usage_initialized(self):\n         return self._current_cgroup_cpu is not None and self._current_system_cpu is not None\n \n@@ -188,13 +249,14 @@ class CpuCgroup(CGroup):\n             raise CGroupsException(\"initialize_cpu_usage() should be invoked only once\")\n         self._current_cgroup_cpu = self._get_cpu_ticks(allow_no_such_file_or_directory_error=True)\n         self._current_system_cpu = self._osutil.get_total_cpu_ticks_since_boot()\n+        self._current_throttled_time = self.get_throttled_time()\n \n     def get_cpu_usage(self):\n         \"\"\"\n         Computes the CPU used by the cgroup since the last call to this function.\n \n-        The usage is measured as a percentage of utilization of all cores in the system. For example,\n-        using 1 core at 100% on a 4-core system would be reported as 25%.\n+        The usage is measured as a percentage of utilization of 1 core in the system. For example,\n+        using 1 core all of the time on a 4-core system would be reported as 100%.\n \n         NOTE: initialize_cpu_usage() must be invoked before calling get_cpu_usage()\n         \"\"\"\n@@ -209,53 +271,122 @@ class CpuCgroup(CGroup):\n         cgroup_delta = self._current_cgroup_cpu - self._previous_cgroup_cpu\n         system_delta = max(1, self._current_system_cpu - self._previous_system_cpu)\n \n-        return round(100.0 * float(cgroup_delta) / float(system_delta), 3)\n+        return round(100.0 * self._osutil.get_processor_cores() * float(cgroup_delta) / float(system_delta), 3)\n+\n+    def get_cpu_throttled_time(self, read_previous_throttled_time=True):\n+        \"\"\"\n+        Computes the throttled time (in seconds) since the last call to this function.\n+        NOTE: initialize_cpu_usage() must be invoked before calling this function\n+        Compute only current throttled time if read_previous_throttled_time set to False\n+        \"\"\"\n+        if not read_previous_throttled_time:\n+            return float(self.get_throttled_time() / 1E9)\n+\n+        if not self._cpu_usage_initialized():\n+            raise CGroupsException(\n+                \"initialize_cpu_usage() must be invoked before the first call to get_throttled_time()\")\n+\n+        self._previous_throttled_time = self._current_throttled_time\n+        self._current_throttled_time = self.get_throttled_time()\n+\n+        return float(self._current_throttled_time - self._previous_throttled_time) / 1E9\n+\n+    def get_tracked_metrics(self, **kwargs):\n+        tracked = []\n+        cpu_usage = self.get_cpu_usage()\n+        if cpu_usage >= float(0):\n+            tracked.append(\n+                MetricValue(MetricsCategory.CPU_CATEGORY, MetricsCounter.PROCESSOR_PERCENT_TIME, self.name, cpu_usage))\n+\n+        if 'track_throttled_time' in kwargs and kwargs['track_throttled_time']:\n+            throttled_time = self.get_cpu_throttled_time()\n+            if cpu_usage >= float(0) and throttled_time >= float(0):\n+                tracked.append(\n+                    MetricValue(MetricsCategory.CPU_CATEGORY, MetricsCounter.THROTTLED_TIME, self.name, throttled_time))\n+\n+        return tracked\n \n \n class MemoryCgroup(CGroup):\n     def __init__(self, name, cgroup_path):\n+        super(MemoryCgroup, self).__init__(name, cgroup_path)\n+\n+        self._counter_not_found_error_count = 0\n+\n+    def _get_memory_stat_counter(self, counter_name):\n+        try:\n+            with open(os.path.join(self.path, 'memory.stat')) as memory_stat:\n+                # cat /sys/fs/cgroup/memory/azure.slice/memory.stat\n+                # cache 67178496\n+                # rss 42340352\n+                # rss_huge 6291456\n+                # swap 0\n+                for line in memory_stat:\n+                    re_memory_counter = r'{0}\\s+(\\d+)'.format(counter_name)\n+                    match = re.match(re_memory_counter, line)\n+                    if match is not None:\n+                        return int(match.groups()[0])\n+        except (IOError, OSError) as e:\n+            if e.errno == errno.ENOENT:\n+                raise\n+            raise CGroupsException(\"Failed to read memory.stat: {0}\".format(ustr(e)))\n+        except Exception as e:\n+            raise CGroupsException(\"Failed to read memory.stat: {0}\".format(ustr(e)))\n+\n+        raise CounterNotFound(\"Cannot find counter: {0}\".format(counter_name))\n+\n+    def get_memory_usage(self):\n         \"\"\"\n-        Initialize _data collection for the Memory controller\n+        Collect RSS+CACHE from memory.stat cgroup.\n \n-        :return: MemoryCgroup\n+        :return: Memory usage in bytes\n+        :rtype: int\n         \"\"\"\n-        super(MemoryCgroup, self).__init__(name, cgroup_path, CGroupContollers.MEMORY)\n \n-    def __str__(self):\n-        return \"cgroup: Name: {0}, cgroup_path: {1}; Controller: {2}\".format(\n-            self.name, self.path, self.controller\n-        )\n+        cache = self._get_memory_stat_counter(\"cache\")\n+        rss = self._get_memory_stat_counter(\"rss\")\n+        return cache + rss\n \n-    def get_memory_usage(self):\n+    def try_swap_memory_usage(self):\n         \"\"\"\n-        Collect memory.usage_in_bytes from the cgroup.\n+        Collect SWAP from memory.stat cgroup.\n \n         :return: Memory usage in bytes\n         :rtype: int\n+        Note: stat file is the only place to get the SWAP since other swap related file memory.memsw.usage_in_bytes is for total Memory+SWAP.\n         \"\"\"\n-        usage = None\n         try:\n-            usage = self._get_parameters('memory.usage_in_bytes', first_line_only=True)\n-        except Exception as e:\n-            if isinstance(e, (IOError, OSError)) and e.errno == errno.ENOENT:\n-                raise\n-            raise CGroupsException(\"Exception while attempting to read {0}\".format(\"memory.usage_in_bytes\"), e)\n-\n-        return int(usage)\n+            return self._get_memory_stat_counter(\"swap\")\n+        except CounterNotFound as e:\n+            if self._counter_not_found_error_count < 1:\n+                logger.periodic_info(logger.EVERY_HALF_HOUR,\n+                                     '{0} from \"memory.stat\" file in the cgroup: {1}---[Note: This log for informational purpose only and can be ignored]'.format(ustr(e), self.path))\n+                self._counter_not_found_error_count += 1\n+            return 0\n \n     def get_max_memory_usage(self):\n         \"\"\"\n-        Collect memory.usage_in_bytes from the cgroup.\n+        Collect memory.max_usage_in_bytes from the cgroup.\n \n         :return: Memory usage in bytes\n         :rtype: int\n         \"\"\"\n-        usage = None\n+        usage = 0\n         try:\n-            usage = self._get_parameters('memory.max_usage_in_bytes', first_line_only=True)\n+            usage = int(self._get_parameters('memory.max_usage_in_bytes', first_line_only=True))\n         except Exception as e:\n-            if isinstance(e, (IOError, OSError)) and e.errno == errno.ENOENT:\n+            if isinstance(e, (IOError, OSError)) and e.errno == errno.ENOENT:  # pylint: disable=E1101\n                 raise\n-            raise CGroupsException(\"Exception while attempting to read {0}\".format(\"memory.usage_in_bytes\"), e)\n-\n-        return int(usage)\n+            raise CGroupsException(\"Exception while attempting to read {0}\".format(\"memory.max_usage_in_bytes\"), e)\n+\n+        return usage\n+\n+    def get_tracked_metrics(self, **_):\n+        return [\n+            MetricValue(MetricsCategory.MEMORY_CATEGORY, MetricsCounter.TOTAL_MEM_USAGE, self.name,\n+                        self.get_memory_usage()),\n+            MetricValue(MetricsCategory.MEMORY_CATEGORY, MetricsCounter.MAX_MEM_USAGE, self.name,\n+                        self.get_max_memory_usage(), _REPORT_EVERY_HOUR),\n+            MetricValue(MetricsCategory.MEMORY_CATEGORY, MetricsCounter.SWAP_MEM_USAGE, self.name,\n+                        self.try_swap_memory_usage(), _REPORT_EVERY_HOUR)\n+        ]\ndiff --git a/azurelinuxagent/common/cgroupapi.py b/azurelinuxagent/common/cgroupapi.py\nindex c671a2e..ca0ef3b 100644\n--- a/azurelinuxagent/common/cgroupapi.py\n+++ b/azurelinuxagent/common/cgroupapi.py\n@@ -1,3 +1,4 @@\n+# -*- coding: utf-8 -*-\n # Copyright 2018 Microsoft Corporation\n #\n # Licensed under the Apache License, Version 2.0 (the \"License\");\n@@ -14,102 +15,65 @@\n #\n # Requires Python 2.6+ and Openssl 1.0+\n \n-import errno\n import os\n+import re\n import shutil\n import subprocess\n+import threading\n import uuid\n \n from azurelinuxagent.common import logger\n-from azurelinuxagent.common.cgroup import CGroup\n+from azurelinuxagent.common.cgroup import CpuCgroup, MemoryCgroup\n from azurelinuxagent.common.cgroupstelemetry import CGroupsTelemetry\n from azurelinuxagent.common.conf import get_agent_pid_file_path\n-from azurelinuxagent.common.event import add_event, WALAEventOperation\n from azurelinuxagent.common.exception import CGroupsException, ExtensionErrorCodes, ExtensionError, \\\n     ExtensionOperationError\n from azurelinuxagent.common.future import ustr\n+from azurelinuxagent.common.osutil import systemd\n from azurelinuxagent.common.utils import fileutil, shellutil\n-from azurelinuxagent.common.utils.extensionprocessutil import handle_process_completion, read_output\n-from azurelinuxagent.common.version import AGENT_NAME, CURRENT_VERSION\n+from azurelinuxagent.common.utils.extensionprocessutil import handle_process_completion, read_output, \\\n+    TELEMETRY_MESSAGE_MAX_LEN\n+from azurelinuxagent.common.utils.flexible_version import FlexibleVersion\n+from azurelinuxagent.common.version import get_distro\n \n CGROUPS_FILE_SYSTEM_ROOT = '/sys/fs/cgroup'\n CGROUP_CONTROLLERS = [\"cpu\", \"memory\"]\n-VM_AGENT_CGROUP_NAME = \"walinuxagent.service\"\n-EXTENSIONS_ROOT_CGROUP_NAME = \"walinuxagent.extensions\"\n-UNIT_FILES_FILE_SYSTEM_PATH = \"/etc/systemd/system\"\n+EXTENSION_SLICE_PREFIX = \"azure-vmextensions\"\n \n \n-class CGroupsApi(object):\n+class SystemdRunError(CGroupsException):\n     \"\"\"\n-    Interface for the cgroups API\n+    Raised when systemd-run fails\n     \"\"\"\n-    def create_agent_cgroups(self):\n-        raise NotImplementedError()\n-\n-    def create_extension_cgroups_root(self):\n-        raise NotImplementedError()\n-\n-    def create_extension_cgroups(self, extension_name):\n-        raise NotImplementedError()\n-\n-    def remove_extension_cgroups(self, extension_name):\n-        raise NotImplementedError()\n \n-    def get_extension_cgroups(self, extension_name):\n-        raise NotImplementedError()\n+    def __init__(self, msg=None):\n+        super(SystemdRunError, self).__init__(msg)\n \n-    def start_extension_command(self, extension_name, command, timeout, shell, cwd, env, stdout, stderr, error_code):\n-        raise NotImplementedError()\n \n-    def cleanup_legacy_cgroups(self):\n-        raise NotImplementedError()\n+class CGroupsApi(object):\n+    @staticmethod\n+    def cgroups_supported():\n+        distro_info = get_distro()\n+        distro_name = distro_info[0]\n+        try:\n+            distro_version = FlexibleVersion(distro_info[1])\n+        except ValueError:\n+            return False\n+        return distro_name.lower() == 'ubuntu' and distro_version.major >= 16\n \n     @staticmethod\n     def track_cgroups(extension_cgroups):\n         try:\n             for cgroup in extension_cgroups:\n                 CGroupsTelemetry.track_cgroup(cgroup)\n-        except Exception as e:\n+        except Exception as exception:\n             logger.warn(\"Cannot add cgroup '{0}' to tracking list; resource usage will not be tracked. \"\n-                        \"Error: {1}\".format(cgroup.path, ustr(e)))\n+                        \"Error: {1}\".format(cgroup.path, ustr(exception)))\n \n     @staticmethod\n-    def _get_extension_cgroup_name(extension_name):\n-        # Since '-' is used as a separator in systemd unit names, we replace it with '_' to prevent side-effects.\n-        return extension_name.replace('-', '_')\n-\n-    @staticmethod\n-    def create():\n-        \"\"\"\n-        Factory method to create the correct API for the current platform\n-        \"\"\"\n-        return SystemdCgroupsApi() if CGroupsApi._is_systemd() else FileSystemCgroupsApi()\n-\n-    @staticmethod\n-    def _is_systemd():\n-        \"\"\"\n-        Determine if systemd is managing system services; the implementation follows the same strategy as, for example,\n-        sd_booted() in libsystemd, or /usr/sbin/service\n-        \"\"\"\n-        return os.path.exists('/run/systemd/system/')\n-\n-    @staticmethod\n-    def _foreach_controller(operation, message):\n-        \"\"\"\n-        Executes the given operation on all controllers that need to be tracked; outputs 'message' if the controller\n-        is not mounted or if an error occurs in the operation\n-        :return: Returns a list of error messages or an empty list if no errors occurred\n-        \"\"\"\n-        mounted_controllers = os.listdir(CGROUPS_FILE_SYSTEM_ROOT)\n-\n-        for controller in CGROUP_CONTROLLERS:\n-            try:\n-                if controller not in mounted_controllers:\n-                    logger.warn('Cgroup controller \"{0}\" is not mounted. {1}', controller, message)\n-                else:\n-                    operation(controller)\n-            except Exception as e:\n-                logger.warn('Error in cgroup controller \"{0}\": {1}. {2}', controller, ustr(e), message)\n+    def get_processes_in_cgroup(cgroup_path):\n+        with open(os.path.join(cgroup_path, \"cgroup.procs\"), \"r\") as cgroup_procs:\n+            return [int(pid) for pid in cgroup_procs.read().split()]\n \n     @staticmethod\n     def _foreach_legacy_cgroup(operation):\n@@ -138,429 +102,250 @@ class CGroupsApi(object):\n \n                 if os.path.exists(procs_file):\n                     procs_file_contents = fileutil.read_file(procs_file).strip()\n-                    daemon_pid = fileutil.read_file(get_agent_pid_file_path()).strip()\n+                    daemon_pid = CGroupsApi.get_daemon_pid()\n \n-                    if daemon_pid in procs_file_contents:\n+                    if ustr(daemon_pid) in procs_file_contents:\n                         operation(controller, daemon_pid)\n         finally:\n             for _, cgroup in legacy_cgroups:\n                 logger.info('Removing {0}', cgroup)\n                 shutil.rmtree(cgroup, ignore_errors=True)\n+        return len(legacy_cgroups)\n \n-\n-class FileSystemCgroupsApi(CGroupsApi):\n-    \"\"\"\n-    Cgroups interface using the cgroups file system directly\n-    \"\"\"\n     @staticmethod\n-    def _try_mkdir(path):\n-        \"\"\"\n-        Try to create a directory, recursively. If it already exists as such, do nothing. Raise the appropriate\n-        exception should an error occur.\n-\n-        :param path: str\n-        \"\"\"\n-        if not os.path.isdir(path):\n-            try:\n-                os.makedirs(path, 0o755)\n-            except OSError as e:\n-                if e.errno == errno.EEXIST:\n-                    if not os.path.isdir(path):\n-                        raise CGroupsException(\"Create directory for cgroup {0}: normal file already exists with that name\".format(path))\n-                    else:\n-                        pass  # There was a race to create the directory, but it's there now, and that's fine\n-                elif e.errno == errno.EACCES:\n-                    # This is unexpected, as the agent runs as root\n-                    raise CGroupsException(\"Create directory for cgroup {0}: permission denied\".format(path))\n-                else:\n-                    raise\n-\n-    @staticmethod\n-    def _get_agent_cgroup_path(controller):\n-        return os.path.join(CGROUPS_FILE_SYSTEM_ROOT, controller, VM_AGENT_CGROUP_NAME)\n-\n-    @staticmethod\n-    def _get_extension_cgroups_root_path(controller):\n-        return os.path.join(CGROUPS_FILE_SYSTEM_ROOT, controller, EXTENSIONS_ROOT_CGROUP_NAME)\n-\n-    def _get_extension_cgroup_path(self, controller, extension_name):\n-        extensions_root = self._get_extension_cgroups_root_path(controller)\n-\n-        if not os.path.exists(extensions_root):\n-            logger.warn(\"Root directory {0} does not exist.\".format(extensions_root))\n-\n-        cgroup_name = self._get_extension_cgroup_name(extension_name)\n+    def get_daemon_pid():\n+        return int(fileutil.read_file(get_agent_pid_file_path()).strip())\n \n-        return os.path.join(extensions_root, cgroup_name)\n \n-    def _create_extension_cgroup(self, controller, extension_name):\n-        return CGroup.create(self._get_extension_cgroup_path(controller, extension_name), controller, extension_name)\n+class SystemdCgroupsApi(CGroupsApi):\n+    \"\"\"\n+    Cgroups interface via systemd\n+    \"\"\"\n \n-    @staticmethod\n-    def _add_process_to_cgroup(pid, cgroup_path):\n-        tasks_file = os.path.join(cgroup_path, 'cgroup.procs')\n-        fileutil.append_file(tasks_file, \"{0}\\n\".format(pid))\n-        logger.info(\"Added PID {0} to cgroup {1}\".format(pid, cgroup_path))\n+    def __init__(self):\n+        self._cgroup_mountpoints = None\n+        self._agent_unit_name = None\n+        self._systemd_run_commands = []\n+        self._systemd_run_commands_lock = threading.RLock()\n \n-    def cleanup_legacy_cgroups(self):\n+    def get_systemd_run_commands(self):\n         \"\"\"\n-        Previous versions of the daemon (2.2.31-2.2.40) wrote their PID to /sys/fs/cgroup/{cpu,memory}/WALinuxAgent/WALinuxAgent;\n-        starting from version 2.2.41 we track the agent service in walinuxagent.service instead of WALinuxAgent/WALinuxAgent. This\n-        method moves the daemon's PID from the legacy cgroups to the newer cgroups.\n+        Returns a list of the systemd-run commands currently running (given as PIDs)\n         \"\"\"\n-        def move_daemon_pid(controller, daemon_pid):\n-            new_path = FileSystemCgroupsApi._get_agent_cgroup_path(controller)\n-            logger.info(\"Writing daemon's PID ({0}) to {1}\", daemon_pid, new_path)\n-            fileutil.append_file(os.path.join(new_path, \"cgroup.procs\"), daemon_pid)\n-            msg = \"Moved daemon's PID from legacy cgroup to {0}\".format(new_path)\n-            add_event(AGENT_NAME, version=CURRENT_VERSION, op=WALAEventOperation.CGroupsCleanUp, is_success=True, message=msg)\n+        with self._systemd_run_commands_lock:\n+            return self._systemd_run_commands[:]\n \n-        CGroupsApi._foreach_legacy_cgroup(move_daemon_pid)\n-\n-    def create_agent_cgroups(self):\n+    def get_cgroup_mount_points(self):\n         \"\"\"\n-        Creates a cgroup for the VM Agent in each of the controllers we are tracking; returns the created cgroups.\n+        Returns a tuple with the mount points for the cpu and memory controllers; the values can be None\n+        if the corresponding controller is not mounted\n         \"\"\"\n-        cgroups = []\n-\n-        pid = int(os.getpid())\n-\n-        def create_cgroup(controller):\n-            path = FileSystemCgroupsApi._get_agent_cgroup_path(controller)\n-\n-            if not os.path.isdir(path):\n-                FileSystemCgroupsApi._try_mkdir(path)\n-                logger.info(\"Created cgroup {0}\".format(path))\n-\n-            self._add_process_to_cgroup(pid, path)\n-\n-            cgroups.append(CGroup.create(path, controller, VM_AGENT_CGROUP_NAME))\n-\n-        self._foreach_controller(create_cgroup, 'Failed to create a cgroup for the VM Agent; resource usage will not be tracked')\n-\n-        if len(cgroups) == 0:\n-            raise CGroupsException(\"Failed to create any cgroup for the VM Agent\")\n+        # the output of mount is similar to\n+        #     $ mount -t cgroup\n+        #     cgroup on /sys/fs/cgroup/systemd type cgroup (rw,nosuid,nodev,noexec,relatime,xattr,name=systemd)\n+        #     cgroup on /sys/fs/cgroup/cpu,cpuacct type cgroup (rw,nosuid,nodev,noexec,relatime,cpu,cpuacct)\n+        #     cgroup on /sys/fs/cgroup/memory type cgroup (rw,nosuid,nodev,noexec,relatime,memory)\n+        #     etc\n+        #\n+        if self._cgroup_mountpoints is None:\n+            cpu = None\n+            memory = None\n+            for line in shellutil.run_command(['mount', '-t', 'cgroup']).splitlines():\n+                match = re.search(r'on\\s+(?P<path>/\\S+(memory|cpuacct))\\s', line)\n+                if match is not None:\n+                    path = match.group('path')\n+                    if 'cpuacct' in path:\n+                        cpu = path\n+                    else:\n+                        memory = path\n+            self._cgroup_mountpoints = {'cpu': cpu, 'memory': memory}\n \n-        return cgroups\n+        return self._cgroup_mountpoints['cpu'], self._cgroup_mountpoints['memory']\n \n-    def create_extension_cgroups_root(self):\n+    @staticmethod\n+    def get_process_cgroup_relative_paths(process_id):\n         \"\"\"\n-        Creates the directory within the cgroups file system that will contain the cgroups for the extensions.\n+        Returns a tuple with the path of the cpu and memory cgroups for the given process (relative to the mount point of the corresponding\n+        controller).\n+        The 'process_id' can be a numeric PID or the string \"self\" for the current process.\n+        The values returned can be None if the process is not in a cgroup for that controller (e.g. the controller is not mounted).\n         \"\"\"\n-        def create_cgroup(controller):\n-            path = self._get_extension_cgroups_root_path(controller)\n-\n-            if not os.path.isdir(path):\n-                FileSystemCgroupsApi._try_mkdir(path)\n-                logger.info(\"Created {0}\".format(path))\n+        # The contents of the file are similar to\n+        #    # cat /proc/1218/cgroup\n+        #    10:memory:/system.slice/walinuxagent.service\n+        #    3:cpu,cpuacct:/system.slice/walinuxagent.service\n+        #    etc\n+        cpu_path = None\n+        memory_path = None\n+        for line in fileutil.read_file(\"/proc/{0}/cgroup\".format(process_id)).splitlines():\n+            match = re.match(r'\\d+:(?P<controller>(memory|.*cpuacct.*)):(?P<path>.+)', line)\n+            if match is not None:\n+                controller = match.group('controller')\n+                path = match.group('path').lstrip('/') if match.group('path') != '/' else None\n+                if controller == 'memory':\n+                    memory_path = path\n+                else:\n+                    cpu_path = path\n \n-        self._foreach_controller(create_cgroup, 'Failed to create a root cgroup for extensions')\n+        return cpu_path, memory_path\n \n-    def create_extension_cgroups(self, extension_name):\n+    def get_process_cgroup_paths(self, process_id):\n         \"\"\"\n-        Creates a cgroup for the given extension in each of the controllers we are tracking; returns the created cgroups.\n+        Returns a tuple with the path of the cpu and memory cgroups for the given process. The 'process_id' can be a numeric PID or the string \"self\" for the current process.\n+        The values returned can be None if the process is not in a cgroup for that controller (e.g. the controller is not mounted).\n         \"\"\"\n-        cgroups = []\n-\n-        def create_cgroup(controller):\n-            cgroup = self._create_extension_cgroup(controller, extension_name)\n+        cpu_cgroup_relative_path, memory_cgroup_relative_path = self.get_process_cgroup_relative_paths(process_id)\n \n-            if not os.path.isdir(cgroup.path):\n-                FileSystemCgroupsApi._try_mkdir(cgroup.path)\n-                logger.info(\"Created cgroup {0}\".format(cgroup.path))\n+        cpu_mount_point, memory_mount_point = self.get_cgroup_mount_points()\n \n-            cgroups.append(cgroup)\n+        cpu_cgroup_path = os.path.join(cpu_mount_point, cpu_cgroup_relative_path) \\\n+            if cpu_mount_point is not None and cpu_cgroup_relative_path is not None else None\n \n-        self._foreach_controller(create_cgroup, 'Failed to create a cgroup for extension {0}'.format(extension_name))\n+        memory_cgroup_path = os.path.join(memory_mount_point, memory_cgroup_relative_path) \\\n+            if memory_mount_point is not None and memory_cgroup_relative_path is not None else None\n \n-        return cgroups\n+        return cpu_cgroup_path, memory_cgroup_path\n \n-    def remove_extension_cgroups(self, extension_name):\n+    def get_unit_cgroup_paths(self, unit_name):\n         \"\"\"\n-        Deletes the cgroups for the given extension.\n+        Returns a tuple with the path of the cpu and memory cgroups for the given unit.\n+        The values returned can be None if the controller is not mounted.\n+        Ex: ControlGroup=/azure.slice/walinuxagent.service\n+        controlgroup_path[1:] = azure.slice/walinuxagent.service\n         \"\"\"\n-        def remove_cgroup(controller):\n-            path = self._get_extension_cgroup_path(controller, extension_name)\n-\n-            if os.path.exists(path):\n-                try:\n-                    os.rmdir(path)\n-                    logger.info('Deleted cgroup \"{0}\".'.format(path))\n-                except OSError as exception:\n-                    if exception.errno == 16:  # [Errno 16] Device or resource busy\n-                        logger.warn('CGroup \"{0}\" still has active tasks; will not remove it.'.format(path))\n-\n-        self._foreach_controller(remove_cgroup, 'Failed to delete cgroups for extension {0}'.format(extension_name))\n-\n-    def get_extension_cgroups(self, extension_name):\n-        \"\"\"\n-        Returns the cgroups for the given extension.\n-        \"\"\"\n-\n-        cgroups = []\n+        controlgroup_path = systemd.get_unit_property(unit_name, \"ControlGroup\")\n+        cpu_mount_point, memory_mount_point = self.get_cgroup_mount_points()\n \n-        def get_cgroup(controller):\n-            cgroup = self._create_extension_cgroup(controller, extension_name)\n-            cgroups.append(cgroup)\n+        cpu_cgroup_path = os.path.join(cpu_mount_point, controlgroup_path[1:]) \\\n+            if cpu_mount_point is not None else None\n \n-        self._foreach_controller(get_cgroup, 'Failed to retrieve cgroups for extension {0}'.format(extension_name))\n+        memory_cgroup_path = os.path.join(memory_mount_point, controlgroup_path[1:]) \\\n+            if memory_mount_point is not None else None\n \n-        return cgroups\n+        return cpu_cgroup_path, memory_cgroup_path\n \n-    def start_extension_command(self, extension_name, command, timeout, shell, cwd, env, stdout, stderr,\n-                                error_code=ExtensionErrorCodes.PluginUnknownFailure):\n+    @staticmethod\n+    def get_cgroup2_controllers():\n         \"\"\"\n-        Starts a command (install/enable/etc) for an extension and adds the command's PID to the extension's cgroup\n-        :param extension_name: The extension executing the command\n-        :param command: The command to invoke\n-        :param timeout: Number of seconds to wait for command completion\n-        :param cwd: The working directory for the command\n-        :param env: The environment to pass to the command's process\n-        :param stdout: File object to redirect stdout to\n-        :param stderr: File object to redirect stderr to\n-        :param error_code: Extension error code to raise in case of error\n+        Returns a tuple with the mount point for the cgroups v2 controllers, and the currently mounted controllers;\n+        either value can be None if cgroups v2 or its controllers are not mounted\n         \"\"\"\n-        try:\n-            extension_cgroups = self.create_extension_cgroups(extension_name)\n-        except Exception as exception:\n-            extension_cgroups = []\n-            logger.warn(\"Failed to create cgroups for extension '{0}'; resource usage will not be tracked. \"\n-                        \"Error: {1}\".format(extension_name, ustr(exception)))\n-\n-        def pre_exec_function():\n-            os.setsid()\n-\n-            try:\n-                pid = os.getpid()\n-\n-                for cgroup in extension_cgroups:\n-                    try:\n-                        self._add_process_to_cgroup(pid, cgroup.path)\n-                    except Exception as exception:\n-                        logger.warn(\"Failed to add PID {0} to the cgroups for extension '{1}'. \"\n-                                    \"Resource usage will not be tracked. Error: {2}\".format(pid,\n-                                                                                            extension_name,\n-                                                                                            ustr(exception)))\n-            except Exception as e:\n-                logger.warn(\"Failed to add extension {0} to its cgroup. Resource usage will not be tracked. \"\n-                            \"Error: {1}\".format(extension_name, ustr(e)))\n-\n-        process = subprocess.Popen(command,\n-                                   shell=shell,\n-                                   cwd=cwd,\n-                                   env=env,\n-                                   stdout=stdout,\n-                                   stderr=stderr,\n-                                   preexec_fn=pre_exec_function)\n-\n-        self.track_cgroups(extension_cgroups)\n-        process_output = handle_process_completion(process=process,\n-                                                   command=command,\n-                                                   timeout=timeout,\n-                                                   stdout=stdout,\n-                                                   stderr=stderr,\n-                                                   error_code=error_code)\n-\n-        return extension_cgroups, process_output\n-\n-\n-class SystemdCgroupsApi(CGroupsApi):\n-    \"\"\"\n-    Cgroups interface via systemd\n-    \"\"\"\n-\n-    @staticmethod\n-    def create_and_start_unit(unit_filename, unit_contents):\n-        try:\n-            unit_path = os.path.join(UNIT_FILES_FILE_SYSTEM_PATH, unit_filename)\n-            fileutil.write_file(unit_path, unit_contents)\n-            shellutil.run_command([\"systemctl\", \"daemon-reload\"])\n-            shellutil.run_command([\"systemctl\", \"start\", unit_filename])\n-        except Exception as e:\n-            raise CGroupsException(\"Failed to create and start {0}. Error: {1}\".format(unit_filename, ustr(e)))\n+        # the output of mount is similar to\n+        #     $ mount -t cgroup2\n+        #     cgroup2 on /sys/fs/cgroup/unified type cgroup2 (rw,nosuid,nodev,noexec,relatime,nsdelegate)\n+        #\n+        for line in shellutil.run_command(['mount', '-t', 'cgroup2']).splitlines():\n+            match = re.search(r'on\\s+(?P<path>/\\S+)\\s', line)\n+            if match is not None:\n+                mount_point = match.group('path')\n+                controllers = None\n+                controllers_file = os.path.join(mount_point, 'cgroup.controllers')\n+                if os.path.exists(controllers_file):\n+                    controllers = fileutil.read_file(controllers_file)\n+                return mount_point, controllers\n+        return None, None\n \n     @staticmethod\n-    def _get_extensions_slice_root_name():\n-        return \"system-{0}.slice\".format(EXTENSIONS_ROOT_CGROUP_NAME)\n-\n-    def _get_extension_slice_name(self, extension_name):\n-        return \"system-{0}-{1}.slice\".format(EXTENSIONS_ROOT_CGROUP_NAME, self._get_extension_cgroup_name(extension_name))\n-\n-    def create_agent_cgroups(self):\n-        try:\n-            cgroup_unit = None\n-            cgroup_paths = fileutil.read_file(\"/proc/self/cgroup\")\n-            for entry in cgroup_paths.splitlines():\n-                fields = entry.split(':')\n-                if fields[1] == \"name=systemd\":\n-                    cgroup_unit = fields[2].lstrip(os.path.sep)\n-\n-            cpu_cgroup_path = os.path.join(CGROUPS_FILE_SYSTEM_ROOT, 'cpu', cgroup_unit)\n-            memory_cgroup_path = os.path.join(CGROUPS_FILE_SYSTEM_ROOT, 'memory', cgroup_unit)\n-\n-            return [CGroup.create(cpu_cgroup_path, 'cpu', VM_AGENT_CGROUP_NAME),\n-                    CGroup.create(memory_cgroup_path, 'memory', VM_AGENT_CGROUP_NAME)]\n-        except Exception as e:\n-            raise CGroupsException(\"Failed to get paths of agent's cgroups. Error: {0}\".format(ustr(e)))\n-\n-    def create_extension_cgroups_root(self):\n-        unit_contents = \"\"\"\n-[Unit]\n-Description=Slice for walinuxagent extensions\n-DefaultDependencies=no\n-Before=slices.target\n-Requires=system.slice\n-After=system.slice\"\"\"\n-        unit_filename = self._get_extensions_slice_root_name()\n-        self.create_and_start_unit(unit_filename, unit_contents)\n-        logger.info(\"Created slice for walinuxagent extensions {0}\".format(unit_filename))\n-\n-    def create_extension_cgroups(self, extension_name):\n-        # TODO: The slice created by this function is not used currently. We need to create the extension scopes within\n-        #  this slice and use the slice to monitor the cgroups. Also see comment in get_extension_cgroups.\n-        # the slice.\n-        unit_contents = \"\"\"\n-[Unit]\n-Description=Slice for extension {0}\n-DefaultDependencies=no\n-Before=slices.target\n-Requires=system-{1}.slice\n-After=system-{1}.slice\"\"\".format(extension_name, EXTENSIONS_ROOT_CGROUP_NAME)\n-        unit_filename = self._get_extension_slice_name(extension_name)\n-        self.create_and_start_unit(unit_filename, unit_contents)\n-        logger.info(\"Created slice for {0}\".format(unit_filename))\n-\n-        return self.get_extension_cgroups(extension_name)\n-\n-    def remove_extension_cgroups(self, extension_name):\n-        # For transient units, cgroups are released automatically when the unit stops, so it is sufficient\n-        # to call stop on them. Persistent cgroups are released when the unit is disabled and its configuration\n-        # file is deleted.\n-        # The assumption is that this method is called after the extension has been uninstalled. For now, since\n-        # we're running extensions within transient scopes which clean up after they finish running, no removal\n-        # of units is needed. In the future, when the extension is running under its own slice,\n-        # the following clean up is needed.\n-        unit_filename = self._get_extension_slice_name(extension_name)\n-        try:\n-            unit_path = os.path.join(UNIT_FILES_FILE_SYSTEM_PATH, unit_filename)\n-            shellutil.run_command([\"systemctl\", \"stop\", unit_filename])\n-            fileutil.rm_files(unit_path)\n-            shellutil.run_command([\"systemctl\", \"daemon-reload\"])\n-        except Exception as e:\n-            raise CGroupsException(\"Failed to remove {0}. Error: {1}\".format(unit_filename, ustr(e)))\n-\n-    def get_extension_cgroups(self, extension_name):\n-        # TODO: The slice returned by this function is not used currently. We need to create the extension scopes within\n-        #  this slice and use the slice to monitor the cgroups. Also see comment in create_extension_cgroups.\n-        slice_name = self._get_extension_cgroup_name(extension_name)\n-\n-        cgroups = []\n-\n-        def create_cgroup(controller):\n-            cpu_cgroup_path = os.path.join(CGROUPS_FILE_SYSTEM_ROOT, controller, 'system.slice', slice_name)\n-            cgroups.append(CGroup.create(cpu_cgroup_path, controller, extension_name))\n-\n-        self._foreach_controller(create_cgroup, 'Cannot retrieve cgroup for extension {0}; resource usage will not be tracked.'.format(extension_name))\n-\n-        return cgroups\n+    def _is_systemd_failure(scope_name, stderr):\n+        stderr.seek(0)\n+        stderr = ustr(stderr.read(TELEMETRY_MESSAGE_MAX_LEN), encoding='utf-8', errors='backslashreplace')\n+        unit_not_found = \"Unit {0} not found.\".format(scope_name)\n+        return unit_not_found in stderr or scope_name not in stderr\n \n     @staticmethod\n-    def _is_systemd_failure(scope_name, process_output):\n-        unit_not_found = \"Unit {0} not found.\".format(scope_name)\n-        return unit_not_found in process_output or scope_name not in process_output\n+    def get_extension_slice_name(extension_name, old_slice=False):\n+        # The old slice makes it difficult for user to override the limits because they need to place drop-in files on every upgrade if extension slice is different for each version.\n+        # old slice includes <HandlerName>.<ExtensionName>-<HandlerVersion>\n+        # new slice without version <HandlerName>.<ExtensionName>\n+        if not old_slice:\n+            extension_name = extension_name.rsplit(\"-\", 1)[0]\n+        # Since '-' is used as a separator in systemd unit names, we replace it with '_' to prevent side-effects.\n+        return EXTENSION_SLICE_PREFIX + \"-\" + extension_name.replace('-', '_') + \".slice\"\n \n-    def start_extension_command(self, extension_name, command, timeout, shell, cwd, env, stdout, stderr,\n+    def start_extension_command(self, extension_name, command, cmd_name, timeout, shell, cwd, env, stdout, stderr,\n                                 error_code=ExtensionErrorCodes.PluginUnknownFailure):\n-        scope_name = \"{0}_{1}\".format(self._get_extension_cgroup_name(extension_name), uuid.uuid4())\n-\n-        process = subprocess.Popen(\n-            \"systemd-run --unit={0} --scope {1}\".format(scope_name, command),\n-            shell=shell,\n-            cwd=cwd,\n-            stdout=stdout,\n-            stderr=stderr,\n-            env=env,\n-            preexec_fn=os.setsid)\n+        scope = \"{0}_{1}\".format(cmd_name, uuid.uuid4())\n+        extension_slice_name = self.get_extension_slice_name(extension_name)\n+        with self._systemd_run_commands_lock:\n+            process = subprocess.Popen(  # pylint: disable=W1509\n+                # Some distros like ubuntu20 by default cpu and memory accounting enabled. Thus create nested cgroups under the extension slice\n+                # So disabling CPU and Memory accounting prevents from creating nested cgroups, so that all the counters will be present in extension Cgroup\n+                # since slice unit file configured with accounting enabled.\n+                \"systemd-run --property=CPUAccounting=no --property=MemoryAccounting=no --unit={0} --scope --slice={1} {2}\".format(scope, extension_slice_name, command),\n+                shell=shell,\n+                cwd=cwd,\n+                stdout=stdout,\n+                stderr=stderr,\n+                env=env,\n+                preexec_fn=os.setsid)\n+\n+            # We start systemd-run with shell == True so process.pid is the shell's pid, not the pid for systemd-run\n+            self._systemd_run_commands.append(process.pid)\n+\n+        scope_name = scope + '.scope'\n+\n+        logger.info(\"Started extension in unit '{0}'\", scope_name)\n+\n+        cpu_cgroup = None\n+        try:\n+            cgroup_relative_path = os.path.join('azure.slice/azure-vmextensions.slice', extension_slice_name)\n \n-        logger.info(\"Started extension using scope '{0}'\", scope_name)\n-        extension_cgroups = []\n+            cpu_cgroup_mountpoint, memory_cgroup_mountpoint = self.get_cgroup_mount_points()\n \n-        def create_cgroup(controller):\n-            cgroup_path = os.path.join(CGROUPS_FILE_SYSTEM_ROOT, controller, 'system.slice', scope_name + \".scope\")\n-            extension_cgroups.append(CGroup.create(cgroup_path, controller, extension_name))\n+            if cpu_cgroup_mountpoint is None:\n+                logger.info(\"The CPU controller is not mounted; will not track resource usage\")\n+            else:\n+                cpu_cgroup_path = os.path.join(cpu_cgroup_mountpoint, cgroup_relative_path)\n+                cpu_cgroup = CpuCgroup(extension_name, cpu_cgroup_path)\n+                CGroupsTelemetry.track_cgroup(cpu_cgroup)\n \n-        self._foreach_controller(create_cgroup, 'Cannot create cgroup for extension {0}; '\n-                                                'resource usage will not be tracked.'.format(extension_name))\n-        self.track_cgroups(extension_cgroups)\n+            if memory_cgroup_mountpoint is None:\n+                logger.info(\"The Memory controller is not mounted; will not track resource usage\")\n+            else:\n+                memory_cgroup_path = os.path.join(memory_cgroup_mountpoint, cgroup_relative_path)\n+                memory_cgroup = MemoryCgroup(extension_name, memory_cgroup_path)\n+                CGroupsTelemetry.track_cgroup(memory_cgroup)\n+\n+        except IOError as e:\n+            if e.errno == 2:  # 'No such file or directory'\n+                logger.info(\"The extension command already completed; will not track resource usage\")\n+            logger.info(\"Failed to start tracking resource usage for the extension: {0}\", ustr(e))\n+        except Exception as e:\n+            logger.info(\"Failed to start tracking resource usage for the extension: {0}\", ustr(e))\n \n         # Wait for process completion or timeout\n         try:\n-            process_output = handle_process_completion(process=process,\n-                                                       command=command,\n-                                                       timeout=timeout,\n-                                                       stdout=stdout,\n-                                                       stderr=stderr,\n-                                                       error_code=error_code)\n+            return handle_process_completion(process=process, command=command, timeout=timeout, stdout=stdout,\n+                                             stderr=stderr, error_code=error_code, cpu_cgroup=cpu_cgroup)\n         except ExtensionError as e:\n             # The extension didn't terminate successfully. Determine whether it was due to systemd errors or\n             # extension errors.\n-            process_output = read_output(stdout, stderr)\n-            systemd_failure = self._is_systemd_failure(scope_name, process_output)\n-\n-            if not systemd_failure:\n+            if not self._is_systemd_failure(scope, stderr):\n                 # There was an extension error; it either timed out or returned a non-zero exit code. Re-raise the error\n                 raise\n+\n+            # There was an issue with systemd-run. We need to log it and retry the extension without systemd.\n+            process_output = read_output(stdout, stderr)\n+            # Reset the stdout and stderr\n+            stdout.truncate(0)\n+            stderr.truncate(0)\n+\n+            if isinstance(e, ExtensionOperationError):\n+                # no-member: Instance of 'ExtensionError' has no 'exit_code' member (no-member) - Disabled: e is actually an ExtensionOperationError\n+                err_msg = 'Systemd process exited with code %s and output %s' % (\n+                    e.exit_code, process_output)  # pylint: disable=no-member\n             else:\n-                # There was an issue with systemd-run. We need to log it and retry the extension without systemd.\n-                err_msg = 'Systemd process exited with code %s and output %s' % (e.exit_code, process_output) \\\n-                    if isinstance(e, ExtensionOperationError) else \"Systemd timed-out, output: %s\" % process_output\n-                event_msg = 'Failed to run systemd-run for unit {0}.scope. ' \\\n-                            'Will retry invoking the extension without systemd. ' \\\n-                            'Systemd-run error: {1}'.format(scope_name, err_msg)\n-                add_event(AGENT_NAME,\n-                          version=CURRENT_VERSION,\n-                          op=WALAEventOperation.InvokeCommandUsingSystemd,\n-                          is_success=False,\n-                          log_event=False,\n-                          message=event_msg)\n-                logger.warn(event_msg)\n-\n-                # Reset the stdout and stderr\n-                stdout.truncate(0)\n-                stderr.truncate(0)\n-\n-                # Try invoking the process again, this time without systemd-run\n-                logger.info('Extension invocation using systemd failed, falling back to regular invocation '\n-                            'without cgroups tracking.')\n-                process = subprocess.Popen(command,\n-                                           shell=shell,\n-                                           cwd=cwd,\n-                                           env=env,\n-                                           stdout=stdout,\n-                                           stderr=stderr,\n-                                           preexec_fn=os.setsid)\n-\n-                process_output = handle_process_completion(process=process,\n-                                                           command=command,\n-                                                           timeout=timeout,\n-                                                           stdout=stdout,\n-                                                           stderr=stderr,\n-                                                           error_code=error_code)\n-\n-                return [], process_output\n-\n-        # The process terminated in time and successfully\n-        return extension_cgroups, process_output\n+                err_msg = \"Systemd timed-out, output: %s\" % process_output\n+            raise SystemdRunError(err_msg)\n+        finally:\n+            with self._systemd_run_commands_lock:\n+                self._systemd_run_commands.remove(process.pid)\n \n     def cleanup_legacy_cgroups(self):\n         \"\"\"\n         Previous versions of the daemon (2.2.31-2.2.40) wrote their PID to /sys/fs/cgroup/{cpu,memory}/WALinuxAgent/WALinuxAgent;\n         starting from version 2.2.41 we track the agent service in walinuxagent.service instead of WALinuxAgent/WALinuxAgent. If\n-        we find that any of the legacy groups include the PID of the daemon then we disable data collection for this instance\n-        (under systemd, moving PIDs across the cgroup file system can produce unpredictable results)\n+        we find that any of the legacy groups include the PID of the daemon then we need to disable data collection for this\n+        instance (under systemd, moving PIDs across the cgroup file system can produce unpredictable results)\n         \"\"\"\n-        def report_error(_, daemon_pid):\n-            raise CGroupsException(\n-                \"The daemon's PID ({0}) was already added to the legacy cgroup; this invalidates resource usage data.\".format(daemon_pid))\n-\n-        CGroupsApi._foreach_legacy_cgroup(report_error)\n+        return CGroupsApi._foreach_legacy_cgroup(lambda *_: None)\n",
+ "diff_truncated": true
+}

@@ -1,0 +1,1619 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~hectorcao/ubuntu/+source/qemu-hwe/+git/qemu-hwe/+merge/511470",
+ "id": "511470",
+ "title": "PPA: https://launchpad.net/~hectorcao/+archive/ubuntu/lp2164849",
+ "source_branch": "lp2166749-resolute",
+ "target_branch": "ubuntu/resolute-devel",
+ "revision": "d5c98a12df7174333f775f4e14ff6a78e0db1448",
+ "base_revision": "7972f88a5211637f02d50a7a2f54bd288a9f4591",
+ "description": "PPA: https://launchpad.net/~hectorcao/+archive/ubuntu/lp2164849",
+ "commit_message": null,
+ "diffstat": {
+  ".gitlab-ci.d/base.yml": [
+   3,
+   4
+  ],
+  ".gitlab-ci.d/buildtest.yml": [
+   29,
+   34
+  ],
+  "dev/null": [
+   0,
+   148
+  ],
+  ".gitlab-ci.d/container-cross.yml": [
+   2,
+   20
+  ],
+  ".gitlab-ci.d/containers.yml": [
+   1,
+   4
+  ],
+  ".gitlab-ci.d/crossbuilds.yml": [
+   1,
+   46
+  ],
+  ".gitlab-ci.d/macos-14.vars": [
+   1,
+   1
+  ],
+  ".gitlab-ci.d/macos.yml": [
+   47,
+   0
+  ],
+  ".gitlab-ci.d/qemu-project.yml": [
+   1,
+   1
+  ],
+  ".gitlab-ci.d/windows.yml": [
+   8,
+   1
+  ],
+  ".mailmap": [
+   1,
+   0
+  ],
+  "Kconfig": [
+   1,
+   0
+  ],
+  "MAINTAINERS": [
+   215,
+   125
+  ],
+  "Makefile": [
+   1,
+   1
+  ],
+  "VERSION": [
+   1,
+   1
+  ],
+  "accel/Kconfig": [
+   3,
+   0
+  ],
+  "accel/accel-common.c": [
+   5,
+   0
+  ],
+  "accel/accel-system.c": [
+   1,
+   1
+  ],
+  "accel/hvf/hvf-accel-ops.c": [
+   2,
+   16
+  ],
+  "accel/hvf/hvf-all.c": [
+   59,
+   133
+  ],
+  "accel/hvf/meson.build": [
+   1,
+   4
+  ],
+  "accel/hvf/trace-events": [
+   1,
+   0
+  ],
+  "accel/kvm/kvm-accel-ops.c": [
+   1,
+   0
+  ],
+  "accel/kvm/kvm-all.c": [
+   340,
+   52
+  ],
+  "accel/kvm/trace-events": [
+   2,
+   0
+  ],
+  "accel/meson.build": [
+   2,
+   0
+  ],
+  "accel/mshv/irq.c": [
+   1,
+   2
+  ],
+  "accel/mshv/mem.c": [
+   28,
+   378
+  ],
+  "accel/mshv/meson.build": [
+   1,
+   4
+  ],
+  "accel/mshv/mshv-all.c": [
+   3,
+   5
+  ],
+  "accel/mshv/trace-events": [
+   0,
+   5
+  ],
+  "accel/nitro/meson.build": [
+   3,
+   0
+  ],
+  "accel/nitro/nitro-accel.c": [
+   284,
+   0
+  ],
+  "accel/nitro/trace-events": [
+   6,
+   0
+  ],
+  "accel/nitro/trace.h": [
+   2,
+   0
+  ],
+  "accel/qtest/meson.build": [
+   4,
+   1
+  ],
+  "accel/qtest/qtest.c": [
+   2,
+   2
+  ],
+  "accel/stubs/kvm-stub.c": [
+   18,
+   0
+  ],
+  "accel/stubs/meson.build": [
+   10,
+   10
+  ],
+  "accel/stubs/nitro-stub.c": [
+   11,
+   0
+  ],
+  "accel/stubs/whpx-stub.c": [
+   1,
+   0
+  ],
+  "accel/tcg/atomic_common.c.inc": [
+   0,
+   32
+  ],
+  "accel/tcg/atomic_template.h": [
+   2,
+   2
+  ],
+  "accel/tcg/cputlb.c": [
+   27,
+   67
+  ],
+  "accel/tcg/icount-common.c": [
+   12,
+   13
+  ],
+  "accel/tcg/internal-common.h": [
+   3,
+   2
+  ],
+  "accel/tcg/ldst_atomicity.c.inc": [
+   21,
+   128
+  ],
+  "accel/tcg/tb-maint.c": [
+   19,
+   24
+  ],
+  "accel/tcg/tcg-accel-ops-mttcg.c": [
+   2,
+   1
+  ],
+  "accel/tcg/tcg-all.c": [
+   1,
+   1
+  ],
+  "accel/tcg/tcg-runtime.c": [
+   0,
+   15
+  ],
+  "accel/tcg/tcg-runtime.h": [
+   0,
+   23
+  ],
+  "accel/tcg/translator.c": [
+   1,
+   3
+  ],
+  "accel/tcg/user-exec-stub.c": [
+   33,
+   0
+  ],
+  "accel/tcg/user-exec.c": [
+   36,
+   35
+  ],
+  "accel/whpx/meson.build": [
+   7,
+   0
+  ],
+  "accel/whpx/whpx-accel-ops.c": [
+   119,
+   0
+  ],
+  "accel/whpx/whpx-common.c": [
+   589,
+   0
+  ],
+  "accel/xen/meson.build": [
+   1,
+   1
+  ],
+  "accel/xen/xen-all.c": [
+   1,
+   1
+  ],
+  "audio/alsaaudio.c": [
+   124,
+   149
+  ],
+  "audio/audio-be.c": [
+   274,
+   0
+  ],
+  "audio/audio-mixeng-be.c": [
+   1782,
+   0
+  ],
+  "audio/audio.c": [
+   192,
+   2053
+  ],
+  "audio/audio_int.h": [
+   63,
+   107
+  ],
+  "audio/audio_template.h": [
+   88,
+   124
+  ],
+  "audio/audio_win_int.c": [
+   15,
+   16
+  ],
+  "audio/coreaudio.m": [
+   199,
+   194
+  ],
+  "audio/dbusaudio.c": [
+   95,
+   73
+  ],
+  "audio/dsound_template.h": [
+   41,
+   48
+  ],
+  "audio/dsoundaudio.c": [
+   124,
+   141
+  ],
+  "audio/jackaudio.c": [
+   88,
+   69
+  ],
+  "audio/meson.build": [
+   7,
+   5
+  ],
+  "audio/mixeng.c": [
+   0,
+   1
+  ],
+  "audio/noaudio.c": [
+   39,
+   39
+  ],
+  "audio/ossaudio.c": [
+   147,
+   153
+  ],
+  "audio/paaudio.c": [
+   141,
+   148
+  ],
+  "audio/pwaudio.c": [
+   111,
+   103
+  ],
+  "audio/sdlaudio.c": [
+   89,
+   87
+  ],
+  "audio/sndioaudio.c": [
+   55,
+   53
+  ],
+  "audio/spiceaudio.c": [
+   64,
+   83
+  ],
+  "audio/trace-events": [
+   46,
+   0
+  ],
+  "audio/wavaudio.c": [
+   47,
+   54
+  ],
+  "audio/wavcapture.c": [
+   6,
+   3
+  ],
+  "backends/cryptodev-lkcf.c": [
+   1,
+   1
+  ],
+  "backends/hostmem.c": [
+   3,
+   2
+  ],
+  "backends/igvm-cfg.c": [
+   62,
+   2
+  ],
+  "backends/igvm.c": [
+   164,
+   151
+  ],
+  "backends/iommufd.c": [
+   112,
+   3
+  ],
+  "backends/spdm-socket.c": [
+   4,
+   4
+  ],
+  "backends/tpm/tpm_emulator.c": [
+   24,
+   38
+  ],
+  "backends/tpm/tpm_util.c": [
+   2,
+   1
+  ],
+  "backends/trace-events": [
+   11,
+   1
+  ],
+  "block.c": [
+   3,
+   3
+  ],
+  "block/accounting.c": [
+   9,
+   1
+  ],
+  "block/aio_task.c": [
+   1,
+   1
+  ],
+  "block/blkdebug.c": [
+   15,
+   2
+  ],
+  "block/blkio.c": [
+   1,
+   1
+  ],
+  "block/blklogwrites.c": [
+   1,
+   0
+  ],
+  "block/block-backend.c": [
+   35,
+   14
+  ],
+  "block/commit.c": [
+   8,
+   2
+  ],
+  "block/crypto.c": [
+   4,
+   4
+  ],
+  "block/curl.c": [
+   75,
+   42
+  ],
+  "block/export/export.c": [
+   44,
+   4
+  ],
+  "block/export/fuse.c": [
+   1048,
+   302
+  ],
+  "block/export/vduse-blk.c": [
+   8,
+   0
+  ],
+  "block/export/vhost-user-blk-server.c": [
+   11,
+   2
+  ],
+  "block/export/virtio-blk-handler.c": [
+   2,
+   1
+  ],
+  "block/file-posix.c": [
+   1,
+   16
+  ],
+  "block/file-win32.c": [
+   1,
+   33
+  ],
+  "block/graph-lock.c": [
+   5,
+   7
+  ],
+  "block/io.c": [
+   22,
+   3
+  ],
+  "block/io_uring.c": [
+   46,
+   38
+  ],
+  "block/linux-aio.c": [
+   94,
+   18
+  ],
+  "block/mirror.c": [
+   55,
+   38
+  ],
+  "block/monitor/block-hmp-cmds.c": [
+   3,
+   3
+  ],
+  "block/nfs.c": [
+   59,
+   10
+  ],
+  "block/parallels-ext.c": [
+   1,
+   0
+  ],
+  "block/qapi.c": [
+   5,
+   5
+  ],
+  "block/qcow2-cluster.c": [
+   49,
+   3
+  ],
+  "block/qcow2.c": [
+   76,
+   7
+  ],
+  "block/qcow2.h": [
+   5,
+   0
+  ],
+  "block/qed.c": [
+   11,
+   5
+  ],
+  "block/throttle-groups.c": [
+   66,
+   34
+  ],
+  "block/trace-events": [
+   2,
+   1
+  ],
+  "block/vmdk.c": [
+   4,
+   4
+  ],
+  "block/win32-aio.c": [
+   2,
+   1
+  ],
+  "blockjob.c": [
+   1,
+   1
+  ],
+  "bsd-user/bsd-mem.h": [
+   0,
+   3
+  ],
+  "bsd-user/bsd-misc.c": [
+   192,
+   0
+  ],
+  "bsd-user/bsd-misc.h": [
+   366,
+   0
+  ],
+  "bsd-user/bsd-proc.c": [
+   0,
+   1
+  ],
+  "bsd-user/freebsd/os-proc.h": [
+   0,
+   2
+  ],
+  "bsd-user/freebsd/os-syscall.c": [
+   52,
+   1
+  ],
+  "bsd-user/meson.build": [
+   1,
+   0
+  ],
+  "bsd-user/mmap.c": [
+   5,
+   3
+  ],
+  "bsd-user/qemu-bsd.h": [
+   15,
+   1
+  ],
+  "bsd-user/qemu.h": [
+   1,
+   16
+  ],
+  "bsd-user/signal.c": [
+   6,
+   4
+  ],
+  "bsd-user/strace.c": [
+   0,
+   34
+  ],
+  "bsd-user/syscall_defs.h": [
+   70,
+   23
+  ],
+  "chardev/baum.c": [
+   43,
+   9
+  ],
+  "chardev/char-console.c": [
+   5,
+   5
+  ],
+  "chardev/char-fe.c": [
+   4,
+   4
+  ],
+  "chardev/char-file.c": [
+   13,
+   13
+  ],
+  "chardev/char-hub.c": [
+   13,
+   14
+  ],
+  "chardev/char-io.c": [
+   5,
+   0
+  ],
+  "chardev/char-mux.c": [
+   17,
+   13
+  ],
+  "chardev/char-null.c": [
+   3,
+   6
+  ],
+  "chardev/char-parallel.c": [
+   18,
+   23
+  ],
+  "chardev/char-pipe.c": [
+   15,
+   15
+  ],
+  "chardev/char-pty.c": [
+   33,
+   23
+  ],
+  "chardev/char-ringbuf.c": [
+   11,
+   9
+  ],
+  "chardev/char-serial.c": [
+   21,
+   18
+  ],
+  "chardev/char-socket.c": [
+   39,
+   68
+  ],
+  "chardev/char-stdio.c": [
+   15,
+   15
+  ],
+  "chardev/char-udp.c": [
+   7,
+   11
+  ],
+  "chardev/char-win-stdio.c": [
+   13,
+   12
+  ],
+  "chardev/char-win.c": [
+   10,
+   6
+  ],
+  "chardev/char.c": [
+   94,
+   43
+  ],
+  "chardev/msmouse.c": [
+   7,
+   6
+  ],
+  "chardev/spice.c": [
+   21,
+   31
+  ],
+  "chardev/wctablet.c": [
+   5,
+   5
+  ],
+  "common-user/safe-syscall.S": [
+   1,
+   1
+  ],
+  "configs/devices/arm-softmmu/default.mak": [
+   0,
+   1
+  ],
+  "configs/devices/riscv64-softmmu/default.mak": [
+   1,
+   0
+  ],
+  "configs/targets/aarch64-bsd-user.mak": [
+   1,
+   1
+  ],
+  "configs/targets/aarch64-linux-user.mak": [
+   1,
+   1
+  ],
+  "configs/targets/aarch64-softmmu.c": [
+   3,
+   0
+  ],
+  "configs/targets/aarch64-softmmu.mak": [
+   2,
+   1
+  ],
+  "configs/targets/aarch64_be-linux-user.mak": [
+   1,
+   1
+  ],
+  "configs/targets/alpha-linux-user.mak": [
+   3,
+   1
+  ],
+  "configs/targets/alpha-softmmu.mak": [
+   3,
+   1
+  ],
+  "configs/targets/arm-bsd-user.mak": [
+   1,
+   1
+  ],
+  "configs/targets/arm-linux-user.mak": [
+   1,
+   1
+  ],
+  "configs/targets/arm-softmmu.c": [
+   3,
+   0
+  ],
+  "configs/targets/arm-softmmu.mak": [
+   2,
+   1
+  ],
+  "configs/targets/armeb-linux-user.mak": [
+   1,
+   1
+  ],
+  "configs/targets/avr-softmmu.mak": [
+   2,
+   1
+  ],
+  "configs/targets/hexagon-linux-user.mak": [
+   2,
+   1
+  ],
+  "configs/targets/hppa-linux-user.mak": [
+   1,
+   0
+  ],
+  "configs/targets/hppa-softmmu.mak": [
+   1,
+   0
+  ],
+  "configs/targets/i386-bsd-user.mak": [
+   1,
+   1
+  ],
+  "configs/targets/i386-linux-user.mak": [
+   1,
+   1
+  ],
+  "configs/targets/i386-softmmu.mak": [
+   2,
+   1
+  ],
+  "configs/targets/loongarch64-linux-user.mak": [
+   2,
+   1
+  ],
+  "configs/targets/loongarch64-softmmu.mak": [
+   2,
+   1
+  ],
+  "configs/targets/m68k-linux-user.mak": [
+   1,
+   1
+  ],
+  "configs/targets/m68k-softmmu.mak": [
+   1,
+   1
+  ],
+  "configs/targets/microblaze-linux-user.mak": [
+   1,
+   1
+  ],
+  "configs/targets/microblaze-softmmu.mak": [
+   2,
+   1
+  ],
+  "configs/targets/microblazeel-linux-user.mak": [
+   1,
+   1
+  ],
+  "configs/targets/mips-softmmu.mak": [
+   1,
+   0
+  ],
+  "configs/targets/mips64-softmmu.mak": [
+   1,
+   0
+  ],
+  "configs/targets/mips64el-softmmu.mak": [
+   1,
+   0
+  ],
+  "configs/targets/mipsel-softmmu.mak": [
+   1,
+   0
+  ],
+  "configs/targets/or1k-linux-user.mak": [
+   3,
+   1
+  ],
+  "configs/targets/or1k-softmmu.mak": [
+   4,
+   1
+  ],
+  "configs/targets/ppc-linux-user.mak": [
+   1,
+   1
+  ],
+  "configs/targets/ppc-softmmu.mak": [
+   1,
+   1
+  ],
+  "configs/targets/ppc64-linux-user.mak": [
+   1,
+   1
+  ],
+  "configs/targets/ppc64-softmmu.mak": [
+   1,
+   1
+  ],
+  "configs/targets/ppc64le-linux-user.mak": [
+   1,
+   1
+  ],
+  "configs/targets/riscv32-linux-user.mak": [
+   1,
+   1
+  ],
+  "configs/targets/riscv32-softmmu.mak": [
+   2,
+   1
+  ],
+  "configs/targets/riscv64-bsd-user.mak": [
+   1,
+   1
+  ],
+  "configs/targets/riscv64-linux-user.mak": [
+   1,
+   1
+  ],
+  "configs/targets/riscv64-softmmu.mak": [
+   2,
+   1
+  ],
+  "configs/targets/rx-softmmu.mak": [
+   3,
+   1
+  ],
+  "configs/targets/s390x-linux-user.mak": [
+   2,
+   1
+  ],
+  "configs/targets/s390x-softmmu.mak": [
+   2,
+   1
+  ],
+  "configs/targets/sh4-softmmu.mak": [
+   1,
+   0
+  ],
+  "configs/targets/sh4eb-softmmu.mak": [
+   1,
+   0
+  ],
+  "configs/targets/sparc-linux-user.mak": [
+   2,
+   0
+  ],
+  "configs/targets/sparc-softmmu.mak": [
+   3,
+   0
+  ],
+  "configs/targets/sparc32plus-linux-user.mak": [
+   2,
+   0
+  ],
+  "configs/targets/sparc64-linux-user.mak": [
+   2,
+   1
+  ],
+  "configs/targets/sparc64-softmmu.mak": [
+   3,
+   1
+  ],
+  "configs/targets/tricore-softmmu.mak": [
+   2,
+   0
+  ],
+  "configs/targets/x86_64-bsd-user.mak": [
+   1,
+   1
+  ],
+  "configs/targets/x86_64-linux-user.mak": [
+   1,
+   1
+  ],
+  "configs/targets/x86_64-softmmu.mak": [
+   2,
+   1
+  ],
+  "configs/targets/xtensa-softmmu.mak": [
+   1,
+   0
+  ],
+  "configs/targets/xtensaeb-softmmu.mak": [
+   1,
+   0
+  ],
+  "configure": [
+   54,
+   73
+  ],
+  "contrib/elf2dmp/main.c": [
+   15,
+   17
+  ],
+  "contrib/plugins/bbv.c": [
+   6,
+   1
+  ],
+  "contrib/plugins/cpp.cpp": [
+   376,
+   0
+  ],
+  "contrib/plugins/execlog.c": [
+   8,
+   6
+  ],
+  "contrib/plugins/hotblocks.c": [
+   14,
+   6
+  ],
+  "contrib/plugins/meson.build": [
+   23,
+   15
+  ],
+  "contrib/plugins/traps.c": [
+   1,
+   1
+  ],
+  "contrib/plugins/uftrace.c": [
+   127,
+   12
+  ],
+  "contrib/plugins/uftrace_symbols.py": [
+   5,
+   0
+  ],
+  "contrib/vhost-user-bridge/meson.build": [
+   4,
+   0
+  ],
+  "contrib/vhost-user-bridge/vhost-user-bridge.c": [
+   7,
+   0
+  ],
+  "contrib/vhost-user-gpu/virgl.c": [
+   7,
+   0
+  ],
+  "contrib/vhost-user-gpu/vugpu.h": [
+   9,
+   0
+  ],
+  "crypto/tlscredsanon.c": [
+   2,
+   0
+  ],
+  "crypto/x509-utils.c": [
+   2,
+   1
+  ],
+  "debian/changelog": [
+   370,
+   0
+  ],
+  "debian/control": [
+   258,
+   71
+  ],
+  "debian/control-in": [
+   126,
+   20
+  ],
+  "debian/control.mk": [
+   7,
+   35
+  ],
+  "debian/copyright": [
+   0,
+   2
+  ],
+  "debian/gbp.conf": [
+   1,
+   2
+  ],
+  "debian/hwe-helper/99-ubuntu-virt.conf": [
+   7,
+   0
+  ],
+  "debian/hwe-helper/postrm-snippet": [
+   3,
+   0
+  ],
+  "debian/hwe-helper/ubuntu_virt_postrm_hook": [
+   66,
+   0
+  ],
+  "debian/patches/gnu-hurd.patch": [
+   5,
+   5
+  ],
+  "debian/patches/hw-q35-fix-VGA-text-console-with-SMM-disabled.patch": [
+   86,
+   0
+  ],
+  "debian/patches/iotest-161-fix-race.patch": [
+   19,
+   0
+  ],
+  "debian/patches/note-missing-module-pkg-name.diff": [
+   19,
+   23
+  ],
+  "debian/patches/seabios-hppa-stdbool.diff": [
+   9,
+   0
+  ],
+  "debian/patches/series": [
+   15,
+   1
+  ],
+  "debian/patches/target-loongarch-Fixes-for-endianness-problems-in-ve.patch": [
+   131,
+   0
+  ],
+  "debian/patches/target-loongarch-fix-data-race-in-CSR_ESTAT.patch": [
+   100,
+   0
+  ],
+  "debian/patches/ubuntu/define-ubuntu-machine-types.patch": [
+   151,
+   0
+  ],
+  "debian/patches/ubuntu/target-riscv-kvm-add-KVM-support-for-Zicbop-extensio.patch": [
+   4,
+   0
+  ],
+  "debian/qemu-block-extra-hwe.postinst": [
+   4,
+   0
+  ],
+  "debian/qemu-kvm-init": [
+   3,
+   0
+  ],
+  "debian/qemu-system-common-hwe.install": [
+   4,
+   0
+  ],
+  "debian/qemu-system-common-hwe.maintscript": [
+   1,
+   0
+  ],
+  "debian/rules": [
+   30,
+   5
+  ],
+  "debian/scripts/hwe-helper": [
+   141,
+   0
+  ],
+  "debian/tests/control": [
+   80,
+   0
+  ],
+  "debian/tests/hwe-check-default.py": [
+   74,
+   0
+  ],
+  "debian/tests/hwe-test-libvirtd-switch.py": [
+   85,
+   0
+  ],
+  "debian/tests/hwe-test-purge.py": [
+   138,
+   0
+  ],
+  "debian/tests/hwe_lib.py": [
+   227,
+   0
+  ],
+  "debian/tests/test-qemu-user.sh": [
+   9,
+   1
+  ],
+  "debian/ubuntu-helper-virt-hwe.install": [
+   4,
+   0
+  ],
+  "debian/watch": [
+   1,
+   1
+  ],
+  "disas/disas-host.c": [
+   0,
+   9
+  ],
+  "disas/riscv.c": [
+   33,
+   21
+  ],
+  "disas/riscv.h": [
+   1,
+   1
+  ],
+  "docs/about/build-platforms.rst": [
+   3,
+   3
+  ],
+  "docs/about/deprecated.rst": [
+   32,
+   101
+  ],
+  "docs/about/emulation.rst": [
+   43,
+   20
+  ],
+  "docs/about/removed-features.rst": [
+   88,
+   12
+  ],
+  "docs/conf.py": [
+   2,
+   2
+  ],
+  "docs/devel/build-system.rst": [
+   14,
+   2
+  ],
+  "docs/devel/clocks.rst": [
+   3,
+   3
+  ],
+  "docs/devel/code-provenance.rst": [
+   2,
+   2
+  ],
+  "docs/devel/codebase.rst": [
+   0,
+   2
+  ],
+  "docs/devel/loads-stores.rst": [
+   4,
+   4
+  ],
+  "docs/devel/memory.rst": [
+   3,
+   7
+  ],
+  "docs/devel/migration/compatibility.rst": [
+   1,
+   1
+  ],
+  "docs/devel/migration/features.rst": [
+   1,
+   0
+  ],
+  "docs/devel/migration/xbzrle.rst": [
+   64,
+   42
+  ],
+  "docs/devel/multiple-iothreads.rst": [
+   2,
+   2
+  ],
+  "docs/devel/qdev-api.rst": [
+   1,
+   1
+  ],
+  "docs/devel/reset.rst": [
+   1,
+   1
+  ],
+  "docs/devel/rust.rst": [
+   57,
+   0
+  ],
+  "docs/devel/style.rst": [
+   1,
+   1
+  ],
+  "docs/devel/submitting-a-patch.rst": [
+   1,
+   1
+  ],
+  "docs/devel/tcg-ops.rst": [
+   4,
+   28
+  ],
+  "docs/devel/tcg-plugins.rst": [
+   2,
+   2
+  ],
+  "docs/devel/testing/ci-jobs.rst.inc": [
+   0,
+   6
+  ],
+  "docs/devel/testing/functional.rst": [
+   23,
+   9
+  ],
+  "docs/devel/testing/main.rst": [
+   2,
+   2
+  ],
+  "docs/devel/testing/qgraph.rst": [
+   4,
+   4
+  ],
+  "docs/devel/vfio-iommufd.rst": [
+   27,
+   13
+  ],
+  "docs/interop/firmware.json": [
+   45,
+   2
+  ],
+  "docs/interop/vhost-user.rst": [
+   38,
+   22
+  ],
+  "docs/specs/acpi_cpu_hotplug.rst": [
+   3,
+   25
+  ],
+  "docs/specs/aspeed-intc.rst": [
+   25,
+   67
+  ],
+  "docs/specs/fsi.rst": [
+   1,
+   1
+  ],
+  "docs/specs/index.rst": [
+   1,
+   0
+  ],
+  "docs/specs/iommu-testdev.rst": [
+   140,
+   0
+  ],
+  "docs/specs/riscv-aia.rst": [
+   39,
+   4
+  ],
+  "docs/system/arm/aspeed.rst": [
+   19,
+   20
+  ],
+  "docs/system/arm/b-l475e-iot01a.rst": [
+   1,
+   1
+  ],
+  "docs/system/arm/cpu-features.rst": [
+   29,
+   2
+  ],
+  "docs/system/arm/emulation.rst": [
+   4,
+   1
+  ],
+  "docs/system/arm/imx8mp-evk.rst": [
+   2,
+   2
+  ],
+  "docs/system/arm/nrf.rst": [
+   2,
+   2
+  ],
+  "docs/system/arm/stm32.rst": [
+   6,
+   6
+  ],
+  "docs/system/arm/virt.rst": [
+   24,
+   5
+  ],
+  "docs/system/arm/xlnx-versal-virt.rst": [
+   8,
+   8
+  ],
+  "docs/system/arm/xlnx-zynq.rst": [
+   27,
+   24
+  ],
+  "docs/system/confidential-guest-support.rst": [
+   1,
+   0
+  ],
+  "docs/system/cpu-models-x86.rst.inc": [
+   16,
+   0
+  ],
+  "docs/system/device-emulation.rst": [
+   1,
+   0
+  ],
+  "docs/system/device-url-syntax.rst.inc": [
+   8,
+   2
+  ],
+  "docs/system/devices/cxl.rst": [
+   23,
+   0
+  ],
+  "docs/system/devices/scsi/index.rst": [
+   10,
+   0
+  ],
+  "docs/system/devices/scsi/migrate-pr.rst": [
+   54,
+   0
+  ],
+  "docs/system/devices/usb-u2f.rst": [
+   1,
+   1
+  ],
+  "docs/system/devices/virtio/vhost-user-contrib.rst": [
+   39,
+   0
+  ],
+  "docs/system/devices/virtio/vhost-user.rst": [
+   3,
+   0
+  ],
+  "docs/system/devices/virtio/virtio-gpu.rst": [
+   116,
+   5
+  ],
+  "docs/system/generic-loader.rst": [
+   26,
+   30
+  ],
+  "docs/system/guest-loader.rst": [
+   1,
+   1
+  ],
+  "docs/system/igvm.rst": [
+   3,
+   3
+  ],
+  "docs/system/index.rst": [
+   3,
+   0
+  ],
+  "docs/system/introduction.rst": [
+   5,
+   7
+  ],
+  "docs/system/nitro.rst": [
+   133,
+   0
+  ],
+  "docs/system/qemu-colo.rst": [
+   258,
+   231
+  ],
+  "docs/system/replay.rst": [
+   1,
+   1
+  ],
+  "docs/system/riscv/mips.rst": [
+   20,
+   0
+  ],
+  "docs/system/target-arm.rst": [
+   0,
+   1
+  ],
+  "docs/system/target-or1k.rst": [
+   4,
+   4
+  ],
+  "docs/system/target-riscv.rst": [
+   1,
+   0
+  ],
+  "docs/system/targets.rst": [
+   1,
+   1
+  ],
+  "docs/system/tls.rst": [
+   4,
+   4
+  ],
+  "docs/system/vnc-security.rst": [
+   3,
+   3
+  ],
+  "docs/system/whpx.rst": [
+   144,
+   0
+  ],
+  "dump/Kconfig": [
+   6,
+   0
+  ],
+  "dump/dump.c": [
+   8,
+   4
+  ],
+  "dump/meson.build": [
+   2,
+   1
+  ],
+  "dump/win_dump-stubs.c": [
+   8,
+   7
+  ],
+  "dump/win_dump-x86.c": [
+   1,
+   19
+  ],
+  "fpu/softfloat-parts.c.inc": [
+   117,
+   50
+  ],
+  "fpu/softfloat-specialize.c.inc": [
+   91,
+   138
+  ],
+  "fpu/softfloat.c": [
+   355,
+   27
+  ],
+  "fsdev/file-op-9p.h": [
+   12,
+   1
+  ],
+  "fsdev/meson.build": [
+   2,
+   1
+  ],
+  "fsdev/qemu-fsdev-opts.c": [
+   6,
+   0
+  ],
+  "fsdev/qemu-fsdev-throttle.h": [
+   0,
+   1
+  ],
+  "fsdev/qemu-fsdev.c": [
+   1,
+   1
+  ],
+  "gdbstub/gdb-xml/avr-cpu.xml": [
+   1,
+   1
+  ],
+  "gdbstub/gdb-xml/cf-fp.xml": [
+   1,
+   1
+  ],
+  "gdbstub/gdb-xml/i386-32bit.xml": [
+   27,
+   20
+  ],
+  "gdbstub/gdb-xml/i386-64bit-apx.xml": [
+   26,
+   0
+  ],
+  "gdbstub/gdb-xml/i386-64bit.xml": [
+   7,
+   0
+  ],
+  "gdbstub/gdb-xml/m68k-fp.xml": [
+   1,
+   1
+  ],
+  "gdbstub/gdb-xml/or1k-core.xml": [
+   65,
+   0
+  ],
+  "gdbstub/gdb-xml/sparc32-cp0.xml": [
+   18,
+   0
+  ],
+  "gdbstub/gdb-xml/sparc32-cpu.xml": [
+   42,
+   0
+  ],
+  "gdbstub/gdb-xml/sparc32-fpu.xml": [
+   42,
+   0
+  ],
+  "gdbstub/gdb-xml/sparc64-cp0.xml": [
+   16,
+   0
+  ],
+  "gdbstub/gdb-xml/sparc64-cpu.xml": [
+   42,
+   0
+  ],
+  "gdbstub/gdb-xml/sparc64-fpu.xml": [
+   2,
+   42
+  ],
+  "gdbstub/gdbstub.c": [
+   44,
+   40
+  ],
+  "gdbstub/internals.h": [
+   10,
+   0
+  ],
+  "gdbstub/meson.build": [
+   23,
+   0
+  ],
+  "gdbstub/syscalls.c": [
+   36,
+   0
+  ],
+  "gdbstub/system.c": [
+   18,
+   7
+  ],
+  "gdbstub/trace-events": [
+   7,
+   0
+  ],
+  "gdbstub/user-target.c": [
+   9,
+   4
+  ],
+  "gdbstub/user.c": [
+   53,
+   17
+  ],
+  "hmp-commands-info.hx": [
+   12,
+   12
+  ],
+  "host/include/ppc64/host/cpuinfo.h": [
+   30,
+   1
+  ],
+  "host/include/ppc64/host/crypto/aes-round.h": [
+   182,
+   1
+  ],
+  "host/include/x86_64/host/bufferiszero.c.inc": [
+   120,
+   1
+  ],
+  "host/include/x86_64/host/cpuinfo.h": [
+   41,
+   1
+  ],
+  "host/include/x86_64/host/crypto/aes-round.h": [
+   152,
+   1
+  ],
+  "host/include/x86_64/host/crypto/clmul.h": [
+   29,
+   1
+  ],
+  "hw/9pfs/9p-local.c": [
+   35,
+   9
+  ],
+  "hw/9pfs/9p-synth.c": [
+   47,
+   4
+  ],
+  "hw/9pfs/9p.c": [
+   165,
+   14
+  ],
+  "hw/9pfs/9p.h": [
+   4,
+   2
+  ],
+  "hw/9pfs/codir.c": [
+   3,
+   0
+  ],
+  "hw/9pfs/meson.build": [
+   1,
+   1
+  ],
+  "hw/9pfs/virtio-9p-device.c": [
+   18,
+   1
+  ],
+  "hw/9pfs/xen-9p-backend.c": [
+   31,
+   0
+  ],
+  "hw/Kconfig": [
+   3,
+   1
+  ],
+  "hw/acpi/acpi-cpu-hotplug-stub.c": [
+   1,
+   18
+  ],
+  "hw/acpi/acpi-nvdimm-stub.c": [
+   1,
+   1
+  ]
+ },
+ "files": 3642,
+ "added_lines": 91739,
+ "removed_lines": 38416,
+ "diff": "diff --git a/.gitlab-ci.d/base.yml b/.gitlab-ci.d/base.yml\nindex 921c562..72eadc8 100644\n--- a/.gitlab-ci.d/base.yml\n+++ b/.gitlab-ci.d/base.yml\n@@ -28,6 +28,9 @@ variables:\n     # we don't need. The --filter options avoid blobs and tree references we aren't going to use\n     # and we also avoid fetching tags.\n     GIT_FETCH_EXTRA_FLAGS: --filter=blob:none --filter=tree:0 --no-tags --prune --quiet\n+    # Ensure docker.py / tests/docker/Makefile.include always displays stdout\n+    # from any docker commands to aid debugging of failures\n+    DOCKER_V: 1\n \n   interruptible: true\n \n@@ -49,10 +52,6 @@ variables:\n     - if: '$CI_PIPELINE_SOURCE == \"schedule\"'\n       when: never\n \n-    # Cirrus jobs can't run unless the creds / target repo are set\n-    - if: '$QEMU_JOB_CIRRUS && ($CIRRUS_GITHUB_REPO == null || $CIRRUS_API_TOKEN == null)'\n-      when: never\n-\n     # Publishing jobs should only run on the default branch in upstream\n     - if: '$QEMU_JOB_PUBLISH == \"1\" && $CI_PROJECT_NAMESPACE == $QEMU_CI_UPSTREAM && $CI_COMMIT_BRANCH != $CI_DEFAULT_BRANCH'\n       when: never\ndiff --git a/.gitlab-ci.d/buildtest.yml b/.gitlab-ci.d/buildtest.yml\nindex dfe954f..4b1949a 100644\n--- a/.gitlab-ci.d/buildtest.yml\n+++ b/.gitlab-ci.d/buildtest.yml\n@@ -40,7 +40,7 @@ build-system-ubuntu:\n   variables:\n     IMAGE: ubuntu2204\n     CONFIGURE_ARGS: --enable-docs --enable-rust\n-    TARGETS: alpha-softmmu microblazeel-softmmu mips64el-softmmu\n+    TARGETS: alpha-softmmu microblaze-softmmu mips64el-softmmu\n     MAKE_CHECK_ARGS: check-build\n \n check-system-ubuntu:\n@@ -101,8 +101,7 @@ crash-test-debian:\n     IMAGE: debian\n   script:\n     - cd build\n-    - make NINJA=\":\" check-venv\n-    - pyvenv/bin/python3 scripts/device-crash-test -q --tcg-only ./qemu-system-i386\n+    - ./run scripts/device-crash-test -q --tcg-only ./qemu-system-i386\n \n build-system-fedora:\n   extends:\n@@ -113,7 +112,7 @@ build-system-fedora:\n   variables:\n     IMAGE: fedora\n     CONFIGURE_ARGS: --disable-gcrypt --enable-nettle --enable-docs --enable-crypto-afalg --enable-rust\n-    TARGETS: microblaze-softmmu mips-softmmu\n+    TARGETS: mips-softmmu\n       xtensa-softmmu m68k-softmmu riscv32-softmmu ppc-softmmu sparc64-softmmu\n     MAKE_CHECK_ARGS: check-build check-doc\n \n@@ -158,9 +157,8 @@ crash-test-fedora:\n     IMAGE: fedora\n   script:\n     - cd build\n-    - make NINJA=\":\" check-venv\n-    - pyvenv/bin/python3 scripts/device-crash-test -q ./qemu-system-ppc\n-    - pyvenv/bin/python3 scripts/device-crash-test -q ./qemu-system-riscv32\n+    - ./run scripts/device-crash-test -q ./qemu-system-ppc\n+    - ./run scripts/device-crash-test -q ./qemu-system-riscv32\n \n build-system-centos:\n   extends:\n@@ -350,15 +348,15 @@ build-tcg-disabled:\n     - make -j\"$JOBS\"\n     - make check-unit\n     - make check-qapi-schema\n-    - cd tests/qemu-iotests/\n-    - ./check -raw 001 002 003 004 005 008 009 010 011 012 021 025 032 033 048\n-            052 063 077 086 101 104 106 113 148 150 151 152 157 159 160 163\n-            170 171 184 192 194 208 221 226 227 236 253 277 image-fleecing\n-    - ./check -qcow2 028 051 056 057 058 065 068 082 085 091 095 096 102 122\n-            124 132 139 142 144 145 151 152 155 157 165 194 196 200 202\n-            208 209 216 218 227 234 246 247 248 250 254 255 257 258\n-            260 261 262 263 264 270 272 273 277 279 image-fleecing\n-    - cd ../..\n+    - ./run tests/qemu-iotests/check -raw 001 002 003 004 005 008 009\n+            010 011 012 021 025 032 033 048 052 063 077 086 101 104 106\n+            113 148 150 151 152 157 159 160 163 170 171 184 192 194 208\n+            221 226 227 236 253 277 image-fleecing\n+    - ./run tests/qemu-iotests/check -qcow2 028 051 056 057 058 065 068\n+            082 085 091 095 096 102 122 124 132 139 142 144 145 151 152\n+            155 157 165 194 196 200 202 208 209 216 218 227 234 246 247\n+            248 250 254 255 257 258 260 261 262 263 264 270 272 273 277\n+            279 image-fleecing\n     - make distclean\n \n build-user:\n@@ -378,18 +376,6 @@ build-user-static:\n   variables:\n     IMAGE: debian-all-test-cross\n     CONFIGURE_ARGS: --disable-tools --disable-system --static\n-      --target-list-exclude=alpha-linux-user,sh4-linux-user\n-    MAKE_CHECK_ARGS: check-tcg\n-\n-# targets stuck on older compilers\n-build-legacy:\n-  extends: .native_build_job_template\n-  needs:\n-    - job: amd64-debian-legacy-cross-container\n-  variables:\n-    IMAGE: debian-legacy-test-cross\n-    TARGETS: alpha-linux-user alpha-softmmu sh4-linux-user\n-    CONFIGURE_ARGS: --disable-tools\n     MAKE_CHECK_ARGS: check-tcg\n \n build-user-hexagon:\n@@ -628,7 +614,7 @@ build-oss-fuzz:\n     IMAGE: fedora\n   script:\n     - mkdir build-oss-fuzz\n-    - export LSAN_OPTIONS=suppressions=scripts/oss-fuzz/lsan_suppressions.txt\n+    - export LSAN_OPTIONS=suppressions=scripts/lsan_suppressions.txt\n     - CC=\"clang\" CXX=\"clang++\" CFLAGS=\"-fsanitize=address\"\n       ./scripts/oss-fuzz/build.sh\n     - export ASAN_OPTIONS=\"fast_unwind_on_malloc=0\"\n@@ -678,7 +664,7 @@ build-without-defaults:\n       --disable-pie\n       --disable-qom-cast-debug\n       --disable-strip\n-      --target-list-exclude=aarch64-softmmu,microblaze-softmmu,mips64-softmmu,mipsel-softmmu,ppc64-softmmu,sh4el-softmmu,xtensa-softmmu,x86_64-softmmu\n+      --target-list-exclude=aarch64-softmmu,mips64-softmmu,mipsel-softmmu,ppc64-softmmu,sh4el-softmmu,xtensa-softmmu,x86_64-softmmu\n     MAKE_CHECK_ARGS: check\n \n build-libvhost-user:\n@@ -785,11 +771,20 @@ coverity:\n     # Always manual on forks even if $QEMU_CI == \"2\"\n     - when: manual\n \n-build-wasm:\n+build-wasm64-64bit:\n+  extends: .wasm_build_job_template\n+  timeout: 2h\n+  needs:\n+    - job: wasm64-emsdk-cross-container\n+  variables:\n+    IMAGE: emsdk-wasm64-cross\n+    CONFIGURE_ARGS: --static --cpu=wasm64 --disable-tools --enable-debug --enable-tcg-interpreter\n+\n+build-wasm64-32bit:\n   extends: .wasm_build_job_template\n   timeout: 2h\n   needs:\n-    - job: wasm-emsdk-cross-container\n+    - job: wasm64-emsdk-cross-container\n   variables:\n-    IMAGE: emsdk-wasm32-cross\n-    CONFIGURE_ARGS: --static --disable-tools --enable-debug --enable-tcg-interpreter\n+    IMAGE: emsdk-wasm64-cross\n+    CONFIGURE_ARGS: --static --cpu=wasm64 --wasm64-32bit-address-limit --disable-tools --enable-debug --enable-tcg-interpreter\ndiff --git a/.gitlab-ci.d/cirrus.yml b/.gitlab-ci.d/cirrus.yml\ndeleted file mode 100644\nindex 0d66a14..0000000\n--- a/.gitlab-ci.d/cirrus.yml\n+++ /dev/null\n@@ -1,60 +0,0 @@\n-# Jobs that we delegate to Cirrus CI because they require an operating\n-# system other than Linux. These jobs will only run if the required\n-# setup has been performed on the GitLab account.\n-#\n-# The Cirrus CI configuration is generated by replacing target-specific\n-# variables in a generic template: some of these variables are provided\n-# when the GitLab CI job is defined, others are taken from a shell\n-# snippet generated using lcitool.\n-#\n-# Note that the $PATH environment variable has to be treated with\n-# special care, because we can't just override it at the GitLab CI job\n-# definition level or we risk breaking it completely.\n-.cirrus_build_job:\n-  extends: .base_job_template\n-  stage: build\n-  image: registry.gitlab.com/libvirt/libvirt-ci/cirrus-run:latest\n-  needs: []\n-  allow_failure:\n-    exit_codes: 3\n-  # 20 mins larger than \"timeout_in\" in cirrus/build.yml\n-  # as there's often a 5-10 minute delay before Cirrus CI\n-  # actually starts the task\n-  timeout: 80m\n-  script:\n-    - set -o allexport\n-    - source .gitlab-ci.d/cirrus/$NAME.vars\n-    - set +o allexport\n-    - cirrus-vars <.gitlab-ci.d/cirrus/build.yml >.gitlab-ci.d/cirrus/$NAME.yml\n-    - cat .gitlab-ci.d/cirrus/$NAME.yml\n-    - cirrus-run -v --show-build-log always .gitlab-ci.d/cirrus/$NAME.yml\n-  variables:\n-    QEMU_JOB_CIRRUS: 1\n-\n-x64-freebsd-14-build:\n-  extends: .cirrus_build_job\n-  variables:\n-    NAME: freebsd-14\n-    CIRRUS_VM_INSTANCE_TYPE: freebsd_instance\n-    CIRRUS_VM_IMAGE_SELECTOR: image_family\n-    CIRRUS_VM_IMAGE_NAME: freebsd-14-3\n-    CIRRUS_VM_CPUS: 8\n-    CIRRUS_VM_RAM: 8G\n-    UPDATE_COMMAND: pkg update; pkg upgrade -y\n-    INSTALL_COMMAND: pkg install -y\n-    CONFIGURE_ARGS: --target-list-exclude=arm-softmmu,i386-softmmu,microblaze-softmmu,mips64el-softmmu,mipsel-softmmu,mips-softmmu,ppc-softmmu,sh4eb-softmmu,xtensa-softmmu --enable-rust\n-    TEST_TARGETS: check\n-\n-aarch64-macos-build:\n-  extends: .cirrus_build_job\n-  variables:\n-    NAME: macos-14\n-    CIRRUS_VM_INSTANCE_TYPE: macos_instance\n-    CIRRUS_VM_IMAGE_SELECTOR: image\n-    CIRRUS_VM_IMAGE_NAME: ghcr.io/cirruslabs/macos-runner:sonoma\n-    UPDATE_COMMAND: brew update\n-    INSTALL_COMMAND: brew install\n-    PATH_EXTRA: /opt/homebrew/ccache/libexec:/opt/homebrew/gettext/bin\n-    PKG_CONFIG_PATH: /opt/homebrew/curl/lib/pkgconfig:/opt/homebrew/ncurses/lib/pkgconfig:/opt/homebrew/readline/lib/pkgconfig\n-    CONFIGURE_ARGS: --target-list-exclude=arm-softmmu,i386-softmmu,microblazeel-softmmu,mips64-softmmu,mipsel-softmmu,mips-softmmu,ppc-softmmu,sh4-softmmu,xtensaeb-softmmu\n-    TEST_TARGETS: check-unit check-block check-qapi-schema check-softfloat check-qtest-x86_64\ndiff --git a/.gitlab-ci.d/cirrus/README.rst b/.gitlab-ci.d/cirrus/README.rst\ndeleted file mode 100644\nindex 657b070..0000000\n--- a/.gitlab-ci.d/cirrus/README.rst\n+++ /dev/null\n@@ -1,54 +0,0 @@\n-Cirrus CI integration\n-=====================\n-\n-GitLab CI shared runners only provide a docker environment running on Linux.\n-While it is possible to provide private runners for non-Linux platforms this\n-is not something most contributors/maintainers will wish to do.\n-\n-To work around this limitation, we take advantage of `Cirrus CI`_'s free\n-offering: more specifically, we use the `cirrus-run`_ script to trigger Cirrus\n-CI jobs from GitLab CI jobs so that Cirrus CI job output is integrated into\n-the main GitLab CI pipeline dashboard.\n-\n-There is, however, some one-time setup required. If you want FreeBSD and macOS\n-builds to happen when you push to your GitLab repository, you need to\n-\n-* set up a GitHub repository for the project, eg. ``yourusername/qemu``.\n-  This repository needs to exist for cirrus-run to work, but it doesn't need to\n-  be kept up to date, so you can create it and then forget about it;\n-\n-* enable the `Cirrus CI GitHub app`_  for your GitHub account;\n-\n-* sign up for Cirrus CI. It's enough to log into the website using your GitHub\n-  account;\n-\n-* grab an API token from the `Cirrus CI settings`_ page;\n-\n-* it may be necessary to push an empty ``.cirrus.yml`` file to your github fork\n-  for Cirrus CI to properly recognize the project. You can check whether\n-  Cirrus CI knows about your project by navigating to:\n-\n-  ``https://cirrus-ci.com/yourusername/qemu``\n-\n-* in the *CI/CD / Variables* section of the settings page for your GitLab\n-  repository, create two new variables:\n-\n-  * ``CIRRUS_GITHUB_REPO``, containing the name of the GitHub repository\n-    created earlier, eg. ``yourusername/qemu``;\n-\n-  * ``CIRRUS_API_TOKEN``, containing the Cirrus CI API token generated earlier.\n-    This variable **must** be marked as *Masked*, because anyone with knowledge\n-    of it can impersonate you as far as Cirrus CI is concerned.\n-\n-  Neither of these variables should be marked as *Protected*, because in\n-  general you'll want to be able to trigger Cirrus CI builds from non-protected\n-  branches.\n-\n-Once this one-time setup is complete, you can just keep pushing to your GitLab\n-repository as usual and you'll automatically get the additional CI coverage.\n-\n-\n-.. _Cirrus CI GitHub app: https://github.com/marketplace/cirrus-ci\n-.. _Cirrus CI settings: https://cirrus-ci.com/settings/profile/\n-.. _Cirrus CI: https://cirrus-ci.com/\n-.. _cirrus-run: https://github.com/sio/cirrus-run/\ndiff --git a/.gitlab-ci.d/cirrus/build.yml b/.gitlab-ci.d/cirrus/build.yml\ndeleted file mode 100644\nindex 41abd0b..0000000\n--- a/.gitlab-ci.d/cirrus/build.yml\n+++ /dev/null\n@@ -1,42 +0,0 @@\n-@CIRRUS_VM_INSTANCE_TYPE@:\n-  @CIRRUS_VM_IMAGE_SELECTOR@: @CIRRUS_VM_IMAGE_NAME@\n-  cpu: @CIRRUS_VM_CPUS@\n-  memory: @CIRRUS_VM_RAM@\n-\n-env:\n-  CIRRUS_CLONE_DEPTH: 1\n-  CI_REPOSITORY_URL: \"@CI_REPOSITORY_URL@\"\n-  CI_COMMIT_REF_NAME: \"@CI_COMMIT_REF_NAME@\"\n-  CI_COMMIT_SHA: \"@CI_COMMIT_SHA@\"\n-  PATH: \"@PATH_EXTRA@:$PATH\"\n-  PKG_CONFIG_PATH: \"@PKG_CONFIG_PATH@\"\n-  PYTHON: \"@PYTHON@\"\n-  MAKE: \"@MAKE@\"\n-  CONFIGURE_ARGS: \"@CONFIGURE_ARGS@\"\n-  TEST_TARGETS: \"@TEST_TARGETS@\"\n-\n-build_task:\n-  # A little shorter than GitLab timeout in ../cirrus.yml\n-  timeout_in: 60m\n-  install_script:\n-    - @UPDATE_COMMAND@\n-    - @INSTALL_COMMAND@ @PKGS@\n-    - if test -n \"@PYPI_PKGS@\" ; then PYLIB=$(@PYTHON@ -c 'import sysconfig; print(sysconfig.get_path(\"stdlib\"))'); rm -f $PYLIB/EXTERNALLY-MANAGED; @PIP3@ install @PYPI_PKGS@ ; fi\n-  clone_script:\n-    - git clone --depth 100 \"$CI_REPOSITORY_URL\" .\n-    - git fetch origin \"$CI_COMMIT_REF_NAME\"\n-    - git reset --hard \"$CI_COMMIT_SHA\"\n-  step_script:\n-    - mkdir build\n-    - cd build\n-    - ../configure --enable-werror $CONFIGURE_ARGS\n-      || { cat config.log meson-logs/meson-log.txt; exit 1; }\n-    - $MAKE -j$(sysctl -n hw.ncpu)\n-    - for TARGET in $TEST_TARGETS ;\n-      do\n-        $MAKE -j$(sysctl -n hw.ncpu) $TARGET V=1 ;\n-      done\n-  always:\n-    build_result_artifacts:\n-      path: build/meson-logs/*log.txt\n-      type: text/plain\ndiff --git a/.gitlab-ci.d/cirrus/freebsd-14.vars b/.gitlab-ci.d/cirrus/freebsd-14.vars\ndeleted file mode 100644\nindex 6477440..0000000\n--- a/.gitlab-ci.d/cirrus/freebsd-14.vars\n+++ /dev/null\n@@ -1,16 +0,0 @@\n-# THIS FILE WAS AUTO-GENERATED\n-#\n-#  $ lcitool variables freebsd-14 qemu\n-#\n-# https://gitlab.com/libvirt/libvirt-ci\n-\n-CCACHE='/usr/local/bin/ccache'\n-CPAN_PKGS=''\n-CROSS_PKGS=''\n-MAKE='/usr/local/bin/gmake'\n-NINJA='/usr/local/bin/ninja'\n-PACKAGING_COMMAND='pkg'\n-PIP3='/usr/local/bin/pip'\n-PKGS='alsa-lib bash bison bzip2 ca_root_nss capstone4 ccache4 cmocka coreutils ctags curl cyrus-sasl dbus diffutils dtc flex fusefs-libs3 gettext git glib gmake gnutls gsed gtk-vnc gtk3 json-c libepoxy libffi libgcrypt libjpeg-turbo libnfs libslirp libspice-server libssh libtasn1 llvm lzo2 meson mtools ncurses nettle ninja opencv pixman pkgconf png py311-numpy py311-pillow py311-pip py311-pyyaml py311-sphinx py311-sphinx_rtd_theme py311-tomli python3 rpm2cpio rust rust-bindgen-cli sdl2 sdl2_image snappy sndio socat spice-protocol tesseract usbredir virglrenderer vte3 vulkan-tools xorriso zstd'\n-PYPI_PKGS=''\n-PYTHON='/usr/local/bin/python3'\ndiff --git a/.gitlab-ci.d/container-cross.yml b/.gitlab-ci.d/container-cross.yml\nindex 0fd7341..92a7f1c 100644\n--- a/.gitlab-ci.d/container-cross.yml\n+++ b/.gitlab-ci.d/container-cross.yml\n@@ -10,24 +10,12 @@ amd64-debian-user-cross-container:\n   variables:\n     NAME: debian-all-test-cross\n \n-amd64-debian-legacy-cross-container:\n-  extends: .container_job_template\n-  stage: containers\n-  variables:\n-    NAME: debian-legacy-test-cross\n-\n arm64-debian-cross-container:\n   extends: .container_job_template\n   stage: containers\n   variables:\n     NAME: debian-arm64-cross\n \n-armhf-debian-cross-container:\n-  extends: .container_job_template\n-  stage: containers\n-  variables:\n-    NAME: debian-armhf-cross\n-\n hexagon-cross-container:\n   extends: .container_job_template\n   stage: containers\n@@ -40,12 +28,6 @@ loongarch-debian-cross-container:\n   variables:\n     NAME: debian-loongarch-cross\n \n-i686-debian-cross-container:\n-  extends: .container_job_template\n-  stage: containers\n-  variables:\n-    NAME: debian-i686-cross\n-\n mips64el-debian-cross-container:\n   extends: .container_job_template\n   stage: containers\n@@ -86,7 +68,7 @@ win64-fedora-cross-container:\n   variables:\n     NAME: fedora-win64-cross\n \n-wasm-emsdk-cross-container:\n+wasm64-emsdk-cross-container:\n   extends: .container_job_template\n   variables:\n-    NAME: emsdk-wasm32-cross\n+    NAME: emsdk-wasm64-cross\ndiff --git a/.gitlab-ci.d/containers.yml b/.gitlab-ci.d/containers.yml\nindex f7d3e72..c8b8e44 100644\n--- a/.gitlab-ci.d/containers.yml\n+++ b/.gitlab-ci.d/containers.yml\n@@ -45,12 +45,9 @@ weekly-container-builds:\n     # cross\n     - amd64-debian-cross-container\n     - amd64-debian-user-cross-container\n-    - amd64-debian-legacy-cross-container\n     - arm64-debian-cross-container\n-    - armhf-debian-cross-container\n     - hexagon-cross-container\n     - loongarch-debian-cross-container\n-    - i686-debian-cross-container\n     - mips64el-debian-cross-container\n     - ppc64el-debian-cross-container\n     - riscv64-debian-cross-container\n@@ -58,7 +55,7 @@ weekly-container-builds:\n     - tricore-debian-cross-container\n     - xtensa-debian-cross-container\n     - win64-fedora-cross-container\n-    - wasm-emsdk-cross-container\n+    - wasm64-emsdk-cross-container\n     # containers\n     - amd64-alpine-container\n     - amd64-debian-container\ndiff --git a/.gitlab-ci.d/crossbuilds.yml b/.gitlab-ci.d/crossbuilds.yml\nindex 99dfa7e..cf977df 100644\n--- a/.gitlab-ci.d/crossbuilds.yml\n+++ b/.gitlab-ci.d/crossbuilds.yml\n@@ -1,13 +1,6 @@\n include:\n   - local: '/.gitlab-ci.d/crossbuild-template.yml'\n \n-cross-armhf-user:\n-  extends: .cross_user_build_job\n-  needs:\n-    - job: armhf-debian-cross-container\n-  variables:\n-    IMAGE: debian-armhf-cross\n-\n cross-arm64-system:\n   extends: .cross_system_build_job\n   needs:\n@@ -30,44 +23,6 @@ cross-arm64-kvm-only:\n     IMAGE: debian-arm64-cross\n     EXTRA_CONFIGURE_OPTS: --disable-tcg --without-default-features\n \n-cross-i686-system:\n-  extends:\n-    - .cross_system_build_job\n-    - .cross_test_artifacts\n-  needs:\n-    - job: i686-debian-cross-container\n-  variables:\n-    IMAGE: debian-i686-cross\n-    EXTRA_CONFIGURE_OPTS: --disable-kvm\n-    MAKE_CHECK_ARGS: check-qtest\n-\n-cross-i686-user:\n-  extends:\n-    - .cross_user_build_job\n-    - .cross_test_artifacts\n-  needs:\n-    - job: i686-debian-cross-container\n-  variables:\n-    IMAGE: debian-i686-cross\n-    MAKE_CHECK_ARGS: check\n-\n-cross-i686-tci:\n-  extends:\n-    - .cross_accel_build_job\n-    - .cross_test_artifacts\n-  timeout: 60m\n-  needs:\n-    - job: i686-debian-cross-container\n-  variables:\n-    IMAGE: debian-i686-cross\n-    ACCEL: tcg-interpreter\n-    EXTRA_CONFIGURE_OPTS: --target-list=i386-softmmu,i386-linux-user,arm-softmmu,arm-linux-user,ppc-softmmu,ppc-linux-user --disable-plugins --disable-kvm\n-    # Force tests to run with reduced parallelism, to see whether this\n-    # reduces the flakiness of this CI job. The CI\n-    # environment by default shows us 8 CPUs and so we\n-    # would otherwise be using a parallelism of 9.\n-    MAKE_CHECK_ARGS: check check-tcg -j2\n-\n cross-mips64el-system:\n   extends: .cross_system_build_job\n   needs:\n@@ -156,7 +111,7 @@ cross-win64-system:\n     IMAGE: fedora-win64-cross\n     EXTRA_CONFIGURE_OPTS: --enable-fdt=internal --disable-plugins\n     CROSS_SKIP_TARGETS: alpha-softmmu avr-softmmu hppa-softmmu\n-                        m68k-softmmu microblazeel-softmmu\n+                        m68k-softmmu microblaze-softmmu\n                         or1k-softmmu rx-softmmu sh4eb-softmmu sparc64-softmmu\n                         tricore-softmmu xtensaeb-softmmu\n   artifacts:\ndiff --git a/.gitlab-ci.d/cirrus/macos-14.vars b/.gitlab-ci.d/macos-14.vars\nsimilarity index 87%\nrename from .gitlab-ci.d/cirrus/macos-14.vars\nrename to .gitlab-ci.d/macos-14.vars\nindex 4701c38..def77cf 100644\n--- a/.gitlab-ci.d/cirrus/macos-14.vars\n+++ b/.gitlab-ci.d/macos-14.vars\n@@ -11,6 +11,6 @@ MAKE='/opt/homebrew/bin/gmake'\n NINJA='/opt/homebrew/bin/ninja'\n PACKAGING_COMMAND='brew'\n PIP3='/opt/homebrew/bin/pip3'\n-PKGS='bash bc bindgen bison bzip2 capstone ccache cmocka coreutils ctags curl dbus diffutils dtc flex gcovr gettext git glib gnu-sed gnutls gtk+3 gtk-vnc jemalloc jpeg-turbo json-c libcbor libepoxy libffi libgcrypt libiscsi libnfs libpng libslirp libssh libtasn1 libusb llvm lzo make meson mtools ncurses nettle ninja pixman pkg-config python3 rpm2cpio rust sdl2 sdl2_image snappy socat sparse spice-protocol swtpm tesseract usbredir vde vte3 vulkan-tools xorriso zlib zstd'\n+PKGS='bash bc bindgen bison bzip2 capstone ccache cmocka coreutils ctags curl dbus diffutils dtc flex gcovr gettext git glib gnu-sed gnutls gtk+3 gtk-vnc jemalloc jpeg-turbo json-c libcbor libepoxy libffi libgcrypt libiscsi libnfs libpng libslirp libssh libtasn1 libusb llvm lzo make meson mtools ncurses nettle ninja pixman pkg-config python-setuptools python3 rpm2cpio rust sdl2 sdl2_image snappy socat sparse spice-protocol swtpm tesseract usbredir vde vte3 vulkan-tools xorriso zlib zstd'\n PYPI_PKGS='PyYAML numpy pillow sphinx sphinx-rtd-theme tomli'\n PYTHON='/opt/homebrew/bin/python3'\ndiff --git a/.gitlab-ci.d/macos.yml b/.gitlab-ci.d/macos.yml\nnew file mode 100644\nindex 0000000..c93bf12\n--- /dev/null\n+++ b/.gitlab-ci.d/macos.yml\n@@ -0,0 +1,47 @@\n+.macos_job_template:\n+  extends: .base_job_template\n+  stage: build\n+  tags:\n+    - saas-macos-large-m2pro\n+  needs: []\n+  timeout: 80m\n+  artifacts:\n+    name: \"$CI_JOB_NAME-$CI_COMMIT_REF_SLUG\"\n+    expire_in: 7 days\n+    paths:\n+      - build/meson-logs/\n+      - build/tests/tcg/\n+    reports:\n+      junit: build/meson-logs/*.junit.xml\n+    when: always\n+  before_script:\n+    - set -o allexport\n+    - source .gitlab-ci.d/macos-14.vars\n+    - set +o allexport\n+    - export PATH=\"$PATH_EXTRA:$PATH\"\n+    - export PKG_CONFIG_PATH=\"$PKG_CONFIG_PATH\"\n+    - brew update\n+    - brew install $PKGS\n+    - brew install gdb aarch64-elf-gcc i686-elf-gcc x86_64-elf-gcc\n+    - if test -n \"$PYPI_PKGS\" ; then PYLIB=$($PYTHON -c 'import sysconfig; print(sysconfig.get_path(\"stdlib\"))'); rm -f $PYLIB/EXTERNALLY-MANAGED; $PIP3 install --break-system-packages $PYPI_PKGS ; fi\n+  script:\n+    - mkdir build\n+    - cd build\n+    - ../configure --enable-werror $CONFIGURE_ARGS || { cat config.log meson-logs/meson-log.txt; exit 1; }\n+    - $MAKE -j$(sysctl -n hw.ncpu)\n+    - for TARGET in $TEST_TARGETS ; do $MAKE $TARGET ; done\n+\n+aarch64-macos-15-build:\n+  extends: .macos_job_template\n+  image: macos-15-xcode-16\n+  variables:\n+    NAME: macos-15\n+    PATH_EXTRA: /opt/homebrew/gettext/bin\n+    PKG_CONFIG_PATH: /opt/homebrew/curl/lib/pkgconfig:/opt/homebrew/ncurses/lib/pkgconfig:/opt/homebrew/readline/lib/pkgconfig\n+    CONFIGURE_ARGS:\n+        --target-list=aarch64-softmmu,i386-softmmu,x86_64-softmmu\n+        --cross-prefix-aarch64=aarch64-elf-\n+        --cross-prefix-i386=i686-elf-\n+        --cross-prefix-x86_64=x86_64-elf-\n+        --disable-plugins\n+    TEST_TARGETS: check-unit run-tcg-tests-aarch64-softmmu run-tcg-tests-i386-softmmu run-tcg-tests-x86_64-softmmu\ndiff --git a/.gitlab-ci.d/qemu-project.yml b/.gitlab-ci.d/qemu-project.yml\nindex 4d914c4..104a147 100644\n--- a/.gitlab-ci.d/qemu-project.yml\n+++ b/.gitlab-ci.d/qemu-project.yml\n@@ -17,5 +17,5 @@ include:\n   - local: '/.gitlab-ci.d/buildtest.yml'\n   - local: '/.gitlab-ci.d/static_checks.yml'\n   - local: '/.gitlab-ci.d/custom-runners.yml'\n-  - local: '/.gitlab-ci.d/cirrus.yml'\n   - local: '/.gitlab-ci.d/windows.yml'\n+  - local: '/.gitlab-ci.d/macos.yml'\ndiff --git a/.gitlab-ci.d/windows.yml b/.gitlab-ci.d/windows.yml\nindex 5dbdabf..145500a 100644\n--- a/.gitlab-ci.d/windows.yml\n+++ b/.gitlab-ci.d/windows.yml\n@@ -17,7 +17,7 @@ msys2-64bit:\n     # This feature doesn't (currently) work with PowerShell, it stops\n     # the echo'ing of commands being run and doesn't show any timing\n     FF_SCRIPT_SECTIONS: 0\n-    CONFIGURE_ARGS: --disable-system --enable-tools -Ddebug=false -Doptimization=0\n+    CONFIGURE_ARGS: --disable-system --enable-tools -Ddebug=false -Doptimization=0 --enable-rust\n     # The Windows git is a bit older so override the default\n     GIT_FETCH_EXTRA_FLAGS: --no-tags --prune --quiet\n   artifacts:\n@@ -77,6 +77,7 @@ msys2-64bit:\n       bison diffutils flex\n       git grep make sed\n       mingw-w64-x86_64-binutils\n+      mingw-w64-x86_64-ca-certificates\n       mingw-w64-x86_64-ccache\n       mingw-w64-x86_64-curl-winssl\n       mingw-w64-x86_64-gcc\n@@ -87,6 +88,11 @@ msys2-64bit:\n       mingw-w64-x86_64-pixman\n       mingw-w64-x86_64-pkgconf\n       mingw-w64-x86_64-python\n+      mingw-w64-x86_64-python-certifi\n+      mingw-w64-x86_64-python-setuptools\n+      mingw-w64-x86_64-python-wheel\n+      mingw-w64-x86_64-rust\n+      mingw-w64-x86_64-rust-bindgen\n       mingw-w64-x86_64-zstd\"\n   - .\\msys64\\usr\\bin\\bash -lc \"pacman -Sc --noconfirm\"\n   - Write-Output \"Running build at $(Get-Date -Format u)\"\n@@ -98,6 +104,7 @@ msys2-64bit:\n   - $env:CCACHE_MAXSIZE = \"180M\"\n   - $env:CCACHE_DEPEND = 1 # cache misses are too expensive with preprocessor mode\n   - $env:CC = \"ccache gcc\"\n+  - $env:LIBCLANG_PATH = Join-Path -Path $PWD.Path -ChildPath \"msys64/mingw64/bin\"\n   - mkdir build\n   - cd build\n   - ..\\msys64\\usr\\bin\\bash -lc \"ccache --zero-stats\"\ndiff --git a/.mailmap b/.mailmap\nindex 0690f7b..3839484 100644\n--- a/.mailmap\n+++ b/.mailmap\n@@ -97,6 +97,7 @@ Leif Lindholm <leif.lindholm@oss.qualcomm.com> <leif@nuviainc.com>\n Luc Michel <luc@lmichel.fr> <luc.michel@git.antfield.fr>\n Luc Michel <luc@lmichel.fr> <luc.michel@greensocs.com>\n Luc Michel <luc@lmichel.fr> <lmichel@kalray.eu>\n+Nina Schoetterl-Glausch <oss@nina.schoetterlglausch.eu> <nsg@linux.ibm.com>\n Radoslaw Biernacki <rad@semihalf.com> <radoslaw.biernacki@linaro.org>\n Paul Brook <paul@nowt.org> <paul@codesourcery.com>\n Paul Burton <paulburton@kernel.org> <paul.burton@mips.com>\ndiff --git a/Kconfig b/Kconfig\nindex 63ca7f4..26388c1 100644\n--- a/Kconfig\n+++ b/Kconfig\n@@ -1,6 +1,7 @@\n source Kconfig.host\n source backends/Kconfig\n source accel/Kconfig\n+source dump/Kconfig\n source target/Kconfig\n source hw/Kconfig\n source semihosting/Kconfig\ndiff --git a/MAINTAINERS b/MAINTAINERS\nindex 63e9ba5..296a9c7 100644\n--- a/MAINTAINERS\n+++ b/MAINTAINERS\n@@ -67,7 +67,6 @@ F: */\n Project policy and developer guides\n R: Alex Bennée <alex.bennee@linaro.org>\n R: Daniel P. Berrangé <berrange@redhat.com>\n-R: Thomas Huth <thuth@redhat.com>\n R: Markus Armbruster <armbru@redhat.com>\n R: Philippe Mathieu-Daudé <philmd@linaro.org>\n W: https://www.qemu.org/docs/master/devel/index.html\n@@ -102,10 +101,13 @@ T: git https://github.com/vivier/qemu.git trivial-patches\n Architecture support\n --------------------\n S390 general architecture support\n-M: Thomas Huth <thuth@redhat.com>\n+M: Cornelia Huck <cohuck@redhat.com>\n+M: Eric Farman <farman@linux.ibm.com>\n+M: Matthew Rosato <mjrosato@linux.ibm.com>\n S: Supported\n F: configs/devices/s390x-softmmu/default.mak\n-F: gdb-xml/s390*.xml\n+F: configs/targets/s390x-softmmu.mak\n+F: gdbstub/gdb-xml/s390*.xml\n F: hw/char/sclp*.[hc]\n F: hw/char/terminal3270.c\n F: hw/intc/s390_flic.c\n@@ -133,6 +135,7 @@ S: Odd Fixes\n K: ^Subject:.*(?i)mips\n F: docs/system/target-mips.rst\n F: configs/targets/mips*\n+F: tests/functional/mips*/meson.build\n \n X86 general architecture support\n M: Paolo Bonzini <pbonzini@redhat.com>\n@@ -141,6 +144,7 @@ S: Maintained\n F: configs/devices/i386-softmmu/default.mak\n F: configs/targets/i386-softmmu.mak\n F: configs/targets/x86_64-softmmu.mak\n+F: docs/system/i386/\n F: docs/system/target-i386*\n F: target/i386/*.[ch]\n F: target/i386/Kconfig\n@@ -149,6 +153,13 @@ F: tools/i386/\n F: tests/functional/i386/\n F: tests/functional/x86_64/\n \n+X86 VM file descriptor change on reset test\n+M: Ani Sinha <anisinha@redhat.com>\n+M: Paolo Bonzini <pbonzini@redhat.com>\n+S: Maintained\n+F: stubs/kvm.c\n+F: tests/functional/x86_64/test_rebuild_vmfd.py\n+\n Guest CPU cores (TCG)\n ---------------------\n Overall TCG CPUs\n@@ -156,7 +167,7 @@ M: Richard Henderson <richard.henderson@linaro.org>\n R: Paolo Bonzini <pbonzini@redhat.com>\n S: Maintained\n F: system/watchpoint.c\n-F: page-vary-target.c\n+F: page-vary-system.c\n F: page-vary-common.c\n F: accel/tcg/\n F: accel/stubs/tcg-stub.c\n@@ -197,9 +208,11 @@ F: disas/alpha.c\n ARM TCG CPUs\n M: Peter Maydell <peter.maydell@linaro.org>\n L: qemu-arm@nongnu.org\n-S: Maintained\n+S: Supported\n F: target/arm/\n F: target/arm/tcg/\n+F: tests/functional/aarch64/meson.build\n+F: tests/functional/arm/meson.build\n F: tests/tcg/arm/\n F: tests/tcg/aarch64/\n F: tests/qtest/arm-cpu-features.c\n@@ -208,8 +221,9 @@ F: hw/cpu/a*mpcore.c\n F: include/hw/cpu/a*mpcore.h\n F: docs/system/target-arm.rst\n F: docs/system/arm/cpu-features.rst\n-F: gdb-xml/arm*.xml\n-F: gdb-xml/aarch64*.xml\n+F: docs/system/arm/emulation.rst\n+F: gdbstub/gdb-xml/arm*.xml\n+F: gdbstub/gdb-xml/aarch64*.xml\n \n ARM SMMU\n M: Eric Auger <eric.auger@redhat.com>\n@@ -218,12 +232,13 @@ S: Maintained\n F: hw/arm/smmu*\n F: include/hw/arm/smmu*\n F: tests/functional/aarch64/test_smmu.py\n+F: tests/qtest/iommu-smmuv3-test.c\n \n AVR TCG CPUs\n M: Michael Rolnik <mrolnik@gmail.com>\n S: Maintained\n F: docs/system/target-avr.rst\n-F: gdb-xml/avr-cpu.xml\n+F: gdbstub/gdb-xml/avr-cpu.xml\n F: target/avr/\n F: tests/functional/avr/\n \n@@ -238,7 +253,7 @@ F: tests/tcg/hexagon/\n F: disas/hexagon.c\n F: configs/targets/hexagon-linux-user/default.mak\n F: docker/dockerfiles/debian-hexagon-cross.docker\n-F: gdb-xml/hexagon*.xml\n+F: gdbstub/gdb-xml/hexagon*.xml\n T: git https://github.com/quic/qemu.git hex-next\n \n Hexagon idef-parser\n@@ -261,6 +276,7 @@ M: Song Gao <gaosong@loongson.cn>\n S: Maintained\n F: target/loongarch/\n F: tests/tcg/loongarch64/\n+F: tests/functional/loongarch64/meson.build\n F: tests/functional/loongarch64/test_virt.py\n \n M68K TCG CPUs\n@@ -268,6 +284,7 @@ M: Laurent Vivier <laurent@vivier.eu>\n S: Maintained\n F: target/m68k/\n F: disas/m68k.c\n+F: tests/functional/m68k/meson.build\n F: tests/tcg/m68k/\n \n MicroBlaze TCG CPUs\n@@ -277,6 +294,7 @@ F: target/microblaze/\n F: hw/microblaze/\n F: disas/microblaze.c\n F: tests/docker/dockerfiles/debian-microblaze-cross.d/build-toolchain.sh\n+F: tests/functional/microblaze/\n \n MIPS TCG CPUs\n M: Philippe Mathieu-Daudé <philmd@linaro.org>\n@@ -292,15 +310,18 @@ F: tests/tcg/mips/\n OpenRISC TCG CPUs\n M: Stafford Horne <shorne@gmail.com>\n S: Odd Fixes\n-F: docs/system/openrisc/cpu-features.rst\n-F: target/openrisc/\n-F: hw/openrisc/\n-F: include/hw/openrisc/\n-F: tests/tcg/openrisc/\n+F: docs/system/or1k/cpu-features.rst\n+F: target/or1k/\n+F: gdbstub/gdb-xml/or1k-core.xml\n+F: hw/or1k/\n+F: include/hw/or1k/\n+F: tests/functional/or1k/meson.build\n+F: tests/tcg/or1k/\n \n PowerPC TCG CPUs\n M: Nicholas Piggin <npiggin@gmail.com>\n R: Chinmay Rath <rathc@linux.ibm.com>\n+R: Glenn Miles <milesg@linux.ibm.com>\n L: qemu-ppc@nongnu.org\n S: Odd Fixes\n F: target/ppc/\n@@ -313,14 +334,16 @@ F: configs/devices/ppc*\n F: docs/system/ppc/embedded.rst\n F: docs/system/target-ppc.rst\n F: tests/tcg/ppc*/*\n+F: tests/functional/ppc*/meson.build\n F: tests/functional/ppc/test_74xx.py\n \n RISC-V TCG CPUs\n M: Palmer Dabbelt <palmer@dabbelt.com>\n M: Alistair Francis <alistair.francis@wdc.com>\n R: Weiwei Li <liwei1518@gmail.com>\n-R: Daniel Henrique Barboza <dbarboza@ventanamicro.com>\n+R: Daniel Henrique Barboza <daniel.barboza@oss.qualcomm.com>\n R: Liu Zhiwei <zhiwei_liu@linux.alibaba.com>\n+R: Chao Liu <chao.liu.zevorn@gmail.com>\n L: qemu-riscv@nongnu.org\n S: Supported\n F: configs/targets/riscv*\n@@ -338,6 +361,7 @@ F: common-user/host/riscv*\n F: tests/functional/riscv32\n F: tests/functional/riscv64\n F: tests/tcg/riscv64/\n+F: tests/qtest/iommu-riscv-test.c\n \n RISC-V XThead* extensions\n M: Christoph Muellner <christoph.muellner@vrull.eu>\n@@ -361,6 +385,7 @@ RENESAS RX CPUs\n R: Yoshinori Sato <yoshinori.sato@nifty.com>\n S: Orphan\n F: target/rx/\n+F: tests/functional/rx/meson.build\n \n S390 TCG CPUs\n M: Richard Henderson <richard.henderson@linaro.org>\n@@ -380,6 +405,7 @@ F: target/sh4/\n F: hw/sh4/\n F: disas/sh4.c\n F: include/hw/sh4/\n+F: tests/functional/sh4*/meson.build\n F: tests/tcg/sh4/\n \n SPARC TCG CPUs\n@@ -387,16 +413,17 @@ M: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>\n M: Artyom Tarasenko <atar4qemu@gmail.com>\n S: Maintained\n F: target/sparc/\n+F: gdbstub/gdb-xml/sparc*.xml\n F: hw/sparc/\n F: hw/sparc64/\n F: include/hw/sparc/sparc64.h\n F: disas/sparc.c\n+F: tests/functional/sparc*/meson.build\n F: tests/tcg/sparc64/\n \n X86 TCG CPUs\n M: Paolo Bonzini <pbonzini@redhat.com>\n M: Richard Henderson <richard.henderson@linaro.org>\n-M: Eduardo Habkost <eduardo@habkost.net>\n S: Maintained\n F: target/i386/tcg/\n F: tests/tcg/i386/\n@@ -404,7 +431,6 @@ F: tests/tcg/x86_64/\n F: hw/i386/\n F: docs/system/i386/cpu.rst\n F: docs/system/cpu-models-x86*\n-T: git https://gitlab.com/ehabkost/qemu.git x86-next\n \n Xtensa TCG CPUs\n M: Max Filippov <jcmvbkbc@gmail.com>\n@@ -412,6 +438,7 @@ W: http://wiki.osll.ru/doku.php?id=etc:users:jcmvbkbc:qemu-target-xtensa\n S: Maintained\n F: target/xtensa/\n F: hw/xtensa/\n+F: tests/functional/xtensa/meson.build\n F: tests/tcg/xtensa/\n F: tests/tcg/xtensaeb/\n F: disas/xtensa.c\n@@ -419,8 +446,8 @@ F: include/hw/xtensa/xtensa-isa.h\n F: configs/devices/xtensa*/default.mak\n \n TriCore TCG CPUs\n-M: Bastian Koppelmann <kbastian@mail.uni-paderborn.de>\n-S: Maintained\n+M: Bastian Koppelmann <kbastian@rumtueddeln.de>\n+S: Odd Fixes\n F: target/tricore/\n F: hw/tricore/\n F: include/hw/tricore/\n@@ -447,7 +474,7 @@ F: scripts/kvm/kvm_flightrecorder\n ARM KVM CPUs\n M: Peter Maydell <peter.maydell@linaro.org>\n L: qemu-arm@nongnu.org\n-S: Maintained\n+S: Supported\n F: target/arm/kvm.c\n F: tests/functional/aarch64/test_kvm.py\n \n@@ -472,7 +499,7 @@ S: Supported\n F: target/s390x/kvm/\n F: target/s390x/machine.c\n F: target/s390x/sigp.c\n-F: gdb-xml/s390*.xml\n+F: gdbstub/gdb-xml/s390*.xml\n T: git https://github.com/borntraeger/qemu.git s390-next\n L: qemu-s390x@nongnu.org\n \n@@ -521,13 +548,11 @@ F: system/cpus.c\n \n Apple Silicon HVF CPUs\n M: Alexander Graf <agraf@csgraf.de>\n-R: Mads Ynddal <mads@ynddal.dk>\n S: Maintained\n F: target/arm/hvf/\n F: target/arm/hvf-stub.c\n \n X86 HVF CPUs\n-M: Cameron Esfahani <dirty@apple.com>\n M: Roman Bolshakov <rbolshakov@ddn.com>\n R: Phil Dennis-Jordan <phil@philjordan.eu>\n W: https://wiki.qemu.org/Features/HVF\n@@ -535,10 +560,8 @@ S: Maintained\n F: target/i386/hvf/\n \n HVF\n-M: Cameron Esfahani <dirty@apple.com>\n M: Roman Bolshakov <rbolshakov@ddn.com>\n R: Phil Dennis-Jordan <phil@philjordan.eu>\n-R: Mads Ynddal <mads@ynddal.dk>\n W: https://wiki.qemu.org/Features/HVF\n S: Maintained\n F: accel/hvf/\n@@ -550,12 +573,19 @@ WHPX CPUs\n M: Pedro Barbuda <pbarbuda@microsoft.com>\n M: Mohamed Mediouni <mohamed@unpredictable.fr>\n S: Supported\n+F: accel/whpx/\n F: target/i386/whpx/\n+F: target/arm/whpx/\n+F: hw/intc/arm_gicv3_whpx.c\n F: accel/stubs/whpx-stub.c\n F: include/system/whpx.h\n+F: include/system/whpx-accel-ops.h\n+F: include/system/whpx-common.h\n+F: include/system/whpx-internal.h\n+F: docs/system/whpx.rst\n \n MSHV\n-M: Magnus Kulke <magnus.kulke@linux.microsoft.com>\n+M: Magnus Kulke <magnuskulke@linux.microsoft.com>\n R: Wei Liu <wei.liu@kernel.org>\n S: Supported\n F: accel/mshv/\n@@ -563,14 +593,19 @@ F: include/system/mshv.h\n F: include/hw/hyperv/hvgdk*.h\n F: include/hw/hyperv/hvhdk*.h\n \n+Nitro Enclaves (native)\n+M: Alexander Graf <graf@amazon.com>\n+S: Maintained\n+F: accel/nitro/\n+F: include/system/nitro-accel.h\n+\n X86 MSHV CPUs\n-M: Magnus Kulke <magnus.kulke@linux.microsoft.com>\n+M: Magnus Kulke <magnuskulke@linux.microsoft.com>\n R: Wei Liu <wei.liu@kernel.org>\n S: Supported\n F: target/i386/mshv/\n \n X86 Instruction Emulator\n-M: Cameron Esfahani <dirty@apple.com>\n M: Roman Bolshakov <rbolshakov@ddn.com>\n R: Phil Dennis-Jordan <phil@philjordan.eu>\n R: Wei Liu <wei.liu@kernel.org>\n@@ -582,7 +617,6 @@ Guest CPU Cores (Xen)\n X86 Xen CPUs\n M: Stefano Stabellini <sstabellini@kernel.org>\n M: Anthony PERARD <anthony@xenproject.org>\n-M: Paul Durrant <paul@xen.org>\n M: Edgar E. Iglesias <edgar.iglesias@gmail.com>\n L: xen-devel@lists.xenproject.org\n S: Supported\n@@ -670,7 +704,7 @@ F: include/system/os-wasm.h\n F: os-wasm.c\n F: util/coroutine-wasm.c\n F: configs/meson/emscripten.txt\n-F: tests/docker/dockerfiles/emsdk-wasm32-cross.docker\n+F: tests/docker/dockerfiles/emsdk-wasm-cross.docker\n \n Alpha Machines\n --------------\n@@ -787,7 +821,6 @@ F: hw/display/dm163.c\n F: tests/qtest/dm163-test.c\n \n Exynos\n-M: Igor Mitsyanko <i.mitsyanko@gmail.com>\n M: Peter Maydell <peter.maydell@linaro.org>\n L: qemu-arm@nongnu.org\n S: Odd Fixes\n@@ -796,15 +829,6 @@ F: include/hw/*/exynos*\n F: docs/system/arm/exynos.rst\n F: tests/functional/arm/test_smdkc210.py\n \n-Calxeda Highbank\n-M: Rob Herring <robh@kernel.org>\n-M: Peter Maydell <peter.maydell@linaro.org>\n-L: qemu-arm@nongnu.org\n-S: Odd Fixes\n-F: hw/arm/highbank.c\n-F: hw/net/xgmac.c\n-F: docs/system/arm/highbank.rst\n-\n Canon DIGIC\n M: Antony Pavlov <antonynpavlov@gmail.com>\n M: Peter Maydell <peter.maydell@linaro.org>\n@@ -859,6 +883,14 @@ F: include/hw/misc/arm_integrator_debug.h\n F: tests/functional/arm/test_integratorcp.py\n F: docs/system/arm/integratorcp.rst\n \n+MAX78000FTHR\n+L: qemu-arm@nongnu.org\n+S: Orphan\n+F: docs/system/arm/max78000.rst\n+F: hw/*/max78000*\n+F: include/hw/*/max78000*\n+F: tests/functional/arm/test_max78000fthr.py\n+\n MCIMX6UL EVK / i.MX6ul\n M: Peter Maydell <peter.maydell@linaro.org>\n R: Jean-Christophe Dubois <jcd@tribudubois.net>\n@@ -873,7 +905,6 @@ F: docs/system/arm/mcimx6ul-evk.rst\n \n MCIMX7D SABRE / i.MX7\n M: Peter Maydell <peter.maydell@linaro.org>\n-R: Andrey Smirnov <andrew.smirnov@gmail.com>\n L: qemu-arm@nongnu.org\n S: Odd Fixes\n F: hw/arm/mcimx7d-sabre.c\n@@ -1006,7 +1037,6 @@ F: include/hw/misc/imx6_*.h\n F: include/hw/ssi/imx_spi.h\n \n SBSA-REF\n-M: Radoslaw Biernacki <rad@semihalf.com>\n M: Peter Maydell <peter.maydell@linaro.org>\n R: Leif Lindholm <leif.lindholm@oss.qualcomm.com>\n L: qemu-arm@nongnu.org\n@@ -1081,7 +1111,7 @@ F: docs/system/arm/versatile.rst\n Virt\n M: Peter Maydell <peter.maydell@linaro.org>\n L: qemu-arm@nongnu.org\n-S: Maintained\n+S: Supported\n F: hw/arm/virt*\n F: include/hw/arm/virt.h\n F: docs/system/arm/virt.rst\n@@ -1217,6 +1247,7 @@ M: Peter Maydell <peter.maydell@linaro.org>\n R: Steven Lee <steven_lee@aspeedtech.com>\n R: Troy Lee <leetroy@gmail.com>\n R: Jamin Lin <jamin_lin@aspeedtech.com>\n+R: Kane Chen <kane_chen@aspeedtech.com>\n R: Andrew Jeffery <andrew@codeconstruct.com.au>\n R: Joel Stanley <joel@jms.id.au>\n L: qemu-arm@nongnu.org\n@@ -1227,11 +1258,13 @@ F: hw/net/ftgmac100.c\n F: include/hw/net/ftgmac100.h\n F: docs/system/arm/aspeed.rst\n F: docs/system/arm/fby35.rst\n+F: docs/specs/aspeed*\n F: tests/functional/*/*aspeed*\n F: tests/*/*aspeed*\n F: tests/*/*ast2700*\n F: hw/arm/fby35.c\n F: pc-bios/ast27x0_bootrom.bin\n+F: roms/vbootrom\n \n NRF51\n M: Joel Stanley <joel@jms.id.au>\n@@ -1315,18 +1348,18 @@ F: include/hw/intc/loongson_ipi_common.h\n F: hw/intc/loongarch_*.c\n F: hw/intc/loongson_ipi_common.c\n F: hw/rtc/ls7a_rtc.c\n-F: gdb-xml/loongarch*.xml\n+F: gdbstub/gdb-xml/loongarch*.xml\n \n M68K Machines\n -------------\n an5206\n-M: Thomas Huth <huth@tuxfamily.org>\n+M: Thomas Huth <th.huth+qemu@posteo.eu>\n S: Odd Fixes\n F: hw/m68k/an5206.c\n F: hw/m68k/mcf5206.c\n \n mcf5208\n-M: Thomas Huth <huth@tuxfamily.org>\n+M: Thomas Huth <th.huth+qemu@posteo.eu>\n S: Odd Fixes\n F: hw/m68k/mcf5208.c\n F: hw/m68k/mcf_intc.c\n@@ -1336,7 +1369,7 @@ F: include/hw/m68k/mcf*.h\n F: tests/functional/m68k/test_mcf5208evb.py\n \n NeXTcube\n-M: Thomas Huth <huth@tuxfamily.org>\n+M: Thomas Huth <th.huth+qemu@posteo.eu>\n S: Odd Fixes\n F: hw/m68k/next-*.c\n F: hw/display/next-fb.c\n@@ -1391,7 +1424,7 @@ M: Edgar E. Iglesias <edgar.iglesias@gmail.com>\n S: Maintained\n F: hw/microblaze/petalogix_s3adsp1800_mmu.c\n F: include/hw/char/xilinx_uartlite.h\n-F: tests/functional/microblaze*/test_s3adsp1800.py\n+F: tests/functional/microblaze/test_s3adsp1800.py\n \n petalogix_ml605\n M: Edgar E. Iglesias <edgar.iglesias@gmail.com>\n@@ -1469,9 +1502,9 @@ OpenRISC Machines\n or1k-sim\n M: Jia Liu <proljc@gmail.com>\n S: Maintained\n-F: docs/system/openrisc/or1k-sim.rst\n+F: docs/system/or1k/or1k-sim.rst\n F: hw/intc/ompic.c\n-F: hw/openrisc/openrisc_sim.c\n+F: hw/or1k/or1k-sim.c\n F: tests/functional/or1k/test_sim.py\n \n PowerPC Machines\n@@ -1825,10 +1858,10 @@ T: git https://github.com/borntraeger/qemu.git s390-next\n L: qemu-s390x@nongnu.org\n \n S390-ccw boot\n-M: Christian Borntraeger <borntraeger@linux.ibm.com>\n-M: Thomas Huth <thuth@redhat.com>\n-R: Jared Rossi <jrossi@linux.ibm.com>\n+M: Jared Rossi <jrossi@linux.ibm.com>\n R: Zhuoying Cai <zycai@linux.ibm.com>\n+R: Christian Borntraeger <borntraeger@linux.ibm.com>\n+R: Jason Herne <jjherne@linux.ibm.com>\n S: Supported\n F: hw/s390x/ipl.*\n F: pc-bios/s390-ccw/\n@@ -1840,10 +1873,13 @@ L: qemu-s390x@nongnu.org\n \n S390 PCI\n M: Matthew Rosato <mjrosato@linux.ibm.com>\n-M: Eric Farman <farman@linux.ibm.com>\n+M: Farhan Ali <alifm@linux.ibm.com>\n+R: Eric Farman <farman@linux.ibm.com>\n S: Supported\n F: hw/s390x/s390-pci*\n F: include/hw/s390x/s390-pci*\n+F: include/hw/s390x/ipl/s390-pci*\n+F: util/s390x_pci_mmio.c\n L: qemu-s390x@nongnu.org\n \n S390 channel subsystem\n@@ -1882,7 +1918,7 @@ F: hw/s390x/sclp*.c\n L: qemu-s390x@nongnu.org\n \n S390 CPU topology\n-M: Nina Schoetterl-Glausch <nsg@linux.ibm.com>\n+M: Gautam Gala <ggala@linux.ibm.com>\n S: Supported\n F: include/hw/s390x/cpu-topology.h\n F: hw/s390x/cpu-topology.c\n@@ -1978,7 +2014,6 @@ F: include/hw/i386/nitro_enclave.h\n F: docs/system/i386/nitro-enclave.rst\n \n Machine core\n-M: Eduardo Habkost <eduardo@habkost.net>\n M: Marcel Apfelbaum <marcel.apfelbaum@gmail.com>\n R: Philippe Mathieu-Daudé <philmd@linaro.org>\n R: Yanan Wang <wangyanan55@huawei.com>\n@@ -1994,14 +2029,13 @@ F: hw/core/numa.c\n F: hw/cpu/cluster.c\n F: qapi/machine.json\n F: qapi/machine-common.json\n-F: include/hw/boards.h\n+F: include/hw/core/boards.h\n F: include/hw/core/cpu.h\n F: include/hw/cpu/cluster.h\n F: include/system/numa.h\n F: tests/functional/x86_64/test_cpu_queries.py\n F: tests/functional/generic/test_empty_cpu_model.py\n F: tests/unit/test-smp-parse.c\n-T: git https://gitlab.com/ehabkost/qemu.git machine-next\n \n TargetInfo API\n M: Pierrick Bouvier <pierrick.bouvier@linaro.org>\n@@ -2129,7 +2163,6 @@ F: docs/system/sriov.rst\n \n PCIE DOE\n M: Huai-Cheng Kuo <hchkuo@avery-design.com.tw>\n-M: Chris Browy <cbrowy@avery-design.com>\n S: Supported\n F: include/hw/pci/pcie_doe.h\n F: hw/pci/pcie_doe.c\n@@ -2174,7 +2207,7 @@ S: Maintained\n F: hw/riscv/virt-acpi-build.c\n \n ACPI/VIOT\n-M: Jean-Philippe Brucker <jean-philippe@linaro.org>\n+M: Eric Auger <eric.auger@redhat.com>\n S: Supported\n F: hw/acpi/viot.c\n F: hw/acpi/viot.h\n@@ -2183,7 +2216,7 @@ ACPI/FUNCTIONAL/BIOSBITS\n M: Ani Sinha <anisinha@redhat.com>\n M: Michael S. Tsirkin <mst@redhat.com>\n S: Supported\n-F: tests/functional/acpi-bits/*\n+F: tests/functional/acpi-bits/\n F: tests/functional/x86_64/test_acpi_bits.py\n F: docs/devel/testing/acpi-bits.rst\n \n@@ -2285,7 +2318,7 @@ S: Orphan\n F: hw/usb/*\n F: tests/qtest/usb-*-test.c\n F: docs/system/devices/usb.rst\n-F: include/hw/usb.h\n+F: include/hw/usb/usb.h\n F: include/hw/usb/\n \n USB (serial adapter)\n@@ -2346,9 +2379,17 @@ F: include/system/iommufd.h\n F: backends/host_iommu_device.c\n F: include/system/host_iommu_device.h\n F: include/qemu/chardev_open.h\n+F: include/hw/core/iommu.h\n F: util/chardev_open.c\n F: docs/devel/vfio-iommufd.rst\n \n+iommu-testdev\n+M: Tao Tang <tangtao1634@phytium.com.cn>\n+S: Maintained\n+F: hw/misc/iommu-testdev.c\n+F: include/hw/misc/iommu-testdev.h\n+F: docs/specs/iommu-testdev.rst\n+\n vhost\n M: Michael S. Tsirkin <mst@redhat.com>\n R: Stefano Garzarella <sgarzare@redhat.com>\n@@ -2365,6 +2406,7 @@ F: subprojects/libvhost-user/\n F: block/export/vhost-user*\n F: util/vhost-user-server.c\n F: net/vhost*\n+F: tests/functional/x86_64/test_vhost_user_bridge.py\n \n vhost-shadow-virtqueue\n R: Eugenio Pérez <eperezma@redhat.com>\n@@ -2519,12 +2561,18 @@ F: hw/virtio/vhost-user-snd*\n F: include/hw/virtio/vhost-user-snd.h\n \n vhost-user-scmi\n-R: mzamazal@redhat.com\n+R: Milan Zamazal <mzamazal@redhat.com>\n S: Supported\n F: hw/virtio/vhost-user-scmi*\n F: include/hw/virtio/vhost-user-scmi.h\n F: tests/qtest/libqos/virtio-scmi.*\n \n+vhost-user-spi\n+M: Haixu Cui <quic_haixcui@quicinc.com>\n+S: Maintained\n+F: include/hw/virtio/vhost-user-spi.h\n+F: hw/virtio/vhost-user-spi*\n+\n virtio-crypto\n M: Gonglei <arei.gonglei@huawei.com>\n S: Supported\n@@ -2554,7 +2602,7 @@ F: include/hw/virtio/virtio-mem.h\n \n virtio-snd\n M: Gerd Hoffmann <kraxel@redhat.com>\n-R: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>\n+M: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>\n S: Supported\n F: hw/audio/virtio-snd.c\n F: hw/audio/virtio-snd-pci.c\n@@ -2581,9 +2629,8 @@ F: include/block/ufs.h\n F: tests/qtest/ufs-test.c\n \n megasas\n-M: Hannes Reinecke <hare@suse.com>\n L: qemu-block@nongnu.org\n-S: Supported\n+S: Orphan\n F: hw/scsi/megasas.c\n F: hw/scsi/mfi.h\n F: tests/qtest/megasas-test.c\n@@ -2662,7 +2709,7 @@ F: hw/i2c/i2c_mux_pca954x.c\n F: include/hw/i2c/i2c_mux_pca954x.h\n \n pcf8574\n-S: Orphaned\n+S: Orphan\n F: hw/gpio/pcf8574.c\n F: include/gpio/pcf8574.h\n \n@@ -2688,12 +2735,18 @@ F: tests/qtest/hexloader-test.c\n F: tests/data/hex-loader/test.hex\n \n CHRP NVRAM\n-M: Thomas Huth <thuth@redhat.com>\n+M: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>\n S: Maintained\n F: hw/nvram/chrp_nvram.c\n F: include/hw/nvram/chrp_nvram.h\n F: tests/qtest/prom-env-test.c\n \n+EEPROM 93xx\n+M: Stefan Weil <sw@weilnetz.de>\n+S: Maintained\n+F: hw/nvram/eeprom93xx.c\n+F: include/hw/nvram/eeprom93xx.h\n+\n VM Generation ID\n S: Orphan\n R: Ani Sinha <ani@anisinha.ca>\n@@ -2752,7 +2805,7 @@ F: tests/functional/aarch64/test_virt_gpu.py\n F: tests/functional/x86_64/test_virtio_gpu.py\n \n vhost-user-blk\n-M: Raphael Norwitz <raphael@enfabrica.net>\n+M: Raphael Norwitz <rnorwitz@nvidia.com>\n S: Maintained\n F: contrib/vhost-user-blk/\n F: contrib/vhost-user-scsi/\n@@ -2884,7 +2937,7 @@ S390 3270 device\n M: Halil Pasic <pasic@linux.ibm.com>\n M: Christian Borntraeger <borntraeger@linux.ibm.com>\n R: Collin Walling <walling@linux.ibm.com>\n-S: Odd fixes\n+S: Odd Fixes\n F: include/hw/s390x/3270-ccw.h\n F: hw/char/terminal3270.c\n F: hw/s390x/3270-ccw.c\n@@ -2964,6 +3017,13 @@ F: hw/vmapple/*\n F: include/hw/vmapple/*\n F: docs/system/arm/vmapple.rst\n \n+Nitro Enclaves (native)\n+M: Alexander Graf <graf@amazon.com>\n+S: Maintained\n+F: hw/nitro/\n+F: include/hw/nitro/\n+F: docs/system/nitro.rst\n+\n Subsystems\n ----------\n Overall Audio backends\n@@ -2982,6 +3042,7 @@ X: audio/sndioaudio.c\n X: audio/spiceaudio.c\n F: include/qemu/audio*.h\n F: qapi/audio.json\n+F: tests/audio/\n \n ALSA Audio backend\n M: Gerd Hoffmann <kraxel@redhat.com>\n@@ -3020,7 +3081,7 @@ F: audio/paaudio.c\n \n SDL Audio backend\n M: Gerd Hoffmann <kraxel@redhat.com>\n-R: Thomas Huth <huth@tuxfamily.org>\n+R: Thomas Huth <th.huth+qemu@posteo.eu>\n S: Odd Fixes\n F: audio/sdlaudio.c\n \n@@ -3071,8 +3132,8 @@ F: util/aio-*.h\n F: util/defer-call.c\n F: util/fdmon-*.c\n F: block/io.c\n-F: include/block/aio.h\n-F: include/block/aio-wait.h\n+F: include/qemu/aio.h\n+F: include/qemu/aio-wait.h\n F: include/qemu/defer-call.h\n F: scripts/qemugdb/aio.py\n F: tests/unit/test-fdmon-epoll.c\n@@ -3118,6 +3179,8 @@ T: git https://gitlab.com/vsementsov/qemu.git block\n CheckPoint and Restart (CPR)\n R: Peter Xu <peterx@redhat.com>\n R: Fabiano Rosas <farosas@suse.de>\n+R: Mark Kanda <mark.kanda@oracle.com>\n+R: Ben Chaney <bchaney@akamai.com>\n S: Supported\n F: hw/vfio/cpr*\n F: include/hw/vfio/vfio-cpr.h\n@@ -3240,7 +3303,6 @@ F: docs/system/gdb.rst\n F: gdbstub/*\n F: include/exec/gdbstub.h\n F: include/gdbstub/*\n-F: gdb-xml/\n F: tests/tcg/multiarch/gdbstub/*\n F: scripts/feature_to_c.py\n F: scripts/probe-gdb-support.py\n@@ -3249,14 +3311,15 @@ T: git https://gitlab.com/stsquad/qemu gdbstub/next\n Memory API\n M: Paolo Bonzini <pbonzini@redhat.com>\n M: Peter Xu <peterx@redhat.com>\n-M: David Hildenbrand <david@kernel.org>\n R: Philippe Mathieu-Daudé <philmd@linaro.org>\n S: Supported\n F: include/system/ioport.h\n F: include/exec/memop.h\n+F: include/system/ram_addr.h\n F: include/system/memory.h\n+F: include/system/memory_cached.h\n+F: include/system/memory_ldst*\n F: include/system/physmem.h\n-F: include/system/ram_addr.h\n F: include/system/ramblock.h\n F: include/system/memory_mapping.h\n F: system/dma-helpers.c\n@@ -3264,6 +3327,7 @@ F: system/ioport.c\n F: system/memory.c\n F: system/memory_mapping.c\n F: system/physmem.c\n+F: system/memory_ldst*\n F: system/memory-internal.h\n F: system/ram-block-attributes.c\n F: scripts/coccinelle/memory-region-housekeeping.cocci\n@@ -3378,7 +3442,6 @@ S: Maintained\n F: backends/hostmem*.c\n F: include/system/hostmem.h\n F: docs/system/vm-templating.rst\n-T: git https://gitlab.com/ehabkost/qemu.git machine-next\n \n Cryptodev Backends\n M: Gonglei <arei.gonglei@huawei.com>\n@@ -3481,31 +3544,34 @@ T: git https://github.com/kostyanf14/qemu.git qga-win32\n QOM\n M: Paolo Bonzini <pbonzini@redhat.com>\n R: Daniel P. Berrange <berrange@redhat.com>\n-R: Eduardo Habkost <eduardo@habkost.net>\n S: Supported\n F: docs/devel/qom.rst\n+F: include/qom/\n+F: qapi/qom.json\n+F: scripts/coccinelle/qom-parent-type.cocci\n+F: scripts/qom-cast-macro-clean-cocci-gen.py\n+F: qom/\n+F: tests/unit/check-qom-interface.c\n+F: tests/unit/check-qom-proplist.c\n+F: tests/qtest/qom-test.c\n+\n+QDev\n+M: Paolo Bonzini <pbonzini@redhat.com>\n+R: Daniel P. Berrange <berrange@redhat.com>\n+S: Supported\n F: docs/qdev-device-use.txt\n F: hw/core/qdev*\n F: hw/core/bus.c\n F: hw/core/sysbus.c\n F: include/hw/qdev*\n F: include/monitor/qdev.h\n-F: include/qom/\n-F: qapi/qom.json\n F: qapi/qdev.json\n-F: scripts/coccinelle/qom-parent-type.cocci\n-F: scripts/qom-cast-macro-clean-cocci-gen.py\n F: system/qdev-monitor.c\n F: stubs/qdev.c\n-F: qom/\n-F: tests/unit/check-qom-interface.c\n-F: tests/unit/check-qom-proplist.c\n F: tests/unit/test-qdev-global-props.c\n-F: tests/qtest/qom-test.c\n \n QOM boilerplate conversion script\n-M: Eduardo Habkost <eduardo@habkost.net>\n-S: Maintained\n+S: Orphan\n F: scripts/codeconverter/\n \n QMP\n@@ -3539,10 +3605,16 @@ F: docs/devel/testing/qtest.rst\n X: tests/qtest/bios-tables-test*\n X: tests/qtest/migration-*\n \n+QTest IOMMU helpers\n+M: Tao Tang <tangtao1634@phytium.com.cn>\n+S: Maintained\n+F: tests/qtest/libqos/qos-iommu*\n+F: tests/qtest/libqos/qos-smmuv3*\n+F: tests/qtest/libqos/qos-riscv-iommu*\n+\n Device Fuzzing\n M: Alexander Bulekov <alxndr@bu.edu>\n R: Paolo Bonzini <pbonzini@redhat.com>\n-R: Bandan Das <bsd@redhat.com>\n R: Stefan Hajnoczi <stefanha@redhat.com>\n R: Fabiano Rosas <farosas@suse.de>\n R: Darren Kenny <darren.kenny@oracle.com> \n@@ -3559,8 +3631,8 @@ Register API\n M: Alistair Francis <alistair@alistair23.me>\n S: Maintained\n F: hw/core/register.c\n-F: include/hw/register.h\n-F: include/hw/registerfields.h\n+F: include/hw/core/register.h\n+F: include/hw/core/registerfields.h\n \n Rust\n M: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>\n@@ -3600,7 +3672,7 @@ Streams\n M: Edgar E. Iglesias <edgar.iglesias@gmail.com>\n S: Maintained\n F: hw/core/stream.c\n-F: include/hw/stream.h\n+F: include/hw/core/stream.h\n \n Stubs\n M: Paolo Bonzini <pbonzini@redhat.com>\n@@ -3609,7 +3681,6 @@ F: stubs/\n \n Tracing\n M: Stefan Hajnoczi <stefanha@redhat.com>\n-R: Mads Ynddal <mads@ynddal.dk>\n S: Maintained\n F: trace/\n F: trace-events\n@@ -3656,7 +3727,7 @@ M: Peter Xu <peterx@redhat.com>\n M: Fabiano Rosas <farosas@suse.de>\n S: Maintained\n F: hw/core/vmstate-if.c\n-F: include/hw/vmstate-if.h\n+F: include/hw/core/vmstate-if.h\n F: include/migration/\n F: include/qemu/userfaultfd.h\n F: migration/\n@@ -3795,7 +3866,7 @@ F: tests/unit/test-uuid.c\n \n Yank feature\n M: Lukas Straub <lukasstraub2@web.de>\n-S: Odd fixes\n+S: Odd Fixes\n F: util/yank.c\n F: migration/yank_functions*\n F: tests/unit/test-yank.c\n@@ -3803,12 +3874,14 @@ F: include/qemu/yank.h\n F: qapi/yank.json\n \n COLO Framework\n-M: Hailiang Zhang <zhanghailiang@xfusion.com>\n+M: Lukas Straub <lukasstraub2@web.de>\n S: Maintained\n F: migration/colo*\n+F: migration/multifd-colo.*\n F: include/migration/colo.h\n F: include/migration/failover.h\n-F: docs/COLO-FT.txt\n+F: tests/qtest/migration/colo-tests.c\n+F: docs/system/qemu-colo.rst\n \n COLO Proxy\n M: Zhang Chen <zhangckid@gmail.com>\n@@ -3869,6 +3942,19 @@ F: include/hw/i2c/smbus_master.h\n F: include/hw/i2c/smbus_slave.h\n F: include/hw/i2c/smbus_eeprom.h\n \n+I3C\n+M: Joe Komlodi <komlodi@google.com>\n+M: Cédric Le Goater <clg@kaod.org>\n+M: Jamin Lin <jamin_lin@aspeedtech.com>\n+R: Nabih Estefan <nabihestefan@google.com>\n+S: Maintained\n+F: hw/i3c/*.c\n+F: hw/i3c/.h\n+F: hw/i3c/Kconfig\n+F: hw/i3c/meson.build\n+F: hw/i3c/trace-events\n+F: include/hw/i3c/*.h\n+\n PMBus\n M: Titus Rwantare <titusr@google.com>\n S: Maintained\n@@ -3926,10 +4012,11 @@ VT-d Emulation\n M: Michael S. Tsirkin <mst@redhat.com>\n R: Jason Wang <jasowang@redhat.com>\n R: Yi Liu <yi.l.liu@intel.com>\n-R: Clément Mathieu--Drif <clement.mathieu--drif@eviden.com>\n+R: Clément Mathieu--Drif <clement.mathieu--drif@bull.com>\n S: Supported\n F: hw/i386/intel_iommu.c\n F: hw/i386/intel_iommu_internal.h\n+F: hw/i386/intel_iommu_accel.*\n F: include/hw/i386/intel_iommu.h\n F: tests/functional/x86_64/test_intel_iommu.py\n F: tests/qtest/intel-iommu-test.c\n@@ -3939,6 +4026,7 @@ M: Alejandro Jimenez <alejandro.j.jimenez@oracle.com>\n R: Sairaj Kodilkar <sarunkod@amd.com>\n S: Supported\n F: hw/i386/amd_iommu*\n+F: tests/qtest/amd-iommu-test.c\n \n OpenSBI Firmware\n L: qemu-riscv@nongnu.org\n@@ -3951,8 +4039,8 @@ Clock framework\n M: Luc Michel <luc@lmichel.fr>\n R: Damien Hedde <damien.hedde@dahe.fr>\n S: Maintained\n-F: include/hw/clock.h\n-F: include/hw/qdev-clock.h\n+F: include/hw/core/clock.h\n+F: include/hw/core/qdev-clock.h\n F: hw/core/clock.c\n F: hw/core/clock-vmstate.c\n F: hw/core/qdev-clock.c\n@@ -3961,7 +4049,7 @@ F: docs/devel/clocks.rst\n Reset framework\n M: Peter Maydell <peter.maydell@linaro.org>\n S: Maintained\n-F: include/hw/resettable.h\n+F: include/hw/core/resettable.h\n F: include/hw/core/resetcontainer.h\n F: include/system/reset.h\n F: hw/core/reset.c\n@@ -3971,8 +4059,7 @@ F: hw/core/resetcontainer.c\n Usermode Emulation\n ------------------\n Overall usermode emulation\n-M: Riku Voipio <riku.voipio@iki.fi>\n-S: Maintained\n+S: Orphan\n F: accel/tcg/user-exec*.c\n F: hw/core/cpu-user.c\n F: include/user/\n@@ -3981,7 +4068,7 @@ F: common-user/\n BSD user\n M: Warner Losh <imp@bsdimp.com>\n R: Kyle Evans <kevans@freebsd.org>\n-S: Maintained\n+S: Odd Fixes\n F: bsd-user/\n F: configs/targets/*-bsd-user.mak\n F: tests/vm/*bsd\n@@ -3989,7 +4076,8 @@ T: git https://github.com/qemu-bsd-user/qemu-bsd-user bsd-user-rebase-3.1\n \n Linux user\n M: Laurent Vivier <laurent@vivier.eu>\n-S: Maintained\n+R: Pierrick Bouvier <pierrick.bouvier@linaro.org>\n+S: Odd Fixes\n F: linux-user/\n F: configs/targets/*linux-user.mak\n F: scripts/qemu-binfmt-conf.sh\n@@ -4007,14 +4095,15 @@ F: include/tcg/\n \n TCG Plugins\n M: Alex Bennée <alex.bennee@linaro.org>\n+M: Pierrick Bouvier <pierrick.bouvier@linaro.org>\n T: git https://gitlab.com/stsquad/qemu plugins/next\n R: Alexandre Iooss <erdnaxe@crans.org>\n R: Mahmoud Mandour <ma.mandourr@gmail.com>\n-R: Pierrick Bouvier <pierrick.bouvier@linaro.org>\n S: Maintained\n F: docs/devel/tcg-plugins.rst\n F: plugins/\n F: tests/tcg/plugins/\n+F: tests/tcg/multiarch/plugin/\n F: tests/functional/aarch64/test_tcg_plugins.py\n F: contrib/plugins/\n F: scripts/qemu-plugin-symbols.py\n@@ -4025,16 +4114,10 @@ S: Maintained\n L: qemu-arm@nongnu.org\n F: tcg/aarch64/\n \n-ARM TCG target\n-M: Richard Henderson <richard.henderson@linaro.org>\n-S: Maintained\n-L: qemu-arm@nongnu.org\n-F: tcg/arm/\n-\n-i386 TCG target\n+X86 TCG target\n M: Richard Henderson <richard.henderson@linaro.org>\n S: Maintained\n-F: tcg/i386/\n+F: tcg/x86_64/\n \n LoongArch64 TCG target\n M: WANG Xuerui <git@xen0n.name>\n@@ -4048,19 +4131,20 @@ R: Huacai Chen <chenhuacai@kernel.org>\n R: Jiaxun Yang <jiaxun.yang@flygoat.com>\n R: Aleksandar Rikalo <arikalo@gmail.com>\n S: Odd Fixes\n-F: tcg/mips/\n+F: tcg/mips64/\n \n PPC TCG target\n M: Richard Henderson <richard.henderson@linaro.org>\n S: Odd Fixes\n-F: tcg/ppc/\n+F: tcg/ppc64/\n \n RISC-V TCG target\n M: Palmer Dabbelt <palmer@dabbelt.com>\n M: Alistair Francis <Alistair.Francis@wdc.com>\n+R: Daniel Henrique Barboza <daniel.barboza@oss.qualcomm.com>\n L: qemu-riscv@nongnu.org\n S: Maintained\n-F: tcg/riscv/\n+F: tcg/riscv64/\n F: disas/riscv.[ch]\n \n S390 TCG target\n@@ -4398,7 +4482,6 @@ Build and test automation, general continuous integration\n M: Alex Bennée <alex.bennee@linaro.org>\n T: git https://gitlab.com/stsquad/qemu testing/next\n M: Philippe Mathieu-Daudé <philmd@linaro.org>\n-M: Thomas Huth <thuth@redhat.com>\n S: Maintained\n F: .github/workflows/lockdown.yml\n F: .gitlab-ci.yml\n@@ -4420,17 +4503,19 @@ FreeBSD Hosted Continuous Integration\n M: Ed Maste <emaste@freebsd.org>\n M: Li-Wen Hsu <lwhsu@freebsd.org>\n S: Maintained\n-F: .gitlab-ci.d/cirrus/freebsd*\n F: tests/vm/freebsd\n-W: https://cirrus-ci.com/github/qemu/qemu\n \n Functional testing framework\n-M: Thomas Huth <thuth@redhat.com>\n+M: Thomas Huth <th.huth+qemu@posteo.eu>\n R: Philippe Mathieu-Daudé <philmd@linaro.org>\n R: Daniel P. Berrange <berrange@redhat.com>\n-S: Maintained\n+S: Odd Fixes\n F: docs/devel/testing/functional.rst\n F: scripts/clean_functional_cache.py\n+F: tests/functional/meson.build\n+F: tests/functional/generic/meson.build\n+F: tests/functional/generic/test_linters.py\n+F: tests/functional/pylintrc\n F: tests/functional/qemu_test/\n \n Windows Hosted Continuous Integration\n@@ -4444,7 +4529,7 @@ R: Philippe Mathieu-Daudé <philmd@linaro.org>\n S: Maintained\n F: tests/tcg/Makefile.target\n \n-GitLab custom runners (HW sponsored by Linaro, OSOUL and IBM)\n+GitLab custom runners (HW sponsored by Linaro, OSUOSL and IBM)\n M: Alex Bennée <alex.bennee@linaro.org>\n M: Philippe Mathieu-Daudé <philmd@linaro.org>\n S: Maintained\n@@ -4466,9 +4551,14 @@ F: gitdm.config\n F: contrib/gitdm/*\n \n Incompatible changes\n-R: devel@lists.libvirt.org\n+L: devel@lists.libvirt.org\n F: docs/about/deprecated.rst\n \n+General Documentation\n+M: Pierrick Bouvier <pierrick.bouvier@linaro.org>\n+S: Maintained\n+F: docs/\n+\n Build System\n ------------\n Meson\n@@ -4479,13 +4569,13 @@ R: Philippe Mathieu-Daudé <philmd@linaro.org>\n S: Maintained\n F: meson.build\n F: meson_options.txt\n+F: run.in\n F: scripts/check_sparse.py\n F: scripts/symlink-install-tree.py\n \n Top Level Makefile and configure\n M: Paolo Bonzini <pbonzini@redhat.com>\n R: Alex Bennée <alex.bennee@linaro.org>\n-R: Thomas Huth <thuth@redhat.com>\n S: Maintained\n F: Makefile\n F: configure\ndiff --git a/Makefile b/Makefile\nindex 9fb55dc..54547a3 100644\n--- a/Makefile\n+++ b/Makefile\n@@ -130,7 +130,7 @@ Makefile.mtest: build.ninja scripts/mtest2make.py\n \n .PHONY: update-buildoptions\n all update-buildoptions: $(SRC_PATH)/scripts/meson-buildoptions.sh\n-$(SRC_PATH)/scripts/meson-buildoptions.sh: $(SRC_PATH)/meson_options.txt\n+$(SRC_PATH)/scripts/meson-buildoptions.sh: $(SRC_PATH)/meson_options.txt $(SRC_PATH)/scripts/meson-buildoptions.py\n \t$(MESON) introspect --buildoptions $(SRC_PATH)/meson.build | $(PYTHON) \\\n \t  scripts/meson-buildoptions.py > $@.tmp && mv $@.tmp $@\n endif\ndiff --git a/VERSION b/VERSION\nindex 26ee5b0..e7e9473 100644\n--- a/VERSION\n+++ b/VERSION\n@@ -1 +1 @@\n-10.2.1\n+11.0.3\ndiff --git a/accel/Kconfig b/accel/Kconfig\nindex a60f114..6d05287 100644\n--- a/accel/Kconfig\n+++ b/accel/Kconfig\n@@ -16,6 +16,9 @@ config KVM\n config MSHV\n     bool\n \n+config NITRO\n+    bool\n+\n config XEN\n     bool\n     select FSDEV_9P if VIRTFS\ndiff --git a/accel/accel-common.c b/accel/accel-common.c\nindex 850c5ab..eecb2a2 100644\n--- a/accel/accel-common.c\n+++ b/accel/accel-common.c\n@@ -106,6 +106,11 @@ bool accel_cpu_common_realize(CPUState *cpu, Error **errp)\n     if (acc->cpu_common_realize && !acc->cpu_common_realize(cpu, errp)) {\n         return false;\n     }\n+    if (acc->ops\n+        && acc->ops->cpu_target_realize\n+        && !acc->ops->cpu_target_realize(cpu, errp)) {\n+        return false;\n+    }\n \n     return true;\n }\ndiff --git a/accel/accel-system.c b/accel/accel-system.c\nindex 1e97c64..150af05 100644\n--- a/accel/accel-system.c\n+++ b/accel/accel-system.c\n@@ -27,7 +27,7 @@\n #include \"qemu/accel.h\"\n #include \"qapi/qapi-commands-accelerator.h\"\n #include \"monitor/monitor.h\"\n-#include \"hw/boards.h\"\n+#include \"hw/core/boards.h\"\n #include \"hw/core/cpu.h\"\n #include \"accel/accel-ops.h\"\n #include \"accel/accel-cpu-ops.h\"\ndiff --git a/accel/hvf/hvf-accel-ops.c b/accel/hvf/hvf-accel-ops.c\nindex e4c6252..b74a577 100644\n--- a/accel/hvf/hvf-accel-ops.c\n+++ b/accel/hvf/hvf-accel-ops.c\n@@ -64,20 +64,6 @@ HVFState *hvf_state;\n \n /* Memory slots */\n \n-hvf_slot *hvf_find_overlap_slot(uint64_t start, uint64_t size)\n-{\n-    hvf_slot *slot;\n-    int x;\n-    for (x = 0; x < hvf_state->num_slots; ++x) {\n-        slot = &hvf_state->slots[x];\n-        if (slot->size && start < (slot->start + slot->size) &&\n-            (start + size) > slot->start) {\n-            return slot;\n-        }\n-    }\n-    return NULL;\n-}\n-\n static void do_hvf_cpu_synchronize_state(CPUState *cpu, run_on_cpu_data arg)\n {\n     if (!cpu->vcpu_dirty) {\n@@ -149,8 +135,6 @@ static int hvf_init_vcpu(CPUState *cpu)\n     sigaction(SIG_IPI, &sigact, NULL);\n \n #ifdef __aarch64__\n-    pthread_sigmask(SIG_BLOCK, NULL, &cpu->accel->unblock_ipi_mask);\n-    sigdelset(&cpu->accel->unblock_ipi_mask, SIG_IPI);\n     cpu->accel->guest_debug_enabled = false;\n \n     r = hv_vcpu_create(&cpu->accel->fd,\n@@ -372,6 +356,8 @@ static void hvf_accel_ops_class_init(ObjectClass *oc, const void *data)\n {\n     AccelOpsClass *ops = ACCEL_OPS_CLASS(oc);\n \n+    ops->cpu_target_realize = hvf_arch_cpu_realize;\n+\n     ops->create_vcpu_thread = hvf_start_vcpu_thread;\n     ops->kick_vcpu_thread = hvf_kick_vcpu_thread;\n     ops->handle_interrupt = generic_handle_interrupt;\ndiff --git a/accel/hvf/hvf-all.c b/accel/hvf/hvf-all.c\nindex 0a4b498..5f357c6 100644\n--- a/accel/hvf/hvf-all.c\n+++ b/accel/hvf/hvf-all.c\n@@ -11,25 +11,17 @@\n #include \"qemu/osdep.h\"\n #include \"qemu/error-report.h\"\n #include \"accel/accel-ops.h\"\n+#include \"exec/cpu-common.h\"\n #include \"system/address-spaces.h\"\n #include \"system/memory.h\"\n #include \"system/hvf.h\"\n #include \"system/hvf_int.h\"\n #include \"hw/core/cpu.h\"\n-#include \"hw/boards.h\"\n+#include \"hw/core/boards.h\"\n #include \"trace.h\"\n \n bool hvf_allowed;\n \n-struct mac_slot {\n-    int present;\n-    uint64_t size;\n-    uint64_t gpa_start;\n-    uint64_t gva;\n-};\n-\n-struct mac_slot mac_slots[32];\n-\n const char *hvf_return_string(hv_return_t ret)\n {\n     switch (ret) {\n@@ -58,45 +50,44 @@ void assert_hvf_ok_impl(hv_return_t ret, const char *file, unsigned int line,\n     abort();\n }\n \n-static int do_hvf_set_memory(hvf_slot *slot, hv_memory_flags_t flags)\n+static void do_hv_vm_protect(hwaddr start, size_t size,\n+                             hv_memory_flags_t flags)\n {\n-    struct mac_slot *macslot;\n+    intptr_t page_mask = qemu_real_host_page_mask();\n     hv_return_t ret;\n \n-    macslot = &mac_slots[slot->slot_id];\n+    trace_hvf_vm_protect(start, size, flags,\n+                         flags & HV_MEMORY_READ  ? 'R' : '-',\n+                         flags & HV_MEMORY_WRITE ? 'W' : '-',\n+                         flags & HV_MEMORY_EXEC  ? 'X' : '-');\n+    g_assert(!((uintptr_t)start & ~page_mask));\n+    g_assert(!(size & ~page_mask));\n \n-    if (macslot->present) {\n-        if (macslot->size != slot->size) {\n-            macslot->present = 0;\n-            trace_hvf_vm_unmap(macslot->gpa_start, macslot->size);\n-            ret = hv_vm_unmap(macslot->gpa_start, macslot->size);\n-            assert_hvf_ok(ret);\n-        }\n-    }\n+    ret = hv_vm_protect(start, size, flags);\n+    assert_hvf_ok(ret);\n+}\n \n-    if (!slot->size) {\n-        return 0;\n-    }\n+void hvf_protect_clean_range(hwaddr addr, size_t size)\n+{\n+    do_hv_vm_protect(addr, size, HV_MEMORY_READ | HV_MEMORY_EXEC);\n+}\n \n-    macslot->present = 1;\n-    macslot->gpa_start = slot->start;\n-    macslot->size = slot->size;\n-    trace_hvf_vm_map(slot->start, slot->size, slot->mem, flags,\n-                     flags & HV_MEMORY_READ ?  'R' : '-',\n-                     flags & HV_MEMORY_WRITE ? 'W' : '-',\n-                     flags & HV_MEMORY_EXEC ?  'X' : '-');\n-    ret = hv_vm_map(slot->mem, slot->start, slot->size, flags);\n-    assert_hvf_ok(ret);\n-    return 0;\n+void hvf_unprotect_dirty_range(hwaddr addr, size_t size)\n+{\n+    do_hv_vm_protect(addr, size,\n+                     HV_MEMORY_READ | HV_MEMORY_WRITE | HV_MEMORY_EXEC);\n }\n \n static void hvf_set_phys_mem(MemoryRegionSection *section, bool add)\n {\n-    hvf_slot *mem;\n     MemoryRegion *area = section->mr;\n     bool writable = !area->readonly && !area->rom_device;\n     hv_memory_flags_t flags;\n     uint64_t page_size = qemu_real_host_page_size();\n+    uint64_t gpa = section->offset_within_address_space;\n+    uint64_t size = int128_get64(section->size);\n+    hv_return_t ret;\n+    void *mem;\n \n     if (!memory_region_is_ram(area)) {\n         if (writable) {\n@@ -110,120 +101,60 @@ static void hvf_set_phys_mem(MemoryRegionSection *section, bool add)\n         }\n     }\n \n-    if (!QEMU_IS_ALIGNED(int128_get64(section->size), page_size) ||\n-        !QEMU_IS_ALIGNED(section->offset_within_address_space, page_size)) {\n+    if (!QEMU_IS_ALIGNED(size, page_size) ||\n+        !QEMU_IS_ALIGNED(gpa, page_size)) {\n         /* Not page aligned, so we can not map as RAM */\n         add = false;\n     }\n \n-    mem = hvf_find_overlap_slot(\n-            section->offset_within_address_space,\n-            int128_get64(section->size));\n-\n-    if (mem && add) {\n-        if (mem->size == int128_get64(section->size) &&\n-            mem->start == section->offset_within_address_space &&\n-            mem->mem == (memory_region_get_ram_ptr(area) +\n-            section->offset_within_region)) {\n-            return; /* Same region was attempted to register, go away. */\n-        }\n-    }\n-\n-    /* Region needs to be reset. set the size to 0 and remap it. */\n-    if (mem) {\n-        mem->size = 0;\n-        if (do_hvf_set_memory(mem, 0)) {\n-            error_report(\"Failed to reset overlapping slot\");\n-            abort();\n-        }\n-    }\n-\n     if (!add) {\n+        trace_hvf_vm_unmap(gpa, size);\n+        ret = hv_vm_unmap(gpa, size);\n+        assert_hvf_ok(ret);\n         return;\n     }\n \n-    if (area->readonly ||\n-        (!memory_region_is_ram(area) && memory_region_is_romd(area))) {\n-        flags = HV_MEMORY_READ | HV_MEMORY_EXEC;\n-    } else {\n-        flags = HV_MEMORY_READ | HV_MEMORY_WRITE | HV_MEMORY_EXEC;\n-    }\n+    flags = HV_MEMORY_READ | HV_MEMORY_EXEC | (writable ? HV_MEMORY_WRITE : 0);\n+    mem = memory_region_get_ram_ptr(area) + section->offset_within_region;\n \n-    /* Now make a new slot. */\n-    int x;\n-\n-    for (x = 0; x < hvf_state->num_slots; ++x) {\n-        mem = &hvf_state->slots[x];\n-        if (!mem->size) {\n-            break;\n-        }\n-    }\n-\n-    if (x == hvf_state->num_slots) {\n-        error_report(\"No free slots\");\n-        abort();\n-    }\n-\n-    mem->size = int128_get64(section->size);\n-    mem->mem = memory_region_get_ram_ptr(area) + section->offset_within_region;\n-    mem->start = section->offset_within_address_space;\n-    mem->region = area;\n-\n-    if (do_hvf_set_memory(mem, flags)) {\n-        error_report(\"Error registering new memory slot\");\n-        abort();\n-    }\n-}\n-\n-static void hvf_set_dirty_tracking(MemoryRegionSection *section, bool on)\n-{\n-    hvf_slot *slot;\n-\n-    slot = hvf_find_overlap_slot(\n-            section->offset_within_address_space,\n-            int128_get64(section->size));\n-\n-    /* protect region against writes; begin tracking it */\n-    if (on) {\n-        slot->flags |= HVF_SLOT_LOG;\n-        hv_vm_protect((uintptr_t)slot->start, (size_t)slot->size,\n-                      HV_MEMORY_READ | HV_MEMORY_EXEC);\n-    /* stop tracking region*/\n-    } else {\n-        slot->flags &= ~HVF_SLOT_LOG;\n-        hv_vm_protect((uintptr_t)slot->start, (size_t)slot->size,\n-                      HV_MEMORY_READ | HV_MEMORY_WRITE | HV_MEMORY_EXEC);\n-    }\n+    trace_hvf_vm_map(gpa, size, mem, flags,\n+                     flags & HV_MEMORY_READ ?  'R' : '-',\n+                     flags & HV_MEMORY_WRITE ? 'W' : '-',\n+                     flags & HV_MEMORY_EXEC ?  'X' : '-');\n+    ret = hv_vm_map(mem, gpa, size, flags);\n+    assert_hvf_ok(ret);\n }\n \n static void hvf_log_start(MemoryListener *listener,\n                           MemoryRegionSection *section, int old, int new)\n {\n-    if (old != 0) {\n-        return;\n+    assert(new != 0);\n+    if (old == 0) {\n+        hvf_protect_clean_range(section->offset_within_address_space,\n+                                int128_get64(section->size));\n     }\n-\n-    hvf_set_dirty_tracking(section, 1);\n }\n \n static void hvf_log_stop(MemoryListener *listener,\n                          MemoryRegionSection *section, int old, int new)\n {\n-    if (new != 0) {\n-        return;\n+    assert(old != 0);\n+    if (new == 0) {\n+        hvf_unprotect_dirty_range(section->offset_within_address_space,\n+                                  int128_get64(section->size));\n     }\n-\n-    hvf_set_dirty_tracking(section, 0);\n }\n \n-static void hvf_log_sync(MemoryListener *listener,\n-                         MemoryRegionSection *section)\n+static void hvf_log_clear(MemoryListener *listener,\n+                          MemoryRegionSection *section)\n {\n     /*\n-     * sync of dirty pages is handled elsewhere; just make sure we keep\n-     * tracking the region.\n+     * The dirty page bits within section are being cleared.\n+     * Some number of those pages may have been dirtied and\n+     * the write permission enabled.  Reset the range read-only.\n      */\n-    hvf_set_dirty_tracking(section, 1);\n+    hvf_protect_clean_range(section->offset_within_address_space,\n+                            int128_get64(section->size));\n }\n \n static void hvf_region_add(MemoryListener *listener,\n@@ -245,19 +176,20 @@ static MemoryListener hvf_memory_listener = {\n     .region_del = hvf_region_del,\n     .log_start = hvf_log_start,\n     .log_stop = hvf_log_stop,\n-    .log_sync = hvf_log_sync,\n+    .log_clear = hvf_log_clear,\n };\n \n static int hvf_accel_init(AccelState *as, MachineState *ms)\n {\n-    int x;\n     hv_return_t ret;\n     HVFState *s = HVF_STATE(as);\n     int pa_range = 36;\n     MachineClass *mc = MACHINE_GET_CLASS(ms);\n \n-    if (mc->hvf_get_physical_address_range) {\n-        pa_range = mc->hvf_get_physical_address_range(ms);\n+\n+    if (mc->get_physical_address_range) {\n+        pa_range = mc->get_physical_address_range(ms,\n+            hvf_arch_get_default_ipa_bit_size(), hvf_arch_get_max_ipa_bit_size());\n         if (pa_range < 0) {\n             return -EINVAL;\n         }\n@@ -271,12 +203,6 @@ static int hvf_accel_init(AccelState *as, MachineState *ms)\n     }\n     assert_hvf_ok(ret);\n \n-    s->num_slots = ARRAY_SIZE(s->slots);\n-    for (x = 0; x < s->num_slots; ++x) {\n-        s->slots[x].size = 0;\n-        s->slots[x].slot_id = x;\n-    }\n-\n     QTAILQ_INIT(&s->hvf_sw_breakpoints);\n \n     hvf_state = s;\ndiff --git a/accel/hvf/meson.build b/accel/hvf/meson.build\nindex fc52cb7..6e2dcc4 100644\n--- a/accel/hvf/meson.build\n+++ b/accel/hvf/meson.build\n@@ -1,7 +1,4 @@\n-hvf_ss = ss.source_set()\n-hvf_ss.add(files(\n+system_ss.add(when: 'CONFIG_HVF', if_true: files(\n   'hvf-all.c',\n   'hvf-accel-ops.c',\n ))\n-\n-specific_ss.add_all(when: 'CONFIG_HVF', if_true: hvf_ss)\ndiff --git a/accel/hvf/trace-events b/accel/hvf/trace-events\nindex 2fd3e12..f989da5 100644\n--- a/accel/hvf/trace-events\n+++ b/accel/hvf/trace-events\n@@ -5,3 +5,4 @@\n # hvf-accel-ops.c\n hvf_vm_map(uint64_t paddr, uint64_t size, void *vaddr, uint8_t flags, const char r, const char w, const char e) \"paddr:0x%016\"PRIx64\" size:0x%08\"PRIx64\" vaddr:%p flags:0x%02x/%c%c%c\"\n hvf_vm_unmap(uint64_t paddr, uint64_t size) \"paddr:0x%016\"PRIx64\" size:0x%08\"PRIx64\n+hvf_vm_protect(uint64_t paddr, size_t size, uint8_t flags, const char r, const char w, const char e) \"paddr:0x%016\"PRIx64\" size:0x%08zx flags:0x%02x/%c%c%c\"\ndiff --git a/accel/kvm/kvm-accel-ops.c b/accel/kvm/kvm-accel-ops.c\nindex 8ed6945..6d9140e 100644\n--- a/accel/kvm/kvm-accel-ops.c\n+++ b/accel/kvm/kvm-accel-ops.c\n@@ -16,6 +16,7 @@\n #include \"qemu/osdep.h\"\n #include \"qemu/error-report.h\"\n #include \"qemu/main-loop.h\"\n+#include \"exec/cpu-common.h\"\n #include \"accel/accel-cpu-ops.h\"\n #include \"system/kvm.h\"\n #include \"system/kvm_int.h\"\ndiff --git a/accel/kvm/kvm-all.c b/accel/kvm/kvm-all.c\nindex 28006d7..92af425 100644\n--- a/accel/kvm/kvm-all.c\n+++ b/accel/kvm/kvm-all.c\n@@ -42,7 +42,7 @@\n #include \"qemu/event_notifier.h\"\n #include \"qemu/main-loop.h\"\n #include \"trace.h\"\n-#include \"hw/irq.h\"\n+#include \"hw/core/irq.h\"\n #include \"qapi/visitor.h\"\n #include \"qapi/qapi-types-common.h\"\n #include \"qapi/qapi-visit-common.h\"\n@@ -53,7 +53,7 @@\n #include \"system/dirtylimit.h\"\n #include \"qemu/range.h\"\n \n-#include \"hw/boards.h\"\n+#include \"hw/core/boards.h\"\n #include \"system/stats.h\"\n \n /* This check must be after config-host.h is included */\n@@ -61,7 +61,7 @@\n #include <sys/eventfd.h>\n #endif\n \n-#if defined(__i386__) || defined(__x86_64__) || defined(__aarch64__)\n+#if defined(__x86_64__) || defined(__aarch64__)\n # define KVM_HAVE_MCE_INJECTION 1\n #endif\n \n@@ -90,6 +90,7 @@ struct KVMParkedVcpu {\n };\n \n KVMState *kvm_state;\n+VmfdChangeNotifier vmfd_notifier;\n bool kvm_kernel_irqchip;\n bool kvm_split_irqchip;\n bool kvm_async_interrupts_allowed;\n@@ -110,7 +111,7 @@ static uint64_t kvm_supported_memory_attributes;\n static bool kvm_guest_memfd_supported;\n static hwaddr kvm_max_slot_size = ~0;\n \n-static const KVMCapabilityInfo kvm_required_capabilites[] = {\n+static const KVMCapabilityInfo kvm_required_capabilities[] = {\n     KVM_CAP_INFO(USER_MEMORY),\n     KVM_CAP_INFO(DESTROY_MEMORY_REGION_WORKS),\n     KVM_CAP_INFO(JOIN_MEMORY_REGIONS_WORKS),\n@@ -123,6 +124,16 @@ static const KVMCapabilityInfo kvm_required_capabilites[] = {\n static NotifierList kvm_irqchip_change_notifiers =\n     NOTIFIER_LIST_INITIALIZER(kvm_irqchip_change_notifiers);\n \n+static NotifierWithReturnList register_vmfd_changed_notifiers =\n+    NOTIFIER_WITH_RETURN_LIST_INITIALIZER(register_vmfd_changed_notifiers);\n+\n+static NotifierWithReturnList register_vcpufd_changed_notifiers =\n+    NOTIFIER_WITH_RETURN_LIST_INITIALIZER(register_vcpufd_changed_notifiers);\n+\n+static int map_kvm_run(KVMState *s, CPUState *cpu, Error **errp);\n+static int map_kvm_dirty_gfns(KVMState *s, CPUState *cpu, Error **errp);\n+static int vcpu_unmap_regions(KVMState *s, CPUState *cpu);\n+\n struct KVMResampleFd {\n     int gsi;\n     EventNotifier *resample_event;\n@@ -416,6 +427,90 @@ err:\n     return ret;\n }\n \n+static void kvm_create_vcpu_internal(CPUState *cpu, KVMState *s, int kvm_fd)\n+{\n+    cpu->kvm_fd = kvm_fd;\n+    cpu->kvm_state = s;\n+    if (!s->guest_state_protected) {\n+        cpu->vcpu_dirty = true;\n+    }\n+    cpu->dirty_pages = 0;\n+    cpu->throttle_us_per_full = 0;\n+\n+    return;\n+}\n+\n+static int kvm_rebind_vcpus(Error **errp)\n+{\n+    CPUState *cpu;\n+    unsigned long vcpu_id;\n+    KVMState *s = kvm_state;\n+    int kvm_fd, ret = 0;\n+\n+    CPU_FOREACH(cpu) {\n+        vcpu_id = kvm_arch_vcpu_id(cpu);\n+\n+        if (cpu->kvm_fd) {\n+            close(cpu->kvm_fd);\n+        }\n+\n+        ret = kvm_arch_destroy_vcpu(cpu);\n+        if (ret < 0) {\n+            goto err;\n+        }\n+\n+        if (s->coalesced_mmio_ring == (void *)cpu->kvm_run + PAGE_SIZE) {\n+            s->coalesced_mmio_ring = NULL;\n+        }\n+\n+        ret = vcpu_unmap_regions(s, cpu);\n+        if (ret < 0) {\n+            goto err;\n+        }\n+\n+        ret = kvm_arch_pre_create_vcpu(cpu, errp);\n+        if (ret < 0) {\n+            goto err;\n+        }\n+\n+        kvm_fd = kvm_vm_ioctl(s, KVM_CREATE_VCPU, vcpu_id);\n+        if (kvm_fd < 0) {\n+            error_report(\"KVM_CREATE_VCPU IOCTL failed for vCPU %lu (%s)\",\n+                         vcpu_id, strerror(kvm_fd));\n+            return kvm_fd;\n+        }\n+\n+        kvm_create_vcpu_internal(cpu, s, kvm_fd);\n+\n+        ret = map_kvm_run(s, cpu, errp);\n+        if (ret < 0) {\n+            goto err;\n+        }\n+\n+        if (s->kvm_dirty_ring_size) {\n+            ret = map_kvm_dirty_gfns(s, cpu, errp);\n+            if (ret < 0) {\n+                goto err;\n+            }\n+        }\n+\n+        ret = kvm_arch_init_vcpu(cpu);\n+        if (ret < 0) {\n+            error_setg_errno(errp, -ret,\n+                             \"kvm_init_vcpu: kvm_arch_init_vcpu failed (%lu)\",\n+                             vcpu_id);\n+        }\n+\n+        close(cpu->kvm_vcpu_stats_fd);\n+        cpu->kvm_vcpu_stats_fd = kvm_vcpu_ioctl(cpu, KVM_GET_STATS_FD, NULL);\n+        kvm_init_cpu_signals(cpu);\n+    }\n+    trace_kvm_rebind_vcpus();\n+\n+ err:\n+    return ret;\n+}\n+\n static void kvm_park_vcpu(CPUState *cpu)\n {\n     struct KVMParkedVcpu *vcpu;\n@@ -479,13 +574,7 @@ static int kvm_create_vcpu(CPUState *cpu)\n         }\n     }\n \n-    cpu->kvm_fd = kvm_fd;\n-    cpu->kvm_state = s;\n-    if (!s->guest_state_protected) {\n-        cpu->vcpu_dirty = true;\n-    }\n-    cpu->dirty_pages = 0;\n-    cpu->throttle_us_per_full = 0;\n+    kvm_create_vcpu_internal(cpu, s, kvm_fd);\n \n     trace_kvm_create_vcpu(cpu->cpu_index, vcpu_id, kvm_fd);\n \n@@ -504,19 +593,11 @@ int kvm_create_and_park_vcpu(CPUState *cpu)\n     return ret;\n }\n \n-static int do_kvm_destroy_vcpu(CPUState *cpu)\n+static int vcpu_unmap_regions(KVMState *s, CPUState *cpu)\n {\n-    KVMState *s = kvm_state;\n     int mmap_size;\n     int ret = 0;\n \n-    trace_kvm_destroy_vcpu(cpu->cpu_index, kvm_arch_vcpu_id(cpu));\n-\n-    ret = kvm_arch_destroy_vcpu(cpu);\n-    if (ret < 0) {\n-        goto err;\n-    }\n-\n     mmap_size = kvm_ioctl(s, KVM_GET_VCPU_MMAP_SIZE, 0);\n     if (mmap_size < 0) {\n         ret = mmap_size;\n@@ -544,39 +625,47 @@ static int do_kvm_destroy_vcpu(CPUState *cpu)\n         cpu->kvm_dirty_gfns = NULL;\n     }\n \n-    kvm_park_vcpu(cpu);\n-err:\n+ err:\n     return ret;\n }\n \n-void kvm_destroy_vcpu(CPUState *cpu)\n-{\n-    if (do_kvm_destroy_vcpu(cpu) < 0) {\n-        error_report(\"kvm_destroy_vcpu failed\");\n-        exit(EXIT_FAILURE);\n-    }\n-}\n-\n-int kvm_init_vcpu(CPUState *cpu, Error **errp)\n+static int do_kvm_destroy_vcpu(CPUState *cpu)\n {\n     KVMState *s = kvm_state;\n-    int mmap_size;\n-    int ret;\n+    int ret = 0;\n \n-    trace_kvm_init_vcpu(cpu->cpu_index, kvm_arch_vcpu_id(cpu));\n+    trace_kvm_destroy_vcpu(cpu->cpu_index, kvm_arch_vcpu_id(cpu));\n \n-    ret = kvm_arch_pre_create_vcpu(cpu, errp);\n+    ret = kvm_arch_destroy_vcpu(cpu);\n     if (ret < 0) {\n         goto err;\n     }\n \n-    ret = kvm_create_vcpu(cpu);\n+    /* If I am the CPU that created coalesced_mmio_ring, then discard it */\n+    if (s->coalesced_mmio_ring == (void *)cpu->kvm_run + PAGE_SIZE) {\n+        s->coalesced_mmio_ring = NULL;\n+    }\n+\n+    ret = vcpu_unmap_regions(s, cpu);\n     if (ret < 0) {\n-        error_setg_errno(errp, -ret,\n-                         \"kvm_init_vcpu: kvm_create_vcpu failed (%lu)\",\n-                         kvm_arch_vcpu_id(cpu));\n         goto err;\n     }\n+    kvm_park_vcpu(cpu);\n+err:\n+    return ret;\n+}\n+\n+void kvm_destroy_vcpu(CPUState *cpu)\n+{\n+    if (do_kvm_destroy_vcpu(cpu) < 0) {\n+        error_report(\"kvm_destroy_vcpu failed\");\n+        exit(EXIT_FAILURE);\n+    }\n+}\n+\n+static int map_kvm_run(KVMState *s, CPUState *cpu, Error **errp)\n+{\n+    int mmap_size, ret = 0;\n \n     mmap_size = kvm_ioctl(s, KVM_GET_VCPU_MMAP_SIZE, 0);\n     if (mmap_size < 0) {\n@@ -601,14 +690,53 @@ int kvm_init_vcpu(CPUState *cpu, Error **errp)\n             (void *)cpu->kvm_run + s->coalesced_mmio * PAGE_SIZE;\n     }\n \n+ err:\n+    return ret;\n+}\n+\n+static int map_kvm_dirty_gfns(KVMState *s, CPUState *cpu, Error **errp)\n+{\n+    int ret = 0;\n+    /* Use MAP_SHARED to share pages with the kernel */\n+    cpu->kvm_dirty_gfns = mmap(NULL, s->kvm_dirty_ring_bytes,\n+                               PROT_READ | PROT_WRITE, MAP_SHARED,\n+                               cpu->kvm_fd,\n+                               PAGE_SIZE * KVM_DIRTY_LOG_PAGE_OFFSET);\n+    if (cpu->kvm_dirty_gfns == MAP_FAILED) {\n+        ret = -errno;\n+    }\n+\n+    return ret;\n+}\n+\n+int kvm_init_vcpu(CPUState *cpu, Error **errp)\n+{\n+    KVMState *s = kvm_state;\n+    int ret;\n+\n+    trace_kvm_init_vcpu(cpu->cpu_index, kvm_arch_vcpu_id(cpu));\n+\n+    ret = kvm_arch_pre_create_vcpu(cpu, errp);\n+    if (ret < 0) {\n+        goto err;\n+    }\n+\n+    ret = kvm_create_vcpu(cpu);\n+    if (ret < 0) {\n+        error_setg_errno(errp, -ret,\n+                         \"kvm_init_vcpu: kvm_create_vcpu failed (%lu)\",\n+                         kvm_arch_vcpu_id(cpu));\n+        goto err;\n+    }\n+\n+    ret = map_kvm_run(s, cpu, errp);\n+    if (ret < 0) {\n+        goto err;\n+    }\n+\n     if (s->kvm_dirty_ring_size) {\n-        /* Use MAP_SHARED to share pages with the kernel */\n-        cpu->kvm_dirty_gfns = mmap(NULL, s->kvm_dirty_ring_bytes,\n-                                   PROT_READ | PROT_WRITE, MAP_SHARED,\n-                                   cpu->kvm_fd,\n-                                   PAGE_SIZE * KVM_DIRTY_LOG_PAGE_OFFSET);\n-        if (cpu->kvm_dirty_gfns == MAP_FAILED) {\n-            ret = -errno;\n+        ret = map_kvm_dirty_gfns(s, cpu, errp);\n+        if (ret < 0) {\n             goto err;\n         }\n     }\n@@ -2173,6 +2301,38 @@ void kvm_irqchip_change_notify(void)\n     notifier_list_notify(&kvm_irqchip_change_notifiers, NULL);\n }\n \n+void kvm_vmfd_add_change_notifier(NotifierWithReturn *n)\n+{\n+    notifier_with_return_list_add(&register_vmfd_changed_notifiers, n);\n+}\n+\n+void kvm_vmfd_remove_change_notifier(NotifierWithReturn *n)\n+{\n+    notifier_with_return_remove(n);\n+}\n+\n+static int kvm_vmfd_change_notify(Error **errp)\n+{\n+    return notifier_with_return_list_notify(&register_vmfd_changed_notifiers,\n+                                            &vmfd_notifier, errp);\n+}\n+\n+void kvm_vcpufd_add_change_notifier(NotifierWithReturn *n)\n+{\n+    notifier_with_return_list_add(&register_vcpufd_changed_notifiers, n);\n+}\n+\n+void kvm_vcpufd_remove_change_notifier(NotifierWithReturn *n)\n+{\n+    notifier_with_return_remove(n);\n+}\n+\n+static int kvm_vcpufd_change_notify(Error **errp)\n+{\n+    return notifier_with_return_list_notify(&register_vcpufd_changed_notifiers,\n+                                            &vmfd_notifier, errp);\n+}\n+\n int kvm_irqchip_get_virq(KVMState *s)\n {\n     int next_virq;\n@@ -2415,11 +2575,9 @@ void kvm_irqchip_set_qemuirq_gsi(KVMState *s, qemu_irq irq, int gsi)\n     g_hash_table_insert(s->gsimap, irq, GINT_TO_POINTER(gsi));\n }\n \n-static void kvm_irqchip_create(KVMState *s)\n+static int do_kvm_irqchip_create(KVMState *s)\n {\n     int ret;\n-\n-    assert(s->kernel_irqchip_split != ON_OFF_AUTO_AUTO);\n     if (kvm_check_extension(s, KVM_CAP_IRQCHIP)) {\n         ;\n     } else if (kvm_check_extension(s, KVM_CAP_S390_IRQCHIP)) {\n@@ -2429,7 +2587,7 @@ static void kvm_irqchip_create(KVMState *s)\n             exit(1);\n         }\n     } else {\n-        return;\n+        return -EOPNOTSUPP;\n     }\n \n     if (kvm_check_extension(s, KVM_CAP_IRQFD) <= 0) {\n@@ -2453,6 +2611,16 @@ static void kvm_irqchip_create(KVMState *s)\n         exit(1);\n     }\n \n+    return 0;\n+}\n+\n+static void kvm_irqchip_create(KVMState *s)\n+{\n+    assert(s->kernel_irqchip_split != ON_OFF_AUTO_AUTO);\n+\n+    if (do_kvm_irqchip_create(s) < 0) {\n+        return;\n+    }\n     kvm_kernel_irqchip = true;\n     /* If we have an in-kernel IRQ chip then we must have asynchronous\n      * interrupt delivery (though the reverse is not necessarily true)\n@@ -2607,6 +2775,123 @@ static int kvm_setup_dirty_ring(KVMState *s)\n     return 0;\n }\n \n+static int kvm_reset_vmfd(MachineState *ms)\n+{\n+    KVMState *s;\n+    KVMMemoryListener *kml;\n+    int ret = 0, type;\n+    Error *err = NULL;\n+\n+    /*\n+     * bail if the current architecture does not support VM file\n+     * descriptor change.\n+     */\n+    if (!kvm_arch_supports_vmfd_change()) {\n+        error_report(\"This target architecture does not support KVM VM \"\n+                     \"file descriptor change.\");\n+        return -EOPNOTSUPP;\n+    }\n+\n+    s = KVM_STATE(ms->accelerator);\n+    kml = &s->memory_listener;\n+\n+    memory_listener_unregister(&kml->listener);\n+    memory_listener_unregister(&kvm_io_listener);\n+\n+    vmfd_notifier.pre = true;\n+    ret = kvm_vmfd_change_notify(&err);\n+    if (ret < 0) {\n+        return ret;\n+    }\n+    assert(!err);\n+\n+    if (s->vmfd >= 0) {\n+        close(s->vmfd);\n+    }\n+\n+    type = find_kvm_machine_type(ms);\n+    if (type < 0) {\n+        return -EINVAL;\n+    }\n+\n+    ret = do_kvm_create_vm(s, type);\n+    if (ret < 0) {\n+        return ret;\n+    }\n+\n+    s->vmfd = ret;\n+\n+    /* guest state is now unprotected again */\n+    kvm_state->guest_state_protected = false;\n+\n+    kvm_setup_dirty_ring(s);\n+\n+    /* rebind memory to new vm fd */\n+    ret = ram_block_rebind(&err);\n+    if (ret < 0) {\n+        return ret;\n+    }\n+    assert(!err);\n+\n+    ret = kvm_arch_on_vmfd_change(ms, s);\n+    if (ret < 0) {\n+        return ret;\n+    }\n+\n+    if (s->kernel_irqchip_allowed) {\n+        /* ignore return from this function */\n+        do_kvm_irqchip_create(s);\n+    }\n+\n+    /*\n+     * notify everyone that vmfd has changed.\n+     */\n+    vmfd_notifier.vmfd = s->vmfd;\n+    vmfd_notifier.pre = false;\n+\n+    ret = kvm_vmfd_change_notify(&err);\n+    if (ret < 0) {\n+        return ret;\n+    }\n+    assert(!err);\n+\n+    /*\n+     * rebind new vcpu fds with the new kvm fds\n+     * These can only be called after kvm_arch_on_vmfd_change()\n+     */\n+    ret = kvm_rebind_vcpus(&err);\n+    if (ret < 0) {\n+        return ret;\n+    }\n+    assert(!err);\n+\n+    /* notify everyone that vcpu fd has changed. */\n+    ret = kvm_vcpufd_change_notify(&err);\n+    if (ret < 0) {\n+        return ret;\n+    }\n+    assert(!err);\n+\n+    /* these can be only called after ram_block_rebind() */\n+    memory_listener_register(&kml->listener, &address_space_memory);\n+    memory_listener_register(&kvm_io_listener, &address_space_io);\n+\n+    /*\n+     * kvm fd has changed. Commit the irq routes to KVM once more.\n+     */\n+    kvm_irqchip_commit_routes(s);\n+    /*\n+     * for confidential guest, this is the last possible place where we\n+     * can call synchronize_all_post_init() to sync all vcpu states to\n+     * kvm.\n+     */\n+    if (ms->cgs) {\n+        cpu_synchronize_all_post_init();\n+    }\n+    trace_kvm_reset_vmfd();\n+    return ret;\n+}\n+\n static int kvm_init(AccelState *as, MachineState *ms)\n {\n     MachineClass *mc = MACHINE_GET_CLASS(ms);\n@@ -2712,7 +2997,7 @@ static int kvm_init(AccelState *as, MachineState *ms)\n         nc++;\n     }\n \n-    missing_cap = kvm_check_extension_list(s, kvm_required_capabilites);\n+    missing_cap = kvm_check_extension_list(s, kvm_required_capabilities);\n     if (!missing_cap) {\n         missing_cap =\n             kvm_check_extension_list(s, kvm_arch_required_capabilities);\n@@ -3124,7 +3409,7 @@ int kvm_convert_memory(hwaddr start, hwaddr size, bool to_private)\n     addr = memory_region_get_ram_ptr(mr) + section.offset_within_region;\n     rb = qemu_ram_block_from_host(addr, false, &offset);\n \n-    ret = ram_block_attributes_state_change(RAM_BLOCK_ATTRIBUTES(mr->rdm),\n+    ret = ram_block_attributes_state_change(rb->attributes,\n                                             offset, size, to_private);\n     if (ret) {\n         error_report(\"Failed to notify the listener the state change of \"\n@@ -3300,6 +3585,7 @@ int kvm_cpu_exec(CPUState *cpu)\n                 qemu_system_reset_request(SHUTDOWN_CAUSE_GUEST_RESET);\n                 ret = EXCP_INTERRUPT;\n                 break;\n+            case KVM_SYSTEM_EVENT_SEV_TERM:\n             case KVM_SYSTEM_EVENT_CRASH:\n                 kvm_cpu_synchronize_state(cpu);\n                 bql_lock();\n@@ -3996,6 +4282,7 @@ static void kvm_accel_instance_init(Object *obj)\n     s->xen_evtchn_max_pirq = 256;\n     s->device = NULL;\n     s->msr_energy.enable = false;\n+    s->honor_guest_pat = ON_OFF_AUTO_OFF;\n }\n \n /**\n@@ -4014,6 +4301,7 @@ static void kvm_accel_class_init(ObjectClass *oc, const void *data)\n     AccelClass *ac = ACCEL_CLASS(oc);\n     ac->name = \"KVM\";\n     ac->init_machine = kvm_init;\n+    ac->rebuild_guest = kvm_reset_vmfd;\n     ac->has_memory = kvm_accel_has_memory;\n     ac->allowed = &kvm_allowed;\n     ac->gdbstub_supported_sstep_flags = kvm_gdbstub_sstep_flags;\ndiff --git a/accel/kvm/trace-events b/accel/kvm/trace-events\nindex e43d18a..4a8921c 100644\n--- a/accel/kvm/trace-events\n+++ b/accel/kvm/trace-events\n@@ -14,6 +14,8 @@ kvm_destroy_vcpu(int cpu_index, unsigned long arch_cpu_id) \"index: %d id: %lu\"\n kvm_park_vcpu(int cpu_index, unsigned long arch_cpu_id) \"index: %d id: %lu\"\n kvm_unpark_vcpu(unsigned long arch_cpu_id, const char *msg) \"id: %lu %s\"\n kvm_irqchip_commit_routes(void) \"\"\n+kvm_reset_vmfd(void) \"\"\n+kvm_rebind_vcpus(void) \"\"\n kvm_irqchip_add_msi_route(char *name, int vector, int virq) \"dev %s vector %d virq %d\"\n kvm_irqchip_update_msi_route(int virq) \"Updating MSI route virq=%d\"\n kvm_irqchip_release_virq(int virq) \"virq %d\"\ndiff --git a/accel/meson.build b/accel/meson.build\nindex 983dfd0..7da12b9 100644\n--- a/accel/meson.build\n+++ b/accel/meson.build\n@@ -6,11 +6,13 @@ user_ss.add(files('accel-user.c'))\n subdir('tcg')\n if have_system\n   subdir('hvf')\n+  subdir('whpx')\n   subdir('qtest')\n   subdir('kvm')\n   subdir('xen')\n   subdir('stubs')\n   subdir('mshv')\n+  subdir('nitro')\n endif\n \n # qtest\ndiff --git a/accel/mshv/irq.c b/accel/mshv/irq.c\nindex adf8f33..3c238c3 100644\n--- a/accel/mshv/irq.c\n+++ b/accel/mshv/irq.c\n@@ -10,8 +10,8 @@\n  * SPDX-License-Identifier: GPL-2.0-or-later\n  */\n \n-#include \"linux/mshv.h\"\n #include \"qemu/osdep.h\"\n+#include \"linux/mshv.h\"\n #include \"qemu/error-report.h\"\n #include \"hw/hyperv/hvhdk_mini.h\"\n #include \"hw/hyperv/hvgdk_mini.h\"\n@@ -20,7 +20,6 @@\n #include \"system/mshv.h\"\n #include \"system/mshv_int.h\"\n #include \"trace.h\"\n-#include <stdint.h>\n #include <sys/ioctl.h>\n \n #define MSHV_IRQFD_RESAMPLE_FLAG (1 << MSHV_IRQFD_BIT_RESAMPLE)\ndiff --git a/accel/mshv/mem.c b/accel/mshv/mem.c\nindex 0e2164a..e55c38d 100644\n--- a/accel/mshv/mem.c\n+++ b/accel/mshv/mem.c\n@@ -11,9 +11,7 @@\n  */\n \n #include \"qemu/osdep.h\"\n-#include \"qemu/lockable.h\"\n #include \"qemu/error-report.h\"\n-#include \"qemu/rcu.h\"\n #include \"linux/mshv.h\"\n #include \"system/address-spaces.h\"\n #include \"system/mshv.h\"\n@@ -22,137 +20,6 @@\n #include <sys/ioctl.h>\n #include \"trace.h\"\n \n-typedef struct SlotsRCUReclaim {\n-    struct rcu_head rcu;\n-    GList *old_head;\n-    MshvMemorySlot *removed_slot;\n-} SlotsRCUReclaim;\n-\n-static void rcu_reclaim_slotlist(struct rcu_head *rcu)\n-{\n-    SlotsRCUReclaim *r = container_of(rcu, SlotsRCUReclaim, rcu);\n-    g_list_free(r->old_head);\n-    g_free(r->removed_slot);\n-    g_free(r);\n-}\n-\n-static void publish_slots(GList *new_head, GList *old_head,\n-                          MshvMemorySlot *removed_slot)\n-{\n-    MshvMemorySlotManager *manager = &mshv_state->msm;\n-\n-    assert(manager);\n-    qatomic_store_release(&manager->slots, new_head);\n-\n-    SlotsRCUReclaim *r = g_new(SlotsRCUReclaim, 1);\n-    r->old_head = old_head;\n-    r->removed_slot = removed_slot;\n-\n-    call_rcu1(&r->rcu, rcu_reclaim_slotlist);\n-}\n-\n-/* Needs to be called with mshv_state->msm.mutex held */\n-static int remove_slot(MshvMemorySlot *slot)\n-{\n-    GList *old_head, *new_head;\n-    MshvMemorySlotManager *manager = &mshv_state->msm;\n-\n-    assert(manager);\n-    old_head = qatomic_load_acquire(&manager->slots);\n-\n-    if (!g_list_find(old_head, slot)) {\n-        error_report(\"slot requested for removal not found\");\n-        return -1;\n-    }\n-\n-    new_head = g_list_copy(old_head);\n-    new_head = g_list_remove(new_head, slot);\n-    manager->n_slots--;\n-\n-    publish_slots(new_head, old_head, slot);\n-\n-    return 0;\n-}\n-\n-/* Needs to be called with mshv_state->msm.mutex held */\n-static MshvMemorySlot *append_slot(uint64_t gpa, uint64_t userspace_addr,\n-                                   uint64_t size, bool readonly)\n-{\n-    GList *old_head, *new_head;\n-    MshvMemorySlot *slot;\n-    MshvMemorySlotManager *manager = &mshv_state->msm;\n-\n-    assert(manager);\n-\n-    old_head = qatomic_load_acquire(&manager->slots);\n-\n-    if (manager->n_slots >= MSHV_MAX_MEM_SLOTS) {\n-        error_report(\"no free memory slots available\");\n-        return NULL;\n-    }\n-\n-    slot = g_new0(MshvMemorySlot, 1);\n-    slot->guest_phys_addr = gpa;\n-    slot->userspace_addr = userspace_addr;\n-    slot->memory_size = size;\n-    slot->readonly = readonly;\n-\n-    new_head = g_list_copy(old_head);\n-    new_head = g_list_append(new_head, slot);\n-    manager->n_slots++;\n-\n-    publish_slots(new_head, old_head, NULL);\n-\n-    return slot;\n-}\n-\n-static int slot_overlaps(const MshvMemorySlot *slot1,\n-                         const MshvMemorySlot *slot2)\n-{\n-    uint64_t start_1 = slot1->userspace_addr,\n-             start_2 = slot2->userspace_addr;\n-    size_t len_1 = slot1->memory_size,\n-           len_2 = slot2->memory_size;\n-\n-    if (slot1 == slot2) {\n-        return -1;\n-    }\n-\n-    return ranges_overlap(start_1, len_1, start_2, len_2) ?  0 : -1;\n-}\n-\n-static bool is_mapped(MshvMemorySlot *slot)\n-{\n-    /* Subsequent reads of mapped field see a fully-initialized slot */\n-    return qatomic_load_acquire(&slot->mapped);\n-}\n-\n-/*\n- * Find slot that is:\n- * - overlapping in userspace\n- * - currently mapped in the guest\n- *\n- * Needs to be called with mshv_state->msm.mutex or RCU read lock held.\n- */\n-static MshvMemorySlot *find_overlap_mem_slot(GList *head, MshvMemorySlot *slot)\n-{\n-    GList *found;\n-    MshvMemorySlot *overlap_slot;\n-\n-    found = g_list_find_custom(head, slot, (GCompareFunc) slot_overlaps);\n-\n-    if (!found) {\n-        return NULL;\n-    }\n-\n-    overlap_slot = found->data;\n-    if (!overlap_slot || !is_mapped(overlap_slot)) {\n-        return NULL;\n-    }\n-\n-    return overlap_slot;\n-}\n-\n static int set_guest_memory(int vm_fd,\n                             const struct mshv_user_mem_region *region)\n {\n@@ -160,169 +27,38 @@ static int set_guest_memory(int vm_fd,\n \n     ret = ioctl(vm_fd, MSHV_SET_GUEST_MEMORY, region);\n     if (ret < 0) {\n-        error_report(\"failed to set guest memory: %s\", strerror(errno));\n-        return -1;\n+        error_report(\"failed to set guest memory\");\n+        return -errno;\n     }\n \n     return 0;\n }\n \n-static int map_or_unmap(int vm_fd, const MshvMemorySlot *slot, bool map)\n+static int map_or_unmap(int vm_fd, const MshvMemoryRegion *mr, bool map)\n {\n     struct mshv_user_mem_region region = {0};\n \n-    region.guest_pfn = slot->guest_phys_addr >> MSHV_PAGE_SHIFT;\n-    region.size = slot->memory_size;\n-    region.userspace_addr = slot->userspace_addr;\n+    region.guest_pfn = mr->guest_phys_addr >> MSHV_PAGE_SHIFT;\n+    region.size = mr->memory_size;\n+    region.userspace_addr = mr->userspace_addr;\n \n     if (!map) {\n         region.flags |= (1 << MSHV_SET_MEM_BIT_UNMAP);\n-        trace_mshv_unmap_memory(slot->userspace_addr, slot->guest_phys_addr,\n-                                slot->memory_size);\n+        trace_mshv_unmap_memory(mr->userspace_addr, mr->guest_phys_addr,\n+                                mr->memory_size);\n         return set_guest_memory(vm_fd, &region);\n     }\n \n     region.flags = BIT(MSHV_SET_MEM_BIT_EXECUTABLE);\n-    if (!slot->readonly) {\n+    if (!mr->readonly) {\n         region.flags |= BIT(MSHV_SET_MEM_BIT_WRITABLE);\n     }\n \n-    trace_mshv_map_memory(slot->userspace_addr, slot->guest_phys_addr,\n-                          slot->memory_size);\n+    trace_mshv_map_memory(mr->userspace_addr, mr->guest_phys_addr,\n+                          mr->memory_size);\n     return set_guest_memory(vm_fd, &region);\n }\n \n-static int slot_matches_region(const MshvMemorySlot *slot1,\n-                               const MshvMemorySlot *slot2)\n-{\n-    return (slot1->guest_phys_addr == slot2->guest_phys_addr &&\n-            slot1->userspace_addr  == slot2->userspace_addr &&\n-            slot1->memory_size     == slot2->memory_size) ? 0 : -1;\n-}\n-\n-/* Needs to be called with mshv_state->msm.mutex held */\n-static MshvMemorySlot *find_mem_slot_by_region(uint64_t gpa, uint64_t size,\n-                                               uint64_t userspace_addr)\n-{\n-    MshvMemorySlot ref_slot = {\n-        .guest_phys_addr = gpa,\n-        .userspace_addr  = userspace_addr,\n-        .memory_size     = size,\n-    };\n-    GList *found;\n-    MshvMemorySlotManager *manager = &mshv_state->msm;\n-\n-    assert(manager);\n-    found = g_list_find_custom(manager->slots, &ref_slot,\n-                               (GCompareFunc) slot_matches_region);\n-\n-    return found ? found->data : NULL;\n-}\n-\n-static int slot_covers_gpa(const MshvMemorySlot *slot, uint64_t *gpa_p)\n-{\n-    uint64_t gpa_offset, gpa = *gpa_p;\n-\n-    gpa_offset = gpa - slot->guest_phys_addr;\n-    return (slot->guest_phys_addr <= gpa && gpa_offset < slot->memory_size)\n-        ? 0 : -1;\n-}\n-\n-/* Needs to be called with mshv_state->msm.mutex or RCU read lock held */\n-static MshvMemorySlot *find_mem_slot_by_gpa(GList *head, uint64_t gpa)\n-{\n-    GList *found;\n-    MshvMemorySlot *slot;\n-\n-    trace_mshv_find_slot_by_gpa(gpa);\n-\n-    found = g_list_find_custom(head, &gpa, (GCompareFunc) slot_covers_gpa);\n-    if (found) {\n-        slot = found->data;\n-        trace_mshv_found_slot(slot->userspace_addr, slot->guest_phys_addr,\n-                              slot->memory_size);\n-        return slot;\n-    }\n-\n-    return NULL;\n-}\n-\n-/* Needs to be called with mshv_state->msm.mutex held */\n-static void set_mapped(MshvMemorySlot *slot, bool mapped)\n-{\n-    /* prior writes to mapped field becomes visible before readers see slot */\n-    qatomic_store_release(&slot->mapped, mapped);\n-}\n-\n-MshvRemapResult mshv_remap_overlap_region(int vm_fd, uint64_t gpa)\n-{\n-    MshvMemorySlot *gpa_slot, *overlap_slot;\n-    GList *head;\n-    int ret;\n-    MshvMemorySlotManager *manager = &mshv_state->msm;\n-\n-    /* fast path, called often by unmapped_gpa vm exit */\n-    WITH_RCU_READ_LOCK_GUARD() {\n-        assert(manager);\n-        head = qatomic_load_acquire(&manager->slots);\n-        /* return early if no slot is found */\n-        gpa_slot = find_mem_slot_by_gpa(head, gpa);\n-        if (gpa_slot == NULL) {\n-            return MshvRemapNoMapping;\n-        }\n-\n-        /* return early if no overlapping slot is found */\n-        overlap_slot = find_overlap_mem_slot(head, gpa_slot);\n-        if (overlap_slot == NULL) {\n-            return MshvRemapNoOverlap;\n-        }\n-    }\n-\n-    /*\n-     * We'll modify the mapping list, so we need to upgrade to mutex and\n-     * recheck.\n-     */\n-    assert(manager);\n-    QEMU_LOCK_GUARD(&manager->mutex);\n-\n-    /* return early if no slot is found */\n-    gpa_slot = find_mem_slot_by_gpa(manager->slots, gpa);\n-    if (gpa_slot == NULL) {\n-        return MshvRemapNoMapping;\n-    }\n-\n-    /* return early if no overlapping slot is found */\n-    overlap_slot = find_overlap_mem_slot(manager->slots, gpa_slot);\n-    if (overlap_slot == NULL) {\n-        return MshvRemapNoOverlap;\n-    }\n-\n-    /* unmap overlapping slot */\n-    ret = map_or_unmap(vm_fd, overlap_slot, false);\n-    if (ret < 0) {\n-        error_report(\"failed to unmap overlap region\");\n-        abort();\n-    }\n-    set_mapped(overlap_slot, false);\n-    warn_report(\"mapped out userspace_addr=0x%016lx gpa=0x%010lx size=0x%lx\",\n-                overlap_slot->userspace_addr,\n-                overlap_slot->guest_phys_addr,\n-                overlap_slot->memory_size);\n-\n-    /* map region for gpa */\n-    ret = map_or_unmap(vm_fd, gpa_slot, true);\n-    if (ret < 0) {\n-        error_report(\"failed to map new region\");\n-        abort();\n-    }\n-    set_mapped(gpa_slot, true);\n-    warn_report(\"mapped in  userspace_addr=0x%016lx gpa=0x%010lx size=0x%lx\",\n-                gpa_slot->userspace_addr, gpa_slot->guest_phys_addr,\n-                gpa_slot->memory_size);\n-\n-    return MshvRemapOk;\n-}\n-\n static int handle_unmapped_mmio_region_read(uint64_t gpa, uint64_t size,\n                                             uint8_t *data)\n {\n@@ -388,97 +124,20 @@ int mshv_guest_mem_write(uint64_t gpa, const uint8_t *data, uintptr_t size,\n     return -1;\n }\n \n-static int tracked_unmap(int vm_fd, uint64_t gpa, uint64_t size,\n-                        uint64_t userspace_addr)\n+static int set_memory(const MshvMemoryRegion *mshv_mr, bool add)\n {\n-    int ret;\n-    MshvMemorySlot *slot;\n-    MshvMemorySlotManager *manager = &mshv_state->msm;\n-\n-    assert(manager);\n-\n-    QEMU_LOCK_GUARD(&manager->mutex);\n-\n-    slot = find_mem_slot_by_region(gpa, size, userspace_addr);\n-    if (!slot) {\n-        trace_mshv_skip_unset_mem(userspace_addr, gpa, size);\n-        /* no work to do */\n-        return 0;\n-    }\n-\n-    if (!is_mapped(slot)) {\n-        /* remove slot, no need to unmap */\n-        return remove_slot(slot);\n-    }\n-\n-    ret = map_or_unmap(vm_fd, slot, false);\n-    if (ret < 0) {\n-        error_report(\"failed to unmap memory region\");\n-        return ret;\n-    }\n-    return remove_slot(slot);\n-}\n-\n-static int tracked_map(int vm_fd, uint64_t gpa, uint64_t size, bool readonly,\n-                       uint64_t userspace_addr)\n-{\n-    MshvMemorySlot *slot, *overlap_slot;\n-    int ret;\n-    MshvMemorySlotManager *manager = &mshv_state->msm;\n-\n-    assert(manager);\n-\n-    QEMU_LOCK_GUARD(&manager->mutex);\n+    int ret = 0;\n \n-    slot = find_mem_slot_by_region(gpa, size, userspace_addr);\n-    if (slot) {\n-        error_report(\"memory region already mapped at gpa=0x%lx, \"\n-                     \"userspace_addr=0x%lx, size=0x%lx\",\n-                     slot->guest_phys_addr, slot->userspace_addr,\n-                     slot->memory_size);\n+    if (!mshv_mr) {\n+        error_report(\"Invalid mshv_mr\");\n         return -1;\n     }\n \n-    slot = append_slot(gpa, userspace_addr, size, readonly);\n-\n-    overlap_slot = find_overlap_mem_slot(manager->slots, slot);\n-    if (overlap_slot) {\n-        trace_mshv_remap_attempt(slot->userspace_addr,\n-                                 slot->guest_phys_addr,\n-                                 slot->memory_size);\n-        warn_report(\"attempt to map region [0x%lx-0x%lx], while \"\n-                    \"[0x%lx-0x%lx] is already mapped in the guest\",\n-                    userspace_addr, userspace_addr + size - 1,\n-                    overlap_slot->userspace_addr,\n-                    overlap_slot->userspace_addr +\n-                    overlap_slot->memory_size - 1);\n-\n-        /* do not register mem slot in hv, but record for later swap-in */\n-        set_mapped(slot, false);\n-\n-        return 0;\n-    }\n-\n-    ret = map_or_unmap(vm_fd, slot, true);\n-    if (ret < 0) {\n-        error_report(\"failed to map memory region\");\n-        return -1;\n-    }\n-    set_mapped(slot, true);\n-\n-    return 0;\n-}\n-\n-static int set_memory(uint64_t gpa, uint64_t size, bool readonly,\n-                      uint64_t userspace_addr, bool add)\n-{\n-    int vm_fd = mshv_state->vm;\n-\n-    if (add) {\n-        return tracked_map(vm_fd, gpa, size, readonly, userspace_addr);\n-    }\n-\n-    return tracked_unmap(vm_fd, gpa, size, userspace_addr);\n+    trace_mshv_set_memory(add, mshv_mr->guest_phys_addr,\n+                          mshv_mr->memory_size,\n+                          mshv_mr->userspace_addr, mshv_mr->readonly,\n+                          ret);\n+    return map_or_unmap(mshv_state->vm, mshv_mr, add);\n }\n \n /*\n@@ -514,9 +173,7 @@ void mshv_set_phys_mem(MshvMemoryListener *mml, MemoryRegionSection *section,\n     bool writable = !area->readonly && !area->rom_device;\n     hwaddr start_addr, mr_offset, size;\n     void *ram;\n-\n-    size = align_section(section, &start_addr);\n-    trace_mshv_set_phys_mem(add, section->mr->name, start_addr);\n+    MshvMemoryRegion mshv_mr = {0};\n \n     size = align_section(section, &start_addr);\n     trace_mshv_set_phys_mem(add, section->mr->name, start_addr);\n@@ -543,21 +200,14 @@ void mshv_set_phys_mem(MshvMemoryListener *mml, MemoryRegionSection *section,\n \n     ram = memory_region_get_ram_ptr(area) + mr_offset;\n \n-    ret = set_memory(start_addr, size, !writable, (uint64_t)ram, add);\n+    mshv_mr.guest_phys_addr = start_addr;\n+    mshv_mr.memory_size = size;\n+    mshv_mr.readonly = !writable;\n+    mshv_mr.userspace_addr = (uint64_t)ram;\n+\n+    ret = set_memory(&mshv_mr, add);\n     if (ret < 0) {\n-        error_report(\"failed to set memory region\");\n+        error_report(\"Failed to set memory region\");\n         abort();\n     }\n }\n-\n-void mshv_init_memory_slot_manager(MshvState *mshv_state)\n-{\n-    MshvMemorySlotManager *manager;\n-\n-    assert(mshv_state);\n-    manager = &mshv_state->msm;\n-\n-    manager->n_slots = 0;\n-    manager->slots = NULL;\n-    qemu_mutex_init(&manager->mutex);\n-}\ndiff --git a/accel/mshv/meson.build b/accel/mshv/meson.build\nindex d3a2b32..c1b1787 100644\n--- a/accel/mshv/meson.build\n+++ b/accel/mshv/meson.build\n@@ -1,9 +1,6 @@\n-mshv_ss = ss.source_set()\n-mshv_ss.add(if_true: files(\n+system_ss.add(when: 'CONFIG_MSHV', if_true: files(\n   'irq.c',\n   'mem.c',\n   'msr.c',\n   'mshv-all.c'\n ))\n-\n-specific_ss.add_all(when: 'CONFIG_MSHV', if_true: mshv_ss)\ndiff --git a/accel/mshv/mshv-all.c b/accel/mshv/mshv-all.c\nindex 80428d1..d4cc7f5 100644\n--- a/accel/mshv/mshv-all.c\n+++ b/accel/mshv/mshv-all.c\n@@ -19,7 +19,7 @@\n #include \"qemu/event_notifier.h\"\n #include \"qemu/module.h\"\n #include \"qemu/main-loop.h\"\n-#include \"hw/boards.h\"\n+#include \"hw/core/boards.h\"\n \n #include \"hw/hyperv/hvhdk.h\"\n #include \"hw/hyperv/hvhdk_mini.h\"\n@@ -31,6 +31,7 @@\n #include \"qemu/guest-random.h\"\n #include \"accel/accel-ops.h\"\n #include \"accel/accel-cpu-ops.h\"\n+#include \"exec/cpu-common.h\"\n #include \"system/cpus.h\"\n #include \"system/runstate.h\"\n #include \"system/accel-blocker.h\"\n@@ -40,7 +41,6 @@\n #include \"system/reset.h\"\n #include \"trace.h\"\n #include <err.h>\n-#include <stdint.h>\n #include <sys/ioctl.h>\n \n #define TYPE_MSHV_ACCEL ACCEL_CLASS_NAME(\"mshv\")\n@@ -381,7 +381,7 @@ static void register_mshv_memory_listener(MshvState *s, MshvMemoryListener *mml,\n     }\n }\n \n-int mshv_hvcall(int fd, const struct mshv_root_hvcall *args)\n+int mshv_hvcall(int fd, const mshv_root_hvcall *args)\n {\n     int ret = 0;\n \n@@ -437,8 +437,6 @@ static int mshv_init(AccelState *as, MachineState *ms)\n \n     mshv_init_msicontrol();\n \n-    mshv_init_memory_slot_manager(s);\n-\n     ret = create_vm(mshv_fd, &vm_fd);\n     if (ret < 0) {\n         close(mshv_fd);\ndiff --git a/accel/mshv/trace-events b/accel/mshv/trace-events\nindex 36f0d59..a4dffeb 100644\n--- a/accel/mshv/trace-events\n+++ b/accel/mshv/trace-events\n@@ -26,8 +26,3 @@ mshv_map_memory(uint64_t userspace_addr, uint64_t gpa, uint64_t size) \"\\tu_a=0x%\n mshv_unmap_memory(uint64_t userspace_addr, uint64_t gpa, uint64_t size) \"\\tu_a=0x%\" PRIx64 \" gpa=0x%010\" PRIx64 \" size=0x%08\" PRIx64\n mshv_set_phys_mem(bool add, const char *name, uint64_t gpa) \"\\tadd=%d name=%s gpa=0x%010\" PRIx64\n mshv_handle_mmio(uint64_t gva, uint64_t gpa, uint64_t size, uint8_t access_type) \"\\tgva=0x%\" PRIx64 \" gpa=0x%010\" PRIx64 \" size=0x%\" PRIx64 \" access_type=%d\"\n-\n-mshv_found_slot(uint64_t userspace_addr, uint64_t gpa, uint64_t size) \"\\tu_a=0x%\" PRIx64 \" gpa=0x%010\" PRIx64 \" size=0x%08\" PRIx64\n-mshv_skip_unset_mem(uint64_t userspace_addr, uint64_t gpa, uint64_t size) \"\\tu_a=0x%\" PRIx64 \" gpa=0x%010\" PRIx64 \" size=0x%08\" PRIx64\n-mshv_remap_attempt(uint64_t userspace_addr, uint64_t gpa, uint64_t size) \"\\tu_a=0x%\" PRIx64 \" gpa=0x%010\" PRIx64 \" size=0x%08\" PRIx64\n-mshv_find_slot_by_gpa(uint64_t gpa) \"\\tgpa=0x%010\" PRIx64\ndiff --git a/accel/nitro/meson.build b/accel/nitro/meson.build\nnew file mode 100644\nindex 0000000..e01c1ba\n--- /dev/null\n+++ b/accel/nitro/meson.build\n@@ -0,0 +1,3 @@\n+nitro_ss = ss.source_set()\n+nitro_ss.add(files('nitro-accel.c'))\n+system_ss.add_all(when: 'CONFIG_NITRO', if_true: nitro_ss)\ndiff --git a/accel/nitro/nitro-accel.c b/accel/nitro/nitro-accel.c\nnew file mode 100644\nindex 0000000..a1e97a9\n--- /dev/null\n+++ b/accel/nitro/nitro-accel.c\n@@ -0,0 +1,284 @@\n+/*\n+ * Nitro Enclaves accelerator\n+ *\n+ * Copyright © 2026 Amazon.com, Inc. or its affiliates. All Rights Reserved.\n+ *\n+ * Authors:\n+ *   Alexander Graf <graf@amazon.com>\n+ *\n+ * Nitro Enclaves are a confidential compute technology which\n+ * allows a parent instance to carve out resources from itself\n+ * and spawn a confidential sibling VM next to itself. Similar\n+ * to other confidential compute solutions, this sibling is\n+ * controlled by an underlying vmm, but still has a higher level\n+ * vmm (QEMU) to implement some of its I/O functionality and\n+ * lifecycle.\n+ *\n+ * This accelerator drives /dev/nitro_enclaves to spawn a Nitro\n+ * Enclave. It works in tandem with the nitro_enclaves machine\n+ * which ensures the correct backend devices are available and\n+ * that the initial seed (an EIF file) is loaded at the correct\n+ * offset in memory.\n+ *\n+ * The accel starts the enclave when the machine starts, after\n+ * all device setup is finished.\n+ *\n+ * SPDX-License-Identifier: GPL-2.0-or-later\n+ */\n+\n+#include \"qemu/osdep.h\"\n+#include \"qemu/error-report.h\"\n+#include \"qapi/error.h\"\n+#include \"qapi/visitor.h\"\n+#include \"qemu/module.h\"\n+#include \"qemu/rcu.h\"\n+#include \"qemu/accel.h\"\n+#include \"qemu/guest-random.h\"\n+#include \"qemu/main-loop.h\"\n+#include \"accel/accel-ops.h\"\n+#include \"accel/accel-cpu-ops.h\"\n+#include \"accel/dummy-cpus.h\"\n+#include \"system/cpus.h\"\n+#include \"hw/core/cpu.h\"\n+#include \"hw/core/boards.h\"\n+#include \"hw/nitro/nitro-vsock-bus.h\"\n+#include \"system/ramblock.h\"\n+#include \"system/nitro-accel.h\"\n+#include \"trace.h\"\n+\n+#include <sys/ioctl.h>\n+#include \"standard-headers/linux/nitro_enclaves.h\"\n+\n+bool nitro_allowed;\n+\n+typedef struct NitroAccelState {\n+    AccelState parent_obj;\n+\n+    int ne_fd;\n+    int enclave_fd;\n+    uint64_t slot_uid;\n+    uint64_t enclave_cid;\n+    bool debug_mode;\n+} NitroAccelState;\n+\n+static int nitro_init_machine(AccelState *as, MachineState *ms)\n+{\n+    NitroAccelState *s = NITRO_ACCEL(as);\n+    uint64_t slot_uid = 0;\n+    int ret;\n+\n+    s->ne_fd = open(\"/dev/nitro_enclaves\", O_RDWR | O_CLOEXEC);\n+    if (s->ne_fd < 0) {\n+        error_report(\"nitro: failed to open /dev/nitro_enclaves: %s\",\n+                     strerror(errno));\n+        return -errno;\n+    }\n+\n+    ret = ioctl(s->ne_fd, NE_CREATE_VM, &slot_uid);\n+    if (ret < 0) {\n+        error_report(\"nitro: NE_CREATE_VM failed: %s\", strerror(errno));\n+        close(s->ne_fd);\n+        return -errno;\n+    }\n+    s->enclave_fd = ret;\n+    s->slot_uid = slot_uid;\n+\n+    return 0;\n+}\n+\n+static int nitro_donate_ram_block(RAMBlock *rb, void *opaque)\n+{\n+    NitroAccelState *s = opaque;\n+    struct ne_user_memory_region region = {\n+        .flags = 0,\n+        .memory_size = rb->used_length,\n+        .userspace_addr = (uint64_t)(uintptr_t)rb->host,\n+    };\n+\n+    if (!rb->used_length) {\n+        return 0;\n+    }\n+\n+    if (ioctl(s->enclave_fd, NE_SET_USER_MEMORY_REGION, &region) < 0) {\n+        error_report(\"nitro: NE_SET_USER_MEMORY_REGION failed for %s \"\n+                     \"(%\" PRIu64 \" bytes): %s\", rb->idstr, rb->used_length,\n+                     strerror(errno));\n+        return -errno;\n+    }\n+    return 0;\n+}\n+\n+/*\n+ * Start the Enclave. At this point memory is set up and the EIF is loaded.\n+ * This function donates memory, adds vCPUs, and starts the enclave.\n+ */\n+static void nitro_setup_post(AccelState *as)\n+{\n+    MachineState *ms = MACHINE(qdev_get_machine());\n+    NitroAccelState *s = NITRO_ACCEL(as);\n+    int nr_cpus = ms->smp.cpus;\n+    int i, ret;\n+    struct ne_enclave_start_info start_info = {\n+        .flags = s->debug_mode ? NE_ENCLAVE_DEBUG_MODE : 0,\n+        .enclave_cid = s->enclave_cid,\n+    };\n+\n+    ret = qemu_ram_foreach_block(nitro_donate_ram_block, s);\n+    if (ret < 0) {\n+        error_report(\"nitro: failed to donate memory\");\n+        exit(1);\n+    }\n+\n+    for (i = 0; i < nr_cpus; i++) {\n+        uint32_t cpu_id = 0;\n+        if (ioctl(s->enclave_fd, NE_ADD_VCPU, &cpu_id) < 0) {\n+            error_report(\"nitro: NE_ADD_VCPU failed: %s\", strerror(errno));\n+            exit(1);\n+        }\n+    }\n+\n+    ret = ioctl(s->enclave_fd, NE_START_ENCLAVE, &start_info);\n+    if (ret < 0) {\n+        switch (errno) {\n+        case NE_ERR_NO_MEM_REGIONS_ADDED:\n+            error_report(\"nitro: no memory regions added\");\n+            break;\n+        case NE_ERR_NO_VCPUS_ADDED:\n+            error_report(\"nitro: no vCPUs added\");\n+            break;\n+        case NE_ERR_ENCLAVE_MEM_MIN_SIZE:\n+            error_report(\"nitro: memory is below the minimum \"\n+                         \"required size. Try increasing -m\");\n+            break;\n+        case NE_ERR_FULL_CORES_NOT_USED:\n+            error_report(\"nitro: requires full CPU cores. \"\n+                         \"Try increasing -smp to a multiple of threads \"\n+                         \"per core on this host (e.g. -smp 2)\");\n+            break;\n+        case NE_ERR_NOT_IN_INIT_STATE:\n+            error_report(\"nitro: not in init state\");\n+            break;\n+        case NE_ERR_INVALID_FLAG_VALUE:\n+            error_report(\"nitro: invalid flag value for NE_START_ENCLAVE\");\n+            break;\n+        case NE_ERR_INVALID_ENCLAVE_CID:\n+            error_report(\"nitro: invalid enclave CID\");\n+            break;\n+        default:\n+            error_report(\"nitro: NE_START_ENCLAVE failed: %s (errno %d)\",\n+                         strerror(errno), errno);\n+            break;\n+        }\n+        exit(1);\n+    }\n+\n+    s->enclave_cid = start_info.enclave_cid;\n+    trace_nitro_enclave_started(s->enclave_cid);\n+\n+    /*\n+     * Notify all Nitro vsock bus devices that the enclave has started\n+     * and provide them with the CID for vsock connections.\n+     */\n+    {\n+        NitroVsockBridge *bridge = nitro_vsock_bridge_find();\n+        Error *err = NULL;\n+\n+        if (bridge) {\n+            nitro_vsock_bridge_start_enclave(bridge,\n+                                             (uint32_t)s->enclave_cid, &err);\n+            if (err) {\n+                error_report_err(err);\n+                exit(1);\n+            }\n+        }\n+    }\n+}\n+\n+/* QOM properties */\n+\n+static bool nitro_get_debug_mode(Object *obj, Error **errp)\n+{\n+    return NITRO_ACCEL(obj)->debug_mode;\n+}\n+\n+static void nitro_set_debug_mode(Object *obj, bool value, Error **errp)\n+{\n+    NITRO_ACCEL(obj)->debug_mode = value;\n+}\n+\n+static void nitro_get_enclave_cid(Object *obj, Visitor *v,\n+                                  const char *name, void *opaque,\n+                                  Error **errp)\n+{\n+    uint64_t val = NITRO_ACCEL(obj)->enclave_cid;\n+    visit_type_uint64(v, name, &val, errp);\n+}\n+\n+static void nitro_set_enclave_cid(Object *obj, Visitor *v,\n+                                  const char *name, void *opaque,\n+                                  Error **errp)\n+{\n+    uint64_t val;\n+    if (visit_type_uint64(v, name, &val, errp)) {\n+        NITRO_ACCEL(obj)->enclave_cid = val;\n+    }\n+}\n+\n+static void nitro_accel_class_init(ObjectClass *oc, const void *data)\n+{\n+    AccelClass *ac = ACCEL_CLASS(oc);\n+    ac->name = \"Nitro\";\n+    ac->init_machine = nitro_init_machine;\n+    ac->setup_post = nitro_setup_post;\n+    ac->allowed = &nitro_allowed;\n+\n+    object_class_property_add_bool(oc, \"debug-mode\",\n+                                   nitro_get_debug_mode,\n+                                   nitro_set_debug_mode);\n+    object_class_property_set_description(oc, \"debug-mode\",\n+        \"Start enclave in debug mode (enables console output)\");\n+\n+    object_class_property_add(oc, \"enclave-cid\", \"uint64\",\n+                              nitro_get_enclave_cid,\n+                              nitro_set_enclave_cid,\n+                              NULL, NULL);\n+    object_class_property_set_description(oc, \"enclave-cid\",\n+        \"Enclave CID (0 = auto-assigned by Nitro)\");\n+}\n+\n+static const TypeInfo nitro_accel_type = {\n+    .name = TYPE_NITRO_ACCEL,\n+    .parent = TYPE_ACCEL,\n+    .instance_size = sizeof(NitroAccelState),\n+    .class_init = nitro_accel_class_init,\n+};\n+module_obj(TYPE_NITRO_ACCEL);\n+\n+static bool nitro_cpus_are_resettable(void)\n+{\n+    return false;\n+}\n+\n+static void nitro_accel_ops_class_init(ObjectClass *oc, const void *data)\n+{\n+    AccelOpsClass *ops = ACCEL_OPS_CLASS(oc);\n+    ops->create_vcpu_thread = dummy_start_vcpu_thread;\n+    ops->handle_interrupt = generic_handle_interrupt;\n+    ops->cpus_are_resettable = nitro_cpus_are_resettable;\n+}\n+\n+static const TypeInfo nitro_accel_ops_type = {\n+    .name = ACCEL_OPS_NAME(\"nitro\"),\n+    .parent = TYPE_ACCEL_OPS,\n+    .class_init = nitro_accel_ops_class_init,\n+    .abstract = true,\n+};\n+module_obj(ACCEL_OPS_NAME(\"nitro\"));\n+\n+static void nitro_type_init(void)\n+{\n+    type_register_static(&nitro_accel_type);\n+    type_register_static(&nitro_accel_ops_type);\n+}\n+\n+type_init(nitro_type_init);\ndiff --git a/accel/nitro/trace-events b/accel/nitro/trace-events\nnew file mode 100644\nindex 0000000..9673eb5\n--- /dev/null\n+++ b/accel/nitro/trace-events\n@@ -0,0 +1,6 @@\n+# SPDX-License-Identifier: GPL-2.0-or-later\n+#\n+# See docs/devel/tracing.rst for syntax documentation.\n+\n+# nitro-accel.c\n+nitro_enclave_started(uint64_t cid) \"nitro: enclave started, CID=%\"PRIu64\ndiff --git a/accel/nitro/trace.h b/accel/nitro/trace.h\nnew file mode 100644\nindex 0000000..8c55647\n--- /dev/null\n+++ b/accel/nitro/trace.h\n@@ -0,0 +1,2 @@\n+/* SPDX-License-Identifier: GPL-2.0-or-later */\n+#include \"trace/trace-accel_nitro.h\"\ndiff --git a/accel/qtest/meson.build b/accel/qtest/meson.build\nindex 2018de8..e1b089e 100644\n--- a/accel/qtest/meson.build\n+++ b/accel/qtest/meson.build\n@@ -1 +1,4 @@\n-qtest_module_ss.add(when: ['CONFIG_SYSTEM_ONLY'], if_true: files('qtest.c'))\n+qtest_module_ss = ss.source_set()\n+qtest_module_ss.add(files('qtest.c'))\n+\n+modules += {'accel': {'qtest': qtest_module_ss}}\ndiff --git a/accel/qtest/qtest.c b/accel/qtest/qtest.c\nindex 1d4337d..bb1491d 100644\n--- a/accel/qtest/qtest.c\n+++ b/accel/qtest/qtest.c\n@@ -31,12 +31,12 @@ static int64_t qtest_clock_counter;\n \n static int64_t qtest_get_virtual_clock(void)\n {\n-    return qatomic_read_i64(&qtest_clock_counter);\n+    return qatomic_read(&qtest_clock_counter);\n }\n \n static void qtest_set_virtual_clock(int64_t count)\n {\n-    qatomic_set_i64(&qtest_clock_counter, count);\n+    qatomic_set(&qtest_clock_counter, count);\n }\n \n static int qtest_init_accel(AccelState *as, MachineState *ms)\ndiff --git a/accel/stubs/kvm-stub.c b/accel/stubs/kvm-stub.c\nindex 68cd33b..c4617ca 100644\n--- a/accel/stubs/kvm-stub.c\n+++ b/accel/stubs/kvm-stub.c\n@@ -79,6 +79,24 @@ void kvm_irqchip_change_notify(void)\n {\n }\n \n+void kvm_vmfd_add_change_notifier(NotifierWithReturn *n)\n+{\n+}\n+\n+void kvm_vmfd_remove_change_notifier(NotifierWithReturn *n)\n+{\n+}\n+\n+void kvm_vcpufd_add_change_notifier(NotifierWithReturn *n)\n+{\n+    return;\n+}\n+\n+void kvm_vcpufd_remove_change_notifier(NotifierWithReturn *n)\n+{\n+    return;\n+}\n+\n int kvm_irqchip_add_irqfd_notifier_gsi(KVMState *s, EventNotifier *n,\n                                        EventNotifier *rn, int virq)\n {\ndiff --git a/accel/stubs/meson.build b/accel/stubs/meson.build\nindex 48eccd1..ccad583 100644\n--- a/accel/stubs/meson.build\n+++ b/accel/stubs/meson.build\n@@ -1,10 +1,10 @@\n-system_stubs_ss = ss.source_set()\n-system_stubs_ss.add(when: 'CONFIG_XEN', if_false: files('xen-stub.c'))\n-system_stubs_ss.add(when: 'CONFIG_KVM', if_false: files('kvm-stub.c'))\n-system_stubs_ss.add(when: 'CONFIG_TCG', if_false: files('tcg-stub.c'))\n-system_stubs_ss.add(when: 'CONFIG_HVF', if_false: files('hvf-stub.c'))\n-system_stubs_ss.add(when: 'CONFIG_NVMM', if_false: files('nvmm-stub.c'))\n-system_stubs_ss.add(when: 'CONFIG_WHPX', if_false: files('whpx-stub.c'))\n-system_stubs_ss.add(when: 'CONFIG_MSHV', if_false: files('mshv-stub.c'))\n-\n-specific_ss.add_all(when: ['CONFIG_SYSTEM_ONLY'], if_true: system_stubs_ss)\n+stub_ss.add(files(\n+  'hvf-stub.c',\n+  'kvm-stub.c',\n+  'nitro-stub.c',\n+  'mshv-stub.c',\n+  'nvmm-stub.c',\n+  'tcg-stub.c',\n+  'whpx-stub.c',\n+  'xen-stub.c',\n+))\ndiff --git a/accel/stubs/nitro-stub.c b/accel/stubs/nitro-stub.c\nnew file mode 100644\nindex 0000000..186c844\n--- /dev/null\n+++ b/accel/stubs/nitro-stub.c\n@@ -0,0 +1,11 @@\n+/*\n+ * Nitro accel stubs for QEMU\n+ *\n+ * Copyright © 2026 Amazon.com, Inc. or its affiliates. All Rights Reserved.\n+ *\n+ * SPDX-License-Identifier: GPL-2.0-or-later\n+ */\n+\n+#include \"qemu/osdep.h\"\n+\n+bool nitro_allowed;\ndiff --git a/accel/stubs/whpx-stub.c b/accel/stubs/whpx-stub.c\nindex c564c89..4529dc4 100644\n--- a/accel/stubs/whpx-stub.c\n+++ b/accel/stubs/whpx-stub.c\n@@ -10,3 +10,4 @@\n #include \"system/whpx.h\"\n \n bool whpx_allowed;\n+bool whpx_irqchip_in_kernel;\ndiff --git a/accel/tcg/atomic_common.c.inc b/accel/tcg/atomic_common.c.inc\nindex bca93a0..7d779dd 100644\n--- a/accel/tcg/atomic_common.c.inc\n+++ b/accel/tcg/atomic_common.c.inc\n@@ -46,11 +46,8 @@ CMPXCHG_HELPER(cmpxchgw_be, uint32_t)\n CMPXCHG_HELPER(cmpxchgw_le, uint32_t)\n CMPXCHG_HELPER(cmpxchgl_be, uint32_t)\n CMPXCHG_HELPER(cmpxchgl_le, uint32_t)\n-\n-#ifdef CONFIG_ATOMIC64\n CMPXCHG_HELPER(cmpxchgq_be, uint64_t)\n CMPXCHG_HELPER(cmpxchgq_le, uint64_t)\n-#endif\n \n #if HAVE_CMPXCHG128\n CMPXCHG_HELPER(cmpxchgo_be, Int128)\n@@ -59,32 +56,11 @@ CMPXCHG_HELPER(cmpxchgo_le, Int128)\n \n #undef CMPXCHG_HELPER\n \n-Int128 HELPER(nonatomic_cmpxchgo)(CPUArchState *env, uint64_t addr,\n-                                  Int128 cmpv, Int128 newv, uint32_t oi)\n-{\n-#if TCG_TARGET_REG_BITS == 32\n-    uintptr_t ra = GETPC();\n-    Int128 oldv;\n-\n-    oldv = cpu_ld16_mmu(env, addr, oi, ra);\n-    if (int128_eq(oldv, cmpv)) {\n-        cpu_st16_mmu(env, addr, newv, oi, ra);\n-    } else {\n-        /* Even with comparison failure, still need a write cycle. */\n-        probe_write(env, addr, 16, get_mmuidx(oi), ra);\n-    }\n-    return oldv;\n-#else\n-    g_assert_not_reached();\n-#endif\n-}\n-\n #define ATOMIC_HELPER(OP, TYPE) \\\n     TYPE HELPER(glue(atomic_,OP))(CPUArchState *env, uint64_t addr,  \\\n                                   TYPE val, uint32_t oi)                 \\\n     { return glue(glue(cpu_atomic_,OP),_mmu)(env, addr, val, oi, GETPC()); }\n \n-#ifdef CONFIG_ATOMIC64\n #define GEN_ATOMIC_HELPERS(OP)              \\\n     ATOMIC_HELPER(glue(OP,b), uint32_t)     \\\n     ATOMIC_HELPER(glue(OP,w_be), uint32_t)  \\\n@@ -93,14 +69,6 @@ Int128 HELPER(nonatomic_cmpxchgo)(CPUArchState *env, uint64_t addr,\n     ATOMIC_HELPER(glue(OP,l_le), uint32_t)  \\\n     ATOMIC_HELPER(glue(OP,q_be), uint64_t)  \\\n     ATOMIC_HELPER(glue(OP,q_le), uint64_t)\n-#else\n-#define GEN_ATOMIC_HELPERS(OP)              \\\n-    ATOMIC_HELPER(glue(OP,b), uint32_t)     \\\n-    ATOMIC_HELPER(glue(OP,w_be), uint32_t)  \\\n-    ATOMIC_HELPER(glue(OP,w_le), uint32_t)  \\\n-    ATOMIC_HELPER(glue(OP,l_be), uint32_t)  \\\n-    ATOMIC_HELPER(glue(OP,l_le), uint32_t)\n-#endif\n \n GEN_ATOMIC_HELPERS(fetch_add)\n GEN_ATOMIC_HELPERS(fetch_and)\ndiff --git a/accel/tcg/atomic_template.h b/accel/tcg/atomic_template.h\nindex ae5203b..f792407 100644\n--- a/accel/tcg/atomic_template.h\n+++ b/accel/tcg/atomic_template.h\n@@ -27,8 +27,8 @@\n # define SHIFT      4\n #elif DATA_SIZE == 8\n # define SUFFIX     q\n-# define DATA_TYPE  aligned_uint64_t\n-# define SDATA_TYPE aligned_int64_t\n+# define DATA_TYPE  uint64_t\n+# define SDATA_TYPE int64_t\n # define BSWAP      bswap64\n # define SHIFT      3\n #elif DATA_SIZE == 4\n",
+ "diff_truncated": true
+}

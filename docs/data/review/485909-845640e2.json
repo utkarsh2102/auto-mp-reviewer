@@ -1,0 +1,35 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~hectorcao/ubuntu/+source/libvirt/+git/libvirt/+merge/485909",
+ "id": "485909",
+ "title": "lp2106791/noble → ubuntu/noble-updates",
+ "source_branch": "lp2106791/noble",
+ "target_branch": "ubuntu/noble-updates",
+ "revision": "32ba097232bfbe58e0e4b516de768db9ff3b3939",
+ "base_revision": "acfbefe124718e84ef9f269597cba4066d91f278",
+ "description": null,
+ "commit_message": null,
+ "diffstat": {
+  "debian/changelog": [
+   9,
+   0
+  ],
+  "debian/libvirt0.postinst": [
+   34,
+   0
+  ],
+  "debian/local/modules-load.conf": [
+   1,
+   0
+  ],
+  "debian/rules": [
+   8,
+   0
+  ]
+ },
+ "files": 4,
+ "added_lines": 52,
+ "removed_lines": 0,
+ "diff": "diff --git a/debian/changelog b/debian/changelog\nindex 2b32e0a..bca616d 100644\n--- a/debian/changelog\n+++ b/debian/changelog\n@@ -1,3 +1,12 @@\n+libvirt (10.0.0-2ubuntu8.8) noble; urgency=medium\n+\n+ * Fix detection of SapphireRapids (LP: #2106791)\n+   - d/rules,d/libvirt0.postinst: Request msr module to be loaded\n+     The module msr is needed by libvirt to read MSR registers\n+     and detect some CPU features.\n+\n+ -- Hector Cao <hector.cao@canonical.com>  Wed, 21 May 2025 02:42:16 +0000\n+\n libvirt (10.0.0-2ubuntu8.7) noble; urgency=medium\n \n   [ Heinrich Schuchardt ]\ndiff --git a/debian/libvirt0.postinst b/debian/libvirt0.postinst\nnew file mode 100644\nindex 0000000..fa930f5\n--- /dev/null\n+++ b/debian/libvirt0.postinst\n@@ -0,0 +1,34 @@\n+#!/bin/sh\n+\n+set -e\n+\n+# summary of how this script can be called:\n+#        * <postinst> `configure' <most-recently-configured-version>\n+#        * <old-postinst> `abort-upgrade' <new version>\n+#        * <conflictor's-postinst> `abort-remove' `in-favour' <package>\n+#          <new-version>\n+#        * <postinst> `abort-remove'\n+#        * <deconfigured's-postinst> `abort-deconfigure' `in-favour'\n+#          <failed-install-package> <version> `removing'\n+#          <conflicting-package> <version>\n+# for details, see https://www.debian.org/doc/debian-policy/ or\n+# the debian-policy package\n+\n+case \"$1\" in\n+    configure)\n+        # Load the msr module (LP: #2106791)\n+        modprobe msr || true\n+    ;;\n+\n+    abort-upgrade|abort-remove|abort-deconfigure)\n+    ;;\n+\n+    *)\n+        echo \"postinst called with unknown argument \\`$1'\" >&2\n+        exit 1\n+    ;;\n+esac\n+\n+#DEBHELPER#\n+\n+exit 0\ndiff --git a/debian/local/modules-load.conf b/debian/local/modules-load.conf\nnew file mode 100644\nindex 0000000..3e5ee7f\n--- /dev/null\n+++ b/debian/local/modules-load.conf\n@@ -0,0 +1 @@\n+msr\ndiff --git a/debian/rules b/debian/rules\nindex fadb91a..c7b12bb 100755\n--- a/debian/rules\n+++ b/debian/rules\n@@ -319,6 +319,14 @@ ifeq ($(DEB_HOST_ARCH_OS), linux)\n \tmkdir -p debian/tmp/etc/profile.d\n \tcp -f debian/libvirt-uri.sh debian/tmp/etc/profile.d/\n \n+ifneq ($(filter $(DEB_HOST_ARCH),amd64 i386),)\n+\t# Add msr module to be loaded at boot\n+\t# Since the msr read functionality is in libvirt0, we install the modules-load.d file\n+\t# as part of the libvirt0 binary package\n+\tmkdir -p debian/libvirt0/usr/lib/modules-load.d/\n+\tinstall -D -m 644 debian/local/modules-load.conf debian/libvirt0/usr/lib/modules-load.d/libvirt.conf\n+endif\n+\n \t# Disable network autostart\n \trm -rf $(DEB_DESTDIR)/etc/libvirt/qemu/networks/autostart/\n \n",
+ "diff_truncated": false
+}

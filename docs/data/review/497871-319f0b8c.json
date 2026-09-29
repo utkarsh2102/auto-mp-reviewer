@@ -1,0 +1,31 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~vpa1977/ubuntu/+source/gcc-10/+git/gcc-10/+merge/497871",
+ "id": "497871",
+ "title": "Changes:",
+ "source_branch": "focal",
+ "target_branch": "ubuntu/focal-devel",
+ "revision": "2a1f9750d785b0ca3b4a2d27c1ddd976cfd73cef",
+ "base_revision": "3c35cb4f9ce967db6796061716720d3e0bde7b7f",
+ "description": "Changes:\n - apply upstream patch to resolve code generation issue\n\nPPA: ppa:vpa1977/gcc-arm-modern[1]\n\nTesting:\n\nubuntu@ubuntu:~$ lxc exec focal -- /bin/sh -c \"gcc-10 -fno-inline -O3 -Wall -fno-strict-aliasing -march=armv8.4-a+sve -o /home/ubuntu/final /home/ubuntu/test.c\"\nubuntu@ubuntu:~$  lxc file pull focal/home/ubuntu/final final\nubuntu@ubuntu:~$ qemu-aarch64-static -cpu neoverse-n2 ./final\nPASS: got 0x00bbbbbb 0x00aaaaaa as expected\n\n[1] https://launchpad.net/~vpa1977/+archive/ubuntu/gcc-arm-modern",
+ "commit_message": null,
+ "diffstat": {
+  "debian/changelog": [
+   7,
+   0
+  ],
+  "debian/patches/pr118976.diff": [
+   55,
+   0
+  ],
+  "debian/rules.patch": [
+   1,
+   0
+  ]
+ },
+ "files": 3,
+ "added_lines": 63,
+ "removed_lines": 0,
+ "diff": "diff --git a/debian/changelog b/debian/changelog\nindex 1f857c4..0575825 100644\n--- a/debian/changelog\n+++ b/debian/changelog\n@@ -1,3 +1,10 @@\n+gcc-10 (10.5.0-1ubuntu1~20.04.1) focal; urgency=medium\n+\n+  * d/p/pr118976.diff: Fix memory corruption when executing 256-bit\n+    Scalable Vector Extensions code on 128-bit CPUs (LP: #2101084).\n+\n+ -- Vladimir Petko <vladimir.petko@canonical.com>  Fri, 19 Dec 2025 18:03:19 +1300\n+\n gcc-10 (10.5.0-1ubuntu1~20.04) focal-proposed; urgency=medium\n \n   * SRU: LP: #2019465. Update GCC 10 to the 10.5.0 release.\ndiff --git a/debian/patches/pr118976.diff b/debian/patches/pr118976.diff\nnew file mode 100644\nindex 0000000..f660dc4\n--- /dev/null\n+++ b/debian/patches/pr118976.diff\n@@ -0,0 +1,55 @@\n+From: Richard Sandiford <richard.sandiford@arm.com>\n+Date: Tue, 4 Mar 2025 10:44:35 +0000\n+Subject: Fix folding of BIT_NOT_EXPR for POLY_INT_CST [PR118976]\n+\n+There was an embarrassing typo in the folding of BIT_NOT_EXPR for\n+POLY_INT_CSTs: it used - rather than ~ on the poly_int.  Not sure\n+how that happened, but it might have been due to the way that\n+~x is implemented as -1 - x internally.\n+\n+gcc/\n+        PR tree-optimization/118976\n+        * fold-const.cc (const_unop): Use ~ rather than - for BIT_NOT_EXPR.\n+        * config/aarch64/aarch64.cc (aarch64_test_sve_folding): New function.\n+        (aarch64_run_selftests): Run it.\n+\n+Bug-Ubuntu: https://launchpad.net/bugs/2101084\n+Origin: backport, https://gcc.gnu.org/g:78380fd7f743e23dfdf013d68a2f0347e1511550\n+\n+--- a/src/gcc/config/aarch64/aarch64.c\n++++ b/src/gcc/config/aarch64/aarch64.c\n+@@ -23759,12 +23759,23 @@\n+   ASSERT_EQ (SImode, GET_MODE (crtl->return_rtx));\n+ }\n+ \n++/* Test SVE arithmetic folding.  */\n++\n++static void\n++aarch64_test_sve_folding ()\n++{\n++  tree res = fold_unary (BIT_NOT_EXPR, ssizetype,\n++\t\t\t ssize_int (poly_int64 (1, 1)));\n++  ASSERT_TRUE (operand_equal_p (res, ssize_int (poly_int64 (-2, -1))));\n++}\n++\n+ /* Run all target-specific selftests.  */\n+ \n+ static void\n+ aarch64_run_selftests (void)\n+ {\n+   aarch64_test_loading_full_dump ();\n++  aarch64_test_sve_folding ();\n+ }\n+ \n+ } // namespace selftest\n+--- a/src/gcc/fold-const.c\n++++ b/src/gcc/fold-const.c\n+@@ -1797,7 +1797,7 @@\n+       if (TREE_CODE (arg0) == INTEGER_CST)\n+ \treturn fold_not_const (arg0, type);\n+       else if (POLY_INT_CST_P (arg0))\n+-\treturn wide_int_to_tree (type, -poly_int_cst_value (arg0));\n++\treturn wide_int_to_tree (type, ~poly_int_cst_value (arg0));\n+       /* Perform BIT_NOT_EXPR on each element individually.  */\n+       else if (TREE_CODE (arg0) == VECTOR_CST)\n+ \t{\ndiff --git a/debian/rules.patch b/debian/rules.patch\nindex f931ea0..c762b1d 100644\n--- a/debian/rules.patch\n+++ b/debian/rules.patch\n@@ -88,6 +88,7 @@ debian_patches += \\\n \tpr91085 \\\n \tpr107475 \\\n \tlibstdc++-hurd \\\n+\tpr118976 \\\n \n ifneq (,$(filter $(distrelease), jessie stretch buster precise trusty xenial bionic))\n   debian_patches += pr85678-revert\n",
+ "diff_truncated": false
+}

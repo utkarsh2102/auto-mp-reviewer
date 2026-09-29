@@ -1,0 +1,43 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~ahasenack/ubuntu-archive-tools/+git/ubuntu-archive-tools/+merge/512079",
+ "id": "512079",
+ "title": "wiki.ubuntu.com was replaced by a new deployment, without much of the pre-existing content. This PR updates all the wiki links I could find in this repository with what I believe are the best Ubuntu project documentation replacements.",
+ "source_branch": "wiki-is-gone",
+ "target_branch": "main",
+ "revision": "afaba5ddc5cceb6ed8bc440cc944e72656a3c645",
+ "base_revision": "8ff053e26dd643e44b4c66fe997037f1e98041f8",
+ "description": "wiki.ubuntu.com was replaced by a new deployment, without much of the pre-existing content. This PR updates all the wiki links I could find in this repository with what I believe are the best Ubuntu project documentation replacements.\n\nI'm also updating the phased-updater script here, even though it's not the one that runs in production. I'll update that one separatedly.\n",
+ "commit_message": null,
+ "diffstat": {
+  "README.rst": [
+   2,
+   2
+  ],
+  "oem-metapackage-mir-check": [
+   3,
+   3
+  ],
+  "phased-updater": [
+   6,
+   5
+  ],
+  "sru-release": [
+   1,
+   1
+  ],
+  "sru-report": [
+   2,
+   1
+  ],
+  "sru_workflow.py": [
+   3,
+   2
+  ]
+ },
+ "files": 6,
+ "added_lines": 17,
+ "removed_lines": 14,
+ "diff": "diff --git a/README.rst b/README.rst\nindex 0bc4309..344e9e2 100644\n--- a/README.rst\n+++ b/README.rst\n@@ -14,8 +14,8 @@ the `Ubuntu Package Archive Administrators\n Documentation\n -------------\n \n-- `Archive Administration <https://wiki.ubuntu.com/ArchiveAdministration>`_\n-  in the Ubuntu wiki\n+- `Archive Administration <https://ubuntu.com/project/docs/maintainers/AA/>`_\n+  in the Ubuntu project documentation.\n \n Installation\n ------------\ndiff --git a/oem-metapackage-mir-check b/oem-metapackage-mir-check\nindex 647870c..436aedf 100755\n--- a/oem-metapackage-mir-check\n+++ b/oem-metapackage-mir-check\n@@ -19,7 +19,7 @@\n \n # Compare a given source package with the oem-qemu-meta reference package, to\n # see if it complies with the MIR exception granted in\n-# https://wiki.ubuntu.com/MIRTeam/Exceptions/OEM\n+# https://ubuntu.com/project/docs/MIR/mir-exceptions-oem/\n \n set -e\n set -u\n@@ -48,7 +48,7 @@ Compare the given package against the oem-qemu-meta reference package. Check\n that all the differences are inconsequential or expected (different modalias,\n different package name), and then promote or NEW the package directly to main.\n \n-https://wiki.ubuntu.com/MIRTeam/Exceptions/OEM\n+https://ubuntu.com/project/docs/MIR/mir-exceptions-oem/\n EOM\n         exit 1\n fi\n@@ -135,7 +135,7 @@ case $OEM in\n \t\t;;\n \t*)\n \t\t# unknown OEM, needs updating along with\n-\t\t# https://wiki.ubuntu.com/MIRTeam/Exceptions/OEM\n+\t\t# https://ubuntu.com/project/docs/MIR/mir-exceptions-oem/\n \t\tunmatched=$(cat ${NEWMETA}-*/debian/modaliases)\n \t\t;;\n esac\ndiff --git a/phased-updater b/phased-updater\nindex b606703..23e6e7f 100755\n--- a/phased-updater\n+++ b/phased-updater\n@@ -128,13 +128,14 @@ def generate_html_report(releases, buckets):\n             'phased-updater</a></p>' %\n             time.strftime('%F %T UTC', time.gmtime()))\n         report.write('''<p>A <a\n-href=\"https://wiki.ubuntu.com/StableReleaseUpdates\">stable release\n-update</a> is either being phased (update percentage is not 0%) or phasing has\n-been stopped (update percentage is 0%) for the following packages and releases.\n+href=\"https://ubuntu.com/project/docs/SRU/stable-release-updates/\">stable\n+release update</a> is either being phased (update percentage is not 0%) or\n+phasing has been stopped (update percentage is 0%) for the following packages\n+and releases.\n <p>The phasing stops if there is either an increased rate of crashes or an\n error has been found that has only been seen with the SRU'ed version of the\n package.<p>\n-<a href=\"https://wiki.ubuntu.com/StableReleaseUpdates#Phasing\">Learn more</a>\n+<a href=\"https://ubuntu.com/project/docs/SRU/howto/phasing/\">Learn more</a>\n about investigating halted phased updates.''')\n         for release in releases:\n             rname = release.name\n@@ -277,7 +278,7 @@ def create_email_notifications(releases, spph_buckets):\n               '[1] Request access to the Ubuntu Error Tracker at '\n               'https://forms.canonical.com/reports/.\\n'\n               '[2] Learn more about investigating at '\n-              'https://wiki.ubuntu.com/StableReleaseUpdates#Phasing\\n' \n+              'https://ubuntu.com/project/docs/SRU/howto/phasing/\\n'\n               '[3] https://launchpad.net/~ubuntu-sru' %\n               (REPORT_FILE))\n     for release in releases:\ndiff --git a/sru-release b/sru-release\nindex e2bc9f5..295426e 100755\n--- a/sru-release\n+++ b/sru-release\n@@ -77,7 +77,7 @@ POCKET_FREEZE_URL = \"https://git.launchpad.net/~ubuntu-release/britney/+git/\" \\\n # - linux-firmware (*)\n # - wireless-regdb\n #\n-# 1. https://wiki.ubuntu.com/StableReleaseUpdates#Data_Packages_Kept_in_Sync_with_Security\n+# 1. https://ubuntu.com/project/docs/SRU/reference/package-specific/#data-packages-kept-in-sync-with-security\n \n # (*) 2025-09-09: ahasenack: removing linux-firmware from the list, see\n #     https://code.launchpad.net/~ubuntu-sru/sru-docs/+git/sru-docs/+merge/492205\ndiff --git a/sru-report b/sru-report\nindex 7aab2fc..0a84d00 100755\n--- a/sru-report\n+++ b/sru-report\n@@ -262,7 +262,8 @@ def print_report(srus):\n           '<a href=\"#upload-queues\">upload-queues</a> '\n           '<a href=\"#cleanup\">cleanup</a></p>')\n \n-    print('''<p>A <a href=\"https://wiki.ubuntu.com/StableReleaseUpdates\">stable\n+    print('''<p>\n+A <a href=\"https://ubuntu.com/project/docs/SRU/stable-release-updates/\">stable\n release update</a> is currently in progress for the following packages, i. e.\n they have a newer version in -proposed than in -updates. Note that there is a\n separate <a href=\"http://kernel.ubuntu.com/sru/kernel-sru-workflow.html\">report\ndiff --git a/sru_workflow.py b/sru_workflow.py\nindex 313dc25..e31f641 100644\n--- a/sru_workflow.py\n+++ b/sru_workflow.py\n@@ -123,7 +123,8 @@ def process_bug(launchpad, sourcepkg, version, release, num):\n         text += ('To properly test it you will need to obtain and boot '\n                  'a daily build of a Live CD for %s.' % (release))\n     else:\n-        text += ('See https://wiki.ubuntu.com/Testing/EnableProposed for '\n+        text += ('See https://ubuntu.com/project/docs/SRU/reference/'\n+                 'enable-proposed/#reference-enable-proposed for '\n                  'documentation on how to enable and use -proposed.')\n \n     text += ('  Your feedback will aid us getting this update out to other '\n@@ -137,7 +138,7 @@ def process_bug(launchpad, sourcepkg, version, release, num):\n              'In either case, without details of your testing we will not '\n              'be able to proceed.\\n\\nFurther information regarding the '\n              'verification process can be found at '\n-             'https://wiki.ubuntu.com/QATeam/PerformingSRUVerification .  '\n+             'https://ubuntu.com/project/docs/SRU/reference/sru-verification/ .  '\n              'Thank you in advance for helping!\\n\\n'\n              'N.B. The updated package will be released to -updates after '\n              'the bug(s) fixed by this package have been verified and '\n",
+ "diff_truncated": false
+}

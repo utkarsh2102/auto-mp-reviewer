@@ -1,0 +1,39 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~seyeongkim/ubuntu/+source/python3-defaults/+git/python3-defaults/+merge/511350",
+ "id": "511350",
+ "title": "fix/lp2078356-jammy → ubuntu/jammy-devel",
+ "source_branch": "fix/lp2078356-jammy",
+ "target_branch": "ubuntu/jammy-devel",
+ "revision": "ecce26115dee48f138b634e99eb15926b49b5adc",
+ "base_revision": "f5c8a8f400fab6e277faf0c143c91136bba9ce85",
+ "description": null,
+ "commit_message": null,
+ "diffstat": {
+  "debian/changelog": [
+   12,
+   0
+  ],
+  "debian/control": [
+   2,
+   1
+  ],
+  "debian/control.in": [
+   2,
+   1
+  ],
+  "debian/python3.postinst.in": [
+   5,
+   4
+  ],
+  "debian/python3.preinst.in": [
+   3,
+   2
+  ]
+ },
+ "files": 5,
+ "added_lines": 24,
+ "removed_lines": 8,
+ "diff": "diff --git a/debian/changelog b/debian/changelog\nindex dfe086f..d6c9978 100644\n--- a/debian/changelog\n+++ b/debian/changelog\n@@ -1,3 +1,15 @@\n+python3-defaults (3.10.6-1~22.04.2) jammy; urgency=medium\n+\n+  * Avoid false hook failures (LP: #2078356).\n+    Backport Debian commit 2a6a6c96053d.\n+    - d/python3.preinst.in: Use an initialized private variable for\n+      pre-rtupdate hook errors.\n+    - d/python3.postinst.in: Use an initialized private variable for rtupdate\n+      and post-rtupdate hook errors.\n+    - d/control, d/control.in: Update Maintainer for Ubuntu changes.\n+\n+ -- Seyeong Kim <seyeong.kim@canonical.com>  Tue, 15 Sep 2026 09:17:07 +0900\n+\n python3-defaults (3.10.6-1~22.04.1) jammy; urgency=medium\n \n   * Don't use shell when calling dpkg -L\ndiff --git a/debian/control b/debian/control\nindex b5d64c0..8c3e5b6 100644\n--- a/debian/control\n+++ b/debian/control\n@@ -1,7 +1,8 @@\n Source: python3-defaults\n Section: python\n Priority: optional\n-Maintainer: Matthias Klose <doko@debian.org>\n+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>\n+XSBC-Original-Maintainer: Matthias Klose <doko@debian.org>\n Uploaders: Piotr Ożarowski <piotr@debian.org>, Stefano Rivera <stefanor@debian.org>\n Build-Depends: debhelper (>= 11), dpkg-dev (>= 1.17.11), python3.10:any (>= 3.10.6-1~),\n   lsb-release,\ndiff --git a/debian/control.in b/debian/control.in\nindex ef0c846..d0ffe27 100644\n--- a/debian/control.in\n+++ b/debian/control.in\n@@ -1,7 +1,8 @@\n Source: python3-defaults\n Section: python\n Priority: optional\n-Maintainer: Matthias Klose <doko@debian.org>\n+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>\n+XSBC-Original-Maintainer: Matthias Klose <doko@debian.org>\n Uploaders: Piotr Ożarowski <piotr@debian.org>, Stefano Rivera <stefanor@debian.org>\n Build-Depends: debhelper (>= 11), @bd_i586@\n   lsb-release,\ndiff --git a/debian/python3.postinst.in b/debian/python3.postinst.in\nindex 0290269..57a03c4 100644\n--- a/debian/python3.postinst.in\n+++ b/debian/python3.postinst.in\n@@ -12,6 +12,7 @@ new_config_file()\n \n case \"$1\" in\n     configure)\n+\t_py_errors=\n \t[ -d /etc/python3 ] || mkdir /etc/python3\n \t[ -f /etc/python3/debian_config ] || new_config_file\n \n@@ -24,10 +25,10 @@ case \"$1\" in\n \t    if ! $hook rtupdate python$oldv @PVER@; then\n \t        hb=$(basename $hook .rtupdate)\n \t        echo >&2 \"error running python rtupdate hook $hb\"\n-\t        errors=yes\n+\t        _py_errors=yes\n \t    fi\n \tdone\n-\t[ -z \"$errors\" ] || exit 4\n+\t[ -z \"$_py_errors\" ] || exit 4\n \n \tif [ \"$DEBIAN_FRONTEND\" != noninteractive ]; then\n \t    echo \"running python post-rtupdate hooks for @PVER@...\"\n@@ -37,10 +38,10 @@ case \"$1\" in\n \t    if ! $hook post-rtupdate python$oldv @PVER@; then\n \t        hb=$(basename $hook .rtupdate)\n \t        echo >&2 \"error running python post-rtupdate hook $hb\"\n-\t        errors=yes\n+\t        _py_errors=yes\n \t    fi\n \tdone\n-\t[ -z \"$errors\" ] || exit 5\n+\t[ -z \"$_py_errors\" ] || exit 5\n esac\n \n if which py3compile >/dev/null 2>&1; then\ndiff --git a/debian/python3.preinst.in b/debian/python3.preinst.in\nindex d385b2e..e2b6ae2 100644\n--- a/debian/python3.preinst.in\n+++ b/debian/python3.preinst.in\n@@ -9,6 +9,7 @@ update-alternatives --auto /usr/bin/python3 >/dev/null 2>&1 || true\n \n case \"$1\" in\n     upgrade)\n+\t_py_errors=\n \toldv=$(echo $2 | sed 's/^\\(...\\).*/\\1/')\n \tif [ \"$DEBIAN_FRONTEND\" != noninteractive ]; then\n \t    echo \"running python pre-rtupdate hooks for @PVER@...\"\n@@ -20,11 +21,11 @@ case \"$1\" in\n \t\techo >&2 \"error running python pre-rtupdate hook $hb\"\n \t\techo >&2 \"running python failed-pre-rtupdate hook $hb\"\n \t\t$hook failed-pre-rtupdate python$oldv @PVER@\n-\t\terrors=yes\n+\t\t_py_errors=yes\n \t\tbreak\n \t    fi\n \tdone\n-\t[ -z \"$errors\" ] || exit 3\n+\t[ -z \"$_py_errors\" ] || exit 3\n esac\n \n #DEBHELPER#\n",
+ "diff_truncated": false
+}

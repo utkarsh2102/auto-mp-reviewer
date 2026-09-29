@@ -1,0 +1,31 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~halves/ubuntu/+source/gnupg2/+git/gnupg2/+merge/396407",
+ "id": "396407",
+ "title": "lp1910432-devel → ubuntu/devel",
+ "source_branch": "lp1910432-devel",
+ "target_branch": "ubuntu/devel",
+ "revision": "a46857bc6304f986b6e679e303e3fe73170f51b2",
+ "base_revision": "a22806082032ce6f621a5640b8b5136f28b707c8",
+ "description": null,
+ "commit_message": null,
+ "diffstat": {
+  "debian/patches/series": [
+   1,
+   0
+  ],
+  "debian/changelog": [
+   7,
+   0
+  ],
+  "debian/patches/dirmngr-handle-EAFNOSUPPORT-at-connect_server.patch": [
+   38,
+   0
+  ]
+ },
+ "files": 3,
+ "added_lines": 46,
+ "removed_lines": 0,
+ "diff": "diff --git a/debian/changelog b/debian/changelog\nindex 974065a..9bb9319 100644\n--- a/debian/changelog\n+++ b/debian/changelog\n@@ -1,3 +1,10 @@\n+gnupg2 (2.2.20-1ubuntu2) hirsute; urgency=medium\n+\n+  * d/p/dirmngr-handle-EAFNOSUPPORT-at-connect_server.patch:\n+    - Fix IPv6 connectivity for dirmngr (LP: #1910432)\n+\n+ -- Heitor Alves de Siqueira <halves@canonical.com>  Sat, 16 Jan 2021 14:53:14 +0000\n+\n gnupg2 (2.2.20-1ubuntu1) groovy; urgency=low\n \n   * Merge from Debian unstable.  Remaining changes:\ndiff --git a/debian/patches/dirmngr-handle-EAFNOSUPPORT-at-connect_server.patch b/debian/patches/dirmngr-handle-EAFNOSUPPORT-at-connect_server.patch\nnew file mode 100644\nindex 0000000..15a96a6\n--- /dev/null\n+++ b/debian/patches/dirmngr-handle-EAFNOSUPPORT-at-connect_server.patch\n@@ -0,0 +1,38 @@\n+From ca937cf390662b830d4fc5d295e69b24b1778050 Mon Sep 17 00:00:00 2001\n+From: NIIBE Yutaka <gniibe@fsij.org>\n+Date: Mon, 13 Jul 2020 10:00:58 +0900\n+Subject: [PATCH] dirmngr: Handle EAFNOSUPPORT at connect_server.\n+\n+* dirmngr/http.c (connect_server): Skip server with EAFNOSUPPORT.\n+\n+--\n+\n+GnuPG-bug-id: 4977\n+Signed-off-by: NIIBE Yutaka <gniibe@fsij.org>\n+\n+Origin: backport, https://git.gnupg.org/cgi-bin/gitweb.cgi?p=gnupg.git;a=commit;h=109d16e8f644\n+Bug-Ubuntu: https://bugs.launchpad.net/bugs/1910432\n+---\n+ dirmngr/http.c | 9 +++++++++\n+ 1 file changed, 9 insertions(+)\n+\n+Index: gnupg2/dirmngr/http.c\n+===================================================================\n+--- gnupg2.orig/dirmngr/http.c\n++++ gnupg2/dirmngr/http.c\n+@@ -3005,6 +3005,15 @@ connect_server (const char *server, unsi\n+           sock = my_sock_new_for_addr (ai->addr, ai->socktype, ai->protocol);\n+           if (sock == ASSUAN_INVALID_FD)\n+             {\n++              if (errno == EAFNOSUPPORT)\n++                {\n++                  if (ai->family == AF_INET)\n++                    v4_valid = 0;\n++                  if (ai->family == AF_INET6)\n++                    v6_valid = 0;\n++                  continue;\n++                }\n++\n+               err = gpg_err_make (default_errsource,\n+                                   gpg_err_code_from_syserror ());\n+               log_error (\"error creating socket: %s\\n\", gpg_strerror (err));\ndiff --git a/debian/patches/series b/debian/patches/series\nindex a0f1baf..af77b88 100644\n--- a/debian/patches/series\n+++ b/debian/patches/series\n@@ -20,3 +20,4 @@ Use-hkps-keys.openpgp.org-as-the-default-keyserver.patch\n Make-gpg-zip-use-tar-from-PATH.patch\n gpg-drop-import-clean-from-default-keyserver-import-optio.patch\n dirmngr-honor-http-proxy.patch\n+dirmngr-handle-EAFNOSUPPORT-at-connect_server.patch\n",
+ "diff_truncated": false
+}

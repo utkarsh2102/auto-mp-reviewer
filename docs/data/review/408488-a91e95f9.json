@@ -1,0 +1,27 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~alexghiti/ubuntu/+source/ubuntu-meta/+git/ubuntu-meta/+merge/408488",
+ "id": "408488",
+ "title": "d/control: Enable build of all packages for riscv64",
+ "source_branch": "alexghiti/riscv64",
+ "target_branch": "ubuntu/devel",
+ "revision": "cca885dd89f6e76d5713d86f0604d20627830096",
+ "base_revision": "5e58d603cc8d6c2fa54a44b534fc1acf3bfa8a15",
+ "description": null,
+ "commit_message": "d/control: Enable build of all packages for riscv64",
+ "diffstat": {
+  "debian/control": [
+   2,
+   2
+  ],
+  "debian/changelog": [
+   6,
+   0
+  ]
+ },
+ "files": 2,
+ "added_lines": 8,
+ "removed_lines": 2,
+ "diff": "diff --git a/debian/changelog b/debian/changelog\nindex 6cfb633..cabc293 100644\n--- a/debian/changelog\n+++ b/debian/changelog\n@@ -1,3 +1,9 @@\n+ubuntu-meta (1.473) impish; urgency=medium\n+\n+  * Enabled build of ubuntu-desktop/ubuntu-desktop-minimal for riscv64\n+\n+ -- Alexandre Ghiti <alexandre.ghiti@canonical.com>  Wed, 06 Oct 2021 09:49:16 +0200\n+\n ubuntu-meta (1.472) impish; urgency=medium\n \n   * Refreshed dependencies\ndiff --git a/debian/control b/debian/control\nindex 071399d..422e24c 100644\n--- a/debian/control\n+++ b/debian/control\n@@ -36,7 +36,7 @@ Description: The Ubuntu standard system\n  it not be removed.\n \n Package: ubuntu-desktop-minimal\n-Architecture: amd64 arm64 armhf ppc64el\n+Architecture: amd64 arm64 armhf ppc64el riscv64\n Depends: ${misc:Depends}, ${germinate:Depends}\n Recommends: ${germinate:Recommends}\n Provides: packagekit-installer\n@@ -58,7 +58,7 @@ Description: The Ubuntu desktop system for Raspberry Pi\n  it not be removed.\n \n Package: ubuntu-desktop\n-Architecture: amd64 arm64 armhf ppc64el\n+Architecture: amd64 arm64 armhf ppc64el riscv64\n Depends: ${misc:Depends}, ${germinate:Depends}\n Recommends: ${germinate:Recommends}\n Provides: packagekit-installer\n",
+ "diff_truncated": false
+}

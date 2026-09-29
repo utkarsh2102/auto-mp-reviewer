@@ -1,0 +1,23 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~tobhe/ubuntu/+source/flash-kernel/+git/flash-kernel/+merge/473785",
+ "id": "473785",
+ "title": "dup → ubuntu/devel",
+ "source_branch": "dup",
+ "target_branch": "ubuntu/devel",
+ "revision": "e581042ebd586756ed7db78d96ca219dc656fb71",
+ "base_revision": "929dd07b07ad34fbe386cf9429583103c59365b5",
+ "description": null,
+ "commit_message": null,
+ "diffstat": {
+  "db/all.db": [
+   0,
+   4
+  ]
+ },
+ "files": 1,
+ "added_lines": 0,
+ "removed_lines": 4,
+ "diff": "diff --git a/db/all.db b/db/all.db\nindex 5008aa7..66c469e 100644\n--- a/db/all.db\n+++ b/db/all.db\n@@ -955,10 +955,6 @@ Machine: Lenovo ThinkPad X13s\n Kernel-Flavors: any\n DTB-Id: qcom/sc8280xp-lenovo-thinkpad-x13s.dtb\n \n-Machine: Lenovo ThinkPad X13s\n-Kernel-Flavors: any\n-DTB-Id: qcom/sc8280xp-lenovo-thinkpad-x13s.dtb\n-\n Machine: Lenovo Yoga C630\n Kernel-Flavors: arm64\n Boot-Script-Path: /boot/boot.scr\n",
+ "diff_truncated": false
+}

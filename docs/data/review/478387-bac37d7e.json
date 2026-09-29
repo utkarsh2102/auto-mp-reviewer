@@ -1,0 +1,23 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~juliank/ubuntu-archive-tools/+git/ubuntu-archive-tools/+merge/478387",
+ "id": "478387",
+ "title": "color-sru → main",
+ "source_branch": "color-sru",
+ "target_branch": "main",
+ "revision": "a4cdab286446f257d875d462f141d7c7d4a795b9",
+ "base_revision": "12d6a53c85a50516d4eee97345041420a9564632",
+ "description": null,
+ "commit_message": null,
+ "diffstat": {
+  "sru-review": [
+   11,
+   1
+  ]
+ },
+ "files": 1,
+ "added_lines": 11,
+ "removed_lines": 1,
+ "diff": "diff --git a/sru-review b/sru-review\nindex 154fb66..bc339d7 100755\n--- a/sru-review\n+++ b/sru-review\n@@ -70,6 +70,12 @@ def parse_options():\n         \"--no-browser\", dest=\"browser\", action=\"store_false\",\n         default=True, help=\"Don't open Launchpad bugs in browser\")\n     parser.add_option(\n+        \"-C\", \"--color\", dest=\"color\", action=\"store_true\",\n+        default=True, help=\"View debdiff in color\")\n+    parser.add_option(\n+        \"--no-color\", dest=\"color\", action=\"store_false\",\n+        default=True, help=\"View debdiff in color\")\n+    parser.add_option(\n         \"-v\", \"--view\", dest=\"view\", action=\"store_true\",\n         default=True, help=\"View debdiff in pager\")\n     parser.add_option(\n@@ -455,7 +461,11 @@ if __name__ == '__main__':\n                                 (tfile.name, tfile.name, combinedfile.name),\n                                 shell=True)\n                 tfile = combinedfile\n-            ret = subprocess.call([\"sensible-pager\", tfile.name])\n+            if opts.color and os.path.exists(\"/usr/bin/colordiff\") and os.path.exists(\"/usr/bin/less\"):\n+                ret = subprocess.call(f'colordiff < \"{tfile.name}\" | less -R',\n+                                      shell=True)\n+            else:\n+                ret = subprocess.call([\"sensible-pager\", tfile.name])\n \n     if opts.ppa:\n         print('\\nTo copy from PPA to distribution, run:\\n'\n",
+ "diff_truncated": false
+}

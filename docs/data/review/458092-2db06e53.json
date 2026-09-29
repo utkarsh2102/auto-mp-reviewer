@@ -1,0 +1,27 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~adrien/ubuntu/+source/gnutls28/+git/gnutls28/+merge/458092",
+ "id": "458092",
+ "title": "config: disable DTLS 0.9 and 1.0 system-wide",
+ "source_branch": "noble-gnutls-disable-dtls-0.9-and-1.0",
+ "target_branch": "ubuntu/devel",
+ "revision": "74e450bff8498710656fd9c286dfcf653cc650be",
+ "base_revision": "6ae1e108d1820b09b021cc59eb01dfa0eb40d7bf",
+ "description": null,
+ "commit_message": "config: disable DTLS 0.9 and 1.0 system-wide\n\nUbuntu has decided to disable TLS 1.0 and 1.1 system-wide several years\nago. I recently found out that the existing change in gnutls was not\nsufficient to really achieve that and fixed it through the system\nconfiguration file. While doing so, I found out that this only applied\nto TLS and not DTLS but didn't want to reword my change back then due to\nunrelated issues in the archive which were going on at the same time.\n\nThis commit disables DTLS 0.9 and 1.0 in the same way than TLS 1.0 and\n1.1 have been disabled.\n\nFor context, there are several versions versions of DTLS: 1.0, 1.2, 1.3.\nNo 0.9 and no 1.1. DTLS 0.9 seems to be similar to a draft of DTLS 1.0,\nand DTLS 1.0 is based on TLS 1.1. Starting with DTLS 1.2, version\nnumbers match TLS version numbers.\n\nThe biggest user of DTLS 0.9 and 1.0 is probably OpenConnect. However\nthe maintainers consider that the support of these protocols is a key\nrequirement for their software and its compatibility with outdated\nnetwork equipments which can only handle these DTLS versions in\nhardware. They have thus \"opted out\" of the system configuration after\nsimilar changes in Fedora and will therefore be unaffected.",
+ "diffstat": {
+  "debian/changelog": [
+   6,
+   0
+  ],
+  "debian/conf/config": [
+   2,
+   0
+  ]
+ },
+ "files": 2,
+ "added_lines": 8,
+ "removed_lines": 0,
+ "diff": "diff --git a/debian/changelog b/debian/changelog\nindex 856fd4d..5a574ed 100644\n--- a/debian/changelog\n+++ b/debian/changelog\n@@ -1,3 +1,9 @@\n+gnutls28 (3.8.1-4ubuntu7) noble; urgency=medium\n+\n+  * Forcefully disable DTLS 0.9 and 1.0 through /etc/gnutls/config.\n+\n+ -- Adrien Nader <adrien.nader@canonical.com>  Wed, 03 Jan 2024 15:06:38 +0100\n+\n gnutls28 (3.8.1-4ubuntu6) noble; urgency=medium\n \n   * SECURITY UPDATE: timing side-channel inside RSA-PSK key exchange\ndiff --git a/debian/conf/config b/debian/conf/config\nindex 447fe0c..a545960 100644\n--- a/debian/conf/config\n+++ b/debian/conf/config\n@@ -1,4 +1,6 @@\n [overrides]\n disabled-version = tls1.0\n disabled-version = tls1.1\n+disabled-version = dtls0.9\n+disabled-version = dtls1.0\n \n",
+ "diff_truncated": false
+}

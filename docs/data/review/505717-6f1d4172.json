@@ -1,0 +1,59 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~utkarsh/ubuntu-cdimage/+git/ubuntu-cdimage/+merge/505717",
+ "id": "505717",
+ "title": "Stop scheduling and configuring Ubuntu desktop daily-dangerous builds",
+ "source_branch": "delete-dangerous",
+ "target_branch": "main",
+ "revision": "fdbc18b75423314ef3b9aa0c089b605235797c6f",
+ "base_revision": "99c9b89ba2e237ba94df2728839194f0f665bc59",
+ "description": null,
+ "commit_message": "Stop scheduling and configuring Ubuntu desktop daily-dangerous builds\n\nThe Ubuntu desktop \"dangerous\" images (the daily-dangerous image type\nfor the ubuntu project) built live desktop images with all snaps from the\nedge channel, for quicker testing of snapd, the prompting client, the\ndesktop installer, etc. They are now redundant, so stop building them.\n\nRemove the cron entry, the daily-dangerous entry-point script, the livefs\nLaunchpad mapping, the default-arches and purge-days entries, and the\nREADME documentation block.\n\nhttps://warthogs.atlassian.net/browse/ADT-1912\n\n",
+ "diffstat": {
+  "README": [
+   0,
+   4
+  ],
+  "dev/null": [
+   0,
+   49
+  ],
+  "bin/rebuild-requests": [
+   0,
+   1
+  ],
+  "etc/crontab": [
+   0,
+   4
+  ],
+  "etc/default-arches": [
+   0,
+   1
+  ],
+  "etc/livefs-launchpad": [
+   0,
+   1
+  ],
+  "etc/purge-days": [
+   0,
+   1
+  ],
+  "lib/cdimage/build.py": [
+   0,
+   2
+  ],
+  "lib/cdimage/test_observer.py": [
+   0,
+   6
+  ],
+  "lib/cdimage/tree.py": [
+   0,
+   2
+  ]
+ },
+ "files": 10,
+ "added_lines": 0,
+ "removed_lines": 71,
+ "diff": "diff --git a/README b/README\nindex 9c0a6e1..e3b2992 100644\n--- a/README\n+++ b/README\n@@ -28,10 +28,6 @@ the following scripts, which may be called by hand:\n \n     Build live CDs for all relevant Ubuntu architectures.\n \n-  * cron.daily-dangerous\n-\n-    Build live CDs for all relevant Ubuntu architectures, with all snaps from edge.\n-\n   * cron.daily-canary\n  \n     Build live CDs of the experimental canary layout for all relevant\ndiff --git a/bin/cron.daily-dangerous b/bin/cron.daily-dangerous\ndeleted file mode 100755\nindex f37eace..0000000\n--- a/bin/cron.daily-dangerous\n+++ /dev/null\n@@ -1,49 +0,0 @@\n-#! /usr/bin/python3\n-\n-# Copyright (C) 2013 Canonical Ltd.\n-# Author: Colin Watson <cjwatson@ubuntu.com>\n-\n-# This program is free software: you can redistribute it and/or modify\n-# it under the terms of the GNU General Public License as published by\n-# the Free Software Foundation; version 3 of the License.\n-#\n-# This program is distributed in the hope that it will be useful,\n-# but WITHOUT ANY WARRANTY; without even the implied warranty of\n-# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\n-# GNU General Public License for more details.\n-#\n-# You should have received a copy of the GNU General Public License\n-# along with this program.  If not, see <http://www.gnu.org/licenses/>.\n-\n-\"\"\"Build a set of desktop images.\"\"\"\n-\n-from optparse import OptionParser\n-import os\n-import sys\n-\n-sys.path.insert(0, os.path.join(sys.path[0], os.pardir, \"lib\"))\n-\n-\n-def main():\n-    from cdimage.build import build_image_set\n-    from cdimage.config import Config\n-\n-    parser = OptionParser(\"%prog\")\n-    parser.add_option(\n-        \"--live\",\n-        default=False,\n-        action=\"store_true\",\n-        help=\"build live filesystems first\",\n-    )\n-    options, _ = parser.parse_args()\n-\n-    image_type = \"daily-dangerous\"\n-\n-    config = Config(IMAGE_TYPE=image_type)\n-    config[\"CDIMAGE_LIVE\"] = \"1\"\n-    if not build_image_set(config, options):\n-        sys.exit(1)\n-\n-\n-if __name__ == \"__main__\":\n-    main()\ndiff --git a/bin/rebuild-requests b/bin/rebuild-requests\nindex b65604e..771fabb 100755\n--- a/bin/rebuild-requests\n+++ b/bin/rebuild-requests\n@@ -116,7 +116,6 @@ def handle_test_observer(args, options, publisher, clean_env):\n         image_type = full_path.split(\"/\")[-3]\n         assert image_type in [\n             \"daily\",\n-            \"daily-dangerous\",\n             \"daily-live\",\n             \"daily-minimal\",\n             \"daily-preinstalled\",\ndiff --git a/etc/crontab b/etc/crontab\nindex 496486e..1ea2e98 100644\n--- a/etc/crontab\n+++ b/etc/crontab\n@@ -125,10 +125,6 @@ PATH=/srv/cdimage.ubuntu.com/bin:/usr/sbin:/usr/bin:/sbin:/bin\n # The daily ubuntu-base images are used by core-next, so we can't build it\n # with proposed enabled.\n 42 3 * * *  PROPOSED=0 for-project ubuntu-base cron.daily-live --live\n-# daily-dangerous devel desktop build\n-# This is a live desktop image with all snaps from edge, for quicker testing\n-# of things like snapd, prompting client, the desktop installer, etc\n-24 1 * * *  CHANNEL=edge for-project ubuntu cron.daily-dangerous --live\n # we only are building core-installer and core-desktop for devel\n 05 7 * * *  for-project ubuntu-core-installer cron.daily-live --live; for-project ubuntu-core-desktop cron.daily-live --live\n \ndiff --git a/etc/default-arches b/etc/default-arches\nindex 29588ac..c750f89 100644\n--- a/etc/default-arches\n+++ b/etc/default-arches\n@@ -29,7 +29,6 @@ ubuntu\t\t\tdaily-live\t\tlunar\t\t\tamd64 arm64\n ubuntu\t\t\tdaily-live\t\tmantic\t\t\tamd64 arm64 arm64+x13s\n ubuntu\t\t\tdaily-live\t\tnoble\t\t\tamd64 arm64\n ubuntu\t\t\tdaily-live\t\toracular-\t\tamd64 arm64\n-ubuntu\t\t\tdaily-dangerous\t\toracular-\t\tamd64\n \n ubuntu-desktop-preinstalled daily-preinstalled\tjammy-\t\tarm64+raspi\n \ndiff --git a/etc/livefs-launchpad b/etc/livefs-launchpad\nindex 5fa98b2..e4668ec 100644\n--- a/etc/livefs-launchpad\n+++ b/etc/livefs-launchpad\n@@ -3,7 +3,6 @@\n # Like etc/default-arches, \"PROJECT\" is in fact PROJECT[-SUBPROJECT].\n \n ubuntu\t\t\tdaily-live\t\t*\t\t*\t\tubuntu-cdimage/ubuntu\n-ubuntu\t\t\tdaily-dangerous\t\t*\t\t*\t\tubuntu-cdimage/ubuntu-dangerous\n ubuntu-canary\t\tdaily-canary\t\tfocal-\t\t*\t\tubuntu-cdimage/ubuntu-canary\n ubuntu-desktop-preinstalled daily-preinstalled\tfocal-\t\t*\t\tubuntu-cdimage/ubuntu-preinstalled\n ubuntu-mini-iso\t\tdaily-live\t\tlunar-\t\t*\t\tubuntu-cdimage/ubuntu-mini-iso\ndiff --git a/etc/purge-days b/etc/purge-days\nindex cfb6255..5da061f 100644\n--- a/etc/purge-days\n+++ b/etc/purge-days\n@@ -1,6 +1,5 @@\n daily 1\n daily-live 1\n-daily-dangerous 1\n daily-preinstalled 1\n daily-canary 1\n daily-legacy 1\ndiff --git a/lib/cdimage/build.py b/lib/cdimage/build.py\nindex 5d5fe27..17893f5 100644\n--- a/lib/cdimage/build.py\n+++ b/lib/cdimage/build.py\n@@ -282,7 +282,6 @@ def build_livecd_base(config, builds):\n             copy_artifact(config, arch, publish_type, \"manifest\")\n \n     if config.project in ISO_PROJECTS and config.image_type in [\n-        \"daily-dangerous\",  # Only for ubuntu\n         \"daily-live\",\n         \"daily-minimal\",  # Only for xubuntu\n         \"live-server\",\n@@ -506,7 +505,6 @@ def is_live_fs_only(config):\n         live_fs_only = True\n     elif config.series >= \"resolute\":\n         if config.project in ISO_PROJECTS and config.image_type in [\n-            \"daily-dangerous\",  # Only for ubuntu\n             \"daily-live\",\n             \"daily-minimal\",  # Only for xubuntu\n         ]:\ndiff --git a/lib/cdimage/test_observer.py b/lib/cdimage/test_observer.py\nindex c64aaf5..3f117bb 100644\n--- a/lib/cdimage/test_observer.py\n+++ b/lib/cdimage/test_observer.py\n@@ -114,11 +114,6 @@ class TestObserver:\n         release = full_path.stem.split(\"-\")[0]\n         sha256 = self._get_sha256(full_path)\n \n-        # Hack around `daily-dangerous` having the exact same name as\n-        # `daily-live`, thus showing only one row in TO\n-        if os == \"daily-dangerous\":\n-            artifact_name = \"dangerous-\" + artifact_name\n-\n         # Hack around desktop images having special treatement in tree.py\n         if os in [\n             \"noble\",\n@@ -126,7 +121,6 @@ class TestObserver:\n             \"stonking\",\n             \"daily-live\",\n             \"daily-preinstalled\",\n-            \"daily-dangerous\",\n         ]:\n             os = \"ubuntu-desktop\"\n \ndiff --git a/lib/cdimage/tree.py b/lib/cdimage/tree.py\nindex 3bf4b41..0ed9818 100644\n--- a/lib/cdimage/tree.py\n+++ b/lib/cdimage/tree.py\n@@ -432,8 +432,6 @@ class Publisher:\n                 return \"wsl\"\n             else:\n                 return \"desktop\"\n-        elif self.image_type.endswith(\"-dangerous\"):\n-            return \"desktop\"\n         elif self.image_type.endswith(\"_dvd\") or self.image_type == \"dvd\":\n             return \"dvd\"\n         elif self.image_type == \"daily-canary\":\n",
+ "diff_truncated": false
+}

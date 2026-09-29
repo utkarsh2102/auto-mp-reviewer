@@ -1,0 +1,27 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~vhaudiquet/livecd-rootfs/+git/livecd-rootfs/+merge/504036",
+ "id": "504036",
+ "title": "riscv64: remove boot flag from root partitions in preinstalled server images",
+ "source_branch": "noble-lp2148511",
+ "target_branch": "ubuntu/noble",
+ "revision": "6f7a453ca775bf250cc863f31bc02e3f4e0652fe",
+ "base_revision": "e6bd70f33d83cfc839f96f6ede1e6e16e90cdabf",
+ "description": "riscv64: remove boot flag from root partitions in preinstalled server images\n\nFix LP: #2148511",
+ "commit_message": null,
+ "diffstat": {
+  "debian/changelog": [
+   7,
+   0
+  ],
+  "live-build/ubuntu-cpc/hooks.d/base/disk-image-uefi-non-cloud.binary": [
+   6,
+   12
+  ]
+ },
+ "files": 2,
+ "added_lines": 13,
+ "removed_lines": 12,
+ "diff": "diff --git a/debian/changelog b/debian/changelog\nindex ca95ae3..87ec8b0 100644\n--- a/debian/changelog\n+++ b/debian/changelog\n@@ -1,3 +1,10 @@\n+livecd-rootfs (24.04.98) noble; urgency=medium\n+\n+  * riscv64: remove boot flag from root partitions in preinstalled\n+    server images (LP: #2148511)\n+\n+ -- Valentin Haudiquet <valentin.haudiquet@canonical.com>  Fri, 17 Apr 2026 10:17:48 +0200\n+\n livecd-rootfs (24.04.97) noble; urgency=medium\n \n   * Build ubuntu-server with multipath-tools-boot installed, so that the\ndiff --git a/live-build/ubuntu-cpc/hooks.d/base/disk-image-uefi-non-cloud.binary b/live-build/ubuntu-cpc/hooks.d/base/disk-image-uefi-non-cloud.binary\nindex 3181630..c25ef48 100755\n--- a/live-build/ubuntu-cpc/hooks.d/base/disk-image-uefi-non-cloud.binary\n+++ b/live-build/ubuntu-cpc/hooks.d/base/disk-image-uefi-non-cloud.binary\n@@ -80,8 +80,7 @@ create_partitions() {\n                        --set-alignment=2 \\\n                        --new=15::+106M \\\n                        --typecode=15:ef00 \\\n-                       --new=1:: \\\n-                       --attributes=1:set:2\n+                       --new=1:: \n             elif [ \"${SUBARCH:-}\" = \"nezha\" ] || [ \"${SUBARCH:-}\" = \"licheerv\" ]; then\n                 # Nezha/LicheeRV D1 boards\n                 sgdisk \"${disk_image}\" \\\n@@ -103,8 +102,7 @@ create_partitions() {\n                        --change-name=15:ESP \\\n                        --new=12::+4M \\\n                        --change-name=12:CIDATA \\\n-                       --new=1:: \\\n-                       --attributes=1:set:2\n+                       --new=1:: \n             elif [ \"${SUBARCH:-}\" = \"icicle\" ] || [ \"${SUBARCH:-}\" = \"pic64gx\" ]; then\n                 # Microchip Icicle Kit\n                 sgdisk \"${disk_image}\" \\\n@@ -118,8 +116,7 @@ create_partitions() {\n                        --change-name=15:ESP \\\n                        --new=12::+4M \\\n                        --change-name=12:CIDATA \\\n-                       --new=1:: \\\n-                       --attributes=1:set:2\n+                       --new=1:: \n             elif [ \"${SUBARCH:-}\" = \"visionfive\" ]; then\n                 # VisionFive\n                 sgdisk \"${disk_image}\" \\\n@@ -131,8 +128,7 @@ create_partitions() {\n                         --change-name=12:CIDATA \\\n                         --new=3::+1M \\\n                         --change-name=3:uEnv \\\n-                        --new=1:: \\\n-                        --attributes=1:set:2\n+                        --new=1:: \n             elif [ \"${SUBARCH:-}\" = \"visionfive2\" ] || [ \"${SUBARCH:-}\" = \"milkvmars\" ] || [ \"${SUBARCH:-}\" = \"jh7110\" ]; then\n                 # JH7110 chips: VisionFive 2, Milk-V Mars\n                 sgdisk \"${disk_image}\" \\\n@@ -148,8 +144,7 @@ create_partitions() {\n                         --new=15:49152:253951 \\\n                         --typecode=15:ef00 \\\n                         --change-name=15:ESP \\\n-                        --new=1:253952: \\\n-                        --attributes=1:set:2\n+                        --new=1:253952: \n             else\n                 # preinstalled server, currently FU540\n                 # FU740 too in the future\n@@ -167,8 +162,7 @@ create_partitions() {\n                        --typecode=15:ef00 \\\n                        --new=12::+4M \\\n                        --change-name=12:CIDATA \\\n-                       --new=1:: \\\n-                       --attributes=1:set:2\n+                       --new=1:: \n             fi\n             ;;\n         amd64)\n",
+ "diff_truncated": false
+}

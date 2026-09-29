@@ -1,0 +1,27 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~ghadi-rahme/ubuntu/+source/powermgmt-base/+git/powermgmt-base/+merge/486537",
+ "id": "486537",
+ "title": "lp1980991-oracular → ubuntu/oracular-devel",
+ "source_branch": "lp1980991-oracular",
+ "target_branch": "ubuntu/oracular-devel",
+ "revision": "dda2b7b670b835cf8115e1a6bb416919aafb9136",
+ "base_revision": "55b71e3f9ea1ef3b9d045d7a21faac3f21001b23",
+ "description": null,
+ "commit_message": null,
+ "diffstat": {
+  "debian/changelog": [
+   7,
+   0
+  ],
+  "on_ac_power": [
+   36,
+   23
+  ]
+ },
+ "files": 2,
+ "added_lines": 43,
+ "removed_lines": 23,
+ "diff": "diff --git a/debian/changelog b/debian/changelog\nindex ed53f79..7ae4634 100644\n--- a/debian/changelog\n+++ b/debian/changelog\n@@ -1,3 +1,10 @@\n+powermgmt-base (1.37+ubuntu2) oracular; urgency=medium\n+\n+  * on_ac_power: improve reporting of AC power status in more scenarios\n+    (LP: #1980991)\n+\n+ -- Ghadi Elie Rahme <ghadi.rahme@canonical.com>  Wed, 04 Jun 2025 12:44:57 +0000\n+\n powermgmt-base (1.37+nmu1ubuntu1) oracular; urgency=medium\n \n   * Fix on_ac_power incorrectly reporting AC state on some\ndiff --git a/on_ac_power b/on_ac_power\nindex 2e65fc0..88db2df 100755\n--- a/on_ac_power\n+++ b/on_ac_power\n@@ -21,41 +21,51 @@ set -e\n # no adapters are on-line but one or more are off-line, we return 1.\n #\n OFF_LINE_P=no\n-USB_IS_SINK=no\n-USB_IS_SOURCE=no\n-power_type=\"Mains\"\n+POWER_TYPE=\"Mains\"\n+HAS_BATTERY=no\n \n # USB-C sysfs documentation:\n # https://www.kernel.org/doc/Documentation/ABI/testing/sysfs-class-typec\n #\n-# We verify first if there are any USB-C devices in power sink mode to\n-# check if we should consider USB as a power source.  If no source ports\n-# are found assume they are sink ports.\n-#\n-if [ -d /sys/class/typec/ ]; then\n-\tfor FN in /sys/class/typec/*; do\n-\t\tif test -d \"${FN}\" && test -r \"${FN}/power_role\"; then\n-\t\t\tpower_role=\"$(cat \"${FN}/power_role\")\"\n-\t\t\tif echo $power_role | grep -q '\\[source\\]'; then\n-\t\t\t\tUSB_IS_SOURCE=yes\n-\t\t\telif echo $power_role | grep -q '\\[sink\\]'; then\n-\t\t\t\tUSB_IS_SINK=yes\n+# We verify first if the USB-C port is is in sink or source mode before\n+# checking it's connection status. Many typec devices might be linked to\n+# one ucsi. If no source is found, treat it like a sink.\n+check_usb_power_role() {\n+\tusb_is_sink=no\n+\tusb_is_source=no\n+\tpowersupply_path=$1\n+\tPOWER_TYPE=\"Mains\"\n+\tif [ -d \"${powersupply_path}/device/typec\" ]; then\n+\t\tfor FN in $(find \"${powersupply_path}/device/typec/\" -mindepth 1 -maxdepth 1 -type d); do\n+\t\t\tif test -d \"${FN}\" && test -r \"${FN}/power_role\"; then\n+\t\t\t\tpower_role=\"$(cat \"${FN}/power_role\")\"\n+\t\t\t\tif echo \"$power_role\" | grep -q '\\[source\\]'; then\n+\t\t\t\t\tusb_is_source=yes\n+\t\t\t\telif echo \"$power_role\" | grep -q '\\[sink\\]'; then\n+\t\t\t\t\tusb_is_sink=yes\n+\t\t\t\tfi\n \t\t\tfi\n+\t\tdone\n+\t\t# Add USB* power type if any USB ports are sink or no source is found\n+\t\tif [ \"${usb_is_sink}\" = \"yes\" ] || [ \"${usb_is_source}\" = \"no\" ]; then\n+\t\t\tPOWER_TYPE=\"USB*\"\n \t\tfi\n-\tdone\n-\t# Add USB* power type if any USB ports are sink or no source is found\n-\tif [ \"${USB_IS_SINK}\" = \"yes\" ] || [ \"${USB_IS_SOURCE}\" = \"no\" ]; then\n-\t\tpower_type=\"USB*\"\n \tfi\n-fi\n-\n+}\n \n if [ -d /sys/class/power_supply/ ]; then\n     for FN in /sys/class/power_supply/*; do\n \tif test -d \"${FN}\" && test -r \"${FN}/type\"; then\n \t    type=\"$(cat \"${FN}/type\")\"\n+\t    # check if the device has a battery\n+\t    if echo \"$FN\" | grep -qE '/BAT[0-9]+$' && [ \"$type\" = \"Battery\" ]; then\n+\t\tHAS_BATTERY=yes\n+\t    fi\n+\t    # check if it's a typec and it's power role if it is.\n+\t    # Also set $POWER_TYPE accordingly and reset variables after last run\n+\t    check_usb_power_role \"$FN\"\n \t    case \"${type}\" in\n-\t    Mains|$power_type|BrickID|Wireless)\n+\t    Mains|$POWER_TYPE|BrickID|Wireless)\n \t\tif [ -r \"${FN}/online\" ]; then\n \t\t    online=\"$(cat \"${FN}/online\")\"\n \t\t    [ \"$online\" = 1 ] && exit 0\n@@ -64,7 +74,8 @@ if [ -d /sys/class/power_supply/ ]; then\n \t    esac\n \tfi\n     done\n-    [ \"${OFF_LINE_P}\" = \"yes\" ] && exit 1\n+    # Make sure a battery is present if we are to be offline\n+    [ \"${OFF_LINE_P}\" = \"yes\" ] && [ \"${HAS_BATTERY}\" = \"yes\" ] && exit 1\n fi\n \n # PMU\n@@ -95,5 +106,7 @@ if [ -r /proc/apm ]; then\n     '\n fi\n \n+# if no battery is present and all other checks failed then we are online.\n+[ \"${HAS_BATTERY}\" = \"no\" ] && exit 0\n # nothing is available\n exit 255\n",
+ "diff_truncated": false
+}

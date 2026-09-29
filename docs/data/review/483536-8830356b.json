@@ -1,0 +1,27 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~adrianoco/ubuntu/+source/cd-boot-images-riscv64/+git/cd-boot-images-riscv64/+merge/483536",
+ "id": "483536",
+ "title": "Use \"echo 'search.file /.disk/info root' > tree/EFI/boot/grub.cfg\"",
+ "source_branch": "ubuntu/noble-devel",
+ "target_branch": "ubuntu/noble-devel",
+ "revision": "df7673b7b7aaa38e4de16c5aae9168e1c1f79e6e",
+ "base_revision": "f051ad4d05df723a1715a3d30dceb405bbf6e10c",
+ "description": null,
+ "commit_message": "Use \"echo 'search.file /.disk/info root' > tree/EFI/boot/grub.cfg\"\nto find the correct rootfs. Needed because now debian-cd builds risc-v\nISOs and does not set disk label to 'live-media' as it used to. The\ndisk label of an ISO filesystem is the so-called volume-id, which is\nusually set to a build-dependent string, usually something like\n'Ubuntu-Server 25.04 riscv'. (LP: #2104572)",
+ "diffstat": {
+  "debian/changelog": [
+   8,
+   0
+  ],
+  "debian/rules": [
+   1,
+   1
+  ]
+ },
+ "files": 2,
+ "added_lines": 9,
+ "removed_lines": 1,
+ "diff": "diff --git a/debian/changelog b/debian/changelog\nindex 919efd5..0143226 100644\n--- a/debian/changelog\n+++ b/debian/changelog\n@@ -1,3 +1,11 @@\n+cd-boot-images-riscv64 (12.2) noble; urgency=medium\n+\n+  * d/rules: Use \"echo 'search.file /.disk/info root' > tree/EFI/boot/grub.cfg\"\n+             to find correct rootfs, as now debian-cd builds risc-v ISOs and does\n+             not set disk label to 'live-media' as it used to. (LP: #2104572)\n+\n+ -- Adriano Cordova <adriano.cordova@canonical.com>  Thu, 27 Mar 2025 16:02:55 -0300\n+\n cd-boot-images-riscv64 (12.1) noble; urgency=medium\n \n   * Rebuild against grub2 2.12-1ubuntu7.1 and u-boot 2024.01+dfsg-1ubuntu5.1\ndiff --git a/debian/rules b/debian/rules\nindex 3779339..357a64e 100755\n--- a/debian/rules\n+++ b/debian/rules\n@@ -98,7 +98,7 @@ override_dh_auto_build:\n \t  --format 'riscv64-efi' \\\n \t  $(CD_MODULES)\n \t\n-\techo 'search.fs_label live-media root' > tree/EFI/boot/grub.cfg\n+\techo 'search.file /.disk/info root' > tree/EFI/boot/grub.cfg\n \techo 'set prefix=($$root)'\\''/boot/grub'\\''' >> tree/EFI/boot/grub.cfg\n \techo 'configfile $$prefix/grub.cfg' >> tree/EFI/boot/grub.cfg\n \n",
+ "diff_truncated": false
+}

@@ -1,0 +1,23 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~mwhudson/ubuntu/+source/grub-installer/+git/grub-installer/+merge/384068",
+ "id": "384068",
+ "title": "allow invoker to override architecture",
+ "source_branch": "lp-1847721",
+ "target_branch": "ubuntu/devel",
+ "revision": "4087f06d1f5bad84ca4b21f8b78bf4b9349e00be",
+ "base_revision": "de05494b37b3e61ad8f142195a0df11e0b53d7b9",
+ "description": null,
+ "commit_message": "allow invoker to override architecture\n",
+ "diffstat": {
+  "grub-installer": [
+   11,
+   12
+  ]
+ },
+ "files": 1,
+ "added_lines": 11,
+ "removed_lines": 12,
+ "diff": "diff --git a/grub-installer b/grub-installer\nindex 8879dbe..2329f0e 100755\n--- a/grub-installer\n+++ b/grub-installer\n@@ -8,11 +8,16 @@ set -e\n if [ \"$1\" ]; then\n \tROOT=\"$1\"\n \tchroot=chroot\n+\tshift\n else\n \tROOT=\n \tchroot=\n fi\n \n+if [ \"$1\" ]; then\n+\tARCH=\"$1\"\n+fi\n+\n . /usr/share/grub-installer/functions.sh\n . /usr/share/grub-installer/otheros.sh\n \n@@ -37,7 +42,7 @@ debug () {\n \t[ -z \"${DEBCONF_DEBUG}\" ] || log \"debug: $@\"\n }\n \n-ARCH=\"$(archdetect)\"\n+ARCH=\"${ARCH:-$(archdetect)}\"\n info \"architecture: $ARCH\"\n \n umount_dirs=\n@@ -494,17 +499,7 @@ case $ARCH in\n \tif [ -f /var/lib/partman/ignore_uefi ]; then\n \t\tgrub_package=\"grub-pc\"\n \telse\n-\t\tgrub_package=\"grub-efi\"\n-\t\t# Override the package choice if we can figure out the\n-\t\t# right package to use directly\n-\t\tif [ -f /sys/firmware/efi/fw_platform_size ] ; then\n-\t\t\tSIZE=$(cat /sys/firmware/efi/fw_platform_size)\n-\t\t\tif [ $SIZE -eq 64 ] ; then\n-\t\t\t\tgrub_package=\"grub-efi-amd64-signed\"\n-\t\t\telif [ $SIZE -eq 32 ] ; then\n-\t\t\t\tgrub_package=\"grub-efi-ia32\"\n-\t\t\tfi\n-\t\tfi\n+\t\tgrub_package=\"grub-efi-amd64-signed\"\n \t\tif [ ! -d /target/boot/efi ]; then\n \t\t\t# No EFI System Partition, so presumably the partitioner\n \t\t\t# believed this to be unnecessary, perhaps because we're\n@@ -1094,6 +1089,10 @@ EOF\n \t\t\tgrub_install_params=\"$grub_install_params --force\"\n \t\tfi\n \n+\t\tif [ \"$ARCH\" = \"amd64/efi\" ] ; then\n+\t\t        grub_install_params=\"$grub_install_params --target x86_64-efi\"\n+                fi\n+\n \t\tCODE=0\n \t\tcase $ARCH:$grub_package in\n \t\t    *:grub|*:grub-pc|*:grub-efi*|sparc:grub-ieee1275|ppc64el/*:grub-ieee1275)\n",
+ "diff_truncated": false
+}

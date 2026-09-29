@@ -1,0 +1,27 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~michal-maloszewski99/ubuntu/+source/libvirt/+git/libvirt/+merge/452957",
+ "id": "452957",
+ "title": "PPA: https://launchpad.net/~michal-maloszewski99/+archive/ubuntu/ppa-libvirtd-conff",
+ "source_branch": "ubuntu/devel",
+ "target_branch": "ubuntu/devel",
+ "revision": "d542d4708d0248ce8fc7472495dcd4e990a748ed",
+ "base_revision": "420ce175e3ed69ea741c432a97dd1ac90fbd80a6",
+ "description": "PPA: https://launchpad.net/~michal-maloszewski99/+archive/ubuntu/ppa-libvirtd-conff",
+ "commit_message": null,
+ "diffstat": {
+  "debian/changelog": [
+   8,
+   0
+  ],
+  "debian/libvirt-daemon-system.libvirtd.default": [
+   15,
+   1
+  ]
+ },
+ "files": 2,
+ "added_lines": 23,
+ "removed_lines": 1,
+ "diff": "diff --git a/debian/changelog b/debian/changelog\nindex e0141ce..c90c231 100644\n--- a/debian/changelog\n+++ b/debian/changelog\n@@ -1,3 +1,11 @@\n+libvirt (9.6.0-1ubuntu2) mantic; urgency=medium\n+\n+  * d/libvirt-daemon-system.libvirtd.default: Document tcp/tls\n+    usage to stop libvirtd conffiles from being misleading.\n+    (LP: #1960937)\n+\n+ -- Michal Maloszewski <michal.maloszewski@canonical.com>  Thu, 05 Oct 2023 16:44:40 +0200\n+\n libvirt (9.6.0-1ubuntu1) mantic; urgency=medium\n \n   * Merge with Debian unstable (LP: #2018082). Remaining changes:\ndiff --git a/debian/libvirt-daemon-system.libvirtd.default b/debian/libvirt-daemon-system.libvirtd.default\nindex 7db970d..f4e9028 100644\n--- a/debian/libvirt-daemon-system.libvirtd.default\n+++ b/debian/libvirt-daemon-system.libvirtd.default\n@@ -7,7 +7,21 @@\n # connects.\n #LIBVIRTD_ARGS=\"--timeout 120\"\n \n-# If systemd socket activation is disabled, then the following\n+# If systemd socket activation is enabled (this is the default), then the\n+# following can be used to listen on TCP/TLS sockets:\n+# $ systemctl start libvirtd-<socket_type>.socket\n+# where <socket_type> = tls or tcp.\n+\n+# Note: In case the service is already running, this command might fail, but\n+# that does not matter as it has already started. If not using the daemon\n+# at the moment you might stop it so the socket(s) can be enabled:\n+# $ sudo systemctl stop libvirtd\n+\n+# To configure the socket to be started and available on system startup use:\n+# $ sudo systemctl enable libvirtd-<socket_type>.socket\n+# where socket_type = tls or tcp.\n+\n+# If systemd socket activation has been disabled, then the following\n # can be used to listen on TCP/TLS sockets\n #LIBVIRTD_ARGS=\"--listen\"\n \n",
+ "diff_truncated": false
+}

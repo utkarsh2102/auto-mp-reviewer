@@ -1,0 +1,27 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~cnihelton/ubuntu/+source/ubuntu-release-upgrader/+git/ubuntu-release-upgrader/+merge/505712",
+ "id": "505712",
+ "title": "ubuntu-release-upgrader (1:26.04.22) resolute; urgency=medium",
+ "source_branch": "fix-prompt-rr",
+ "target_branch": "ubuntu/resolute-devel",
+ "revision": "2ca5bb99b1a59e26609edc0d6e2d1a0840e7eb5a",
+ "base_revision": "f1587394db6690b765dcd867829382daec19bc9c",
+ "description": "Resolute Racoon is an LTS, so the upgrade policy should reflect that.",
+ "commit_message": "ubuntu-release-upgrader (1:26.04.22) resolute; urgency=medium\n\n  * data/release-upgrades: set Prompt=lts for resolute (LP: #2154602)\n\n -- Carlos Nihelton <email address hidden>  Fri, 29 May 2026 15:58:15 -0300\n",
+ "diffstat": {
+  "data/release-upgrades": [
+   1,
+   1
+  ],
+  "debian/changelog": [
+   6,
+   0
+  ]
+ },
+ "files": 2,
+ "added_lines": 7,
+ "removed_lines": 1,
+ "diff": "diff --git a/data/release-upgrades b/data/release-upgrades\nindex 5e740de..fd6dece 100644\n--- a/data/release-upgrades\n+++ b/data/release-upgrades\n@@ -13,4 +13,4 @@\n #           the currently-running one.  Note that if this option is used and\n #           the currently-running release is not itself an LTS release the\n #           upgrader will assume prompt was meant to be normal.\n-Prompt=normal\n+Prompt=lts\ndiff --git a/debian/changelog b/debian/changelog\nindex 3e7f8dc..7baa073 100644\n--- a/debian/changelog\n+++ b/debian/changelog\n@@ -1,3 +1,9 @@\n+ubuntu-release-upgrader (1:26.04.22) resolute; urgency=medium\n+\n+  * data/release-upgrades: set Prompt=lts for resolute (LP: #2154602)\n+\n+ -- Carlos Nihelton <cnihelton@ubuntu.com>  Fri, 29 May 2026 15:58:15 -0300\n+\n ubuntu-release-upgrader (1:26.04.21) resolute; urgency=medium\n \n   * DistUpgradeQuirks: Fix log message when installing piboot-try\n",
+ "diff_truncated": false
+}

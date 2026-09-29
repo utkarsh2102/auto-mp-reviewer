@@ -1,0 +1,23 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~xnox/livecd-rootfs/+git/livecd-rootfs/+merge/401389",
+ "id": "401389",
+ "title": "When building images against x86_64-v2 by-default toolchain PPA, also enable the -v2 rebuild-test archive.",
+ "source_branch": "x86-64-v2",
+ "target_branch": "ubuntu/master",
+ "revision": "35ad0f4f117a66a58dbc6cb6f199fb961c816559",
+ "base_revision": "05023332bce47415d9685f168366e8119eaa5e76",
+ "description": null,
+ "commit_message": "When building images against x86_64-v2 by-default toolchain PPA, also enable the -v2 rebuild-test archive.\n\nCurrently rebuild-test archive is unsigned, hence it is trusted=yes.",
+ "diffstat": {
+  "live-build/auto/config": [
+   38,
+   0
+  ]
+ },
+ "files": 1,
+ "added_lines": 38,
+ "removed_lines": 0,
+ "diff": "diff --git a/live-build/auto/config b/live-build/auto/config\nindex c02c47c..17ac1a8 100755\n--- a/live-build/auto/config\n+++ b/live-build/auto/config\n@@ -983,6 +983,14 @@ case $PROJECT in\n \t\t;;\n esac\n \n+case ${EXTRA_PPAS:-} in\n+\tubuntu-toolchain-r/x86-64-v2:*)\n+\t\tOPTS=\"${OPTS:+$OPTS }--apt-secure false --parent-mirror-chroot  http://ftpmaster.internal/ubuntu/ --parent-mirror-binary  http://ftpmaster.internal/ubuntu/\"\n+\t\tMIRROR=http://rebuild-test.internal/ubuntu-test-rebuild-20210412-hirsute-v2/ubuntu\n+                echo \"LB_BOOTSTRAP_EXCLUDE=networkd-dispatcher\" >> config/common\n+\t\t;;\n+esac\n+\n lb config noauto \\\n \t--mode ubuntu \\\n \t--distribution \"$SUITE\" \\\n@@ -1285,6 +1293,36 @@ EOF\n \t\tfi\n \t\tcat \"$gpg_tmpdir/export.gpg\" >> config/archives/extra-ppas.key.chroot\n \t\trm -f \"$gpg_tmpdir/export.gpg\"\n+\t\tif [ \"$extra_ppa_origin\" = \"LP-PPA-ubuntu-toolchain-r-x86-64-v2\" ]; then\n+\t\t\tcat <<EOF >> config/archives/extra-ppas.pref.chroot\n+\n+Package: *\n+Pin: origin \"rebuild-test.ubuntu.com\"\n+Pin-Priority: $extra_ppa_pin\n+\n+Package: src:*-signed src:linux* src:grub* src:fwupd* src:shim*\n+Pin: origin \"rebuild-test.ubuntu.com\"\n+Pin-Priority: -10\n+\n+Package: *\n+Pin: origin \"rebuild-test.internal\"\n+Pin-Priority: $extra_ppa_pin\n+\n+Package: src:*-signed src:linux* src:grub* src:fwupd* src:shim*\n+Pin: origin \"rebuild-test.internal\"\n+Pin-Priority: -10\n+\n+Package: src:*-signed src:linux* src:grub* src:fwupd* src:shim*\n+Pin: release o=$extra_ppa_origin\n+Pin-Priority: -10\n+\n+EOF\n+\t\t\tcat >> config/archives/extra-ppas.list.chroot <<EOF\n+\n+deb [trusted=yes] http://rebuild-test.ubuntu.com/ubuntu-test-rebuild-20210412-hirsute-v2/ubuntu @DISTRIBUTION@ main restricted universe multiverse\n+#deb-src [trusted=yes] http://rebuild-test.ubuntu.com/ubuntu-test-rebuild-20210412-hirsute-v2/ubuntu @DISTRIBUTION@ main restricted universe multiverse\n+EOF\n+\t\tfi\n \tdone\n \trm -rf \"$gpg_tmpdir\"\n \tcp -a config/archives/extra-ppas.list.chroot \\\n",
+ "diff_truncated": false
+}

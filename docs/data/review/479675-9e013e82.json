@@ -1,0 +1,23 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~gneiss/ubuntu/+source/python3-defaults/+git/python3-defaults/+merge/479675",
+ "id": "479675",
+ "title": "function default_version in py3versions.py fails if os.readlink('/usr/bin/python3') returns a link",
+ "source_branch": "CorrectFunc_default_version",
+ "target_branch": "ubuntu/devel",
+ "revision": "45da9c61d87a124682415188d99e8097e12e8385",
+ "base_revision": "f7ed65e1a305478e29bafd3f07c7f1b94db3243a",
+ "description": "Instead of simple read the link\n\n_default_version = os.readlink('/usr/bin/python3')\n\nan use it I add the loop:\n\nwhile os.path.islink(_default_version):\n    _default_version = os.readlink(_default_version)\n\nthis will resolve the true target/of python\n",
+ "commit_message": "function default_version in py3versions.py fails if os.readlink('/usr/bin/python3') returns a link\n\nWhen upgrading python3-twisted (ubuntu 18.04) I got the error:\nValueError: the symlink /usr/bin/python3 does not point to the python3 default version. It must be reset to point to python3.6\n\nThis is, because I had installed alternatives to python3.6.\nWhen doing this the symlink '/usr/bin/python3' points to '/etc/alternatives/python3' which in turn points to '/usr/bin/python3.6'.\n\nSo the code of the function 'default_version' is (at least) incomplete.\n\nEven I notice the problem as described above, the incorrect function 'default_version' is still presnt under Ubuntu 24.04.1 LTS.\n\nSo I suggest that this merge was introduced into all active branches.\n",
+ "diffstat": {
+  "debian/py3versions.py": [
+   1,
+   1
+  ]
+ },
+ "files": 1,
+ "added_lines": 1,
+ "removed_lines": 1,
+ "diff": "diff --git a/debian/py3versions.py b/debian/py3versions.py\nindex 76f9e6e..3936dd1 100755\n--- a/debian/py3versions.py\n+++ b/debian/py3versions.py\n@@ -147,7 +147,7 @@ def supported_versions(version_only=False):\n def default_version(version_only=False):\n     global _default_version\n     if not _default_version:\n-        _default_version = os.readlink('/usr/bin/python3')\n+        _default_version = os.path.realpath('/usr/bin/python3', strict=False)\n     # consistency check\n     debian_default = read_default('default-version')\n     if not _default_version in (debian_default, os.path.join('/usr/bin', debian_default)):\n",
+ "diff_truncated": false
+}

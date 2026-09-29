@@ -1,0 +1,51 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~tobhe/ubuntu/+source/ubuntu-x13s-settings/+git/ubuntu-x13s-settings/+merge/491992",
+ "id": "491992",
+ "title": "This is a combined fix for multiple issues, from the changelog:",
+ "source_branch": "ubuntu/questing-devel",
+ "target_branch": "ubuntu/devel",
+ "revision": "4dc9cbf32cc4f42b72038830d669a758a889e449",
+ "base_revision": "e4e4183ed675fff951370c9d446db08d08255f5b",
+ "description": "This is a combined fix for multiple issues, from the changelog:\n\n* Add dracut support in addition to initramfs-tools (LP: #2121951)\n* Add workaround to make wireplumber user service wait for camera readiness (LP: #2122049)\n\nHappy to split it up if that would be preferred.\n\nThis is very similar to\nhttps://code.launchpad.net/~tobhe/ubuntu/+source/ubuntu-x1e-settings/+git/ubuntu-x1e-settings/+merge/491984\nto a point where the wireplumber workaround would conflict.\n\nI also added a conflict with ubuntu-x1e-settings which I proposed the same wireplumber fix for, since those packages are hardware enablement specific they should never be installed at the same time anyway.",
+ "commit_message": null,
+ "diffstat": {
+  "debian/changelog": [
+   9,
+   0
+  ],
+  "debian/control": [
+   1,
+   0
+  ],
+  "debian/rules": [
+   3,
+   0
+  ],
+  "debian/ubuntu-x13s-settings-nogrub.install": [
+   7,
+   3
+  ],
+  "dracut/dracut.conf.d/10-ubuntu-x13s-settings.conf": [
+   1,
+   0
+  ],
+  "dracut/modules.d/50ubuntu-x13s-settings/module-setup.sh": [
+   52,
+   0
+  ],
+  "systemd/wireplumber-wait-media.service": [
+   12,
+   0
+  ],
+  "systemd/wp-waitformedia": [
+   18,
+   0
+  ]
+ },
+ "files": 8,
+ "added_lines": 103,
+ "removed_lines": 3,
+ "diff": "diff --git a/debian/changelog b/debian/changelog\nindex 8a9dce2..7e70c4e 100644\n--- a/debian/changelog\n+++ b/debian/changelog\n@@ -1,3 +1,12 @@\n+ubuntu-x13s-settings (25.10.1) questing; urgency=medium\n+\n+  * Add dracut support in addition to initramfs-tools (LP: #2121951)\n+  * Add workaround to make wireplumber user service wait for\n+    camera readiness (LP: #2122049)\n+  * Mark conflict with ubuntu-x1e-settings-nogrub\n+\n+ -- Tobias Heider <tobias.heider@canonical.com>  Fri, 05 Sep 2025 10:27:02 +0200\n+\n ubuntu-x13s-settings (25.10.0) questing; urgency=medium\n \n   * d/hwe-lenovo-x13s-meta.modaliases: Match on of:*qcom*sc8280xp-clk-virt\ndiff --git a/debian/control b/debian/control\nindex 880bc65..1985738 100644\n--- a/debian/control\n+++ b/debian/control\n@@ -32,6 +32,7 @@ Description: Default settings for Ubuntu on Lenovo X13s arm64 laptops\n Package: ubuntu-x13s-settings-nogrub\n Architecture: arm64\n Replaces: ubuntu-x13s-settings (<< 24.10.2)\n+Conflicts: ubuntu-x1e-settings-nogrub\n Depends:\n  ${misc:Depends},\n  libcamera-v4l2,\ndiff --git a/debian/rules b/debian/rules\nindex 0a22476..84e48c4 100755\n--- a/debian/rules\n+++ b/debian/rules\n@@ -2,3 +2,6 @@\n \n %:\n \tdh $@ --with modaliases\n+\n+override_dh_installsystemduser:\n+\tdh_installsystemduser -pubuntu-x13s-settings-nogrub wireplumber-wait-media.service\ndiff --git a/debian/ubuntu-x13s-settings-nogrub.install b/debian/ubuntu-x13s-settings-nogrub.install\nindex bb0cee7..4ce75db 100644\n--- a/debian/ubuntu-x13s-settings-nogrub.install\n+++ b/debian/ubuntu-x13s-settings-nogrub.install\n@@ -1,5 +1,9 @@\n-hooks/* usr/share/initramfs-tools/hooks/\n-modules.d/* usr/share/initramfs-tools/modules.d/\n+dracut/dracut.conf.d/10-ubuntu-x13s-settings.conf usr/lib/dracut/dracut.conf.d/\n+dracut/modules.d/50ubuntu-x13s-settings/* usr/lib/dracut/modules.d/50ubuntu-x13s-settings/\n+initramfs-tools/hooks/* usr/share/initramfs-tools/hooks/\n+initramfs-tools/modules.d/* usr/share/initramfs-tools/modules.d\n rules.d/* lib/udev/rules.d/\n share/* usr/share/ubuntu-x13s-settings/\n-systemd-system/* usr/lib/systemd/system/\n+systemd/hwe-lenovo-x13s-bluetooth-addr.service usr/lib/systemd/system/\n+systemd/wp-waitformedia usr/libexec\n+systemd/wireplumber-wait-media.service usr/lib/systemd/user/\ndiff --git a/dracut/dracut.conf.d/10-ubuntu-x13s-settings.conf b/dracut/dracut.conf.d/10-ubuntu-x13s-settings.conf\nnew file mode 100644\nindex 0000000..96d5a0c\n--- /dev/null\n+++ b/dracut/dracut.conf.d/10-ubuntu-x13s-settings.conf\n@@ -0,0 +1 @@\n+add_dracutmodules+=\" ubuntu-x13s-settings \"\ndiff --git a/dracut/modules.d/50ubuntu-x13s-settings/.module-setup.sh.swp b/dracut/modules.d/50ubuntu-x13s-settings/.module-setup.sh.swp\nnew file mode 100644\nindex 0000000..9d403dc\nBinary files /dev/null and b/dracut/modules.d/50ubuntu-x13s-settings/.module-setup.sh.swp differ\ndiff --git a/dracut/modules.d/50ubuntu-x13s-settings/module-setup.sh b/dracut/modules.d/50ubuntu-x13s-settings/module-setup.sh\nnew file mode 100755\nindex 0000000..d36b0d9\n--- /dev/null\n+++ b/dracut/modules.d/50ubuntu-x13s-settings/module-setup.sh\n@@ -0,0 +1,52 @@\n+#!/bin/bash\n+\n+install() {\n+\tinst_dir \"/lib/firmware\"\n+\tfor f in /lib/firmware/qcom/sc8280xp/LENOVO/21BX/* \\\n+\t    /lib/firmware/qcom/a6* ; do\n+\t\tinst \"${f}\"\n+\tdone\n+}\n+\n+# called by dracut\n+installkernel() {\n+\t# Core\n+\thostonly='' instmods \\\n+\t    qnoc-sc8280xp \\\n+\t    qcom_hwspinlock \\\n+\t    uio_pdrv_genirq\n+\n+\t# NVME\n+\thostonly='' instmods \\\n+\t    phy_qcom_qmp_pcie \\\n+\t    pcie_qcom \\\n+\t    nvme\n+\n+\t# Keyboard\n+\thostonly='' instmods \\\n+\t    i2c_qcom_geni \\\n+\t    i2c_hid_of \\\n+\t    hid_generic\n+\n+\t# Display\n+\thostonly='' instmods \\\n+\t    pwm_bl \\\n+\t    qrtr \\\n+\t    phy_qcom_edp \\\n+\t    i2c_qcom_geni \\\n+\t    gpio_sbu_mux \\\n+\t    pmic_glink_altmode \\\n+\t    spmi_pmic_arb \\\n+\t    phy_qcom_qmp_combo \\\n+\t    qcom_spmi_pmic \\\n+\t    pinctrl_spmi_gpio \\\n+\t    leds_qcom_lpg \\\n+\t    panel_edp \\\n+\t    msm\n+\n+\t# USB (required for installation from USB)\n+\thostonly='' instmods \\\n+\t    qcom_q6v5_pas \\\n+\t    usb_storage \\\n+\t    uas\n+}\ndiff --git a/hooks/ubuntu-x13s-settings b/initramfs-tools/hooks/ubuntu-x13s-settings\nsimilarity index 100%\nrename from hooks/ubuntu-x13s-settings\nrename to initramfs-tools/hooks/ubuntu-x13s-settings\ndiff --git a/modules.d/ubuntu-x13s-settings b/initramfs-tools/modules.d/ubuntu-x13s-settings\nsimilarity index 100%\nrename from modules.d/ubuntu-x13s-settings\nrename to initramfs-tools/modules.d/ubuntu-x13s-settings\ndiff --git a/systemd-system/hwe-lenovo-x13s-bluetooth-addr.service b/systemd/hwe-lenovo-x13s-bluetooth-addr.service\nsimilarity index 100%\nrename from systemd-system/hwe-lenovo-x13s-bluetooth-addr.service\nrename to systemd/hwe-lenovo-x13s-bluetooth-addr.service\ndiff --git a/systemd/wireplumber-wait-media.service b/systemd/wireplumber-wait-media.service\nnew file mode 100644\nindex 0000000..42227b8\n--- /dev/null\n+++ b/systemd/wireplumber-wait-media.service\n@@ -0,0 +1,12 @@\n+[Unit]\n+Description=Wait for /dev/media0 and /dev/udmabuf to be available via uaccess\n+Conflicts=shutdown.target\n+Before=wireplumber.service\n+\n+[Service]\n+Type=oneshot\n+ExecStart=/usr/libexec/wp-waitformedia\n+RemainAfterExit=yes\n+\n+[Install]\n+WantedBy=wireplumber.service\ndiff --git a/systemd/wp-waitformedia b/systemd/wp-waitformedia\nnew file mode 100755\nindex 0000000..7561537\n--- /dev/null\n+++ b/systemd/wp-waitformedia\n@@ -0,0 +1,18 @@\n+#!/bin/sh\n+\n+countdown=20\n+\n+# Return immediately if the camera /dev files don't exist\n+if [ ! -e /dev/media0 ] || [ ! -e /dev/udmabuf ]; then\n+\texit 0\n+fi\n+\n+# Wait for uaccess to making them user readable\n+while [ \"$countdown\" -gt 0 ]; do\n+\tif [ -r /dev/media0 ] && [ -r /dev/udmabuf ]; then\n+\t\texit 0\n+\tfi\n+\tcountdown=$((countdown-1))\n+\tsleep 0.1\n+done\n+exit 1\n",
+ "diff_truncated": false
+}

@@ -1,0 +1,31 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~ssstr1pe/ubuntu-release-tools/+git/templates/+merge/475855",
+ "id": "475855",
+ "title": "adds a new card instructing the URM team to contact platform leads to begin testing as well as assisting with any testing necessary and possible",
+ "source_branch": "ping-platform-testers",
+ "target_branch": "main",
+ "revision": "aa02876aabf7a95c2e250b2133ec1b37f2210c0d",
+ "base_revision": "91d1466610e7f9f58b6d11c21b0e5e37ad2d72f2",
+ "description": "adds a new card instructing the URM team to contact platform leads to begin testing as well as assisting with any testing necessary and possible",
+ "commit_message": null,
+ "diffstat": {
+  "jira-milestones/devel-release/beta-release.yaml": [
+   12,
+   0
+  ],
+  "jira-milestones/devel-release/final-release.yaml": [
+   12,
+   0
+  ],
+  "jira-milestones/point-release.yaml": [
+   13,
+   1
+  ]
+ },
+ "files": 3,
+ "added_lines": 37,
+ "removed_lines": 1,
+ "diff": "diff --git a/jira-milestones/devel-release/beta-release.yaml b/jira-milestones/devel-release/beta-release.yaml\nindex 47899ac..2ce1715 100644\n--- a/jira-milestones/devel-release/beta-release.yaml\n+++ b/jira-milestones/devel-release/beta-release.yaml\n@@ -63,6 +63,18 @@ timelines:\n     - Confirm the new milestone is listed at http://iso.qa.ubuntu.com\n     - Confirm that it has all the images listed on the ReleaseManifest\n     - Make it the default_milestone in ~cdimage/.isotracker.conf on cdimage-master, make sure that it is\n+  - task: Ping Ubuntu Release Management team to get in contact with platform (raspi, risc-v, arm64 desktop) leads to begin testing images\n+    description: |\n+      The URM team can be found on mattermost in the \"Ubuntu Release Management\" channel, or on IRC.\n+      The URM team should stay in contact with the platform leads and keep track of the state of the testing and provide regular reports, as well as assisting with any testing as necessary.\n+      Platform engineers:\n+        Raspi:\n+          Dave Jones (@waveform)\n+          Pragyansh Chaturvedi (@r41k0u)\n+        risc-v:\n+          Heinrich Schuchardt (@xypron)\n+        arm64:\n+          Tobias Heder (@tobhe)\n   - task: Check with the Ubuntu QA about the results of manual and automatic installation smoke tests and upgrade smoke tests\n     description: |\n       Or be proactive and check some of them yourself\ndiff --git a/jira-milestones/devel-release/final-release.yaml b/jira-milestones/devel-release/final-release.yaml\nindex 5cf5244..be46d2f 100644\n--- a/jira-milestones/devel-release/final-release.yaml\n+++ b/jira-milestones/devel-release/final-release.yaml\n@@ -74,6 +74,18 @@ timelines:\n       - website preparations are on-track; this includes preparing download pages\n       - update https://ubuntu.com/download/flavours\n     - task: Post full set of pre-release images with last language pack updates to QA iso tracker to start QA testing\n+    - task: Ping Ubuntu Release Management team to get in contact with platform (raspi, risc-v, arm64 desktop) leads to begin testing images\n+      description: |\n+        The URM team can be found on mattermost in the \"Ubuntu Release Management\" channel, or on IRC.\n+        The URM team should stay in contact with the platform leads and keep track of the state of the testing and provide regular reports, as well as assisting with any testing as necessary.\n+        Platform engineers:\n+          Raspi:\n+            Dave Jones (@waveform)\n+            Pragyansh Chaturvedi (@r41k0u)\n+          risc-v:\n+            Heinrich Schuchardt (@xypron)\n+          arm64:\n+            Tobias Heder (@tobhe)\n     - task: Turn off daily builds\n       description: Unless explicit reason why they need to remain on.\n     - task: Review unsubscribed packages in the team to package mapping report - there should be none\ndiff --git a/jira-milestones/point-release.yaml b/jira-milestones/point-release.yaml\nindex 52b4ad5..11e3393 100644\n--- a/jira-milestones/point-release.yaml\n+++ b/jira-milestones/point-release.yaml\n@@ -26,8 +26,20 @@\n   - task: Make sure that that we are building the daily images with -proposed enabled\n   - task: Update the manifest to reflect publishing status of images based on input from product leads\n   - task: Build CD images and smoke-test in some convenient environment to check for obvious failures\n+  - task: Ping Ubuntu Release Management team to get in contact with platform (raspi, risc-v, arm64 desktop) leads to begin testing images\n+    description: |\n+      The URM team can be found on mattermost in the \"Ubuntu Release Management\" channel, or on IRC.\n+      The URM team should stay in contact with the platform leads and keep track of the state of the testing and provide regular reports, as well as assisting with any testing as necessary.\n+      Platform engineers:\n+        Raspi:\n+          Dave Jones (@waveform)\n+          Pragyansh Chaturvedi (@r41k0u)\n+        risc-v:\n+          Heinrich Schuchardt (@xypron)\n+        arm64:\n+          Tobias Heder (@tobhe)\n   - task: Liaise with teams, QA, community, certification and all involved teams to arrange for testing resources\n-    description: We need to make sure that we have QA coverage for every flavor (desktop, server, pi, riscv, kubuntu etc.)\n+    description: We need to make sure that we have QA coverage for every flavor (desktop, server, kubuntu etc.)\n - timeline: -21\n   tasks:\n   - task: Notify translations-team to prepare updates for point release\n",
+ "diff_truncated": false
+}

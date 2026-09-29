@@ -1,0 +1,27 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~bluca/ubuntu/+source/dpkg/+git/dpkg/+merge/461113",
+ "id": "461113",
+ "title": "Restore support for DEB_BUILD_PROFILES env var",
+ "source_branch": "fix_build_profiles_env",
+ "target_branch": "ubuntu/noble",
+ "revision": "77993cef33b1b064247d1d2986f488eea076155e",
+ "base_revision": "b80bc1cb34e560281a030312eef7c16f4b0c2963",
+ "description": "Due to the change in dpkg-buildpackage.pl to always call set_build_profiles()\nDEB_BUILD_PROFILES is never parsed, even if there is no --build-profile\ncommand line argument.\n\nWhen set_build_profiles() is called with an empty array, meaning\nthat there were no overrides via --build-profile, check the env\nvar instead.\n\nTest case added to cover this use case.",
+ "commit_message": "Restore support for DEB_BUILD_PROFILES env var",
+ "diffstat": {
+  "scripts/Dpkg/BuildProfiles.pm": [
+   5,
+   0
+  ],
+  "scripts/t/Dpkg_BuildProfiles.t": [
+   12,
+   1
+  ]
+ },
+ "files": 2,
+ "added_lines": 17,
+ "removed_lines": 1,
+ "diff": "diff --git a/scripts/Dpkg/BuildProfiles.pm b/scripts/Dpkg/BuildProfiles.pm\nindex 672e541..4484eef 100644\n--- a/scripts/Dpkg/BuildProfiles.pm\n+++ b/scripts/Dpkg/BuildProfiles.pm\n@@ -81,6 +81,11 @@ sub set_build_profiles {\n     my (@profiles) = @_;\n \n     $cache_profiles = 1;\n+    # This is called from dpkg-buildpackage.pl unconditionally. If no profile\n+    # was passed from the command line, check the environment variable.\n+    if (!@profiles && Dpkg::BuildEnv::has('DEB_BUILD_PROFILES')) {\n+        @profiles = split ' ', Dpkg::BuildEnv::get('DEB_BUILD_PROFILES');\n+    }\n     @build_profiles = @profiles;\n     run_vendor_hook('update-buildprofiles', \\@build_profiles);\n     Dpkg::BuildEnv::set('DEB_BUILD_PROFILES', join ' ', @build_profiles);\ndiff --git a/scripts/t/Dpkg_BuildProfiles.t b/scripts/t/Dpkg_BuildProfiles.t\nindex fad8e51..bfb7fc7 100644\n--- a/scripts/t/Dpkg_BuildProfiles.t\n+++ b/scripts/t/Dpkg_BuildProfiles.t\n@@ -16,7 +16,7 @@\n use strict;\n use warnings;\n \n-use Test::More tests => 10;\n+use Test::More tests => 11;\n \n BEGIN {\n     use_ok('Dpkg::BuildProfiles', qw(parse_build_profiles\n@@ -71,3 +71,14 @@ is_deeply([ get_build_profiles() ], [ qw(noudeb nocheck stage1) ],\n set_build_profiles(qw(!noudeb nocheck stage1));\n is_deeply([ get_build_profiles() ], [ qw(nocheck stage1) ],\n     'get active build profiles explicitly set');\n+\n+{\n+    local $ENV{DEB_BUILD_PROFILES} = 'cross nodoc profile.name';\n+\n+    # dpkg-buildpackage.pl calls set_build_profiles with an empty array by\n+    # default (unless --build-profiles is used), ensure the env var is still\n+    # parsed\n+    set_build_profiles(qw());\n+    is_deeply([ get_build_profiles() ], [ qw(noudeb cross nodoc profile.name) ],\n+        'get active build profiles from environment');\n+}\n",
+ "diff_truncated": false
+}

@@ -1,0 +1,59 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~racb/ubuntu/+source/bacula/+git/bacula/+merge/380163",
+ "id": "380163",
+ "title": "Merge latest bacula (9.4.2->9.4.4). Upstream changes: https://www.bacula.org/git/cgit.cgi/bacula/log/?h=Branch-9.4",
+ "source_branch": "merge",
+ "target_branch": "debian/sid",
+ "revision": "0c7492007bdd175d5fdbca63e7e7652a06ae7417",
+ "base_revision": "115ddd7dd0584fce495d9b04d22030c440715ea2",
+ "description": "Merge latest bacula (9.4.2->9.4.4). Upstream changes: https://www.bacula.org/git/cgit.cgi/bacula/log/?h=Branch-9.4\n\nBuild and autopkgtest passes locally on amd64.",
+ "commit_message": null,
+ "diffstat": {
+  "debian/bacula-tray-monitor.postinst": [
+   2,
+   2
+  ],
+  "debian/bacula-fd.postinst": [
+   2,
+   2
+  ],
+  "debian/bacula-sd.postinst": [
+   4,
+   2
+  ],
+  "debian/bacula-console.postinst": [
+   2,
+   2
+  ],
+  "debian/control": [
+   2,
+   1
+  ],
+  "debian/bacula-console-qt.postinst": [
+   2,
+   2
+  ],
+  "debian/bacula-director.postinst": [
+   2,
+   2
+  ],
+  "debian/tests/backup-test": [
+   16,
+   0
+  ],
+  "debian/changelog": [
+   49,
+   0
+  ],
+  "debian/tests/control": [
+   3,
+   3
+  ]
+ },
+ "files": 10,
+ "added_lines": 84,
+ "removed_lines": 16,
+ "diff": "diff --git a/debian/bacula-console-qt.postinst b/debian/bacula-console-qt.postinst\nindex 3c2f825..386fb88 100644\n--- a/debian/bacula-console-qt.postinst\n+++ b/debian/bacula-console-qt.postinst\n@@ -15,11 +15,11 @@ case \"$1\" in\n \t# create new bat.conf using the template\n \tTMP_CONFIG=\"$(mktemp -p /tmp $PKG_NAME.conf.ucftmp-XXXXXXXXXX)\"\n \tchmod 640 $TMP_CONFIG\n-\tchown root:bacula $TMP_CONFIG\n-\n \tsed -e s~@debian_basename@~`hostname`~ \\\n \t    -e s~XXX_DIRPASSWORD_XXX~$DIRPASSWD~ \\\n \t    $TEMPLATE > $TMP_CONFIG\n+\tchown root:bacula $TMP_CONFIG\n+\n \t# let ucf handle the conffile and register it\n \tucf --debconf-ok --three-way $TMP_CONFIG $TARGET\n \tucfr $PKG_NAME $TARGET\ndiff --git a/debian/bacula-console.postinst b/debian/bacula-console.postinst\nindex 8a35c00..f8d5bae 100644\n--- a/debian/bacula-console.postinst\n+++ b/debian/bacula-console.postinst\n@@ -15,11 +15,11 @@ case \"$1\" in\n \t# create new bconsole.conf using the template\n \tTMP_CONFIG=\"$(mktemp -p /tmp $PKG_NAME.conf.ucftmp-XXXXXXXXXX)\"\n \tchmod 640 $TMP_CONFIG\n-\tchown root:bacula $TMP_CONFIG\n-\n \tsed -e s~@debian_basename@~`hostname`~ \\\n \t    -e s~XXX_DIRPASSWORD_XXX~$DIRPASSWD~ \\\n \t    $TEMPLATE > $TMP_CONFIG\n+\tchown root:bacula $TMP_CONFIG\n+\n \t# let ucf handle the conffile and register it\n \tucf --debconf-ok --three-way $TMP_CONFIG $TARGET\n \tucfr $PKG_NAME $TARGET\ndiff --git a/debian/bacula-director.postinst b/debian/bacula-director.postinst\nindex 9e0cdec..ee629e5 100644\n--- a/debian/bacula-director.postinst\n+++ b/debian/bacula-director.postinst\n@@ -27,8 +27,6 @@ case \"$1\" in\n \t# create new bacula-dir.conf using the template\n \tTMP_CONFIG=\"$(mktemp -p /tmp $PKG_NAME.conf.ucftmp-XXXXXXXXXX)\"\n \tchmod 640 $TMP_CONFIG\n-\tchown root:bacula $TMP_CONFIG\n-\n \tsed -e s~XXX_DIRPASSWORD_XXX~$DIRPASSWD~ \\\n \t    -e s~XXX_MONDIRPASSWORD_XXX~$DIRMPASSWD~ \\\n \t    -e s~XXX_SDPASSWORD_XXX~$SDPASSWD~ \\\n@@ -59,6 +57,8 @@ case \"$1\" in\n \t\t;;\n \t    esac\n         fi\n+\tchown root:bacula $TMP_CONFIG\n+\n \t# let ucf handle the conffile and register it\n \tucf --debconf-ok --three-way $TMP_CONFIG $TARGET\n \tucfr $PKG_NAME $TARGET\ndiff --git a/debian/bacula-fd.postinst b/debian/bacula-fd.postinst\nindex 8529173..f2a229e 100644\n--- a/debian/bacula-fd.postinst\n+++ b/debian/bacula-fd.postinst\n@@ -15,12 +15,12 @@ case \"$1\" in\n \t# create new bacula-fd.conf using the template\n \tTMP_CONFIG=\"$(mktemp -p /tmp $PKG_NAME.conf.ucftmp-XXXXXXXXXX)\"\n \tchmod 640 $TMP_CONFIG\n-\tchown root:bacula $TMP_CONFIG\n-\n \tsed -e s~@debian_basename@~`hostname`~ \\\n \t    -e s~XXX_FDPASSWORD_XXX~$FDPASSWD~ \\\n \t    -e s~XXX_MONFDPASSWORD_XXX~$FDMPASSWD~ \\\n \t    $TEMPLATE > $TMP_CONFIG\n+\tchown root:bacula $TMP_CONFIG\n+\n \t# let ucf handle the conffile and register it\n \tucf --debconf-ok --three-way $TMP_CONFIG $TARGET\n \tucfr $PKG_NAME $TARGET\ndiff --git a/debian/bacula-sd.postinst b/debian/bacula-sd.postinst\nindex 1ed67ff..1465d6f 100644\n--- a/debian/bacula-sd.postinst\n+++ b/debian/bacula-sd.postinst\n@@ -15,12 +15,14 @@ case \"$1\" in\n \t# create new bacula-sd.conf using the template\n \tTMP_CONFIG=\"$(mktemp -p /tmp $PKG_NAME.conf.ucftmp-XXXXXXXXXX)\"\n \tchmod 640 $TMP_CONFIG\n-\tchown bacula:bacula $TMP_CONFIG\n-\n \tsed -e s~@debian_basename@~`hostname`~ \\\n \t    -e s~XXX_SDPASSWORD_XXX~$SDPASSWD~ \\\n \t    -e s~XXX_MONSDPASSWORD_XXX~$SDMPASSWD~ \\\n \t    $TEMPLATE > $TMP_CONFIG\n+\t# change owner of file to bacula only after we wrote to it as root\n+\t# cf. bug #953030\n+\tchown bacula:bacula $TMP_CONFIG\n+\n \t# let ucf handle the conffile and register it\n \tucf --debconf-ok --three-way $TMP_CONFIG $TARGET\n \tucfr $PKG_NAME $TARGET\ndiff --git a/debian/bacula-tray-monitor.postinst b/debian/bacula-tray-monitor.postinst\nindex 0440a9d..341152a 100644\n--- a/debian/bacula-tray-monitor.postinst\n+++ b/debian/bacula-tray-monitor.postinst\n@@ -15,13 +15,13 @@ case \"$1\" in\n \t# create new bacula-tray-monitor.conf using the template\n \tTMP_CONFIG=\"$(mktemp -p /tmp $PKG_NAME.conf.ucftmp-XXXXXXXXXX)\"\n \tchmod 640 $TMP_CONFIG\n-\tchown root:bacula $TMP_CONFIG\n-\n \tsed -e s~@debian_basename@~`hostname`~ \\\n \t    -e s~XXX_MONDIRPASSWORD_XXX~$DIRMPASSWD~ \\\n \t    -e s~XXX_MONFDPASSWORD_XXX~$FDMPASSWD~ \\\n \t    -e s~XXX_MONSDPASSWORD_XXX~$SDMPASSWD~ \\\n \t    $TEMPLATE > $TMP_CONFIG\n+\tchown root:bacula $TMP_CONFIG\n+\n \t# let ucf handle the conffile and register it\n \tucf --debconf-ok --three-way $TMP_CONFIG $TARGET\n \tucfr $PKG_NAME $TARGET\ndiff --git a/debian/changelog b/debian/changelog\nindex 463f9ed..2c49093 100644\n--- a/debian/changelog\n+++ b/debian/changelog\n@@ -1,3 +1,21 @@\n+bacula (9.4.4-2ubuntu1) focal; urgency=medium\n+\n+  * Merge with Debian unstable. Remaining changes:\n+    - d/t/backup-test: fix test failures caused by test dependency installation\n+      misordering by reinstalling the required database schema at the start of\n+      the test. This is a workaround for Debian bug 923444.\n+    - d/t/control: some dbconfig-common output goes to stderr. This is not a\n+      failure, so instruct the autopkgtest machinery accordingly.\n+  * Drop changes (applied upstream):\n+    - debian/patches/debian/mysql-8-compat: Fix compatibility with MySQL 8 by\n+      using bool instead of my_bool.\n+  * Various postinsts in d/: change temporary file ownership after writing\n+    to avoid protected_regular=2 world-writeable sticky denials. Closes:\n+    #953030. Cherry-picked from Debian VCS 0fc4829. Thanks to Carsten\n+    Leonhardt.\n+\n+ -- Robie Basak <robie.basak@ubuntu.com>  Tue, 03 Mar 2020 11:24:56 +0000\n+\n bacula (9.4.4-2) unstable; urgency=medium\n \n   * Upload to unstable.\n@@ -15,6 +33,30 @@ bacula (9.4.4-1) experimental; urgency=medium\n \n  -- Carsten Leonhardt <leo@debian.org>  Wed, 19 Jun 2019 23:08:15 +0200\n \n+bacula (9.4.2-2ubuntu3) eoan; urgency=medium\n+\n+  * d/t/backup-test: fix test failures caused by test dependency installation\n+    misordering by reinstalling the required database schema at the start of\n+    the test. This is a workaround for Debian bug 923444.\n+  * d/t/control: some dbconfig-common output goes to stderr. This is not a\n+    failure, so instruct the autopkgtest machinery accordingly.\n+\n+ -- Robie Basak <robie.basak@ubuntu.com>  Wed, 28 Aug 2019 13:00:33 +0000\n+\n+bacula (9.4.2-2ubuntu2) eoan; urgency=medium\n+\n+  * No change rebuild for libmysqlclient21.\n+\n+ -- Christian Ehrhardt <christian.ehrhardt@canonical.com>  Thu, 15 Aug 2019 09:32:44 +0200\n+\n+bacula (9.4.2-2ubuntu1) disco; urgency=medium\n+\n+  * Merge from Debian unstable. Remaining changes:\n+    - debian/patches/debian/mysql-8-compat: Fix compatibility with MySQL 8 by\n+      using bool instead of my_bool.\n+\n+ -- Logan Rosen <logan@ubuntu.com>  Sun, 03 Mar 2019 15:17:26 -0500\n+\n bacula (9.4.2-2) unstable; urgency=medium\n \n   [ Carsten Leonhardt ]\n@@ -26,6 +68,12 @@ bacula (9.4.2-2) unstable; urgency=medium\n \n  -- Carsten Leonhardt <leo@debian.org>  Thu, 28 Feb 2019 12:05:39 +0100\n \n+bacula (9.4.2-1ubuntu1) disco; urgency=medium\n+\n+  * Fix compatibility with MySQL 8 by using bool instead of my_bool.\n+\n+ -- Logan Rosen <logan@ubuntu.com>  Sat, 23 Feb 2019 23:16:05 -0500\n+\n bacula (9.4.2-1) unstable; urgency=medium\n \n   [ Carsten Leonhardt ]\n@@ -2630,3 +2678,4 @@ bacula (1.32f-4-1) unstable; urgency=low\n           * Initial Packaging: 12 binary packages built\n \n  -- JosÃ© Luis TallÃ³n <jltallon@adv-solutions.net>  Wed, 18 Feb 2004 00:04:11 +0100\n+\ndiff --git a/debian/control b/debian/control\nindex 9e13a46..df28412 100644\n--- a/debian/control\n+++ b/debian/control\n@@ -1,7 +1,8 @@\n Source: bacula\n Section: admin\n Priority: optional\n-Maintainer: Debian Bacula Team <pkg-bacula-devel@lists.alioth.debian.org>\n+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>\n+XSBC-Original-Maintainer: Debian Bacula Team <pkg-bacula-devel@lists.alioth.debian.org>\n Uploaders: Carsten Leonhardt <leo@debian.org>\n Build-Depends: autoconf,\n                bc,\ndiff --git a/debian/tests/backup-test b/debian/tests/backup-test\nindex 2e0c616..7c09956 100755\n--- a/debian/tests/backup-test\n+++ b/debian/tests/backup-test\n@@ -10,6 +10,22 @@ BASH_XTRACEFD=\"3\"\n # Activate Tracing and exit-on-error\n set -ex\n \n+# Workaround for https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=923444\n+apt-get -y install debconf-utils\n+# If we don't reset some password fields we get a password mismatch error on\n+# the subsequent database reinstallation. For the purposes of this workaround\n+# in this isolated test environment it's easier just to reset them all.\n+debconf-get-selections|awk '$3==\"password\"{print}'|debconf-set-selections\n+for pkg in bacula-director-mysql bacula-director-pgsql; do\n+    # This test script is used in multiple cases; we want to only reinstall the\n+    # database if its package is installed.\n+    pkg_status=`dpkg-query --showformat '${db:Status-Status}' -W \"$pkg\" 2>/dev/null || true`\n+    if [ \"$pkg_status\" = \"installed\" ]; then\n+        echo \"$pkg $pkg/dbconfig-reinstall boolean true\"|debconf-set-selections\n+        DEBIAN_FRONTEND=noninteractive dpkg-reconfigure \"$pkg\"\n+    fi\n+done\n+\n echo \"start testing ... \"\n echo \"USER: ${USER}\"\n \ndiff --git a/debian/tests/control b/debian/tests/control\nindex ead3052..a9c5087 100644\n--- a/debian/tests/control\n+++ b/debian/tests/control\n@@ -1,13 +1,13 @@\n Tests: backup-test-pgsql, program-test-pgsql\n-Restrictions: breaks-testbed needs-root\n+Restrictions: breaks-testbed needs-root allow-stderr\n Depends: postgresql\n \n Tests: backup-test-mysql, program-test-mysql\n-Restrictions: breaks-testbed needs-root\n+Restrictions: breaks-testbed needs-root allow-stderr\n Depends: bacula,\n          bacula-director-mysql,\n          default-mysql-server | virtual-mysql-server\n \n Tests: backup-test-sqlite3, program-test-sqlite3\n-Restrictions: breaks-testbed needs-root\n+Restrictions: breaks-testbed needs-root allow-stderr\n Depends: bacula, bacula-director-sqlite3\n",
+ "diff_truncated": false
+}

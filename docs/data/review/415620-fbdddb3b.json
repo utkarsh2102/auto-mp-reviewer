@@ -1,0 +1,31 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~enr0n/ubuntu/+source/apport/+git/apport/+merge/415620",
+ "id": "415620",
+ "title": "lp.1952947 → ubuntu/devel",
+ "source_branch": "lp.1952947",
+ "target_branch": "ubuntu/devel",
+ "revision": "d42081ccc6b4aece9de7002cb89abb3160bda469",
+ "base_revision": "d02544474eb33690ffeaead869e217972dc3fcb9",
+ "description": null,
+ "commit_message": null,
+ "diffstat": {
+  "apport/ui.py": [
+   13,
+   0
+  ],
+  "debian/changelog": [
+   6,
+   0
+  ],
+  "man/apport-cli.1": [
+   5,
+   0
+  ]
+ },
+ "files": 3,
+ "added_lines": 24,
+ "removed_lines": 0,
+ "diff": "diff --git a/apport/ui.py b/apport/ui.py\nindex 200f7ff..3de0aa6 100644\n--- a/apport/ui.py\n+++ b/apport/ui.py\n@@ -727,6 +727,19 @@ class UserInterface:\n                 self.ui_error_message(_('Invalid problem report'), excstr(e))\n             return True\n         elif self.options.window:\n+            if os.getenv('XDG_SESSION_TYPE') == 'wayland':\n+                self.ui_error_message(_('Cannot create report'),\n+                                      _('The window option cannot be used on '\n+                                        'Wayland.\\n\\nPlease find the window\\'s '\n+                                        'process ID and then run \\'ubuntu-bug '\n+                                        '<process ID>\\'.'\n+                                        '\\n\\nThe process ID can be found '\n+                                        'by running the System Monitor application. '\n+                                        'In the Processes tab, scroll until you '\n+                                        'find the correct application. The process '\n+                                        'ID is the number listed in the ID column.'))\n+                return True\n+\n             self.ui_info_message('', _('After closing this message '\n                                        'please click on an application window to report a problem about it.'))\n             xprop = subprocess.Popen(['xprop', '_NET_WM_PID'],\ndiff --git a/debian/changelog b/debian/changelog\nindex 6e892e9..14df5c3 100644\n--- a/debian/changelog\n+++ b/debian/changelog\n@@ -1,3 +1,9 @@\n+apport (2.20.11-0ubuntu77) UNRELEASED; urgency=medium\n+\n+  * apport/ui.py: Error out when -w option is used on wayland (LP: #1952947).\n+\n+ -- Nick Rosbrook <nick.rosbrook@canonical.com>  Tue, 15 Feb 2022 10:10:59 -0500\n+\n apport (2.20.11-0ubuntu76) jammy; urgency=medium\n \n   * data/package-hooks/ubuntu-desktop-installer.py: Add in a new package hook\ndiff --git a/man/apport-cli.1 b/man/apport-cli.1\nindex 298a07f..575a9b0 100644\n--- a/man/apport-cli.1\n+++ b/man/apport-cli.1\n@@ -125,6 +125,11 @@ for you. This option can be specially useful in situations when you do not know\n the name of the package, or if the application window has stopped responding\n and you cannot report the problem from the \"Help\" menu of the application.\n \n+This option is not supported on Wayland. Users running Wayland should use another\n+option such as\n+.B -P\n+to specify the application.\n+\n .SH ENVIRONMENT\n \n .TP\n",
+ "diff_truncated": false
+}

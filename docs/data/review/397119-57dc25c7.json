@@ -1,0 +1,27 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~ubuntu-core-dev/livecd-rootfs/+git/livecd-rootfs/+merge/397119",
+ "id": "397119",
+ "title": "Fix PROPOSED=1 not enabling proposed for all needed components",
+ "source_branch": "sil2100/proposed-components",
+ "target_branch": "ubuntu/master",
+ "revision": "f026177dc6f2b2b71bf4147eab04e4658224247f",
+ "base_revision": "d699d8db19f07616186efc233807142f48700697",
+ "description": "Fix PROPOSED=1 not enabling proposed for all needed components.\n\nProblem: PROPOSED=1 only enabled series-proposed for main and restricted, regardless of what we define in COMPONENTS during configuration. I think this is wrong (since we enable those components for all the other pockets).\n\nNot sure if that's enough, this is a quick-hot-fix attempt.",
+ "commit_message": "Fix PROPOSED=1 not enabling proposed for all needed components",
+ "diffstat": {
+  "live-build/auto/config": [
+   1,
+   1
+  ],
+  "debian/changelog": [
+   8,
+   0
+  ]
+ },
+ "files": 2,
+ "added_lines": 9,
+ "removed_lines": 1,
+ "diff": "diff --git a/debian/changelog b/debian/changelog\nindex 6eb0463..695e49b 100644\n--- a/debian/changelog\n+++ b/debian/changelog\n@@ -1,3 +1,11 @@\n+livecd-rootfs (2.711) UNRELEASED; urgency=medium\n+\n+  * auto/config: when running with PROPOSED=1, enable -proposed for all the\n+    components we listed as required and not just the default set (main,\n+    restricted).\n+\n+ -- Łukasz 'sil2100' Zemczak <lukasz.zemczak@ubuntu.com>  Fri, 29 Jan 2021 01:33:07 +0100\n+\n livecd-rootfs (2.710) hirsute; urgency=medium\n \n   * esp: install grub in ubuntu bootloader id path, instead of removable.\ndiff --git a/live-build/auto/config b/live-build/auto/config\nindex b8c6e7a..20bfd04 100755\n--- a/live-build/auto/config\n+++ b/live-build/auto/config\n@@ -1166,7 +1166,7 @@ if [ \"$PROPOSED\" ]; then\n \t. config/bootstrap\n \n \tcat > config/archives/proposed.list.chroot << EOF\n-deb $LB_PARENT_MIRROR_BINARY_VOLATILE $SUITE-proposed $LB_PARENT_ARCHIVE_AREAS\n+deb $LB_PARENT_MIRROR_BINARY_VOLATILE $SUITE-proposed ${COMPONENTS:-${LB_PARENT_ARCHIVE_AREAS}}\n EOF\n \tcp -a config/archives/proposed.list.chroot \\\n \t      config/archives/proposed.list.binary\n",
+ "diff_truncated": false
+}

@@ -1,0 +1,27 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~dlalaj/ubuntu/+source/distro-info-data/+git/distro-info-data/+merge/494413",
+ "id": "494413",
+ "title": "dlalaj/bionic → ubuntu/bionic-devel",
+ "source_branch": "dlalaj/bionic",
+ "target_branch": "ubuntu/bionic-devel",
+ "revision": "cbf0f476690326e0ac6e060d2f3d02190dd00964",
+ "base_revision": "9ddfe2f33eb5ea29f2b26c80da4a126b47f2c071",
+ "description": null,
+ "commit_message": null,
+ "diffstat": {
+  "debian/changelog": [
+   6,
+   0
+  ],
+  "ubuntu.csv": [
+   1,
+   0
+  ]
+ },
+ "files": 2,
+ "added_lines": 7,
+ "removed_lines": 0,
+ "diff": "diff --git a/debian/changelog b/debian/changelog\nindex 264f0be..0f4f546 100644\n--- a/debian/changelog\n+++ b/debian/changelog\n@@ -1,3 +1,9 @@\n+distro-info-data (0.37ubuntu0.20) bionic; urgency=medium\n+\n+  * Add Ubuntu 26.04 \"Resolute Raccoon\" (LP: #2126961)\n+\n+ -- Denis Lalaj <denis.lalaj@canonical.com>  Tue, 14 Oct 2025 12:53:53 -0700\n+\n distro-info-data (0.37ubuntu0.19) bionic; urgency=medium\n \n   * Add Ubuntu 25.04 \"Plucky Puffin\" (LP: #2084572)\ndiff --git a/ubuntu.csv b/ubuntu.csv\nindex c495e67..1466ce0 100644\n--- a/ubuntu.csv\n+++ b/ubuntu.csv\n@@ -42,3 +42,4 @@ version,codename,series,created,release,eol,eol-server,eol-esm\n 24.10,Oracular Oriole,oracular,2024-04-25,2024-10-10,2025-07-10\n 25.04,Plucky Puffin,plucky,2024-10-10,2025-04-17,2026-01-15\n 25.10,Questing Quokka,questing,2025-04-17,2025-10-09,2026-07-09\n+26.04 LTS,Resolute Raccoon,resolute,2025-10-09,2026-04-23,2031-05-29,2031-05-29,2036-04-23,2038-04-27\n",
+ "diff_truncated": false
+}

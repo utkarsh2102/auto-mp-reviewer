@@ -1,0 +1,27 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~adrien/ubuntu/+source/gnutls28/+git/gnutls28/+merge/455781",
+ "id": "455781",
+ "title": "The gnutls testsuite is influenced by the configuration stored in /etc/gnutls/config. This means that the package build and tests succeeded until the most recent version of the package landed in -proposed because tests then started being run with the new package and the new configuration that it ships.",
+ "source_branch": "autopkgtests-fixes-with-system-config",
+ "target_branch": "ubuntu/devel",
+ "revision": "8b1b2586530f63d208616438382f9cf313bb3996",
+ "base_revision": "46d267f4cb744f7a46af968004588a5d07d522a5",
+ "description": "The gnutls testsuite is influenced by the configuration stored in /etc/gnutls/config. This means that the package build and tests succeeded until the most recent version of the package landed in -proposed because tests then started being run with the new package and the new configuration that it ships.\n\nThis merge request makes the testsuite pass by making it ignore the system-wide gnutls configuration. The dep8 tests don't set a dozen environment variables and therefore currently  run in a different way than upstream's make check even though the scripts used are the same.\n\nLong term, the dep8 tests should be changed to use the same environment as the upstream testsuite driver.\n\nPPA at https://launchpad.net/~adrien-n/+archive/ubuntu/noble-gnutls-testsuite-config-fix\n\nRan autopkgtest using the PPA through the following: autopkgtest --no-built-binaries --apt-upgrade --setup-commands='apt install -y software-properties-common' --setup-commands='add-apt-repository ppa:adrien-n/noble-gnutls-testsuite-config-fix' .",
+ "commit_message": null,
+ "diffstat": {
+  "debian/changelog": [
+   6,
+   0
+  ],
+  "debian/tests/run-upstream-testsuite": [
+   1,
+   1
+  ]
+ },
+ "files": 2,
+ "added_lines": 7,
+ "removed_lines": 1,
+ "diff": "diff --git a/debian/changelog b/debian/changelog\nindex 7b4ab77..808c2bd 100644\n--- a/debian/changelog\n+++ b/debian/changelog\n@@ -1,3 +1,9 @@\n+gnutls28 (3.8.1-4ubuntu4) noble; urgency=medium\n+\n+  * Don't run the testsuite under the influence of a configuration file. \n+\n+ -- Adrien Nader <adrien.nader@canonical.com>  Fri, 17 Nov 2023 11:08:39 +0100\n+\n gnutls28 (3.8.1-4ubuntu3) noble; urgency=medium\n \n   * Forcefully disable TLS 1.0 and 1.1 through /etc/gnutls/config.\ndiff --git a/debian/tests/run-upstream-testsuite b/debian/tests/run-upstream-testsuite\nindex e061e36..bf88154 100755\n--- a/debian/tests/run-upstream-testsuite\n+++ b/debian/tests/run-upstream-testsuite\n@@ -51,7 +51,7 @@ for i in $(find ../../tests/ -type f -name '*.sh' | \\\n \t\t*)\n \t\t\td=\"\";;\n \tesac\n-\tif env srcdir=../../tests/$d sh $i ; then\n+\tif env GNUTLS_SYSTEM_PRIORITY_FILE= srcdir=../../tests/$d sh $i ; then\n \t\techo SUCCESS [$count]$i\n \telse\n \t\tif [ $? = 77 ] ; then\n",
+ "diff_truncated": false
+}

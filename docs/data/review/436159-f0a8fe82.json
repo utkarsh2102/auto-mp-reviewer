@@ -1,0 +1,71 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~lamoura/ubuntu/+source/update-notifier/+git/update-notifier/+merge/436159",
+ "id": "436159",
+ "title": "Fix the translation issues caused by:",
+ "source_branch": "xenial-fix-translations-on-script",
+ "target_branch": "ubuntu/xenial-devel",
+ "revision": "68efae6de2fe9ca8cc6ef0c71968432a94b0f87c",
+ "base_revision": "101d19a8d73057efef27d0c172fe3ee3f25cdfab",
+ "description": "Fix the translation issues caused by:\nhttps://bugs.launchpad.net/ubuntu/+source/update-notifier/+bug/2003543",
+ "commit_message": null,
+ "diffstat": {
+  "po/hr.po": [
+   1,
+   1
+  ],
+  "po/fr.po": [
+   1,
+   1
+  ],
+  "po/ia.po": [
+   1,
+   1
+  ],
+  "po/tt.po": [
+   1,
+   1
+  ],
+  "po/ar.po": [
+   1,
+   1
+  ],
+  "po/mr.po": [
+   1,
+   1
+  ],
+  "po/ku.po": [
+   1,
+   1
+  ],
+  "po/kab.po": [
+   1,
+   1
+  ],
+  "po/uk.po": [
+   1,
+   1
+  ],
+  "debian/changelog": [
+   7,
+   0
+  ],
+  "po/mnw.po": [
+   1,
+   1
+  ],
+  "po/tr.po": [
+   1,
+   1
+  ],
+  "po/cy.po": [
+   1,
+   1
+  ]
+ },
+ "files": 13,
+ "added_lines": 19,
+ "removed_lines": 12,
+ "diff": "diff --git a/debian/changelog b/debian/changelog\nindex d99442f..c9c861e 100644\n--- a/debian/changelog\n+++ b/debian/changelog\n@@ -1,3 +1,10 @@\n+update-notifier (3.168.19) xenial; urgency=medium\n+\n+  * po/*.po: do not translate template variable needed for\n+    package-data-downloader script (LP: #2003543)\n+\n+ -- Lucas Moura <lucas.moura@canonical.com>  Fri, 20 Jan 2023 17:54:41 -0300\n+\n update-notifier (3.168.18) xenial; urgency=medium\n \n   * po/*.po:\ndiff --git a/po/ar.po b/po/ar.po\nindex 5d70077..31ef066 100644\n--- a/po/ar.po\n+++ b/po/ar.po\n@@ -367,7 +367,7 @@ msgstr \"\"\n #: ../data/package-data-downloads-failed.in:5\n #: ../data/package-data-downloads-failed-permanently.in:3\n msgid \"  $packages\"\n-msgstr \"  &حزم\"\n+msgstr \"  $packages\"\n \n #. Description\n #: ../data/package-data-downloads-failed.in:5\ndiff --git a/po/cy.po b/po/cy.po\nindex 06c2c8c..68073a3 100644\n--- a/po/cy.po\n+++ b/po/cy.po\n@@ -396,7 +396,7 @@ msgstr \"\"\n #: ../data/package-data-downloads-failed.in:5\n #: ../data/package-data-downloads-failed-permanently.in:3\n msgid \"  $packages\"\n-msgstr \"  $pecynnau\"\n+msgstr \"  $packages\"\n \n #. Description\n #: ../data/package-data-downloads-failed.in:5\ndiff --git a/po/fr.po b/po/fr.po\nindex 686c913..b0d2d8c 100644\n--- a/po/fr.po\n+++ b/po/fr.po\n@@ -383,7 +383,7 @@ msgstr \"\"\n #: ../data/package-data-downloads-failed.in:5\n #: ../data/package-data-downloads-failed-permanently.in:3\n msgid \"  $packages\"\n-msgstr \"  $paquets\"\n+msgstr \"  $packages\"\n \n #. Description\n #: ../data/package-data-downloads-failed.in:5\ndiff --git a/po/hr.po b/po/hr.po\nindex 243c13c..d1d493d 100644\n--- a/po/hr.po\n+++ b/po/hr.po\n@@ -370,7 +370,7 @@ msgstr \"\"\n #: ../data/package-data-downloads-failed.in:5\n #: ../data/package-data-downloads-failed-permanently.in:3\n msgid \"  $packages\"\n-msgstr \"  $paketa\"\n+msgstr \"  $packages\"\n \n #. Description\n #: ../data/package-data-downloads-failed.in:5\ndiff --git a/po/ia.po b/po/ia.po\nindex 67adec8..896f4d1 100644\n--- a/po/ia.po\n+++ b/po/ia.po\n@@ -370,7 +370,7 @@ msgstr \"\"\n #: ../data/package-data-downloads-failed.in:5\n #: ../data/package-data-downloads-failed-permanently.in:3\n msgid \"  $packages\"\n-msgstr \"  $pacchettos\"\n+msgstr \"  $packages\"\n \n #. Description\n #: ../data/package-data-downloads-failed.in:5\ndiff --git a/po/kab.po b/po/kab.po\nindex d25133d..61196ad 100644\n--- a/po/kab.po\n+++ b/po/kab.po\n@@ -363,7 +363,7 @@ msgstr \"\"\n #: ../data/package-data-downloads-failed.in:5\n #: ../data/package-data-downloads-failed-permanently.in:3\n msgid \"  $packages\"\n-msgstr \"  $aḥrazen\"\n+msgstr \"  $packages\"\n \n #. Description\n #: ../data/package-data-downloads-failed.in:5\ndiff --git a/po/ku.po b/po/ku.po\nindex 2f8de5d..650e8cc 100644\n--- a/po/ku.po\n+++ b/po/ku.po\n@@ -366,7 +366,7 @@ msgstr \"\"\n #: ../data/package-data-downloads-failed.in:5\n #: ../data/package-data-downloads-failed-permanently.in:3\n msgid \"  $packages\"\n-msgstr \"  $pakêt\"\n+msgstr \"  $packages\"\n \n #. Description\n #: ../data/package-data-downloads-failed.in:5\ndiff --git a/po/mnw.po b/po/mnw.po\nindex fa7af72..cb8797d 100644\n--- a/po/mnw.po\n+++ b/po/mnw.po\n@@ -351,7 +351,7 @@ msgstr \"\"\n #: ../data/package-data-downloads-failed.in:5\n #: ../data/package-data-downloads-failed-permanently.in:3\n msgid \"  $packages\"\n-msgstr \"  $ကဠာဂမၠိုၚ်\"\n+msgstr \"  $packages\"\n \n #. Description\n #: ../data/package-data-downloads-failed.in:5\ndiff --git a/po/mr.po b/po/mr.po\nindex 20c7013..18b53ab 100644\n--- a/po/mr.po\n+++ b/po/mr.po\n@@ -354,7 +354,7 @@ msgstr \"\"\n #: ../data/package-data-downloads-failed.in:5\n #: ../data/package-data-downloads-failed-permanently.in:3\n msgid \"  $packages\"\n-msgstr \"  $पाकिटे\"\n+msgstr \"  $packages\"\n \n #. Description\n #: ../data/package-data-downloads-failed.in:5\ndiff --git a/po/tr.po b/po/tr.po\nindex 0814c1e..aa4bea7 100644\n--- a/po/tr.po\n+++ b/po/tr.po\n@@ -374,7 +374,7 @@ msgstr \"\"\n #: ../data/package-data-downloads-failed.in:5\n #: ../data/package-data-downloads-failed-permanently.in:3\n msgid \"  $packages\"\n-msgstr \"  $paketler\"\n+msgstr \"  $packages\"\n \n #. Description\n #: ../data/package-data-downloads-failed.in:5\ndiff --git a/po/tt.po b/po/tt.po\nindex 43d0b1d..81a3e2e 100644\n--- a/po/tt.po\n+++ b/po/tt.po\n@@ -329,7 +329,7 @@ msgstr \"\"\n #: ../data/package-data-downloads-failed.in:5\n #: ../data/package-data-downloads-failed-permanently.in:3\n msgid \"  $packages\"\n-msgstr \"  $пакетлар\"\n+msgstr \"  $packages\"\n \n #. Description\n #: ../data/package-data-downloads-failed.in:5\ndiff --git a/po/uk.po b/po/uk.po\nindex 0eb209d..e588aa3 100644\n--- a/po/uk.po\n+++ b/po/uk.po\n@@ -375,7 +375,7 @@ msgstr \"\"\n #: ../data/package-data-downloads-failed.in:5\n #: ../data/package-data-downloads-failed-permanently.in:3\n msgid \"  $packages\"\n-msgstr \"  $пакунки\"\n+msgstr \"  $packages\"\n \n #. Description\n #: ../data/package-data-downloads-failed.in:5\n",
+ "diff_truncated": false
+}

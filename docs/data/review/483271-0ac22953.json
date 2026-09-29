@@ -1,0 +1,23 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~tsimonq2/britney/+git/hints-ubuntu/+merge/483271",
+ "id": "483271",
+ "title": "tsimonq2/rakudo → devel",
+ "source_branch": "tsimonq2/rakudo",
+ "target_branch": "devel",
+ "revision": "1144fb66f3abc3372a23f869c8378fc1ebe89df5",
+ "base_revision": "69f6f8dce33fc95457c869f067bb43a3c8fe26ae",
+ "description": null,
+ "commit_message": null,
+ "diffstat": {
+  "ubuntu-release": [
+   7,
+   0
+  ]
+ },
+ "files": 1,
+ "added_lines": 7,
+ "removed_lines": 0,
+ "diff": "diff --git a/ubuntu-release b/ubuntu-release\nindex d5bf057..62fc681 100644\n--- a/ubuntu-release\n+++ b/ubuntu-release\n@@ -41,3 +41,10 @@ unblock linux-riscv/6.11.0-8.8.1\n \n # do not let gcc-snapshot regressions block other packages\n force-badtest gcc-snapshot/all\n+\n+# Per LP: #2100916, moarvm was intentionally limited to non-ARM architectures\n+# Skip the uninstallability tests as appropriate, and hint the relevant items\n+# together to be safe (or at least for an initial candidate look.)\n+#  -tsimonq2\n+allow-uninst nqp/arm64 nqp/armhf rakudo/arm64 rakudo/armhf raku-json-name/arm64 raku-json-name/armhf raku-json-optin/arm64 raku-json-optin/armhf raku-uri/arm64 raku-uri/armhf\n+hint moarvm/2024.09+dfsg-4 nqp/2024.09+dfsg-2.1 prove6/0.0.12-7build3 rakudo/2024.09-2 raku-json-class/0.0.21-1 raku-json-marshal/0.0.25-1build1 raku-json-name/0.0.7-4 raku-json-optin/0.0.2-3 raku-json-unmarshal/0.15-1build1 raku-meta6/0.0.30-1 raku-uri/0.3.7-1 raku-license-spdx/3.18.0-2 raku-test-meta/0.0.20-1 raku-json-fast/0.19-1build1 raku-tap-harness/0.3.8-2build2 raku-getopt-long/0.4.2-1build1\n",
+ "diff_truncated": false
+}

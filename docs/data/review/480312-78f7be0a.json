@@ -1,0 +1,23 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~p-pisati/britney/+git/hints-ubuntu/+merge/480312",
+ "id": "480312",
+ "title": "devel-6.12-skip-signed-s390x → devel",
+ "source_branch": "devel-6.12-skip-signed-s390x",
+ "target_branch": "devel",
+ "revision": "ae6354117888e2de12906190d61b629aa8ea4480",
+ "base_revision": "3d14f0e4230edb0c183a134b2f83f12f72f9fae7",
+ "description": null,
+ "commit_message": null,
+ "diffstat": {
+  "ubuntu-release": [
+   3,
+   0
+  ]
+ },
+ "files": 1,
+ "added_lines": 3,
+ "removed_lines": 0,
+ "diff": "diff --git a/ubuntu-release b/ubuntu-release\nindex 49834ae..1569d3a 100644\n--- a/ubuntu-release\n+++ b/ubuntu-release\n@@ -28,6 +28,9 @@ force-badtest linux/all\n # never passed, only skipped. rebuild test is broken for this package\n force-badtest linux-oracle/all\n \n+# 6.12.0-12.12 has s390x signing disabled\n+force linux-signed/6.12.0-12.12/s390x\n+\n # arch: all, don't care\n force-badtest node-unicode-property-aliases/1.6.0+ds-1/i386 node-unicode-property-value-aliases/3.7.0+ds-1/i386 node-unicode-property-value-aliases-ecmascript/2.1.0+ds-1/i386\n \n",
+ "diff_truncated": false
+}

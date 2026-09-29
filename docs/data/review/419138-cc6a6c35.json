@@ -1,0 +1,23 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~sergiodj/britney/+git/hints-ubuntu/+merge/419138",
+ "id": "419138",
+ "title": "This MP adds a hint for ubuntu-fan/0.12.13 on all architectures.",
+ "source_branch": "ubuntu-fan-focal",
+ "target_branch": "focal",
+ "revision": "a43ad8b08fee818851ec72d69ce69df06a0e0d42",
+ "base_revision": "80d1c1c88923e420e1429d24cd90c3a99d88194e",
+ "description": "This MP adds a hint for ubuntu-fan/0.12.13 on all architectures.\n\nThe package is currently failing and blocking docker.io from migrating.  After spending a few hours investigating, here are my conclusions:\n\n- I cannot reproduce the issue locally, even after setting up a container with proxy settings similar to those being used by autopkgtest.u.c.  The tests pass all the time, no matter if I use packages from -updates and/or -proposed.\n\n- While testing on autopkgtest.u.c, the \"docker\" dep8 test always fails.  I was able to determine that \"docker pull\" will fail to pull images from whatever registry you specify, so that's not something related to Dockerhub (initially I was thinking that we could be reaching some rate-limit).\n\n- I also thought it could be something related to not being able to properly setting docker's proxy settings, but as I said above I did try to run the test in a VM with the squid.internal proxy configured and it passed.\n\n- docker.io's dep8 tests are passing OK.  I've tested the package locally and it is working.\n\nHaving said all that, I'm reasonably convinced that the problem here is not on docker.io, but rather on some weird interaction between ubuntu-fan and autopkgtest.u.c.  It *could* still be a problem with proxy settings on docker, but that's not a bug.",
+ "commit_message": null,
+ "diffstat": {
+  "ubuntu-release": [
+   4,
+   0
+  ]
+ },
+ "files": 1,
+ "added_lines": 4,
+ "removed_lines": 0,
+ "diff": "diff --git a/ubuntu-release b/ubuntu-release\nindex 04f9c42..16a357f 100644\n--- a/ubuntu-release\n+++ b/ubuntu-release\n@@ -399,3 +399,7 @@ force-badtest vagrant-libvirt/0.0.45-2/amd64 vagrant-libvirt/0.0.45-2/s390x\n force-badtest debootstrap/all/s390x\n # fails only on lxc hosts\n force-badtest sbuild/all/armhf\n+\n+# ubuntu-fan is failing when running \"docker pull\" on autopkgtest.u.c,\n+# most likely due to some weird problem with proxy configuration.\n+force-badtest ubuntu-fan/0.12.13\n",
+ "diff_truncated": false
+}

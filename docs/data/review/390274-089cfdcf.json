@@ -1,0 +1,31 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~sergiodj/ubuntu/+source/bind9/+git/bind9/+merge/390274",
+ "id": "390274",
+ "title": "This is the fix of https://bugs.launchpad.net/ubuntu/+source/bind9/+bug/1825712 for bionic (the last missing Ubuntu release).",
+ "source_branch": "bind9-eddsa-dnssec-bug1825712",
+ "target_branch": "ubuntu/bionic-devel",
+ "revision": "4ec64035ada10127444895f63098600f68e9236d",
+ "base_revision": "9e23017ca76f0394954db038cf8cc7de91c59d79",
+ "description": "This is the fix of https://bugs.launchpad.net/ubuntu/+source/bind9/+bug/1825712 for bionic (the last missing Ubuntu release).\n\nThe rationale is the same as for the other releases.  Also, there was a lot of discussion happening between Andreas and Christian in the other two MPs, so I'm linking them here:\n\nhttps://code.launchpad.net/~ahasenack/ubuntu/+source/bind9/+git/bind9/+merge/366414\n\nhttps://code.launchpad.net/~ahasenack/ubuntu/+source/bind9/+git/bind9/+merge/366410\n\nIn the bug, comment #14, Andreas mentioned:\n\n\"It's a valid request, I'm just not sure if the version of bind in bionic is good enough for this support. I vaguely remember reading somewhere that certain encryption types were not working well in certain versions of bind9 (sorry, very vague, I know). Because of that I'm confirming the bug, but this would have to be investigated.\"\n\nAfter investigating whether there is indeed such a problem with bind9 on bionic, I could not find anything that might prevent us from enabling EdDSA support there.  I did find something interesting that Debian did, though: they decided to enable EdDSA, but disable Ed448.  I'm choosing not to do that for now, because I think that would be somewhat orthogonal to this change, but I am getting in touch with Ondřej Surý to make sure that this won't bite us down the road.\n\nThe package doesn't have dep8 tests, but I did a PPA build:\n\nhttps://launchpad.net/~sergiodj/+archive/ubuntu/bind9-bug1825712\n\ninstalled it in a bionic lxd, and performed the \"Test Case\" instructions from the original bug.  Everything is working OK.",
+ "commit_message": null,
+ "diffstat": {
+  "debian/rules": [
+   7,
+   2
+  ],
+  "debian/changelog": [
+   9,
+   0
+  ],
+  "debian/libdns1100.symbols": [
+   1,
+   0
+  ]
+ },
+ "files": 3,
+ "added_lines": 17,
+ "removed_lines": 2,
+ "diff": "diff --git a/debian/changelog b/debian/changelog\nindex 0f34694..dbd16d2 100644\n--- a/debian/changelog\n+++ b/debian/changelog\n@@ -1,3 +1,12 @@\n+bind9 (1:9.11.3+dfsg-1ubuntu1.14) bionic; urgency=medium\n+\n+  * d/libdns1100.symbols: Add dst__openssleddsa_init@Base.\n+  * d/rules: add back EdDSA support (LP: #1825712)\n+    [ Thanks to Andreas Hasenack for the original commit on Eoan and\n+      Disco. ]\n+\n+ -- Sergio Durigan Junior <sergio.durigan@canonical.com>  Thu, 03 Sep 2020 17:31:51 -0400\n+\n bind9 (1:9.11.3+dfsg-1ubuntu1.13) bionic-security; urgency=medium\n \n   * SECURITY UPDATE: A truncated TSIG response can lead to an assertion\ndiff --git a/debian/libdns1100.symbols b/debian/libdns1100.symbols\nindex 62f8991..f5c9fbb 100644\n--- a/debian/libdns1100.symbols\n+++ b/debian/libdns1100.symbols\n@@ -2983,6 +2983,7 @@ libdns.so.1100 libdns1100 #MINVER#\n  dst__openssldh_init@Base 1:9.11.3+dfsg\n  dst__openssldsa_init@Base 1:9.11.3+dfsg\n  dst__opensslecdsa_init@Base 1:9.11.3+dfsg\n+ dst__openssleddsa_init@Base 1:9.11.3+dfsg\n  dst__opensslrsa_init@Base 1:9.11.3+dfsg\n  dst__privstruct_free@Base 1:9.11.3+dfsg\n  dst__privstruct_parse@Base 1:9.11.3+dfsg\ndiff --git a/debian/rules b/debian/rules\nindex 7a96e56..efea2fc 100755\n--- a/debian/rules\n+++ b/debian/rules\n@@ -65,6 +65,13 @@ clean_native_pkcs11:\n override_dh_autoreconf: prepare_native_pkcs11\n \tdh_autoreconf\n \n+# Behavior of --with-eddsa:\n+#  yes: enables it for openssl and pkcs11\n+#  no: disables it for openssl and pkcs11\n+#  auto, or absent: enables it for openssl if supported, disables\n+#  it for pkcs11\n+# EDDSA requires openssl 1.1.1 or later.\n+# If EDDSA is enabled, extra symbols will appear in libdns110x.\n override_dh_auto_configure:\n \tdh_auto_configure -B build -- \\\n \t\t--libdir=/usr/lib/$(DEB_HOST_MULTIARCH) \\\n@@ -90,7 +97,6 @@ override_dh_auto_configure:\n \t\t--enable-native-pkcs11 \\\n \t\t--with-pkcs11=\\$${prefix}/lib/softhsm/libsofthsm2.so \\\n \t\t--with-randomdev=/dev/urandom \\\n-\t\t--with-eddsa=no \\\n \t\t$(EXTRA_FEATURES)\n \tdh_auto_configure -B build-udeb -- \\\n \t\t--sysconfdir=/etc/bind \\\n@@ -109,7 +115,6 @@ override_dh_auto_configure:\n \t\t--enable-shared \\\n \t\t--with-libtool \\\n \t\t--with-gssapi=no \\\n-\t\t--with-eddsa=no \\\n \t\t--libdir=/lib/$(DEB_HOST_MULTIARCH) \\\n \t\t--includedir=/usr/include/bind-export\n \tsh debian/apply-export-patch\n",
+ "diff_truncated": false
+}

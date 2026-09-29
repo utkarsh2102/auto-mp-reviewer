@@ -1,0 +1,27 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~sdeziel/ubuntu/+source/secureboot-db/+git/secureboot-db/+merge/454748",
+ "id": "454748",
+ "title": "not-in-containers → ubuntu/devel",
+ "source_branch": "not-in-containers",
+ "target_branch": "ubuntu/devel",
+ "revision": "6c2dc3f5d3a14d7be80a5c9c2f71fe2c251fbcf8",
+ "base_revision": "4fbbbc09d4511ab3a978d7da35350620f3c58dc0",
+ "description": null,
+ "commit_message": null,
+ "diffstat": {
+  "debian/changelog": [
+   6,
+   0
+  ],
+  "debian/secureboot-db.service": [
+   1,
+   0
+  ]
+ },
+ "files": 2,
+ "added_lines": 7,
+ "removed_lines": 0,
+ "diff": "diff --git a/debian/changelog b/debian/changelog\nindex fe81af4..54d704e 100644\n--- a/debian/changelog\n+++ b/debian/changelog\n@@ -1,3 +1,9 @@\n+secureboot-db (1.10) noble; urgency=medium\n+\n+  * d/secureboot-db.service: do not run inside containers (LP: #1840845)\n+\n+ -- Simon Deziel <simon.deziel@canonical.com>  Tue, 21 Nov 2023 15:26:41 -0500\n+\n secureboot-db (1.9) noble; urgency=medium\n \n   * Update packaging to debhelper 13\ndiff --git a/debian/secureboot-db.service b/debian/secureboot-db.service\nindex 7748e4a..3d34731 100644\n--- a/debian/secureboot-db.service\n+++ b/debian/secureboot-db.service\n@@ -1,6 +1,7 @@\n [Unit]\n Description=Secure Boot updates for DB and DBX\n ConditionPathExists=/sys/firmware/efi/efivars/db-d719b2cb-3d3a-4596-a3bc-dad00e67656f\n+ConditionVirtualization=!container\n \n [Service]\n Type=oneshot\n",
+ "diff_truncated": false
+}

@@ -1,0 +1,27 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~xnox/ubuntu-images/+git/ubuntu-images/+merge/451941",
+ "id": "451941",
+ "title": "Correct skipping first stage of oem config",
+ "source_branch": "fix-desktop-pi",
+ "target_branch": "mantic",
+ "revision": "a25d78ce3f22bd4054193b8f9076a17753ed95f6",
+ "base_revision": "9928be1e234124653a113386f74bdb53d0aaa0a0",
+ "description": null,
+ "commit_message": "Correct skipping first stage of oem config\n\nIt looks like pi preinstalled images want to skip interactive customization stage oem config and boot directly into end-user first-boot experience.\n\nPrevious attempts of doing it result in failure. As /proc, /sys are not mounted, oem user doesn't exist, and sudo into oem user is attempted to notify the interactive user that customization is now completed.\n\nThe imagedefinition spec doesn't allow passing any arguments, so write a script that will mount /proc /sys, execute oem-config-prepare in quiet mode, unmount and self-remove the script.\n\nThis correctly completes the oem config stage, as mounted image can be checked to be booting into oem systemd target.\n\ndebug log looks like this:\n\n[14] perform_manual_customization\nCopying file \"skip-oem-firststage\" to \"/tmp/ubuntu-image-310959ce-b637-4d38-a0c2-906dcdc0183a/chroot/usr/local/bin/skip-oem-firststage\"\nExecuting command \"/usr/sbin/chroot /tmp/ubuntu-image-310959ce-b637-4d38-a0c2-906dcdc0183a/chroot /usr/local/bin/skip-oem-firststage\"\nCreated symlink /etc/systemd/system/oem-config.target.wants/oem-config.service → /lib/systemd/system/oem-config.service.\nThe unit files have no installation config (WantedBy=, RequiredBy=, Also=,\nAlias= settings in the [Install] section, and DefaultInstance= for template\nunits). This means they are not meant to be enabled or disabled using systemctl.\n \nPossible reasons for having this kind of units are:\n• A unit may be statically enabled by being symlinked from another unit's\n  .wants/ or .requires/ directory.\n• A unit's purpose may be to act as a helper for some other unit which has\n  a requirement dependency on it.\n• A unit may be started when needed via activation (socket, path, timer,\n  D-Bus, udev, scripted systemctl call, ...).\n• In case of template units, the unit is meant to be enabled with some\n  instance name specified.\nCreated symlink /etc/systemd/system/default.target → /lib/systemd/system/oem-config.target.\nremoved '/usr/local/bin/skip-oem-firststage'\n[15] populate_rootfs_contents\n",
+ "diffstat": {
+  "skip-oem-firststage": [
+   18,
+   0
+  ],
+  "ubuntu-pi-arm64.yaml": [
+   4,
+   6
+  ]
+ },
+ "files": 2,
+ "added_lines": 22,
+ "removed_lines": 6,
+ "diff": "diff --git a/skip-oem-firststage b/skip-oem-firststage\nnew file mode 100755\nindex 0000000..168451d\n--- /dev/null\n+++ b/skip-oem-firststage\n@@ -0,0 +1,18 @@\n+#!/bin/sh\n+\n+## ubuntu-image allows executing scripts, but not pass any args\n+\n+## oem-config-prepare errors out without oem user, or without quiet arg\n+\n+## also oem-config-prepare prints scray messages if /proc is not mounted\n+\n+mount proc /proc -t proc\n+mount sys /sys -t sysfs\n+\n+oem-config-prepare --quiet\n+\n+umount /proc\n+umount /sys\n+\n+# and delete ourselves\n+rm --verbose --force -- \"$0\"\ndiff --git a/ubuntu-pi-arm64.yaml b/ubuntu-pi-arm64.yaml\nindex 0da4798..c1ee9d2 100644\n--- a/ubuntu-pi-arm64.yaml\n+++ b/ubuntu-pi-arm64.yaml\n@@ -71,14 +71,12 @@ customization:\n       mount-options: \"defaults\"\n       dump: false\n       fsck-order: 1\n-# FIXME: Temporarily, we also need to make sure that for desktop pi images\n-#  we actually run oem-config-prepare before first boot. Otherwise we won't\n-#  be able to boot into oem-config properly.\n-#  This should be done via a package postinst ideally, so this manual\n-#  customization should be only temporary.\n   manual:\n+    copy-file:\n+      - source: skip-oem-firststage\n+        destination: \"/usr/local/bin/skip-oem-firststage\"\n     execute:\n-      - path: \"/usr/sbin/oem-config-prepare\"\n+      - path: \"/usr/local/bin/skip-oem-firststage\"\n artifacts:\n   img:\n     -\n",
+ "diff_truncated": false
+}

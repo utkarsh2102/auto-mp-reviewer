@@ -1,0 +1,27 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~gjolly/livecd-rootfs/+git/livecd-rootfs/+merge/405754",
+ "id": "405754",
+ "title": "999-cpc-fixes: enable more code on grub2 armhf & arm64",
+ "source_branch": "backport/bionic/arm_grub",
+ "target_branch": "ubuntu/bionic",
+ "revision": "c45bce898653e2ef88529bb4f94d8790b42f4e2c",
+ "base_revision": "dcb39cfe18570aeb1f6b587a59a4bec3ddffcf36",
+ "description": null,
+ "commit_message": "999-cpc-fixes: enable more code on grub2 armhf & arm64\n",
+ "diffstat": {
+  "live-build/ubuntu-cpc/hooks.d/chroot/999-cpc-fixes.chroot": [
+   11,
+   8
+  ],
+  "debian/changelog": [
+   6,
+   0
+  ]
+ },
+ "files": 2,
+ "added_lines": 17,
+ "removed_lines": 8,
+ "diff": "diff --git a/debian/changelog b/debian/changelog\nindex fef79c2..30b573a 100644\n--- a/debian/changelog\n+++ b/debian/changelog\n@@ -1,3 +1,9 @@\n+livecd-rootfs (2.525.56) UNRELEASED; urgency=medium\n+\n+  * 999-cpc-fixes: enable more code on grub2 armhf & arm64 (LP: #1925780)\n+\n+ -- Gauthier Jolly <gauthier.jolly@canonical.com>  Thu, 15 Jul 2021 15:26:31 +0200\n+\n livecd-rootfs (2.525.55) bionic; urgency=medium\n \n   [ Thomas Bechtold ]\ndiff --git a/live-build/ubuntu-cpc/hooks.d/chroot/999-cpc-fixes.chroot b/live-build/ubuntu-cpc/hooks.d/chroot/999-cpc-fixes.chroot\nindex 47edfcc..ff9a5c5 100755\n--- a/live-build/ubuntu-cpc/hooks.d/chroot/999-cpc-fixes.chroot\n+++ b/live-build/ubuntu-cpc/hooks.d/chroot/999-cpc-fixes.chroot\n@@ -150,7 +150,7 @@ case $arch+${SUBARCH:-} in\n         exit 0\n         ;;\n \n-    armhf+*|arm64+*|powerpc+*|ppc64el+*|s390x+*)\n+    powerpc+*|ppc64el+*|s390x+*)\n         exit 0\n         ;;\n esac\n@@ -241,17 +241,20 @@ GRUB_CMDLINE_LINUX_DEFAULT=\"console=tty1 console=ttyS0\"\n # Set the grub console type\n GRUB_TERMINAL=console\n EOF\n-_xchroot \"${rootd}\" update-grub2\n \n-# since this is a disk image, we technically don't need to install all the\n-# grub modules, as the image itself is not bootable. This makes for a small\n-# disk image\n-_xchroot \"${rootd}\" update-grub\n+# Sometimes grub is not installed yet (i.e. uefi arm images). Overall\n+# it is odd that we run this out of chroot hooks, instead of binary\n+# hooks. I wonder if we can move all of this to disk-image hooks.\n+if [ -x \"${rootd}/usr/sbin/update-grub\" ]; then\n+    _xchroot \"${rootd}\" update-grub\n+fi\n \n # reconfigure grub so that upgrades to grub-pc do not force a debconf config\n # changed prompt (LP: #1009294).  This re-runs update-grub\n-_xchroot \"${rootd}\" env DEBIAN_FRONTEND=noninteractive \\\n-    dpkg-reconfigure grub-pc\n+if [ -n \"`_xchroot \"${rootd}\" dpkg-query -W grub-pc 2>/dev/null`\" ]; then\n+    _xchroot \"${rootd}\" env DEBIAN_FRONTEND=noninteractive \\\n+             dpkg-reconfigure grub-pc\n+fi\n \n grub2cfg=\"${rootd}/boot/grub/grub.cfg\"\n [ ! -f \"${grub2cfg}\" ] ||\n",
+ "diff_truncated": false
+}

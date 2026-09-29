@@ -1,0 +1,27 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~tobhe/ubuntu/+source/ubuntu-x13s-settings/+git/ubuntu-x13s-settings/+merge/491292",
+ "id": "491292",
+ "title": "Similar to https://code.launchpad.net/~tobhe/ubuntu/+source/ubuntu-x1e-settings/+git/ubuntu-x1e-settings/+merge/491290 we probably want to catch all the sc8280x devices. They are pretty similar and require the same tweaks. Listing them individually doesn't scale as we have seen with x1e.",
+ "source_branch": "questing",
+ "target_branch": "ubuntu/devel",
+ "revision": "6586ef775f7a433d8fdb5c40b0440ab7442b1562",
+ "base_revision": "9538fc696f1ef786b11195e3d6526ad6796e9dbf",
+ "description": "Similar to https://code.launchpad.net/~tobhe/ubuntu/+source/ubuntu-x1e-settings/+git/ubuntu-x1e-settings/+merge/491290 we probably want to catch all the sc8280x devices. They are pretty similar and require the same tweaks. Listing them individually doesn't scale as we have seen with x1e.",
+ "commit_message": null,
+ "diffstat": {
+  "debian/changelog": [
+   7,
+   0
+  ],
+  "debian/hwe-lenovo-x13s-meta.modaliases": [
+   1,
+   1
+  ]
+ },
+ "files": 2,
+ "added_lines": 8,
+ "removed_lines": 1,
+ "diff": "diff --git a/debian/changelog b/debian/changelog\nindex 83d7f2d..8a9dce2 100644\n--- a/debian/changelog\n+++ b/debian/changelog\n@@ -1,3 +1,10 @@\n+ubuntu-x13s-settings (25.10.0) questing; urgency=medium\n+\n+  * d/hwe-lenovo-x13s-meta.modaliases: Match on of:*qcom*sc8280xp-clk-virt\n+    modalias to cover all sc8280x devices\n+\n+ -- Tobias Heider <tobias.heider@canonical.com>  Fri, 22 Aug 2025 15:05:35 +0200\n+\n ubuntu-x13s-settings (25.04.2) plucky; urgency=medium\n \n   * d/control: Add libcamera-v4l2 to Depends (LP: #2102108).\ndiff --git a/debian/hwe-lenovo-x13s-meta.modaliases b/debian/hwe-lenovo-x13s-meta.modaliases\nindex 7bf3653..5bcbdd7 100644\n--- a/debian/hwe-lenovo-x13s-meta.modaliases\n+++ b/debian/hwe-lenovo-x13s-meta.modaliases\n@@ -1 +1 @@\n-alias dmi:bvnLENOVO:*:pvrThinkPadX13s* hwe-lenovo-x13s-meta\n+alias of:*qcom*sc8280xp-clk-virt hwe-lenovo-x13s-meta\n",
+ "diff_truncated": false
+}

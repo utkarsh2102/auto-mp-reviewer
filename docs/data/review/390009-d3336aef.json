@@ -1,0 +1,23 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~ycheng-twn/ubuntu/+source/ubiquity/+git/ubiquity/+merge/390009",
+ "id": "390009",
+ "title": "This fix LP: #1891599. please check there for details.",
+ "source_branch": "0001_mark_install_enhancement",
+ "target_branch": "ubuntu/devel",
+ "revision": "6049b7ee59e95e38006ce047cf91092d69a3fb49",
+ "base_revision": "6969f9ce7599f1e9382f05c774aa212c9cfae5d7",
+ "description": null,
+ "commit_message": "This fix LP: #1891599. please check there for details.",
+ "diffstat": {
+  "ubiquity/install_misc.py": [
+   15,
+   2
+  ]
+ },
+ "files": 1,
+ "added_lines": 15,
+ "removed_lines": 2,
+ "diff": "diff --git a/ubiquity/install_misc.py b/ubiquity/install_misc.py\nindex 7d9f771..f996272 100644\n--- a/ubiquity/install_misc.py\n+++ b/ubiquity/install_misc.py\n@@ -934,8 +934,21 @@ class InstallBase:\n                 return\n \n             with cache.actiongroup():\n-                for pkg in to_install:\n-                    mark_install(cache, pkg)\n+                while len(to_install) > 0:\n+                    failed_pkgs = set()\n+                    for pkg in to_install:\n+                        try:\n+                            mark_install(cache, pkg)\n+                        except InstallStepError as err:\n+                            syslog.syslog(\"W: error as mark_install(\" +\n+                                          pkg + \"):\" + str(err))\n+                            syslog.syslog(\"W: will move \" + pkg +\n+                                          \"to next iteration\")\n+                            failed_pkgs.append(pkg)\n+                    if len(to_install) == len(failed_pkgs):\n+                        raise InstallStepError(\n+                            \"E: Re-ordered installation still failed\")\n+                    to_install = failed_pkgs\n \n             self.db.progress('SET', 1)\n             self.progress_region(1, 10)\n",
+ "diff_truncated": false
+}

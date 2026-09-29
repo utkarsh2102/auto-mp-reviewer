@@ -1,0 +1,23 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~oreiche/ubuntu-release-tools/+git/templates/+merge/499564",
+ "id": "499564",
+ "title": "oreiche/update-eol → main",
+ "source_branch": "oreiche/update-eol",
+ "target_branch": "main",
+ "revision": "03d216d9f2bfd8a256a0e27302a0c5b19ea06c52",
+ "base_revision": "bf2bcd528eeebc293e3cc4a04e01819738cdfa8c",
+ "description": null,
+ "commit_message": null,
+ "diffstat": {
+  "jira-milestones/end-of-life.yaml": [
+   2,
+   3
+  ]
+ },
+ "files": 1,
+ "added_lines": 2,
+ "removed_lines": 3,
+ "diff": "diff --git a/jira-milestones/end-of-life.yaml b/jira-milestones/end-of-life.yaml\nindex 16e3d08..3b23666 100644\n--- a/jira-milestones/end-of-life.yaml\n+++ b/jira-milestones/end-of-life.yaml\n@@ -133,8 +133,7 @@\n   - task: Clear all packages from the partner repository for this release with remove-package (check with PES first)\n     description: The last release this is relevant for is Ubuntu 22.04 (Jammy Jellyfish).\n   - task: Send EndOfLifeAnnouncement to ubuntu-announce, ubuntu-security-announce\n-  - task: Update the main page of wiki.ubuntu.com by removing the release from the Releases table\n-  - task: Update https://wiki.ubuntu.com/Releases for Canonical support\n+  - task: Update https://documentation.ubuntu.com/project/release-team/list-of-releases/ for Canonical support\n   - task: Notify the web team manager to remove the release from the website\n   - task: Run close-EOL-bugs RELEASE from ubuntu-archive-tools\n     description: Run it multiple times until nothing is returned. (Brian encountered in 2024-07 where not every bug task was closed.)\n@@ -150,7 +149,7 @@\n       Visit https://bugs.launchpad.net/ubuntu/+manage-official-tags\n   - task: Remove automatic upgrade testing profiles\n     description: >\n-      We only want to remove the upgrade testing to the EoL release, users can continue to upgrade from an EoL release well past that release's EoL. See https://git.launchpad.net/auto-upgrade-testing-specifications/commit/?id=5cb8276dd9a41df796914a0a82bc7a39572e0d19 as an example\n+      Remove all upgrade testing for the EoL release, except for upgrades from the EoL release to its direct successor (users can continue to upgrade from an EoL release well past that release's EoL). See https://git.launchpad.net/auto-upgrade-testing-specifications/commit/?id=552b20d782207a2f48469fdc9f47a756f05d7547 as an example\n   - task: Remove unnecessary crash data from the Error Tracker for the EoL release\n     description: >\n       On a daisy-app server run the following \"PYTHONPATH=$PYTHONPATH:/srv/daisy.ubuntu.com/production/daisy/..:/srv/daisy.ubuntu.com/production/daisy:/srv/daisy.ubuntu.com/production/local_config:/srv/daisy.ubuntu.com/production/daisy/daisy python /srv/daisy.ubuntu.com/production/daisy/tools/remove_old_release_data.py mantic\". However, if you look at the code carefully you'll notice it only removes some of the columns in the OOPS table. We really don't need all of the columns so the code should be fixed and all the OOPS data for EoL releases should be cleaned up.\n",
+ "diff_truncated": false
+}

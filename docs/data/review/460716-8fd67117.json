@@ -1,0 +1,23 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~ubuntu-archive/ubuntu-archive-tools/+git/ubuntu-archive-tools/+merge/460716",
+ "id": "460716",
+ "title": "Phasing language-packages doesn't seem useful to me given that the only crash reports we would get about them would be of the \"Type: Package\" (package install failures) which should surface other ways.",
+ "source_branch": "fully-phase-language-packs",
+ "target_branch": "main",
+ "revision": "b20e6d20b7e921409d853883de4dfa36d8ed1026",
+ "base_revision": "9e5028255183905c5427ba4e9d3847f4733c6ca1",
+ "description": "Phasing language-packages doesn't seem useful to me given that the only crash reports we would get about them would be of the \"Type: Package\" (package install failures) which should surface other ways.",
+ "commit_message": null,
+ "diffstat": {
+  "phased-updater": [
+   2,
+   1
+  ]
+ },
+ "files": 1,
+ "added_lines": 2,
+ "removed_lines": 1,
+ "diff": "diff --git a/phased-updater b/phased-updater\nindex a1c2aea..8a64905 100755\n--- a/phased-updater\n+++ b/phased-updater\n@@ -734,7 +734,8 @@ def main():\n                     new_pup = current_pup + PUP_SLOW_INCREMENT\n                 if src_pkg in MEDIUM_PACKAGES:\n                     new_pup = current_pup + PUP_MEDIUM_INCREMENT\n-                if src_pkg in FULLY_PHASED_PACKAGES:\n+                if (src_pkg in FULLY_PHASED_PACKAGES or\n+                        src_pkg.startswith('language-pack')):\n                     new_pup = 100\n                 if not options.no_act:\n                     set_pup(current_pup, new_pup, release, suite, src_pkg)\n",
+ "diff_truncated": false
+}

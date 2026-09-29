@@ -1,0 +1,27 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~bamf0/ubuntu/+source/rust-sudo-rs/+git/rust-sudo-rs/+merge/511460",
+ "id": "511460",
+ "title": "This change will make the sudo-rs binary package provide the virtual sudo package.",
+ "source_branch": "stonking-lp2167493-add-provides-sudo",
+ "target_branch": "ubuntu/devel",
+ "revision": "66e22ca6607873e5cf3a2e5efae015badfd8f1c8",
+ "base_revision": "e2d323d1eca552e236b2332eb0d4b3d8b19b5b00",
+ "description": "This change will make the sudo-rs binary package provide the virtual sudo package.",
+ "commit_message": null,
+ "diffstat": {
+  "debian/changelog": [
+   7,
+   0
+  ],
+  "debian/control": [
+   2,
+   1
+  ]
+ },
+ "files": 2,
+ "added_lines": 9,
+ "removed_lines": 1,
+ "diff": "diff --git a/debian/changelog b/debian/changelog\nindex 19a1cfb..ad795c5 100644\n--- a/debian/changelog\n+++ b/debian/changelog\n@@ -1,3 +1,10 @@\n+rust-sudo-rs (0.2.14-1ubuntu3) stonking; urgency=medium\n+\n+  * d/control: Add Provides sudo to the sudo-rs binary package\n+    (LP: #2167493)\n+\n+ -- Simon Johnsson <simon.johnsson@canonical.com>  Wed, 16 Sep 2026 16:20:55 +0200\n+\n rust-sudo-rs (0.2.14-1ubuntu2) stonking; urgency=medium\n \n   * d/t/04-getroot-sssd: Fix test by restarting slapd with systemd\ndiff --git a/debian/control b/debian/control\nindex b4c4bf3..e247eb6 100644\n--- a/debian/control\n+++ b/debian/control\n@@ -35,7 +35,8 @@ Recommends:\n Suggests:\n  ${cargo:Suggests}\n Provides:\n- ${cargo:Provides}\n+ ${cargo:Provides},\n+ sudo\n Built-Using: ${cargo:Built-Using}\n Static-Built-Using: ${cargo:Static-Built-Using}\n Description: Rust-based sudo and su implementations\n",
+ "diff_truncated": false
+}

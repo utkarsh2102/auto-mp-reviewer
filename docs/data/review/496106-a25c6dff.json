@@ -1,0 +1,23 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~ruinedyourlife/ubuntu-archive-tools/+git/ubuntu-archive-tools/+merge/496106",
+ "id": "496106",
+ "title": "manage-chroot: fix --image flag while using --from-livefs",
+ "source_branch": "manage-chroot-image-fix",
+ "target_branch": "main",
+ "revision": "b51a89eb96ded0a92f1d79250a1b5df360a757cc",
+ "base_revision": "164302037e51b1b57368bc6535b60d71504fba22",
+ "description": null,
+ "commit_message": "manage-chroot: fix --image flag while using --from-livefs",
+ "diffstat": {
+  "manage-chroot": [
+   9,
+   4
+  ]
+ },
+ "files": 1,
+ "added_lines": 9,
+ "removed_lines": 4,
+ "diff": "diff --git a/manage-chroot b/manage-chroot\nindex 51fb45c..e729f8b 100755\n--- a/manage-chroot\n+++ b/manage-chroot\n@@ -152,10 +152,14 @@ def get_last_livefs_builds(livefs, architectures):\n \n def set_chroots_from_livefs(args):\n     \"\"\"Set a whole batch of base images at once, for convenience.\"\"\"\n-    if args.image_type is None:\n-        image_types = [args.image_type]\n+    # Decide which image type we care about.\n+    # If -i was given, only operate on that type.\n+    # Otherwise, operate on all known image types.\n+    if args.image_type is not None:\n+        selected_type = image_types.get(args.image_type.lower(), args.image_type)\n+        selected_image_types = [selected_type]\n     else:\n-        image_types = list(image_types.values())\n+        selected_image_types = list(image_types.values())\n \n     livefs = args.launchpad.load(args.livefs_url)\n     builds = get_last_livefs_builds(livefs, args.architectures)\n@@ -166,7 +170,8 @@ def set_chroots_from_livefs(args):\n         for image_url in build.getFileUrls():\n             image_name = unquote(urlparse(image_url).path).split('/')[-1]\n             image_type = image_types_by_name.get(image_name)\n-            if image_type is not None:\n+            # Only use images whose type we selected\n+            if image_type is not None and image_type in selected_image_types:\n                 previous_url = das.getChrootURL(\n                     pocket=args.pocket, image_type=image_type)\n                 if previous_url is not None:\n",
+ "diff_truncated": false
+}

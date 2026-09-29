@@ -1,0 +1,39 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~bamf0/ubuntu/+source/rust-sequoia-sq/+git/rust-sequoia-sq/+merge/511435",
+ "id": "511435",
+ "title": "This change will introduce build and autopkgtests to rust-sequoia-sq. It will not impact the binary package in any way and is thus a non-functional change.",
+ "source_branch": "stonking-lp2167303-add-tests",
+ "target_branch": "ubuntu/devel",
+ "revision": "00139524c61c73fd5da1bf82a157fc44f995e584",
+ "base_revision": "707888efaebab89983a920e815d4315dae606b3b",
+ "description": "This change will introduce build and autopkgtests to rust-sequoia-sq. It will not impact the binary package in any way and is thus a non-functional change.\n\nPPA: https://launchpad.net/~bamf0/+archive/ubuntu/stonking-rust-sequoia-sq-tests-lp21673063",
+ "commit_message": null,
+ "diffstat": {
+  "debian/changelog": [
+   8,
+   0
+  ],
+  "debian/rules": [
+   5,
+   0
+  ],
+  "debian/tests/cargo-test": [
+   23,
+   0
+  ],
+  "debian/tests/control": [
+   3,
+   0
+  ],
+  "debian/tests/run-cargo-tests": [
+   12,
+   0
+  ]
+ },
+ "files": 5,
+ "added_lines": 51,
+ "removed_lines": 0,
+ "diff": "diff --git a/debian/changelog b/debian/changelog\nindex 8a68bf9..feb39a0 100644\n--- a/debian/changelog\n+++ b/debian/changelog\n@@ -1,3 +1,11 @@\n+rust-sequoia-sq (1.4.0-0ubuntu2) stonking; urgency=medium\n+\n+  * debian/rules: Run cargo test during build (LP: #2167303)\n+  * debian/tests: Add autopkgtest mirroring the cargo test to catch\n+    regressions based on updates to rust-sequoia-sq's dependencies\n+\n+ -- Simon Johnsson <simon.johnsson@canonical.com>  Tue, 15 Sep 2026 15:54:07 +0200\n+\n rust-sequoia-sq (1.4.0-0ubuntu1) stonking; urgency=medium\n \n   * Package new upstream version (LP: #2161399):\ndiff --git a/debian/rules b/debian/rules\nindex 4e2e0c8..ab7a122 100755\n--- a/debian/rules\n+++ b/debian/rules\n@@ -54,6 +54,11 @@ vendor:\n \tgit add debian/control\n \tgit commit debian/control -m \"Update XS-Vendored-Sources-Rust field\" || true\n \n+override_dh_auto_test:\n+\tcargo test \\\n+\t    --all-targets \\\n+            --offline\n+\n override_dh_auto_configure:\n \tDEB_CARGO_CRATE=sequoia-sq_$(shell dpkg-parsechangelog --show-field Version) \\\n \t\t\t\t\t$(CARGO) prepare-debian $(CARGO_VENDOR_DIR)\ndiff --git a/debian/tests/cargo-test b/debian/tests/cargo-test\nnew file mode 100755\nindex 0000000..a7ff188\n--- /dev/null\n+++ b/debian/tests/cargo-test\n@@ -0,0 +1,23 @@\n+#!/bin/sh\n+set -xeu\n+\n+# Create cargo config directory\n+CARGO_TMP_DIR=$(mktemp -d)\n+trap 'rm -rf \"$CARGO_TMP_DIR\"' EXIT\n+\n+# Create config.toml\n+cat > $CARGO_TMP_DIR/config.toml << EOL\n+[source.crates-io]\n+replace-with = \"vendored-sources\"\n+\n+[source.vendored-sources]\n+directory = \"$(pwd)/debian/rust-vendor\"\n+EOL\n+\n+# Run the actual test\n+export CARGO_HOME=\"$CARGO_TMP_DIR\"\n+# We explicitly test the installed rather than building a new package,\n+# as this is the test other packages trigger\n+export SEQUOIA_TEST_BIN=/usr/bin/sq\n+\n+debian/tests/run-cargo-tests\ndiff --git a/debian/tests/control b/debian/tests/control\nnew file mode 100644\nindex 0000000..3aa6b0c\n--- /dev/null\n+++ b/debian/tests/control\n@@ -0,0 +1,3 @@\n+Tests: cargo-test\n+Depends: @, @builddeps@\n+Restrictions: allow-stderr\ndiff --git a/debian/tests/run-cargo-tests b/debian/tests/run-cargo-tests\nnew file mode 100755\nindex 0000000..416a46e\n--- /dev/null\n+++ b/debian/tests/run-cargo-tests\n@@ -0,0 +1,12 @@\n+#!/bin/sh\n+# Shared helper script for centralizing arguments and features.\n+# Callers can optionally pass test harness arguments to cargo like:\n+# run-cargo-tests --skip test_1\n+\n+set -eu\n+\n+cargo test \\\n+    --all-targets \\\n+    --offline \\\n+    -- \\\n+    \"$@\"\n",
+ "diff_truncated": false
+}

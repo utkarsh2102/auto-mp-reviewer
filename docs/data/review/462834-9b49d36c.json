@@ -1,0 +1,31 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~liushuyu-011/ubuntu/+source/spamassassin/+git/spamassassin/+merge/462834",
+ "id": "462834",
+ "title": "This MP fixes the DNS unit tests in Spamassassin, where the built-in DNS server failed to start due to an API change in the Net::DNS::Nameserver module.",
+ "source_branch": "ubuntu/devel",
+ "target_branch": "ubuntu/devel",
+ "revision": "480b1535acdf328bc153b95ccefa97a2af7870f3",
+ "base_revision": "5107df786089ef795df5f9c012a06b771a99447e",
+ "description": "This MP fixes the DNS unit tests in Spamassassin, where the built-in DNS server failed to start due to an API change in the Net::DNS::Nameserver module.",
+ "commit_message": null,
+ "diffstat": {
+  "debian/changelog": [
+   7,
+   0
+  ],
+  "debian/patches/series": [
+   1,
+   0
+  ],
+  "debian/patches/t-adapt-to-new-dns-module-behavior.patch": [
+   69,
+   0
+  ]
+ },
+ "files": 3,
+ "added_lines": 77,
+ "removed_lines": 0,
+ "diff": "diff --git a/debian/changelog b/debian/changelog\nindex 406f4ee..1430ee5 100644\n--- a/debian/changelog\n+++ b/debian/changelog\n@@ -1,3 +1,10 @@\n+spamassassin (4.0.0-8ubuntu3~ppa1) noble; urgency=medium\n+\n+  * debian/patches/t-adapt-to-new-dns-module-behavior.patch: Adapt to\n+    new Net::DNS::Nameserver behavior.\n+\n+ -- Zixing Liu <zixing.liu@canonical.com>  Wed, 20 Mar 2024 22:19:39 -0600\n+\n spamassassin (4.0.0-8ubuntu2) noble; urgency=medium\n \n   * No-change rebuild against libssl3t64\ndiff --git a/debian/patches/series b/debian/patches/series\nindex 991acfd..994a39f 100644\n--- a/debian/patches/series\n+++ b/debian/patches/series\n@@ -12,3 +12,4 @@ spamd_disable_ai_addrconfig_for_ipv4_literals.patch\n bug1041759-deprecated-method.patch\n bug1039960-deprecated-method-rdstring.patch\n bug_1056001-reread-prefs.patch\n+t-adapt-to-new-dns-module-behavior.patch\ndiff --git a/debian/patches/t-adapt-to-new-dns-module-behavior.patch b/debian/patches/t-adapt-to-new-dns-module-behavior.patch\nnew file mode 100644\nindex 0000000..dd2d435\n--- /dev/null\n+++ b/debian/patches/t-adapt-to-new-dns-module-behavior.patch\n@@ -0,0 +1,69 @@\n+Description: Adapt to new Net::DNS::Nameserver behavior\n+ The newer version will do fork() itself and will break\n+ if doing a double-fork from the tests.\n+Author: Zixing Liu <zixing.liu@canonical.com>\n+Forwarded: no\n+Last-Update: 2024-03-21\n+\n+--- spamassassin-4.0.0.orig/t/dnsbl_subtests.t\n++++ spamassassin-4.0.0/t/dnsbl_subtests.t\n+@@ -221,7 +221,8 @@ sub dns_server($$) {\n+     LocalAddr => $local_addr, LocalPort => $local_port,\n+     ReplyHandler => \\&reply_handler, Verbose => 0);\n+   $ns  or die \"Cannot create a nameserver object\";\n+-  $ns->main_loop;\n++  $ns->start_server(10);\n++  return $ns;\n+ }\n+ \n+ sub find_free_port($) {\n+@@ -308,16 +309,7 @@ if ($sock_tcp) {\n+   $sock_tcp->close()  or die \"Error closing TCP socket: $!\";\n+ }\n+ \n+-# detach a DNS server process\n+-my $pid = fork();\n+-defined $pid or die \"Cannot fork: $!\";\n+-if (!$pid) {  # child\n+-  dns_server($dns_server_localaddr, $dns_server_localport);\n+-  exit;\n+-}\n+-\n+-# parent\n+-# print STDERR \"Forked a DNS server process [$pid]\\n\";\n++my $ns = dns_server($dns_server_localaddr, $dns_server_localport);\n+ sleep 1;\n+ \n+ $spamassassin_obj = Mail::SpamAssassin->new({\n+@@ -353,28 +345,9 @@ test_samples(\n+ # X_URIBL_Y_FFD no longer hits intentionally (not in the 127.0.0.0/8 range),\n+ # see Bug 6803\n+ \n+-if ($pid) {\n+-  kill('TERM',$pid) or die \"Cannot stop a DNS server [$pid]: $!\";\n+-\n+-# Bug 7000: Seems like a DNS server process can't be terminated. [...]\n+-# Reason is \"waitpid($pid,0)\". If commented out, it does not hang.\n+-# There are no extra processes after end of this test.\n+-#\n+-# perlfunc: waitpid - waiting for a particular pid with FLAGS of 0 is\n+-# implemented everywhere\n+-#\n+-# perlport: (Win32) waitpid Can only be applied to process handles returned\n+-# for processes spawned using \"system(1, ...)\" or pseudo processes created\n+-# with \"fork()\".\n+-#\n+-# so ... waitpid($pid,0) should work on Windows, but it doesn't - nevermind:\n+-\n+-  waitpid($pid,0) unless $RUNNING_ON_WINDOWS;\n+-\n+-  undef $pid;\n+-}\n+-\n+ END {\n+   $spamassassin_obj->finish  if $spamassassin_obj;\n+-  kill('KILL',$pid)  if $pid;  # ignoring status\n++  if ($ns) {\n++    $ns->stop_server();\n++  }\n+ }\n",
+ "diff_truncated": false
+}

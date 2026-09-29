@@ -1,0 +1,27 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~ogayot/ubuntu/+source/multipath-tools/+git/multipath-tools/+merge/510939",
+ "id": "510939",
+ "title": "initramfs-tools-boot provides a init-top script that invokes `modprobe --syslog <module>` in the initramfs.",
+ "source_branch": "stonking-modprobe-syslog",
+ "target_branch": "ubuntu/devel",
+ "revision": "50e33a82b0fb3d02d9be9fac92ac539dbccecb8e",
+ "base_revision": "d968b8d484f690bc9e827cb3bb5fce23d90f87cc",
+ "description": "initramfs-tools-boot provides a init-top script that invokes `modprobe --syslog <module>` in the initramfs.\n\nUnfortunately, the implementation of `modprobe` from `busybox` (which is the one used today) does not support the `--syslog` option.\n\nThis results in the dm-multipath module (and its dependencies) failing to load in the initramfs.\n\nThe equivalent short option (i.e., -s) is compatible with both implementations so let's use it instead.\n\n```\nBegin: Loading multipath modules ... modprobe: unrecognized option '--syslog'\nBusyBox v1.38.0 (Ubuntu 1:1.38.0-3ubuntu1) multi-call binary.\n\nUsage: modprobe [-alrqvsDb] MODULE [SYMBOL=VALUE]...\n\n -a Load multiple MODULEs\n -l List (MODULE is a pattern)\n -r Remove MODULE (stacks) or do autoclean\n -q Quiet\n -v Verbose\n -s Log to syslog\n -D Show dependencies\n -b Apply blacklist to module names too\nFailure: failed to load module dm-multipath.\ndone.\n```",
+ "commit_message": null,
+ "diffstat": {
+  "debian/changelog": [
+   8,
+   0
+  ],
+  "debian/initramfs/scripts/init-top/multipath": [
+   2,
+   2
+  ]
+ },
+ "files": 2,
+ "added_lines": 10,
+ "removed_lines": 2,
+ "diff": "diff --git a/debian/changelog b/debian/changelog\nindex 81fea27..e220fc8 100644\n--- a/debian/changelog\n+++ b/debian/changelog\n@@ -1,3 +1,11 @@\n+multipath-tools (0.14.3-3ubuntu2) stonking; urgency=medium\n+\n+  * Pass the -s option instead of --syslog when invoking modprobe. The\n+    long option is not compatible with busybox's implementation of modprobe\n+    (LP: #2165993).\n+\n+ -- Olivier Gayot <olivier.gayot@canonical.com>  Mon, 07 Sep 2026 18:14:02 +0200\n+\n multipath-tools (0.14.3-3ubuntu1) stonking; urgency=medium\n \n   * Merge with Debian unstable (LP: #2153215). Remaining changes:\ndiff --git a/debian/initramfs/scripts/init-top/multipath b/debian/initramfs/scripts/init-top/multipath\nindex 4965e2b..bd0f0bd 100755\n--- a/debian/initramfs/scripts/init-top/multipath\n+++ b/debian/initramfs/scripts/init-top/multipath\n@@ -32,7 +32,7 @@ MP_MODULES=\"dm-multipath\"\n \n verbose && log_begin_msg \"Loading multipath modules\"\n for module in ${MP_MODULES}; do\n-\tif modprobe --syslog \"$module\"; then\n+\tif modprobe -s \"$module\"; then\n \t\tverbose && log_success_msg \"loaded module ${module}.\"\n \telse\n \t\tlog_failure_msg \"failed to load module ${module}.\"\n@@ -42,7 +42,7 @@ verbose && log_end_msg\n \n verbose && log_begin_msg \"Loading multipath hardware handlers\"\n for module in ${HW_HANDLERS}; do\n-\tif modprobe --syslog \"$module\"; then\n+\tif modprobe -s \"$module\"; then\n \t\tverbose && log_success_msg \"loaded module ${module}.\"\n \telse\n \t\tlog_failure_msg \"failed to load module ${module}.\"\n",
+ "diff_truncated": false
+}

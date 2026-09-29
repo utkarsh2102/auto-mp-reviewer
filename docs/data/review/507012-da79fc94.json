@@ -1,0 +1,27 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~hectorcao/ubuntu/+source/qemu/+git/qemu/+merge/507012",
+ "id": "507012",
+ "title": "lp2157739-resolute → ubuntu/resolute-devel",
+ "source_branch": "lp2157739-resolute",
+ "target_branch": "ubuntu/resolute-devel",
+ "revision": "799f1b10e698590322eaa2b0cfe11aa28a835c2e",
+ "base_revision": "90f147fd1faad479cc95fb4712f104597ee63e27",
+ "description": null,
+ "commit_message": null,
+ "diffstat": {
+  "debian/changelog": [
+   6,
+   0
+  ],
+  "debian/qemu-kvm-init": [
+   4,
+   0
+  ]
+ },
+ "files": 2,
+ "added_lines": 10,
+ "removed_lines": 0,
+ "diff": "diff --git a/debian/changelog b/debian/changelog\nindex d61686e..08c149f 100644\n--- a/debian/changelog\n+++ b/debian/changelog\n@@ -1,3 +1,9 @@\n+qemu (1:10.2.1+ds-1ubuntu3.2) resolute; urgency=medium\n+\n+  * d/qemu-kvm-init: load kvm kernel module for riscv64 (LP: #2157739)\n+\n+ -- Hector Cao <hector.cao@canonical.com>  Sun, 22 Jun 2026 11:41:00 +0200\n+\n qemu (1:10.2.1+ds-1ubuntu3.1) resolute; urgency=medium\n \n   * d/qemu-guest-agent.postinst: trigger udev rule to start the service\ndiff --git a/debian/qemu-kvm-init b/debian/qemu-kvm-init\nindex af00b71..2b1eaf4 100755\n--- a/debian/qemu-kvm-init\n+++ b/debian/qemu-kvm-init\n@@ -32,6 +32,10 @@ case \"$arch\" in\n         fi\n         modlist=\"kvm-hv\"\n         ;;\n+    riscv64)\n+        kvm=/usr/bin/qemu-system-riscv64\n+        modlist=\"kvm\"\n+        ;;\n esac\n \n # Silently exit if the package isn't installed anymore\n",
+ "diff_truncated": false
+}

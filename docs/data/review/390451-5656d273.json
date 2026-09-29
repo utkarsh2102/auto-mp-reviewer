@@ -1,0 +1,27 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~flexiondotorg/ubuntu/+source/ubuntu-meta/+git/ubuntu-meta/+merge/390451",
+ "id": "390451",
+ "title": "ubuntu/groovy → ubuntu/groovy",
+ "source_branch": "ubuntu/groovy",
+ "target_branch": "ubuntu/groovy",
+ "revision": "3a4727a8f785fda0ec3cbd05a5ad3308d43f0061",
+ "base_revision": "06874cfb24e17778a381cc1424e8eba9a9370372",
+ "description": null,
+ "commit_message": null,
+ "diffstat": {
+  "metapackage-map": [
+   2,
+   0
+  ],
+  "debian/control": [
+   23,
+   0
+  ]
+ },
+ "files": 2,
+ "added_lines": 25,
+ "removed_lines": 0,
+ "diff": "diff --git a/debian/control b/debian/control\nindex d94e913..5958fb4 100644\n--- a/debian/control\n+++ b/debian/control\n@@ -45,6 +45,18 @@ Description: The Ubuntu desktop minimal system\n  It is also used to help ensure proper upgrades, so it is recommended that\n  it not be removed.\n \n+Package: ubuntu-desktop-raspi\n+Architecture: arm64 armhf\n+Depends: ${misc:Depends}, ${germinate:Depends}\n+Recommends: ${germinate:Recommends}\n+Provides: packagekit-installer\n+Description: The Ubuntu desktop system for Raspiberry Pi\n+ This package depends on all of the packages in the Ubuntu desktop system\n+ for Raspyberry Pi.\n+ .\n+ It is also used to help ensure proper upgrades, so it is recommended that\n+ it not be removed.\n+\n Package: ubuntu-desktop\n Architecture: amd64 arm64 armhf ppc64el\n Depends: ${misc:Depends}, ${germinate:Depends}\n@@ -66,6 +78,17 @@ Description: The Ubuntu Server system\n  It is also used to help ensure proper upgrades, so it is recommended that\n  it not be removed.\n \n+ Package: ubuntu-server-raspi\n+Architecture: arm64 armhf\n+Depends: ${misc:Depends}, ${germinate:Depends}\n+Recommends: ${germinate:Recommends}\n+Description: The Ubuntu Server system for Raspberry Pi\n+ This package depends on all of the packages in the Ubuntu Server system\n+ for Raspberry Pi.\n+ .\n+ It is also used to help ensure proper upgrades, so it is recommended that\n+ it not be removed.\n+\n Package: ubuntu-wsl\n Architecture: amd64 arm64\n Depends: ${misc:Depends}, ${germinate:Depends}\ndiff --git a/metapackage-map b/metapackage-map\nindex b2dfab4..8a53f4b 100644\n--- a/metapackage-map\n+++ b/metapackage-map\n@@ -1,6 +1,8 @@\n minimal ubuntu-minimal\n standard ubuntu-standard\n desktop-minimal ubuntu-desktop-minimal\n+desktop-raspi ubuntu-desktop-raspi\n desktop ubuntu-desktop\n server ubuntu-server\n+server-raspi ubuntu-server-raspi\n wsl ubuntu-wsl\n",
+ "diff_truncated": false
+}

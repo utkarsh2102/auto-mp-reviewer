@@ -1,0 +1,27 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~xnox/ubuntu/+source/wireguard/+git/wireguard/+merge/438205",
+ "id": "438205",
+ "title": "Drop depends on wireguard-modules (always built-in), wireguard-dkms (removed from the archive). This makes wireguard package sort of redundant. LP: #2008086",
+ "source_branch": "lp2008086/jammy",
+ "target_branch": "ubuntu/jammy-devel",
+ "revision": "c2917713fc3a969efb3d8839c5d629aafee193d1",
+ "base_revision": "01d1b902e7d5e1ff9513e3599b19fdd64d34b974",
+ "description": null,
+ "commit_message": "Drop depends on wireguard-modules (always built-in), wireguard-dkms (removed from the archive). This makes wireguard package sort of redundant. LP: #2008086",
+ "diffstat": {
+  "debian/changelog": [
+   8,
+   0
+  ],
+  "debian/control": [
+   0,
+   2
+  ]
+ },
+ "files": 2,
+ "added_lines": 8,
+ "removed_lines": 2,
+ "diff": "diff --git a/debian/changelog b/debian/changelog\nindex 4d0d98c..a3bbb80 100644\n--- a/debian/changelog\n+++ b/debian/changelog\n@@ -1,3 +1,11 @@\n+wireguard (1.0.20210914-1ubuntu2.22.04.0) jammy; urgency=medium\n+\n+  * Drop depends on wireguard-modules (always built-in), wireguard-dkms\n+    (removed from the archive). This makes wireguard package sort of\n+    redundant. LP: #2008086\n+\n+ -- Dimitri John Ledkov <dimitri.ledkov@canonical.com>  Wed, 22 Feb 2023 12:35:51 +0000\n+\n wireguard (1.0.20210914-1ubuntu2) jammy; urgency=medium\n \n   * Add better DEP8 tests (LP: #1952102):\ndiff --git a/debian/control b/debian/control\nindex 7912d6d..d113cce 100644\n--- a/debian/control\n+++ b/debian/control\n@@ -18,7 +18,6 @@ Rules-Requires-Root: no\n Package: wireguard\n Architecture: all\n Depends:\n- wireguard-dkms (>= 0.0.20200121-2) | wireguard-modules (>= 0.0.20191219),\n  wireguard-tools (>= ${source:Version}),\n  ${misc:Depends},\n Description: fast, modern, secure kernel VPN tunnel (metapackage)\n@@ -40,7 +39,6 @@ Depends:\n  ${shlibs:Depends},\n Recommends:\n  nftables | iptables,\n- wireguard-modules (>= 0.0.20171001) | wireguard-dkms (>= 0.0.20191219),\n Suggests: openresolv | resolvconf,\n Description: fast, modern, secure kernel VPN tunnel (userland utilities)\n  WireGuard is a novel VPN that runs inside the Linux Kernel and uses\n",
+ "diff_truncated": false
+}

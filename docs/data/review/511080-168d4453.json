@@ -1,0 +1,27 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~dlalaj/livecd-rootfs/+git/livecd-rootfs/+merge/511080",
+ "id": "511080",
+ "title": "I built an ubuntu-base buildd image using livecd-rootfs to verify dbus was no longer included in the image and to also ensure dbus-broker is installed instead.",
+ "source_branch": "dlalaj/remove-dbus-from-bootable-buildd",
+ "target_branch": "ubuntu/master",
+ "revision": "e9ec02bc052e4d568502a9a16621eff9cd685da8",
+ "base_revision": "e29ac146357280462e23a3a097156d447d20fa64",
+ "description": "I built an ubuntu-base buildd image using livecd-rootfs to verify dbus was no longer included in the image and to also ensure dbus-broker is installed instead.",
+ "commit_message": null,
+ "diffstat": {
+  "debian/changelog": [
+   8,
+   0
+  ],
+  "live-build/buildd/hooks/52-linux-virtual-image.binary": [
+   1,
+   1
+  ]
+ },
+ "files": 2,
+ "added_lines": 9,
+ "removed_lines": 1,
+ "diff": "diff --git a/debian/changelog b/debian/changelog\nindex 4b7c62b..ab35ab7 100644\n--- a/debian/changelog\n+++ b/debian/changelog\n@@ -1,3 +1,11 @@\n+livecd-rootfs (26.10.11) stonking; urgency=medium\n+\n+  * Since Stonking (26.10) is moving away from dbus/dbus-daemon in favor of\n+    dbus-broker, the old dbus installation is no longer relevant for\n+    bootable buildd images.\n+\n+ -- Denis Lalaj <denis.lalaj@canonical.com>  Mon, 14 Sep 2026 13:28:29 -0700\n+\n livecd-rootfs (26.10.10) stonking; urgency=medium\n \n   [ Allen Abraham ]\ndiff --git a/live-build/buildd/hooks/52-linux-virtual-image.binary b/live-build/buildd/hooks/52-linux-virtual-image.binary\nindex f1ed534..d0b8293 100755\n--- a/live-build/buildd/hooks/52-linux-virtual-image.binary\n+++ b/live-build/buildd/hooks/52-linux-virtual-image.binary\n@@ -51,7 +51,7 @@ env DEBIAN_FRONTEND=noninteractive chroot \"$mount_d\" apt-get \\\n # Install dependencies\n env DEBIAN_FRONTEND=noninteractive chroot \"$mount_d\" apt-get \\\n     install -y lsb-release locales dracut busybox-initramfs \\\n-               dbus netplan.io cloud-init openssh-server sudo snapd \\\n+               netplan.io cloud-init openssh-server sudo snapd \\\n                lxd-agent-loader\n \n # Install a kernel\n",
+ "diff_truncated": false
+}

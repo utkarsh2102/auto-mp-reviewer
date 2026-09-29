@@ -1,0 +1,31 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~bdrung/ubuntu/+source/python3.12/+git/python3.12/+merge/468058",
+ "id": "468058",
+ "title": "ubuntu/devel → ubuntu/devel",
+ "source_branch": "ubuntu/devel",
+ "target_branch": "ubuntu/devel",
+ "revision": "5d77c58acbadc54f425b075d61763e317a3867fe",
+ "base_revision": "61a0291de1270fb15ea03ae2fc45b341426fb91e",
+ "description": null,
+ "commit_message": null,
+ "diffstat": {
+  "dev/null": [
+   0,
+   17
+  ],
+  "debian/patches/series": [
+   0,
+   1
+  ],
+  "debian/rules": [
+   12,
+   22
+  ]
+ },
+ "files": 3,
+ "added_lines": 12,
+ "removed_lines": 40,
+ "diff": "diff --git a/debian/patches/reproducible-buildinfo.diff b/debian/patches/reproducible-buildinfo.diff\ndeleted file mode 100644\nindex fbb6117..0000000\n--- a/debian/patches/reproducible-buildinfo.diff\n+++ /dev/null\n@@ -1,17 +0,0 @@\n-Description: Build reproduceable date and time into build info\n- Build information is encoded into getbuildinfo.o at build time.\n- Use the date and time from the debian changelog, to make this reproduceable.\n-\n-Forwarded: no\n-\n---- a/Makefile.pre.in\n-+++ b/Makefile.pre.in\n-@@ -1349,6 +1349,8 @@\n- \t      -DGITVERSION=\"\\\"`LC_ALL=C $(GITVERSION)`\\\"\" \\\n- \t      -DGITTAG=\"\\\"`LC_ALL=C $(GITTAG)`\\\"\" \\\n- \t      -DGITBRANCH=\"\\\"`LC_ALL=C $(GITBRANCH)`\\\"\" \\\n-+\t      $(if $(BUILD_DATE),-DDATE='\"$(BUILD_DATE)\"') \\\n-+\t      $(if $(BUILD_TIME),-DTIME='\"$(BUILD_TIME)\"') \\\n- \t      -o $@ $(srcdir)/Modules/getbuildinfo.c\n- \n- Modules/getpath.o: $(srcdir)/Modules/getpath.c Python/frozen_modules/getpath.h Makefile $(PYTHON_HEADERS)\ndiff --git a/debian/patches/series b/debian/patches/series\nindex 1ff9c27..dfc7b2d 100644\n--- a/debian/patches/series\n+++ b/debian/patches/series\n@@ -19,7 +19,6 @@ multiarch.diff\n test-no-random-order.diff\n tempfile-minimal.diff\n ensurepip-disabled.diff\n-reproducible-buildinfo.diff\n pydoc-use-pager.diff\n local-doc-references.diff\n #build-math-object.diff\ndiff --git a/debian/rules b/debian/rules\nindex ca0a1a4..45a2d59 100755\n--- a/debian/rules\n+++ b/debian/rules\n@@ -1,5 +1,8 @@\n #!/usr/bin/make -f\n \n+include /usr/share/dpkg/architecture.mk\n+include /usr/share/dpkg/pkg-info.mk\n+\n unexport LANG LC_ALL LC_CTYPE LC_COLLATE LC_TIME LC_NUMERIC LC_MESSAGES\n unexport CFLAGS CXXFLAGS LDFLAGS CPPFLAGS\n \n@@ -8,16 +11,6 @@ export SHELL = /bin/bash\n # Uncomment this to turn on verbose mode.\n #export DH_VERBOSE=1\n \n-vafilt\t\t= $(subst $(2)=,,$(filter $(2)=%,$(1)))\n-DPKG_VARS\t:= $(shell dpkg-architecture)\n-DEB_BUILD_ARCH\t\t?= $(call vafilt,$(DPKG_VARS),DEB_BUILD_ARCH)\n-DEB_BUILD_GNU_TYPE\t?= $(call vafilt,$(DPKG_VARS),DEB_BUILD_GNU_TYPE)\n-DEB_HOST_ARCH\t\t?= $(call vafilt,$(DPKG_VARS),DEB_HOST_ARCH)\n-DEB_HOST_ARCH_ENDIAN\t?= $(call vafilt,$(DPKG_VARS),DEB_HOST_ARCH_ENDIAN)\n-DEB_HOST_ARCH_OS\t?= $(call vafilt,$(DPKG_VARS),DEB_HOST_ARCH_OS)\n-DEB_HOST_GNU_TYPE\t?= $(call vafilt,$(DPKG_VARS),DEB_HOST_GNU_TYPE)\n-DEB_HOST_MULTIARCH\t?= $(call vafilt,$(DPKG_VARS),DEB_HOST_MULTIARCH)\n-\n ifeq ($(DEB_HOST_ARCH_OS),linux)\n   PLAT = linux\n else ifeq ($(DEB_HOST_ARCH_OS),kfreebsd)\n@@ -29,19 +22,16 @@ else\n   PLAT = unknown\n endif\n \n-CHANGELOG_VARS := $(shell dpkg-parsechangelog | \\\n-\tsed -n 's/ /_/g;/^[^_]/s/^\\([^:]*\\):_\\(.*\\)/\\1=\\2/p')\n-PKGSOURCE  := $(call vafilt,$(CHANGELOG_VARS),Source)\n-PKGVERSION := $(call vafilt,$(CHANGELOG_VARS),Version)\n-\n-LAST_CHANGE := $(shell dpkg-parsechangelog -S Date)\n-export BUILD_DATE := $(shell LC_ALL=C date -u +'%b %e %Y' -d '$(LAST_CHANGE)')\n-export BUILD_TIME := $(shell LC_ALL=C date -u +'%H:%M:%S' -d '$(LAST_CHANGE)')\n-\n-SPHINXOPTS := -D today='$(shell LC_ALL=C date -u +'%B %d, %Y' -d '$(LAST_CHANGE)')'\n-SPHINXOPTS += -D html_last_updated_fmt='$(shell LC_ALL=C date -u +'%B %d, %Y' -d '$(LAST_CHANGE)')'\n+SPHINXOPTS := -D today='$(shell LC_ALL=C date -u +'%B %d, %Y' -d '@$(SOURCE_DATE_EPOCH)')'\n+SPHINXOPTS += -D html_last_updated_fmt='$(shell LC_ALL=C date -u +'%B %d, %Y' -d '@$(SOURCE_DATE_EPOCH)')'\n export SPHINXOPTS\n \n+# Export variables needed for ELF package metadata\n+export DEB_BUILD_OS_RELEASE_ID=$(shell . /usr/lib/os-release && echo $$ID)\n+export DEB_HOST_ARCH\n+export DEB_SOURCE\n+export DEB_VERSION\n+\n on_buildd := $(shell [ -f /CurrentlyBuilding -o \"$$LOGNAME\" = buildd -o \"$$USER\" = buildd ] && echo yes)\n \n dh_compat2 := $(shell dpkg --compare-versions \"$$(dpkg-query -f '$${Version}' -W debhelper)\" lt 9.20150811ubuntu2 && echo DH_COMPAT=2)\n@@ -818,7 +808,7 @@ control-file:\n \t      | $(ma_filter) \\\n \t      > debian/control.tmp\n ifeq ($(distribution),Ubuntu)\n-  ifneq (,$(findstring ubuntu, $(PKGVERSION)))\n+  ifneq (,$(findstring ubuntu, $(DEB_VERSION)))\n \tm='Ubuntu Core Developers <ubuntu-devel-discuss@lists.ubuntu.com>'; \\\n \tsed -i \"/^Maintainer:/s/\\(.*\\)/Maintainer: $$m\\nXSBC-Original-\\1/\" \\\n \t  debian/control.tmp\n",
+ "diff_truncated": false
+}

@@ -1,0 +1,31 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~bryce/ubuntu/+source/rabbitmq-server/+git/rabbitmq-server/+merge/368664",
+ "id": "368664",
+ "title": "Pretty straightforward fix, as suggested by Alvin Joseph Tang (alvintang3)",
+ "source_branch": "sru.1773324-bionic",
+ "target_branch": "ubuntu/bionic-devel",
+ "revision": "ceba562547a6d75edd155d7cfd93d079667baf17",
+ "base_revision": "be2ea2d7e0c7d9091a1b1733bddcb014fad243a6",
+ "description": "Pretty straightforward fix, as suggested by Alvin Joseph Tang (alvintang3)\n\nPPA with the change, for testing, is at\nhttps://launchpad.net/~bryce/+archive/ubuntu/sru.1773324\n\nTo test, verify that rabbitmqadmin --version prints an actual version string.",
+ "commit_message": null,
+ "diffstat": {
+  "debian/patches/series": [
+   1,
+   0
+  ],
+  "debian/changelog": [
+   7,
+   0
+  ],
+  "debian/patches/fix-string-version.patch": [
+   23,
+   0
+  ]
+ },
+ "files": 3,
+ "added_lines": 31,
+ "removed_lines": 0,
+ "diff": "diff --git a/debian/changelog b/debian/changelog\nindex 08e3b69..0aab8c8 100644\n--- a/debian/changelog\n+++ b/debian/changelog\n@@ -1,3 +1,10 @@\n+rabbitmq-server (3.6.10-1ubuntu0~18.04.1) bionic; urgency=medium\n+\n+  * d/patch: Add fix-string-version.patch to update rabbitmq_management\n+    version string during build.  (LP: #1773324)\n+\n+ -- Alvin Joseph Tang <alvintang@gmail.com>  Sun, 09 Jun 2019 15:51:54 +0800\n+\n rabbitmq-server (3.6.10-1) unstable; urgency=medium\n \n   * New upstream release (Closes: #863586), fixing multiple issues:\ndiff --git a/debian/patches/fix-string-version.patch b/debian/patches/fix-string-version.patch\nnew file mode 100644\nindex 0000000..4cadf7a\n--- /dev/null\n+++ b/debian/patches/fix-string-version.patch\n@@ -0,0 +1,23 @@\n+Description: Replace %%VSN%% in rabbitmqadmin with version number\n+Author: Alvin Joseph Tang, alvintang@gmail.com\n+Origin: other, https://bugs.launchpad.net/ubuntu/+source/rabbitmq-server/+bug/1773324/+attachment/5269746/+files/3-1.0-1ubuntu2.debdiff\n+Forwarded: not-needed\n+Bug-Ubuntu: https://bugs.launchpad.net/ubuntu/+source/rabbitmq-server/+bug/1773324\n+Bug-Debian: https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=908690\n+Reviewed-by: Bryce Harrington <bryce@canonical.com>\n+Last-Update: 2019-06-13\n+\n+Index: rabbitmq-server-3.6.10/deps/rabbitmq_management/Makefile\n+===================================================================\n+--- rabbitmq-server-3.6.10.orig/deps/rabbitmq_management/Makefile\n++++ rabbitmq-server-3.6.10/deps/rabbitmq_management/Makefile\n+@@ -40,6 +40,9 @@ include erlang.mk\n+ # Distribution.\n+ # --------------------------------------------------------------------\n+ \n++all::\n++\t$(verbose) sed -i 's/%%VSN%%/$(PROJECT_VERSION)/' bin/rabbitmqadmin\n++\n+ list-dist-deps::\n+ \t@echo bin/rabbitmqadmin\n+ \ndiff --git a/debian/patches/series b/debian/patches/series\nnew file mode 100644\nindex 0000000..0003352\n--- /dev/null\n+++ b/debian/patches/series\n@@ -0,0 +1 @@\n+fix-string-version.patch\n",
+ "diff_truncated": false
+}

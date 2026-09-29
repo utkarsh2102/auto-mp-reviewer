@@ -1,0 +1,31 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~kajiya/ubuntu/+source/openssh/+git/openssh/+merge/412723",
+ "id": "412723",
+ "title": "sbuild results",
+ "source_branch": "lp1952421-sshd-matching-certs-focal",
+ "target_branch": "ubuntu/focal-devel",
+ "revision": "96e7637ccc4851b32927d6c64b960fa6c06c93b4",
+ "base_revision": "c6fdf00bd952b177b3b8d6e9073e3858f57fa459",
+ "description": "sbuild results\n\n+------------------------------------------------------------------------------+\n| Post Build                                                                   |\n+------------------------------------------------------------------------------+\n\n\n+------------------------------------------------------------------------------+\n| Cleanup                                                                      |\n+------------------------------------------------------------------------------+\n\nPurging /<<BUILDDIR>>\nNot cleaning session: cloned chroot in use\n\n+------------------------------------------------------------------------------+\n| Summary                                                                      |\n+------------------------------------------------------------------------------+\n\nBuild Architecture: amd64\nBuild Type: full\nBuild-Space: 153028\nBuild-Time: 471\nDistribution: focal\nHost Architecture: amd64\nInstall-Time: 77\nJob: /home/kajiya/Desktop/sruu/openssh_8.2p1-4ubuntu0.4.dsc\nLintian: fail\nMachine Architecture: amd64\nPackage: openssh\nPackage-Time: 659\nSource-Version: 1:8.2p1-4ubuntu0.4\nSpace: 153028\nStatus: successful\nVersion: 1:8.2p1-4ubuntu0.4\n--------------------------------------------------------------------------------\nFinished at 2021-12-02T22:54:44Z\nBuild needed 00:10:59, 153028k disk space",
+ "commit_message": null,
+ "diffstat": {
+  "debian/changelog": [
+   8,
+   0
+  ],
+  "debian/patches/series": [
+   1,
+   0
+  ],
+  "debian/patches/match-host-certs-w-public-keys.patch": [
+   30,
+   0
+  ]
+ },
+ "files": 3,
+ "added_lines": 39,
+ "removed_lines": 0,
+ "diff": "diff --git a/debian/changelog b/debian/changelog\nindex c7904a4..1a9555f 100644\n--- a/debian/changelog\n+++ b/debian/changelog\n@@ -1,3 +1,11 @@\n+openssh (1:8.2p1-4ubuntu0.4) focal; urgency=medium\n+\n+  * d/p/match-host-certs-w-public-keys.patch: Add patch\n+    to match host certificates agianst host public keys.\n+    (LP: #1952421 \n+\n+ -- Chloé S <chloe.smith@canonical.com>  Thu, 02 Dec 2021 22:38:52 +0000\n+\n openssh (1:8.2p1-4ubuntu0.3) focal; urgency=medium\n \n   * d/systemd/ssh@.service: preserve the systemd managed runtime directory to\ndiff --git a/debian/patches/match-host-certs-w-public-keys.patch b/debian/patches/match-host-certs-w-public-keys.patch\nnew file mode 100644\nindex 0000000..2f4d509\n--- /dev/null\n+++ b/debian/patches/match-host-certs-w-public-keys.patch\n@@ -0,0 +1,30 @@\n+Description: Match host certificates against host public keys\n+ not private keys. Allows use of certificates with private keys\n+ held in a ssh-agent.\n+Origin: upstream\n+Bug: https://bugzilla.mindrot.org/show_bug.cgi?id=3254\n+Bug-Ubuntu: https://bugs.launchpad.net/ubuntu/+source/openssh/+bug/1952421\n+Forwarded: not-needed\n+Applied-Upstream: https://github.com/openssh/openssh-portable/commit/530739d4\n+\n+From 530739d42f6102668aecd699be0ce59815c1eceb Mon Sep 17 00:00:00 2001\n+From: \"djm@openbsd.org\" <djm@openbsd.org>\n+Date: Sun, 6 Jun 2021 11:34:16 +0000\n+Reported by Miles Zhou in bz3524; ok dtucker@\n+OpenBSD-Commit-ID: 25f5bf70003126d19162862d9eb380bf34bac22a\n+\n+---\n+ sshd.c | 4 ++--\n+ 1 file changed, 2 insertions(+), 2 deletions(-)\n+\n+--- a/sshd.c\n++++ b/sshd.c\n+@@ -1896,7 +1896,7 @@\n+ \t\t/* Find matching private key */\n+ \t\tfor (j = 0; j < options.num_host_key_files; j++) {\n+ \t\t\tif (sshkey_equal_public(key,\n+-\t\t\t    sensitive_data.host_keys[j])) {\n++\t\t\t    sensitive_data.host_pubkeys[j])) {\n+ \t\t\t\tsensitive_data.host_certificates[j] = key;\n+ \t\t\t\tbreak;\n+ \t\t\t}\ndiff --git a/debian/patches/series b/debian/patches/series\nindex b5b84a9..0d109af 100644\n--- a/debian/patches/series\n+++ b/debian/patches/series\n@@ -25,3 +25,4 @@ conch-old-privkey-format.patch\n revert-ipqos-defaults.patch\n lp-1876320-upstream-Do-not-call-process_queued_listen_addrs-for.patch\n CVE-2021-28041.patch\n+match-host-certs-w-public-keys.patch\n",
+ "diff_truncated": false
+}

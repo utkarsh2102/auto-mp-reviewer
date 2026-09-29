@@ -1,0 +1,27 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~dlalaj/livecd-rootfs/+git/livecd-rootfs/+merge/503762",
+ "id": "503762",
+ "title": "Images built from the ubuntu-cpc (non-minimized) and ubuntu-base (buildd) use dracut as the default initrd generator for 26.04 onward. To ensure the initrd is suitable for a generic host \"hostonly=no\" should be set for both these image lines",
+ "source_branch": "hostonly-config-cloud-images",
+ "target_branch": "ubuntu/master",
+ "revision": "a623ca729c107fcd0accbe427f48431c10852c2b",
+ "base_revision": "1aa9a21deb99d84315858c5a57891a681bc871d5",
+ "description": "1. Package was built with each change separately\n2. Images were built with the given configuration\n3. Images were booted in PS5/6 for bootable arches that PS has available compute\n4. Images were subjected to CPC internal testing that gates publication\n\nVerification has been completed for all arches which CPC tests on PS5/6",
+ "commit_message": "Images built from the ubuntu-cpc (non-minimized) and ubuntu-base (buildd) use dracut as the default initrd generator for 26.04 onward. To ensure the initrd is suitable for a generic host \"hostonly=no\" should be set for both these image lines\n",
+ "diffstat": {
+  "live-build/buildd/includes.chroot/etc/dracut.conf.d/90-buildd-dracut.conf": [
+   1,
+   0
+  ],
+  "live-build/ubuntu-cpc/hooks.d/chroot/040-dracut-config.chroot": [
+   17,
+   0
+  ]
+ },
+ "files": 2,
+ "added_lines": 18,
+ "removed_lines": 0,
+ "diff": "diff --git a/live-build/buildd/includes.chroot/etc/dracut.conf.d/90-buildd-dracut.conf b/live-build/buildd/includes.chroot/etc/dracut.conf.d/90-buildd-dracut.conf\nnew file mode 100644\nindex 0000000..ecc2ab1\n--- /dev/null\n+++ b/live-build/buildd/includes.chroot/etc/dracut.conf.d/90-buildd-dracut.conf\n@@ -0,0 +1 @@\n+hostonly=\"no\"\n\\ No newline at end of file\ndiff --git a/live-build/ubuntu-cpc/hooks.d/chroot/040-dracut-config.chroot b/live-build/ubuntu-cpc/hooks.d/chroot/040-dracut-config.chroot\nnew file mode 100644\nindex 0000000..0b2d573\n--- /dev/null\n+++ b/live-build/ubuntu-cpc/hooks.d/chroot/040-dracut-config.chroot\n@@ -0,0 +1,17 @@\n+#!/bin/bash -ex\n+\n+. /root/config/chroot\n+\n+# Do not apply dracut config for minimized images; they do initrdless booting\n+if [ \"${SUBPROJECT:-}\" = \"minimized\" ]; then\n+    echo \"Minimized images do initrdless booting\"\n+    exit 0\n+fi\n+\n+# Ensure dracut always generates a generic (not host-specific) initramfs since\n+# download cloud images need to run in a variety of hardware\n+mkdir -p /etc/dracut.conf.d\n+cat > /etc/dracut.conf.d/01-generic.conf << 'EOF'\n+# Cloud images must boot on varied hardware; disable host-only initramfs.\n+hostonly=\"no\"\n+EOF\n\\ No newline at end of file\n",
+ "diff_truncated": false
+}

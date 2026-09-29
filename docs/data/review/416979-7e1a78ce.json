@@ -1,0 +1,35 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~fritzdaswiesel/ubuntu/+source/ubiquity/+git/ubiquity/+merge/416979",
+ "id": "416979",
+ "title": "Bugfix for Ubiquity bug #1963697",
+ "source_branch": "fritzdaswiesel_bug1963697",
+ "target_branch": "ubuntu/devel",
+ "revision": "e8545367008b041b7960dd8d45cb81591bc0cfb6",
+ "base_revision": "64285628a76abcde96bc80100a6fda1fbe1f8191",
+ "description": "With this patch applied, I successfully went through all default steps of the installer and got Kubuntu Jammy's current daily build installed on my VM.",
+ "commit_message": "Bugfix for Ubiquity bug #1963697\nKubuntu installer scripts reported crashes due to unexpected types. The reason is the ICON_SIZE which, for some reason, was an odd number. Thus dividing it by 2 results in a float number.",
+ "diffstat": {
+  "ubiquity/frontend/kde_components/Timezone.py": [
+   2,
+   2
+  ],
+  "ubiquity/frontend/kde_components/Keyboard.py": [
+   1,
+   1
+  ],
+  "ubiquity/frontend/kde_components/nmwidgets.py": [
+   1,
+   1
+  ],
+  "ubiquity/frontend/kde_components/PartitionBar.py": [
+   1,
+   1
+  ]
+ },
+ "files": 4,
+ "added_lines": 5,
+ "removed_lines": 5,
+ "diff": "diff --git a/ubiquity/frontend/kde_components/Keyboard.py b/ubiquity/frontend/kde_components/Keyboard.py\nindex 822dc2f..08768fe 100644\n--- a/ubiquity/frontend/kde_components/Keyboard.py\n+++ b/ubiquity/frontend/kde_components/Keyboard.py\n@@ -94,7 +94,7 @@ class Keyboard(QWidget):\n     def resizeEvent(self, re):\n         self.space = 6\n         self.usable_width = self.width() - 2\n-        self.key_w = (self.usable_width - 14 * self.space) / 15\n+        self.key_w = int((self.usable_width - 14 * self.space) / 15)\n \n         self.setMinimumHeight(self.key_w * 4 + self.space * 5)\n \ndiff --git a/ubiquity/frontend/kde_components/PartitionBar.py b/ubiquity/frontend/kde_components/PartitionBar.py\nindex fc6e698..39be383 100644\n--- a/ubiquity/frontend/kde_components/PartitionBar.py\n+++ b/ubiquity/frontend/kde_components/PartitionBar.py\n@@ -164,7 +164,7 @@ class PartitionsBar(QtWidgets.QWidget):\n                 QtCore.Qt.TextSingleLine, text)\n             painter.drawText(\n                 x + 18,\n-                labelY + v_off + textSize.height() / 2, text)\n+                labelY + v_off + int(textSize.height() / 2), text)\n             v_off += textSize.height()\n             painter.setFont(infoFont)\n             painter.setPen(QtGui.QColor(PartitionsBar.InfoColor))\ndiff --git a/ubiquity/frontend/kde_components/Timezone.py b/ubiquity/frontend/kde_components/Timezone.py\nindex ea62f3d..05bbb7b 100644\n--- a/ubiquity/frontend/kde_components/Timezone.py\n+++ b/ubiquity/frontend/kde_components/Timezone.py\n@@ -126,9 +126,9 @@ class TimezoneMap(QtWidgets.QWidget):\n \n     def heightForWidth(self, w):\n         size = self.pixmap.size()\n-        if w > size.width():\n+        if int(w) > size.width():\n             w = size.width()\n-        return w * size.height() / size.width()\n+        return int(w * size.height() / size.width())\n \n     def paintEvent(self, unused_paintEvent):\n         painter = QtGui.QPainter(self)\ndiff --git a/ubiquity/frontend/kde_components/nmwidgets.py b/ubiquity/frontend/kde_components/nmwidgets.py\nindex 9edd7f3..edf300d 100644\n--- a/ubiquity/frontend/kde_components/nmwidgets.py\n+++ b/ubiquity/frontend/kde_components/nmwidgets.py\n@@ -205,7 +205,7 @@ class QtNetworkStore(QtGui.QStandardItemModel, NetworkStore):\n             pixes.append(draw_level_pix(level))\n \n         secure_icon = QtGui.QIcon.fromTheme(\"emblem-locked\")\n-        secure_pix = secure_icon.pixmap(ICON_SIZE / 2, ICON_SIZE / 2)\n+        secure_pix = secure_icon.pixmap(int(ICON_SIZE / 2), int(ICON_SIZE / 2))\n         for level in range(5):\n             pix2 = QtGui.QPixmap(pixes[level])\n             painter = QtGui.QPainter(pix2)\n",
+ "diff_truncated": false
+}

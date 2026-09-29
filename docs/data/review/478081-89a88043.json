@@ -1,0 +1,31 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~xypron/ubuntu/+source/libvirt/+git/libvirt/+merge/478081",
+ "id": "478081",
+ "title": "riscv-oracular → ubuntu/oracular-devel",
+ "source_branch": "riscv-oracular",
+ "target_branch": "ubuntu/oracular-devel",
+ "revision": "cc32dca24512fe0ea0f4b1300b4a2894a2b14b64",
+ "base_revision": "41fbf7117878f1230b14b45f128474a8007059a4",
+ "description": null,
+ "commit_message": null,
+ "diffstat": {
+  "debian/changelog": [
+   8,
+   0
+  ],
+  "debian/patches/series": [
+   1,
+   0
+  ],
+  "debian/patches/ubuntu-aa/virt-aa-helper-allow-riscv64-EDK-II.patch": [
+   31,
+   0
+  ]
+ },
+ "files": 3,
+ "added_lines": 40,
+ "removed_lines": 0,
+ "diff": "diff --git a/debian/changelog b/debian/changelog\nindex 66f86ed..9a26c62 100644\n--- a/debian/changelog\n+++ b/debian/changelog\n@@ -1,3 +1,11 @@\n+libvirt (10.6.0-1ubuntu3.2) UNRELEASED; urgency=medium\n+\n+  - d/p/ubuntu-aa/virt-aa-helper-allow-riscv64-EDK-II.patch\n+    virt-aa-helper: allow riscv64 EDK II\n+    (LP: #2091357)\n+\n+ -- Heinrich Schuchardt <heinrich.schuchardt@canonical.com>  Tue, 10 Dec 2024 17:09:43 +0100\n+\n libvirt (10.6.0-1ubuntu3.1) oracular; urgency=medium\n \n    - d/p/u/lp-2083986-drop-vmx-from-migratable-cpu-when-origCPU-set.patch:\ndiff --git a/debian/patches/series b/debian/patches/series\nindex 1325e35..886ce5e 100644\n--- a/debian/patches/series\n+++ b/debian/patches/series\n@@ -24,3 +24,4 @@ ubuntu-aa/lp-1815910-allow-vhost-hotplug.patch\n ubuntu-aa/allow-more-paths-for-qemu-bridge-helper.patch\n CVE-2024-8235.patch\n ubuntu/lp-2083986-drop-vmx-from-migratable-cpu-when-origCPU-set.patch\n+ubuntu-aa/virt-aa-helper-allow-riscv64-EDK-II.patch\ndiff --git a/debian/patches/ubuntu-aa/virt-aa-helper-allow-riscv64-EDK-II.patch b/debian/patches/ubuntu-aa/virt-aa-helper-allow-riscv64-EDK-II.patch\nnew file mode 100644\nindex 0000000..efec6cf\n--- /dev/null\n+++ b/debian/patches/ubuntu-aa/virt-aa-helper-allow-riscv64-EDK-II.patch\n@@ -0,0 +1,31 @@\n+From: Heinrich Schuchardt <heinrich.schuchardt@canonical.com>\n+Date: Mon, 9 Dec 2024 11:55:36 +0100\n+Subject: [PATCH 1/1] virt-aa-helper: allow riscv64 EDK II\n+\n+Debian has packaged EDK II for 64-bit RISC-V in directory\n+/usr/share/qemu-efi-riscv64/.\n+\n+For usage with libvirt update the AppArmor helper.\n+\n+Signed-off-by: Heinrich Schuchardt <heinrich.schuchardt@canonical.com>\n+Reviewed-by: Andrea Bolognani <abologna@redhat.com>\n+Origin: https://gitlab.com/libvirt/libvirt/-/commit/c63bdd17b9f5c31a2511f173d60455b83d22c561\n+---\n+ src/security/virt-aa-helper.c | 1 +\n+ 1 file changed, 1 insertion(+)\n+\n+diff --git a/src/security/virt-aa-helper.c b/src/security/virt-aa-helper.c\n+index e82b5de2b4..1cf9d7ad3d 100644\n+--- a/src/security/virt-aa-helper.c\n++++ b/src/security/virt-aa-helper.c\n+@@ -481,6 +481,7 @@ valid_path(const char *path, const bool readonly)\n+         \"/usr/share/AAVMF/\",\n+         \"/usr/share/qemu-efi/\",              /* for AAVMF images */\n+         \"/usr/share/qemu-efi-aarch64/\",\n++        \"/usr/share/qemu-efi-riscv64/\",\n+         \"/usr/share/qemu/\",                  /* SUSE path for OVMF and AAVMF images */\n+         \"/usr/lib/u-boot/\",\n+         \"/usr/lib/riscv64-linux-gnu/opensbi\",\n+-- \n+2.45.2\n+\n",
+ "diff_truncated": false
+}

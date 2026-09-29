@@ -1,0 +1,27 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~ravi-sharma/ubuntu/+source/openssl/+git/openssl/+merge/509348",
+ "id": "509348",
+ "title": "revert-lp2158026 → ubuntu/devel",
+ "source_branch": "revert-lp2158026",
+ "target_branch": "ubuntu/devel",
+ "revision": "3038f41e066a7bbfb75f24f841c86f743c57999d",
+ "base_revision": "92462bf94d2888cbc52f9255b8c6ff5f1dde5b0f",
+ "description": null,
+ "commit_message": null,
+ "diffstat": {
+  "debian/changelog": [
+   7,
+   0
+  ],
+  "debian/control": [
+   0,
+   3
+  ]
+ },
+ "files": 2,
+ "added_lines": 7,
+ "removed_lines": 3,
+ "diff": "diff --git a/debian/changelog b/debian/changelog\nindex f193178..3dd9af4 100644\n--- a/debian/changelog\n+++ b/debian/changelog\n@@ -1,3 +1,10 @@\n+openssl (4.0.1-1ubuntu3) stonking; urgency=medium\n+\n+  * Revert \"Add Depends on libjitterentropy3-dev, zlib1g-dev, and libzstd-dev.\n+    (LP: #2158026)\n+\n+ -- Ravi Kant Sharma <ravi.kant.sharma@canonical.com>  Mon, 10 Aug 2026 11:49:51 +0200\n+\n openssl (4.0.1-1ubuntu2) stonking; urgency=medium\n \n   * Add Depends on libjitterentropy3-dev, zlib1g-dev, and libzstd-dev.\ndiff --git a/debian/control b/debian/control\nindex bb0b890..d181936 100644\n--- a/debian/control\n+++ b/debian/control\n@@ -89,9 +89,6 @@ Architecture: any\n Multi-Arch: same\n Suggests: libssl-doc\n Depends: libssl4 (= ${binary:Version}),\n-         libjitterentropy3-dev,\n-         zlib1g-dev,\n-         libzstd-dev,\n          ${misc:Depends}\n Description: Secure Sockets Layer toolkit - development files\n  This package is part of the OpenSSL project's implementation of the SSL\n",
+ "diff_truncated": false
+}

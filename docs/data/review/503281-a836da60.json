@@ -1,0 +1,31 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~bamf0/ubuntu/+source/fwupd/+git/fwupd/+merge/503281",
+ "id": "503281",
+ "title": "This merge will introduce a cherry-picked patch to fix updates containing only the default image, which would otherwise fail to notify snapd.",
+ "source_branch": "lp2147129-fail-to-notify-snapd",
+ "target_branch": "ubuntu/devel",
+ "revision": "c6bb74084267b67163a5361e903d347da06f0098",
+ "base_revision": "4778858d4e8092609516ea412eabcacabf0ed09d",
+ "description": "This merge will introduce a cherry-picked patch to fix updates containing only the default image, which would otherwise fail to notify snapd.\n\nUpstream also improve the unit and CI tests in relation to this bug here: https://github.com/fwupd/fwupd/pull/10092\n\nIt was chosen to not include this however, as these tests would likely get skipped due to lack of firmware blobs. This also decreases the delta.\n\n---\n\nPPA: https://launchpad.net/~bamf0/+archive/ubuntu/fwupd-lp2147129-fail-to-notify-snapd",
+ "commit_message": null,
+ "diffstat": {
+  "debian/changelog": [
+   7,
+   0
+  ],
+  "debian/patches/fix-notify-snapd-default-image.patch": [
+   25,
+   0
+  ],
+  "debian/patches/series": [
+   1,
+   0
+  ]
+ },
+ "files": 3,
+ "added_lines": 33,
+ "removed_lines": 0,
+ "diff": "diff --git a/debian/changelog b/debian/changelog\nindex 53b1f80..3011ff5 100644\n--- a/debian/changelog\n+++ b/debian/changelog\n@@ -1,3 +1,10 @@\n+fwupd (2.1.1-1ubuntu2) resolute; urgency=medium\n+\n+  * d/p/fix-notify-snapd-default-image.patch: Fix snapd failed to\n+    notify bug when only the default image was used. (LP: #2147129)\n+\n+ -- Simon Johnsson <simon.johnsson@canonical.com>  Tue, 07 Apr 2026 10:14:35 +0200\n+\n fwupd (2.1.1-1ubuntu1) resolute; urgency=medium\n \n   * New upstream version (LP: #2146332)\ndiff --git a/debian/patches/fix-notify-snapd-default-image.patch b/debian/patches/fix-notify-snapd-default-image.patch\nnew file mode 100644\nindex 0000000..df497ea\n--- /dev/null\n+++ b/debian/patches/fix-notify-snapd-default-image.patch\n@@ -0,0 +1,25 @@\n+From: Maciej Borzecki <maciej.borzecki@canonical.com>\n+Subject: plugins/snapd-uefi: fix handling of payloads with default image only\n+\n+Commit 703e2fd introduced support for firmwares containing more than one \n+update blob, but at the same time it broke handling of firmwares where \n+only the default image is available.\n+\n+Bug-Ubuntu: https://bugs.launchpad.net/bugs/2147129\n+---\n+Origin: upstream, https://github.com/bboozzoo/fwupd/commit/0b14ba4eceb680e8f5a819e55aabeeda3329b89b.patch\n+Bug: https://github.com/fwupd/fwupd/issues/10082\n+Forwarded: not-needed\n+Reviewed-By: Simon Johnsson <simon.johnsson@canonical.com>\n+\n+--- fwupd-2.1.1.orig/plugins/snapd-uefi/fu-snapd-uefi-plugin.c\n++++ fwupd-2.1.1/plugins/snapd-uefi/fu-snapd-uefi-plugin.c\n+@@ -268,7 +268,7 @@ fu_snapd_uefi_plugin_composite_peek_firm\n+ \t\treturn TRUE;\n+ \n+ \timages = fu_firmware_get_images(firmware);\n+-\tif (images->len == 1) {\n++\tif (images->len == 0) {\n+ \t\t/* get default image */\n+ \t\tg_autoptr(GBytes) fw = fu_firmware_get_bytes(firmware, error);\n+ \t\tif (fw == NULL)\ndiff --git a/debian/patches/series b/debian/patches/series\nindex c58e794..b2df693 100644\n--- a/debian/patches/series\n+++ b/debian/patches/series\n@@ -1,2 +1,3 @@\n flaky-p2p.patch\n fwupdmgr-fde-verify-snapd-recovery-key.patch\n+fix-notify-snapd-default-image.patch\n",
+ "diff_truncated": false
+}

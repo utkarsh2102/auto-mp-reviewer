@@ -1,0 +1,63 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~virtustom/livecd-rootfs/+git/livecd-rootfs/+merge/503429",
+ "id": "503429",
+ "title": "feat(apparmor): Add new 6.8 kernel apparmor features",
+ "source_branch": "noble-apparmor-6.8",
+ "target_branch": "ubuntu/noble",
+ "revision": "78954fc8a4772f75819eb6a225c8f525b4e63d28",
+ "base_revision": "23275f3d528ba499d9391ee3dbf0cd4745b86c7b",
+ "description": null,
+ "commit_message": "feat(apparmor): Add new 6.8 kernel apparmor features\n\n",
+ "diffstat": {
+  "live-build/apparmor/6.8/caps/extended": [
+   1,
+   0
+  ],
+  "live-build/apparmor/6.8/domain/disconnected.path": [
+   1,
+   0
+  ],
+  "live-build/apparmor/6.8/domain/interruptible": [
+   1,
+   0
+  ],
+  "live-build/apparmor/6.8/domain/kill.signal": [
+   1,
+   0
+  ],
+  "live-build/apparmor/6.8/domain/unconfined_allowed_children": [
+   1,
+   0
+  ],
+  "live-build/apparmor/6.8/mount/move_mount": [
+   1,
+   0
+  ],
+  "live-build/apparmor/6.8/namespaces/userns_create": [
+   1,
+   0
+  ],
+  "live-build/apparmor/6.8/network_v8/af_inet": [
+   1,
+   0
+  ],
+  "live-build/apparmor/6.8/policy/permstable32_version": [
+   1,
+   0
+  ],
+  "live-build/apparmor/6.8/policy/unconfined_restrictions/io_uring": [
+   1,
+   1
+  ],
+  "live-build/apparmor/6.8/policy/unconfined_restrictions/userns": [
+   1,
+   1
+  ]
+ },
+ "files": 11,
+ "added_lines": 11,
+ "removed_lines": 2,
+ "diff": "diff --git a/live-build/apparmor/6.8/caps/extended b/live-build/apparmor/6.8/caps/extended\nnew file mode 100644\nindex 0000000..7cfab5b\n--- /dev/null\n+++ b/live-build/apparmor/6.8/caps/extended\n@@ -0,0 +1 @@\n+yes\ndiff --git a/live-build/apparmor/6.8/domain/disconnected.path b/live-build/apparmor/6.8/domain/disconnected.path\nnew file mode 100644\nindex 0000000..7cfab5b\n--- /dev/null\n+++ b/live-build/apparmor/6.8/domain/disconnected.path\n@@ -0,0 +1 @@\n+yes\ndiff --git a/live-build/apparmor/6.8/domain/interruptible b/live-build/apparmor/6.8/domain/interruptible\nnew file mode 100644\nindex 0000000..7cfab5b\n--- /dev/null\n+++ b/live-build/apparmor/6.8/domain/interruptible\n@@ -0,0 +1 @@\n+yes\ndiff --git a/live-build/apparmor/6.8/domain/kill.signal b/live-build/apparmor/6.8/domain/kill.signal\nnew file mode 100644\nindex 0000000..7cfab5b\n--- /dev/null\n+++ b/live-build/apparmor/6.8/domain/kill.signal\n@@ -0,0 +1 @@\n+yes\ndiff --git a/live-build/apparmor/6.8/domain/unconfined_allowed_children b/live-build/apparmor/6.8/domain/unconfined_allowed_children\nnew file mode 100644\nindex 0000000..7cfab5b\n--- /dev/null\n+++ b/live-build/apparmor/6.8/domain/unconfined_allowed_children\n@@ -0,0 +1 @@\n+yes\ndiff --git a/live-build/apparmor/6.8/mount/move_mount b/live-build/apparmor/6.8/mount/move_mount\nnew file mode 100644\nindex 0000000..9aa4e2b\n--- /dev/null\n+++ b/live-build/apparmor/6.8/mount/move_mount\n@@ -0,0 +1 @@\n+detached\ndiff --git a/live-build/apparmor/6.8/namespaces/userns_create b/live-build/apparmor/6.8/namespaces/userns_create\nnew file mode 100644\nindex 0000000..64abab7\n--- /dev/null\n+++ b/live-build/apparmor/6.8/namespaces/userns_create\n@@ -0,0 +1 @@\n+pciu&\ndiff --git a/live-build/apparmor/6.8/network_v8/af_inet b/live-build/apparmor/6.8/network_v8/af_inet\nnew file mode 100644\nindex 0000000..7cfab5b\n--- /dev/null\n+++ b/live-build/apparmor/6.8/network_v8/af_inet\n@@ -0,0 +1 @@\n+yes\ndiff --git a/live-build/apparmor/6.8/policy/permstable32_version b/live-build/apparmor/6.8/policy/permstable32_version\nnew file mode 100644\nindex 0000000..eb8ece3\n--- /dev/null\n+++ b/live-build/apparmor/6.8/policy/permstable32_version\n@@ -0,0 +1 @@\n+0x000003\ndiff --git a/live-build/apparmor/6.8/policy/unconfined_restrictions/io_uring b/live-build/apparmor/6.8/policy/unconfined_restrictions/io_uring\nindex 573541a..7cfab5b 100644\n--- a/live-build/apparmor/6.8/policy/unconfined_restrictions/io_uring\n+++ b/live-build/apparmor/6.8/policy/unconfined_restrictions/io_uring\n@@ -1 +1 @@\n-0\n+yes\ndiff --git a/live-build/apparmor/6.8/policy/unconfined_restrictions/userns b/live-build/apparmor/6.8/policy/unconfined_restrictions/userns\nindex d00491f..7cfab5b 100644\n--- a/live-build/apparmor/6.8/policy/unconfined_restrictions/userns\n+++ b/live-build/apparmor/6.8/policy/unconfined_restrictions/userns\n@@ -1 +1 @@\n-1\n+yes\n",
+ "diff_truncated": false
+}

@@ -1,0 +1,23 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~mwhudson/ubuntu-archive-tools/+git/ubuntu-archive-tools/+merge/493838",
+ "id": "493838",
+ "title": "generate-freeze-block: do not consider architecture variants",
+ "source_branch": "variants-vs-generate-freeze-block",
+ "target_branch": "main",
+ "revision": "9d89be02bb9d6a1067e59e040e9779e092d23173",
+ "base_revision": "356ee456db87861915eed382182550c3f1e63d80",
+ "description": null,
+ "commit_message": "generate-freeze-block: do not consider architecture variants\n\n",
+ "diffstat": {
+  "generate-freeze-block": [
+   2,
+   1
+  ]
+ },
+ "files": 1,
+ "added_lines": 2,
+ "removed_lines": 1,
+ "diff": "diff --git a/generate-freeze-block b/generate-freeze-block\nindex ea43ce6..4c71149 100755\n--- a/generate-freeze-block\n+++ b/generate-freeze-block\n@@ -61,7 +61,8 @@ class GetPackage():\n         ubuntu = lp.distributions['ubuntu']\n         series = ubuntu.current_series.name\n         self.all_arches = [a.architecture_tag\n-                          for a in ubuntu.current_series.architectures]\n+                           for a in ubuntu.current_series.architectures\n+                           if a.underlying_architecture_tag is None]\n         main_arches = (\"amd64\", \"i386\")\n         port_arches = set(self.all_arches) - set(main_arches)\n \n",
+ "diff_truncated": false
+}

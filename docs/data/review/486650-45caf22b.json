@@ -1,0 +1,27 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~ankushpathak/ubuntu/+source/jq/+git/jq/+merge/486650",
+ "id": "486650",
+ "title": "Merge jq 1.7.1-6 into questing (LP: #2112016)",
+ "source_branch": "merge-lp2112016-questing",
+ "target_branch": "debian/sid",
+ "revision": "abded7c22b841ba2a8ef137915d73d876eb959c3",
+ "base_revision": "aa5d5dd93ba8ec6b41c6e9b27a78dac1f8146d88",
+ "description": "PPA: https://launchpad.net/~ankushpathak/+archive/ubuntu/lp2112016-jq-questing-merge\nSmoke tested the following commands on a lxc questing container\n```\n# echo '{\"messages\": [\"Hello\", \"world\"]}' | jq '.messages | length'                                                       \n2                                                                                                                                                                                                  \n# echo '{\"messages\": [\"Hello\", \"world\"]}' | jq                                                                                                                                        \n{                                                                                                                                                                                                  \n  \"messages\": [                                                                                                                                                                                    \n    \"Hello\",                                                                                                                                                                                       \n    \"world\"                                                                                                                                                                                        \n  ]                                                                                              \n}\n```",
+ "commit_message": "Merge jq 1.7.1-6 into questing (LP: #2112016)",
+ "diffstat": {
+  "debian/changelog": [
+   25,
+   0
+  ],
+  "debian/control": [
+   3,
+   2
+  ]
+ },
+ "files": 2,
+ "added_lines": 28,
+ "removed_lines": 2,
+ "diff": "diff --git a/debian/changelog b/debian/changelog\nindex b89d352..84b24ae 100644\n--- a/debian/changelog\n+++ b/debian/changelog\n@@ -1,3 +1,13 @@\n+jq (1.7.1-6ubuntu1) questing; urgency=medium\n+\n+  * Merge with Debian unstable. Remaining changes:\n+    - d/control: don't build-depend on python3-jsonschema on i386, since that\n+      package is uninstallable on Ubuntu i386. This works for now because\n+      python3-jsonschema is only used in a script during tests if the manual.yml\n+      file is patched by the packaging. (LP: #2104170)\n+\n+ -- Ankush Pathak <ankush.pathak@canonical.com>  Thu, 05 Jun 2025 16:01:26 +0530\n+\n jq (1.7.1-6) unstable; urgency=medium\n \n   * Cherry-pick upstream commit for CVE-2024-23337 (Closes: #1106289)\n@@ -18,6 +28,21 @@ jq (1.7.1-4) unstable; urgency=medium\n \n  -- ChangZhuo Chen (陳昌倬) <czchen@debian.org>  Wed, 09 Apr 2025 22:34:25 +0800\n \n+jq (1.7.1-3ubuntu1) plucky; urgency=medium\n+\n+  * d/control: don't build-depend on python3-jsonschema on i386, since that\n+    package is uninstallable on Ubuntu i386. This works for now because\n+    python3-jsonschema is only used in a script during tests if the manual.yml\n+    file is patched by the packaging. (LP: #2104170)\n+\n+ -- Andreas Hasenack <andreas@canonical.com>  Mon, 07 Apr 2025 21:02:49 -0300\n+\n+jq (1.7.1-3build1) noble; urgency=medium\n+\n+  * No-change rebuild for CVE-2024-3094\n+\n+ -- Steve Langasek <steve.langasek@ubuntu.com>  Sun, 31 Mar 2024 07:40:40 +0000\n+\n jq (1.7.1-3) unstable; urgency=medium\n \n   [ Helmut Grohne ]\ndiff --git a/debian/control b/debian/control\nindex 80bf1d2..b55a417 100644\n--- a/debian/control\n+++ b/debian/control\n@@ -1,7 +1,8 @@\n Source: jq\n Section: utils\n Priority: optional\n-Maintainer: ChangZhuo Chen (陳昌倬) <czchen@debian.org>\n+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>\n+XSBC-Original-Maintainer: ChangZhuo Chen (陳昌倬) <czchen@debian.org>\n Build-Depends: debhelper-compat (= 13),\n                bison,\n                flex,\n@@ -11,7 +12,7 @@ Build-Depends: debhelper-compat (= 13),\n                python3-yaml,\n                python3-markdown,\n                python3-lxml,\n-               python3-jsonschema,\n+               python3-jsonschema [!i386],\n                valgrind [amd64],\n Standards-Version: 4.6.2\n Rules-Requires-Root: no\n",
+ "diff_truncated": false
+}

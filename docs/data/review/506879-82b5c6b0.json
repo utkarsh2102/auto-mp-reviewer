@@ -1,0 +1,1619 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~bluca/ubuntu/+source/dpdk/+git/dpdk/+merge/506879",
+ "id": "506879",
+ "title": "Import dpdk stable release 25.11.3 into Resolute for SRU.",
+ "source_branch": "resolute",
+ "target_branch": "ubuntu/resolute",
+ "revision": "d9b78510f13f23f49aa52c886465c3c447cd80e1",
+ "base_revision": "69754a4304e84a7ba02b5bec7ca182a280d0c5b4",
+ "description": null,
+ "commit_message": "Import dpdk stable release 25.11.3 into Resolute for SRU.\n\nPPA build: https://launchpad.net/~bluca/+archive/ubuntu/dpdk/+packages\nautopkgtest for PPA: https://autopkgtest.ubuntu.com/user/bluca/ppa/dpdk\n(matches resolute where amd64/arm64 pass, ppc64el fails due to testbed hardware compat https://autopkgtest.ubuntu.com/results/autopkgtest-resolute/resolute/ppc64el/d/dpdk/20260612_053233_fa517@/log.gz )\n\nThree packaging changes:\n\n- symbols file update due to the upstream changes to private (ie, not public, used only internally) symbols\n- patch refresh for fuzz\n- fix for amd64v3 optimization, which can be observed to be working from the build log https://launchpadlibrarian.net/865547069/buildlog_ubuntu-resolute-amd64v3.dpdk_25.11.2-0ubuntu0.26.04.1_BUILDING.txt.gz as it is correctly using the -march=x86-64-v3 optimization",
+ "diffstat": {
+  ".ci/linux-build.sh": [
+   0,
+   1
+  ],
+  ".github/workflows/build.yml": [
+   14,
+   14
+  ],
+  ".mailmap": [
+   50,
+   5
+  ],
+  "MAINTAINERS": [
+   3,
+   2
+  ],
+  "VERSION": [
+   1,
+   1
+  ],
+  "app/graph/conn.c": [
+   67,
+   67
+  ],
+  "app/pdump/main.c": [
+   6,
+   6
+  ],
+  "app/test-crypto-perf/cperf_options_parsing.c": [
+   2,
+   3
+  ],
+  "app/test-dma-perf/benchmark.c": [
+   3,
+   3
+  ],
+  "app/test-dma-perf/main.c": [
+   10,
+   1
+  ],
+  "app/test-dma-perf/main.h": [
+   1,
+   1
+  ],
+  "app/test-eventdev/evt_options.c": [
+   1,
+   1
+  ],
+  "app/test-pmd/cmdline.c": [
+   11,
+   2
+  ],
+  "app/test-pmd/cmdline_flow.c": [
+   26,
+   25
+  ],
+  "app/test-pmd/config.c": [
+   190,
+   23
+  ],
+  "app/test-pmd/parameters.c": [
+   20,
+   22
+  ],
+  "app/test-pmd/testpmd.c": [
+   27,
+   7
+  ],
+  "app/test-pmd/testpmd.h": [
+   4,
+   0
+  ],
+  "app/test-regex/main.c": [
+   2,
+   7
+  ],
+  "app/test/bpf/meson.build": [
+   2,
+   1
+  ],
+  "app/test/meson.build": [
+   3,
+   3
+  ],
+  "app/test/suites/meson.build": [
+   13,
+   6
+  ],
+  "app/test/test.h": [
+   19,
+   0
+  ],
+  "app/test/test_atomic.c": [
+   39,
+   27
+  ],
+  "app/test/test_bpf.c": [
+   746,
+   3
+  ],
+  "app/test/test_cfgfile.c": [
+   2,
+   6
+  ],
+  "app/test/test_cryptodev.c": [
+   24,
+   22
+  ],
+  "app/test/test_cryptodev_asym.c": [
+   40,
+   28
+  ],
+  "app/test/test_cryptodev_ml_dsa_test_vectors.h": [
+   8,
+   0
+  ],
+  "app/test/test_cryptodev_ml_kem_test_vectors.h": [
+   8,
+   0
+  ],
+  "app/test/test_debug.c": [
+   3,
+   3
+  ],
+  "app/test/test_dispatcher.c": [
+   1,
+   0
+  ],
+  "app/test/test_eal_flags.c": [
+   51,
+   50
+  ],
+  "app/test/test_external_mem.c": [
+   2,
+   2
+  ],
+  "app/test/test_fib6.c": [
+   74,
+   0
+  ],
+  "app/test/test_hash.c": [
+   134,
+   0
+  ],
+  "app/test/test_interrupts.c": [
+   1,
+   1
+  ],
+  "app/test/test_latencystats.c": [
+   47,
+   32
+  ],
+  "app/test/test_mbuf.c": [
+   9,
+   9
+  ],
+  "app/test/test_mcslock.c": [
+   7,
+   3
+  ],
+  "app/test/test_memcpy.c": [
+   16,
+   4
+  ],
+  "app/test/test_mp_secondary.c": [
+   2,
+   2
+  ],
+  "app/test/test_pcapng.c": [
+   61,
+   4
+  ],
+  "app/test/test_pdump.c": [
+   4,
+   0
+  ],
+  "app/test/test_security_inline_proto.c": [
+   94,
+   10
+  ],
+  "app/test/test_stack.c": [
+   8,
+   3
+  ],
+  "app/test/test_table_acl.c": [
+   14,
+   16
+  ],
+  "app/test/test_telemetry_data.c": [
+   21,
+   0
+  ],
+  "app/test/test_threads.c": [
+   9,
+   8
+  ],
+  "app/test/test_timer_secondary.c": [
+   34,
+   18
+  ],
+  "buildtools/get-test-suites.py": [
+   2,
+   1
+  ],
+  "config/arm/arm32_armv8_linux_gcc": [
+   3,
+   0
+  ],
+  "config/arm/meson.build": [
+   0,
+   1
+  ],
+  "debian/changelog": [
+   14,
+   0
+  ],
+  "debian/control": [
+   2,
+   1
+  ],
+  "debian/librte-eal26.symbols": [
+   2,
+   0
+  ],
+  "debian/librte-net-mlx5-26.symbols": [
+   2,
+   0
+  ],
+  "debian/librte-rib26.symbols": [
+   3,
+   0
+  ],
+  "debian/patches/disable_ppc64_autopkgtest_fails.patch": [
+   8,
+   8
+  ],
+  "debian/rules": [
+   10,
+   10
+  ],
+  "devtools/checkpatches.sh": [
+   4,
+   4
+  ],
+  "doc/api/dts/tests.TestSuite_pmd_rss.rst": [
+   8,
+   0
+  ],
+  "doc/api/dts/tests.TestSuite_qinq.rst": [
+   8,
+   0
+  ],
+  "doc/guides/linux_gsg/amd_platform.rst": [
+   14,
+   7
+  ],
+  "doc/guides/nics/features/i40e.ini": [
+   1,
+   1
+  ],
+  "doc/guides/nics/features/iavf.ini": [
+   2,
+   2
+  ],
+  "doc/guides/nics/features/ice.ini": [
+   3,
+   3
+  ],
+  "doc/guides/nics/i40e.rst": [
+   2,
+   2
+  ],
+  "doc/guides/nics/ice.rst": [
+   1,
+   1
+  ],
+  "doc/guides/nics/igc.rst": [
+   1,
+   1
+  ],
+  "doc/guides/nics/mlx5.rst": [
+   166,
+   53
+  ],
+  "doc/guides/nics/nbl.rst": [
+   13,
+   0
+  ],
+  "doc/guides/rel_notes/release_25_11.rst": [
+   825,
+   0
+  ],
+  "doc/guides/tools/flow-perf.rst": [
+   3,
+   0
+  ],
+  "doc/guides/tools/img/mldev_model_ops_subtest_a.svg": [
+   2,
+   2
+  ],
+  "doc/guides/tools/img/mldev_model_ops_subtest_b.svg": [
+   2,
+   2
+  ],
+  "doc/guides/tools/img/mldev_model_ops_subtest_d.svg": [
+   2,
+   2
+  ],
+  "drivers/bus/dpaa/base/qbman/bman_driver.c": [
+   2,
+   1
+  ],
+  "drivers/bus/dpaa/base/qbman/qman.c": [
+   7,
+   4
+  ],
+  "drivers/bus/dpaa/base/qbman/qman_driver.c": [
+   3,
+   3
+  ],
+  "drivers/bus/dpaa/dpaa_bus.c": [
+   8,
+   9
+  ],
+  "drivers/bus/dpaa/include/fman.h": [
+   3,
+   3
+  ],
+  "drivers/bus/fslmc/fslmc_bus.c": [
+   7,
+   1
+  ],
+  "drivers/bus/fslmc/fslmc_vfio.c": [
+   4,
+   17
+  ],
+  "drivers/bus/fslmc/portal/dpaa2_hw_pvt.h": [
+   9,
+   7
+  ],
+  "drivers/bus/ifpga/bus_ifpga_driver.h": [
+   0,
+   10
+  ],
+  "drivers/bus/ifpga/ifpga_bus.c": [
+   0,
+   13
+  ],
+  "drivers/bus/pci/linux/pci.c": [
+   0,
+   1
+  ],
+  "drivers/bus/pci/linux/pci_vfio.c": [
+   1,
+   1
+  ],
+  "drivers/bus/pci/pci_common.c": [
+   4,
+   0
+  ],
+  "drivers/bus/pci/windows/pci.c": [
+   0,
+   1
+  ],
+  "drivers/bus/vmbus/vmbus_common.c": [
+   1,
+   0
+  ],
+  "drivers/common/cnxk/cnxk_security.c": [
+   94,
+   60
+  ],
+  "drivers/common/cnxk/cnxk_telemetry_nix.c": [
+   30,
+   50
+  ],
+  "drivers/common/cnxk/hw/npa.h": [
+   4,
+   2
+  ],
+  "drivers/common/cnxk/hw/rvu.h": [
+   2,
+   0
+  ],
+  "drivers/common/cnxk/roc_cpt.c": [
+   4,
+   5
+  ],
+  "drivers/common/cnxk/roc_cpt.h": [
+   2,
+   0
+  ],
+  "drivers/common/cnxk/roc_cpt_debug.c": [
+   13,
+   14
+  ],
+  "drivers/common/cnxk/roc_dev.c": [
+   11,
+   4
+  ],
+  "drivers/common/cnxk/roc_mbox.h": [
+   2,
+   2
+  ],
+  "drivers/common/cnxk/roc_nix_debug.c": [
+   20,
+   11
+  ],
+  "drivers/common/cnxk/roc_nix_inl.c": [
+   46,
+   26
+  ],
+  "drivers/common/cnxk/roc_nix_inl_dev.c": [
+   6,
+   11
+  ],
+  "drivers/common/cnxk/roc_nix_inl_dev_irq.c": [
+   12,
+   6
+  ],
+  "drivers/common/cnxk/roc_nix_inl_dp.h": [
+   3,
+   0
+  ],
+  "drivers/common/cnxk/roc_nix_priv.h": [
+   2,
+   2
+  ],
+  "drivers/common/cnxk/roc_nix_stats.c": [
+   25,
+   21
+  ],
+  "drivers/common/cnxk/roc_npa.c": [
+   3,
+   0
+  ],
+  "drivers/common/cnxk/roc_platform.c": [
+   25,
+   14
+  ],
+  "drivers/common/cnxk/roc_ree.c": [
+   12,
+   5
+  ],
+  "drivers/common/cnxk/roc_se.c": [
+   15,
+   0
+  ],
+  "drivers/common/cnxk/roc_se.h": [
+   1,
+   1
+  ],
+  "drivers/common/mlx5/linux/mlx5_common_os.c": [
+   81,
+   5
+  ],
+  "drivers/common/mlx5/linux/mlx5_common_os.h": [
+   9,
+   0
+  ],
+  "drivers/common/mlx5/linux/mlx5_nl.c": [
+   2,
+   4
+  ],
+  "drivers/common/mlx5/mlx5_devx_cmds.c": [
+   26,
+   11
+  ],
+  "drivers/common/mlx5/mlx5_devx_cmds.h": [
+   6,
+   0
+  ],
+  "drivers/common/mlx5/mlx5_prm.h": [
+   11,
+   5
+  ],
+  "drivers/common/mlx5/windows/mlx5_glue.h": [
+   1,
+   1
+  ],
+  "drivers/common/sfc_efx/base/ef10_mac.c": [
+   27,
+   8
+  ],
+  "drivers/common/sfc_efx/base/ef10_nic.c": [
+   31,
+   26
+  ],
+  "drivers/common/sfc_efx/base/efx.h": [
+   1,
+   0
+  ],
+  "drivers/common/sfc_efx/base/efx_np.c": [
+   1,
+   1
+  ],
+  "drivers/compress/zlib/zlib_pmd.c": [
+   8,
+   8
+  ],
+  "drivers/crypto/armv8/rte_armv8_pmd.c": [
+   2,
+   2
+  ],
+  "drivers/crypto/ccp/ccp_crypto.c": [
+   4,
+   4
+  ],
+  "drivers/crypto/cnxk/cnxk_ae.h": [
+   7,
+   4
+  ],
+  "drivers/crypto/cnxk/cnxk_cryptodev_ops.c": [
+   3,
+   0
+  ],
+  "drivers/crypto/cnxk/cnxk_se.h": [
+   97,
+   12
+  ],
+  "drivers/crypto/ipsec_mb/pmd_snow3g.c": [
+   2,
+   1
+  ],
+  "drivers/crypto/openssl/rte_openssl_pmd.c": [
+   46,
+   78
+  ],
+  "drivers/crypto/openssl/rte_openssl_pmd_ops.c": [
+   6,
+   0
+  ],
+  "drivers/crypto/qat/dev/qat_crypto_pmd_gens.h": [
+   15,
+   18
+  ],
+  "drivers/crypto/scheduler/scheduler_multicore.c": [
+   2,
+   2
+  ],
+  "drivers/crypto/uadk/uadk_crypto_pmd.c": [
+   2,
+   2
+  ],
+  "drivers/crypto/virtio/virtio_cryptodev.c": [
+   0,
+   23
+  ],
+  "drivers/dma/cnxk/cnxk_dmadev.c": [
+   3,
+   0
+  ],
+  "drivers/dma/dpaa/dpaa_qdma.c": [
+   6,
+   1
+  ],
+  "drivers/dma/dpaa2/dpaa2_qdma.c": [
+   1,
+   1
+  ],
+  "drivers/dma/idxd/idxd_bus.c": [
+   1,
+   1
+  ],
+  "drivers/dma/idxd/idxd_internal.h": [
+   1,
+   1
+  ],
+  "drivers/dma/odm/odm_dmadev.c": [
+   15,
+   3
+  ],
+  "drivers/event/cnxk/cn10k_eventdev.c": [
+   6,
+   2
+  ],
+  "drivers/event/cnxk/cnxk_eventdev.c": [
+   1,
+   1
+  ],
+  "drivers/event/cnxk/cnxk_eventdev_adptr.c": [
+   2,
+   2
+  ],
+  "drivers/event/cnxk/cnxk_tim_evdev.c": [
+   1,
+   1
+  ],
+  "drivers/ml/cnxk/cn10k_ml_ops.c": [
+   0,
+   3
+  ],
+  "drivers/net/af_packet/rte_eth_af_packet.c": [
+   91,
+   43
+  ],
+  "drivers/net/af_xdp/rte_eth_af_xdp.c": [
+   4,
+   6
+  ],
+  "drivers/net/ark/ark_ethdev.c": [
+   4,
+   0
+  ],
+  "drivers/net/ark/ark_pktchkr.c": [
+   6,
+   4
+  ],
+  "drivers/net/ark/ark_pktgen.c": [
+   6,
+   4
+  ],
+  "drivers/net/atlantic/atl_ethdev.c": [
+   2,
+   1
+  ],
+  "drivers/net/axgbe/axgbe_common.h": [
+   1,
+   1
+  ],
+  "drivers/net/axgbe/axgbe_dev.c": [
+   3,
+   0
+  ],
+  "drivers/net/axgbe/axgbe_ethdev.c": [
+   6,
+   5
+  ],
+  "drivers/net/axgbe/axgbe_ethdev.h": [
+   2,
+   2
+  ],
+  "drivers/net/axgbe/axgbe_mdio.c": [
+   2,
+   2
+  ],
+  "drivers/net/axgbe/axgbe_phy.h": [
+   3,
+   3
+  ],
+  "drivers/net/axgbe/axgbe_phy_impl.c": [
+   15,
+   0
+  ],
+  "drivers/net/bnxt/bnxt.h": [
+   17,
+   0
+  ],
+  "drivers/net/bnxt/bnxt_cpr.c": [
+   100,
+   0
+  ],
+  "drivers/net/bnxt/bnxt_cpr.h": [
+   30,
+   0
+  ],
+  "drivers/net/bnxt/bnxt_ethdev.c": [
+   55,
+   194
+  ],
+  "drivers/net/bnxt/bnxt_hwrm.c": [
+   358,
+   52
+  ],
+  "drivers/net/bnxt/bnxt_hwrm.h": [
+   1,
+   0
+  ],
+  "drivers/net/bnxt/bnxt_ring.c": [
+   10,
+   1
+  ],
+  "drivers/net/bnxt/bnxt_rxq.c": [
+   47,
+   3
+  ],
+  "drivers/net/bnxt/bnxt_rxr.c": [
+   40,
+   9
+  ],
+  "drivers/net/bnxt/bnxt_rxr.h": [
+   5,
+   2
+  ],
+  "drivers/net/bnxt/bnxt_stats.c": [
+   15,
+   11
+  ],
+  "drivers/net/bnxt/bnxt_txq.c": [
+   2,
+   1
+  ],
+  "drivers/net/bnxt/bnxt_txr.c": [
+   191,
+   16
+  ],
+  "dev/null": [
+   0,
+   1100
+  ],
+  "drivers/net/bnxt/tf_core/v3/tfc_cpm.c": [
+   11,
+   1
+  ],
+  "drivers/net/bnxt/tf_ulp/bnxt_ulp.c": [
+   1,
+   1
+  ],
+  "drivers/net/bnxt/tf_ulp/bnxt_ulp_tf.c": [
+   5,
+   5
+  ],
+  "drivers/net/bnxt/tf_ulp/bnxt_ulp_tfc.c": [
+   1,
+   1
+  ],
+  "drivers/net/bnxt/tf_ulp/ulp_mapper.c": [
+   5,
+   0
+  ],
+  "drivers/net/bnxt/tf_ulp/ulp_mapper_tfc.c": [
+   4,
+   0
+  ],
+  "drivers/net/bnxt/tf_ulp/ulp_sc_mgr.c": [
+   1,
+   1
+  ],
+  "drivers/net/bnxt/tf_ulp/ulp_utils.h": [
+   2,
+   0
+  ],
+  "drivers/net/bonding/rte_eth_bond_8023ad.c": [
+   8,
+   4
+  ],
+  "drivers/net/bonding/rte_eth_bond_pmd.c": [
+   51,
+   3
+  ],
+  "drivers/net/cnxk/cn10k_tx.h": [
+   2,
+   6
+  ],
+  "drivers/net/cnxk/cn20k_ethdev.c": [
+   1,
+   1
+  ],
+  "drivers/net/cnxk/cn20k_tx.h": [
+   2,
+   6
+  ],
+  "drivers/net/cnxk/cn9k_tx.h": [
+   2,
+   6
+  ],
+  "drivers/net/cnxk/cnxk_ethdev_sec_telemetry.c": [
+   24,
+   26
+  ],
+  "drivers/net/cnxk/cnxk_link.c": [
+   2,
+   2
+  ],
+  "drivers/net/dpaa/dpaa_ethdev.c": [
+   16,
+   15
+  ],
+  "drivers/net/dpaa/dpaa_flow.c": [
+   4,
+   0
+  ],
+  "drivers/net/dpaa/dpaa_rxtx.c": [
+   5,
+   0
+  ],
+  "drivers/net/dpaa/fmlib/fm_lib.c": [
+   3,
+   0
+  ],
+  "drivers/net/dpaa2/base/dpaa2_hw_dpni.c": [
+   4,
+   30
+  ],
+  "drivers/net/dpaa2/dpaa2_ethdev.c": [
+   82,
+   104
+  ],
+  "drivers/net/dpaa2/dpaa2_rxtx.c": [
+   41,
+   44
+  ],
+  "drivers/net/dpaa2/mc/fsl_dpni.h": [
+   6,
+   0
+  ],
+  "drivers/net/enetc/base/enetc_hw.h": [
+   3,
+   4
+  ],
+  "drivers/net/enetc/enetc4_ethdev.c": [
+   11,
+   1
+  ],
+  "drivers/net/enetc/enetc_rxtx.c": [
+   9,
+   8
+  ],
+  "drivers/net/enic/enic_flow.c": [
+   3,
+   3
+  ],
+  "drivers/net/failsafe/failsafe.c": [
+   12,
+   3
+  ],
+  "drivers/net/gve/base/gve_adminq.c": [
+   10,
+   5
+  ],
+  "drivers/net/gve/base/gve_osdep.h": [
+   2,
+   2
+  ],
+  "drivers/net/gve/gve_ethdev.c": [
+   5,
+   3
+  ],
+  "drivers/net/gve/gve_ethdev.h": [
+   1,
+   0
+  ],
+  "drivers/net/gve/gve_rx.c": [
+   3,
+   0
+  ],
+  "drivers/net/gve/gve_rx_dqo.c": [
+   6,
+   0
+  ],
+  "drivers/net/gve/gve_tx.c": [
+   27,
+   19
+  ],
+  "drivers/net/hinic/base/hinic_compat.h": [
+   4,
+   2
+  ],
+  "drivers/net/hns3/hns3_rxtx.c": [
+   7,
+   2
+  ],
+  "drivers/net/intel/common/rx.h": [
+   4,
+   0
+  ],
+  "drivers/net/intel/cpfl/cpfl_ethdev.c": [
+   1,
+   1
+  ],
+  "drivers/net/intel/cpfl/cpfl_flow_engine_fxp.c": [
+   0,
+   2
+  ],
+  "drivers/net/intel/cpfl/cpfl_flow_parser.c": [
+   10,
+   12
+  ],
+  "drivers/net/intel/cpfl/cpfl_fxp_rule.h": [
+   0,
+   2
+  ],
+  "drivers/net/intel/cpfl/cpfl_representor.h": [
+   1,
+   1
+  ],
+  "drivers/net/intel/cpfl/cpfl_rxtx.c": [
+   1,
+   0
+  ],
+  "drivers/net/intel/e1000/base/e1000_82575.c": [
+   2,
+   2
+  ],
+  "drivers/net/intel/e1000/base/e1000_defines.h": [
+   1,
+   0
+  ],
+  "drivers/net/intel/e1000/base/e1000_ich8lan.c": [
+   21,
+   7
+  ],
+  "drivers/net/intel/e1000/base/e1000_ich8lan.h": [
+   3,
+   0
+  ],
+  "drivers/net/intel/e1000/base/e1000_mac.c": [
+   1,
+   1
+  ],
+  "drivers/net/intel/e1000/base/e1000_manage.c": [
+   2,
+   2
+  ],
+  "drivers/net/intel/e1000/base/e1000_phy.c": [
+   2,
+   3
+  ],
+  "drivers/net/intel/e1000/igb_ethdev.c": [
+   3,
+   2
+  ],
+  "drivers/net/intel/e1000/igb_rxtx.c": [
+   2,
+   1
+  ],
+  "drivers/net/intel/e1000/igc_ethdev.c": [
+   13,
+   6
+  ],
+  "drivers/net/intel/e1000/igc_txrx.c": [
+   226,
+   56
+  ],
+  "drivers/net/intel/e1000/igc_txrx.h": [
+   9,
+   0
+  ],
+  "drivers/net/intel/i40e/base/i40e_dcb.c": [
+   3,
+   3
+  ],
+  "drivers/net/intel/i40e/base/i40e_nvm.c": [
+   45,
+   22
+  ],
+  "drivers/net/intel/i40e/base/i40e_prototype.h": [
+   1,
+   1
+  ],
+  "drivers/net/intel/i40e/base/i40e_type.h": [
+   1,
+   1
+  ],
+  "drivers/net/intel/i40e/i40e_ethdev.c": [
+   49,
+   17
+  ],
+  "drivers/net/intel/i40e/i40e_ethdev.h": [
+   9,
+   5
+  ],
+  "drivers/net/intel/i40e/i40e_fdir.c": [
+   15,
+   8
+  ],
+  "drivers/net/intel/i40e/i40e_flow.c": [
+   60,
+   41
+  ],
+  "drivers/net/intel/i40e/i40e_rxtx.c": [
+   4,
+   3
+  ],
+  "drivers/net/intel/i40e/i40e_rxtx_vec_avx2.c": [
+   2,
+   2
+  ],
+  "drivers/net/intel/i40e/i40e_rxtx_vec_avx512.c": [
+   1,
+   1
+  ],
+  "drivers/net/intel/i40e/rte_pmd_i40e.c": [
+   5,
+   5
+  ],
+  "drivers/net/intel/iavf/iavf.h": [
+   9,
+   0
+  ],
+  "drivers/net/intel/iavf/iavf_ethdev.c": [
+   243,
+   40
+  ],
+  "drivers/net/intel/iavf/iavf_fsub.c": [
+   2,
+   2
+  ],
+  "drivers/net/intel/iavf/iavf_generic_flow.c": [
+   32,
+   6
+  ],
+  "drivers/net/intel/iavf/iavf_generic_flow.h": [
+   1,
+   0
+  ],
+  "drivers/net/intel/iavf/iavf_ipsec_crypto.c": [
+   3,
+   1
+  ],
+  "drivers/net/intel/iavf/iavf_rxtx.c": [
+   40,
+   58
+  ],
+  "drivers/net/intel/iavf/iavf_rxtx_vec_avx2.c": [
+   4,
+   16
+  ],
+  "drivers/net/intel/iavf/iavf_rxtx_vec_avx512.c": [
+   9,
+   21
+  ],
+  "drivers/net/intel/iavf/iavf_tm.c": [
+   22,
+   15
+  ],
+  "drivers/net/intel/iavf/iavf_vchnl.c": [
+   92,
+   57
+  ],
+  "drivers/net/intel/ice/base/ice_acl_ctrl.c": [
+   3,
+   3
+  ],
+  "drivers/net/intel/ice/base/ice_bitops.h": [
+   7,
+   7
+  ],
+  "drivers/net/intel/ice/base/ice_dcb.c": [
+   4,
+   4
+  ],
+  "drivers/net/intel/ice/base/ice_ddp.c": [
+   0,
+   4
+  ],
+  "drivers/net/intel/ice/base/ice_fdir.c": [
+   14,
+   8
+  ],
+  "drivers/net/intel/ice/base/ice_ptp_hw.c": [
+   3,
+   3
+  ],
+  "drivers/net/intel/ice/base/ice_sched.c": [
+   2,
+   1
+  ],
+  "drivers/net/intel/ice/base/ice_switch.c": [
+   1,
+   1
+  ],
+  "drivers/net/intel/ice/base/meson.build": [
+   1,
+   0
+  ],
+  "drivers/net/intel/ice/ice_dcf_ethdev.c": [
+   10,
+   2
+  ],
+  "drivers/net/intel/ice/ice_dcf_sched.c": [
+   11,
+   4
+  ],
+  "drivers/net/intel/ice/ice_diagnose.c": [
+   1,
+   1
+  ],
+  "drivers/net/intel/ice/ice_ethdev.c": [
+   37,
+   27
+  ],
+  "drivers/net/intel/ice/ice_fdir_filter.c": [
+   7,
+   2
+  ],
+  "drivers/net/intel/ice/ice_rxtx.c": [
+   2,
+   2
+  ],
+  "drivers/net/intel/ice/ice_rxtx_vec_avx2.c": [
+   2,
+   2
+  ],
+  "drivers/net/intel/ice/ice_rxtx_vec_avx512.c": [
+   1,
+   1
+  ],
+  "drivers/net/intel/ice/ice_tm.c": [
+   53,
+   7
+  ],
+  "drivers/net/intel/idpf/idpf_common_rxtx.h": [
+   1,
+   1
+  ],
+  "drivers/net/intel/idpf/idpf_common_rxtx_avx2.c": [
+   2,
+   2
+  ],
+  "drivers/net/intel/idpf/idpf_common_rxtx_avx512.c": [
+   5,
+   5
+  ],
+  "drivers/net/intel/idpf/idpf_ethdev.c": [
+   1,
+   1
+  ],
+  "drivers/net/intel/idpf/idpf_rxtx.c": [
+   1,
+   0
+  ],
+  "drivers/net/intel/ixgbe/ixgbe_bypass_api.h": [
+   1,
+   7
+  ],
+  "drivers/net/intel/ixgbe/ixgbe_ethdev.c": [
+   42,
+   19
+  ],
+  "drivers/net/intel/ixgbe/ixgbe_ethdev.h": [
+   23,
+   3
+  ],
+  "drivers/net/intel/ixgbe/ixgbe_fdir.c": [
+   24,
+   88
+  ],
+  "drivers/net/intel/ixgbe/ixgbe_flow.c": [
+   211,
+   196
+  ],
+  "drivers/net/intel/ixgbe/ixgbe_ipsec.c": [
+   11,
+   17
+  ],
+  "drivers/net/intel/ixgbe/ixgbe_ipsec.h": [
+   15,
+   4
+  ],
+  "drivers/net/intel/ixgbe/ixgbe_pf.c": [
+   3,
+   2
+  ],
+  "drivers/net/intel/ixgbe/ixgbe_rxtx.c": [
+   11,
+   6
+  ],
+  "drivers/net/intel/ixgbe/ixgbe_vf_representor.c": [
+   48,
+   15
+  ],
+  "drivers/net/mana/mana.c": [
+   14,
+   0
+  ],
+  "drivers/net/mana/mana.h": [
+   1,
+   1
+  ],
+  "drivers/net/mana/mp.c": [
+   8,
+   0
+  ],
+  "drivers/net/mana/rx.c": [
+   5,
+   1
+  ],
+  "drivers/net/mana/tx.c": [
+   5,
+   3
+  ],
+  "drivers/net/memif/rte_eth_memif.c": [
+   22,
+   5
+  ],
+  "drivers/net/memif/rte_eth_memif.h": [
+   1,
+   0
+  ],
+  "drivers/net/mlx4/mlx4_mp.c": [
+   6,
+   0
+  ],
+  "drivers/net/mlx5/hws/mlx5dr_action.c": [
+   11,
+   0
+  ],
+  "drivers/net/mlx5/hws/mlx5dr_cmd.c": [
+   2,
+   2
+  ],
+  "drivers/net/mlx5/hws/mlx5dr_definer.c": [
+   3,
+   1
+  ],
+  "drivers/net/mlx5/hws/mlx5dr_internal.h": [
+   6,
+   0
+  ],
+  "drivers/net/mlx5/hws/mlx5dr_matcher.c": [
+   1,
+   0
+  ],
+  "drivers/net/mlx5/hws/mlx5dr_matcher.h": [
+   1,
+   0
+  ],
+  "drivers/net/mlx5/hws/mlx5dr_rule.c": [
+   6,
+   1
+  ],
+  "drivers/net/mlx5/hws/mlx5dr_send.c": [
+   2,
+   2
+  ],
+  "drivers/net/mlx5/linux/mlx5_ethdev_os.c": [
+   21,
+   0
+  ],
+  "drivers/net/mlx5/linux/mlx5_mp_os.c": [
+   6,
+   0
+  ],
+  "drivers/net/mlx5/linux/mlx5_os.c": [
+   360,
+   115
+  ],
+  "drivers/net/mlx5/linux/mlx5_os.h": [
+   1,
+   0
+  ],
+  "drivers/net/mlx5/mlx5.c": [
+   83,
+   25
+  ],
+  "drivers/net/mlx5/mlx5.h": [
+   33,
+   2
+  ],
+  "drivers/net/mlx5/mlx5_ethdev.c": [
+   175,
+   107
+  ],
+  "drivers/net/mlx5/mlx5_flow.c": [
+   38,
+   5
+  ],
+  "drivers/net/mlx5/mlx5_flow.h": [
+   57,
+   12
+  ],
+  "drivers/net/mlx5/mlx5_flow_aso.c": [
+   23,
+   21
+  ],
+  "drivers/net/mlx5/mlx5_flow_dv.c": [
+   73,
+   22
+  ],
+  "drivers/net/mlx5/mlx5_flow_flex.c": [
+   2,
+   2
+  ],
+  "drivers/net/mlx5/mlx5_flow_hw.c": [
+   729,
+   230
+  ],
+  "drivers/net/mlx5/mlx5_nta_sample.c": [
+   2,
+   0
+  ],
+  "drivers/net/mlx5/mlx5_rx.c": [
+   8,
+   5
+  ],
+  "drivers/net/mlx5/mlx5_rx.h": [
+   21,
+   19
+  ],
+  "drivers/net/mlx5/mlx5_rxq.c": [
+   68,
+   17
+  ],
+  "drivers/net/mlx5/mlx5_rxtx_vec.c": [
+   2,
+   0
+  ],
+  "drivers/net/mlx5/mlx5_trigger.c": [
+   18,
+   11
+  ],
+  "drivers/net/mlx5/mlx5_txpp.c": [
+   0,
+   3
+  ],
+  "drivers/net/mlx5/rte_pmd_mlx5.h": [
+   54,
+   0
+  ],
+  "drivers/net/mlx5/windows/mlx5_os.c": [
+   45,
+   16
+  ],
+  "drivers/net/mvpp2/mrvl_ethdev.c": [
+   0,
+   1
+  ],
+  "drivers/net/nbl/nbl_common/nbl_userdev.c": [
+   15,
+   10
+  ],
+  "drivers/net/nbl/nbl_core.c": [
+   2,
+   0
+  ],
+  "drivers/net/nbl/nbl_dev/nbl_dev.c": [
+   63,
+   4
+  ],
+  "drivers/net/nbl/nbl_dev/nbl_dev.h": [
+   2,
+   0
+  ],
+  "drivers/net/nbl/nbl_dispatch.c": [
+   45,
+   0
+  ],
+  "drivers/net/nbl/nbl_ethdev.c": [
+   11,
+   0
+  ],
+  "drivers/net/nbl/nbl_hw/nbl_channel.c": [
+   85,
+   26
+  ],
+  "drivers/net/nbl/nbl_hw/nbl_channel.h": [
+   9,
+   2
+  ],
+  "drivers/net/nbl/nbl_hw/nbl_resource.h": [
+   2,
+   2
+  ],
+  "drivers/net/nbl/nbl_hw/nbl_txrx.c": [
+   88,
+   35
+  ],
+  "drivers/net/nbl/nbl_hw/nbl_txrx_ops.h": [
+   1,
+   1
+  ],
+  "drivers/net/nbl/nbl_include/nbl_def_channel.h": [
+   5,
+   0
+  ],
+  "drivers/net/nbl/nbl_include/nbl_def_resource.h": [
+   2,
+   0
+  ],
+  "drivers/net/netvsc/hn_ethdev.c": [
+   436,
+   35
+  ],
+  "drivers/net/netvsc/hn_nvs.h": [
+   6,
+   0
+  ],
+  "drivers/net/netvsc/hn_rxtx.c": [
+   18,
+   22
+  ],
+  "drivers/net/netvsc/hn_var.h": [
+   2,
+   0
+  ],
+  "drivers/net/netvsc/hn_vf.c": [
+   154,
+   76
+  ],
+  "drivers/net/nfb/nfb.h": [
+   13,
+   1
+  ],
+  "drivers/net/nfb/nfb_ethdev.c": [
+   99,
+   67
+  ],
+  "drivers/net/nfb/nfb_rx.c": [
+   1,
+   1
+  ],
+  "drivers/net/nfb/nfb_rxmode.c": [
+   6,
+   6
+  ],
+  "drivers/net/nfb/nfb_stats.c": [
+   32,
+   25
+  ],
+  "drivers/net/nfb/nfb_tx.c": [
+   1,
+   1
+  ],
+  "drivers/net/nfp/flower/nfp_flower_ctrl.c": [
+   2,
+   3
+  ],
+  "drivers/net/nfp/nfpcore/nfp6000_pcie.c": [
+   4,
+   4
+  ],
+  "drivers/net/ngbe/base/ngbe_phy_yt.c": [
+   3,
+   0
+  ],
+  "drivers/net/ngbe/ngbe_ethdev.c": [
+   0,
+   5
+  ],
+  "drivers/net/ngbe/ngbe_ethdev_vf.c": [
+   9,
+   2
+  ],
+  "drivers/net/ngbe/ngbe_rxtx.c": [
+   8,
+   5
+  ],
+  "drivers/net/null/rte_eth_null.c": [
+   2,
+   2
+  ],
+  "drivers/net/octeontx/base/octeontx_pkovf.c": [
+   2,
+   2
+  ],
+  "drivers/net/octeontx/octeontx_ethdev.c": [
+   2,
+   2
+  ],
+  "drivers/net/pcap/pcap_ethdev.c": [
+   33,
+   13
+  ],
+  "drivers/net/pcap/pcap_osdep_windows.c": [
+   4,
+   4
+  ],
+  "drivers/net/r8169/base/rtl8168fp.c": [
+   1,
+   0
+  ],
+  "drivers/net/r8169/base/rtl8168fp.h": [
+   1,
+   0
+  ],
+  "drivers/net/r8169/base/rtl8168fp_mcu.c": [
+   6,
+   0
+  ],
+  "drivers/net/r8169/r8169_ethdev.c": [
+   0,
+   1
+  ],
+  "drivers/net/r8169/r8169_fiber.c": [
+   2,
+   2
+  ],
+  "drivers/net/r8169/r8169_hw.c": [
+   3,
+   1
+  ],
+  "drivers/net/r8169/r8169_rxtx.c": [
+   12,
+   12
+  ],
+  "drivers/net/sfc/sfc.h": [
+   1,
+   1
+  ],
+  "drivers/net/sfc/sfc_ethdev.c": [
+   83,
+   58
+  ],
+  "drivers/net/sfc/sfc_ev.c": [
+   6,
+   1
+  ],
+  "drivers/net/sfc/sfc_port.c": [
+   5,
+   3
+  ],
+  "drivers/net/sfc/sfc_repr.c": [
+   1,
+   1
+  ],
+  "drivers/net/tap/rte_eth_tap.c": [
+   45,
+   48
+  ],
+  "drivers/net/tap/rte_eth_tap.h": [
+   2,
+   2
+  ],
+  "drivers/net/tap/tap_flow.c": [
+   16,
+   7
+  ],
+  "drivers/net/txgbe/base/meson.build": [
+   2,
+   0
+  ],
+  "drivers/net/txgbe/base/txgbe.h": [
+   2,
+   0
+  ],
+  "drivers/net/txgbe/base/txgbe_aml.c": [
+   147,
+   38
+  ],
+  "drivers/net/txgbe/base/txgbe_aml.h": [
+   4,
+   2
+  ],
+  "drivers/net/txgbe/base/txgbe_aml40.c": [
+   94,
+   20
+  ],
+  "drivers/net/txgbe/base/txgbe_aml40.h": [
+   4,
+   2
+  ],
+  "drivers/net/txgbe/base/txgbe_dcb_hw.c": [
+   1,
+   1
+  ],
+  "drivers/net/txgbe/base/txgbe_e56.c": [
+   3746,
+   0
+  ],
+  "drivers/net/txgbe/base/txgbe_e56.h": [
+   1778,
+   0
+  ],
+  "drivers/net/txgbe/base/txgbe_e56_bp.c": [
+   2601,
+   0
+  ],
+  "drivers/net/txgbe/base/txgbe_e56_bp.h": [
+   282,
+   0
+  ],
+  "drivers/net/txgbe/base/txgbe_hw.c": [
+   21,
+   33
+  ],
+  "drivers/net/txgbe/base/txgbe_hw.h": [
+   2,
+   2
+  ],
+  "drivers/net/txgbe/base/txgbe_osdep.h": [
+   4,
+   0
+  ],
+  "drivers/net/txgbe/base/txgbe_phy.c": [
+   140,
+   222
+  ],
+  "drivers/net/txgbe/base/txgbe_phy.h": [
+   40,
+   6
+  ],
+  "drivers/net/txgbe/base/txgbe_regs.h": [
+   9,
+   4
+  ],
+  "drivers/net/txgbe/base/txgbe_type.h": [
+   42,
+   1
+  ],
+  "drivers/net/txgbe/txgbe_ethdev.c": [
+   424,
+   49
+  ],
+  "drivers/net/txgbe/txgbe_ethdev.h": [
+   6,
+   1
+  ],
+  "drivers/net/txgbe/txgbe_rxtx.c": [
+   67,
+   57
+  ],
+  "drivers/net/txgbe/txgbe_rxtx.h": [
+   37,
+   1
+  ],
+  "drivers/net/txgbe/txgbe_rxtx_vec_common.h": [
+   12,
+   5
+  ]
+ },
+ "files": 545,
+ "added_lines": 21464,
+ "removed_lines": 6513,
+ "diff": "diff --git a/.ci/linux-build.sh b/.ci/linux-build.sh\nindex ceead25..fee1040 100755\n--- a/.ci/linux-build.sh\n+++ b/.ci/linux-build.sh\n@@ -128,7 +128,6 @@ else\n fi\n OPTS=\"$OPTS -Dlibdir=lib\"\n \n-buildtype=debugoptimized\n sanitizer=\n if [ \"$ASAN\" = \"true\" ]; then\n     sanitizer=${sanitizer:+$sanitizer,}address\ndiff --git a/.github/workflows/build.yml b/.github/workflows/build.yml\nindex 39b4275..bf1fca5 100644\n--- a/.github/workflows/build.yml\n+++ b/.github/workflows/build.yml\n@@ -21,7 +21,7 @@ jobs:\n     runs-on: ubuntu-24.04\n     steps:\n     - name: Checkout sources\n-      uses: actions/checkout@v4\n+      uses: actions/checkout@v6\n       with:\n         fetch-depth: 0\n     - name: Check patches\n@@ -121,7 +121,7 @@ jobs:\n \n     steps:\n     - name: Checkout sources\n-      uses: actions/checkout@v4\n+      uses: actions/checkout@v6\n     - name: Generate cache keys\n       id: get_ref_keys\n       run: |\n@@ -129,7 +129,7 @@ jobs:\n         echo 'libabigail=libabigail-${{ env.LIBABIGAIL_VERSION }}-${{ matrix.config.os }}' >> $GITHUB_OUTPUT\n         echo 'abi=abi-${{ matrix.config.os }}-${{ matrix.config.compiler }}-${{ matrix.config.cross }}-${{ env.REF_GIT_TAG }}' >> $GITHUB_OUTPUT\n     - name: Retrieve ccache cache\n-      uses: actions/cache@v4\n+      uses: actions/cache@v5\n       with:\n         path: ~/.ccache\n         key: ${{ steps.get_ref_keys.outputs.ccache }}-${{ github.ref }}\n@@ -137,13 +137,13 @@ jobs:\n           ${{ steps.get_ref_keys.outputs.ccache }}-refs/heads/main\n     - name: Retrieve libabigail cache\n       id: libabigail-cache\n-      uses: actions/cache@v4\n+      uses: actions/cache@v5\n       if: env.ABI_CHECKS == 'true'\n       with:\n         path: libabigail\n         key: ${{ steps.get_ref_keys.outputs.libabigail }}\n     - name: Retrieve ABI reference cache\n-      uses: actions/cache@v4\n+      uses: actions/cache@v5\n       if: env.ABI_CHECKS == 'true'\n       with:\n         path: reference\n@@ -195,7 +195,7 @@ jobs:\n         key: ${{ steps.get_ref_keys.outputs.ccache }}-${{ github.ref }}\n     - name: Upload logs on failure\n       if: failure()\n-      uses: actions/upload-artifact@v4\n+      uses: actions/upload-artifact@v7\n       with:\n         name: meson-logs-${{ join(matrix.config.*, '-') }}\n         path: |\n@@ -216,9 +216,9 @@ jobs:\n \n     steps:\n     - name: Checkout sources\n-      uses: actions/checkout@v4\n+      uses: actions/checkout@v6\n     - name: Set up Python\n-      uses: actions/setup-python@v5\n+      uses: actions/setup-python@v6\n       with:\n         python-version: '3.x'\n     - name: Install dependencies\n@@ -235,7 +235,7 @@ jobs:\n         meson compile -C build\n     - name: Upload logs on failure\n       if: failure()\n-      uses: actions/upload-artifact@v4\n+      uses: actions/upload-artifact@v7\n       with:\n         name: meson-logs-${{ join(matrix.config.*, '-') }}\n         path: |\n@@ -287,7 +287,7 @@ jobs:\n         echo 'image=image-${{ matrix.config.image }}-'$(date -u +%Y-%m-%d) >> $GITHUB_OUTPUT\n     - name: Retrieve image cache\n       id: image_cache\n-      uses: actions/cache@v4\n+      uses: actions/cache@v5\n       with:\n         path: ~/.image\n         key: ${{ steps.get_keys.outputs.image }}\n@@ -330,7 +330,7 @@ jobs:\n \n     steps:\n     - name: Checkout sources\n-      uses: actions/checkout@v4\n+      uses: actions/checkout@v6\n     - name: Generate various keys\n       id: get_keys\n       run: |\n@@ -338,7 +338,7 @@ jobs:\n         echo 'logs=meson-logs-${{ join(matrix.config.*, '-') }}' | tr -d ':' >> $GITHUB_OUTPUT\n     - name: Retrieve image cache\n       id: image_cache\n-      uses: actions/cache@v4\n+      uses: actions/cache@v5\n       with:\n         path: ~/.image\n         key: ${{ needs.prepare-container-images.outputs.image }}\n@@ -348,7 +348,7 @@ jobs:\n         echo 'Image ${{ matrix.config.image }} is not cached.'\n         false\n     - name: Retrieve ccache cache\n-      uses: actions/cache@v4\n+      uses: actions/cache@v5\n       with:\n         path: ~/.ccache\n         key: ${{ steps.get_keys.outputs.ccache }}-${{ github.ref }}\n@@ -386,7 +386,7 @@ jobs:\n       run: docker kill dpdk\n     - name: Upload logs on failure\n       if: failure()\n-      uses: actions/upload-artifact@v4\n+      uses: actions/upload-artifact@v7\n       with:\n         name: ${{ steps.get_keys.outputs.logs }}\n         path: |\ndiff --git a/.mailmap b/.mailmap\nindex 2f08932..048c02b 100644\n--- a/.mailmap\n+++ b/.mailmap\n@@ -16,6 +16,7 @@ Abhishek Sachan <abhishek.sachan@altran.com>\n Abraham Tovar <abrahamx.tovar@intel.com>\n Adam Bynes <adambynes@outlook.com>\n Adam Dybkowski <adamx.dybkowski@intel.com>\n+Adam Hassick <ahassick@iol.unh.edu>\n Adam Ludkiewicz <adam.ludkiewicz@intel.com>\n Adel Belkhiri <adel.belkhiri@polymtl.ca>\n Adham Masarwah <adham@nvidia.com> <adham@mellanox.com>\n@@ -70,14 +71,17 @@ Alexander Solganik <solganik@gmail.com>\n Alexander V Gutkin <alexander.v.gutkin@intel.com>\n Alexandre Ferrieux <alexandre.ferrieux@orange.com>\n Alexey Kardashevskiy <aik@ozlabs.ru>\n+Alexey Simakov <bigalex934@gmail.com>\n Alfredo Cardigliano <cardigliano@ntop.org>\n Ali Alnubani <alialnu@nvidia.com> <alialnu@mellanox.com>\n Ali Volkan Atli <volkan.atli@argela.com.tr>\n+Aliaksei Belovus <albe19021990@gmail.com>\n Alice Michael <alice.michael@intel.com>\n Alin Rauta <alin.rauta@intel.com>\n Allain Legacy <allain.legacy@windriver.com>\n Allen Hubbe <allen.hubbe@amd.com>\n Alok Makhariya <alok.makhariya@nxp.com>\n+Alok Mishra <almishra@marvell.com>\n Alok Prasad <palok@marvell.com>\n Alvaro Karsz <alvaro.karsz@solid-run.com>\n Alvin Zhang <alvinx.zhang@intel.com>\n@@ -217,6 +221,7 @@ Boleslav Stankevich <boleslav.stankevich@oktetlabs.ru>\n Boon Ang <boon.ang@broadcom.com> <bang@vmware.com>\n Boris Ouretskey <borisusun@gmail.com>\n Boris Pismenny <borisp@mellanox.com>\n+Borys Tsyrulnikov <tsyrulnikov.borys@gmail.com>\n Brad Larson <bradley.larson@amd.com>\n Brandon Lo <blo@iol.unh.edu>\n Brendan Ryan <brendan.ryan@intel.com>\n@@ -263,6 +268,7 @@ Chenglian Sun <sunchenglian@loongson.cn>\n Chengwen Feng <fengchengwen@huawei.com>\n Chenmin Sun <chenmin.sun@intel.com>\n Chenming Chang <ccm@ccm.ink>\n+Chenna Arnoori <chenna.arnoori@broadcom.com>\n Chenxingyu Wang <wangchenxingyu@huawei.com>\n Chenxu Di <chenxux.di@intel.com>\n Chenyu Huang <chenyux.huang@intel.com>\n@@ -291,8 +297,10 @@ Cian Ferriter <cian.ferriter@intel.com>\n Ciara Loftus <ciara.loftus@intel.com>\n Ciara Power <ciara.power@intel.com>\n Claire Murphy <claire.k.murphy@intel.com>\n+Claudia Cauli <claudiacauli@gmail.com>\n Clemens Famulla-Conrad <cfamullaconrad@suse.com>\n Cody Doucette <doucette@bu.edu>\n+Congjie Zhou <zcjie0802@qq.com>\n Congwen Zhang <zhang.congwen@zte.com.cn>\n Conor Fogarty <conor.fogarty@intel.com>\n Conor Walsh <conor.walsh@intel.com>\n@@ -303,6 +311,7 @@ Cunming Liang <cunming.liang@intel.com>\n Cyril Chemparathy <cchemparathy@ezchip.com> <cchemparathy@tilera.com>\n Cyril Cressent <cyril.cressent@intel.com>\n Dahir Osman <dahir.osman@windriver.com>\n+Dakota Sicher <dakota.sicher@broadcom.com>\n Damian Milosek <damian.milosek@intel.com>\n Damian Nowak <damianx.nowak@intel.com>\n Damien Millescamps <damien.millescamps@6wind.com>\n@@ -321,11 +330,14 @@ Daniel Mrzyglod <danielx.t.mrzyglod@intel.com>\n Daniel Shelepov <dashel@microsoft.com>\n Daniel Verkamp <daniel.verkamp@intel.com>\n Daniele Di Proietto <ddiproietto@vmware.com>\n+Daniil Agalakov <ade@amicon.ru>\n+Daniil Iskhakov <dish@amicon.ru>\n Daniil Ushkov <daniil.ushkov@yandex.ru>\n Danny Patel <dannyp@marvell.com>\n Danny Zhou <danny.zhou@intel.com>\n Danylo Vodopianov <dvo-plv@napatech.com>\n Dapeng Yu <dapengx.yu@intel.com>\n+Daphne Priscilla <df@marvell.com>\n Darek Stojaczyk <dariusz.stojaczyk@intel.com>\n Daria Kolistratova <daria.kolistratova@intel.com>\n Dariusz Chaberski <dariuszx.chaberski@intel.com>\n@@ -351,6 +363,7 @@ David Riddoch <driddoch@solarflare.com>\n David Su <david.w.su@intel.com>\n David Verbeiren <david.verbeiren@intel.com>\n David Wilder <dwilder@us.ibm.com>\n+David Zage <david.zage@intel.com>\n David Zeng <zengxhsh@cn.ibm.com>\n Davide Caratti <dcaratti@redhat.com>\n Dawid Gorecki <dgr@semihalf.com>\n@@ -362,10 +375,13 @@ Dean Marx <dmarx@iol.unh.edu>\n Declan Doherty <declan.doherty@intel.com>\n Deepak Khandelwal <deepak.khandelwal@intel.com>\n Deepak Kumar Jain <deepak.k.jain@intel.com>\n+Deepthi Kavalur <deepthi.kavalur@intel.com>\n Deirdre O'Connor <deirdre.o.connor@intel.com>\n Dekel Peled <dekelp@nvidia.com> <dekelp@mellanox.com>\n Dengdui Huang <huangdengdui@huawei.com>\n+Denis Lyulin <lyulin.2003@mail.ru>\n Denis Pryazhennikov <denis.pryazhennikov@arknetworks.am>\n+Denis Sergeev <denserg.edu@gmail.com>\n Dennis Marinus <dmarinus@amazon.com>\n Derek Chickles <derek.chickles@caviumnetworks.com>\n Des O Dea <des.j.o.dea@intel.com>\n@@ -496,12 +512,14 @@ Ganghui Zeng <zengganghui@huawei.com>\n Gao Feng <davidfgao@tencent.com>\n Gaoxiang Liu <liugaoxiang@huawei.com>\n Gargi Sau <gargi.sau@intel.com>\n+Garvit Varshney <gvarshney@marvell.com>\n Gary Mussar <gmussar@ciena.com>\n Gaurav Singh <gaurav1086@gmail.com>\n Gautam Dawar <gdawar@solarflare.com>\n Gavin Hu <gahu@nvidia.com> <gavin.hu@arm.com>\n Gavin Hu <gahu@nvidia.com> <gavin.hu@linaro.org>\n Gavin Li <gavinl@nvidia.com>\n+Gena Tertychnyi <genter@microsoft.com>\n Geoff Thorpe <geoff.thorpe@nxp.com>\n Geoffrey Le Gourriérec <geoffrey.le_gourrierec@6wind.com>\n Geoffrey Lv <geoffrey.lv@gmail.com>\n@@ -668,6 +686,7 @@ James Fox <jamesfox@xilinx.com>\n James Grant <j.grant@qub.ac.uk>\n James Hershaw <james.hershaw@corigine.com>\n James Poole <james.g.poole@intel.com>\n+James Raphael Tiovalen <jamestiotio@gmail.com>\n Jamie Lavigne <lavignen@amazon.com>\n Jan Beulich <jbeulich@suse.com>\n Jan Blunck <jblunck@infradead.org>\n@@ -833,9 +852,11 @@ Karmarkar Suyash <skarmarkar@sonusnet.com>\n Karol Kolacinski <karol.kolacinski@intel.com>\n Karra Satwik <kaara.satwik@chelsio.com>\n Kathleen Capella <kathleen.capella@arm.com>\n+Kavya AV <kavyax.a.v@intel.com>\n Kazatsker Kirill <kirill.kazatsker@intel.com>\n Ke Xu <ke1.xu@intel.com>\n Ke Zhang <ke1x.zhang@intel.com>\n+Keegan Freyhof <keegan.freyhof@broadcom.com>\n Kefu Chai <tchaikov@gmail.com>\n Keiichi Watanabe <keiichiw@chromium.org>\n Keith Wiles <keith.wiles@intel.com> <keith.wiles@windriver.com>\n@@ -905,7 +926,7 @@ Liang Ma <liangma@bytedance.com> <liang.j.ma@intel.com>\n Liang Xu <liang.xu@cinfotech.cn>\n Liang Zhang <zhangliang@bigo.sg>\n Liang-Min Larry Wang <liang-min.wang@intel.com>\n-Liangxing Wang <liangxing.wang@arm.com>\n+Liangxing Wang <wangliangxing@hygon.cn> <liangxing.wang@arm.com>\n Lihong Ma <lihongx.ma@intel.com>\n Lijian Zhang <lijian.zhang@arm.com>\n Lijie Shan <shan.lijie@zte.com.cn>\n@@ -916,6 +937,7 @@ Lin Li <lilintjpu@bytedance.com> <lilin24@baidu.com>\n Linfan Hu <zhongdahulinfan@163.com>\n Lingli Chen <linglix.chen@intel.com>\n Lingyu Liu <lingyu.liu@intel.com>\n+Linhu Li <lilinhu618@gmail.com>\n Linsi Yuan <yuanlinsi01@baidu.com>\n Lior Margalit <lmargalit@nvidia.com>\n Liron Himi <lironh@marvell.com>\n@@ -932,8 +954,9 @@ Luca Boccassi <luca.boccassi@microsoft.com> <luca.boccassi@gmail.com>\n Luca Boccassi <luca.boccassi@microsoft.com> <lboccass@brocade.com>\n Luca Boccassi <luca.boccassi@microsoft.com> <luca.boccassi@intl.att.com>\n Luca Vizzarro <luca.vizzarro@arm.com>\n+Luigi Rizzo <rizzo.unipi@gmail.com>\n Luka Jankovic <luka.jankovic@ericsson.com>\n-Lukas Sismis <sismis@cesnet.cz>\n+Lukas Sismis <sismis@dyna-nic.com> <sismis@cesnet.cz>\n Lukasz Bartosik <lbartosik@marvell.com>\n Lukasz Cieplicki <lukaszx.cieplicki@intel.com>\n Lukasz Czapnik <lukasz.czapnik@intel.com>\n@@ -978,6 +1001,7 @@ Marat Khalili <marat.khalili@huawei.com>\n Marc Sune <marcdevel@gmail.com> <marc.sune@bisdn.de>\n Marcel Apfelbaum <marcel@redhat.com>\n Marcel Cornu <marcel.d.cornu@intel.com>\n+Marcel Telka <marcel@telka.sk>\n Marcelo Ricardo Leitner <marcelo.leitner@gmail.com>\n Marcin Baran <marcinx.baran@intel.com>\n Marcin Danilewicz <marcinx.danilewicz@intel.com>\n@@ -1040,7 +1064,9 @@ Mauro Annarumma <mauroannarumma@hotmail.it>\n Maxime Coquelin <maxime.coquelin@redhat.com>\n Maxime Gouin <maxime.gouin@6wind.com>\n Maxime Leroy <maxime@leroys.fr> <maxime.leroy@6wind.com>\n+Maxime Peim <maxime.peim@gmail.com>\n Md Fahad Iqbal Polash <md.fahad.iqbal.polash@intel.com>\n+Md Shofiqul Islam <shofiqtest@gmail.com>\n Megha Ajmera <megha.ajmera@intel.com>\n Meijuan Zhao <meijuanx.zhao@intel.com>\n Meir Levi <mlevi4@marvell.com>\n@@ -1057,7 +1083,7 @@ Michael Haeuptle <michael.haeuptle@hpe.com>\n Michael Lilja <ml@napatech.com>\n Michael Luo <michael.luo@intel.com>\n Michael McConville <mmcco@mykolab.com>\n-Michael Pfeiffer <michael.pfeiffer@tu-ilmenau.de>\n+Michael Pfeiffer <m.pfeiffer@syseleven.de> <michael.pfeiffer@tu-ilmenau.de>\n Michael Qiu <qiudayu@chinac.com> <michael.qiu@intel.com>\n Michael Rossberg <michael.rossberg@tu-ilmenau.de>\n Michael S. Tsirkin <mst@redhat.com>\n@@ -1076,6 +1102,7 @@ Michal Mazurek <maz@semihalf.com>\n Michal Michalik <michal.michalik@intel.com>\n Michal Nowak <michal2.nowak@intel.com>\n Michal Schmidt <mschmidt@redhat.com>\n+Michal Sieron <michal.sieron@nokia.com>\n Michal Swiatkowski <michal.swiatkowski@intel.com>\n Michal Wilczynski <michal.wilczynski@intel.com>\n Michał Mirosław <michal.miroslaw@atendesoftware.pl> <mirq-linux@rere.qmqm.pl>\n@@ -1085,6 +1112,7 @@ Miguel Bernal Marin <miguel.bernal.marin@linux.intel.com>\n Mihai Brodschi <mihai.brodschi@broadcom.com>\n Mihai Pogonaru <pogonarumihai@gmail.com>\n Mike Baucom <michael.baucom@broadcom.com>\n+Mike Bly <bly454@gmail.com>\n Mike Pattrick <mkp@redhat.com>\n Mike Sowka <msowka@gmail.com>\n Mike Stolarchuk <mike.stolarchuk@bigswitch.com>\n@@ -1107,7 +1135,9 @@ Mohamad Noor Alim Hussin <mohamad.noor.alim.hussin@intel.com>\n Mohamed Feroz Abdul Majeeth <mabdulmajeet@marvell.com>\n Mohammad Abdul Awal <mohammad.abdul.awal@intel.com>\n Mohammad Iqbal Ahmad <mahmad@marvell.com>\n+Mohammad Shuab Siddique <mohammad-shuab.siddique@broadcom.com>\n Mohammed Gamal <mgamal@redhat.com>\n+Mohand Alrasheed <mrasheed@wirefilter.com>\n Mohsin Kazmi <mohsin.kazmi14@gmail.com>\n Mohsin Mazhar Shaikh <mohsinmazhar_shaikh@trendmicro.com>\n Mohsin Shaikh <mohsinshaikh@niometrics.com>\n@@ -1117,6 +1147,7 @@ Moti Haimovsky <motih@mellanox.com>\n Muhammad Ahmad <muhammad.ahmad@emumba.com>\n Muhammad Bilal <m.bilal@emumba.com>\n Mukesh Dua <mukesh.dua81@gmail.com>\n+Mukul Katiyar <mukul@versa-networks.com>\n Murphy Yang <murphyx.yang@intel.com>\n Murthy NSSR <nidadavolu.murthy@caviumnetworks.com>\n Muthurajan Jayakumar <muthurajan.jayakumar@intel.com>\n@@ -1199,6 +1230,7 @@ Omri Mor <omrimor2@illinois.edu>\n Ophir Munk <ophirmu@nvidia.com> <ophirmu@mellanox.com>\n Or Ami <ora@mellanox.com>\n Ori Kam <orika@nvidia.com> <orika@mellanox.com>\n+Ouyang Hao <ouyanghao@tencent.com>\n Owen Hilyard <ohilyard@iol.unh.edu>\n Pabitra Dalai <pabitra.dalai@intel.com>\n Pablo Cascón <pablo.cascon@netronome.com>\n@@ -1282,6 +1314,7 @@ Prashant Gupta <prashant.gupta_3@nxp.com>\n Prashant Upadhyaya <prashant.upadhyaya@aricent.com> <praupadhyaya@gmail.com>\n Prateek Agarwal <prateekag@cse.iitb.ac.in>\n Prathisna Padmasanan <prathisna.padmasanan@intel.com>\n+Pratik Senapati <psenapati@marvell.com>\n Praveen Kaligineedi <pkaligineedi@google.com>\n Praveen Shetty <praveen.shetty@intel.com>\n Pravin Pathak <pravin.pathak.dev@gmail.com> <pravin.pathak@intel.com>\n@@ -1317,6 +1350,7 @@ Radu Bulie <radu-andrei.bulie@nxp.com>\n Radu Nicolau <radu.nicolau@intel.com>\n Rafael Ávila de Espíndola <espindola@scylladb.com>\n Rafal Kozik <rk@semihalf.com>\n+Raghavendra Ningoji <raghavendra.ningoji@amd.com>\n Ragothaman Jayaraman <rjayaraman@caviumnetworks.com>\n Rahul Bhansali <rbhansali@marvell.com>\n Rahul Gupta <rahul.gupta@broadcom.com>\n@@ -1437,6 +1471,7 @@ Saurabh Singhal <saurabhs@arista.com>\n Savinay Dharmappa <savinay.dharmappa@intel.com>\n Scott Branden <scott.branden@broadcom.com>\n Scott Daniels <daniels@research.att.com>\n+Scott Mitchell <scott.k.mitch1@gmail.com> <scott_mitchell@apple.com>\n Scott W Taylor <scott.w.taylor@intel.com>\n Scott Wasson <scott_wasson@affirmednetworks.com>\n Seán Harte <seanbh@gmail.com>\n@@ -1445,6 +1480,7 @@ Sean Morrissey <sean.morrissey@intel.com>\n Sean Zhang <xiazhang@nvidia.com>\n Sebastian Basierski <sebastianx.basierski@intel.com>\n Selwin Sebastian <selwin.sebastian@amd.com>\n+Sergei Iashin <yashin.sergey@gmail.com>\n Sergey Balabanov <balabanovsv@ecotelecom.ru>\n Sergey Dyasly <s.dyasly@samsung.com>\n Sergey Madaminov <sergey.madaminov@gmail.com>\n@@ -1500,6 +1536,7 @@ Shujing Dong <shujing.dong@corigine.com>\n Shuki Katzenelson <shuki@lightbitslabs.com>\n Shun Hao <shunh@nvidia.com>\n Shuo Li <lishuo02@baidu.com>\n+Shuzo Ichiyoshi <deadcafe.beef@gmail.com>\n Shweta Choudaha <shweta.choudaha@att.com>\n Shy Shyman <shys@nvidia.com> <shys@mellanox.com>\n Shyam Kumar Shrivastav <shrivastav.shyam@gmail.com>\n@@ -1512,6 +1549,7 @@ Simon Kagstrom <simon.kagstrom@netinsight.net>\n Simon Kuenzer <simon.kuenzer@neclab.eu>\n Sinan Kaya <okaya@kernel.org>\n Siobhan Butler <siobhan.a.butler@intel.com>\n+Siraj Luthfi Ananda <sirajluthfi@gmail.com>\n Sirshak Das <sirshak.das@arm.com>\n Sivaprasad Tummala <sivaprasad.tummala@amd.com> <sivaprasad.tummala@intel.com>\n Sivaramakrishnan Venkat <venkatx.sivaramakrishnan@intel.com>\n@@ -1525,6 +1563,7 @@ Solal Pirelli <solal.pirelli@gmail.com>\n Solganik Alexander <sashas@lightbitslabs.com>\n Somnath Kotur <somnath.kotur@broadcom.com>\n Song Jiale <songx.jiale@intel.com>\n+Song Yoong Siang <yoong.siang.song@intel.com>\n Song Zhu <song.zhu@arm.com>\n Sony Chacko <sony.chacko@qlogic.com>\n Sotiris Salloumis <sotiris.salloumis@ericsson.com>\n@@ -1598,6 +1637,7 @@ Takeshi Yoshimura <tyos@jp.ibm.com> <t.yoshimura8869@gmail.com>\n Takuya Asada <syuu@cloudius-systems.com>\n Tal Avraham <talavr@annapurnalabs.com>\n Tal Shnaiderman <talshn@nvidia.com> <talshn@mellanox.com>\n+Talluri Chaitanyababu <chaitanyababux.talluri@intel.com>\n Tamar Mashiah <tmashiah@nvidia.com>\n Tanzeel Ahmed <tanzeelahmed713@gmail.com>\n Tao Y Yang <tao.y.yang@intel.com>\n@@ -1708,7 +1748,7 @@ Vikas Gupta <vikas.gupta@broadcom.com>\n Vikash Poddar <vikash.chandrax.poddar@intel.com>\n Vimal Chungath <vcchunga@amazon.com>\n Vincent Guo <guopengfei160@163.com>\n-Vincent Jardin <vincent.jardin@6wind.com>\n+Vincent Jardin <vjardin@free.fr> <vincent.jardin@6wind.com>\n Vincent Li <vincent.mc.li@gmail.com>\n Vincent S. Cojot <vcojot@redhat.com>\n Vinh Tran <vinh.t.tran10@gmail.com>\n@@ -1738,7 +1778,7 @@ Wang Sheng-Hui <shhuiw@gmail.com>\n Wangyu (Eric) <seven.wangyu@huawei.com>\n Waterman Cao <waterman.cao@intel.com>\n Wathsala Vithanage <wathsala.vithanage@arm.com>\n-Wei Dai <wei.dai@intel.com>\n+Wei Dai <wei.dai@picocom.com> <wei.dai@intel.com>\n Wei Hu <weh@microsoft.com>\n Wei Hu (Xavier) <xavier.huwei@huawei.com>\n Wei Huang <wei.huang@intel.com>\n@@ -1775,6 +1815,7 @@ Wojciech Drewek <wojciech.drewek@intel.com>\n Wojciech Liguzinski <wojciechx.liguzinski@intel.com>\n Wojciech Panfil <wojciech.panfil@intel.com>\n Wojciech Zmuda <woz@semihalf.com>\n+Xavier Guillaume <xavier.guillaume@ovhcloud.com>\n Xavier Simonart <xavier.simonart@intel.com>\n Xi Zhang <xix.zhang@intel.com>\n Xiangjun Meng <mengxiangjun4@huawei.com>\n@@ -1820,6 +1861,7 @@ Yajun Wu <yajunw@nvidia.com>\n Yan Lu <luyan@cmss.chinamobile.com>\n Yan Xia <yanx.xia@intel.com>\n Yang Ming <mosesyyoung@gmail.com> <ming.1.yang@nokia-sbell.com>\n+Yang Xu <xu.yang3@zte.com.cn>\n Yang Zhang <zy107165@alibaba-inc.com>\n Yangchao Zhou <zhouyates@gmail.com>\n Yanglong Wu <yanglong.wu@intel.com>\n@@ -1833,6 +1875,7 @@ Yaron Illouz <yaroni@radcom.com>\n Yaroslav Brustinov <ybrustin@cisco.com>\n Yash Sharma <ysharma@marvell.com>\n Yasufumi Ogawa <ogawa.yasufumi@lab.ntt.co.jp> <yasufum.o@gmail.com>\n+Yehor Malikov <yehor.malikov@solidigm.com>\n Yelena Krivosheev <yelena@marvell.com>\n Yerden Zhumabekov <e_zhumabekov@sts.kz> <yerden.zhumabekov@sts.kz>\n Yevgeny Kliteynik <kliteyn@nvidia.com>\n@@ -1897,6 +1940,7 @@ Zengmo Gao <gaozengmo@jd.com>\n Zerun Fu <zerun.fu@corigine.com>\n Zhangfei Gao <zhangfei.gao@linaro.org>\n Zhangkun <zhangk.zhangkun@huawei.com>\n+Zhanibek Bakin <zhanibek.bakin@gmail.com>\n Zhaochen Zhan <zhaochen.zhan@intel.com>\n Zhaoyan Chen <zhaoyan.chen@intel.com>\n Zhe Tao <zhe.tao@intel.com>\n@@ -1906,6 +1950,7 @@ Zhichao Zeng <zhichaox.zeng@intel.com>\n Zhigang Hu <zhigang.hu@intel.com>\n Zhigang Lu <zlu@ezchip.com>\n Zhiguang He <hezhiguang3@huawei.com>\n+Zhiguang Jin <jinzhiguang@kylinos.cn>\n Zhihong Peng <zhihongx.peng@intel.com>\n Zhihong Wang <wangzhihong.wzh@bytedance.com> <zhihong.wang@intel.com>\n Zhike Wang <wangzhike@jd.com> <wangzk320@163.com>\ndiff --git a/MAINTAINERS b/MAINTAINERS\nindex d7d8dbd..dca611f 100644\n--- a/MAINTAINERS\n+++ b/MAINTAINERS\n@@ -540,6 +540,7 @@ F: lib/eventdev/\n F: doc/guides/prog_guide/eventdev/eventdev.rst\n F: drivers/event/skeleton/\n F: app/test/test_eventdev.c\n+F: app/test/test_event_ring.c\n F: examples/l3fwd/l3fwd_event*\n \n Eventdev Ethdev Rx Adapter API\n@@ -1759,7 +1760,8 @@ M: Vladimir Medvedkin <vladimir.medvedkin@intel.com>\n F: lib/hash/\n F: doc/guides/prog_guide/hash_lib.rst\n F: doc/guides/prog_guide/toeplitz_hash_lib.rst\n-F: app/test/test_*hash*\n+F: app/test/test_hash*\n+F: app/test/test_thash*\n F: app/test/test_func_reentrancy.c\n \n LPM\n@@ -1990,7 +1992,6 @@ T: git://dpdk.org/next/dpdk-next-eventdev\n F: app/test-eventdev/\n F: doc/guides/tools/testeventdev.rst\n F: doc/guides/tools/img/eventdev_*\n-F: app/test/test_event_ring.c\n \n Graph application\n M: Sunil Kumar Kori <skori@marvell.com>\ndiff --git a/VERSION b/VERSION\nindex 6cd39b7..d1b9f99 100644\n--- a/VERSION\n+++ b/VERSION\n@@ -1 +1 @@\n-25.11.0\n+25.11.3\ndiff --git a/app/graph/conn.c b/app/graph/conn.c\nindex 4493460..c5e1c1a 100644\n--- a/app/graph/conn.c\n+++ b/app/graph/conn.c\n@@ -20,12 +20,12 @@\n #define MSG_CMD_TOO_LONG \"Command too long.\"\n \n static int\n-data_event_handle(struct conn *conn, int fd_client)\n+data_event_handle(struct conn *c, int fd_client)\n {\n \tssize_t len, i, rc = 0;\n \n \t/* Read input message */\n-\tlen = read(fd_client, conn->buf, conn->buf_size);\n+\tlen = read(fd_client, c->buf, c->buf_size);\n \tif (len == -1) {\n \t\tif ((errno == EAGAIN) || (errno == EWOULDBLOCK))\n \t\t\treturn 0;\n@@ -38,37 +38,37 @@ data_event_handle(struct conn *conn, int fd_client)\n \n \t/* Handle input messages */\n \tfor (i = 0; i < len; i++) {\n-\t\tif (conn->buf[i] == '\\n') {\n+\t\tif (c->buf[i] == '\\n') {\n \t\t\tsize_t n;\n \n-\t\t\tconn->msg_in[conn->msg_in_len] = 0;\n-\t\t\tconn->msg_out[0] = 0;\n+\t\t\tc->msg_in[c->msg_in_len] = 0;\n+\t\t\tc->msg_out[0] = 0;\n \n-\t\t\tconn->msg_handle(conn->msg_in, conn->msg_out, conn->msg_out_len_max,\n-\t\t\t\t\t conn->msg_handle_arg);\n+\t\t\tc->msg_handle(c->msg_in, c->msg_out, c->msg_out_len_max,\n+\t\t\t\t\t c->msg_handle_arg);\n \n-\t\t\tn = strlen(conn->msg_out);\n+\t\t\tn = strlen(c->msg_out);\n \t\t\tif (n) {\n-\t\t\t\trc = write(fd_client, conn->msg_out, n);\n+\t\t\t\trc = write(fd_client, c->msg_out, n);\n \t\t\t\tif (rc == -1)\n \t\t\t\t\tgoto exit;\n \t\t\t}\n \n-\t\t\tconn->msg_in_len = 0;\n-\t\t} else if (conn->msg_in_len < conn->msg_in_len_max) {\n-\t\t\tconn->msg_in[conn->msg_in_len] = conn->buf[i];\n-\t\t\tconn->msg_in_len++;\n+\t\t\tc->msg_in_len = 0;\n+\t\t} else if (c->msg_in_len < c->msg_in_len_max) {\n+\t\t\tc->msg_in[c->msg_in_len] = c->buf[i];\n+\t\t\tc->msg_in_len++;\n \t\t} else {\n \t\t\trc = write(fd_client, MSG_CMD_TOO_LONG, strlen(MSG_CMD_TOO_LONG));\n \t\t\tif (rc == -1)\n \t\t\t\tgoto exit;\n \n-\t\t\tconn->msg_in_len = 0;\n+\t\t\tc->msg_in_len = 0;\n \t\t}\n \t}\n \n \t/* Write prompt */\n-\trc = write(fd_client, conn->prompt, strlen(conn->prompt));\n+\trc = write(fd_client, c->prompt, strlen(c->prompt));\n \trc = (rc == -1) ? -1 : 0;\n \n exit:\n@@ -76,11 +76,11 @@ exit:\n }\n \n static int\n-control_event_handle(struct conn *conn, int fd_client)\n+control_event_handle(struct conn *c, int fd_client)\n {\n \tint rc;\n \n-\trc = epoll_ctl(conn->fd_client_group, EPOLL_CTL_DEL, fd_client, NULL);\n+\trc = epoll_ctl(c->fd_client_group, EPOLL_CTL_DEL, fd_client, NULL);\n \tif (rc == -1)\n \t\tgoto exit;\n \n@@ -99,7 +99,7 @@ conn_init(struct conn_params *p)\n {\n \tint fd_server, fd_client_group, rc;\n \tstruct sockaddr_in server_address;\n-\tstruct conn *conn = NULL;\n+\tstruct conn *c = NULL;\n \tint reuse = 1;\n \n \tmemset(&server_address, 0, sizeof(server_address));\n@@ -115,20 +115,20 @@ conn_init(struct conn_params *p)\n \t\tgoto exit;\n \n \t/* Memory allocation */\n-\tconn = calloc(1, sizeof(struct conn));\n-\tif (conn == NULL)\n+\tc = calloc(1, sizeof(struct conn));\n+\tif (c == NULL)\n \t\tgoto exit;\n \n-\tconn->welcome = calloc(1, CONN_WELCOME_LEN_MAX + 1);\n-\tconn->prompt = calloc(1, CONN_PROMPT_LEN_MAX + 1);\n-\tconn->buf = calloc(1, p->buf_size);\n-\tconn->msg_in = calloc(1, p->msg_in_len_max + 1);\n-\tconn->msg_out = calloc(1, p->msg_out_len_max + 1);\n+\tc->welcome = calloc(1, CONN_WELCOME_LEN_MAX + 1);\n+\tc->prompt = calloc(1, CONN_PROMPT_LEN_MAX + 1);\n+\tc->buf = calloc(1, p->buf_size);\n+\tc->msg_in = calloc(1, p->msg_in_len_max + 1);\n+\tc->msg_out = calloc(1, p->msg_out_len_max + 1);\n \n-\tif ((conn->welcome == NULL) || (conn->prompt == NULL) || (conn->buf == NULL) ||\n-\t    (conn->msg_in == NULL) || (conn->msg_out == NULL)) {\n-\t\tconn_free(conn);\n-\t\tconn = NULL;\n+\tif ((c->welcome == NULL) || (c->prompt == NULL) || (c->buf == NULL) ||\n+\t    (c->msg_in == NULL) || (c->msg_out == NULL)) {\n+\t\tconn_free(c);\n+\t\tc = NULL;\n \t\tgoto exit;\n \t}\n \n@@ -138,8 +138,8 @@ conn_init(struct conn_params *p)\n \n \tfd_server = socket(AF_INET, SOCK_STREAM | SOCK_NONBLOCK, 0);\n \tif (fd_server == -1) {\n-\t\tconn_free(conn);\n-\t\tconn = NULL;\n+\t\tconn_free(c);\n+\t\tc = NULL;\n \t\tgoto exit;\n \t}\n \n@@ -161,47 +161,47 @@ conn_init(struct conn_params *p)\n \t\tgoto free;\n \n \t/* Fill in */\n-\trte_strscpy(conn->welcome, p->welcome, CONN_WELCOME_LEN_MAX);\n-\trte_strscpy(conn->prompt, p->prompt, CONN_PROMPT_LEN_MAX);\n-\tconn->buf_size = p->buf_size;\n-\tconn->msg_in_len_max = p->msg_in_len_max;\n-\tconn->msg_out_len_max = p->msg_out_len_max;\n-\tconn->msg_in_len = 0;\n-\tconn->fd_server = fd_server;\n-\tconn->fd_client_group = fd_client_group;\n-\tconn->msg_handle = p->msg_handle;\n-\tconn->msg_handle_arg = p->msg_handle_arg;\n+\trte_strscpy(c->welcome, p->welcome, CONN_WELCOME_LEN_MAX);\n+\trte_strscpy(c->prompt, p->prompt, CONN_PROMPT_LEN_MAX);\n+\tc->buf_size = p->buf_size;\n+\tc->msg_in_len_max = p->msg_in_len_max;\n+\tc->msg_out_len_max = p->msg_out_len_max;\n+\tc->msg_in_len = 0;\n+\tc->fd_server = fd_server;\n+\tc->fd_client_group = fd_client_group;\n+\tc->msg_handle = p->msg_handle;\n+\tc->msg_handle_arg = p->msg_handle_arg;\n \n exit:\n-\treturn conn;\n+\treturn c;\n free:\n-\tconn_free(conn);\n+\tconn_free(c);\n \tclose(fd_server);\n-\tconn = NULL;\n-\treturn conn;\n+\tc = NULL;\n+\treturn c;\n }\n \n void\n-conn_free(struct conn *conn)\n+conn_free(struct conn *c)\n {\n-\tif (conn == NULL)\n+\tif (c == NULL)\n \t\treturn;\n \n-\tif (conn->fd_client_group)\n-\t\tclose(conn->fd_client_group);\n+\tif (c->fd_client_group)\n+\t\tclose(c->fd_client_group);\n \n-\tif (conn->fd_server)\n-\t\tclose(conn->fd_server);\n+\tif (c->fd_server)\n+\t\tclose(c->fd_server);\n \n-\tfree(conn->msg_out);\n-\tfree(conn->msg_in);\n-\tfree(conn->prompt);\n-\tfree(conn->welcome);\n-\tfree(conn);\n+\tfree(c->msg_out);\n+\tfree(c->msg_in);\n+\tfree(c->prompt);\n+\tfree(c->welcome);\n+\tfree(c);\n }\n \n int\n-conn_req_poll(struct conn *conn)\n+conn_req_poll(struct conn *c)\n {\n \tstruct sockaddr_in client_address;\n \tsocklen_t client_address_length;\n@@ -209,12 +209,12 @@ conn_req_poll(struct conn *conn)\n \tint fd_client, rc;\n \n \t/* Check input arguments */\n-\tif (conn == NULL)\n+\tif (c == NULL)\n \t\treturn -1;\n \n \t/* Server socket */\n \tclient_address_length = sizeof(client_address);\n-\tfd_client = accept4(conn->fd_server, (struct sockaddr *)&client_address,\n+\tfd_client = accept4(c->fd_server, (struct sockaddr *)&client_address,\n \t\t\t    &client_address_length, SOCK_NONBLOCK);\n \tif (fd_client == -1) {\n \t\tif ((errno == EAGAIN) || (errno == EWOULDBLOCK))\n@@ -227,20 +227,20 @@ conn_req_poll(struct conn *conn)\n \tevent.events = EPOLLIN | EPOLLRDHUP | EPOLLHUP;\n \tevent.data.fd = fd_client;\n \n-\trc = epoll_ctl(conn->fd_client_group, EPOLL_CTL_ADD, fd_client, &event);\n+\trc = epoll_ctl(c->fd_client_group, EPOLL_CTL_ADD, fd_client, &event);\n \tif (rc == -1) {\n \t\tclose(fd_client);\n \t\tgoto exit;\n \t}\n \n \t/* Client */\n-\trc = write(fd_client, conn->welcome, strlen(conn->welcome));\n+\trc = write(fd_client, c->welcome, strlen(c->welcome));\n \tif (rc == -1) {\n \t\tclose(fd_client);\n \t\tgoto exit;\n \t}\n \n-\trc = write(fd_client, conn->prompt, strlen(conn->prompt));\n+\trc = write(fd_client, c->prompt, strlen(c->prompt));\n \tif (rc == -1) {\n \t\tclose(fd_client);\n \t\tgoto exit;\n@@ -253,17 +253,17 @@ exit:\n }\n \n int\n-conn_msg_poll(struct conn *conn)\n+conn_msg_poll(struct conn *c)\n {\n \tint fd_client, rc, rc_data = 0, rc_control = 0;\n \tstruct epoll_event event;\n \n \t/* Check input arguments */\n-\tif (conn == NULL)\n+\tif (c == NULL)\n \t\treturn -1;\n \n \t/* Client group */\n-\trc = epoll_wait(conn->fd_client_group, &event, 1, 0);\n+\trc = epoll_wait(c->fd_client_group, &event, 1, 0);\n \tif ((rc == -1) || rc == 0)\n \t\treturn rc;\n \n@@ -271,11 +271,11 @@ conn_msg_poll(struct conn *conn)\n \n \t/* Data available */\n \tif (event.events & EPOLLIN)\n-\t\trc_data = data_event_handle(conn, fd_client);\n+\t\trc_data = data_event_handle(c, fd_client);\n \n \t/* Control events */\n \tif (event.events & (EPOLLRDHUP | EPOLLERR | EPOLLHUP))\n-\t\trc_control = control_event_handle(conn, fd_client);\n+\t\trc_control = control_event_handle(c, fd_client);\n \n \tif (rc_data || rc_control)\n \t\treturn -1;\ndiff --git a/app/pdump/main.c b/app/pdump/main.c\nindex 68bda48..1e62c8a 100644\n--- a/app/pdump/main.c\n+++ b/app/pdump/main.c\n@@ -247,7 +247,7 @@ parse_uint_value(const char *key, const char *value, void *extra_args)\n }\n \n static int\n-parse_pdump(const char *optarg)\n+parse_pdump(const char *arg)\n {\n \tstruct rte_kvargs *kvlist;\n \tint ret = 0, cnt1, cnt2;\n@@ -257,9 +257,9 @@ parse_pdump(const char *optarg)\n \tpt = &pdump_t[num_tuples];\n \n \t/* initial check for invalid arguments */\n-\tkvlist = rte_kvargs_parse(optarg, valid_pdump_arguments);\n+\tkvlist = rte_kvargs_parse(arg, valid_pdump_arguments);\n \tif (kvlist == NULL) {\n-\t\tprintf(\"--pdump=\\\"%s\\\": invalid argument passed\\n\", optarg);\n+\t\tprintf(\"--pdump=\\\"%s\\\": invalid argument passed\\n\", arg);\n \t\treturn -1;\n \t}\n \n@@ -268,7 +268,7 @@ parse_pdump(const char *optarg)\n \tcnt2 = rte_kvargs_count(kvlist, PDUMP_PCI_ARG);\n \tif (!((cnt1 == 1 && cnt2 == 0) || (cnt1 == 0 && cnt2 == 1))) {\n \t\tprintf(\"--pdump=\\\"%s\\\": must have either port or \"\n-\t\t\t\"device_id argument\\n\", optarg);\n+\t\t\t\"device_id argument\\n\", arg);\n \t\tret = -1;\n \t\tgoto free_kvlist;\n \t} else if (cnt1 == 1) {\n@@ -290,7 +290,7 @@ parse_pdump(const char *optarg)\n \t/* queue parsing and validation */\n \tcnt1 = rte_kvargs_count(kvlist, PDUMP_QUEUE_ARG);\n \tif (cnt1 != 1) {\n-\t\tprintf(\"--pdump=\\\"%s\\\": must have queue argument\\n\", optarg);\n+\t\tprintf(\"--pdump=\\\"%s\\\": must have queue argument\\n\", arg);\n \t\tret = -1;\n \t\tgoto free_kvlist;\n \t}\n@@ -303,7 +303,7 @@ parse_pdump(const char *optarg)\n \tcnt2 = rte_kvargs_count(kvlist, PDUMP_TX_DEV_ARG);\n \tif (cnt1 == 0 && cnt2 == 0) {\n \t\tprintf(\"--pdump=\\\"%s\\\": must have either rx-dev or \"\n-\t\t\t\"tx-dev argument\\n\", optarg);\n+\t\t\t\"tx-dev argument\\n\", arg);\n \t\tret = -1;\n \t\tgoto free_kvlist;\n \t} else if (cnt1 == 1 && cnt2 == 1) {\ndiff --git a/app/test-crypto-perf/cperf_options_parsing.c b/app/test-crypto-perf/cperf_options_parsing.c\nindex 14e7315..0951293 100644\n--- a/app/test-crypto-perf/cperf_options_parsing.c\n+++ b/app/test-crypto-perf/cperf_options_parsing.c\n@@ -481,8 +481,7 @@ parse_device_type(struct cperf_options *opts, const char *arg)\n \tif (strlen(arg) > (sizeof(opts->device_type) - 1))\n \t\treturn -1;\n \n-\tstrncpy(opts->device_type, arg, sizeof(opts->device_type) - 1);\n-\t*(opts->device_type + sizeof(opts->device_type) - 1) = '\\0';\n+\tstrlcpy(opts->device_type, arg, sizeof(opts->device_type));\n \n \treturn 0;\n }\n@@ -1125,7 +1124,7 @@ cperf_options_default(struct cperf_options *opts)\n \topts->segment_sz = 0;\n \n \topts->imix_distribution_count = 0;\n-\tstrncpy(opts->device_type, \"crypto_aesni_mb\",\n+\tstrlcpy(opts->device_type, \"crypto_aesni_mb\",\n \t\t\tsizeof(opts->device_type));\n \topts->nb_qps = 1;\n \ndiff --git a/app/test-dma-perf/benchmark.c b/app/test-dma-perf/benchmark.c\nindex b6125d8..c0ffc85 100644\n--- a/app/test-dma-perf/benchmark.c\n+++ b/app/test-dma-perf/benchmark.c\n@@ -520,10 +520,10 @@ do_cpu_mem_copy(void *p)\n \n \twhile (1) {\n \t\tfor (i = 0; i < nr_buf; i++) {\n-\t\t\tconst void *src = rte_pktmbuf_mtod(dsts[i], void *);\n-\t\t\tvoid *dst = rte_pktmbuf_mtod(srcs[i], void *);\n+\t\t\tconst void *src = rte_pktmbuf_mtod(srcs[i], void *);\n+\t\t\tvoid *dst = rte_pktmbuf_mtod(dsts[i], void *);\n \n-\t\t\t/* copy buffer form src to dst */\n+\t\t\t/* copy buffer from src to dst */\n \t\t\trte_memcpy(dst, src, (size_t)buf_size);\n \t\t\tworker_info->total_cpl++;\n \t\t}\ndiff --git a/app/test-dma-perf/main.c b/app/test-dma-perf/main.c\nindex 4249dcf..04ddc4e 100644\n--- a/app/test-dma-perf/main.c\n+++ b/app/test-dma-perf/main.c\n@@ -110,6 +110,7 @@ static void\n run_test(uint32_t case_id, struct test_configure *case_cfg)\n {\n \tuint32_t nb_lcores = rte_lcore_count();\n+\tuint32_t main_lcore = rte_get_main_lcore();\n \tstruct test_configure_entry *mem_size = &case_cfg->mem_size;\n \tstruct test_configure_entry *buf_size = &case_cfg->buf_size;\n \tstruct test_configure_entry *ring_size = &case_cfg->ring_size;\n@@ -122,6 +123,14 @@ run_test(uint32_t case_id, struct test_configure *case_cfg)\n \t\treturn;\n \t}\n \n+\tfor (uint32_t i = 0; i < case_cfg->num_worker; i++) {\n+\t\tif (case_cfg->dma_config[i].lcore_dma_map.lcore == main_lcore) {\n+\t\t\tprintf(\"Case %u: worker %u cannot run on the EAL main lcore (%u).\\n\",\n+\t\t\t       case_id, i, main_lcore);\n+\t\t\treturn;\n+\t\t}\n+\t}\n+\n \tprintf(\"Number of used lcores: %u.\\n\", nb_lcores);\n \n \tif (mem_size->incr != 0)\n@@ -220,7 +229,7 @@ parse_entry(const char *value, struct test_configure_entry *entry)\n \tint args_nr = -1;\n \tint ret;\n \n-\tstrncpy(input, value, 254);\n+\tstrlcpy(input, value, sizeof(input));\n \tif (*input == '\\0')\n \t\tgoto out;\n \ndiff --git a/app/test-dma-perf/main.h b/app/test-dma-perf/main.h\nindex 25f32b7..a383ac0 100644\n--- a/app/test-dma-perf/main.h\n+++ b/app/test-dma-perf/main.h\n@@ -10,7 +10,7 @@\n #include <rte_cycles.h>\n #include <rte_dev.h>\n \n-#define MAX_WORKER_NB 128\n+#define MAX_WORKER_NB RTE_MAX_LCORE\n \n enum {\n \tTEST_TYPE_NONE = 0,\ndiff --git a/app/test-eventdev/evt_options.c b/app/test-eventdev/evt_options.c\nindex 0e70c97..1da0aba 100644\n--- a/app/test-eventdev/evt_options.c\n+++ b/app/test-eventdev/evt_options.c\n@@ -23,7 +23,7 @@ evt_options_default(struct evt_options *opt)\n \tmemset(opt, 0, sizeof(*opt));\n \topt->verbose_level = 1; /* Enable minimal prints */\n \topt->dev_id = 0;\n-\tstrncpy(opt->test_name, \"order_queue\", EVT_TEST_NAME_MAX_LEN);\n+\tstrlcpy(opt->test_name, \"order_queue\", sizeof(opt->test_name));\n \topt->nb_flows = 1024;\n \topt->socket_id = SOCKET_ID_ANY;\n \topt->pool_sz = 16 * 1024;\ndiff --git a/app/test-pmd/cmdline.c b/app/test-pmd/cmdline.c\nindex c33c66f..18cc358 100644\n--- a/app/test-pmd/cmdline.c\n+++ b/app/test-pmd/cmdline.c\n@@ -6241,6 +6241,10 @@ static void cmd_set_dcb_fwd_tc_parsed(void *parsed_result,\n {\n \tstruct cmd_set_dcb_fwd_tc_result *res = parsed_result;\n \tint i;\n+\tif (test_done == 0) {\n+\t\tfprintf(stderr, \"Please stop forwarding first\\n\");\n+\t\treturn;\n+\t}\n \tif (res->tc_mask == 0) {\n \t\tfprintf(stderr, \"TC mask should not be zero!\\n\");\n \t\treturn;\n@@ -6293,6 +6297,10 @@ static void cmd_set_dcb_fwd_tc_cores_parsed(void *parsed_result,\n \t\t\t\t\t    __rte_unused void *data)\n {\n \tstruct cmd_set_dcb_fwd_tc_cores_result *res = parsed_result;\n+\tif (test_done == 0) {\n+\t\tfprintf(stderr, \"Please stop forwarding first\\n\");\n+\t\treturn;\n+\t}\n \tif (res->tc_cores == 0) {\n \t\tfprintf(stderr, \"Cores per-TC should not be zero!\\n\");\n \t\treturn;\n@@ -9353,7 +9361,7 @@ static void cmd_dump_mbuf_history_parsed(void *parsed_result,\n \t\t\tcmdline_printf(cl,\n \t\t\t\t\t\"Failed to find mempool '%s'\\n\",\n \t\t\t\t\tres->name);\n-\t\t\treturn;\n+\t\t\tgoto out_close;\n \t\t}\n \t\trte_mbuf_history_dump_mempool(out, mp);\n \t\tif (out != stdout)\n@@ -9366,7 +9374,7 @@ static void cmd_dump_mbuf_history_parsed(void *parsed_result,\n \t\tif (sscanf(res->obj, \"0x%\" SCNxPTR, &mbuf_addr) != 1) {\n \t\t\tcmdline_printf(cl,\n \t\t\t\t\t\"Invalid mbuf pointer format. Use 0x<address>\\n\");\n-\t\t\treturn;\n+\t\t\tgoto out_close;\n \t\t}\n \t\tmbuf = (struct rte_mbuf *)mbuf_addr;\n \t\trte_mbuf_history_dump(out, mbuf);\n@@ -9376,6 +9384,7 @@ static void cmd_dump_mbuf_history_parsed(void *parsed_result,\n \t\t\t\t\tmbuf, res->file);\n \t}\n \n+out_close:\n \tif (out != stdout)\n \t\tfclose(out);\n }\ndiff --git a/app/test-pmd/cmdline_flow.c b/app/test-pmd/cmdline_flow.c\nindex 54b2478..5188d3a 100644\n--- a/app/test-pmd/cmdline_flow.c\n+++ b/app/test-pmd/cmdline_flow.c\n@@ -4586,7 +4586,8 @@ static const struct token token_list[] = {\n \t\t.help = \"tag control information\",\n \t\t.next = NEXT(item_vlan, NEXT_ENTRY(COMMON_UNSIGNED),\n \t\t\t     item_param),\n-\t\t.args = ARGS(ARGS_ENTRY_HTON(struct rte_flow_item_vlan, hdr.vlan_tci)),\n+\t\t.args = ARGS(ARGS_ENTRY_MASK_HTON(struct rte_flow_item_vlan,\n+\t\t\t\t\t  hdr.vlan_tci, \"\\xff\\xff\")),\n \t},\n \t[ITEM_VLAN_PCP] = {\n \t\t.name = \"pcp\",\n@@ -4617,8 +4618,8 @@ static const struct token token_list[] = {\n \t\t.help = \"inner EtherType\",\n \t\t.next = NEXT(item_vlan, NEXT_ENTRY(COMMON_UNSIGNED),\n \t\t\t     item_param),\n-\t\t.args = ARGS(ARGS_ENTRY_HTON(struct rte_flow_item_vlan,\n-\t\t\t\t\t     hdr.eth_proto)),\n+\t\t.args = ARGS(ARGS_ENTRY_MASK_HTON(struct rte_flow_item_vlan,\n+\t\t\t\t\t\t  hdr.eth_proto, \"\\xff\\xff\")),\n \t},\n \t[ITEM_VLAN_HAS_MORE_VLAN] = {\n \t\t.name = \"has_more_vlan\",\n@@ -11878,7 +11879,7 @@ parse_string0(struct context *ctx, const struct token *token __rte_unused,\n \tif (!ctx->object)\n \t\treturn len;\n \tbuf = (uint8_t *)ctx->object + arg_data->offset;\n-\tstrncpy(buf, str, len);\n+\tmemcpy(buf, str, len);\n \tif (ctx->objmask)\n \t\tmemset((uint8_t *)ctx->objmask + arg_data->offset, 0xff, len);\n \treturn len;\n@@ -14064,7 +14065,7 @@ cmd_set_raw_parsed(const struct buffer *in)\n \tdata_tail = data + ACTION_RAW_ENCAP_MAX_DATA;\n \tfor (i = n - 1 ; i >= 0; --i) {\n \t\tconst struct rte_flow_item_gtp *gtp;\n-\t\tconst struct rte_flow_item_geneve_opt *opt;\n+\t\tconst struct rte_flow_item_geneve_opt *geneve_opt;\n \t\tstruct rte_flow_item_ipv6_routing_ext *ext;\n \n \t\titem = in->args.vc.pattern + i;\n@@ -14136,16 +14137,16 @@ cmd_set_raw_parsed(const struct buffer *in)\n \t\t\tsize = sizeof(struct rte_geneve_hdr);\n \t\t\tbreak;\n \t\tcase RTE_FLOW_ITEM_TYPE_GENEVE_OPT:\n-\t\t\topt = (const struct rte_flow_item_geneve_opt *)\n+\t\t\tgeneve_opt = (const struct rte_flow_item_geneve_opt *)\n \t\t\t\t\t\t\t\titem->spec;\n \t\t\tsize = offsetof(struct rte_flow_item_geneve_opt,\n \t\t\t\t\toption_len) + sizeof(uint8_t);\n-\t\t\tif (opt->option_len && opt->data) {\n-\t\t\t\t*total_size += opt->option_len *\n+\t\t\tif (geneve_opt->option_len && geneve_opt->data) {\n+\t\t\t\t*total_size += geneve_opt->option_len *\n \t\t\t\t\t       sizeof(uint32_t);\n \t\t\t\trte_memcpy(data_tail - (*total_size),\n-\t\t\t\t\t   opt->data,\n-\t\t\t\t\t   opt->option_len * sizeof(uint32_t));\n+\t\t\t\t\t   geneve_opt->data,\n+\t\t\t\t\t   geneve_opt->option_len * sizeof(uint32_t));\n \t\t\t}\n \t\t\tbreak;\n \t\tcase RTE_FLOW_ITEM_TYPE_L2TPV3OIP:\n@@ -14195,7 +14196,7 @@ cmd_set_raw_parsed(const struct buffer *in)\n \t\t\t\tgoto error;\n \t\t\t} else {\n \t\t\t\tconst struct rte_flow_item_gtp_psc\n-\t\t\t\t\t*opt = item->spec;\n+\t\t\t\t\t*gtp_opt = item->spec;\n \t\t\t\tstruct rte_gtp_psc_generic_hdr *hdr;\n \t\t\t\tsize_t hdr_size = RTE_ALIGN(sizeof(*hdr),\n \t\t\t\t\t\t\t sizeof(int32_t));\n@@ -14203,7 +14204,7 @@ cmd_set_raw_parsed(const struct buffer *in)\n \t\t\t\t*total_size += hdr_size;\n \t\t\t\thdr = (typeof(hdr))(data_tail - (*total_size));\n \t\t\t\tmemset(hdr, 0, hdr_size);\n-\t\t\t\t*hdr = opt->hdr;\n+\t\t\t\t*hdr = gtp_opt->hdr;\n \t\t\t\thdr->ext_hdr_len = 1;\n \t\t\t\tgtp_psc = i;\n \t\t\t\tsize = 0;\n@@ -14225,25 +14226,25 @@ cmd_set_raw_parsed(const struct buffer *in)\n \t\t\tsize = 0;\n \t\t\tif (item->spec) {\n \t\t\t\tconst struct rte_flow_item_gre_opt\n-\t\t\t\t\t*opt = item->spec;\n-\t\t\t\tif (opt->checksum_rsvd.checksum) {\n+\t\t\t\t\t*gre_opt = item->spec;\n+\t\t\t\tif (gre_opt->checksum_rsvd.checksum) {\n \t\t\t\t\t*total_size +=\n-\t\t\t\t\t\tsizeof(opt->checksum_rsvd);\n+\t\t\t\t\t\tsizeof(gre_opt->checksum_rsvd);\n \t\t\t\t\trte_memcpy(data_tail - (*total_size),\n-\t\t\t\t\t\t   &opt->checksum_rsvd,\n-\t\t\t\t\t\t   sizeof(opt->checksum_rsvd));\n+\t\t\t\t\t\t   &gre_opt->checksum_rsvd,\n+\t\t\t\t\t\t   sizeof(gre_opt->checksum_rsvd));\n \t\t\t\t}\n-\t\t\t\tif (opt->key.key) {\n-\t\t\t\t\t*total_size += sizeof(opt->key.key);\n+\t\t\t\tif (gre_opt->key.key) {\n+\t\t\t\t\t*total_size += sizeof(gre_opt->key.key);\n \t\t\t\t\trte_memcpy(data_tail - (*total_size),\n-\t\t\t\t\t\t   &opt->key.key,\n-\t\t\t\t\t\t   sizeof(opt->key.key));\n+\t\t\t\t\t\t   &gre_opt->key.key,\n+\t\t\t\t\t\t   sizeof(gre_opt->key.key));\n \t\t\t\t}\n-\t\t\t\tif (opt->sequence.sequence) {\n-\t\t\t\t\t*total_size += sizeof(opt->sequence.sequence);\n+\t\t\t\tif (gre_opt->sequence.sequence) {\n+\t\t\t\t\t*total_size += sizeof(gre_opt->sequence.sequence);\n \t\t\t\t\trte_memcpy(data_tail - (*total_size),\n-\t\t\t\t\t\t   &opt->sequence.sequence,\n-\t\t\t\t\t\t   sizeof(opt->sequence.sequence));\n+\t\t\t\t\t\t   &gre_opt->sequence.sequence,\n+\t\t\t\t\t\t   sizeof(gre_opt->sequence.sequence));\n \t\t\t\t}\n \t\t\t}\n \t\t\tproto = 0x2F;\ndiff --git a/app/test-pmd/config.c b/app/test-pmd/config.c\nindex 6ea5062..32c885d 100644\n--- a/app/test-pmd/config.c\n+++ b/app/test-pmd/config.c\n@@ -69,6 +69,8 @@\n \n #define NS_PER_SEC 1E9\n \n+#define FLOW_QUEUE_FLUSH_MAX_ITERS (10)\n+\n static const struct {\n \tenum tx_pkt_split split;\n \tconst char *name;\n@@ -1834,6 +1836,15 @@ port_flow_configure(portid_t port_id,\n \tport->queue_sz = queue_attr->size;\n \tfor (std_queue = 0; std_queue < nb_queue; std_queue++)\n \t\tattr_list[std_queue] = queue_attr;\n+\tfree(port->job_list);\n+\tport->job_list = calloc(nb_queue, sizeof(*port->job_list));\n+\tif (port->job_list == NULL) {\n+\t\tTESTPMD_LOG(ERR, \"Failed to allocate memory for operations tracking on port %u\\n\",\n+\t\t\t    port_id);\n+\t\treturn -ENOMEM;\n+\t}\n+\tfor (unsigned int i = 0; i < nb_queue; i++)\n+\t\tLIST_INIT(&port->job_list[i]);\n \t/* Poisoning to make sure PMDs update it in case of error. */\n \tmemset(&error, 0x66, sizeof(error));\n \tif (rte_flow_configure(port_id, port_attr, nb_queue, attr_list, &error))\n@@ -2938,6 +2949,7 @@ port_queue_flow_create(portid_t port_id, queueid_t queue_id,\n \tpf->flow = flow;\n \tjob->pf = pf;\n \tport->flow_list = pf;\n+\tLIST_INSERT_HEAD(&port->job_list[queue_id], job, chain);\n \tprintf(\"Flow rule #%\"PRIu64\" creation enqueued\\n\", pf->id);\n \treturn 0;\n }\n@@ -2975,6 +2987,7 @@ port_queue_flow_update_resized(portid_t port_id, queueid_t queue_id,\n \t\tfree(job);\n \t\treturn port_flow_complain(&error);\n \t}\n+\tLIST_INSERT_HEAD(&port->job_list[queue_id], job, chain);\n \treturn 0;\n }\n \n@@ -3028,6 +3041,7 @@ port_queue_flow_destroy(portid_t port_id, queueid_t queue_id,\n \t\t\t\tret = port_flow_complain(&error);\n \t\t\t\tcontinue;\n \t\t\t}\n+\t\t\tLIST_INSERT_HEAD(&port->job_list[queue_id], job, chain);\n \t\t\tprintf(\"Flow rule #%\"PRIu64\" destruction enqueued\\n\",\n \t\t\t       pf->id);\n \t\t\t*tmp = pf->next;\n@@ -3161,6 +3175,7 @@ port_queue_flow_update(portid_t port_id, queueid_t queue_id,\n \tuf->flow = pf->flow;\n \t*tmp = uf;\n \tjob->pf = pf;\n+\tLIST_INSERT_HEAD(&port->job_list[queue_id], job, chain);\n \n \tprintf(\"Flow rule #%\"PRIu64\" update enqueued\\n\", pf->id);\n \treturn 0;\n@@ -3215,6 +3230,7 @@ port_queue_action_handle_create(portid_t port_id, uint32_t queue_id,\n \t\tfree(job);\n \t\treturn port_flow_complain(&error);\n \t}\n+\tLIST_INSERT_HEAD(&port->job_list[queue_id], job, chain);\n \tprintf(\"Indirect action #%u creation queued\\n\", pia->id);\n \treturn 0;\n }\n@@ -3276,6 +3292,7 @@ port_queue_action_handle_destroy(portid_t port_id,\n \t\t\t\tret = port_flow_complain(&error);\n \t\t\t\tcontinue;\n \t\t\t}\n+\t\t\tLIST_INSERT_HEAD(&port->job_list[queue_id], job, chain);\n \t\t\t*tmp = pia->next;\n \t\t\tprintf(\"Indirect action #%u destruction queued\\n\",\n \t\t\t       pia->id);\n@@ -3350,6 +3367,7 @@ port_queue_action_handle_update(portid_t port_id,\n \t\tfree(job);\n \t\treturn port_flow_complain(&error);\n \t}\n+\tLIST_INSERT_HEAD(&port->job_list[queue_id], job, chain);\n \tprintf(\"Indirect action #%u update queued\\n\", id);\n \treturn 0;\n }\n@@ -3365,8 +3383,11 @@ port_queue_action_handle_query_update(portid_t port_id,\n \tstruct rte_flow_error error;\n \tstruct port_indirect_action *pia = action_get_by_id(port_id, id);\n \tconst struct rte_flow_op_attr attr = { .postpone = postpone};\n+\tstruct rte_port *port;\n \tstruct queue_job *job;\n \n+\tport = &ports[port_id];\n+\n \tif (!pia || !pia->handle)\n \t\treturn;\n \tjob = calloc(1, sizeof(*job));\n@@ -3385,6 +3406,7 @@ port_queue_action_handle_query_update(portid_t port_id,\n \t\tport_flow_complain(&error);\n \t\tfree(job);\n \t} else {\n+\t\tLIST_INSERT_HEAD(&port->job_list[queue_id], job, chain);\n \t\tprintf(\"port-%u: indirect action #%u update-and-query queued\\n\",\n \t\t       port_id, id);\n \t}\n@@ -3426,6 +3448,7 @@ port_queue_action_handle_query(portid_t port_id,\n \t\tfree(job);\n \t\treturn port_flow_complain(&error);\n \t}\n+\tLIST_INSERT_HEAD(&port->job_list[queue_id], job, chain);\n \tprintf(\"Indirect action #%u update queued\\n\", id);\n \treturn 0;\n }\n@@ -3541,6 +3564,19 @@ port_flow_hash_calc_encap(portid_t port_id,\n \treturn 0;\n }\n \n+static void\n+port_free_queue_job(struct queue_job *job)\n+{\n+\tif (job->type == QUEUE_JOB_TYPE_FLOW_DESTROY ||\n+\t    job->type == QUEUE_JOB_TYPE_FLOW_UPDATE)\n+\t\tfree(job->pf);\n+\telse if (job->type == QUEUE_JOB_TYPE_ACTION_DESTROY)\n+\t\tfree(job->pia);\n+\n+\tLIST_REMOVE(job, chain);\n+\tfree(job);\n+}\n+\n /** Pull queue operation results from the queue. */\n static int\n port_queue_aged_flow_destroy(portid_t port_id, queueid_t queue_id,\n@@ -3578,6 +3614,8 @@ port_queue_aged_flow_destroy(portid_t port_id, queueid_t queue_id,\n \t\t\treturn ret;\n \t\t}\n \t\twhile (success < nb_flows) {\n+\t\t\tstruct queue_job *job;\n+\n \t\t\tret = rte_flow_pull(port_id, queue_id, res,\n \t\t\t\t\t    port->queue_sz, &error);\n \t\t\tif (ret < 0) {\n@@ -3590,6 +3628,13 @@ port_queue_aged_flow_destroy(portid_t port_id, queueid_t queue_id,\n \t\t\tfor (i = 0; i < ret; i++) {\n \t\t\t\tif (res[i].status == RTE_FLOW_OP_SUCCESS)\n \t\t\t\t\tsuccess++;\n+\t\t\t\tjob = res[i].user_data;\n+\t\t\t\t/*\n+\t\t\t\t * It is assumed that each enqueued async flow operation\n+\t\t\t\t * has a queue_job entry.\n+\t\t\t\t */\n+\t\t\t\tRTE_ASSERT(job != NULL);\n+\t\t\t\tport_free_queue_job(job);\n \t\t\t}\n \t\t}\n \t\trule += n;\n@@ -3738,15 +3783,10 @@ port_queue_flow_pull(portid_t port_id, queueid_t queue_id)\n \t\tif (res[i].status == RTE_FLOW_OP_SUCCESS)\n \t\t\tsuccess++;\n \t\tjob = (struct queue_job *)res[i].user_data;\n-\t\tif (job->type == QUEUE_JOB_TYPE_FLOW_DESTROY ||\n-\t\t    job->type == QUEUE_JOB_TYPE_FLOW_UPDATE)\n-\t\t\tfree(job->pf);\n-\t\telse if (job->type == QUEUE_JOB_TYPE_ACTION_DESTROY)\n-\t\t\tfree(job->pia);\n-\t\telse if (job->type == QUEUE_JOB_TYPE_ACTION_QUERY)\n+\t\tif (job->type == QUEUE_JOB_TYPE_ACTION_QUERY)\n \t\t\tport_action_handle_query_dump(port_id, job->pia,\n \t\t\t\t\t\t      &job->query);\n-\t\tfree(job);\n+\t\tport_free_queue_job(job);\n \t}\n \tprintf(\"Queue #%u pulled %u operations (%u failed, %u succeeded)\\n\",\n \t       queue_id, ret, ret - success, success);\n@@ -3960,6 +4000,128 @@ port_flow_update(portid_t port_id, uint32_t rule_id,\n \treturn -EINVAL;\n }\n \n+static int\n+port_flow_queue_job_flush(portid_t port_id, queueid_t queue_id)\n+{\n+\tstruct rte_flow_op_result *res;\n+\tstruct rte_flow_error error;\n+\tunsigned int expected_ops;\n+\tstruct rte_port *port;\n+\tstruct queue_job *job;\n+\tunsigned int success;\n+\tunsigned int polled;\n+\tint iterations;\n+\tint ret;\n+\n+\tport = &ports[port_id];\n+\n+\tprintf(\"Flushing flow queue %u on port %u\\n\", queue_id, port_id);\n+\n+\t/* Poisoning to make sure PMDs update it in case of error. */\n+\tmemset(&error, 0x44, sizeof(error));\n+\tif (rte_flow_push(port_id, queue_id, &error))\n+\t\treturn port_flow_complain(&error);\n+\n+\t/* Count expected operations. */\n+\texpected_ops = 0;\n+\tLIST_FOREACH(job, &port->job_list[queue_id], chain)\n+\t\texpected_ops++;\n+\n+\tres = calloc(expected_ops, sizeof(*res));\n+\tif (res == NULL)\n+\t\treturn -ENOMEM;\n+\n+\tpolled = 0;\n+\tsuccess = 0;\n+\titerations = FLOW_QUEUE_FLUSH_MAX_ITERS;\n+\twhile (iterations > 0 && expected_ops > 0) {\n+\t\t/* Poisoning to make sure PMDs update it in case of error. */\n+\t\tmemset(&error, 0x55, sizeof(error));\n+\t\tret = rte_flow_pull(port_id, queue_id, res, expected_ops, &error);\n+\t\tif (ret < 0) {\n+\t\t\tport_flow_complain(&error);\n+\t\t\tfree(res);\n+\t\t\treturn ret;\n+\t\t}\n+\t\tif (ret == 0) {\n+\t\t\t/* Prevent infinite loop when driver does not return any completion. */\n+\t\t\titerations--;\n+\t\t\tcontinue;\n+\t\t}\n+\n+\t\texpected_ops -= ret;\n+\t\tpolled += ret;\n+\t\tfor (int i = 0; i < ret; i++) {\n+\t\t\tif (res[i].status == RTE_FLOW_OP_SUCCESS)\n+\t\t\t\tsuccess++;\n+\n+\t\t\tjob = res[i].user_data;\n+\t\t\t/*\n+\t\t\t * It is assumed that each enqueued async flow operation\n+\t\t\t * has a queue_job entry.\n+\t\t\t */\n+\t\t\tRTE_ASSERT(job != NULL);\n+\t\t\tport_free_queue_job(job);\n+\t\t}\n+\t}\n+\tfree(res);\n+\n+\tprintf(\"Flushed flow queue %u on port %u (%u failed, %u succeeded).\\n\",\n+\t       queue_id, port_id, polled - success, success);\n+\n+\tif (iterations == 0 && expected_ops > 0) {\n+\t\t/*\n+\t\t * Driver was not able to return all completions for flow operations in time.\n+\t\t * Log the error and free the queue_job entries to prevent leak.\n+\t\t */\n+\n+\t\tTESTPMD_LOG(ERR, \"Unable to fully flush flow queue %u on port %u (left ops %u)\\n\",\n+\t\t\t    queue_id, port_id, expected_ops);\n+\n+\t\twhile (!LIST_EMPTY(&port->job_list[queue_id])) {\n+\t\t\tjob = LIST_FIRST(&port->job_list[queue_id]);\n+\t\t\tport_free_queue_job(job);\n+\t\t}\n+\n+\t\treturn 0;\n+\t}\n+\n+\t/*\n+\t * It is assumed that each enqueued async flow operation\n+\t * has a queue_job entry, so if expected_ops reached zero,\n+\t * then the queue_job list should be empty.\n+\t */\n+\tRTE_ASSERT(LIST_EMPTY(&port->job_list[queue_id]));\n+\n+\treturn 0;\n+}\n+\n+static int\n+port_flow_queues_job_flush(portid_t port_id)\n+{\n+\tstruct rte_port *port;\n+\tint ret;\n+\n+\tport = &ports[port_id];\n+\n+\tif (port->queue_nb == 0)\n+\t\treturn 0;\n+\n+\tfor (queueid_t queue_id = 0; queue_id < port->queue_nb; ++queue_id) {\n+\t\tif (LIST_EMPTY(&port->job_list[queue_id]))\n+\t\t\tcontinue;\n+\n+\t\tret = port_flow_queue_job_flush(port_id, queue_id);\n+\t\tif (ret < 0) {\n+\t\t\tTESTPMD_LOG(ERR, \"Flushing flows queue %u failed on port %u (ret %d)\\n\",\n+\t\t\t\t    queue_id, port_id, ret);\n+\t\t\treturn ret;\n+\t\t}\n+\t}\n+\n+\treturn 0;\n+}\n+\n /** Remove all flow rules. */\n int\n port_flow_flush(portid_t port_id)\n@@ -3974,6 +4136,11 @@ port_flow_flush(portid_t port_id)\n \n \tport = &ports[port_id];\n \n+\tret = port_flow_queues_job_flush(port_id);\n+\tif (ret < 0)\n+\t\tTESTPMD_LOG(ERR, \"Flushing flows queues failed on port %u (ret %d)\\n\",\n+\t\t\t    port_id, ret);\n+\n \tif (port->flow_list == NULL)\n \t\treturn ret;\n \n@@ -4490,15 +4657,9 @@ ring_rxd_display_dword(union igb_ring_dword dword)\n \n static void\n ring_rx_descriptor_display(const struct rte_memzone *ring_mz,\n-#ifndef RTE_NET_INTEL_USE_16BYTE_DESC\n \t\t\t   portid_t port_id,\n-#else\n-\t\t\t   __rte_unused portid_t port_id,\n-#endif\n \t\t\t   uint16_t desc_id)\n {\n-\tstruct igb_ring_desc_16_bytes *ring =\n-\t\t(struct igb_ring_desc_16_bytes *)ring_mz->addr;\n #ifndef RTE_NET_INTEL_USE_16BYTE_DESC\n \tint ret;\n \tstruct rte_eth_dev_info dev_info;\n@@ -4528,12 +4689,15 @@ ring_rx_descriptor_display(const struct rte_memzone *ring_mz,\n \t}\n #endif\n \t/* 16 bytes RX descriptor */\n+\tstruct igb_ring_desc_16_bytes *ring =\n+\t\t(struct igb_ring_desc_16_bytes *)ring_mz->addr;\n \tring[desc_id].lo_dword.dword =\n \t\trte_le_to_cpu_64(ring[desc_id].lo_dword.dword);\n \tring_rxd_display_dword(ring[desc_id].lo_dword);\n \tring[desc_id].hi_dword.dword =\n \t\trte_le_to_cpu_64(ring[desc_id].hi_dword.dword);\n \tring_rxd_display_dword(ring[desc_id].hi_dword);\n+\tRTE_SET_USED(port_id);\n }\n \n static void\n@@ -4742,7 +4906,6 @@ port_rss_hash_conf_show(portid_t port_id, int show_rss_key, int show_rss_algo)\n {\n \tstruct rte_eth_rss_conf rss_conf = {0};\n \tuint8_t rss_key[RSS_HASH_KEY_LENGTH];\n-\tuint64_t rss_hf;\n \tuint8_t i;\n \tint diag;\n \tstruct rte_eth_dev_info dev_info;\n@@ -4783,8 +4946,7 @@ port_rss_hash_conf_show(portid_t port_id, int show_rss_key, int show_rss_algo)\n \t\t}\n \t\treturn;\n \t}\n-\trss_hf = rss_conf.rss_hf;\n-\tif (rss_hf == 0) {\n+\tif (rss_conf.rss_hf == 0) {\n \t\tprintf(\"RSS disabled\\n\");\n \t\treturn;\n \t}\n@@ -4796,7 +4958,7 @@ port_rss_hash_conf_show(portid_t port_id, int show_rss_key, int show_rss_algo)\n \t}\n \n \tprintf(\"RSS functions:\\n\");\n-\trss_types_display(rss_hf, TESTPMD_RSS_TYPES_CHAR_NUM_PER_LINE);\n+\trss_types_display(rss_conf.rss_hf, TESTPMD_RSS_TYPES_CHAR_NUM_PER_LINE);\n \n \tif (!show_rss_key)\n \t\treturn;\n@@ -5216,6 +5378,7 @@ dcb_fwd_config_setup(void)\n \tuint16_t nb_rx_queue, nb_tx_queue;\n \tuint16_t i, j, k, sm_id = 0;\n \tuint16_t sub_core_idx = 0;\n+\tuint8_t effective_nb_tcs;\n \tuint16_t total_tc_num;\n \tstruct rte_port *port;\n \tuint8_t tc = 0;\n@@ -5281,6 +5444,7 @@ dcb_fwd_config_setup(void)\n \tdcb_fwd_tc_update_dcb_info(&rxp_dcb_info);\n \t(void)rte_eth_dev_get_dcb_info(fwd_ports_ids[txp], &txp_dcb_info);\n \tdcb_fwd_tc_update_dcb_info(&txp_dcb_info);\n+\teffective_nb_tcs = RTE_MIN(rxp_dcb_info.nb_tcs, txp_dcb_info.nb_tcs);\n \n \tfor (lc_id = 0; lc_id < cur_fwd_config.nb_fwd_lcores; lc_id++) {\n \t\tfwd_lcores[lc_id]->stream_nb = 0;\n@@ -5289,7 +5453,8 @@ dcb_fwd_config_setup(void)\n \t\t\t/* if the nb_queue is zero, means this tc is\n \t\t\t * not enabled on the POOL\n \t\t\t */\n-\t\t\tif (rxp_dcb_info.tc_queue.tc_rxq[i][tc].nb_queue == 0)\n+\t\t\tif (rxp_dcb_info.tc_queue.tc_rxq[i][tc].nb_queue == 0 ||\n+\t\t\t    txp_dcb_info.tc_queue.tc_txq[i][tc].nb_queue == 0)\n \t\t\t\tbreak;\n \t\t\tk = fwd_lcores[lc_id]->stream_nb +\n \t\t\t\tfwd_lcores[lc_id]->stream_idx;\n@@ -5319,7 +5484,7 @@ dcb_fwd_config_setup(void)\n \n \t\tsub_core_idx = 0;\n \t\ttc++;\n-\t\tif (tc < rxp_dcb_info.nb_tcs)\n+\t\tif (tc < effective_nb_tcs)\n \t\t\tcontinue;\n \t\t/* Restart from TC 0 on next RX port */\n \t\ttc = 0;\n@@ -5336,6 +5501,8 @@ dcb_fwd_config_setup(void)\n \t\tdcb_fwd_tc_update_dcb_info(&rxp_dcb_info);\n \t\trte_eth_dev_get_dcb_info(fwd_ports_ids[txp], &txp_dcb_info);\n \t\tdcb_fwd_tc_update_dcb_info(&txp_dcb_info);\n+\n+\t\teffective_nb_tcs = RTE_MIN(rxp_dcb_info.nb_tcs, txp_dcb_info.nb_tcs);\n \t}\n }\n \n@@ -6502,8 +6669,8 @@ vlan_extend_set(portid_t port_id, int on)\n \tdiag = rte_eth_dev_set_vlan_offload(port_id, vlan_offload);\n \tif (diag < 0) {\n \t\tfprintf(stderr,\n-\t\t\t\"rx_vlan_extend_set(port_pi=%d, on=%d) failed diag=%d\\n\",\n-\t\t\tport_id, on, diag);\n+\t\t\t\"%s(port_pi=%d, on=%d) failed diag=%d\\n\",\n+\t\t\t__func__, port_id, on, diag);\n \t\treturn;\n \t}\n \tports[port_id].dev_conf.rxmode.offloads = port_rx_offloads;\n@@ -6729,8 +6896,8 @@ vlan_tpid_set(portid_t port_id, enum rte_vlan_type vlan_type, uint16_t tp_id)\n \t\treturn;\n \n \tfprintf(stderr,\n-\t\t\"tx_vlan_tpid_set(port_pi=%d, vlan_type=%d, tpid=%d) failed diag=%d\\n\",\n-\t\tport_id, vlan_type, tp_id, diag);\n+\t\t\"%s(port_pi=%d, vlan_type=%d, tpid=%d) failed diag=%d\\n\",\n+\t\t__func__, port_id, vlan_type, tp_id, diag);\n }\n \n void\ndiff --git a/app/test-pmd/parameters.c b/app/test-pmd/parameters.c\nindex 9697390..54f0ad0 100644\n--- a/app/test-pmd/parameters.c\n+++ b/app/test-pmd/parameters.c\n@@ -777,42 +777,42 @@ parse_ringnuma_config(const char *q_arg)\n }\n \n static int\n-parse_event_printing_config(const char *optarg, int enable)\n+parse_event_printing_config(const char *event_arg, int enable)\n {\n \tuint32_t mask = 0;\n \n-\tif (!strcmp(optarg, \"unknown\"))\n+\tif (!strcmp(event_arg, \"unknown\"))\n \t\tmask = UINT32_C(1) << RTE_ETH_EVENT_UNKNOWN;\n-\telse if (!strcmp(optarg, \"intr_lsc\"))\n+\telse if (!strcmp(event_arg, \"intr_lsc\"))\n \t\tmask = UINT32_C(1) << RTE_ETH_EVENT_INTR_LSC;\n-\telse if (!strcmp(optarg, \"queue_state\"))\n+\telse if (!strcmp(event_arg, \"queue_state\"))\n \t\tmask = UINT32_C(1) << RTE_ETH_EVENT_QUEUE_STATE;\n-\telse if (!strcmp(optarg, \"intr_reset\"))\n+\telse if (!strcmp(event_arg, \"intr_reset\"))\n \t\tmask = UINT32_C(1) << RTE_ETH_EVENT_INTR_RESET;\n-\telse if (!strcmp(optarg, \"vf_mbox\"))\n+\telse if (!strcmp(event_arg, \"vf_mbox\"))\n \t\tmask = UINT32_C(1) << RTE_ETH_EVENT_VF_MBOX;\n-\telse if (!strcmp(optarg, \"ipsec\"))\n+\telse if (!strcmp(event_arg, \"ipsec\"))\n \t\tmask = UINT32_C(1) << RTE_ETH_EVENT_IPSEC;\n-\telse if (!strcmp(optarg, \"macsec\"))\n+\telse if (!strcmp(event_arg, \"macsec\"))\n \t\tmask = UINT32_C(1) << RTE_ETH_EVENT_MACSEC;\n-\telse if (!strcmp(optarg, \"intr_rmv\"))\n+\telse if (!strcmp(event_arg, \"intr_rmv\"))\n \t\tmask = UINT32_C(1) << RTE_ETH_EVENT_INTR_RMV;\n-\telse if (!strcmp(optarg, \"dev_probed\"))\n+\telse if (!strcmp(event_arg, \"dev_probed\"))\n \t\tmask = UINT32_C(1) << RTE_ETH_EVENT_NEW;\n-\telse if (!strcmp(optarg, \"dev_released\"))\n+\telse if (!strcmp(event_arg, \"dev_released\"))\n \t\tmask = UINT32_C(1) << RTE_ETH_EVENT_DESTROY;\n-\telse if (!strcmp(optarg, \"flow_aged\"))\n+\telse if (!strcmp(event_arg, \"flow_aged\"))\n \t\tmask = UINT32_C(1) << RTE_ETH_EVENT_FLOW_AGED;\n-\telse if (!strcmp(optarg, \"err_recovering\"))\n+\telse if (!strcmp(event_arg, \"err_recovering\"))\n \t\tmask = UINT32_C(1) << RTE_ETH_EVENT_ERR_RECOVERING;\n-\telse if (!strcmp(optarg, \"recovery_success\"))\n+\telse if (!strcmp(event_arg, \"recovery_success\"))\n \t\tmask = UINT32_C(1) << RTE_ETH_EVENT_RECOVERY_SUCCESS;\n-\telse if (!strcmp(optarg, \"recovery_failed\"))\n+\telse if (!strcmp(event_arg, \"recovery_failed\"))\n \t\tmask = UINT32_C(1) << RTE_ETH_EVENT_RECOVERY_FAILED;\n-\telse if (!strcmp(optarg, \"all\"))\n+\telse if (!strcmp(event_arg, \"all\"))\n \t\tmask = ~UINT32_C(0);\n \telse {\n-\t\tfprintf(stderr, \"Invalid event: %s\\n\", optarg);\n+\t\tfprintf(stderr, \"Invalid event: %s\\n\", event_arg);\n \t\treturn -1;\n \t}\n \tif (enable)\n@@ -987,11 +987,10 @@ launch_args_parse(int argc, char** argv)\n \t\t\tbreak;\n \t\tcase TESTPMD_OPT_STATS_PERIOD_NUM: {\n \t\t\tchar *end = NULL;\n-\t\t\tunsigned int n;\n \n \t\t\tn = strtoul(optarg, &end, 10);\n \t\t\tif ((optarg[0] == '\\0') || (end == NULL) ||\n-\t\t\t\t\t(*end != '\\0'))\n+\t\t\t\t\t(*end != '\\0') || n <= 0 || n >= UINT16_MAX)\n \t\t\t\trte_exit(EXIT_FAILURE, \"Invalid stats-period value\\n\");\n \n \t\t\tstats_period = n;\n@@ -1283,10 +1282,10 @@ launch_args_parse(int argc, char** argv)\n \t\t\tset_pkt_forwarding_mode(optarg);\n \t\t\tbreak;\n \t\tcase TESTPMD_OPT_RSS_IP_NUM:\n-\t\t\trss_hf = RTE_ETH_RSS_IP;\n+\t\t\trss_hf |= RTE_ETH_RSS_IP;\n \t\t\tbreak;\n \t\tcase TESTPMD_OPT_RSS_UDP_NUM:\n-\t\t\trss_hf = RTE_ETH_RSS_UDP;\n+\t\t\trss_hf |= RTE_ETH_RSS_IP | RTE_ETH_RSS_UDP;\n \t\t\tbreak;\n \t\tcase TESTPMD_OPT_RSS_LEVEL_INNER_NUM:\n \t\t\trss_hf |= RTE_ETH_RSS_LEVEL_INNERMOST;\n@@ -1339,7 +1338,6 @@ launch_args_parse(int argc, char** argv)\n \t\t\tbreak;\n \t\tcase TESTPMD_OPT_HAIRPIN_MODE_NUM: {\n \t\t\tchar *end = NULL;\n-\t\t\tunsigned int n;\n \n \t\t\terrno = 0;\n \t\t\tn = strtoul(optarg, &end, 0);\ndiff --git a/app/test-pmd/testpmd.c b/app/test-pmd/testpmd.c\nindex 1fe41d8..4568e2f 100644\n--- a/app/test-pmd/testpmd.c\n+++ b/app/test-pmd/testpmd.c\n@@ -3276,6 +3276,15 @@ remove_invalid_ports(void)\n }\n \n static void\n+port_free_job_list(portid_t pi)\n+{\n+\tstruct rte_port *port = &ports[pi];\n+\tfree(port->job_list);\n+\tport->job_list = NULL;\n+\tport->queue_nb = 0;\n+}\n+\n+static void\n flush_port_owned_resources(portid_t pi)\n {\n \tmcast_addr_pool_destroy(pi);\n@@ -3285,6 +3294,7 @@ flush_port_owned_resources(portid_t pi)\n \tport_flow_actions_template_flush(pi);\n \tport_flex_item_flush(pi);\n \tport_action_handle_flush(pi);\n+\tport_free_job_list(pi);\n }\n \n static void\n@@ -3433,23 +3443,28 @@ convert_pci_address_format(const char *identifier, char *pci_buffer, size_t buf_\n \tstruct rte_devargs da;\n \tstruct rte_pci_addr pci_addr;\n \tsize_t pci_len;\n+\tchar *result = NULL;\n \n \tif (rte_devargs_parse(&da, identifier) != 0)\n \t\treturn NULL;\n \n \tif (da.bus == NULL)\n-\t\treturn NULL;\n+\t\tgoto cleanup;\n \n \tif (strcmp(rte_bus_name(da.bus), \"pci\") != 0)\n-\t\treturn NULL;\n+\t\tgoto cleanup;\n \n \tif (rte_pci_addr_parse(da.name, &pci_addr) != 0)\n-\t\treturn NULL;\n+\t\tgoto cleanup;\n \n \trte_pci_device_name(&pci_addr, pci_buffer, buf_size);\n \tpci_len = strlen(pci_buffer);\n \tsnprintf(pci_buffer + pci_len, buf_size - pci_len, \",%s\", da.args);\n-\treturn pci_buffer;\n+\tresult = pci_buffer;\n+\n+cleanup:\n+\trte_devargs_reset(&da);\n+\treturn result;\n }\n \n void\n@@ -4393,8 +4408,11 @@ init_port_dcb_config(portid_t pid,\n \t\t\t\tnb_rxq = rte_port->dev_info.max_rx_queues;\n \t\t\t\tnb_txq = rte_port->dev_info.max_tx_queues;\n \t\t\t} else {\n-\t\t\t\tnb_rxq = (queueid_t)num_tcs;\n-\t\t\t\tnb_txq = (queueid_t)num_tcs;\n+\t\t\t\t/* Use PF queue count for DCB-only mode with VMDQ devices */\n+\t\t\t\tnb_rxq = rte_port->dev_info.max_rx_queues -\n+\t\t\t\t\t rte_port->dev_info.vmdq_queue_num;\n+\t\t\t\tnb_txq = rte_port->dev_info.max_tx_queues -\n+\t\t\t\t\t rte_port->dev_info.vmdq_queue_num;\n \t\t\t}\n \t\t}\n \t}\n@@ -4467,6 +4485,8 @@ print_stats(void)\n static void\n signal_handler(int signum __rte_unused)\n {\n+\tsignal(SIGINT, SIG_DFL);\n+\tsignal(SIGTERM, SIG_DFL);\n \tf_quit = 1;\n \tprompt_exit();\n }\n@@ -4660,7 +4680,7 @@ main(int argc, char** argv)\n \n #ifdef RTE_LIB_LATENCYSTATS\n \tif (latencystats_enabled != 0) {\n-\t\tint ret = rte_latencystats_init(1, NULL);\n+\t\tret = rte_latencystats_init(1, NULL);\n \t\tif (ret)\n \t\t\tfprintf(stderr,\n \t\t\t\t\"Warning: latencystats init() returned error %d\\n\",\ndiff --git a/app/test-pmd/testpmd.h b/app/test-pmd/testpmd.h\nindex 492b575..f319471 100644\n--- a/app/test-pmd/testpmd.h\n+++ b/app/test-pmd/testpmd.h\n@@ -280,6 +280,7 @@ union port_action_query {\n \n /* Descriptor for queue job. */\n struct queue_job {\n+\tLIST_ENTRY(queue_job) chain;\n \tuint32_t type; /**< Job type. */\n \tunion {\n \t\tstruct port_flow *pf;\n@@ -288,6 +289,8 @@ struct queue_job {\n \tunion port_action_query query;\n };\n \n+LIST_HEAD(queue_job_list, queue_job);\n+\n struct port_flow_tunnel {\n \tLIST_ENTRY(port_flow_tunnel) chain;\n \tstruct rte_flow_action *pmd_actions;\n@@ -369,6 +372,7 @@ struct rte_port {\n \tstruct port_flow        *flow_list; /**< Associated flows. */\n \tstruct port_indirect_action *actions_list;\n \t/**< Associated indirect actions. */\n+\tstruct queue_job_list *job_list; /**< Pending async flow API operations, per queue. */\n \tLIST_HEAD(, port_flow_tunnel) flow_tunnel_list;\n \tconst struct rte_eth_rxtx_callback *rx_dump_cb[RTE_MAX_QUEUES_PER_PORT+1];\n \tconst struct rte_eth_rxtx_callback *tx_dump_cb[RTE_MAX_QUEUES_PER_PORT+1];\ndiff --git a/app/test-regex/main.c b/app/test-regex/main.c\nindex acb834a..81719f2 100644\n--- a/app/test-regex/main.c\n+++ b/app/test-regex/main.c\n@@ -103,7 +103,6 @@ args_parse(int argc, char **argv, char *rules_file, char *data_file,\n \tchar **argvopt;\n \tint opt;\n \tint opt_idx;\n-\tsize_t len;\n \tstatic struct option lgopts[] = {\n \t\t{ \"help\",  0, 0, ARG_HELP},\n \t\t/* Rules database file to load. */\n@@ -133,20 +132,16 @@ args_parse(int argc, char **argv, char *rules_file, char *data_file,\n \t\t\t\tlgopts, &opt_idx)) != EOF) {\n \t\tswitch (opt) {\n \t\tcase ARG_RULES_FILE_NAME:\n-\t\t\tlen = strnlen(optarg, MAX_FILE_NAME - 1);\n-\t\t\tif (len == MAX_FILE_NAME)\n+\t\t\tif (strlcpy(rules_file, optarg, MAX_FILE_NAME) >= MAX_FILE_NAME)\n \t\t\t\trte_exit(EXIT_FAILURE,\n \t\t\t\t\t \"Rule file name to long max %d\\n\",\n \t\t\t\t\t MAX_FILE_NAME - 1);\n-\t\t\tstrncpy(rules_file, optarg, MAX_FILE_NAME - 1);\n \t\t\tbreak;\n \t\tcase ARG_DATA_FILE_NAME:\n-\t\t\tlen = strnlen(optarg, MAX_FILE_NAME - 1);\n-\t\t\tif (len == MAX_FILE_NAME)\n+\t\t\tif (strlcpy(data_file, optarg, MAX_FILE_NAME) >= MAX_FILE_NAME)\n \t\t\t\trte_exit(EXIT_FAILURE,\n \t\t\t\t\t \"Data file name to long max %d\\n\",\n \t\t\t\t\t MAX_FILE_NAME - 1);\n-\t\t\tstrncpy(data_file, optarg, MAX_FILE_NAME - 1);\n \t\t\tbreak;\n \t\tcase ARG_NUM_OF_JOBS:\n \t\t\t*nb_jobs = atoi(optarg);\ndiff --git a/app/test/bpf/meson.build b/app/test/bpf/meson.build\nindex aaecfa7..91c1b43 100644\n--- a/app/test/bpf/meson.build\n+++ b/app/test/bpf/meson.build\n@@ -24,7 +24,8 @@ if not xxd.found()\n endif\n \n # BPF compiler flags\n-bpf_cflags = [ '-O2', '-target', 'bpf', '-g', '-c']\n+# At present: DPDK BPF does not support v3 or later\n+bpf_cflags = [ '-O2', '-target', 'bpf', '-mcpu=v2', '-g', '-c']\n \n # Enable test in test_bpf.c\n cflags += '-DTEST_BPF_ELF_LOAD'\ndiff --git a/app/test/meson.build b/app/test/meson.build\nindex efec42a..8302d16 100644\n--- a/app/test/meson.build\n+++ b/app/test/meson.build\n@@ -112,7 +112,7 @@ source_file_deps = {\n         'net'] + packet_burst_generator_deps + virtual_pmd_deps,\n     'test_link_bonding_mode4.c': ['ethdev', 'net_ring', 'net_bond',\n         'net'] + packet_burst_generator_deps,\n-    'test_link_bonding_rssconf.c': ['ethdev', 'bus_vdev', 'net_bond'],\n+    'test_link_bonding_rssconf.c': ['ethdev', 'bus_vdev', 'net_bond', 'net_null'],\n     'test_logs.c': [],\n     'test_lpm.c': ['net', 'lpm'],\n     'test_lpm6.c': ['lpm'],\n@@ -135,7 +135,7 @@ source_file_deps = {\n     'test_mp_secondary.c': ['hash'],\n     'test_net_ether.c': ['net'],\n     'test_net_ip6.c': ['net'],\n-    'test_pcapng.c': ['ethdev', 'net', 'pcapng', 'bus_vdev'],\n+    'test_pcapng.c': ['net_null', 'net', 'ethdev', 'pcapng', 'bus_vdev'],\n     'test_pdcp.c': ['eventdev', 'pdcp', 'net', 'timer', 'security'],\n     'test_pdump.c': ['pdump'] + sample_packet_forward_deps,\n     'test_per_lcore.c': [],\n@@ -209,7 +209,7 @@ source_file_deps = {\n     'test_trace.c': [],\n     'test_trace_perf.c': [],\n     'test_trace_register.c': [],\n-    'test_vdev.c': ['kvargs', 'bus_vdev'],\n+    'test_vdev.c': ['kvargs', 'bus_vdev', 'net_null'],\n     'test_version.c': [],\n }\n \ndiff --git a/app/test/suites/meson.build b/app/test/suites/meson.build\nindex 712dd65..5446324 100644\n--- a/app/test/suites/meson.build\n+++ b/app/test/suites/meson.build\n@@ -75,27 +75,34 @@ foreach suite:test_suites\n             if nohuge\n                 test_args += test_no_huge_args\n             elif not has_hugepage\n-                continue  #skip this tests\n+                continue  # skip this test\n             endif\n             if not asan and get_option('b_sanitize').contains('address')\n                 continue  # skip this test\n             endif\n-\n             if get_option('default_library') == 'shared'\n                 test_args += ['-d', dpdk_drivers_build_dir]\n             endif\n \n+            # use unique file-prefix to allow parallel runs\n+            file_prefix = []\n+            trace_prefix = []\n+            if is_linux\n+                file_prefix = ['--file-prefix=' + test_name.underscorify()]\n+                trace_prefix = [file_prefix[0] + '_with_traces']\n+            endif\n+\n             test(test_name, dpdk_test,\n-                args : test_args,\n+                args : test_args + file_prefix,\n                 env: ['DPDK_TEST=' + test_name],\n                 timeout : timeout_seconds_fast,\n                 is_parallel : false,\n                 suite : 'fast-tests')\n             if not is_windows and test_name == 'trace_autotest'\n-                test_args += ['--trace=.*']\n-                test_args += ['--trace-dir=@0@'.format(meson.current_build_dir())]\n+                trace_extra = ['--trace=.*',\n+                               '--trace-dir=@0@'.format(meson.current_build_dir())]\n                 test(test_name + '_with_traces', dpdk_test,\n-                    args : test_args,\n+                    args : test_args + trace_extra + trace_prefix,\n                     env: ['DPDK_TEST=' + test_name],\n                     timeout : timeout_seconds_fast,\n                     is_parallel : false,\ndiff --git a/app/test/test.h b/app/test/test.h\nindex c6d7d23..17181ed 100644\n--- a/app/test/test.h\n+++ b/app/test/test.h\n@@ -12,6 +12,7 @@\n \n #include <rte_hexdump.h>\n #include <rte_common.h>\n+#include <rte_lcore.h>\n #include <rte_os_shim.h>\n \n #define TEST_SUCCESS EXIT_SUCCESS\n@@ -212,4 +213,22 @@ void add_test_command(struct test_command *t);\n #define REGISTER_DRIVER_TEST REGISTER_TEST_COMMAND\n #define REGISTER_STRESS_TEST REGISTER_TEST_COMMAND\n \n+/**\n+ * Scale test iterations inversely with core count.\n+ *\n+ * On high core count systems, tests with per-core work can exceed\n+ * timeout limits due to increased lock contention and scheduling\n+ * overhead. This helper scales iterations to keep total test time\n+ * roughly constant regardless of core count.\n+ *\n+ * @param base  Base iteration count (used on single-core systems)\n+ * @param min   Minimum iterations (floor to ensure meaningful testing)\n+ * @return      Scaled iteration count\n+ */\n+static inline unsigned int\n+test_scale_iterations(unsigned int base, unsigned int min)\n+{\n+\treturn RTE_MAX(base / rte_lcore_count(), min);\n+}\n+\n #endif\ndiff --git a/app/test/test_atomic.c b/app/test/test_atomic.c\nindex 3f26ce8..de2011b 100644\n--- a/app/test/test_atomic.c\n+++ b/app/test/test_atomic.c\n@@ -10,11 +10,13 @@\n #include <sys/queue.h>\n \n #include <rte_memory.h>\n+#include <rte_common.h>\n #include <rte_per_lcore.h>\n #include <rte_launch.h>\n #include <rte_atomic.h>\n #include <rte_eal.h>\n #include <rte_lcore.h>\n+#include <rte_pause.h>\n #include <rte_random.h>\n #include <rte_hash_crc.h>\n \n@@ -100,7 +102,15 @@\n \n #define NUM_ATOMIC_TYPES 3\n \n-#define N 1000000\n+#define N_BASE 1000000u\n+#define N_MIN  10000u\n+\n+/*\n+ * Number of iterations for each test, scaled inversely with core count.\n+ * More cores means more contention which increases time per operation.\n+ * Calculated once at test start to avoid repeated computation in workers.\n+ */\n+static unsigned int num_iterations;\n \n static rte_atomic16_t a16;\n static rte_atomic32_t a32;\n@@ -111,36 +121,36 @@ static rte_atomic32_t synchro;\n static int\n test_atomic_usual(__rte_unused void *arg)\n {\n-\tunsigned i;\n+\tunsigned int i;\n \n \twhile (rte_atomic32_read(&synchro) == 0)\n-\t\t;\n+\t\trte_pause();\n \n-\tfor (i = 0; i < N; i++)\n+\tfor (i = 0; i < num_iterations; i++)\n \t\trte_atomic16_inc(&a16);\n-\tfor (i = 0; i < N; i++)\n+\tfor (i = 0; i < num_iterations; i++)\n \t\trte_atomic16_dec(&a16);\n-\tfor (i = 0; i < (N / 5); i++)\n+\tfor (i = 0; i < (num_iterations / 5); i++)\n \t\trte_atomic16_add(&a16, 5);\n-\tfor (i = 0; i < (N / 5); i++)\n+\tfor (i = 0; i < (num_iterations / 5); i++)\n \t\trte_atomic16_sub(&a16, 5);\n \n-\tfor (i = 0; i < N; i++)\n+\tfor (i = 0; i < num_iterations; i++)\n \t\trte_atomic32_inc(&a32);\n-\tfor (i = 0; i < N; i++)\n+\tfor (i = 0; i < num_iterations; i++)\n \t\trte_atomic32_dec(&a32);\n-\tfor (i = 0; i < (N / 5); i++)\n+\tfor (i = 0; i < (num_iterations / 5); i++)\n \t\trte_atomic32_add(&a32, 5);\n-\tfor (i = 0; i < (N / 5); i++)\n+\tfor (i = 0; i < (num_iterations / 5); i++)\n \t\trte_atomic32_sub(&a32, 5);\n \n-\tfor (i = 0; i < N; i++)\n+\tfor (i = 0; i < num_iterations; i++)\n \t\trte_atomic64_inc(&a64);\n-\tfor (i = 0; i < N; i++)\n+\tfor (i = 0; i < num_iterations; i++)\n \t\trte_atomic64_dec(&a64);\n-\tfor (i = 0; i < (N / 5); i++)\n+\tfor (i = 0; i < (num_iterations / 5); i++)\n \t\trte_atomic64_add(&a64, 5);\n-\tfor (i = 0; i < (N / 5); i++)\n+\tfor (i = 0; i < (num_iterations / 5); i++)\n \t\trte_atomic64_sub(&a64, 5);\n \n \treturn 0;\n@@ -150,7 +160,7 @@ static int\n test_atomic_tas(__rte_unused void *arg)\n {\n \twhile (rte_atomic32_read(&synchro) == 0)\n-\t\t;\n+\t\trte_pause();\n \n \tif (rte_atomic16_test_and_set(&a16))\n \t\trte_atomic64_inc(&count);\n@@ -168,12 +178,12 @@ test_atomic_addsub_and_return(__rte_unused void *arg)\n \tuint32_t tmp16;\n \tuint32_t tmp32;\n \tuint64_t tmp64;\n-\tunsigned i;\n+\tunsigned int i;\n \n \twhile (rte_atomic32_read(&synchro) == 0)\n-\t\t;\n+\t\trte_pause();\n \n-\tfor (i = 0; i < N; i++) {\n+\tfor (i = 0; i < num_iterations; i++) {\n \t\ttmp16 = rte_atomic16_add_return(&a16, 1);\n \t\trte_atomic64_add(&count, tmp16);\n \n@@ -210,7 +220,7 @@ static int\n test_atomic_inc_and_test(__rte_unused void *arg)\n {\n \twhile (rte_atomic32_read(&synchro) == 0)\n-\t\t;\n+\t\trte_pause();\n \n \tif (rte_atomic16_inc_and_test(&a16)) {\n \t\trte_atomic64_inc(&count);\n@@ -237,7 +247,7 @@ static int\n test_atomic_dec_and_test(__rte_unused void *arg)\n {\n \twhile (rte_atomic32_read(&synchro) == 0)\n-\t\t;\n+\t\trte_pause();\n \n \tif (rte_atomic16_dec_and_test(&a16))\n \t\trte_atomic64_inc(&count);\n@@ -269,11 +279,11 @@ test_atomic128_cmp_exchange(__rte_unused void *arg)\n \tunsigned int i;\n \n \twhile (rte_atomic32_read(&synchro) == 0)\n-\t\t;\n+\t\trte_pause();\n \n \texpected = count128;\n \n-\tfor (i = 0; i < N; i++) {\n+\tfor (i = 0; i < num_iterations; i++) {\n \t\tdo {\n \t\t\trte_int128_t desired;\n \n@@ -400,14 +410,14 @@ get_crc8(uint8_t *message, int length)\n static int\n test_atomic_exchange(__rte_unused void *arg)\n {\n-\tint i;\n+\tunsigned int i;\n \ttest16_t nt16, ot16; /* new token, old token */\n \ttest32_t nt32, ot32;\n \ttest64_t nt64, ot64;\n \n \t/* Wait until all of the other threads have been dispatched */\n \twhile (rte_atomic32_read(&synchro) == 0)\n-\t\t;\n+\t\trte_pause();\n \n \t/*\n \t * Let the battle begin! Every thread attempts to steal the current\n@@ -416,7 +426,7 @@ test_atomic_exchange(__rte_unused void *arg)\n \t * appropriate crc32 hash for the data) then the test iteration has\n \t * passed.  If the token is invalid, increment the counter.\n \t */\n-\tfor (i = 0; i < N; i++) {\n+\tfor (i = 0; i < num_iterations; i++) {\n \n \t\t/* Test 64bit Atomic Exchange */\n \t\tnt64.u64 = rte_rand();\n@@ -445,6 +455,8 @@ test_atomic_exchange(__rte_unused void *arg)\n static int\n test_atomic(void)\n {\n+\tnum_iterations = test_scale_iterations(N_BASE, N_MIN);\n+\n \trte_atomic16_init(&a16);\n \trte_atomic32_init(&a32);\n \trte_atomic64_init(&a64);\n@@ -592,7 +604,7 @@ test_atomic(void)\n \trte_atomic32_clear(&synchro);\n \n \titerations = count128.val[0] - count128.val[1];\n-\tif (iterations != (uint64_t)4*N*(rte_lcore_count()-1)) {\n+\tif (iterations != (uint64_t)4*num_iterations*(rte_lcore_count()-1)) {\n \t\tprintf(\"128-bit compare and swap failed\\n\");\n \t\treturn -1;\n \t}\ndiff --git a/app/test/test_bpf.c b/app/test/test_bpf.c\nindex b7c94ba..f7cca2b 100644\n--- a/app/test/test_bpf.c\n+++ b/app/test/test_bpf.c\n@@ -34,6 +34,260 @@ test_bpf(void)\n #include <rte_ip.h>\n \n \n+/* Tests of most simple BPF programs (no instructions, one instruction etc.) */\n+\n+/*\n+ * Try to load a simple bpf program from the instructions array.\n+ *\n+ * When `expected_errno` is zero, expect it to load successfully.\n+ * When `expected_errno` is non-zero, expect it to fail with this `rte_errno`.\n+ *\n+ * @param nb_ins\n+ *   Number of instructions in the `ins` array.\n+ * @param ins\n+ *   BPF instructions array.\n+ * @param expected_errno\n+ *   Expected result.\n+ * @return\n+ *   TEST_SUCCESS on success, error code on failure.\n+ */\n+static int\n+bpf_load_test(uint32_t nb_ins, const struct ebpf_insn *ins, int expected_errno)\n+{\n+\tconst struct rte_bpf_prm prm = {\n+\t\t.ins = ins,\n+\t\t.nb_ins = nb_ins,\n+\t\t.prog_arg = {\n+\t\t\t.type = RTE_BPF_ARG_RAW,\n+\t\t\t.size = sizeof(uint64_t),\n+\t\t},\n+\t};\n+\n+\tstruct rte_bpf *const bpf = rte_bpf_load(&prm);\n+\tconst int actual_errno = rte_errno;\n+\trte_bpf_destroy(bpf);\n+\n+\tif (expected_errno != 0) {\n+\t\tRTE_TEST_ASSERT_EQUAL(bpf, NULL,\n+\t\t\t\"expect rte_bpf_load() == NULL\");\n+\t\tRTE_TEST_ASSERT_EQUAL(actual_errno, expected_errno,\n+\t\t\t\"expect rte_errno == %d, found %d\",\n+\t\t\texpected_errno, actual_errno);\n+\t} else\n+\t\tRTE_TEST_ASSERT_NOT_EQUAL(bpf, NULL,\n+\t\t\t\"expect rte_bpf_load() != NULL\");\n+\n+\treturn TEST_SUCCESS;\n+}\n+\n+/*\n+ * Try and load completely empty BPF program.\n+ * Should fail because there is no EXIT (and also return value is undefined).\n+ */\n+static int\n+test_no_instructions(void)\n+{\n+\tstatic const struct ebpf_insn ins[] = {};\n+\treturn bpf_load_test(RTE_DIM(ins), ins, EINVAL);\n+}\n+\n+REGISTER_FAST_TEST(bpf_no_instructions_autotest, NOHUGE_OK, ASAN_OK, test_no_instructions);\n+\n+/*\n+ * Try and load a BPF program comprising single EXIT instruction.\n+ * Should fail because the return value is undefined.\n+ */\n+static int\n+test_exit_only(void)\n+{\n+\tstatic const struct ebpf_insn ins[] = {\n+\t\t{\n+\t\t\t.code = (BPF_JMP | EBPF_EXIT),\n+\t\t},\n+\t};\n+\treturn bpf_load_test(RTE_DIM(ins), ins, EINVAL);\n+}\n+\n+REGISTER_FAST_TEST(bpf_exit_only_autotest, NOHUGE_OK, ASAN_OK, test_exit_only);\n+\n+/*\n+ * Try and load a BPF program with no EXIT instruction.\n+ * Should fail because of this.\n+ */\n+static int\n+test_no_exit(void)\n+{\n+\tstatic const struct ebpf_insn ins[] = {\n+\t\t{\n+\t\t\t/* Set return value to the program argument. */\n+\t\t\t.code = (EBPF_ALU64 | EBPF_MOV | BPF_X),\n+\t\t\t.src_reg = EBPF_REG_1,\n+\t\t\t.dst_reg = EBPF_REG_0,\n+\t\t},\n+\t};\n+\treturn bpf_load_test(RTE_DIM(ins), ins, EINVAL);\n+}\n+\n+REGISTER_FAST_TEST(bpf_no_exit_autotest, NOHUGE_OK, ASAN_OK, test_no_exit);\n+\n+/*\n+ * Try and load smallest possible valid BPF program.\n+ */\n+static int\n+test_minimal_working(void)\n+{\n+\tstatic const struct ebpf_insn ins[] = {\n+\t\t{\n+\t\t\t/* Set return value to the program argument. */\n+\t\t\t.code = (EBPF_ALU64 | EBPF_MOV | BPF_X),\n+\t\t\t.src_reg = EBPF_REG_1,\n+\t\t\t.dst_reg = EBPF_REG_0,\n+\t\t},\n+\t\t{\n+\t\t\t.code = (BPF_JMP | EBPF_EXIT),\n+\t\t},\n+\t};\n+\treturn bpf_load_test(RTE_DIM(ins), ins, 0);\n+}\n+\n+REGISTER_FAST_TEST(bpf_minimal_working_autotest, NOHUGE_OK, ASAN_OK, test_minimal_working);\n+\n+/*\n+ * Try and load valid BPF program adding one to the argument.\n+ */\n+static int\n+test_add_one(void)\n+{\n+\tstatic const struct ebpf_insn ins[] = {\n+\t\t{\n+\t\t\t/* Set return value to one. */\n+\t\t\t.code = (EBPF_ALU64 | EBPF_MOV | BPF_K),\n+\t\t\t.dst_reg = EBPF_REG_0,\n+\t\t\t.imm = 1,\n+\t\t},\n+\t\t{\n+\t\t\t/* Add program argument to the return value. */\n+\t\t\t.code = (EBPF_ALU64 | BPF_ADD | BPF_X),\n+\t\t\t.src_reg = EBPF_REG_1,\n+\t\t\t.dst_reg = EBPF_REG_0,\n+\t\t},\n+\t\t{\n+\t\t\t.code = (BPF_JMP | EBPF_EXIT),\n+\t\t},\n+\t};\n+\treturn bpf_load_test(RTE_DIM(ins), ins, 0);\n+}\n+\n+REGISTER_FAST_TEST(bpf_add_one_autotest, NOHUGE_OK, ASAN_OK, test_add_one);\n+\n+/*\n+ * Try and load valid BPF program subtracting one from the argument.\n+ */\n+static int\n+test_subtract_one(void)\n+{\n+\tstatic const struct ebpf_insn ins[] = {\n+\t\t{\n+\t\t\t/* Subtract one from the program argument. */\n+\t\t\t.code = (EBPF_ALU64 | BPF_SUB | BPF_K),\n+\t\t\t.dst_reg = EBPF_REG_1,\n+\t\t\t.imm = 1,\n+\t\t},\n+\t\t{\n+\t\t\t/* Set return value to the result. */\n+\t\t\t.code = (EBPF_ALU64 | EBPF_MOV | BPF_X),\n+\t\t\t.src_reg = EBPF_REG_1,\n+\t\t\t.dst_reg = EBPF_REG_0,\n+\t\t},\n+\t\t{\n+\t\t\t.code = (BPF_JMP | EBPF_EXIT),\n+\t\t},\n+\t};\n+\treturn bpf_load_test(RTE_DIM(ins), ins, 0);\n+}\n+\n+REGISTER_FAST_TEST(bpf_subtract_one_autotest, NOHUGE_OK, ASAN_OK, test_subtract_one);\n+\n+/*\n+ * Conditionally jump over invalid operation as first instruction.\n+ */\n+static int\n+test_jump_over_invalid_first(void)\n+{\n+\tstatic const struct ebpf_insn ins[] = {\n+\t\t{\n+\t\t\t/* Jump over the next instruction for some r1. */\n+\t\t\t.code = (BPF_JMP | BPF_JEQ | BPF_K),\n+\t\t\t.dst_reg = EBPF_REG_1,\n+\t\t\t.imm = 42,\n+\t\t\t.off = 1,\n+\t\t},\n+\t\t{\n+\t\t\t/* Write 0xDEADBEEF to [r1 + INT16_MIN]. */\n+\t\t\t.code = (BPF_ST | BPF_MEM | EBPF_DW),\n+\t\t\t.dst_reg = EBPF_REG_1,\n+\t\t\t.off = INT16_MIN,\n+\t\t\t.imm = 0xDEADBEEF,\n+\t\t},\n+\t\t{\n+\t\t\t/* Set return value to the program argument. */\n+\t\t\t.code = (EBPF_ALU64 | EBPF_MOV | BPF_X),\n+\t\t\t.src_reg = EBPF_REG_1,\n+\t\t\t.dst_reg = EBPF_REG_0,\n+\t\t},\n+\t\t{\n+\t\t\t.code = (BPF_JMP | EBPF_EXIT),\n+\t\t},\n+\t};\n+\treturn bpf_load_test(RTE_DIM(ins), ins, EINVAL);\n+}\n+\n+REGISTER_FAST_TEST(bpf_jump_over_invalid_first_autotest, NOHUGE_OK, ASAN_OK,\n+\ttest_jump_over_invalid_first);\n+\n+/*\n+ * Conditionally jump over invalid operation as non-first instruction.\n+ */\n+static int\n+test_jump_over_invalid_non_first(void)\n+{\n+\tstatic const struct ebpf_insn ins[] = {\n+\t\t{\n+\t\t\t/* Set return value to the program argument. */\n+\t\t\t.code = (EBPF_ALU64 | EBPF_MOV | BPF_X),\n+\t\t\t.src_reg = EBPF_REG_1,\n+\t\t\t.dst_reg = EBPF_REG_0,\n+\t\t},\n+\t\t{\n+\t\t\t/* Jump over the next instruction for some r1. */\n+\t\t\t.code = (BPF_JMP | BPF_JEQ | BPF_K),\n+\t\t\t.dst_reg = EBPF_REG_1,\n+\t\t\t.imm = 42,\n+\t\t\t.off = 1,\n+\t\t},\n+\t\t{\n+\t\t\t/* Write 0xDEADBEEF to [r1 + INT16_MIN]. */\n+\t\t\t.code = (BPF_ST | BPF_MEM | EBPF_DW),\n+\t\t\t.dst_reg = EBPF_REG_1,\n+\t\t\t.off = INT16_MIN,\n+\t\t\t.imm = 0xDEADBEEF,\n+\t\t},\n+\t\t{\n+\t\t\t/* Set return value to the program argument. */\n+\t\t\t.code = (EBPF_ALU64 | EBPF_MOV | BPF_X),\n+\t\t\t.src_reg = EBPF_REG_1,\n+\t\t\t.dst_reg = EBPF_REG_0,\n+\t\t},\n+\t\t{\n+\t\t\t.code = (BPF_JMP | EBPF_EXIT),\n+\t\t},\n+\t};\n+\treturn bpf_load_test(RTE_DIM(ins), ins, EINVAL);\n+}\n+\n+REGISTER_FAST_TEST(bpf_jump_over_invalid_non_first_autotest, NOHUGE_OK, ASAN_OK,\n+\ttest_jump_over_invalid_non_first);\n+\n /*\n  * Basic functional tests for librte_bpf.\n  * The main procedure - load eBPF program, execute it and\n@@ -139,6 +393,13 @@ cmp_res(const char *func, uint64_t exp_rc, uint64_t ret_rc,\n \treturn ret;\n }\n \n+/* Empty prepare function */\n+static void\n+dummy_prepare(void *arg)\n+{\n+\tRTE_SET_USED(arg);\n+}\n+\n /* store immediate test-cases */\n static const struct ebpf_insn test_store1_prog[] = {\n \t{\n@@ -2903,6 +3164,70 @@ static const struct ebpf_insn test_ld_mbuf3_prog[] = {\n \t},\n };\n \n+/* divide INT64_MIN by -1 */\n+static const struct ebpf_insn test_int64min_udiv_uint64max_prog[] = {\n+\t/* Load INT64_MIN into r0 */\n+\t{\n+\t\t.code = (BPF_LD | BPF_IMM | EBPF_DW),\n+\t\t.dst_reg = EBPF_REG_0,\n+\t\t.imm = (int32_t)INT64_MIN,\n+\t},\n+\t{\n+\t\t.imm = (int32_t)(INT64_MIN >> 32),\n+\t},\n+\t/* Divide r0 by immediate -1 */\n+\t{\n+\t\t.code = (EBPF_ALU64 | BPF_DIV | BPF_K),\n+\t\t.dst_reg = EBPF_REG_0,\n+\t\t.imm = -1,\n+\t},\n+\t/* Exit for correctness otherwise */\n+\t{\n+\t\t.code = (BPF_JMP | EBPF_EXIT),\n+\t},\n+};\n+\n+static int\n+test_int64min_udiv_uint64max_check(uint64_t rc, const void *arg)\n+{\n+\tRTE_SET_USED(arg);\n+\t/* 0x8000000000000000ull / 0xFFFFFFFFFFFFFFFFull == 0 */\n+\tTEST_ASSERT_EQUAL(rc, 0, \"expected 0, found %#\" PRIx64, rc);\n+\treturn TEST_SUCCESS;\n+}\n+\n+/* modulo INT64_MIN by -1 */\n+static const struct ebpf_insn test_int64min_umod_uint64max_prog[] = {\n+\t/* Load INT64_MIN into r0 */\n+\t{\n+\t\t.code = (BPF_LD | BPF_IMM | EBPF_DW),\n+\t\t.dst_reg = EBPF_REG_0,\n+\t\t.imm = (int32_t)INT64_MIN,\n+\t},\n+\t{\n+\t\t.imm = (int32_t)(INT64_MIN >> 32),\n+\t},\n+\t/* Modulo r0 by immediate -1 */\n+\t{\n+\t\t.code = (EBPF_ALU64 | BPF_MOD | BPF_K),\n+\t\t.dst_reg = EBPF_REG_0,\n+\t\t.imm = -1,\n+\t},\n+\t/* Exit for correctness otherwise */\n+\t{\n+\t\t.code = (BPF_JMP | EBPF_EXIT),\n+\t},\n+};\n+\n+static int\n+test_int64min_umod_uint64max_check(uint64_t rc, const void *arg)\n+{\n+\tRTE_SET_USED(arg);\n+\t/* 0x8000000000000000ull % 0xFFFFFFFFFFFFFFFFull == 0x8000000000000000ull  */\n+\tTEST_ASSERT_EQUAL(rc, (uint64_t)INT64_MIN, \"expected INT64_MIN, found %#\" PRIx64, rc);\n+\treturn TEST_SUCCESS;\n+}\n+\n /* all bpf test cases */\n static const struct bpf_test tests[] = {\n \t{\n@@ -3211,6 +3536,34 @@ static const struct bpf_test tests[] = {\n \t\t/* mbuf as input argument is not supported on 32 bit platform */\n \t\t.allow_fail = (sizeof(uint64_t) != sizeof(uintptr_t)),\n \t},\n+\t{\n+\t\t.name = \"test_int64min_udiv_uint64max\",\n+\t\t.arg_sz = sizeof(struct dummy_vect8),\n+\t\t.prm = {\n+\t\t\t.ins = test_int64min_udiv_uint64max_prog,\n+\t\t\t.nb_ins = RTE_DIM(test_int64min_udiv_uint64max_prog),\n+\t\t\t.prog_arg = {\n+\t\t\t\t.type = RTE_BPF_ARG_PTR,\n+\t\t\t\t.size = sizeof(struct dummy_vect8),\n+\t\t\t},\n+\t\t},\n+\t\t.prepare = dummy_prepare,\n+\t\t.check_result = test_int64min_udiv_uint64max_check,\n+\t},\n+\t{\n+\t\t.name = \"test_int64min_umod_uint64max\",\n+\t\t.arg_sz = 1,\n+\t\t.prm = {\n+\t\t\t.ins = test_int64min_umod_uint64max_prog,\n+\t\t\t.nb_ins = RTE_DIM(test_int64min_umod_uint64max_prog),\n+\t\t\t.prog_arg = {\n+\t\t\t\t.type = RTE_BPF_ARG_PTR,\n+\t\t\t\t.size = 1,\n+\t\t\t},\n+\t\t},\n+\t\t.prepare = dummy_prepare,\n+\t\t.check_result = test_int64min_umod_uint64max_check,\n+\t},\n };\n \n static int\n@@ -3280,6 +3633,395 @@ test_bpf(void)\n \n REGISTER_FAST_TEST(bpf_autotest, true, true, test_bpf);\n \n+/* Tests of BPF JIT stack alignment when calling external functions (xfuncs). */\n+\n+/* Function called from the BPF program in a test. */\n+typedef uint64_t (*text_xfunc_t)(uint64_t argument);\n+\n+/* Call function from BPF program, verify that it incremented its argument. */\n+static int\n+call_from_bpf_test(text_xfunc_t xfunc)\n+{\n+\tstatic const struct ebpf_insn ins[] = {\n+\t\t{\n+\t\t\t.code = (BPF_JMP | EBPF_CALL),\n+\t\t\t.imm = 0,  /* xsym #0 */\n+\t\t},\n+\t\t{\n+\t\t\t.code = (BPF_JMP | EBPF_EXIT),\n+\t\t},\n+\t};\n+\tconst struct rte_bpf_xsym xsym[] = {\n+\t\t{\n+\t\t\t.name = \"xfunc\",\n+\t\t\t.type = RTE_BPF_XTYPE_FUNC,\n+\t\t\t.func = {\n+\t\t\t\t.val = (void *)xfunc,\n+\t\t\t\t.nb_args = 1,\n+\t\t\t\t.args = {\n+\t\t\t\t\t{\n+\t\t\t\t\t\t.type = RTE_BPF_ARG_RAW,\n+\t\t\t\t\t\t.size = sizeof(uint64_t),\n+\t\t\t\t\t},\n+\t\t\t\t},\n+\t\t\t\t.ret = {\n+\t\t\t\t\t.type = RTE_BPF_ARG_RAW,\n+\t\t\t\t\t.size = sizeof(uint64_t),\n+\t\t\t\t},\n+\t\t\t},\n+\t\t},\n+\t};\n+\tconst struct rte_bpf_prm prm = {\n+\t\t.ins = ins,\n+\t\t.nb_ins = RTE_DIM(ins),\n+\t\t.xsym = xsym,\n+\t\t.nb_xsym = RTE_DIM(xsym),\n+\t\t.prog_arg = {\n+\t\t\t.type = RTE_BPF_ARG_RAW,\n+\t\t\t.size = sizeof(uint64_t),\n+\t\t},\n+\t};\n+\n+\tstruct rte_bpf_jit jit;\n+\n+\tstruct rte_bpf *const bpf = rte_bpf_load(&prm);\n+\tRTE_TEST_ASSERT_NOT_EQUAL(bpf, NULL,\n+\t\t\"expect rte_bpf_load() != NULL\");\n+\n+\tRTE_TEST_ASSERT_SUCCESS(rte_bpf_get_jit(bpf, &jit),\n+\t\t\"expect rte_bpf_get_jit() to succeed\");\n+\n+\tconst text_xfunc_t jit_function = (void *)jit.func;\n+\tif (jit_function == NULL) {\n+\t\trte_bpf_destroy(bpf);\n+\t\treturn TEST_SKIPPED;\n+\t}\n+\n+\tconst uint64_t argument = 42;\n+\tconst uint64_t result = jit_function(argument);\n+\trte_bpf_destroy(bpf);\n+\n+\tRTE_TEST_ASSERT_EQUAL(result, argument + 1,\n+\t\t\"expect result == %ju, found %ju\",\n+\t\t(uintmax_t)(argument + 1), (uintmax_t)result);\n+\n+\treturn TEST_SUCCESS;\n+}\n+\n+/*\n+ * Test alignment of a local variable.\n+ *\n+ * NOTE: May produce false negatives with sanitizers if they replace the stack.\n+ */\n+\n+/* Copy of the pointer to max_align stack variable, volatile to thwart optimization. */\n+static volatile uintptr_t stack_alignment_test_pointer;\n+\n+static uint64_t\n+stack_alignment_xfunc(uint64_t argument)\n+{\n+\tmax_align_t max_align;\n+\tstack_alignment_test_pointer = (uintptr_t)&max_align;\n+\treturn argument + 1;\n+}\n+\n+static int\n+test_stack_alignment(void)\n+{\n+\tconst int test_rc = call_from_bpf_test(stack_alignment_xfunc);\n+\tif (test_rc == TEST_SKIPPED)\n+\t\treturn TEST_SKIPPED;\n+\n+\tRTE_TEST_ASSERT_SUCCESS(test_rc,\n+\t\t\"expect call_from_bpf_test(stack_alignment_xfunc) to succeed\");\n+\n+\tconst uintptr_t test_offset = stack_alignment_test_pointer;\n+\tRTE_TEST_ASSERT_NOT_EQUAL(test_offset, 0, \"expect test_pointer != 0\");\n+\n+\tconst size_t test_alignment = test_offset % alignof(max_align_t);\n+\tRTE_TEST_ASSERT_EQUAL(test_alignment, 0,\n+\t\t\"expect test_alignment == 0, found %zu\", test_alignment);\n+\n+\treturn TEST_SUCCESS;\n+}\n+\n+REGISTER_FAST_TEST(bpf_stack_alignment_autotest, NOHUGE_OK, ASAN_OK, test_stack_alignment);\n+\n+/*\n+ * Test copying `__uint128_t`.\n+ *\n+ * This operation is used by some variations of `rte_memcpy`;\n+ * it can also be produced by vectorizer in the compiler.\n+ */\n+\n+#if defined(__SIZEOF_INT128__)\n+\n+static uint64_t\n+stack_copy_uint128_xfunc(uint64_t argument)\n+{\n+\t/* Pass addresses through volatiles to prevent compiler from optimizing it all out. */\n+\tchar alignas(16) src_buffer[16];\n+\tchar alignas(16) dst_buffer[16];\n+\tvoid *const src = (char *volatile)src_buffer;\n+\tvoid *const dst = (char *volatile)dst_buffer;\n+\tconst size_t size = 16;\n+\n+\tmemset(src, 0x2a, size);\n+\tmemset(dst, 0x55, size);\n+\tconst int initial_memcmp_rc = memcmp(dst, src, size);\n+\n+\tconst __uint128_t *const src128 = (const __uint128_t *)src;\n+\t__uint128_t *const dst128 = (__uint128_t *)dst;\n+\t*dst128 = *src128;\n+\tconst int memcmp_rc = memcmp(dst, src, size);\n+\n+\treturn argument + 1 + !initial_memcmp_rc + memcmp_rc;\n+}\n+\n+static int\n+test_stack_copy_uint128(void)\n+{\n+\tconst int test_rc = call_from_bpf_test(stack_copy_uint128_xfunc);\n+\tif (test_rc == TEST_SKIPPED)\n+\t\treturn TEST_SKIPPED;\n+\n+\tRTE_TEST_ASSERT_SUCCESS(test_rc,\n+\t\t\"expect call_from_bpf_test(stack_copy_uint128_xfunc) to succeed\");\n+\n+\treturn TEST_SUCCESS;\n+}\n+\n+#else\n+\n+static int\n+test_stack_copy_uint128(void)\n+{\n+\treturn TEST_SKIPPED;\n+}\n+\n+#endif\n+\n+REGISTER_FAST_TEST(bpf_stack_copy_uint128_autotest, NOHUGE_OK, ASAN_OK, test_stack_copy_uint128);\n+\n+/*\n+ * Test SSE2 load and store intrinsics.\n+ *\n+ * These intrinsics are used by e.g. lib/hash.\n+ *\n+ * Test both aligned and unaligned versions. Unaligned intrinsics may still fail\n+ * when the stack is misaligned, since they only treat memory address as\n+ * unaligned, not stack.\n+ */\n+\n+#if defined(__SSE2__)\n+\n+static uint64_t\n+stack_sse2_aligned_xfunc(uint64_t argument)\n+{\n+\t/* Pass addresses through volatiles to prevent compiler from optimizing it all out. */\n+\tchar alignas(16) src_buffer[16];\n+\tchar alignas(16) dst_buffer[16];\n+\tvoid *const src = (char *volatile)src_buffer;\n+\tvoid *const dst = (char *volatile)dst_buffer;\n+\tconst size_t size = 16;\n+\n+\tmemset(src, 0x2a, size);\n+\tmemset(dst, 0x55, size);\n+\tconst int initial_memcmp_rc = memcmp(dst, src, size);\n+\n+\tconst __m128i tmp = _mm_load_si128((const __m128i *)src);\n+\t_mm_store_si128((__m128i *)dst, tmp);\n+\tconst int memcmp_rc = memcmp(dst, src, size);\n+\n+\treturn argument + 1 + !initial_memcmp_rc + memcmp_rc;\n+}\n+\n+static uint64_t\n+stack_sse2_unaligned_xfunc(uint64_t argument)\n+{\n+\t/* Pass addresses through volatiles to prevent compiler from optimizing it all out. */\n+\tchar alignas(16) src_buffer[17];\n+\tchar alignas(16) dst_buffer[17];\n+\tvoid *const src = (char *volatile)src_buffer + 1;\n+\tvoid *const dst = (char *volatile)dst_buffer + 1;\n+\tconst size_t size = 16;\n+\n+\tmemset(src, 0x2a, size);\n+\tmemset(dst, 0x55, size);\n+\tconst int initial_memcmp_rc = memcmp(dst, src, size);\n+\n+\tconst __m128i tmp = _mm_loadu_si128((const __m128i *)src);\n+\t_mm_storeu_si128((__m128i *)dst, tmp);\n+\tconst int memcmp_rc = memcmp(dst, src, size);\n+\n+\treturn argument + 1 + !initial_memcmp_rc + memcmp_rc;\n+}\n+\n+static int\n+test_stack_sse2(void)\n+{\n+\tint test_rc;\n+\n+\ttest_rc = call_from_bpf_test(stack_sse2_aligned_xfunc);\n+\tif (test_rc == TEST_SKIPPED)\n+\t\treturn test_rc;\n+\tRTE_TEST_ASSERT_SUCCESS(test_rc,\n+\t\t\"expect call_from_bpf_test(stack_sse2_aligned_xfunc) to succeed\");\n+\n+\ttest_rc = call_from_bpf_test(stack_sse2_unaligned_xfunc);\n+\tif (test_rc == TEST_SKIPPED)\n+\t\treturn test_rc;\n+\tRTE_TEST_ASSERT_SUCCESS(test_rc,\n+\t\t\"expect call_from_bpf_test(stack_sse2_unaligned_xfunc) to succeed\");\n+\n+\treturn TEST_SUCCESS;\n+}\n+\n+#else\n+\n+static int\n+test_stack_sse2(void)\n+{\n+\treturn TEST_SKIPPED;\n+}\n+\n+#endif\n+\n+REGISTER_FAST_TEST(bpf_stack_sse2_autotest, NOHUGE_OK, ASAN_OK, test_stack_sse2);\n+\n+/*\n+ * Run memcpy and rte_memcpy with various data sizes and offsets (unaligned and aligned).\n+ *\n+ * May produce false negatives even if BPF breaks stack alignment since\n+ * compilers may realign the stack in the beginning of the function to use\n+ * vector instructions with width larger than the default stack alignment.\n+ * However, represents very important use case that was broken in practice.\n+ *\n+ * For the reason specified above test 16-byte fixed-width memcpy explicitly.\n+ */\n+\n+static void *volatile stack_memcpy_dst;\n+static const void *volatile stack_memcpy_src;\n+static size_t volatile stack_memcpy_size;\n+\n+static uint64_t\n+stack_memcpy16_xfunc(uint64_t argument)\n+{\n+\tRTE_ASSERT(stack_memcpy_size == 16);\n+\tmemcpy(stack_memcpy_dst, stack_memcpy_src, 16);\n+\treturn argument + 1;\n+}\n+\n+static uint64_t\n+stack_rte_memcpy16_xfunc(uint64_t argument)\n+{\n+\tRTE_ASSERT(stack_memcpy_size == 16);\n+\trte_memcpy(stack_memcpy_dst, stack_memcpy_src, 16);\n+\treturn argument + 1;\n+}\n+\n+static uint64_t\n+stack_memcpy_xfunc(uint64_t argument)\n+{\n+\tmemcpy(stack_memcpy_dst, stack_memcpy_src, stack_memcpy_size);\n+\treturn argument + 1;\n+}\n+\n+static uint64_t\n+stack_rte_memcpy_xfunc(uint64_t argument)\n+{\n+\trte_memcpy(stack_memcpy_dst, stack_memcpy_src, stack_memcpy_size);\n+\treturn argument + 1;\n+}\n+\n+static int\n+stack_memcpy_subtest(text_xfunc_t xfunc, size_t size, size_t src_offset, size_t dst_offset)\n+{\n+\tstack_memcpy_size = size;\n+\n+\tchar *const src_buffer = malloc(size + src_offset);\n+\tchar *const dst_buffer = malloc(size + dst_offset);\n+\n+\tif (src_buffer == NULL || dst_buffer == NULL) {\n+\t\tfree(dst_buffer);\n+\t\tfree(src_buffer);\n+\t\treturn TEST_FAILED;\n+\t}\n+\n+\tmemset(src_buffer + src_offset, 0x2a, size);\n+\tstack_memcpy_src = src_buffer + src_offset;\n+\n+\tmemset(dst_buffer + dst_offset, 0x55, size);\n+\tstack_memcpy_dst = dst_buffer + dst_offset;\n+\n+\tconst int initial_memcmp_rc = memcmp(stack_memcpy_dst, stack_memcpy_src, size);\n+\tconst int test_rc = call_from_bpf_test(xfunc);\n+\tconst int memcmp_rc = memcmp(stack_memcpy_dst, stack_memcpy_src, size);\n+\n+\tfree(dst_buffer);\n+\tfree(src_buffer);\n+\n+\tif (test_rc == TEST_SKIPPED)\n+\t\treturn TEST_SKIPPED;\n+\n+\tRTE_TEST_ASSERT_FAIL(initial_memcmp_rc, \"expect memcmp() to fail initially\");\n+\tRTE_TEST_ASSERT_SUCCESS(test_rc, \"expect call_from_bpf_test(xfunc) to succeed\");\n+\tRTE_TEST_ASSERT_SUCCESS(memcmp_rc, \"expect memcmp() to succeed\");\n+\n+\treturn TEST_SUCCESS;\n+}\n+\n+static int\n+test_stack_memcpy(void)\n+{\n+\tfor (int offsets = 0; offsets < 4; ++offsets) {\n+\t\tconst bool src_offset = offsets & 1;\n+\t\tconst bool dst_offset = offsets & 2;\n+\t\tint test_rc;\n+\n+\t\ttest_rc = stack_memcpy_subtest(stack_memcpy16_xfunc,\n+\t\t\t16, src_offset, dst_offset);\n+\t\tif (test_rc == TEST_SKIPPED)\n+\t\t\treturn test_rc;\n+\t\tRTE_TEST_ASSERT_SUCCESS(test_rc,\n+\t\t\t\"expect stack_memcpy_subtest(stack_memcpy16_xfunc, \"\n+\t\t\t\t\"16, %i, %i) to succeed\",\n+\t\t\tsrc_offset, dst_offset);\n+\n+\t\ttest_rc = stack_memcpy_subtest(stack_rte_memcpy16_xfunc,\n+\t\t\t16, src_offset, dst_offset);\n+\t\tif (test_rc == TEST_SKIPPED)\n+\t\t\treturn test_rc;\n+\t\tRTE_TEST_ASSERT_SUCCESS(test_rc,\n+\t\t\t\"expect stack_memcpy_subtest(stack_rte_memcpy16_xfunc, \"\n+\t\t\t\t\"16, %i, %i) to succeed\",\n+\t\t\tsrc_offset, dst_offset);\n+\n+\t\tfor (size_t size = 1; size <= 1024; size <<= 1) {\n+\t\t\ttest_rc = stack_memcpy_subtest(stack_memcpy_xfunc,\n+\t\t\t\tsize, src_offset, dst_offset);\n+\t\t\tif (test_rc == TEST_SKIPPED)\n+\t\t\t\treturn test_rc;\n+\t\t\tRTE_TEST_ASSERT_SUCCESS(test_rc,\n+\t\t\t\t\"expect stack_memcpy_subtest(stack_memcpy_xfunc, \"\n+\t\t\t\t\t\"%zu, %i, %i) to succeed\",\n+\t\t\t\tsize, src_offset, dst_offset);\n+\n+\t\t\ttest_rc = stack_memcpy_subtest(stack_rte_memcpy_xfunc,\n+\t\t\t\tsize, src_offset, dst_offset);\n+\t\t\tif (test_rc == TEST_SKIPPED)\n+\t\t\t\treturn test_rc;\n+\t\t\tRTE_TEST_ASSERT_SUCCESS(test_rc,\n+\t\t\t\t\"expect stack_memcpy_subtest(stack_rte_memcpy_xfunc, \"\n+\t\t\t\t\t\"%zu, %i, %i) to succeed\",\n+\t\t\t\tsize, src_offset, dst_offset);\n+\t\t}\n+\t}\n+\treturn TEST_SUCCESS;\n+}\n+\n+REGISTER_FAST_TEST(bpf_stack_memcpy_autotest, NOHUGE_OK, ASAN_OK, test_stack_memcpy);\n+\n #ifdef TEST_BPF_ELF_LOAD\n \n /*\n@@ -3529,7 +4271,7 @@ static int bpf_tx_test(uint16_t port, const char *tmpfile, struct rte_mempool *p\n \tconst struct rte_bpf_prm prm = {\n \t\t.prog_arg = {\n \t\t\t.type = RTE_BPF_ARG_PTR,\n-\t\t\t.size = sizeof(struct rte_mbuf),\n+\t\t\t.size = sizeof(struct dummy_net),\n \t\t},\n \t};\n \tint ret;\n@@ -3580,6 +4322,7 @@ test_bpf_elf_tx_load(void)\n \tmb_pool = rte_pktmbuf_pool_create(\"bpf_tx_test_pool\", BPF_TEST_POOLSIZE,\n \t\t\t\t\t  0, 0, RTE_MBUF_DEFAULT_BUF_SIZE,\n \t\t\t\t\t  SOCKET_ID_ANY);\n+\tTEST_ASSERT(mb_pool != NULL, \"failed to create mempool\");\n \n \tret = null_vdev_setup(null_dev, &port, mb_pool);\n \tif (ret != 0)\n@@ -3627,7 +4370,7 @@ static int bpf_rx_test(uint16_t port, const char *tmpfile, struct rte_mempool *p\n \tconst struct rte_bpf_prm prm = {\n \t\t.prog_arg = {\n \t\t\t.type = RTE_BPF_ARG_PTR,\n-\t\t\t.size = sizeof(struct rte_mbuf),\n+\t\t\t.size = sizeof(struct dummy_net),\n \t\t},\n \t};\n \tint ret;\n@@ -3664,7 +4407,7 @@ test_bpf_elf_rx_load(void)\n \tstatic const char null_dev[] = \"net_null_bpf0\";\n \tstruct rte_mempool *pool = NULL;\n \tchar *tmpfile = NULL;\n-\tuint16_t port;\n+\tuint16_t port = UINT16_MAX;\n \tint ret;\n \n \tprintf(\"%s start\\n\", __func__);\ndiff --git a/app/test/test_cfgfile.c b/app/test/test_cfgfile.c\nindex b189d9d..eabf155 100644\n--- a/app/test/test_cfgfile.c\n+++ b/app/test/test_cfgfile.c\n@@ -178,12 +178,8 @@ test_cfgfile_realloc_sections(void)\n \tret = remove(filename);\n \tTEST_ASSERT_SUCCESS(ret, \"Failed to remove file\");\n \n-\tchar tmp[PATH_MAX] = \"/tmp/\";\n-#ifdef RTE_EXEC_ENV_WINDOWS\n-\tret = GetTempPathA(sizeof(tmp), tmp);\n-\tTEST_ASSERT(ret > 0, \"Failed to get tmp directory\");\n-#endif\n-\tsnprintf(filename, sizeof(filename), \"%s%s\", tmp, \"cfg_save.ini\");\n+\tret = make_tmp_file(filename, \"save\", \"\");\n+\tTEST_ASSERT(ret == 0, \"Failed to make empty tmp filename for save\");\n \n \tret = rte_cfgfile_save(cfgfile, filename);\n \tTEST_ASSERT_SUCCESS(ret, \"Failed to save to %s\", filename);\ndiff --git a/app/test/test_cryptodev.c b/app/test/test_cryptodev.c\nindex 9bdd357..ed9a0fb 100644\n--- a/app/test/test_cryptodev.c\n+++ b/app/test/test_cryptodev.c\n@@ -9716,7 +9716,6 @@ test_pdcp_proto_SGL(int i, int oop,\n \tint ret = TEST_SUCCESS;\n \tint to_trn = 0;\n \tint to_trn_tbl[16];\n-\tint segs = 1;\n \tunsigned int trn_data = 0;\n \tstruct rte_cryptodev_info dev_info;\n \tuint64_t feat_flags;\n@@ -9785,7 +9784,6 @@ test_pdcp_proto_SGL(int i, int oop,\n \t */\n \n \twhile (trn_data < input_vec_len) {\n-\t\t++segs;\n \t\tto_trn = (input_vec_len - trn_data < fragsz) ?\n \t\t\t\t(input_vec_len - trn_data) : fragsz;\n \n@@ -9793,6 +9791,7 @@ test_pdcp_proto_SGL(int i, int oop,\n \n \t\tbuf->next = rte_pktmbuf_alloc(ts_params->mbuf_pool);\n \t\tbuf = buf->next;\n+\t\tut_params->ibuf->nb_segs++;\n \n \t\tmemset(rte_pktmbuf_mtod(buf, uint8_t *), 0,\n \t\t\t\trte_pktmbuf_tailroom(buf));\n@@ -9802,6 +9801,7 @@ test_pdcp_proto_SGL(int i, int oop,\n \t\t\tbuf_oop->next =\n \t\t\t\t\trte_pktmbuf_alloc(ts_params->mbuf_pool);\n \t\t\tbuf_oop = buf_oop->next;\n+\t\t\tut_params->obuf->nb_segs++;\n \t\t\tmemset(rte_pktmbuf_mtod(buf_oop, uint8_t *),\n \t\t\t\t\t0, rte_pktmbuf_tailroom(buf_oop));\n \t\t\tTEST_ASSERT_NOT_NULL(ut_params->obuf, \"Output buffer not initialized\");\n@@ -9816,16 +9816,12 @@ test_pdcp_proto_SGL(int i, int oop,\n \t\ttrn_data += to_trn;\n \t}\n \n-\tut_params->ibuf->nb_segs = segs;\n-\n-\tsegs = 1;\n \tif (fragsz_oop && oop) {\n \t\tto_trn = 0;\n \t\tecx = 0;\n \n \t\ttrn_data = frag_size_oop;\n \t\twhile (trn_data < output_vec_len) {\n-\t\t\t++segs;\n \t\t\tto_trn =\n \t\t\t\t(output_vec_len - trn_data <\n \t\t\t\t\t\tfrag_size_oop) ?\n@@ -9837,13 +9833,13 @@ test_pdcp_proto_SGL(int i, int oop,\n \t\t\tbuf_oop->next =\n \t\t\t\trte_pktmbuf_alloc(ts_params->mbuf_pool);\n \t\t\tbuf_oop = buf_oop->next;\n+\t\t\tut_params->obuf->nb_segs++;\n \t\t\tmemset(rte_pktmbuf_mtod(buf_oop, uint8_t *),\n \t\t\t\t\t0, rte_pktmbuf_tailroom(buf_oop));\n \t\t\tTEST_ASSERT_NOT_NULL(rte_pktmbuf_append(ut_params->obuf, to_trn), \"Failed to append to mbuf\");\n \n \t\t\ttrn_data += to_trn;\n \t\t}\n-\t\tut_params->obuf->nb_segs = segs;\n \t}\n \n \t/* Setup Cipher Parameters */\n@@ -15868,7 +15864,6 @@ test_AES_GMAC_authentication_SGL(const struct gmac_test_data *tdata,\n \tuint64_t feature_flags;\n \tunsigned int trn_data = 0;\n \tvoid *digest_mem = NULL;\n-\tuint32_t segs = 1;\n \tunsigned int to_trn = 0;\n \tstruct rte_mbuf *buf = NULL;\n \tuint8_t *auth_tag, *plaintext;\n@@ -15929,12 +15924,12 @@ test_AES_GMAC_authentication_SGL(const struct gmac_test_data *tdata,\n \t */\n \n \twhile (trn_data < tdata->plaintext.len) {\n-\t\t++segs;\n \t\tto_trn = (tdata->plaintext.len - trn_data < fragsz) ?\n \t\t\t\t(tdata->plaintext.len - trn_data) : fragsz;\n \n \t\tbuf->next = rte_pktmbuf_alloc(ts_params->mbuf_pool);\n \t\tbuf = buf->next;\n+\t\tut_params->ibuf->nb_segs++;\n \n \t\tmemset(rte_pktmbuf_mtod(buf, uint8_t *), 0,\n \t\t\t\trte_pktmbuf_tailroom(buf));\n@@ -15952,7 +15947,6 @@ test_AES_GMAC_authentication_SGL(const struct gmac_test_data *tdata,\n \t\t\tTEST_ASSERT_NOT_NULL(digest_mem, \"Failed to append digest data\");\n \t\t}\n \t}\n-\tut_params->ibuf->nb_segs = segs;\n \n \t/*\n \t * Place digest at the end of the last buffer\n@@ -17105,7 +17099,6 @@ test_authenticated_encryption_SGL(const struct aead_test_data *tdata,\n \tint retval;\n \tint to_trn = 0;\n \tint to_trn_tbl[SGL_MAX_NO];\n-\tint segs = 1;\n \tunsigned int trn_data = 0;\n \tuint8_t *plaintext, *ciphertext, *auth_tag;\n \tstruct rte_cryptodev_info dev_info;\n@@ -17230,7 +17223,6 @@ test_authenticated_encryption_SGL(const struct aead_test_data *tdata,\n \t */\n \n \twhile (trn_data < tdata->plaintext.len) {\n-\t\t++segs;\n \t\tto_trn = (tdata->plaintext.len - trn_data < fragsz) ?\n \t\t\t\t(tdata->plaintext.len - trn_data) : fragsz;\n \n@@ -17238,6 +17230,7 @@ test_authenticated_encryption_SGL(const struct aead_test_data *tdata,\n \n \t\tbuf->next = rte_pktmbuf_alloc(ts_params->mbuf_pool);\n \t\tbuf = buf->next;\n+\t\tut_params->ibuf->nb_segs++;\n \n \t\tmemset(rte_pktmbuf_mtod(buf, uint8_t *), 0,\n \t\t\t\trte_pktmbuf_tailroom(buf));\n@@ -17247,6 +17240,7 @@ test_authenticated_encryption_SGL(const struct aead_test_data *tdata,\n \t\t\tbuf_last_oop = buf_oop->next =\n \t\t\t\t\trte_pktmbuf_alloc(ts_params->mbuf_pool);\n \t\t\tbuf_oop = buf_oop->next;\n+\t\t\tut_params->obuf->nb_segs++;\n \t\t\tmemset(rte_pktmbuf_mtod(buf_oop, uint8_t *),\n \t\t\t\t\t0, rte_pktmbuf_tailroom(buf_oop));\n \t\t\tTEST_ASSERT_NOT_NULL(rte_pktmbuf_append(ut_params->obuf, to_trn), \"Failed to append to mbuf\");\n@@ -17276,9 +17270,6 @@ test_authenticated_encryption_SGL(const struct aead_test_data *tdata,\n \n \tuint64_t digest_phys = 0;\n \n-\tut_params->ibuf->nb_segs = segs;\n-\n-\tsegs = 1;\n \tif (fragsz_oop && oop) {\n \t\tto_trn = 0;\n \t\tecx = 0;\n@@ -17294,7 +17285,6 @@ test_authenticated_encryption_SGL(const struct aead_test_data *tdata,\n \n \t\ttrn_data = frag_size_oop;\n \t\twhile (trn_data < tdata->plaintext.len) {\n-\t\t\t++segs;\n \t\t\tto_trn =\n \t\t\t\t(tdata->plaintext.len - trn_data <\n \t\t\t\t\t\tfrag_size_oop) ?\n@@ -17306,6 +17296,7 @@ test_authenticated_encryption_SGL(const struct aead_test_data *tdata,\n \t\t\tbuf_last_oop = buf_oop->next =\n \t\t\t\t\trte_pktmbuf_alloc(ts_params->mbuf_pool);\n \t\t\tTEST_ASSERT_NOT_NULL(buf_oop->next, \"Unexpected end of chain\");\n+\t\t\tut_params->obuf->nb_segs++;\n \t\t\tbuf_oop = buf_oop->next;\n \t\t\tmemset(rte_pktmbuf_mtod(buf_oop, uint8_t *),\n \t\t\t\t\t0, rte_pktmbuf_tailroom(buf_oop));\n@@ -17319,8 +17310,6 @@ test_authenticated_encryption_SGL(const struct aead_test_data *tdata,\n \t\t\t\tTEST_ASSERT_NOT_NULL(digest_mem, \"Failed to append auth tag\");\n \t\t\t}\n \t\t}\n-\n-\t\tut_params->obuf->nb_segs = segs;\n \t}\n \n \t/*\n@@ -17713,8 +17702,15 @@ scheduler_testsuite_setup(void)\n \t\tRTE_LCORE_FOREACH_WORKER(i) {\n \t\t\tif (worker_core_count > 1)\n \t\t\t\tbreak;\n-\t\t\tsnprintf(vdev_args, sizeof(vdev_args),\n-\t\t\t\t\t\"%s%d\", temp_str, i);\n+\t\t\tret = snprintf(vdev_args, sizeof(vdev_args), \"%s%d\", temp_str, i);\n+\n+\t\t\t/* If too many args the result will have been truncated */\n+\t\t\tif (ret >= VDEV_ARGS_SIZE) {\n+\t\t\t\tRTE_LOG(ERR, USER1,\n+\t\t\t\t\t\"Cryptodev scheduler test vdev arg size exceeded\\n\");\n+\t\t\t\treturn TEST_FAILED;\n+\t\t\t}\n+\n \t\t\tstrcpy(temp_str, vdev_args);\n \t\t\tstrlcat(temp_str, \";\", sizeof(temp_str));\n \t\t\tworker_core_count++;\n@@ -17728,8 +17724,14 @@ scheduler_testsuite_setup(void)\n \t\t\treturn TEST_FAILED;\n \t\t}\n \t\tstrcpy(temp_str, vdev_args);\n-\t\tsnprintf(vdev_args, sizeof(vdev_args), \"%s,socket_id=%d\",\n-\t\t\t\ttemp_str, socket_id);\n+\t\tret = snprintf(vdev_args, sizeof(vdev_args), \"%s,socket_id=%d\", temp_str,\n+\t\t\tsocket_id);\n+\t\tif (ret >= VDEV_ARGS_SIZE) {\n+\t\t\tRTE_LOG(ERR, USER1,\n+\t\t\t\t\"Cryptodev scheduler test vdev arg size exceeded\\n\");\n+\t\t\treturn TEST_FAILED;\n+\t\t}\n+\n \t\tRTE_LOG(DEBUG, USER1, \"vdev_args: %s\\n\", vdev_args);\n \t\tnb_devs = rte_cryptodev_device_count_by_driver(\n \t\t\t\trte_cryptodev_driver_id_get(\ndiff --git a/app/test/test_cryptodev_asym.c b/app/test/test_cryptodev_asym.c\nindex 111f675..e6c9159 100644\n--- a/app/test/test_cryptodev_asym.c\n+++ b/app/test/test_cryptodev_asym.c\n@@ -139,6 +139,7 @@ queue_ops_rsa_sign_verify(void *sess)\n \n \t/* Negative test */\n \tresult_op->asym->rsa.sign.data[0] ^= 0xff;\n+\tresult_op->asym->rsa.sign.length = RTE_DIM(rsa_n);\n \tif (rte_cryptodev_enqueue_burst(dev_id, 0, &result_op, 1) != 1) {\n \t\tRTE_LOG(ERR, USER1, \"Error sending packet for verify\\n\");\n \t\tstatus = TEST_FAILED;\n@@ -3904,19 +3905,15 @@ mlkem_keygen(const void *test_data)\n \t\trte_crypto_ml_kem_pubkey_size[vector->type],\n \t\t\"Incorrect Encapsulation key length\\n\");\n \n-\t/* If the seed is all zero, keys are deterministic */\n-\tif (memcmp(vector->d.data, (uint8_t [32]) {0},\n-\t\t\tvector->d.length) == 0) {\n-\t\tTEST_ASSERT_BUFFERS_ARE_EQUAL(vector->dk.data,\n-\t\t\tself->result_op->asym->mlkem.keygen.dk.data,\n-\t\t\tself->result_op->asym->mlkem.keygen.dk.length,\n-\t\t\t\"Incorrect Decapsulation key\\n\");\n-\t\tTEST_ASSERT_BUFFERS_ARE_EQUAL(vector->ek.data,\n-\t\t\tself->result_op->asym->mlkem.keygen.ek.data,\n-\t\t\tself->result_op->asym->mlkem.keygen.ek.length,\n-\t\t\t\"Incorrect Encapsulation key\\n\");\n-\t\tRTE_LOG(DEBUG, USER1, \"Deterministic keygen test passed\\n\");\n-\t}\n+\tTEST_ASSERT_BUFFERS_ARE_EQUAL(vector->dk.data,\n+\t\tself->result_op->asym->mlkem.keygen.dk.data,\n+\t\tself->result_op->asym->mlkem.keygen.dk.length,\n+\t\t\"Incorrect Decapsulation key\\n\");\n+\tTEST_ASSERT_BUFFERS_ARE_EQUAL(vector->ek.data,\n+\t\tself->result_op->asym->mlkem.keygen.ek.data,\n+\t\tself->result_op->asym->mlkem.keygen.ek.length,\n+\t\t\"Incorrect Encapsulation key\\n\");\n+\tRTE_LOG(DEBUG, USER1, \"Deterministic keygen test passed\\n\");\n \n \trte_cryptodev_asym_session_free(dev_id, self->sess);\n \treturn TEST_SUCCESS;\n@@ -4076,7 +4073,7 @@ mlkem_decap(const void *test_data)\n \tself->op->asym->mlkem.decap.sk.data = sk;\n \tself->op->asym->mlkem.decap.sk.length = 32;\n \n-\tTEST_ASSERT_SUCCESS(send_one(),\n+\tTEST_ASSERT_SUCCESS(send_one_no_status_check(),\n \t\t\"Failed to process crypto op (ML-KEM Decap)\");\n \n \tdebug_hexdump(stdout, \"Shared secret from decap\",\n@@ -4104,7 +4101,7 @@ mlkem_decap(const void *test_data)\n \tself->op->asym->mlkem.decap.sk.data = sk;\n \tself->op->asym->mlkem.decap.sk.length = 32;\n \n-\tTEST_ASSERT_SUCCESS(send_one(),\n+\tTEST_ASSERT_SUCCESS(send_one_no_status_check(),\n \t\t\"Failed to process crypto op (ML-KEM Decap)\");\n \n \tdebug_hexdump(stdout, \"Shared secret from negative test\",\n@@ -4169,19 +4166,15 @@ mldsa_keygen(const void *test_data)\n \t\trte_crypto_ml_dsa_pubkey_size[vector->type],\n \t\t\"Incorrect Public key length\\n\");\n \n-\t/* If the seed is all zero, keys are deterministic */\n-\tif (memcmp(vector->seed.data, (uint8_t [32]) {0},\n-\t\t\tvector->seed.length) == 0) {\n-\t\tTEST_ASSERT_BUFFERS_ARE_EQUAL(vector->privkey.data,\n-\t\t\tself->result_op->asym->mldsa.keygen.privkey.data,\n-\t\t\tself->result_op->asym->mldsa.keygen.privkey.length,\n-\t\t\t\"Incorrect Private key\\n\");\n-\t\tTEST_ASSERT_BUFFERS_ARE_EQUAL(vector->pubkey.data,\n-\t\t\tself->result_op->asym->mldsa.keygen.pubkey.data,\n-\t\t\tself->result_op->asym->mldsa.keygen.pubkey.length,\n-\t\t\t\"Incorrect Public key\\n\");\n-\t\tRTE_LOG(DEBUG, USER1, \"Deterministic keygen test passed\\n\");\n-\t}\n+\tTEST_ASSERT_BUFFERS_ARE_EQUAL(vector->privkey.data,\n+\t\tself->result_op->asym->mldsa.keygen.privkey.data,\n+\t\tself->result_op->asym->mldsa.keygen.privkey.length,\n+\t\t\"Incorrect Private key\\n\");\n+\tTEST_ASSERT_BUFFERS_ARE_EQUAL(vector->pubkey.data,\n+\t\tself->result_op->asym->mldsa.keygen.pubkey.data,\n+\t\tself->result_op->asym->mldsa.keygen.pubkey.length,\n+\t\t\"Incorrect Public key\\n\");\n+\tRTE_LOG(DEBUG, USER1, \"Deterministic keygen test passed\\n\");\n \n \trte_cryptodev_asym_session_free(dev_id, self->sess);\n \treturn TEST_SUCCESS;\n@@ -4199,6 +4192,7 @@ mldsa_sign(const void *test_data)\n \n \txform.mldsa.type = vector->type;\n \txform.mldsa.sign_deterministic = vector->sign_deterministic;\n+\txform.mldsa.sign_prehash = !!vector->hash;\n \txform.xform_type = RTE_CRYPTO_ASYM_XFORM_ML_DSA;\n \n \trte_cryptodev_info_get(dev_id, &dev_info);\n@@ -4273,6 +4267,7 @@ mldsa_sign(const void *test_data)\n \tself->op->asym->mldsa.sigver.pubkey.length = vector->pubkey.length;\n \tself->op->asym->mldsa.sigver.sign.data = sign;\n \tself->op->asym->mldsa.sigver.sign.length = sign_len;\n+\tself->op->asym->mldsa.sigver.hash = vector->hash;\n \n \tTEST_ASSERT_SUCCESS(send_one(),\n \t\t\"Failed to process crypto op (ML-DSA Verify)\");\n@@ -4295,6 +4290,7 @@ mldsa_sign(const void *test_data)\n \tself->op->asym->mldsa.sigver.pubkey.length = vector->pubkey.length;\n \tself->op->asym->mldsa.sigver.sign.data = sign;\n \tself->op->asym->mldsa.sigver.sign.length = sign_len;\n+\tself->op->asym->mldsa.sigver.hash = vector->hash;\n \n \tTEST_ASSERT_SUCCESS(send_one_no_status_check(),\n \t\t\"Failed to process crypto op (ML-DSA Verify)\");\n@@ -4315,12 +4311,26 @@ mldsa_verify(const void *test_data)\n \tconst struct crypto_testsuite_mldsa_params *vector = test_data;\n \tconst uint8_t dev_id = params->valid_devs[0];\n \tstruct rte_crypto_asym_xform xform = {0};\n+\tstruct rte_cryptodev_info dev_info;\n \tuint8_t sign[TEST_DATA_SIZE] = {0};\n \tsize_t sign_len;\n \n \txform.mldsa.type = vector->type;\n \txform.mldsa.sign_deterministic = vector->sign_deterministic;\n+\txform.mldsa.sign_prehash = !!vector->hash;\n \txform.xform_type = RTE_CRYPTO_ASYM_XFORM_ML_DSA;\n+\n+\trte_cryptodev_info_get(dev_id, &dev_info);\n+\n+\t/* Check if prehash is supported */\n+\tif (vector->hash) {\n+\t\tif (!(dev_info.feature_flags & RTE_CRYPTODEV_FF_MLDSA_SIGN_PREHASH)) {\n+\t\t\tRTE_LOG(DEBUG, USER1,\n+\t\t\t\t\"Device doesn't support prehash in ML-DSA verify. Test skipped\\n\");\n+\t\t\treturn TEST_SKIPPED;\n+\t\t}\n+\t}\n+\n \tif (rte_cryptodev_asym_session_create(dev_id, &xform,\n \t\t\tparams->session_mpool, &self->sess) < 0) {\n \t\tRTE_LOG(ERR, USER1, \"line %u FAILED: Session creation failed\",\n@@ -4342,6 +4352,7 @@ mldsa_verify(const void *test_data)\n \tself->op->asym->mldsa.sigver.pubkey.length = vector->pubkey.length;\n \tself->op->asym->mldsa.sigver.sign.data = vector->sign.data;\n \tself->op->asym->mldsa.sigver.sign.length = vector->sign.length;\n+\tself->op->asym->mldsa.sigver.hash = vector->hash;\n \n \tTEST_ASSERT_SUCCESS(send_one(),\n \t\t\"Failed to process crypto op (ML-DSA Verify)\");\n@@ -4366,6 +4377,7 @@ mldsa_verify(const void *test_data)\n \tself->op->asym->mldsa.sigver.pubkey.length = vector->pubkey.length;\n \tself->op->asym->mldsa.sigver.sign.data = sign;\n \tself->op->asym->mldsa.sigver.sign.length = sign_len;\n+\tself->op->asym->mldsa.sigver.hash = vector->hash;\n \n \tTEST_ASSERT_SUCCESS(send_one_no_status_check(),\n \t\t\"Failed to process crypto op (ML-DSA Verify)\");\ndiff --git a/app/test/test_cryptodev_ml_dsa_test_vectors.h b/app/test/test_cryptodev_ml_dsa_test_vectors.h\nindex f2453b9..675a6fa 100644\n--- a/app/test/test_cryptodev_ml_dsa_test_vectors.h\n+++ b/app/test/test_cryptodev_ml_dsa_test_vectors.h\n@@ -1653,6 +1653,14 @@ struct crypto_testsuite_mldsa_params mldsa_keygen_test_vectors[] = {\n \t\t\t.data = mldsa_44_seed,\n \t\t\t.length = sizeof(mldsa_44_seed),\n \t\t},\n+\t\t.privkey = {\n+\t\t\t.data = mldsa_44_privkey,\n+\t\t\t.length = sizeof(mldsa_44_privkey),\n+\t\t},\n+\t\t.pubkey = {\n+\t\t\t.data = mldsa_44_pubkey,\n+\t\t\t.length = sizeof(mldsa_44_pubkey),\n+\t\t},\n \t},\n \t{\n \t\t.name = \"mldsa_44_keygen (deterministic)\",\ndiff --git a/app/test/test_cryptodev_ml_kem_test_vectors.h b/app/test/test_cryptodev_ml_kem_test_vectors.h\nindex 8294acc..a1d727b 100644\n--- a/app/test/test_cryptodev_ml_kem_test_vectors.h\n+++ b/app/test/test_cryptodev_ml_kem_test_vectors.h\n@@ -785,6 +785,14 @@ struct crypto_testsuite_mlkem_params mlkem_keygen_test_vectors[] = {\n \t\t\t.data = mlkem_512_z,\n \t\t\t.length = sizeof(mlkem_512_z),\n \t\t},\n+\t\t.dk = {\n+\t\t\t.data = mlkem_512_dk,\n+\t\t\t.length = sizeof(mlkem_512_dk),\n+\t\t},\n+\t\t.ek = {\n+\t\t\t.data = mlkem_512_ek,\n+\t\t\t.length = sizeof(mlkem_512_ek),\n+\t\t}\n \t},\n \t{\n \t\t.name = \"mlkem_512_keygen (deterministic)\",\ndiff --git a/app/test/test_debug.c b/app/test/test_debug.c\nindex 5ff9068..5968764 100644\n--- a/app/test/test_debug.c\n+++ b/app/test/test_debug.c\n@@ -154,15 +154,15 @@ test_debug(void)\n \ttest_args[2] = \"-l\";\n \ttest_args[3] = core;\n \n-\tif (rte_eal_has_hugepages()) {\n+\tif (rte_eal_has_hugepages() && RTE_EXEC_ENV_IS_LINUX) {\n \t\ttest_args[4] = \"\";\n \t\ttest_args[5] = \"\";\n \t\ttest_args[6] = \"\";\n \t\ttest_args[7] = \"\";\n \t} else {\n \t\ttest_args[4] = \"--no-huge\";\n-\t\ttest_args[5] = \"-m\";\n-\t\ttest_args[6] = \"2048\";\n+\t\ttest_args[5] = \"-m2048\";\n+\t\ttest_args[6] = \"--no-telemetry\";\n #ifdef RTE_ARCH_PPC_64\n \t\t/* iova=pa is the default, but fails on ppc64 with --no-huge */\n \t\ttest_args[7] = \"--iova-mode=va\";\ndiff --git a/app/test/test_dispatcher.c b/app/test/test_dispatcher.c\nindex 6eb3f57..a5fdf4a 100644\n--- a/app/test/test_dispatcher.c\n+++ b/app/test/test_dispatcher.c\n@@ -385,6 +385,7 @@ test_app_process_queue(uint8_t p_event_dev_id, uint8_t p_event_port_id,\n \t\t\t\t.sched_type = RTE_SCHED_TYPE_ATOMIC,\n \t\t\t\t.op = RTE_EVENT_OP_FORWARD,\n \t\t\t\t.priority = RTE_EVENT_DEV_PRIORITY_NORMAL,\n+\t\t\t\t.impl_opaque = in_event->impl_opaque,\n \t\t\t\t.u64 = sn\n \t\t\t};\n \t}\ndiff --git a/app/test/test_eal_flags.c b/app/test/test_eal_flags.c\nindex e32f83d..26dbd62 100644\n--- a/app/test/test_eal_flags.c\n+++ b/app/test/test_eal_flags.c\n@@ -10,88 +10,88 @@\n #include <string.h>\n #include <stdarg.h>\n \n-#ifdef RTE_EXEC_ENV_WINDOWS\n+#ifndef RTE_EXEC_ENV_LINUX\n static int\n test_missing_c_flag(void)\n {\n-\tprintf(\"missing_c_flag not supported on Windows, skipping test\\n\");\n+\tprintf(\"missing_c_flag only supported on Linux, skipping test\\n\");\n \treturn TEST_SKIPPED;\n }\n \n static int\n test_main_lcore_flag(void)\n {\n-\tprintf(\"main_lcore_flag not supported on Windows, skipping test\\n\");\n+\tprintf(\"main_lcore_flag only supported on Linux, skipping test\\n\");\n \treturn TEST_SKIPPED;\n }\n \n static int\n test_invalid_n_flag(void)\n {\n-\tprintf(\"invalid_n_flag not supported on Windows, skipping test\\n\");\n+\tprintf(\"invalid_n_flag only supported on Linux, skipping test\\n\");\n \treturn TEST_SKIPPED;\n }\n \n static int\n test_no_hpet_flag(void)\n {\n-\tprintf(\"no_hpet_flag not supported on Windows, skipping test\\n\");\n+\tprintf(\"no_hpet_flag only supported on Linux, skipping test\\n\");\n \treturn TEST_SKIPPED;\n }\n \n static int\n test_no_huge_flag(void)\n {\n-\tprintf(\"no_huge_flag not supported on Windows, skipping test\\n\");\n+\tprintf(\"no_huge_flag only supported on Linux, skipping test\\n\");\n \treturn TEST_SKIPPED;\n }\n \n static int\n test_allow_flag(void)\n {\n-\tprintf(\"allow_flag not supported on Windows, skipping test\\n\");\n+\tprintf(\"allow_flag only supported on Linux, skipping test\\n\");\n \treturn TEST_SKIPPED;\n }\n \n static int\n test_invalid_b_flag(void)\n {\n-\tprintf(\"invalid_b_flag not supported on Windows, skipping test\\n\");\n+\tprintf(\"invalid_b_flag only supported on Linux, skipping test\\n\");\n \treturn TEST_SKIPPED;\n }\n \n static int\n test_invalid_vdev_flag(void)\n {\n-\tprintf(\"invalid_vdev_flag not supported on Windows, skipping test\\n\");\n+\tprintf(\"invalid_vdev_flag only supported on Linux, skipping test\\n\");\n \treturn TEST_SKIPPED;\n }\n \n static int\n test_invalid_r_flag(void)\n {\n-\tprintf(\"invalid_r_flag not supported on Windows, skipping test\\n\");\n+\tprintf(\"invalid_r_flag only supported on Linux, skipping test\\n\");\n \treturn TEST_SKIPPED;\n }\n \n static int\n test_memory_flags(void)\n {\n-\tprintf(\"memory_flags not supported on Windows, skipping test\\n\");\n+\tprintf(\"memory_flags only supported on Linux, skipping test\\n\");\n \treturn TEST_SKIPPED;\n }\n \n static int\n test_file_prefix(void)\n {\n-\tprintf(\"file_prefix not supported on Windows, skipping test\\n\");\n+\tprintf(\"file_prefix only supported on Linux, skipping test\\n\");\n \treturn TEST_SKIPPED;\n }\n \n static int\n test_misc_flags(void)\n {\n-\tprintf(\"misc_flags not supported on Windows, skipping test\\n\");\n+\tprintf(\"misc_flags only supported on Linux, skipping test\\n\");\n \treturn TEST_SKIPPED;\n }\n \n@@ -121,6 +121,7 @@ test_misc_flags(void)\n #define no_shconf \"--no-shconf\"\n #define allow \"--allow\"\n #define vdev \"--vdev\"\n+#define no_pci \"--no-pci\"\n #define memtest \"memtest\"\n #define memtest1 \"memtest1\"\n #define memtest2 \"memtest2\"\n@@ -445,17 +446,17 @@ test_invalid_vdev_flag(void)\n \n \t/* Test with invalid vdev option */\n \tconst char *vdevinval[] = {prgname, prefix, no_huge,\n-\t\t\t\tvdev, \"eth_dummy\"};\n+\t\t\t\tno_pci, vdev, \"eth_dummy\"};\n \n \t/* Test with valid vdev option */\n \tconst char *vdevval1[] = {prgname, prefix, no_huge,\n-\tvdev, \"net_ring0\"};\n+\tno_pci, vdev, \"net_ring0\"};\n \n \tconst char *vdevval2[] = {prgname, prefix, no_huge,\n-\tvdev, \"net_ring0,args=test\"};\n+\tno_pci, vdev, \"net_ring0,args=test\"};\n \n \tconst char *vdevval3[] = {prgname, prefix, no_huge,\n-\tvdev, \"net_ring0,nodeaction=r1:0:CREATE\"};\n+\tno_pci, vdev, \"net_ring0,nodeaction=r1:0:CREATE\"};\n \n \tif (launch_proc(vdevinval) == 0) {\n \t\tprintf(\"Error - process did run ok with invalid \"\n@@ -992,24 +993,24 @@ test_misc_flags(void)\n \tconst char *argv5[] = {prgname, prefix, mp_flag, \"--syslog=invalid\"};\n \n \t/* With no-sh-conf, also use no-huge to ensure this test runs on BSD */\n-\tconst char *argv6[] = {prgname, \"-m\", DEFAULT_MEM_SIZE,\n+\tconst char *argv6[] = {prgname, no_pci, \"-m\", DEFAULT_MEM_SIZE,\n \t\t\tno_shconf, nosh_prefix, no_huge};\n \n \t/* With --huge-dir */\n \tconst char *argv7[] = {prgname, \"-m\", DEFAULT_MEM_SIZE,\n-\t\t\t\"--file-prefix=hugedir\", \"--huge-dir\", hugepath};\n+\t\t\tno_pci, \"--file-prefix=hugedir\", \"--huge-dir\", hugepath};\n \t/* With empty --huge-dir (should fail) */\n \tconst char *argv8[] = {prgname, \"-m\", DEFAULT_MEM_SIZE,\n-\t\t\t\"--file-prefix=hugedir\", \"--huge-dir\"};\n+\t\t\tno_pci, \"--file-prefix=hugedir\", \"--huge-dir\"};\n \t/* With invalid --huge-dir */\n \tconst char *argv9[] = {prgname, \"-m\", DEFAULT_MEM_SIZE,\n-\t\t\t\"--file-prefix=hugedir\", \"--huge-dir\", \"invalid\"};\n+\t\t\tno_pci, \"--file-prefix=hugedir\", \"--huge-dir\", \"invalid\"};\n \t/* With invalid --huge-dir sub-directory */\n \tconst char *argv10[] = {prgname, \"-m\", DEFAULT_MEM_SIZE,\n-\t\t\t\"--file-prefix=hugedir\", \"--huge-dir\", hugepath_dir};\n+\t\t\tno_pci, \"--file-prefix=hugedir\", \"--huge-dir\", hugepath_dir};\n \t/* With valid --huge-dir sub-directory */\n \tconst char *argv11[] = {prgname, \"-m\", DEFAULT_MEM_SIZE,\n-\t\t\t\"--file-prefix=hugedir\", \"--huge-dir\", hugepath_dir2};\n+\t\t\tno_pci, \"--file-prefix=hugedir\", \"--huge-dir\", hugepath_dir2};\n \t/* Secondary process with invalid --huge-dir (should run as flag has no\n \t * effect on secondary processes) */\n \tconst char *argv12[] = {prgname, prefix, mp_flag,\n@@ -1017,35 +1018,35 @@ test_misc_flags(void)\n \n \t/* try running with base-virtaddr param */\n \tconst char *argv13[] = {prgname, \"--file-prefix=virtaddr\",\n-\t\t\t\"--base-virtaddr=0x23456789\"};\n+\t\t\tno_pci, \"--base-virtaddr=0x23456789\"};\n \n \t/* try running with --vfio-intr INTx flag */\n \tconst char *argv14[] = {prgname, \"--file-prefix=intr\",\n-\t\t\t\"--vfio-intr=legacy\"};\n+\t\t\tno_pci, \"--vfio-intr=legacy\"};\n \n \t/* try running with --vfio-intr MSI flag */\n \tconst char *argv15[] = {prgname, \"--file-prefix=intr\",\n-\t\t\t\"--vfio-intr=msi\"};\n+\t\t\tno_pci, \"--vfio-intr=msi\"};\n \n \t/* try running with --vfio-intr MSI-X flag */\n \tconst char *argv16[] = {prgname, \"--file-prefix=intr\",\n-\t\t\t\"--vfio-intr=msix\"};\n+\t\t\tno_pci, \"--vfio-intr=msix\"};\n \n \t/* try running with --vfio-intr invalid flag */\n \tconst char *argv17[] = {prgname, \"--file-prefix=intr\",\n-\t\t\t\"--vfio-intr=invalid\"};\n+\t\t\tno_pci, \"--vfio-intr=invalid\"};\n \n \t/* With process type as auto-detect */\n \tconst char * const argv18[] = {prgname, \"--file-prefix=auto\",\n-\t\t\t\"--proc-type=auto\"};\n+\t\t\tno_pci, \"--proc-type=auto\"};\n \n \t/* With process type as auto-detect with no-shconf */\n \tconst char * const argv19[] = {prgname, \"--proc-type=auto\",\n-\t\t\tno_shconf, nosh_prefix, no_huge};\n+\t\t\tno_pci, no_shconf, nosh_prefix, no_huge};\n \n \t/* With process type as --create-uio-dev flag */\n \tconst char * const argv20[] = {prgname, \"--file-prefix=uiodev\",\n-\t\t\t\"--create-uio-dev\"};\n+\t\t\tno_pci, \"--create-uio-dev\"};\n \n \t/* Try running with --huge-worker-stack flag */\n \tconst char * const argv21[] = {prgname, prefix, mp_flag,\n@@ -1255,43 +1256,43 @@ test_file_prefix(void)\n \t\t\tDEFAULT_MEM_SIZE, \"--file-prefix=\" memtest };\n \n \t/* primary process with memtest1 and default mem mode */\n-\tconst char *argv1[] = {prgname, \"-m\",\n+\tconst char *argv1[] = {prgname, no_pci, \"-m\",\n \t\t\tDEFAULT_MEM_SIZE, \"--file-prefix=\" memtest1 };\n \n \t/* primary process with memtest1 and legacy mem mode */\n-\tconst char *argv2[] = {prgname, \"-m\",\n+\tconst char *argv2[] = {prgname, no_pci, \"-m\",\n \t\t\tDEFAULT_MEM_SIZE, \"--file-prefix=\" memtest1,\n \t\t\t\"--legacy-mem\" };\n \n \t/* primary process with memtest2 and legacy mem mode */\n-\tconst char *argv3[] = {prgname, \"-m\",\n+\tconst char *argv3[] = {prgname, no_pci, \"-m\",\n \t\t\tDEFAULT_MEM_SIZE, \"--file-prefix=\" memtest2,\n \t\t\t\"--legacy-mem\" };\n \n \t/* primary process with memtest2 and default mem mode */\n-\tconst char *argv4[] = {prgname, \"-m\",\n+\tconst char *argv4[] = {prgname, no_pci, \"-m\",\n \t\t\tDEFAULT_MEM_SIZE, \"--file-prefix=\" memtest2 };\n \n \t/* primary process with --in-memory mode */\n-\tconst char * const argv5[] = {prgname, \"-m\",\n+\tconst char * const argv5[] = {prgname, no_pci, \"-m\",\n \t\tDEFAULT_MEM_SIZE, \"--in-memory\" };\n \n \t/* primary process with memtest1 and --in-memory mode */\n-\tconst char * const argv6[] = {prgname, \"-m\",\n+\tconst char * const argv6[] = {prgname, no_pci, \"-m\",\n \t\tDEFAULT_MEM_SIZE, \"--in-memory\",\n \t\t\"--file-prefix=\" memtest1 };\n \n \t/* primary process with parent file-prefix and --in-memory mode */\n-\tconst char * const argv7[] = {prgname, \"-m\",\n+\tconst char * const argv7[] = {prgname, no_pci, \"-m\",\n \t\tDEFAULT_MEM_SIZE, \"--in-memory\", \"--file-prefix\", prefix };\n \n \t/* primary process with memtest1 and --single-file-segments mode */\n-\tconst char * const argv8[] = {prgname, \"-m\",\n+\tconst char * const argv8[] = {prgname, no_pci, \"-m\",\n \t\tDEFAULT_MEM_SIZE, \"--single-file-segments\",\n \t\t\"--file-prefix=\" memtest1 };\n \n \t/* primary process with memtest1 and --huge-unlink=never mode */\n-\tconst char * const argv9[] = {prgname, \"-m\",\n+\tconst char * const argv9[] = {prgname, no_pci, \"-m\",\n \t\tDEFAULT_MEM_SIZE, \"--huge-unlink=never\",\n \t\t\"--file-prefix=\" memtest1 };\n \n@@ -1542,41 +1543,41 @@ test_memory_flags(void)\n \t\t\t\"-m\", DEFAULT_MEM_SIZE};\n \n \t/* valid -m flag */\n-\tconst char *argv1[] = {prgname,\n+\tconst char *argv1[] = {prgname, no_pci,\n \t\t\t\"--file-prefix=\" memtest, \"-m\", DEFAULT_MEM_SIZE};\n \n \t/* valid (zero) --socket-mem flag */\n \tchar arg2_socket_mem[SOCKET_MEM_STRLEN];\n-\tconst char *argv2[] = {prgname,\n+\tconst char *argv2[] = {prgname, no_pci,\n \t\t\t\"--file-prefix=\" memtest, arg2_socket_mem};\n \n \t/* invalid (incomplete) --socket-mem flag */\n \tchar arg3_socket_mem[SOCKET_MEM_STRLEN];\n-\tconst char *argv3[] = {prgname,\n+\tconst char *argv3[] = {prgname, no_pci,\n \t\t\t\"--file-prefix=\" memtest, arg3_socket_mem};\n \n \t/* invalid (mixed with invalid data) --socket-mem flag */\n \tchar arg4_socket_mem[SOCKET_MEM_STRLEN];\n-\tconst char *argv4[] = {prgname,\n+\tconst char *argv4[] = {prgname, no_pci,\n \t\t\t\"--file-prefix=\" memtest, arg4_socket_mem};\n \n \t/* invalid (with numeric value as last character) --socket-mem flag */\n \tchar arg5_socket_mem[SOCKET_MEM_STRLEN];\n-\tconst char *argv5[] = {prgname,\n+\tconst char *argv5[] = {prgname, no_pci,\n \t\t\t\"--file-prefix=\" memtest, arg5_socket_mem};\n \n \t/* invalid (with empty socket) --socket-mem flag */\n \tchar arg6_socket_mem[SOCKET_MEM_STRLEN];\n-\tconst char *argv6[] = {prgname,\n+\tconst char *argv6[] = {prgname, no_pci,\n \t\t\t\"--file-prefix=\" memtest, arg6_socket_mem};\n \n \t/* invalid (null) --socket-mem flag */\n-\tconst char *argv7[] = {prgname,\n+\tconst char *argv7[] = {prgname, no_pci,\n \t\t\t\"--file-prefix=\" memtest, \"--socket-mem=\"};\n \n \t/* valid --socket-mem specified together with -m flag */\n \tchar arg8_socket_mem[SOCKET_MEM_STRLEN];\n-\tconst char *argv8[] = {prgname,\n+\tconst char *argv8[] = {prgname, no_pci,\n \t\t\t\"--file-prefix=\" memtest, \"-m\", DEFAULT_MEM_SIZE,\n \t\t\targ8_socket_mem};\n \n@@ -1594,12 +1595,12 @@ test_memory_flags(void)\n \n \t/* invalid --socket-mem flag (with extra socket) */\n \tchar invalid_socket_mem[SOCKET_MEM_STRLEN];\n-\tconst char *argv9[] = {prgname,\n+\tconst char *argv9[] = {prgname, no_pci,\n \t\t\t\"--file-prefix=\" memtest, invalid_socket_mem};\n \n \t/* valid --socket-mem flag */\n \tchar valid_socket_mem[SOCKET_MEM_STRLEN];\n-\tconst char *argv10[] = {prgname,\n+\tconst char *argv10[] = {prgname, no_pci,\n \t\t\t\"--file-prefix=\" memtest, valid_socket_mem};\n \n \tif (launch_proc(argv0) != 0) {\ndiff --git a/app/test/test_external_mem.c b/app/test/test_external_mem.c\nindex 0c64b61..d925736 100644\n--- a/app/test/test_external_mem.c\n+++ b/app/test/test_external_mem.c\n@@ -10,11 +10,11 @@\n #include <string.h>\n #include <fcntl.h>\n \n-#ifdef RTE_EXEC_ENV_WINDOWS\n+#ifndef RTE_EXEC_ENV_LINUX\n static int\n test_external_mem(void)\n {\n-\tprintf(\"external_mem not supported on Windows, skipping test\\n\");\n+\tprintf(\"external_mem only supported on Linux, skipping test\\n\");\n \treturn TEST_SKIPPED;\n }\n \ndiff --git a/app/test/test_fib6.c b/app/test/test_fib6.c\nindex 843a408..045b392 100644\n--- a/app/test/test_fib6.c\n+++ b/app/test/test_fib6.c\n@@ -25,6 +25,7 @@ static int32_t test_get_invalid(void);\n static int32_t test_lookup(void);\n static int32_t test_invalid_rcu(void);\n static int32_t test_fib_rcu_sync_rw(void);\n+static int32_t test_drift(void);\n \n #define MAX_ROUTES\t(1 << 16)\n /** Maximum number of tbl8 for 2-byte entries */\n@@ -599,6 +600,78 @@ error:\n \treturn status == 0 ? TEST_SUCCESS : TEST_FAILED;\n }\n \n+/*\n+ * Reproducer for the rsvd_tbl8s drift bug. depth_diff used to maintain\n+ * rsvd_tbl8s is computed from the current RIB state, so it is not\n+ * invariant between the ADD of a prefix and its later DEL when a\n+ * covering parent prefix is removed in between.\n+ *\n+ * Layout: one /28 parent (fcde::/28) and three /48 siblings under it\n+ * (fcde:0:6000::/48, fcde:1:6000::/48, fcde:2:6000::/48). The second\n+ * hextet's high 12 bits are zero, so the three /48 IPs all fall inside\n+ * the /28.\n+ *\n+ * One asymmetric sequence is enough to wrap the counter:\n+ *   ADD /28                                  rsvd_tbl8s += 1\n+ *   ADD /48 child_0,1,2 (with /28 parent)    rsvd_tbl8s += 2 each (+6)\n+ *   DEL /28 (sibling /48 found)              rsvd_tbl8s -= 0\n+ *   DEL /48 child_0,1,2 (no parent left)     rsvd_tbl8s -= 3 each (-9)\n+ */\n+static int32_t\n+test_drift(void)\n+{\n+\tstruct rte_fib6_conf config = { 0 };\n+\tstruct rte_fib6 *fib;\n+\tstruct rte_ipv6_addr parent =\n+\t\tRTE_IPV6(0xfcde, 0, 0, 0, 0, 0, 0, 0);\n+\tstruct rte_ipv6_addr child[3] = {\n+\t\tRTE_IPV6(0xfcde, 0, 0x6000, 0, 0, 0, 0, 0),\n+\t\tRTE_IPV6(0xfcde, 1, 0x6000, 0, 0, 0, 0, 0),\n+\t\tRTE_IPV6(0xfcde, 2, 0x6000, 0, 0, 0, 0, 0),\n+\t};\n+\tunsigned int c;\n+\tint ret;\n+\n+\tconfig.max_routes = 1024;\n+\tconfig.rib_ext_sz = 0;\n+\tconfig.default_nh = 0;\n+\tconfig.type = RTE_FIB6_TRIE;\n+\tconfig.trie.nh_sz = RTE_FIB6_TRIE_2B;\n+\tconfig.trie.num_tbl8 = 256;\n+\n+\tfib = rte_fib6_create(__func__, SOCKET_ID_ANY, &config);\n+\tRTE_TEST_ASSERT(fib != NULL, \"Failed to create FIB\\n\");\n+\n+\tret = rte_fib6_add(fib, &parent, 28, 0xa);\n+\tRTE_TEST_ASSERT(ret == 0, \"ADD /28 failed (ret=%d)\\n\", ret);\n+\n+\tfor (c = 0; c < 3; c++) {\n+\t\tret = rte_fib6_add(fib, &child[c], 48, 0xb + c);\n+\t\tRTE_TEST_ASSERT(ret == 0,\n+\t\t\t\"ADD /48 child %u failed (ret=%d)\\n\", c, ret);\n+\t}\n+\n+\tret = rte_fib6_delete(fib, &parent, 28);\n+\tRTE_TEST_ASSERT(ret == 0, \"DEL /28 failed (ret=%d)\\n\", ret);\n+\n+\tfor (c = 0; c < 3; c++) {\n+\t\tret = rte_fib6_delete(fib, &child[c], 48);\n+\t\tRTE_TEST_ASSERT(ret == 0,\n+\t\t\t\"DEL /48 child %u failed (ret=%d)\\n\", c, ret);\n+\t}\n+\n+\t/* Pre-fix: -ENOSPC. Post-fix: succeeds. */\n+\tret = rte_fib6_add(fib, &parent, 28, 0xe);\n+\tRTE_TEST_ASSERT(ret == 0,\n+\t\t\"Fresh ADD /28 spuriously failed (ret=%d)\\n\", ret);\n+\n+\tret = rte_fib6_delete(fib, &parent, 28);\n+\tRTE_TEST_ASSERT(ret == 0, \"Final DEL /28 failed (ret=%d)\\n\", ret);\n+\n+\trte_fib6_free(fib);\n+\treturn TEST_SUCCESS;\n+}\n+\n static struct unit_test_suite fib6_fast_tests = {\n \t.suite_name = \"fib6 autotest\",\n \t.setup = NULL,\n@@ -611,6 +684,7 @@ static struct unit_test_suite fib6_fast_tests = {\n \tTEST_CASE(test_lookup),\n \tTEST_CASE(test_invalid_rcu),\n \tTEST_CASE(test_fib_rcu_sync_rw),\n+\tTEST_CASE(test_drift),\n \tTEST_CASES_END()\n \t}\n };\ndiff --git a/app/test/test_hash.c b/app/test/test_hash.c\nindex 5791fd7..8d79d69 100644\n--- a/app/test/test_hash.c\n+++ b/app/test/test_hash.c\n@@ -2321,6 +2321,137 @@ test_hash_rcu_qsbr_dq_reclaim(void)\n \treturn 0;\n }\n \n+static void *old_data;\n+\n+static void\n+test_hash_free_key_data_func(void *p __rte_unused, void *key_data)\n+{\n+\told_data = key_data;\n+}\n+\n+/*\n+ * Test automatic RCU free on overwrite via rte_hash_add_key_data.\n+ *  - Create hash with RW_CONCURRENCY_LF and RCU QSBR in DQ mode\n+ *    with a free_key_data_func callback that increments a counter.\n+ *  - Register a pseudo reader thread.\n+ *  - Add key with data (void *)1.\n+ *  - Overwrite same key with data (void *)2 via rte_hash_add_key_data.\n+ *  - Report quiescent state, trigger reclamation.\n+ *  - Verify the free callback was called exactly once.\n+ *  - Delete the key, report quiescent state, reclaim again.\n+ *  - Verify the free callback was called a second time.\n+ */\n+static int\n+test_hash_rcu_qsbr_replace_auto_free(void)\n+{\n+\tstruct rte_hash_rcu_config rcu = {\n+\t\t.v = NULL,\n+\t\t.mode = RTE_HASH_QSBR_MODE_DQ,\n+\t\t.free_key_data_func = test_hash_free_key_data_func,\n+\t\t.key_data_ptr = NULL,\n+\t};\n+\tstruct rte_hash_parameters params = {\n+\t\t.name = \"test_replace_auto_free\",\n+\t\t.entries = 16,\n+\t\t.key_len = sizeof(uint32_t),\n+\t\t.hash_func = NULL,\n+\t\t.hash_func_init_val = 0,\n+\t\t.socket_id = SOCKET_ID_ANY,\n+\t\t.extra_flag = RTE_HASH_EXTRA_FLAGS_RW_CONCURRENCY_LF,\n+\t};\n+\tstruct rte_hash *hash = NULL;\n+\tuint32_t key = 55;\n+\tint32_t status;\n+\tint ret = -1;\n+\tsize_t sz;\n+\n+\tprintf(\"\\n# Running RCU replace auto-free test\\n\");\n+\n+\thash = rte_hash_create(&params);\n+\tif (hash == NULL) {\n+\t\tprintf(\"hash creation failed\\n\");\n+\t\tgoto end;\n+\t}\n+\n+\tsz = rte_rcu_qsbr_get_memsize(RTE_MAX_LCORE);\n+\trcu.v = rte_zmalloc(NULL, sz, RTE_CACHE_LINE_SIZE);\n+\tif (rcu.v == NULL) {\n+\t\tprintf(\"RCU QSBR alloc failed\\n\");\n+\t\tgoto end;\n+\t}\n+\tstatus = rte_rcu_qsbr_init(rcu.v, RTE_MAX_LCORE);\n+\tif (status != 0) {\n+\t\tprintf(\"RCU QSBR init failed\\n\");\n+\t\tgoto end;\n+\t}\n+\n+\tstatus = rte_hash_rcu_qsbr_add(hash, &rcu);\n+\tif (status != 0) {\n+\t\tprintf(\"RCU QSBR add failed\\n\");\n+\t\tgoto end;\n+\t}\n+\n+\t/* Register pseudo reader */\n+\tstatus = rte_rcu_qsbr_thread_register(rcu.v, 0);\n+\tif (status != 0) {\n+\t\tprintf(\"RCU QSBR thread register failed\\n\");\n+\t\tgoto end;\n+\t}\n+\trte_rcu_qsbr_thread_online(rcu.v, 0);\n+\n+\told_data = NULL;\n+\n+\t/* Add key with data = (void *)1 */\n+\tstatus = rte_hash_add_key_data(hash, &key, (void *)(uintptr_t)1);\n+\tif (status != 0) {\n+\t\tprintf(\"failed to add key (status=%d)\\n\", status);\n+\t\tgoto end;\n+\t}\n+\n+\t/* Overwrite same key with data = (void *)2 */\n+\tstatus = rte_hash_add_key_data(hash, &key, (void *)(uintptr_t)2);\n+\tif (status != 0) {\n+\t\tprintf(\"failed to overwrite key (status=%d)\\n\", status);\n+\t\tgoto end;\n+\t}\n+\n+\t/* Reader quiescent and reclaim */\n+\trte_rcu_qsbr_quiescent(rcu.v, 0);\n+\trte_hash_rcu_qsbr_dq_reclaim(hash, NULL, NULL, NULL);\n+\n+\tif (old_data != (void *)(uintptr_t)1) {\n+\t\tprintf(\"old data should be 0x1 but is %p\\n\", old_data);\n+\t\tgoto end;\n+\t}\n+\n+\t/* Delete the key */\n+\tstatus = rte_hash_del_key(hash, &key);\n+\tif (status < 0) {\n+\t\tprintf(\"failed to delete key (status=%d)\\n\", status);\n+\t\tgoto end;\n+\t}\n+\n+\t/* Reader quiescent and reclaim again */\n+\trte_rcu_qsbr_quiescent(rcu.v, 0);\n+\trte_hash_rcu_qsbr_dq_reclaim(hash, NULL, NULL, NULL);\n+\n+\tif (old_data != (void *)(uintptr_t)2) {\n+\t\tprintf(\"old data should be 2 but is %p\\n\", old_data);\n+\t\tgoto end;\n+\t}\n+\n+\tret = 0;\n+end:\n+\tif (rcu.v != NULL) {\n+\t\trte_rcu_qsbr_thread_offline(rcu.v, 0);\n+\t\trte_rcu_qsbr_thread_unregister(rcu.v, 0);\n+\t}\n+\trte_hash_free(hash);\n+\trte_free(rcu.v);\n+\n+\treturn ret;\n+}\n+\n /*\n  * Do all unit and performance tests.\n  */\n@@ -2402,6 +2533,9 @@ test_hash(void)\n \tif (test_hash_rcu_qsbr_dq_reclaim() < 0)\n \t\treturn -1;\n \n+\tif (test_hash_rcu_qsbr_replace_auto_free() < 0)\n+\t\treturn -1;\n+\n \treturn 0;\n }\n \ndiff --git a/app/test/test_interrupts.c b/app/test/test_interrupts.c\nindex 3952f96..d57fe2f 100644\n--- a/app/test/test_interrupts.c\n+++ b/app/test/test_interrupts.c\n@@ -429,7 +429,7 @@ test_interrupt(void)\n \tint ret = -1;\n \tstruct rte_intr_handle *test_intr_handle;\n \n-\tif (RTE_EXEC_ENV_IS_WINDOWS)\n+\tif (RTE_EXEC_ENV_IS_WINDOWS || RTE_EXEC_ENV_IS_FREEBSD)\n \t\treturn TEST_SKIPPED;\n \n \tif (test_interrupt_init() < 0) {\n",
+ "diff_truncated": true
+}

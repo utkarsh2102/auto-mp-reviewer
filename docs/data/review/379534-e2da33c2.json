@@ -1,0 +1,27 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~ack/ubuntu/+source/maas/+git/maas/+merge/379534",
+ "id": "379534",
+ "title": "Fix dependencies to use Pre-Depends for debconf and snapd.",
+ "source_branch": "fix-pre-deps",
+ "target_branch": "ubuntu/devel",
+ "revision": "0f0ed37e20733106dee0c61b7489b77a4f668ed7",
+ "base_revision": "a029f174ab75946f2f82450abe170436983c7b8d",
+ "description": null,
+ "commit_message": "Fix dependencies to use Pre-Depends for debconf and snapd.\n\nSnapd must be running when the package preinst is run.",
+ "diffstat": {
+  "debian/control": [
+   4,
+   3
+  ],
+  "debian/changelog": [
+   7,
+   0
+  ]
+ },
+ "files": 2,
+ "added_lines": 11,
+ "removed_lines": 3,
+ "diff": "diff --git a/debian/changelog b/debian/changelog\nindex c400e34..47bb023 100644\n--- a/debian/changelog\n+++ b/debian/changelog\n@@ -1,3 +1,10 @@\n+maas (1:0.2) focal; urgency=medium\n+\n+  * Fix dependencies to pre-depend on debconf and snapd\n+  * Fix project homepage URL to https\n+\n+ -- Alberto Donato <alberto.donato@canonical.com>  Thu, 20 Feb 2020 11:49:00 +0100\n+\n maas (1:0.1) focal; urgency=medium\n \n   * Install MAAS from the snap, migrating existing install if needed\ndiff --git a/debian/control b/debian/control\nindex 2ff0adc..994026a 100644\n--- a/debian/control\n+++ b/debian/control\n@@ -4,7 +4,7 @@ Priority: optional\n Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>\n Build-Depends: debhelper (>= 10)\n Standards-Version: 4.1.3\n-Homepage: http://maas.io/\n+Homepage: https://maas.io/\n \n Package: maas\n Architecture: all\n@@ -41,8 +41,9 @@ Replaces: bind9,\n           maas-rack-controller (<< 1:0.1~),\n           maas-region-api (<< 1:0.1~),\n           maas-region-controller (<< 1:0.1~)\n-Depends: snapd,\n-         ${misc:Depends}\n+Pre-Depends: debconf,\n+             snapd\n+Depends: ${misc:Depends}\n Description: Transitional package to the maas snap\n   This is a transitional dummy package. It can be safely removed.\n \n",
+ "diff_truncated": false
+}

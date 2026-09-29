@@ -1,0 +1,27 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~lmlogiudice/ubuntu/+source/bind9/+git/bind9/+merge/502853",
+ "id": "502853",
+ "title": "noble-lp2119320 → applied/ubuntu/noble-devel",
+ "source_branch": "noble-lp2119320",
+ "target_branch": "applied/ubuntu/noble-devel",
+ "revision": "619c0723b71289e384280be00273aa1758280dfa",
+ "base_revision": "6a9ab535a8ec877f44d5b8295a3739471888d611",
+ "description": null,
+ "commit_message": null,
+ "diffstat": {
+  "debian/changelog": [
+   7,
+   0
+  ],
+  "debian/extras/apparmor.d/usr.sbin.named": [
+   3,
+   0
+  ]
+ },
+ "files": 2,
+ "added_lines": 10,
+ "removed_lines": 0,
+ "diff": "diff --git a/debian/changelog b/debian/changelog\nindex 86118dd..8c8bff8 100644\n--- a/debian/changelog\n+++ b/debian/changelog\n@@ -1,3 +1,10 @@\n+bind9 (1:9.18.39-0ubuntu0.24.04.4) noble; urgency=medium\n+\n+  * d/e/apparmor.d/usr.sbin.named: Allow read access to\n+    /proc/version_signature for named (LP: #2119320).\n+\n+ -- Luciano Lo Giudice <luciano.logiudice@canonical.com>  Fri, 27 Mar 2026 18:02:30 -0300\n+\n bind9 (1:9.18.39-0ubuntu0.24.04.3) noble-security; urgency=medium\n \n   * SECURITY UPDATE: Excessive NSEC3 iterations cause high CPU load during\ndiff --git a/debian/extras/apparmor.d/usr.sbin.named b/debian/extras/apparmor.d/usr.sbin.named\nindex f572f4d..353d325 100644\n--- a/debian/extras/apparmor.d/usr.sbin.named\n+++ b/debian/extras/apparmor.d/usr.sbin.named\n@@ -57,6 +57,9 @@ profile named /usr/sbin/named flags=(attach_disconnected) {\n   # support for resolvconf\n   /{,var/}run/named/named.options r,\n \n+  # libuv1 checks for kernel version within named process.\n+  @{PROC}/version_signature r,\n+\n   # some people like to put logs in /var/log/named/ instead of having\n   # syslog do the heavy lifting.\n   /var/log/named/** rw,\n",
+ "diff_truncated": false
+}

@@ -1,0 +1,31 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~lucaskanashiro/ubuntu/+source/corosync/+git/corosync/+merge/418567",
+ "id": "418567",
+ "title": "Fix LP: #1874719. This is a simple patch commenting out the hardcoded 'node1' node name in the default config file, with that, the hostname will be used as the default node name. FWIW this is the behavior in all supported releases but Focal.",
+ "source_branch": "lp1874719-hostname-as-node-name",
+ "target_branch": "ubuntu/focal-devel",
+ "revision": "8bc5094ff27afa20d93ffa0c9990614a582fd8c1",
+ "base_revision": "06b607ef4916cc9543487e5c22b8ccced73fe094",
+ "description": "Fix LP: #1874719. This is a simple patch commenting out the hardcoded 'node1' node name in the default config file, with that, the hostname will be used as the default node name. FWIW this is the behavior in all supported releases but Focal.\n\nThe package is available here:\n\nhttps://launchpad.net/~lucaskanashiro/+archive/ubuntu/ha-stack/+packages\n\nautopkgtest is still happy:\n\nautopkgtest [17:39:07]: @@@@@@@@@@@@@@@@@@@@ summary\ncfgtool              PASS\nquorumtool           PASS\n",
+ "commit_message": null,
+ "diffstat": {
+  "debian/tests/quorumtool": [
+   1,
+   1
+  ],
+  "debian/changelog": [
+   9,
+   0
+  ],
+  "debian/patches/Make-the-example-config-valid.patch": [
+   13,
+   5
+  ]
+ },
+ "files": 3,
+ "added_lines": 23,
+ "removed_lines": 6,
+ "diff": "diff --git a/debian/changelog b/debian/changelog\nindex f4e324a..75fed53 100644\n--- a/debian/changelog\n+++ b/debian/changelog\n@@ -1,3 +1,12 @@\n+corosync (3.0.3-2ubuntu2.2) focal; urgency=medium\n+\n+  * d/p/Make-the-example-config-valid.patch: comment out the node name in\n+    config file. With this, we will keep the same behavior as we have in Bionic\n+    which is using the output of \"uname -n\" as the node name (LP: #1874719).\n+  * d/t/quorumtool: search for localhost instead of node1\n+\n+ -- Lucas Kanashiro <kanashiro@ubuntu.com>  Tue, 05 Apr 2022 17:32:25 -0300\n+\n corosync (3.0.3-2ubuntu2.1) focal; urgency=medium\n \n   * d/p/lp1911904-Don-t-lock-all-current-and-future-memory-if-can-t-in.patch:\ndiff --git a/debian/patches/Make-the-example-config-valid.patch b/debian/patches/Make-the-example-config-valid.patch\nindex 5c2182f..9a37427 100644\n--- a/debian/patches/Make-the-example-config-valid.patch\n+++ b/debian/patches/Make-the-example-config-valid.patch\n@@ -2,12 +2,14 @@ From: =?utf-8?q?Ferenc_W=C3=A1gner?= <wferi@debian.org>\n Date: Sun, 16 Dec 2018 22:51:46 +0100\n Subject: Make the example config valid\n \n+Forwarded: yes, https://salsa.debian.org/ha-team/corosync/-/merge_requests/4\n+Bug-Ubuntu: https://bugs.launchpad.net/ubuntu/+source/corosync/+bug/1874719\n+Reviewed-By: Lucas Kanashiro <kanashiro@ubuntu.com>\n+Last-Updated: 2021-06-17\n ---\n  conf/corosync.conf.example | 22 +++++++---------------\n  1 file changed, 7 insertions(+), 15 deletions(-)\n \n-diff --git a/conf/corosync.conf.example b/conf/corosync.conf.example\n-index 4658a86..91de572 100644\n --- a/conf/corosync.conf.example\n +++ b/conf/corosync.conf.example\n @@ -2,8 +2,10 @@\n@@ -23,7 +25,7 @@ index 4658a86..91de572 100644\n  \n  \t# crypto_cipher and crypto_hash: Used for mutual node authentication.\n  \t# If you choose to enable this, then do remember to create a shared\n-@@ -25,7 +27,7 @@ logging {\n+@@ -25,7 +27,7 @@\n  \t# Log to a log file. When set to \"no\", the \"logfile\" option\n  \t# must not be set.\n  \tto_logfile: yes\n@@ -32,7 +34,7 @@ index 4658a86..91de572 100644\n  \t# Log to the system log daemon. When in doubt, set to yes.\n  \tto_syslog: yes\n  \t# Log debug messages (very verbose). When in doubt, leave off.\n-@@ -41,7 +43,7 @@ logging {\n+@@ -41,31 +43,21 @@\n  quorum {\n  \t# Enable and configure quorum subsystem (default: off)\n  \t# see also corosync.conf.5 and votequorum.5\n@@ -41,7 +43,13 @@ index 4658a86..91de572 100644\n  }\n  \n  nodelist {\n-@@ -53,19 +55,9 @@ nodelist {\n+ \t# Change/uncomment/add node sections to match cluster configuration\n+ \n+ \tnode {\n+-\t\t# Hostname of the node\n+-\t\tname: node1\n++\t\t# Hostname of the node.\n++\t\t# name: node1\n  \t\t# Cluster membership node identifier\n  \t\tnodeid: 1\n  \t\t# Address of first link\ndiff --git a/debian/tests/quorumtool b/debian/tests/quorumtool\nindex 26b7b38..4ef10b7 100755\n--- a/debian/tests/quorumtool\n+++ b/debian/tests/quorumtool\n@@ -6,4 +6,4 @@ OUTPUT=\"${AUTOPKGTEST_ARTIFACTS:-.}/quorumtool.txt\"\n \n corosync-quorumtool >\"$OUTPUT\"\n cat \"$OUTPUT\"\n-grep -q ' 1 node1 (local)' \"$OUTPUT\"\n+grep -q ' 1 localhost (local)' \"$OUTPUT\"\n",
+ "diff_truncated": false
+}

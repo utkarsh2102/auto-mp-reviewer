@@ -1,0 +1,31 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~lgp171188/ubuntu/+source/libp11/+git/libp11/+merge/512265",
+ "id": "512265",
+ "title": "libp11-sru-bug-2163152-revert-workaround → ubuntu/noble-devel",
+ "source_branch": "libp11-sru-bug-2163152-revert-workaround",
+ "target_branch": "ubuntu/noble-devel",
+ "revision": "782e2dcbff8947a00d95f8f142d0e08f60563489",
+ "base_revision": "c196d705de9479b67ed516ee71a4a6ad5bcf8c5a",
+ "description": null,
+ "commit_message": null,
+ "diffstat": {
+  "debian/changelog": [
+   10,
+   0
+  ],
+  "dev/null": [
+   0,
+   43
+  ],
+  "debian/patches/series": [
+   0,
+   1
+  ]
+ },
+ "files": 3,
+ "added_lines": 10,
+ "removed_lines": 44,
+ "diff": "diff --git a/debian/changelog b/debian/changelog\nindex e676e00..241086a 100644\n--- a/debian/changelog\n+++ b/debian/changelog\n@@ -1,3 +1,13 @@\n+libp11 (0.4.12-1.1ubuntu2) noble; urgency=medium\n+\n+  * d/p/pkcs11-engine-openssl3-load-privkey-segfault-workaround.patch:\n+    Dropped. The workaround, added in 0.4.12-1.1ubuntu1, leaves the PKCS#11\n+    engine registered as the process-wide default for RSA and EC, which breaks\n+    unrelated provider-path operations.\n+    (LP: #2163152)\n+\n+ -- Guruprasad Lakshmi Narayanan <guruprasad.ln@canonical.com>  Wed, 30 Sep 2026 01:30:58 +0530\n+\n libp11 (0.4.12-1.1ubuntu1) noble; urgency=medium\n \n   * d/p/pkcs11-engine-openssl3-load-privkey-segfault-workaround.patch:\ndiff --git a/debian/patches/pkcs11-engine-openssl3-load-privkey-segfault-workaround.patch b/debian/patches/pkcs11-engine-openssl3-load-privkey-segfault-workaround.patch\ndeleted file mode 100644\nindex c3d8d8f..0000000\n--- a/debian/patches/pkcs11-engine-openssl3-load-privkey-segfault-workaround.patch\n+++ /dev/null\n@@ -1,43 +0,0 @@\n-Description: Work around a PKCS#11-engine load_privkey() segfault on OpenSSL 3.0.12-3.0.13\n- Affected OpenSSL versions: 3.0.12-3.0.13, 3.1.4-3.1.5, 3.2.0-3.2.1. A regression\n- in these versions wipes pkey->pmeth_engine after ENGINE_load_private_key, causing\n- a NULL dereference in RSA_sign (root cause openssl/openssl#23063; regression\n- 2b74e75, fixed in 39ea783). Reroute signing through PKEY_CRYPTO for the affected\n- versions, avoiding the broken RSA_get_ex_data path.\n- .\n- 0.4.12 has no prior OpenSSL-version gate, so this introduces the workaround in the\n- form released in libp11 0.4.13, assembled from these upstream changes:\n-   - c3f2267 (PR #545): introduce the PKEY_CRYPTO version check (3.2.0/3.2.1)\n-   - 1b4e3b6 (PR #549): guard it with #if OPENSSL_VERSION_NUMBER >= 0x30000000L\n-   - 86c0404 (PR #554): extend the check to 3.0.12-3.0.13 and 3.1.4-3.1.5\n-   - ccf3c77: convert the checks to ranges and add error handling\n-Author: Guruprasad Lakshmi Narayanan <guruprasad.ln@canonical.com>\n-Origin: backport, https://github.com/OpenSC/libp11/commit/ccf3c7739be2263b2415244104e734dd944246ea\n-Bug-Ubuntu: https://bugs.launchpad.net/ubuntu/+source/libp11/+bug/2158304\n-Applied-Upstream: 0.4.13, https://github.com/OpenSC/libp11/commit/ccf3c7739be2263b2415244104e734dd944246ea\n-Last-Update: 2026-07-07\n----\n---- a/src/eng_front.c\n-+++ b/src/eng_front.c\n-@@ -186,6 +186,21 @@\n- \tctx = get_ctx(engine);\n- \tif (!ctx)\n- \t\treturn 0;\n-+#if OPENSSL_VERSION_NUMBER >= 0x30000000L\n-+\t{\n-+\t\tunsigned long ver = OpenSSL_version_num();\n-+\t\tif ((ver >= 0x300000c0L && ver <= 0x300000d0L) ||\n-+\t\t\t\t(ver >= 0x30100040L && ver <= 0x30100050L) ||\n-+\t\t\t\t(ver >= 0x30200000L && ver <= 0x30200010L)) {\n-+\t\t\tif (ENGINE_set_default_string(engine, \"PKEY_CRYPTO\")) {\n-+\t\t\t\tfprintf(stderr, \"Workaround for %s enabled\\n\",\n-+\t\t\t\t\tOpenSSL_version(OPENSSL_VERSION));\n-+\t\t\t} else {\n-+\t\t\t\tfprintf(stderr, \"Failed to set PKEY_CRYPTO default engine\\n\");\n-+\t\t\t}\n-+\t\t}\n-+\t}\n-+#endif\n- \tpkey = ctx_load_privkey(ctx, s_key_id, ui_method, callback_data);\n- #ifdef EVP_F_EVP_PKEY_SET1_ENGINE\n- \t/* EVP_PKEY_set1_engine() is required for OpenSSL 1.1.x,\ndiff --git a/debian/patches/series b/debian/patches/series\nindex 989f90d..04372e3 100644\n--- a/debian/patches/series\n+++ b/debian/patches/series\n@@ -1,2 +1 @@\n fix-upstream-soname-madness.patch\n-pkcs11-engine-openssl3-load-privkey-segfault-workaround.patch\n",
+ "diff_truncated": false
+}

@@ -1,0 +1,35 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~pushkarnk/ubuntu/+source/openjdk-lts/+git/openjdk-lts/+merge/475407",
+ "id": "475407",
+ "title": "merge-11.0.25+9 → ubuntu/devel",
+ "source_branch": "merge-11.0.25+9",
+ "target_branch": "ubuntu/devel",
+ "revision": "25f21399e6245fac24607a8fc5b1471c0df4fcc6",
+ "base_revision": "46369d29ec911cb54254b362cde03eb838ec58aa",
+ "description": null,
+ "commit_message": null,
+ "diffstat": {
+  "debian/changelog": [
+   17,
+   0
+  ],
+  "debian/control": [
+   1,
+   1
+  ],
+  "debian/rules": [
+   8,
+   5
+  ],
+  "debian/tests/problems.csv": [
+   1,
+   0
+  ]
+ },
+ "files": 4,
+ "added_lines": 27,
+ "removed_lines": 6,
+ "diff": "diff --git a/debian/changelog b/debian/changelog\nindex ef1c054..bd336ac 100644\n--- a/debian/changelog\n+++ b/debian/changelog\n@@ -1,3 +1,20 @@\n+openjdk-lts (11.0.25+9-1ubuntu1) oracular; urgency=medium\n+\n+  * OpenJDK 11.0.25 release, build 9.\n+\n+     - CVEs\n+       + CVE-2024-21208, 8328286: Enhance HTTP client\n+       + CVE-2024-21210, 8328544: Improve handling of vectorization\n+       + CVE-2024-21217, 8331446: Improve deserialization support\n+       + CVE-2024-21235, 8332644: Improve graph optimizations\n+\n+  [ Vladimir Petko ]\n+  * d/rules: do not include dtrace support for S390x (JDK-8305174).\n+  * d/t/problems.csv: Disable jdk/sun/security/util/Debug/DebugOptions.java\n+    due to JDK-8339713.\n+\n+ -- Pushkar Kulkarni <pushkar.kulkarni@canonical.com>  Thu, 17 Oct 2024 22:51:26 +0530\n+\n openjdk-lts (11.0.25~5ea-1ubuntu1) oracular; urgency=medium\n \n   * OpenJDK 11.0.25+5 build (early access) (LP: #2080298).\ndiff --git a/debian/control b/debian/control\nindex 651f62d..85b71c7 100644\n--- a/debian/control\n+++ b/debian/control\n@@ -14,7 +14,7 @@ Build-Depends: debhelper (>= 11),\n   openjdk-11-jdk-headless:native | openjdk-10-jdk-headless:native,\n   libxtst-dev, libxi-dev, libxt-dev, libxaw7-dev, libxrender-dev, libcups2-dev, libasound2-dev, liblcms2-dev, libxinerama-dev, libkrb5-dev, xsltproc, libpcsclite-dev, libxrandr-dev, libelf-dev, libfontconfig-dev, libfreetype-dev, libharfbuzz-dev,\n   libffi-dev,\n-  zlib1g-dev:native, zlib1g-dev, libattr1-dev, libpng-dev, libjpeg-dev, libgif-dev, systemtap-sdt-dev [!sh4],\n+  zlib1g-dev:native, zlib1g-dev, libattr1-dev, libpng-dev, libjpeg-dev, libgif-dev, systemtap-sdt-dev [!ppc64 !ppc64el !sh4 !s390x],\n   libnss3-dev (>= 2:3.17.1),\n   openjdk-11-jdk-headless <cross>,\n Build-Depends-Indep: graphviz, pandoc,\ndiff --git a/debian/rules b/debian/rules\nindex f569509..ab686c8 100755\n--- a/debian/rules\n+++ b/debian/rules\n@@ -79,7 +79,6 @@ else\n endif\n \n is_upstream_release = yes\n-is_upstream_release =\n \n srcdir\t\t= .\n builddir\t= build\n@@ -407,12 +406,16 @@ else ifeq ($(with_nss),no)\n   CONFIGURE_ARGS += --disable-nss\n endif\n \n-CONFIGURE_ARGS += --enable-dtrace\n-\n COMMON_CONFIGURE_ARGS =\n DEFAULT_CONFIGURE_ARGS =\n ZERO_CONFIGURE_ARGS =\n \n+# S390x does not support dtrace probes\n+# https://github.com/openjdk/jdk/pull/13228\n+ifeq (,$(filter $(DEB_HOST_ARCH), powerpc ppc64 ppc64el s390x))\n+  CONFIGURE_ARGS += --enable-dtrace\n+endif\n+\n # FIXME: --with-jvm-variants=server,zero not supported upstream\n ifneq (,$(filter $(DEB_HOST_ARCH),$(hotspot_archs)))\n   ifneq (,$(filter $(DEB_HOST_ARCH),i386))\n@@ -699,7 +702,7 @@ ifeq ($(with_nss),yes)\n     bd_nss = libnss3-dev (>= 2:3.17.1),\n   endif\n endif\n-bd_systemtap = systemtap-sdt-dev [!sh4],\n+bd_systemtap = systemtap-sdt-dev [!powerpc !ppc64 !ppc64el !sh4 !s390x],\n \n ifeq (,$(filter $(distrel),jessie stretch buster precise trusty xenial bionic focal groovy))\n   with_debugedit = yes\n@@ -1935,7 +1938,7 @@ endif\n \tdh_builddeb -a $(nodemo) $(nojrez) #$(bd_options)\n \n git_project\t\t= jdk11u\n-git_tag\t\t\t= jdk-11.0.25+5\n+git_tag\t\t\t= jdk-11.0.25+9\n package_version\t\t= $(subst jdk-,,$(git_tag))\n package_version\t\t= $(shell echo $(PKGVERSION) | sed 's/-[^-][^-]*$$//')\n ifneq ($(is_upstream_release),yes)\ndiff --git a/debian/tests/problems.csv b/debian/tests/problems.csv\nindex 332d54a..7076a91 100644\n--- a/debian/tests/problems.csv\n+++ b/debian/tests/problems.csv\n@@ -82,3 +82,4 @@ FAILED: java/foreign/TestUpcallAsync.java,, asserts due to the invalid structure\n FAILED: java/foreign/TestUpcallStack.java,, asserts due to the invalid structure size. Ignore as this is a preview API and the issue does not occur in openjdk-22. I will add it to the problemlist.,:openjdk-21,:armhf,:release-all\n FAILED: java/foreign/TestVarArgs.java,, asserts due to the invalid structure size. Ignore as this is a preview API and the issue does not occur in openjdk-22. I will add it to the problemlist.,:openjdk-21,:armhf,:release-all\n FAILED: runtime/os/TestTrimNative.java#trimNative,, java.lang.RuntimeException: We found fewer (periodic) trim lines in UL log than expected (expected at least 13  found 11). This looks like a flaky test - it asserts number of lines from the periodic trimmer  e.g. src/hotspot/share/runtime/trimNativeHeap.hpp:56 which causes the test to fail due to the slow VM. Test passes locally.,:openjdk-21,:armhf,:release-all\n+FAILED: jdk/sun/security/util/Debug/DebugOptions.java,JDK-8339713,Stack overflow error on 32-bit platforms,:openjdk-21:openjdk-23,:armhf:i386,:release-all\n",
+ "diff_truncated": false
+}

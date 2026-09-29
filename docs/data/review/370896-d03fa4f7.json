@@ -1,0 +1,31 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~mwhudson/ubuntu/+source/grub2/+git/grub2/+merge/370896",
+ "id": "370896",
+ "title": "lp-1429327 → ubuntu/devel",
+ "source_branch": "lp-1429327",
+ "target_branch": "ubuntu/devel",
+ "revision": "23d4820fdd6d2e29cb83b5c4dc33db8ff495ef80",
+ "base_revision": "af9cfe9d58fb1c51979677b8e3b649b4aac72832",
+ "description": null,
+ "commit_message": null,
+ "diffstat": {
+  "debian/patches/series": [
+   1,
+   0
+  ],
+  "debian/changelog": [
+   9,
+   0
+  ],
+  "debian/patches/boot-from-multipath-dependent-symlink.patch": [
+   50,
+   0
+  ]
+ },
+ "files": 3,
+ "added_lines": 60,
+ "removed_lines": 0,
+ "diff": "diff --git a/debian/changelog b/debian/changelog\nindex 88dd6e0..212b14b 100644\n--- a/debian/changelog\n+++ b/debian/changelog\n@@ -1,3 +1,12 @@\n+grub2 (2.04-1ubuntu4) UNRELEASED; urgency=medium\n+\n+  * d/patches/boot-from-multipath-dependent-symlink.patch: when booting from a\n+    multipath device, set root= to a UUID dependent symlink, not a partition\n+    UUID (which in general will be reachable by multiple paths!)\n+    (LP: #1429327)\n+\n+ -- Michael Hudson-Doyle <michael.hudson@ubuntu.com>  Fri, 02 Aug 2019 14:06:39 +1200\n+\n grub2 (2.04-1ubuntu3) eoan; urgency=medium\n \n   [ Mathieu Trudel-Lapierre ]\ndiff --git a/debian/patches/boot-from-multipath-dependent-symlink.patch b/debian/patches/boot-from-multipath-dependent-symlink.patch\nnew file mode 100644\nindex 0000000..1d0bba2\n--- /dev/null\n+++ b/debian/patches/boot-from-multipath-dependent-symlink.patch\n@@ -0,0 +1,50 @@\n+--- a/util/grub.d/10_linux.in\n++++ b/util/grub.d/10_linux.in\n+@@ -65,6 +65,47 @@\n+ # older kernels.\n+ GRUB_DISABLE_LINUX_PARTUUID=${GRUB_DISABLE_LINUX_PARTUUID-true}\n+ \n++# get_dm_field_for_dev /dev/dm-0 uuid -> get the device mapper UUID for /dev/dm-0\n++# get_dm_field_for_dev /dev/dm-1 name -> get the device mapper name for /dev/dm-1\n++# etc\n++get_dm_field_for_dev () {\n++    dmsetup info -c --noheadings -o $2 $1 2>/dev/null\n++}\n++\n++# Is $1 a multipath device?\n++is_multipath () {\n++    local dmuuid dmtype\n++    dmuuid=\"$(get_dm_field_for_dev $1 uuid)\"\n++    if [ $? -ne 0 ]; then\n++        # Not a device mapper device -- or dmsetup not installed, and as\n++        # multipath depends on kpartx which depends on dmsetup, if there is no\n++        # dmsetup then there are not going to be any multipath devices.\n++        return 1\n++    fi\n++    # A device mapper uuid is always <type>-<uuid>. If <type> is of the form\n++    # part[0-9] then <uuid> is the device the partition is on and we want to\n++    # look at that instead. A multipath node always has <type> of mpath.\n++    dmtype=\"${dmuuid%%-*}\"\n++    if [ \"${dmtype#part}\" != \"$dmtype\" ]; then\n++        dmuuid=\"${dmuuid#*-}\"\n++        dmtype=\"${dmuuid%%-*}\"\n++    fi\n++    if [ \"$dmtype\" = \"mpath\" ]; then\n++        return 0\n++    else\n++        return 1\n++    fi\n++}\n++\n++if test -e \"${GRUB_DEVICE}\" && is_multipath \"${GRUB_DEVICE}\"; then\n++    # If / is multipathed, there will be multiple paths to the partition, so\n++    # using root=UUID= exposes the boot process to udev races. In addition\n++    # GRUB_DEVICE in this case will be /dev/dm-0 or similar -- better to use a\n++    # symlink that depends on the multipath name.\n++    GRUB_DEVICE=/dev/mapper/\"$(get_dm_field_dev $GRUB_DEVICE name)\"\n++    GRUB_DISABLE_LINUX_UUID=true\n++fi\n++\n+ # btrfs may reside on multiple devices. We cannot pass them as value of root= parameter\n+ # and mounting btrfs requires user space scanning, so force UUID in this case.\n+ if ( [ \"x${GRUB_DEVICE_UUID}\" = \"x\" ] && [ \"x${GRUB_DEVICE_PARTUUID}\" = \"x\" ] ) \\\ndiff --git a/debian/patches/series b/debian/patches/series\nindex 900d3d4..f5e9aa4 100644\n--- a/debian/patches/series\n+++ b/debian/patches/series\n@@ -65,3 +65,4 @@ ubuntu-fix-lzma-decompressor-objcopy.patch\n ubuntu-clear-invalid-initrd-spacing.patch\n ubuntu-temp-keep-auto-nvram.patch\n ubuntu-add-devicetree-command-support.patch\n+boot-from-multipath-dependent-symlink.patch\n",
+ "diff_truncated": false
+}

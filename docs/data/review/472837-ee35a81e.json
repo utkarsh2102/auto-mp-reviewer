@@ -1,0 +1,27 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~yurenchen/ubuntu/+source/update-manager/+git/update-manager/+merge/472837",
+ "id": "472837",
+ "title": "feature: support horizontal-layout for changes and details:",
+ "source_branch": "layout_horizon",
+ "target_branch": "ubuntu/devel",
+ "revision": "ac87a7eec910a231358e6a68d21555158f1e2932",
+ "base_revision": "8b8dadcfe8038ba17e183bc092814a1909b949a9",
+ "description": "I implemented it, and post the patch here:\nhttps://code.launchpad.net/~yurenchen/ubuntu/+source/update-manager/+git/update-manager/+ref/layout_horizon\n\nin this patch:\n- add a `layout-horizon` bool setting in gschema.xml\n- check `layout-horizon` setting and apply to window layout at window init\n\nso that, user can change layout via `gsettings` or `dconf`\n\n```\n$ gsettings set com.ubuntu.update-manager layout-horizon false\n$ gsettings set com.ubuntu.update-manager layout-horizon true\n$ gsettings get com.ubuntu.update-manager layout-horizon\ntrue\n\n",
+ "commit_message": "feature: support horizontal-layout for changes and details:\n  add `layout-horizon` bool setting, \n  and apply to layout at window init\n\nhttps://bugs.launchpad.net/ubuntu/+source/update-manager/+bug/2019249",
+ "diffstat": {
+  "UpdateManager/UpdatesAvailable.py": [
+   4,
+   0
+  ],
+  "data/com.ubuntu.update-manager.gschema.xml.in": [
+   5,
+   0
+  ]
+ },
+ "files": 2,
+ "added_lines": 9,
+ "removed_lines": 0,
+ "diff": "diff --git a/UpdateManager/UpdatesAvailable.py b/UpdateManager/UpdatesAvailable.py\nindex ffdb91c..f14c14f 100644\n--- a/UpdateManager/UpdatesAvailable.py\n+++ b/UpdateManager/UpdatesAvailable.py\n@@ -366,6 +366,10 @@ class UpdatesAvailable(InternalDialog):\n             \"summary-before-name\"\n         )\n \n+        # layout_horizon\n+        if self.settings.get_boolean(\"layout-horizon\"):\n+            self.paned.set_orientation(Gtk.Orientation.HORIZONTAL)\n+\n         # expander\n         self.expander_details.set_expanded(\n             self.settings.get_boolean(\"show-details\")\ndiff --git a/data/com.ubuntu.update-manager.gschema.xml.in b/data/com.ubuntu.update-manager.gschema.xml.in\nindex 40c618b..f323f6b 100644\n--- a/data/com.ubuntu.update-manager.gschema.xml.in\n+++ b/data/com.ubuntu.update-manager.gschema.xml.in\n@@ -1,5 +1,10 @@\n <schemalist>\n   <schema id=\"com.ubuntu.update-manager\" path=\"/apps/update-manager/\">\n+    <key name=\"layout-horizon\" type=\"b\">\n+      <default>false</default>\n+      <summary>Show layout as horizontal</summary>\n+      <description>show list and detail in horizontal layout</description>\n+    </key>\n     <key name=\"show-details\" type=\"b\">\n       <default>false</default>\n       <summary>Show details of an update</summary>\n",
+ "diff_truncated": false
+}

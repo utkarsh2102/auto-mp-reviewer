@@ -1,0 +1,27 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~slyon/ubuntu/+source/qemu/+git/qemu/+merge/496789",
+ "id": "496789",
+ "title": "PPA: https://launchpad.net/~slyon/+archive/ubuntu/lp2131236-amd64v3-vdso/+packages",
+ "source_branch": "lp2131236-amd64v3-vdso-questing",
+ "target_branch": "ubuntu/questing-devel",
+ "revision": "8efd3ed4c6524c8e12b02f8c6b937925a426ebb6",
+ "base_revision": "87f61ae25b77793ef2be3427b12dc70027967736",
+ "description": "PPA: https://launchpad.net/~slyon/+archive/ubuntu/lp2131236-amd64v3-vdso/+packages",
+ "commit_message": null,
+ "diffstat": {
+  "debian/changelog": [
+   6,
+   0
+  ],
+  "debian/rules": [
+   5,
+   1
+  ]
+ },
+ "files": 2,
+ "added_lines": 11,
+ "removed_lines": 1,
+ "diff": "diff --git a/debian/changelog b/debian/changelog\nindex 74f215b..3962dfc 100644\n--- a/debian/changelog\n+++ b/debian/changelog\n@@ -1,3 +1,9 @@\n+qemu (1:10.1.0+ds-5ubuntu2.2) questing; urgency=medium\n+\n+  * d/rules: Use upstream vDSO for architecture variant builds (LP: #2131236)\n+\n+ -- Lukas Märdian <slyon@ubuntu.com>  Wed, 03 Dec 2025 10:46:40 +0100\n+\n qemu (1:10.1.0+ds-5ubuntu2.1) questing; urgency=medium\n \n   * d/p/u/lp-2123828-*: Fix RISC-V instructions endianness (LP: #2123828)\ndiff --git a/debian/rules b/debian/rules\nindex fef1be6..9481216 100755\n--- a/debian/rules\n+++ b/debian/rules\n@@ -31,7 +31,11 @@ ifeq ($(VENDOR),ubuntu)\n   # upstream tests either.\n   export DEB_BUILD_PROFILES += nocheck\n \n-  ifneq ($(DEB_HOST_ARCH),amd64)\n+  # Enable upstream vDSO if the OR expands to a non-empty string, e.g.:\n+  # - $DEB_HOST_ARCH != amd64, OR\n+  # - $DEB_HOST_ARCH_VARIANT is set (non-emtpy, e.g. amd64v3)\n+  # Those are the conditions where we only run the \"binary-arch\" build.\n+  ifneq ($(or $(filter-out amd64,$(DEB_HOST_ARCH)),$(DEB_HOST_ARCH_VARIANT)),)\n     export DEB_BUILD_PROFILES += pkg.qemu.use-upstream-vdso\n   endif\n endif\n",
+ "diff_truncated": false
+}

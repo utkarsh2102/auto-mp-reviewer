@@ -1,0 +1,23 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~apw/ubuntu-archive-tools/+git/ubuntu-archive-tools/+merge/511859",
+ "id": "511859",
+ "title": "sync-packageset-kernel: fix selection criteria and --package-set option",
+ "source_branch": "sync-packageset-kernel",
+ "target_branch": "main",
+ "revision": "31429fc2bf8d991f9b2873556f35a05da63de485",
+ "base_revision": "3076a4cd715490f84341d1bd0784aff50311cc45",
+ "description": null,
+ "commit_message": "sync-packageset-kernel: fix selection criteria and --package-set option\n\nA couple of small fixes:\n\n1) fix the primary selection criteria so it correctly selects development\n   mode kernels, and\n2) switch us to the more common --packageset option (compatibilty is\n   maintained).",
+ "diffstat": {
+  "sync-packageset-kernel": [
+   3,
+   3
+  ]
+ },
+ "files": 1,
+ "added_lines": 3,
+ "removed_lines": 3,
+ "diff": "diff --git a/sync-packageset-kernel b/sync-packageset-kernel\nindex caedffc..aff5395 100755\n--- a/sync-packageset-kernel\n+++ b/sync-packageset-kernel\n@@ -65,7 +65,7 @@ class UpdatePackageSet:\n         ks = KernelSeries()\n         ks_series = ks.lookup_series(codename=self.series.name)\n         for ks_source in ks_series.sources:\n-            if ks_source.supported or not ks_source.development:\n+            if ks_source.supported or ks_source.development:\n                 for ks_package in ks_source.packages:\n                     newSet.add(ks_package.name)\n \n@@ -93,7 +93,7 @@ if __name__ == '__main__':\n \n     parser = ArgumentParser()\n     parser.add_argument(\"--series\", help=\"series-name to update.\")\n-    parser.add_argument(\"--package-set\", help=\"package-set name to update.\", default=\"kernel\")\n+    parser.add_argument(\"--packageset\", \"--package-set\", help=\"package-set name to update.\", default=\"kernel\")\n     parser.add_argument(\"-y\", \"--yes\", help=\"perform the update\", action=\"store_true\")\n     args = parser.parse_args()\n \n@@ -101,5 +101,5 @@ if __name__ == '__main__':\n         print(\"ERROR: --series is required.\", file=sys.stderr)\n         sys.exit(1)\n \n-    update_package_set = UpdatePackageSet(args.series, args.package_set)\n+    update_package_set = UpdatePackageSet(args.series, args.packageset)\n     update_package_set.update_sources(dry_run=not args.yes)\n",
+ "diff_truncated": false
+}

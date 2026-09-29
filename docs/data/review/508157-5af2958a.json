@@ -1,0 +1,27 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~tchavadar/ubuntu/+source/flash-kernel/+git/flash-kernel/+merge/508157",
+ "id": "508157",
+ "title": "PPA: https://launchpad.net/~tchavadar/+archive/ubuntu/lp2157346",
+ "source_branch": "ubuntu/jammy-devel",
+ "target_branch": "ubuntu/jammy-devel",
+ "revision": "45851ed3fc82b59b57e26684876d12447fd3dfdb",
+ "base_revision": "b90d11eb02d9a896ec13666c946cfda0983ebf7b",
+ "description": "PPA: https://launchpad.net/~tchavadar/+archive/ubuntu/lp2157346\nAutopkgtest: https://autopkgtest.ubuntu.com/user/tchavadar/ppa/lp2157346\nBugs: LP: #2157346",
+ "commit_message": null,
+ "diffstat": {
+  "bootscript/arm64/bootscr.zynqmp.kria": [
+   1,
+   1
+  ],
+  "debian/changelog": [
+   7,
+   0
+  ]
+ },
+ "files": 2,
+ "added_lines": 8,
+ "removed_lines": 1,
+ "diff": "diff --git a/bootscript/arm64/bootscr.zynqmp.kria b/bootscript/arm64/bootscr.zynqmp.kria\nindex 8de680f..bd584f0 100644\n--- a/bootscript/arm64/bootscr.zynqmp.kria\n+++ b/bootscript/arm64/bootscr.zynqmp.kria\n@@ -109,7 +109,7 @@ do\n     if test $kria = \"KD\"; then\n       cma=\"512M\"\n     elif  test -n $kria; then\n-      cma=\"1000M\"\n+      cma=\"800M\"\n     fi\n \n     if test -n $cma; then\ndiff --git a/debian/changelog b/debian/changelog\nindex d02558e..7560f1c 100644\n--- a/debian/changelog\n+++ b/debian/changelog\n@@ -1,3 +1,10 @@\n+flash-kernel (3.104ubuntu23) jammy; urgency=medium\n+\n+  * bootscript/bootscr.zynqmp.kria: fix the CMA failure with new AMD boot\n+    firmware (LP: #2157346)\n+\n+ -- Talha Can Havadar <talha.can.havadar@canonical.com>  Thu, 18 Jun 2026 16:46:16 +0200\n+\n flash-kernel (3.104ubuntu22) jammy; urgency=medium\n \n   * Add FK_FORCE_EFI environment variable to skip EFI check (LP: #2011536)\n",
+ "diff_truncated": false
+}

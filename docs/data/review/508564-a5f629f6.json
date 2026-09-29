@@ -1,0 +1,27 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~mylesjp/ubuntu/+source/software-properties/+git/software-properties/+merge/508564",
+ "id": "508564",
+ "title": "lp2161023-devel → ubuntu/devel",
+ "source_branch": "lp2161023-devel",
+ "target_branch": "ubuntu/devel",
+ "revision": "cbcddf17611184a4958c45414db134763908ec3f",
+ "base_revision": "bb755c774670794143d4cb17cfdbfd90a08dc506",
+ "description": null,
+ "commit_message": null,
+ "diffstat": {
+  "debian/changelog": [
+   7,
+   0
+  ],
+  "softwareproperties/cloudarchive.py": [
+   1,
+   0
+  ]
+ },
+ "files": 2,
+ "added_lines": 8,
+ "removed_lines": 0,
+ "diff": "diff --git a/debian/changelog b/debian/changelog\nindex 5025bd6..d86d194 100644\n--- a/debian/changelog\n+++ b/debian/changelog\n@@ -1,3 +1,10 @@\n+software-properties (0.123) stonking; urgency=medium\n+\n+  * cloudarchive: Enable support for the Hibiscus Ubuntu Cloud Archive\n+    (LP: #2161023).\n+\n+ -- Myles Penner <myles.penner@canonical.com>  Thu, 16 Jul 2026 15:10:00 -0700\n+\n software-properties (0.122) stonking; urgency=medium\n \n   * Fix GtkBuilder translations by changing the translable property\ndiff --git a/softwareproperties/cloudarchive.py b/softwareproperties/cloudarchive.py\nindex 78bbc47..978e0f4 100644\n--- a/softwareproperties/cloudarchive.py\n+++ b/softwareproperties/cloudarchive.py\n@@ -61,6 +61,7 @@ RELEASE_MAP = {\n     'epoxy': 'noble',\n     'flamingo': 'noble',\n     'gazpacho': 'noble',\n+    'hibiscus': 'resolute',\n }\n UCA = \"Ubuntu Cloud Archive\"\n WEB_LINK = 'https://wiki.ubuntu.com/OpenStack/CloudArchive'\n",
+ "diff_truncated": false
+}

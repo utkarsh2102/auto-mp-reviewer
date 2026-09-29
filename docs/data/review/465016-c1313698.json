@@ -1,0 +1,23 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~ubuntu-archive/ubuntu-archive-tools/+git/ubuntu-archive-tools/+merge/465016",
+ "id": "465016",
+ "title": "Don't hard-code all openjdk versions across all Ubuntu releases.  We should be selective about which series we hard-code which versions for, so that we can eventually age these out instead of having the list grow indefinitely.",
+ "source_branch": "clean-up-java-hard-coding",
+ "target_branch": "main",
+ "revision": "ab5ed5403e4b909b85eaf5bbbddaac8678824af7",
+ "base_revision": "0b10d9269229a1408de85ce29abaff1338e31eb3",
+ "description": "Don't hard-code all openjdk versions across all Ubuntu releases.  We should be selective about which series we hard-code which versions for, so that we can eventually age these out instead of having the list grow indefinitely.\n\nI'm not sure I've gotten this exactly right in terms of which releases we want to allow where, however (due to ppas) so I'm requesting review.",
+ "commit_message": null,
+ "diffstat": {
+  "update-i386-whitelist": [
+   12,
+   7
+  ]
+ },
+ "files": 1,
+ "added_lines": 12,
+ "removed_lines": 7,
+ "diff": "diff --git a/update-i386-whitelist b/update-i386-whitelist\nindex e00287c..594a4d4 100755\n--- a/update-i386-whitelist\n+++ b/update-i386-whitelist\n@@ -89,18 +89,23 @@ if __name__ == '__main__':\n \n     # needed to bootstrap openjdk-N\n     newSet.update(['openjdk-lts'])\n-    newSet.update(['openjdk-13'])\n-    newSet.update(['openjdk-16'])\n     newSet.update(['openjdk-17'])\n-    newSet.update(['openjdk-18'])\n-    newSet.update(['openjdk-19'])\n-    newSet.update(['openjdk-20'])\n-    newSet.update(['openjdk-21'])\n-    newSet.update(['openjdk-22'])\n     newSet.update(['openjdk-23'])\n     newSet.update(['gsfonts'])\n     if opts.release in ('focal','jammy','mantic'):\n+        newSet.update(['openjdk-21', 'java-atk-wrapper', 'x11-utils'])\n         newSet.update(['openjdk-8'])\n+    if opts.release == 'focal':\n+        newSet.update(['openjdk-13'])\n+        newSet.update(['openjdk-16'])\n+    if opts.release in ('jammy', 'mantic'):\n+        newSet.update(['openjdk-19'])\n+    if opts.release == 'jammy':\n+        newSet.update(['openjdk-18'])\n+    if opts.release in ('mantic', 'noble'):\n+        newSet.update(['openjdk-22'])\n+    if opts.release == 'mantic':\n+        newSet.update(['openjdk-20'])\n \n     newSet.update(['llvm-toolchain-9'])\n     newSet.update(['llvm-toolchain-11'])\n",
+ "diff_truncated": false
+}

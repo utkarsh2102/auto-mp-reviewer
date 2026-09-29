@@ -1,0 +1,27 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~danilogondolfo/ubuntu/+source/fetchmail/+git/fetchmail/+merge/461242",
+ "id": "461242",
+ "title": "fetchmail is not locked to OpenSSL >= 3.1. According to the README.SSL file, it will work just fine with 3.0.",
+ "source_branch": "openssl_3_0",
+ "target_branch": "ubuntu/devel",
+ "revision": "e81beb5a7cb7e4e2592eb1170650f6cc05d41987",
+ "base_revision": "b5117dfac39c231fc7eec6bbfdba1b8430103b99",
+ "description": "fetchmail is not locked to OpenSSL >= 3.1. According to the README.SSL file, it will work just fine with 3.0.\n\nAs we are not going to merge neither OpenSSL 3.1 nor 3.2 (see https://bugs.launchpad.net/ubuntu/+source/fetchmail/+bug/2052964) we should probably just patch debian/control.\n\nThe README.SSL also mentions this:\n\n---\nUse an up-to-date release of OpenSSL v3.0/v3.1 or wolfSSL 5.5 or\nnewer, so as to get TLSv1.3 support and latest fixes.  Older OpenSSL versions \nare unsupported upstream, and fetchmail rejects versions before v1.0.2f and \nwarns about versions before 3.0.13.\n---\n\nThe current version in Noble is 3.0.10 but it will be updated to 3.0.13. See https://code.launchpad.net/~adrien-n/ubuntu/+source/openssl/+git/openssl/+merge/461044\n\n\nPPA: https://launchpad.net/~danilogondolfo/+archive/ubuntu/fetchmail\n\nAutopkgtest logs:\n\nhttps://autopkgtest.ubuntu.com/results/autopkgtest-noble-danilogondolfo-fetchmail/noble/amd64/f/fetchmail/20240226_111514_5ee20@/log.gz\n\nhttps://autopkgtest.ubuntu.com/results/autopkgtest-noble-danilogondolfo-fetchmail/noble/armhf/f/fetchmail/20240226_113547_77ee0@/log.gz\n\nhttps://autopkgtest.ubuntu.com/results/autopkgtest-noble-danilogondolfo-fetchmail/noble/ppc64el/f/fetchmail/20240226_113653_b130e@/log.gz\n\nhttps://autopkgtest.ubuntu.com/results/autopkgtest-noble-danilogondolfo-fetchmail/noble/s390x/f/fetchmail/20240226_112754_a509b@/log.gz\n\nThe log for arm64 is missing due to an outage in launchpad.",
+ "commit_message": null,
+ "diffstat": {
+  "debian/changelog": [
+   8,
+   0
+  ],
+  "debian/control": [
+   3,
+   2
+  ]
+ },
+ "files": 2,
+ "added_lines": 11,
+ "removed_lines": 2,
+ "diff": "diff --git a/debian/changelog b/debian/changelog\nindex c21c4c0..74b8b75 100644\n--- a/debian/changelog\n+++ b/debian/changelog\n@@ -1,3 +1,11 @@\n+fetchmail (6.4.38-1ubuntu1) noble; urgency=medium\n+\n+  * debian/control: drop OpenSSL requirements to >= 3.0.10 (LP: #2052964)\n+    According to the README.SSL file it works just fine with 3.0 but will\n+    warn if it's < 3.0.13.\n+\n+ -- Danilo Egea Gondolfo <danilo.egea.gondolfo@canonical.com>  Mon, 26 Feb 2024 09:45:36 +0000\n+\n fetchmail (6.4.38-1) unstable; urgency=medium\n \n   * New upstream release.\ndiff --git a/debian/control b/debian/control\nindex fa03685..ac77ca9 100644\n--- a/debian/control\n+++ b/debian/control\n@@ -1,8 +1,9 @@\n Source: fetchmail\n Section: mail\n Priority: optional\n-Maintainer: Laszlo Boszormenyi (GCS) <gcs@debian.org>\n-Build-Depends: debhelper-compat (= 13), pkg-config, flex, libssl-dev (>= 3.1.4), bison, libkrb5-dev, libgssglue-dev\n+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>\n+XSBC-Original-Maintainer: Laszlo Boszormenyi (GCS) <gcs@debian.org>\n+Build-Depends: debhelper-compat (= 13), pkg-config, flex, libssl-dev (>= 3.0.10), bison, libkrb5-dev, libgssglue-dev\n Standards-Version: 4.6.2\n Rules-Requires-Root: no\n Homepage: https://www.fetchmail.info\n",
+ "diff_truncated": false
+}

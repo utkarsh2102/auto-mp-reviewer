@@ -1,0 +1,967 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~levihackerman-102/ubuntu/+source/golang-1.25/+git/golang-1.25/+merge/511886",
+ "id": "511886",
+ "title": "Backport golang-1.25 1.25.14-1 to resolute (LP: #2166409).",
+ "source_branch": "lp2166409/1.25.14/resolute",
+ "target_branch": "ubuntu/resolute-devel",
+ "revision": "e7874fbc5dfecc356bd6038e2369f3a58690f122",
+ "base_revision": "a6fe3a9f144abe0dbcf27c75caa524edd0186bcb",
+ "description": "Backport golang-1.25 1.25.14-1 to resolute (LP: #2166409).\n\nDrops the golang-1.25-go Build-Depends alternative so the package does not bootstrap from itself, mirroring the existing resolute delta in 1.25.7-2. Carries Debian 1.25.14-1, which already includes the TestTSAN-on-s390x skip previously added as an Ubuntu delta.",
+ "commit_message": null,
+ "diffstat": {
+  "VERSION": [
+   2,
+   2
+  ],
+  "debian/changelog": [
+   180,
+   0
+  ],
+  "debian/control": [
+   72,
+   56
+  ],
+  "debian/control.in": [
+   72,
+   56
+  ],
+  "debian/copyright": [
+   0,
+   4
+  ],
+  "debian/golang-X.Y-src.lintian-overrides": [
+   6,
+   31
+  ],
+  "debian/patches/0001-Skip-flaky-TestCrashDumpsAllThreads-on-mips64le.patch": [
+   2,
+   0
+  ],
+  "dev/null": [
+   0,
+   121
+  ],
+  "debian/patches/0005-Skip-TestTSAN-test-on-s390x.patch": [
+   1,
+   1
+  ],
+  "debian/patches/0005-Support-DEB_GOMINCOMPAT.patch": [
+   35,
+   0
+  ],
+  "debian/patches/0006-cmd-compile-fix-mergelocals-for-arm32-s390x-riscv64.patch": [
+   120,
+   0
+  ],
+  "debian/patches/series": [
+   2,
+   1
+  ],
+  "doc/godebug.md": [
+   9,
+   2
+  ],
+  "lib/fips140/certified.txt": [
+   1,
+   0
+  ],
+  "src/archive/tar/format.go": [
+   6,
+   0
+  ],
+  "src/archive/tar/reader.go": [
+   24,
+   4
+  ],
+  "src/archive/tar/reader_test.go": [
+   11,
+   0
+  ],
+  "src/cmd/cgo/internal/test/test.go": [
+   1,
+   1
+  ],
+  "src/cmd/compile/internal/dwarfgen/dwarf.go": [
+   8,
+   4
+  ],
+  "src/cmd/compile/internal/liveness/mergelocals.go": [
+   6,
+   1
+  ],
+  "src/cmd/compile/internal/loopvar/loopvar_test.go": [
+   60,
+   0
+  ],
+  "src/cmd/compile/internal/loopvar/testdata/range_esc_closure_linedir.go": [
+   24,
+   0
+  ],
+  "src/cmd/compile/internal/mips/ssa.go": [
+   15,
+   1
+  ],
+  "src/cmd/compile/internal/mips64/ssa.go": [
+   15,
+   1
+  ],
+  "src/cmd/compile/internal/noder/writer.go": [
+   1,
+   1
+  ],
+  "src/cmd/compile/internal/ppc64/ssa.go": [
+   15,
+   4
+  ],
+  "src/cmd/compile/internal/ssa/_gen/386Ops.go": [
+   92,
+   86
+  ],
+  "src/cmd/compile/internal/ssa/_gen/AMD64.rules": [
+   2,
+   1
+  ],
+  "src/cmd/compile/internal/ssa/_gen/AMD64Ops.go": [
+   281,
+   275
+  ],
+  "src/cmd/compile/internal/ssa/_gen/ARM64Ops.go": [
+   60,
+   53
+  ],
+  "src/cmd/compile/internal/ssa/_gen/ARMOps.go": [
+   35,
+   29
+  ],
+  "src/cmd/compile/internal/ssa/_gen/LOONG64Ops.go": [
+   34,
+   31
+  ],
+  "src/cmd/compile/internal/ssa/_gen/MIPS64.rules": [
+   2,
+   1
+  ],
+  "src/cmd/compile/internal/ssa/_gen/MIPS64Ops.go": [
+   49,
+   36
+  ],
+  "src/cmd/compile/internal/ssa/_gen/MIPSOps.go": [
+   45,
+   39
+  ],
+  "src/cmd/compile/internal/ssa/_gen/PPC64Ops.go": [
+   56,
+   44
+  ],
+  "src/cmd/compile/internal/ssa/_gen/RISCV64.rules": [
+   13,
+   11
+  ],
+  "src/cmd/compile/internal/ssa/_gen/RISCV64Ops.go": [
+   42,
+   38
+  ],
+  "src/cmd/compile/internal/ssa/_gen/S390XOps.go": [
+   99,
+   90
+  ],
+  "src/cmd/compile/internal/ssa/_gen/WasmOps.go": [
+   18,
+   18
+  ],
+  "src/cmd/compile/internal/ssa/_gen/allocators.go": [
+   5,
+   0
+  ],
+  "src/cmd/compile/internal/ssa/_gen/main.go": [
+   8,
+   0
+  ],
+  "src/cmd/compile/internal/ssa/allocators.go": [
+   26,
+   0
+  ],
+  "src/cmd/compile/internal/ssa/loopbce.go": [
+   31,
+   11
+  ],
+  "src/cmd/compile/internal/ssa/op.go": [
+   2,
+   0
+  ],
+  "src/cmd/compile/internal/ssa/opGen.go": [
+   1783,
+   1004
+  ],
+  "src/cmd/compile/internal/ssa/prove.go": [
+   261,
+   326
+  ],
+  "src/cmd/compile/internal/ssa/rewriteAMD64.go": [
+   4,
+   2
+  ],
+  "src/cmd/compile/internal/ssa/rewriteMIPS64.go": [
+   22,
+   0
+  ],
+  "src/cmd/compile/internal/ssa/rewriteRISCV64.go": [
+   22,
+   11
+  ],
+  "src/cmd/compile/internal/ssa/value.go": [
+   12,
+   0
+  ],
+  "src/cmd/compile/internal/ssagen/ssa.go": [
+   14,
+   6
+  ],
+  "src/cmd/compile/internal/test/memoverlap_test.go": [
+   41,
+   0
+  ],
+  "src/cmd/compile/internal/typecheck/expr.go": [
+   0,
+   13
+  ],
+  "src/cmd/compile/internal/types2/builtins.go": [
+   2,
+   2
+  ],
+  "src/cmd/compile/internal/types2/issues_test.go": [
+   5,
+   1
+  ],
+  "src/cmd/compile/internal/types2/signature.go": [
+   4,
+   1
+  ],
+  "src/cmd/compile/internal/types2/under.go": [
+   1,
+   1
+  ],
+  "src/cmd/compile/internal/walk/complit.go": [
+   1,
+   5
+  ],
+  "src/cmd/dist/buildtool.go": [
+   1,
+   0
+  ],
+  "src/cmd/go.mod": [
+   2,
+   2
+  ],
+  "src/cmd/go.sum": [
+   4,
+   4
+  ],
+  "src/cmd/go/internal/bug/bug.go": [
+   3,
+   3
+  ],
+  "src/cmd/go/internal/cache/cache.go": [
+   31,
+   10
+  ],
+  "src/cmd/go/internal/modfetch/codehost/git_test.go": [
+   51,
+   0
+  ],
+  "src/cmd/go/internal/modfetch/fetch.go": [
+   14,
+   1
+  ],
+  "src/cmd/go/internal/modindex/read.go": [
+   2,
+   2
+  ],
+  "src/cmd/go/internal/test/test.go": [
+   62,
+   9
+  ],
+  "src/cmd/go/internal/vcweb/script.go": [
+   29,
+   0
+  ],
+  "src/cmd/go/internal/work/cover.go": [
+   1,
+   1
+  ],
+  "src/cmd/go/internal/work/exec.go": [
+   5,
+   4
+  ],
+  "src/cmd/go/internal/work/security.go": [
+   57,
+   0
+  ],
+  "src/cmd/go/proxy_test.go": [
+   17,
+   0
+  ],
+  "src/cmd/go/scriptconds_test.go": [
+   30,
+   0
+  ],
+  "src/cmd/go/testdata/mod/example.com_importcrypto_v1.0.0.txt": [
+   19,
+   0
+  ],
+  "src/cmd/go/testdata/script/README": [
+   2,
+   0
+  ],
+  "src/cmd/go/testdata/script/build_git_sha256_go_get_branch.txt": [
+   1,
+   0
+  ],
+  "src/cmd/go/testdata/script/build_git_sha256_moddep.txt": [
+   1,
+   0
+  ],
+  "src/cmd/go/testdata/script/cgo_bad_directives.txt": [
+   9,
+   0
+  ],
+  "src/cmd/go/testdata/script/cover_switch_toolchain.txt": [
+   12,
+   0
+  ],
+  "src/cmd/go/testdata/script/mod_download_git_bareRepository_sha256.txt": [
+   1,
+   0
+  ],
+  "src/cmd/go/testdata/script/mod_get_fips140_issue73649.txt": [
+   10,
+   0
+  ],
+  "src/cmd/go/testdata/script/mod_sum_absent.txt": [
+   17,
+   0
+  ],
+  "src/cmd/go/testdata/script/test_cache_coverpkg_bug.txt": [
+   134,
+   0
+  ],
+  "src/cmd/go/testdata/script/test_cache_coverpkg_no_profile.txt": [
+   80,
+   0
+  ],
+  "src/cmd/go/testdata/vcstest/git/gitrepo-sha256.txt": [
+   2,
+   0
+  ],
+  "src/cmd/internal/obj/mips/asm0.go": [
+   3,
+   0
+  ],
+  "src/cmd/internal/script/engine.go": [
+   3,
+   1
+  ],
+  "src/cmd/internal/testdir/testdir_test.go": [
+   11,
+   10
+  ],
+  "src/cmd/link/internal/ld/lib.go": [
+   42,
+   10
+  ],
+  "src/cmd/pack/pack.go": [
+   5,
+   0
+  ],
+  "src/cmd/pack/pack_test.go": [
+   44,
+   0
+  ],
+  "src/cmd/vendor/golang.org/x/mod/sumdb/client.go": [
+   1,
+   1
+  ],
+  "src/cmd/vendor/golang.org/x/mod/sumdb/tlog/tile.go": [
+   30,
+   11
+  ],
+  "src/cmd/vendor/golang.org/x/sys/windows/zsyscall_windows.go": [
+   483,
+   483
+  ],
+  "src/cmd/vendor/modules.txt": [
+   2,
+   2
+  ],
+  "src/crypto/fips140/fips140.go": [
+   6,
+   0
+  ],
+  "src/crypto/tls/bogo_config.json": [
+   0,
+   1
+  ],
+  "src/crypto/tls/conn.go": [
+   8,
+   4
+  ],
+  "src/crypto/tls/conn_test.go": [
+   34,
+   0
+  ],
+  "src/crypto/tls/handshake_client.go": [
+   13,
+   3
+  ],
+  "src/crypto/tls/handshake_client_tls13.go": [
+   2,
+   2
+  ],
+  "src/crypto/tls/handshake_messages.go": [
+   3,
+   1
+  ],
+  "src/crypto/tls/handshake_messages_test.go": [
+   95,
+   4
+  ],
+  "src/crypto/tls/handshake_server.go": [
+   10,
+   4
+  ],
+  "src/crypto/tls/handshake_server_tls13.go": [
+   2,
+   2
+  ],
+  "src/crypto/tls/handshake_test.go": [
+   48,
+   0
+  ],
+  "src/crypto/tls/tls_test.go": [
+   1,
+   0
+  ],
+  "src/crypto/x509/name_constraints_test.go": [
+   168,
+   0
+  ],
+  "src/crypto/x509/verify.go": [
+   52,
+   21
+  ],
+  "src/crypto/x509/verify_test.go": [
+   72,
+   72
+  ],
+  "src/encoding/asn1/asn1.go": [
+   15,
+   6
+  ],
+  "src/encoding/asn1/asn1_test.go": [
+   87,
+   0
+  ],
+  "src/encoding/xml/read.go": [
+   13,
+   15
+  ],
+  "src/encoding/xml/read_test.go": [
+   154,
+   0
+  ],
+  "src/encoding/xml/xml.go": [
+   9,
+   2
+  ],
+  "src/go.mod": [
+   2,
+   2
+  ],
+  "src/go.sum": [
+   4,
+   4
+  ],
+  "src/go/build/build.go": [
+   1,
+   1
+  ],
+  "src/go/types/builtins.go": [
+   2,
+   2
+  ],
+  "src/go/types/issues_test.go": [
+   5,
+   1
+  ],
+  "src/go/types/signature.go": [
+   4,
+   1
+  ],
+  "src/go/types/under.go": [
+   1,
+   1
+  ],
+  "src/html/template/attr_string.go": [
+   3,
+   2
+  ],
+  "src/html/template/context.go": [
+   21,
+   1
+  ],
+  "src/html/template/element_string.go": [
+   3,
+   2
+  ],
+  "src/html/template/escape.go": [
+   16,
+   2
+  ],
+  "src/html/template/escape_test.go": [
+   147,
+   16
+  ],
+  "src/html/template/js.go": [
+   1,
+   0
+  ],
+  "src/html/template/state_string.go": [
+   5,
+   3
+  ],
+  "src/html/template/transition.go": [
+   47,
+   6
+  ],
+  "src/internal/godebugs/table.go": [
+   2,
+   0
+  ],
+  "src/internal/goroot/gc.go": [
+   3,
+   3
+  ],
+  "src/internal/poll/fstatat_unix.go": [
+   22,
+   0
+  ],
+  "src/internal/runtime/atomic/atomic_ppc64x.s": [
+   10,
+   0
+  ],
+  "src/internal/syscall/unix/at.go": [
+   0,
+   17
+  ],
+  "src/internal/syscall/unix/at_sysnum_linux.go": [
+   2,
+   1
+  ],
+  "src/internal/syscall/unix/fchmodat_linux.go": [
+   51,
+   0
+  ],
+  "src/internal/syscall/unix/fchmodat_other.go": [
+   29,
+   0
+  ],
+  "src/internal/syscall/unix/fchmodat_test.go": [
+   62,
+   0
+  ],
+  "src/internal/syscall/windows/at_windows.go": [
+   20,
+   3
+  ],
+  "src/internal/syscall/windows/at_windows_test.go": [
+   109,
+   0
+  ],
+  "src/internal/syscall/windows/registry/key.go": [
+   10,
+   2
+  ],
+  "src/internal/syscall/windows/registry/value.go": [
+   5,
+   1
+  ],
+  "src/internal/syscall/windows/registry/zsyscall_windows.go": [
+   7,
+   7
+  ],
+  "src/internal/syscall/windows/syscall_windows.go": [
+   4,
+   0
+  ],
+  "src/internal/syscall/windows/types_windows.go": [
+   82,
+   0
+  ],
+  "src/internal/syscall/windows/zsyscall_windows.go": [
+   90,
+   63
+  ],
+  "src/internal/types/testdata/fixedbugs/issue78163.go": [
+   11,
+   0
+  ],
+  "src/mime/encodedword.go": [
+   2,
+   2
+  ],
+  "src/mime/encodedword_test.go": [
+   4,
+   0
+  ],
+  "src/net/cgo_unix.go": [
+   4,
+   1
+  ],
+  "src/net/http/clientserver_test.go": [
+   20,
+   1
+  ],
+  "src/net/http/h2_bundle.go": [
+   3,
+   3
+  ],
+  "src/net/http/http2_test.go": [
+   18,
+   0
+  ],
+  "src/net/http/httputil/reverseproxy.go": [
+   14,
+   0
+  ],
+  "src/net/http/httputil/reverseproxy_test.go": [
+   6,
+   0
+  ],
+  "src/net/http/netconn_test.go": [
+   2,
+   1
+  ],
+  "src/net/http/omithttp2_test.go": [
+   13,
+   0
+  ],
+  "src/net/http/serve_test.go": [
+   87,
+   1
+  ],
+  "src/net/http/server.go": [
+   13,
+   13
+  ],
+  "src/net/lookup_test.go": [
+   3,
+   2
+  ],
+  "src/net/lookup_windows.go": [
+   16,
+   3
+  ],
+  "src/net/mail/message.go": [
+   20,
+   9
+  ],
+  "src/net/mail/message_test.go": [
+   30,
+   0
+  ],
+  "src/net/smtp/smtp_test.go": [
+   51,
+   46
+  ],
+  "src/net/textproto/reader.go": [
+   7,
+   7
+  ],
+  "src/net/textproto/reader_test.go": [
+   4,
+   2
+  ],
+  "src/net/textproto/textproto.go": [
+   1,
+   1
+  ],
+  "src/net/url/url.go": [
+   23,
+   30
+  ],
+  "src/net/url/url_test.go": [
+   27,
+   4
+  ],
+  "src/os/dir_darwin.go": [
+   2,
+   2
+  ],
+  "src/os/dir_unix.go": [
+   2,
+   2
+  ],
+  "src/os/export_test.go": [
+   14,
+   1
+  ],
+  "src/os/file.go": [
+   0,
+   3
+  ],
+  "src/os/file_plan9.go": [
+   7,
+   0
+  ],
+  "src/os/file_posix.go": [
+   7,
+   0
+  ],
+  "src/os/file_unix.go": [
+   9,
+   5
+  ],
+  "src/os/os_test.go": [
+   50,
+   4
+  ],
+  "src/os/os_unix_test.go": [
+   3,
+   5
+  ],
+  "src/os/removeall_at.go": [
+   6,
+   2
+  ],
+  "src/os/removeall_noat.go": [
+   6,
+   0
+  ],
+  "src/os/removeall_test.go": [
+   34,
+   8
+  ],
+  "src/os/removeall_unix.go": [
+   0,
+   8
+  ],
+  "src/os/removeall_windows.go": [
+   0,
+   4
+  ],
+  "src/os/root.go": [
+   10,
+   8
+  ],
+  "src/os/root_js.go": [
+   5,
+   12
+  ],
+  "src/os/root_noopenat.go": [
+   11,
+   0
+  ],
+  "src/os/root_openat.go": [
+   141,
+   33
+  ],
+  "src/os/root_test.go": [
+   1569,
+   36
+  ],
+  "src/os/root_unix.go": [
+   26,
+   14
+  ],
+  "src/os/root_unix_test.go": [
+   2,
+   3
+  ],
+  "src/os/root_windows.go": [
+   41,
+   15
+  ],
+  "src/os/stat.go": [
+   3,
+   0
+  ],
+  "src/os/statat.go": [
+   24,
+   0
+  ],
+  "src/os/statat_other.go": [
+   12,
+   0
+  ],
+  "src/os/statat_unix.go": [
+   20,
+   0
+  ],
+  "src/runtime/callers_test.go": [
+   24,
+   0
+  ],
+  "src/runtime/export_test.go": [
+   24,
+   6
+  ],
+  "src/runtime/iface.go": [
+   10,
+   2
+  ],
+  "src/runtime/malloc.go": [
+   1,
+   53
+  ],
+  "src/runtime/mem.go": [
+   104,
+   9
+  ],
+  "src/runtime/metrics/doc.go": [
+   9,
+   0
+  ],
+  "src/runtime/mgcmark.go": [
+   9,
+   0
+  ],
+  "src/runtime/netpoll_epoll.go": [
+   1,
+   1
+  ],
+  "src/runtime/race/README": [
+   9,
+   9
+  ],
+  "src/runtime/race/internal/amd64v1/race_darwin.patch": [
+   63,
+   0
+  ],
+  "src/runtime/race/internal/amd64v1/race_freebsd.patch": [
+   63,
+   0
+  ],
+  "src/runtime/race/internal/amd64v1/race_linux.patch": [
+   63,
+   0
+  ],
+  "src/runtime/race/internal/amd64v1/race_windows.patch": [
+   63,
+   0
+  ],
+  "src/runtime/race/internal/amd64v3/race_linux.patch": [
+   63,
+   0
+  ],
+  "src/runtime/race/race_darwin_arm64.patch": [
+   63,
+   0
+  ],
+  "src/runtime/race/race_linux_arm64.patch": [
+   63,
+   0
+  ],
+  "src/runtime/race/race_linux_loong64.patch": [
+   63,
+   0
+  ],
+  "src/runtime/race/race_linux_s390x.patch": [
+   63,
+   0
+  ],
+  "src/runtime/stack.go": [
+   38,
+   9
+  ],
+  "src/runtime/sys_darwin_amd64.s": [
+   5,
+   0
+  ],
+  "src/runtime/traceback.go": [
+   6,
+   1
+  ],
+  "src/syscall/syscall_windows.go": [
+   5,
+   1
+  ],
+  "src/syscall/zsyscall_windows.go": [
+   149,
+   149
+  ],
+  "src/vendor/golang.org/x/net/idna/idna10.0.0.go": [
+   14,
+   1
+  ],
+  "src/vendor/modules.txt": [
+   2,
+   2
+  ],
+  "test/codegen/slices.go": [
+   12,
+   0
+  ],
+  "test/fixedbugs/issue46234.go": [
+   1,
+   1
+  ],
+  "test/fixedbugs/issue77919.go": [
+   15,
+   0
+  ],
+  "test/fixedbugs/issue78641.go": [
+   25,
+   0
+  ],
+  "test/fixedbugs/issue79182.go": [
+   32,
+   0
+  ],
+  "test/fixedbugs/issue79186.go": [
+   67,
+   0
+  ],
+  "test/fixedbugs/issue79874.go": [
+   57,
+   0
+  ],
+  "test/fixedbugs/issue80097.go": [
+   23,
+   0
+  ],
+  "test/fixedbugs/issue80127.go": [
+   30,
+   0
+  ],
+  "test/fixedbugs/issue80188.go": [
+   238,
+   0
+  ],
+  "test/fixedbugs/issue80517_1.go": [
+   41,
+   0
+  ],
+  "test/fixedbugs/issue80517_2.go": [
+   33,
+   0
+  ],
+  "test/fixedbugs/issue80517_3.go": [
+   33,
+   0
+  ],
+  "test/fixedbugs/issue80577.go": [
+   68,
+   0
+  ],
+  "test/loopbce.go": [
+   28,
+   0
+  ]
+ },
+ "files": 237,
+ "added_lines": 10606,
+ "removed_lines": 3793,
+ "diff": "diff --git a/VERSION b/VERSION\nindex e1fa21e..9ec0470 100644\n--- a/VERSION\n+++ b/VERSION\n@@ -1,2 +1,2 @@\n-go1.25.7\n-time 2026-02-03T20:02:30Z\n+go1.25.14\n+time 2026-08-18T21:44:21Z\ndiff --git a/debian/changelog b/debian/changelog\nindex e2a5983..97e26c0 100644\n--- a/debian/changelog\n+++ b/debian/changelog\n@@ -1,3 +1,183 @@\n+golang-1.25 (1.25.14-1~26.04.1) resolute; urgency=medium\n+\n+  * Backport golang-1.25 1.25.14-1 to resolute (LP: #2166409).\n+    - Drop the golang-1.25-go alternative from Build-Depends so the\n+      package does not bootstrap from itself, keeping golang-1.24-go as\n+      the bootstrap toolchain (as done in 1.25.7-2).\n+\n+ -- Anshul Singh <anshul.singh@canonical.com>  Wed, 23 Sep 2026 13:53:52 +0530\n+\n+golang-1.25 (1.25.14-1) unstable; urgency=medium\n+\n+  * New upstream version 1.25.14\n+    - Add patch to fix mergelocals for arm32/s390x/riscv64\n+\n+ -- Dr. Tobias Quathamer <toddy@debian.org>  Fri, 21 Aug 2026 18:00:54 +0200\n+\n+golang-1.25 (1.25.13-1) unstable; urgency=medium\n+\n+  * New upstream version 1.25.13 (Closes: #1144342)\n+    - CVE-2026-56865\n+      A malicious GOPROXY was previously capable of forging up to two sumdb\n+      tiles that allow for a requested module to bypass the GOSUMDB check and\n+      persist attacker-controlled module content to a local Go module cache.\n+      This attack allows for a malicious GOPROXY to serve malicious module\n+      content that cannot be detected by evaluating the transparency log. All\n+      tiles are now correctly verified against their parents. In order to\n+      determine if you have been affected: rm -r go.sum go.work.sum vendor/ &&\n+      go mod tidy\n+    - CVE-2026-56864\n+      A malicious GOSUMDB was capable of serving arbitrary module content not\n+      contained within the transparency log. This attack allows for a\n+      coordinating GOPROXY and GOSUMDB to serve a client malicious module\n+      content that cannot be detected by evaluating the transparency log. In\n+      order to determine if you have been affected: rm -r go.sum go.work.sum\n+      vendor/ && go mod tidy\n+    - CVE-2026-56862\n+      Handshake messages, such as KeyUpdate, are always considered as\n+      state-advancing, regardless of whether a handshake has been completed or\n+      not. As a result, a malicious client can keep sending KeyUpdate messages\n+      to force the server to keep performing key derivation operations\n+      indefinitely.\n+    - CVE-2026-56860\n+      Previously, resolving relative paths containing parent directory ('..')\n+      segments performed string conversions and buffer rewrites on each step,\n+      resulting in quadratic time complexity and high memory allocation\n+      overhead. Now, path resolution operates on a byte buffer using\n+      index-based backtracking for '..' segments, eliminating the quadratic\n+      time complexity and significantly reducing memory allocations.\n+    - CVE-2026-56859\n+      Previously, DecodeElement would reset the depth counter causing it to\n+      never fire; this could lead to stack exhaustion.\n+    - CVE-2026-56858\n+      Previously, pathological inputs could close an unescaped '/' early,\n+      allowing for attack-controlled data to inject arbitrary content,\n+      potentially leading to XSS.\n+    - CVE-2026-56853\n+      When a server is configured to support unencrypted HTTP/2, it reads a\n+      few bytes from each new connection to see if they contain the HTTP/2\n+      client preface. ReadHeaderTimeout is unexpectedly not being applied when\n+      doing this.\n+    - CVE-2026-33818\n+      Enforce a recursion limit in Unmarshal to prevent stack exhaustion when\n+      parsing deeply-nested, recursive structures.\n+\n+ -- Dr. Tobias Quathamer <toddy@debian.org>  Sun, 16 Aug 2026 21:19:57 +0200\n+\n+golang-1.25 (1.25.12-1) unstable; urgency=medium\n+\n+  * New upstream version 1.25.12\n+    - CVE-2026-39822\n+      os: properly handle trailing slashes in paths in Root\n+    - CVE-2026-42505\n+      crypto/tls: omit PSK in ECH outer client hello\n+  * Mark patch as Forwarded: not-needed\n+\n+ -- Dr. Tobias Quathamer <toddy@debian.org>  Tue, 07 Jul 2026 22:52:52 +0200\n+\n+golang-1.25 (1.25.11-1) unstable; urgency=medium\n+\n+  * New upstream version 1.25.11\n+    - CVE-2026-27145\n+      crypto/x509: split candidate hostname only once\n+    - CVE-2026-42507\n+      net/textproto: escape arbitrary input when including them in errors\n+    - CVE-2026-42504\n+      mime: avoid quadratic complexity in WordDecoder.DecodeHeader\n+\n+ -- Dr. Tobias Quathamer <toddy@debian.org>  Thu, 04 Jun 2026 14:23:02 +0200\n+\n+golang-1.25 (1.25.10-2) unstable; urgency=medium\n+\n+  * Support forcing a minimum go compatibility version for\n+    GODEBUG via DEB_GOMINCOMPAT.\n+    Thanks to Helmut Grohne <helmut@subdivi.de>\n+\n+ -- Dr. Tobias Quathamer <toddy@debian.org>  Thu, 21 May 2026 11:57:39 +0200\n+\n+golang-1.25 (1.25.10-1) unstable; urgency=medium\n+\n+  * New upstream version 1.25.10\n+    - CVE-2026-42501\n+      cmd/go: malicious module proxy can bypass checksum database\n+    - CVE-2026-39820\n+      Well-crafted inputs reaching ParseAddress, ParseAddressList, and\n+      ParseDate were able to trigger excessive CPU exhaustion and memory\n+      allocations.\n+    - CVE-2026-39823\n+      Vulnerability in which URLs were not correctly escaped inside of a\n+      <meta> tag's <content> attribute.\n+    - CVE-2026-33811\n+      When using LookupCNAME with the cgo DNS resolver, a very long\n+      CNAME response can trigger a double-free of C memory and a crash.\n+    - CVE-2026-39826\n+      If a trusted template author were to write a <script> tag\n+      containing an empty 'type' attribute or a 'type' attribute with an\n+      ASCII whitespace, the execution of the template would incorrectly\n+      escape any data passed into the <script> block.\n+    - CVE-2026-39817\n+      The \"go tool pack\" subcommand (usually used only by the compiler\n+      as an internal tool with known-good inputs) does not sanitize\n+      output filenames. Extracting a malicious archive file with the\n+      \"pack\" subcommand can write files to arbitrary locations on the\n+      filesystem.\n+    - CVE-2026-39819\n+      The \"go bug\" command writes to two files with predictable names in\n+      the system temporary directory (for example, \"/tmp\"). An attacker\n+      with access to the temporary directory can create a symlink in one\n+      of these names, causing \"go bug\" to overwrite the target of the\n+      symlink.\n+    - CVE-2026-42499\n+      Pathological inputs could cause DoS through consumePhrase when\n+      parsing an email address according to RFC 5322.\n+    - CVE-2026-39825\n+      ReverseProxy can forward queries containing parameters not visible\n+      to Rewrite functions.\n+  * Remove superfluous file pattern from d/copyright\n+  * Update lintian overrides\n+\n+ -- Dr. Tobias Quathamer <toddy@debian.org>  Thu, 07 May 2026 22:22:32 +0200\n+\n+golang-1.25 (1.25.9-1) unstable; urgency=medium\n+\n+  * New upstream version 1.25.9\n+    - Update Build-Depends on golang 1.25 or 1.24\n+    - CVE-2026-32280\n+      During chain building, the amount of work that is done is not\n+      correctly limited when a large number of intermediate certificates\n+      are passed in VerifyOptions.Intermediates, which can lead to a\n+      denial of service. This affects both direct users of crypto/x509\n+      and users of crypto/tls.\n+    - CVE-2026-32281\n+      Validating certificate chains which use policies is unexpectedly\n+      inefficient when certificates in the chain contain a very large\n+      number of policy mappings, possibly causing denial of service.\n+      This only affects validation of otherwise trusted certificate\n+      chains, issued by a root CA in the VerifyOptions.Roots CertPool,\n+      or in the system certificate pool.\n+  * Set Forwarded in patch headers\n+  * Remove Priority: optional from d/control\n+  * Remove Rules-Requires-Root from d/control\n+  * Update Standards-Version to 4.7.4\n+  * Use wrap-and-sort -astkb\n+  * Add myself as uploader, somehow I got involved again. :-)\n+\n+ -- Dr. Tobias Quathamer <toddy@debian.org>  Wed, 08 Apr 2026 11:31:44 +0200\n+\n+golang-1.25 (1.25.8-1) unstable; urgency=medium\n+\n+  * Update to 1.25.8 upstream release\n+    https://groups.google.com/g/golang-announce/c/EdhZqrQ98hk/m/41DopX_WAAAJ\n+    - CVE-2026-27142: html/template: URLs in meta content attribute actions\n+                      are not escaped\n+    - CVE-2026-25679: net/url: reject IPv6 literal not at start of host\n+    - CVE-2026-27139: os: FileInfo can escape from a Root\n+    (notably, CVE-2026-27137 and CVE-2026-27138 apply only to 1.26+)\n+  * Drop 0004-Replace-localhostCert-and-localhostKey.patch (obsolete via\n+    https://github.com/golang/go/commit/0c56fa28180c1281bb4934bb6779a72a3fb43f52)\n+\n+ -- Tianon Gravi <tianon@debian.org>  Sat, 07 Mar 2026 09:12:47 -0800\n+\n golang-1.25 (1.25.7-2) unstable; urgency=medium\n \n   * Team upload.\ndiff --git a/debian/control b/debian/control\nindex 6291060..23103ee 100644\n--- a/debian/control\n+++ b/debian/control\n@@ -4,33 +4,45 @@\n \n Source: golang-1.25\n Maintainer: Debian Go Compiler Team <team+go-compiler@tracker.debian.org>\n-Uploaders: Michael Stapelberg <stapelberg@debian.org>,\n-           Paul Tagliamonte <paultag@debian.org>,\n-           Tianon Gravi <tianon@debian.org>,\n-           Michael Hudson-Doyle <mwhudson@debian.org>,\n-           Anthony Fok <foka@debian.org>\n+Uploaders:\n+ Michael Stapelberg <stapelberg@debian.org>,\n+ Paul Tagliamonte <paultag@debian.org>,\n+ Tianon Gravi <tianon@debian.org>,\n+ Michael Hudson-Doyle <mwhudson@debian.org>,\n+ Anthony Fok <foka@debian.org>,\n+ Dr. Tobias Quathamer <toddy@debian.org>,\n Section: golang\n-Priority: optional\n-Build-Depends: debhelper-compat (= 13),\n-               binutils-gold [arm64],\n-               golang-1.24-go:native | golang-1.23-go:native | golang-1.22-go:native,\n-               netbase\n-Standards-Version: 4.6.2\n+Build-Depends:\n+ debhelper-compat (= 13),\n+ binutils-gold [arm64],\n+ golang-1.24-go:native,\n+ netbase,\n+Standards-Version: 4.7.4\n Vcs-Browser: https://salsa.debian.org/go-team/compiler/golang/tree/golang-1.25\n Vcs-Git: https://salsa.debian.org/go-team/compiler/golang.git -b golang-1.25\n Homepage: https://go.dev/\n-Rules-Requires-Root: no\n \n Package: golang-1.25-go\n Architecture: amd64 arm64 armel armhf i386 loong64 mips mips64el mipsel ppc64 ppc64el riscv64 s390x\n-Depends: binutils-gold [arm64],\n-         golang-1.25-src (>= ${source:Version}),\n-         ${misc:Depends},\n-         ${perl:Depends},\n-         ${shlibs:Depends}\n-Recommends: g++, gcc, libc6-dev, pkgconf\n-Breaks: dh-golang (<< 1.43~)\n-Suggests: bzr | brz, ca-certificates, git, mercurial, subversion\n+Depends:\n+ binutils-gold [arm64],\n+ golang-1.25-src (>= ${source:Version}),\n+ ${misc:Depends},\n+ ${perl:Depends},\n+ ${shlibs:Depends},\n+Recommends:\n+ g++,\n+ gcc,\n+ libc6-dev,\n+ pkgconf,\n+Breaks:\n+ dh-golang (<< 1.43~),\n+Suggests:\n+ bzr | brz,\n+ ca-certificates,\n+ git,\n+ mercurial,\n+ subversion,\n Description: Go programming language compiler, linker, compiled stdlib\n  The Go programming language is an open source project to make programmers more\n  productive. Go is expressive, concise, clean, and efficient. Its concurrency\n@@ -47,25 +59,34 @@ Description: Go programming language compiler, linker, compiled stdlib\n  To use this version, instead of the default one provided by golang-go package,\n  add /usr/lib/go-1.25/bin/ to PATH, or invoke /usr/lib/go-1.25/bin/go directly.\n \n-Package: golang-1.25-src\n+Package: golang-1.25\n+Depends:\n+ golang-1.25-doc (>= ${source:Version}),\n+ golang-1.25-go (>= ${source:Version}),\n+ golang-1.25-src (>= ${source:Version}),\n+ ${misc:Depends},\n Architecture: all\n-Multi-Arch: foreign\n-Depends: ${misc:Depends}, ${shlibs:Depends}\n-Description: Go programming language - source files\n- The Go programming language is an open source project to make programmers more\n- productive. Go is expressive, concise, clean, and efficient. Its concurrency\n- mechanisms make it easy to write programs that get the most out of multicore\n- and networked machines, while its novel type system enables flexible and\n- modular program construction. Go compiles quickly to machine code yet has the\n- convenience of garbage collection and the power of run-time reflection. It's a\n- fast, statically typed, compiled language that feels like a dynamically typed,\n- interpreted language.\n+Description: Go programming language compiler - metapackage\n+ The Go programming language is an open source project to make\n+ programmers more productive. Go is expressive, concise, clean, and\n+ efficient. Its concurrency mechanisms make it easy to write programs\n+ that get the most out of multicore and networked machines, while its\n+ novel type system enables flexible and modular program construction.\n+ Go compiles quickly to machine code yet has the convenience of\n+ garbage collection and the power of run-time reflection. It's a\n+ fast, statically typed, compiled language that feels like a\n+ dynamically typed, interpreted language.\n  .\n- This package provides the Go programming language source files needed for\n- compilation.\n+ This package is a metapackage that, when installed, guarantees\n+ that (most of) a full Go development environment is installed.\n+ .\n+ To use this version, instead of the default one provided by golang-go\n+ package, add /usr/lib/go-1.25/bin/ to PATH, or invoke /usr/lib/go-1.25/bin/go\n+ directly.\n \n Package: golang-1.25-doc\n-Depends: ${misc:Depends}\n+Depends:\n+ ${misc:Depends},\n Architecture: all\n Multi-Arch: foreign\n Section: doc\n@@ -83,26 +104,21 @@ Description: Go programming language - documentation\n  This package provides the documentation for the Go programming\n  language.\n \n-Package: golang-1.25\n-Depends: golang-1.25-doc (>= ${source:Version}),\n-         golang-1.25-go (>= ${source:Version}),\n-         golang-1.25-src (>= ${source:Version}),\n-         ${misc:Depends}\n+Package: golang-1.25-src\n Architecture: all\n-Description: Go programming language compiler - metapackage\n- The Go programming language is an open source project to make\n- programmers more productive. Go is expressive, concise, clean, and\n- efficient. Its concurrency mechanisms make it easy to write programs\n- that get the most out of multicore and networked machines, while its\n- novel type system enables flexible and modular program construction.\n- Go compiles quickly to machine code yet has the convenience of\n- garbage collection and the power of run-time reflection. It's a\n- fast, statically typed, compiled language that feels like a\n- dynamically typed, interpreted language.\n- .\n- This package is a metapackage that, when installed, guarantees\n- that (most of) a full Go development environment is installed.\n+Multi-Arch: foreign\n+Depends:\n+ ${misc:Depends},\n+ ${shlibs:Depends},\n+Description: Go programming language - source files\n+ The Go programming language is an open source project to make programmers more\n+ productive. Go is expressive, concise, clean, and efficient. Its concurrency\n+ mechanisms make it easy to write programs that get the most out of multicore\n+ and networked machines, while its novel type system enables flexible and\n+ modular program construction. Go compiles quickly to machine code yet has the\n+ convenience of garbage collection and the power of run-time reflection. It's a\n+ fast, statically typed, compiled language that feels like a dynamically typed,\n+ interpreted language.\n  .\n- To use this version, instead of the default one provided by golang-go\n- package, add /usr/lib/go-1.25/bin/ to PATH, or invoke /usr/lib/go-1.25/bin/go\n- directly.\n+ This package provides the Go programming language source files needed for\n+ compilation.\ndiff --git a/debian/control.in b/debian/control.in\nindex a88a15c..ddad1e9 100644\n--- a/debian/control.in\n+++ b/debian/control.in\n@@ -1,32 +1,44 @@\n Source: golang-X.Y\n Maintainer: Debian Go Compiler Team <team+go-compiler@tracker.debian.org>\n-Uploaders: Michael Stapelberg <stapelberg@debian.org>,\n-           Paul Tagliamonte <paultag@debian.org>,\n-           Tianon Gravi <tianon@debian.org>,\n-           Michael Hudson-Doyle <mwhudson@debian.org>,\n-           Anthony Fok <foka@debian.org>\n+Uploaders:\n+ Michael Stapelberg <stapelberg@debian.org>,\n+ Paul Tagliamonte <paultag@debian.org>,\n+ Tianon Gravi <tianon@debian.org>,\n+ Michael Hudson-Doyle <mwhudson@debian.org>,\n+ Anthony Fok <foka@debian.org>,\n+ Dr. Tobias Quathamer <toddy@debian.org>,\n Section: golang\n-Priority: optional\n-Build-Depends: debhelper-compat (= 13),\n-               binutils-gold [arm64],\n-               golang-1.24-go:native | golang-1.23-go:native | golang-1.22-go:native,\n-               netbase\n-Standards-Version: 4.6.2\n+Build-Depends:\n+ debhelper-compat (= 13),\n+ binutils-gold [arm64],\n+ golang-1.24-go:native,\n+ netbase,\n+Standards-Version: 4.7.4\n Vcs-Browser: https://salsa.debian.org/go-team/compiler/golang/tree/golang-X.Y\n Vcs-Git: https://salsa.debian.org/go-team/compiler/golang.git -b golang-X.Y\n Homepage: https://go.dev/\n-Rules-Requires-Root: no\n \n Package: golang-X.Y-go\n Architecture: amd64 arm64 armel armhf i386 loong64 mips mips64el mipsel ppc64 ppc64el riscv64 s390x\n-Depends: binutils-gold [arm64],\n-         golang-X.Y-src (>= ${source:Version}),\n-         ${misc:Depends},\n-         ${perl:Depends},\n-         ${shlibs:Depends}\n-Recommends: g++, gcc, libc6-dev, pkgconf\n-Breaks: dh-golang (<< 1.43~)\n-Suggests: bzr | brz, ca-certificates, git, mercurial, subversion\n+Depends:\n+ binutils-gold [arm64],\n+ golang-X.Y-src (>= ${source:Version}),\n+ ${misc:Depends},\n+ ${perl:Depends},\n+ ${shlibs:Depends},\n+Recommends:\n+ g++,\n+ gcc,\n+ libc6-dev,\n+ pkgconf,\n+Breaks:\n+ dh-golang (<< 1.43~),\n+Suggests:\n+ bzr | brz,\n+ ca-certificates,\n+ git,\n+ mercurial,\n+ subversion,\n Description: Go programming language compiler, linker, compiled stdlib\n  The Go programming language is an open source project to make programmers more\n  productive. Go is expressive, concise, clean, and efficient. Its concurrency\n@@ -43,25 +55,34 @@ Description: Go programming language compiler, linker, compiled stdlib\n  To use this version, instead of the default one provided by golang-go package,\n  add /usr/lib/go-X.Y/bin/ to PATH, or invoke /usr/lib/go-X.Y/bin/go directly.\n \n-Package: golang-X.Y-src\n+Package: golang-X.Y\n+Depends:\n+ golang-X.Y-doc (>= ${source:Version}),\n+ golang-X.Y-go (>= ${source:Version}),\n+ golang-X.Y-src (>= ${source:Version}),\n+ ${misc:Depends},\n Architecture: all\n-Multi-Arch: foreign\n-Depends: ${misc:Depends}, ${shlibs:Depends}\n-Description: Go programming language - source files\n- The Go programming language is an open source project to make programmers more\n- productive. Go is expressive, concise, clean, and efficient. Its concurrency\n- mechanisms make it easy to write programs that get the most out of multicore\n- and networked machines, while its novel type system enables flexible and\n- modular program construction. Go compiles quickly to machine code yet has the\n- convenience of garbage collection and the power of run-time reflection. It's a\n- fast, statically typed, compiled language that feels like a dynamically typed,\n- interpreted language.\n+Description: Go programming language compiler - metapackage\n+ The Go programming language is an open source project to make\n+ programmers more productive. Go is expressive, concise, clean, and\n+ efficient. Its concurrency mechanisms make it easy to write programs\n+ that get the most out of multicore and networked machines, while its\n+ novel type system enables flexible and modular program construction.\n+ Go compiles quickly to machine code yet has the convenience of\n+ garbage collection and the power of run-time reflection. It's a\n+ fast, statically typed, compiled language that feels like a\n+ dynamically typed, interpreted language.\n  .\n- This package provides the Go programming language source files needed for\n- compilation.\n+ This package is a metapackage that, when installed, guarantees\n+ that (most of) a full Go development environment is installed.\n+ .\n+ To use this version, instead of the default one provided by golang-go\n+ package, add /usr/lib/go-X.Y/bin/ to PATH, or invoke /usr/lib/go-X.Y/bin/go\n+ directly.\n \n Package: golang-X.Y-doc\n-Depends: ${misc:Depends}\n+Depends:\n+ ${misc:Depends},\n Architecture: all\n Multi-Arch: foreign\n Section: doc\n@@ -79,26 +100,21 @@ Description: Go programming language - documentation\n  This package provides the documentation for the Go programming\n  language.\n \n-Package: golang-X.Y\n-Depends: golang-X.Y-doc (>= ${source:Version}),\n-         golang-X.Y-go (>= ${source:Version}),\n-         golang-X.Y-src (>= ${source:Version}),\n-         ${misc:Depends}\n+Package: golang-X.Y-src\n Architecture: all\n-Description: Go programming language compiler - metapackage\n- The Go programming language is an open source project to make\n- programmers more productive. Go is expressive, concise, clean, and\n- efficient. Its concurrency mechanisms make it easy to write programs\n- that get the most out of multicore and networked machines, while its\n- novel type system enables flexible and modular program construction.\n- Go compiles quickly to machine code yet has the convenience of\n- garbage collection and the power of run-time reflection. It's a\n- fast, statically typed, compiled language that feels like a\n- dynamically typed, interpreted language.\n- .\n- This package is a metapackage that, when installed, guarantees\n- that (most of) a full Go development environment is installed.\n+Multi-Arch: foreign\n+Depends:\n+ ${misc:Depends},\n+ ${shlibs:Depends},\n+Description: Go programming language - source files\n+ The Go programming language is an open source project to make programmers more\n+ productive. Go is expressive, concise, clean, and efficient. Its concurrency\n+ mechanisms make it easy to write programs that get the most out of multicore\n+ and networked machines, while its novel type system enables flexible and\n+ modular program construction. Go compiles quickly to machine code yet has the\n+ convenience of garbage collection and the power of run-time reflection. It's a\n+ fast, statically typed, compiled language that feels like a dynamically typed,\n+ interpreted language.\n  .\n- To use this version, instead of the default one provided by golang-go\n- package, add /usr/lib/go-X.Y/bin/ to PATH, or invoke /usr/lib/go-X.Y/bin/go\n- directly.\n+ This package provides the Go programming language source files needed for\n+ compilation.\ndiff --git a/debian/copyright b/debian/copyright\nindex da0c0b5..f71929e 100644\n--- a/debian/copyright\n+++ b/debian/copyright\n@@ -192,10 +192,6 @@ Files: src/cmd/vendor/github.com/google/pprof/third_party/svgpan/svgpan.go\n Copyright: 2009-2017 Andrea Leofreddi <a.leofreddi@itcharm.com>\n License: BSD-3-clause-svgpan\n \n-Files: src/cmd/trace/static/*\n-Copyright: 2012 The Chromium Authors\n-License: BSD-3-clause\n-\n Files: debian/*\n Copyright: 2010 Ivan Wong <ivanwyc@gmail.com>\n            2010 Ondřej Surý <ondrej@debian.org>\ndiff --git a/debian/golang-X.Y-src.lintian-overrides b/debian/golang-X.Y-src.lintian-overrides\nindex 709c7d8..5a17229 100644\n--- a/debian/golang-X.Y-src.lintian-overrides\n+++ b/debian/golang-X.Y-src.lintian-overrides\n@@ -4,7 +4,6 @@ unpack-message-for-deb-data\n \n arch-dependent-file-in-usr-share [usr/share/go-X.Y/src/cmd/objdump/testdata/*]\n arch-dependent-file-in-usr-share [usr/share/go-X.Y/src/crypto/internal/boring/syso/*.syso]\n-arch-dependent-file-in-usr-share [usr/share/go-X.Y/src/debug/buildinfo/testdata/*]\n arch-dependent-file-in-usr-share [usr/share/go-X.Y/src/debug/dwarf/testdata/*]\n arch-dependent-file-in-usr-share [usr/share/go-X.Y/src/debug/elf/testdata/*]\n arch-dependent-file-in-usr-share [usr/share/go-X.Y/src/go/internal/gccgoimporter/testdata/*]\n@@ -13,7 +12,6 @@ arch-dependent-file-in-usr-share [usr/share/go-X.Y/src/runtime/pprof/testdata/*]\n arch-dependent-file-in-usr-share [usr/share/go-X.Y/src/runtime/race/*.syso]\n arch-independent-package-contains-binary-or-object [usr/share/go-X.Y/src/cmd/objdump/testdata/*]\n arch-independent-package-contains-binary-or-object [usr/share/go-X.Y/src/crypto/internal/boring/syso/*.syso]\n-arch-independent-package-contains-binary-or-object [usr/share/go-X.Y/src/debug/buildinfo/testdata/*]\n arch-independent-package-contains-binary-or-object [usr/share/go-X.Y/src/debug/dwarf/testdata/*]\n arch-independent-package-contains-binary-or-object [usr/share/go-X.Y/src/debug/elf/testdata/*]\n arch-independent-package-contains-binary-or-object [usr/share/go-X.Y/src/go/internal/gccgoimporter/testdata/*]\n@@ -23,52 +21,29 @@ arch-independent-package-contains-binary-or-object [usr/share/go-X.Y/src/runtime\n binary-with-bad-dynamic-table [usr/share/go-X.Y/src/debug/elf/testdata/*]\n broken-bz2 [usr/share/go-X.Y/src/compress/bzip2/testdata/*]\n broken-zip [usr/share/go-X.Y/src/archive/zip/testdata/*]\n-executable-not-elf-or-script [usr/share/go-X.Y/src/cmd/vendor/github.com/google/pprof/third_party/d3flamegraph/update.sh]\n+executable-not-elf-or-script [usr/share/go-X.Y/src/cmd/compile/profile.sh]\n national-encoding [usr/share/go-X.Y/src/fmt/fmt_test.go]\n no-code-sections [usr/share/go-X.Y/src/cmd/objdump/testdata/*]\n no-code-sections [usr/share/go-X.Y/src/go/internal/gcimporter/testdata/*]\n package-contains-documentation-outside-usr-share-doc\n+package-contains-eslint-config-file [usr/share/go-X.Y/src/cmd/vendor/golang.org/x/telemetry/.eslintrc.json]\n package-contains-vcs-control-file [usr/share/go-X.Y/src/cmd/vendor/github.com/ianlancetaylor/demangle/.gitignore]\n package-contains-vcs-control-file [usr/share/go-X.Y/src/cmd/vendor/golang.org/x/sys/unix/.gitignore]\n+package-contains-vcs-control-file [usr/share/go-X.Y/src/cmd/vendor/golang.org/x/telemetry/.gitattributes]\n+package-contains-vcs-control-file [usr/share/go-X.Y/src/cmd/vendor/golang.org/x/telemetry/.gitignore]\n portable-executable-missing-security-features ASLR DEP/NX [usr/share/go-X.Y/src/debug/dwarf/testdata/*]\n portable-executable-missing-security-features ASLR DEP/NX [usr/share/go-X.Y/src/debug/pe/testdata/*]\n+script-not-executable [usr/share/go-X.Y/src/cmd/vendor/golang.org/x/telemetry/npm]\n+script-not-executable [usr/share/go-X.Y/src/cmd/vendor/golang.org/x/telemetry/npx]\n shared-library-lacks-prerequisites [usr/share/go-X.Y/src/debug/elf/testdata/*]\n statically-linked-binary [usr/share/go-X.Y/src/debug/buildinfo/testdata/*]\n statically-linked-binary [usr/share/go-X.Y/src/debug/dwarf/testdata/*]\n statically-linked-binary [usr/share/go-X.Y/src/runtime/pprof/testdata/*]\n-undeclared-elf-prerequisites * [usr/share/go-X.Y/src/debug/buildinfo/testdata/*]\n undeclared-elf-prerequisites * [usr/share/go-X.Y/src/debug/dwarf/testdata/*]\n undeclared-elf-prerequisites * [usr/share/go-X.Y/src/debug/elf/testdata/*]\n unstripped-binary-or-object [usr/share/go-X.Y/src/crypto/internal/boring/syso/*.syso]\n-unstripped-binary-or-object [usr/share/go-X.Y/src/debug/buildinfo/testdata/*]\n unstripped-binary-or-object [usr/share/go-X.Y/src/debug/dwarf/testdata/*]\n unstripped-binary-or-object [usr/share/go-X.Y/src/debug/elf/testdata/*]\n unstripped-binary-or-object [usr/share/go-X.Y/src/runtime/pprof/testdata/*]\n unstripped-binary-or-object [usr/share/go-X.Y/src/runtime/race/*.syso]\n unstripped-static-library (_go_.o) [usr/share/go-X.Y/src/go/internal/gccgoimporter/testdata/*]\n-package-contains-eslint-config-file [usr/share/go-X.Y/src/cmd/vendor/golang.org/x/telemetry/.eslintrc.json]\n-\n-# old syntax for ftp-master\n-arch-dependent-file-in-usr-share usr/share/go-X.Y/src/cmd/objdump/testdata/*\n-arch-dependent-file-in-usr-share usr/share/go-X.Y/src/crypto/internal/boring/syso/*.syso\n-arch-dependent-file-in-usr-share usr/share/go-X.Y/src/crypto/internal/boring/syso/\n-arch-dependent-file-in-usr-share usr/share/go-X.Y/src/debug/buildinfo/testdata/*\n-arch-dependent-file-in-usr-share usr/share/go-X.Y/src/debug/dwarf/testdata/*\n-arch-dependent-file-in-usr-share usr/share/go-X.Y/src/debug/elf/*\n-arch-dependent-file-in-usr-share usr/share/go-X.Y/src/go/internal/gccgoimporter/testdata/*\n-arch-dependent-file-in-usr-share usr/share/go-X.Y/src/go/internal/gcimporter/testdata/*\n-arch-dependent-file-in-usr-share usr/share/go-X.Y/src/runtime/pprof/testdata/*\n-arch-dependent-file-in-usr-share usr/share/go-X.Y/src/runtime/race/*.syso\n-arch-independent-package-contains-binary-or-object usr/share/go-X.Y/src/cmd/objdump/testdata/*\n-arch-independent-package-contains-binary-or-object usr/share/go-X.Y/src/crypto/internal/boring/syso/*.syso\n-arch-independent-package-contains-binary-or-object usr/share/go-X.Y/src/debug/buildinfo/testdata/*\n-arch-independent-package-contains-binary-or-object usr/share/go-X.Y/src/debug/dwarf/testdata/*\n-arch-independent-package-contains-binary-or-object usr/share/go-X.Y/src/debug/elf/testdata/*\n-arch-independent-package-contains-binary-or-object usr/share/go-X.Y/src/go/internal/gccgoimporter/testdata/*\n-arch-independent-package-contains-binary-or-object usr/share/go-X.Y/src/go/internal/gcimporter/testdata/*\n-arch-independent-package-contains-binary-or-object usr/share/go-X.Y/src/runtime/pprof/testdata/*\n-arch-independent-package-contains-binary-or-object usr/share/go-X.Y/src/runtime/race/*.syso\n-binary-with-bad-dynamic-table usr/share/go-X.Y/src/debug/elf/testdata/*\n-statically-linked-binary usr/share/go-X.Y/src/debug/buildinfo/testdata/*\n-statically-linked-binary usr/share/go-X.Y/src/debug/dwarf/testdata/*\n-statically-linked-binary usr/share/go-X.Y/src/runtime/pprof/testdata/*\ndiff --git a/debian/patches/0001-Skip-flaky-TestCrashDumpsAllThreads-on-mips64le.patch b/debian/patches/0001-Skip-flaky-TestCrashDumpsAllThreads-on-mips64le.patch\nindex 2169264..1f98c54 100644\n--- a/debian/patches/0001-Skip-flaky-TestCrashDumpsAllThreads-on-mips64le.patch\n+++ b/debian/patches/0001-Skip-flaky-TestCrashDumpsAllThreads-on-mips64le.patch\n@@ -3,6 +3,8 @@ Date: Mon, 26 Feb 2024 17:03:06 +0800\n Subject: Skip flaky TestCrashDumpsAllThreads on mips64le\n \n crash_unix_test.go:145: found 3 instances of main.crashDumpsAllThreadsLoop; expected 4\n+\n+Forwarded: not-needed\n ---\n  src/runtime/crash_unix_test.go | 4 ++++\n  1 file changed, 4 insertions(+)\ndiff --git a/debian/patches/0004-Replace-localhostCert-and-localhostKey.patch b/debian/patches/0004-Replace-localhostCert-and-localhostKey.patch\ndeleted file mode 100644\nindex 459eae7..0000000\n--- a/debian/patches/0004-Replace-localhostCert-and-localhostKey.patch\n+++ /dev/null\n@@ -1,121 +0,0 @@\n-From: \"Dr. Tobias Quathamer\" <toddy@debian.org>\n-Date: Fri, 6 Feb 2026 14:06:33 +0100\n-Subject: Replace localhostCert and localhostKey.\n-\n-The previous certificate expired on 2026-03-18 19:27:54 UTC.\n-A new certificate can be generated by running this command\n-in the directory src/crypto/tls:\n-\n-$ go run generate_cert.go --rsa-bits 2048 --host 127.0.0.1,::1,example.com --ca --start-date \"Jan 1 00:00:00 1970\" --duration=1000000h\n-\n-This patch adds a newly generated certificate which expires\n-on 2084-01-29 16:00:00 UTC.\n-\n-Closes: #1127117\n----\n- src/net/smtp/smtp_test.go | 87 ++++++++++++++++++++++++-----------------------\n- 1 file changed, 44 insertions(+), 43 deletions(-)\n-\n-diff --git a/src/net/smtp/smtp_test.go b/src/net/smtp/smtp_test.go\n-index 427ed0f..c4aeae6 100644\n---- a/src/net/smtp/smtp_test.go\n-+++ b/src/net/smtp/smtp_test.go\n-@@ -1140,54 +1140,55 @@ func sendMail(hostPort string) error {\n- //\t\t--ca --start-date \"Jan 1 00:00:00 1970\" --duration=1000000h\n- var localhostCert = []byte(`\n- -----BEGIN CERTIFICATE-----\n--MIIDFDCCAfygAwIBAgIRAPV4ktbcY/mn0oRRjnGAGJgwDQYJKoZIhvcNAQELBQAw\n--EjEQMA4GA1UEChMHQWNtZSBDbzAeFw0yNTAzMTgxOTI3NTRaFw0yNjAzMTgxOTI3\n--NTRaMBIxEDAOBgNVBAoTB0FjbWUgQ28wggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAw\n--ggEKAoIBAQDbsEfk1bK7ozwZlcQM8rBUikC4gwnnw0J1PUlGDGu1Y84dKtulbdWj\n--yrh88D4fSdtmxFbXE7fhYUJTBmEHSUk9OLHh/Tr+nSC3SfH0I/9y6l9j9vVVYhYJ\n--C07Z1mZZKVb+gmbbB7LEavGMNaFHjvRJAwBX2TMDbXJceZ9jU/iihILkZbrbG40r\n--n1mctYVmcR3YqOzI/ynLje97FEvxtsg99OUjzzXyFMqfAl0J3Gc6tzvAER3N+ovK\n--nudsnMB5Y+InQHHmPeizG4mFyeBYesXNwX6cmI30c8KFiAlKHcsxjJsuoBZ3bSwv\n--vFdK2hnuCO05HEgCzAQKUlY6Q2F0xJblAgMBAAGjZTBjMA4GA1UdDwEB/wQEAwIF\n--oDATBgNVHSUEDDAKBggrBgEFBQcDATAMBgNVHRMBAf8EAjAAMC4GA1UdEQQnMCWC\n--C2V4YW1wbGUuY29thwR/AAABhxAAAAAAAAAAAAAAAAAAAAABMA0GCSqGSIb3DQEB\n--CwUAA4IBAQBnfO4lYRXR9AdMidpgdITqMEKJik8MvCkpQ+EKQLq3CIGXPt5lkHLs\n--ysbF9f3VxioKNYzkakJGVGyu51hqyhGqGQ4M7IpOBQkmY24IExWPVEk2wkIV+HTU\n--+oQVZOIrHF+s9IIFOIh3SIPIsXNvx7rUc5sgF4P+eAnAcv3o1zL7YjGJZ8e27Ai2\n--uF8iG/po/0Vd93OSB8Tj/Nvg99SSucy7nBYTreSdhUjZWRI0W1oYJX49/fhWljR9\n--8+f2GqUfLc7iCjcV3wxlfBqEKCdpjXsiqtsb1KrAx7AEOj7XfDjJjyCL4bshLp9x\n--PbV+kBFCN151iWYtfzhKEplrZFYNXlX2\n-+MIIDOTCCAiGgAwIBAgIQNa9+JgaO+xR8zZNBEpuWFzANBgkqhkiG9w0BAQsFADAS\n-+MRAwDgYDVQQKEwdBY21lIENvMCAXDTcwMDEwMTAwMDAwMFoYDzIwODQwMTI5MTYw\n-+MDAwWjASMRAwDgYDVQQKEwdBY21lIENvMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8A\n-+MIIBCgKCAQEA0m/AL3KP4t8K3izOO9HsoPcJh/Be5qX/oXPk5TZPUfAs7OQDFoFv\n-+TZ4LZXd46oNTzRRP/Mk5knMrwtkFLWX+eh7AnXmerUheN2zQ58EpgwN42B3tyk3g\n-+Msa0Rs/mG5gUqkUXAE0aKWqx5RjzDa8nKbxhKTtGJSMoyM3ZobTDhu2aZWXTVWjx\n-+68Mh/g5LhmPjVewYWu0wOFToHfP5K481CpMSHfpOHRxeXMuw7TWAW7jo7AjWebrc\n-+1VFaVjRhOwmpjuAOmlEXlNPQfz2cj9+YkUNPSL3hjYFKxWRf22AMmFAHn1fT4jOp\n-+XCuWnRbimd7St5DXgiWz3UKD5ekvFoklCQIDAQABo4GIMIGFMA4GA1UdDwEB/wQE\n-+AwICpDATBgNVHSUEDDAKBggrBgEFBQcDATAPBgNVHRMBAf8EBTADAQH/MB0GA1Ud\n-+DgQWBBRPNyX6AR3LoGGTVDy7+mh2QTPsvjAuBgNVHREEJzAlggtleGFtcGxlLmNv\n-+bYcEfwAAAYcQAAAAAAAAAAAAAAAAAAAAATANBgkqhkiG9w0BAQsFAAOCAQEAkMha\n-+P9Q59eoqz+lNwlFW5VIVK3aiEG6EA0clIy21qvhSrWEZ5E4bAc0FgYkvpVtnNUQa\n-+9KtyQJjhqIKIU2hyCyRDbc6yxZiaeKMGamB962+aioLmpPe6Ix/SRddTE9kyAWfc\n-+MyltZw9wErtTHHk5JOjuBAdsuTMs/AeUIXSgtjoMoWgbD3kgVoW6V84j0IFbJ5RS\n-+XTSF6CuKwy4MAlgROBjeqzj0dANlJwNadxHNjVtzZ/BsF20AX93dOKZgR9/Cu8Dl\n-+/ghKA8SiB0Er3RCGLnK8vr4MLt8r7C8SwEDs+ocd/n3Uw+Vv/0slTgXleOos1GpK\n-+o1i3NwuQ7fa3oKPL4g==\n- -----END CERTIFICATE-----`)\n- \n- // localhostKey is the private key for localhostCert.\n- var localhostKey = []byte(testingKey(`\n- -----BEGIN RSA TESTING KEY-----\n--MIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQDbsEfk1bK7ozwZ\n--lcQM8rBUikC4gwnnw0J1PUlGDGu1Y84dKtulbdWjyrh88D4fSdtmxFbXE7fhYUJT\n--BmEHSUk9OLHh/Tr+nSC3SfH0I/9y6l9j9vVVYhYJC07Z1mZZKVb+gmbbB7LEavGM\n--NaFHjvRJAwBX2TMDbXJceZ9jU/iihILkZbrbG40rn1mctYVmcR3YqOzI/ynLje97\n--FEvxtsg99OUjzzXyFMqfAl0J3Gc6tzvAER3N+ovKnudsnMB5Y+InQHHmPeizG4mF\n--yeBYesXNwX6cmI30c8KFiAlKHcsxjJsuoBZ3bSwvvFdK2hnuCO05HEgCzAQKUlY6\n--Q2F0xJblAgMBAAECggEACzZIOQraBB8M3G5rEtEZBDuJGZGgggpSXDrsQC22mouV\n--M6JiEuOT5Xfdagz10rF5h9lp6DCqsA8/bA7ViWJpYT1BQNwkdGWvC4Oz3EaxDRue\n--kjLCqyCmKMCBvfbmAtNsC/G6T5/pNQKTQNlk2YrXd1l2nUUpyBlAHq2bX52jwSGD\n--bFy5hyzSrzjeLpLUNZ56W/uXCvP0l6PAEvXRn/KG89XLZCtMBvVDMCfjIe77Q1U9\n--/XzIrnb67RzQwiDelvX+biMkBrjeYw/Gvdo9hNCOfbOZ+SpnfDOLEfAha/XPmr3+\n--5EeF4emeEhCODvfe7wy/4h1gHEG2N435S61DcV3gQQKBgQD92EJidwriPGDTUSM8\n--nJrPQ5xwPMKz5hWpfI0zxIYZyqA37eRC5Q9WD3rDbrEZiLCInFh+Ci899iLzEpFZ\n--dFQAUiRam+zFpDCQcGHr/uytRoTH/nxh2MrYPq8cA5ZGU6oMH+Yl4TynqJm2KN7e\n--0ocE07QjyK/9nIvEtdibEiFEwQKBgQDdjcgoqHaM49YJ4yxGpjuRdc5a3iuKzZU6\n--BON4GKqYQ9u/o8/NPaOSQ3vKhwzTjiEoOZImn+eX1cRP0ZskmQ+LyzsdVAHMDydz\n--9I23dbIywtCXGhKOJRwt9O++8ataWIxi1frjj6BcI+TzGl8LM2lYIfUHzVzfswwE\n--1EK8ikxnJQKBgBqPKvr0a54aJSNXBPHNjOEMuOyBXvnFpBSUpI17DXDbY4IWkOBy\n--6PTfL8AM79i1FYtlmFivphu8ihGWqsCKTFOwRH96ev5+3FnweD5h8M98Zl4qgUcX\n--kLmpbVboBSwcitkz6TejZl5AZLzLb+4uZtQZdmqcD9XgMDuHrz8iWXrBAoGBAMJO\n--Z34pCRfVddFkGF+5yMJw5FLTSLLKTJb+1JRuZad21BIF0+i3p25OmxHrUXd0zmWd\n--4CzZzt5eD3bFaOA3EOhUi/rTw2O44qwSjfuZUHiuXQw4RI+/wjAYAe+fud1ZjX3d\n--FtVfEI/etxvyQ+rp4vj1hxWZqVtThzXxBrqePBW1AoGBAOTC19rFQXtVf9A+8c/w\n--2ryAY2W9qNKe0xMivTAqau0Kdy2/2toJekR/5qOy3tOF7JasOgG+y3m3gLF47EFF\n--v75eW4FkiCFvsyl/qv4CO1eKnHlvkRoDsnMb+dA5czst58rO6BK40QvPqwXaSxj1\n--ee8ReNCDhC0Zidczajm63O1G\n-+MIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQDSb8Avco/i3wre\n-+LM470eyg9wmH8F7mpf+hc+TlNk9R8Czs5AMWgW9Nngtld3jqg1PNFE/8yTmScyvC\n-+2QUtZf56HsCdeZ6tSF43bNDnwSmDA3jYHe3KTeAyxrRGz+YbmBSqRRcATRoparHl\n-+GPMNrycpvGEpO0YlIyjIzdmhtMOG7ZplZdNVaPHrwyH+DkuGY+NV7Bha7TA4VOgd\n-+8/krjzUKkxId+k4dHF5cy7DtNYBbuOjsCNZ5utzVUVpWNGE7CamO4A6aUReU09B/\n-+PZyP35iRQ09IveGNgUrFZF/bYAyYUAefV9PiM6lcK5adFuKZ3tK3kNeCJbPdQoPl\n-+6S8WiSUJAgMBAAECggEAH6wNnSaNNOx0domAVb0L9BMSVmktY2IPFjX6+Kuipxay\n-+sEnGFDRRc/lqRjCD3Kn86iQZQNbpaRsX9kjTEGjmMuufemQUZ4i5k3Z3f7YRISSb\n-+4s0oXbc4W/QPrIu8WqFaVOE2q8cu/ZZPJYfKhx/6UTwG1J2U+mBvEj/3NjEeb5db\n-+yPAUu57y2XE2lIGZrjFfhp0b7lP779PVix4zDRv4uim0SifOvEWS2QUkwktWvdi+\n-+CQ8sExelHmyiOmqYNUYhfyeLiiFmY3CLiuLQlsKCU3fQH5RMY4lSU3WfrWDU/9hu\n-+Ub6hOwC2o4EGcipOT9NIKTT6xaO5BtkWvXMBowr6vQKBgQDYfKqJY+53Wft7Awsp\n-+UcmnCOCM/o0hRpCIHD2CEhWp3d3EjmBLkapN37VLUqflHgy1K9XXcj/JsbQebBKX\n-+EnqrnAttzXDyhK0rHse/h6wipvb5yNeNXuEq+4eqWOn8xAHqZ2oPNYro7k8vg/xs\n-+O+z0JnZxqtQWCkTHbkENiBQnbQKBgQD42GC4IW+eMzqvQrEC8yBo+v7nX+GUW30V\n-+cx4FszyEmTCLgmbTZDPAzv9RHxbZJFekT26Mv6KsrCSkoS/9VFO4ScLZ8hM9j5xk\n-+PClW/h2RBj15IVb5kBhnPpipXP80NIesy7q+fNCtejRBzDqMUgDy5TBu2AoGjuRx\n-+LnRllGJmjQKBgE+Rwrys1kFX+W7FN50ASrXyNVadWRIZ9ZWRi6n7K6s7uP89tXcR\n-+Gx90UhZVUxCLcvBEJF0DyR5BCosD/fE5AY2B1VGOaS06RsvKjHCBVWuHIs+8Wj3D\n-+2c8KlFqwQ5B8GpglWn4sl9n1fXVhda3yeK1kVbSBrWJMc+s5Qv/OPFohAoGAH7tP\n-+0gsJda3orNKfSdYA6wIeoRh75nQoJiUQzf9GF06FfzS4sfoUE2ER86E4Q6Y7ussa\n-+OL5zGvu0jH21ZeNr7ZMSUsJoq6/1bF6zktFCqeyWyCx1L8utIPU9eFNQg7KzHli4\n-+TnQSFB0CLuXBDYWjc1XAcFICLUXpYXlgBFgAmD0CgYBOPw/bINcuQR50FKqGSH8H\n-+Hg/6eBSf6BVoMQmS9FYKkr/qjYBmXs9O99Ak7HKT0xr56FNTDRtpMkLkJJJcHpif\n-+4odTUKveh5bpAh3q4mX0j2r3HAo341i8cNQHiuh7YQfqlriDW3ejChx1jvy2GV0G\n-+jU5Li19dcUhK+0KxTXl9tA==\n- -----END RSA TESTING KEY-----`))\n- \n- func testingKey(s string) string { return strings.ReplaceAll(s, \"TESTING KEY\", \"PRIVATE KEY\") }\ndiff --git a/debian/patches/0005-Skip-TestTSAN-test-on-s390x.patch b/debian/patches/0005-Skip-TestTSAN-test-on-s390x.patch\nindex 97334a5..33d00bd 100644\n--- a/debian/patches/0005-Skip-TestTSAN-test-on-s390x.patch\n+++ b/debian/patches/0005-Skip-TestTSAN-test-on-s390x.patch\n@@ -8,7 +8,7 @@ resolved, we disable the test to be able to build the\n golang package, so it can migrate to testing and\n fix lots of other bugs and CVEs.\n \n-See https://github.com/golang/go/issues/77289\n+Forwarded: https://github.com/golang/go/issues/77289\n ---\n  src/cmd/cgo/internal/testsanitizers/tsan_test.go | 4 +++-\n  1 file changed, 3 insertions(+), 1 deletion(-)\ndiff --git a/debian/patches/0005-Support-DEB_GOMINCOMPAT.patch b/debian/patches/0005-Support-DEB_GOMINCOMPAT.patch\nnew file mode 100644\nindex 0000000..274b173\n--- /dev/null\n+++ b/debian/patches/0005-Support-DEB_GOMINCOMPAT.patch\n@@ -0,0 +1,35 @@\n+From: Helmut Grohne <helmut@subdivi.de>\n+Date: Fri, 8 May 2026 11:20:27 +0200\n+Subject: Support DEB_GOMINCOMPAT\n+\n+Support forcing a minimum go compatibility version for GODEBUG via\n+DEB_GOMINCOMPAT.\n+\n+Forwarded: not-needed\n+---\n+ src/cmd/go/internal/load/godebug.go | 5 +++++\n+ 1 file changed, 5 insertions(+)\n+\n+diff --git a/src/cmd/go/internal/load/godebug.go b/src/cmd/go/internal/load/godebug.go\n+index 8ea8ffa..63e6cad 100644\n+--- a/src/cmd/go/internal/load/godebug.go\n++++ b/src/cmd/go/internal/load/godebug.go\n+@@ -10,6 +10,7 @@ import (\n+ \t\"go/build\"\n+ \t\"internal/godebugs\"\n+ \t\"maps\"\n++\t\"os\"\n+ \t\"sort\"\n+ \t\"strconv\"\n+ \t\"strings\"\n+@@ -60,6 +61,10 @@ func defaultGODEBUG(p *Package, directives, testDirectives, xtestDirectives []bu\n+ \t\t\tgoVersion = \"1.20\"\n+ \t\t}\n+ \t}\n++\tdebGoMinVer := os.Getenv(\"DEB_GOMINCOMPAT\")\n++\tif debGoMinVer != \"\" && gover.Compare(goVersion, debGoMinVer) < 0 {\n++\t\tgoVersion = debGoMinVer\n++\t}\n+ \n+ \tvar m map[string]string\n+ \ndiff --git a/debian/patches/0006-cmd-compile-fix-mergelocals-for-arm32-s390x-riscv64.patch b/debian/patches/0006-cmd-compile-fix-mergelocals-for-arm32-s390x-riscv64.patch\nnew file mode 100644\nindex 0000000..db9cba1\n--- /dev/null\n+++ b/debian/patches/0006-cmd-compile-fix-mergelocals-for-arm32-s390x-riscv64.patch\n@@ -0,0 +1,120 @@\n+From: \"Dr. Tobias Quathamer\" <toddy@debian.org>\n+Date: Fri, 21 Aug 2026 17:57:28 +0200\n+Subject: cmd/compile: fix mergelocals for arm32/s390x/riscv64\n+\n+This is a cherry-pick from https://go-review.googlesource.com/c/go/+/812920\n+---\n+ src/cmd/compile/internal/liveness/mergelocals.go | 19 ++++++++++++++++---\n+ src/cmd/compile/internal/ssa/_gen/ARMOps.go      |  2 ++\n+ src/cmd/compile/internal/ssa/_gen/RISCV64Ops.go  |  4 ++++\n+ src/cmd/compile/internal/ssa/opGen.go            |  4 ++++\n+ 4 files changed, 26 insertions(+), 3 deletions(-)\n+\n+diff --git a/src/cmd/compile/internal/liveness/mergelocals.go b/src/cmd/compile/internal/liveness/mergelocals.go\n+index 28d034a..b9be0dd 100644\n+--- a/src/cmd/compile/internal/liveness/mergelocals.go\n++++ b/src/cmd/compile/internal/liveness/mergelocals.go\n+@@ -516,9 +516,22 @@ func (cs *cstate) populateIndirectUseTable(cands []*ir.Name) ([]*ir.Name, []cand\n+ \t\t\tfor idx, arg := range v.Args {\n+ \t\t\t\tif nc, ok := pendingUses[arg.ID]; ok {\n+ \t\t\t\t\tif !v.AddrSinkArg(idx) {\n+-\t\t\t\t\t\t// If this op may propagate the argument address to its output,\n+-\t\t\t\t\t\t// then give up. See issue 80127.\n+-\t\t\t\t\t\tcontinue\n++\t\t\t\t\t\t// If this op may propagate its input address\n++\t\t\t\t\t\t// to somewhere else, we must track where that\n++\t\t\t\t\t\t// somewhere else might be. See issue 80127.\n++\t\t\t\t\t\tif v.Type.IsMemory() {\n++\t\t\t\t\t\t\t// Might be stored to memory. Give up.\n++\t\t\t\t\t\t\tcontinue\n++\t\t\t\t\t\t}\n++\t\t\t\t\t\t// Some sort of address arithmetic.\n++\t\t\t\t\t\tif _, ok := pendingUses[v.ID]; ok {\n++\t\t\t\t\t\t\t// v has used multiple addresses, which is something\n++\t\t\t\t\t\t\t// we can't keep track of. Give up.\n++\t\t\t\t\t\t\tcontinue\n++\t\t\t\t\t\t}\n++\t\t\t\t\t\t// Treat this op as producing the address of the same variable\n++\t\t\t\t\t\t// that its argument was the address of.\n++\t\t\t\t\t\tpendingUses[v.ID] = nameCount{n: nc.n, count: v.Uses}\n+ \t\t\t\t\t}\n+ \t\t\t\t\t// We found a use of some value that took the\n+ \t\t\t\t\t// address of nc.n. Record this inst as a\n+diff --git a/src/cmd/compile/internal/ssa/_gen/ARMOps.go b/src/cmd/compile/internal/ssa/_gen/ARMOps.go\n+index f21f2cb..7a392db 100644\n+--- a/src/cmd/compile/internal/ssa/_gen/ARMOps.go\n++++ b/src/cmd/compile/internal/ssa/_gen/ARMOps.go\n+@@ -505,6 +505,7 @@ func init() {\n+ \t\t\tclobberFlags:   true,\n+ \t\t\tfaultOnNilArg0: true,\n+ \t\t\taddrSinkArg0:   true,\n++\t\t\taddrSinkArg1:   true,\n+ \t\t},\n+ \n+ \t\t// large or unaligned move\n+@@ -530,6 +531,7 @@ func init() {\n+ \t\t\tfaultOnNilArg1: true,\n+ \t\t\taddrSinkArg0:   true,\n+ \t\t\taddrSinkArg1:   true,\n++\t\t\t// TODO: could use addrSinkArg2 here.\n+ \t\t},\n+ \n+ \t\t// Scheduler ensures LoweredGetClosurePtr occurs only in entry block,\n+diff --git a/src/cmd/compile/internal/ssa/_gen/RISCV64Ops.go b/src/cmd/compile/internal/ssa/_gen/RISCV64Ops.go\n+index a72a6f5..49f54b9 100644\n+--- a/src/cmd/compile/internal/ssa/_gen/RISCV64Ops.go\n++++ b/src/cmd/compile/internal/ssa/_gen/RISCV64Ops.go\n+@@ -290,6 +290,7 @@ func init() {\n+ \t\t\t},\n+ \t\t\ttyp:            \"Mem\",\n+ \t\t\tfaultOnNilArg0: true,\n++\t\t\taddrSinkArg0:   true,\n+ \t\t},\n+ \n+ \t\t// duffcopy\n+@@ -335,6 +336,8 @@ func init() {\n+ \t\t\t},\n+ \t\t\ttyp:            \"Mem\",\n+ \t\t\tfaultOnNilArg0: true,\n++\t\t\taddrSinkArg0:   true,\n++\t\t\taddrSinkArg1:   true,\n+ \t\t},\n+ \n+ \t\t// general unaligned move\n+@@ -363,6 +366,7 @@ func init() {\n+ \t\t\tfaultOnNilArg1: true,\n+ \t\t\taddrSinkArg0:   true,\n+ \t\t\taddrSinkArg1:   true,\n++\t\t\t// TODO: could use addrSinkArg2 here.\n+ \t\t},\n+ \n+ \t\t// Atomic loads.\n+diff --git a/src/cmd/compile/internal/ssa/opGen.go b/src/cmd/compile/internal/ssa/opGen.go\n+index 442ac71..b7c9050 100644\n+--- a/src/cmd/compile/internal/ssa/opGen.go\n++++ b/src/cmd/compile/internal/ssa/opGen.go\n+@@ -19480,6 +19480,7 @@ var opcodeTable = [...]opInfo{\n+ \t\tclobberFlags:   true,\n+ \t\tfaultOnNilArg0: true,\n+ \t\taddrSinkArg0:   true,\n++\t\taddrSinkArg1:   true,\n+ \t\treg: regInfo{\n+ \t\t\tinputs: []inputInfo{\n+ \t\t\t\t{0, 2},     // R1\n+@@ -35125,6 +35126,7 @@ var opcodeTable = [...]opInfo{\n+ \t\tauxType:        auxInt64,\n+ \t\targLen:         2,\n+ \t\tfaultOnNilArg0: true,\n++\t\taddrSinkArg0:   true,\n+ \t\treg: regInfo{\n+ \t\t\tinputs: []inputInfo{\n+ \t\t\t\t{0, 16777216}, // X25\n+@@ -35153,6 +35155,8 @@ var opcodeTable = [...]opInfo{\n+ \t\tauxType:        auxInt64,\n+ \t\targLen:         3,\n+ \t\tfaultOnNilArg0: true,\n++\t\taddrSinkArg0:   true,\n++\t\taddrSinkArg1:   true,\n+ \t\treg: regInfo{\n+ \t\t\tinputs: []inputInfo{\n+ \t\t\t\t{0, 16},         // X5\ndiff --git a/debian/patches/series b/debian/patches/series\nindex 7651666..5452e32 100644\n--- a/debian/patches/series\n+++ b/debian/patches/series\n@@ -1,5 +1,6 @@\n 0001-Skip-flaky-TestCrashDumpsAllThreads-on-mips64le.patch\n 0002-Skip-flaky-TestCrashDumpsAllThreads-on-s390x.patch\n 0003-Skip-TestAsan-on-riscv64.patch\n-0004-Replace-localhostCert-and-localhostKey.patch\n 0005-Skip-TestTSAN-test-on-s390x.patch\n+0005-Support-DEB_GOMINCOMPAT.patch\n+0006-cmd-compile-fix-mergelocals-for-arm32-s390x-riscv64.patch\ndiff --git a/doc/godebug.md b/doc/godebug.md\nindex a6e64d1..b4a753b 100644\n--- a/doc/godebug.md\n+++ b/doc/godebug.md\n@@ -133,9 +133,7 @@ are also treated as invalid.\n The defaults that will be compiled into a main package\n are reported by the command:\n \n-{{raw `\n \tgo list -f '{{.DefaultGODEBUG}}' my/main/package\n-`}}\n \n Only differences from the base Go toolchain defaults are reported.\n \n@@ -172,6 +170,15 @@ this setting and default was backported to Go 1.25.4 and Go 1.24.10.\n \n ### Go 1.25\n \n+Go 1.25.13 added a `fips140ems` setting that when set to `0` disables the\n+enforcement of Extended Master Secret in FIPS 140-3 mode. There is no change in\n+default behavior.\n+\n+Go 1.25.8 added a new `htmlmetacontenturlescape` setting that controls whether\n+html/template will escape URLs in the `url=` portion of the content attribute of\n+HTML meta tags. The default `htmlmetacontentescape=1` will cause URLs to be\n+escaped. Setting `htmlmetacontentescape=0` disables this behavior.\n+\n Go 1.25 added a new `decoratemappings` setting that controls whether the Go\n runtime annotates OS anonymous memory mappings with context about their\n purpose. These annotations appear in /proc/self/maps and /proc/self/smaps as\ndiff --git a/lib/fips140/certified.txt b/lib/fips140/certified.txt\nnew file mode 100644\nindex 0000000..efd3cab\n--- /dev/null\n+++ b/lib/fips140/certified.txt\n@@ -0,0 +1 @@\n+v1.0.0-c2097c7c\ndiff --git a/src/archive/tar/format.go b/src/archive/tar/format.go\nindex 9954b4d..32e58a9 100644\n--- a/src/archive/tar/format.go\n+++ b/src/archive/tar/format.go\n@@ -147,6 +147,12 @@ const (\n \t// Max length of a special file (PAX header, GNU long name or link).\n \t// This matches the limit used by libarchive.\n \tmaxSpecialFileSize = 1 << 20\n+\n+\t// Maximum number of sparse file entries.\n+\t// We should never actually hit this limit\n+\t// (every sparse encoding will first be limited by maxSpecialFileSize),\n+\t// but this adds an additional layer of defense.\n+\tmaxSparseFileEntries = 1 << 20\n )\n \n // blockPadding computes the number of bytes needed to pad offset up to the\ndiff --git a/src/archive/tar/reader.go b/src/archive/tar/reader.go\nindex 16ac2f5..f85b998 100644\n--- a/src/archive/tar/reader.go\n+++ b/src/archive/tar/reader.go\n@@ -490,7 +490,8 @@ func (tr *Reader) readOldGNUSparseMap(hdr *Header, blk *block) (sparseDatas, err\n \t}\n \ts := blk.toGNU().sparse()\n \tspd := make(sparseDatas, 0, s.maxEntries())\n-\tfor {\n+\ttotalSize := len(s)\n+\tfor totalSize < maxSpecialFileSize {\n \t\tfor i := 0; i < s.maxEntries(); i++ {\n \t\t\t// This termination condition is identical to GNU and BSD tar.\n \t\t\tif s.entry(i).offset()[0] == 0x00 {\n@@ -501,7 +502,11 @@ func (tr *Reader) readOldGNUSparseMap(hdr *Header, blk *block) (sparseDatas, err\n \t\t\tif p.err != nil {\n \t\t\t\treturn nil, p.err\n \t\t\t}\n-\t\t\tspd = append(spd, sparseEntry{Offset: offset, Length: length})\n+\t\t\tvar err error\n+\t\t\tspd, err = appendSparseEntry(spd, sparseEntry{Offset: offset, Length: length})\n+\t\t\tif err != nil {\n+\t\t\t\treturn nil, err\n+\t\t\t}\n \t\t}\n \n \t\tif s.isExtended()[0] > 0 {\n@@ -510,10 +515,12 @@ func (tr *Reader) readOldGNUSparseMap(hdr *Header, blk *block) (sparseDatas, err\n \t\t\t\treturn nil, err\n \t\t\t}\n \t\t\ts = blk.toSparse()\n+\t\t\ttotalSize += len(s)\n \t\t\tcontinue\n \t\t}\n \t\treturn spd, nil // Done\n \t}\n+\treturn nil, errSparseTooLong\n }\n \n // readGNUSparseMap1x0 reads the sparse map as stored in GNU's PAX sparse format\n@@ -586,7 +593,10 @@ func readGNUSparseMap1x0(r io.Reader) (sparseDatas, error) {\n \t\tif err1 != nil || err2 != nil {\n \t\t\treturn nil, ErrHeader\n \t\t}\n-\t\tspd = append(spd, sparseEntry{Offset: offset, Length: length})\n+\t\tspd, err = appendSparseEntry(spd, sparseEntry{Offset: offset, Length: length})\n+\t\tif err != nil {\n+\t\t\treturn nil, err\n+\t\t}\n \t}\n \treturn spd, nil\n }\n@@ -620,12 +630,22 @@ func readGNUSparseMap0x1(paxHdrs map[string]string) (sparseDatas, error) {\n \t\tif err1 != nil || err2 != nil {\n \t\t\treturn nil, ErrHeader\n \t\t}\n-\t\tspd = append(spd, sparseEntry{Offset: offset, Length: length})\n+\t\tspd, err = appendSparseEntry(spd, sparseEntry{Offset: offset, Length: length})\n+\t\tif err != nil {\n+\t\t\treturn nil, err\n+\t\t}\n \t\tsparseMap = sparseMap[2:]\n \t}\n \treturn spd, nil\n }\n \n+func appendSparseEntry(spd sparseDatas, ent sparseEntry) (sparseDatas, error) {\n+\tif len(spd) >= maxSparseFileEntries {\n+\t\treturn nil, errSparseTooLong\n+\t}\n+\treturn append(spd, ent), nil\n+}\n+\n // Read reads from the current file in the tar archive.\n // It returns (0, io.EOF) when it reaches the end of that file,\n // until [Next] is called to advance to the next file.\ndiff --git a/src/archive/tar/reader_test.go b/src/archive/tar/reader_test.go\nindex fca53da..49a71cb 100644\n--- a/src/archive/tar/reader_test.go\n+++ b/src/archive/tar/reader_test.go\n@@ -1133,6 +1133,17 @@ func TestReadOldGNUSparseMap(t *testing.T) {\n \t\tinput: makeInput(FormatGNU, \"\",\n \t\t\tmakeSparseStrings(sparseDatas{{10 << 30, 512}, {20 << 30, 512}})...),\n \t\twantMap: sparseDatas{{10 << 30, 512}, {20 << 30, 512}},\n+\t}, {\n+\t\tinput: makeInput(FormatGNU, \"\",\n+\t\t\tmakeSparseStrings(func() sparseDatas {\n+\t\t\t\tvar datas sparseDatas\n+\t\t\t\t// This is more than enough entries to exceed our limit.\n+\t\t\t\tfor i := range int64(1 << 20) {\n+\t\t\t\t\tdatas = append(datas, sparseEntry{i * 2, (i * 2) + 1})\n+\t\t\t\t}\n+\t\t\t\treturn datas\n+\t\t\t}())...),\n+\t\twantErr: errSparseTooLong,\n \t}}\n \n \tfor i, v := range vectors {\ndiff --git a/src/cmd/cgo/internal/test/test.go b/src/cmd/cgo/internal/test/test.go\nindex 844b2dd..fb4a825 100644\n--- a/src/cmd/cgo/internal/test/test.go\n+++ b/src/cmd/cgo/internal/test/test.go\n@@ -245,7 +245,7 @@ static void *thread(void *p) {\n \treturn NULL;\n }\n void testSendSIG() {\n-\tconst int N = 20;\n+\tenum { N = 20 };\n \tint i;\n \tpthread_t tid[N];\n \tfor (i = 0; i < N; i++) {\ndiff --git a/src/cmd/compile/internal/dwarfgen/dwarf.go b/src/cmd/compile/internal/dwarfgen/dwarf.go\nindex 4ded846..d8c6f80 100644\n--- a/src/cmd/compile/internal/dwarfgen/dwarf.go\n+++ b/src/cmd/compile/internal/dwarfgen/dwarf.go\n@@ -288,10 +288,14 @@ func createDwarfVars(fnsym *obj.LSym, complexOK bool, fn *ir.Func, apDecls []*ir\n \t\t\tDictIndex:     n.DictIndex,\n \t\t\tClosureOffset: closureOffset(n, closureVars),\n \t\t}\n-\t\tif n.Esc() == ir.EscHeap {\n-\t\t\tif n.Heapaddr == nil {\n-\t\t\t\tbase.Fatalf(\"invalid heap allocated var without Heapaddr\")\n-\t\t\t}\n+\t\tif n.Esc() == ir.EscHeap && n.Heapaddr != nil {\n+\t\t\t// The variable was promoted to the heap and has a known heap\n+\t\t\t// address, so describe its location by dereferencing the pointer\n+\t\t\t// stored at its stack offset. A heap-escaped variable may have no\n+\t\t\t// Heapaddr if it was declared in unreachable code: escape analysis\n+\t\t\t// marks it as heap-allocated, but SSA generation skips the dead\n+\t\t\t// declaration and never allocates the address. In that case fall\n+\t\t\t// through and emit a conservative variable with no location list.\n \t\t\tdebug := fn.DebugInfo.(*ssa.FuncDebug)\n \t\t\tlist := createHeapDerefLocationList(n, debug.EntryID)\n \t\t\tdvar.PutLocationList = func(listSym, startPC dwarf.Sym) {\ndiff --git a/src/cmd/compile/internal/liveness/mergelocals.go b/src/cmd/compile/internal/liveness/mergelocals.go\nindex 6967ee0..28d034a 100644\n--- a/src/cmd/compile/internal/liveness/mergelocals.go\n+++ b/src/cmd/compile/internal/liveness/mergelocals.go\n@@ -513,8 +513,13 @@ func (cs *cstate) populateIndirectUseTable(cands []*ir.Name) ([]*ir.Name, []cand\n \t\t\t\t\t}\n \t\t\t\t}\n \t\t\t}\n-\t\t\tfor _, arg := range v.Args {\n+\t\t\tfor idx, arg := range v.Args {\n \t\t\t\tif nc, ok := pendingUses[arg.ID]; ok {\n+\t\t\t\t\tif !v.AddrSinkArg(idx) {\n+\t\t\t\t\t\t// If this op may propagate the argument address to its output,\n+\t\t\t\t\t\t// then give up. See issue 80127.\n+\t\t\t\t\t\tcontinue\n+\t\t\t\t\t}\n \t\t\t\t\t// We found a use of some value that took the\n \t\t\t\t\t// address of nc.n. Record this inst as a\n \t\t\t\t\t// potential indirect use.\ndiff --git a/src/cmd/compile/internal/loopvar/loopvar_test.go b/src/cmd/compile/internal/loopvar/loopvar_test.go\nindex b19962f..90bddbb 100644\n--- a/src/cmd/compile/internal/loopvar/loopvar_test.go\n+++ b/src/cmd/compile/internal/loopvar/loopvar_test.go\n@@ -6,6 +6,7 @@ package loopvar_test\n \n import (\n \t\"internal/testenv\"\n+\t\"os\"\n \t\"os/exec\"\n \t\"path/filepath\"\n \t\"regexp\"\n@@ -381,3 +382,62 @@ func TestLoopVarVersionDisableGoBuild(t *testing.T) {\n \t\tt.Errorf(\"err=%v == nil\", err)\n \t}\n }\n+\n+// TestLoopVarLineDirective tests that loopvar version detection works correctly\n+// with line directives. This is a regression test for a bug where FileBase() was\n+// used instead of Base(), causing incorrect version lookup when line directives\n+// were present.\n+func TestLoopVarLineDirective(t *testing.T) {\n+\tswitch runtime.GOOS {\n+\tcase \"linux\", \"darwin\":\n+\tdefault:\n+\t\tt.Skipf(\"Slow test, usually avoid it, os=%s not linux or darwin\", runtime.GOOS)\n+\t}\n+\tswitch runtime.GOARCH {\n+\tcase \"amd64\", \"arm64\":\n+\tdefault:\n+\t\tt.Skipf(\"Slow test, usually avoid it, arch=%s not amd64 or arm64\", runtime.GOARCH)\n+\t}\n+\n+\ttestenv.MustHaveGoBuild(t)\n+\tgocmd := testenv.GoToolPath(t)\n+\ttmpdir := t.TempDir()\n+\toutput := filepath.Join(tmpdir, \"foo.exe\")\n+\n+\t// Create a go.mod file with Go 1.21 to test compatibility behavior.\n+\t// When building with a higher Go compiler, the loopvar should be created per-loop.\n+\tgomodPath := filepath.Join(tmpdir, \"go.mod\")\n+\tif err := os.WriteFile(gomodPath, []byte(\"module test\\n\\ngo 1.21\\n\"), 0644); err != nil {\n+\t\tt.Fatal(err)\n+\t}\n+\n+\t// Copy the test file (with line directive) to the temporary module\n+\ttestFile := \"range_esc_closure_linedir.go\"\n+\tsrcPath := filepath.Join(\"testdata\", testFile)\n+\tdstPath := filepath.Join(tmpdir, testFile)\n+\tsrc, err := os.ReadFile(srcPath)\n+\tif err != nil {\n+\t\tt.Fatal(err)\n+\t}\n+\tif err := os.WriteFile(dstPath, src, 0644); err != nil {\n+\t\tt.Fatal(err)\n+\t}\n+\n+\t// Build the module (not as a single file, so go.mod is respected)\n+\tcmd := testenv.Command(t, gocmd, \"build\", \"-o\", output, \".\")\n+\tcmd.Dir = tmpdir\n+\tb, err := cmd.CombinedOutput()\n+\tif err != nil {\n+\t\tt.Logf(\"build output: %s\", b)\n+\t\tt.Fatal(err)\n+\t}\n+\tt.Logf(\"build output: %s\", b)\n+\n+\tcmd = testenv.Command(t, output)\n+\tb, err = cmd.CombinedOutput()\n+\tt.Logf(\"run output: %s\", b)\n+\n+\tif err != nil {\n+\t\tt.Errorf(\"expected success (exit code 0), got: %v\", err)\n+\t}\n+}\ndiff --git a/src/cmd/compile/internal/loopvar/testdata/range_esc_closure_linedir.go b/src/cmd/compile/internal/loopvar/testdata/range_esc_closure_linedir.go\nnew file mode 100644\nindex 0000000..24823e8\n--- /dev/null\n+++ b/src/cmd/compile/internal/loopvar/testdata/range_esc_closure_linedir.go\n@@ -0,0 +1,24 @@\n+// Copyright 2026 The Go Authors. All rights reserved.\n+// Use of this source code is governed by a BSD-style\n+// license that can be found in the LICENSE file.\n+\n+//line range_esc_closure_linedir.go:5\n+package main\n+\n+import \"fmt\"\n+\n+var is []func() int\n+\n+func main() {\n+\tvar ints = []int{0, 0, 0}\n+\tfor i := range ints {\n+\t\tis = append(is, func() int { return i })\n+\t}\n+\n+\tfor _, f := range is {\n+\t\tfmt.Println(f())\n+\t\tif f() != 2 {\n+\t\t\tpanic(\"loop variable i: expected shared per-loop, but got distinct per-iteration\")\n+\t\t}\n+\t}\n+}\ndiff --git a/src/cmd/compile/internal/mips/ssa.go b/src/cmd/compile/internal/mips/ssa.go\nindex 9762554..0ec23ad 100644\n--- a/src/cmd/compile/internal/mips/ssa.go\n+++ b/src/cmd/compile/internal/mips/ssa.go\n@@ -212,11 +212,25 @@ func ssaGenValue(s *ssagen.State, v *ssa.Value) {\n \t\tssa.OpMIPSMULTU,\n \t\tssa.OpMIPSDIV,\n \t\tssa.OpMIPSDIVU:\n-\t\t// result in hi,lo\n+\t\t// HI, LO results exist in low quality registers that can't\n+\t\t// be stored without using REGTMP.\n+\t\t// This used to cause corruptions since store might also need\n+\t\t// REGTMP to materialize the address.\n+\t\t// Instead we move the result into high quality registers.\n \t\tp := s.Prog(v.Op.Asm())\n \t\tp.From.Type = obj.TYPE_REG\n \t\tp.From.Reg = v.Args[1].Reg()\n \t\tp.Reg = v.Args[0].Reg()\n+\t\tp1 := s.Prog(mips.AMOVW)\n+\t\tp1.From.Type = obj.TYPE_REG\n+\t\tp1.From.Reg = mips.REG_HI\n+\t\tp1.To.Type = obj.TYPE_REG\n+\t\tp1.To.Reg = v.Reg0()\n+\t\tp2 := s.Prog(mips.AMOVW)\n+\t\tp2.From.Type = obj.TYPE_REG\n+\t\tp2.From.Reg = mips.REG_LO\n+\t\tp2.To.Type = obj.TYPE_REG\n+\t\tp2.To.Reg = v.Reg1()\n \tcase ssa.OpMIPSMOVWconst:\n \t\tr := v.Reg()\n \t\tp := s.Prog(v.Op.Asm())\ndiff --git a/src/cmd/compile/internal/mips64/ssa.go b/src/cmd/compile/internal/mips64/ssa.go\nindex af94c16..46df14a 100644\n--- a/src/cmd/compile/internal/mips64/ssa.go\n+++ b/src/cmd/compile/internal/mips64/ssa.go\n@@ -206,11 +206,25 @@ func ssaGenValue(s *ssagen.State, v *ssa.Value) {\n \t\tssa.OpMIPS64MULVU,\n \t\tssa.OpMIPS64DIVV,\n \t\tssa.OpMIPS64DIVVU:\n-\t\t// result in hi,lo\n+\t\t// HI, LO results exist in low quality registers that can't\n+\t\t// be stored without using REGTMP.\n+\t\t// This used to cause corruptions since store might also need\n+\t\t// REGTMP to materialize the address.\n+\t\t// Instead we move the result into high quality registers.\n \t\tp := s.Prog(v.Op.Asm())\n \t\tp.From.Type = obj.TYPE_REG\n \t\tp.From.Reg = v.Args[1].Reg()\n \t\tp.Reg = v.Args[0].Reg()\n+\t\tp1 := s.Prog(mips.AMOVV)\n+\t\tp1.From.Type = obj.TYPE_REG\n+\t\tp1.From.Reg = mips.REG_HI\n+\t\tp1.To.Type = obj.TYPE_REG\n+\t\tp1.To.Reg = v.Reg0()\n+\t\tp2 := s.Prog(mips.AMOVV)\n+\t\tp2.From.Type = obj.TYPE_REG\n+\t\tp2.From.Reg = mips.REG_LO\n+\t\tp2.To.Type = obj.TYPE_REG\n+\t\tp2.To.Reg = v.Reg1()\n \tcase ssa.OpMIPS64MOVVconst:\n \t\tr := v.Reg()\n \t\tp := s.Prog(v.Op.Asm())\ndiff --git a/src/cmd/compile/internal/noder/writer.go b/src/cmd/compile/internal/noder/writer.go\nindex dd79c3e..de12793 100644\n--- a/src/cmd/compile/internal/noder/writer.go\n+++ b/src/cmd/compile/internal/noder/writer.go\n@@ -1560,7 +1560,7 @@ func (w *writer) forStmt(stmt *syntax.ForStmt) {\n \n func (w *writer) distinctVars(stmt *syntax.ForStmt) bool {\n \tlv := base.Debug.LoopVar\n-\tfileVersion := w.p.info.FileVersions[stmt.Pos().Base()]\n+\tfileVersion := w.p.info.FileVersions[stmt.Pos().FileBase()]\n \tis122 := fileVersion == \"\" || version.Compare(fileVersion, \"go1.22\") >= 0\n \n \t// Turning off loopvar for 1.22 is only possible with loopvarhash=qn\ndiff --git a/src/cmd/compile/internal/ppc64/ssa.go b/src/cmd/compile/internal/ppc64/ssa.go\nindex c1f2484..a81ef95 100644\n--- a/src/cmd/compile/internal/ppc64/ssa.go\n+++ b/src/cmd/compile/internal/ppc64/ssa.go\n@@ -134,6 +134,7 @@ func ssaGenValue(s *ssagen.State, v *ssa.Value) {\n \t\t// AND/OR\tRarg1, Rtmp\n \t\t// STBCCC/STWCCC Rtmp, (Rarg0)\n \t\t// BNE\t\t-3(PC)\n+\t\t// LWSYNC\n \t\tld := ppc64.ALBAR\n \t\tst := ppc64.ASTBCCC\n \t\tif v.Op == ssa.OpPPC64LoweredAtomicAnd32 || v.Op == ssa.OpPPC64LoweredAtomicOr32 {\n@@ -169,6 +170,10 @@ func ssaGenValue(s *ssagen.State, v *ssa.Value) {\n \t\tp3 := s.Prog(ppc64.ABNE)\n \t\tp3.To.Type = obj.TYPE_BRANCH\n \t\tp3.To.SetTarget(p)\n+\t\t// LWSYNC - Provide acquire ordering to pair with the\n+\t\t// release (pre-LWSYNC) above, making the operation\n+\t\t// sequentially consistent.\n+\t\ts.Prog(ppc64.ALWSYNC)\n \n \tcase ssa.OpPPC64LoweredAtomicAdd32,\n \t\tssa.OpPPC64LoweredAtomicAdd64:\n@@ -178,6 +183,7 @@ func ssaGenValue(s *ssagen.State, v *ssa.Value) {\n \t\t// STDCCC/STWCCC Rout, (Rarg0)\n \t\t// BNE         -3(PC)\n \t\t// MOVW\t\tRout,Rout (if Add32)\n+\t\t// LWSYNC\n \t\tld := ppc64.ALDAR\n \t\tst := ppc64.ASTDCCC\n \t\tif v.Op == ssa.OpPPC64LoweredAtomicAdd32 {\n@@ -187,10 +193,10 @@ func ssaGenValue(s *ssagen.State, v *ssa.Value) {\n \t\tr0 := v.Args[0].Reg()\n \t\tr1 := v.Args[1].Reg()\n \t\tout := v.Reg0()\n-\t\t// LWSYNC - Assuming shared data not write-through-required nor\n-\t\t// caching-inhibited. See Appendix B.2.2.2 in the ISA 2.07b.\n-\t\tplwsync := s.Prog(ppc64.ALWSYNC)\n-\t\tplwsync.To.Type = obj.TYPE_NONE\n+\t\t// LWSYNC - Provide acquire ordering to pair with the\n+\t\t// release (pre-LWSYNC) above, making the operation\n+\t\t// sequentially consistent.\n+\t\ts.Prog(ppc64.ALWSYNC)\n \t\t// LDAR or LWAR\n \t\tp := s.Prog(ld)\n \t\tp.From.Type = obj.TYPE_MEM\n@@ -222,6 +228,11 @@ func ssaGenValue(s *ssagen.State, v *ssa.Value) {\n \t\t\tp5.From.Type = obj.TYPE_REG\n \t\t\tp5.From.Reg = out\n \t\t}\n+\t\t// LWSYNC - Provide acquire ordering to pair with the\n+\t\t// release (pre-LWSYNC) above, making the operation\n+\t\t// sequentially consistent.\n+\t\tplwsync2 := s.Prog(ppc64.ALWSYNC)\n+\t\tplwsync2.To.Type = obj.TYPE_NONE\n \n \tcase ssa.OpPPC64LoweredAtomicExchange8,\n \t\tssa.OpPPC64LoweredAtomicExchange32,\ndiff --git a/src/cmd/compile/internal/ssa/_gen/386Ops.go b/src/cmd/compile/internal/ssa/_gen/386Ops.go\nindex a976a91..a416b06 100644\n--- a/src/cmd/compile/internal/ssa/_gen/386Ops.go\n+++ b/src/cmd/compile/internal/ssa/_gen/386Ops.go\n@@ -153,30 +153,30 @@ func init() {\n \t\t{name: \"DIVSS\", argLength: 2, reg: fp21, asm: \"DIVSS\", resultInArg0: true},                    // fp32 div\n \t\t{name: \"DIVSD\", argLength: 2, reg: fp21, asm: \"DIVSD\", resultInArg0: true},                    // fp64 div\n \n-\t\t{name: \"MOVSSload\", argLength: 2, reg: fpload, asm: \"MOVSS\", aux: \"SymOff\", faultOnNilArg0: true, symEffect: \"Read\"}, // fp32 load\n-\t\t{name: \"MOVSDload\", argLength: 2, reg: fpload, asm: \"MOVSD\", aux: \"SymOff\", faultOnNilArg0: true, symEffect: \"Read\"}, // fp64 load\n-\t\t{name: \"MOVSSconst\", reg: fp01, asm: \"MOVSS\", aux: \"Float32\", rematerializeable: true},                               // fp32 constant\n-\t\t{name: \"MOVSDconst\", reg: fp01, asm: \"MOVSD\", aux: \"Float64\", rematerializeable: true},                               // fp64 constant\n-\t\t{name: \"MOVSSloadidx1\", argLength: 3, reg: fploadidx, asm: \"MOVSS\", aux: \"SymOff\", symEffect: \"Read\"},                // fp32 load indexed by i\n-\t\t{name: \"MOVSSloadidx4\", argLength: 3, reg: fploadidx, asm: \"MOVSS\", aux: \"SymOff\", symEffect: \"Read\"},                // fp32 load indexed by 4*i\n-\t\t{name: \"MOVSDloadidx1\", argLength: 3, reg: fploadidx, asm: \"MOVSD\", aux: \"SymOff\", symEffect: \"Read\"},                // fp64 load indexed by i\n-\t\t{name: \"MOVSDloadidx8\", argLength: 3, reg: fploadidx, asm: \"MOVSD\", aux: \"SymOff\", symEffect: \"Read\"},                // fp64 load indexed by 8*i\n-\n-\t\t{name: \"MOVSSstore\", argLength: 3, reg: fpstore, asm: \"MOVSS\", aux: \"SymOff\", faultOnNilArg0: true, symEffect: \"Write\"}, // fp32 store\n-\t\t{name: \"MOVSDstore\", argLength: 3, reg: fpstore, asm: \"MOVSD\", aux: \"SymOff\", faultOnNilArg0: true, symEffect: \"Write\"}, // fp64 store\n-\t\t{name: \"MOVSSstoreidx1\", argLength: 4, reg: fpstoreidx, asm: \"MOVSS\", aux: \"SymOff\", symEffect: \"Write\"},                // fp32 indexed by i store\n-\t\t{name: \"MOVSSstoreidx4\", argLength: 4, reg: fpstoreidx, asm: \"MOVSS\", aux: \"SymOff\", symEffect: \"Write\"},                // fp32 indexed by 4i store\n-\t\t{name: \"MOVSDstoreidx1\", argLength: 4, reg: fpstoreidx, asm: \"MOVSD\", aux: \"SymOff\", symEffect: \"Write\"},                // fp64 indexed by i store\n-\t\t{name: \"MOVSDstoreidx8\", argLength: 4, reg: fpstoreidx, asm: \"MOVSD\", aux: \"SymOff\", symEffect: \"Write\"},                // fp64 indexed by 8i store\n-\n-\t\t{name: \"ADDSSload\", argLength: 3, reg: fp21load, asm: \"ADDSS\", aux: \"SymOff\", resultInArg0: true, faultOnNilArg1: true, symEffect: \"Read\"}, // fp32 arg0 + tmp, tmp loaded from arg1+auxint+aux, arg2 = mem\n-\t\t{name: \"ADDSDload\", argLength: 3, reg: fp21load, asm: \"ADDSD\", aux: \"SymOff\", resultInArg0: true, faultOnNilArg1: true, symEffect: \"Read\"}, // fp64 arg0 + tmp, tmp loaded from arg1+auxint+aux, arg2 = mem\n-\t\t{name: \"SUBSSload\", argLength: 3, reg: fp21load, asm: \"SUBSS\", aux: \"SymOff\", resultInArg0: true, faultOnNilArg1: true, symEffect: \"Read\"}, // fp32 arg0 - tmp, tmp loaded from arg1+auxint+aux, arg2 = mem\n-\t\t{name: \"SUBSDload\", argLength: 3, reg: fp21load, asm: \"SUBSD\", aux: \"SymOff\", resultInArg0: true, faultOnNilArg1: true, symEffect: \"Read\"}, // fp64 arg0 - tmp, tmp loaded from arg1+auxint+aux, arg2 = mem\n-\t\t{name: \"MULSSload\", argLength: 3, reg: fp21load, asm: \"MULSS\", aux: \"SymOff\", resultInArg0: true, faultOnNilArg1: true, symEffect: \"Read\"}, // fp32 arg0 * tmp, tmp loaded from arg1+auxint+aux, arg2 = mem\n-\t\t{name: \"MULSDload\", argLength: 3, reg: fp21load, asm: \"MULSD\", aux: \"SymOff\", resultInArg0: true, faultOnNilArg1: true, symEffect: \"Read\"}, // fp64 arg0 * tmp, tmp loaded from arg1+auxint+aux, arg2 = mem\n-\t\t{name: \"DIVSSload\", argLength: 3, reg: fp21load, asm: \"DIVSS\", aux: \"SymOff\", resultInArg0: true, faultOnNilArg1: true, symEffect: \"Read\"}, // fp32 arg0 / tmp, tmp loaded from arg1+auxint+aux, arg2 = mem\n-\t\t{name: \"DIVSDload\", argLength: 3, reg: fp21load, asm: \"DIVSD\", aux: \"SymOff\", resultInArg0: true, faultOnNilArg1: true, symEffect: \"Read\"}, // fp64 arg0 / tmp, tmp loaded from arg1+auxint+aux, arg2 = mem\n+\t\t{name: \"MOVSSload\", argLength: 2, reg: fpload, asm: \"MOVSS\", aux: \"SymOff\", faultOnNilArg0: true, symEffect: \"Read\", addrSinkArg0: true}, // fp32 load\n+\t\t{name: \"MOVSDload\", argLength: 2, reg: fpload, asm: \"MOVSD\", aux: \"SymOff\", faultOnNilArg0: true, symEffect: \"Read\", addrSinkArg0: true}, // fp64 load\n+\t\t{name: \"MOVSSconst\", reg: fp01, asm: \"MOVSS\", aux: \"Float32\", rematerializeable: true},                                                   // fp32 constant\n+\t\t{name: \"MOVSDconst\", reg: fp01, asm: \"MOVSD\", aux: \"Float64\", rematerializeable: true},                                                   // fp64 constant\n+\t\t{name: \"MOVSSloadidx1\", argLength: 3, reg: fploadidx, asm: \"MOVSS\", aux: \"SymOff\", symEffect: \"Read\", addrSinkArg0: true},                // fp32 load indexed by i\n+\t\t{name: \"MOVSSloadidx4\", argLength: 3, reg: fploadidx, asm: \"MOVSS\", aux: \"SymOff\", symEffect: \"Read\", addrSinkArg0: true},                // fp32 load indexed by 4*i\n+\t\t{name: \"MOVSDloadidx1\", argLength: 3, reg: fploadidx, asm: \"MOVSD\", aux: \"SymOff\", symEffect: \"Read\", addrSinkArg0: true},                // fp64 load indexed by i\n+\t\t{name: \"MOVSDloadidx8\", argLength: 3, reg: fploadidx, asm: \"MOVSD\", aux: \"SymOff\", symEffect: \"Read\", addrSinkArg0: true},                // fp64 load indexed by 8*i\n+\n+\t\t{name: \"MOVSSstore\", argLength: 3, reg: fpstore, asm: \"MOVSS\", aux: \"SymOff\", faultOnNilArg0: true, symEffect: \"Write\", addrSinkArg0: true}, // fp32 store\n+\t\t{name: \"MOVSDstore\", argLength: 3, reg: fpstore, asm: \"MOVSD\", aux: \"SymOff\", faultOnNilArg0: true, symEffect: \"Write\", addrSinkArg0: true}, // fp64 store\n+\t\t{name: \"MOVSSstoreidx1\", argLength: 4, reg: fpstoreidx, asm: \"MOVSS\", aux: \"SymOff\", symEffect: \"Write\", addrSinkArg0: true},                // fp32 indexed by i store\n+\t\t{name: \"MOVSSstoreidx4\", argLength: 4, reg: fpstoreidx, asm: \"MOVSS\", aux: \"SymOff\", symEffect: \"Write\", addrSinkArg0: true},                // fp32 indexed by 4i store\n+\t\t{name: \"MOVSDstoreidx1\", argLength: 4, reg: fpstoreidx, asm: \"MOVSD\", aux: \"SymOff\", symEffect: \"Write\", addrSinkArg0: true},                // fp64 indexed by i store\n+\t\t{name: \"MOVSDstoreidx8\", argLength: 4, reg: fpstoreidx, asm: \"MOVSD\", aux: \"SymOff\", symEffect: \"Write\", addrSinkArg0: true},                // fp64 indexed by 8i store\n+\n+\t\t{name: \"ADDSSload\", argLength: 3, reg: fp21load, asm: \"ADDSS\", aux: \"SymOff\", resultInArg0: true, faultOnNilArg1: true, symEffect: \"Read\", addrSinkArg1: true}, // fp32 arg0 + tmp, tmp loaded from arg1+auxint+aux, arg2 = mem\n+\t\t{name: \"ADDSDload\", argLength: 3, reg: fp21load, asm: \"ADDSD\", aux: \"SymOff\", resultInArg0: true, faultOnNilArg1: true, symEffect: \"Read\", addrSinkArg1: true}, // fp64 arg0 + tmp, tmp loaded from arg1+auxint+aux, arg2 = mem\n+\t\t{name: \"SUBSSload\", argLength: 3, reg: fp21load, asm: \"SUBSS\", aux: \"SymOff\", resultInArg0: true, faultOnNilArg1: true, symEffect: \"Read\", addrSinkArg1: true}, // fp32 arg0 - tmp, tmp loaded from arg1+auxint+aux, arg2 = mem\n+\t\t{name: \"SUBSDload\", argLength: 3, reg: fp21load, asm: \"SUBSD\", aux: \"SymOff\", resultInArg0: true, faultOnNilArg1: true, symEffect: \"Read\", addrSinkArg1: true}, // fp64 arg0 - tmp, tmp loaded from arg1+auxint+aux, arg2 = mem\n+\t\t{name: \"MULSSload\", argLength: 3, reg: fp21load, asm: \"MULSS\", aux: \"SymOff\", resultInArg0: true, faultOnNilArg1: true, symEffect: \"Read\", addrSinkArg1: true}, // fp32 arg0 * tmp, tmp loaded from arg1+auxint+aux, arg2 = mem\n+\t\t{name: \"MULSDload\", argLength: 3, reg: fp21load, asm: \"MULSD\", aux: \"SymOff\", resultInArg0: true, faultOnNilArg1: true, symEffect: \"Read\", addrSinkArg1: true}, // fp64 arg0 * tmp, tmp loaded from arg1+auxint+aux, arg2 = mem\n+\t\t{name: \"DIVSSload\", argLength: 3, reg: fp21load, asm: \"DIVSS\", aux: \"SymOff\", resultInArg0: true, faultOnNilArg1: true, symEffect: \"Read\", addrSinkArg1: true}, // fp32 arg0 / tmp, tmp loaded from arg1+auxint+aux, arg2 = mem\n+\t\t{name: \"DIVSDload\", argLength: 3, reg: fp21load, asm: \"DIVSD\", aux: \"SymOff\", resultInArg0: true, faultOnNilArg1: true, symEffect: \"Read\", addrSinkArg1: true}, // fp64 arg0 / tmp, tmp loaded from arg1+auxint+aux, arg2 = mem\n \n \t\t// binary ops\n \t\t{name: \"ADDL\", argLength: 2, reg: gp21sp, asm: \"ADDL\", commutative: true, clobberFlags: true},                // arg0 + arg1\n@@ -235,14 +235,14 @@ func init() {\n \t\t{name: \"CMPBconst\", argLength: 1, reg: gp1flags, asm: \"CMPB\", typ: \"Flags\", aux: \"Int8\"},  // arg0 compare to auxint\n \n \t\t// compare *(arg0+auxint+aux) to arg1 (in that order). arg2=mem.\n-\t\t{name: \"CMPLload\", argLength: 3, reg: gp1flagsLoad, asm: \"CMPL\", aux: \"SymOff\", typ: \"Flags\", symEffect: \"Read\", faultOnNilArg0: true},\n-\t\t{name: \"CMPWload\", argLength: 3, reg: gp1flagsLoad, asm: \"CMPW\", aux: \"SymOff\", typ: \"Flags\", symEffect: \"Read\", faultOnNilArg0: true},\n-\t\t{name: \"CMPBload\", argLength: 3, reg: gp1flagsLoad, asm: \"CMPB\", aux: \"SymOff\", typ: \"Flags\", symEffect: \"Read\", faultOnNilArg0: true},\n+\t\t{name: \"CMPLload\", argLength: 3, reg: gp1flagsLoad, asm: \"CMPL\", aux: \"SymOff\", typ: \"Flags\", symEffect: \"Read\", faultOnNilArg0: true, addrSinkArg0: true},\n+\t\t{name: \"CMPWload\", argLength: 3, reg: gp1flagsLoad, asm: \"CMPW\", aux: \"SymOff\", typ: \"Flags\", symEffect: \"Read\", faultOnNilArg0: true, addrSinkArg0: true},\n+\t\t{name: \"CMPBload\", argLength: 3, reg: gp1flagsLoad, asm: \"CMPB\", aux: \"SymOff\", typ: \"Flags\", symEffect: \"Read\", faultOnNilArg0: true, addrSinkArg0: true},\n \n \t\t// compare *(arg0+ValAndOff(AuxInt).Off()+aux) to ValAndOff(AuxInt).Val() (in that order). arg1=mem.\n-\t\t{name: \"CMPLconstload\", argLength: 2, reg: gp0flagsLoad, asm: \"CMPL\", aux: \"SymValAndOff\", typ: \"Flags\", symEffect: \"Read\", faultOnNilArg0: true},\n-\t\t{name: \"CMPWconstload\", argLength: 2, reg: gp0flagsLoad, asm: \"CMPW\", aux: \"SymValAndOff\", typ: \"Flags\", symEffect: \"Read\", faultOnNilArg0: true},\n-\t\t{name: \"CMPBconstload\", argLength: 2, reg: gp0flagsLoad, asm: \"CMPB\", aux: \"SymValAndOff\", typ: \"Flags\", symEffect: \"Read\", faultOnNilArg0: true},\n+\t\t{name: \"CMPLconstload\", argLength: 2, reg: gp0flagsLoad, asm: \"CMPL\", aux: \"SymValAndOff\", typ: \"Flags\", symEffect: \"Read\", faultOnNilArg0: true, addrSinkArg0: true},\n+\t\t{name: \"CMPWconstload\", argLength: 2, reg: gp0flagsLoad, asm: \"CMPW\", aux: \"SymValAndOff\", typ: \"Flags\", symEffect: \"Read\", faultOnNilArg0: true, addrSinkArg0: true},\n+\t\t{name: \"CMPBconstload\", argLength: 2, reg: gp0flagsLoad, asm: \"CMPB\", aux: \"SymValAndOff\", typ: \"Flags\", symEffect: \"Read\", faultOnNilArg0: true, addrSinkArg0: true},\n \n \t\t{name: \"UCOMISS\", argLength: 2, reg: fp2flags, asm: \"UCOMISS\", typ: \"Flags\"}, // arg0 compare to arg1, f32\n \t\t{name: \"UCOMISD\", argLength: 2, reg: fp2flags, asm: \"UCOMISD\", typ: \"Flags\"}, // arg0 compare to arg1, f64\n@@ -280,20 +280,20 @@ func init() {\n \t\t{name: \"ROLBconst\", argLength: 1, reg: gp11, asm: \"ROLB\", aux: \"Int8\", resultInArg0: true, clobberFlags: true},  // arg0 rotate left auxint, rotate amount 0-7\n \n \t\t// binary-op with a memory source operand\n-\t\t{name: \"ADDLload\", argLength: 3, reg: gp21load, asm: \"ADDL\", aux: \"SymOff\", resultInArg0: true, clobberFlags: true, faultOnNilArg1: true, symEffect: \"Read\"},  // arg0 + tmp, tmp loaded from  arg1+auxint+aux, arg2 = mem\n-\t\t{name: \"SUBLload\", argLength: 3, reg: gp21load, asm: \"SUBL\", aux: \"SymOff\", resultInArg0: true, clobberFlags: true, faultOnNilArg1: true, symEffect: \"Read\"},  // arg0 - tmp, tmp loaded from  arg1+auxint+aux, arg2 = mem\n-\t\t{name: \"MULLload\", argLength: 3, reg: gp21load, asm: \"IMULL\", aux: \"SymOff\", resultInArg0: true, clobberFlags: true, faultOnNilArg1: true, symEffect: \"Read\"}, // arg0 * tmp, tmp loaded from  arg1+auxint+aux, arg2 = mem\n-\t\t{name: \"ANDLload\", argLength: 3, reg: gp21load, asm: \"ANDL\", aux: \"SymOff\", resultInArg0: true, clobberFlags: true, faultOnNilArg1: true, symEffect: \"Read\"},  // arg0 & tmp, tmp loaded from  arg1+auxint+aux, arg2 = mem\n-\t\t{name: \"ORLload\", argLength: 3, reg: gp21load, asm: \"ORL\", aux: \"SymOff\", resultInArg0: true, clobberFlags: true, faultOnNilArg1: true, symEffect: \"Read\"},    // arg0 | tmp, tmp loaded from  arg1+auxint+aux, arg2 = mem\n-\t\t{name: \"XORLload\", argLength: 3, reg: gp21load, asm: \"XORL\", aux: \"SymOff\", resultInArg0: true, clobberFlags: true, faultOnNilArg1: true, symEffect: \"Read\"},  // arg0 ^ tmp, tmp loaded from  arg1+auxint+aux, arg2 = mem\n+\t\t{name: \"ADDLload\", argLength: 3, reg: gp21load, asm: \"ADDL\", aux: \"SymOff\", resultInArg0: true, clobberFlags: true, faultOnNilArg1: true, symEffect: \"Read\", addrSinkArg1: true},  // arg0 + tmp, tmp loaded from  arg1+auxint+aux, arg2 = mem\n+\t\t{name: \"SUBLload\", argLength: 3, reg: gp21load, asm: \"SUBL\", aux: \"SymOff\", resultInArg0: true, clobberFlags: true, faultOnNilArg1: true, symEffect: \"Read\", addrSinkArg1: true},  // arg0 - tmp, tmp loaded from  arg1+auxint+aux, arg2 = mem\n+\t\t{name: \"MULLload\", argLength: 3, reg: gp21load, asm: \"IMULL\", aux: \"SymOff\", resultInArg0: true, clobberFlags: true, faultOnNilArg1: true, symEffect: \"Read\", addrSinkArg1: true}, // arg0 * tmp, tmp loaded from  arg1+auxint+aux, arg2 = mem\n+\t\t{name: \"ANDLload\", argLength: 3, reg: gp21load, asm: \"ANDL\", aux: \"SymOff\", resultInArg0: true, clobberFlags: true, faultOnNilArg1: true, symEffect: \"Read\", addrSinkArg1: true},  // arg0 & tmp, tmp loaded from  arg1+auxint+aux, arg2 = mem\n+\t\t{name: \"ORLload\", argLength: 3, reg: gp21load, asm: \"ORL\", aux: \"SymOff\", resultInArg0: true, clobberFlags: true, faultOnNilArg1: true, symEffect: \"Read\", addrSinkArg1: true},    // arg0 | tmp, tmp loaded from  arg1+auxint+aux, arg2 = mem\n+\t\t{name: \"XORLload\", argLength: 3, reg: gp21load, asm: \"XORL\", aux: \"SymOff\", resultInArg0: true, clobberFlags: true, faultOnNilArg1: true, symEffect: \"Read\", addrSinkArg1: true},  // arg0 ^ tmp, tmp loaded from  arg1+auxint+aux, arg2 = mem\n \n \t\t// binary-op with an indexed memory source operand\n-\t\t{name: \"ADDLloadidx4\", argLength: 4, reg: gp21loadidx, asm: \"ADDL\", aux: \"SymOff\", resultInArg0: true, clobberFlags: true, symEffect: \"Read\"},  // arg0 + tmp, tmp loaded from  arg1+arg2*4+auxint+aux, arg3 = mem\n-\t\t{name: \"SUBLloadidx4\", argLength: 4, reg: gp21loadidx, asm: \"SUBL\", aux: \"SymOff\", resultInArg0: true, clobberFlags: true, symEffect: \"Read\"},  // arg0 - tmp, tmp loaded from  arg1+arg2*4+auxint+aux, arg3 = mem\n-\t\t{name: \"MULLloadidx4\", argLength: 4, reg: gp21loadidx, asm: \"IMULL\", aux: \"SymOff\", resultInArg0: true, clobberFlags: true, symEffect: \"Read\"}, // arg0 * tmp, tmp loaded from  arg1+arg2*4+auxint+aux, arg3 = mem\n-\t\t{name: \"ANDLloadidx4\", argLength: 4, reg: gp21loadidx, asm: \"ANDL\", aux: \"SymOff\", resultInArg0: true, clobberFlags: true, symEffect: \"Read\"},  // arg0 & tmp, tmp loaded from  arg1+arg2*4+auxint+aux, arg3 = mem\n-\t\t{name: \"ORLloadidx4\", argLength: 4, reg: gp21loadidx, asm: \"ORL\", aux: \"SymOff\", resultInArg0: true, clobberFlags: true, symEffect: \"Read\"},    // arg0 | tmp, tmp loaded from  arg1+arg2*4+auxint+aux, arg3 = mem\n-\t\t{name: \"XORLloadidx4\", argLength: 4, reg: gp21loadidx, asm: \"XORL\", aux: \"SymOff\", resultInArg0: true, clobberFlags: true, symEffect: \"Read\"},  // arg0 ^ tmp, tmp loaded from  arg1+arg2*4+auxint+aux, arg3 = mem\n+\t\t{name: \"ADDLloadidx4\", argLength: 4, reg: gp21loadidx, asm: \"ADDL\", aux: \"SymOff\", resultInArg0: true, clobberFlags: true, symEffect: \"Read\", addrSinkArg1: true},  // arg0 + tmp, tmp loaded from  arg1+arg2*4+auxint+aux, arg3 = mem\n+\t\t{name: \"SUBLloadidx4\", argLength: 4, reg: gp21loadidx, asm: \"SUBL\", aux: \"SymOff\", resultInArg0: true, clobberFlags: true, symEffect: \"Read\", addrSinkArg1: true},  // arg0 - tmp, tmp loaded from  arg1+arg2*4+auxint+aux, arg3 = mem\n+\t\t{name: \"MULLloadidx4\", argLength: 4, reg: gp21loadidx, asm: \"IMULL\", aux: \"SymOff\", resultInArg0: true, clobberFlags: true, symEffect: \"Read\", addrSinkArg1: true}, // arg0 * tmp, tmp loaded from  arg1+arg2*4+auxint+aux, arg3 = mem\n+\t\t{name: \"ANDLloadidx4\", argLength: 4, reg: gp21loadidx, asm: \"ANDL\", aux: \"SymOff\", resultInArg0: true, clobberFlags: true, symEffect: \"Read\", addrSinkArg1: true},  // arg0 & tmp, tmp loaded from  arg1+arg2*4+auxint+aux, arg3 = mem\n+\t\t{name: \"ORLloadidx4\", argLength: 4, reg: gp21loadidx, asm: \"ORL\", aux: \"SymOff\", resultInArg0: true, clobberFlags: true, symEffect: \"Read\", addrSinkArg1: true},    // arg0 | tmp, tmp loaded from  arg1+arg2*4+auxint+aux, arg3 = mem\n+\t\t{name: \"XORLloadidx4\", argLength: 4, reg: gp21loadidx, asm: \"XORL\", aux: \"SymOff\", resultInArg0: true, clobberFlags: true, symEffect: \"Read\", addrSinkArg1: true},  // arg0 ^ tmp, tmp loaded from  arg1+arg2*4+auxint+aux, arg3 = mem\n \n \t\t// unary ops\n \t\t{name: \"NEGL\", argLength: 1, reg: gp11, asm: \"NEGL\", resultInArg0: true, clobberFlags: true}, // -arg0\n@@ -362,67 +362,67 @@ func init() {\n \t\t// Note: LEAL{1,2,4,8} must not have OpSB as either argument.\n \n \t\t// auxint+aux == add auxint and the offset of the symbol in aux (if any) to the effective address\n-\t\t{name: \"MOVBload\", argLength: 2, reg: gpload, asm: \"MOVBLZX\", aux: \"SymOff\", typ: \"UInt8\", faultOnNilArg0: true, symEffect: \"Read\"},  // load byte from arg0+auxint+aux. arg1=mem.  Zero extend.\n-\t\t{name: \"MOVBLSXload\", argLength: 2, reg: gpload, asm: \"MOVBLSX\", aux: \"SymOff\", faultOnNilArg0: true, symEffect: \"Read\"},             // ditto, sign extend to int32\n-\t\t{name: \"MOVWload\", argLength: 2, reg: gpload, asm: \"MOVWLZX\", aux: \"SymOff\", typ: \"UInt16\", faultOnNilArg0: true, symEffect: \"Read\"}, // load 2 bytes from arg0+auxint+aux. arg1=mem.  Zero extend.\n-\t\t{name: \"MOVWLSXload\", argLength: 2, reg: gpload, asm: \"MOVWLSX\", aux: \"SymOff\", faultOnNilArg0: true, symEffect: \"Read\"},             // ditto, sign extend to int32\n-\t\t{name: \"MOVLload\", argLength: 2, reg: gpload, asm: \"MOVL\", aux: \"SymOff\", typ: \"UInt32\", faultOnNilArg0: true, symEffect: \"Read\"},    // load 4 bytes from arg0+auxint+aux. arg1=mem.  Zero extend.\n-\t\t{name: \"MOVBstore\", argLength: 3, reg: gpstore, asm: \"MOVB\", aux: \"SymOff\", typ: \"Mem\", faultOnNilArg0: true, symEffect: \"Write\"},    // store byte in arg1 to arg0+auxint+aux. arg2=mem\n-\t\t{name: \"MOVWstore\", argLength: 3, reg: gpstore, asm: \"MOVW\", aux: \"SymOff\", typ: \"Mem\", faultOnNilArg0: true, symEffect: \"Write\"},    // store 2 bytes in arg1 to arg0+auxint+aux. arg2=mem\n-\t\t{name: \"MOVLstore\", argLength: 3, reg: gpstore, asm: \"MOVL\", aux: \"SymOff\", typ: \"Mem\", faultOnNilArg0: true, symEffect: \"Write\"},    // store 4 bytes in arg1 to arg0+auxint+aux. arg2=mem\n+\t\t{name: \"MOVBload\", argLength: 2, reg: gpload, asm: \"MOVBLZX\", aux: \"SymOff\", typ: \"UInt8\", faultOnNilArg0: true, symEffect: \"Read\", addrSinkArg0: true},  // load byte from arg0+auxint+aux. arg1=mem.  Zero extend.\n+\t\t{name: \"MOVBLSXload\", argLength: 2, reg: gpload, asm: \"MOVBLSX\", aux: \"SymOff\", faultOnNilArg0: true, symEffect: \"Read\", addrSinkArg0: true},             // ditto, sign extend to int32\n+\t\t{name: \"MOVWload\", argLength: 2, reg: gpload, asm: \"MOVWLZX\", aux: \"SymOff\", typ: \"UInt16\", faultOnNilArg0: true, symEffect: \"Read\", addrSinkArg0: true}, // load 2 bytes from arg0+auxint+aux. arg1=mem.  Zero extend.\n+\t\t{name: \"MOVWLSXload\", argLength: 2, reg: gpload, asm: \"MOVWLSX\", aux: \"SymOff\", faultOnNilArg0: true, symEffect: \"Read\", addrSinkArg0: true},             // ditto, sign extend to int32\n+\t\t{name: \"MOVLload\", argLength: 2, reg: gpload, asm: \"MOVL\", aux: \"SymOff\", typ: \"UInt32\", faultOnNilArg0: true, symEffect: \"Read\", addrSinkArg0: true},    // load 4 bytes from arg0+auxint+aux. arg1=mem.  Zero extend.\n+\t\t{name: \"MOVBstore\", argLength: 3, reg: gpstore, asm: \"MOVB\", aux: \"SymOff\", typ: \"Mem\", faultOnNilArg0: true, symEffect: \"Write\", addrSinkArg0: true},    // store byte in arg1 to arg0+auxint+aux. arg2=mem\n+\t\t{name: \"MOVWstore\", argLength: 3, reg: gpstore, asm: \"MOVW\", aux: \"SymOff\", typ: \"Mem\", faultOnNilArg0: true, symEffect: \"Write\", addrSinkArg0: true},    // store 2 bytes in arg1 to arg0+auxint+aux. arg2=mem\n+\t\t{name: \"MOVLstore\", argLength: 3, reg: gpstore, asm: \"MOVL\", aux: \"SymOff\", typ: \"Mem\", faultOnNilArg0: true, symEffect: \"Write\", addrSinkArg0: true},    // store 4 bytes in arg1 to arg0+auxint+aux. arg2=mem\n \n \t\t// direct binary-op on memory (read-modify-write)\n-\t\t{name: \"ADDLmodify\", argLength: 3, reg: gpstore, asm: \"ADDL\", aux: \"SymOff\", typ: \"Mem\", faultOnNilArg0: true, clobberFlags: true, symEffect: \"Read,Write\"}, // *(arg0+auxint+aux) += arg1, arg2=mem\n-\t\t{name: \"SUBLmodify\", argLength: 3, reg: gpstore, asm: \"SUBL\", aux: \"SymOff\", typ: \"Mem\", faultOnNilArg0: true, clobberFlags: true, symEffect: \"Read,Write\"}, // *(arg0+auxint+aux) -= arg1, arg2=mem\n-\t\t{name: \"ANDLmodify\", argLength: 3, reg: gpstore, asm: \"ANDL\", aux: \"SymOff\", typ: \"Mem\", faultOnNilArg0: true, clobberFlags: true, symEffect: \"Read,Write\"}, // *(arg0+auxint+aux) &= arg1, arg2=mem\n-\t\t{name: \"ORLmodify\", argLength: 3, reg: gpstore, asm: \"ORL\", aux: \"SymOff\", typ: \"Mem\", faultOnNilArg0: true, clobberFlags: true, symEffect: \"Read,Write\"},   // *(arg0+auxint+aux) |= arg1, arg2=mem\n-\t\t{name: \"XORLmodify\", argLength: 3, reg: gpstore, asm: \"XORL\", aux: \"SymOff\", typ: \"Mem\", faultOnNilArg0: true, clobberFlags: true, symEffect: \"Read,Write\"}, // *(arg0+auxint+aux) ^= arg1, arg2=mem\n+\t\t{name: \"ADDLmodify\", argLength: 3, reg: gpstore, asm: \"ADDL\", aux: \"SymOff\", typ: \"Mem\", faultOnNilArg0: true, clobberFlags: true, symEffect: \"Read,Write\", addrSinkArg0: true}, // *(arg0+auxint+aux) += arg1, arg2=mem\n+\t\t{name: \"SUBLmodify\", argLength: 3, reg: gpstore, asm: \"SUBL\", aux: \"SymOff\", typ: \"Mem\", faultOnNilArg0: true, clobberFlags: true, symEffect: \"Read,Write\", addrSinkArg0: true}, // *(arg0+auxint+aux) -= arg1, arg2=mem\n+\t\t{name: \"ANDLmodify\", argLength: 3, reg: gpstore, asm: \"ANDL\", aux: \"SymOff\", typ: \"Mem\", faultOnNilArg0: true, clobberFlags: true, symEffect: \"Read,Write\", addrSinkArg0: true}, // *(arg0+auxint+aux) &= arg1, arg2=mem\n+\t\t{name: \"ORLmodify\", argLength: 3, reg: gpstore, asm: \"ORL\", aux: \"SymOff\", typ: \"Mem\", faultOnNilArg0: true, clobberFlags: true, symEffect: \"Read,Write\", addrSinkArg0: true},   // *(arg0+auxint+aux) |= arg1, arg2=mem\n+\t\t{name: \"XORLmodify\", argLength: 3, reg: gpstore, asm: \"XORL\", aux: \"SymOff\", typ: \"Mem\", faultOnNilArg0: true, clobberFlags: true, symEffect: \"Read,Write\", addrSinkArg0: true}, // *(arg0+auxint+aux) ^= arg1, arg2=mem\n \n \t\t// direct binary-op on indexed memory (read-modify-write)\n-\t\t{name: \"ADDLmodifyidx4\", argLength: 4, reg: gpstoreidx, asm: \"ADDL\", aux: \"SymOff\", typ: \"Mem\", clobberFlags: true, symEffect: \"Read,Write\"}, // *(arg0+arg1*4+auxint+aux) += arg2, arg3=mem\n-\t\t{name: \"SUBLmodifyidx4\", argLength: 4, reg: gpstoreidx, asm: \"SUBL\", aux: \"SymOff\", typ: \"Mem\", clobberFlags: true, symEffect: \"Read,Write\"}, // *(arg0+arg1*4+auxint+aux) -= arg2, arg3=mem\n-\t\t{name: \"ANDLmodifyidx4\", argLength: 4, reg: gpstoreidx, asm: \"ANDL\", aux: \"SymOff\", typ: \"Mem\", clobberFlags: true, symEffect: \"Read,Write\"}, // *(arg0+arg1*4+auxint+aux) &= arg2, arg3=mem\n-\t\t{name: \"ORLmodifyidx4\", argLength: 4, reg: gpstoreidx, asm: \"ORL\", aux: \"SymOff\", typ: \"Mem\", clobberFlags: true, symEffect: \"Read,Write\"},   // *(arg0+arg1*4+auxint+aux) |= arg2, arg3=mem\n-\t\t{name: \"XORLmodifyidx4\", argLength: 4, reg: gpstoreidx, asm: \"XORL\", aux: \"SymOff\", typ: \"Mem\", clobberFlags: true, symEffect: \"Read,Write\"}, // *(arg0+arg1*4+auxint+aux) ^= arg2, arg3=mem\n+\t\t{name: \"ADDLmodifyidx4\", argLength: 4, reg: gpstoreidx, asm: \"ADDL\", aux: \"SymOff\", typ: \"Mem\", clobberFlags: true, symEffect: \"Read,Write\", addrSinkArg0: true}, // *(arg0+arg1*4+auxint+aux) += arg2, arg3=mem\n+\t\t{name: \"SUBLmodifyidx4\", argLength: 4, reg: gpstoreidx, asm: \"SUBL\", aux: \"SymOff\", typ: \"Mem\", clobberFlags: true, symEffect: \"Read,Write\", addrSinkArg0: true}, // *(arg0+arg1*4+auxint+aux) -= arg2, arg3=mem\n+\t\t{name: \"ANDLmodifyidx4\", argLength: 4, reg: gpstoreidx, asm: \"ANDL\", aux: \"SymOff\", typ: \"Mem\", clobberFlags: true, symEffect: \"Read,Write\", addrSinkArg0: true}, // *(arg0+arg1*4+auxint+aux) &= arg2, arg3=mem\n+\t\t{name: \"ORLmodifyidx4\", argLength: 4, reg: gpstoreidx, asm: \"ORL\", aux: \"SymOff\", typ: \"Mem\", clobberFlags: true, symEffect: \"Read,Write\", addrSinkArg0: true},   // *(arg0+arg1*4+auxint+aux) |= arg2, arg3=mem\n+\t\t{name: \"XORLmodifyidx4\", argLength: 4, reg: gpstoreidx, asm: \"XORL\", aux: \"SymOff\", typ: \"Mem\", clobberFlags: true, symEffect: \"Read,Write\", addrSinkArg0: true}, // *(arg0+arg1*4+auxint+aux) ^= arg2, arg3=mem\n \n \t\t// direct binary-op on memory with a constant (read-modify-write)\n-\t\t{name: \"ADDLconstmodify\", argLength: 2, reg: gpstoreconst, asm: \"ADDL\", aux: \"SymValAndOff\", typ: \"Mem\", clobberFlags: true, faultOnNilArg0: true, symEffect: \"Read,Write\"}, // add ValAndOff(AuxInt).Val() to arg0+ValAndOff(AuxInt).Off()+aux, arg1=mem\n-\t\t{name: \"ANDLconstmodify\", argLength: 2, reg: gpstoreconst, asm: \"ANDL\", aux: \"SymValAndOff\", typ: \"Mem\", clobberFlags: true, faultOnNilArg0: true, symEffect: \"Read,Write\"}, // and ValAndOff(AuxInt).Val() to arg0+ValAndOff(AuxInt).Off()+aux, arg1=mem\n-\t\t{name: \"ORLconstmodify\", argLength: 2, reg: gpstoreconst, asm: \"ORL\", aux: \"SymValAndOff\", typ: \"Mem\", clobberFlags: true, faultOnNilArg0: true, symEffect: \"Read,Write\"},   // or  ValAndOff(AuxInt).Val() to arg0+ValAndOff(AuxInt).Off()+aux, arg1=mem\n-\t\t{name: \"XORLconstmodify\", argLength: 2, reg: gpstoreconst, asm: \"XORL\", aux: \"SymValAndOff\", typ: \"Mem\", clobberFlags: true, faultOnNilArg0: true, symEffect: \"Read,Write\"}, // xor ValAndOff(AuxInt).Val() to arg0+ValAndOff(AuxInt).Off()+aux, arg1=mem\n+\t\t{name: \"ADDLconstmodify\", argLength: 2, reg: gpstoreconst, asm: \"ADDL\", aux: \"SymValAndOff\", typ: \"Mem\", clobberFlags: true, faultOnNilArg0: true, symEffect: \"Read,Write\", addrSinkArg0: true}, // add ValAndOff(AuxInt).Val() to arg0+ValAndOff(AuxInt).Off()+aux, arg1=mem\n+\t\t{name: \"ANDLconstmodify\", argLength: 2, reg: gpstoreconst, asm: \"ANDL\", aux: \"SymValAndOff\", typ: \"Mem\", clobberFlags: true, faultOnNilArg0: true, symEffect: \"Read,Write\", addrSinkArg0: true}, // and ValAndOff(AuxInt).Val() to arg0+ValAndOff(AuxInt).Off()+aux, arg1=mem\n+\t\t{name: \"ORLconstmodify\", argLength: 2, reg: gpstoreconst, asm: \"ORL\", aux: \"SymValAndOff\", typ: \"Mem\", clobberFlags: true, faultOnNilArg0: true, symEffect: \"Read,Write\", addrSinkArg0: true},   // or  ValAndOff(AuxInt).Val() to arg0+ValAndOff(AuxInt).Off()+aux, arg1=mem\n+\t\t{name: \"XORLconstmodify\", argLength: 2, reg: gpstoreconst, asm: \"XORL\", aux: \"SymValAndOff\", typ: \"Mem\", clobberFlags: true, faultOnNilArg0: true, symEffect: \"Read,Write\", addrSinkArg0: true}, // xor ValAndOff(AuxInt).Val() to arg0+ValAndOff(AuxInt).Off()+aux, arg1=mem\n \n \t\t// direct binary-op on indexed memory with a constant (read-modify-write)\n-\t\t{name: \"ADDLconstmodifyidx4\", argLength: 3, reg: gpstoreconstidx, asm: \"ADDL\", aux: \"SymValAndOff\", typ: \"Mem\", clobberFlags: true, symEffect: \"Read,Write\"}, // add ValAndOff(AuxInt).Val() to arg0+arg1*4+ValAndOff(AuxInt).Off()+aux, arg2=mem\n-\t\t{name: \"ANDLconstmodifyidx4\", argLength: 3, reg: gpstoreconstidx, asm: \"ANDL\", aux: \"SymValAndOff\", typ: \"Mem\", clobberFlags: true, symEffect: \"Read,Write\"}, // and ValAndOff(AuxInt).Val() to arg0+arg1*4+ValAndOff(AuxInt).Off()+aux, arg2=mem\n-\t\t{name: \"ORLconstmodifyidx4\", argLength: 3, reg: gpstoreconstidx, asm: \"ORL\", aux: \"SymValAndOff\", typ: \"Mem\", clobberFlags: true, symEffect: \"Read,Write\"},   // or  ValAndOff(AuxInt).Val() to arg0+arg1*4+ValAndOff(AuxInt).Off()+aux, arg2=mem\n-\t\t{name: \"XORLconstmodifyidx4\", argLength: 3, reg: gpstoreconstidx, asm: \"XORL\", aux: \"SymValAndOff\", typ: \"Mem\", clobberFlags: true, symEffect: \"Read,Write\"}, // xor ValAndOff(AuxInt).Val() to arg0+arg1*4+ValAndOff(AuxInt).Off()+aux, arg2=mem\n+\t\t{name: \"ADDLconstmodifyidx4\", argLength: 3, reg: gpstoreconstidx, asm: \"ADDL\", aux: \"SymValAndOff\", typ: \"Mem\", clobberFlags: true, symEffect: \"Read,Write\", addrSinkArg0: true}, // add ValAndOff(AuxInt).Val() to arg0+arg1*4+ValAndOff(AuxInt).Off()+aux, arg2=mem\n+\t\t{name: \"ANDLconstmodifyidx4\", argLength: 3, reg: gpstoreconstidx, asm: \"ANDL\", aux: \"SymValAndOff\", typ: \"Mem\", clobberFlags: true, symEffect: \"Read,Write\", addrSinkArg0: true}, // and ValAndOff(AuxInt).Val() to arg0+arg1*4+ValAndOff(AuxInt).Off()+aux, arg2=mem\n+\t\t{name: \"ORLconstmodifyidx4\", argLength: 3, reg: gpstoreconstidx, asm: \"ORL\", aux: \"SymValAndOff\", typ: \"Mem\", clobberFlags: true, symEffect: \"Read,Write\", addrSinkArg0: true},   // or  ValAndOff(AuxInt).Val() to arg0+arg1*4+ValAndOff(AuxInt).Off()+aux, arg2=mem\n+\t\t{name: \"XORLconstmodifyidx4\", argLength: 3, reg: gpstoreconstidx, asm: \"XORL\", aux: \"SymValAndOff\", typ: \"Mem\", clobberFlags: true, symEffect: \"Read,Write\", addrSinkArg0: true}, // xor ValAndOff(AuxInt).Val() to arg0+arg1*4+ValAndOff(AuxInt).Off()+aux, arg2=mem\n \n \t\t// indexed loads/stores\n-\t\t{name: \"MOVBloadidx1\", argLength: 3, reg: gploadidx, commutative: true, asm: \"MOVBLZX\", aux: \"SymOff\", symEffect: \"Read\"}, // load a byte from arg0+arg1+auxint+aux. arg2=mem\n-\t\t{name: \"MOVWloadidx1\", argLength: 3, reg: gploadidx, commutative: true, asm: \"MOVWLZX\", aux: \"SymOff\", symEffect: \"Read\"}, // load 2 bytes from arg0+arg1+auxint+aux. arg2=mem\n-\t\t{name: \"MOVWloadidx2\", argLength: 3, reg: gploadidx, asm: \"MOVWLZX\", aux: \"SymOff\", symEffect: \"Read\"},                    // load 2 bytes from arg0+2*arg1+auxint+aux. arg2=mem\n-\t\t{name: \"MOVLloadidx1\", argLength: 3, reg: gploadidx, commutative: true, asm: \"MOVL\", aux: \"SymOff\", symEffect: \"Read\"},    // load 4 bytes from arg0+arg1+auxint+aux. arg2=mem\n-\t\t{name: \"MOVLloadidx4\", argLength: 3, reg: gploadidx, asm: \"MOVL\", aux: \"SymOff\", symEffect: \"Read\"},                       // load 4 bytes from arg0+4*arg1+auxint+aux. arg2=mem\n+\t\t{name: \"MOVBloadidx1\", argLength: 3, reg: gploadidx, commutative: true, asm: \"MOVBLZX\", aux: \"SymOff\", symEffect: \"Read\", addrSinkArg0: true, addrSinkArg1: true}, // load a byte from arg0+arg1+auxint+aux. arg2=mem\n+\t\t{name: \"MOVWloadidx1\", argLength: 3, reg: gploadidx, commutative: true, asm: \"MOVWLZX\", aux: \"SymOff\", symEffect: \"Read\", addrSinkArg0: true, addrSinkArg1: true}, // load 2 bytes from arg0+arg1+auxint+aux. arg2=mem\n+\t\t{name: \"MOVWloadidx2\", argLength: 3, reg: gploadidx, asm: \"MOVWLZX\", aux: \"SymOff\", symEffect: \"Read\", addrSinkArg0: true},                                        // load 2 bytes from arg0+2*arg1+auxint+aux. arg2=mem\n+\t\t{name: \"MOVLloadidx1\", argLength: 3, reg: gploadidx, commutative: true, asm: \"MOVL\", aux: \"SymOff\", symEffect: \"Read\", addrSinkArg0: true, addrSinkArg1: true},    // load 4 bytes from arg0+arg1+auxint+aux. arg2=mem\n+\t\t{name: \"MOVLloadidx4\", argLength: 3, reg: gploadidx, asm: \"MOVL\", aux: \"SymOff\", symEffect: \"Read\", addrSinkArg0: true},                                           // load 4 bytes from arg0+4*arg1+auxint+aux. arg2=mem\n \t\t// TODO: sign-extending indexed loads\n-\t\t{name: \"MOVBstoreidx1\", argLength: 4, reg: gpstoreidx, commutative: true, asm: \"MOVB\", aux: \"SymOff\", symEffect: \"Write\"}, // store byte in arg2 to arg0+arg1+auxint+aux. arg3=mem\n-\t\t{name: \"MOVWstoreidx1\", argLength: 4, reg: gpstoreidx, commutative: true, asm: \"MOVW\", aux: \"SymOff\", symEffect: \"Write\"}, // store 2 bytes in arg2 to arg0+arg1+auxint+aux. arg3=mem\n-\t\t{name: \"MOVWstoreidx2\", argLength: 4, reg: gpstoreidx, asm: \"MOVW\", aux: \"SymOff\", symEffect: \"Write\"},                    // store 2 bytes in arg2 to arg0+2*arg1+auxint+aux. arg3=mem\n-\t\t{name: \"MOVLstoreidx1\", argLength: 4, reg: gpstoreidx, commutative: true, asm: \"MOVL\", aux: \"SymOff\", symEffect: \"Write\"}, // store 4 bytes in arg2 to arg0+arg1+auxint+aux. arg3=mem\n-\t\t{name: \"MOVLstoreidx4\", argLength: 4, reg: gpstoreidx, asm: \"MOVL\", aux: \"SymOff\", symEffect: \"Write\"},                    // store 4 bytes in arg2 to arg0+4*arg1+auxint+aux. arg3=mem\n+\t\t{name: \"MOVBstoreidx1\", argLength: 4, reg: gpstoreidx, commutative: true, asm: \"MOVB\", aux: \"SymOff\", symEffect: \"Write\", addrSinkArg0: true, addrSinkArg1: true}, // store byte in arg2 to arg0+arg1+auxint+aux. arg3=mem\n+\t\t{name: \"MOVWstoreidx1\", argLength: 4, reg: gpstoreidx, commutative: true, asm: \"MOVW\", aux: \"SymOff\", symEffect: \"Write\", addrSinkArg0: true, addrSinkArg1: true}, // store 2 bytes in arg2 to arg0+arg1+auxint+aux. arg3=mem\n+\t\t{name: \"MOVWstoreidx2\", argLength: 4, reg: gpstoreidx, asm: \"MOVW\", aux: \"SymOff\", symEffect: \"Write\", addrSinkArg0: true},                                        // store 2 bytes in arg2 to arg0+2*arg1+auxint+aux. arg3=mem\n+\t\t{name: \"MOVLstoreidx1\", argLength: 4, reg: gpstoreidx, commutative: true, asm: \"MOVL\", aux: \"SymOff\", symEffect: \"Write\", addrSinkArg0: true, addrSinkArg1: true}, // store 4 bytes in arg2 to arg0+arg1+auxint+aux. arg3=mem\n+\t\t{name: \"MOVLstoreidx4\", argLength: 4, reg: gpstoreidx, asm: \"MOVL\", aux: \"SymOff\", symEffect: \"Write\", addrSinkArg0: true},                                        // store 4 bytes in arg2 to arg0+4*arg1+auxint+aux. arg3=mem\n \t\t// TODO: add size-mismatched indexed loads, like MOVBstoreidx4.\n \n \t\t// For storeconst ops, the AuxInt field encodes both\n \t\t// the value to store and an address offset of the store.\n \t\t// Cast AuxInt to a ValAndOff to extract Val and Off fields.\n-\t\t{name: \"MOVBstoreconst\", argLength: 2, reg: gpstoreconst, asm: \"MOVB\", aux: \"SymValAndOff\", typ: \"Mem\", faultOnNilArg0: true, symEffect: \"Write\"}, // store low byte of ValAndOff(AuxInt).Val() to arg0+ValAndOff(AuxInt).Off()+aux.  arg1=mem\n-\t\t{name: \"MOVWstoreconst\", argLength: 2, reg: gpstoreconst, asm: \"MOVW\", aux: \"SymValAndOff\", typ: \"Mem\", faultOnNilArg0: true, symEffect: \"Write\"}, // store low 2 bytes of ...\n-\t\t{name: \"MOVLstoreconst\", argLength: 2, reg: gpstoreconst, asm: \"MOVL\", aux: \"SymValAndOff\", typ: \"Mem\", faultOnNilArg0: true, symEffect: \"Write\"}, // store low 4 bytes of ...\n+\t\t{name: \"MOVBstoreconst\", argLength: 2, reg: gpstoreconst, asm: \"MOVB\", aux: \"SymValAndOff\", typ: \"Mem\", faultOnNilArg0: true, symEffect: \"Write\", addrSinkArg0: true}, // store low byte of ValAndOff(AuxInt).Val() to arg0+ValAndOff(AuxInt).Off()+aux.  arg1=mem\n+\t\t{name: \"MOVWstoreconst\", argLength: 2, reg: gpstoreconst, asm: \"MOVW\", aux: \"SymValAndOff\", typ: \"Mem\", faultOnNilArg0: true, symEffect: \"Write\", addrSinkArg0: true}, // store low 2 bytes of ...\n+\t\t{name: \"MOVLstoreconst\", argLength: 2, reg: gpstoreconst, asm: \"MOVL\", aux: \"SymValAndOff\", typ: \"Mem\", faultOnNilArg0: true, symEffect: \"Write\", addrSinkArg0: true}, // store low 4 bytes of ...\n \n-\t\t{name: \"MOVBstoreconstidx1\", argLength: 3, reg: gpstoreconstidx, asm: \"MOVB\", aux: \"SymValAndOff\", typ: \"Mem\", symEffect: \"Write\"}, // store low byte of ValAndOff(AuxInt).Val() to arg0+1*arg1+ValAndOff(AuxInt).Off()+aux.  arg2=mem\n-\t\t{name: \"MOVWstoreconstidx1\", argLength: 3, reg: gpstoreconstidx, asm: \"MOVW\", aux: \"SymValAndOff\", typ: \"Mem\", symEffect: \"Write\"}, // store low 2 bytes of ... arg1 ...\n-\t\t{name: \"MOVWstoreconstidx2\", argLength: 3, reg: gpstoreconstidx, asm: \"MOVW\", aux: \"SymValAndOff\", typ: \"Mem\", symEffect: \"Write\"}, // store low 2 bytes of ... 2*arg1 ...\n-\t\t{name: \"MOVLstoreconstidx1\", argLength: 3, reg: gpstoreconstidx, asm: \"MOVL\", aux: \"SymValAndOff\", typ: \"Mem\", symEffect: \"Write\"}, // store low 4 bytes of ... arg1 ...\n-\t\t{name: \"MOVLstoreconstidx4\", argLength: 3, reg: gpstoreconstidx, asm: \"MOVL\", aux: \"SymValAndOff\", typ: \"Mem\", symEffect: \"Write\"}, // store low 4 bytes of ... 4*arg1 ...\n+\t\t{name: \"MOVBstoreconstidx1\", argLength: 3, reg: gpstoreconstidx, asm: \"MOVB\", aux: \"SymValAndOff\", typ: \"Mem\", symEffect: \"Write\", addrSinkArg0: true}, // store low byte of ValAndOff(AuxInt).Val() to arg0+1*arg1+ValAndOff(AuxInt).Off()+aux.  arg2=mem\n+\t\t{name: \"MOVWstoreconstidx1\", argLength: 3, reg: gpstoreconstidx, asm: \"MOVW\", aux: \"SymValAndOff\", typ: \"Mem\", symEffect: \"Write\", addrSinkArg0: true}, // store low 2 bytes of ... arg1 ...\n+\t\t{name: \"MOVWstoreconstidx2\", argLength: 3, reg: gpstoreconstidx, asm: \"MOVW\", aux: \"SymValAndOff\", typ: \"Mem\", symEffect: \"Write\", addrSinkArg0: true}, // store low 2 bytes of ... 2*arg1 ...\n+\t\t{name: \"MOVLstoreconstidx1\", argLength: 3, reg: gpstoreconstidx, asm: \"MOVL\", aux: \"SymValAndOff\", typ: \"Mem\", symEffect: \"Write\", addrSinkArg0: true}, // store low 4 bytes of ... arg1 ...\n+\t\t{name: \"MOVLstoreconstidx4\", argLength: 3, reg: gpstoreconstidx, asm: \"MOVL\", aux: \"SymValAndOff\", typ: \"Mem\", symEffect: \"Write\", addrSinkArg0: true}, // store low 4 bytes of ... 4*arg1 ...\n \n \t\t// arg0 = pointer to start of memory to zero\n \t\t// arg1 = value to store (will always be zero)\n@@ -439,6 +439,7 @@ func init() {\n \t\t\t\t// Note: CX is only clobbered when dynamic linking.\n \t\t\t},\n \t\t\tfaultOnNilArg0: true,\n+\t\t\taddrSinkArg0:   true,\n \t\t},\n \n \t\t// arg0 = address of memory to zero\n@@ -454,6 +455,7 @@ func init() {\n \t\t\t\tclobbers: buildReg(\"DI CX\"),\n \t\t\t},\n \t\t\tfaultOnNilArg0: true,\n+\t\t\taddrSinkArg0:   true,\n \t\t},\n \n \t\t{name: \"CALLstatic\", argLength: 1, reg: regInfo{clobbers: callerSave}, aux: \"CallOff\", clobberFlags: true, call: true},                                              // call static function aux.(*obj.LSym).  arg0=mem, auxint=argsize, returns mem\n@@ -477,6 +479,8 @@ func init() {\n \t\t\tclobberFlags:   true,\n \t\t\tfaultOnNilArg0: true,\n \t\t\tfaultOnNilArg1: true,\n+\t\t\taddrSinkArg0:   true,\n+\t\t\taddrSinkArg1:   true,\n \t\t},\n \n \t\t// arg0 = destination pointer\n@@ -493,6 +497,8 @@ func init() {\n \t\t\t},\n \t\t\tfaultOnNilArg0: true,\n \t\t\tfaultOnNilArg1: true,\n+\t\t\taddrSinkArg0:   true,\n+\t\t\taddrSinkArg1:   true,\n \t\t},\n \n \t\t// (InvertFlags (CMPL a b)) == (CMPL b a)\ndiff --git a/src/cmd/compile/internal/ssa/_gen/AMD64.rules b/src/cmd/compile/internal/ssa/_gen/AMD64.rules\nindex d55dfe7..44c797d 100644\n--- a/src/cmd/compile/internal/ssa/_gen/AMD64.rules\n+++ b/src/cmd/compile/internal/ssa/_gen/AMD64.rules\n@@ -932,7 +932,8 @@\n (LEA(Q|L)2 [0] {s} (ADD(Q|L) x x) x) && s == nil => (SHL(Q|L)const [2] x)\n \n // (x + x) << 2 -> x << 3 and similar\n-(SHL(Q|L)const [c] (ADD(Q|L) x x))  => (SHL(Q|L)const [c+1] x)\n+(SHLQconst [c] (ADDQ x x)) && c < 63 => (SHLQconst [c+1] x)\n+(SHLLconst [c] (ADDL x x)) && c < 31 => (SHLLconst [c+1] x)\n \n // reverse ordering of compare instruction\n (SETL (InvertFlags x)) => (SETG x)\n",
+ "diff_truncated": true
+}

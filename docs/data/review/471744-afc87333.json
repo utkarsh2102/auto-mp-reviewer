@@ -1,0 +1,35 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~mitchdz/ubuntu/+source/gdisk/+git/gdisk/+merge/471744",
+ "id": "471744",
+ "title": "PPA - https://launchpad.net/~mitchdz/+archive/ubuntu/lp2039594-gdisk-decimal",
+ "source_branch": "mitch/gdisk-decimal-jammy",
+ "target_branch": "ubuntu/jammy-devel",
+ "revision": "71a757e68ec581005f852fecf9a3f9ed8bca6831",
+ "base_revision": "9bade04736ef27075f2e2737eeb97840ec54c372",
+ "description": "PPA - https://launchpad.net/~mitchdz/+archive/ubuntu/lp2039594-gdisk-decimal\n\n  - gdisk/1.0.8-4ubuntu1~jammy1\n    + ✅ gdisk on jammy for amd64   @ 21.08.24 04:43:31\n      • Log: https://autopkgtest.ubuntu.com/results/autopkgtest-jammy-mitchdz-lp2039594-gdisk-decimal/jammy/amd64/g/gdisk/20240821_044331_8fd94@/log.gz\n    + ✅ gdisk on jammy for amd64   @ 21.08.24 04:58:20\n      • Log: https://autopkgtest.ubuntu.com/results/autopkgtest-jammy-mitchdz-lp2039594-gdisk-decimal/jammy/amd64/g/gdisk/20240821_045820_6ac1d@/log.gz\n    + ✅ gdisk on jammy for arm64   @ 21.08.24 04:46:13\n      • Log: https://autopkgtest.ubuntu.com/results/autopkgtest-jammy-mitchdz-lp2039594-gdisk-decimal/jammy/arm64/g/gdisk/20240821_044613_0393d@/log.gz\n    + ✅ gdisk on jammy for armhf   @ 21.08.24 04:45:33\n      • Log: https://autopkgtest.ubuntu.com/results/autopkgtest-jammy-mitchdz-lp2039594-gdisk-decimal/jammy/armhf/g/gdisk/20240821_044533_b2aa3@/log.gz\n    + ✅ gdisk on jammy for i386    @ 21.08.24 04:43:23\n      • Log: https://autopkgtest.ubuntu.com/results/autopkgtest-jammy-mitchdz-lp2039594-gdisk-decimal/jammy/i386/g/gdisk/20240821_044323_50b6d@/log.gz\n    + ✅ gdisk on jammy for ppc64el @ 21.08.24 04:45:33\n      • Log: https://autopkgtest.ubuntu.com/results/autopkgtest-jammy-mitchdz-lp2039594-gdisk-decimal/jammy/ppc64el/g/gdisk/20240821_044533_fdae3@/log.gz\n    + ✅ gdisk on jammy for s390x   @ 21.08.24 04:58:37\n      • Log: https://autopkgtest.ubuntu.com/results/autopkgtest-jammy-mitchdz-lp2039594-gdisk-decimal/jammy/s390x/g/gdisk/20240821_045837_40714@/log.gz\n",
+ "commit_message": null,
+ "diffstat": {
+  "debian/changelog": [
+   12,
+   0
+  ],
+  "debian/control": [
+   2,
+   1
+  ],
+  "debian/patches/0002-Truncate-decimal-inputs-e.g.-9.5G-becomes-9G.patch": [
+   48,
+   0
+  ],
+  "debian/patches/series": [
+   1,
+   0
+  ]
+ },
+ "files": 4,
+ "added_lines": 63,
+ "removed_lines": 1,
+ "diff": "diff --git a/debian/changelog b/debian/changelog\nindex d6de79e..10d6d4e 100644\n--- a/debian/changelog\n+++ b/debian/changelog\n@@ -1,3 +1,15 @@\n+gdisk (1.0.8-4ubuntu0.1) jammy; urgency=medium\n+\n+  * Truncate decimal inputs (e.g., '9.5G' becomes '9G') (LP: #2039594).\n+    - In previous versions, GPT fdisk accepted only integer values for partition\n+      start points, end points, and sizes, and it interpreted decimal values\n+      incorrectly. That is, if you typed \"+9.5G\" as the partition end point,\n+      you'd end up with something just 9 sectors in size. This version now\n+      truncates decimal numbers to their integral values, so you'd get a 9 GiB\n+      partition instead.\n+\n+ -- Mitchell Dzurick <mitchell.dzurick@canonical.com>  Tue, 20 Aug 2024 16:33:55 -0700\n+\n gdisk (1.0.8-4build1) jammy; urgency=medium\n \n   * No-change rebuild for ppc64el baseline bump.\ndiff --git a/debian/control b/debian/control\nindex 8ec9bad..bcfc9b8 100644\n--- a/debian/control\n+++ b/debian/control\n@@ -1,7 +1,8 @@\n Source: gdisk\n Section: admin\n Priority: optional\n-Maintainer: Jonathan Carter <jcc@debian.org>\n+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>\n+XSBC-Original-Maintainer: Jonathan Carter <jcc@debian.org>\n Build-Depends: debhelper-compat (= 13),\n                libncursesw5-dev,\n                libpopt-dev,\ndiff --git a/debian/patches/0002-Truncate-decimal-inputs-e.g.-9.5G-becomes-9G.patch b/debian/patches/0002-Truncate-decimal-inputs-e.g.-9.5G-becomes-9G.patch\nnew file mode 100644\nindex 0000000..989fe26\n--- /dev/null\n+++ b/debian/patches/0002-Truncate-decimal-inputs-e.g.-9.5G-becomes-9G.patch\n@@ -0,0 +1,48 @@\n+Description: Truncate decimal inputs (e.g., '9.5G' becomes '9G')\n+Author: Rod Smith <rodsmith@rodsbooks.com>\n+Origin: upstream, https://sourceforge.net/p/gptfdisk/code/ci/e1cc654ef71996d836c5d051278130f50f768f84\n+Bug-Ubuntu: https://bugs.launchpad.net/bugs/2039594\n+Forwarded: not-needed\n+Last-Update: 2024-08-20\n+---\n+ support.cc | 12 +++++++++++-\n+ 1 file changed, 11 insertions(+), 1 deletion(-)\n+\n+This patch header follows DEP-3: http://dep.debian.net/deps/dep3/\n+diff --git a/support.cc b/support.cc\n+index 99fdffe..d7833cf 100644\n+--- a/support.cc\n++++ b/support.cc\n+@@ -147,6 +147,8 @@ uint64_t GetSectorNum(uint64_t low, uint64_t high, uint64_t def, uint64_t sSize,\n+ // inValue works out to something outside the range low-high, returns the\n+ // computed value; the calling function is responsible for checking the\n+ // validity of this value.\n++// If inValue contains a decimal number (e.g., \"9.5G\"), quietly truncate it\n++// (to \"9G\" in this example).\n+ // NOTE: There's a difference in how GCC and VC++ treat oversized values\n+ // (say, \"999999999999999999999\") read via the \">>\" operator; GCC turns\n+ // them into the maximum value for the type, whereas VC++ turns them into\n+@@ -181,6 +183,15 @@ uint64_t IeeeToInt(string inValue, uint64_t sSize, uint64_t low, uint64_t high,\n+       badInput = 1;\n+    inString >> response >> suffix;\n+    suffix = toupper(suffix);\n++   foundAt = suffixes.find(suffix);\n++   // If suffix is invalid, try to find a valid one. Done because users\n++   // sometimes enter decimal numbers; when they do, suffix becomes\n++   // '.', and we need to truncate the number and find the real suffix.\n++   while (foundAt > (suffixes.length() - 1) && inString.peek() != -1) {\n++      inString >> suffix;\n++      foundAt = suffixes.find(suffix);\n++      suffix = toupper(suffix);\n++   }\n+ \n+    // If no response, or if response == 0, use default (def)\n+    if ((inValue.length() == 0) || (response == 0)) {\n+@@ -190,7 +201,6 @@ uint64_t IeeeToInt(string inValue, uint64_t sSize, uint64_t low, uint64_t high,\n+    } // if\n+ \n+    // Find multiplication and division factors for the suffix\n+-   foundAt = suffixes.find(suffix);\n+    if (foundAt != string::npos) {\n+       bytesPerUnit = UINT64_C(1) << (10 * (foundAt + 1));\n+       mult = bytesPerUnit / sSize;\ndiff --git a/debian/patches/series b/debian/patches/series\nindex d58c2a6..577afac 100644\n--- a/debian/patches/series\n+++ b/debian/patches/series\n@@ -1 +1,2 @@\n 0001-Fix-string-format-errors-with-recent-ncurses.patch\n+0002-Truncate-decimal-inputs-e.g.-9.5G-becomes-9G.patch\n",
+ "diff_truncated": false
+}

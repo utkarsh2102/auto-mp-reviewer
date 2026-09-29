@@ -1,0 +1,23 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~arif-ali/autopkgtest-cloud/+git/autopkgtest-package-configs/+merge/511231",
+ "id": "511231",
+ "title": "main → main",
+ "source_branch": "main",
+ "target_branch": "main",
+ "revision": "5656cbe30a5cf7384da1d8f0b7b2c87230763c4a",
+ "base_revision": "eba2cfa2278fe7e86ee2ba193f23c6fabb2686b9",
+ "description": null,
+ "commit_message": null,
+ "diffstat": {
+  "vm_packages": [
+   1,
+   0
+  ]
+ },
+ "files": 1,
+ "added_lines": 1,
+ "removed_lines": 0,
+ "diff": "diff --git a/vm_packages b/vm_packages\nindex a5fba35..3ae78eb 100644\n--- a/vm_packages\n+++ b/vm_packages\n@@ -186,6 +186,7 @@ skopeo\n smcroute\n snapd\n sos\n+sosreport\n sphinx\n squashfs-mount\n squashfuse\n",
+ "diff_truncated": false
+}

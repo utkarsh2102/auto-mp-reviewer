@@ -1,0 +1,27 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~jbicha/britney/+git/https-autopkgtest/+merge/345302",
+ "id": "345302",
+ "title": "master → master",
+ "source_branch": "master",
+ "target_branch": "master",
+ "revision": "9dfab298f49452c5ae69356fc2f3fab74b81e454",
+ "base_revision": "c3fe5dc8970f438d625ab85f5a4ff99ebab48745",
+ "description": null,
+ "commit_message": null,
+ "diffstat": {
+  "tests/test_autopkgtest.py": [
+   7,
+   7
+  ],
+  "britney2/policies/autopkgtest.py": [
+   2,
+   2
+  ]
+ },
+ "files": 2,
+ "added_lines": 9,
+ "removed_lines": 9,
+ "diff": "diff --git a/britney2/policies/autopkgtest.py b/britney2/policies/autopkgtest.py\nindex 806debd..03e7162 100644\n--- a/britney2/policies/autopkgtest.py\n+++ b/britney2/policies/autopkgtest.py\n@@ -188,7 +188,7 @@ class AutopkgtestPolicy(BasePolicy):\n \n         # add test result details to Excuse\n         verdict = PolicyVerdict.PASS\n-        cloud_url = \"http://autopkgtest.ubuntu.com/packages/%(h)s/%(s)s/%(r)s/%(a)s\"\n+        cloud_url = \"https://autopkgtest.ubuntu.com/packages/%(h)s/%(s)s/%(r)s/%(a)s\"\n         for (testsrc, testver) in sorted(pkg_arch_result):\n             arch_results = pkg_arch_result[(testsrc, testver)]\n             r = set([v[0] for v in arch_results.values()])\n@@ -717,7 +717,7 @@ class AutopkgtestPolicy(BasePolicy):\n                     result = 'RUNNING'\n                 else:\n                     result = 'RUNNING-ALWAYSFAIL'\n-                url = 'http://autopkgtest.ubuntu.com/running'\n+                url = 'https://autopkgtest.ubuntu.com/running'\n             else:\n                 raise RuntimeError('Result for %s/%s/%s (triggered by %s) is neither known nor pending!' %\n                                    (src, ver, arch, trigger))\ndiff --git a/tests/test_autopkgtest.py b/tests/test_autopkgtest.py\nindex bc736ae..26ff3c6 100755\n--- a/tests/test_autopkgtest.py\n+++ b/tests/test_autopkgtest.py\n@@ -231,13 +231,13 @@ class T(TestBase):\n         self.assertEqual(exc['darkgreen']['policy_info']['autopkgtest'],\n                          {'darkgreen': {\n                              'amd64': ['RUNNING-ALWAYSFAIL',\n-                                       'http://autopkgtest.ubuntu.com/running',\n-                                       'http://autopkgtest.ubuntu.com/packages/d/darkgreen/series/amd64',\n+                                       'https://autopkgtest.ubuntu.com/running',\n+                                       'https://autopkgtest.ubuntu.com/packages/d/darkgreen/series/amd64',\n                                        None,\n                                        None],\n                              'i386': ['RUNNING-ALWAYSFAIL',\n-                                      'http://autopkgtest.ubuntu.com/running',\n-                                      'http://autopkgtest.ubuntu.com/packages/d/darkgreen/series/i386',\n+                                      'https://autopkgtest.ubuntu.com/running',\n+                                      'https://autopkgtest.ubuntu.com/packages/d/darkgreen/series/i386',\n                                       None,\n                                       None]}})\n \n@@ -507,7 +507,7 @@ class T(TestBase):\n         self.assertEqual(exc['green']['policy_info']['autopkgtest']['lightgreen/1']['amd64'][:4],\n                          ['REGRESSION',\n                           'http://localhost:18085/autopkgtest-series/series/amd64/l/lightgreen/20150101_100101@/log.gz',\n-                          'http://autopkgtest.ubuntu.com/packages/l/lightgreen/series/amd64',\n+                          'https://autopkgtest.ubuntu.com/packages/l/lightgreen/series/amd64',\n                           None])\n \n         # should have retry link for the regressions (not a stable URL, test\n@@ -2065,12 +2065,12 @@ class T(TestBase):\n         self.assertEqual(exc['lightgreen']['policy_info']['autopkgtest'],\n                          {'lightgreen': {\n                              'amd64': ['RUNNING-ALWAYSFAIL',\n-                                       'http://autopkgtest.ubuntu.com/running',\n+                                       'https://autopkgtest.ubuntu.com/running',\n                                        None,\n                                        None,\n                                        None],\n                              'i386': ['RUNNING-ALWAYSFAIL',\n-                                      'http://autopkgtest.ubuntu.com/running',\n+                                      'https://autopkgtest.ubuntu.com/running',\n                                       None,\n                                       None,\n                                       None]}\n",
+ "diff_truncated": false
+}

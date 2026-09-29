@@ -1,0 +1,47 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~pushkarnk/ubuntu/+source/openjdk-21/+git/openjdk-21/+merge/484599",
+ "id": "484599",
+ "title": "ubuntu/devel → ubuntu/devel",
+ "source_branch": "ubuntu/devel",
+ "target_branch": "ubuntu/devel",
+ "revision": "65955d3ab645f0ecab0dad8f1b66d69af8af7328",
+ "base_revision": "18876a2faf862b00fbea54b805fa8d91adb07066",
+ "description": null,
+ "commit_message": null,
+ "diffstat": {
+  "debian/changelog": [
+   16,
+   0
+  ],
+  "debian/control": [
+   2,
+   1
+  ],
+  "debian/control.in": [
+   2,
+   1
+  ],
+  "debian/rules": [
+   2,
+   2
+  ],
+  "debian/tests/jtreg-autopkgtest.in": [
+   7,
+   1
+  ],
+  "debian/tests/jtreg-autopkgtest.sh": [
+   7,
+   1
+  ],
+  "debian/watch": [
+   1,
+   1
+  ]
+ },
+ "files": 7,
+ "added_lines": 37,
+ "removed_lines": 7,
+ "diff": "diff --git a/debian/changelog b/debian/changelog\nindex acf4003..0669e37 100644\n--- a/debian/changelog\n+++ b/debian/changelog\n@@ -1,3 +1,19 @@\n+openjdk-21 (21.0.7+6~us1-0ubuntu1) plucky; urgency=medium\n+\n+  * OpenJDK 21.0.7 release, build 6. Release notes:\n+    https://mail.openjdk.org/pipermail/jdk-updates-dev/2025-April/043308.html\n+\n+    - CVEs:\n+      + CVE-2025-21587\n+      + CVE-2025-30691\n+      + CVE-2025-30698\n+\n+  [ Matthias Klose ]\n+  * Honour DEB_BUILD_OPTIONS=parallel=N while running jtreg tests (Helmut\n+    Grohne). Addresses: #1095920.\n+\n+ -- Pushkar Kulkarni <pushkar.kulkarni@canonical.com>  Thu, 17 Apr 2025 11:27:30 +0530\n+\n openjdk-21 (21.0.7~8ea-1) unstable; urgency=medium\n \n   [ NOTE: This really is 21.0.7~5ea-1, the version in the last upload was wrong]\ndiff --git a/debian/control b/debian/control\nindex 52697ed..d936d68 100644\n--- a/debian/control\n+++ b/debian/control\n@@ -1,7 +1,8 @@\n Source: openjdk-21\n Section: java\n Priority: optional\n-Maintainer: OpenJDK Team <openjdk-21@packages.debian.org>\n+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>\n+XSBC-Original-Maintainer: OpenJDK Team <openjdk-21@packages.debian.org>\n Uploaders: Matthias Klose <doko@ubuntu.com>\n Build-Depends: debhelper (>= 11),\n   m4, lsb-release, zip, unzip,\ndiff --git a/debian/control.in b/debian/control.in\nindex 7b94a3e..f0c3f20 100644\n--- a/debian/control.in\n+++ b/debian/control.in\n@@ -1,7 +1,8 @@\n Source: @basename@\n Section: java\n Priority: optional\n-Maintainer: OpenJDK Team <@basename@@packages.debian.org>\n+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>\n+XSBC-Original-Maintainer: OpenJDK Team <@basename@@packages.debian.org>\n Uploaders: Matthias Klose <doko@ubuntu.com>\n Build-Depends: @bd_debhelper@\n   m4, lsb-release, zip, unzip,\ndiff --git a/debian/rules b/debian/rules\nindex 057995c..24ac38d 100755\n--- a/debian/rules\n+++ b/debian/rules\n@@ -83,7 +83,7 @@ else\n endif\n \n is_upstream_release = yes\n-is_upstream_release =\n+#is_upstream_release =\n \n srcdir\t\t= .\n builddir\t= build\n@@ -2035,7 +2035,7 @@ endif\n \tdh_builddeb -a $(nodemo) $(nojrez) #$(bd_options)\n \n git_project\t\t= jdk21u\n-git_tag\t\t\t= jdk-21.0.7+5\n+git_tag\t\t\t= jdk-21.0.7+6\n package_version\t\t= $(shell echo $(PKGVERSION) | sed 's/-[^-][^-]*$$//')\n ifneq ($(is_upstream_release),yes)\n   package_version\t:= $(subst +,~,$(package_version))\ndiff --git a/debian/tests/jtreg-autopkgtest.in b/debian/tests/jtreg-autopkgtest.in\nindex 6c4c3c3..2cb7395 100755\n--- a/debian/tests/jtreg-autopkgtest.in\n+++ b/debian/tests/jtreg-autopkgtest.in\n@@ -30,7 +30,13 @@ if [[ \"armel\" == *\"${host_arch}\"* ]]; then\n   jt_options+=\" -Xmx256M\"\n fi\n if dpkg --compare-versions ${jtreg_version} ge 4.2; then\n-  jt_options+=\" -conc:auto\"\n+  njobs=auto\n+  for opt in ${DEB_BUILD_OPTIONS:-}; do\n+    if test \"${opt#parallel=}\" != \"$opt\"; then\n+      njobs=\"${opt#parallel=}\"\n+    fi\n+  done\n+  jt_options+=\" -conc:$njobs\"\n fi\n \n # check java binary\ndiff --git a/debian/tests/jtreg-autopkgtest.sh b/debian/tests/jtreg-autopkgtest.sh\nindex 0eb7128..e7a2d28 100755\n--- a/debian/tests/jtreg-autopkgtest.sh\n+++ b/debian/tests/jtreg-autopkgtest.sh\n@@ -30,7 +30,13 @@ if [[ \"armel\" == *\"${host_arch}\"* ]]; then\n   jt_options+=\" -Xmx256M\"\n fi\n if dpkg --compare-versions ${jtreg_version} ge 4.2; then\n-  jt_options+=\" -conc:auto\"\n+  njobs=auto\n+  for opt in ${DEB_BUILD_OPTIONS:-}; do\n+    if test \"${opt#parallel=}\" != \"$opt\"; then\n+      njobs=\"${opt#parallel=}\"\n+    fi\n+  done\n+  jt_options+=\" -conc:$njobs\"\n fi\n \n # check java binary\ndiff --git a/debian/watch b/debian/watch\nindex e7fc7d8..53d7a52 100644\n--- a/debian/watch\n+++ b/debian/watch\n@@ -1,6 +1,6 @@\n version=4\n opts=\\\n-repack,repacksuffix=ea,oversionmangle=s/\\+(\\d+)/\\~$1/,dversionmangle=s/\\~(\\d*)ea$/\\+$1/,\\\n+repack,\\\n compression=xz, \\\n     https://github.com/openjdk/jdk21u/tags \\\n     (?:.*?/)?jdk-(21[\\+\\.\\d]*)\\.tar\\.gz\n",
+ "diff_truncated": false
+}

@@ -1,0 +1,1619 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~arif-ali/ubuntu/+source/sosreport/+git/sosreport/+merge/494823",
+ "id": "494823",
+ "title": "lp2088381-bionic → ubuntu/bionic-devel",
+ "source_branch": "lp2088381-bionic",
+ "target_branch": "ubuntu/bionic-devel",
+ "revision": "3ec34870d0de31dc89d4439cf1d0f2cdcd95b2be",
+ "base_revision": "73ff33d8fe58e675dccbc6af90014fb44ff9c468",
+ "description": null,
+ "commit_message": null,
+ "diffstat": {
+  ".cirrus.yml": [
+   235,
+   92
+  ],
+  "dev/null": [
+   0,
+   40
+  ],
+  ".github/PULL_REQUEST_TEMPLATE.md": [
+   2,
+   1
+  ],
+  ".github/codeql/codeql-config.yaml": [
+   4,
+   0
+  ],
+  ".github/workflows/codeql.yaml": [
+   42,
+   0
+  ],
+  ".github/workflows/snap.yaml": [
+   43,
+   0
+  ],
+  ".gitignore": [
+   12,
+   10
+  ],
+  ".packit.yaml": [
+   20,
+   19
+  ],
+  "README.md": [
+   11,
+   4
+  ],
+  "bin/sos": [
+   1,
+   0
+  ],
+  "bin/sos-collector": [
+   3,
+   2
+  ],
+  "bin/sosreport": [
+   3,
+   2
+  ],
+  "debian/changelog": [
+   70,
+   0
+  ],
+  "debian/control": [
+   4,
+   1
+  ],
+  "debian/patches/0002-debian-remove-magic-stderr.patch": [
+   41,
+   0
+  ],
+  "debian/patches/0003-debian-remove-py38-walrus.patch": [
+   41,
+   0
+  ],
+  "debian/patches/0003-o_horizon-Obfuscate-credentials-in-local_settings.py.patch": [
+   42,
+   0
+  ],
+  "debian/patches/0004-ceph_common-Obfuscate-rgw-password-in-ceph.conf.patch": [
+   28,
+   0
+  ],
+  "debian/patches/0005-logs-Add-all-auth.log-syslog-and-kerne.log-as-standa.patch": [
+   76,
+   0
+  ],
+  "debian/patches/0006-ubuntu-Revamp-of-plugin.patch": [
+   89,
+   0
+  ],
+  "debian/patches/0007-clean-Update-the-last-command-for-obfuscation.patch": [
+   26,
+   0
+  ],
+  "debian/patches/0008-login-clean-Update-login-plugin-and-use-for-clean.patch": [
+   76,
+   0
+  ],
+  "debian/patches/series": [
+   8,
+   2
+  ],
+  "debian/rules": [
+   1,
+   1
+  ],
+  "debian/tests/simple.sh": [
+   11,
+   9
+  ],
+  "docs/conf.py": [
+   3,
+   4
+  ],
+  "docs/index.rst": [
+   3,
+   3
+  ],
+  "man/en/sos-clean.1": [
+   18,
+   8
+  ],
+  "man/en/sos-collect.1": [
+   46,
+   51
+  ],
+  "man/en/sos-help.1": [
+   2,
+   2
+  ],
+  "man/en/sos-report.1": [
+   40,
+   24
+  ],
+  "man/en/sos.1": [
+   10,
+   10
+  ],
+  "man/en/sos.conf.5": [
+   3,
+   3
+  ],
+  "plugins_overview.py": [
+   47,
+   28
+  ],
+  "pylintrc": [
+   46,
+   0
+  ],
+  "requirements.txt": [
+   2,
+   1
+  ],
+  "setup.py": [
+   10,
+   88
+  ],
+  "snap/snapcraft.yaml": [
+   19,
+   11
+  ],
+  "sos.spec": [
+   96,
+   20
+  ],
+  "sos/__init__.py": [
+   17,
+   25
+  ],
+  "sos/archive.py": [
+   145,
+   94
+  ],
+  "sos/cleaner/__init__.py": [
+   226,
+   143
+  ],
+  "sos/cleaner/archives/__init__.py": [
+   69,
+   45
+  ],
+  "sos/cleaner/archives/generic.py": [
+   2,
+   3
+  ],
+  "sos/cleaner/archives/insights.py": [
+   1,
+   8
+  ],
+  "sos/cleaner/archives/sos.py": [
+   2,
+   21
+  ],
+  "sos/cleaner/mappings/__init__.py": [
+   14,
+   6
+  ],
+  "sos/cleaner/mappings/hostname_map.py": [
+   25,
+   25
+  ],
+  "sos/cleaner/mappings/ip_map.py": [
+   18,
+   20
+  ],
+  "sos/cleaner/mappings/ipv6_map.py": [
+   279,
+   0
+  ],
+  "sos/cleaner/mappings/keyword_map.py": [
+   4,
+   1
+  ],
+  "sos/cleaner/mappings/mac_map.py": [
+   5,
+   4
+  ],
+  "sos/cleaner/mappings/username_map.py": [
+   5,
+   8
+  ],
+  "sos/cleaner/parsers/__init__.py": [
+   12,
+   7
+  ],
+  "sos/cleaner/parsers/hostname_parser.py": [
+   18,
+   56
+  ],
+  "sos/cleaner/parsers/ip_parser.py": [
+   3,
+   3
+  ],
+  "sos/cleaner/parsers/ipv6_parser.py": [
+   59,
+   0
+  ],
+  "sos/cleaner/parsers/keyword_parser.py": [
+   2,
+   17
+  ],
+  "sos/cleaner/parsers/mac_parser.py": [
+   12,
+   11
+  ],
+  "sos/cleaner/parsers/username_parser.py": [
+   4,
+   33
+  ],
+  "sos/cleaner/preppers/__init__.py": [
+   126,
+   0
+  ],
+  "sos/cleaner/preppers/hostname.py": [
+   63,
+   0
+  ],
+  "sos/cleaner/preppers/ip.py": [
+   34,
+   0
+  ],
+  "sos/cleaner/preppers/keywords.py": [
+   38,
+   0
+  ],
+  "sos/cleaner/preppers/mac.py": [
+   28,
+   0
+  ],
+  "sos/cleaner/preppers/usernames.py": [
+   69,
+   0
+  ],
+  "sos/collector/__init__.py": [
+   236,
+   189
+  ],
+  "sos/collector/clusters/__init__.py": [
+   53,
+   40
+  ],
+  "sos/collector/clusters/ceph.py": [
+   67,
+   0
+  ],
+  "sos/collector/clusters/juju.py": [
+   234,
+   0
+  ],
+  "sos/collector/clusters/kubernetes.py": [
+   3,
+   4
+  ],
+  "sos/collector/clusters/ocp.py": [
+   82,
+   43
+  ],
+  "sos/collector/clusters/openstack.py": [
+   3,
+   3
+  ],
+  "sos/collector/clusters/ovirt.py": [
+   23,
+   27
+  ],
+  "sos/collector/clusters/pacemaker.py": [
+   10,
+   10
+  ],
+  "sos/collector/clusters/saltstack.py": [
+   84,
+   0
+  ],
+  "sos/collector/clusters/satellite.py": [
+   1,
+   1
+  ],
+  "sos/collector/exceptions.py": [
+   39,
+   18
+  ],
+  "sos/collector/sosnode.py": [
+   207,
+   195
+  ],
+  "sos/collector/transports/__init__.py": [
+   98,
+   56
+  ],
+  "sos/collector/transports/control_persist.py": [
+   41,
+   40
+  ],
+  "sos/collector/transports/juju.py": [
+   91,
+   0
+  ],
+  "sos/collector/transports/local.py": [
+   6,
+   3
+  ],
+  "sos/collector/transports/oc.py": [
+   33,
+   28
+  ],
+  "sos/collector/transports/saltstack.py": [
+   162,
+   0
+  ],
+  "sos/component.py": [
+   128,
+   46
+  ],
+  "sos/help/__init__.py": [
+   21,
+   20
+  ],
+  "sos/missing.py": [
+   4,
+   6
+  ],
+  "sos/options.py": [
+   24,
+   38
+  ],
+  "sos/policies/__init__.py": [
+   85,
+   82
+  ],
+  "sos/policies/auth/__init__.py": [
+   212,
+   0
+  ],
+  "sos/policies/distros/__init__.py": [
+   440,
+   132
+  ],
+  "sos/policies/distros/almalinux.py": [
+   30,
+   0
+  ],
+  "sos/policies/distros/amazon.py": [
+   6,
+   23
+  ],
+  "sos/policies/distros/anolis.py": [
+   24,
+   0
+  ],
+  "sos/policies/distros/azure.py": [
+   34,
+   0
+  ],
+  "sos/policies/distros/circle.py": [
+   26,
+   0
+  ],
+  "sos/policies/distros/cloudlinux.py": [
+   29,
+   0
+  ],
+  "sos/policies/distros/cos.py": [
+   8,
+   13
+  ],
+  "sos/policies/distros/debian.py": [
+   26,
+   22
+  ],
+  "sos/policies/distros/opencloudos.py": [
+   25,
+   0
+  ],
+  "sos/policies/distros/openeuler.py": [
+   6,
+   22
+  ],
+  "sos/policies/distros/redhat.py": [
+   206,
+   223
+  ],
+  "sos/policies/distros/rocky.py": [
+   6,
+   29
+  ],
+  "sos/policies/distros/suse.py": [
+   12,
+   19
+  ],
+  "sos/policies/distros/ubuntu.py": [
+   29,
+   25
+  ],
+  "sos/policies/distros/uniontechserver.py": [
+   6,
+   22
+  ],
+  "sos/policies/init_systems/__init__.py": [
+   7,
+   6
+  ],
+  "sos/policies/init_systems/systemd.py": [
+   2,
+   1
+  ],
+  "sos/policies/package_managers/__init__.py": [
+   229,
+   58
+  ],
+  "sos/policies/package_managers/dpkg.py": [
+   10,
+   1
+  ],
+  "sos/policies/package_managers/flatpak.py": [
+   29,
+   0
+  ],
+  "sos/policies/package_managers/rpm.py": [
+   7,
+   0
+  ],
+  "sos/policies/package_managers/snap.py": [
+   33,
+   0
+  ],
+  "sos/policies/runtimes/__init__.py": [
+   11,
+   12
+  ],
+  "sos/policies/runtimes/crio.py": [
+   5,
+   5
+  ],
+  "sos/policies/runtimes/docker.py": [
+   3,
+   3
+  ],
+  "sos/policies/runtimes/lxd.py": [
+   152,
+   0
+  ],
+  "sos/presets/__init__.py": [
+   23,
+   8
+  ],
+  "sos/presets/redhat/__init__.py": [
+   33,
+   17
+  ],
+  "sos/report/__init__.py": [
+   331,
+   232
+  ],
+  "sos/report/plugins/__init__.py": [
+   520,
+   420
+  ],
+  "sos/report/plugins/aap_controller.py": [
+   91,
+   0
+  ],
+  "sos/report/plugins/aap_eda.py": [
+   53,
+   0
+  ],
+  "sos/report/plugins/aap_gateway.py": [
+   51,
+   0
+  ],
+  "sos/report/plugins/aap_hub.py": [
+   37,
+   0
+  ],
+  "sos/report/plugins/aap_receptor.py": [
+   58,
+   0
+  ],
+  "sos/report/plugins/abrt.py": [
+   3,
+   3
+  ],
+  "sos/report/plugins/activemq.py": [
+   2,
+   2
+  ],
+  "sos/report/plugins/aide.py": [
+   56,
+   0
+  ],
+  "sos/report/plugins/alternatives.py": [
+   49,
+   11
+  ],
+  "sos/report/plugins/anaconda.py": [
+   5,
+   4
+  ],
+  "sos/report/plugins/ansible.py": [
+   7,
+   2
+  ],
+  "sos/report/plugins/apache.py": [
+   27,
+   18
+  ],
+  "sos/report/plugins/apparmor.py": [
+   5,
+   4
+  ],
+  "sos/report/plugins/apport.py": [
+   2,
+   1
+  ],
+  "sos/report/plugins/apt.py": [
+   11,
+   1
+  ],
+  "sos/report/plugins/arcconf.py": [
+   36,
+   10
+  ],
+  "sos/report/plugins/auditd.py": [
+   10,
+   9
+  ],
+  "sos/report/plugins/autofs.py": [
+   23,
+   2
+  ],
+  "sos/report/plugins/azure.py": [
+   6,
+   6
+  ],
+  "sos/report/plugins/bird.py": [
+   70,
+   0
+  ],
+  "sos/report/plugins/block.py": [
+   10,
+   7
+  ],
+  "sos/report/plugins/boot.py": [
+   13,
+   9
+  ],
+  "sos/report/plugins/bootc.py": [
+   32,
+   0
+  ],
+  "sos/report/plugins/buildah.py": [
+   3,
+   3
+  ],
+  "sos/report/plugins/candlepin.py": [
+   12,
+   6
+  ],
+  "sos/report/plugins/canonical_livepatch.py": [
+   6,
+   3
+  ],
+  "sos/report/plugins/canonical_livepatch_onprem.py": [
+   42,
+   0
+  ],
+  "sos/report/plugins/ceph_ansible.py": [
+   1,
+   1
+  ],
+  "sos/report/plugins/ceph_common.py": [
+   73,
+   39
+  ],
+  "sos/report/plugins/ceph_iscsi.py": [
+   49,
+   0
+  ],
+  "sos/report/plugins/ceph_mds.py": [
+   76,
+   48
+  ],
+  "sos/report/plugins/ceph_mgr.py": [
+   135,
+   69
+  ],
+  "sos/report/plugins/ceph_mon.py": [
+   224,
+   98
+  ],
+  "sos/report/plugins/ceph_osd.py": [
+   127,
+   78
+  ],
+  "sos/report/plugins/ceph_rgw.py": [
+   101,
+   21
+  ],
+  "sos/report/plugins/cgroups.py": [
+   4,
+   3
+  ],
+  "sos/report/plugins/charmed_postgresql.py": [
+   191,
+   0
+  ],
+  "sos/report/plugins/chrony.py": [
+   3,
+   3
+  ],
+  "sos/report/plugins/cifs.py": [
+   6,
+   4
+  ],
+  "sos/report/plugins/clear_containers.py": [
+   17,
+   14
+  ],
+  "sos/report/plugins/cloud_init.py": [
+   4,
+   0
+  ],
+  "sos/report/plugins/cman.py": [
+   2,
+   3
+  ],
+  "sos/report/plugins/cobbler.py": [
+   4,
+   0
+  ],
+  "sos/report/plugins/cockpit.py": [
+   5,
+   3
+  ],
+  "sos/report/plugins/collectd.py": [
+   10,
+   9
+  ],
+  "sos/report/plugins/composer.py": [
+   25,
+   5
+  ],
+  "sos/report/plugins/conntrack.py": [
+   11,
+   3
+  ],
+  "sos/report/plugins/console.py": [
+   1,
+   1
+  ],
+  "sos/report/plugins/container_log.py": [
+   16,
+   5
+  ],
+  "sos/report/plugins/containerd.py": [
+   38,
+   0
+  ],
+  "sos/report/plugins/containers_common.py": [
+   9,
+   4
+  ],
+  "sos/report/plugins/convert2rhel.py": [
+   4,
+   1
+  ],
+  "sos/report/plugins/coredump.py": [
+   118,
+   0
+  ],
+  "sos/report/plugins/corosync.py": [
+   10,
+   13
+  ],
+  "sos/report/plugins/crio.py": [
+   12,
+   10
+  ],
+  "sos/report/plugins/crypto.py": [
+   2,
+   2
+  ],
+  "sos/report/plugins/cs.py": [
+   12,
+   5
+  ],
+  "sos/report/plugins/ctdb.py": [
+   1,
+   1
+  ],
+  "sos/report/plugins/curtin.py": [
+   57,
+   0
+  ],
+  "sos/report/plugins/cxl.py": [
+   43,
+   0
+  ],
+  "sos/report/plugins/date.py": [
+   1,
+   1
+  ],
+  "sos/report/plugins/dellrac.py": [
+   9,
+   7
+  ],
+  "sos/report/plugins/devicemapper.py": [
+   5,
+   0
+  ],
+  "sos/report/plugins/dhcp.py": [
+   2,
+   2
+  ],
+  "sos/report/plugins/discovery.py": [
+   5,
+   5
+  ],
+  "sos/report/plugins/dlm.py": [
+   4,
+   3
+  ],
+  "sos/report/plugins/dmraid.py": [
+   1,
+   1
+  ],
+  "sos/report/plugins/dnf.py": [
+   35,
+   9
+  ],
+  "sos/report/plugins/docker.py": [
+   27,
+   17
+  ],
+  "sos/report/plugins/docker_distribution.py": [
+   4,
+   4
+  ],
+  "sos/report/plugins/dovecot.py": [
+   2,
+   6
+  ],
+  "sos/report/plugins/dracut.py": [
+   1,
+   1
+  ],
+  "sos/report/plugins/drbd.py": [
+   1,
+   1
+  ],
+  "sos/report/plugins/ds.py": [
+   13,
+   7
+  ],
+  "sos/report/plugins/ebpf.py": [
+   17,
+   14
+  ],
+  "sos/report/plugins/elastic.py": [
+   14,
+   10
+  ],
+  "sos/report/plugins/etcd.py": [
+   32,
+   44
+  ],
+  "sos/report/plugins/fail2ban.py": [
+   30,
+   0
+  ],
+  "sos/report/plugins/fapolicyd.py": [
+   42,
+   0
+  ],
+  "sos/report/plugins/fcoe.py": [
+   1,
+   1
+  ],
+  "sos/report/plugins/fibrechannel.py": [
+   3,
+   3
+  ],
+  "sos/report/plugins/filesys.py": [
+   26,
+   9
+  ],
+  "sos/report/plugins/firewall_tables.py": [
+   22,
+   6
+  ],
+  "sos/report/plugins/firewalld.py": [
+   6,
+   3
+  ],
+  "sos/report/plugins/flatpak.py": [
+   3,
+   2
+  ],
+  "sos/report/plugins/foreman.py": [
+   89,
+   64
+  ],
+  "sos/report/plugins/foreman_installer.py": [
+   11,
+   11
+  ],
+  "sos/report/plugins/foreman_openscap.py": [
+   26,
+   0
+  ],
+  "sos/report/plugins/foreman_proxy.py": [
+   12,
+   10
+  ],
+  "sos/report/plugins/frr.py": [
+   35,
+   1
+  ],
+  "sos/report/plugins/fwupd.py": [
+   6,
+   5
+  ],
+  "sos/report/plugins/gcp.py": [
+   24,
+   21
+  ],
+  "sos/report/plugins/gfs2.py": [
+   8,
+   0
+  ],
+  "sos/report/plugins/gluster.py": [
+   25,
+   25
+  ],
+  "sos/report/plugins/gluster_block.py": [
+   2,
+   2
+  ],
+  "sos/report/plugins/grafana.py": [
+   30,
+   14
+  ],
+  "sos/report/plugins/greenboot.py": [
+   26,
+   0
+  ],
+  "sos/report/plugins/grub2.py": [
+   8,
+   5
+  ],
+  "sos/report/plugins/haproxy.py": [
+   8,
+   6
+  ],
+  "sos/report/plugins/hardware.py": [
+   4,
+   1
+  ],
+  "sos/report/plugins/host.py": [
+   4,
+   4
+  ],
+  "sos/report/plugins/hpssm.py": [
+   10,
+   11
+  ],
+  "sos/report/plugins/i18n.py": [
+   1,
+   1
+  ],
+  "sos/report/plugins/infiniband.py": [
+   20,
+   24
+  ],
+  "sos/report/plugins/infinidat.py": [
+   44,
+   0
+  ],
+  "sos/report/plugins/insights.py": [
+   11,
+   4
+  ],
+  "sos/report/plugins/instructlab.py": [
+   158,
+   0
+  ],
+  "sos/report/plugins/ipa.py": [
+   45,
+   25
+  ],
+  "sos/report/plugins/ipmitool.py": [
+   12,
+   12
+  ],
+  "sos/report/plugins/iprconfig.py": [
+   16,
+   16
+  ],
+  "sos/report/plugins/iscsi.py": [
+   10,
+   8
+  ],
+  "sos/report/plugins/iscsitarget.py": [
+   2,
+   2
+  ],
+  "sos/report/plugins/jars.py": [
+   32,
+   31
+  ],
+  "sos/report/plugins/juju.py": [
+   142,
+   8
+  ],
+  "sos/report/plugins/kafka.py": [
+   61,
+   0
+  ],
+  "sos/report/plugins/kata_containers.py": [
+   0,
+   5
+  ],
+  "sos/report/plugins/kdump.py": [
+   95,
+   17
+  ],
+  "sos/report/plugins/kea.py": [
+   44,
+   0
+  ],
+  "sos/report/plugins/kernel.py": [
+   22,
+   10
+  ],
+  "sos/report/plugins/kernelrt.py": [
+   8,
+   2
+  ],
+  "sos/report/plugins/kpatch.py": [
+   2,
+   2
+  ],
+  "sos/report/plugins/krb5.py": [
+   50,
+   12
+  ],
+  "sos/report/plugins/kubernetes.py": [
+   269,
+   120
+  ],
+  "sos/report/plugins/landscape.py": [
+   47,
+   51
+  ],
+  "sos/report/plugins/ldap.py": [
+   11,
+   15
+  ],
+  "sos/report/plugins/leapp.py": [
+   4,
+   1
+  ],
+  "sos/report/plugins/libraries.py": [
+   7,
+   5
+  ],
+  "sos/report/plugins/libvirt.py": [
+   25,
+   9
+  ],
+  "sos/report/plugins/login.py": [
+   3,
+   3
+  ],
+  "sos/report/plugins/logrotate.py": [
+   4,
+   1
+  ],
+  "sos/report/plugins/logs.py": [
+   47,
+   22
+  ],
+  "sos/report/plugins/lstopo.py": [
+   7,
+   3
+  ],
+  "sos/report/plugins/lustre.py": [
+   40,
+   14
+  ],
+  "sos/report/plugins/lvm2.py": [
+   37,
+   9
+  ],
+  "sos/report/plugins/lxd.py": [
+   27,
+   22
+  ],
+  "sos/report/plugins/maas.py": [
+   138,
+   85
+  ],
+  "sos/report/plugins/manageiq.py": [
+   1,
+   1
+  ],
+  "sos/report/plugins/md.py": [
+   2,
+   1
+  ],
+  "sos/report/plugins/megacli.py": [
+   1,
+   1
+  ],
+  "sos/report/plugins/mellanox_firmware.py": [
+   126,
+   0
+  ],
+  "sos/report/plugins/memcached.py": [
+   21,
+   3
+  ],
+  "sos/report/plugins/memory.py": [
+   3,
+   1
+  ],
+  "sos/report/plugins/microcloud.py": [
+   44,
+   0
+  ],
+  "sos/report/plugins/microk8s.py": [
+   69,
+   0
+  ],
+  "sos/report/plugins/microovn.py": [
+   40,
+   0
+  ],
+  "sos/report/plugins/microshift.py": [
+   180,
+   0
+  ],
+  "sos/report/plugins/microshift_ovn.py": [
+   47,
+   0
+  ],
+  "sos/report/plugins/mongodb.py": [
+   8,
+   12
+  ],
+  "sos/report/plugins/monit.py": [
+   5,
+   22
+  ],
+  "sos/report/plugins/mssql.py": [
+   19,
+   19
+  ],
+  "sos/report/plugins/multipath.py": [
+   1,
+   1
+  ],
+  "sos/report/plugins/mvcli.py": [
+   6,
+   5
+  ],
+  "sos/report/plugins/mysql.py": [
+   39,
+   15
+  ],
+  "sos/report/plugins/named.py": [
+   5,
+   7
+  ],
+  "sos/report/plugins/navicli.py": [
+   18,
+   18
+  ],
+  "sos/report/plugins/networking.py": [
+   166,
+   93
+  ],
+  "sos/report/plugins/networkmanager.py": [
+   31,
+   17
+  ],
+  "sos/report/plugins/nfs.py": [
+   7,
+   1
+  ],
+  "sos/report/plugins/nfsganesha.py": [
+   0,
+   2
+  ],
+  "sos/report/plugins/nginx.py": [
+   12,
+   0
+  ],
+  "sos/report/plugins/npm.py": [
+   3,
+   6
+  ],
+  "sos/report/plugins/nscd.py": [
+   5,
+   5
+  ],
+  "sos/report/plugins/ntp.py": [
+   3,
+   3
+  ],
+  "sos/report/plugins/nvidia.py": [
+   13,
+   6
+  ],
+  "sos/report/plugins/nvme.py": [
+   16,
+   2
+  ],
+  "sos/report/plugins/omnipath_client.py": [
+   5,
+   7
+  ],
+  "sos/report/plugins/omnipath_manager.py": [
+   4,
+   4
+  ],
+  "sos/report/plugins/omsa.py": [
+   11,
+   11
+  ],
+  "sos/report/plugins/opencontrail.py": [
+   4,
+   1
+  ],
+  "sos/report/plugins/openhpi.py": [
+   1,
+   1
+  ],
+  "sos/report/plugins/openshift.py": [
+   30,
+   29
+  ],
+  "sos/report/plugins/openshift_ovn.py": [
+   30,
+   5
+  ],
+  "sos/report/plugins/openssl.py": [
+   3,
+   3
+  ],
+  "sos/report/plugins/openstack_ansible.py": [
+   1,
+   1
+  ],
+  "sos/report/plugins/openstack_aodh.py": [
+   15,
+   7
+  ],
+  "sos/report/plugins/openstack_barbican.py": [
+   4,
+   3
+  ],
+  "sos/report/plugins/openstack_ceilometer.py": [
+   13,
+   5
+  ],
+  "sos/report/plugins/openstack_cinder.py": [
+   73,
+   18
+  ],
+  "sos/report/plugins/openstack_database.py": [
+   6,
+   6
+  ],
+  "sos/report/plugins/openstack_designate.py": [
+   12,
+   4
+  ],
+  "sos/report/plugins/openstack_edpm.py": [
+   41,
+   0
+  ],
+  "sos/report/plugins/openstack_glance.py": [
+   27,
+   7
+  ],
+  "sos/report/plugins/openstack_gnocchi.py": [
+   17,
+   22
+  ],
+  "sos/report/plugins/openstack_heat.py": [
+   27,
+   7
+  ],
+  "sos/report/plugins/openstack_horizon.py": [
+   11,
+   21
+  ],
+  "sos/report/plugins/openstack_instack.py": [
+   47,
+   46
+  ],
+  "sos/report/plugins/openstack_ironic.py": [
+   22,
+   15
+  ],
+  "sos/report/plugins/openstack_keystone.py": [
+   30,
+   16
+  ],
+  "sos/report/plugins/openstack_manila.py": [
+   36,
+   9
+  ],
+  "sos/report/plugins/openstack_masakari.py": [
+   75,
+   0
+  ],
+  "sos/report/plugins/openstack_masakarimonitors.py": [
+   57,
+   0
+  ],
+  "sos/report/plugins/openstack_mistral.py": [
+   48,
+   0
+  ],
+  "sos/report/plugins/openstack_neutron.py": [
+   76,
+   18
+  ],
+  "sos/report/plugins/openstack_nova.py": [
+   53,
+   32
+  ],
+  "sos/report/plugins/openstack_novajoin.py": [
+   2,
+   7
+  ],
+  "sos/report/plugins/openstack_octavia.py": [
+   17,
+   9
+  ],
+  "sos/report/plugins/openstack_placement.py": [
+   59,
+   22
+  ],
+  "sos/report/plugins/openstack_sahara.py": [
+   7,
+   8
+  ],
+  "sos/report/plugins/openstack_swift.py": [
+   13,
+   4
+  ],
+  "sos/report/plugins/openstack_tripleo.py": [
+   4,
+   6
+  ],
+  "sos/report/plugins/openstack_trove.py": [
+   7,
+   10
+  ],
+  "sos/report/plugins/opensvc.py": [
+   5,
+   3
+  ],
+  "sos/report/plugins/openvswitch.py": [
+   281,
+   221
+  ],
+  "sos/report/plugins/origin.py": [
+   18,
+   22
+  ],
+  "sos/report/plugins/os_net_config.py": [
+   1,
+   0
+  ],
+  "sos/report/plugins/ostree.py": [
+   5,
+   2
+  ],
+  "sos/report/plugins/ovirt.py": [
+   44,
+   47
+  ],
+  "sos/report/plugins/ovirt_engine_backup.py": [
+   6,
+   9
+  ],
+  "sos/report/plugins/ovirt_node.py": [
+   1,
+   1
+  ],
+  "sos/report/plugins/ovn_central.py": [
+   156,
+   82
+  ],
+  "sos/report/plugins/ovn_host.py": [
+   58,
+   17
+  ],
+  "sos/report/plugins/pacemaker.py": [
+   36,
+   21
+  ],
+  "sos/report/plugins/pam.py": [
+   6,
+   6
+  ],
+  "sos/report/plugins/pci.py": [
+   3,
+   1
+  ],
+  "sos/report/plugins/pcp.py": [
+   16,
+   24
+  ],
+  "sos/report/plugins/perccli.py": [
+   4,
+   4
+  ],
+  "sos/report/plugins/perccli2.py": [
+   58,
+   0
+  ],
+  "sos/report/plugins/peripety.py": [
+   3,
+   3
+  ],
+  "sos/report/plugins/pmem.py": [
+   22,
+   25
+  ],
+  "sos/report/plugins/podman.py": [
+   17,
+   11
+  ],
+  "sos/report/plugins/postfix.py": [
+   51,
+   10
+  ],
+  "sos/report/plugins/postgresql.py": [
+   16,
+   41
+  ],
+  "sos/report/plugins/powerpc.py": [
+   45,
+   17
+  ],
+  "sos/report/plugins/process.py": [
+   44,
+   14
+  ],
+  "sos/report/plugins/processor.py": [
+   27,
+   11
+  ],
+  "sos/report/plugins/proxmox.py": [
+   101,
+   0
+  ],
+  "sos/report/plugins/psacct.py": [
+   2,
+   2
+  ],
+  "sos/report/plugins/pulp.py": [
+   39,
+   26
+  ],
+  "sos/report/plugins/pulpcore.py": [
+   63,
+   63
+  ],
+  "sos/report/plugins/puppet.py": [
+   11,
+   8
+  ],
+  "sos/report/plugins/pxe.py": [
+   2,
+   2
+  ],
+  "sos/report/plugins/python.py": [
+   44,
+   46
+  ],
+  "sos/report/plugins/qaucli.py": [
+   5,
+   5
+  ],
+  "sos/report/plugins/qpid.py": [
+   4,
+   4
+  ],
+  "sos/report/plugins/qpid_dispatch.py": [
+   3,
+   3
+  ],
+  "sos/report/plugins/rabbitmq.py": [
+   7,
+   1
+  ],
+  "sos/report/plugins/radius.py": [
+   2,
+   2
+  ],
+  "sos/report/plugins/rasdaemon.py": [
+   1,
+   1
+  ],
+  "sos/report/plugins/rear.py": [
+   2,
+   2
+  ],
+  "sos/report/plugins/redis.py": [
+   6,
+   25
+  ],
+  "sos/report/plugins/release.py": [
+   5,
+   4
+  ],
+  "sos/report/plugins/rhc.py": [
+   65,
+   0
+  ],
+  "sos/report/plugins/rhui.py": [
+   10,
+   4
+  ],
+  "sos/report/plugins/rhv_analyzer.py": [
+   7,
+   16
+  ],
+  "sos/report/plugins/rpm.py": [
+   3,
+   3
+  ],
+  "sos/report/plugins/rpmostree.py": [
+   2,
+   2
+  ],
+  "sos/report/plugins/s390.py": [
+   5,
+   5
+  ],
+  "sos/report/plugins/salt.py": [
+   34,
+   4
+  ],
+  "sos/report/plugins/saltmaster.py": [
+   38,
+   3
+  ],
+  "sos/report/plugins/samba.py": [
+   6,
+   2
+  ],
+  "sos/report/plugins/sanlock.py": [
+   1,
+   2
+  ],
+  "sos/report/plugins/saphana.py": [
+   20,
+   19
+  ],
+  "sos/report/plugins/sapnw.py": [
+   31,
+   41
+  ],
+  "sos/report/plugins/sar.py": [
+   26,
+   23
+  ],
+  "sos/report/plugins/sas3ircu.py": [
+   8,
+   6
+  ],
+  "sos/report/plugins/scsi.py": [
+   6,
+   4
+  ],
+  "sos/report/plugins/seagate_ses.py": [
+   6,
+   2
+  ],
+  "sos/report/plugins/sedutil.py": [
+   49,
+   0
+  ],
+  "sos/report/plugins/selinux.py": [
+   5,
+   4
+  ],
+  "sos/report/plugins/sendmail.py": [
+   2,
+   2
+  ],
+  "sos/report/plugins/services.py": [
+   7,
+   7
+  ],
+  "sos/report/plugins/shmcli.py": [
+   25,
+   20
+  ],
+  "sos/report/plugins/skydive.py": [
+   1,
+   1
+  ],
+  "sos/report/plugins/slurm.py": [
+   138,
+   0
+  ],
+  "sos/report/plugins/smartcard.py": [
+   3,
+   1
+  ],
+  "sos/report/plugins/smclient.py": [
+   3,
+   2
+  ],
+  "sos/report/plugins/snap.py": [
+   57,
+   1
+  ],
+  "sos/report/plugins/snapper.py": [
+   2,
+   1
+  ],
+  "sos/report/plugins/snmp.py": [
+   0,
+   5
+  ],
+  "sos/report/plugins/sos_extras.py": [
+   36,
+   35
+  ],
+  "sos/report/plugins/soundcard.py": [
+   2,
+   4
+  ],
+  "sos/report/plugins/ssh.py": [
+   48,
+   28
+  ],
+  "sos/report/plugins/ssmtp.py": [
+   2,
+   2
+  ],
+  "sos/report/plugins/sssd.py": [
+   6,
+   8
+  ],
+  "sos/report/plugins/storcli.py": [
+   4,
+   4
+  ],
+  "sos/report/plugins/stratis.py": [
+   1,
+   1
+  ],
+  "sos/report/plugins/subscription_manager.py": [
+   50,
+   25
+  ],
+  "sos/report/plugins/sudo.py": [
+   16,
+   0
+  ]
+ },
+ "files": 503,
+ "added_lines": 19637,
+ "removed_lines": 6885,
+ "diff": "diff --git a/.cirrus.yml b/.cirrus.yml\nindex 8c48aed..7da4a6f 100644\n--- a/.cirrus.yml\n+++ b/.cirrus.yml\n@@ -3,35 +3,46 @@\n # Main environment vars to set for all tasks\n env:\n \n-    FEDORA_VER: \"35\"\n-    FEDORA_PRIOR_VER: \"34\"\n-    FEDORA_NAME: \"fedora-${FEDORA_VER}\"\n-    FEDORA_PRIOR_NAME: \"fedora-${FEDORA_PRIOR_VER}\"\n+    FEDORA_NAME: \"fedora-38\"\n+    FEDORA_PRIOR_NAME: \"fedora-37\"\n \n-    UBUNTU_NAME: \"ubuntu-22.04\"\n-    UBUNTU_PRIOR_NAME: \"ubuntu-20.04\"\n+    DEBIAN_NAME: \"debian-11\"\n+\n+    UBUNTU_DEVEL_NAME: \"ubuntu-25.04\"\n+    UBUNTU_LATEST_NAME: \"ubuntu-24.10\"\n+    UBUNTU_NAME: \"ubuntu-24.04\"\n+    UBUNTU_PRIOR_NAME: \"ubuntu-22.04\"\n+    UBUNTU_PRIOR2_NAME: \"ubuntu-20.04\"\n \n     CENTOS_9_NAME: \"centos-stream-9\"\n-    CENTOS_8_NAME: \"centos-stream-8\"\n \n     CENTOS_PROJECT: \"centos-cloud\"\n+    DEBIAN_PROJECT: \"debian-cloud\"\n     FEDORA_PROJECT: \"fedora-cloud\"\n     SOS_PROJECT: \"sos-devel-jobs\"\n     UBUNTU_PROJECT: \"ubuntu-os-cloud\"\n-\n-    # These are generated images pushed to GCP from Red Hat\n-    # FEDORA_PRIOR to be switched to \"stock\" images from the Fedora Project\n-    # once the F36 image is pushed. \n-    FEDORA_PRIOR_IMAGE_NAME: \"f${FEDORA_PRIOR_VER}-server-sos-testing\"\n-    FOREMAN_CENTOS_IMAGE_NAME: \"foreman-25-centos-8-sos-testing\"\n-    FOREMAN_DEBIAN_IMAGE_NAME: \"foreman-25-debian-10-sos-testing\"\n+    UBUNTU_DEVEL_PROJECT: \"ubuntu-os-cloud-devel\"\n \n     # Images exist on GCP already\n-    CENTOS_9_IMAGE_NAME: \"centos-stream-9-v20220621\"\n-    CENTOS_8_IMAGE_NAME: \"centos-stream-8-v20220621\"\n-    FEDORA_IMAGE_NAME: \"fedora-cloud-base-gcp-${FEDORA_VER}-1-2-x86-64\"\n-    UBUNTU_IMAGE_NAME: \"ubuntu-2204-jammy-v20220622\"\n-    UBUNTU_PRIOR_IMAGE_NAME: \"ubuntu-2004-focal-v20220701\"\n+    CENTOS_9_FAMILY_NAME: \"centos-stream-9\"\n+    DEBIAN_FAMILY_NAME: \"debian-11\"\n+    FEDORA_FAMILY_NAME: \"fedora-cloud-38\"\n+    FEDORA_PRIOR_FAMILY_NAME: \"fedora-cloud-37\"\n+\n+    UBUNTU_DEB_FAMILY_NAME: \"ubuntu-minimal-2410-amd64\"\n+    UBUNTU_LATEST_FAMILY_NAME: \"ubuntu-2410-amd64\"\n+    UBUNTU_FAMILY_NAME: \"ubuntu-2404-lts-amd64\"\n+    UBUNTU_PRIOR_FAMILY_NAME: \"ubuntu-2204-lts\"\n+    UBUNTU_PRIOR2_FAMILY_NAME: \"ubuntu-2004-lts\"\n+    UBUNTU_SNAP_FAMILY_NAME: \"ubuntu-2404-lts-amd64\"\n+    UBUNTU_DEVEL_FAMILY_NAME: \"ubuntu-2504-amd64\"\n+\n+    # Curl-command prefix for downloading task artifacts, simply add the\n+    # the url-encoded task name, artifact name, and path as a suffix.\n+    # This approach originally seen in the podman project.\n+    ARTCURL: >-\n+        curl --fail --location -O\n+        --url https://api.cirrus-ci.com/v1/artifact/build/${CIRRUS_BUILD_ID}\n \n # Default task timeout\n timeout_in: 30m\n@@ -44,16 +55,30 @@ gcp_credentials: ENCRYPTED[!77d4c8251094346c41db63cb05eba2ff98eaff04e58c5d0e2a8e\n \n # Run a simple lint on the community cluster\n flake8_task:\n+    skip: &man-changes-include \"changesIncludeOnly('man/**')\"\n     alias: \"flake8_test\"\n     name: \"Flake8 linting test\"\n     container:\n-        image: alpine/flake8:latest\n-    flake_script: flake8 sos\n+        image: \"python:latest\"\n+    setup_script: &tox-lint-setup |\n+        apt update\n+        apt -y install tox\n+    flake_script: tox -e flake8\n+\n+pylint_task:\n+    skip: *man-changes-include\n+    alias: \"pylint_test\"\n+    name: \"pylint linting test\"\n+    container:\n+        image: \"python:latest\"\n+    setup_script: *tox-lint-setup\n+    pylint_script: tox -e pylint\n \n # Run a check on newer upstream python versions to check for possible\n # breaks/changes in common modules. This is not meant to check any of the actual\n # collections or archive integrity.\n py_break_task:\n+    skip: *man-changes-include\n     alias: \"py_break\"\n     name: \"Breakage test python-$PY_VERSION\"\n     container:\n@@ -69,96 +94,203 @@ py_break_task:\n \n # Make sure a user can manually build an rpm from the checkout\n rpm_build_task:\n+    skip: *man-changes-include\n     alias: \"rpm_build\"\n-    name: \"RPM Build From Checkout\"\n-    container:\n-        image: \"fedora\"\n-    setup_script: dnf -y install rpm-build rpmdevtools gettext python3-devel\n+    name: \"rpm Build From Checkout - ${BUILD_NAME}\"\n+    gce_instance: &standardvm\n+        image_project: \"${PROJECT}\"\n+        image_family: \"${VM_FAMILY_NAME}\"\n+        type: e2-medium\n+    matrix:\n+        - env: &centos9\n+            PROJECT: ${CENTOS_PROJECT}\n+            BUILD_NAME: ${CENTOS_9_NAME}\n+            VM_FAMILY_NAME: ${CENTOS_9_FAMILY_NAME}\n+        - env: &fedora\n+            PROJECT: ${FEDORA_PROJECT}\n+            BUILD_NAME: ${FEDORA_NAME}\n+            VM_FAMILY_NAME: ${FEDORA_FAMILY_NAME}\n+        - env: &fedoraprior\n+            PROJECT: ${FEDORA_PROJECT}\n+            BUILD_NAME: ${FEDORA_PRIOR_NAME}\n+            VM_FAMILY_NAME: ${FEDORA_PRIOR_FAMILY_NAME}\n+    setup_script: |\n+        dnf clean all\n+        dnf -y install rpm-build rpmdevtools gettext python3-devel\n     main_script: |\n-        rpmdev-setuptree\n+        mkdir -p /rpmbuild/{BUILD,BUILDROOT,RPMS,SRPMS,SOURCES}\n         python3 setup.py sdist\n-        cp dist/sos*.tar.gz ~/rpmbuild/SOURCES\n+        cp dist/sos*.tar.gz /rpmbuild/SOURCES/\n         rpmbuild -bs sos.spec\n+        dnf -y builddep /rpmbuild/SRPMS/sos*src.rpm\n         rpmbuild -bb sos.spec\n+    # Retrieving the built rpm in later tasks requires knowing the exact name\n+    # of the file. To avoid having to juggle version numbers here, rename it\n+    prep_artifacts_script: mv /rpmbuild/RPMS/noarch/sos-*.rpm ./sos_${BUILD_NAME}.rpm\n+    packages_artifacts:\n+        path: ./sos_${BUILD_NAME}.rpm\n+        type: application/octet-stream\n+\n+# Make sure a user can manually build a deb from the checkout\n+deb_build_task:\n+    skip: *man-changes-include\n+    alias: \"deb_build\"\n+    name: \"deb Build From Checkout\"\n+    gce_instance:\n+        image_project: \"${UBUNTU_PROJECT}\"\n+        image_family: \"${UBUNTU_DEB_FAMILY_NAME}\"\n+        type: e2-medium\n+    setup_script: |\n+        apt update --allow-releaseinfo-change\n+        apt -y install devscripts equivs python3-pip\n+        mk-build-deps\n+        apt -y install ./sosreport-build-deps*.deb\n+        pip3 install -r test-requirements.txt --break-system-packages\n+    main_script: |\n+        dpkg-buildpackage -b -us -uc -rfakeroot -m --build-by=\"noreply@canonical.com\"\n+    prep_artifacts_script: mv ../*.deb ./sos_cirrus.deb\n+    packages_artifacts:\n+        path: ./sos_cirrus.deb\n+        type: application/octet-stream\n+\n+# Make sure a user can manually build a snap from the checkout\n+snap_build_task:\n+    skip: *man-changes-include\n+    alias: \"snap_build\"\n+    name: \"snap Build From Checkout\"\n+    gce_instance:\n+        image_project: \"${UBUNTU_PROJECT}\"\n+        image_family: \"${UBUNTU_SNAP_FAMILY_NAME}\"\n+        type: e2-medium\n+    setup_script: |\n+        apt update\n+        apt -y install snapd\n+        systemctl start snapd\n+        sed -i -e 's/adopt-info.*/version: test/g' -e '/set version/d' snap/snapcraft.yaml\n+        snap install snapcraft --classic\n+    main_script: |\n+        snapcraft --destructive-mode\n+    packages_artifacts:\n+        path: \"*.snap\"\n+    on_failure:\n+        fail_script: |\n+            ls -d /root/.cache/snapcraft/log 2> /dev/null | xargs tar cf snap-build-fail-logs.tar\n+        log_artifacts:\n+            path: \"snap-build-fail-logs.tar\"\n \n # Run the stage one (no mocking) tests across all distros on GCP\n report_stageone_task:\n+    skip: *man-changes-include\n     alias: \"stageone_report\"\n     name: \"Report Stage One - $BUILD_NAME\"\n-    gce_instance: &standardvm\n-        image_project: \"${PROJECT}\"\n-        image_name: \"${VM_IMAGE_NAME}\"\n-        type: e2-medium\n+    depends_on:\n+        - rpm_build\n+        - snap_build\n+        - deb_build\n+    gce_instance: *standardvm\n     matrix:\n-        - env:\n-            PROJECT: ${CENTOS_PROJECT}\n-            BUILD_NAME: ${CENTOS_9_NAME}\n-            VM_IMAGE_NAME: ${CENTOS_9_IMAGE_NAME}\n-        - env:\n-            PROJECT: ${CENTOS_PROJECT}\n-            BUILD_NAME: ${CENTOS_8_NAME}\n-            VM_IMAGE_NAME: ${CENTOS_8_IMAGE_NAME}\n-        - env:\n-            PROJECT: ${FEDORA_PROJECT}\n-            BUILD_NAME: ${FEDORA_NAME}\n-            VM_IMAGE_NAME: ${FEDORA_IMAGE_NAME}\n-        - env:\n-            PROJECT: ${SOS_PROJECT}\n-            BUILD_NAME: ${FEDORA_PRIOR_NAME}\n-            VM_IMAGE_NAME: ${FEDORA_PRIOR_IMAGE_NAME}\n-        - env:\n+        - env: *centos9\n+        - env: *fedora\n+        - env: *fedoraprior\n+        - env: &ubuntu\n+            PKG: \"snap\"\n             PROJECT: ${UBUNTU_PROJECT}\n-            BUILD_NAME: ${UBUNTU_NAME}\n-            VM_IMAGE_NAME: ${UBUNTU_IMAGE_NAME}\n-        - env:\n+            BUILD_NAME: \"${UBUNTU_NAME} - ${PKG}\"\n+            VM_FAMILY_NAME: ${UBUNTU_FAMILY_NAME}\n+        - env: &ubuntuprior\n+            PKG: \"snap\"\n             PROJECT: ${UBUNTU_PROJECT}\n-            BUILD_NAME: ${UBUNTU_PRIOR_NAME}\n-            VM_IMAGE_NAME: ${UBUNTU_PRIOR_IMAGE_NAME}\n-    remove_sos_script: &remove_sos |\n+            BUILD_NAME: \"${UBUNTU_PRIOR_NAME} - ${PKG}\"\n+            VM_FAMILY_NAME: ${UBUNTU_PRIOR_FAMILY_NAME}\n+        - env: &ubuntuprior2\n+            PKG: \"snap\"\n+            PROJECT: ${UBUNTU_PROJECT}\n+            BUILD_NAME: \"${UBUNTU_PRIOR2_NAME} - ${PKG}\"\n+            VM_FAMILY_NAME: ${UBUNTU_PRIOR2_FAMILY_NAME}\n+        - env: &ubuntu-latest-snap\n+            PKG: \"snap\"\n+            PROJECT: ${UBUNTU_PROJECT}\n+            BUILD_NAME: \"${UBUNTU_LATEST_NAME} - ${PKG}\"\n+            VM_FAMILY_NAME: ${UBUNTU_LATEST_FAMILY_NAME}\n+        - env: &ubuntu-latest-deb\n+            PKG: \"deb\"\n+            PROJECT: ${UBUNTU_PROJECT}\n+            BUILD_NAME: \"${UBUNTU_LATEST_NAME} - ${PKG}\"\n+            VM_FAMILY_NAME: ${UBUNTU_LATEST_FAMILY_NAME}\n+    setup_script: &setup |\n         if [ $(command -v apt) ]; then\n             apt -y purge sosreport\n             apt update --allow-releaseinfo-change\n-            apt -y install python3-pip\n+            apt -y install python3-pip snapd\n+            if [ ${PKG} == \"snap\" ] ; then\n+                echo \"$ARTCURL/snap%20Build%20From%20Checkout/packages/sosreport_test_amd64.snap\"\n+                $ARTCURL/snap%20Build%20From%20Checkout/packages/sosreport_test_amd64.snap\n+                systemctl start snapd\n+                snap install ./sosreport_test_amd64.snap --classic --dangerous\n+                snap alias sosreport.sos sos\n+            elif [ ${PKG} == \"deb\" ]; then\n+                echo \"$ARTCURL/deb%20Build%20From%20Checkout/packages/sos_cirrus.deb\"\n+                $ARTCURL/deb%20Build%20From%20Checkout/packages/sos_cirrus.deb\n+                apt -y install ./sos_cirrus.deb\n+            fi\n         fi\n         if [ $(command -v dnf) ]; then\n+            echo \"$ARTCURL/rpm%20Build%20From%20Checkout%20-%20${BUILD_NAME}/packages/sos_${BUILD_NAME}.rpm\"\n+            $ARTCURL/rpm%20Build%20From%20Checkout%20-%20${BUILD_NAME}/packages/sos_${BUILD_NAME}.rpm\n             dnf -y remove sos\n             dnf -y install python3-pip ethtool\n+            dnf -y install ./sos_${BUILD_NAME}.rpm\n         fi\n-    setup_script: &setup 'pip3 install avocado-framework==94.0 python-magic pyyaml'\n+        PIP_EXTRA=\"\"\n+        [[ $(pip3 install --help | grep break-system) ]] && PIP_EXTRA=\"--break-system-packages\"\n+        pip3 install -r test-requirements.txt ${PIP_EXTRA}\n     # run the unittests separately as they require a different PYTHONPATH in\n     # order for the imports to work properly under avocado\n-    unittest_script: PYTHONPATH=. avocado run tests/unittests/\n-    main_script: PYTHONPATH=tests/ avocado run --test-runner=runner -t stageone tests/{cleaner,collect,report,vendor}_tests\n+    unittest_script: &unit_test |\n+        PYTHONPATH=. avocado run tests/unittests/\n+    main_script: &stageone_test\n+        PYTHONPATH=tests/ avocado run -p TESTLOCAL=true --max-parallel-tasks=1 -t stageone tests/{cleaner,collect,report,vendor}_tests\n     on_failure:\n         fail_script: &faillogs |\n             ls -d /var/tmp/avocado* /root/avocado* 2> /dev/null | xargs tar cf sos-fail-logs.tar\n-        log_artifacts:\n+        log_artifacts: &logs\n             path: \"sos-fail-logs.tar\"\n \n+report_stageone_daily_task:\n+    skip: *man-changes-include\n+    alias: \"stageone_daily_report\"\n+    name: \"Report Stage One - $BUILD_NAME\"\n+    allow_failures: true\n+    depends_on:\n+        - snap_build\n+    gce_instance: *standardvm\n+    environment: &ubuntudevel\n+      PKG: \"snap\"\n+      PROJECT: ${UBUNTU_DEVEL_PROJECT}\n+      VM_FAMILY_NAME: ${UBUNTU_DEVEL_FAMILY_NAME}\n+      BUILD_NAME: \"${UBUNTU_DEVEL_NAME} - ${PKG}\"\n+    setup_script: *setup\n+    unittest_script: *unit_test\n+    main_script: *stageone_test\n+    on_failure:\n+        fail_script: *faillogs\n+        log_artifacts: *logs\n+\n # IFF the stage one tests all pass, then run stage two for latest distros\n report_stagetwo_task:\n+    skip: *man-changes-include\n     alias: \"stagetwo_report\"\n     name: \"Report Stage Two - $BUILD_NAME\"\n     depends_on: stageone_report\n+    timeout_in: 45m\n     gce_instance: *standardvm\n     matrix:\n-        - env:\n-            PROJECT: ${CENTOS_PROJECT}\n-            BUILD_NAME: ${CENTOS_9_NAME}\n-            VM_IMAGE_NAME: ${CENTOS_9_IMAGE_NAME}\n-        - env:\n-            PROJECT: ${CENTOS_PROJECT}\n-            BUILD_NAME: ${CENTOS_8_NAME}\n-            VM_IMAGE_NAME: ${CENTOS_8_IMAGE_NAME}\n-        - env:\n-            PROJECT: ${FEDORA_PROJECT}\n-            BUILD_NAME: ${FEDORA_NAME}\n-            VM_IMAGE_NAME: ${FEDORA_IMAGE_NAME}\n-        - env:\n-            PROJECT: ${UBUNTU_PROJECT}\n-            BUILD_NAME: ${UBUNTU_NAME}\n-            VM_IMAGE_NAME: ${UBUNTU_IMAGE_NAME}\n-    remove_sos_script: *remove_sos\n+        - env: *centos9\n+        - env: *fedora\n+        - env: *ubuntu\n+        - env: *ubuntu-latest-snap\n+        - env: *ubuntu-latest-deb\n+    setup_script: *setup\n     install_pexpect_script: |\n         if [ $(command -v apt) ]; then\n             apt -y install python3-pexpect\n@@ -166,34 +298,45 @@ report_stagetwo_task:\n         if [ $(command -v dnf) ]; then\n             dnf -y install python3-pexpect\n         fi\n+    main_script: &stagetwo_test |\n+        PYTHONPATH=tests/ avocado run -p TESTLOCAL=true --max-parallel-tasks=1 -t stagetwo tests/{cleaner,collect,report,vendor}_tests\n+    on_failure:\n+        fail_script: *faillogs\n+        log_artifacts: *logs\n+\n+report_stagetwo_daily_task:\n+    skip: *man-changes-include\n+    alias: \"stagetwo_daily_report\"\n+    name: \"Report Stage Two - $BUILD_NAME\"\n+    allow_failures: true\n+    depends_on: stageone_daily_report\n+    timeout_in: 45m\n+    gce_instance: *standardvm\n+    environment: *ubuntudevel\n     setup_script: *setup\n-    main_script: PYTHONPATH=tests/ avocado run --test-runner=runner -t stagetwo tests/{cleaner,collect,report,vendor}_tests\n+    main_script: *stagetwo_test\n     on_failure:\n         fail_script: *faillogs\n-        log_artifacts:\n-            path: \"sos-fail-logs.tar\"\n+        log_artifacts: *logs\n \n report_foreman_task:\n-    skip: \"!changesInclude('.cirrus.yml', '**/{__init__,apache,foreman,foreman_tests,candlepin,pulp,pulpcore}.py')\"\n+    skip: \"!changesInclude('.cirrus.yml', '**/{__init__,apache,foreman,foreman_tests,candlepin,pulp,pulpcore}.py', '**/foreman_setup.sh')\"\n+    timeout_in: 45m\n     alias: \"foreman_integration\"\n-    name: \"Integration Test - Foreman ${FOREMAN_VER}\"\n+    name: \"Integration Test - Foreman ${FOREMAN_VER} - ${BUILD_NAME}\"\n     depends_on: stageone_report\n     gce_instance: &bigvm\n         <<: *standardvm\n         type: e2-standard-2\n     matrix:\n         - env:\n-            PROJECT: ${SOS_PROJECT}\n-            VM_IMAGE_NAME: ${FOREMAN_CENTOS_IMAGE_NAME}\n-            FOREMAN_VER: \"2.5 - CentOS Stream 8\"\n-        - env:\n-            PROJECT: ${SOS_PROJECT}\n-            VM_IMAGE_NAME: ${FOREMAN_DEBIAN_IMAGE_NAME}\n-            FOREMAN_VER: \"2.5 - Debian 10\"\n-    remove_sos_script: *remove_sos\n+            PROJECT: ${DEBIAN_PROJECT}\n+            VM_FAMILY_NAME: ${DEBIAN_FAMILY_NAME}\n+            BUILD_NAME: ${DEBIAN_NAME}\n+            FOREMAN_VER: \"3.7\"\n     setup_script: *setup\n-    main_script: PYTHONPATH=tests/ avocado run --test-runner=runner -t foreman tests/product_tests/foreman/\n+    foreman_setup_script: ./tests/test_data/foreman_setup.sh\n+    main_script: PYTHONPATH=tests/ avocado run -p TESTLOCAL=true --max-parallel-tasks=1 -t foreman tests/product_tests/foreman/\n     on_failure:\n         fail_script: *faillogs\n-        log_artifacts:\n-            path: \"sos-fail-logs.tar\"\n+        log_artifacts: *logs\ndiff --git a/.fmf/version b/.fmf/version\ndeleted file mode 100644\nindex d00491f..0000000\n--- a/.fmf/version\n+++ /dev/null\n@@ -1 +0,0 @@\n-1\ndiff --git a/.github/PULL_REQUEST_TEMPLATE.md b/.github/PULL_REQUEST_TEMPLATE.md\nindex d3b39fe..cc980ad 100644\n--- a/.github/PULL_REQUEST_TEMPLATE.md\n+++ b/.github/PULL_REQUEST_TEMPLATE.md\n@@ -5,4 +5,5 @@ Please place an 'X' inside each '[]' to confirm you adhere to our [Contributor G\n - [ ] Is the subject and message clear and concise?\n - [ ] Does the subject start with **[plugin_name]** if submitting a plugin patch or a **[section_name]** if part of the core sosreport code?\n - [ ] Does the commit contain a **Signed-off-by: First Lastname <email@example.com>**?\n-- [ ] Are any related Issues or existing PRs [properly referenced](https://docs.github.com/en/issues/tracking-your-work-with-issues/creating-issues/linking-a-pull-request-to-an-issue#linking-a-pull-request-to-an-issue-using-a-keyword) via a Closes (Issue) or Resolved (PR) line?\n\\ No newline at end of file\n+- [ ] Are any related Issues or existing PRs [properly referenced](https://docs.github.com/en/issues/tracking-your-work-with-issues/creating-issues/linking-a-pull-request-to-an-issue#linking-a-pull-request-to-an-issue-using-a-keyword) via a Closes (Issue) or Resolved (PR) line?\n+- [ ] Are all passwords or private data gathered by this PR [obfuscated](https://github.com/sosreport/sos/wiki/How-to-Write-a-Plugin#how-to-prevent-collecting-passwords)?\ndiff --git a/.github/codeql/codeql-config.yaml b/.github/codeql/codeql-config.yaml\nnew file mode 100644\nindex 0000000..b950e71\n--- /dev/null\n+++ b/.github/codeql/codeql-config.yaml\n@@ -0,0 +1,4 @@\n+name: \"SoS CodeQL Config\"\n+\n+paths:\n+  - sos\ndiff --git a/.github/workflows/codeql.yaml b/.github/workflows/codeql.yaml\nnew file mode 100644\nindex 0000000..ecd08ca\n--- /dev/null\n+++ b/.github/workflows/codeql.yaml\n@@ -0,0 +1,42 @@\n+name: \"CodeQL\"\n+\n+on:\n+  push:\n+    branches: [ \"main\" ]\n+  pull_request:\n+    branches: [ \"main\" ]\n+  schedule:\n+    - cron: \"49 12 * * 6\"\n+\n+jobs:\n+  analyze:\n+    name: Analyze\n+    runs-on: ubuntu-latest\n+    permissions:\n+      actions: read\n+      contents: read\n+      security-events: write\n+\n+    strategy:\n+      fail-fast: false\n+      matrix:\n+        language: [ python ]\n+\n+    steps:\n+      - name: Checkout\n+        uses: actions/checkout@v3\n+\n+      - name: Initialize CodeQL\n+        uses: github/codeql-action/init@v2\n+        with:\n+          config-file: .github/codeql/codeql-config.yaml\n+          languages: ${{ matrix.language }}\n+          queries: +security-and-quality\n+\n+      - name: Autobuild\n+        uses: github/codeql-action/autobuild@v2\n+\n+      - name: Perform CodeQL Analysis\n+        uses: github/codeql-action/analyze@v2\n+        with:\n+          category: \"/language:${{ matrix.language }}\"\ndiff --git a/.github/workflows/snap.yaml b/.github/workflows/snap.yaml\nnew file mode 100644\nindex 0000000..d7d8935\n--- /dev/null\n+++ b/.github/workflows/snap.yaml\n@@ -0,0 +1,43 @@\n+name: snap\n+on:\n+  push:\n+    branches:\n+      - main\n+  release:\n+    types:\n+      - published\n+\n+jobs:\n+  build:\n+    runs-on: ubuntu-22.04\n+    concurrency:\n+      group: snap-build\n+      cancel-in-progress: true\n+    steps:\n+    - uses: actions/checkout@v3\n+      with:\n+        fetch-depth: 0\n+    - uses: snapcore/action-build@v1\n+      id: build-snap\n+    # Make sure the snap is installable\n+    - run: |\n+        sudo apt -y remove sosreport\n+        sudo snap install --classic --dangerous ${{ steps.build-snap.outputs.snap }}\n+        sudo snap alias sosreport.sos sos\n+    # Do some testing with the snap\n+    - run: |\n+        sudo sos help\n+    - uses: snapcore/action-publish@v1\n+      if: ${{ github.event_name == 'push' }}\n+      env:\n+        SNAPCRAFT_STORE_CREDENTIALS: ${{ secrets.STORE_LOGIN }}\n+      with:\n+        snap: ${{ steps.build-snap.outputs.snap }}\n+        release: \"latest/edge\"\n+    - uses: snapcore/action-publish@v1\n+      if: ${{ github.event_name == 'release' }}\n+      env:\n+        SNAPCRAFT_STORE_CREDENTIALS: ${{ secrets.STORE_LOGIN }}\n+      with:\n+        snap: ${{ steps.build-snap.outputs.snap }}\n+        release: \"latest/candidate\"\ndiff --git a/.gitignore b/.gitignore\nindex 3090e00..1fc4abc 100644\n--- a/.gitignore\n+++ b/.gitignore\n@@ -3,6 +3,7 @@\n *swp*\n *.pyc\n *.sw*\n+*.DS_Store\n tags\n buildjar/\n gpgkeys/rhsupport.*\n@@ -16,16 +17,17 @@ venv\n MANIFEST\n build/\n dist/\n+*sos.egg*\n docs/_build\n \n # Pycharm\n-.idea/**/workspace.xml\n-.idea/**/tasks.xml\n-.idea/dictionaries\n-.idea/**/dataSources/\n-.idea/**/dataSources.ids\n-.idea/**/dataSources.xml\n-.idea/**/dataSources.local.xml\n-.idea/**/sqlDataSources.xml\n-.idea/**/dynamic.xml\n-.idea/**/uiDesigner.xml\n+.idea/\n+\n+# debian files\n+debian/sosreport*\n+debian/files\n+debian/.debhelper\n+debian/debhelper-build-stamp\n+\n+# tox\n+.tox\ndiff --git a/.packit.yaml b/.packit.yaml\nindex 05c18e3..76d9912 100644\n--- a/.packit.yaml\n+++ b/.packit.yaml\n@@ -1,25 +1,26 @@\n+upstream_project_url: https://github.com/sosreport/sos\n+specfile_path: sos.spec\n downstream_package_name: sos\n+upstream_package_name: sos\n+\n+files_to_sync:\n+  - sos.spec\n+  - .packit.yaml\n+\n+srpm_build_deps:\n+  - python3-devel\n+  - gettext\n+\n jobs:\n-- job: copr_build\n-  metadata:\n-    targets:\n-    - fedora-development-x86_64\n-    - fedora-development-aarch64\n-    - fedora-development-ppc64le\n-    - fedora-development-s390x\n-  trigger: pull_request\n-- job: tests\n-  trigger: pull_request\n-  metadata:\n+  - job: copr_build\n+    trigger: pull_request\n     targets:\n-    - fedora-all\n-    - epel-8\n-    - epel-9\n-specfile_path: sos.spec\n-synced_files:\n-- sos.spec\n-- .packit.yaml\n-upstream_package_name: sos\n+      - fedora-development-x86_64\n+      - fedora-development-aarch64\n+      - fedora-development-ppc64le\n+      - fedora-development-s390x\n+      - centos-stream-9\n+\n notifications:\n   pull_request:\n     successful_build: true\ndiff --git a/README.md b/README.md\nindex d67129d..4366403 100644\n--- a/README.md\n+++ b/README.md\n@@ -1,4 +1,5 @@\n-[![Build Status](https://api.cirrus-ci.com/github/sosreport/sos.svg?branch=main)](https://cirrus-ci.com/github/sosreport/sos) [![Documentation Status](https://readthedocs.org/projects/sos/badge/?version=main)](https://sos.readthedocs.io/en/main/?badge=main) [![Language grade: Python](https://img.shields.io/lgtm/grade/python/g/sosreport/sos.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/sosreport/sos/context:python)\n+[![Build Status](https://api.cirrus-ci.com/github/sosreport/sos.svg?branch=main)](https://cirrus-ci.com/github/sosreport/sos) [![Documentation Status](https://readthedocs.org/projects/sos/badge/?version=main)](https://sos.readthedocs.io/en/main/?badge=main) [![sosreport](https://snapcraft.io/sosreport/badge.svg)](https://snapcraft.io/sosreport)\n+\n \n # SoS\n \n@@ -82,7 +83,7 @@ pip install -r requirements.txt\n and run\n \n ```\n-python3 setup.py build_sphinx -a\n+sphinx-build -b html docs <destination dir> \n ```\n \n \n@@ -130,10 +131,10 @@ To install locally (as root):\n \n ### Pre-built Packaging\n \n-Fedora/RHEL users install via yum:\n+Fedora/RHEL users install via dnf:\n \n ```\n-# yum install sos\n+# dnf install sos\n ```\n \n Debian users install via apt:\n@@ -149,6 +150,12 @@ Ubuntu (14.04 LTS and above) users install via apt:\n # sudo apt install sosreport\n ```\n \n+### Snap Installation\n+\n+```\n+# snap install sosreport --classic\n+```\n+\n  [0]: https://github.com/sosreport/sos/wiki/Contribution-Guidelines\n  [1]: https://github.com/sosreport/sos/wiki/How-to-Write-a-Plugin\n  [2]: https://github.com/sosreport/sos/wiki/How-to-Write-a-Policy\ndiff --git a/bin/sos b/bin/sos\nindex 179b2d2..323c6ec 100755\n--- a/bin/sos\n+++ b/bin/sos\n@@ -20,5 +20,6 @@ except KeyboardInterrupt:\n if __name__ == '__main__':\n     sos = SoS(sys.argv[1:])\n     sos.execute()\n+    os._exit(0)\n \n # vim:ts=4 et sw=4\ndiff --git a/bin/sos-collector b/bin/sos-collector\nindex df2c977..e04e38b 100755\n--- a/bin/sos-collector\n+++ b/bin/sos-collector\n@@ -22,8 +22,9 @@ except KeyboardInterrupt:\n     raise SystemExit()\n \n if __name__ == '__main__':\n-    msg = (\"Please note the 'sos-collector' command has been deprecated in \"\n-           \" favor of the new 'sos' command, E.G. 'sos collect'.\\n\"\n+    msg = (\"WARNING: the 'sos-collector' command has been deprecated in \"\n+           \" favor of the new 'sos' command, E.G. 'sos collect', and will be \"\n+           \"removed in the upcoming sos-4.9 release.\\n\"\n            \"Redirecting to 'sos collect %s'\" % (' '.join(sys.argv[1:]) or ''))\n     print(msg)\n     time.sleep(0.5)\ndiff --git a/bin/sosreport b/bin/sosreport\nindex a298d63..d2e8181 100755\n--- a/bin/sosreport\n+++ b/bin/sosreport\n@@ -22,8 +22,9 @@ except KeyboardInterrupt:\n     raise SystemExit()\n \n if __name__ == '__main__':\n-    msg = (\"Please note the 'sosreport' command has been deprecated in favor \"\n-           \"of the new 'sos' command, E.G. 'sos report'.\\n\"\n+    msg = (\"WARNING: the 'sosreport' command has been deprecated in favor \"\n+           \"of the new 'sos' command, E.G. 'sos report', and will be removed \"\n+           \"in the upcoming sos-4.9 release.\\n\"\n            \"Redirecting to 'sos report %s'\" % (' '.join(sys.argv[1:]) or ''))\n     print(msg)\n     time.sleep(0.5)\ndiff --git a/debian/changelog b/debian/changelog\nindex 0221900..5e7564f 100644\n--- a/debian/changelog\n+++ b/debian/changelog\n@@ -1,3 +1,73 @@\n+sosreport (4.8.2-0ubuntu0~18.04.1) bionic; urgency=medium\n+\n+  * New 4.8.2 upstream release. (LP: #2091858)\n+\n+  * For more details, full release note is available here:\n+    - https://github.com/sosreport/sos/releases/tag/4.8.2\n+\n+  * d/control:\n+    - Add 'python3-pexpect' as part of the build depends:\n+    - Add 'python3-packaging' as part of the runtime depends.\n+    - Add 'python3-packaging' as part of the build depends:\n+      Use packaging for version comparison instead of pkg_resources from\n+      setuptools.\n+    - Add 'python3-yaml' as part of the build depends:\n+      The new saltstack collect plugin now imports the yaml module, this is\n+      now required to build and run the sos package\n+\n+  * d/rules:\n+    - skip running unittests/policy_tests.py due to the avocado dependency\n+\n+  * d/tests/simple.sh:\n+    - Correct typo in test_mask to print ip address (LP: #2037873)\n+    - Fix the IP address check, and escape the periods for grepping the IP\n+      address on the files to check if the IP address is being masked or not.\n+    - Replace \"sosreport\" with \"sos report\". The old command is now deprecated,\n+      and should be \"sos report\" in all places.\n+    - Fix S01autopkgtest and autopkgtest-run mis-represented as a hostname.\n+    - Ignore the \"Unable to read\" messages in stderr for kernel. The\n+      environment doesn't have these files, and hence brings them into stderr.\n+      But, this isn't an issue in this particular environment.\n+\n+  * Added patches:\n+    - d/p/0002-debian-remove-magic-stderr.patch: (LP: #2028666)\n+      Suppress the warning that sos reports due to a lower version of the magic\n+      python library.\n+    - d/p/0003-debian-remove-py38-walrus.patch:\n+      new version of sos introduces walrus operator. This patch solves this to\n+      to conform to python 3.6 and work in bionic.\n+\n+  * Resolve obfuscation issues (LP: #2101134)\n+    - d/p/0003-o_horizon-Obfuscate-credentials-in-local_settings.py.patch:\n+      Fixes the obfuscation of SECRET_KEY and PASSWORD fields in the config\n+      file for horizon in /etc/horizon/local_setting.py.\n+    - d/p/0004-ceph_common-Obfuscate-rgw-password-in-ceph.conf.patch:\n+      Fixes the obfuscation of \"rgw keystone admin password\" key in\n+      /etc/ceph/ceph.conf on the radosgw node.\n+    - d/p/0005-logs-Add-all-auth.log-syslog-and-kerne.log-as-standa.patch:\n+      Collect the auth.log, syslog and kern.log now by default. This was\n+      removed in a prior version. This is very useful for debugging issues for\n+      support personnel. This re-instates the collection from releases prior\n+      to 4.4.\n+    - d/p/0006-ubuntu-Revamp-of-plugin.patch:\n+      Collect Ubuntu Pro details that were being missed. The package name was\n+      changed and the plugin was no longer collecting the details.\n+\n+  * Resolve username clean issues (LP: #2102199)\n+    - d/p/0007-clean-Update-the-last-command-for-obfuscation.patch:\n+      Fix username clean issue. A regression was introduced in 4.8.2 where the\n+      username was not being cleaned due to the command updated from last to\n+      last -F.\n+    - d/p/0008-login-clean-Update-login-plugin-and-use-for-clean.patch:\n+      oracular and plucky don't have last and lastlogin by default, we now use\n+      lslogins and lastlogin2 to grab the user details and clean based out of\n+      these outputs.\n+\n+  * Remaining patches:\n+    - d/p/0001-debian-change-tmp-dir-location.patch\n+\n+ -- Arif Ali <arif-ali@canonical.com>  Sun, 05 Jan 2025 18:18:59 +0000\n+\n sosreport (4.4-1ubuntu0.18.04.3) bionic; urgency=medium\n \n   * d/p/0003-clean-Properly-obfuscate-MAC-addresses.patch:\ndiff --git a/debian/control b/debian/control\nindex 1c1ec99..f28bd5f 100644\n--- a/debian/control\n+++ b/debian/control\n@@ -12,6 +12,9 @@ Build-Depends:\n  python3-nose,\n  python3-setuptools,\n  python3-sphinx,\n+ python3-pexpect,\n+ python3-packaging,\n+ python3-yaml,\n Homepage: https://github.com/sosreport/sos\n Vcs-Browser: https://salsa.debian.org/sosreport-team/sosreport\n Vcs-Git: https://salsa.debian.org/sosreport-team/sosreport.git\n@@ -19,7 +22,7 @@ X-Python3-Version: >= 3.6\n \n Package: sosreport\n Architecture: any\n-Depends: ${python3:Depends}, ${misc:Depends}, python3-pexpect\n+Depends: ${python3:Depends}, ${misc:Depends}, python3-pexpect, python3-packaging\n Description: Set of tools to gather troubleshooting data from a system\n  Sos is a set of tools that gathers information about system\n  hardware and configuration. The information can then be used for\ndiff --git a/debian/patches/0002-debian-remove-magic-stderr.patch b/debian/patches/0002-debian-remove-magic-stderr.patch\nnew file mode 100644\nindex 0000000..34f3cb7\n--- /dev/null\n+++ b/debian/patches/0002-debian-remove-magic-stderr.patch\n@@ -0,0 +1,41 @@\n+From: Nikhil Kshirsagar <nikhil.kshirsagar@canonical.com>\n+Date: Wed, 26 Jul 2023 08:31:57 +0100\n+Subject: Remove python3-magic related warning\n+\n+Do not bother spewing a warning about python3-magic version since\n+that breaks autopkg tests due to the stderr spew. There's nothing\n+that we can do anyway about it, since focal would not have the\n+python3-magic version that sos needs for the new approach.\n+\n+Forwarded: not-needed\n+Bug: https://github.com/sosreport/sos/issues/3021\n+Applied-Upstream: https://github.com/sosreport/sos/pull/3025\n+Bug-Ubuntu: https://launchpad.net/bugs/2028666\n+---\n+ sos/utilities.py | 13 -------------\n+ 1 file changed, 13 deletions(-)\n+\n+diff --git a/sos/utilities.py b/sos/utilities.py\n+index e666c64..6e92905 100644\n+--- a/sos/utilities.py\n++++ b/sos/utilities.py\n+@@ -32,19 +32,6 @@ log = logging.getLogger('sos')\n+ \n+ # try loading magic>=0.4.20 which implements detect_from_filename method\n+ magic_mod = False\n+-try:\n+-    import magic\n+-    magic.detect_from_filename(__file__)\n+-    magic_mod = True\n+-except (ImportError, AttributeError):\n+-    from textwrap import fill\n+-    msg = \"\"\"\\\n+-WARNING: Failed to load 'magic' module version >= 0.4.20 which sos aims to \\\n+-use for detecting binary files. A less effective method will be used. It is \\\n+-recommended to install proper python3-magic package with the module.\n+-\"\"\"\n+-    log.warning(f'\\n{fill(msg, 72, replace_whitespace=False)}\\n')\n+-\n+ \n+ TIMEOUT_DEFAULT = 300\n+ \ndiff --git a/debian/patches/0002-revert-to-old-style-binary-file-detection.patch b/debian/patches/0002-revert-to-old-style-binary-file-detection.patch\ndeleted file mode 100644\nindex ba116c7..0000000\n--- a/debian/patches/0002-revert-to-old-style-binary-file-detection.patch\n+++ /dev/null\n@@ -1,79 +0,0 @@\n-Description: Revert to old way of binary file detection\n- Reverting to older (4.3) way of detecting binary files \n- because sos 4.4 uses python3-magic version 0.4.20 which is \n- not present in bionic.\n- .\n- sosreport (4.4-1ubuntu0.18.04.1) bionic; urgency=medium\n- .\n-   * New 4.4 upstream. (LP: #1986611)\n- .\n-   * For more details, full release note is available here:\n-     - https://github.com/sosreport/sos/releases/tag/4.4\n- .\n-   * Former patches, now fixed:\n-     - d/p/0002-fix-setup-py.patch\n-     - d/p/0003-mention-sos-help-in-sos-manpage.patch\n- .\n-   * Remaining patches:\n-     - d/p/0001-debian-change-tmp-dir-location.patch\n- .\n-   * New patches:\n-     - d/p/0002-revert-to-old-style-binary-file-detection.patch\n-Author: Nikhil Kshirsagar <nikhil.kshirsagar@canonical.com>\n-Bug-Ubuntu: https://bugs.launchpad.net/bugs/1986611\n-\n---- sosreport-4.4.orig/requirements.txt\n-+++ sosreport-4.4/requirements.txt\n-@@ -2,5 +2,4 @@ pycodestyle>=2.4.0\n- coverage>=4.0.3\n- Sphinx>=1.3.5\n- pexpect>=4.0.0\n--python_magic>=0.4.20\n- pyyaml\n---- sosreport-4.4.orig/setup.py\n-+++ sosreport-4.4/setup.py\n-@@ -107,7 +107,7 @@ setup(\n-     ],\n-     cmdclass=cmdclass,\n-     command_options=command_options,\n--    requires=['pexpect', 'python_magic', 'pyyaml']\n-+    requires=['pexpect', 'pyyaml']\n-     )\n- \n- \n---- sosreport-4.4.orig/sos/utilities.py\n-+++ sosreport-4.4/sos/utilities.py\n-@@ -19,7 +19,6 @@ import tempfile\n- import threading\n- import time\n- import io\n--import magic\n- \n- from contextlib import closing\n- from collections import deque\n-@@ -75,17 +74,14 @@ def file_is_binary(fname):\n-     :returns:   True if binary, else False\n-     :rtype:     ``bool``\n-     \"\"\"\n--    try:\n--        _ftup = magic.detect_from_filename(fname)\n--        _mimes = ['text/', 'inode/']\n--        return (\n--            _ftup.encoding == 'binary' and not\n--            any(_ftup.mime_type.startswith(_mt) for _mt in _mimes)\n--        )\n--    except Exception:\n--        # if for some reason this check fails, don't blindly remove all files\n--        # but instead rely on other checks done by the component\n--        return False\n-+    with open(fname, 'tr') as tfile:\n-+        try:\n-+            # when opened as above (tr), reading binary content will raise\n-+            # an exception\n-+            tfile.read(1)\n-+            return False\n-+        except UnicodeDecodeError:\n-+            return True\n- \n- \n- def find(file_pattern, top_dir, max_depth=None, path_pattern=None):\ndiff --git a/debian/patches/0003-debian-remove-py38-walrus.patch b/debian/patches/0003-debian-remove-py38-walrus.patch\nnew file mode 100644\nindex 0000000..eacc574\n--- /dev/null\n+++ b/debian/patches/0003-debian-remove-py38-walrus.patch\n@@ -0,0 +1,41 @@\n+From: Arif Ali <arif.ali@canonical.com>\n+Date: Sun, 5 Jan 2025 14:48:10 +0000\n+Subject: Remove the walrus operator\n+\n+The walrus operator is not valid for python 3.6 so we update this to conform\n+to work with bionic\n+\n+Forwarded: not-needed\n+---\n+ sos/collector/sosnode.py       | 3 ++-\n+ sos/report/plugins/coredump.py | 3 ++-\n+ 2 files changed, 4 insertions(+), 2 deletions(-)\n+\n+diff --git a/sos/collector/sosnode.py b/sos/collector/sosnode.py\n+index f60ffed..8612239 100644\n+--- a/sos/collector/sosnode.py\n++++ b/sos/collector/sosnode.py\n+@@ -372,7 +372,8 @@ class SosNode():\n+             for line in result.splitlines():\n+                 if not is_list:\n+                     try:\n+-                        if ls := line.split():\n++                        ls = line.split()\n++                        if ls:\n+                             res.append(ls[0])\n+                     except Exception as err:\n+                         self.log_debug(f\"Error parsing sos help: {err}\")\n+diff --git a/sos/report/plugins/coredump.py b/sos/report/plugins/coredump.py\n+index 7608e34..0678327 100644\n+--- a/sos/report/plugins/coredump.py\n++++ b/sos/report/plugins/coredump.py\n+@@ -72,7 +72,8 @@ class Coredump(Plugin, IndependentPlugin):\n+             cdump = line.split()\n+             pid = cdump[4]\n+             exe = cdump[-2]\n+-            if regex := self.get_option(\"executable\"):\n++            regex = self.get_option(\"executable\")\n++            if regex:\n+                 if not re.search(regex, exe, re.I):\n+                     continue\n+             cinfo = self.collect_cmd_output(f\"coredumpctl info {pid}\")\ndiff --git a/debian/patches/0003-o_horizon-Obfuscate-credentials-in-local_settings.py.patch b/debian/patches/0003-o_horizon-Obfuscate-credentials-in-local_settings.py.patch\nnew file mode 100644\nindex 0000000..1af3dee\n--- /dev/null\n+++ b/debian/patches/0003-o_horizon-Obfuscate-credentials-in-local_settings.py.patch\n@@ -0,0 +1,42 @@\n+From: Arif Ali <arif.ali@canonical.com>\n+Date: Mon, 24 Feb 2025 08:12:25 +0100\n+Subject: [PATCH] [o_horizon] Obfuscate credentials in local_settings.py\n+\n+This file is present on Ubuntu based systems, and was not being obfuscated.\n+Also potentially hide PASSWORD for the DB, which can be similar to below line\n+\n+        'PASSWORD': 'q8GzrLk9bj9dt2RPqZZcgJMfGSmGhNLT',\n+\n+Closes: #3942\n+\n+Signed-off-by: Arif Ali <arif.ali@canonical.com>\n+Forwarded: https://github.com/sosreport/sos/pull/3942\n+Origin: upstream, https://github.com/sosreport/sos/commit/b4c1830eb87b3f91edb5d6dd830a18bb5b83a29f\n+Bug-Ubuntu: https://launchpad.net/bugs/2101134\n+---\n+ sos/report/plugins/openstack_horizon.py | 9 ++++++---\n+ 1 file changed, 6 insertions(+), 3 deletions(-)\n+\n+diff --git a/sos/report/plugins/openstack_horizon.py b/sos/report/plugins/openstack_horizon.py\n+index ed9d936..dbb90bb 100644\n+--- a/sos/report/plugins/openstack_horizon.py\n++++ b/sos/report/plugins/openstack_horizon.py\n+@@ -47,12 +47,15 @@ class OpenStackHorizon(Plugin):\n+     def postproc(self):\n+         var_puppet_gen = self.var_puppet_gen + \"/horizon\"\n+         protect_keys = [\n+-            \"SECRET_KEY\", \"EMAIL_HOST_PASSWORD\"\n++            \"EMAIL_HOST_PASSWORD\",\n++            \"PASSWORD\",\n++            \"SECRET_KEY\",\n+         ]\n+ \n+-        regexp = fr\"(^\\s*({'|'.join(protect_keys)})\\s*=\\s*)(.*)\"\n++        regexp = fr\"(^\\s*\\'?({'|'.join(protect_keys)})\\'?\\s*(:|=)\\s*)(.*)\"\n+         for regpath in [r\"/etc/openstack-dashboard/.*\\.json\",\n+-                        \"/etc/openstack-dashboard/local_settings$\"]:\n++                        \"/etc/openstack-dashboard/local_settings$\",\n++                        \"/etc/openstack-dashboard/local_settings.py$\"]:\n+             self.do_path_regex_sub(regpath, regexp, r\"\\1*********\")\n+             self.do_path_regex_sub(var_puppet_gen + regpath,\n+                                    regexp, r\"\\1*********\")\ndiff --git a/debian/patches/0004-ceph_common-Obfuscate-rgw-password-in-ceph.conf.patch b/debian/patches/0004-ceph_common-Obfuscate-rgw-password-in-ceph.conf.patch\nnew file mode 100644\nindex 0000000..c7035af\n--- /dev/null\n+++ b/debian/patches/0004-ceph_common-Obfuscate-rgw-password-in-ceph.conf.patch\n@@ -0,0 +1,28 @@\n+From: Arif Ali <arif.ali@canonical.com>\n+Date: Tue, 4 Mar 2025 13:52:44 +0000\n+Subject: [PATCH] [ceph_common] Obfuscate rgw password in ceph.conf\n+\n+Signed-off-by: Arif Ali <arif.ali@canonical.com>\n+Forwarded: https://github.com/sosreport/sos/pull/3951\n+Origin: upstream, https://github.com/sosreport/sos/commit/0487da8b328df55e3ec9ace1da1e4281a461276c\n+Bug-Ubuntu: https://launchpad.net/bugs/2101134\n+---\n+ sos/report/plugins/ceph_common.py | 7 +++++++\n+ 1 file changed, 7 insertions(+)\n+\n+diff --git a/sos/report/plugins/ceph_common.py b/sos/report/plugins/ceph_common.py\n+index ca17398..8c1a689 100644\n+--- a/sos/report/plugins/ceph_common.py\n++++ b/sos/report/plugins/ceph_common.py\n+@@ -116,4 +116,11 @@ class CephCommon(Plugin, RedHatPlugin, UbuntuPlugin):\n+             \"ceph -v\",\n+         ])\n+ \n++    def postproc(self):\n++        protect_keys = [\n++            \"rgw keystone admin password\",\n++        ]\n++        regex = fr\"(^({'|'.join(protect_keys)})\\s*=\\s*)(.*)\"\n++        self.do_path_regex_sub(\"/etc/ceph/ceph.conf\", regex, r\"\\1*********\")\n++\n+ # vim: set et ts=4 sw=4 :\ndiff --git a/debian/patches/0005-logs-Add-all-auth.log-syslog-and-kerne.log-as-standa.patch b/debian/patches/0005-logs-Add-all-auth.log-syslog-and-kerne.log-as-standa.patch\nnew file mode 100644\nindex 0000000..7f43008\n--- /dev/null\n+++ b/debian/patches/0005-logs-Add-all-auth.log-syslog-and-kerne.log-as-standa.patch\n@@ -0,0 +1,76 @@\n+From: Arif Ali <arif.ali@canonical.com>\n+Date: Fri, 21 Feb 2025 14:27:02 +0000\n+Subject: [PATCH] [logs] Add all auth.log, syslog and kerne.log as standard\n+\n+The RH based systems already collect this type of logs, and Ubuntu systems was\n+lacking this. This will allow one to debug issue better and easier to consume.\n+\n+Re-order the file set to be in alphabetical order.\n+\n+The else for the syslog, auth.log and syslog us now redundant, as we collect all\n+of these files now.\n+\n+Closes: #3940\n+\n+Signed-off-by: Arif Ali <arif.ali@canonical.com>\n+Forwarded: https://github.com/sosreport/sos/pull/3940\n+Origin: upstream, https://github.com/sosreport/sos/commit/e5c0236cf4a2df4e3cfa875e98ad8e0dfb0010f9\n+Bug-Ubuntu: https://launchpad.net/bugs/2101134\n+---\n+ sos/report/plugins/logs.py | 31 +++++++------------------------\n+ 1 file changed, 7 insertions(+), 24 deletions(-)\n+\n+diff --git a/sos/report/plugins/logs.py b/sos/report/plugins/logs.py\n+index 78d7e4a..7f5ab6e 100644\n+--- a/sos/report/plugins/logs.py\n++++ b/sos/report/plugins/logs.py\n+@@ -41,16 +41,18 @@ class LogsBase(Plugin):\n+                 self.add_copy_spec(i)\n+ \n+         self.add_copy_spec([\n+-            \"/etc/syslog.conf\",\n+-            \"/etc/rsyslog.conf\",\n+-            \"/etc/rsyslog.d\",\n++            \"/var/log/auth.log*\",\n+             \"/var/log/boot.log\",\n++            \"/var/log/dist-upgrade\",\n+             \"/var/log/installer\",\n++            \"/var/log/kern.log*\",\n+             \"/var/log/messages*\",\n+             \"/var/log/secure*\",\n++            \"/var/log/syslog*\",\n+             \"/var/log/udev\",\n+-            \"/var/log/dist-upgrade\",\n+-            \"/var/log/auth.log\",\n++            \"/etc/rsyslog.conf\",\n++            \"/etc/rsyslog.d\",\n++            \"/etc/syslog.conf\",\n+         ])\n+ \n+         self.add_cmd_output(\"journalctl --disk-usage\")\n+@@ -72,25 +74,6 @@ class LogsBase(Plugin):\n+                     \"/var/log/journal/*\",\n+                     \"/run/log/journal/*\"\n+                 ])\n+-        else:  # If not using journal\n+-            if not self.get_option(\"all_logs\"):\n+-                self.add_copy_spec([\n+-                    \"/var/log/syslog\",\n+-                    \"/var/log/syslog.1\",\n+-                    \"/var/log/syslog.2*\",\n+-                    \"/var/log/kern.log\",\n+-                    \"/var/log/kern.log.1\",\n+-                    \"/var/log/kern.log.2*\",\n+-                    \"/var/log/auth.log\",\n+-                    \"/var/log/auth.log.1\",\n+-                    \"/var/log/auth.log.2*\",\n+-                ])\n+-            else:\n+-                self.add_copy_spec([\n+-                    \"/var/log/syslog*\",\n+-                    \"/var/log/kern.log*\",\n+-                    \"/var/log/auth.log*\",\n+-                ])\n+ \n+     def postproc(self):\n+         self.do_path_regex_sub(\ndiff --git a/debian/patches/0006-ubuntu-Revamp-of-plugin.patch b/debian/patches/0006-ubuntu-Revamp-of-plugin.patch\nnew file mode 100644\nindex 0000000..a520429\n--- /dev/null\n+++ b/debian/patches/0006-ubuntu-Revamp-of-plugin.patch\n@@ -0,0 +1,89 @@\n+From: Arif Ali <arif.ali@canonical.com>\n+Date: Thu, 6 Mar 2025 18:41:23 +0000\n+Subject: [PATCH] [ubuntu] Revamp of plugin\n+\n+* Use the packages tuple to trigger for plugin\n+* Remove the if statement to check for package install, this seemed redundant\n+* Add collection of uaclient.conf\n+\n+Signed-off-by: Arif Ali <arif.ali@canonical.com>\n+Forwarded: https://github.com/sosreport/sos/pull/3953\n+Origin: upstream, https://github.com/sosreport/sos/commit/a65bad64fb2e3629a2f0133564ba7b336d6d0904\n+Bug-Ubuntu: https://launchpad.net/bugs/2101134\n+---\n+ sos/report/plugins/ubuntu.py | 59 +++++++++++++++++++++++++-------------------\n+ 1 file changed, 34 insertions(+), 25 deletions(-)\n+\n+diff --git a/sos/report/plugins/ubuntu.py b/sos/report/plugins/ubuntu.py\n+index 6706bf2..5abc818 100644\n+--- a/sos/report/plugins/ubuntu.py\n++++ b/sos/report/plugins/ubuntu.py\n+@@ -17,34 +17,43 @@ class Ubuntu(Plugin, UbuntuPlugin):\n+     plugin_name = 'ubuntu'\n+     profiles = ('system',)\n+ \n++    packages = (\n++        'ubuntu-advantage-tools',\n++        'ubuntu-pro-client',\n++        'update-manager-core',\n++    )\n++\n+     def setup(self):\n+         self.add_cmd_output([\n+             \"ubuntu-security-status --thirdparty --unavailable\",\n+             \"hwe-support-status --verbose\",\n+         ])\n+ \n+-        if self.is_installed('ubuntu-advantage-tools'):\n+-            if is_executable('ua'):\n+-                ua_tools_status = 'ua status'\n+-            elif is_executable('pro'):\n+-                ua_tools_status = 'pro status'\n+-            else:\n+-                ua_tools_status = 'ubuntu-advantage status'\n+-            ua_pred = SoSPredicate(self, kmods=['tls'])\n+-            self.add_cmd_output(ua_tools_status,\n+-                                pred=ua_pred, changes=True)\n+-            self.add_cmd_output(f\"{ua_tools_status} --format json\",\n+-                                pred=ua_pred, changes=True)\n+-\n+-            if not self.get_option(\"all_logs\"):\n+-                self.add_copy_spec([\n+-                    \"/var/log/ubuntu-advantage.log\",\n+-                    \"/var/log/ubuntu-advantage.log.1\",\n+-                    \"/var/log/ubuntu-advantage.log.2*\",\n+-                    \"/var/log/ubuntu-advantage-timer.log\",\n+-                    \"/var/log/ubuntu-advantage-timer.log.1\",\n+-                    \"/var/log/ubuntu-advantage-timer.log.2*\",\n+-                ])\n+-            else:\n+-                self.add_copy_spec(\"/var/log/ubuntu-advantage.log*\")\n+-                self.add_copy_spec(\"/var/log/ubuntu-advantage-timer.log*\")\n++        if is_executable('ua'):\n++            ua_tools_status = 'ua status'\n++        elif is_executable('pro'):\n++            ua_tools_status = 'pro status'\n++        else:\n++            ua_tools_status = 'ubuntu-advantage status'\n++        ua_pred = SoSPredicate(self, kmods=['tls'])\n++        self.add_cmd_output(ua_tools_status,\n++                            pred=ua_pred, changes=True)\n++        self.add_cmd_output(f\"{ua_tools_status} --format json\",\n++                            pred=ua_pred, changes=True)\n++\n++        self.add_copy_spec(\"/etc/ubuntu-advantage/uaclient.conf\")\n++\n++        if not self.get_option(\"all_logs\"):\n++            self.add_copy_spec([\n++               \"/var/log/ubuntu-advantage.log\",\n++               \"/var/log/ubuntu-advantage.log.1\",\n++               \"/var/log/ubuntu-advantage.log.2*\",\n++               \"/var/log/ubuntu-advantage-timer.log\",\n++               \"/var/log/ubuntu-advantage-timer.log.1\",\n++               \"/var/log/ubuntu-advantage-timer.log.2*\",\n++            ])\n++        else:\n++            self.add_copy_spec(\"/var/log/ubuntu-advantage.log*\")\n++            self.add_copy_spec(\"/var/log/ubuntu-advantage-timer.log*\")\n++\n++# vim: set et ts=4 sw=4 :\ndiff --git a/debian/patches/0007-clean-Update-the-last-command-for-obfuscation.patch b/debian/patches/0007-clean-Update-the-last-command-for-obfuscation.patch\nnew file mode 100644\nindex 0000000..6af6249\n--- /dev/null\n+++ b/debian/patches/0007-clean-Update-the-last-command-for-obfuscation.patch\n@@ -0,0 +1,26 @@\n+From: Arif Ali <arif.ali@canonical.com>\n+Date: Thu, 13 Mar 2025 08:45:40 +0000\n+Subject: [PATCH] [clean] Update the last command for obfuscation\n+\n+Resolves: #3960\n+Signed-off-by: Arif Ali <arif.ali@canonical.com>\n+Forwarded: https://github.com/sosreport/sos/pull/3961\n+Origin: upstream, https://github.com/sosreport/sos/commit/5c9ec3ca5f3408529c7a6f632e63ad935ddd0b52\n+Bug: https://github.com/sosreport/sos/issues/3960\n+Bug-Ubuntu: https://bugs.launchpad.net/bugs/2102199\n+---\n+ sos/cleaner/preppers/usernames.py | 1 +\n+ 1 file changed, 1 insertion(+)\n+\n+diff --git a/sos/cleaner/preppers/usernames.py b/sos/cleaner/preppers/usernames.py\n+index 0f05959..8b03d02 100644\n+--- a/sos/cleaner/preppers/usernames.py\n++++ b/sos/cleaner/preppers/usernames.py\n+@@ -42,6 +42,7 @@ class UsernamePrepper(SoSPrepper):\n+             # AD users will be reported here, but favor the lastlog files since\n+             # those will include local users who have not logged in\n+             'sos_commands/login/last',\n++            'sos_commands/login/last_-F',\n+             'etc/cron.allow',\n+             'etc/cron.deny'\n+         ]\ndiff --git a/debian/patches/0008-login-clean-Update-login-plugin-and-use-for-clean.patch b/debian/patches/0008-login-clean-Update-login-plugin-and-use-for-clean.patch\nnew file mode 100644\nindex 0000000..49c99d5\n--- /dev/null\n+++ b/debian/patches/0008-login-clean-Update-login-plugin-and-use-for-clean.patch\n@@ -0,0 +1,76 @@\n+From: Arif Ali <arif.ali@canonical.com>\n+Date: Thu, 13 Mar 2025 15:41:41 +0000\n+Subject: [PATCH] [login,clean] Update login plugin and use for clean\n+\n+Add lslogin and lastlog2 output. Then use these for username\n+obfuscations for clean. New distros don't have lastlogin anymore and\n+last is not always installed by default.\n+\n+timout: is excluded as well. When the command is run, it runs with\n+timout command, and if the command doesn't exist, it parses that as\n+the username.\n+\n+Related: #3960\n+\n+Signed-off-by: Arif Ali <arif.ali@canonical.com>\n+Forwarded: yes\n+Origin: upstream, https://github.com/sosreport/sos/commit/271ddb42eb004719d1917e860c9f97f575490efb\n+Bug: https://github.com/sosreport/sos/issues/3960\n+Bug-Ubuntu: https://bugs.launchpad.net/bugs/2102199\n+---\n+ sos/cleaner/preppers/usernames.py | 8 ++++++++\n+ sos/report/plugins/login.py       | 4 +++-\n+ 2 files changed, 11 insertions(+), 1 deletion(-)\n+\n+diff --git a/sos/cleaner/preppers/usernames.py b/sos/cleaner/preppers/usernames.py\n+index 8b03d025..208c57df 100644\n+--- a/sos/cleaner/preppers/usernames.py\n++++ b/sos/cleaner/preppers/usernames.py\n+@@ -28,6 +28,7 @@ class UsernamePrepper(SoSPrepper):\n+         'stack',\n+         'reboot',\n+         'root',\n++        'timeout:',\n+         'ubuntu',\n+         'username',\n+         'wtmp'\n+@@ -39,10 +40,12 @@ class UsernamePrepper(SoSPrepper):\n+             'sos_commands/login/lastlog_-u_1000-60000',\n+             'sos_commands/login/lastlog_-u_60001-65536',\n+             'sos_commands/login/lastlog_-u_65537-4294967295',\n++            'sos_commands/login/lastlog2',\n+             # AD users will be reported here, but favor the lastlog files since\n+             # those will include local users who have not logged in\n+             'sos_commands/login/last',\n+             'sos_commands/login/last_-F',\n++            'sos_commands/login/lslogins',\n+             'etc/cron.allow',\n+             'etc/cron.deny'\n+         ]\n+@@ -53,6 +56,11 @@ class UsernamePrepper(SoSPrepper):\n+             for line in content.splitlines():\n+                 try:\n+                     user = line.split()[0].lower()\n++                    if \"lslogins\" in _file:\n++                        if int(line.split()[0]) >= 1000:\n++                            user = line.split()[1].lower()\n++                        else:\n++                            continue\n+                     if user and user not in self.skip_list:\n+                         items.add(user)\n+                         if '\\\\' in user:\n+diff --git a/sos/report/plugins/login.py b/sos/report/plugins/login.py\n+index 6b302db1..baef5b26 100644\n+--- a/sos/report/plugins/login.py\n++++ b/sos/report/plugins/login.py\n+@@ -25,7 +25,9 @@ class Login(Plugin, IndependentPlugin):\n+             \"lastlog -u 0-999\",\n+             \"lastlog -u 1000-60000\",\n+             \"lastlog -u 60001-65536\",\n+-            \"lastlog -u 65537-4294967295\"\n++            \"lastlog -u 65537-4294967295\",\n++            \"lastlog2\",\n++            \"lslogins\",\n+         ])\n+ \n+         self.add_copy_spec([\ndiff --git a/debian/patches/series b/debian/patches/series\nindex b4b2d90..6ccf58a 100644\n--- a/debian/patches/series\n+++ b/debian/patches/series\n@@ -1,3 +1,9 @@\n 0001-debian-change-tmp-dir-location.patch\n-0002-revert-to-old-style-binary-file-detection.patch\n-0003-clean-Properly-obfuscate-MAC-addresses.patch\n+0002-debian-remove-magic-stderr.patch\n+0003-debian-remove-py38-walrus.patch\n+0003-o_horizon-Obfuscate-credentials-in-local_settings.py.patch\n+0004-ceph_common-Obfuscate-rgw-password-in-ceph.conf.patch\n+0005-logs-Add-all-auth.log-syslog-and-kerne.log-as-standa.patch\n+0006-ubuntu-Revamp-of-plugin.patch\n+0007-clean-Update-the-last-command-for-obfuscation.patch\n+0008-login-clean-Update-login-plugin-and-use-for-clean.patch\ndiff --git a/debian/rules b/debian/rules\nindex 79b75aa..7a889d2 100755\n--- a/debian/rules\n+++ b/debian/rules\n@@ -12,4 +12,4 @@ override_dh_install:\n \trm -rf debian/sosreport/usr/config\n \n override_dh_auto_test:\n-\tnosetests3 -v --with-cover --cover-package=sos tests/unittests\n+\tnosetests3 -v --with-cover --cover-package=sos tests/unittests --ignore-files=\"policy_tests\\.py\"\ndiff --git a/debian/tests/simple.sh b/debian/tests/simple.sh\nindex c12a81b..dad4125 100755\n--- a/debian/tests/simple.sh\n+++ b/debian/tests/simple.sh\n@@ -44,10 +44,12 @@ run_expecting_success () {\n     echo \"#### Sos Total time (seconds):\" $runtime\n \n     if [ -s /dev/shm/stderr ]; then\n-       add_failure \"test generated stderr output, see above\"\n-       echo \"### start stderr\"\n-       cat /dev/shm/stderr\n-       echo \"### end stderr\"\n+       if [ \"$(grep -v -E \"Unable to read kernel|Unable to find booted\" /dev/shm/stderr)\" ] ; then\n+           add_failure \"test generated stderr output, see above\"\n+           echo \"### start stderr\"\n+           cat /dev/shm/stderr\n+           echo \"### end stderr\"\n+       fi\n     fi\n     \n     echo \"### start stdout\"\n@@ -157,9 +159,9 @@ test_mask () {\n             add_failure \"hostname not obfuscated with --mask\"\n         fi\n         # we don't yet support binary obfuscation, so skip binary matches\n-        if [ \"$(grep -rI `hostname` /tmp/sosreport_test/*)\" ]; then\n+        if [ \"$(grep -rI `hostname` /tmp/sosreport_test/* | grep -v -E \"autopkgtest-run|S01autopkgtest\")\" ]; then\n             add_failure \"hostname not obfuscated in all places\"\n-            echo \"$(grep -rI `hostname` /tmp/sosreport_test/*)\"\n+            echo \"$(grep -rI `hostname` /tmp/sosreport_test/* | grep -v -E \"autopkgtest-run|S01autopkgtest\")\"\n         fi\n         # only tests first interface\n         mac_addr=$(cat /sys/class/net/$(ip route show default | awk '/default/ {print $5}')/address)\n@@ -168,10 +170,10 @@ test_mask () {\n             echo \"$(grep -rI $mac_addr /tmp/sosreport_test/*)\"\n         fi\n         # only tests first interface\n-        ip_addr=$(ip route show default | awk '/default/ {print $3}')\n+        ip_addr=$(ip route show default | awk '/default/ {print $3}' | sed 's/\\./\\\\\\./g')\n         if [ \"$(grep -rI $ip_addr /tmp/sosreport_test/*)\" ]; then\n             add_failure \"IP address not obfuscated in all places\"\n-            echo \"$(grep -rI $ip_addr /tmp/sosreport/_test/*)\"\n+            echo \"$(grep -rI $ip_addr /tmp/sosreport_test/*)\"\n         fi\n         update_failures\n     fi\n@@ -222,7 +224,7 @@ test_build_threads () {\n     cmd=\"--build -t1 -o host,kernel,filesys,hardware,date,logs\"\n     run_expecting_success \"$cmd\"\n     if [ $? -eq 0 ]; then\n-        if [ ! \"$(grep \"Your sosreport build tree\" /dev/shm/stdout)\" ]; then\n+        if [ ! \"$(grep \"Your sos report build tree\" /dev/shm/stdout)\" ]; then\n             add_failure \"did not save the build tree\"\n         fi\n         if [ $(grep \"Finishing plugins\" /dev/shm/stdout) ]; then\ndiff --git a/docs/conf.py b/docs/conf.py\nindex c886a9b..899fcac 100644\n--- a/docs/conf.py\n+++ b/docs/conf.py\n@@ -21,7 +21,6 @@ import os\n # documentation root, use os.path.abspath to make it absolute, like shown here.\n #sys.path.insert(0, os.path.abspath('.'))\n sys.path.insert(0, os.path.abspath('..'))\n-import sos\n \n \n # -- General configuration ------------------------------------------------\n@@ -52,16 +51,16 @@ master_doc = 'index'\n \n # General information about the project.\n project = 'SoS'\n-copyright = '2014, Bryn Reeves'\n+project_copyright = '2014, Bryn Reeves'\n \n # The version info for the project you're documenting, acts as replacement for\n # |version| and |release|, also used in various other places throughout the\n # built documents.\n #\n # The short X.Y version.\n-version = '4.4'\n+version = '4.8.2'\n # The full version, including alpha/beta/rc tags.\n-release = '4.4'\n+release = '4.8.2'\n \n # The language for content autogenerated by Sphinx. Refer to documentation\n # for a list of supported languages.\ndiff --git a/docs/index.rst b/docs/index.rst\nindex 16f765a..d3ed028 100644\n--- a/docs/index.rst\n+++ b/docs/index.rst\n@@ -17,7 +17,7 @@ To clone the current main (development) branch run:\n \n .. code::\n \n-    git clone git://github.com/sosreport/sos.git\n+    git clone git@github.com:sosreport/sos.git\n \n Reporting bugs\n ^^^^^^^^^^^^^^\n@@ -63,9 +63,9 @@ Manual Installation\n Pre-built Packaging\n ^^^^^^^^^^^^^^^^^^^\n \n-Fedora/RHEL users install via yum:\n+Fedora/RHEL users install via dnf:\n \n-``yum install sos``\n+``dnf install sos``\n \n Debian users install via apt:\n \ndiff --git a/man/en/sos-clean.1 b/man/en/sos-clean.1\nindex 7fd2df0..916ad99 100644\n--- a/man/en/sos-clean.1\n+++ b/man/en/sos-clean.1\n@@ -1,10 +1,11 @@\n-.TH SOS CLEAN 1 \"Thu May 21 2020\"\n+.TH SOS_CLEAN 1 \"Thu May 21 2020\"\n .SH NAME\n-sos clean - Obfuscate sensitive data from one or more sosreports\n+sos_clean, sos_mask \\- Obfuscate sensitive data from one or more sos reports\n .SH SYNOPSIS\n .B sos clean TARGET [options]\n     [\\-\\-domains]\n     [\\-\\-disable-parsers]\n+    [\\-\\-skip-cleaning-files|\\-\\-skip-masking-files]\n     [\\-\\-keywords]\n     [\\-\\-keyword-file]\n     [\\-\\-map-file]\n@@ -15,11 +16,11 @@ sos clean - Obfuscate sensitive data from one or more sosreports\n \n .SH DESCRIPTION\n \\fBsos clean\\fR or \\fBsos mask\\fR is an sos subcommand used to obfuscate sensitive information from\n-previously generated sosreports that is not covered by the standard plugin-based post\n+previously generated sos reports that is not covered by the standard plugin-based post\n processing executed during report generation, for example IP addresses.\n .LP\n Data obfuscated via this utility is done so consistently, meaning for example an IP address of\n-192.168.1.1 in an unprocessed sosreport that gets obfuscated to, for example, 100.0.0.1, will be\n+192.168.1.1 in an unprocessed sos report that gets obfuscated to, for example, 100.0.0.1, will be\n changed to 100.0.0.1 in all occurrences found in the report.\n \n Additionally, by default all such obfuscations are stored in \"maps\" that will be persistently\n@@ -46,7 +47,7 @@ using the same compression method as the original.\n .TP\n .B \\-\\-domains DOMAINS\n Provide a comma-delimited list of domain names to obfuscate, in addition to those\n-matching the hostname of the system that created the sosreport. Subdomains that\n+matching the hostname of the system that created the sos report. Subdomains that\n match a domain given via this option will also be obfuscated.\n \n For example, if \\fB\\-\\-domains redhat.com\\fR is specified, then 'redhat.com' will\n@@ -60,8 +61,17 @@ Note that using this option is very likely to leave sensitive information in pla\n the target archive, so only use this option when absolutely necessary or you have complete\n trust in the party/parties that may handle the generated report.\n \n-Valid values for this option are currently: \\fBhostname\\fR, \\fBip\\fR, \\fBmac\\fR, \\fBkeyword\\fR,\n-and \\fBusername\\fR.\n+Valid values for this option are currently: \\fBhostname\\fR, \\fBip\\fR, \\fBipv6\\fR,\n+\\fBmac\\fR, \\fBkeyword\\fR, and \\fBusername\\fR.\n+.TP\n+.B \\-\\-skip-cleaning-files, \\-\\-skip-masking-files FILES\n+Provide a comma-delimited list of files inside an archive, that cleaner should skip in cleaning.\n+\n+Globs like asterisk are supported, so \\fBsos_commands/host/hostname*\\fR will match all three\n+usual filenames in that directory (\\fBhostname\\fR, \\fBhostnamectl_status\\fR and \\fBhostname_-f\\fR).\n+\n+Use this option with caution, only when being certain the given files do not contain any sensitive\n+information.\n .TP\n .B \\-\\-keywords KEYWORDS\n Provide a comma-delimited list of keywords to scrub in addition to the default parsers.\n@@ -135,7 +145,7 @@ on the system from a previous execution.\n \n .SH MAINTAINER\n .nf\n-Jake Hunsaker <jhunsake@redhat.com>\n+Maintained on GitHub at https://github.com/sosreport/sos\n .fi\n .SH AUTHORS & CONTRIBUTORS\n See \\fBAUTHORS\\fR file in the package documentation.\ndiff --git a/man/en/sos-collect.1 b/man/en/sos-collect.1\nindex 2f60332..e3100bf 100644\n--- a/man/en/sos-collect.1\n+++ b/man/en/sos-collect.1\n@@ -1,7 +1,7 @@\n-.TH SOS COLLECT 1 \"April 2020\"\n+.TH SOS_COLLECT 1 \"April 2020\"\n \n .SH NAME\n-sos collect \\- Collect sosreports from multiple (cluster) nodes\n+sos_collect \\- Collect sos reports from multiple (cluster) nodes\n .SH SYNOPSIS\n .B sos collect\n     [\\-a|\\-\\-all\\-options]\n@@ -41,7 +41,6 @@ sos collect \\- Collect sosreports from multiple (cluster) nodes\n     [\\-\\-skip-files FILES]\n     [\\-s|\\-\\-sysroot SYSROOT]\n     [\\-\\-ssh\\-user SSH_USER]\n-    [\\-\\-sos-cmd SOS_CMD]\n     [\\-t|\\-\\-threads THREADS]\n     [\\-\\-timeout TIMEOUT]\n     [\\-\\-transport TRANSPORT]\n@@ -52,20 +51,22 @@ sos collect \\- Collect sosreports from multiple (cluster) nodes\n \n .PP\n .SH DESCRIPTION\n-collect is an sos subcommand to collect sosreports from multiple nodes and package\n+collect is an sos subcommand to collect sos reports from multiple nodes and package\n them in a single useful tar archive. \n \n sos collect can be run either on a workstation that has SSH key authentication setup\n for the nodes in a given cluster, or from a \"primary\" node in a cluster that has SSH\n keys configured for the other nodes.\n \n-Some sosreport options are supported by sos-collect and are passed directly to \n-the sosreport command run on each node.\n-\n+Some sos report options are supported by sos-collect and are passed directly to\n+the sos report command run on each node.\n+.LP\n+\\fBNote:\\fR the \\fBsos-collector\\fR command has been deprecated and will be removed in\n+sos-4.9. Use the new \\fBsos collect\\fR syntax instead.\n .SH OPTIONS\n .TP\n \\fB\\-a\\fR, \\fB\\-\\-alloptions\\fR\n-Enables all sosreport options. \n+Enables all sos report options.\n \n This does NOT enable all sos collect options.\n .TP\n@@ -73,11 +74,10 @@ This does NOT enable all sos collect options.\n Become the root user on the remote node when connecting as a non-root user.\n .TP\n \\fB\\-\\-batch\\fR\n-Run in non-interactive mode. This will skip prompts for user input, with the\n-exception of a prompt for the SSH password.\n+Run in non-interactive mode. This will skip prompts for user input.\n .TP\n \\fB\\-\\-all\\-logs\\fR\n-Sosreport option. Collects all logs regardless of size. \n+Report option. Collects all logs regardless of size. \n \n Default: no\n .TP\n@@ -90,13 +90,13 @@ a specific cluster you would use \\fB'-c ovirt.cluster=example_cluster'\\fR.\n Available cluster options can be listed by running \\fB'sos collect -l'\\fR.\n .TP\n \\fB\\-\\-chroot\\fR CHROOT\n-Sosreport option. Set the chroot mode. When \\fB\\-\\-sysroot\\fR is used commands default\n+Report option. Set the chroot mode. When \\fB\\-\\-sysroot\\fR is used commands default\n to executing with SYSROOT as the root directory. This can be overridden by setting\n \\fB\\-\\-chroot\\fR to \"always\" (always chroot) or \"never\" (always run in the host\n namespace).\n .TP\n \\fB\\-\\-case\\-id\\fR CASE_ID\n-Sosreport option. Specifies a case number identifier.\n+Report option. Specifies a case number identifier.\n .TP\n \\fB\\-\\-cluster\\-type\\fR CLUSTER_TYPE\n When run by itself, sos collect will attempt to identify the type of cluster at play.\n@@ -111,7 +111,7 @@ specified by the \\fB--nodes\\fR option. Note that in this scenario, regex string(\n for node names will be ignored.\n \n Example: \\fBsos collect --cluster-type=kubernetes\\fR will force the kubernetes profile\n-to be run, and thus set sosreport options and attempt to determine a list of nodes using\n+to be run, and thus set sos report options and attempt to determine a list of nodes using\n that profile. \n .TP\n \\fB\\-\\-container\\-runtime\\fR RUNTIME\n@@ -120,7 +120,7 @@ to nodes with sos version 4.3 or later. This option controls the default contain\n runtime plugins will use for collections. See \\fBman sos-report\\fR.\n .TP\n \\fB\\-e\\fR ENABLE_PLUGINS, \\fB\\-\\-enable\\-plugins\\fR ENABLE_PLUGINS\n-Sosreport option. Use this to enable a plugin that would otherwise not be run.\n+Report option. Use this to enable a plugin that would otherwise not be run.\n \n This option supports providing a comma-delimited list of plugins.\n .TP\n@@ -160,7 +160,7 @@ rather than key-pair encryption.\n Specify an existing host group definition to use.\n \n Host groups are pre-defined settings for the cluster-type, primary node, and nodes options\n-saved in JSON-formatted files under /var/lib/sos collect/<GROUP>.\n+saved in JSON-formatted files under /etc/sos/groups.d/<GROUP>.\n \n If cluster_type and/or primary are set in the group, sos collect behaves as if\n these values were specified on the command-line.\n@@ -168,7 +168,7 @@ these values were specified on the command-line.\n If nodes is defined, sos collect \\fBextends\\fR the \\fB\\-\\-nodes\\fR option, if set,\n with the nodes or regexes listed in the group.\n \n-Note that sos collect will only write group definitions to /var/lib/sos collect/\n+Note that sos collect will only write group definitions to /etc/sos/groups.d/\n however the GROUP value may be a filename for any group definitions that exist outside\n of the default location. If you are manually writing these files, use the value \\fBnull\\fR\n when a python NoneType is expected. Caveat: use \\fBstring\\fR 'none' if setting cluster_type\n@@ -177,7 +177,7 @@ to none.\n \\fB\\-\\-save\\-group\\fR GROUP\n Save the results of this run of sos collect to a host group definition.\n \n-sos-colllector will write a JSON-formatted file with name GROUP to /var/lib/sos collect/\n+sos-collector will write a JSON-formatted file with name GROUP to /etc/sos/groups.d/\n with the settings for cluster-type, primary, and the node list as discovered by cluster enumeration.\n Note that this means regexes are not directly saved to host groups, but the results of matching against\n those regexes are.\n@@ -187,7 +187,7 @@ Specify the number of concurrent node collections that should be run.\n \n If the number of nodes enumerated exceeds the number of JOBS, then sos collect\n will start collecting from the first X number of nodes and then continue to iterate\n-through the remaining nodes as sosreport collection finishes.\n+through the remaining nodes as sos report collection finishes.\n \n Defaults to 4.\n .TP\n@@ -196,17 +196,17 @@ Use this option when connecting as a non-root user that has passwordless sudo\n configured.\n \n If this option is omitted and a bogus sudo password is supplied, collection of\n-sosreports may exhibit unexpected behavior and/or fail entirely.\n+sos reports may exhibit unexpected behavior and/or fail entirely.\n .TP\n \\fB\\-k\\fR PLUGIN_OPTION, \\fB\\-\\-plugin\\-option\\fR PLUGIN_OPTION\n-Sosreport option. Set a plugin option to a particular value. This takes the form of\n+Report option. Set a plugin option to a particular value. This takes the form of\n plugin_name.option_name=value.\n \n-Example: To enable the kubernetes \"all\" option in sosreport use \\fB-k kubernetes.all=on\\fR.\n+Example: To enable the kubernetes \"all\" option in sos report use \\fB-k kubernetes.all=on\\fR.\n .TP\n \\fB\\-\\-label\\fR LABEL\n Specify a label to be added to the archive names. This label will be applied to\n-both the sos collect archive and the sosreport archives.\n+both the sos collect archive and the sos report archives.\n \n If a cluster sets a default label, the user-provided label will be appended to\n that cluster default.\n@@ -224,13 +224,13 @@ size of the final sos report tarball and the memory usage of sos during collecti\n of commands, such as very large journals that may be several GiB in size.\n .TP\n \\fB\\-n\\fR SKIP_PLUGINS, \\fB\\-\\-skip\\-plugins\\fR SKIP_PLUGINS\n-Sosreport option. Disable (skip) a particular plugin that would otherwise run.\n+Report option. Disable (skip) a particular plugin that would otherwise run.\n This is useful if a particular plugin is prone to hanging for one reason or another.\n \n This option supports providing a comma-delimited list of plugins.\n .TP\n \\fB\\-\\-nodes\\fR NODES\n-Provide a comma-delimited list of nodes to collect sosreports from, or a regex string to\n+Provide a comma-delimited list of nodes to collect sos reports from, or a regex string to\n be used to compare discovered node names against. If using a regex, only nodes matching the regex\n will be used - i.e. it can be used as a whitelist but not a blacklist.\n \n@@ -244,10 +244,10 @@ if the cluster profile should be applied or not.\n Use this with \\fB\\-\\-cluster-type\\fR if there are rpm or apt issues on the primary/local node.\n .TP\n \\fB\\-\\-no\\-local\\fR\n-Do not collect a sosreport from the local system. \n+Do not collect a sos report from the local system. \n \n-If \\fB--primary\\fR is not supplied, it is assumed that the host running sosreport is part of\n-the cluster that is to be collected. Use this option to skip collection of a local sosreport.\n+If \\fB--primary\\fR is not supplied, it is assumed that the host running sos report is part of\n+the cluster that is to be collected. Use this option to skip collection of a local sos report.\n \n This option is NOT needed if \\fB--primary\\fR is provided.\n .TP\n@@ -259,7 +259,7 @@ the type of cluster in use.\n .TP\n \\fB\\-\\-image IMAGE\\fR\n Specify an image to use for the temporary container created for collections on\n-containerized host, if you do not want to use the default image specifed by the\n+containerized host, if you do not want to use the default image specified by the\n host's policy. Note that this should include the registry.\n .TP\n \\fB\\-\\-force-pull-image TOGGLE, \\-\\-pull TOGGLE\\fR\n@@ -289,9 +289,9 @@ Note that this file must exist on the node(s) performing the pull operations, no\n node from which \\fBsos collect\\fR was run.\n .TP\n \\fB\\-o\\fR ONLY_PLUGINS, \\fB\\-\\-only\\-plugins\\fR ONLY_PLUGINS\n-Sosreport option. Run ONLY the plugins listed.\n+Report option. Run ONLY the plugins listed.\n \n-Note that a cluster profile will NOT override this option. This may cause the sosreports\n+Note that a cluster profile will NOT override this option. This may cause the sos reports\n generated to not contain the relevant output for a given type of cluster.\n \n This option supports providing a comma-delimited list of plugins.\n@@ -305,7 +305,7 @@ ideally deploy SSH keys, but the \\-\\-password\\-per\\-node option is also availabl\n .TP\n \\fB\\-\\-password\\-per\\-node\\fR\n When using this option, sos collect will prompt the user for the SSH password for\n-each node that will have an sosreport collected from it individually before attempting\n+each node that will have an sos report collected from it individually before attempting\n to connect to the nodes.\n .TP\n \\fB\\-\\-preset\\fR PRESET\n@@ -337,16 +337,7 @@ Specify an SSH user for sos collect to connect to nodes with. Default is root.\n sos collect will prompt for a sudo password for non-root users.\n .TP\n \\fB\\-s\\fR SYSROOT, \\fB\\-\\-sysroot\\fR SYSROOT\n-Sosreport option. Specify an alternate root file system path.\n-.TP\n-\\fB\\-\\-sos-cmd\\fR SOS_CMD\n-Define all options that sosreport should be run with on the nodes. This will\n-override any other commandline options as well as any options specified by a \n-cluster profile.\n-\n-The sosreport command will execute as 'sosreport --batch SOS_CMD'. The BATCH \n-option cannot be removed from the sosreport command as it is required to run \n-sosreport non-interactively for sos collect to function.\n+Report option. Specify an alternate root file system path.\n .TP\n \\fB\\-t\\fR THREADS \\fB\\-\\-threads\\fR THREADS\n Report option. Specify the number of collection threads to run.\n@@ -357,9 +348,9 @@ during the collection process.\n Defaults to 4.\n .TP\n \\fB\\-\\-timeout\\fR TIMEOUT\n-Timeout for sosreport generation on each node, in seconds.\n+Timeout for sos report generation on each node, in seconds.\n \n-Note that sosreports are collected in parallel, so you can approximate the total\n+Note that sos reports are collected in parallel, so you can approximate the total\n runtime of sos collect via timeout*(number of nodes/jobs).\n \n Default is 180 seconds.\n@@ -383,20 +374,20 @@ The types of transports supported are currently as follows:\n Specify a temporary directory to save sos archives to. By default one will be created in\n /tmp and then removed after sos collect has finished running.\n \n-This is NOT the same as specifying a temporary directory for sosreport on the remote nodes.\n+This is NOT the same as specifying a temporary directory for sos report on the remote nodes.\n .TP\n \\fB\\-v\\fR \\fB\\-\\-verbose\\fR\n Print debug information to screen.\n .TP\n-\\fB\\-\\-verfiy\\fR\n-Sosreport option. Passes the \"--verify\" option to sosreport on the nodes which \n-causes sosreport to validate plugin-specific data during collection.\n+\\fB\\-\\-verify\\fR\n+Report option. Passes the \"--verify\" option to sos report on the nodes which \n+causes sos report to validate plugin-specific data during collection.\n \n-Note that this option may considerably extend the time it takes sosreport to run on\n+Note that this option may considerably extend the time it takes sos report to run on\n the nodes. Consider increasing \\fB\\-\\-timeout\\fR when using this option.\n .TP\n \\fB\\-z\\fR COMPRESSION, \\fB\\-\\-compression-type\\fR COMPRESSION\n-Sosreport option. Override the default compression type.\n+Report option. Override the default compression type.\n \n .SH SEE ALSO\n .BR sos (1)\n@@ -405,4 +396,8 @@ Sosreport option. Override the default compression type.\n .BR sos.conf (5)\n \n .SH MAINTAINER\n-    Jake Hunsaker <jhunsake@redhat.com>\n+.nf\n+Maintained on GitHub at https://github.com/sosreport/sos\n+.fi\n+.SH AUTHORS & CONTRIBUTORS\n+See \\fBAUTHORS\\fR file in the package documentation.\ndiff --git a/man/en/sos-help.1 b/man/en/sos-help.1\nindex ec7777a..53bd7d9 100644\n--- a/man/en/sos-help.1\n+++ b/man/en/sos-help.1\n@@ -1,6 +1,6 @@\n-.TH SOS HELP 1 \"Fri Nov 05 2021\"\n+.TH SOS_HELP 1 \"Fri Nov 05 2021\"\n .SH NAME\n-sos help - get detailed help information on sos commands and components\n+sos_help \\- get detailed help information on sos commands and components\n .SH SYNOPSIS\n .B sos help TOPIC\n \ndiff --git a/man/en/sos-report.1 b/man/en/sos-report.1\nindex 5b2b1d5..6c6043f 100644\n--- a/man/en/sos-report.1\n+++ b/man/en/sos-report.1\n@@ -1,6 +1,6 @@\n-.TH SOS REPORT 1 \"Mon Mar 25 2013\"\n+.TH SOS_REPORT 1 \"Mon Mar 25 2013\"\n .SH NAME\n-sos report \\- Collect and package diagnostic and support data\n+sos_report \\- Collect and package diagnostic and support data\n .SH SYNOPSIS\n .B sos report\n           [-l|--list-plugins]\\fR\n@@ -8,7 +8,7 @@ sos report \\- Collect and package diagnostic and support data\n           [-e|--enable-plugins plugin-names]\\fR\n           [-o|--only-plugins plugin-names]\\fR\n           [-a|--alloptions] [-v|--verbose]\\fR\n-          [-k plug.opt|--plugin-option plug.opt]\\fR\n+          [-k plug.opt|--plugin-option plug.opt]|--plugopts plug.opt\\fR\n           [--no-report] [--config-file conf]\\fR\n           [--no-postproc]\\fR\n           [--preset preset] [--add-preset add_preset]\\fR\n@@ -27,11 +27,13 @@ sos report \\- Collect and package diagnostic and support data\n           [--list-profiles]\\fR\n           [--verify]\\fR\n           [--log-size]\\fR\n+          [--journal-size]\\fR\n           [--all-logs]\\fR\n           [--since YYYYMMDD[HHMMSS]]\\fR\n           [--skip-commands commands]\\fR\n           [--skip-files files]\\fR\n           [--allow-system-changes]\\fR\n+          [--low-priority]\\fR\n           [-z|--compression-type method]\\fR\n           [--encrypt]\\fR\n           [--encrypt-key KEY]\\fR\n@@ -55,6 +57,9 @@ Sos is modular in design and is able to collect data from a wide\n range of subsystems and packages that may be installed. An\n HTML report summarizing the collected information is optionally\n generated and stored within the archive.\n+.LP\n+\\fBNote:\\fR the \\fBsosreport\\fR command has been deprecated and will be removed in\n+sos-4.9. Use the new \\fBsos report\\fR syntax instead.\n .SH OPTIONS\n .TP\n .B \\-l, \\--list-plugins\n@@ -79,7 +84,8 @@ Enable the specified plugin(s) only (all other plugins should be\n disabled). Multiple plugins may be specified by repeating the option\n or as a comma-separated list.\n .TP\n-.B \\-k PLUGNAME.PLUGOPT[=VALUE], \\--plugin-option=PLUGNAME.PLUGOPT[=VALUE]\n+.B \\-k PLUGNAME.PLUGOPT[=VALUE], \\--plugin-option=PLUGNAME.PLUGOPT[=VALUE], \\\n+\\--plugopts=PLUGNAME.PLUGOPT[=VALUE]\n Specify plug-in options. The option PLUGOPT is enabled, or set to the\n specified value in the plug-in PLUGNAME.\n .TP\n@@ -117,7 +123,7 @@ example a preset may enable a certain set of plugins, disable others, or enable\n specific plugin options. They may also specify sos options such as log-size or\n package verification.\n \n-User defined presets are saved under /var/lib/sos/presets as JSON-formatted files.\n+User defined presets are saved under /etc/sos/presets.d as JSON-formatted files.\n .TP\n .B \\--add-preset ADD_PRESET [options]\n Add a preset with name ADD_PRESET that enables [options] when called.\n@@ -185,13 +191,22 @@ Places a limit on the size of collected logs and output in MiB. Note that this\n causes sos to capture the last X amount of the file or command output collected.\n \n By default, this is set to 25 MiB and applies to all files and command output collected\n-with the exception of journal collections, which are limited to 100 MiB.\n+with the exception of journal collections, which are limited by the \\fB--journal-size\\fR\n+option instead.\n \n Setting this value to 0 removes all size limitations, and any files or commands\n collected will be collected in their entirety, which may drastically increase the\n size of the final sos report tarball and the memory usage of sos during collection\n-of commands, such as very large journals that may be several GiB in size.\n+of commands.\n+\n+.TP\n+.B \\--journal-size\n+Places a limit on the size of journals collected in MiB. Note that this causes sos\n+to capture the last X amount of the journal.\n \n+By default, this is set to 100 MiB. Setting this value to 0 removes all size limitations,\n+as does the use of the \\fB--all-logs\\fR option. This may drastically increase the size\n+of the final sos report tarball.\n .TP\n .B \\--all-logs\n Tell plugins to collect all possible log data ignoring any size limits\n@@ -220,6 +235,11 @@ for example \\fB/etc/sos/*\\fR.\n .B \\--allow-system-changes\n Run commands even if they can change the system (e.g. load kernel modules).\n .TP\n+.B \\--low-priority\n+Set sos to execute as a low priority process so that is does not interfere with\n+other processes running on the system. Specific distributions may set their own\n+constraints, but by default this involves setting process niceness to 19 and, if\n+available, setting an idle IO class via ionice.\n .B \\-z, \\--compression-type METHOD\n Override the default compression type specified by the active policy.\n .TP\n@@ -244,13 +264,13 @@ See the sections on \\fB--encrypt-key\\fR and \\fB--encrypt-pass\\fR below for more\n information.\n .TP\n .B \\--encrypt-key KEY\n-Encrypts the resulting archive that sosreport produces using GPG. KEY must be\n+Encrypts the resulting archive that sos report produces using GPG. KEY must be\n an existing key in the user's keyring as GPG does not allow for keyfiles.\n KEY can be any value accepted by gpg's 'recipient' option.\n \n-Note that the user running sosreport must match the user owning the keyring\n+Note that the user running sos report must match the user owning the keyring\n from which keys will be obtained. In particular this means that if sudo is\n-used to run sosreport, the keyring must also be set up using sudo\n+used to run sos report, the keyring must also be set up using sudo\n (or direct shell access to the account).\n \n Users should be aware that encrypting the final archive will result in sos\n@@ -282,7 +302,7 @@ Labels will be appended after the system's short hostname and may contain\n alphanumeric characters.\n .TP\n .B \\--threads THREADS\n-Specify the number of threads sosreport will use for concurrency. Defaults to 4.\n+Specify the number of threads sos report will use for concurrency. Defaults to 4.\n .TP\n .B \\--plugin-timeout TIMEOUT\n Specify a timeout in seconds to allow each plugin to run for. A value of 0\n@@ -294,7 +314,7 @@ a timeout for a specific plugin, use the 'timeout' plugin option available to\n all plugins - e.g. '-k logs.timeout=600'.\n \n The plugin-specific timeout option will override this option. For example, using\n-\\'--plugin-timeout=60 -k logs.timeout=600\\' will set a timeout of 600 seconds for\n+\\(aq--plugin-timeout=60 -k logs.timeout=600' will set a timeout of 600 seconds for\n the logs plugin and 60 seconds for all other enabled plugins.\n .TP\n .B \\--cmd-timeout TIMEOUT\n@@ -344,7 +364,7 @@ Specify a case identifier to associate with the archive.\n Identifiers may include alphanumeric characters, commas and periods ('.').\n .TP\n .B \\--build\n-Do not archive copied data. Causes sosreport to leave an uncompressed\n+Do not archive copied data. Causes sos report to leave an uncompressed\n archive as a temporary file or directory tree.\n .TP\n .B \\--debug\n@@ -359,11 +379,11 @@ option.\n .TP\n .B \\--estimate-only\n Estimate disk space requirements when running sos report. This can be valuable\n-to prevent sosreport working dir to consume all free disk space. No plugin data\n+to prevent sos report working dir to consume all free disk space. No plugin data\n is available at the end.\n \n Plugins will be collected sequentially, size of collected files and commands outputs\n-will be calculated and the plugin files will be immediatelly deleted prior execution\n+will be calculated and the plugin files will be immediately deleted prior execution\n of the next plugin. This still can consume whole free disk space, though.\n \n Please note, size estimations may not be accurate for highly utilized systems due to\n@@ -382,7 +402,7 @@ as well. If these credentials are not provided, sos will still run and create an\n but will not attempt an automatic upload, instead relying on the end user to upload it\n as needed.\n \n-The sosreport archive will still remain on the local filesystem even after a successful\n+The sos report archive will still remain on the local filesystem even after a successful\n upload.\n \n Note that depending on the distribution sos is being run on, or the vendor policy detected during\n@@ -414,6 +434,7 @@ variable. If this variable is set, then no username prompt will occur and --batc\n may be used provided all other required values (case number, upload password)\n are provided.\n \n+This option is ignored when uploading to the Red Customer Portal or Red Hat Secure FTP server in favour of web token authentication.\n .TP\n .B \\-\\-upload-pass PASS\n Specify the password to use for authentication with the destination server.\n@@ -423,7 +444,7 @@ If this option is omitted and upload is requested, you will be prompted for one.\n If --batch is used, this prompt will not occur, so any uploads are likely to fail unless\n this option is used.\n \n-Note that this will result in the plaintext string appearing in `ps` output that may\n+Note that this may result in the plaintext string appearing in `ps` output that may\n be collected by sos and be in the archive. If a password must be provided by you\n for uploading, it is strongly recommended to not use --batch and enter the password\n when prompted rather than using this option.\n@@ -432,6 +453,7 @@ You also have the option of providing this value via the SOSUPLOADPASSWORD envir\n variable. If this variable is set, then no password prompt will occur and --batch may\n be used provided all other required values (case number, upload user) are provided.\n \n+This option is ignored when uploading to the Red Customer Portal or Red Hat Secure FTP server in favour of web token authentication.\n .TP\n .B \\--upload-directory DIR\n Specify a directory to upload to, if one is not specified by a vendor default location\n@@ -478,13 +500,7 @@ Display usage message.\n \n .SH MAINTAINER\n .nf\n-Jake Hunsaker <jhunsake@redhat.com>\n+Maintained on GitHub at https://github.com/sosreport/sos\n .fi\n .SH AUTHORS & CONTRIBUTORS\n See \\fBAUTHORS\\fR file in the package documentation.\n-.nf\n-.SH TRANSLATIONS\n-.nf\n-Translations are handled by transifex (https://fedorahosted.org/transifex/)\n-.fi\n-.fi\ndiff --git a/man/en/sos.1 b/man/en/sos.1\nindex 2d5a972..863da15 100644\n--- a/man/en/sos.1\n+++ b/man/en/sos.1\n@@ -10,7 +10,7 @@ sos \\- A unified tool for collecting system logs and other debug information\n support representatives, and the like to assist in troubleshooting issues with\n a system or group of systems.\n \n-The most well known function is \\fB sos report\\fR or \\fBsosreport\\fR as it was\n+The most well known function is \\fB sos report\\fR or \\fBsos report\\fR as it was\n previously known.\n \n An sos archive is typically requested by support organizations to collect baseline\n@@ -31,7 +31,7 @@ services, or system architecture is detected.\n \n See \\fBsos report --help\\fR and \\fBman sos-report\\fR for more information.\n \n-May also be invoked via the alias \\fBrep\\fR or the deprecated command \\fBsosreport\\fR.\n+May also be invoked via the alias \\fBrep\\fR or the deprecated command \\fBsos report\\fR.\n \n .TP\n .B collect\n@@ -51,9 +51,9 @@ May also be invoked via the alias \\fBsos collector\\fR or the deprecated command\n \n .TP\n .B clean|cleaner|mask\n-This subcommand takes input of either 1) an sosreport tarball, 2) a collection\n-of sosreport tarballs such as from \\fBcollect\\fR, or 3) the unpackaged\n-directory of an sosreport and obfuscates potentially sensitive system information\n+This subcommand takes input of either 1) an sos report tarball, 2) a collection\n+of sos report tarballs such as from \\fBcollect\\fR, or 3) the unpackaged\n+directory of an sos report and obfuscates potentially sensitive system information\n that is not covered by the standard postprocessing of \\fBsos report\\fR.\n \n Such data includes IP addresses, networks, MAC addresses, and more. Data obfuscated\n@@ -103,13 +103,13 @@ See the sections on \\fB--encrypt-key\\fR and \\fB--encrypt-pass\\fR below for more\n information.\n .TP\n .B \\--encrypt-key KEY\n-Encrypts the resulting archive that sosreport produces using GPG. KEY must be\n+Encrypts the resulting archive that sos report produces using GPG. KEY must be\n an existing key in the user's keyring as GPG does not allow for keyfiles.\n KEY can be any value accepted by gpg's 'recipient' option.\n \n-Note that the user running sosreport must match the user owning the keyring\n+Note that the user running sos report must match the user owning the keyring\n from which keys will be obtained. In particular this means that if sudo is\n-used to run sosreport, the keyring must also be set up using sudo\n+used to run sos report, the keyring must also be set up using sudo\n (or direct shell access to the account).\n \n Users should be aware that encrypting the final archive will result in sos\n@@ -139,7 +139,7 @@ Specify an alternate root file system path.\n Specify alternate temporary directory to copy data during execution.\n .TP\n .B \\--threads THREADS\n-Specify the number of threads sosreport will use for concurrency. Defaults to 4. \n+Specify the number of threads sos report will use for concurrency. Defaults to 4. \n .TP\n .B \\-v, \\--verbose\n Increase logging verbosity. May be specified multiple times to enable\n@@ -165,7 +165,7 @@ Display usage message.\n .BR sos.conf (5)\n .SH MAINTAINER\n .nf\n-Jake Hunsaker <jhunsake@redhat.com>\n+Maintained on GitHub at https://github.com/sos report/sos\n .fi\n .SH AUTHORS & CONTRIBUTORS\n See \\fBAUTHORS\\fR file in the package documentation.\ndiff --git a/man/en/sos.conf.5 b/man/en/sos.conf.5\nindex 8bc17b4..19136c3 100644\n--- a/man/en/sos.conf.5\n+++ b/man/en/sos.conf.5\n@@ -1,9 +1,9 @@\n-.TH \"sos.conf\" \"5\" \"SOSREPORT\" \"sosreport configuration file\"\n+.TH \"sos.conf\" \"5\" \"SOS\" \"sos configuration file\"\n .SH NAME\n-sos.conf \\- sosreport configuration\n+sos.conf \\- sos report configuration\n .SH DESCRIPTION\n .sp\n-sosreport uses a configuration file at /etc/sos/sos.conf, and there are\n+sos report uses a configuration file at /etc/sos/sos.conf, and there are\n subdirectories under /etc/sos that are used for specific purposes.\n \n Note that non-root users may override options set in /etc/sos/sos.conf by creating\ndiff --git a/plugins_overview.py b/plugins_overview.py\nindex 46bcbf5..f7ef042 100644\n--- a/plugins_overview.py\n+++ b/plugins_overview.py\n@@ -8,7 +8,7 @@\n # - list of paths it forbits to collect (add_forbidden_path)\n # - list of commands it calls (add_cmd_output)\n #\n-# Output of the script: \n+# Output of the script:\n # - a JSON object with plugins in keys\n # - or CSV format in case \"csv\" cmdline is provided\n #\n@@ -27,11 +27,12 @@ import sys\n PLUGDIR = 'sos/report/plugins'\n \n plugs_data = {}     # the map of all plugins data to collect\n-plugcontent = ''    # content of plugin file just being processed\n+\n \n # method to parse an item of a_s_c/a_c_o/.. methods\n # we work on an assumption the item is a string quoted by \\\" or optionally\n-# by \\'. If we detect at least 2 such chars in the item, take what is between those.\n+# by \\'. If we detect at least 2 such chars in the item, take what is between\n+# those.\n def add_valid_item(dest, item):\n     for qoutemark in \"\\\"\\'\":\n         split = item.split(qoutemark)\n@@ -39,13 +40,15 @@ def add_valid_item(dest, item):\n             dest.append(split[1])\n             return\n \n-# method to find in `plugcontent` all items of given method (a_c_s/a_c_o/..) split\n-# by comma; add each valid item to the `dest` list\n-def add_all_items(method, dest, wrapopen='\\(', wrapclose='\\)'):\n-    regexp = \"%s%s(.*?)%s\" % (method, wrapopen, wrapclose)\n-    for match in re.findall(regexp, plugcontent, flags=re.MULTILINE|re.DOTALL):\n+\n+# method to find all items of given method (a_c_s/a_c_o/..) in plugin content,\n+# split by comma; add each valid item to the `dest` list\n+def add_all_items(method, dest, plugfd, wrapopen=r'\\(', wrapclose=r'\\)'):\n+    regexp = f\"{method}{wrapopen}(.*?){wrapclose}\"\n+    for match in re.findall(regexp, plugfd,\n+                            flags=re.MULTILINE | re.DOTALL):\n         # tuple of distros ended by either (class|from|import)\n-        if isinstance(match,tuple):\n+        if isinstance(match, tuple):\n             for item in list(match):\n                 if item not in ['class', 'from', 'import']:\n                     for it in item.split(','):\n@@ -63,7 +66,8 @@ def add_all_items(method, dest, wrapopen='\\(', wrapclose='\\)'):\n         else:\n             add_valid_item(dest, match)\n \n-# main body: traverse report's plugins directory and for each plugin, grep for \n+\n+# main body: traverse report's plugins directory and for each plugin, grep for\n # add_copy_spec / add_forbidden_path / add_cmd_output there\n for plugfile in sorted(os.listdir(PLUGDIR)):\n     # ignore non-py files and __init__.py\n@@ -73,7 +77,8 @@ for plugfile in sorted(os.listdir(PLUGDIR)):\n #    if plugname != 'bcache':\n #        continue\n     plugs_data[plugname] = {\n-            'sourcecode': 'https://github.com/sosreport/sos/blob/main/sos/report/plugins/%s.py' % plugname,\n+            'sourcecode': 'https://github.com/sosreport/sos/blob/'\n+                          f'main/sos/report/plugins/{plugname}.py',\n             'distros': [],\n             'profiles': [],\n             'packages': [],\n@@ -84,24 +89,38 @@ for plugfile in sorted(os.listdir(PLUGDIR)):\n             'journals': [],\n             'env': [],\n     }\n-    plugcontent = open(os.path.join(PLUGDIR, plugfile)).read().replace('\\n','')\n-    add_all_items(\"from sos.report.plugins import \", plugs_data[plugname]['distros'], wrapopen='', wrapclose='(class|from|import)')\n-    add_all_items(\"profiles = \", plugs_data[plugname]['profiles'], wrapopen='')\n-    add_all_items(\"packages = \", plugs_data[plugname]['packages'], wrapopen='')\n-    add_all_items(\"add_copy_spec\", plugs_data[plugname]['copyspecs'])\n-    add_all_items(\"add_forbidden_path\", plugs_data[plugname]['forbidden'])\n-    add_all_items(\"add_cmd_output\", plugs_data[plugname]['commands'])\n-    add_all_items(\"collect_cmd_output\", plugs_data[plugname]['commands'])\n-    add_all_items(\"add_service_status\", plugs_data[plugname]['service_status'])\n-    add_all_items(\"add_journal\", plugs_data[plugname]['journals'])\n-    add_all_items(\"add_env_var\", plugs_data[plugname]['env'])\n+    with open(os.path.join(PLUGDIR, plugfile),\n+              encoding='utf-8') as pfd:\n+        pfd_content = pfd.read().replace('\\n', '')\n+        add_all_items(\n+            \"from sos.report.plugins import \", plugs_data[plugname]['distros'],\n+            pfd_content, wrapopen='', wrapclose='(class|from|import)'\n+        )\n+        add_all_items(\"profiles = \", plugs_data[plugname]['profiles'],\n+                      pfd_content, wrapopen='')\n+        add_all_items(\"packages = \", plugs_data[plugname]['packages'],\n+                      pfd_content, wrapopen='')\n+        add_all_items(\"add_copy_spec\", plugs_data[plugname]['copyspecs'],\n+                      pfd_content)\n+        add_all_items(\"add_forbidden_path\",\n+                      plugs_data[plugname]['forbidden'], pfd_content)\n+        add_all_items(\"add_cmd_output\", plugs_data[plugname]['commands'],\n+                      pfd_content)\n+        add_all_items(\"collect_cmd_output\",\n+                      plugs_data[plugname]['commands'], pfd_content)\n+        add_all_items(\"add_service_status\",\n+                      plugs_data[plugname]['service_status'], pfd_content)\n+        add_all_items(\"add_journal\", plugs_data[plugname]['journals'],\n+                      pfd_content)\n+        add_all_items(\"add_env_var\", plugs_data[plugname]['env'], pfd_content)\n \n # print output; if \"csv\" is cmdline argument, print in CSV format, else JSON\n if (len(sys.argv) > 1) and (sys.argv[1] == \"csv\"):\n-    print(\"plugin;url;distros;profiles;packages;copyspecs;forbidden;commands;service_status;journals;env_vars\")\n-    for plugname in plugs_data.keys():\n-        plugin = plugs_data[plugname]\n-        # determine max number of lines - usually \"max(len(copyspec),len(commands))\"\n+    print(\"plugin;url;distros;profiles;packages;copyspecs;forbidden;commands;\"\n+          \"service_status;journals;env_vars\")\n+    for plugname, plugin in plugs_data.items():\n+        # determine max number of lines - usually\n+        # \"max(len(copyspec),len(commands))\"\n         # ignore 'sourcecode' key as it\n         maxline = 1\n         plugkeys = list(plugin.keys())\n@@ -109,10 +128,10 @@ if (len(sys.argv) > 1) and (sys.argv[1] == \"csv\"):\n         for key in plugkeys:\n             maxline = max(maxline, len(plugin[key]))\n         for line in range(maxline):\n-            out = \";\" if line>0 else (\"%s;%s\" % (plugname, plugin['sourcecode']))\n+            out = \";\" if line > 0 else f\"{plugname};{plugin['sourcecode']}\"\n             for key in plugkeys:\n                 out += \";\"\n-                if line<len(plugin[key]):\n+                if line < len(plugin[key]):\n                     out += plugin[key][line]\n             print(out)\n else:\ndiff --git a/pylintrc b/pylintrc\nnew file mode 100644\nindex 0000000..a3522df\n--- /dev/null\n+++ b/pylintrc\n@@ -0,0 +1,46 @@\n+[MAIN]\n+# Use multiple processes to speed up Pylint. Specifying 0 will auto-detect the\n+# number of processors available to use.\n+jobs=0\n+\n+# When enabled, pylint would attempt to guess common misconfiguration and emit\n+# user-friendly hints instead of false-positive error messages.\n+suggestion-mode=yes\n+\n+[FORMAT]\n+# Maximum number of characters on a single line.\n+max-line-length=79\n+\n+[REPORTS]\n+# Activate the evaluation score.\n+score=yes\n+\n+[MESSAGES CONTROL]\n+disable=\n+    C0103, # invalid-name\n+    C0114, # missing-module-docstring\n+    C0115, # missing-class-docstring\n+    C0116, # missing-function-docstring\n+    C0302, # too-many-lines\n+    C0415, # import-outside-toplevel\n+    R0401, # cyclic-import\n+    R0801, # duplicate-code\n+    R0902, # too-many-instance-attributes\n+    R0903, # too-few-public-methods\n+    R0904, # too-many-public-methods\n+    R0911, # too-many-return-statements\n+    R0912, # too-many-branches\n+    R0913, # too-many-arguments\n+    R0914, # too-many-locals\n+    R0915, # too-many-statements\n+    R0917, # too-many-positional-arguments\n+    R1702, # too-many-nested-blocks\n+    W0201, # attribute-defined-outside-init\n+    W0511, # fixme\n+    ###################### VV things we should fix VV\n+    W0719, # broad-exception-raised\n+    W1203, # logging-fstring-interpolation\n+    W0718, # broad-exception-caught\n+    W0102, # dangerous-default-value\n+    W0212, # protected-access\n+    W1509, # subprocess-popen-preexec-fn\ndiff --git a/requirements.txt b/requirements.txt\nindex c6ba116..4f6cbb7 100644\n--- a/requirements.txt\n+++ b/requirements.txt\n@@ -2,5 +2,6 @@ pycodestyle>=2.4.0\n coverage>=4.0.3\n Sphinx>=1.3.5\n pexpect>=4.0.0\n-python_magic>=0.4.20\n pyyaml\n+packaging\n+\ndiff --git a/setup.py b/setup.py\nindex 2a70802..9ad4bb7 100644\n--- a/setup.py\n+++ b/setup.py\n@@ -1,84 +1,18 @@\n #!/usr/bin/env python\n \n-from distutils.core import setup\n-from distutils.command.build import build\n-from distutils.command.install_data import install_data\n-from distutils.dep_util import newer\n-from distutils.log import error\n-\n-import glob\n-import os\n-import re\n-import subprocess\n-import sys\n-\n+from setuptools import setup, find_packages\n from sos import __version__ as VERSION\n \n-PO_DIR = 'po'\n-MO_DIR = os.path.join('build', 'mo')\n-\n-class BuildData(build):\n-  def run(self):\n-    build.run(self)\n-    for po in glob.glob(os.path.join(PO_DIR, '*.po')):\n-      lang = os.path.basename(po[:-3])\n-      mo = os.path.join(MO_DIR, lang, 'sos.mo')\n-\n-      directory = os.path.dirname(mo)\n-      if not os.path.exists(directory):\n-        os.makedirs(directory)\n-\n-      if newer(po, mo):\n-        try:\n-          rc = subprocess.call(['msgfmt', '-o', mo, po])\n-          if rc != 0:\n-            raise Warning(\"msgfmt returned %d\" % (rc,))\n-        except Exception as e:\n-          error(\"Failed gettext.\")\n-          sys.exit(1)\n-\n-class InstallData(install_data):\n-  def run(self):\n-    self.data_files.extend(self._find_mo_files())\n-    install_data.run(self)\n-\n-  def _find_mo_files(self):\n-    data_files = []\n-    for mo in glob.glob(os.path.join(MO_DIR, '*', 'sos.mo')):\n-      lang = os.path.basename(os.path.dirname(mo))\n-      dest = os.path.join('share', 'locale', lang, 'LC_MESSAGES')\n-      data_files.append((dest, [mo]))\n-    return data_files\n-\n-  # Workaround https://bugs.python.org/issue644744\n-  def copy_file (self, filename, dirname):\n-    (out, _) = install_data.copy_file(self, filename, dirname)\n-    # match for man pages\n-    if re.search(r'/man/man\\d/.+\\.\\d$', out):\n-      return (out+\".gz\", _)\n-    return (out, _)\n-\n-cmdclass = {'build': BuildData, 'install_data': InstallData}\n-command_options = {}\n-try:\n-    from sphinx.setup_command import BuildDoc\n-    cmdclass['build_sphinx'] = BuildDoc\n-    command_options={\n-        'build_sphinx': {\n-            'project': ('setup.py', 'sos'),\n-            'version': ('setup.py', VERSION),\n-            'source_dir': ('setup.py', 'docs')\n-        }\n-    }\n-except Exception:\n-    print(\"Unable to build sphinx docs - module not present. Install sphinx \"\n-          \"to enable documentation generation\")\n \n setup(\n     name='sos',\n     version=VERSION,\n-    description=(\"\"\"A set of tools to gather troubleshooting\"\"\"\n-                 \"\"\" information from a system.\"\"\"),\n+    # to avoid a packaging dependency on older RHELs\n+    # we only declare it on recent Python versions\n+    install_requires=['pexpect', 'pyyaml', 'packaging;python_version>=\"3.11\"'],\n+    description=(\n+        'A set of tools to gather troubleshooting information from a system'\n+    ),\n     author='Bryn M. Reeves',\n     author_email='bmr@redhat.com',\n     maintainer='Jake Hunsaker',\n@@ -94,21 +28,9 @@ setup(\n         ('share/man/man5', ['man/en/sos.conf.5']),\n         ('share/licenses/sos', ['LICENSE']),\n         ('share/doc/sos', ['AUTHORS', 'README.md']),\n-        ('config', ['sos.conf'])\n+        ('config', ['sos.conf', 'tmpfiles/tmpfilesd-sos-rh.conf'])\n     ],\n-    packages=[\n-        'sos', 'sos.presets', 'sos.presets.redhat', 'sos.policies',\n-        'sos.policies.distros', 'sos.policies.runtimes',\n-        'sos.policies.package_managers', 'sos.policies.init_systems',\n-        'sos.report', 'sos.report.plugins', 'sos.collector',\n-        'sos.collector.clusters', 'sos.collector.transports', 'sos.cleaner',\n-        'sos.cleaner.mappings', 'sos.cleaner.parsers', 'sos.cleaner.archives',\n-        'sos.help'\n-    ],\n-    cmdclass=cmdclass,\n-    command_options=command_options,\n-    requires=['pexpect', 'python_magic', 'pyyaml']\n-    )\n-\n+    packages=find_packages(include=['sos', 'sos.*'])\n+)\n \n # vim: set et ts=4 sw=4 :\ndiff --git a/snap/snapcraft.yaml b/snap/snapcraft.yaml\nindex 92b7949..1c796aa 100644\n--- a/snap/snapcraft.yaml\n+++ b/snap/snapcraft.yaml\n@@ -5,35 +5,43 @@ description: |\n   primarily aimed at Linux distributions and other UNIX-like operating\n   systems.\n grade: stable\n-base: core20\n+base: core24\n confinement: classic\n adopt-info: sos\n+license: GPL-2.0-only\n+environment:\n+  PYTHONPATH: ${SNAP}/lib/python3.12/site-packages:${SNAP}/usr/lib/python3/dist-packages:${PYTHONPATH}\n \n parts:\n   sos:\n     plugin: python\n     source: .\n     override-pull: |\n-      snapcraftctl pull\n-      snapcraftctl set-version $(git describe --tags --always)\n+      craftctl default\n+      craftctl set version=\"$(git describe --tags --always)\"\n+    build-attributes:\n+      - enable-patchelf\n     build-packages:\n       - git\n       - python3\n-      - snapcraft\n       - gettext\n+      - python3-venv\n     stage-packages:\n-      - python3-magic\n+      - python3.12-minimal\n+      - libpython3.12-minimal\n+      - libpython3.12-stdlib\n+    python-packages:\n+      - pip\n+      - setuptools\n+      - wheel\n+      - python_magic\n+      - packaging==24.0\n+      - boto3==1.26.155\n \n apps:\n   sos:\n-    environment:\n-      PYTHONPATH: ${PYTHONPATH}:${SNAP}/lib/python3.8/site-packages:${SNAP}/usr/lib/python3/dist-packages\n     command: bin/sos\n   sosreport:\n-    environment:\n-      PYTHONPATH: ${PYTHONPATH}:${SNAP}/lib/python3.8/site-packages:${SNAP}/usr/lib/python3/dist-packages\n     command: bin/sos report\n   sos-collector:\n-    environment:\n-      PYTHONPATH: ${PYTHONPATH}:${SNAP}/lib/python3.8/site-packages:${SNAP}/usr/lib/python3/dist-packages\n     command: bin/sos collector\ndiff --git a/sos.spec b/sos.spec\nindex 748b9fd..cf88669 100644\n--- a/sos.spec\n+++ b/sos.spec\n@@ -1,24 +1,28 @@\n-%{!?python_sitelib: %define python_sitelib %(%{__python} -c \"from distutils.sysconfig import get_python_lib; print get_python_lib()\")}\n-\n Summary: A set of tools to gather troubleshooting information from a system\n Name: sos\n-Version: 4.4\n+Version: 4.8.2\n Release: 1%{?dist}\n-Group: Applications/System\n Source0: https://github.com/sosreport/sos/archive/%{name}-%{version}.tar.gz\n-License: GPLv2+\n-BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot\n+License: GPL-2.0-only\n BuildArch: noarch\n-Url: https://github.com/sosreport/sos/\n+Url: https://github.com/sosreport/sos\n BuildRequires: python3-devel\n-BuildRequires: gettext\n-Requires: python3-rpm\n-Requires: tar\n-Requires: xz\n+BuildRequires: python3-setuptools\n Requires: python3-pexpect\n-Requires: python3-magic\n+%if 0%{?rhel} && 0%{?rhel} < 10\n+Requires: python3-setuptools\n+%else\n+Requires: python3-packaging\n+%endif\n+Recommends: python3-file-magic\n+# Mandatory just for uploading to a SFTP server:\n+Recommends: python3-requests\n Recommends: python3-pyyaml\n Obsoletes: sos-collector <= 1.9\n+# For the _tmpfilesdir macro.\n+BuildRequires: systemd\n+# Mandatory just for uploading to an S3 bucket:\n+Recommends: python3-boto3\n \n %description\n Sos is a set of tools that gathers information about system\n@@ -29,31 +33,56 @@ support technicians and developers.\n %prep\n %setup -qn %{name}-%{version}\n \n+%if 0%{?fedora} >= 39\n+%generate_buildrequires\n+%pyproject_buildrequires\n+%endif\n+\n %build\n+%if 0%{?fedora} >= 39\n+%pyproject_wheel\n+%else\n %py3_build\n+%endif\n \n %install\n+%if 0%{?fedora} >= 39\n+%pyproject_install\n+%pyproject_save_files sos\n+%else\n %py3_install '--install-scripts=%{_sbindir}'\n+%endif\n \n-install -d -m 755 ${RPM_BUILD_ROOT}/etc/sos\n-install -d -m 700 ${RPM_BUILD_ROOT}/etc/sos/cleaner\n-install -d -m 755 ${RPM_BUILD_ROOT}/etc/sos/presets.d\n-install -d -m 755 ${RPM_BUILD_ROOT}/etc/sos/groups.d\n-install -d -m 755 ${RPM_BUILD_ROOT}/etc/sos/extras.d\n-install -m 644 %{name}.conf ${RPM_BUILD_ROOT}/etc/sos/%{name}.conf\n+install -d -m 755 %{buildroot}%{_sysconfdir}/%{name}\n+install -d -m 700 %{buildroot}%{_sysconfdir}/%{name}/cleaner\n+install -d -m 755 %{buildroot}%{_sysconfdir}/%{name}/presets.d\n+install -d -m 755 %{buildroot}%{_sysconfdir}/%{name}/groups.d\n+install -d -m 755 %{buildroot}%{_sysconfdir}/%{name}/extras.d\n+install -d -m 755 %{buildroot}%{_tmpfilesdir}\n+install -m 644 %{name}.conf %{buildroot}%{_sysconfdir}/%{name}/%{name}.conf\n+install -m 644 tmpfiles/tmpfilesd-sos-rh.conf %{buildroot}%{_tmpfilesdir}/%{name}.conf\n \n-rm -rf ${RPM_BUILD_ROOT}/usr/config/\n+rm -rf %{buildroot}/usr/config/\n \n %find_lang %{name} || echo 0\n \n-%files -f %{name}.lang\n+# internationalization is currently broken. Uncomment this line once fixed.\n+# %%files -f %%{name}.lang\n+%files\n+%if 0%{?fedora} >= 39\n+%{_bindir}/sos\n+%{_bindir}/sosreport\n+%{_bindir}/sos-collector\n+%else\n %{_sbindir}/sos\n %{_sbindir}/sosreport\n %{_sbindir}/sos-collector\n+%endif\n %dir /etc/sos/cleaner\n %dir /etc/sos/presets.d\n %dir /etc/sos/extras.d\n %dir /etc/sos/groups.d\n+%{_tmpfilesdir}/%{name}.conf\n %{python3_sitelib}/*\n %{_mandir}/man1/*\n %{_mandir}/man5/*\n@@ -62,6 +91,53 @@ rm -rf ${RPM_BUILD_ROOT}/usr/config/\n %config(noreplace) %{_sysconfdir}/sos/sos.conf\n \n %changelog\n+* Mon Dec 16 2024 Pavel Moravec <pmoravec@redhat.com> = 4.8.2\n+- New upstream release\n+\n+* Tue Oct 15 2024 Pavel Moravec <pmoravec@redhat.com> = 4.8.1\n+- New upstream release\n+\n+* Sat Aug 17 2024 Jake Hunsaker <jacob.r.hunsaker@gmail.com> = 4.8.0\n+- New upstream release\n+- License clarification to GPLv2 only\n+\n+* Fri Jun 21 2024 Pavel Moravec <pmoravec@redhat.com> = 4.7.2\n+- New upstream release\n+\n+* Mon Apr 08 2024 Pavel Moravec <pmoravec@redhat.com> = 4.7.1\n+- New upstream release\n+\n+* Mon Feb 19 2024 Jake Hunsaker <jacob.r.hunsaker@gmail.com> = 4.7.0\n+- New upstream release\n+\n+* Wed Jan 10 2024 Pavel Moravec <pmoravec@redhat.com> = 4.6.1\n+- New upstream release\n+\n+* Thu Aug 17 2023 Jake Hunsaker <jacob.r.hunsaker@gmail.com> = 4.6.0\n+- New upstream release\n+\n+* Thu Jul 20 2023 Jake Hunsaker <jacob.r.hunsaker@gmail.com> = 4.5.6\n+- New upstream release\n+\n+* Fri Jun 23 2023 Jake Hunsaker <jacob.r.hunsaker@gmail.com> = 4.5.5\n+- New upstream release\n+\n+* Fri May 26 2023 Jake Hunsaker <jhunsake@redhat.com> = 4.5.4\n+- New upstream release\n+\n+* Fri Apr 28 2023 Jake Hunsaker <jhunsake@redhat.com> = 4.5.3\n+- New upstream release\n+\n+* Fri Mar 31 2023 Jake Hunsaker <jhunsake@redhat.com> = 4.5.2\n+- New upstream release\n+- Migrated to SPDX license\n+\n+* Wed Mar 01 2023 Jake Hunsaker <jhunsake@redhat.com> = 4.5.1\n+- New upstream release\n+\n+* Wed Feb 01 2023 Jake Hunsaker <jhunsake@redhat.com> = 4.5.0\n+- New upstream release\n+\n * Mon Aug 15 2022 Jake Hunsaker <jhunsake@redhat.com> = 4.4\n - New upstream release\n \ndiff --git a/sos/__init__.py b/sos/__init__.py\nindex 5bd9fff..c0baa3b 100644\n--- a/sos/__init__.py\n+++ b/sos/__init__.py\n@@ -14,15 +14,15 @@\n This module houses the i18n setup and message function. The default is to use\n gettext to internationalize messages.\n \"\"\"\n-__version__ = \"4.4\"\n+__version__ = \"4.8.2\"\n \n import os\n import sys\n+import gettext\n \n from argparse import ArgumentParser\n from sos.options import SosListOption\n \n-import gettext\n gettext_dir = \"/usr/share/locale\"\n gettext_app = \"sos\"\n gettext.bindtextdomain(gettext_app, gettext_dir)\n@@ -34,12 +34,6 @@ def _default(msg):\n \n _sos = _default\n \n-# py3 < 3.6 compat\n-try:\n-    ModuleNotFoundError\n-except NameError:\n-    ModuleNotFoundError = ImportError\n-\n \n class SoS():\n     \"\"\"Main entrypoint for sos from the command line\n@@ -74,10 +68,10 @@ class SoS():\n                                            ['collector'])\n         except ModuleNotFoundError as err:\n             import sos.missing\n-            if 'sos.collector' in err.msg:\n+            if 'sos.collector' in str(err.msg):\n                 # is not locally installed - packaged separately\n                 self._components['collect'] = (sos.missing.MissingCollect, [])\n-            elif 'pexpect' in err.msg:\n+            elif 'pexpect' in str(err.msg):\n                 # cannot be imported due to missing the pexpect dep\n                 self._components['collect'] = (sos.missing.MissingPexpect, [])\n             else:\n@@ -85,18 +79,16 @@ class SoS():\n                 raise\n         # build the top-level parser\n         _com_string = ''\n-        for com in self._components:\n-            aliases = self._components[com][1]\n+        for com, value in self._components.items():\n+            aliases = value[1]\n             aliases.insert(0, com)\n             _com = ', '.join(aliases)\n-            desc = self._components[com][0].desc\n-            _com_string += (\n-                \"\\t{com:<30}{desc}\\n\".format(com=_com, desc=desc)\n-            )\n+            desc = value[0].desc\n+            _com_string += (f\"\\t{_com:<30}{desc}\\n\")\n         usage_string = (\"%(prog)s <component> [options]\\n\\n\"\n                         \"Available components:\\n\")\n         usage_string = usage_string + _com_string\n-        epilog = (\"See `sos <component> --help` for more information\")\n+        epilog = \"See `sos <component> --help` for more information\"\n         self.parser = ArgumentParser(usage=usage_string, epilog=epilog)\n         self.parser.register('action', 'extend', SosListOption)\n         # set the component subparsers\n@@ -109,16 +101,16 @@ class SoS():\n         # now build the parser for each component.\n         # this needs to be done here, as otherwise --help will be unavailable\n         # for the component subparsers\n-        for comp in self._components:\n+        for comp, value in self._components.items():\n             _com_subparser = self.subparsers.add_parser(\n                 comp,\n-                aliases=self._components[comp][1],\n-                prog=\"sos %s\" % comp\n+                aliases=value[1],\n+                prog=f\"sos {comp}\"\n             )\n-            _com_subparser.usage = \"sos %s [options]\" % comp\n+            _com_subparser.usage = f\"sos {comp} [options]\"\n             _com_subparser.register('action', 'extend', SosListOption)\n             self._add_common_options(_com_subparser)\n-            self._components[comp][0].add_parser_options(parser=_com_subparser)\n+            value[0].add_parser_options(parser=_com_subparser)\n             _com_subparser.set_defaults(component=comp)\n         self.args = self.parser.parse_args(self.cmdline)\n         self._init_component()\n@@ -175,8 +167,8 @@ class SoS():\n         initialize that component.\n         \"\"\"\n         _com = self.args.component\n-        if _com not in self._components.keys():\n-            print(\"Unknown subcommand '%s' specified\" % _com)\n+        if _com not in self._components:\n+            print(f\"Unknown subcommand '{_com}' specified\")\n         try:\n             _to_load = self._components[_com][0]\n             if _to_load.root_required and not os.getuid() == 0:\n@@ -184,7 +176,7 @@ class SoS():\n             self._component = _to_load(self.parser, self.args, self.cmdline)\n \n         except Exception as err:\n-            print(\"Could not initialize '%s': %s\" % (_com, err))\n+            print(f\"Could not initialize '{_com}': {err}\")\n             if self.args.debug:\n                 raise err\n             sys.exit(1)\n",
+ "diff_truncated": true
+}

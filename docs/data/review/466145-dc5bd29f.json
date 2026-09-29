@@ -1,0 +1,23 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~grozzly/ubuntu/+source/cryptsetup/+git/cryptsetup/+merge/466145",
+ "id": "466145",
+ "title": "ubuntu/devel → ubuntu/devel",
+ "source_branch": "ubuntu/devel",
+ "target_branch": "ubuntu/devel",
+ "revision": "0c79a7ab57b1e01a9af364ad878144424306d3c4",
+ "base_revision": "ea7fa223c15d4de298a256a3d436bf3bb677f3ba",
+ "description": null,
+ "commit_message": null,
+ "diffstat": {
+  "debian/initramfs/cryptroot-unlock": [
+   2,
+   8
+  ]
+ },
+ "files": 1,
+ "added_lines": 2,
+ "removed_lines": 8,
+ "diff": "diff --git a/debian/initramfs/cryptroot-unlock b/debian/initramfs/cryptroot-unlock\nindex 0e91701..f904acc 100644\n--- a/debian/initramfs/cryptroot-unlock\n+++ b/debian/initramfs/cryptroot-unlock\n@@ -40,14 +40,8 @@ fi\n pgrep_exe() {\n \tlocal exe pid\n \texe=\"$(readlink -f -- \"$1\" 2>/dev/null)\" && [ -f \"$exe\" ] || return 0\n-\tps | awk '{print $1, $5}' | while read LINE; do\n-\t\tset $LINE\n-\t\tlocal pid=$1\n-\t\tlocal cmd=$(readlink -f -- \"$2\")\n-\t\tif [ \"$cmd\" == \"$exe\" ]; then\n-\t\t\techo $pid\n-\t\t\tbreak\n-\t\tfi\n+\tps | sed 1d | while read pid _; do\n+\t\t[ \"$(readlink -f \"/proc/$pid/exe\")\" != \"$exe\" ] || printf '%d\\n' \"$pid\"\n \tdone\n }\n \n",
+ "diff_truncated": false
+}

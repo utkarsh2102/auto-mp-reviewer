@@ -1,0 +1,83 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~cnihelton/ubuntu/+source/ubuntu-meta/+git/ubuntu-meta/+merge/492210",
+ "id": "492210",
+ "title": "ubuntu-meta (1.450.3) focal; urgency=medium",
+ "source_branch": "focal-wsl",
+ "target_branch": "ubuntu/focal-devel",
+ "revision": "5f8a27c7b0c83b8a6108bad3a77012245a8a1220",
+ "base_revision": "3a1e562b2599cd982b0ade4e2aab9cf9c037e68d",
+ "description": "This change relates to SRU https://bugs.launchpad.net/ubuntu/+source/livecd-rootfs/+bug/2115536.\n\nWe need to update ubuntu-meta and livecd-rootfs (handled via https://code.launchpad.net/~cnihelton/livecd-rootfs/+git/livecd-rootfs/+merge/488297) for Focal to be able to trigger a one shot build of WSL images in the new format that allows migrating out of the Microsoft Store, as we already discussed.\n\nWhile ubuntu-meta's standard update procedure requires pushing all the changes caused to the various package lists by running the `/update` script, this case is special because we won't trigger builds of desktop, server etc due focal being out of standard support. Thus only the changes related to WSL are being presented in this merge proposal. Though the recent inclusion of the `wsl-setup` package in focal-updates (via SRU https://bugs.launchpad.net/ubuntu/+source/wsl-setup/+bug/2115426) was the main reason for those changes, there were packages removed or added due seed alignment done in https://git.launchpad.net/~ubuntu-core-dev/ubuntu-seeds/+git/ubuntu/commit/?h=focal&id=70d0bae95ea450b5cb18325d52a56b9e41be9465 and subsequent commits.\n\nThis topic has been thoroughly discussed with the SRU and Release teams, motivation and allowance should be clear by now.\n\nThe following links contain proofs that the changes herein presented not only produce buildable packages but also building images from them produce the expected results:\n\nAMD64: https://launchpad.net/~ubuntu-wsl-dev/+livefs/ubuntu/focal/wsl/+build/836983\n\nARM64: https://launchpad.net/~ubuntu-wsl-dev/+livefs/ubuntu/focal/wsl/+build/836984\n\nThose images are installable on latest versions of the WSL platform and behave similarly to Noble from the platform's point of view.",
+ "commit_message": "ubuntu-meta (1.450.3) focal; urgency=medium\n\n  * Refreshed dependencies\n  * Added apparmor to wsl-recommends\n  * Added apport to wsl\n  * Added bash-completion to wsl-recommends\n  * Added bind9-dnsutils to standard\n  * Added binutils to wsl\n  * Added byobu to wsl\n  * Added cloud-init to wsl-recommends\n  * Added command-not-found to wsl-recommends\n  * Added curl to wsl\n  * Added dirmngr to wsl\n  * Added ed to wsl\n  * Added file to wsl\n  * Added fonts-ubuntu to wsl-recommends\n  * Added git to wsl\n  * Added gnome-control-center to desktop [riscv64], desktop-minimal\n    [riscv64]\n  * Added gnupg to wsl\n  * Added info to wsl\n  * Added landscape-client to wsl-recommends\n  * Added libegl1 to wsl\n  * Added libgl1 to wsl\n  * Added libgtk-3-0 to wsl\n  * Added libpam-systemd to wsl\n  * Added lsof to wsl\n  * Added man-db to wsl\n  * Added manpages to wsl-recommends\n  * Added motd-news-config to server, wsl-recommends\n  * Added nano to wsl-recommends\n  * Added open-vm-tools to server-recommends [arm64]\n  * Added openssh-client to wsl-recommends\n  * Added patch to wsl\n  * Added psmisc to wsl\n  * Added rsync to wsl\n  * Added snapd to desktop-minimal-recommends [riscv64], desktop-\n    recommends [riscv64], server-recommends [riscv64], wsl-recommends\n  * Added software-properties-common to wsl\n  * Added strace to standard [riscv64]\n  * Added time to wsl\n  * Added ubuntu-drivers-common to desktop [riscv64], desktop-minimal\n    [riscv64]\n  * Added unattended-upgrades to wsl-recommends\n  * Added update-manager-core to wsl-recommends\n  * Added vim to wsl\n  * Added wget to wsl\n  * Added wsl-pro-service to wsl-recommends [amd64 arm64]\n  * Added wsl-setup to wsl\n  * Removed dnsutils from standard\n  * Moved dbus-x11 to wsl",
+ "diffstat": {
+  "debian/changelog": [
+   47,
+   0
+  ],
+  "debian/control": [
+   1,
+   0
+  ],
+  "debootstrap-version": [
+   1,
+   1
+  ],
+  "update.cfg": [
+   1,
+   0
+  ],
+  "wsl-amd64": [
+   25,
+   0
+  ],
+  "wsl-arm64": [
+   25,
+   0
+  ],
+  "wsl-armhf": [
+   25,
+   0
+  ],
+  "wsl-ppc64el": [
+   25,
+   0
+  ],
+  "wsl-recommends-amd64": [
+   14,
+   1
+  ],
+  "wsl-recommends-arm64": [
+   14,
+   1
+  ],
+  "wsl-recommends-armhf": [
+   13,
+   1
+  ],
+  "wsl-recommends-ppc64el": [
+   13,
+   1
+  ],
+  "wsl-recommends-riscv64": [
+   13,
+   1
+  ],
+  "wsl-recommends-s390x": [
+   13,
+   1
+  ],
+  "wsl-riscv64": [
+   25,
+   0
+  ],
+  "wsl-s390x": [
+   25,
+   0
+  ]
+ },
+ "files": 16,
+ "added_lines": 280,
+ "removed_lines": 7,
+ "diff": "diff --git a/debian/changelog b/debian/changelog\nindex fc9bb24..24508d1 100644\n--- a/debian/changelog\n+++ b/debian/changelog\n@@ -1,3 +1,50 @@\n+ubuntu-meta (1.450.3) focal; urgency=medium\n+\n+  * Refreshed dependencies to allow building Focal images in the new image\n+    format (LP: #2115536).\n+  * Added apparmor to wsl-recommends\n+  * Added apport to wsl\n+  * Added bash-completion to wsl-recommends\n+  * Added bind9-dnsutils to standard\n+  * Added binutils to wsl\n+  * Added byobu to wsl\n+  * Added cloud-init to wsl-recommends\n+  * Added command-not-found to wsl-recommends\n+  * Added curl to wsl\n+  * Added dirmngr to wsl\n+  * Added ed to wsl\n+  * Added file to wsl\n+  * Added fonts-ubuntu to wsl-recommends\n+  * Added git to wsl\n+  * Added gnupg to wsl\n+  * Added info to wsl\n+  * Added landscape-client to wsl-recommends\n+  * Added libegl1 to wsl\n+  * Added libgl1 to wsl\n+  * Added libgtk-3-0 to wsl\n+  * Added libpam-systemd to wsl\n+  * Added lsof to wsl\n+  * Added man-db to wsl\n+  * Added manpages to wsl-recommends\n+  * Added motd-news-config to server, wsl-recommends\n+  * Added nano to wsl-recommends\n+  * Added open-vm-tools to server-recommends [arm64]\n+  * Added openssh-client to wsl-recommends\n+  * Added patch to wsl\n+  * Added psmisc to wsl\n+  * Added rsync to wsl\n+  * Added software-properties-common to wsl\n+  * Added time to wsl\n+  * Added unattended-upgrades to wsl-recommends\n+  * Added update-manager-core to wsl-recommends\n+  * Added vim to wsl\n+  * Added wget to wsl\n+  * Added wsl-pro-service to wsl-recommends [amd64 arm64]\n+  * Added wsl-setup to wsl\n+  * Moved dbus-x11 to wsl\n+\n+ -- Carlos Nihelton <cnihelton@ubuntu.com>  Tue, 16 Dec 2025 09:38:01 -0300\n+\n ubuntu-meta (1.450.2) focal; urgency=medium\n \n   * d/control: have ubuntu-server depend on motd-news-config\ndiff --git a/debian/control b/debian/control\nindex f05e988..f7cbfd0 100644\n--- a/debian/control\n+++ b/debian/control\n@@ -70,6 +70,7 @@ Package: ubuntu-wsl\n Architecture: amd64 arm64\n Depends: ${misc:Depends}, ${germinate:Depends}\n Recommends: ${germinate:Recommends}\n+XB-Task: ubuntu-wsl\n Description: Ubuntu on Windows tools - Windows Subsystem for Linux integration\n  Utilities for integrating Ubuntu well into the WSL environment.\n  .\ndiff --git a/debootstrap-version b/debootstrap-version\nindex c15c482..4a063f1 100644\n--- a/debootstrap-version\n+++ b/debootstrap-version\n@@ -1 +1 @@\n-1.0.118ubuntu1\n+1.0.141\ndiff --git a/update.cfg b/update.cfg\nindex 751c60d..7fa8728 100644\n--- a/update.cfg\n+++ b/update.cfg\n@@ -14,6 +14,7 @@ archive_base/ppc64el: %(archive_base/ports)s\n archive_base/riscv64: %(archive_base/ports)s\n archive_base/s390x: %(archive_base/ports)s\n components: main restricted\n+dists: focal focal-updates\n \n [focal/vcs]\n seed_base: https://git.launchpad.net/~ubuntu-core-dev/ubuntu-seeds/+git/\ndiff --git a/wsl-amd64 b/wsl-amd64\nindex 4ae9a22..8e25643 100644\n--- a/wsl-amd64\n+++ b/wsl-amd64\n@@ -1 +1,26 @@\n+apport\n+binutils\n+byobu\n+curl\n+dbus-x11\n+dirmngr\n+ed\n+file\n+git\n+gnupg\n+info\n+libegl1\n+libgl1\n+libgtk-3-0\n+libpam-systemd\n+lsof\n+man-db\n+patch\n+psmisc\n+rsync\n+software-properties-common\n+time\n+vim\n+wget\n+wsl-setup\n wslu\ndiff --git a/wsl-arm64 b/wsl-arm64\nindex 4ae9a22..8e25643 100644\n--- a/wsl-arm64\n+++ b/wsl-arm64\n@@ -1 +1,26 @@\n+apport\n+binutils\n+byobu\n+curl\n+dbus-x11\n+dirmngr\n+ed\n+file\n+git\n+gnupg\n+info\n+libegl1\n+libgl1\n+libgtk-3-0\n+libpam-systemd\n+lsof\n+man-db\n+patch\n+psmisc\n+rsync\n+software-properties-common\n+time\n+vim\n+wget\n+wsl-setup\n wslu\ndiff --git a/wsl-armhf b/wsl-armhf\nindex 4ae9a22..8e25643 100644\n--- a/wsl-armhf\n+++ b/wsl-armhf\n@@ -1 +1,26 @@\n+apport\n+binutils\n+byobu\n+curl\n+dbus-x11\n+dirmngr\n+ed\n+file\n+git\n+gnupg\n+info\n+libegl1\n+libgl1\n+libgtk-3-0\n+libpam-systemd\n+lsof\n+man-db\n+patch\n+psmisc\n+rsync\n+software-properties-common\n+time\n+vim\n+wget\n+wsl-setup\n wslu\ndiff --git a/wsl-ppc64el b/wsl-ppc64el\nindex 4ae9a22..8e25643 100644\n--- a/wsl-ppc64el\n+++ b/wsl-ppc64el\n@@ -1 +1,26 @@\n+apport\n+binutils\n+byobu\n+curl\n+dbus-x11\n+dirmngr\n+ed\n+file\n+git\n+gnupg\n+info\n+libegl1\n+libgl1\n+libgtk-3-0\n+libpam-systemd\n+lsof\n+man-db\n+patch\n+psmisc\n+rsync\n+software-properties-common\n+time\n+vim\n+wget\n+wsl-setup\n wslu\ndiff --git a/wsl-recommends-amd64 b/wsl-recommends-amd64\nindex 37667fd..80185a5 100644\n--- a/wsl-recommends-amd64\n+++ b/wsl-recommends-amd64\n@@ -1,2 +1,15 @@\n-dbus-x11\n+apparmor\n+bash-completion\n+cloud-init\n+command-not-found\n+fonts-ubuntu\n+landscape-client\n+manpages\n+motd-news-config\n+nano\n+openssh-client\n show-motd\n+snapd\n+unattended-upgrades\n+update-manager-core\n+wsl-pro-service\ndiff --git a/wsl-recommends-arm64 b/wsl-recommends-arm64\nindex 37667fd..80185a5 100644\n--- a/wsl-recommends-arm64\n+++ b/wsl-recommends-arm64\n@@ -1,2 +1,15 @@\n-dbus-x11\n+apparmor\n+bash-completion\n+cloud-init\n+command-not-found\n+fonts-ubuntu\n+landscape-client\n+manpages\n+motd-news-config\n+nano\n+openssh-client\n show-motd\n+snapd\n+unattended-upgrades\n+update-manager-core\n+wsl-pro-service\ndiff --git a/wsl-recommends-armhf b/wsl-recommends-armhf\nindex 37667fd..9b77ca0 100644\n--- a/wsl-recommends-armhf\n+++ b/wsl-recommends-armhf\n@@ -1,2 +1,14 @@\n-dbus-x11\n+apparmor\n+bash-completion\n+cloud-init\n+command-not-found\n+fonts-ubuntu\n+landscape-client\n+manpages\n+motd-news-config\n+nano\n+openssh-client\n show-motd\n+snapd\n+unattended-upgrades\n+update-manager-core\ndiff --git a/wsl-recommends-ppc64el b/wsl-recommends-ppc64el\nindex 37667fd..9b77ca0 100644\n--- a/wsl-recommends-ppc64el\n+++ b/wsl-recommends-ppc64el\n@@ -1,2 +1,14 @@\n-dbus-x11\n+apparmor\n+bash-completion\n+cloud-init\n+command-not-found\n+fonts-ubuntu\n+landscape-client\n+manpages\n+motd-news-config\n+nano\n+openssh-client\n show-motd\n+snapd\n+unattended-upgrades\n+update-manager-core\ndiff --git a/wsl-recommends-riscv64 b/wsl-recommends-riscv64\nindex 37667fd..9b77ca0 100644\n--- a/wsl-recommends-riscv64\n+++ b/wsl-recommends-riscv64\n@@ -1,2 +1,14 @@\n-dbus-x11\n+apparmor\n+bash-completion\n+cloud-init\n+command-not-found\n+fonts-ubuntu\n+landscape-client\n+manpages\n+motd-news-config\n+nano\n+openssh-client\n show-motd\n+snapd\n+unattended-upgrades\n+update-manager-core\ndiff --git a/wsl-recommends-s390x b/wsl-recommends-s390x\nindex 37667fd..9b77ca0 100644\n--- a/wsl-recommends-s390x\n+++ b/wsl-recommends-s390x\n@@ -1,2 +1,14 @@\n-dbus-x11\n+apparmor\n+bash-completion\n+cloud-init\n+command-not-found\n+fonts-ubuntu\n+landscape-client\n+manpages\n+motd-news-config\n+nano\n+openssh-client\n show-motd\n+snapd\n+unattended-upgrades\n+update-manager-core\ndiff --git a/wsl-riscv64 b/wsl-riscv64\nindex 4ae9a22..8e25643 100644\n--- a/wsl-riscv64\n+++ b/wsl-riscv64\n@@ -1 +1,26 @@\n+apport\n+binutils\n+byobu\n+curl\n+dbus-x11\n+dirmngr\n+ed\n+file\n+git\n+gnupg\n+info\n+libegl1\n+libgl1\n+libgtk-3-0\n+libpam-systemd\n+lsof\n+man-db\n+patch\n+psmisc\n+rsync\n+software-properties-common\n+time\n+vim\n+wget\n+wsl-setup\n wslu\ndiff --git a/wsl-s390x b/wsl-s390x\nindex 4ae9a22..8e25643 100644\n--- a/wsl-s390x\n+++ b/wsl-s390x\n@@ -1 +1,26 @@\n+apport\n+binutils\n+byobu\n+curl\n+dbus-x11\n+dirmngr\n+ed\n+file\n+git\n+gnupg\n+info\n+libegl1\n+libgl1\n+libgtk-3-0\n+libpam-systemd\n+lsof\n+man-db\n+patch\n+psmisc\n+rsync\n+software-properties-common\n+time\n+vim\n+wget\n+wsl-setup\n wslu\n",
+ "diff_truncated": false
+}

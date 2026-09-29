@@ -1,0 +1,27 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~raharper/ubuntu/+source/cloud-utils/+git/cloud-utils/+merge/378839",
+ "id": "378839",
+ "title": "growpart: flock disk before modifying partition table",
+ "source_branch": "fix/growpart-flock-disk",
+ "target_branch": "ubuntu/devel",
+ "revision": "c03055e7498e1674c5720678f70b46d6f3e76ae9",
+ "base_revision": "e9e847956e97b057cfb27d43a6d2641f3713a37b",
+ "description": null,
+ "commit_message": "growpart: flock disk before modifying partition table\n    \nUse an exclusive file lock on the target disk prior to modifying\nthe partition table to prevent udev scripts from executing while\nthe state of the partition is being modified.\n    \nLP: #1834875",
+ "diffstat": {
+  "bin/growpart": [
+   23,
+   0
+  ],
+  "debian/changelog": [
+   7,
+   0
+  ]
+ },
+ "files": 2,
+ "added_lines": 30,
+ "removed_lines": 0,
+ "diff": "diff --git a/bin/growpart b/bin/growpart\nindex 33d27f1..e0b4c51 100755\n--- a/bin/growpart\n+++ b/bin/growpart\n@@ -27,6 +27,8 @@ DISK=\"\"\n PART=\"\"\n PT_UPDATE=false\n DRY_RUN=0\n+FLOCK_FD=\"\" # this will always be hard coded to 9\n+FLOCK_TIMEOUT=\"2\"\n \n SFDISK_VERSION=\"\"\n SFDISK_2_26=\"22600\"\n@@ -74,6 +76,9 @@ cleanup() {\n \t\t\tfi\n \t\tfi\n \tfi\n+\tif [ -n \"${FLOCK_FD}\" ]; then\n+\t\texec 9>&- # FLOCK_FD variable cannot be used, use 9\n+\tfi\n \t[ -z \"${TEMP_D}\" -o ! -d \"${TEMP_D}\" ] || rm -Rf \"${TEMP_D}\"\n }\n \n@@ -808,7 +813,25 @@ get_resizer \"$format\" \"$resizer\" ||\n \tfail \"failed to get a resizer for id '$id'\"\n resizer=$_RET\n \n+# flock the disk to protect against udev actions while modifying part\n+# https://systemd.io/BLOCK_DEVICE_LOCKING/\n+FLOCK_FD=\"9\"  # fd must be 3-9 in /bin/sh\n+exec 9<>$DISK  # sh syntax cannot use variable FLOCK_FD, use 9\n+# we wait $FLOCK_TIMEOUT seconds in case udev is currently processing\n+if ! flock --exclusive --timeout $FLOCK_TIMEOUT $FLOCK_FD; then\n+\terror \"WARN: failed to obtain exclusive lock on $DISK\"\n+fi\n+debug 1 \"FLOCK: $DISK: obtained exclusive lock\"\n+\n debug 1 \"resizing $PART on $DISK using $resizer\"\n \"$resizer\"\n \n+# release the lock\n+[ -n \"${FLOCK_FD}\" ] && {\n+\tdebug 1 \"FLOCK: ${DISK}: releasing exclusive lock\"\n+\texec 9>&- # FLOCK_FD variable cannot be used, use 9\n+\tFLOCK_FD=\"\"\n+\tudevadm settle\n+}\n+\n # vi: ts=4 noexpandtab\ndiff --git a/debian/changelog b/debian/changelog\nindex 8cf22dc..5d73854 100644\n--- a/debian/changelog\n+++ b/debian/changelog\n@@ -1,3 +1,10 @@\n+cloud-utils (0.31-6-g16916780-0ubuntu2) focal; urgency=medium\n+\n+  * Add flock support to growpart to avoid racing with udev.\n+    [Ryan Harper] (LP: #1834875)\n+\n+ -- Ryan Harper <ryan.harper@canonical.com>  Mon, 10 Feb 2020 15:03:05 -0600\n+\n cloud-utils (0.31-6-g16916780-0ubuntu1) focal; urgency=medium\n \n   * New upstream snapshot.\n",
+ "diff_truncated": false
+}

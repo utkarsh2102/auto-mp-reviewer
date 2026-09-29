@@ -1,0 +1,23 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~bryce/britney/+git/britney/+merge/406611",
+ "id": "406611",
+ "title": "Recent update to Delve added a new feature that depends on kernel functionality that either isn't available or isn't working on impish's arm64 linux kernel.",
+ "source_branch": "plusone-hints",
+ "target_branch": "devel",
+ "revision": "de71350981a674a6a66790865a359893926f5e76",
+ "base_revision": "7762124b116d9241eb5c632dc859478dab90f7a5",
+ "description": "Recent update to Delve added a new feature that depends on kernel functionality that either isn't available or isn't working on impish's arm64 linux kernel.\n\nSee https://bugs.launchpad.net/ubuntu/+source/delve/+bug/1938474\n\n    notes:\n      - Delve is failing on a test introduced with a new feature in\n        version 1.6.1, but only on arm.  Dan Bungert traced backwards\n        thru the failing case (using delve) quite a bit and eventually\n        found that it was attempting to dump the mappings listed in\n        smaps, and on which mapping it was failing.  Delve does some\n        filtering to reduce which mappings get dumped - smaps does have\n        a \"dd\" flag that is intended to say \"do not include area into                                                \n        core dump\", but vvar in this case does not have the flag, and it\n        is working OK on older kernels.  Opened launchpad and upstream\n        issue with this information.  Upstream is considering also\n        filtering on the \"pf\" flag, which is present in the vvar mapping\n        info on the failing kernels.\n\nFeedback from upstream is that this appears to them to be a kernel bug, rather than a bug in this package.\nGiven that, I think we should force-reset-test for this arch.",
+ "commit_message": null,
+ "diffstat": {
+  "ubuntu-release": [
+   5,
+   0
+  ]
+ },
+ "files": 1,
+ "added_lines": 5,
+ "removed_lines": 0,
+ "diff": "diff --git a/ubuntu-release b/ubuntu-release\nindex 684e6c4..3b2af62 100644\n--- a/ubuntu-release\n+++ b/ubuntu-release\n@@ -11740,3 +11740,8 @@ force-reset-test ruby-excon/0.79.0-2/s390x\n # this is a badtest only as we should have this fixed one way or another in the\n # package; we need results for systemd on all arches\n force-badtest systemd/248.3-1ubuntu1/armhf\n+\n+# This version introduced a new feature and test that depends on a\n+# (recent?) kernel function missing on arm64.\n+# (LP: #1938474)\n+force-reset-test delve/1.6.1-1/arm64\n",
+ "diff_truncated": false
+}

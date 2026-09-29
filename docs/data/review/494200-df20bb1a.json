@@ -1,0 +1,23 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~ssstr1pe/ubuntu-release-tools/+git/templates/+merge/494200",
+ "id": "494200",
+ "title": "seeded-snaps-card → main",
+ "source_branch": "seeded-snaps-card",
+ "target_branch": "main",
+ "revision": "c2633bff913a3daa327c461b8fa2d4484d67ae76",
+ "base_revision": "81af402f869d31f30f2d96d2c7e5dcda1ae5612f",
+ "description": null,
+ "commit_message": null,
+ "diffstat": {
+  "jira-milestones/devel-release/new-cycle-opening.yaml": [
+   2,
+   2
+  ]
+ },
+ "files": 1,
+ "added_lines": 2,
+ "removed_lines": 2,
+ "diff": "diff --git a/jira-milestones/devel-release/new-cycle-opening.yaml b/jira-milestones/devel-release/new-cycle-opening.yaml\nindex da93893..2a19289 100644\n--- a/jira-milestones/devel-release/new-cycle-opening.yaml\n+++ b/jira-milestones/devel-release/new-cycle-opening.yaml\n@@ -166,8 +166,8 @@ timelines:\n       Note: image owners are listed in the product manifests available from the ISO Tracker (https://iso.qa.ubuntu.com/).\n \n       This includes:\n-      - 'Get the list of seeded snaps from the seeds: `readarray -t seeded_snaps < <(grep -ohP \"(?<=snap:)[^\\s/]*\" * 2>/dev/null | sort -u)`'\n-      - 'Try downloading all the snaps from the stable channel: for `s in \"${seeded_snaps[@]}\"; do snap download \"$s\" --channel=stable/ubuntu-XX.YY; done`'\n+      - Check which snaps don't have the correct new seed by running (for example):\n+      - `ubuntu-release-tools/scripts-for-cards/seeded-snaps-new-release.py --from-release \"25.10\" --to-release \"26.04\" --manifest-url $MANIFEST_URL`\n       - If a failing download is for an internally developed snap (we're upstream), contact the relevant team to have the channel open.\n       - If a failing download is for an external snap (e.g. firefox), ask the image owner to ask the snap upstream to open the channel.\n       - Iterate until all the downloads succeed.\n",
+ "diff_truncated": false
+}

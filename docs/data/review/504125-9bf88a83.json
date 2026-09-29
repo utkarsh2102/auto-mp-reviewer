@@ -1,0 +1,47 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~shemgp/ubuntu/+source/ubuntu-release-upgrader/+git/ubuntu-release-upgrader/+merge/504125",
+ "id": "504125",
+ "title": "Fix for /proc/%s/compatible permission denied crash in Proot-distro in Termux on Android.",
+ "source_branch": "resolute/fix_pd_termux",
+ "target_branch": "ubuntu/devel",
+ "revision": "a1a1b17205e9a5cc0bb1d110d5b4a8e466e3a0c9",
+ "base_revision": "062d42d530423ac80864e08276a8d1cfe2bdd658",
+ "description": "This fix handles crash when /proc/%s/compatible is permission denied since previous code only catched exception on file not found. This will allow upgrades of Ubuntu running in proot distro in Termux on Android.",
+ "commit_message": "Fix for /proc/%s/compatible permission denied crash in Proot-distro in Termux on Android.",
+ "diffstat": {
+  ".gitignore": [
+   11,
+   0
+  ],
+  "DistUpgrade/DistUpgradeController.py": [
+   7,
+   0
+  ],
+  "DistUpgrade/DistUpgradeQuirks.py": [
+   4,
+   0
+  ],
+  "DistUpgrade/DistUpgradeVersion.py": [
+   4,
+   0
+  ],
+  "data/mirrors.cfg": [
+   13,
+   0
+  ],
+  "debian/changelog": [
+   3,
+   0
+  ],
+  "tests/test_sources_list.py": [
+   3,
+   0
+  ]
+ },
+ "files": 7,
+ "added_lines": 45,
+ "removed_lines": 0,
+ "diff": "diff --git a/.gitignore b/.gitignore\nnew file mode 100644\nindex 0000000..981119f\n--- /dev/null\n+++ b/.gitignore\n@@ -0,0 +1,11 @@\n+__pycache__\n+debian/*.debhelper*\n+debian/*.substvars\n+debian/files\n+debian/python-update-manager\n+debian/python3-update-manager\n+debian/tmp\n+debian/update-manager\n+debian/update-manager-core\n+debian/update-manager-kde\n+debian/update-manager-text\ndiff --git a/DistUpgrade/DistUpgradeController.py b/DistUpgrade/DistUpgradeController.py\nindex 4a01207..aaec346 100644\n--- a/DistUpgrade/DistUpgradeController.py\n+++ b/DistUpgrade/DistUpgradeController.py\n@@ -198,7 +198,11 @@ class DistUpgradeController(object):\n         )\n \n         self.arch = apt_pkg.config.find(\"APT::Architecture\")\n+<<<<<<< DistUpgrade/DistUpgradeController.py\n         if self.arch in (\"amd64\", \"arm64\", \"i386\"):\n+=======\n+        if self.arch in (\"amd64\", \"i386\"):\n+>>>>>>> DistUpgrade/DistUpgradeController.py\n             self.default_source_uri = \"http://archive.ubuntu.com/ubuntu\"\n             self.security_source_uri = \"http://security.ubuntu.com/ubuntu\"\n         else:\n@@ -901,6 +905,7 @@ class DistUpgradeController(object):\n                 else:\n                     entry.uris = [self.default_source_uri]\n \n+<<<<<<< DistUpgrade/DistUpgradeController.py\n             # Rewrite ports.ubuntu.com -> archive.ubuntu.com for arm64.\n             # arm64 packages moved to the primary archive as of Resolute\n             # (LP: #2147101). Also covers systems that were already on\n@@ -930,6 +935,8 @@ class DistUpgradeController(object):\n                     for u in entry.uris\n                 )\n \n+=======\n+>>>>>>> DistUpgrade/DistUpgradeController.py\n             logging.debug(\"examining: '%s'\" %\n                           get_string_with_no_auth_from_source_entry(copy.deepcopy(entry)))\n \ndiff --git a/DistUpgrade/DistUpgradeQuirks.py b/DistUpgrade/DistUpgradeQuirks.py\nindex 089397c..76a6011 100644\n--- a/DistUpgrade/DistUpgradeQuirks.py\n+++ b/DistUpgrade/DistUpgradeQuirks.py\n@@ -1248,7 +1248,11 @@ class DistUpgradeQuirks(object):\n         try:\n             compatible = set((\n                 dt / 'compatible').read_bytes().rstrip(b'\\0').split(b'\\0'))\n+<<<<<<< DistUpgrade/DistUpgradeQuirks.py\n         except FileNotFoundError:\n+=======\n+        except:\n+>>>>>>> DistUpgrade/DistUpgradeQuirks.py\n             return\n         else:\n             if not any(s.startswith(b'raspberrypi,') for s in compatible):\ndiff --git a/DistUpgrade/DistUpgradeVersion.py b/DistUpgrade/DistUpgradeVersion.py\nindex 1eb57bd..e00457f 100644\n--- a/DistUpgrade/DistUpgradeVersion.py\n+++ b/DistUpgrade/DistUpgradeVersion.py\n@@ -1 +1,5 @@\n+<<<<<<< DistUpgrade/DistUpgradeVersion.py\n VERSION = '26.04.17'\n+=======\n+VERSION = '26.04.16'\n+>>>>>>> DistUpgrade/DistUpgradeVersion.py\ndiff --git a/data/mirrors.cfg b/data/mirrors.cfg\nindex 8666847..2d1ab2d 100644\n--- a/data/mirrors.cfg\n+++ b/data/mirrors.cfg\n@@ -356,6 +356,10 @@ http://mirror1.totbb.net/ubuntu/\n https://mirrors.dc.clear.net.ar/ubuntu/\n https://mirrors.hostico.ro/ubuntu/archive/\n http://ubuntu.unc.edu.ar/ubuntu/\n+<<<<<<< data/mirrors.cfg\n+=======\n+https://mirror.papua.go.id/ubuntu/\n+>>>>>>> data/mirrors.cfg\n https://mirrors.cloud.tencent.com/ubuntu/\n http://mirror1.sox.rs/ubuntu/ubuntu/\n http://ftp.rz.tu-bs.de/pub/mirror/ubuntu-packages/\n@@ -540,6 +544,10 @@ https://mirror.cs.odu.edu/ubuntu/\n http://ubuntu.linux-bg.org/ubuntu/\n https://mirror.krfoss.org/ubuntu/\n https://mirrors.gofiber.vn/ubuntu/\n+<<<<<<< data/mirrors.cfg\n+=======\n+http://ubuntu.mti.mt.gov.br/\n+>>>>>>> data/mirrors.cfg\n https://mirrors.webhs.pt/ubuntu/\n https://mirror.dewabiz.com/ubuntu/\n https://mirror.eliv.digital/ubuntu/\n@@ -655,6 +663,7 @@ http://mirror.ratiokontakt.de/mirror/ubuntu/\n http://ftp.lysator.liu.se/ubuntu/\n http://ftp.ntua.gr/ubuntu/\n http://mirror.soonkeat.sg/ubuntu/\n+<<<<<<< data/mirrors.cfg\n https://ubuntu.btit.nz/ubuntu/\n http://mirror.aktkn.sg/ubuntu/\n http://mirrors.nhanhoa.com/ubuntu/\n@@ -664,3 +673,7 @@ http://mirror.overthewire.com.au/ubuntu/\n http://archive.g4t1.pro/ubuntu/\n http://ubuntu.ntc.net.np/ubuntu/\n http://mirror.kapteyan.com.tr/ubuntu/\n+=======\n+https://archive.eibly.com/ubuntu/\n+https://ubuntu.btit.nz/ubuntu/\n+>>>>>>> data/mirrors.cfg\ndiff --git a/debian/changelog b/debian/changelog\nindex c895813..132666c 100644\n--- a/debian/changelog\n+++ b/debian/changelog\n@@ -1,3 +1,4 @@\n+<<<<<<< debian/changelog\n ubuntu-release-upgrader (1:26.04.17) resolute; urgency=medium\n \n   [ Nick Rosbrook ]\n@@ -10,6 +11,8 @@ ubuntu-release-upgrader (1:26.04.17) resolute; urgency=medium\n \n  -- Nick Rosbrook <enr0n@ubuntu.com>  Tue, 21 Apr 2026 09:27:14 -0400\n \n+=======\n+>>>>>>> debian/changelog\n ubuntu-release-upgrader (1:26.04.16) resolute; urgency=medium\n \n   [ Oliver Reiche ]\ndiff --git a/tests/test_sources_list.py b/tests/test_sources_list.py\nindex c6fd7c7..6dbb063 100644\n--- a/tests/test_sources_list.py\n+++ b/tests/test_sources_list.py\n@@ -250,6 +250,7 @@ class TestDeb822SourcesUpdate(unittest.TestCase):\n             security_source_uri=d.security_source_uri,\n         )\n \n+<<<<<<< tests/test_sources_list.py\n     @mock.patch(\"DistUpgrade.DistUpgradeController.DistUpgradeController._deb822SourceEntryDownloadable\")\n     def test_arm64_ports_rewrite(self, mock_deb822SourceEntryDownloadable):\n         \"\"\"\n@@ -284,6 +285,8 @@ class TestDeb822SourcesUpdate(unittest.TestCase):\n                     security_source_uri=target_security_source_uri,\n                 )\n \n+=======\n+>>>>>>> tests/test_sources_list.py\n     def assertSourcesMatchExpected(self, **kwargs):\n         # Compare the output to the expected data corresponding to the calling\n         # test function.\n",
+ "diff_truncated": false
+}

@@ -1,0 +1,23 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~darkmuggle/livecd-rootfs/+git/livecd-rootfs/+merge/417126",
+ "id": "417126",
+ "title": "ARM machines generally use ttyAMA0 for consoles. Instead of using \"console=tty1 console=ttyS0\" the CPC images should use \"console=ttyAMA0 console=ttyS0\"",
+ "source_branch": "lp1926138/arm-console",
+ "target_branch": "ubuntu/master",
+ "revision": "eabd292d5266b20637fadd53920c6d424aa892ff",
+ "base_revision": "68b26a790b03ea3a658e6b2ebfde3d520f41cc60",
+ "description": "Changed the default consoles",
+ "commit_message": "ARM machines generally use ttyAMA0 for consoles. Instead of using \"console=tty1 console=ttyS0\" the CPC images should use \"console=ttyAMA0 console=ttyS0\"\n\n",
+ "diffstat": {
+  "live-build/ubuntu-cpc/hooks.d/chroot/999-cpc-fixes.chroot": [
+   8,
+   1
+  ]
+ },
+ "files": 1,
+ "added_lines": 8,
+ "removed_lines": 1,
+ "diff": "diff --git a/live-build/ubuntu-cpc/hooks.d/chroot/999-cpc-fixes.chroot b/live-build/ubuntu-cpc/hooks.d/chroot/999-cpc-fixes.chroot\nindex 3071e01..8f8ce24 100755\n--- a/live-build/ubuntu-cpc/hooks.d/chroot/999-cpc-fixes.chroot\n+++ b/live-build/ubuntu-cpc/hooks.d/chroot/999-cpc-fixes.chroot\n@@ -187,10 +187,17 @@ fi\n psuedo_grub_probe > \"${gprobe}\"\n chmod 755 \"${gprobe}\"\n \n+# arm uses ttyAMA0 for virtual consoles\n+console=\"console=tty1 console=ttyS0\"\n+if [[ \"${arch}\" =~ (aarch64|arm) ]]; then\n+        console=\"console=ttyAMA0 console=ttyS0\"\n+fi\n+\n # for Quantal and later, use /etc/default/grub.d functionality\n # rather than modifying the grub configuration itself.\n # This avoids the mess of having to do dpkg stuff\n # LP: 1179940\n+\n mkdir -p \"${rootd}/etc/default/grub.d\"\n cat << EOF > \"${rootd}/etc/default/grub.d/50-cloudimg-settings.cfg\"\n # Cloud Image specific Grub settings for Generic Cloud Images\n@@ -203,7 +210,7 @@ GRUB_RECORDFAIL_TIMEOUT=0\n GRUB_TIMEOUT=0\n \n # Set the default commandline\n-GRUB_CMDLINE_LINUX_DEFAULT=\"console=tty1 console=ttyS0\"\n+GRUB_CMDLINE_LINUX_DEFAULT=\"${console}\"\n \n # Set the grub console type\n GRUB_TERMINAL=console\n",
+ "diff_truncated": false
+}

@@ -1,0 +1,27 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~zhsj/ubuntu/+source/nbd/+git/nbd/+merge/472797",
+ "id": "472797",
+ "title": "run-root → ubuntu/devel",
+ "source_branch": "run-root",
+ "target_branch": "ubuntu/devel",
+ "revision": "30157446b175cd2df637cd20be5534d5ccd74bb5",
+ "base_revision": "ac2d8e99e4fc569a86569b7d345c0953e50bada0",
+ "description": null,
+ "commit_message": null,
+ "diffstat": {
+  "debian/changelog": [
+   7,
+   0
+  ],
+  "debian/tests/control": [
+   1,
+   1
+  ]
+ },
+ "files": 2,
+ "added_lines": 8,
+ "removed_lines": 1,
+ "diff": "diff --git a/debian/changelog b/debian/changelog\nindex 23b91ae..77635c6 100644\n--- a/debian/changelog\n+++ b/debian/changelog\n@@ -1,3 +1,10 @@\n+nbd (1:3.26.1-4.1ubuntu1) oracular; urgency=medium\n+\n+  * Run initrd-boot autopkgtest with root to avoid userns permission with\n+    apparmor (LP: #2078255).\n+\n+ -- Shengjing Zhu <shengjing.zhu@canonical.com>  Fri, 06 Sep 2024 21:57:37 +0800\n+\n nbd (1:3.26.1-4.1) unstable; urgency=medium\n \n   * Non-maintainer upload.\ndiff --git a/debian/tests/control b/debian/tests/control\nindex dff7258..5b2008e 100644\n--- a/debian/tests/control\n+++ b/debian/tests/control\n@@ -12,4 +12,4 @@ Depends:\n  e2fsprogs,\n  uidmap,\n  awk,\n-Restrictions: needs-sudo, allow-stderr\n+Restrictions: needs-root, allow-stderr\n",
+ "diff_truncated": false
+}

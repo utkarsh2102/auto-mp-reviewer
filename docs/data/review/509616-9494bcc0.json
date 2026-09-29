@@ -1,0 +1,1043 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~levihackerman-102/ubuntu/+source/cryptsetup/+git/cryptsetup/+merge/509616",
+ "id": "509616",
+ "title": "Merge from Debian unstable (LP: #2163661)",
+ "source_branch": "merge-2.8.7-1ubuntu1",
+ "target_branch": "ubuntu/devel",
+ "revision": "755d6c1f1fd2013f681b253a2e040d22432f8056",
+ "base_revision": "112d1d9de0be2ccabded00ffa50ee65a5345a566",
+ "description": "Merge cryptsetup 2:2.8.7-1 from Debian unstable into stonking.\n\nDropped changes, included in Debian:\n - askpass: Fix FTBFS with glibc 2.43 (in 2:2.8.6-1)\n - d/tests/control: Add cpio autopkgtest dependency (in 2:2.8.6-2)\n - d/p/tests-Fix-tests-to-not-use-aes-generic-kernel-cipher-name.patch (upstream in 2.8.7)\n - d/p/Add-specific-error-for-failed-posix_fallocate-call.patch (upstream in 2.8.7)\n\nDropped changes, no longer needed:\n - busybox-initramfs dependency (reverted in 2:2.8.4-1ubuntu5, matches Debian)\n\nNotable adaptation: d/tests/utils/cryptroot-common kernel extraction updated for\nDebian's linux-image package split (linux-binary/linux-modules/linux-base debs),\nkeeping the Ubuntu-specific linux-image+linux-modules extraction.\n\nPPA: https://launchpad.net/~levihackerman-102/+archive/ubuntu/cryptsetup-merge\n",
+ "commit_message": "Merge from Debian unstable (LP: #2163661)",
+ "diffstat": {
+  ".github/workflows/cibuild-setup-ubuntu.sh": [
+   2,
+   2
+  ],
+  ".github/workflows/cibuild.yml": [
+   1,
+   1
+  ],
+  ".github/workflows/codeql.yml": [
+   4,
+   4
+  ],
+  ".github/workflows/coverity.yml": [
+   1,
+   1
+  ],
+  ".gitlab/ci/csmock.yml": [
+   1,
+   1
+  ],
+  ".gitlab/ci/fedora-opal.yml": [
+   1,
+   0
+  ],
+  ".gitlab/ci/fedora.yml": [
+   8,
+   1
+  ],
+  ".gitlab/ci/run_csmock": [
+   1,
+   1
+  ],
+  "CONTRIBUTING.md": [
+   5,
+   1
+  ],
+  "README.md": [
+   4,
+   4
+  ],
+  "configure.ac": [
+   3,
+   1
+  ],
+  "debian/changelog": [
+   106,
+   0
+  ],
+  "debian/control": [
+   2,
+   2
+  ],
+  "debian/patches/Exclude-reencryption-compat-test-from-Makefile.localtest.patch": [
+   3,
+   3
+  ],
+  "debian/patches/series": [
+   3,
+   0
+  ],
+  "debian/rules": [
+   2,
+   2
+  ],
+  "debian/scripts/suspend/cryptsetup-suspend-wrapper": [
+   6,
+   1
+  ],
+  "debian/tests/control": [
+   2,
+   1
+  ],
+  "debian/tests/utils/cryptroot-common": [
+   12,
+   1
+  ],
+  "docs/examples/crypt_log_usage.c": [
+   1,
+   1
+  ],
+  "docs/examples/crypt_luks_usage.c": [
+   1,
+   1
+  ],
+  "docs/v2.8.5-ReleaseNotes": [
+   73,
+   0
+  ],
+  "docs/v2.8.6-ReleaseNotes": [
+   77,
+   0
+  ],
+  "docs/v2.8.7-ReleaseNotes": [
+   99,
+   0
+  ],
+  "lib/bitlk/bitlk.c": [
+   3,
+   3
+  ],
+  "lib/bitlk/bitlk.h": [
+   3,
+   3
+  ],
+  "lib/crypt_plain.c": [
+   2,
+   2
+  ],
+  "lib/crypto_backend/argon2_generic.c": [
+   2,
+   2
+  ],
+  "lib/crypto_backend/base64.c": [
+   1,
+   1
+  ],
+  "lib/crypto_backend/cipher_check.c": [
+   2,
+   2
+  ],
+  "lib/crypto_backend/cipher_generic.c": [
+   2,
+   2
+  ],
+  "lib/crypto_backend/crypto_backend.h": [
+   2,
+   2
+  ],
+  "lib/crypto_backend/crypto_backend_internal.h": [
+   2,
+   2
+  ],
+  "lib/crypto_backend/crypto_cipher_kernel.c": [
+   4,
+   5
+  ],
+  "lib/crypto_backend/crypto_gcrypt.c": [
+   45,
+   3
+  ],
+  "lib/crypto_backend/crypto_kernel.c": [
+   2,
+   2
+  ],
+  "lib/crypto_backend/crypto_nettle.c": [
+   2,
+   2
+  ],
+  "lib/crypto_backend/crypto_nss.c": [
+   2,
+   2
+  ],
+  "lib/crypto_backend/crypto_openssl.c": [
+   76,
+   37
+  ],
+  "lib/crypto_backend/crypto_storage.c": [
+   1,
+   1
+  ],
+  "lib/crypto_backend/memutils.c": [
+   1,
+   1
+  ],
+  "lib/crypto_backend/pbkdf2_generic.c": [
+   2,
+   2
+  ],
+  "lib/crypto_backend/pbkdf_check.c": [
+   2,
+   2
+  ],
+  "lib/crypto_backend/utf8.c": [
+   2,
+   2
+  ],
+  "lib/fvault2/fvault2.c": [
+   10,
+   8
+  ],
+  "lib/integrity/integrity.c": [
+   6,
+   2
+  ],
+  "lib/integrity/integrity.h": [
+   1,
+   1
+  ],
+  "lib/internal.h": [
+   10,
+   6
+  ],
+  "lib/keyslot_context.c": [
+   2,
+   2
+  ],
+  "lib/keyslot_context.h": [
+   2,
+   2
+  ],
+  "lib/libcryptsetup.h": [
+   9,
+   3
+  ],
+  "lib/libcryptsetup_macros.h": [
+   2,
+   2
+  ],
+  "lib/libcryptsetup_symver.h": [
+   1,
+   1
+  ],
+  "lib/libdevmapper.c": [
+   6,
+   6
+  ],
+  "lib/loopaes/loopaes.c": [
+   2,
+   2
+  ],
+  "lib/loopaes/loopaes.h": [
+   2,
+   2
+  ],
+  "lib/luks1/af.c": [
+   1,
+   1
+  ],
+  "lib/luks1/af.h": [
+   1,
+   1
+  ],
+  "lib/luks1/keyencryption.c": [
+   2,
+   2
+  ],
+  "lib/luks1/keymanage.c": [
+   6,
+   24
+  ],
+  "lib/luks1/luks.h": [
+   1,
+   6
+  ],
+  "lib/luks2/hw_opal/hw_opal.c": [
+   2,
+   2
+  ],
+  "lib/luks2/hw_opal/hw_opal.h": [
+   2,
+   2
+  ],
+  "lib/luks2/luks2.h": [
+   4,
+   3
+  ],
+  "lib/luks2/luks2_digest.c": [
+   96,
+   20
+  ],
+  "lib/luks2/luks2_digest_pbkdf2.c": [
+   2,
+   2
+  ],
+  "lib/luks2/luks2_disk_metadata.c": [
+   2,
+   2
+  ],
+  "lib/luks2/luks2_internal.h": [
+   10,
+   8
+  ],
+  "lib/luks2/luks2_json_format.c": [
+   2,
+   2
+  ],
+  "lib/luks2/luks2_json_metadata.c": [
+   30,
+   5
+  ],
+  "lib/luks2/luks2_keyslot.c": [
+   3,
+   2
+  ],
+  "lib/luks2/luks2_keyslot_luks2.c": [
+   49,
+   96
+  ],
+  "lib/luks2/luks2_keyslot_reenc.c": [
+   2,
+   2
+  ],
+  "lib/luks2/luks2_luks1_convert.c": [
+   4,
+   38
+  ],
+  "lib/luks2/luks2_reencrypt.c": [
+   13,
+   9
+  ],
+  "lib/luks2/luks2_reencrypt_digest.c": [
+   5,
+   4
+  ],
+  "lib/luks2/luks2_segment.c": [
+   2,
+   2
+  ],
+  "lib/luks2/luks2_token.c": [
+   2,
+   2
+  ],
+  "lib/luks2/luks2_token_keyring.c": [
+   2,
+   2
+  ],
+  "lib/meson.build": [
+   1,
+   0
+  ],
+  "lib/random.c": [
+   1,
+   1
+  ],
+  "lib/setup.c": [
+   134,
+   58
+  ],
+  "lib/tcrypt/tcrypt.c": [
+   13,
+   22
+  ],
+  "lib/tcrypt/tcrypt.h": [
+   2,
+   2
+  ],
+  "lib/utils.c": [
+   70,
+   2
+  ],
+  "lib/utils_benchmark.c": [
+   2,
+   2
+  ],
+  "lib/utils_blkid.c": [
+   7,
+   2
+  ],
+  "lib/utils_blkid.h": [
+   1,
+   1
+  ],
+  "lib/utils_crypt.c": [
+   3,
+   3
+  ],
+  "lib/utils_crypt.h": [
+   2,
+   2
+  ],
+  "lib/utils_device.c": [
+   17,
+   7
+  ],
+  "lib/utils_device_locking.c": [
+   2,
+   2
+  ],
+  "lib/utils_device_locking.h": [
+   2,
+   2
+  ],
+  "lib/utils_devpath.c": [
+   2,
+   2
+  ],
+  "lib/utils_dm.h": [
+   2,
+   2
+  ],
+  "lib/utils_io.c": [
+   2,
+   2
+  ],
+  "lib/utils_io.h": [
+   2,
+   2
+  ],
+  "lib/utils_keyring.c": [
+   3,
+   2
+  ],
+  "lib/utils_keyring.h": [
+   3,
+   3
+  ],
+  "lib/utils_loop.c": [
+   2,
+   2
+  ],
+  "lib/utils_loop.h": [
+   2,
+   2
+  ],
+  "lib/utils_pbkdf.c": [
+   2,
+   2
+  ],
+  "lib/utils_safe_memory.c": [
+   2,
+   2
+  ],
+  "lib/utils_storage_wrappers.c": [
+   21,
+   13
+  ],
+  "lib/utils_storage_wrappers.h": [
+   7,
+   6
+  ],
+  "lib/utils_wipe.c": [
+   2,
+   2
+  ],
+  "lib/verity/rs.h": [
+   1,
+   1
+  ],
+  "lib/verity/rs_decode_char.c": [
+   1,
+   1
+  ],
+  "lib/verity/rs_encode_char.c": [
+   1,
+   1
+  ],
+  "lib/verity/verity.c": [
+   2,
+   2
+  ],
+  "lib/verity/verity.h": [
+   1,
+   1
+  ],
+  "lib/verity/verity_fec.c": [
+   1,
+   1
+  ],
+  "lib/verity/verity_hash.c": [
+   10,
+   1
+  ],
+  "lib/volumekey.c": [
+   6,
+   8
+  ],
+  "meson.build": [
+   26,
+   14
+  ],
+  "meson_options.txt": [
+   1,
+   1
+  ],
+  "misc/fedora/cryptsetup.spec": [
+   1,
+   1
+  ],
+  "po/LINGUAS": [
+   1,
+   0
+  ],
+  "po/cryptsetup.pot": [
+   583,
+   579
+  ],
+  "po/cs.po": [
+   646,
+   639
+  ],
+  "po/de.po": [
+   646,
+   640
+  ],
+  "po/fr.po": [
+   646,
+   640
+  ],
+  "po/ja.po": [
+   635,
+   636
+  ],
+  "po/ko.po": [
+   4346,
+   0
+  ],
+  "po/pl.po": [
+   635,
+   636
+  ],
+  "po/ro.po": [
+   650,
+   638
+  ],
+  "po/sk.po": [
+   647,
+   638
+  ],
+  "po/sr.po": [
+   368,
+   364
+  ],
+  "po/sv.po": [
+   1230,
+   995
+  ],
+  "po/uk.po": [
+   645,
+   639
+  ],
+  "scripts/cryptsetup.conf.in": [
+   1,
+   1
+  ],
+  "src/cryptsetup.c": [
+   26,
+   20
+  ],
+  "src/cryptsetup.h": [
+   2,
+   2
+  ],
+  "src/cryptsetup_arg_list.h": [
+   2,
+   2
+  ],
+  "src/cryptsetup_args.h": [
+   2,
+   2
+  ],
+  "src/integritysetup.c": [
+   13,
+   8
+  ],
+  "src/integritysetup_arg_list.h": [
+   2,
+   2
+  ],
+  "src/integritysetup_args.h": [
+   2,
+   2
+  ],
+  "src/utils_arg_macros.h": [
+   2,
+   2
+  ],
+  "src/utils_arg_names.h": [
+   2,
+   2
+  ],
+  "src/utils_args.c": [
+   2,
+   2
+  ],
+  "src/utils_blockdev.c": [
+   2,
+   2
+  ],
+  "src/utils_key_description.c": [
+   3,
+   3
+  ],
+  "src/utils_keyslot_check.c": [
+   1,
+   1
+  ],
+  "src/utils_luks.c": [
+   5,
+   5
+  ],
+  "src/utils_luks.h": [
+   5,
+   5
+  ],
+  "src/utils_password.c": [
+   2,
+   2
+  ],
+  "src/utils_progress.c": [
+   2,
+   2
+  ],
+  "src/utils_reencrypt.c": [
+   11,
+   8
+  ],
+  "src/utils_reencrypt_luks1.c": [
+   2,
+   2
+  ],
+  "src/utils_tools.c": [
+   2,
+   2
+  ],
+  "src/veritysetup.c": [
+   2,
+   2
+  ],
+  "src/veritysetup_arg_list.h": [
+   2,
+   2
+  ],
+  "src/veritysetup_args.h": [
+   2,
+   2
+  ],
+  "tests/Makefile.am": [
+   1,
+   0
+  ],
+  "tests/Makefile.localtest": [
+   5,
+   2
+  ],
+  "tests/all-symbols-test.c": [
+   1,
+   1
+  ],
+  "tests/api-test-2.c": [
+   255,
+   23
+  ],
+  "tests/api-test.c": [
+   115,
+   3
+  ],
+  "tests/api_test.h": [
+   3,
+   3
+  ],
+  "tests/compat-args-test": [
+   4,
+   0
+  ],
+  "tests/compat-test": [
+   51,
+   14
+  ],
+  "tests/compat-test2": [
+   80,
+   5
+  ],
+  "tests/crypto-check.c": [
+   76,
+   24
+  ],
+  "tests/crypto-vectors.c": [
+   119,
+   2
+  ],
+  "tests/differ.c": [
+   1,
+   1
+  ],
+  "tests/fuzz/crypt2_load_fuzz.cc": [
+   2,
+   2
+  ],
+  "tests/fuzz/crypt2_load_ondisk_fuzz.cc": [
+   1,
+   1
+  ],
+  "tests/generators/generate-luks2-area-in-json-hdr-space-json0.img.sh": [
+   2,
+   2
+  ],
+  "tests/generators/generate-luks2-argon2-leftover-params.img.sh": [
+   3,
+   3
+  ],
+  "tests/generators/generate-luks2-invalid-json-size-c0.img.sh": [
+   2,
+   2
+  ],
+  "tests/generators/generate-luks2-invalid-json-size-c1.img.sh": [
+   2,
+   2
+  ],
+  "tests/generators/generate-luks2-invalid-json-size-c2.img.sh": [
+   2,
+   2
+  ],
+  "tests/generators/generate-luks2-invalid-keyslots-size-c0.img.sh": [
+   2,
+   2
+  ],
+  "tests/generators/generate-luks2-invalid-keyslots-size-c1.img.sh": [
+   2,
+   2
+  ],
+  "tests/generators/generate-luks2-invalid-keyslots-size-c2.img.sh": [
+   2,
+   2
+  ],
+  "tests/generators/generate-luks2-invalid-tokens.img.sh": [
+   2,
+   2
+  ],
+  "tests/generators/generate-luks2-invalid-top-objects.img.sh": [
+   2,
+   2
+  ],
+  "tests/generators/generate-luks2-keyslot-invalid-af.img.sh": [
+   2,
+   2
+  ],
+  "tests/generators/generate-luks2-keyslot-invalid-area-size.img.sh": [
+   2,
+   2
+  ],
+  "tests/generators/generate-luks2-keyslot-invalid-area.img.sh": [
+   2,
+   2
+  ],
+  "tests/generators/generate-luks2-keyslot-invalid-objects.img.sh": [
+   2,
+   2
+  ],
+  "tests/generators/generate-luks2-keyslot-missing-digest.img.sh": [
+   3,
+   3
+  ],
+  "tests/generators/generate-luks2-keyslot-too-many-digests.img.sh": [
+   2,
+   2
+  ],
+  "tests/generators/generate-luks2-metadata-size-128k-secondary.img.sh": [
+   2,
+   2
+  ],
+  "tests/generators/generate-luks2-metadata-size-128k.img.sh": [
+   2,
+   2
+  ],
+  "tests/generators/generate-luks2-metadata-size-16k-secondary.img.sh": [
+   2,
+   2
+  ],
+  "tests/generators/generate-luks2-metadata-size-1m-secondary.img.sh": [
+   2,
+   2
+  ],
+  "tests/generators/generate-luks2-metadata-size-1m.img.sh": [
+   2,
+   2
+  ],
+  "tests/generators/generate-luks2-metadata-size-256k-secondary.img.sh": [
+   2,
+   2
+  ],
+  "tests/generators/generate-luks2-metadata-size-256k.img.sh": [
+   2,
+   2
+  ],
+  "tests/generators/generate-luks2-metadata-size-2m-secondary.img.sh": [
+   2,
+   2
+  ],
+  "tests/generators/generate-luks2-metadata-size-2m.img.sh": [
+   2,
+   2
+  ],
+  "tests/generators/generate-luks2-metadata-size-32k-secondary.img.sh": [
+   2,
+   2
+  ],
+  "tests/generators/generate-luks2-metadata-size-32k.img.sh": [
+   2,
+   2
+  ],
+  "tests/generators/generate-luks2-metadata-size-4m-secondary.img.sh": [
+   2,
+   2
+  ],
+  "tests/generators/generate-luks2-metadata-size-4m.img.sh": [
+   2,
+   2
+  ],
+  "tests/generators/generate-luks2-metadata-size-512k-secondary.img.sh": [
+   2,
+   2
+  ],
+  "tests/generators/generate-luks2-metadata-size-512k.img.sh": [
+   2,
+   2
+  ],
+  "tests/generators/generate-luks2-metadata-size-64k-inv-area-c0.img.sh": [
+   2,
+   2
+  ],
+  "tests/generators/generate-luks2-metadata-size-64k-inv-area-c1.img.sh": [
+   2,
+   2
+  ],
+  "tests/generators/generate-luks2-metadata-size-64k-inv-keyslots-size-c0.img.sh": [
+   2,
+   2
+  ],
+  "tests/generators/generate-luks2-metadata-size-64k-secondary.img.sh": [
+   2,
+   2
+  ],
+  "tests/generators/generate-luks2-metadata-size-64k.img.sh": [
+   2,
+   2
+  ],
+  "tests/generators/generate-luks2-metadata-size-invalid-secondary.img.sh": [
+   2,
+   2
+  ],
+  "tests/generators/generate-luks2-metadata-size-invalid.img.sh": [
+   2,
+   2
+  ],
+  "tests/generators/generate-luks2-missing-keyslot-referenced-in-digest.img.sh": [
+   3,
+   3
+  ],
+  "tests/generators/generate-luks2-missing-keyslot-referenced-in-token.img.sh": [
+   2,
+   2
+  ],
+  "tests/generators/generate-luks2-missing-segment-referenced-in-digest.img.sh": [
+   3,
+   3
+  ],
+  "tests/generators/generate-luks2-non-compact-json-4k-token-0.img.sh": [
+   1,
+   1
+  ],
+  "tests/generators/generate-luks2-non-compact-json-token-0.img.sh": [
+   1,
+   1
+  ],
+  "tests/generators/generate-luks2-overlapping-areas-c0-json0.img.sh": [
+   2,
+   2
+  ],
+  "tests/generators/generate-luks2-overlapping-areas-c1-json0.img.sh": [
+   2,
+   2
+  ],
+  "tests/generators/generate-luks2-overlapping-areas-c2-json0.img.sh": [
+   2,
+   2
+  ],
+  "tests/generators/generate-luks2-pbkdf2-leftover-params-0.img.sh": [
+   3,
+   3
+  ],
+  "tests/generators/generate-luks2-pbkdf2-leftover-params-1.img.sh": [
+   3,
+   3
+  ],
+  "tests/generators/generate-luks2-segment-crypt-empty-encryption.img.sh": [
+   2,
+   2
+  ],
+  "tests/generators/generate-luks2-segment-crypt-missing-encryption.img.sh": [
+   2,
+   2
+  ],
+  "tests/generators/generate-luks2-segment-crypt-missing-ivoffset.img.sh": [
+   2,
+   2
+  ],
+  "tests/generators/generate-luks2-segment-crypt-missing-sectorsize.img.sh": [
+   2,
+   2
+  ],
+  "tests/generators/generate-luks2-segment-crypt-wrong-encryption.img.sh": [
+   2,
+   2
+  ],
+  "tests/generators/generate-luks2-segment-crypt-wrong-ivoffset.img.sh": [
+   2,
+   2
+  ],
+  "tests/generators/generate-luks2-segment-crypt-wrong-sectorsize-0.img.sh": [
+   2,
+   2
+  ],
+  "tests/generators/generate-luks2-segment-crypt-wrong-sectorsize-1.img.sh": [
+   2,
+   2
+  ],
+  "tests/generators/generate-luks2-segment-crypt-wrong-sectorsize-2.img.sh": [
+   2,
+   2
+  ],
+  "tests/generators/generate-luks2-segment-missing-offset.img.sh": [
+   2,
+   2
+  ],
+  "tests/generators/generate-luks2-segment-missing-size.img.sh": [
+   2,
+   2
+  ],
+  "tests/generators/generate-luks2-segment-missing-type.img.sh": [
+   2,
+   2
+  ],
+  "tests/generators/generate-luks2-segment-two.img.sh": [
+   2,
+   2
+  ],
+  "tests/generators/generate-luks2-segment-unknown-type.img.sh": [
+   2,
+   2
+  ],
+  "tests/generators/generate-luks2-segment-wrong-backup-key-0.img.sh": [
+   2,
+   2
+  ],
+  "tests/generators/generate-luks2-segment-wrong-backup-key-1.img.sh": [
+   2,
+   2
+  ],
+  "tests/generators/generate-luks2-segment-wrong-flags-element.img.sh": [
+   2,
+   2
+  ],
+  "tests/generators/generate-luks2-segment-wrong-flags.img.sh": [
+   2,
+   2
+  ],
+  "tests/generators/generate-luks2-segment-wrong-offset.img.sh": [
+   2,
+   2
+  ],
+  "tests/generators/generate-luks2-segment-wrong-size-0.img.sh": [
+   2,
+   2
+  ],
+  "tests/generators/generate-luks2-segment-wrong-size-1.img.sh": [
+   2,
+   2
+  ],
+  "tests/generators/generate-luks2-segment-wrong-size-2.img.sh": [
+   2,
+   2
+  ],
+  "tests/generators/generate-luks2-segment-wrong-type.img.sh": [
+   2,
+   2
+  ],
+  "tests/generators/generate-luks2-uint64-max-segment-size.img.sh": [
+   2,
+   2
+  ],
+  "tests/generators/generate-luks2-uint64-overflow-segment-size.img.sh": [
+   2,
+   2
+  ],
+  "tests/generators/generate-luks2-uint64-signed-segment-size.img.sh": [
+   2,
+   2
+  ],
+  "tests/generators/lib.sh": [
+   8,
+   0
+  ],
+  "tests/integrity-compat-test": [
+   20,
+   4
+  ],
+  "tests/luks2-reencryption-test": [
+   6,
+   1
+  ],
+  "tests/mode-test": [
+   1,
+   1
+  ],
+  "tests/reencryption-compat-test": [
+   15,
+   6
+  ],
+  "tests/systemd-test-plugin": [
+   1,
+   1
+  ],
+  "tests/test_utils.c": [
+   2,
+   2
+  ],
+  "tests/unit-utils-crypt.c": [
+   1,
+   1
+  ],
+  "tests/unit-utils-io.c": [
+   1,
+   1
+  ],
+  "tests/unit-wipe.c": [
+   1,
+   1
+  ],
+  "tokens/ssh/cryptsetup-ssh.c": [
+   2,
+   2
+  ],
+  "tokens/ssh/libcryptsetup-token-ssh.c": [
+   2,
+   2
+  ],
+  "tokens/ssh/ssh-utils.c": [
+   2,
+   2
+  ],
+  "tokens/ssh/ssh-utils.h": [
+   2,
+   2
+  ]
+ },
+ "files": 256,
+ "added_lines": 13937,
+ "removed_lines": 7947,
+ "diff": "diff --git a/.github/workflows/cibuild-setup-ubuntu.sh b/.github/workflows/cibuild-setup-ubuntu.sh\nindex be3f556..7f7c03b 100755\n--- a/.github/workflows/cibuild-setup-ubuntu.sh\n+++ b/.github/workflows/cibuild-setup-ubuntu.sh\n@@ -21,8 +21,8 @@ bash -c \"echo 'deb-src http://archive.ubuntu.com/ubuntu/ $RELEASE main restricte\n add-apt-repository -y ppa:ubuntu-toolchain-r/test\n PACKAGES+=(gcc-$COMPILER_VERSION)\n \n-# scsi_debug, gost crypto\n-PACKAGES+=(dkms linux-headers-$(uname -r) linux-modules-extra-$(uname -r) gost-crypto-dkms)\n+# scsi_debug\n+PACKAGES+=(dkms linux-headers-$(uname -r) linux-modules-extra-$(uname -r))\n \n apt-get -y update --fix-missing\n apt-get -y install \"${PACKAGES[@]}\"\ndiff --git a/.github/workflows/cibuild.yml b/.github/workflows/cibuild.yml\nindex c805da1..7db6754 100644\n--- a/.github/workflows/cibuild.yml\n+++ b/.github/workflows/cibuild.yml\n@@ -20,7 +20,7 @@ jobs:\n     env: ${{ matrix.env }}\n     steps:\n       - name: Repository checkout\n-        uses: actions/checkout@v4\n+        uses: actions/checkout@v5\n       - name: Ubuntu setup\n         run: sudo -E .github/workflows/cibuild-setup-ubuntu.sh\n       - name: Configure & Make\ndiff --git a/.github/workflows/codeql.yml b/.github/workflows/codeql.yml\nindex e8cb699..901d791 100644\n--- a/.github/workflows/codeql.yml\n+++ b/.github/workflows/codeql.yml\n@@ -29,10 +29,10 @@ jobs:\n \n     steps:\n       - name: Checkout repository\n-        uses: actions/checkout@v4\n+        uses: actions/checkout@v5\n \n       - name: Initialize CodeQL\n-        uses: github/codeql-action/init@v3\n+        uses: github/codeql-action/init@v4\n         with:\n           languages: ${{ matrix.language }}\n           queries: +security-extended,security-and-quality\n@@ -47,7 +47,7 @@ jobs:\n         env: { COMPILER: \"gcc\", COMPILER_VERSION: \"14\",  RUN_SSH_PLUGIN_TEST: \"1\" }\n \n       - name: Autobuild\n-        uses: github/codeql-action/autobuild@v3\n+        uses: github/codeql-action/autobuild@v4\n \n       - name: Perform CodeQL Analysis\n-        uses: github/codeql-action/analyze@v3\n+        uses: github/codeql-action/analyze@v4\ndiff --git a/.github/workflows/coverity.yml b/.github/workflows/coverity.yml\nindex 6b34dbe..b7d872e 100644\n--- a/.github/workflows/coverity.yml\n+++ b/.github/workflows/coverity.yml\n@@ -12,7 +12,7 @@ jobs:\n     if: github.repository == 'mbroz/cryptsetup'\n     steps:\n       - name: Repository checkout\n-        uses: actions/checkout@v4\n+        uses: actions/checkout@v5\n       - name: Ubuntu setup\n         run: sudo -E .github/workflows/cibuild-setup-ubuntu.sh\n         env:\ndiff --git a/.gitlab/ci/csmock.yml b/.gitlab/ci/csmock.yml\nindex ada2d0c..d160d7c 100644\n--- a/.gitlab/ci/csmock.yml\n+++ b/.gitlab/ci/csmock.yml\n@@ -1,7 +1,7 @@\n .dnf-csmock:\n   variables:\n     DISTRO: cryptsetup-fedora-rawhide\n-    DISK_SIZE: 20\n+    DISK_SIZE: 25\n   extends:\n     - .fail_if_coredump_generated\n   before_script:\ndiff --git a/.gitlab/ci/fedora-opal.yml b/.gitlab/ci/fedora-opal.yml\nindex d7072bf..fe3e20c 100644\n--- a/.gitlab/ci/fedora-opal.yml\n+++ b/.gitlab/ci/fedora-opal.yml\n@@ -13,6 +13,7 @@\n   script:\n     - sudo dnf install -y -q nvme-cli\n     - sudo nvme list\n+    - ./configure\n     - make -j\n     - make -j -C tests check-programs\n     - sudo -E make check TESTS=\"00modules-test compat-test-opal\"\ndiff --git a/.gitlab/ci/fedora.yml b/.gitlab/ci/fedora.yml\nindex cbd1e13..5b8e10d 100644\n--- a/.gitlab/ci/fedora.yml\n+++ b/.gitlab/ci/fedora.yml\n@@ -16,7 +16,6 @@\n     - (r=3;while ! sudo dnf -y -q install $PKGS ; do ((--r))||exit;sleep 5;echo \"Retrying\";done)\n     - sudo -E git clean -xdf\n     - ./autogen.sh\n-    - ./configure --enable-fips --enable-pwquality --enable-libargon2 --with-crypto_backend=openssl --enable-asciidoc\n \n test-main-commit-job-rawhide:\n   extends:\n@@ -31,11 +30,15 @@ test-main-commit-job-rawhide:\n     RUN_SSH_PLUGIN_TEST: \"1\"\n     RUN_KEYRING_TRUSTED_TEST: \"1\"\n     RUN_SYSTEMD_PLUGIN_TEST: \"1\"\n+  parallel:\n+    matrix:\n+      - OPTION: [ \"--enable-kernel_crypto\", \"--disable-kernel_crypto\" ]\n   rules:\n     - if: $CI_PROJECT_PATH != \"cryptsetup/cryptsetup\"\n       when: never\n     - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH || $CI_COMMIT_BRANCH =~ /v2\\..\\.x$/\n   script:\n+    - ./configure --enable-fips --enable-pwquality $OPTION\n     - make -j\n     - make -j -C tests check-programs\n     - sudo -E make check\n@@ -53,11 +56,15 @@ test-mergerq-job-rawhide:\n     RUN_SSH_PLUGIN_TEST: \"1\"\n     RUN_KEYRING_TRUSTED_TEST: \"1\"\n     RUN_SYSTEMD_PLUGIN_TEST: \"1\"\n+  parallel:\n+    matrix:\n+      - OPTION: [ \"--enable-kernel_crypto\", \"--disable-kernel_crypto\" ]\n   rules:\n     - if: $CI_PROJECT_PATH != \"cryptsetup/cryptsetup\"\n       when: never\n     - if: $CI_PIPELINE_SOURCE == \"merge_request_event\"\n   script:\n+    - ./configure --enable-fips --enable-pwquality $OPTION\n     - make -j\n     - make -j -C tests check-programs\n     - sudo -E make check\ndiff --git a/.gitlab/ci/run_csmock b/.gitlab/ci/run_csmock\nindex 707e0ff..d322b08 100755\n--- a/.gitlab/ci/run_csmock\n+++ b/.gitlab/ci/run_csmock\n@@ -17,6 +17,6 @@ $CSMOCK cryptsetup-*.src.rpm \\\n \n tar xJf $CSMOCK_TXZ $CSMOCK_ERR --strip-components 1 \\\n        && test -s $CSMOCK_ERR \\\n-       && { echo \"csmock discovered important errors\"; echo 3; }\n+       && { echo \"csmock discovered important errors\"; exit 3; }\n \n exit 0\ndiff --git a/CONTRIBUTING.md b/CONTRIBUTING.md\nindex e929b6e..8852726 100644\n--- a/CONTRIBUTING.md\n+++ b/CONTRIBUTING.md\n@@ -11,7 +11,7 @@ We welcome contributions from everyone.\n Cryptsetup is an independent project with much volunteer effort, and our resources are limited.\n Following the guidelines specified in this file makes it easier for us to process your issue.\n \n-Project maintainers can remove or reject abusive or otherwise unacceptable comments or code.\n+Project maintainers can remove or reject abusive contributions, code apparently submitted by artificial intelligence (AI) without human interaction, or otherwise unacceptable comments or code.\n \n Git repository\n --------------\n@@ -43,6 +43,10 @@ Alternatively (for trivial changes), you can send a patch to [cryptsetup mailing\n \n Please do not write personal emails with questions or patches to maintainers and developers.\n \n+Please refrain from submissions that you haven't thoroughly understood, reviewed, and tested.\n+Please disclose if your contribution was AI-generated.\n+Descriptions and comments should be made by you.\n+\n ### Project structure\n Cryptsetup projects include a libcryptsetup library, tools, token plugins, documentation, and a test suite.\n \ndiff --git a/README.md b/README.md\nindex f41bc57..22c930a 100644\n--- a/README.md\n+++ b/README.md\n@@ -39,11 +39,11 @@ Download\n Release notes and tarballs are available at\n [kernel.org](https://cdn.kernel.org/pub/linux/utils/cryptsetup/).\n \n-**The latest stable cryptsetup release version is 2.8.4**\n-  * [cryptsetup-2.8.4.tar.xz](https://cdn.kernel.org/pub/linux/utils/cryptsetup/v2.8/cryptsetup-2.8.4.tar.xz)\n-  * Signature [cryptsetup-2.8.4.tar.sign](https://cdn.kernel.org/pub/linux/utils/cryptsetup/v2.8/cryptsetup-2.8.4.tar.sign)\n+**The latest stable cryptsetup release version is 2.8.7**\n+  * [cryptsetup-2.8.7.tar.xz](https://cdn.kernel.org/pub/linux/utils/cryptsetup/v2.8/cryptsetup-2.8.7.tar.xz)\n+  * Signature [cryptsetup-2.8.7.tar.sign](https://cdn.kernel.org/pub/linux/utils/cryptsetup/v2.8/cryptsetup-2.8.7.tar.sign)\n     _(You need to decompress file first to check signature.)_\n-  * [Cryptsetup 2.8.4 Release Notes](https://cdn.kernel.org/pub/linux/utils/cryptsetup/v2.8/v2.8.4-ReleaseNotes).\n+  * [Cryptsetup 2.8.7 Release Notes](https://cdn.kernel.org/pub/linux/utils/cryptsetup/v2.8/v2.8.7-ReleaseNotes).\n \n [Previous versions](https://cdn.kernel.org/pub/linux/utils/cryptsetup)\n \ndiff --git a/configure.ac b/configure.ac\nindex 91ac747..9d085e9 100644\n--- a/configure.ac\n+++ b/configure.ac\n@@ -1,5 +1,5 @@\n AC_PREREQ([2.67])\n-AC_INIT([cryptsetup],[2.8.4])\n+AC_INIT([cryptsetup],[2.8.7])\n \n dnl library version from <major>.<minor>.<release>[-<suffix>]\n LIBCRYPTSETUP_VERSION=$(echo $PACKAGE_VERSION | cut -f1 -d-)\n@@ -741,6 +741,7 @@ case $with_crypto_backend in\n \topenssl) PKGMODULES=\"$PKGMODULES openssl\" ;;\n \tnss)     PKGMODULES=\"$PKGMODULES nss\" ;;\n \tnettle)  PKGMODULES=\"$PKGMODULES nettle\" ;;\n+\tmbedtls) PKGMODULES=\"$PKGMODULES mbedtls\" ;;\n esac\n if test \"x$enable_libargon2\" = \"xyes\"; then\n \tPKGMODULES=\"$PKGMODULES libargon2\"\n@@ -838,6 +839,7 @@ test -z \"$with_luks2_lock_path\" && with_luks2_lock_path=/run/cryptsetup\n CS_ABSPATH([${with_luks2_lock_path}],[with-luks2-lock-path])\n DEFAULT_LUKS2_LOCK_PATH=$with_luks2_lock_path\n AC_SUBST(DEFAULT_LUKS2_LOCK_PATH)\n+AC_SUBST([DEFAULT_LUKS2_LOCK_PATH_UNQUOTED], [$DEFAULT_LUKS2_LOCK_PATH])\n \n CS_NUM_WITH([luks2-lock-dir-perms], [default luks2 locking directory permissions], [0700])\n test -z \"$with_luks2_lock_dir_perms\" && with_luks2_lock_dir_perms=0700\ndiff --git a/debian/changelog b/debian/changelog\nindex 6a55309..b9701ae 100644\n--- a/debian/changelog\n+++ b/debian/changelog\n@@ -1,3 +1,85 @@\n+<<<<<<< debian/changelog\n+=======\n+cryptsetup (2:2.8.7-1ubuntu1) stonking; urgency=medium\n+\n+  * Merge with Debian unstable (LP: #2163661). Remaining changes:\n+    - d/tests/utils/mkinitramfs: Support zstd compressed modules for self test\n+    - d/rules: Compile-in support for a FIPS mode. LP #2032659\n+    - d/control: Recommend plymouth\n+    - d/control: Move cryptsetup-initramfs back to cryptsetup Recommends,\n+      preferring dracut\n+    - d/{control,rules}: Disable building cryptsetup-suspend on i386\n+    - d/initramfs/cryptroot-unlock: Fix busybox/narrow compat LP #1968636\n+    - d/tests: Fix autopkgtests\n+      + d/tests/utils/mkinitramfs: Prevent linking attempt if file exists\n+      + d/tests/utils/cryptroot-common: Handle Ubuntu kernel package split\n+        (linux-image + linux-modules) when extracting the kernel\n+    - d/{functions,initramfs/hooks/cryptroot}: Fix ZFS root warning/error\n+      + d/functions: Return an empty devno for ZFS devices as they don't have\n+        major:minor device numbers.\n+      + d/initramfs/hooks/cryptroot: Ignore and don't print an error message\n+        when devices don't have a devno.\n+    - d/p/{no-dd-direct-flags-tmpfs,series}: Disable O_DIRECT on tmpfs\n+    - d/p/test-use-gnudd-as-workaround-in-luks2-reencryption-mangle.patch:\n+      use gnudd as workaround in luks2-reencryption-mangle-test failing\n+      with rust-coreutils dd (see\n+      https://bugs.launchpad.net/ubuntu/+source/rust-coreutils/+bug/2143933)\n+  * Dropped changes, included in Debian:\n+    - askpass: Fix FTBFS with glibc 2.43 (in 2:2.8.6-1)\n+    - d/tests/control: Add cpio autopkgtest dependency (in 2:2.8.6-2)\n+    - d/p/tests-Fix-tests-to-not-use-aes-generic-kernel-cipher-name.patch:\n+      applied upstream (in 2:2.8.7-1)\n+    - d/p/Add-specific-error-for-failed-posix_fallocate-call.patch:\n+      applied upstream (in 2:2.8.7-1)\n+  * Dropped changes, no longer needed:\n+    - d/control: Depend on busybox-initramfs instead of busybox |\n+      busybox-static (reverted in 2:2.8.4-1ubuntu5, matching Debian)\n+\n+ -- Anshul Singh <anshul.singh@canonical.com>  Mon, 17 Aug 2026 21:59:32 +0900\n+\n+cryptsetup (2:2.8.7-1) unstable; urgency=medium\n+\n+  * New upstream bugfix release.\n+\n+ -- Guilhem Moulin <guilhem@debian.org>  Wed, 22 Jul 2026 01:53:08 +0200\n+\n+cryptsetup (2:2.8.7~rc2-1) experimental; urgency=medium\n+\n+  * New upstream release candidate. (Closes: #1141257)\n+  * d/rules: Adjust blhc's ignore-line-regexp.\n+  * cryptsetup-suspend-wrapper: Replace `find … -execdir {}` call with a shell\n+    loop. (Closes: #1141157)\n+  * Refresh d/patches.\n+  * d/t/cryptroot-*: Install mount in the guests.\n+\n+ -- Guilhem Moulin <guilhem@debian.org>  Mon, 13 Jul 2026 16:47:12 +0200\n+\n+cryptsetup (2:2.8.7~rc1-1) experimental; urgency=medium\n+\n+  * New upstream release candidate.\n+  * Drop d/patches/* applied upstream.\n+\n+ -- Guilhem Moulin <guilhem@debian.org>  Tue, 30 Jun 2026 12:24:18 +0200\n+\n+cryptsetup (2:2.8.6-2) unstable; urgency=medium\n+\n+  * Backport upstream changes to fix FTBFS with recent jq(1). The jq upstream\n+    fix for CVE-2026-33948 breaks cryptsetup's test suite. (Closes: #1135390)\n+  * Update Standards-Version to 4.7.4 (no changes necessary).\n+  * d/t/cryptroot-*: Add \"Depends: cpio\".\n+\n+ -- Guilhem Moulin <guilhem@debian.org>  Sun, 03 May 2026 15:26:25 +0200\n+\n+cryptsetup (2:2.8.6-1) unstable; urgency=medium\n+\n+  * New upstream bugfix release.\n+  * askpass: Fix FTBFS with glibc 2.43. (Closes: #1128538)\n+  * d/control: Replace B-D: libselinux1-dev with libselinux-dev.\n+  * d/t/cryptroot-*: Account for the linux-image package split.\n+\n+ -- Guilhem Moulin <guilhem@debian.org>  Thu, 02 Apr 2026 20:39:12 +0200\n+\n+>>>>>>> debian/changelog\n cryptsetup (2:2.8.4-1ubuntu6) stonking; urgency=medium\n \n   * No-change rebuild against libssl4\n@@ -199,7 +281,11 @@ cryptsetup (2:2.7.5-2ubuntu2) questing; urgency=medium\n \n cryptsetup (2:2.7.5-2ubuntu1) questing; urgency=medium\n \n+<<<<<<< debian/changelog\n   * Merge with Debian unstable. Remaining changes:\n+=======\n+  * Merge with Debian unstable (LP: #2163661). Remaining changes:\n+>>>>>>> debian/changelog\n     - Support zstd compressed modules for the self test.\n     - Compile-in support for a FIPS mode. LP #2032659\n     - debian/{control,rules}:\n@@ -262,7 +348,11 @@ cryptsetup (2:2.7.5-1ubuntu2) plucky; urgency=medium\n \n cryptsetup (2:2.7.5-1ubuntu1) plucky; urgency=medium\n \n+<<<<<<< debian/changelog\n   * Merge with Debian unstable. Remaining changes:\n+=======\n+  * Merge with Debian unstable (LP: #2163661). Remaining changes:\n+>>>>>>> debian/changelog\n     - Support zstd compressed modules for the self test.\n     - Compile-in support for a FIPS mode. LP #2032659\n     - debian/{control,rules}:\n@@ -329,7 +419,11 @@ cryptsetup (2:2.7.4-1) unstable; urgency=medium\n \n cryptsetup (2:2.7.2-2ubuntu1) oracular; urgency=medium\n \n+<<<<<<< debian/changelog\n   * Merge with Debian unstable. Remaining changes:\n+=======\n+  * Merge with Debian unstable (LP: #2163661). Remaining changes:\n+>>>>>>> debian/changelog\n     - Support zstd compressed modules for the self test.\n     - Compile-in support for a FIPS mode. LP #2032659\n     - debian/control:\n@@ -519,7 +613,11 @@ cryptsetup (2:2.7.0~rc0-2) experimental; urgency=medium\n \n cryptsetup (2:2.6.1-6ubuntu1) noble; urgency=medium\n \n+<<<<<<< debian/changelog\n   * Merge with Debian unstable. Remaining changes:\n+=======\n+  * Merge with Debian unstable (LP: #2163661). Remaining changes:\n+>>>>>>> debian/changelog\n     - Support zstd compressed modules for the self test.\n     - Compile-in support for a FIPS mode. LP #2032659\n     - debian/control:\n@@ -586,7 +684,11 @@ cryptsetup (2:2.7.0~rc0-1) experimental; urgency=medium\n \n cryptsetup (2:2.6.1-5ubuntu1) noble; urgency=medium\n \n+<<<<<<< debian/changelog\n   * Merge with Debian unstable. Remaining changes:\n+=======\n+  * Merge with Debian unstable (LP: #2163661). Remaining changes:\n+>>>>>>> debian/changelog\n     - Support zstd compressed modules for the self test.\n     - Compile-in support for a FIPS mode. LP #2032659\n     - debian/control:\n@@ -1414,7 +1516,11 @@ cryptsetup (2:2.3.4-1ubuntu2) hirsute; urgency=medium\n \n cryptsetup (2:2.3.4-1ubuntu1) hirsute; urgency=medium\n \n+<<<<<<< debian/changelog\n   * Merge with Debian unstable. Remaining changes:\n+=======\n+  * Merge with Debian unstable (LP: #2163661). Remaining changes:\n+>>>>>>> debian/changelog\n     - debian/control:\n       + Recommend plymouth.\n       + Depend on busybox-initramfs instead of busybox | busybox-static.\ndiff --git a/debian/control b/debian/control\nindex eac9822..d27ca42 100644\n--- a/debian/control\n+++ b/debian/control\n@@ -18,7 +18,7 @@ Build-Depends: asciidoctor <!nodoc>,\n                libdevmapper-dev,\n                libjson-c-dev,\n                libpopt-dev,\n-               libselinux1-dev,\n+               libselinux-dev,\n                libsepol-dev,\n                libssh-dev,\n                libssl-dev (>> 3.2~),\n@@ -30,7 +30,7 @@ Build-Depends: asciidoctor <!nodoc>,\n                uuid-dev,\n                xsltproc <!nodoc>,\n                xxd <!nocheck>\n-Standards-Version: 4.7.3\n+Standards-Version: 4.7.4\n Homepage: https://gitlab.com/cryptsetup/cryptsetup\n Vcs-Browser: https://salsa.debian.org/cryptsetup-team/cryptsetup\n Vcs-Git: https://salsa.debian.org/cryptsetup-team/cryptsetup.git -b debian/latest\ndiff --git a/debian/patches/Exclude-reencryption-compat-test-from-Makefile.localtest.patch b/debian/patches/Exclude-reencryption-compat-test-from-Makefile.localtest.patch\nindex cab0e91..c912fc8 100644\n--- a/debian/patches/Exclude-reencryption-compat-test-from-Makefile.localtest.patch\n+++ b/debian/patches/Exclude-reencryption-compat-test-from-Makefile.localtest.patch\n@@ -35,15 +35,15 @@ Bug-Debian: https://bugs.debian.org/1122539\n  1 file changed, 1 insertion(+), 1 deletion(-)\n \n diff --git a/tests/Makefile.localtest b/tests/Makefile.localtest\n-index 89ce2c3..22d0d7e 100644\n+index dd7bbe8..ae0f9cc 100644\n --- a/tests/Makefile.localtest\n +++ b/tests/Makefile.localtest\n @@ -7,7 +7,7 @@ CPPFLAGS=-I../lib/ -I../lib/luks1 -DHAVE_DECL_DM_TASK_RETRY_REMOVE -DKERNEL_KEYR\n- \t-DHAVE_SYS_SYSMACROS_H -DNO_CRYPTSETUP_PATH\n+ \t-DHAVE_SYS_SYSMACROS_H -DNO_CRYPTSETUP_PATH -DNO_CRYPT_BACKEND\n  CFLAGS=-O2 -g -Wall -D_GNU_SOURCE\n  LDLIBS=-lcryptsetup -ldevmapper\n -TESTS=$(wildcard *-test *-test2) api-test api-test-2 all-symbols-test unit-utils-crypt-test\n +TESTS=$(filter-out reencryption-compat-test,$(wildcard *-test *-test2)) api-test api-test-2 all-symbols-test unit-utils-crypt-test\n- TESTS_UTILS=differ unit-utils-io unit-wipe\n+ TESTS_UTILS=differ unit-utils-io unit-wipe crypto-check\n  \n  ifneq ($(RUN_SSH_PLUGIN_TEST),)\ndiff --git a/debian/patches/series b/debian/patches/series\nindex f910ed2..bc6f8e9 100644\n--- a/debian/patches/series\n+++ b/debian/patches/series\n@@ -1,5 +1,8 @@\n Exclude-reencryption-compat-test-from-Makefile.localtest.patch\n no-dd-direct-flags-tmpfs.patch\n+<<<<<<< debian/patches/series\n tests-Fix-tests-to-not-use-aes-generic-kernel-cipher-name.patch\n Add-specific-error-for-failed-posix_fallocate-call.patch\n+=======\n+>>>>>>> debian/patches/series\n test-use-gnudd-as-workaround-in-luks2-reencryption-mangle.patch\ndiff --git a/debian/rules b/debian/rules\nindex 096c47d..6b5998c 100755\n--- a/debian/rules\n+++ b/debian/rules\n@@ -54,8 +54,8 @@ endif\n \t$(MAKE) -C debian/scripts/po all luksformat.pot\n \n execute_before_dh_auto_test:\n-\t# tests/fake_token_path.so is built without global $(CFLAGS)\n-\t@echo \"blhc: ignore-line-regexp: gcc\\\\s.*\\\\s\\\\.\\\\./tests/[0-9A-Za-z_-]+\\\\.c\\\\s.*\"\n+\t# tests/fake_token_path.so and tests/fake_systemd_tpm_path.so are built without global $(CFLAGS)\n+\t@echo \"blhc: ignore-line-regexp: ([0-9A-Za-z_]+-)*gcc\\\\s.*\\\\s\\\\.\\\\./tests/[0-9A-Za-z_-]+\\\\.c(\\\\s.*)?\"\n \n execute_after_dh_auto_install:\n \t# install gettext po files (for luksformat)\ndiff --git a/debian/scripts/suspend/cryptsetup-suspend-wrapper b/debian/scripts/suspend/cryptsetup-suspend-wrapper\nindex 12b0299..b766d2e 100644\n--- a/debian/scripts/suspend/cryptsetup-suspend-wrapper\n+++ b/debian/scripts/suspend/cryptsetup-suspend-wrapper\n@@ -46,8 +46,13 @@ read_config() {\n # Run all executable scripts in directory SYSTEM_SLEEP_PATH with arguments ARGS\n # mimic systemd behavior\n run_dir() {\n+    local p\n     [ -d \"$SYSTEM_SLEEP_PATH\" ] || return 0\n-    find \"$SYSTEM_SLEEP_PATH\" -type f -executable -execdir {} \"$@\" \\;\n+    for p in \"$SYSTEM_SLEEP_PATH\"/*; do\n+        if [ -x \"$p\" ]; then\n+            \"$p\" \"$@\" || return $?\n+        fi\n+    done\n }\n \n log_error() {\ndiff --git a/debian/tests/control b/debian/tests/control\nindex da2528e..7e11668 100644\n--- a/debian/tests/control\n+++ b/debian/tests/control\n@@ -123,7 +123,8 @@ Restrictions: allow-stderr, needs-root\n Architecture: amd64\n \n #Tests: cryptroot-nested\n-#Depends: btrfs-progs,\n+#Depends: cpio,\n+#         btrfs-progs,\n #         cryptsetup-bin,\n #         dosfstools [arm64 armhf],\n #         e2fsprogs,\ndiff --git a/debian/tests/utils/cryptroot-common b/debian/tests/utils/cryptroot-common\nindex 0d788ac..bda5203 100755\n--- a/debian/tests/utils/cryptroot-common\n+++ b/debian/tests/utils/cryptroot-common\n@@ -176,7 +176,7 @@ PKG_INIT=\"systemd-sysv\" # default pid1\n MERGED_USR=\"\" # use default layout for the target version\n declare -a PKGS_EXTRA=() DRIVE_SIZES=( \"2G\" )\n PKGS_EXTRA+=( \"zstd\" ) # default initrd compression, see #976054\n-PKGS_EXTRA+=( \"login\" \"passwd\" ) # for login(1) and passwd(1)\n+PKGS_EXTRA+=( \"login\" \"passwd\" \"mount\" ) # for login(1), passwd(1) and mount(8)\n PKGS_EXTRA+=( \"initramfs-tools\" )\n \n if [ -f \"$TESTDIR/$TESTNAME.d/config\" ]; then\n@@ -433,12 +433,23 @@ extract_kernel() {\n     mkdir \"$destdir\"\n     mkdir \"$destdir/usr\" \"$destdir/usr/lib\"\n     ln -sT \"usr/lib\" \"$destdir/lib\"\n+<<<<<<< debian/tests/utils/cryptroot-common\n     if [ \"$DISTRIBUTOR_ID\" == \"debian\" ]; then\n         dpkg-deb --fsys-tarfile \"$APT_CACHE/archives/$KERNEL_DEB\" | tar -C \"$destdir\" -xf- \\\n             --wildcards --wildcards-match-slash \\\n             \"./boot/vmlinuz-$KERNEL_VERSION\" \\\n             \"*/lib/modules/$KERNEL_VERSION\"\n     elif [ \"$DISTRIBUTOR_ID\" == \"ubuntu\" ]; then\n+=======\n+    if [ \"$DISTRIBUTOR_ID\" = \"debian\" ]; then\n+        dpkg-deb --fsys-tarfile \"$APT_CACHE/archives/linux-binary-${KERNEL_DEB#linux-image-}\" \\\n+            | tar -C \"$destdir\" -xf- \"./boot/vmlinuz-$KERNEL_VERSION\"\n+        dpkg-deb --fsys-tarfile \"$APT_CACHE/archives/linux-modules-${KERNEL_DEB#linux-image-}\" \\\n+            | tar -C \"$destdir\" -xf- \"./usr/lib/modules/$KERNEL_VERSION\"\n+        dpkg-deb --fsys-tarfile \"$APT_CACHE/archives/linux-base-${KERNEL_DEB#linux-image-}\" \\\n+            | tar -C \"$destdir\" -xf- \"./usr/lib/modules/$KERNEL_VERSION\"\n+    elif [ \"$DISTRIBUTOR_ID\" = \"ubuntu\" ]; then\n+>>>>>>> debian/tests/utils/cryptroot-common\n         dpkg-deb --fsys-tarfile \"$APT_CACHE/archives/$KERNEL_DEB\" | tar -C \"$destdir\" -xf- \\\n             \"./boot/vmlinuz-$KERNEL_VERSION\"; MODULES_DEB=\"$(echo $KERNEL_DEB |  sed s/-image-/-modules-/)\"; \\\n         dpkg-deb --fsys-tarfile \"$APT_CACHE/archives/$MODULES_DEB\" | tar -C \"$destdir\" -xf- \\\ndiff --git a/docs/examples/crypt_log_usage.c b/docs/examples/crypt_log_usage.c\nindex de8d45c..491bdf4 100644\n--- a/docs/examples/crypt_log_usage.c\n+++ b/docs/examples/crypt_log_usage.c\n@@ -2,7 +2,7 @@\n /*\n  * libcryptsetup API log example\n  *\n- * Copyright (C) 2011-2025 Red Hat, Inc. All rights reserved.\n+ * Copyright (C) 2011-2026 Red Hat, Inc. All rights reserved.\n  */\n \n #include <stdio.h>\ndiff --git a/docs/examples/crypt_luks_usage.c b/docs/examples/crypt_luks_usage.c\nindex 784d368..8c63ed5 100644\n--- a/docs/examples/crypt_luks_usage.c\n+++ b/docs/examples/crypt_luks_usage.c\n@@ -2,7 +2,7 @@\n /*\n  *  libcryptsetup API - using LUKS device example\n  *\n- * Copyright (C) 2011-2025 Red Hat, Inc. All rights reserved.\n+ * Copyright (C) 2011-2026 Red Hat, Inc. All rights reserved.\n  */\n \n #include <stdio.h>\ndiff --git a/docs/v2.8.5-ReleaseNotes b/docs/v2.8.5-ReleaseNotes\nnew file mode 100644\nindex 0000000..3db0d4f\n--- /dev/null\n+++ b/docs/v2.8.5-ReleaseNotes\n@@ -0,0 +1,73 @@\n+Cryptsetup 2.8.5 Release Notes\n+==============================\n+Stable bug-fix release.\n+\n+All users of cryptsetup 2.8.x must upgrade to this version.\n+\n+Changes since version 2.8.4\n+~~~~~~~~~~~~~~~~~~~~~~~~~~~\n+\n+* Fix FileVault (fvault2) metadata parsing.\n+  With a specially crafted image, it is possible to cause a crash during the loading\n+  of the FileVault-compatible disk encryption format. It is caused by the metadata block size\n+  not being fully validated during the crypt_load() API call.\n+\n+  Thanks to David Pokora (Trail of Bits, in collaboration with Anthropic) for reporting\n+  and proposing the patch.\n+\n+* Fix reading FileVault image metadata from incorrect image offset.\n+  If two subsequent crypt_load() API calls are made, the second call to load FileVault metadata\n+  uses an incorrect offset.  Subsequently, the correct FileVault metadata is not recognized.\n+  This is caused by a missing seek to the device's beginning. No other formats are affected.\n+\n+* OpenSSL backend: Increase the number of allowed threads to 64.\n+  If there are multiple crypto contexts in use, the 8-thread limit could cause parallel Argon2\n+  PBKDF to wait or even deadlock. This is a workaround; the real fix probably needs changes\n+  in the OpenSSL Argon2 thread allocation.\n+\n+* Fix LUKS2 reencryption lock name.\n+  If the device is in the reencryption process, it must use the metadata lock to protect\n+  the reencryption metadata. In some very specific situations, the lock did not contain\n+  the proper UUID of the reencrypted device.\n+\n+* Check the UUID of the resumed device to match the UUID stored in metadata.\n+  It is possible to resume the device with an invalid context, with possible data corruption\n+  (a different encryption key is loaded).\n+\n+* Add a specific error for failed detached header allocation.\n+  If there wasn't enough space on the filesystem, the error message was confusing.\n+\n+* Fix tests not to use aes-generic kernel cipher name.\n+  Since Linux kernel 7.0, the crypto library has been used, and the old generic alias for kernel\n+  crypto no longer works. As it was never supposed to be used from userspace, tests were fixed\n+  to pass even with Linux kernel 7.0.\n+\n+* Fix OpenSSL crypto backend if built with LibreSSL.\n+  LibreSSL provides some definitions that it does not actually support.\n+  This confused the logic of the configuration scripts.\n+\n+* Several compatibility fixes to the alternative Meson configuration system:\n+  * using pkg-config to find the popt library,\n+  * fix the UUID header path in the function check,\n+  * fix argp detection with the static argp-standalone library,\n+  * allow external tokens without dlvsym (with musl library),\n+  * propagate the crypto backend library dependency to all targets in the static build, and\n+  * fix the defined locking directory path..\n+  These changes align it with Autoconf logic.\n+\n+* Various code fixes based on AI-assisted reviews:\n+  * fix memory wiping of the larger Veracrypt password pool,\n+  * remove superfluous return line in integritysetup,\n+  * OpenSSL crypto backend: check for maximal RAND_bytes buffer size,\n+  * FileVault format: use safe_alloc for key unwrapping,\n+  * check for strtoll() failure,\n+  * avoid integrity sector size overflow (when reading from disk),\n+  * fix device-mapper flags initialization in the error path,\n+  * increase buffer for keyring name in the device-mapper table to not truncate it,\n+  * document non-standard behavior of safe_realloc,\n+  * fix wrong union access for dm-integrity reload,\n+  * check for possible CTX_dup failure in OpenSSL crypto backend,\n+  * fix kernel crypto backend snprintf check,\n+  * fix prefix \"capi:\" check not to ignore colon,\n+  * fix device resize not to leak data on error path, and\n+  * fix return value in reencryption segment helper.\ndiff --git a/docs/v2.8.6-ReleaseNotes b/docs/v2.8.6-ReleaseNotes\nnew file mode 100644\nindex 0000000..9edeba2\n--- /dev/null\n+++ b/docs/v2.8.6-ReleaseNotes\n@@ -0,0 +1,77 @@\n+Cryptsetup 2.8.6 Release Notes\n+==============================\n+Stable bug-fix release.\n+\n+All users of cryptsetup 2.8.x must upgrade to this version.\n+\n+Changes since version 2.8.5\n+~~~~~~~~~~~~~~~~~~~~~~~~~~~\n+* Fixes an autotools regression in 2.8.5 in the locking tmpfiles.d directory configuration.\n+\n+Changes since version 2.8.4\n+~~~~~~~~~~~~~~~~~~~~~~~~~~~\n+\n+* Fix FileVault (fvault2) metadata parsing.\n+  With a specially crafted image, it is possible to cause a crash during the loading\n+  of the FileVault-compatible disk encryption format. It is caused by the metadata block size\n+  not being fully validated during the crypt_load() API call.\n+\n+  Thanks to David Pokora (Trail of Bits, in collaboration with Anthropic) for reporting\n+  and proposing the patch.\n+\n+* Fix reading FileVault image metadata from incorrect image offset.\n+  If two subsequent crypt_load() API calls are made, the second call to load FileVault metadata\n+  uses an incorrect offset.  Subsequently, the correct FileVault metadata is not recognized.\n+  This is caused by a missing seek to the device's beginning. No other formats are affected.\n+\n+* OpenSSL backend: Increase the number of allowed threads to 64.\n+  If there are multiple crypto contexts in use, the 8-thread limit could cause parallel Argon2\n+  PBKDF to wait or even deadlock. This is a workaround; the real fix probably needs changes\n+  in the OpenSSL Argon2 thread allocation.\n+\n+* Fix LUKS2 reencryption lock name.\n+  If the device is in the reencryption process, it must use the metadata lock to protect\n+  the reencryption metadata. In some very specific situations, the lock did not contain\n+  the proper UUID of the reencrypted device.\n+\n+* Check the UUID of the resumed device to match the UUID stored in metadata.\n+  It is possible to resume the device with an invalid context, with possible data corruption\n+  (a different encryption key is loaded).\n+\n+* Add a specific error for failed detached header allocation.\n+  If there wasn't enough space on the filesystem, the error message was confusing.\n+\n+* Fix tests not to use aes-generic kernel cipher name.\n+  Since Linux kernel 7.0, the crypto library has been used, and the old generic alias for kernel\n+  crypto no longer works. As it was never supposed to be used from userspace, tests were fixed\n+  to pass even with Linux kernel 7.0.\n+\n+* Fix OpenSSL crypto backend if built with LibreSSL.\n+  LibreSSL provides some definitions that it does not actually support.\n+  This confused the logic of the configuration scripts.\n+\n+* Several compatibility fixes to the alternative Meson configuration system:\n+  * using pkg-config to find the popt library,\n+  * fix the UUID header path in the function check,\n+  * fix argp detection with the static argp-standalone library,\n+  * allow external tokens without dlvsym (with musl library),\n+  * propagate the crypto backend library dependency to all targets in the static build, and\n+  * fix the defined locking directory path..\n+  These changes align it with Autoconf logic.\n+\n+* Various code fixes based on AI-assisted reviews:\n+  * fix memory wiping of the larger Veracrypt password pool,\n+  * remove superfluous return line in integritysetup,\n+  * OpenSSL crypto backend: check for maximal RAND_bytes buffer size,\n+  * FileVault format: use safe_alloc for key unwrapping,\n+  * check for strtoll() failure,\n+  * avoid integrity sector size overflow (when reading from disk),\n+  * fix device-mapper flags initialization in the error path,\n+  * increase buffer for keyring name in the device-mapper table to not truncate it,\n+  * document non-standard behavior of safe_realloc,\n+  * fix wrong union access for dm-integrity reload,\n+  * check for possible CTX_dup failure in OpenSSL crypto backend,\n+  * fix kernel crypto backend snprintf check,\n+  * fix prefix \"capi:\" check not to ignore colon,\n+  * fix device resize not to leak data on error path, and\n+  * fix return value in reencryption segment helper.\ndiff --git a/docs/v2.8.7-ReleaseNotes b/docs/v2.8.7-ReleaseNotes\nnew file mode 100644\nindex 0000000..00e5db2\n--- /dev/null\n+++ b/docs/v2.8.7-ReleaseNotes\n@@ -0,0 +1,99 @@\n+Cryptsetup 2.8.7 Release Notes\n+==============================\n+Stable bug-fix release that solves several compatibility issues.\n+\n+All users of cryptsetup must upgrade to this version.\n+\n+Changes since version 2.8.6\n+~~~~~~~~~~~~~~~~~~~~~~~~~~~\n+\n+* Changes related to Linux kernel AF_ALG crypto userspace interface deprecation\n+  Linux kernel maintainers decided to deprecate the AF_ALG interface, which was heavily used\n+  by cryptsetup, with the plan to remove it (or severely limit it) for security reasons.\n+  Libcryptsetup uses userspace (primarily via AF_ALG) for processing LUKS keyslots and for on-disk\n+  metadata handling for other formats. Using AF_ALG ensured that the same set of algorithms\n+  is present in userspace and later in-kernel for device activation.\n+\n+  While libcryptsetup has a concept of fallback to userspace library, it was not used in\n+  all situations.\n+\n+  In this version, libcryptsetup can use a userspace crypto library, AF_ALG (if present), and\n+  in some situations (LUKS keyslots), fallback to a temporary dm-crypt mapping. The last option\n+  requires root privileges. This ensures that most operations will continue to work even when\n+  AF_ALG is disabled or limited.\n+\n+  Unfortunately, removing the AF_ALG could cause severe compatibility issues if the required\n+  algorithm (or encryption mode) is not implemented in the userspace library. A typical example is\n+  the Adiantum cipher, which is implemented only in the kernel. Also, ciphers like Serpent or\n+  Twofish (in XTS mode) are missing from several userspace libraries. The cryptsetup benchmark\n+  for ciphers is no longer available if the AF_ALG interface is unavailable.\n+\n+* Keyring handling changes.\n+  Libcryptsetup can use the kernel keyring to transfer the volume key into the kernel, avoiding\n+  sending it as a parameter to system calls.\n+\n+  In previous versions, the volume key could be stored in the thread keyring, which should be\n+  removed when the process exits. Unfortunately, the thread keyring can remain active in some\n+  situations (such as when allocating a loop device). This could be a problem after calling\n+  luksSuspend when the volume key could remain in memory.\n+\n+  Instead of loading volume keys directly into the thread keyring, cryptsetup now creates\n+  an intermediary keyring linked into the thread keyring and loads volume keys there.\n+  The intermediary keyring is now removed in the libcryptsetup context destructor\n+  (usually on application exit).\n+\n+  Note that in previous versions, volume keys persisted until the process exited (even after\n+  the context destructor was called).\n+\n+* Changes related to possible LUKS volume key digest collisions.\n+  LUKS on-disk metadata uses a volume key digest generated by the PBKDF2 key-derivation algorithm\n+  to verify that the decrypted volume key is valid. The use of PBKDF2 (instead of a more suitable\n+  cryptographic digest algorithm) is part of the original LUKS design. It was retained for LUKS2\n+  for compatibility (it allows easy in-place conversion).\n+\n+  However, PBKDF2 has several design flaws. As it is based on HMAC (Hash-based Message\n+  Authentication Code), it also inherits the weak-key HMAC issue. In HMAC, the key can be\n+  arbitrarily long. If the key is shorter than the hash internal block size, it is padded with\n+  zeroes to a full block size. This flawed padding causes any HMAC key (shorter than the specified\n+  block size) to collide with keys that have added trailing zeroes. A collision means that HMAC\n+  (and PBKDF2) has the same output for colliding keys.\n+\n+  In LUKS, a PBKDF2 collision is not a security issue; it cannot compromise data confidentiality.\n+  Moreover, the colliding key has a different length and should be rejected by the underlying block\n+  cipher. Unfortunately, in some reencryption scenarios (e.g., a header without keyslots),\n+  a collision key could be accepted, leading to possible data corruption.\n+\n+  Code now always validates the expected key length.\n+  This validation is now strictly implemented in LUKS metadata processing.\n+\n+  In the long term, LUKS will need to upgrade to a better volume key digest algorithm, but that\n+  will make the format backward-incompatible.\n+\n+* Support Aria and Camellia ciphers in the libgcrypt cryptographic backend.\n+\n+* Fix pkg-config library entry for the Mbed TLS cryptographic backend.\n+\n+* Better document CRYPT_VOLUME_KEY_NO_SEGMENT and CRYPT_VOLUME_KEY_DIGEST_REUSE API flags.\n+  The keyslot created with the CRYPT_VOLUME_KEY_NO_SEGMENT flag must always be unbound\n+  (not assigned to the default data segment). The use of the CRYPT_VOLUME_KEY_DIGEST_REUSE flag\n+  does not make sense without the CRYPT_VOLUME_KEY_NO_SEGMENT or CRYPT_VOLUME_KEY_SET flags.\n+\n+* Fix several possible corner cases in OpenSSL cryptographic backend (based on AI analysis).\n+  These include checking before casting from size_t to int, checking return values for the old\n+  OpenSSL HMAC API, avoiding sending a partial buffer to the caller if the operation fails,\n+  and explicitly checking for buffer length overflow. Most of these cannot happen in\n+  the libcryptsetup context, but the cryptographic backend can be used for other projects.\n+\n+* Code hardening based on various AI analysis reports.\n+  Including a fix for snprintf truncation in libdevmapper code, avoiding possible leak of JSON\n+  keyslot object on error path, and a fix for reencryption temporary device name.\n+\n+* Fix jq (JSON commandline processor) use in testing scripts.\n+  After the security update for jq, it no longer processes JSON with trailing zeroes.\n+  Regression test scripts were updated to avoid using this scenario.\n+\n+* Add support for --integrity-legacy-hmac in integritysetup open command.\n+  Integritysetup open command incorrectly configured options for legacy HMAC devices.\n+  To use --integrity-legacy-hmac, it must now be used both on format and open.\n+\n+* Fix cryptsetup --tries option not to overflow for high values.\ndiff --git a/lib/bitlk/bitlk.c b/lib/bitlk/bitlk.c\nindex 3b4a40b..35fe5cf 100644\n--- a/lib/bitlk/bitlk.c\n+++ b/lib/bitlk/bitlk.c\n@@ -2,9 +2,9 @@\n /*\n  * BITLK (BitLocker-compatible) volume handling\n  *\n- * Copyright (C) 2019-2025 Red Hat, Inc. All rights reserved.\n- * Copyright (C) 2019-2025 Milan Broz\n- * Copyright (C) 2019-2025 Vojtech Trefny\n+ * Copyright (C) 2019-2026 Red Hat, Inc. All rights reserved.\n+ * Copyright (C) 2019-2026 Milan Broz\n+ * Copyright (C) 2019-2026 Vojtech Trefny\n  */\n \n #include <errno.h>\ndiff --git a/lib/bitlk/bitlk.h b/lib/bitlk/bitlk.h\nindex dde32bf..c5d44d8 100644\n--- a/lib/bitlk/bitlk.h\n+++ b/lib/bitlk/bitlk.h\n@@ -2,9 +2,9 @@\n /*\n  * BITLK (BitLocker-compatible) header definition\n  *\n- * Copyright (C) 2019-2025 Red Hat, Inc. All rights reserved.\n- * Copyright (C) 2019-2025 Milan Broz\n- * Copyright (C) 2019-2025 Vojtech Trefny\n+ * Copyright (C) 2019-2026 Red Hat, Inc. All rights reserved.\n+ * Copyright (C) 2019-2026 Milan Broz\n+ * Copyright (C) 2019-2026 Vojtech Trefny\n  */\n \n #ifndef _CRYPTSETUP_BITLK_H\ndiff --git a/lib/crypt_plain.c b/lib/crypt_plain.c\nindex 21e008e..21f6658 100644\n--- a/lib/crypt_plain.c\n+++ b/lib/crypt_plain.c\n@@ -3,8 +3,8 @@\n  * cryptsetup plain device helper functions\n  *\n  * Copyright (C) 2004 Jana Saout <jana@saout.de>\n- * Copyright (C) 2010-2025 Red Hat, Inc. All rights reserved.\n- * Copyright (C) 2010-2025 Milan Broz\n+ * Copyright (C) 2010-2026 Red Hat, Inc. All rights reserved.\n+ * Copyright (C) 2010-2026 Milan Broz\n  */\n \n #include <string.h>\ndiff --git a/lib/crypto_backend/argon2_generic.c b/lib/crypto_backend/argon2_generic.c\nindex d50bb9b..094d0cf 100644\n--- a/lib/crypto_backend/argon2_generic.c\n+++ b/lib/crypto_backend/argon2_generic.c\n@@ -2,8 +2,8 @@\n /*\n  * Argon2 PBKDF2 library wrapper\n  *\n- * Copyright (C) 2016-2025 Red Hat, Inc. All rights reserved.\n- * Copyright (C) 2016-2025 Milan Broz\n+ * Copyright (C) 2016-2026 Red Hat, Inc. All rights reserved.\n+ * Copyright (C) 2016-2026 Milan Broz\n  */\n \n #include <errno.h>\ndiff --git a/lib/crypto_backend/base64.c b/lib/crypto_backend/base64.c\nindex d9733a0..8d517c4 100644\n--- a/lib/crypto_backend/base64.c\n+++ b/lib/crypto_backend/base64.c\n@@ -5,7 +5,7 @@\n  * Copyright (C) 2010 Lennart Poettering\n  *\n  * cryptsetup related changes\n- * Copyright (C) 2021-2025 Milan Broz\n+ * Copyright (C) 2021-2026 Milan Broz\n  */\n \n #include <errno.h>\ndiff --git a/lib/crypto_backend/cipher_check.c b/lib/crypto_backend/cipher_check.c\nindex d8c7a60..336a3d9 100644\n--- a/lib/crypto_backend/cipher_check.c\n+++ b/lib/crypto_backend/cipher_check.c\n@@ -2,8 +2,8 @@\n /*\n  * Cipher performance check\n  *\n- * Copyright (C) 2018-2025 Red Hat, Inc. All rights reserved.\n- * Copyright (C) 2018-2025 Milan Broz\n+ * Copyright (C) 2018-2026 Red Hat, Inc. All rights reserved.\n+ * Copyright (C) 2018-2026 Milan Broz\n  */\n \n #include <errno.h>\ndiff --git a/lib/crypto_backend/cipher_generic.c b/lib/crypto_backend/cipher_generic.c\nindex be7e4a0..cb57a79 100644\n--- a/lib/crypto_backend/cipher_generic.c\n+++ b/lib/crypto_backend/cipher_generic.c\n@@ -2,8 +2,8 @@\n /*\n  * Linux kernel cipher generic utilities\n  *\n- * Copyright (C) 2018-2025 Red Hat, Inc. All rights reserved.\n- * Copyright (C) 2018-2025 Milan Broz\n+ * Copyright (C) 2018-2026 Red Hat, Inc. All rights reserved.\n+ * Copyright (C) 2018-2026 Milan Broz\n  */\n \n #include <errno.h>\ndiff --git a/lib/crypto_backend/crypto_backend.h b/lib/crypto_backend/crypto_backend.h\nindex 9c37cf1..9a48f02 100644\n--- a/lib/crypto_backend/crypto_backend.h\n+++ b/lib/crypto_backend/crypto_backend.h\n@@ -2,8 +2,8 @@\n /*\n  * crypto backend implementation\n  *\n- * Copyright (C) 2010-2025 Red Hat, Inc. All rights reserved.\n- * Copyright (C) 2010-2025 Milan Broz\n+ * Copyright (C) 2010-2026 Red Hat, Inc. All rights reserved.\n+ * Copyright (C) 2010-2026 Milan Broz\n  */\n \n #ifndef _CRYPTO_BACKEND_H\ndiff --git a/lib/crypto_backend/crypto_backend_internal.h b/lib/crypto_backend/crypto_backend_internal.h\nindex 5326094..e00a5fa 100644\n--- a/lib/crypto_backend/crypto_backend_internal.h\n+++ b/lib/crypto_backend/crypto_backend_internal.h\n@@ -2,8 +2,8 @@\n /*\n  * crypto backend implementation\n  *\n- * Copyright (C) 2010-2025 Red Hat, Inc. All rights reserved.\n- * Copyright (C) 2010-2025 Milan Broz\n+ * Copyright (C) 2010-2026 Red Hat, Inc. All rights reserved.\n+ * Copyright (C) 2010-2026 Milan Broz\n  */\n \n #ifndef _CRYPTO_BACKEND_INTERNAL_H\ndiff --git a/lib/crypto_backend/crypto_cipher_kernel.c b/lib/crypto_backend/crypto_cipher_kernel.c\nindex 72918eb..c7b2e0f 100644\n--- a/lib/crypto_backend/crypto_cipher_kernel.c\n+++ b/lib/crypto_backend/crypto_cipher_kernel.c\n@@ -2,8 +2,8 @@\n /*\n  * Linux kernel userspace API crypto backend implementation (skcipher)\n  *\n- * Copyright (C) 2012-2025 Red Hat, Inc. All rights reserved.\n- * Copyright (C) 2012-2025 Milan Broz\n+ * Copyright (C) 2012-2026 Red Hat, Inc. All rights reserved.\n+ * Copyright (C) 2012-2026 Milan Broz\n  */\n \n #include <stdlib.h>\n@@ -240,7 +240,7 @@ int crypt_cipher_check_kernel(const char *name, const char *mode,\n \n \tsalg_type = aead ? \"aead\" : \"skcipher\";\n \tr = snprintf((char *)sa.salg_type, sizeof(sa.salg_type), \"%s\", salg_type);\n-\tif (r < 0 || (size_t)r >= sizeof(sa.salg_name))\n+\tif (r < 0 || (size_t)r >= sizeof(sa.salg_type))\n \t\treturn -EINVAL;\n \n \tmemset(tmp_salg_name, 0, sizeof(tmp_salg_name));\n@@ -355,8 +355,7 @@ int crypt_cipher_decrypt_kernel(struct crypt_cipher_kernel *ctx,\n int crypt_cipher_check_kernel(const char *name, const char *mode,\n \t\t\t      const char *integrity, size_t key_length)\n {\n-\t/* Cannot check, expect success. */\n-\treturn 0;\n+\treturn -ENOTSUP;\n }\n int crypt_bitlk_decrypt_key_kernel(const void *key, size_t key_length,\n \t\t\t\t   const char *in, char *out, size_t length,\ndiff --git a/lib/crypto_backend/crypto_gcrypt.c b/lib/crypto_backend/crypto_gcrypt.c\nindex a50cb45..1648c62 100644\n--- a/lib/crypto_backend/crypto_gcrypt.c\n+++ b/lib/crypto_backend/crypto_gcrypt.c\n@@ -2,8 +2,8 @@\n /*\n  * GCRYPT crypto backend implementation\n  *\n- * Copyright (C) 2010-2025 Red Hat, Inc. All rights reserved.\n- * Copyright (C) 2010-2025 Milan Broz\n+ * Copyright (C) 2010-2026 Red Hat, Inc. All rights reserved.\n+ * Copyright (C) 2010-2026 Milan Broz\n  */\n \n #include <stdio.h>\n@@ -43,6 +43,12 @@ struct hash_alg {\n \tconst char *gcrypt_name;\n };\n \n+struct cipher_alg {\n+\tconst char *name;\n+\tsize_t key_bytes;\n+\tconst char *gcrypt_name;\n+};\n+\n /*\n  * Test for wrong Whirlpool variant,\n  * Ref: https://lists.gnupg.org/pipermail/gcrypt-devel/2014-January/002889.html\n@@ -186,6 +192,37 @@ static const char *crypt_hash_compat_name(const char *name, unsigned int *flags)\n \treturn hash_name;\n }\n \n+static const char *crypt_cipher_compat_name(const char *name, const char *mode, size_t key_bytes)\n+{\n+\tconst char *cipher_name = name;\n+\tint i;\n+\tstatic struct cipher_alg cipher_algs[] = {\n+\t{ \"aria\",     16,     \"aria128\" },\n+\t{ \"aria\",     24,     \"aria192\" },\n+\t{ \"aria\",     32,     \"aria256\" },\n+\t{ \"camellia\", 16, \"camellia128\" },\n+\t{ \"camellia\", 24, \"camellia192\" },\n+\t{ \"camellia\", 32, \"camellia256\" },\n+\t{ NULL,        0,         NULL }};\n+\n+\tif (!name)\n+\t\treturn NULL;\n+\n+\tif (mode && !strcmp(mode, \"xts\"))\n+\t\tkey_bytes /= 2;\n+\n+\ti = 0;\n+\twhile (cipher_algs[i].name) {\n+\t\tif (!strcasecmp(name, cipher_algs[i].name) && cipher_algs[i].key_bytes == key_bytes) {\n+\t\t\tcipher_name =  cipher_algs[i].gcrypt_name;\n+\t\t\tbreak;\n+\t\t}\n+\t\ti++;\n+\t}\n+\n+\treturn cipher_name;\n+}\n+\n /* HASH */\n int crypt_hash_size(const char *name)\n {\n@@ -529,8 +566,13 @@ static int _cipher_init(gcry_cipher_hd_t *hd, const char *name,\n \t\t\tconst char *mode, const void *buffer, size_t length)\n {\n \tint cipher_id, mode_id;\n+\tconst char *gcrypt_name;\n+\n+\tif (!name)\n+\t\treturn -EINVAL;\n \n-\tcipher_id = gcry_cipher_map_name(name);\n+\tgcrypt_name = crypt_cipher_compat_name(name, mode, length);\n+\tcipher_id = gcry_cipher_map_name(gcrypt_name);\n \tif (cipher_id == GCRY_CIPHER_MODE_NONE)\n \t\treturn -ENOENT;\n \ndiff --git a/lib/crypto_backend/crypto_kernel.c b/lib/crypto_backend/crypto_kernel.c\nindex 8b96e9e..ad4840a 100644\n--- a/lib/crypto_backend/crypto_kernel.c\n+++ b/lib/crypto_backend/crypto_kernel.c\n@@ -2,8 +2,8 @@\n /*\n  * Linux kernel userspace API crypto backend implementation\n  *\n- * Copyright (C) 2010-2025 Red Hat, Inc. All rights reserved.\n- * Copyright (C) 2010-2025 Milan Broz\n+ * Copyright (C) 2010-2026 Red Hat, Inc. All rights reserved.\n+ * Copyright (C) 2010-2026 Milan Broz\n  */\n \n #include <stdlib.h>\ndiff --git a/lib/crypto_backend/crypto_nettle.c b/lib/crypto_backend/crypto_nettle.c\nindex 3ce239a..3b74453 100644\n--- a/lib/crypto_backend/crypto_nettle.c\n+++ b/lib/crypto_backend/crypto_nettle.c\n@@ -2,8 +2,8 @@\n /*\n  * Nettle crypto backend implementation\n  *\n- * Copyright (C) 2011-2025 Red Hat, Inc. All rights reserved.\n- * Copyright (C) 2011-2025 Milan Broz\n+ * Copyright (C) 2011-2026 Red Hat, Inc. All rights reserved.\n+ * Copyright (C) 2011-2026 Milan Broz\n  */\n \n #include <stdlib.h>\ndiff --git a/lib/crypto_backend/crypto_nss.c b/lib/crypto_backend/crypto_nss.c\nindex bbf6533..f289469 100644\n--- a/lib/crypto_backend/crypto_nss.c\n+++ b/lib/crypto_backend/crypto_nss.c\n@@ -2,8 +2,8 @@\n /*\n  * NSS crypto backend implementation\n  *\n- * Copyright (C) 2010-2025 Red Hat, Inc. All rights reserved.\n- * Copyright (C) 2010-2025 Milan Broz\n+ * Copyright (C) 2010-2026 Red Hat, Inc. All rights reserved.\n+ * Copyright (C) 2010-2026 Milan Broz\n  */\n \n #include <stdio.h>\ndiff --git a/lib/crypto_backend/crypto_openssl.c b/lib/crypto_backend/crypto_openssl.c\nindex 762cd71..01bd0dd 100644\n--- a/lib/crypto_backend/crypto_openssl.c\n+++ b/lib/crypto_backend/crypto_openssl.c\n@@ -2,8 +2,8 @@\n /*\n  * OPENSSL crypto backend implementation\n  *\n- * Copyright (C) 2010-2025 Red Hat, Inc. All rights reserved.\n- * Copyright (C) 2010-2025 Milan Broz\n+ * Copyright (C) 2010-2026 Red Hat, Inc. All rights reserved.\n+ * Copyright (C) 2010-2026 Milan Broz\n  */\n \n #include <stdio.h>\n@@ -15,7 +15,18 @@\n #include <openssl/hmac.h>\n #include <openssl/rand.h>\n #include \"crypto_backend_internal.h\"\n-#if OPENSSL_VERSION_MAJOR >= 3\n+\n+/*\n+ * LibreSSL defines OPENSSL_VERSION_MAJOR >= 3 for compatibility but does not\n+ * implement the OpenSSL 3.x provider/KDF API. Use this macro instead.\n+ */\n+#if OPENSSL_VERSION_MAJOR >= 3 && !defined(LIBRESSL_VERSION_NUMBER)\n+#define OPENSSL3_API 1\n+#else\n+#define OPENSSL3_API 0\n+#endif\n+\n+#if OPENSSL3_API\n #include <openssl/provider.h>\n #include <openssl/kdf.h>\n #include <openssl/core_names.h>\n@@ -25,7 +36,7 @@ static OSSL_PROVIDER *ossl_default = NULL;\n static OSSL_LIB_CTX  *ossl_ctx = NULL;\n static char backend_version[256] = \"OpenSSL\";\n \n-#define MAX_THREADS 8\n+#define MAX_THREADS 64\n #if !HAVE_DECL_OSSL_GET_MAX_THREADS\n static int OSSL_set_max_threads(OSSL_LIB_CTX *ctx __attribute__((unused)),\n \t\t\t\tuint64_t max_threads __attribute__((unused))) { return 0; }\n@@ -48,7 +59,7 @@ struct crypt_hash {\n };\n \n struct crypt_hmac {\n-#if OPENSSL_VERSION_MAJOR >= 3\n+#if OPENSSL3_API\n \tEVP_MAC *mac;\n \tEVP_MAC_CTX *md;\n \tEVP_MAC_CTX *md_org;\n@@ -132,7 +143,7 @@ static void HMAC_CTX_free(HMAC_CTX *md)\n #else\n static void openssl_backend_exit(void)\n {\n-#if OPENSSL_VERSION_MAJOR >= 3\n+#if OPENSSL3_API\n \tif (ossl_legacy)\n \t\tOSSL_PROVIDER_unload(ossl_legacy);\n \tif (ossl_default)\n@@ -151,7 +162,7 @@ static int openssl_backend_init(bool fips)\n /*\n  * OpenSSL >= 3.0.0 provides some algorithms in legacy provider\n  */\n-#if OPENSSL_VERSION_MAJOR >= 3\n+#if OPENSSL3_API\n \tint r;\n \tbool ossl_threads = false;\n \n@@ -197,7 +208,7 @@ static int openssl_backend_init(bool fips)\n \n static const char *openssl_backend_version(void)\n {\n-#if OPENSSL_VERSION_MAJOR >= 3\n+#if OPENSSL3_API\n \treturn backend_version;\n #else\n \treturn OpenSSL_version(OPENSSL_VERSION);\n@@ -233,10 +244,10 @@ void crypt_backend_destroy(void)\n uint32_t crypt_backend_flags(void)\n {\n \tuint32_t flags = 0;\n-#if OPENSSL_VERSION_MAJOR < 3\n+#if !OPENSSL3_API\n \tflags |= CRYPT_BACKEND_PBKDF2_INT;\n #endif\n-#if HAVE_DECL_OSSL_KDF_PARAM_ARGON2_VERSION\n+#if OPENSSL3_API && HAVE_DECL_OSSL_KDF_PARAM_ARGON2_VERSION\n \tflags |= CRYPT_BACKEND_ARGON2;\n #endif\n \treturn flags;\n@@ -273,7 +284,7 @@ static const char *crypt_hash_compat_name(const char *name)\n \n static const EVP_MD *hash_id_get(const char *name)\n {\n-#if OPENSSL_VERSION_MAJOR >= 3\n+#if OPENSSL3_API\n \treturn EVP_MD_fetch(ossl_ctx, crypt_hash_compat_name(name), NULL);\n #else\n \treturn EVP_get_digestbyname(crypt_hash_compat_name(name));\n@@ -282,7 +293,7 @@ static const EVP_MD *hash_id_get(const char *name)\n \n static void hash_id_free(const EVP_MD *hash_id)\n {\n-#if OPENSSL_VERSION_MAJOR >= 3\n+#if OPENSSL3_API\n \tEVP_MD_free(CONST_CAST(EVP_MD*)hash_id);\n #else\n \tUNUSED(hash_id);\n@@ -291,7 +302,7 @@ static void hash_id_free(const EVP_MD *hash_id)\n \n static const EVP_CIPHER *cipher_type_get(const char *name)\n {\n-#if OPENSSL_VERSION_MAJOR >= 3\n+#if OPENSSL3_API\n \treturn EVP_CIPHER_fetch(ossl_ctx, name, NULL);\n #else\n \treturn EVP_get_cipherbyname(name);\n@@ -300,7 +311,7 @@ static const EVP_CIPHER *cipher_type_get(const char *name)\n \n static void cipher_type_free(const EVP_CIPHER *cipher_type)\n {\n-#if OPENSSL_VERSION_MAJOR >= 3\n+#if OPENSSL3_API\n \tEVP_CIPHER_free(CONST_CAST(EVP_CIPHER*)cipher_type);\n #else\n \tUNUSED(cipher_type);\n@@ -382,12 +393,14 @@ int crypt_hash_final(struct crypt_hash *ctx, char *buffer, size_t length)\n \tif (EVP_DigestFinal_ex(ctx->md, tmp, &tmp_len) != 1)\n \t\treturn -EINVAL;\n \n+\tif (tmp_len < length) {\n+\t\tcrypt_backend_memzero(tmp, sizeof(tmp));\n+\t\treturn -EINVAL;\n+\t}\n+\n \tcrypt_backend_memcpy(buffer, tmp, length);\n \tcrypt_backend_memzero(tmp, sizeof(tmp));\n \n-\tif (tmp_len < length)\n-\t\treturn -EINVAL;\n-\n \tif (crypt_hash_restart(ctx))\n \t\treturn -EINVAL;\n \n@@ -411,7 +424,7 @@ int crypt_hmac_init(struct crypt_hmac **ctx, const char *name,\n \t\t    const void *key, size_t key_length)\n {\n \tstruct crypt_hmac *h;\n-#if OPENSSL_VERSION_MAJOR >= 3\n+#if OPENSSL3_API\n \tOSSL_PARAM params[] = {\n \t\tOSSL_PARAM_utf8_string(OSSL_MAC_PARAM_DIGEST, CONST_CAST(void*)name, 0),\n \t\tOSSL_PARAM_END\n@@ -443,6 +456,12 @@ int crypt_hmac_init(struct crypt_hmac **ctx, const char *name,\n \n \th->hash_len = EVP_MAC_CTX_get_mac_size(h->md);\n \th->md_org = EVP_MAC_CTX_dup(h->md);\n+\tif (!h->md_org) {\n+\t\tEVP_MAC_CTX_free(h->md);\n+\t\tEVP_MAC_free(h->mac);\n+\t\tfree(h);\n+\t\treturn -EINVAL;\n+\t}\n #else\n \th = malloc(sizeof(*h));\n \tif (!h)\n@@ -461,7 +480,12 @@ int crypt_hmac_init(struct crypt_hmac **ctx, const char *name,\n \t\treturn -EINVAL;\n \t}\n \n-\tHMAC_Init_ex(h->md, key, key_length, h->hash_id, NULL);\n+\tif (HMAC_Init_ex(h->md, key, key_length, h->hash_id, NULL) != 1) {\n+\t\thash_id_free(h->hash_id);\n+\t\tHMAC_CTX_free(h->md);\n+\t\tfree(h);\n+\t\treturn -EINVAL;\n+\t}\n \n \th->hash_len = EVP_MD_size(h->hash_id);\n #endif\n@@ -471,31 +495,31 @@ int crypt_hmac_init(struct crypt_hmac **ctx, const char *name,\n \n static int crypt_hmac_restart(struct crypt_hmac *ctx)\n {\n-#if OPENSSL_VERSION_MAJOR >= 3\n+#if OPENSSL3_API\n \tEVP_MAC_CTX_free(ctx->md);\n \tctx->md = EVP_MAC_CTX_dup(ctx->md_org);\n \tif (!ctx->md)\n \t\treturn -EINVAL;\n #else\n-\tHMAC_Init_ex(ctx->md, NULL, 0, ctx->hash_id, NULL);\n+\tif (HMAC_Init_ex(ctx->md, NULL, 0, ctx->hash_id, NULL) != 1)\n+\t\treturn -EINVAL;\n #endif\n \treturn 0;\n }\n \n int crypt_hmac_write(struct crypt_hmac *ctx, const char *buffer, size_t length)\n {\n-#if OPENSSL_VERSION_MAJOR >= 3\n+#if OPENSSL3_API\n \treturn EVP_MAC_update(ctx->md, (const unsigned char *)buffer, length) == 1 ? 0 : -EINVAL;\n #else\n-\tHMAC_Update(ctx->md, (const unsigned char *)buffer, length);\n-\treturn 0;\n+\treturn HMAC_Update(ctx->md, (const unsigned char *)buffer, length) == 1 ? 0 : -EINVAL;\n #endif\n }\n \n int crypt_hmac_final(struct crypt_hmac *ctx, char *buffer, size_t length)\n {\n \tunsigned char tmp[EVP_MAX_MD_SIZE];\n-#if OPENSSL_VERSION_MAJOR >= 3\n+#if OPENSSL3_API\n \tsize_t tmp_len = 0;\n \n \tif (length > (size_t)ctx->hash_len)\n@@ -509,14 +533,17 @@ int crypt_hmac_final(struct crypt_hmac *ctx, char *buffer, size_t length)\n \tif (length > (size_t)ctx->hash_len)\n \t\treturn -EINVAL;\n \n-\tHMAC_Final(ctx->md, tmp, &tmp_len);\n+\tif (HMAC_Final(ctx->md, tmp, &tmp_len) != 1)\n+\t\treturn -EINVAL;\n #endif\n+\tif (tmp_len < length) {\n+\t\tcrypt_backend_memzero(tmp, sizeof(tmp));\n+\t\treturn -EINVAL;\n+\t}\n+\n \tcrypt_backend_memcpy(buffer, tmp, length);\n \tcrypt_backend_memzero(tmp, sizeof(tmp));\n \n-\tif (tmp_len < length)\n-\t\treturn -EINVAL;\n-\n \tif (crypt_hmac_restart(ctx))\n \t\treturn -EINVAL;\n \n@@ -525,7 +552,7 @@ int crypt_hmac_final(struct crypt_hmac *ctx, char *buffer, size_t length)\n \n void crypt_hmac_destroy(struct crypt_hmac *ctx)\n {\n-#if OPENSSL_VERSION_MAJOR >= 3\n+#if OPENSSL3_API\n \tEVP_MAC_CTX_free(ctx->md);\n \tEVP_MAC_CTX_free(ctx->md_org);\n \tEVP_MAC_free(ctx->mac);\n@@ -540,6 +567,9 @@ void crypt_hmac_destroy(struct crypt_hmac *ctx)\n int crypt_backend_rng(char *buffer, size_t length,\n \tint quality __attribute__((unused)), int fips __attribute__((unused)))\n {\n+\tif (length > INT_MAX)\n+\t\treturn -EINVAL;\n+\n \tif (RAND_bytes((unsigned char *)buffer, length) != 1)\n \t\treturn -EINVAL;\n \n@@ -551,7 +581,7 @@ static int openssl_pbkdf2(const char *password, size_t password_length,\n \tconst char *hash, char *key, size_t key_length)\n {\n \tint r;\n-#if OPENSSL_VERSION_MAJOR >= 3\n+#if OPENSSL3_API\n \tEVP_KDF_CTX *ctx;\n \tEVP_KDF *pbkdf2;\n \tOSSL_PARAM params[] = {\n@@ -588,6 +618,9 @@ static int openssl_pbkdf2(const char *password, size_t password_length,\n \tif (iterations > INT_MAX)\n \t\treturn -EINVAL;\n \n+\tif (password_length > INT_MAX || salt_length > INT_MAX || key_length > INT_MAX)\n+\t\treturn -EINVAL;\n+\n \tr = PKCS5_PBKDF2_HMAC(password, (int)password_length, (const unsigned char *)salt,\n \t\t(int)salt_length, iterations, hash_id, (int)key_length, (unsigned char*) key);\n #endif\n@@ -598,7 +631,7 @@ static int openssl_argon2(const char *type, const char *password, size_t passwor\n \tconst char *salt, size_t salt_length, char *key, size_t key_length,\n \tuint32_t iterations, uint32_t memory, uint32_t parallel)\n {\n-#if HAVE_DECL_OSSL_KDF_PARAM_ARGON2_VERSION\n+#if OPENSSL3_API && HAVE_DECL_OSSL_KDF_PARAM_ARGON2_VERSION\n \tEVP_KDF_CTX *ctx;\n \tEVP_KDF *argon2;\n \tunsigned int threads = parallel;\n@@ -771,17 +804,20 @@ void crypt_cipher_destroy(struct crypt_cipher *ctx)\n }\n \n static int _cipher_encrypt(struct crypt_cipher *ctx, const unsigned char *in, unsigned char *out,\n-\t\t\t   int length, const unsigned char *iv, size_t iv_length)\n+\t\t\t   size_t length, const unsigned char *iv, size_t iv_length)\n {\n \tint len;\n \n+\tif (length > INT_MAX)\n+\t\treturn -EINVAL;\n+\n \tif (ctx->u.lib.iv_length != iv_length)\n \t\treturn -EINVAL;\n \n \tif (EVP_EncryptInit_ex(ctx->u.lib.hd_enc, NULL, NULL, NULL, iv) != 1)\n \t\treturn -EINVAL;\n \n-\tif (EVP_EncryptUpdate(ctx->u.lib.hd_enc, out, &len, in, length) != 1)\n+\tif (EVP_EncryptUpdate(ctx->u.lib.hd_enc, out, &len, in, (int)length) != 1)\n \t\treturn -EINVAL;\n \n \tif (EVP_EncryptFinal(ctx->u.lib.hd_enc, out + len, &len) != 1)\n@@ -791,17 +827,20 @@ static int _cipher_encrypt(struct crypt_cipher *ctx, const unsigned char *in, un\n }\n \n static int _cipher_decrypt(struct crypt_cipher *ctx, const unsigned char *in, unsigned char *out,\n-\t\t\t   int length, const unsigned char *iv, size_t iv_length)\n+\t\t\t   size_t length, const unsigned char *iv, size_t iv_length)\n {\n \tint len;\n \n+\tif (length > INT_MAX)\n+\t\treturn -EINVAL;\n+\n \tif (ctx->u.lib.iv_length != iv_length)\n \t\treturn -EINVAL;\n \n \tif (EVP_DecryptInit_ex(ctx->u.lib.hd_dec, NULL, NULL, NULL, iv) != 1)\n \t\treturn -EINVAL;\n \n-\tif (EVP_DecryptUpdate(ctx->u.lib.hd_dec, out, &len, in, length) != 1)\n+\tif (EVP_DecryptUpdate(ctx->u.lib.hd_dec, out, &len, in, (int)length) != 1)\n \t\treturn -EINVAL;\n \n \tif (EVP_DecryptFinal(ctx->u.lib.hd_dec, out + len, &len) != 1)\n@@ -881,7 +920,7 @@ bool crypt_fips_mode(void) { return false; }\n #else\n static bool openssl_fips_mode(void)\n {\n-#if OPENSSL_VERSION_MAJOR >= 3\n+#if OPENSSL3_API\n \treturn EVP_default_properties_is_fips_enabled(NULL);\n #else\n \treturn FIPS_mode();\ndiff --git a/lib/crypto_backend/crypto_storage.c b/lib/crypto_backend/crypto_storage.c\nindex edd4db7..8991949 100644\n--- a/lib/crypto_backend/crypto_storage.c\n+++ b/lib/crypto_backend/crypto_storage.c\n@@ -3,7 +3,7 @@\n  * Generic wrapper for storage encryption modes and Initial Vectors\n  * (reimplementation of some functions from Linux dm-crypt kernel)\n  *\n- * Copyright (C) 2014-2025 Milan Broz\n+ * Copyright (C) 2014-2026 Milan Broz\n  */\n \n #include <stdio.h>\ndiff --git a/lib/crypto_backend/memutils.c b/lib/crypto_backend/memutils.c\nindex a041b3e..39a466f 100644\n--- a/lib/crypto_backend/memutils.c\n+++ b/lib/crypto_backend/memutils.c\n@@ -2,7 +2,7 @@\n /*\n  * Safe memory utilities\n  *\n- * Copyright (C) 2024-2025 Milan Broz\n+ * Copyright (C) 2024-2026 Milan Broz\n  */\n \n #include \"crypto_backend_internal.h\"\ndiff --git a/lib/crypto_backend/pbkdf2_generic.c b/lib/crypto_backend/pbkdf2_generic.c\nindex e5e5a9c..ccb09bc 100644\n--- a/lib/crypto_backend/pbkdf2_generic.c\n+++ b/lib/crypto_backend/pbkdf2_generic.c\n@@ -5,8 +5,8 @@\n  * Copyright (C) 2004 Free Software Foundation\n  *\n  * cryptsetup related changes\n- * Copyright (C) 2012-2025 Red Hat, Inc. All rights reserved.\n- * Copyright (C) 2012-2025 Milan Broz\n+ * Copyright (C) 2012-2026 Red Hat, Inc. All rights reserved.\n+ * Copyright (C) 2012-2026 Milan Broz\n  */\n \n #include <errno.h>\ndiff --git a/lib/crypto_backend/pbkdf_check.c b/lib/crypto_backend/pbkdf_check.c\nindex 5eb21f3..4524240 100644\n--- a/lib/crypto_backend/pbkdf_check.c\n+++ b/lib/crypto_backend/pbkdf_check.c\n@@ -1,8 +1,8 @@\n // SPDX-License-Identifier: LGPL-2.1-or-later\n /*\n  * PBKDF performance check\n- * Copyright (C) 2012-2025 Red Hat, Inc. All rights reserved.\n- * Copyright (C) 2012-2025 Milan Broz\n+ * Copyright (C) 2012-2026 Red Hat, Inc. All rights reserved.\n+ * Copyright (C) 2012-2026 Milan Broz\n  * Copyright (C) 2016-2020 Ondrej Mosnacek\n  */\n \ndiff --git a/lib/crypto_backend/utf8.c b/lib/crypto_backend/utf8.c\nindex c68d1b7..13528c1 100644\n--- a/lib/crypto_backend/utf8.c\n+++ b/lib/crypto_backend/utf8.c\n@@ -5,7 +5,7 @@\n  * Copyright (C) 2010 Lennart Poettering\n  *\n  * cryptsetup related changes\n- * Copyright (C) 2021-2025 Vojtech Trefny\n+ * Copyright (C) 2021-2026 Vojtech Trefny\n \n  * Parts of the original systemd implementation are based on the GLIB utf8\n  * validation functions.\n@@ -16,9 +16,9 @@\n  */\n \n #include <errno.h>\n-#include <endian.h>\n \n #include \"crypto_backend.h\"\n+#include \"bitops.h\"\n \n static inline bool utf16_is_surrogate(char16_t c)\n {\ndiff --git a/lib/fvault2/fvault2.c b/lib/fvault2/fvault2.c\nindex 59f4570..4eff7b3 100644\n--- a/lib/fvault2/fvault2.c\n+++ b/lib/fvault2/fvault2.c\n@@ -229,13 +229,13 @@ static int _unwrap_key(\n \tif (r < 0)\n \t\tgoto out;\n \n-\tcipher_in = malloc(16);\n+\tcipher_in = crypt_safe_alloc(16);\n \tif (cipher_in == NULL) {\n \t\tr = -ENOMEM;\n \t\tgoto out;\n \t}\n \n-\tcipher_out = malloc(16);\n+\tcipher_out = crypt_safe_alloc(16);\n \tif (cipher_out == NULL) {\n \t\tr = -ENOMEM;\n \t\tgoto out;\n@@ -283,8 +283,8 @@ static int _unwrap_key(\n \t((uint64_t *)key_buf)[0] = r2;\n \t((uint64_t *)key_buf)[1] = r3;\n out:\n-\tfree(cipher_in);\n-\tfree(cipher_out);\n+\tcrypt_safe_free(cipher_in);\n+\tcrypt_safe_free(cipher_out);\n \tif (cipher != NULL)\n \t\tcrypt_cipher_destroy(cipher);\n \treturn r;\n@@ -371,7 +371,8 @@ static int _parse_metadata_block_0x0019(\n \tuint32_t xml_off = le32_to_cpu(md_block->xml_off);\n \tuint32_t xml_size = le32_to_cpu(md_block->xml_size);\n \n-\tif (xml_off + xml_size > FVAULT2_MD_BLOCK_SIZE)\n+\tif (xml_off >= FVAULT2_MD_BLOCK_SIZE ||\n+\t    xml_size > FVAULT2_MD_BLOCK_SIZE - xml_off)\n \t\treturn -EINVAL;\n \n \txml = strndup((const char *)md_block + xml_off, xml_size);\n@@ -451,7 +452,8 @@ static int _parse_metadata_block_0x001a(\n \tuint32_t xml_off = le32_to_cpu(md_block->xml_off);\n \tuint32_t xml_size = le32_to_cpu(md_block->xml_size);\n \n-\tif (xml_off + xml_size > FVAULT2_MD_BLOCK_SIZE)\n+\tif (xml_off >= FVAULT2_MD_BLOCK_SIZE ||\n+\t    xml_size > FVAULT2_MD_BLOCK_SIZE - xml_off)\n \t\treturn -EINVAL;\n \n \txml = strndup((const char *)md_block + xml_off, xml_size);\n@@ -524,9 +526,9 @@ static int _read_volume_header(\n \t}\n \n \tlog_dbg(cd, \"Reading FVAULT2 volume header of size %u bytes.\", FVAULT2_VOL_HEADER_SIZE);\n-\tif (read_blockwise(devfd, device_block_size(cd, dev),\n+\tif (read_lseek_blockwise(devfd, device_block_size(cd, dev),\n \t\t\tdevice_alignment(dev), vol_header,\n-\t\t\tFVAULT2_VOL_HEADER_SIZE) != FVAULT2_VOL_HEADER_SIZE) {\n+\t\t\tFVAULT2_VOL_HEADER_SIZE, 0) != FVAULT2_VOL_HEADER_SIZE) {\n \t\tlog_err(cd, _(\"Could not read %u bytes of volume header.\"), FVAULT2_VOL_HEADER_SIZE);\n \t\tr = -EIO;\n \t\tgoto out;\ndiff --git a/lib/integrity/integrity.c b/lib/integrity/integrity.c\nindex a10050d..92da41f 100644\n--- a/lib/integrity/integrity.c\n+++ b/lib/integrity/integrity.c\n@@ -2,7 +2,7 @@\n /*\n  * Integrity volume handling\n  *\n- * Copyright (C) 2016-2025 Milan Broz\n+ * Copyright (C) 2016-2026 Milan Broz\n  */\n \n #include <errno.h>\n@@ -51,6 +51,10 @@ static int INTEGRITY_read_superblock(struct crypt_device *cd,\n \t\t\tsb->version, device_path(device));\n \t\tr = -EINVAL;\n \t} else {\n+\t\tif ((uint32_t)sb->log2_sectors_per_block + SECTOR_SHIFT >= 32) {\n+\t\t\tlog_dbg(cd, \"dm-integrity log2_sectors_per_block overflow\");\n+\t\t\treturn -EINVAL;\n+\t\t}\n \t\tsb->integrity_tag_size = le16toh(sb->integrity_tag_size);\n \t\tsb->journal_sections = le32toh(sb->journal_sections);\n \t\tsb->provided_data_sectors = le64toh(sb->provided_data_sectors);\n@@ -74,7 +78,7 @@ int INTEGRITY_read_sb(struct crypt_device *cd,\n \t\treturn r;\n \n \tif (params) {\n-\t\tparams->sector_size = SECTOR_SIZE << sb.log2_sectors_per_block;\n+\t\tparams->sector_size = (uint32_t)SECTOR_SIZE << sb.log2_sectors_per_block;\n \t\tparams->tag_size = sb.integrity_tag_size;\n \t}\n \ndiff --git a/lib/integrity/integrity.h b/lib/integrity/integrity.h\nindex ff1293f..fb0eebd 100644\n--- a/lib/integrity/integrity.h\n+++ b/lib/integrity/integrity.h\n@@ -2,7 +2,7 @@\n /*\n  * Integrity header definition\n  *\n- * Copyright (C) 2016-2025 Milan Broz\n+ * Copyright (C) 2016-2026 Milan Broz\n  */\n \n #ifndef _CRYPTSETUP_INTEGRITY_H\ndiff --git a/lib/internal.h b/lib/internal.h\nindex 56efa46..e398d0a 100644\n--- a/lib/internal.h\n+++ b/lib/internal.h\n@@ -4,8 +4,8 @@\n  *\n  * Copyright (C) 2004 Jana Saout <jana@saout.de>\n  * Copyright (C) 2004-2007 Clemens Fruhwirth <clemens@endorphin.org>\n- * Copyright (C) 2009-2025 Red Hat, Inc. All rights reserved.\n- * Copyright (C) 2009-2025 Milan Broz\n+ * Copyright (C) 2009-2026 Red Hat, Inc. All rights reserved.\n+ * Copyright (C) 2009-2026 Milan Broz\n  */\n \n #ifndef INTERNAL_H\n@@ -29,7 +29,6 @@\n #include \"utils_keyring.h\"\n #include \"utils_io.h\"\n #include \"crypto_backend/crypto_backend.h\"\n-#include \"utils_storage_wrappers.h\"\n \n #include \"libcryptsetup.h\"\n \n@@ -75,7 +74,7 @@ struct volume_key *crypt_volume_key_next(struct volume_key *vk);\n struct volume_key *crypt_volume_key_by_id(struct volume_key *vk, int id);\n void crypt_volume_key_pass_safe_alloc(struct volume_key *vk, void **safe_alloc);\n bool crypt_volume_key_is_set(const struct volume_key *vk);\n-bool crypt_volume_key_upload_kernel_key(struct volume_key *vk);\n+bool crypt_volume_key_upload_kernel_key(struct volume_key *vk, key_serial_t keyring);\n void crypt_volume_key_drop_uploaded_kernel_key(struct crypt_device *cd, struct volume_key *vk);\n void crypt_volume_key_drop_kernel_key(struct crypt_device *cd, struct volume_key *vk);\n \n@@ -248,9 +247,9 @@ int crypt_keyring_get_keysize_by_name(struct crypt_device *cd,\n \t\tsize_t *r_key_size);\n \n int crypt_use_keyring_for_vk(struct crypt_device *cd);\n-void crypt_unlink_key_from_thread_keyring(struct crypt_device *cd,\n+void crypt_unlink_key_from_keyring(struct crypt_device *cd,\n \t\tkey_serial_t key_id);\n-void crypt_unlink_key_by_description_from_thread_keyring(struct crypt_device *cd,\n+void crypt_unlink_key_by_description_from_keyring(struct crypt_device *cd,\n \t\tconst char *key_description,\n \t\tkey_type_t ktype);\n void crypt_drop_uploaded_keyring_key(struct crypt_device *cd, struct volume_key *vks);\n@@ -288,4 +287,9 @@ static inline bool uint64_mult_overflow(uint64_t *u, uint64_t b, size_t size)\n \n size_t crypt_safe_alloc_size(const void *data);\n \n+int crypt_check_cipher(struct crypt_device *cd,\n+\t\t       size_t keylength,\n+\t\t       const char *cipher,\n+\t\t       const char *cipher_mode);\n+\n #endif /* INTERNAL_H */\ndiff --git a/lib/keyslot_context.c b/lib/keyslot_context.c\nindex 1b13782..fee5aa5 100644\n--- a/lib/keyslot_context.c\n+++ b/lib/keyslot_context.c\n@@ -2,8 +2,8 @@\n /*\n  * LUKS - Linux Unified Key Setup, keyslot unlock helpers\n  *\n- * Copyright (C) 2022-2025 Red Hat, Inc. All rights reserved.\n- * Copyright (C) 2022-2025 Ondrej Kozina\n+ * Copyright (C) 2022-2026 Red Hat, Inc. All rights reserved.\n+ * Copyright (C) 2022-2026 Ondrej Kozina\n  */\n \n #include <errno.h>\ndiff --git a/lib/keyslot_context.h b/lib/keyslot_context.h\nindex a2e42b2..c07c171 100644\n--- a/lib/keyslot_context.h\n+++ b/lib/keyslot_context.h\n@@ -2,8 +2,8 @@\n /*\n  * LUKS - Linux Unified Key Setup, keyslot unlock helpers\n  *\n- * Copyright (C) 2022-2025 Red Hat, Inc. All rights reserved.\n- * Copyright (C) 2022-2025 Ondrej Kozina\n+ * Copyright (C) 2022-2026 Red Hat, Inc. All rights reserved.\n+ * Copyright (C) 2022-2026 Ondrej Kozina\n  */\n \n #ifndef KEYSLOT_CONTEXT_H\ndiff --git a/lib/libcryptsetup.h b/lib/libcryptsetup.h\nindex e645b18..c7db0ad 100644\n--- a/lib/libcryptsetup.h\n+++ b/lib/libcryptsetup.h\n@@ -4,8 +4,8 @@\n  *\n  * Copyright (C) 2004 Jana Saout <jana@saout.de>\n  * Copyright (C) 2004-2007 Clemens Fruhwirth <clemens@endorphin.org>\n- * Copyright (C) 2009-2025 Red Hat, Inc. All rights reserved.\n- * Copyright (C) 2009-2025 Milan Broz\n+ * Copyright (C) 2009-2026 Red Hat, Inc. All rights reserved.\n+ * Copyright (C) 2009-2026 Milan Broz\n  */\n \n /**\n@@ -1161,7 +1161,11 @@ int crypt_keyslot_add_by_volume_key(struct crypt_device *cd,\n /** create keyslot with new volume key and assign it to current dm-crypt segment */\n #define CRYPT_VOLUME_KEY_SET (UINT32_C(1) << 1)\n \n-/** Assign key to first matching digest before creating new digest */\n+/**\n+ * Assign key to first matching digest not associated with current dm-crypt segment\n+ * before creating new digest. The flag is effective only with\n+ * CRYPT_VOLUME_KEY_NO_SEGMENT or CRYPT_VOLUME_KEY_SET flag set.\n+ */\n #define CRYPT_VOLUME_KEY_DIGEST_REUSE (UINT32_C(1) << 2)\n \n /**\n@@ -3174,6 +3178,8 @@ void crypt_safe_free(void *data);\n  * @param size new size of memory in bytes\n  *\n  * @return pointer to allocated memory or @e NULL.\n+ *\n+ * @note On memory failure, original memory safely wiped and deallocated.\n  */\n void *crypt_safe_realloc(void *data, size_t size);\n \ndiff --git a/lib/libcryptsetup_macros.h b/lib/libcryptsetup_macros.h\nindex 657c48f..2509583 100644\n--- a/lib/libcryptsetup_macros.h\n+++ b/lib/libcryptsetup_macros.h\n@@ -2,8 +2,8 @@\n /*\n  * Definitions of common constant and generic macros of libcryptsetup\n  *\n- * Copyright (C) 2009-2025 Red Hat, Inc. All rights reserved.\n- * Copyright (C) 2009-2025 Milan Broz\n+ * Copyright (C) 2009-2026 Red Hat, Inc. All rights reserved.\n+ * Copyright (C) 2009-2026 Milan Broz\n  */\n \n #ifndef _LIBCRYPTSETUP_MACROS_H\ndiff --git a/lib/libcryptsetup_symver.h b/lib/libcryptsetup_symver.h\nindex 6d18ab5..b42ea01 100644\n--- a/lib/libcryptsetup_symver.h\n+++ b/lib/libcryptsetup_symver.h\n@@ -2,7 +2,7 @@\n /*\n  * Helpers for defining versioned symbols\n  *\n- * Copyright (C) 2021-2025 Red Hat, Inc. All rights reserved.\n+ * Copyright (C) 2021-2026 Red Hat, Inc. All rights reserved.\n  */\n \n #ifndef _LIBCRYPTSETUP_SYMVER_H\ndiff --git a/lib/libdevmapper.c b/lib/libdevmapper.c\nindex 743efb9..2892336 100644\n--- a/lib/libdevmapper.c\n+++ b/lib/libdevmapper.c\n@@ -4,8 +4,8 @@\n  *\n  * Copyright (C) 2004 Jana Saout <jana@saout.de>\n  * Copyright (C) 2004-2007 Clemens Fruhwirth <clemens@endorphin.org>\n- * Copyright (C) 2009-2025 Red Hat, Inc. All rights reserved.\n- * Copyright (C) 2009-2025 Milan Broz\n+ * Copyright (C) 2009-2026 Red Hat, Inc. All rights reserved.\n+ * Copyright (C) 2009-2026 Milan Broz\n  */\n \n #include <stdio.h>\n@@ -529,9 +529,9 @@ static int cipher_dm2c(const char *org_c, const char *org_i, unsigned tag_size,\n \t\tc_size = snprintf(c_dm, c_dm_size, \"capi:authenc(%s,%s)-%s\", org_i, capi, iv);\n \t}\n \n-\tif (c_size < 0 || c_size == c_dm_size)\n+\tif (c_size < 0 || c_size >= c_dm_size)\n \t\treturn -EINVAL;\n-\tif (i_size < 0 || i_size == i_dm_size)\n+\tif (i_size < 0 || i_size >= i_dm_size)\n \t\treturn -EINVAL;\n \n \treturn 0;\n@@ -2022,7 +2022,7 @@ static int _dm_target_query_crypt(struct crypt_device *cd, uint64_t get_flags,\n \t\t\t\t  uint32_t *act_flags)\n {\n \tuint64_t val64;\n-\tchar *rcipher, *rintegrity, *key_, *rdevice, *endp, buffer[3], *arg, *key_desc, keyring[16];\n+\tchar *rcipher, *rintegrity, *key_, *rdevice, *endp, buffer[3], *arg, *key_desc, keyring[64];\n \tunsigned int i, val;\n \tint r;\n \tsize_t key_size;\n@@ -2155,7 +2155,7 @@ static int _dm_target_query_crypt(struct crypt_device *cd, uint64_t get_flags,\n \t\t\t\tif (!endp)\n \t\t\t\t\tgoto err;\n \t\t\t\tkey_desc = strpbrk(endp + 1, \":\");\n-\t\t\t\tif (!key_desc)\n+\t\t\t\tif (!key_desc || (size_t)(key_desc - endp) > sizeof(keyring))\n \t\t\t\t\tgoto err;\n \t\t\t\tmemcpy(keyring, endp + 1, key_desc - endp - 1);\n \t\t\t\tkeyring[key_desc - endp - 1] = '\\0';\ndiff --git a/lib/loopaes/loopaes.c b/lib/loopaes/loopaes.c\nindex bdd9ded..0294685 100644\n--- a/lib/loopaes/loopaes.c\n+++ b/lib/loopaes/loopaes.c\n@@ -2,8 +2,8 @@\n /*\n  * loop-AES compatible volume handling\n  *\n- * Copyright (C) 2011-2025 Red Hat, Inc. All rights reserved.\n- * Copyright (C) 2011-2025 Milan Broz\n+ * Copyright (C) 2011-2026 Red Hat, Inc. All rights reserved.\n+ * Copyright (C) 2011-2026 Milan Broz\n  */\n \n #include <errno.h>\ndiff --git a/lib/loopaes/loopaes.h b/lib/loopaes/loopaes.h\nindex 425ca22..5f7a35e 100644\n--- a/lib/loopaes/loopaes.h\n+++ b/lib/loopaes/loopaes.h\n@@ -2,8 +2,8 @@\n /*\n  * loop-AES compatible volume handling\n  *\n- * Copyright (C) 2011-2025 Red Hat, Inc. All rights reserved.\n- * Copyright (C) 2011-2025 Milan Broz\n+ * Copyright (C) 2011-2026 Red Hat, Inc. All rights reserved.\n+ * Copyright (C) 2011-2026 Milan Broz\n  */\n \n #ifndef _LOOPAES_H\ndiff --git a/lib/luks1/af.c b/lib/luks1/af.c\nindex 7ab153d..3da43e1 100644\n--- a/lib/luks1/af.c\n+++ b/lib/luks1/af.c\n@@ -3,7 +3,7 @@\n  * AFsplitter - Anti forensic information splitter\n  *\n  * Copyright (C) 2004 Clemens Fruhwirth <clemens@endorphin.org>\n- * Copyright (C) 2009-2025 Red Hat, Inc. All rights reserved.\n+ * Copyright (C) 2009-2026 Red Hat, Inc. All rights reserved.\n  *\n  * AFsplitter diffuses information over a large stripe of data,\n  * therefore supporting secure data destruction.\ndiff --git a/lib/luks1/af.h b/lib/luks1/af.h\nindex 08f3757..6dd2445 100644\n--- a/lib/luks1/af.h\n+++ b/lib/luks1/af.h\n@@ -3,7 +3,7 @@\n  * AFsplitter - Anti forensic information splitter\n  *\n  * Copyright (C) 2004 Clemens Fruhwirth <clemens@endorphin.org>\n- * Copyright (C) 2009-2025 Red Hat, Inc. All rights reserved.\n+ * Copyright (C) 2009-2026 Red Hat, Inc. All rights reserved.\n  */\n \n #ifndef INCLUDED_CRYPTSETUP_LUKS_AF_H\ndiff --git a/lib/luks1/keyencryption.c b/lib/luks1/keyencryption.c\nindex de8aa30..fa55107 100644\n--- a/lib/luks1/keyencryption.c\n+++ b/lib/luks1/keyencryption.c\n@@ -3,8 +3,8 @@\n  * LUKS - Linux Unified Key Setup\n  *\n  * Copyright (C) 2004-2006 Clemens Fruhwirth <clemens@endorphin.org>\n- * Copyright (C) 2009-2025 Red Hat, Inc. All rights reserved.\n- * Copyright (C) 2012-2025 Milan Broz\n+ * Copyright (C) 2009-2026 Red Hat, Inc. All rights reserved.\n+ * Copyright (C) 2012-2026 Milan Broz\n  */\n \n #include <stdio.h>\ndiff --git a/lib/luks1/keymanage.c b/lib/luks1/keymanage.c\nindex 3792981..269d55d 100644\n--- a/lib/luks1/keymanage.c\n+++ b/lib/luks1/keymanage.c\n@@ -3,8 +3,8 @@\n  * LUKS - Linux Unified Key Setup\n  *\n  * Copyright (C) 2004-2006 Clemens Fruhwirth <clemens@endorphin.org>\n- * Copyright (C) 2009-2025 Red Hat, Inc. All rights reserved.\n- * Copyright (C) 2013-2025 Milan Broz\n+ * Copyright (C) 2009-2026 Red Hat, Inc. All rights reserved.\n+ * Copyright (C) 2013-2026 Milan Broz\n  */\n \n #include <sys/types.h>\n@@ -420,7 +420,7 @@ static int _keyslot_repair(struct luks_phdr *phdr, struct crypt_device *ctx)\n \t\tneed_write = 1;\n \t}\n \n-\tr = LUKS_check_cipher(ctx, phdr->keyBytes, phdr->cipherName, phdr->cipherMode);\n+\tr = crypt_check_cipher(ctx, phdr->keyBytes, phdr->cipherName, phdr->cipherMode);\n \tif (r < 0)\n \t\treturn -EINVAL;\n \n@@ -701,27 +701,6 @@ int LUKS_write_phdr(struct luks_phdr *hdr,\n \treturn r;\n }\n \n-/* Check that kernel supports requested cipher by decryption of one sector */\n-int LUKS_check_cipher(struct crypt_device *ctx, size_t keylength, const char *cipher, const char *cipher_mode)\n-{\n-\tint r;\n-\tstruct volume_key *empty_key;\n-\tchar buf[SECTOR_SIZE];\n-\n-\tlog_dbg(ctx, \"Checking if cipher %s-%s is usable.\", cipher, cipher_mode);\n-\n-\t/* No need to get KEY quality random but it must avoid known weak keys. */\n-\tempty_key = crypt_generate_volume_key(ctx, keylength, KEY_QUALITY_NORMAL);\n-\tif (!empty_key)\n-\t\treturn -ENOMEM;\n-\n-\tr = LUKS_decrypt_from_storage(buf, sizeof(buf), cipher, cipher_mode, empty_key, 0, ctx);\n-\n-\tcrypt_free_volume_key(empty_key);\n-\tcrypt_safe_memzero(buf, sizeof(buf));\n-\treturn r;\n-}\n-\n int LUKS_generate_phdr(struct luks_phdr *header,\n \tconst struct volume_key *vk,\n \tconst char *cipherName,\n@@ -991,6 +970,9 @@ int LUKS_verify_volume_key(const struct luks_phdr *hdr,\n \tif (crypt_backend_memeq(checkHashBuf, hdr->mkDigest, LUKS_DIGESTSIZE))\n \t\treturn -EPERM;\n \n+\tif (hdr->keyBytes != crypt_volume_key_length(vk))\n+\t\treturn -EPERM;\n+\n \treturn 0;\n }\n \ndiff --git a/lib/luks1/luks.h b/lib/luks1/luks.h\nindex 80f6544..69cf9c9 100644\n--- a/lib/luks1/luks.h\n+++ b/lib/luks1/luks.h\n@@ -3,7 +3,7 @@\n  * LUKS - Linux Unified Key Setup\n  *\n  * Copyright (C) 2004-2006 Clemens Fruhwirth <clemens@endorphin.org>\n- * Copyright (C) 2009-2025 Red Hat, Inc. All rights reserved.\n+ * Copyright (C) 2009-2026 Red Hat, Inc. All rights reserved.\n  */\n \n #ifndef INCLUDED_CRYPTSETUP_LUKS_LUKS_H\n@@ -89,11 +89,6 @@ struct luks_phdr {\n int LUKS_verify_volume_key(const struct luks_phdr *hdr,\n \t\t\t   const struct volume_key *vk);\n \n-int LUKS_check_cipher(struct crypt_device *ctx,\n-\t\t      size_t keylength,\n-\t\t      const char *cipher,\n-\t\t      const char *cipher_mode);\n-\n int LUKS_generate_phdr(struct luks_phdr *header,\n \tconst struct volume_key *vk,\n \tconst char *cipherName,\ndiff --git a/lib/luks2/hw_opal/hw_opal.c b/lib/luks2/hw_opal/hw_opal.c\nindex 3256393..3dff775 100644\n--- a/lib/luks2/hw_opal/hw_opal.c\n+++ b/lib/luks2/hw_opal/hw_opal.c\n@@ -3,8 +3,8 @@\n  * OPAL utilities\n  *\n  * Copyright (C) 2022-2023 Luca Boccassi <bluca@debian.org>\n- * Copyright (C) 2023-2025 Ondrej Kozina <okozina@redhat.com>\n- * Copyright (C) 2024-2025 Milan Broz\n+ * Copyright (C) 2023-2026 Ondrej Kozina <okozina@redhat.com>\n+ * Copyright (C) 2024-2026 Milan Broz\n  */\n \n #include <stdio.h>\ndiff --git a/lib/luks2/hw_opal/hw_opal.h b/lib/luks2/hw_opal/hw_opal.h\nindex f0058a5..6749752 100644\n--- a/lib/luks2/hw_opal/hw_opal.h\n+++ b/lib/luks2/hw_opal/hw_opal.h\n@@ -3,8 +3,8 @@\n  * OPAL utilities\n  *\n  * Copyright (C) 2022-2023 Luca Boccassi <bluca@debian.org>\n- * Copyright (C) 2023-2025 Ondrej Kozina <okozina@redhat.com>\n- * Copyright (C) 2024-2025 Milan Broz\n+ * Copyright (C) 2023-2026 Ondrej Kozina <okozina@redhat.com>\n+ * Copyright (C) 2024-2026 Milan Broz\n  */\n \n #ifndef _UTILS_OPAL\ndiff --git a/lib/luks2/luks2.h b/lib/luks2/luks2.h\nindex 30568db..dde24eb 100644\n--- a/lib/luks2/luks2.h\n+++ b/lib/luks2/luks2.h\n@@ -2,8 +2,8 @@\n /*\n  * LUKS - Linux Unified Key Setup v2\n  *\n- * Copyright (C) 2015-2025 Red Hat, Inc. All rights reserved.\n- * Copyright (C) 2015-2025 Milan Broz\n+ * Copyright (C) 2015-2026 Red Hat, Inc. All rights reserved.\n+ * Copyright (C) 2015-2026 Milan Broz\n  */\n \n #ifndef _CRYPTSETUP_LUKS2_ONDISK_H\n@@ -318,7 +318,8 @@ void crypt_token_unload_external_all(struct crypt_device *cd);\n  * Generic LUKS2 digest\n  */\n int LUKS2_digest_verify_by_any_matching(struct crypt_device *cd,\n-\t\tconst struct volume_key *vk);\n+\t\tconst struct volume_key *vk,\n+\t\tbool exclude_default_segment);\n \n int LUKS2_digest_verify_by_segment(struct crypt_device *cd,\n \tstruct luks2_hdr *hdr,\ndiff --git a/lib/luks2/luks2_digest.c b/lib/luks2/luks2_digest.c\nindex fb9a902..f1fdfc9 100644\n--- a/lib/luks2/luks2_digest.c\n+++ b/lib/luks2/luks2_digest.c\n@@ -2,8 +2,8 @@\n /*\n  * LUKS - Linux Unified Key Setup v2, digest handling\n  *\n- * Copyright (C) 2015-2025 Red Hat, Inc. All rights reserved.\n- * Copyright (C) 2015-2025 Milan Broz\n+ * Copyright (C) 2015-2026 Red Hat, Inc. All rights reserved.\n+ * Copyright (C) 2015-2026 Milan Broz\n  */\n \n #include \"luks2_internal.h\"\n@@ -97,17 +97,13 @@ int LUKS2_digest_by_keyslot(struct luks2_hdr *hdr, int keyslot)\n \treturn -ENOENT;\n }\n \n-int LUKS2_digest_verify_by_digest(struct crypt_device *cd,\n+static int digest_verify(struct crypt_device *cd,\n+\tconst digest_handler *h,\n \tint digest,\n \tconst struct volume_key *vk)\n {\n-\tconst digest_handler *h;\n \tint r;\n \n-\th = LUKS2_digest_handler(cd, digest);\n-\tif (!h)\n-\t\treturn -EINVAL;\n-\n \tr = h->verify(cd, digest, crypt_volume_key_get_key(vk), crypt_volume_key_length(vk));\n \tif (r < 0) {\n \t\tlog_dbg(cd, \"Digest %d (%s) verify failed with %d.\", digest, h->name, r);\n@@ -117,20 +113,76 @@ int LUKS2_digest_verify_by_digest(struct crypt_device *cd,\n \treturn digest;\n }\n \n-int LUKS2_digest_verify(struct crypt_device *cd,\n+int LUKS2_digest_verify_by_digest(struct crypt_device *cd,\n+\tint digest,\n+\tconst struct volume_key *vk)\n+{\n+\tconst digest_handler *h;\n+\tint key_size, r;\n+\n+\th = LUKS2_digest_handler(cd, digest);\n+\tif (!h)\n+\t\treturn -EINVAL;\n+\n+\tr = digest_verify(cd, h, digest, vk);\n+\tif (r < 0)\n+\t\treturn r;\n+\n+\tkey_size = LUKS2_get_volume_key_size_by_digest(crypt_get_hdr(cd, CRYPT_LUKS2), digest);\n+\n+\tif (key_size > 0 && (size_t)key_size != crypt_volume_key_length(vk))\n+\t\treturn -EPERM;\n+\n+\treturn r;\n+}\n+\n+static int digest_verify_by_keyslot(struct crypt_device *cd,\n \tstruct luks2_hdr *hdr,\n \tconst struct volume_key *vk,\n-\tint keyslot)\n+\tint keyslot,\n+\tbool check_key_size)\n {\n-\tint digest;\n+\tconst digest_handler *h;\n+\tint digest, key_size, r;\n \n \tdigest = LUKS2_digest_by_keyslot(hdr, keyslot);\n \tif (digest < 0)\n \t\treturn digest;\n \n+\th = LUKS2_digest_handler(cd, digest);\n+\tif (!h)\n+\t\treturn -EINVAL;\n+\n \tlog_dbg(cd, \"Verifying key from keyslot %d, digest %d.\", keyslot, digest);\n \n-\treturn LUKS2_digest_verify_by_digest(cd, digest, vk);\n+\tr = digest_verify(cd, h, digest, vk);\n+\tif (r < 0 || !check_key_size)\n+\t\treturn r;\n+\n+\tkey_size = LUKS2_get_keyslot_stored_key_size(hdr, keyslot);\n+\tif (key_size < 0)\n+\t\treturn -EINVAL;\n+\n+\tif ((size_t)key_size != crypt_volume_key_length(vk))\n+\t\treturn -EPERM;\n+\n+\treturn r;\n+}\n+\n+int LUKS2_digest_verify(struct crypt_device *cd,\n+\tstruct luks2_hdr *hdr,\n+\tconst struct volume_key *vk,\n+\tint keyslot)\n+{\n+\treturn digest_verify_by_keyslot(cd, hdr, vk, keyslot, /* check_key_size= */ true);\n+}\n+\n+int LUKS2_reencrypt_keyslot_digest_verify(struct crypt_device *cd,\n+\tstruct luks2_hdr *hdr,\n+\tconst struct volume_key *vk,\n+\tint keyslot)\n+{\n+\treturn digest_verify_by_keyslot(cd, hdr, vk, keyslot, /* check_key_size= */ false);\n }\n \n int LUKS2_digest_dump(struct crypt_device *cd, int digest)\n@@ -144,13 +196,19 @@ int LUKS2_digest_dump(struct crypt_device *cd, int digest)\n }\n \n int LUKS2_digest_verify_by_any_matching(struct crypt_device *cd,\n-\t\tconst struct volume_key *vk)\n+\t\tconst struct volume_key *vk,\n+\t\tbool exclude_default_segment)\n {\n-\tint digest;\n+\tint digest, default_segment_digest = -1;\n+\n+\tif (exclude_default_segment)\n+\t\tdefault_segment_digest = LUKS2_digest_by_segment(crypt_get_hdr(cd, CRYPT_LUKS2), CRYPT_DEFAULT_SEGMENT);\n \n-\tfor (digest = 0; digest < LUKS2_DIGEST_MAX; digest++)\n-\t\tif (LUKS2_digest_verify_by_digest(cd, digest, vk) == digest)\n+\tfor (digest = 0; digest < LUKS2_DIGEST_MAX; digest++) {\n+\t\tif (digest != default_segment_digest &&\n+\t\t    LUKS2_digest_verify_by_digest(cd, digest, vk) == digest)\n \t\t\treturn digest;\n+\t}\n \n \treturn -ENOENT;\n }\n@@ -160,23 +218,41 @@ int LUKS2_digest_verify_by_segment(struct crypt_device *cd,\n \tint segment,\n \tconst struct volume_key *vk)\n {\n-\tint r;\n+\tconst digest_handler *h;\n+\tint digest, key_size, r;\n \tunsigned s;\n \n \tif (segment == CRYPT_ANY_SEGMENT) {\n \t\tfor (s = 0; s < json_segments_count(LUKS2_get_segments_jobj(hdr)); s++) {\n-\t\t\tif ((r = LUKS2_digest_verify_by_digest(cd, LUKS2_digest_by_segment(hdr, s), vk)) >= 0)\n+\t\t\tif ((r = LUKS2_digest_verify_by_segment(cd, hdr, s, vk)) >= 0)\n \t\t\t\treturn r;\n \t\t}\n \n \t\treturn -EPERM;\n \t}\n \n-\tr = LUKS2_digest_by_segment(hdr, segment);\n+\tdigest = LUKS2_digest_by_segment(hdr, segment);\n+\tif (digest < 0)\n+\t\treturn digest;\n+\n+\th = LUKS2_digest_handler(cd, digest);\n+\tif (!h)\n+\t\treturn -EINVAL;\n+\n+\tr = digest_verify(cd, h, digest, vk);\n \tif (r < 0)\n \t\treturn r;\n \n-\treturn LUKS2_digest_verify_by_digest(cd, r, vk);\n+\tif (segment == CRYPT_DEFAULT_SEGMENT)\n+\t\t/* use default segment key size or fallback to the cached key size */\n+\t\tkey_size = crypt_get_volume_key_size(cd);\n+\telse\n+\t\tkey_size = LUKS2_get_volume_key_size(hdr, segment);\n+\n+\tif (key_size > 0 && (size_t)key_size != crypt_volume_key_length(vk))\n+\t\treturn -EPERM;\n+\n+\treturn r;\n }\n \n /* FIXME: segment can have more digests */\ndiff --git a/lib/luks2/luks2_digest_pbkdf2.c b/lib/luks2/luks2_digest_pbkdf2.c\nindex e5e06ee..ecc5263 100644\n--- a/lib/luks2/luks2_digest_pbkdf2.c\n+++ b/lib/luks2/luks2_digest_pbkdf2.c\n@@ -2,8 +2,8 @@\n /*\n  * LUKS - Linux Unified Key Setup v2, PBKDF2 digest handler (LUKS1 compatible)\n  *\n- * Copyright (C) 2015-2025 Red Hat, Inc. All rights reserved.\n- * Copyright (C) 2015-2025 Milan Broz\n+ * Copyright (C) 2015-2026 Red Hat, Inc. All rights reserved.\n+ * Copyright (C) 2015-2026 Milan Broz\n  */\n \n #include \"luks2_internal.h\"\ndiff --git a/lib/luks2/luks2_disk_metadata.c b/lib/luks2/luks2_disk_metadata.c\nindex e649f89..8fbf86d 100644\n--- a/lib/luks2/luks2_disk_metadata.c\n+++ b/lib/luks2/luks2_disk_metadata.c\n@@ -2,8 +2,8 @@\n /*\n  * LUKS - Linux Unified Key Setup v2\n  *\n- * Copyright (C) 2015-2025 Red Hat, Inc. All rights reserved.\n- * Copyright (C) 2015-2025 Milan Broz\n+ * Copyright (C) 2015-2026 Red Hat, Inc. All rights reserved.\n+ * Copyright (C) 2015-2026 Milan Broz\n  */\n \n #include \"luks2_internal.h\"\ndiff --git a/lib/luks2/luks2_internal.h b/lib/luks2/luks2_internal.h\nindex adaea91..0c15fa9 100644\n--- a/lib/luks2/luks2_internal.h\n+++ b/lib/luks2/luks2_internal.h\n@@ -2,8 +2,8 @@\n /*\n  * LUKS - Linux Unified Key Setup v2 (with JSON internals)\n  *\n- * Copyright (C) 2015-2025 Red Hat, Inc. All rights reserved.\n- * Copyright (C) 2015-2025 Milan Broz\n+ * Copyright (C) 2015-2026 Red Hat, Inc. All rights reserved.\n+ * Copyright (C) 2015-2026 Milan Broz\n  */\n \n #ifndef _CRYPTSETUP_LUKS2_INTERNAL_H\n@@ -226,11 +226,6 @@ int LUKS2_find_area_max_gap(struct crypt_device *cd, struct luks2_hdr *hdr,\n \n uint64_t LUKS2_hdr_and_areas_size_jobj(json_object *jobj);\n \n-int LUKS2_check_cipher(struct crypt_device *cd,\n-\t\t      size_t keylength,\n-\t\t      const char *cipher,\n-\t\t      const char *cipher_mode);\n-\n static inline const char *crypt_reencrypt_mode_to_str(crypt_reencrypt_mode_info mi)\n {\n \tif (mi == CRYPT_REENCRYPT_REENCRYPT)\n@@ -363,11 +358,13 @@ int LUKS2_last_segment_by_type(struct luks2_hdr *hdr,\n \n int LUKS2_get_default_segment(struct luks2_hdr *hdr);\n \n+int LUKS2_get_volume_key_size_by_digest(struct luks2_hdr *hdr, int digest);\n+\n int LUKS2_reencrypt_digest_new(struct luks2_hdr *hdr);\n int LUKS2_reencrypt_digest_old(struct luks2_hdr *hdr);\n int LUKS2_reencrypt_segment_new(struct luks2_hdr *hdr);\n int LUKS2_reencrypt_segment_old(struct luks2_hdr *hdr);\n-int LUKS2_reencrypt_data_offset(struct luks2_hdr *hdr, bool blockwise);\n+uint64_t LUKS2_reencrypt_data_offset(struct luks2_hdr *hdr, bool blockwise);\n \n int LUKS2_reencrypt_max_hotzone_size(struct crypt_device *cd,\n \tstruct luks2_hdr *hdr,\n@@ -384,6 +381,11 @@ int LUKS2_digest_verify_by_digest(struct crypt_device *cd,\n \tint digest,\n \tconst struct volume_key *vk);\n \n+int LUKS2_reencrypt_keyslot_digest_verify(struct crypt_device *cd,\n+\tstruct luks2_hdr *hdr,\n+\tconst struct volume_key *vk,\n+\tint keyslot);\n+\n void LUKS2_digests_erase_unused(struct crypt_device *cd,\n \tstruct luks2_hdr *hdr);\n \ndiff --git a/lib/luks2/luks2_json_format.c b/lib/luks2/luks2_json_format.c\nindex 2098028..45bc24c 100644\n--- a/lib/luks2/luks2_json_format.c\n+++ b/lib/luks2/luks2_json_format.c\n@@ -2,8 +2,8 @@\n /*\n  * LUKS - Linux Unified Key Setup v2, LUKS2 header format code\n  *\n- * Copyright (C) 2015-2025 Red Hat, Inc. All rights reserved.\n- * Copyright (C) 2015-2025 Milan Broz\n+ * Copyright (C) 2015-2026 Red Hat, Inc. All rights reserved.\n+ * Copyright (C) 2015-2026 Milan Broz\n  */\n \n #include \"luks2_internal.h\"\ndiff --git a/lib/luks2/luks2_json_metadata.c b/lib/luks2/luks2_json_metadata.c\nindex 15e83a8..e8126bc 100644\n--- a/lib/luks2/luks2_json_metadata.c\n+++ b/lib/luks2/luks2_json_metadata.c\n@@ -2,9 +2,9 @@\n /*\n  * LUKS - Linux Unified Key Setup v2\n  *\n- * Copyright (C) 2015-2025 Red Hat, Inc. All rights reserved.\n- * Copyright (C) 2015-2025 Milan Broz\n- * Copyright (C) 2015-2025 Ondrej Kozina\n+ * Copyright (C) 2015-2026 Red Hat, Inc. All rights reserved.\n+ * Copyright (C) 2015-2026 Milan Broz\n+ * Copyright (C) 2015-2026 Ondrej Kozina\n  */\n \n #include \"luks2_internal.h\"\n@@ -2439,6 +2439,24 @@ int LUKS2_get_keyslot_stored_key_size(struct luks2_hdr *hdr, int keyslot)\n \treturn LUKS2_keyslot_get_volume_key_size(hdr, keyslot_name);\n }\n \n+int LUKS2_get_volume_key_size_by_digest(struct luks2_hdr *hdr, int digest)\n+{\n+\tjson_object *jobj_digest, *jobj_digest_keyslots;\n+\n+\tjobj_digest = LUKS2_get_digest_jobj(hdr, digest);\n+\tif (!jobj_digest)\n+\t\treturn -ENOENT;\n+\n+\tif (!json_object_object_get_ex(jobj_digest, \"keyslots\", &jobj_digest_keyslots))\n+\t\treturn -EINVAL;\n+\n+\tif (json_object_array_length(jobj_digest_keyslots) <= 0)\n+\t\treturn -ENOENT;\n+\n+\treturn LUKS2_keyslot_get_volume_key_size(hdr,\n+\t\t\tjson_object_get_string(json_object_array_get_idx(jobj_digest_keyslots, 0)));\n+}\n+\n int LUKS2_get_volume_key_size(struct luks2_hdr *hdr, int segment)\n {\n \tjson_object *jobj_digests, *jobj_digest_segments, *jobj_digest_keyslots, *jobj1;\n@@ -2826,9 +2844,16 @@ static bool is_reencryption_helper(const char *name)\n \t\treturn false;\n \n \tlen = strlen(name);\n-\treturn (len >= 9 && (!strncmp(name + len - 8, \"-hotzone-\", 9) ||\n-\t\t\t     !strcmp(name + len - 8, \"-overlay\")));\n+\tif (len > 8 && !strcmp(name + len - 8, \"-overlay\"))\n+\t\treturn true;\n+\n+\tif (len > 16 && !strcmp(name + len - 16, \"-hotzone-forward\"))\n+\t\treturn true;\n+\n+\tif (len > 17 && !strcmp(name + len - 17, \"-hotzone-backward\"))\n+\t\treturn true;\n \n+\treturn false;\n }\n \n static bool contains_reencryption_helper(char **names)\ndiff --git a/lib/luks2/luks2_keyslot.c b/lib/luks2/luks2_keyslot.c\nindex 9072570..5947fe1 100644\n--- a/lib/luks2/luks2_keyslot.c\n+++ b/lib/luks2/luks2_keyslot.c\n@@ -2,8 +2,8 @@\n /*\n  * LUKS - Linux Unified Key Setup v2, keyslot handling\n  *\n- * Copyright (C) 2015-2025 Red Hat, Inc. All rights reserved.\n- * Copyright (C) 2015-2025 Milan Broz\n+ * Copyright (C) 2015-2026 Red Hat, Inc. All rights reserved.\n+ * Copyright (C) 2015-2026 Milan Broz\n  */\n \n #include \"luks2_internal.h\"\n@@ -968,6 +968,7 @@ int LUKS2_keyslot_swap(struct crypt_device *cd, struct luks2_hdr *hdr,\n \tjson_object_object_del_by_uint(jobj_keyslots, keyslot);\n \tr = json_object_object_add_by_uint(jobj_keyslots, keyslot, jobj_keyslot2);\n \tif (r < 0) {\n+\t\tjson_object_put(jobj_keyslot);\n \t\tjson_object_put(jobj_keyslot2);\n \t\tlog_dbg(cd, \"Failed to swap keyslot %d.\", keyslot);\n \t\treturn r;\ndiff --git a/lib/luks2/luks2_keyslot_luks2.c b/lib/luks2/luks2_keyslot_luks2.c\nindex ec68236..0b7d8d4 100644\n--- a/lib/luks2/luks2_keyslot_luks2.c\n+++ b/lib/luks2/luks2_keyslot_luks2.c\n@@ -2,12 +2,13 @@\n /*\n  * LUKS - Linux Unified Key Setup v2, LUKS2 type keyslot handler\n  *\n- * Copyright (C) 2015-2025 Red Hat, Inc. All rights reserved.\n- * Copyright (C) 2015-2025 Milan Broz\n+ * Copyright (C) 2015-2026 Red Hat, Inc. All rights reserved.\n+ * Copyright (C) 2015-2026 Milan Broz\n  */\n \n #include <limits.h>\n #include \"luks2_internal.h\"\n+#include \"utils_storage_wrappers.h\"\n \n /* FIXME: move keyslot encryption to crypto backend */\n #include \"../luks1/af.h\"\n@@ -20,116 +21,74 @@\n \n /* coverity[ -taint_source : arg-0 ] */\n static int luks2_encrypt_to_storage(char *src, size_t srcLength,\n-\tconst char *cipher, const char *cipher_mode,\n-\tstruct volume_key *vk, unsigned int sector,\n+\tconst char *cipher,\n+\tstruct volume_key *vk, uint64_t offset,\n \tstruct crypt_device *cd)\n {\n-#if !ENABLE_AF_ALG /* Support for old kernel without Crypto API */\n-\treturn LUKS_encrypt_to_storage(src, srcLength, cipher, cipher_mode, vk, sector, cd);\n-#else\n-\tstruct crypt_storage *s;\n-\tint devfd, r;\n \tstruct device *device = crypt_metadata_device(cd);\n+\tstruct crypt_storage_wrapper *csw;\n+\tuint32_t csw_flags = CSW_OPEN_LOCKED;\n+\tssize_t written;\n+\tint r;\n \n-\t/* Only whole sector writes supported */\n-\tif (MISALIGNED_512(srcLength))\n-\t\treturn -EINVAL;\n-\n-\t/* Encrypt buffer */\n-\tr = crypt_storage_init(&s, SECTOR_SIZE, cipher, cipher_mode,\n-\t\t\t       crypt_volume_key_get_key(vk), crypt_volume_key_length(vk), false);\n-\tif (r) {\n-\t\tlog_err(cd, _(\"Cannot use %s-%s cipher for keyslot encryption.\"), cipher, cipher_mode);\n-\t\treturn r;\n-\t}\n+\t/* dm-crypt backend requires root access */\n+\tif (getuid() || geteuid())\n+\t\tcsw_flags |= CSW_DISABLE_DMCRYPT;\n \n-\tr = crypt_storage_encrypt(s, 0, srcLength, src);\n-\tcrypt_storage_destroy(s);\n+\tr = crypt_storage_wrapper_init(cd, &csw, device, offset, 0, SECTOR_SIZE, cipher, vk, csw_flags);\n \tif (r) {\n-\t\tlog_err(cd, _(\"IO error while encrypting keyslot.\"));\n+\t\tlog_err(cd, _(\"Cannot use %s cipher for keyslot encryption.\"), cipher);\n \t\treturn r;\n \t}\n \n-\tdevfd = device_open_locked(cd, device, O_RDWR);\n-\tif (devfd >= 0) {\n-\t\tif (write_lseek_blockwise(devfd, device_block_size(cd, device),\n-\t\t\t\t\t  device_alignment(device), src,\n-\t\t\t\t\t  srcLength, sector * SECTOR_SIZE) < 0)\n-\t\t\tr = -EIO;\n-\t\telse\n-\t\t\tr = 0;\n-\n-\t\tdevice_sync(cd, device);\n-\t} else\n+\twritten = crypt_storage_wrapper_encrypt_write(csw, 0, src, srcLength);\n+\tif (written < 0 || (size_t)written != srcLength) {\n \t\tr = -EIO;\n-\n-\tif (r)\n \t\tlog_err(cd, _(\"IO error while encrypting keyslot.\"));\n+\t} else\n+\t\tr = 0;\n \n+\tcrypt_storage_wrapper_destroy(csw);\n \treturn r;\n-#endif\n }\n \n static int luks2_decrypt_from_storage(char *dst, size_t dstLength,\n-\tconst char *cipher, const char *cipher_mode, struct volume_key *vk,\n-\tunsigned int sector, struct crypt_device *cd)\n+\tconst char *cipher, struct volume_key *vk,\n+\tuint64_t offset, struct crypt_device *cd)\n {\n \tstruct device *device = crypt_metadata_device(cd);\n-#if !ENABLE_AF_ALG /* Support for old kernel without Crypto API */\n-\tint r = device_read_lock(cd, device);\n-\tif (r) {\n-\t\tlog_err(cd, _(\"Failed to acquire read lock on device %s.\"), device_path(device));\n-\t\treturn r;\n-\t}\n-\tr = LUKS_decrypt_from_storage(dst, dstLength, cipher, cipher_mode, vk, sector, cd);\n-\tdevice_read_unlock(cd, crypt_metadata_device(cd));\n-\treturn r;\n-#else\n-\tstruct crypt_storage *s;\n-\tint devfd, r;\n+\tstruct crypt_storage_wrapper *csw;\n+\tuint32_t csw_flags = CSW_OPEN_LOCKED | CSW_OPEN_READONLY;\n+\tssize_t read;\n+\tint r;\n \n-\t/* Only whole sector writes supported */\n-\tif (MISALIGNED_512(dstLength))\n-\t\treturn -EINVAL;\n+\t/* dm-crypt backend requires root access */\n+\tif (getuid() || geteuid())\n+\t\tcsw_flags |= CSW_DISABLE_DMCRYPT;\n \n-\tr = crypt_storage_init(&s, SECTOR_SIZE, cipher, cipher_mode,\n-\t\t\t       crypt_volume_key_get_key(vk),\n-\t\t\t       crypt_volume_key_length(vk), false);\n+\tr = device_read_lock(cd, device);\n \tif (r) {\n-\t\tlog_err(cd, _(\"Cannot use %s-%s cipher for keyslot encryption.\"), cipher, cipher_mode);\n+\t\tlog_err(cd, _(\"Failed to acquire read lock on device %s.\"), device_path(device));\n \t\treturn r;\n \t}\n \n-\tr = device_read_lock(cd, device);\n+\tr = crypt_storage_wrapper_init(cd, &csw, device, offset, 0, SECTOR_SIZE, cipher, vk, csw_flags);\n \tif (r) {\n-\t\tlog_err(cd, _(\"Failed to acquire read lock on device %s.\"),\n-\t\t\tdevice_path(device));\n-\t\tcrypt_storage_destroy(s);\n+\t\tlog_err(cd, _(\"Cannot use %s cipher for keyslot encryption.\"), cipher);\n+\t\tdevice_read_unlock(cd, device);\n \t\treturn r;\n \t}\n \n-\tdevfd = device_open_locked(cd, device, O_RDONLY);\n-\tif (devfd >= 0) {\n-\t\tif (read_lseek_blockwise(devfd, device_block_size(cd, device),\n-\t\t\t\t\t device_alignment(device), dst,\n-\t\t\t\t\t dstLength, sector * SECTOR_SIZE) < 0)\n-\t\t\tr = -EIO;\n-\t\telse\n-\t\t\tr = 0;\n-\t} else\n+\tread = crypt_storage_wrapper_read_decrypt(csw, 0, dst, dstLength);\n+\tif (read < 0 || (size_t)read != dstLength) {\n \t\tr = -EIO;\n-\n-\tdevice_read_unlock(cd, device);\n-\n-\t/* Decrypt buffer */\n-\tif (!r)\n-\t\tr = crypt_storage_decrypt(s, 0, dstLength, dst);\n-\telse\n \t\tlog_err(cd, _(\"IO error while decrypting keyslot.\"));\n+\t} else\n+\t\tr = 0;\n \n-\tcrypt_storage_destroy(s);\n+\tdevice_read_unlock(cd, device);\n+\tcrypt_storage_wrapper_destroy(csw);\n \treturn r;\n-#endif\n }\n \n static int luks2_keyslot_get_pbkdf_params(json_object *jobj_keyslot,\n@@ -192,9 +151,9 @@ static int luks2_keyslot_set_key(struct crypt_device *cd,\n \tconst char *password, size_t passwordLen,\n \tconst char *volume_key, size_t volume_key_len)\n {\n-\tchar *salt = NULL, cipher[MAX_CIPHER_LEN], cipher_mode[MAX_CIPHER_LEN];\n+\tchar *salt = NULL;\n \tchar *AfKey = NULL;\n-\tconst char *af_hash = NULL;\n+\tconst char *af_hash = NULL, *cipher;\n \tsize_t AFEKSize, keyslot_key_len;\n \tjson_object *jobj2, *jobj_kdf, *jobj_af, *jobj_area;\n \tuint64_t area_offset;\n@@ -220,9 +179,7 @@ static int luks2_keyslot_set_key(struct crypt_device *cd,\n \n \tif (!json_object_object_get_ex(jobj_area, \"encryption\", &jobj2))\n \t\treturn -EINVAL;\n-\tr = crypt_parse_name_and_mode(json_object_get_string(jobj2), cipher, NULL, cipher_mode);\n-\tif (r < 0)\n-\t\treturn r;\n+\tcipher = json_object_get_string(jobj2);\n \n \tif (!json_object_object_get_ex(jobj_area, \"key_size\", &jobj2))\n \t\treturn -EINVAL;\n@@ -287,9 +244,8 @@ static int luks2_keyslot_set_key(struct crypt_device *cd,\n \t}\n \n \tlog_dbg(cd, \"Updating keyslot area [0x%04\" PRIx64 \"].\", area_offset);\n-\t/* FIXME: sector_offset should be size_t, fix LUKS_encrypt... accordingly */\n-\tr = luks2_encrypt_to_storage(AfKey, AFEKSize, cipher, cipher_mode,\n-\t\t\t    derived_vk, (unsigned)(area_offset / SECTOR_SIZE), cd);\n+\n+\tr = luks2_encrypt_to_storage(AfKey, AFEKSize, cipher, derived_vk, area_offset, cd);\n out:\n \tcrypt_safe_free(AfKey);\n \tcrypt_safe_free(derived_key);\n@@ -308,8 +264,8 @@ static int luks2_keyslot_get_key(struct crypt_device *cd,\n \tstruct crypt_pbkdf_type pbkdf;\n \tchar *AfKey = NULL;\n \tsize_t AFEKSize;\n-\tconst char *af_hash = NULL;\n-\tchar *salt = NULL, cipher[MAX_CIPHER_LEN], cipher_mode[MAX_CIPHER_LEN];\n+\tconst char *af_hash = NULL, *cipher;\n+\tchar *salt = NULL;\n \tjson_object *jobj2, *jobj_af, *jobj_area;\n \tuint64_t area_offset;\n \tsize_t keyslot_key_len;\n@@ -332,9 +288,8 @@ static int luks2_keyslot_get_key(struct crypt_device *cd,\n \n \tif (!json_object_object_get_ex(jobj_area, \"encryption\", &jobj2))\n \t\treturn -EINVAL;\n-\tr = crypt_parse_name_and_mode(json_object_get_string(jobj2), cipher, NULL, cipher_mode);\n-\tif (r < 0)\n-\t\treturn r;\n+\n+\tcipher = json_object_get_string(jobj2);\n \n \t/* Allow only empty passphrase with null cipher */\n \tif (crypt_is_cipher_null(cipher) && passwordLen)\n@@ -395,10 +350,8 @@ static int luks2_keyslot_get_key(struct crypt_device *cd,\n \t}\n \n \tlog_dbg(cd, \"Reading keyslot area [0x%04\" PRIx64 \"].\", area_offset);\n-\t/* FIXME: sector_offset should be size_t, fix LUKS_decrypt... accordingly */\n-\tr = luks2_decrypt_from_storage(AfKey, AFEKSize, cipher, cipher_mode,\n-\t\t\t      derived_vk, (unsigned)(area_offset / SECTOR_SIZE), cd);\n \n+\tr = luks2_decrypt_from_storage(AfKey, AFEKSize, cipher, derived_vk, area_offset, cd);\n \tif (r == 0) {\n \t\tr = crypt_hash_size(af_hash);\n \t\tif (r < 0)\ndiff --git a/lib/luks2/luks2_keyslot_reenc.c b/lib/luks2/luks2_keyslot_reenc.c\nindex 180ac56..e2806f6 100644\n--- a/lib/luks2/luks2_keyslot_reenc.c\n+++ b/lib/luks2/luks2_keyslot_reenc.c\n@@ -2,8 +2,8 @@\n /*\n  * LUKS - Linux Unified Key Setup v2, reencryption keyslot handler\n  *\n- * Copyright (C) 2016-2025 Red Hat, Inc. All rights reserved.\n- * Copyright (C) 2016-2025 Ondrej Kozina\n+ * Copyright (C) 2016-2026 Red Hat, Inc. All rights reserved.\n+ * Copyright (C) 2016-2026 Ondrej Kozina\n  */\n \n #include \"luks2_internal.h\"\ndiff --git a/lib/luks2/luks2_luks1_convert.c b/lib/luks2/luks2_luks1_convert.c\nindex 6c75f16..6c2d32f 100644\n--- a/lib/luks2/luks2_luks1_convert.c\n+++ b/lib/luks2/luks2_luks1_convert.c\n@@ -2,49 +2,15 @@\n /*\n  * LUKS - Linux Unified Key Setup v2, LUKS1 conversion code\n  *\n- * Copyright (C) 2015-2025 Red Hat, Inc. All rights reserved.\n- * Copyright (C) 2015-2025 Ondrej Kozina\n- * Copyright (C) 2015-2025 Milan Broz\n+ * Copyright (C) 2015-2026 Red Hat, Inc. All rights reserved.\n+ * Copyright (C) 2015-2026 Ondrej Kozina\n+ * Copyright (C) 2015-2026 Milan Broz\n  */\n \n #include \"luks2_internal.h\"\n #include \"../luks1/luks.h\"\n #include \"../luks1/af.h\"\n \n-/* This differs from LUKS_check_cipher() that it does not check dm-crypt fallback. */\n-int LUKS2_check_cipher(struct crypt_device *cd,\n-\t\t      size_t keylength,\n-\t\t      const char *cipher,\n-\t\t      const char *cipher_mode)\n-{\n-\tint r;\n-\tstruct crypt_storage *s;\n-\tchar buf[SECTOR_SIZE], *empty_key;\n-\n-\tlog_dbg(cd, \"Checking if cipher %s-%s is usable (storage wrapper).\", cipher, cipher_mode);\n-\n-\tempty_key = crypt_safe_alloc(keylength);\n-\tif (!empty_key)\n-\t\treturn -ENOMEM;\n-\n-\t/* No need to get KEY quality random but it must avoid known weak keys. */\n-\tr = crypt_random_get(cd, empty_key, keylength, CRYPT_RND_NORMAL);\n-\tif (r < 0)\n-\t\tgoto out;\n-\n-\tr = crypt_storage_init(&s, SECTOR_SIZE, cipher, cipher_mode, empty_key, keylength, false);\n-\tif (r < 0)\n-\t\tgoto out;\n-\n-\tmemset(buf, 0, sizeof(buf));\n-\tr = crypt_storage_decrypt(s, 0, sizeof(buf), buf);\n-\tcrypt_storage_destroy(s);\n-out:\n-\tcrypt_safe_free(empty_key);\n-\tcrypt_safe_memzero(buf, sizeof(buf));\n-\treturn r;\n-}\n-\n static int json_luks1_keyslot(const struct luks_phdr *hdr_v1, int keyslot, struct json_object **keyslot_object)\n {\n \tchar *base64_str, cipher[LUKS_CIPHERNAME_L+LUKS_CIPHERMODE_L];\n@@ -586,7 +552,7 @@ int LUKS2_luks1_to_luks2(struct crypt_device *cd, struct luks_phdr *hdr1, struct\n \t\treturn -EINVAL;\n \t}\n \n-\tif (LUKS2_check_cipher(cd, hdr1->keyBytes, hdr1->cipherName, hdr1->cipherMode)) {\n+\tif (crypt_check_cipher(cd, hdr1->keyBytes, hdr1->cipherName, hdr1->cipherMode)) {\n \t\tlog_err(cd, _(\"Unable to use cipher specification %s-%s for LUKS2.\"),\n \t\t\thdr1->cipherName, hdr1->cipherMode);\n \t\treturn -EINVAL;\ndiff --git a/lib/luks2/luks2_reencrypt.c b/lib/luks2/luks2_reencrypt.c\nindex 3210b58..7445c9e 100644\n--- a/lib/luks2/luks2_reencrypt.c\n+++ b/lib/luks2/luks2_reencrypt.c\n@@ -2,13 +2,14 @@\n /*\n  * LUKS - Linux Unified Key Setup v2, reencryption helpers\n  *\n- * Copyright (C) 2015-2025 Red Hat, Inc. All rights reserved.\n- * Copyright (C) 2015-2025 Ondrej Kozina\n+ * Copyright (C) 2015-2026 Red Hat, Inc. All rights reserved.\n+ * Copyright (C) 2015-2026 Ondrej Kozina\n  */\n \n #include \"luks2_internal.h\"\n #include \"utils_device_locking.h\"\n #include \"keyslot_context.h\"\n+#include \"utils_storage_wrappers.h\"\n \n struct luks2_reencrypt {\n \t/* reencryption window attributes */\n@@ -1397,7 +1398,7 @@ static int reencrypt_init_storage_wrappers(struct crypt_device *cd,\n {\n \tint r;\n \tstruct volume_key *vk;\n-\tuint32_t wrapper_flags = (getuid() || geteuid()) ? 0 : DISABLE_KCAPI;\n+\tuint32_t wrapper_flags = (getuid() || geteuid()) ? 0 : CSW_DISABLE_KCAPI;\n \n \tvk = crypt_volume_key_by_id(vks, rh->digest_old);\n \tr = crypt_storage_wrapper_init(cd, &rh->cw1, crypt_data_device(cd),\n@@ -1405,12 +1406,12 @@ static int reencrypt_init_storage_wrappers(struct crypt_device *cd,\n \t\t\tcrypt_get_iv_offset(cd),\n \t\t\treencrypt_get_sector_size_old(hdr),\n \t\t\treencrypt_segment_cipher_old(hdr),\n-\t\t\tvk, wrapper_flags | OPEN_READONLY);\n+\t\t\tvk, wrapper_flags | CSW_OPEN_READONLY);\n \tif (r) {\n \t\tlog_err(cd, _(\"Failed to initialize old segment storage wrapper.\"));\n \t\treturn r;\n \t}\n-\trh->wflags1 = wrapper_flags | OPEN_READONLY;\n+\trh->wflags1 = wrapper_flags | CSW_OPEN_READONLY;\n \tlog_dbg(cd, \"Old cipher storage wrapper type: %d.\", crypt_storage_wrapper_get_type(rh->cw1));\n \n \tvk = crypt_volume_key_by_id(vks, rh->digest_new);\n@@ -1635,12 +1636,12 @@ static int reencrypt_recover_segment(struct crypt_device *cd,\n \t\tfor (s = 0; s < count; s++) {\n \t\t\tif (crypt_hash_write(rp->p.csum.ch, data_buffer + (s * rp->p.csum.block_size), rp->p.csum.block_size)) {\n \t\t\t\tlog_dbg(cd, \"Failed to write hash.\");\n-\t\t\t\tr = EINVAL;\n+\t\t\t\tr = -EINVAL;\n \t\t\t\tgoto out;\n \t\t\t}\n \t\t\tif (crypt_hash_final(rp->p.csum.ch, checksum_tmp, rp->p.csum.hash_size)) {\n \t\t\t\tlog_dbg(cd, \"Failed to finalize hash.\");\n-\t\t\t\tr = EINVAL;\n+\t\t\t\tr = -EINVAL;\n \t\t\t\tgoto out;\n \t\t\t}\n \t\t\tif (!memcmp(checksum_tmp, (char *)rp->p.csum.checksums + (s * rp->p.csum.hash_size), rp->p.csum.hash_size)) {\n@@ -3370,6 +3371,8 @@ static int reencrypt_lock_internal(struct crypt_device *cd, const char *uuid, st\n \tint r;\n \tchar *lock_resource;\n \n+\tassert(uuid);\n+\n \tif (!crypt_metadata_locking_enabled()) {\n \t\t*reencrypt_lock = NULL;\n \t\treturn 0;\n@@ -3406,6 +3409,7 @@ int LUKS2_reencrypt_lock_by_dm_uuid(struct crypt_device *cd, const char *dm_uuid\n \t\t\t dm_uuid + 6, dm_uuid + 14, dm_uuid + 18, dm_uuid + 22, dm_uuid + 26);\n \t\tif (r < 0 || (size_t)r != (sizeof(hdr_uuid) - 1))\n \t\t\treturn -EINVAL;\n+\t\tuuid = hdr_uuid;\n \t} else if (dm_uuid_cmp(dm_uuid, uuid))\n \t\treturn -EINVAL;\n \n@@ -3885,7 +3889,7 @@ static int reencrypt_init_by_keyslot_context(struct crypt_device *cd,\n \t\t}\n \t\tif (r < 0)\n \t\t\treturn r;\n-\t\tr = LUKS2_check_cipher(cd, key_length, cipher, cipher_mode);\n+\t\tr = crypt_check_cipher(cd, key_length, cipher, cipher_mode);\n \t\tif (r < 0) {\n \t\t\tlog_err(cd, _(\"Unable to use cipher specification %s-%s for LUKS2.\"), cipher, cipher_mode);\n \t\t\treturn r;\n@@ -4447,7 +4451,7 @@ int crypt_reencrypt(\n  * use only for calculation of minimal data device size.\n  * The real data offset is taken directly from segments!\n  */\n-int LUKS2_reencrypt_data_offset(struct luks2_hdr *hdr, bool blockwise)\n+uint64_t LUKS2_reencrypt_data_offset(struct luks2_hdr *hdr, bool blockwise)\n {\n \tcrypt_reencrypt_info ri = LUKS2_reencrypt_status(hdr);\n \tuint64_t data_offset = LUKS2_get_data_offset(hdr);\ndiff --git a/lib/luks2/luks2_reencrypt_digest.c b/lib/luks2/luks2_reencrypt_digest.c\nindex 9db88a4..aee9071 100644\n--- a/lib/luks2/luks2_reencrypt_digest.c\n+++ b/lib/luks2/luks2_reencrypt_digest.c\n@@ -2,9 +2,9 @@\n /*\n  * LUKS - Linux Unified Key Setup v2, reencryption digest helpers\n  *\n- * Copyright (C) 2022-2025 Red Hat, Inc. All rights reserved.\n- * Copyright (C) 2022-2025 Ondrej Kozina\n- * Copyright (C) 2022-2025 Milan Broz\n+ * Copyright (C) 2022-2026 Red Hat, Inc. All rights reserved.\n+ * Copyright (C) 2022-2026 Ondrej Kozina\n+ * Copyright (C) 2022-2026 Milan Broz\n  */\n \n #include \"luks2_internal.h\"\n@@ -392,7 +392,8 @@ int LUKS2_reencrypt_digest_verify(struct crypt_device *cd,\n \tif (r < 0)\n \t\treturn r;\n \n-\tr = LUKS2_digest_verify(cd, hdr, data, keyslot_reencrypt);\n+\t/* We can not check key size since reencryption keyslot contains bogus key_size=1 */\n+\tr = LUKS2_reencrypt_keyslot_digest_verify(cd, hdr, data, keyslot_reencrypt);\n \tcrypt_free_volume_key(data);\n \n \tif (r < 0) {\ndiff --git a/lib/luks2/luks2_segment.c b/lib/luks2/luks2_segment.c\nindex 6284ca8..0990f0e 100644\n--- a/lib/luks2/luks2_segment.c\n+++ b/lib/luks2/luks2_segment.c\n@@ -2,8 +2,8 @@\n /*\n  * LUKS - Linux Unified Key Setup v2, internal segment handling\n  *\n- * Copyright (C) 2018-2025 Red Hat, Inc. All rights reserved.\n- * Copyright (C) 2018-2025 Ondrej Kozina\n+ * Copyright (C) 2018-2026 Red Hat, Inc. All rights reserved.\n+ * Copyright (C) 2018-2026 Ondrej Kozina\n  */\n \n #include \"luks2_internal.h\"\ndiff --git a/lib/luks2/luks2_token.c b/lib/luks2/luks2_token.c\nindex 89e7682..b18b119 100644\n--- a/lib/luks2/luks2_token.c\n+++ b/lib/luks2/luks2_token.c\n@@ -2,8 +2,8 @@\n /*\n  * LUKS - Linux Unified Key Setup v2, token handling\n  *\n- * Copyright (C) 2016-2025 Red Hat, Inc. All rights reserved.\n- * Copyright (C) 2016-2025 Milan Broz\n+ * Copyright (C) 2016-2026 Red Hat, Inc. All rights reserved.\n+ * Copyright (C) 2016-2026 Milan Broz\n  */\n \n #include <ctype.h>\ndiff --git a/lib/luks2/luks2_token_keyring.c b/lib/luks2/luks2_token_keyring.c\nindex c8a33a5..63f6a45 100644\n--- a/lib/luks2/luks2_token_keyring.c\n+++ b/lib/luks2/luks2_token_keyring.c\n@@ -2,8 +2,8 @@\n /*\n  * LUKS - Linux Unified Key Setup v2, kernel keyring token\n  *\n- * Copyright (C) 2016-2025 Red Hat, Inc. All rights reserved.\n- * Copyright (C) 2016-2025 Ondrej Kozina\n+ * Copyright (C) 2016-2026 Red Hat, Inc. All rights reserved.\n+ * Copyright (C) 2016-2026 Ondrej Kozina\n  */\n \n #include \"luks2_internal.h\"\ndiff --git a/lib/meson.build b/lib/meson.build\nindex 9f503b6..39efd36 100644\n--- a/lib/meson.build\n+++ b/lib/meson.build\n@@ -9,6 +9,7 @@ libutils_io = static_library('utils_io',\n libcryptsetup_sym_path = join_paths(meson.current_source_dir(), 'libcryptsetup.sym')\n \n libcryptsetup_deps = [\n+    crypto_backend_library,\n     uuid,\n     devmapper,\n     libargon2_external,\ndiff --git a/lib/random.c b/lib/random.c\nindex 06d2713..28a184a 100644\n--- a/lib/random.c\n+++ b/lib/random.c\n@@ -2,7 +2,7 @@\n /*\n  * cryptsetup kernel RNG access functions\n  *\n- * Copyright (C) 2010-2025 Red Hat, Inc. All rights reserved.\n+ * Copyright (C) 2010-2026 Red Hat, Inc. All rights reserved.\n  */\n \n #include <stdlib.h>\ndiff --git a/lib/setup.c b/lib/setup.c\nindex f1e8d92..c50d078 100644\n--- a/lib/setup.c\n+++ b/lib/setup.c\n@@ -4,8 +4,8 @@\n  *\n  * Copyright (C) 2004 Jana Saout <jana@saout.de>\n  * Copyright (C) 2004-2007 Clemens Fruhwirth <clemens@endorphin.org>\n- * Copyright (C) 2009-2025 Red Hat, Inc. All rights reserved.\n- * Copyright (C) 2009-2025 Milan Broz\n+ * Copyright (C) 2009-2026 Red Hat, Inc. All rights reserved.\n+ * Copyright (C) 2009-2026 Milan Broz\n  */\n \n #include <string.h>\n@@ -52,6 +52,9 @@ struct crypt_device {\n \tconst char *user_key_name2;\n \tkey_type_t keyring_key_type;\n \n+\tconst char *keyring_description;\n+\tkey_serial_t keyring_id;\n+\n \tuint64_t data_offset;\n \tuint64_t metadata_size; /* Used in LUKS2 format */\n \tuint64_t keyslots_size; /* Used in LUKS2 format */\n@@ -1762,7 +1765,7 @@ static int _crypt_format_luks1(struct crypt_device *cd,\n \t\t\t\t       &required_alignment,\n \t\t\t\t       &alignment_offset, DEFAULT_DISK_ALIGNMENT);\n \n-\tr = LUKS_check_cipher(cd, volume_key_size, cipher, cipher_mode);\n+\tr = crypt_check_cipher(cd, volume_key_size, cipher, cipher_mode);\n \tif (r < 0)\n \t\treturn r;\n \n@@ -1852,7 +1855,7 @@ static int LUKS2_check_encryption_params(struct crypt_device *cd,\n \t/* FIXME: allow this later also for normal ciphers (check AF_ALG availability. */\n \tif (integrity && integrity_key_size == 0) {\n \t\tr = crypt_cipher_check_kernel(cipher, cipher_mode, integrity, volume_key_size);\n-\t\tif (r < 0) {\n+\t\tif (r < 0 && r != -ENOTSUP) {\n \t\t\tlog_err(cd, _(\"Cipher %s-%s (key size %zd bits) is not available.\"),\n \t\t\t\tcipher, cipher_mode, volume_key_size * 8);\n \t\t\treturn r;\n@@ -1861,7 +1864,7 @@ static int LUKS2_check_encryption_params(struct crypt_device *cd,\n \n \tif ((!integrity || integrity_key_size) && !crypt_cipher_wrapped_key(cipher, cipher_mode) &&\n \t    !INTEGRITY_tag_size(NULL, cipher, cipher_mode)) {\n-\t\tr = LUKS_check_cipher(cd, volume_key_size - integrity_key_size,\n+\t\tr = crypt_check_cipher(cd, volume_key_size - integrity_key_size,\n \t\t\t\t      cipher, cipher_mode);\n \t\tif (r < 0)\n \t\t\treturn r;\n@@ -3560,7 +3563,7 @@ static int _reload_device(struct crypt_device *cd, const char *name,\n \tr = dm_reload_device(cd, name, &tdmd, dmflags, 1);\n out:\n \t/* otherwise dm_targets_free would free src key */\n-\tif (src->u.crypt.vk == tgt->u.crypt.vk)\n+\tif (tgt->type == DM_CRYPT && src->u.crypt.vk == tgt->u.crypt.vk)\n \t\ttgt->u.crypt.vk = NULL;\n \n \tdm_targets_free(cd, &tdmd);\n@@ -3827,7 +3830,7 @@ int crypt_resize(struct crypt_device *cd, const char *name, uint64_t new_size)\n \t\tr = INTEGRITY_data_sectors(cd, crypt_metadata_device(cd),\n \t\t\t\t\t   crypt_get_data_offset(cd) * SECTOR_SIZE, &old_size);\n \t\tif (r < 0)\n-\t\t\treturn r;\n+\t\t\tgoto out;\n \n \t\tdmd.size = dmdq.size;\n \t\tdmd.flags = dmdq.flags | CRYPT_ACTIVATE_REFRESH | CRYPT_ACTIVATE_PRIVATE;\n@@ -3851,7 +3854,7 @@ int crypt_resize(struct crypt_device *cd, const char *name, uint64_t new_size)\n \t\tr = INTEGRITY_data_sectors(cd, crypt_metadata_device(cd),\n \t\t\t\tcrypt_get_data_offset(cd) * SECTOR_SIZE, &new_size);\n \t\tif (r < 0)\n-\t\t\treturn r;\n+\t\t\tgoto out;\n \t\tlog_dbg(cd, \"Maximum integrity device size from kernel %\" PRIu64, new_size);\n \n \t\tif (old_size == new_size && new_size == dmdq.size &&\n@@ -4092,6 +4095,15 @@ int crypt_header_is_detached(struct crypt_device *cd)\n \treturn r ? 0 : 1;\n }\n \n+static void crypt_unlink_keyring_from_thread_keyring(struct crypt_device *cd,\n+\t\tkey_serial_t keyring_id)\n+{\n+\tlog_dbg(cd, \"Unlinking keyring (id: %\" PRIi32 \") from thread keyring.\", keyring_id);\n+\n+\tif (keyring_unlink_key_from_thread_keyring(keyring_id))\n+\t\tlog_dbg(cd, \"keyring_unlink_key_from_thread_keyring failed with errno %d.\", errno);\n+}\n+\n void crypt_free(struct crypt_device *cd)\n {\n \tif (!cd)\n@@ -4102,6 +4114,11 @@ void crypt_free(struct crypt_device *cd)\n \tdm_backend_exit(cd);\n \tcrypt_free_volume_key(cd->volume_key);\n \n+\tif (cd->keyring_description) {\n+\t\tcrypt_unlink_keyring_from_thread_keyring(cd, cd->keyring_id);\n+\t\tfree(CONST_CAST(void*)cd->keyring_description);\n+\t}\n+\n \tcrypt_free_type(cd, NULL);\n \n \tdevice_free(cd, cd->device);\n@@ -4286,18 +4303,35 @@ static int resume_luks1_by_volume_key(struct crypt_device *cd,\n \treturn r;\n }\n \n+static bool unlink_key_from_keyring(struct crypt_device *cd, key_serial_t kid, key_serial_t keyring_id)\n+{\n+\tlog_dbg(cd, \"Unlinking volume key (id: %\" PRIi32 \") from kernel keyring (id: %\" PRIi32 \").\",\n+\t\tkid, keyring_id);\n+\n+\tif (!keyring_unlink_key_from_keyring(kid, keyring_id))\n+\t\treturn true;\n+\n+\tlog_dbg(cd, \"keyring_unlink_key_from_keyring failed with errno %d.\", errno);\n+\n+\treturn false;\n+}\n+\n+/* internal only */\n+void crypt_unlink_key_from_keyring(struct crypt_device *cd,\n+\t\tkey_serial_t key_id)\n+{\n+\t(void)unlink_key_from_keyring(cd, key_id, cd->keyring_id);\n+}\n+\n static void crypt_unlink_key_from_custom_keyring(struct crypt_device *cd, key_serial_t kid)\n {\n \tassert(cd);\n \tassert(cd->keyring_to_link_vk);\n \n-\tlog_dbg(cd, \"Unlinking volume key (id: %\" PRIi32 \") from kernel keyring (id: %\" PRIi32 \").\",\n-\t\tkid, cd->keyring_to_link_vk);\n \n-\tif (!keyring_unlink_key_from_keyring(kid, cd->keyring_to_link_vk))\n+\tif (unlink_key_from_keyring(cd, kid, cd->keyring_to_link_vk))\n \t\treturn;\n \n-\tlog_dbg(cd, \"keyring_unlink_key_from_keyring failed with errno %d.\", errno);\n \tlog_err(cd, _(\"Failed to unlink volume key from user specified keyring.\"));\n }\n \n@@ -4504,6 +4538,7 @@ int crypt_resume_by_keyslot_context(struct crypt_device *cd,\n \tint r;\n \tstruct volume_key *vk = NULL;\n \tint unlocked_keyslot = -EINVAL;\n+\tstruct crypt_dm_active_device dmd = {};\n \n \tif (!name)\n \t\treturn -EINVAL;\n@@ -4522,6 +4557,17 @@ int crypt_resume_by_keyslot_context(struct crypt_device *cd,\n \t\treturn -EINVAL;\n \t}\n \n+\tr = dm_query_device(cd, name, DM_ACTIVE_UUID, &dmd);\n+\tif (r < 0)\n+\t\treturn r;\n+\n+\tr = dm_uuid_cmp(dmd.uuid, LUKS_UUID(cd));\n+\tif (r < 0) {\n+\t\tlog_dbg(cd, \"LUKS device header uuid: %s mismatches DM returned uuid %s\",\n+\t\t\tLUKS_UUID(cd), dmd.uuid);\n+\t\tgoto out;\n+\t}\n+\n \tif (isLUKS1(cd->type) && kc->get_luks1_volume_key)\n \t\tr = kc->get_luks1_volume_key(cd, kc, keyslot, &vk);\n \telse if (isLUKS2(cd->type) && kc->get_luks2_volume_key)\n@@ -4544,12 +4590,11 @@ int crypt_resume_by_keyslot_context(struct crypt_device *cd,\n \t\tgoto out;\n \n \tr = resume_by_volume_key(cd, vk, name);\n-\n-\tcrypt_free_volume_key(vk);\n-\treturn r < 0 ? r : unlocked_keyslot;\n out:\n \tcrypt_free_volume_key(vk);\n-\treturn r;\n+\tfree(CONST_CAST(void*)dmd.uuid);\n+\n+\treturn r < 0 ? r : unlocked_keyslot;\n }\n \n int crypt_resume_by_passphrase(struct crypt_device *cd,\n@@ -5324,7 +5369,7 @@ static int _verify_key(struct crypt_device *cd,\n \t\t\treturn -EINVAL;\n \n \t\tif (unbound_key)\n-\t\t\tr = LUKS2_digest_verify_by_any_matching(cd, vk);\n+\t\t\tr = LUKS2_digest_verify_by_any_matching(cd, vk, /* exclude_default_segment= */ false);\n \t\telse\n \t\t\tr = LUKS2_digest_verify_by_segment(cd, &cd->u.luks2.hdr, CRYPT_DEFAULT_SEGMENT, vk);\n \t} else if (isVERITY(cd->type))\n@@ -5527,7 +5572,7 @@ int crypt_activate_by_keyslot_context(struct crypt_device *cd,\n \t\tif (kc->get_integrity_volume_key)\n \t\t\tr = kc->get_integrity_volume_key(cd, kc, &vk);\n \t}\n-\tif (r < 0 && (r != -ENOENT || kc->type == CRYPT_KC_TYPE_TOKEN))\n+\tif (r < 0 && (r != -ENOENT || kc->type != CRYPT_KC_TYPE_KEY))\n \t\tgoto out;\n \tunlocked_keyslot = r;\n \n@@ -7309,38 +7354,49 @@ static int keyslot_add_by_key(struct crypt_device *cd,\n \tassert(new_passphrase);\n \tassert(vk);\n \n-\tif (!flags)\n-\t\treturn is_luks1 ? luks1_keyslot_add_by_volume_key(cd, keyslot_new, new_passphrase, new_passphrase_size, vk) :\n-\t\t\t\t  luks2_keyslot_add_by_volume_key(cd, keyslot_new, new_passphrase, new_passphrase_size, vk);\n+\tif (is_luks1) {\n+\t\tif (flags)\n+\t\t\treturn -EINVAL;\n+\t\treturn luks1_keyslot_add_by_volume_key(cd, keyslot_new, new_passphrase, new_passphrase_size, vk);\n+\t}\n \n-\tif (is_luks1)\n-\t\treturn -EINVAL;\n+\t/* if passed key matches volume key digest tear down new vk flag */\n+\tif (flags & CRYPT_VOLUME_KEY_SET) {\n+\t\tdigest = LUKS2_digest_verify_by_segment(cd, &cd->u.luks2.hdr, CRYPT_DEFAULT_SEGMENT, vk);\n+\t\tif (digest >= 0)\n+\t\t\tflags &= ~CRYPT_VOLUME_KEY_SET;\n+\t\telse if (digest != -EPERM) /* Anything other than -EPERM suggests broken metadata. Abort */\n+\t\t\treturn digest;\n+\t}\n \n-\tdigest = LUKS2_digest_verify_by_segment(cd, &cd->u.luks2.hdr, CRYPT_DEFAULT_SEGMENT, vk);\n-\tif (digest >= 0) /* if key matches volume key digest tear down new vk flag */\n-\t\tflags &= ~CRYPT_VOLUME_KEY_SET;\n-\telse if (digest == -EPERM) {\n-\t\t/* if key matches any existing digest, do not create new digest */\n-\t\tif ((flags & CRYPT_VOLUME_KEY_DIGEST_REUSE))\n-\t\t\tdigest = LUKS2_digest_verify_by_any_matching(cd, vk);\n+\t/*\n+\t * Drop CRYPT_VOLUME_KEY_DIGEST_REUSE flag if used without CRYPT_VOLUME_KEY_SET\n+\t * or CRYPT_VOLUME_KEY_NO_SEGMENT flags. The standalone CRYPT_VOLUME_KEY_DIGEST_REUSE flag\n+\t * is otherwise equivalent to adding new keyslot with current volume key.\n+\t */\n+\tif ((flags & CRYPT_VOLUME_KEY_DIGEST_REUSE) &&\n+\t    !(flags & (CRYPT_VOLUME_KEY_SET | CRYPT_VOLUME_KEY_NO_SEGMENT)))\n+\t\tflags &= ~CRYPT_VOLUME_KEY_DIGEST_REUSE;\n \n-\t\t/* Anything other than -EPERM or -ENOENT suggests broken metadata. Abort */\n-\t\tif (digest < 0 && digest != -ENOENT && digest != -EPERM)\n-\t\t\treturn digest;\n+\tif (!flags)\n+\t\treturn luks2_keyslot_add_by_volume_key(cd, keyslot_new, new_passphrase, new_passphrase_size, vk);\n \n-\t\t/* no segment flag or new vk flag requires new key digest */\n-\t\tif (flags & (CRYPT_VOLUME_KEY_NO_SEGMENT | CRYPT_VOLUME_KEY_SET)) {\n-\t\t\tif (digest < 0 || !(flags & CRYPT_VOLUME_KEY_DIGEST_REUSE))\n-\t\t\t\tdigest = LUKS2_digest_create(cd, \"pbkdf2\", &cd->u.luks2.hdr, vk);\n-\t\t}\n-\t} else /* Anything other than -EPERM suggests broken metadata. Abort */\n+\tdigest = -ENOENT;\n+\t/* check if passed key matches any existing unbound digest */\n+\tif (flags & CRYPT_VOLUME_KEY_DIGEST_REUSE)\n+\t\tdigest = LUKS2_digest_verify_by_any_matching(cd, vk, /* exclude_default_segment= */ true);\n+\n+\t/* Anything other than -EPERM or -ENOENT suggests broken metadata. Abort */\n+\tif (digest < 0 && digest != -ENOENT && digest != -EPERM)\n \t\treturn digest;\n \n+\t/* no segment flag or new vk flag requires new key digest */\n+\tif (digest < 0 && (flags & (CRYPT_VOLUME_KEY_NO_SEGMENT | CRYPT_VOLUME_KEY_SET)))\n+\t\tdigest = LUKS2_digest_create(cd, \"pbkdf2\", &cd->u.luks2.hdr, vk);\n+\n \tr = digest;\n-\tif (r < 0) {\n-\t\tlog_err(cd, _(\"Volume key does not match the volume.\"));\n+\tif (r < 0)\n \t\treturn r;\n-\t}\n \n \tcrypt_volume_key_set_id(vk, digest);\n \n@@ -7521,6 +7577,11 @@ int crypt_volume_key_keyring(struct crypt_device *cd __attribute__((unused)), in\n /* internal only */\n int crypt_volume_key_load_in_keyring(struct crypt_device *cd, struct volume_key *vk)\n {\n+\tkey_serial_t keyring_id;\n+\tchar *keyring_description;\n+\tchar rnd[4];\n+\tconst char *uuid;\n+\n \tif (!vk || !cd)\n \t\treturn -EINVAL;\n \n@@ -7529,14 +7590,39 @@ int crypt_volume_key_load_in_keyring(struct crypt_device *cd, struct volume_key \n \t\treturn -EINVAL;\n \t}\n \n-\tlog_dbg(cd, \"Loading key (type logon, name %s) in thread keyring.\",\n-\t\tcrypt_volume_key_description(vk));\n+\tif (!cd->keyring_description) {\n+\t\tuuid = crypt_get_uuid(cd);\n+\t\tif (!uuid)\n+\t\t\treturn -EINVAL;\n+\n+\t\tif (crypt_random_get(cd, rnd, sizeof(rnd), CRYPT_RND_NORMAL) < 0)\n+\t\t\treturn -EINVAL;\n+\n+\t\tif (asprintf(&keyring_description, \"cryptsetup-%.8s-%02x%02x%02x%02x\",\n+\t\t\t     uuid, (unsigned char)rnd[0], (unsigned char)rnd[1],\n+\t\t\t     (unsigned char)rnd[2], (unsigned char)rnd[3]) < 0)\n+\t\t\treturn -ENOMEM;\n+\n+\t\tlog_dbg(cd, \"Loading key (type keyring, name %s) in thread keyring.\", keyring_description);\n+\t\tkeyring_id = keyring_add_key_in_thread_keyring(KEYRING_KEY, keyring_description, NULL, 0);\n+\t\tif (keyring_id < 0) {\n+\t\t\tfree(keyring_description);\n+\t\t\tlog_dbg(cd, \"keyring_add_key_in_thread_keyring failed (error %d)\", errno);\n+\t\t\tlog_err(cd, _(\"Failed to load key in kernel keyring.\"));\n+\t\t\treturn -EINVAL;\n+\t\t}\n+\t\tcd->keyring_id = keyring_id;\n+\t\tcd->keyring_description = keyring_description;\n+\t}\n+\n+\tlog_dbg(cd, \"Loading key (type logon, name %s) in %s keyring.\",\n+\t\tcrypt_volume_key_description(vk), cd->keyring_description);\n \n-\tif (crypt_volume_key_upload_kernel_key(vk)) {\n+\tif (crypt_volume_key_upload_kernel_key(vk, cd->keyring_id)) {\n \t\tcrypt_set_key_in_keyring(cd, 1);\n \t\treturn 0;\n \t} else {\n-\t\tlog_dbg(cd, \"keyring_add_key_in_thread_keyring failed (error %d)\", errno);\n+\t\tlog_dbg(cd, \"keyring_add_key_to_keyring failed (error %d)\", errno);\n \t\tlog_err(cd, _(\"Failed to load key in kernel keyring.\"));\n \t\treturn -EINVAL;\n \t}\n@@ -7652,17 +7738,7 @@ void crypt_set_key_in_keyring(struct crypt_device *cd, unsigned key_in_keyring)\n \tcd->key_in_keyring = key_in_keyring;\n }\n \n-/* internal only */\n-void crypt_unlink_key_from_thread_keyring(struct crypt_device *cd,\n-\t\tkey_serial_t key_id)\n-{\n-\tlog_dbg(cd, \"Unlinking volume key (id: %\" PRIi32 \") from thread keyring.\", key_id);\n-\n-\tif (keyring_unlink_key_from_thread_keyring(key_id))\n-\t\tlog_dbg(cd, \"keyring_unlink_key_from_thread_keyring failed with errno %d.\", errno);\n-}\n-\n-void crypt_unlink_key_by_description_from_thread_keyring(struct crypt_device *cd,\n+void crypt_unlink_key_by_description_from_keyring(struct crypt_device *cd,\n \t\tconst char *key_description,\n \t\tkey_type_t ktype)\n {\n@@ -7685,7 +7761,7 @@ void crypt_unlink_key_by_description_from_thread_keyring(struct crypt_device *cd\n \t\treturn;\n \t}\n \n-\tcrypt_unlink_key_from_thread_keyring(cd, kid);\n+\tcrypt_unlink_key_from_keyring(cd, kid);\n }\n \n int crypt_set_keyring_to_link(struct crypt_device *cd, const char *key_description,\ndiff --git a/lib/tcrypt/tcrypt.c b/lib/tcrypt/tcrypt.c\nindex 8fbe651..9e99a61 100644\n--- a/lib/tcrypt/tcrypt.c\n+++ b/lib/tcrypt/tcrypt.c\n@@ -2,8 +2,8 @@\n /*\n  * TCRYPT (TrueCrypt-compatible) and VeraCrypt volume handling\n  *\n- * Copyright (C) 2012-2025 Red Hat, Inc. All rights reserved.\n- * Copyright (C) 2012-2025 Milan Broz\n+ * Copyright (C) 2012-2026 Red Hat, Inc. All rights reserved.\n+ * Copyright (C) 2012-2026 Milan Broz\n  */\n \n #include <errno.h>\n@@ -444,8 +444,6 @@ static int TCRYPT_decrypt_hdr(struct crypt_device *cd, struct tcrypt_phdr *hdr,\n \n \t\tif (r < 0) {\n \t\t\tlog_dbg(cd, \"TCRYPT:   returned error %d, skipped.\", r);\n-\t\t\tif (r == -ENOTSUP)\n-\t\t\t\tbreak;\n \t\t\tr = -ENOENT;\n \t\t\tcontinue;\n \t\t}\n@@ -519,14 +517,18 @@ static int TCRYPT_init_hdr(struct crypt_device *cd,\n \t\t\t   struct tcrypt_phdr *hdr,\n \t\t\t   struct crypt_params_tcrypt *params)\n {\n-\tunsigned char pwd[VCRYPT_KEY_POOL_LEN] = {};\n+\tunsigned char *pwd = NULL;\n \tsize_t passphrase_size, max_passphrase_size;\n-\tchar *key;\n-\tunsigned int i, skipped = 0, iterations;\n+\tchar *key = NULL;\n+\tunsigned int i, iterations;\n \tint r = -EPERM, keyfiles_pool_length;\n \n-\tif (posix_memalign((void*)&key, crypt_getpagesize(), TCRYPT_HDR_KEY_LEN))\n-\t\treturn -ENOMEM;\n+\tpwd = crypt_safe_alloc(VCRYPT_KEY_POOL_LEN);\n+\tkey = crypt_safe_alloc(TCRYPT_HDR_KEY_LEN);\n+\tif (!pwd || !key) {\n+\t\tr = -ENOMEM;\n+\t\tgoto out;\n+\t}\n \n \tif (params->flags & CRYPT_TCRYPT_VERA_MODES &&\n \t    params->passphrase_size > TCRYPT_KEY_POOL_LEN) {\n@@ -588,7 +590,6 @@ static int TCRYPT_init_hdr(struct crypt_device *cd,\n \t\tif (r < 0) {\n \t\t\tlog_verbose(cd, _(\"PBKDF2 hash algorithm %s not available, skipping.\"),\n \t\t\t\t      tcrypt_kdf[i].hash);\n-\t\t\tskipped++;\n \t\t\tr = -EPERM;\n \t\t\tcontinue;\n \t\t}\n@@ -596,7 +597,6 @@ static int TCRYPT_init_hdr(struct crypt_device *cd,\n \t\t/* Decrypt header */\n \t\tr = TCRYPT_decrypt_hdr(cd, hdr, key, params);\n \t\tif (r == -ENOENT) {\n-\t\t\tskipped++;\n \t\t\tr = -EPERM;\n \t\t\tcontinue;\n \t\t}\n@@ -604,13 +604,6 @@ static int TCRYPT_init_hdr(struct crypt_device *cd,\n \t\t\tbreak;\n \t}\n \n-\tif ((r < 0 && skipped && skipped == i) || r == -ENOTSUP) {\n-\t\tlog_err(cd, _(\"Required kernel crypto interface not available.\"));\n-#if ENABLE_AF_ALG\n-\t\tlog_err(cd, _(\"Ensure you have algif_skcipher kernel module loaded.\"));\n-#endif\n-\t\tr = -ENOTSUP;\n-\t}\n \tif (r < 0)\n \t\tgoto out;\n \n@@ -626,10 +619,8 @@ static int TCRYPT_init_hdr(struct crypt_device *cd,\n \t\t\tparams->cipher, params->mode, params->key_size);\n \t}\n out:\n-\tcrypt_safe_memzero(pwd, TCRYPT_KEY_POOL_LEN);\n-\tif (key)\n-\t\tcrypt_safe_memzero(key, TCRYPT_HDR_KEY_LEN);\n-\tfree(key);\n+\tcrypt_safe_free(pwd);\n+\tcrypt_safe_free(key);\n \treturn r;\n }\n \ndiff --git a/lib/tcrypt/tcrypt.h b/lib/tcrypt/tcrypt.h\nindex db3b723..266b8b8 100644\n--- a/lib/tcrypt/tcrypt.h\n+++ b/lib/tcrypt/tcrypt.h\n@@ -2,8 +2,8 @@\n /*\n  * TCRYPT (TrueCrypt-compatible)  header definition\n  *\n- * Copyright (C) 2012-2025 Red Hat, Inc. All rights reserved.\n- * Copyright (C) 2012-2025 Milan Broz\n+ * Copyright (C) 2012-2026 Red Hat, Inc. All rights reserved.\n+ * Copyright (C) 2012-2026 Milan Broz\n  */\n \n #ifndef _CRYPTSETUP_TCRYPT_H\ndiff --git a/lib/utils.c b/lib/utils.c\nindex afde568..b827059 100644\n--- a/lib/utils.c\n+++ b/lib/utils.c\n@@ -4,8 +4,8 @@\n  *\n  * Copyright (C) 2004 Jana Saout <jana@saout.de>\n  * Copyright (C) 2004-2007 Clemens Fruhwirth <clemens@endorphin.org>\n- * Copyright (C) 2009-2025 Red Hat, Inc. All rights reserved.\n- * Copyright (C) 2009-2025 Milan Broz\n+ * Copyright (C) 2009-2026 Red Hat, Inc. All rights reserved.\n+ * Copyright (C) 2009-2026 Milan Broz\n  */\n \n #include <stdio.h>\n@@ -16,6 +16,7 @@\n #include <sys/utsname.h>\n \n #include \"internal.h\"\n+#include \"utils_storage_wrappers.h\"\n \n size_t crypt_getpagesize(void)\n {\n@@ -381,3 +382,70 @@ int crypt_strcmp(const char *a, const char *b)\n \t\treturn 1;\n \treturn strcmp(a, b);\n }\n+\n+int crypt_check_cipher(struct crypt_device *cd,\n+\t\t       size_t keylength,\n+\t\t       const char *cipher,\n+\t\t       const char *cipher_mode)\n+{\n+\tint r;\n+\tchar cipher_spec[2*MAX_CAPI_ONE_LEN], buf[SECTOR_SIZE], *empty_key;\n+\tstruct crypt_storage *s = NULL;\n+\tstruct volume_key *empty_vk = NULL;\n+\tstruct crypt_storage_wrapper *csw = NULL;\n+\n+\tlog_dbg(cd, \"Checking if cipher %s-%s is usable (storage wrapper).\", cipher, cipher_mode);\n+\n+\tempty_key = malloc(keylength);\n+\tif (!empty_key)\n+\t\treturn -ENOMEM;\n+\n+\t/* No need to get KEY quality random but it must avoid known weak keys. */\n+\tr = crypt_random_get(cd, empty_key, keylength, CRYPT_RND_NORMAL);\n+\tif (r < 0)\n+\t\tgoto out;\n+\n+\tr = crypt_storage_init(&s, SECTOR_SIZE, cipher, cipher_mode, empty_key, keylength, false);\n+\tif (!r) {\n+\t\tmemset(buf, 0, sizeof(buf));\n+\t\tr = crypt_storage_decrypt(s, 0, sizeof(buf), buf);\n+\t}\n+\n+\t/* dm-crypt backend requires root access */\n+\tif (!r || (getuid() || geteuid()))\n+\t\tgoto out;\n+\n+\tif (*cipher_mode != '\\0')\n+\t\tr = snprintf(cipher_spec, sizeof(cipher_spec), \"%s-%s\", cipher, cipher_mode);\n+\telse\n+\t\tr = snprintf(cipher_spec, sizeof(cipher_spec), \"%s\", cipher);\n+\tif (r < 0 || (size_t)r >= sizeof(cipher_spec)) {\n+\t\tr = -EINVAL;\n+\t\tgoto out;\n+\t}\n+\n+\tempty_vk = crypt_alloc_volume_key(keylength, empty_key);\n+\tif (!empty_vk) {\n+\t\tr = -ENOMEM;\n+\t\tgoto out;\n+\t}\n+\n+\tr = crypt_storage_wrapper_init(cd, &csw, crypt_metadata_device(cd), 0, 0, SECTOR_SIZE,\n+\t\t\t\t       cipher_spec, empty_vk, CSW_DMCRYPT_ONLY | CSW_OPEN_READONLY);\n+\tif (r)\n+\t\tgoto out;\n+\n+\tmemset(buf, 0, sizeof(buf));\n+\tr = crypt_storage_wrapper_read_decrypt(csw, 0, &buf, sizeof(buf));\n+\tcrypt_safe_memzero(buf, sizeof(buf));\n+\tif (r < 0 || (size_t)r != sizeof(buf))\n+\t\tr = -EIO;\n+\telse\n+\t\tr = 0;\n+out:\n+\tcrypt_storage_destroy(s);\n+\tfree(empty_key);\n+\tcrypt_storage_wrapper_destroy(csw);\n+\tcrypt_free_volume_key(empty_vk);\n+\treturn r;\n+}\ndiff --git a/lib/utils_benchmark.c b/lib/utils_benchmark.c\nindex 3694f27..7c5ca03 100644\n--- a/lib/utils_benchmark.c\n+++ b/lib/utils_benchmark.c\n@@ -2,8 +2,8 @@\n /*\n  * libcryptsetup - cryptsetup library, cipher benchmark\n  *\n- * Copyright (C) 2012-2025 Red Hat, Inc. All rights reserved.\n- * Copyright (C) 2012-2025 Milan Broz\n+ * Copyright (C) 2012-2026 Red Hat, Inc. All rights reserved.\n+ * Copyright (C) 2012-2026 Milan Broz\n  */\n \n #include <stdlib.h>\ndiff --git a/lib/utils_blkid.c b/lib/utils_blkid.c\nindex 44e501b..c2bcb40 100644\n--- a/lib/utils_blkid.c\n+++ b/lib/utils_blkid.c\n@@ -2,7 +2,7 @@\n /*\n  * blkid probe utilities\n  *\n- * Copyright (C) 2018-2025 Red Hat, Inc. All rights reserved.\n+ * Copyright (C) 2018-2026 Red Hat, Inc. All rights reserved.\n  */\n \n #include <errno.h>\n@@ -217,6 +217,7 @@ int blk_do_wipe(struct blkid_handle *h)\n \treturn blkid_do_wipe(h->pr, 0);\n #else\n \tconst char *offset;\n+\tchar *end;\n \toff_t offset_val;\n \tvoid *buf;\n \tssize_t ret;\n@@ -244,7 +245,11 @@ int blk_do_wipe(struct blkid_handle *h)\n \t\treturn -EINVAL;\n \tmemset(buf, 0, len);\n \n-\toffset_val = strtoll(offset, NULL, 10);\n+\toffset_val = strtoll(offset, &end, 10);\n+\tif (*end || !*offset || errno == ERANGE) {\n+\t\tfree(buf);\n+\t\treturn -EINVAL;\n+\t}\n \n \t/* TODO: missing crypt_wipe_fd() */\n \tret = write_lseek_blockwise(h->fd, bsize, alignment, buf, len, offset_val);\ndiff --git a/lib/utils_blkid.h b/lib/utils_blkid.h\nindex 2112575..87caeed 100644\n--- a/lib/utils_blkid.h\n+++ b/lib/utils_blkid.h\n@@ -2,7 +2,7 @@\n /*\n  * blkid probe utilities\n  *\n- * Copyright (C) 2018-2025 Red Hat, Inc. All rights reserved.\n+ * Copyright (C) 2018-2026 Red Hat, Inc. All rights reserved.\n  */\n \n #ifndef _UTILS_BLKID_H\ndiff --git a/lib/utils_crypt.c b/lib/utils_crypt.c\nindex a5eca18..b2da0e7 100644\n--- a/lib/utils_crypt.c\n+++ b/lib/utils_crypt.c\n@@ -3,8 +3,8 @@\n  * utils_crypt - cipher utilities for cryptsetup\n  *\n  * Copyright (C) 2004-2007 Clemens Fruhwirth <clemens@endorphin.org>\n- * Copyright (C) 2009-2025 Red Hat, Inc. All rights reserved.\n- * Copyright (C) 2009-2025 Milan Broz\n+ * Copyright (C) 2009-2026 Red Hat, Inc. All rights reserved.\n+ * Copyright (C) 2009-2026 Milan Broz\n  */\n \n #include <stdlib.h>\n@@ -298,7 +298,7 @@ int crypt_capi_to_cipher(char **org_c, char **org_i, const char *c_dm, const cha\n \t\treturn -EINVAL;\n \n \t/* legacy mode */\n-\tif (strncmp(c_dm, \"capi:\", 4)) {\n+\tif (strncmp(c_dm, \"capi:\", 5)) {\n \t\tif (!(*org_c = strdup(c_dm)))\n \t\t\treturn -ENOMEM;\n \t\tif (i_dm) {\ndiff --git a/lib/utils_crypt.h b/lib/utils_crypt.h\nindex 21cf4b5..2183cf1 100644\n--- a/lib/utils_crypt.h\n+++ b/lib/utils_crypt.h\n@@ -3,8 +3,8 @@\n  * utils_crypt - cipher utilities for cryptsetup\n  *\n  * Copyright (C) 2004-2007 Clemens Fruhwirth <clemens@endorphin.org>\n- * Copyright (C) 2009-2025 Red Hat, Inc. All rights reserved.\n- * Copyright (C) 2009-2025 Milan Broz\n+ * Copyright (C) 2009-2026 Red Hat, Inc. All rights reserved.\n+ * Copyright (C) 2009-2026 Milan Broz\n  */\n \n #ifndef _UTILS_CRYPT_H\ndiff --git a/lib/utils_device.c b/lib/utils_device.c\nindex 1cdbcc6..a267078 100644\n--- a/lib/utils_device.c\n+++ b/lib/utils_device.c\n@@ -4,8 +4,8 @@\n  *\n  * Copyright (C) 2004 Jana Saout <jana@saout.de>\n  * Copyright (C) 2004-2007 Clemens Fruhwirth <clemens@endorphin.org>\n- * Copyright (C) 2009-2025 Red Hat, Inc. All rights reserved.\n- * Copyright (C) 2009-2025 Milan Broz\n+ * Copyright (C) 2009-2026 Red Hat, Inc. All rights reserved.\n+ * Copyright (C) 2009-2026 Milan Broz\n  */\n \n #include <string.h>\n@@ -153,7 +153,7 @@ static int device_read_test(struct crypt_device *cd, int devfd)\n \tif (minsize > sizeof(buffer))\n \t\tminsize = sizeof(buffer);\n \n-\tif (read_blockwise(devfd, blocksize, alignment, buffer, minsize) == (ssize_t)minsize) {\n+\tif (read_lseek_blockwise(devfd, blocksize, alignment, buffer, minsize, 0) == (ssize_t)minsize) {\n \t\tlog_dbg(cd, \"Direct-io read works.\");\n \t\tr = 0;\n \t} else {\n@@ -676,7 +676,7 @@ int device_fallocate(struct device *device, uint64_t size)\n \t\treturn -EINVAL;\n \n \tif (!fstat(devfd, &st) && S_ISREG(st.st_mode) &&\n-\t    ((uint64_t)st.st_size >= size || !posix_fallocate(devfd, 0, size))) {\n+\t    ((uint64_t)st.st_size >= size || !(r = posix_fallocate(devfd, 0, size)))) {\n \t\tr = 0;\n \t\tif (device->file_path && crypt_loop_resize(device->path))\n \t\t\tr = -EINVAL;\n@@ -690,6 +690,7 @@ int device_check_size(struct crypt_device *cd,\n \t\t      struct device *device,\n \t\t      uint64_t req_offset, int falloc)\n {\n+\tint r;\n \tuint64_t dev_size;\n \n \tif (device_size(device, &dev_size)) {\n@@ -701,8 +702,17 @@ int device_check_size(struct crypt_device *cd,\n \n \tif (req_offset > dev_size) {\n \t\t/* If it is header file, increase its size */\n-\t\tif (falloc && !device_fallocate(device, req_offset))\n-\t\t\treturn 0;\n+\t\tif (falloc) {\n+\t\t\tif (!(r = device_fallocate(device, req_offset)))\n+\t\t\t\treturn 0;\n+\n+\t\t\t/* posix_fallocate returns positive errno on error */\n+\t\t\tif (r > 0) {\n+\t\t\t\tlog_err(cd, _(\"Cannot grow %s to %\" PRIu64 \" bytes (%s).\"),\n+\t\t\t\t\tdevice_path(device), req_offset, strerror(r));\n+\t\t\t\treturn -EINVAL;\n+\t\t\t}\n+\t\t}\n \n \t\tlog_err(cd, _(\"Device %s is too small. Need at least %\" PRIu64 \" bytes.\"),\n \t\t\tdevice_path(device), req_offset);\n@@ -1037,7 +1047,7 @@ size_t device_alignment(struct device *device)\n \tint devfd;\n \n \tif (!device)\n-\t\treturn -EINVAL;\n+\t\treturn 0;\n \n \tif (!device->alignment) {\n \t\tdevfd = open(device_path(device), O_RDONLY);\n",
+ "diff_truncated": true
+}

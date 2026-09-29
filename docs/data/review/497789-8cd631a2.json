@@ -1,0 +1,27 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~tchavadar/ubuntu/+source/software-properties/+git/software-properties/+merge/497789",
+ "id": "497789",
+ "title": "On noble version of add-apt-repository, -ss command should add missing",
+ "source_branch": "ubuntu/noble-devel",
+ "target_branch": "ubuntu/noble-devel",
+ "revision": "7ef68bdebd78f3abf6e3b3335a553764c1b93a12",
+ "base_revision": "95144c396bf1a092b4937cda0c7ee5e9da31eac1",
+ "description": "    On noble version of add-apt-repository, -ss command should add missing\n    deb-src for the sources but it was doing nothing, with addition of\n    deb822=True in __init__ it is able to add deb-src properly.\n",
+ "commit_message": null,
+ "diffstat": {
+  "add-apt-repository": [
+   17,
+   11
+  ],
+  "debian/changelog": [
+   15,
+   0
+  ]
+ },
+ "files": 2,
+ "added_lines": 32,
+ "removed_lines": 11,
+ "diff": "diff --git a/add-apt-repository b/add-apt-repository\nindex 8dc338f..9e60ed0 100755\n--- a/add-apt-repository\n+++ b/add-apt-repository\n@@ -19,7 +19,7 @@ from softwareproperties.uri import URIShortcutHandler\n from softwareproperties.sourceutils import *\n \n \n-from aptsources.sourceslist import SourcesList, SourceEntry\n+from aptsources.sourceslist import SourcesList, SourceEntry, Deb822SourceEntry\n from aptsources.distro import get_distro\n from copy import copy\n from gettext import gettext as _\n@@ -34,7 +34,7 @@ class AddAptRepository(object):\n     def __init__(self):\n         gettext.textdomain(\"software-properties\")\n         self.distro = get_distro()\n-        self.sourceslist = SourcesList()\n+        self.sourceslist = SourcesList(deb822=True)\n         self.distro.get_sources(self.sourceslist)\n \n     def parse_args(self, args):\n@@ -299,7 +299,7 @@ class AddAptRepository(object):\n                 continue\n \n             s = replace_source_entry(b, type=self.source_type)\n-            s_entry = get_source_entry_from_list(self.sourceslist, s)\n+            s_entry = get_source_entry_from_list([e for e in self.sourceslist if not e.invalid], s)\n \n             scomps = set(s_entry.comps if s_entry else [])\n             missing_comps = list(set(b.comps) - scomps)\n@@ -308,14 +308,20 @@ class AddAptRepository(object):\n             s.comps = missing_comps\n             if self.options.enable_source > 1:\n                 # with multiple -s, add new deb-src entries if needed for all deb entries\n-                self.sourceslist.add(\n-                    type=s.type,\n-                    uri=s.uri,\n-                    dist=s.dist,\n-                    orig_comps=s.comps,\n-                    file=s.file,\n-                )\n-                print(_(\"Added: %s\") % str(s).strip())\n+                if isinstance(b, Deb822SourceEntry):\n+                    # For DEB822, add deb-src to existing entry's types to preserve Signed-By\n+                    if self.source_type not in b.types:\n+                        b.types = b.types + [self.source_type]\n+                        print(_(\"Added %s to: %s\") % (self.source_type, b.file))\n+                else:\n+                    self.sourceslist.add(\n+                        type=s.type,\n+                        uri=s.uri,\n+                        dist=s.dist,\n+                        orig_comps=s.comps,\n+                        file=s.file,\n+                    )\n+                    print(_(\"Added: %s\") % str(s).strip())\n             else:\n                 # if only one -s used, don't add missing deb-src, just notify\n                 print(_(\"Warning, missing deb-src for: %s\") % str(s).strip())\ndiff --git a/debian/changelog b/debian/changelog\nindex 4fd4d0f..fcaa408 100644\n--- a/debian/changelog\n+++ b/debian/changelog\n@@ -1,3 +1,18 @@\n+software-properties (0.99.49.5) noble; urgency=medium\n+\n+  * add-apt-repository: fix -ss not working properly (LP: #2093420)\n+    - On noble version of add-apt-repository, -ss command should add missing\n+      deb-src for the sources but it was doing nothing, with addition of\n+      deb822=True in __init__ it is able to add deb-src properly.\n+    - Added guard for possible co-existence of traditional sources.list and\n+      deb822 format, since in noble co-existence is still possible.\n+    - For DEB822 format entries, add deb-src to existing entry's Types field\n+      instead of creating a separate entry. This preserves the Signed-By\n+      attribute and prevents apt \"Conflicting values set for option Signed-By\"\n+      errors during apt update.\n+\n+ -- Talha Can Havadar <talha.can.havadar@canonical.com>  Fri, 13 Feb 2026 12:21:42 +0100\n+\n software-properties (0.99.49.4) noble; urgency=medium\n \n   * cloudarchive.py: Enable support for the Gazpacho Ubuntu Cloud Archive on 24.04\n",
+ "diff_truncated": false
+}

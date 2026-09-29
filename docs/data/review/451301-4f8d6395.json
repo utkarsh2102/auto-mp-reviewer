@@ -1,0 +1,31 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~mitchdz/ubuntu/+source/multipath-tools/+git/multipath-tools/+merge/451301",
+ "id": "451301",
+ "title": "PPA - https://launchpad.net/~mitchdz/+archive/ubuntu/multipath-tools-change-service-requires",
+ "source_branch": "mitch/update_multipathd_service",
+ "target_branch": "ubuntu/devel",
+ "revision": "0b39ea522aea1ff3df712d4feaffe01a23e6f936",
+ "base_revision": "28f8332fe5c59ccaca4c7a6632fc27cb0374a0b7",
+ "description": "PPA - https://launchpad.net/~mitchdz/+archive/ubuntu/multipath-tools-change-service-requires",
+ "commit_message": null,
+ "diffstat": {
+  "debian/changelog": [
+   7,
+   0
+  ],
+  "debian/patches/lp2034471-multipathd-add-Wants-socket.patch": [
+   27,
+   0
+  ],
+  "debian/patches/series": [
+   1,
+   0
+  ]
+ },
+ "files": 3,
+ "added_lines": 35,
+ "removed_lines": 0,
+ "diff": "diff --git a/debian/changelog b/debian/changelog\nindex 032e3d0..f31ac22 100644\n--- a/debian/changelog\n+++ b/debian/changelog\n@@ -1,3 +1,10 @@\n+multipath-tools (0.9.4-5ubuntu4) mantic; urgency=medium\n+\n+  * d/p/lp2034471-multipathd-add-Wants-socket.patch: add\n+    Wants=multipathd.socket (LP: #2034471)\n+\n+ -- Mitchell Dzurick <mitchell.dzurick@canonical.com>  Wed, 13 Sep 2023 12:20:16 -0400\n+\n multipath-tools (0.9.4-5ubuntu3) mantic; urgency=medium\n \n   * d/initramfs/scripts/{local-bottom,local-top}/multipath: Make initramfs\ndiff --git a/debian/patches/lp2034471-multipathd-add-Wants-socket.patch b/debian/patches/lp2034471-multipathd-add-Wants-socket.patch\nnew file mode 100644\nindex 0000000..ef16218\n--- /dev/null\n+++ b/debian/patches/lp2034471-multipathd-add-Wants-socket.patch\n@@ -0,0 +1,27 @@\n+Description: Add Wants=multipathd.socket to multipathd.service\n+    This solves the issue where systemd knows the start order of the \n+    service/socket, but there is no dependency explicitly mentioned. This \n+    causes an issue if you try to start the socket after the service by doing\n+    something such as\n+    \n+        systemctl stop multipathd.service multipathd.socket\n+        systemctl start multipathd.service multipathd.socket\n+    \n+    The socket would see that it is already active, thus causing an error. This\n+    results in the socket ending up in an inactive state.\n+Author: Mitchell Dzurick <mitchell.dzurick@canonical.com>\n+Forwarded: https://github.com/opensvc/multipath-tools/pull/72\n+Bug-Ubuntu: https://bugs.launchpad.net/ubuntu/+source/multipath-tools/+bug/2034471\n+Last-Update: 2023-09-13\n+---\n+This patch header follows DEP-3: http://dep.debian.net/deps/dep3/\n+--- a/multipathd/multipathd.service\n++++ b/multipathd/multipathd.service\n+@@ -5,6 +5,7 @@\n+ Wants=systemd-udevd-kernel.socket\n+ After=systemd-udevd-kernel.socket\n+ After=multipathd.socket systemd-remount-fs.service\n++Wants=multipathd.socket\n+ Before=initrd-cleanup.service\n+ DefaultDependencies=no\n+ Conflicts=shutdown.target\ndiff --git a/debian/patches/series b/debian/patches/series\nindex 1a0661f..dac4dea 100644\n--- a/debian/patches/series\n+++ b/debian/patches/series\n@@ -5,3 +5,4 @@ enable-find-multipaths.patch\n 0009-kpartx-rules-use-Debian-specific-partx-path.patch\n 0012-Reproducible-build.patch\n 0006-multipathd.service-re-add-ExecStartPre.patch\n+lp2034471-multipathd-add-Wants-socket.patch\n",
+ "diff_truncated": false
+}

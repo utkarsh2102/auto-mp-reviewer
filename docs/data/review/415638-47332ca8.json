@@ -1,0 +1,23 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~xnox/ubuntu-archive-tools/+git/ubuntu-archive-tools/+merge/415638",
+ "id": "415638",
+ "title": "kernel-sru-review: change task target from promote-to-proposed to sru-review",
+ "source_branch": "kernel-sru-review",
+ "target_branch": "main",
+ "revision": "76168e0f42b6bede360dd1140f85c9ddbad46ad0",
+ "base_revision": "bd90f6a5ccf65919adec1ec694fc54496a7eba3c",
+ "description": null,
+ "commit_message": "kernel-sru-review: change task target from promote-to-proposed to sru-review\n\nKernel trackers now have an explicit task called sru-review. It should happen before signing, which happens before promote-to-proposed. It is not approriate to do sru-review after signing-bot has completed signing. We must update kernel-sru-review script to perform sru-review when sru-review is in-progress/confirmed, as at promote-to-proposed it is too late, and signed binaries already happened.",
+ "diffstat": {
+  "kernel-sru-review": [
+   1,
+   1
+  ]
+ },
+ "files": 1,
+ "added_lines": 1,
+ "removed_lines": 1,
+ "diff": "diff --git a/kernel-sru-review b/kernel-sru-review\nindex 883176f..5dd7565 100755\n--- a/kernel-sru-review\n+++ b/kernel-sru-review\n@@ -159,7 +159,7 @@ def generate_diff_from_master(me, archive, master_source, master_version,\n \n def review_task_callback(lp, bugnum, task, context):\n     if str(task.target) != \\\n-       ('%skernel-sru-workflow/promote-to-proposed' % str(lp._root_uri)):\n+       ('%skernel-sru-workflow/sru-review' % str(lp._root_uri)):\n         return {}\n     if task.status == 'Confirmed':\n         return {'proposed': task}\n",
+ "diff_truncated": false
+}

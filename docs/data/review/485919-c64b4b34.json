@@ -1,0 +1,35 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~hectorcao/ubuntu/+source/libvirt/+git/libvirt/+merge/485919",
+ "id": "485919",
+ "title": "lp2106791/plucky → ubuntu/plucky-devel",
+ "source_branch": "lp2106791/plucky",
+ "target_branch": "ubuntu/plucky-devel",
+ "revision": "548679c347ee2da8772a9d15cc7bd99db92d0047",
+ "base_revision": "5807120b941b8e2f4aea69e4ab4338965f0839fd",
+ "description": null,
+ "commit_message": null,
+ "diffstat": {
+  "debian/changelog": [
+   9,
+   0
+  ],
+  "debian/libvirt0.postinst": [
+   34,
+   0
+  ],
+  "debian/local/modules-load.conf": [
+   1,
+   0
+  ],
+  "debian/rules": [
+   9,
+   0
+  ]
+ },
+ "files": 4,
+ "added_lines": 53,
+ "removed_lines": 0,
+ "diff": "diff --git a/debian/changelog b/debian/changelog\nindex 271948d..84246f3 100644\n--- a/debian/changelog\n+++ b/debian/changelog\n@@ -1,3 +1,12 @@\n+libvirt (11.0.0-2ubuntu6.3) plucky; urgency=medium\n+\n+  * Fix detection of Sapphire Rapids CPU model (LP: #2106791)\n+    - d/rules,d/libvirt0.postinst: Request msr module to be loaded\n+      The module msr is needed by libvirt to read MSR registers\n+      and detect some CPU features.\n+\n+ -- Hector Cao <hector.cao@canonical.com>  Wed, 02 Jul 2025 11:09:45 +0200\n+\n libvirt (11.0.0-2ubuntu6.2) plucky; urgency=medium\n \n   * l-d-config-network.postinst: clear 'autostarted' state, to activate\ndiff --git a/debian/libvirt0.postinst b/debian/libvirt0.postinst\nnew file mode 100644\nindex 0000000..fa930f5\n--- /dev/null\n+++ b/debian/libvirt0.postinst\n@@ -0,0 +1,34 @@\n+#!/bin/sh\n+\n+set -e\n+\n+# summary of how this script can be called:\n+#        * <postinst> `configure' <most-recently-configured-version>\n+#        * <old-postinst> `abort-upgrade' <new version>\n+#        * <conflictor's-postinst> `abort-remove' `in-favour' <package>\n+#          <new-version>\n+#        * <postinst> `abort-remove'\n+#        * <deconfigured's-postinst> `abort-deconfigure' `in-favour'\n+#          <failed-install-package> <version> `removing'\n+#          <conflicting-package> <version>\n+# for details, see https://www.debian.org/doc/debian-policy/ or\n+# the debian-policy package\n+\n+case \"$1\" in\n+    configure)\n+        # Load the msr module (LP: #2106791)\n+        modprobe msr || true\n+    ;;\n+\n+    abort-upgrade|abort-remove|abort-deconfigure)\n+    ;;\n+\n+    *)\n+        echo \"postinst called with unknown argument \\`$1'\" >&2\n+        exit 1\n+    ;;\n+esac\n+\n+#DEBHELPER#\n+\n+exit 0\ndiff --git a/debian/local/modules-load.conf b/debian/local/modules-load.conf\nnew file mode 100644\nindex 0000000..3e5ee7f\n--- /dev/null\n+++ b/debian/local/modules-load.conf\n@@ -0,0 +1 @@\n+msr\ndiff --git a/debian/rules b/debian/rules\nindex 4f5169d..306aac1 100755\n--- a/debian/rules\n+++ b/debian/rules\n@@ -286,6 +286,15 @@ ifeq ($(DEB_HOST_ARCH_OS), linux)\n \t# Add profile script to automatically set default URI\n \tmkdir -p $(DEB_DESTDIR)/etc/profile.d/\n \tcp -f debian/libvirt-uri.sh $(DEB_DESTDIR)/etc/profile.d/\n+\n+ifneq ($(filter $(DEB_HOST_ARCH),amd64 i386),)\n+\t# Add msr module to be loaded at boot\n+\t# Since the msr read functionality is in libvirt0, we install the modules-load.d file\n+\t# as part of the libvirt0 binary package\n+\tmkdir -p debian/libvirt0/usr/lib/modules-load.d/\n+\tinstall -D -m 644 debian/local/modules-load.conf debian/libvirt0/usr/lib/modules-load.d/libvirt.conf\n+endif\n+\n endif\n \n \t# Copy the release notes where dh_installdocs can find them\n",
+ "diff_truncated": false
+}

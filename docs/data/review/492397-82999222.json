@@ -1,0 +1,23 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~akasurde/ubuntu/+source/rust-sudo-rs/+git/rust-sudo-rs/+merge/492397",
+ "id": "492397",
+ "title": "visudo: Update help message",
+ "source_branch": "visudo_help_message",
+ "target_branch": "ubuntu/devel",
+ "revision": "123f93096b35860778b2214f919a09f06aeb106d",
+ "base_revision": "a3c5f75faf6e3a5d05bf1fc3172293b32705ba06",
+ "description": "* Added missing -I in the help message\n* Added missing -h in the help message",
+ "commit_message": "visudo: Update help message",
+ "diffstat": {
+  "src/visudo/help.rs": [
+   3,
+   1
+  ]
+ },
+ "files": 1,
+ "added_lines": 3,
+ "removed_lines": 1,
+ "diff": "diff --git a/src/visudo/help.rs b/src/visudo/help.rs\nindex c6b90d3..4436bb3 100644\n--- a/src/visudo/help.rs\n+++ b/src/visudo/help.rs\n@@ -1,4 +1,6 @@\n-pub(crate) const USAGE_MSG: &str = \"usage: visudo [-chqsV] [[-f] sudoers ]\";\n+pub(crate) const USAGE_MSG: &str = \"\\\n+usage: visudo -h\n+usage: visudo [-chIqsV] [[-f] sudoers ]\";\n \n const DESCRIPTOR: &str = \"visudo - safely edit the sudoers file\";\n \n",
+ "diff_truncated": false
+}

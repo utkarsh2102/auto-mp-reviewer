@@ -1,0 +1,31 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~michal-maloszewski99/ubuntu/+source/apache2/+git/apache2/+merge/453166",
+ "id": "453166",
+ "title": "dolphin-jammy-1927742 → ubuntu/jammy-devel",
+ "source_branch": "dolphin-jammy-1927742",
+ "target_branch": "ubuntu/jammy-devel",
+ "revision": "efe9a9d53dd7c4e8b94f4a84f1495222f7113059",
+ "base_revision": "70dbb49382d62671f90b5e8b732431db5898ef7a",
+ "description": null,
+ "commit_message": null,
+ "diffstat": {
+  "debian/changelog": [
+   7,
+   0
+  ],
+  "debian/patches/fix-dolphin-to-delete-webdav-dirs.patch": [
+   17,
+   0
+  ],
+  "debian/patches/series": [
+   1,
+   0
+  ]
+ },
+ "files": 3,
+ "added_lines": 25,
+ "removed_lines": 0,
+ "diff": "diff --git a/debian/changelog b/debian/changelog\nindex 10f1284..27c583f 100644\n--- a/debian/changelog\n+++ b/debian/changelog\n@@ -1,3 +1,10 @@\n+apache2 (2.4.52-1ubuntu4.7) jammy; urgency=medium\n+\n+  * d/p/fix-dolphin-to-delete-webdav-dirs.patch: Fix dolphin to make it\n+    possible to delete webdav directories. (LP: #1927742)\n+\n+ -- Michal Maloszewski <michal.maloszewski@canonical.com>  Mon, 09 Oct 2023 21:52:03 +0200\n+\n apache2 (2.4.52-1ubuntu4.6) jammy; urgency=medium\n \n   * d/p/reenable-workers-in-standard-error-state-jammy-apache2.patch:\ndiff --git a/debian/patches/fix-dolphin-to-delete-webdav-dirs.patch b/debian/patches/fix-dolphin-to-delete-webdav-dirs.patch\nnew file mode 100644\nindex 0000000..84fd8d1\n--- /dev/null\n+++ b/debian/patches/fix-dolphin-to-delete-webdav-dirs.patch\n@@ -0,0 +1,17 @@\n+Description: Fix dolphin to make it possible to delete webdav dirs\n+Author: Michal Maloszewski <michal.maloszewski@canonical.com>\n+Bug: https://bz.apache.org/bugzilla/show_bug.cgi?id=67039\n+Bug-Ubuntu: https://bugs.launchpad.net/ubuntu/+source/apache2/+bug/1927742\n+Last-Update: 2023-10-09\n+---\n+docs/conf/extra/httpd-dav.conf.in | 2 ++\n+1 file changed, 2 insertions(+), 0 deletions(-)\n+\n+--- a/docs/conf/extra/httpd-dav.conf.in\n++++ b/docs/conf/extra/httpd-dav.conf.in\n+@@ -48,3 +48,5 @@\n+ BrowserMatch \"^XML Spy\" redirect-carefully\n+ BrowserMatch \"^Dreamweaver-WebDAV-SCM1\" redirect-carefully\n+ BrowserMatch \" Konqueror/4\" redirect-carefully\n++BrowserMatch \" Konqueror/5\" redirect-carefully\n++BrowserMatch \" dolphin/\" redirect-carefully\ndiff --git a/debian/patches/series b/debian/patches/series\nindex fd21a1e..e4e8cdd 100644\n--- a/debian/patches/series\n+++ b/debian/patches/series\n@@ -33,3 +33,4 @@ CVE-2023-25690-2.patch\n CVE-2023-27522.patch\n mod_proxy_hcheck_jammy_fix_to_detect_support.patch\n reenable-workers-in-standard-error-state-jammy-apache2.patch\n+fix-dolphin-to-delete-webdav-dirs.patch\n",
+ "diff_truncated": false
+}

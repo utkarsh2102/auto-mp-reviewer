@@ -1,0 +1,1619 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~jawn-smith/ubuntu/+source/u-boot/+git/u-boot/+merge/404934",
+ "id": "404934",
+ "title": "SRU changes from Hirsute to enable booting on the unmatched",
+ "source_branch": "ubuntu/focal-devel",
+ "target_branch": "ubuntu/focal-devel",
+ "revision": "271e3b0a9b545e83fa72a3ef1bb2ff983cd1bd5d",
+ "base_revision": "8fe4fb1adb426d48240c0a8f45c2e75f7ef195ae",
+ "description": null,
+ "commit_message": "SRU changes from Hirsute to enable booting on the unmatched",
+ "diffstat": {
+  "configs/bcm968380gerg_ram_defconfig": [
+   1,
+   1
+  ],
+  "debian/patches/riscv64/0031-Update-SiFive-Unmatched-defconfig.patch": [
+   42,
+   0
+  ],
+  "arch/x86/dts/edison.dts": [
+   49,
+   1
+  ],
+  "arch/arm/cpu/armv8/fsl-layerscape/fsl_lsch3_serdes.c": [
+   4,
+   4
+  ],
+  "arch/arm/include/asm/mach-imx/sys_proto.h": [
+   5,
+   0
+  ],
+  "test/Kconfig": [
+   19,
+   0
+  ],
+  "arch/powerpc/cpu/mpc86xx/fdt.c": [
+   3,
+   1
+  ],
+  "common/Kconfig.boot": [
+   910,
+   0
+  ],
+  "configs/integratorap_cm920t_defconfig": [
+   1,
+   1
+  ],
+  "arch/arm/dts/stm32429i-eval-u-boot.dtsi": [
+   5,
+   1
+  ],
+  "drivers/mmc/Kconfig": [
+   13,
+   0
+  ],
+  "arch/powerpc/dts/p1020rdb-pc.dts": [
+   16,
+   0
+  ],
+  "include/timer.h": [
+   43,
+   23
+  ],
+  "include/configs/puma_rk3399.h": [
+   0,
+   4
+  ],
+  "cmd/broadcom/Makefile": [
+   6,
+   0
+  ],
+  "configs/opos6uldev_defconfig": [
+   8,
+   4
+  ],
+  "arch/arm/dts/imx6qdl-aristainetos2-u-boot.dtsi": [
+   0,
+   22
+  ],
+  "include/configs/kmp204x.h": [
+   0,
+   7
+  ],
+  "arch/arm/mach-zynqmp/Kconfig": [
+   3,
+   0
+  ],
+  "arch/sandbox/cpu/eth-raw-os.c": [
+   4,
+   4
+  ],
+  "arch/arm/dts/meson-gxl-s905x-libretech-cc.dts": [
+   74,
+   3
+  ],
+  "configs/novena_defconfig": [
+   5,
+   3
+  ],
+  "arch/arm/dts/fsl-imx8qxp-apalis-u-boot.dtsi": [
+   139,
+   0
+  ],
+  "arch/arm/dts/stm32mp15-u-boot.dtsi": [
+   7,
+   0
+  ],
+  "board/ge/b1x5v2/Kconfig": [
+   14,
+   0
+  ],
+  "doc/device-tree-bindings/chosen.txt": [
+   18,
+   0
+  ],
+  "doc/README.dfu": [
+   1,
+   1
+  ],
+  "debian/patches/arndale/board-spl-rule.diff": [
+   3,
+   5
+  ],
+  "configs/boston64r6el_defconfig": [
+   2,
+   2
+  ],
+  "drivers/pinctrl/meson/pinctrl-meson-axg-pmx.c": [
+   4,
+   1
+  ],
+  "arch/powerpc/dts/p4080.dtsi": [
+   9,
+   0
+  ],
+  "arch/arm/dts/sam9x60ek-u-boot.dtsi": [
+   9,
+   61
+  ],
+  "arch/arm/include/asm/arch-sunxi/gpio.h": [
+   1,
+   0
+  ],
+  "arch/arm/dts/k3-j7200-mcu-wakeup.dtsi": [
+   40,
+   0
+  ],
+  "include/i2c.h": [
+   23,
+   0
+  ],
+  "include/binman_sym.h": [
+   1,
+   1
+  ],
+  "arch/arm/include/asm/arch-fsl-layerscape/stream_id_lsch3.h": [
+   6,
+   4
+  ],
+  "configs/udoo_defconfig": [
+   1,
+   1
+  ],
+  "configs/socfpga_de10_nano_defconfig": [
+   2,
+   2
+  ],
+  "lib/efi_loader/efi_file.c": [
+   1,
+   1
+  ],
+  "arch/x86/include/asm/arch-apollolake/acpi/pcie.asl": [
+   22,
+   0
+  ],
+  "tools/binman/etype/u_boot_env.py": [
+   42,
+   0
+  ],
+  "arch/x86/include/asm/acpi_table.h": [
+   162,
+   0
+  ],
+  "fs/btrfs/btrfs.c": [
+   190,
+   129
+  ],
+  "configs/imx6q_logic_defconfig": [
+   3,
+   3
+  ],
+  "configs/ls2080aqds_defconfig": [
+   1,
+   0
+  ],
+  "debian/manpages/u-boot-install-sunxi.8": [
+   18,
+   12
+  ],
+  "drivers/net/pfe_eth/pfe_firmware.c": [
+   44,
+   4
+  ],
+  "drivers/net/mvneta.c": [
+   30,
+   26
+  ],
+  "fs/btrfs/btrfs.h": [
+   4,
+   63
+  ],
+  "include/configs/ge_bx50v3.h": [
+   5,
+   7
+  ],
+  "drivers/fpga/altera.c": [
+   4,
+   3
+  ],
+  "board/toradex/colibri-imx6ull/MAINTAINERS": [
+   1,
+   1
+  ],
+  "arch/microblaze/include/asm/config.h": [
+   0,
+   4
+  ],
+  "cmd/broadcom/chimp_boot.c": [
+   37,
+   0
+  ],
+  "Makefile": [
+   41,
+   35
+  ],
+  "configs/rock64-rk3328_defconfig": [
+   3,
+   3
+  ],
+  "lib/display_options.c": [
+   1,
+   1
+  ],
+  "arch/arm/dts/stm32f469-disco.dts": [
+   13,
+   6
+  ],
+  "board/intel/edison/edison.c": [
+   0,
+   35
+  ],
+  "board/engicam/px30_core/Makefile": [
+   7,
+   0
+  ],
+  "arch/x86/include/asm/acpi/vbnv_layout.h": [
+   38,
+   0
+  ],
+  "configs/rockpro64-rk3399_defconfig": [
+   3,
+   1
+  ],
+  "include/configs/topic_miami.h": [
+   0,
+   1
+  ],
+  "include/acpi/acpi_s3.h": [
+   4,
+   0
+  ],
+  "include/twl4030.h": [
+   9,
+   3
+  ],
+  "tools/buildman/func_test.py": [
+   2,
+   0
+  ],
+  "tools/patman/patchstream.py": [
+   338,
+   145
+  ],
+  "drivers/serial/sandbox.c": [
+   3,
+   0
+  ],
+  "lib/efi_loader/efi_var_mem.c": [
+   8,
+   3
+  ],
+  "doc/board/freescale/mx6ullevk.rst": [
+   20,
+   9
+  ],
+  "configs/P3041DS_SDCARD_defconfig": [
+   3,
+   2
+  ],
+  "include/configs/odroid_xu3.h": [
+   1,
+   5
+  ],
+  "doc/api/getopt.rst": [
+   8,
+   0
+  ],
+  "configs/firefly-rk3399_defconfig": [
+   1,
+   1
+  ],
+  "configs/mccmon6_nor_defconfig": [
+   1,
+   1
+  ],
+  "board/google/chromebook_coral/variant_dptf.asl": [
+   6,
+   0
+  ],
+  "debian/patches/riscv64/0017-riscv-sifive-dts-fu740-add-U-Boot-dmc-node.patch": [
+   36,
+   0
+  ],
+  "lib/rsa/rsa-mod-exp.c": [
+   10,
+   3
+  ],
+  "configs/netspace_max_v2_defconfig": [
+   1,
+   1
+  ],
+  "drivers/pinctrl/pinctrl-at91-pio4.c": [
+   1,
+   0
+  ],
+  "drivers/watchdog/designware_wdt.c": [
+   1,
+   1
+  ],
+  "drivers/clk/sunxi/clk_v3s.c": [
+   2,
+   0
+  ],
+  "board/freescale/common/vid.c": [
+   43,
+   6
+  ],
+  "drivers/clk/rockchip/clk_rk3399.c": [
+   37,
+   7
+  ],
+  "configs/ls1021atwr_nor_lpuart_defconfig": [
+   4,
+   7
+  ],
+  "board/freescale/common/vid.h": [
+   49,
+   0
+  ],
+  "configs/imx6ul_geam_nand_defconfig": [
+   4,
+   4
+  ],
+  "arch/x86/include/asm/acpi/dptf/charger.asl": [
+   65,
+   0
+  ],
+  "cmd/log.c": [
+   311,
+   41
+  ],
+  "drivers/net/designware.c": [
+   2,
+   1
+  ],
+  "drivers/usb/mtu3/Kconfig": [
+   44,
+   0
+  ],
+  "doc/board/toradex/apalix-imx8x.rst": [
+   74,
+   0
+  ],
+  "configs/P1010RDB-PB_36BIT_SPIFLASH_defconfig": [
+   4,
+   2
+  ],
+  "configs/T1023RDB_NAND_defconfig": [
+   2,
+   2
+  ],
+  "configs/x600_defconfig": [
+   4,
+   4
+  ],
+  "arch/riscv/lib/andes_plic.c": [
+   25,
+   33
+  ],
+  "configs/mt8512_bm1_emmc_defconfig": [
+   25,
+   0
+  ],
+  "configs/p212_defconfig": [
+   2,
+   3
+  ],
+  "drivers/phy/meson-g12a-usb2.c": [
+   2,
+   2
+  ],
+  "drivers/fpga/Kconfig": [
+   7,
+   7
+  ],
+  "configs/ls2080a_emu_defconfig": [
+   1,
+   1
+  ],
+  "include/dt-bindings/clock/xlnx-versal-clk.h": [
+   123,
+   0
+  ],
+  "arch/arm/include/asm/arch-rockchip/edp_rk3288.h": [
+   1,
+   1
+  ],
+  "include/configs/pfla02.h": [
+   0,
+   3
+  ],
+  "net/eth_legacy.c": [
+   2,
+   2
+  ],
+  "drivers/mtd/cfi_mtd.c": [
+   3,
+   1
+  ],
+  "debian/bin/u-boot-install-sunxi": [
+   75,
+   32
+  ],
+  "drivers/net/xilinx_axi_emac.c": [
+   30,
+   18
+  ],
+  "arch/arm/mach-zynqmp-r5/cpu.c": [
+   4,
+   7
+  ],
+  "drivers/net/octeontx/smi.c": [
+   380,
+   0
+  ],
+  "include/dt-bindings/clock/sun50i-a64-ccu.h": [
+   3,
+   1
+  ],
+  "include/configs/stmark2.h": [
+   0,
+   1
+  ],
+  "drivers/fpga/zynqmppl.c": [
+   5,
+   5
+  ],
+  "drivers/clk/clk-uclass.c": [
+   49,
+   9
+  ],
+  "debian/patches/riscv64/0023-riscv-sifive-dts-fu740-set-ethernet-clock-rate.patch": [
+   29,
+   0
+  ],
+  "drivers/usb/musb-new/musb_core.c": [
+   2,
+   0
+  ],
+  "drivers/i2c/Makefile": [
+   5,
+   1
+  ],
+  "tools/update_octeon_header.c": [
+   456,
+   0
+  ],
+  "arch/mips/mach-octeon/dram.c": [
+   69,
+   8
+  ],
+  "configs/nitrogen6dl2g_defconfig": [
+   8,
+   5
+  ],
+  "configs/T2080RDB_defconfig": [
+   5,
+   4
+  ],
+  "arch/x86/dts/chromebook_coral.dts": [
+   236,
+   17
+  ],
+  "configs/ls1021aqds_nor_defconfig": [
+   3,
+   7
+  ],
+  "drivers/misc/cros_ec_i2c.c": [
+   2,
+   2
+  ],
+  "drivers/net/octeontx/nic.h": [
+   508,
+   0
+  ],
+  "configs/mx6sllevk_defconfig": [
+   5,
+   4
+  ],
+  "arch/arm/dts/stm32746g-eval.dts": [
+   6,
+   7
+  ],
+  "configs/mvebu_puzzle-m801-88f8040_defconfig": [
+   81,
+   0
+  ],
+  "drivers/timer/ostm_timer.c": [
+   2,
+   4
+  ],
+  "include/zynqmp_tap_delay.h": [
+   3,
+   2
+  ],
+  "drivers/usb/musb-new/sunxi.c": [
+   7,
+   6
+  ],
+  "configs/am335x_shc_sdboot_defconfig": [
+   6,
+   6
+  ],
+  "arch/arm/dts/k3-j7200-common-proc-board-u-boot.dtsi": [
+   28,
+   0
+  ],
+  "arch/powerpc/dts/p1010rdb.dtsi": [
+   67,
+   0
+  ],
+  "configs/ti816x_evm_defconfig": [
+   2,
+   2
+  ],
+  "include/cros_ec.h": [
+   11,
+   0
+  ],
+  "configs/popmetal-rk3288_defconfig": [
+   1,
+   1
+  ],
+  "configs/ls1012afrwy_tfa_SECURE_BOOT_defconfig": [
+   3,
+   2
+  ],
+  "drivers/timer/Kconfig": [
+   16,
+   2
+  ],
+  "arch/x86/include/asm/arch-apollolake/acpi/xhci_apl_ports.asl": [
+   23,
+   0
+  ],
+  "include/configs/sam9x60ek.h": [
+   2,
+   1
+  ],
+  "configs/A20-OLinuXino-Lime2-eMMC_defconfig": [
+   2,
+   0
+  ],
+  "drivers/clk/kendryte/clk.c": [
+   5,
+   2
+  ],
+  "configs/stm32f769-disco_defconfig": [
+   8,
+   4
+  ],
+  "board/freescale/p1_p2_rdb_pc/spl.c": [
+   0,
+   2
+  ],
+  "arch/arm/dts/phycore-imx8mm.dts": [
+   259,
+   0
+  ],
+  "doc/device-tree-bindings/sysinfo/sysinfo.txt": [
+   19,
+   0
+  ],
+  "configs/P2020RDB-PC_NAND_defconfig": [
+   7,
+   3
+  ],
+  "drivers/net/octeontx2/rvu_common.c": [
+   71,
+   0
+  ],
+  "configs/sama5d27_som1_ek_mmc1_defconfig": [
+   1,
+   1
+  ],
+  "drivers/input/input.c": [
+   25,
+   10
+  ],
+  "configs/omapl138_lcdk_defconfig": [
+   2,
+   2
+  ],
+  "include/sdhci.h": [
+   6,
+   3
+  ],
+  "arch/x86/cpu/tangier/sdram.c": [
+   43,
+   0
+  ],
+  "drivers/usb/dwc3/gadget.c": [
+   12,
+   11
+  ],
+  "drivers/net/phy/Kconfig": [
+   9,
+   0
+  ],
+  "drivers/net/mvpp2.c": [
+   45,
+   42
+  ],
+  "configs/mx7ulp_evk_defconfig": [
+   3,
+   3
+  ],
+  "drivers/net/octeontx/nicvf_main.c": [
+   581,
+   0
+  ],
+  "drivers/rng/msm_rng.c": [
+   143,
+   0
+  ],
+  "drivers/pinctrl/pinctrl-qe-io.c": [
+   255,
+   0
+  ],
+  "arch/arm/dts/am335x-regor-rdk.dts": [
+   24,
+   0
+  ],
+  "board/xilinx/zynq/zynq-zturn-v5/ps7_init_gpl.c": [
+   273,
+   0
+  ],
+  "drivers/ddr/marvell/a38x/ddr_ml_wrapper.h": [
+   1,
+   1
+  ],
+  "drivers/usb/musb-new/musb_dsps.c": [
+   3,
+   1
+  ],
+  "configs/strider_con_dp_defconfig": [
+   4,
+   4
+  ],
+  "include/configs/tegra186-common.h": [
+   6,
+   0
+  ],
+  "arch/arm/mach-zynqmp/include/mach/sys_proto.h": [
+   10,
+   0
+  ],
+  "arch/riscv/lib/Makefile": [
+   0,
+   2
+  ],
+  "drivers/power/Kconfig": [
+   2,
+   2
+  ],
+  "board/st/stm32mp1/fit_kernel_dtb.its": [
+   3,
+   3
+  ],
+  "drivers/timer/mpc83xx_timer.c": [
+   7,
+   9
+  ],
+  "arch/arm/dts/meson-gxl-s905d-libretech-pc-u-boot.dtsi": [
+   0,
+   4
+  ],
+  "arch/arm/dts/fsl-lx2160a-qds.dtsi": [
+   21,
+   1
+  ],
+  "include/configs/trats.h": [
+   1,
+   6
+  ],
+  "drivers/clk/at91/clk-utmi.c": [
+   163,
+   71
+  ],
+  "arch/arm/dts/meson-g12-common.dtsi": [
+   38,
+   17
+  ],
+  "configs/am57xx_hs_evm_defconfig": [
+   2,
+   2
+  ],
+  "arch/x86/cpu/apollolake/uart.c": [
+   1,
+   1
+  ],
+  "include/acpi/acpi_table.h": [
+   138,
+   12
+  ],
+  "arch/mips/mach-octeon/include/mach/octeon-feature.h": [
+   442,
+   0
+  ],
+  "arch/arm/include/asm/arch-stm32/stm32f.h": [
+   1,
+   1
+  ],
+  "drivers/pinctrl/pinctrl-stmfx.c": [
+   8,
+   5
+  ],
+  "configs/spear320_usbtty_nand_defconfig": [
+   1,
+   1
+  ],
+  "include/dt-structs.h": [
+   5,
+   3
+  ],
+  "configs/omap5_uevm_defconfig": [
+   2,
+   2
+  ],
+  "include/configs/stm32f746-disco.h": [
+   0,
+   6
+  ],
+  "configs/ap143_defconfig": [
+   2,
+   2
+  ],
+  "drivers/mtd/spi/sf_internal.h": [
+   1,
+   1
+  ],
+  "drivers/net/octeontx2/nix_af.c": [
+   1102,
+   0
+  ],
+  "configs/T1042D4RDB_SDCARD_defconfig": [
+   3,
+   2
+  ],
+  "configs/spear310_usbtty_nand_defconfig": [
+   1,
+   1
+  ],
+  "configs/controlcenterd_TRAILBLAZER_defconfig": [
+   1,
+   1
+  ],
+  "board/phytec/phycore_imx8mm/MAINTAINERS": [
+   9,
+   0
+  ],
+  "include/configs/stm32mp1.h": [
+   0,
+   7
+  ],
+  "arch/arm/dts/stm32mp15xx-dhcom.dtsi": [
+   17,
+   13
+  ],
+  "include/configs/dart_6ul.h": [
+   0,
+   2
+  ],
+  "board/sifive/fu540/Kconfig": [
+   1,
+   0
+  ],
+  "configs/mx23_olinuxino_defconfig": [
+   1,
+   1
+  ],
+  "configs/lx2160aqds_tfa_defconfig": [
+   4,
+   1
+  ],
+  "board/freescale/t104xrdb/eth.c": [
+   3,
+   0
+  ],
+  "drivers/phy/rockchip/phy-rockchip-pcie.c": [
+   7,
+   7
+  ],
+  "drivers/net/ftgmac100.c": [
+   4,
+   0
+  ],
+  "lib/trace.c": [
+   1,
+   1
+  ],
+  "configs/T1042D4RDB_SPIFLASH_defconfig": [
+   3,
+   2
+  ],
+  "configs/ls1028ardb_tfa_SECURE_BOOT_defconfig": [
+   3,
+   2
+  ],
+  "drivers/power/twl4030.c": [
+   3,
+   4
+  ],
+  "configs/bk4r1_defconfig": [
+   5,
+   5
+  ],
+  "configs/mvebu_db_armada8k_defconfig": [
+   0,
+   2
+  ],
+  "lib/efi_loader/efi_string.c": [
+   36,
+   0
+  ],
+  "arch/arm/dts/rk3328-roc-cc-u-boot.dtsi": [
+   21,
+   0
+  ],
+  "arch/x86/include/asm/acpi/pci_osc.asl": [
+   21,
+   0
+  ],
+  "include/dt-bindings/clock/imx8mm-clock.h": [
+   27,
+   1
+  ],
+  "configs/vexpress_aemv8a_juno_defconfig": [
+   3,
+   3
+  ],
+  "configs/clearfog_gt_8k_defconfig": [
+   0,
+   2
+  ],
+  "include/linux/usb/ch9.h": [
+   1,
+   4
+  ],
+  "include/configs/stm32f429-evaluation.h": [
+   1,
+   1
+  ],
+  "drivers/firmware/firmware-zynqmp.c": [
+   9,
+   1
+  ],
+  "drivers/led/led_gpio.c": [
+   2,
+   5
+  ],
+  "drivers/net/qe/uccf.c": [
+   507,
+   0
+  ],
+  "drivers/net/qe/uccf.h": [
+   119,
+   0
+  ],
+  "configs/spear320_pnor_defconfig": [
+   1,
+   1
+  ],
+  "include/configs/s5pc210_universal.h": [
+   1,
+   8
+  ],
+  "tools/binman/test/186_compress_extra.dts": [
+   37,
+   0
+  ],
+  "configs/rock960-rk3399_defconfig": [
+   7,
+   4
+  ],
+  "drivers/clk/renesas/r8a774c0-cpg-mssr.c": [
+   308,
+   0
+  ],
+  "drivers/misc/stm32_rcc.c": [
+   1,
+   1
+  ],
+  "configs/ls1043aqds_sdcard_ifc_defconfig": [
+   3,
+   2
+  ],
+  "arch/powerpc/dts/p1020rdb-pc_36b.dts": [
+   16,
+   0
+  ],
+  "configs/uniphier_v7_defconfig": [
+   1,
+   1
+  ],
+  "include/configs/xilinx_versal.h": [
+   14,
+   3
+  ],
+  "board/ge/bx50v3/bx50v3.c": [
+   48,
+   67
+  ],
+  "configs/mx7dsabresd_defconfig": [
+   4,
+   6
+  ],
+  "arch/arm/dts/stm32f746.dtsi": [
+   5,
+   7
+  ],
+  "configs/ls1088ardb_qspi_defconfig": [
+   4,
+   4
+  ],
+  "include/dm/uclass.h": [
+   2,
+   1
+  ],
+  "drivers/sysreset/sysreset_x86.c": [
+   2,
+   2
+  ],
+  "drivers/sysinfo/smbios.c": [
+   24,
+   0
+  ],
+  "configs/ls1043aqds_nand_defconfig": [
+   3,
+   2
+  ],
+  "arch/arm/dts/meson-gx.dtsi": [
+   18,
+   5
+  ],
+  "doc/README.chromium": [
+   38,
+   3
+  ],
+  "arch/arm/dts/fsl-lx2162a-qds-20-x.dts": [
+   17,
+   0
+  ],
+  "scripts/dtc/libfdt/fdt_overlay.c": [
+   2,
+   1
+  ],
+  "arch/arm/dts/sun50i-a64-pine64-lts.dts": [
+   2,
+   5
+  ],
+  "configs/qemu_arm_defconfig": [
+   0,
+   1
+  ],
+  "arch/arm/dts/fsl-lx2162a-qds.dts": [
+   34,
+   0
+  ],
+  "board/keymile/km83xx/MAINTAINERS": [
+   18,
+   5
+  ],
+  "test/dm/sysreset.c": [
+   8,
+   3
+  ],
+  "arch/arm/dts/imx8mm-evk-u-boot.dtsi": [
+   8,
+   0
+  ],
+  "board/toradex/apalis-imx8/apalis-imx8.c": [
+   23,
+   0
+  ],
+  "arch/x86/cpu/apollolake/fsp_s.c": [
+   6,
+   4
+  ],
+  "arch/riscv/cpu/ax25/Kconfig": [
+   2,
+   2
+  ],
+  "tools/binman/test/183_compress_image_less.dts": [
+   14,
+   0
+  ],
+  "drivers/cpu/at91_cpu.c": [
+   123,
+   0
+  ],
+  "drivers/clk/at91/clk-generic.c": [
+   202,
+   0
+  ],
+  "arch/arm/cpu/armv8/fsl-layerscape/lx2160a_serdes.c": [
+   18,
+   1
+  ],
+  "drivers/clk/at91/clk-main.c": [
+   357,
+   24
+  ],
+  "configs/platinum_titanium_defconfig": [
+   3,
+   3
+  ],
+  "arch/arm/mach-stm32mp/include/mach/gpio.h": [
+   2,
+   35
+  ],
+  "include/configs/stm32h743-eval.h": [
+   1,
+   1
+  ],
+  "arch/arm/dts/rk3288-rock-pi-n8-u-boot.dtsi": [
+   6,
+   0
+  ],
+  "drivers/i2c/acpi_i2c.c": [
+   226,
+   0
+  ],
+  "arch/arm/dts/meson-khadas-vim3.dtsi": [
+   24,
+   2
+  ],
+  "configs/T1024RDB_defconfig": [
+   5,
+   4
+  ],
+  "arch/sandbox/dts/sandbox.dtsi": [
+   31,
+   4
+  ],
+  "arch/x86/cpu/apollolake/hostbridge.c": [
+   237,
+   8
+  ],
+  "drivers/usb/mtu3/mtu3_gadget.c": [
+   686,
+   0
+  ],
+  "arch/riscv/include/asm/global_data.h": [
+   0,
+   3
+  ],
+  "configs/omap4_sdp4430_defconfig": [
+   2,
+   2
+  ],
+  "configs/bcm911360_entphn-ns_defconfig": [
+   3,
+   3
+  ],
+  "arch/powerpc/cpu/mpc85xx/fdt.c": [
+   2,
+   2
+  ],
+  "include/linux/bitops.h": [
+   2,
+   2
+  ],
+  "drivers/usb/gadget/gadget_chips.h": [
+   8,
+   0
+  ],
+  "configs/ls1088aqds_defconfig": [
+   3,
+   2
+  ],
+  "debian/u-boot-tools.manpages": [
+   2,
+   0
+  ],
+  "drivers/firmware/scmi/sandbox-scmi_agent.c": [
+   410,
+   0
+  ],
+  "drivers/phy/marvell/comphy_cp110.c": [
+   104,
+   1166
+  ],
+  "configs/edison_defconfig": [
+   1,
+   1
+  ],
+  "drivers/spi/ich.c": [
+   3,
+   1
+  ],
+  "arch/arm/dts/stm32mp15xx-dhcom-picoitx-u-boot.dtsi": [
+   14,
+   0
+  ],
+  "configs/ot1200_spl_defconfig": [
+   4,
+   3
+  ],
+  "tools/patman/commit.py": [
+   5,
+   0
+  ],
+  "include/mux.h": [
+   159,
+   0
+  ],
+  "arch/arm/dts/armada-3720-espressobin.dts": [
+   24,
+   2
+  ],
+  "configs/ge_bx50v3_defconfig": [
+   2,
+   2
+  ],
+  "configs/netgear_dgnd3700v2_ram_defconfig": [
+   1,
+   1
+  ],
+  "drivers/mmc/Makefile": [
+   1,
+   0
+  ],
+  "test/dm/usb.c": [
+   1,
+   1
+  ],
+  "arch/arm/cpu/armv8/fsl-layerscape/fdt.c": [
+   46,
+   5
+  ],
+  "arch/x86/include/asm/acpi/cros_ec/emem.asl": [
+   53,
+   0
+  ],
+  "configs/teres_i_defconfig": [
+   1,
+   0
+  ],
+  "configs/lx2162aqds_tfa_verified_boot_defconfig": [
+   100,
+   0
+  ],
+  "env/ext4.c": [
+   14,
+   0
+  ],
+  "configs/sama5d2_xplained_qspiflash_defconfig": [
+   1,
+   1
+  ],
+  "drivers/firmware/scmi/Kconfig": [
+   19,
+   0
+  ],
+  "common/bootm.c": [
+   5,
+   3
+  ],
+  "arch/x86/dts/dfi-bt700.dtsi": [
+   2,
+   0
+  ],
+  "configs/hsdk_defconfig": [
+   1,
+   1
+  ],
+  "arch/x86/include/asm/arch-apollolake/acpi/pch_hda.asl": [
+   77,
+   0
+  ],
+  "drivers/dfu/Makefile": [
+   1,
+   1
+  ],
+  "arch/arm/dts/r8a77965-ulcb-u-boot.dts": [
+   5,
+   0
+  ],
+  "configs/thuban_defconfig": [
+   3,
+   3
+  ],
+  "drivers/remoteproc/k3_system_controller.c": [
+   5,
+   4
+  ],
+  "debian/u-boot-rockchip.install": [
+   1,
+   1
+  ],
+  "arch/arm/dts/px30-engicam-ctouch2.dtsi": [
+   8,
+   0
+  ],
+  "arch/arm/dts/zynq-zturn.dts": [
+   1,
+   108
+  ],
+  "configs/P5040DS_defconfig": [
+   3,
+   2
+  ],
+  "net/eth-uclass.c": [
+   7,
+   4
+  ],
+  "arch/x86/include/asm/acpi/cros_ec/pd.asl": [
+   15,
+   0
+  ],
+  "include/dm/platdata.h": [
+   45,
+   4
+  ],
+  "configs/crs305-1g-4s_defconfig": [
+   3,
+   3
+  ],
+  "configs/pinebook-pro-rk3399_defconfig": [
+   7,
+   2
+  ],
+  "arch/powerpc/dts/pq3-etsec2-grp2-2.dtsi": [
+   16,
+   0
+  ],
+  "include/configs/lx2160a_common.h": [
+   3,
+   1
+  ],
+  "configs/gwventana_emmc_defconfig": [
+   5,
+   3
+  ],
+  "arch/arm/dts/stm32mp15xx-dhcor-avenger96.dts": [
+   2,
+   1
+  ],
+  "configs/spear320_usbtty_defconfig": [
+   1,
+   1
+  ],
+  "include/configs/lx2160aqds.h": [
+   0,
+   76
+  ],
+  "arch/arm/dts/imx8mm.dtsi": [
+   99,
+   20
+  ],
+  "arch/powerpc/dts/t104x.dtsi": [
+   9,
+   0
+  ],
+  "configs/vining_2000_defconfig": [
+   3,
+   2
+  ],
+  "drivers/clk/renesas/Kconfig": [
+   18,
+   0
+  ],
+  "drivers/timer/sti-timer.c": [
+   3,
+   5
+  ],
+  "drivers/bootcount/Kconfig": [
+   10,
+   0
+  ],
+  "arch/arm/dts/socfpga_arria10-handoff.dtsi": [
+   290,
+   0
+  ],
+  "arch/x86/include/asm/arch-apollolake/acpi/gpiolib.asl": [
+   109,
+   0
+  ],
+  "arch/Kconfig": [
+   9,
+   1
+  ],
+  "configs/crs328-4c-20s-4s_defconfig": [
+   3,
+   3
+  ],
+  "configs/ls1021atwr_sdcard_ifc_SECURE_BOOT_defconfig": [
+   3,
+   7
+  ],
+  "configs/evb-rk3308_defconfig": [
+   1,
+   1
+  ],
+  "configs/omap3_logic_somlv_defconfig": [
+   2,
+   2
+  ],
+  "common/fdt_support.c": [
+   2,
+   7
+  ],
+  "drivers/rng/Kconfig": [
+   7,
+   0
+  ],
+  "arch/arm/mach-imx/imx8m/Kconfig": [
+   6,
+   0
+  ],
+  "drivers/clk/renesas/r8a774a1-cpg-mssr.c": [
+   4,
+   0
+  ],
+  "include/u-boot/aes.h": [
+   4,
+   2
+  ],
+  "api/api_platform-mips.c": [
+   1,
+   2
+  ],
+  "lib/lmb.c": [
+   2,
+   7
+  ],
+  "board/ge/mx53ppd/Kconfig": [
+   2,
+   0
+  ],
+  "drivers/firmware/Kconfig": [
+   2,
+   0
+  ],
+  "drivers/rtc/rtc-uclass.c": [
+   2,
+   0
+  ],
+  "arch/mips/dts/mscc,ocelot.dtsi": [
+   1,
+   1
+  ],
+  "arch/x86/dts/chromebox_panther.dts": [
+   2,
+   0
+  ],
+  "board/xilinx/versal/board.c": [
+   3,
+   0
+  ],
+  "configs/chromebook_link64_defconfig": [
+   1,
+   1
+  ],
+  "debian/patches/cmd-pxe_utils-sysboot-fix-crash-if-either-board-or-soc.patch": [
+   39,
+   0
+  ],
+  "arch/arm/dts/sun50i-a64-nanopi-a64.dts": [
+   23,
+   47
+  ],
+  "configs/bcm_ns3_defconfig": [
+   1,
+   1
+  ],
+  "arch/mips/mach-octeon/include/mangle-port.h": [
+   56,
+   0
+  ],
+  "env/nowhere.c": [
+   1,
+   1
+  ],
+  "configs/colibri-imx6ull_defconfig": [
+   7,
+   4
+  ],
+  "configs/sagem_f@st1704_ram_defconfig": [
+   1,
+   1
+  ],
+  "drivers/clk/clk_fixed_rate.c": [
+   3,
+   2
+  ],
+  "debian/u-boot-tegra.links.arm64": [
+   1,
+   0
+  ],
+  "configs/ls2088ardb_qspi_SECURE_BOOT_defconfig": [
+   1,
+   0
+  ],
+  "arch/x86/include/asm/interrupt.h": [
+   17,
+   0
+  ],
+  "arch/x86/cpu/intel_common/intel_opregion.c": [
+   168,
+   0
+  ],
+  "arch/arm/dts/meson-gxl-s905x-libretech-cc-u-boot.dtsi": [
+   0,
+   4
+  ],
+  "arch/arm/dts/stm32mp15xx-dhcom-drc02.dts": [
+   13,
+   4
+  ],
+  "configs/mt7623n_bpir2_defconfig": [
+   1,
+   1
+  ],
+  "drivers/timer/cadence-ttc.c": [
+   2,
+   4
+  ],
+  "lib/charset.c": [
+   3,
+   2
+  ],
+  "doc/board/sipeed/maix.rst": [
+   69,
+   5
+  ],
+  "configs/spear600_usbtty_defconfig": [
+   1,
+   1
+  ],
+  "include/configs/mx28evk.h": [
+   0,
+   3
+  ],
+  "include/configs/aristainetos2.h": [
+   172,
+   166
+  ],
+  "configs/gardena-smart-gateway-mt7688_defconfig": [
+   1,
+   1
+  ],
+  "arch/arm/Kconfig": [
+   46,
+   15
+  ],
+  "configs/ls2088ardb_tfa_defconfig": [
+   1,
+   0
+  ],
+  "arch/arm/dts/imx8mm-verdin-u-boot.dtsi": [
+   2,
+   3
+  ],
+  "configs/ls1021atsn_qspi_defconfig": [
+   2,
+   0
+  ],
+  "arch/x86/cpu/x86_64/cpu.c": [
+   5,
+   0
+  ],
+  "configs/crs326-24g-2s_defconfig": [
+   3,
+   3
+  ],
+  "configs/at91sam9263ek_nandflash_defconfig": [
+   0,
+   2
+  ],
+  "configs/boston64r2_defconfig": [
+   2,
+   2
+  ],
+  "drivers/mmc/sh_sdhi.c": [
+   1,
+   2
+  ],
+  "configs/sandbox_defconfig": [
+   12,
+   4
+  ],
+  "board/xilinx/zynqmp/MAINTAINERS": [
+   1,
+   0
+  ],
+  "arch/arm/dts/socfpga_arria10_socdk_sdmmc-u-boot.dtsi": [
+   2,
+   1
+  ],
+  "fs/btrfs/crypto/hash.h": [
+   17,
+   0
+  ],
+  "include/scmi_protocols.h": [
+   179,
+   0
+  ],
+  "arch/arm/mach-socfpga/Kconfig": [
+   2,
+   1
+  ],
+  "configs/ls1046ardb_qspi_SECURE_BOOT_defconfig": [
+   1,
+   0
+  ],
+  "configs/sei610_defconfig": [
+   5,
+   1
+  ],
+  "arch/m68k/include/asm/config.h": [
+   0,
+   2
+  ],
+  "board/keymile/scripts/ramfs-arm.txt": [
+   1,
+   1
+  ],
+  "doc/device-tree-bindings/spi/spi-qup.txt": [
+   33,
+   0
+  ],
+  "board/sandbox/sandbox.c": [
+   2,
+   0
+  ],
+  "configs/P1010RDB-PB_NAND_defconfig": [
+   4,
+   2
+  ],
+  "configs/mx28evk_defconfig": [
+   3,
+   1
+  ],
+  "arch/mips/dts/mrvl,octeon-ebb7304.dts": [
+   24,
+   0
+  ],
+  "configs/3c120_defconfig": [
+   2,
+   2
+  ],
+  "configs/highbank_defconfig": [
+   4,
+   4
+  ],
+  "drivers/led/led_bcm6858.c": [
+   4,
+   4
+  ],
+  "arch/arm/mach-imx/mx7/clock.c": [
+   11,
+   11
+  ],
+  "arch/arm/dts/imx6dl-aristainetos2c_7.dts": [
+   2,
+   2
+  ],
+  "arch/x86/lib/fsp2/fsp_silicon_init.c": [
+   3,
+   1
+  ],
+  "arch/microblaze/include/asm/io.h": [
+   16,
+   6
+  ],
+  "configs/ls1028ardb_tfa_defconfig": [
+   3,
+   2
+  ]
+ },
+ "files": 2890,
+ "added_lines": 161784,
+ "removed_lines": 19265,
+ "diff": "diff --git a/.azure-pipelines.yml b/.azure-pipelines.yml\nindex 473ddee..620696c 100644\n--- a/.azure-pipelines.yml\n+++ b/.azure-pipelines.yml\n@@ -140,7 +140,7 @@ jobs:\n           export USER=azure\n           virtualenv -p /usr/bin/python3 /tmp/venv\n           . /tmp/venv/bin/activate\n-          pip install pyelftools pytest\n+          pip install pyelftools pytest pygit2\n           export UBOOT_TRAVIS_BUILD_DIR=/tmp/sandbox_spl\n           export PYTHONPATH=${UBOOT_TRAVIS_BUILD_DIR}/scripts/dtc/pylibfdt\n           export PATH=${UBOOT_TRAVIS_BUILD_DIR}/scripts/dtc:${PATH}\n@@ -182,7 +182,7 @@ jobs:\n           OVERRIDE: \"-O clang-10\"\n         sandbox_spl:\n           TEST_PY_BD: \"sandbox_spl\"\n-          TEST_PY_TEST_SPEC: \"test_ofplatdata or test_handoff\"\n+          TEST_PY_TEST_SPEC: \"test_ofplatdata or test_handoff or test_spl\"\n         sandbox_flattree:\n           TEST_PY_BD: \"sandbox_flattree\"\n         evb_ast2500:\ndiff --git a/.gitlab-ci.yml b/.gitlab-ci.yml\nindex 9ac2b33..4b06808 100644\n--- a/.gitlab-ci.yml\n+++ b/.gitlab-ci.yml\n@@ -161,7 +161,7 @@ Run binman, buildman, dtoc, Kconfig and patman testsuites:\n       export USER=gitlab;\n       virtualenv -p /usr/bin/python3 /tmp/venv;\n       . /tmp/venv/bin/activate;\n-      pip install pyelftools pytest;\n+      pip install pyelftools pytest pygit2;\n       export UBOOT_TRAVIS_BUILD_DIR=/tmp/sandbox_spl;\n       export PYTHONPATH=\"${UBOOT_TRAVIS_BUILD_DIR}/scripts/dtc/pylibfdt\";\n       export PATH=\"${UBOOT_TRAVIS_BUILD_DIR}/scripts/dtc:${PATH}\";\n@@ -198,7 +198,7 @@ sandbox_spl test.py:\n   tags: [ 'all' ]\n   variables:\n     TEST_PY_BD: \"sandbox_spl\"\n-    TEST_PY_TEST_SPEC: \"test_ofplatdata or test_handoff\"\n+    TEST_PY_TEST_SPEC: \"test_ofplatdata or test_handoff or test_spl\"\n   <<: *buildman_and_testpy_dfn\n \n evb-ast2500 test.py:\ndiff --git a/.mailmap b/.mailmap\nindex 8250015..b76f022 100644\n--- a/.mailmap\n+++ b/.mailmap\n@@ -30,7 +30,10 @@ Jagan Teki <jaganna@xilinx.com>\n Jagan Teki <jagannadh.teki@gmail.com>\n Jagan Teki <jagannadha.sutradharudu-teki@xilinx.com>\n Igor Opaniuk <igor.opaniuk@gmail.com> <igor.opaniuk@linaro.org>\n+Igor Opaniuk <igor.opaniuk@gmail.com> <igor.opaniuk@toradex.com>\n Markus Klotzbuecher <mk@denx.de>\n+Patrice Chotard <patrice.chotard@foss.st.com> <patrice.chotard@st.com>\n+Patrick Delaunay <patrick.delaunay@foss.st.com> <patrick.delaunay@st.com>\n Paul Burton <paul.burton@mips.com> <paul.burton@imgtec.com>\n Prabhakar Kushwaha <prabhakar@freescale.com>\n Rajeshwari Shinde <rajeshwari.s@samsung.com>\ndiff --git a/.travis.yml b/.travis.yml\ndeleted file mode 100644\nindex fb8f731..0000000\n--- a/.travis.yml\n+++ /dev/null\n@@ -1,697 +0,0 @@\n-# SPDX-License-Identifier: GPL-2.0+\n-# Copyright Roger Meier <r.meier@siemens.com>\n-\n-# build U-Boot on Travis CI - https://travis-ci.org/\n-\n-sudo: required\n-dist: bionic\n-\n-language: c\n-\n-addons:\n-  apt:\n-    update: true\n-    sources:\n-    - sourceline: 'deb http://apt.llvm.org/bionic/ llvm-toolchain-bionic-10 main'\n-      key_url: 'https://apt.llvm.org/llvm-snapshot.gpg.key'\n-    packages:\n-    - autopoint\n-    - cppcheck\n-    - sloccount\n-    - sparse\n-    - bc\n-    - build-essential\n-    - libsdl2-dev\n-    - python\n-    - python3-sphinx\n-    - python3-virtualenv\n-    - python3-pip\n-    - swig\n-    - libpython-dev\n-    - iasl\n-    - grub-efi-ia32-bin\n-    - grub-efi-amd64-bin\n-    - rpm2cpio\n-    - wget\n-    - device-tree-compiler\n-    - lzop\n-    - liblz4-tool\n-    - lzma-alone\n-    - libisl15\n-    - clang-10\n-    - srecord\n-    - graphviz\n-    - coreutils\n-    - util-linux\n-    - dosfstools\n-    - gdisk\n-    - mount\n-    - mtools\n-    - openssl\n-    - sbsigntool\n-    - fakeroot\n-    - mtd-utils\n-    - squashfs-tools\n-\n-install:\n- # Clone uboot-test-hooks\n- - git clone --depth=1 git://github.com/swarren/uboot-test-hooks.git /tmp/uboot-test-hooks\n- - ln -s travis-ci /tmp/uboot-test-hooks/bin/`hostname`\n- - ln -s travis-ci /tmp/uboot-test-hooks/py/`hostname`\n- # prepare buildman environment\n- - echo -e \"[toolchain]\\nroot = /usr\" > ~/.buildman\n- - echo -e \"arc = /tmp/arc_gnu_2019.09_prebuilt_uclibc_le_archs_linux_install\" >> ~/.buildman\n- - echo -e \"\\n[toolchain-alias]\\nsh = sh2\" >> ~/.buildman\n- - echo -e \"x86 = i386\" >> ~/.buildman;\n- - echo -e \"riscv = riscv64\" >> ~/.buildman;\n- - cat ~/.buildman\n- - grub-mkimage --prefix=\"\" -o ~/grub_x86.efi -O i386-efi normal  echo lsefimmap lsefi lsefisystab efinet tftp minicmd\n- - grub-mkimage --prefix=\"\" -o ~/grub_x64.efi -O x86_64-efi normal  echo lsefimmap lsefi lsefisystab efinet tftp minicmd\n- - wget http://mirrors.kernel.org/ubuntu/pool/main/m/mpfr4/libmpfr4_3.1.4-1_amd64.deb && sudo dpkg -i libmpfr4_3.1.4-1_amd64.deb && rm libmpfr4_3.1.4-1_amd64.deb\n- - wget http://mirrors.kernel.org/ubuntu/pool/universe/e/efitools/efitools_1.8.1-0ubuntu2_amd64.deb && sudo dpkg -i efitools_1.8.1-0ubuntu2_amd64.deb && rm efitools_1.8.1-0ubuntu2_amd64.deb\n-\n-env:\n-  global:\n-    - PATH=/tmp/qemu-install/bin:/tmp/uboot-test-hooks/bin:/sbin:/usr/bin:/bin:/usr/local/bin\n-    - PYTHONPATH=/tmp/uboot-test-hooks/py/travis-ci\n-    - BUILD_DIR=build\n-    - HOSTCC=\"cc\"\n-    - HOSTCXX=\"c++\"\n-    - QEMU_VERSION=\"v4.2.0\"\n-\n-before_script:\n-  # install toolchains based on TOOLCHAIN} variable\n-  - if [[ \"${TOOLCHAIN}\" == *m68k* ]]; then ./tools/buildman/buildman --fetch-arch m68k ; fi\n-  - if [[ \"${TOOLCHAIN}\" == *microblaze* ]]; then ./tools/buildman/buildman --fetch-arch microblaze ; fi\n-  - if [[ \"${TOOLCHAIN}\" == *mips* ]]; then ./tools/buildman/buildman --fetch-arch mips ; fi\n-  - if [[ \"${TOOLCHAIN}\" == *sh* ]]; then ./tools/buildman/buildman --fetch-arch sh2 ; fi\n-  - if [[ \"${TOOLCHAIN}\" == *i386* ]]; then\n-      ./tools/buildman/buildman --fetch-arch i386;\n-    fi\n-  - if [[ \"${TOOLCHAIN}\" == arc ]]; then\n-       wget https://github.com/foss-for-synopsys-dwc-arc-processors/toolchain/releases/download/arc-2019.09-release/arc_gnu_2019.09_prebuilt_uclibc_le_archs_linux_install.tar.gz &&\n-       tar -C /tmp -xf arc_gnu_2019.09_prebuilt_uclibc_le_archs_linux_install.tar.gz;\n-    fi\n-  - if [[ \"${TOOLCHAIN}\" == \"nds32\" ]]; then\n-       wget https://github.com/vincentzwc/prebuilt-nds32-toolchain/releases/download/20180521/nds32le-linux-glibc-v3-upstream.tar.gz &&\n-       tar -C /tmp -xf nds32le-linux-glibc-v3-upstream.tar.gz &&\n-       echo -e \"\\n[toolchain-prefix]\\nnds32 = /tmp/nds32le-linux-glibc-v3-upstream/bin/nds32le-linux-\" >> ~/.buildman;\n-    fi\n-  - if [[ \"${TOOLCHAIN}\" == *xtensa* ]]; then\n-       wget https://github.com/foss-xtensa/toolchain/releases/download/2018.02/x86_64-2018.02-${TOOLCHAIN}.tar.gz &&\n-       tar -C /tmp -xf x86_64-2018.02-${TOOLCHAIN}.tar.gz &&\n-       echo -e \"\\n[toolchain-prefix]\\nxtensa = /tmp/2018.02/${TOOLCHAIN}/bin/${TOOLCHAIN}-\" >> ~/.buildman;\n-    fi\n-  # If TOOLCHAIN is unset, we're on some flavour of ARM.\n-  - if [[ \"${TOOLCHAIN}\" == \"\" ]]; then\n-       ./tools/buildman/buildman --fetch-arch arm &&\n-       ./tools/buildman/buildman --fetch-arch aarch64;\n-    fi\n-  - if [[ \"${TOOLCHAIN}\" == \"powerpc\" ]]; then ./tools/buildman/buildman --fetch-arch powerpc; fi\n-  - if [[ \"${TOOLCHAIN}\" == \"riscv\" ]]; then\n-       ./tools/buildman/buildman --fetch-arch riscv32 &&\n-       ./tools/buildman/buildman --fetch-arch riscv64;\n-    fi\n-  - if [[ \"${QEMU_TARGET}\" != \"\" ]]; then\n-       git clone git://git.qemu.org/qemu.git /tmp/qemu;\n-       pushd /tmp/qemu;\n-       git submodule update --init dtc &&\n-       git checkout ${QEMU_VERSION} &&\n-       ./configure --prefix=/tmp/qemu-install --target-list=${QEMU_TARGET} &&\n-       make -j4 all install;\n-       popd;\n-    fi\n-\n-  # Build GRUB UEFI targets\n-  - if [[ \"${QEMU_TARGET}\" == \"arm-softmmu\" ]]; then\n-       git clone git://git.savannah.gnu.org/grub.git /tmp/grub &&\n-       pushd /tmp/grub &&\n-       git checkout grub-2.04 &&\n-       ./bootstrap &&\n-       ./configure --target=arm --with-platform=efi\n-       CC=gcc\n-       TARGET_CC=~/.buildman-toolchains/gcc-9.2.0-nolibc/arm-linux-gnueabi/bin/arm-linux-gnueabi-gcc\n-       TARGET_OBJCOPY=~/.buildman-toolchains/gcc-9.2.0-nolibc/arm-linux-gnueabi/bin/arm-linux-gnueabi-objcopy\n-       TARGET_STRIP=~/.buildman-toolchains/gcc-9.2.0-nolibc/arm-linux-gnueabi/bin/arm-linux-gnueabi-strip\n-       TARGET_NM=~/.buildman-toolchains/gcc-9.2.0-nolibc/arm-linux-gnueabi/bin/arm-linux-gnueabi-nm\n-       TARGET_RANLIB=~/.buildman-toolchains/gcc-9.2.0-nolibc/arm-linux-gnueabi/bin/arm-linux-gnueabi-ranlib &&\n-       make -j4 &&\n-       ./grub-mkimage -O arm-efi -o ~/grub_arm.efi --prefix= -d\n-       grub-core cat chain configfile echo efinet ext2 fat halt help linux\n-       lsefisystab loadenv lvm minicmd normal part_msdos part_gpt reboot\n-       search search_fs_file search_fs_uuid search_label serial sleep test\n-       true &&\n-       popd;\n-    fi\n-  - if [[ \"${QEMU_TARGET}\" == \"aarch64-softmmu\" ]]; then\n-       git clone git://git.savannah.gnu.org/grub.git /tmp/grub &&\n-       pushd /tmp/grub &&\n-       git checkout grub-2.04 &&\n-       ./bootstrap &&\n-       ./configure --target=aarch64 --with-platform=efi\n-       CC=gcc\n-       TARGET_CC=~/.buildman-toolchains/gcc-9.2.0-nolibc/aarch64-linux/bin/aarch64-linux-gcc\n-       TARGET_OBJCOPY=~/.buildman-toolchains/gcc-9.2.0-nolibc/aarch64-linux/bin/aarch64-linux-objcopy\n-       TARGET_STRIP=~/.buildman-toolchains/gcc-9.2.0-nolibc/aarch64-linux/bin/aarch64-linux-strip\n-       TARGET_NM=~/.buildman-toolchains/gcc-9.2.0-nolibc/aarch64-linux/bin/aarch64-linux-nm\n-       TARGET_RANLIB=~/.buildman-toolchains/gcc-9.2.0-nolibc/aarch64-linux/bin/aarch64-linux-ranlib &&\n-       make -j4 &&\n-       ./grub-mkimage -O arm64-efi -o ~/grub_arm64.efi --prefix= -d\n-       grub-core cat chain configfile echo efinet ext2 fat halt help linux\n-       lsefisystab loadenv lvm minicmd normal part_msdos part_gpt reboot\n-       search search_fs_file search_fs_uuid search_label serial sleep test\n-       true &&\n-       popd;\n-    fi\n-  - if [[ \"${QEMU_TARGET}\" == \"riscv32-softmmu\" ]]; then\n-       git clone git://git.savannah.gnu.org/grub.git /tmp/grub &&\n-       pushd /tmp/grub &&\n-       git checkout grub-2.04 &&\n-       ./bootstrap &&\n-       ./configure --target=riscv32 --with-platform=efi\n-       CC=gcc\n-       TARGET_CC=~/.buildman-toolchains/gcc-9.2.0-nolibc/riscv32-linux/bin/riscv32-linux-gcc\n-       TARGET_OBJCOPY=~/.buildman-toolchains/gcc-9.2.0-nolibc/riscv32-linux/bin/riscv32-linux-objcopy\n-       TARGET_STRIP=~/.buildman-toolchains/gcc-9.2.0-nolibc/riscv32-linux/bin/riscv32-linux-strip\n-       TARGET_NM=~/.buildman-toolchains/gcc-9.2.0-nolibc/riscv32-linux/bin/riscv32-linux-nm\n-       TARGET_RANLIB=~/.buildman-toolchains/gcc-9.2.0-nolibc/riscv32-linux/bin/riscv32-linux-ranlib &&\n-       make -j4 &&\n-       ./grub-mkimage -O riscv32-efi -o ~/grub_riscv32.efi --prefix= -d\n-       grub-core cat chain configfile echo efinet ext2 fat halt help linux\n-       lsefisystab loadenv lvm minicmd normal part_msdos part_gpt reboot\n-       search search_fs_file search_fs_uuid search_label serial sleep test\n-       true &&\n-       popd;\n-    fi\n-  - if [[ \"${QEMU_TARGET}\" == \"riscv64-softmmu\" ]]; then\n-       git clone git://git.savannah.gnu.org/grub.git /tmp/grub &&\n-       pushd /tmp/grub &&\n-       git checkout grub-2.04 &&\n-       ./bootstrap &&\n-       ./configure --target=riscv64 --with-platform=efi\n-       CC=gcc\n-       TARGET_CC=~/.buildman-toolchains/gcc-9.2.0-nolibc/riscv64-linux/bin/riscv64-linux-gcc\n-       TARGET_OBJCOPY=~/.buildman-toolchains/gcc-9.2.0-nolibc/riscv64-linux/bin/riscv64-linux-objcopy\n-       TARGET_STRIP=~/.buildman-toolchains/gcc-9.2.0-nolibc/riscv64-linux/bin/riscv64-linux-strip\n-       TARGET_NM=~/.buildman-toolchains/gcc-9.2.0-nolibc/riscv64-linux/bin/riscv64-linux-nm\n-       TARGET_RANLIB=~/.buildman-toolchains/gcc-9.2.0-nolibc/riscv64-linux/bin/riscv64-linux-ranlib &&\n-       make -j4 &&\n-       ./grub-mkimage -O riscv64-efi -o ~/grub_riscv64.efi --prefix= -d\n-       grub-core cat chain configfile echo efinet ext2 fat halt help linux\n-       lsefisystab loadenv lvm minicmd normal part_msdos part_gpt reboot\n-       search search_fs_file search_fs_uuid search_label serial sleep test\n-       true &&\n-       popd;\n-    fi\n-  - if [[ \"${TEST_PY_BD}\" == \"qemu-riscv32_spl\" ]]; then\n-       wget -O - https://github.com/riscv/opensbi/releases/download/v0.8/opensbi-0.8-rv-bin.tar.xz | tar -C /tmp -xJ;\n-       export OPENSBI=/tmp/opensbi-0.8-rv-bin/share/opensbi/ilp32/generic/firmware/fw_dynamic.bin;\n-    fi\n-  - if [[ \"${TEST_PY_BD}\" == \"qemu-riscv64_spl\" ]]; then\n-       wget -O - https://github.com/riscv/opensbi/releases/download/v0.8/opensbi-0.8-rv-bin.tar.xz | tar -C /tmp -xJ;\n-       export OPENSBI=/tmp/opensbi-0.8-rv-bin/share/opensbi/lp64/generic/firmware/fw_dynamic.bin;\n-    fi\n-\n-script:\n- # Comments must be outside the command strings below, or the Travis parser\n- # will get confused.\n- #\n- # If we've been asked to use clang only do one configuration.\n- #\n- # Build a selection of boards if TEST_PY_BD is empty\n- - if [[ \"${BUILDMAN}\" != \"\" ]]; then\n-     ret=0\n-     tools/buildman/buildman -P -E -W ${BUILDMAN} ${OVERRIDE} || ret=$?;\n-     if [[ $ret -ne 0 ]]; then\n-       tools/buildman/buildman -seP ${BUILDMAN};\n-       exit $ret;\n-     fi;\n-   fi\n- # Build just the one board needed for testing, if TEST_PY_BD is non-empty\n- # Note: \"${var:+\"-k $var\"}\" expands to \"\" if $var is empty, \"-k $var\" if not\n- - if [[ \"${TEST_PY_BD}\" != \"\" ]]; then\n-     export UBOOT_TRAVIS_BUILD_DIR=`cd .. && pwd`/${TEST_PY_BD};\n-     cp ~/grub_x86.efi $UBOOT_TRAVIS_BUILD_DIR/;\n-     cp ~/grub_x64.efi $UBOOT_TRAVIS_BUILD_DIR/;\n-     if [[ -e ~/grub_arm.efi ]]; then\n-       cp ~/grub_arm.efi $UBOOT_TRAVIS_BUILD_DIR/;\n-     fi;\n-     if [[ -e ~/grub_arm64.efi ]]; then\n-       cp ~/grub_arm64.efi $UBOOT_TRAVIS_BUILD_DIR/;\n-     fi;\n-     if [[ -e ~/grub_riscv32.efi ]]; then\n-       cp ~/grub_riscv32.efi $UBOOT_TRAVIS_BUILD_DIR/;\n-     fi;\n-     if [[ -e ~/grub_riscv64.efi ]]; then\n-       cp ~/grub_riscv64.efi $UBOOT_TRAVIS_BUILD_DIR/;\n-     fi;\n-     tools/buildman/buildman -o ${UBOOT_TRAVIS_BUILD_DIR} -w -E -W -e\n-       --board ${TEST_PY_BD} ${OVERRIDE} || exit;\n-     virtualenv -p /usr/bin/python3 /tmp/venv;\n-     . /tmp/venv/bin/activate;\n-     pip install -r test/py/requirements.txt;\n-     ./test/py/test.py -ra --bd ${TEST_PY_BD} ${TEST_PY_ID}\n-       ${TEST_PY_TEST_SPEC:+\"-k ${TEST_PY_TEST_SPEC}\"}\n-       --build-dir \"$UBOOT_TRAVIS_BUILD_DIR\" || exit;\n-     if [[ -n \"${TEST_PY_TOOLS}\" ]]; then\n-       export PYTHONPATH=\"${UBOOT_TRAVIS_BUILD_DIR}/scripts/dtc/pylibfdt\";\n-       export PATH=\"${UBOOT_TRAVIS_BUILD_DIR}/scripts/dtc:${PATH}\";\n-       pip install pyelftools &&\n-       ./tools/binman/binman --toolpath ${UBOOT_TRAVIS_BUILD_DIR}/tools test &&\n-       ./tools/patman/patman test &&\n-       ./tools/buildman/buildman -t &&\n-       ./tools/dtoc/dtoc -t &&\n-       make testconfig;\n-     fi;\n-   fi\n-\n-matrix:\n-  include:\n-  # we need to build by vendor due to 50min time limit for builds\n-  # each env setting here is a dedicated build\n-    - name: \"buildman arc\"\n-      env:\n-        - BUILDMAN=\"arc\"\n-          TOOLCHAIN=\"arc\"\n-    - name: \"buildman arm11 arm7 arm920t arm946es\"\n-      env:\n-        - BUILDMAN=\"arm11 arm7 arm920t arm946es\"\n-    - name: \"buildman arm926ejs (non-NXP,siemens,at91,kirkwood,spear)\"\n-      env:\n-        - JOB=\"arm926ejs\"\n-          BUILDMAN=\"arm926ejs -x freescale,siemens,at91,kirkwood,spear,omap\"\n-    - name: \"buildman at91 (non arm v7)\"\n-      env:\n-        - BUILDMAN=\"at91 -x armv7\"\n-    - name: \"buildman at91 (non arm926ejs)\"\n-      env:\n-        - BUILDMAN=\"at91 -x arm926ejs\"\n-    - name: \"buildman boundary engicam toradex\"\n-      env:\n-        - BUILDMAN=\"boundary engicam toradex\"\n-    - name: \"buildman ARM bcm\"\n-      env:\n-        - BUILDMAN=\"bcm -x mips\"\n-    - name: \"buildman NXP ARM32 (catch-all)\"\n-      env:\n-        - BUILDMAN=\"freescale -x powerpc,m68k,aarch64,ls101,ls102,ls104,ls108,ls20,lx216\"\n-    - name: \"buildman NXP LS101x\"\n-      env:\n-        - BUILDMAN=\"freescale&ls101\"\n-    - name: \"buildman NXP LS102x\"\n-      env:\n-        - BUILDMAN=\"freescale&ls102\"\n-    - name: \"buildman NXP LS104x\"\n-      env:\n-        - BUILDMAN=\"freescale&ls104\"\n-    - name: \"buildman NXP LS108x\"\n-      env:\n-        - BUILDMAN=\"freescale&ls108\"\n-    - name: \"buildman NXP LS20xx\"\n-      env:\n-        - BUILDMAN=\"freescale&ls20\"\n-    - name: \"buildman NXP LX216x\"\n-      env:\n-        - BUILDMAN=\"freescale&lx216\"\n-    - name: \"buildman i.MX6 tqc\"\n-      env:\n-        - BUILDMAN=\"mx6&tqc\"\n-    - name: \"buildman i.MX6 (catch-all)\"\n-      env:\n-        - BUILDMAN=\"mx6 -x boundary,engicam,freescale,technexion,toradex,tqc\"\n-    - name: \"buildman i.MX (non-i.MX6 catch-all)\"\n-      env:\n-        - BUILDMAN=\"mx -x freescale,mx6,toradex,technexion\"\n-    - name: \"buildman keystone 2/3\"\n-      env:\n-        - BUILDMAN=\"k2 k3\"\n-    - name: \"buildman samsung socfpga\"\n-      env:\n-        - BUILDMAN=\"samsung socfpga\"\n-    - name: \"buildman spear\"\n-      env:\n-        - BUILDMAN=\"spear\"\n-    - name: \"buildman sun4i\"\n-      env:\n-        - BUILDMAN=\"sun4i\"\n-    - name: \"buildman sun5i\"\n-      env:\n-        - BUILDMAN=\"sun5i\"\n-    - name: \"buildman sun6i\"\n-      env:\n-        - BUILDMAN=\"sun6i\"\n-    - name: \"buildman sun7i\"\n-      env:\n-        - BUILDMAN=\"sun7i\"\n-    - name: \"buildman 64bit sun8i\"\n-      env:\n-        - BUILDMAN=\"sun8i&aarch64 -x orangepi\"\n-    - name: \"buildman 32bit sun8i\"\n-      env:\n-        - BUILDMAN=\"sun8i&armv7 -x orangepi\"\n-    - name: \"buildman sun9i\"\n-      env:\n-        - BUILDMAN=\"sun9i\"\n-    - name: \"buildman sun50i\"\n-      env:\n-        - BUILDMAN=\"sun50i -x orangepi\"\n-    - name: \"buildman catch-all ARM\"\n-      env:\n-        - BUILDMAN=\"arm -x arm11,arm7,arm9,aarch64,at91,bcm,freescale,kirkwood,mvebu,siemens,tegra,uniphier,mx,samsung,sunxi,am33xx,omap,rk,toradex,socfpga,k2,k3,zynq\"\n-    - name: \"buildman sandbox x86\"\n-      env:\n-        - BUILDMAN=\"sandbox x86\"\n-          TOOLCHAIN=\"i386\"\n-    - name: \"buildman technexion\"\n-      env:\n-        - BUILDMAN=\"technexion\"\n-    - name: \"buildman kirkwood\"\n-      env:\n-        - BUILDMAN=\"kirkwood\"\n-    - name: \"buildman mvebu\"\n-      env:\n-        - BUILDMAN=\"mvebu\"\n-    - name: \"buildman m68k\"\n-      env:\n-        - BUILDMAN=\"m68k\"\n-          TOOLCHAIN=\"m68k\"\n-    - name: \"buildman microblaze\"\n-      env:\n-        - BUILDMAN=\"microblaze\"\n-          TOOLCHAIN=\"microblaze\"\n-    - name: \"buildman mips\"\n-      env:\n-        - BUILDMAN=\"mips\"\n-          TOOLCHAIN=\"mips\"\n-    - name: \"buildman non-Freescale PowerPC\"\n-      env:\n-        - BUILDMAN=\"powerpc -x freescale\"\n-          TOOLCHAIN=\"powerpc\"\n-    - name: \"buildman mpc85xx&freescale (excluding many)\"\n-      env:\n-        - BUILDMAN=\"mpc85xx&freescale -x t208xrdb -x t4qds -x t102* -x p1_p2_rdb_pc -x p1010rdb -x corenet_ds -x b4860qds -x bsc91*\"\n-          TOOLCHAIN=\"powerpc\"\n-    - name: \"buildman t208xrdb corenet_ds\"\n-      env:\n-        - BUILDMAN=\"t208xrdb corenet_ds\"\n-          TOOLCHAIN=\"powerpc\"\n-    - name: \"buildman Freescale PowerPC\"\n-      env:\n-        - BUILDMAN=\"t4qds b4860qds mpc83xx&freescale mpc86xx&freescale\"\n-          TOOLCHAIN=\"powerpc\"\n-    - name: \"buildman t102*\"\n-      env:\n-        - BUILDMAN=\"t102*\"\n-          TOOLCHAIN=\"powerpc\"\n-    - name: \"buildman p1_p2_rdb_pc\"\n-      env:\n-        - BUILDMAN=\"p1_p2_rdb_pc\"\n-          TOOLCHAIN=\"powerpc\"\n-    - name: \"buildman p1010rdb bsc91\"\n-      env:\n-        - BUILDMAN=\"p1010rdb bsc91\"\n-          TOOLCHAIN=\"powerpc\"\n-    - name: \"buildman siemens\"\n-      env:\n-        - BUILDMAN=\"siemens\"\n-    - name: \"buildman tegra\"\n-      env:\n-        - BUILDMAN=\"tegra -x toradex\"\n-    - name: \"buildman am33xx (no siemens)\"\n-      env:\n-        - BUILDMAN=\"am33xx -x siemens\"\n-    - name: \"buildman omap\"\n-      env:\n-        - BUILDMAN=\"omap\"\n-    - name: \"buildman orangepi\"\n-      env:\n-        - BUILDMAN=\"orangepi\"\n-    - name: \"buildman uniphier\"\n-      env:\n-        - BUILDMAN=\"uniphier\"\n-    - name: \"buildman catch-all AArch64\"\n-      env:\n-        - BUILDMAN=\"aarch64 -x bcm,k3,tegra,ls1,ls2,lx216,mvebu,uniphier,sunxi,samsung,socfpga,rk,versal,zynq\"\n-    - name: \"buildman rockchip\"\n-      env:\n-        - BUILDMAN=\"rk -x orangepi\"\n-    - name: \"buildman sh\"\n-      env:\n-        - BUILDMAN=\"sh -x arm\"\n-          TOOLCHAIN=\"sh\"\n-    - name: \"buildman Zynq* (ARMv7)\"\n-      env:\n-        - BUILDMAN=\"zynq&armv7\"\n-    - name: \"buildman ZynqMP and Versal\"\n-      env:\n-        - BUILDMAN=\"versal|zynqmp&aarch64\"\n-    - name: \"buildman xtensa\"\n-      env:\n-        - BUILDMAN=\"xtensa\"\n-          TOOLCHAIN=\"xtensa-dc233c-elf\"\n-    - name: \"buildman riscv\"\n-      env:\n-        - BUILDMAN=\"riscv\"\n-          TOOLCHAIN=\"riscv\"\n-    - name: \"buildman nds32\"\n-      env:\n-        - BUILDMAN=\"nds32\"\n-          TOOLCHAIN=\"nds32\"\n-\n-    # QA jobs for code analytics\n-    # static code analysis with cppcheck (we can add --enable=all later)\n-    - name: \"cppcheck\"\n-      script:\n-        - cppcheck -j$(nproc) --force --quiet --inline-suppr .\n-    # build HTML documentation\n-    - name: \"htmldocs\"\n-      script:\n-        - make htmldocs\n-    # search for TODO within source tree\n-    - name: \"grep TODO\"\n-      script:\n-        - grep -r TODO .\n-    # search for FIXME within source tree\n-    - name: \"grep FIXME HACK\"\n-      script:\n-        - grep -r FIXME .\n-    # search for HACK within source tree and ignore HACKKIT board\n-      script:\n-        - grep -r HACK . | grep -v HACKKIT\n-    # some statistics about the code base\n-    - name: \"sloccount\"\n-      script:\n-        - sloccount .\n-    # ensure all configs have MAINTAINERS entries\n-    - name: \"Check for configs without MAINTAINERS entry\"\n-      script:\n-        - if [ `./tools/genboardscfg.py -f 2>&1 | wc -l` -ne 0 ]; then exit 1; fi\n-    # Ensure host tools build\n-    - name: \"Build tools-only\"\n-      script:\n-        - make tools-only_config tools-only -j$(nproc)\n-    # Ensure env tools build\n-    - name: \"Build envtools\"\n-      script:\n-        - make tools-only_config envtools -j$(nproc)\n-\n-    - name: \"Run tests for Nokia RX-51 (aka N900)\"\n-      script:\n-        - export PATH=~/.buildman-toolchains/gcc-9.2.0-nolibc/arm-linux-gnueabi/bin/:$PATH\n-        - test/nokia_rx51_test.sh\n-\n-    # test/py\n-    - name: \"test/py sandbox\"\n-      env:\n-        - TEST_PY_BD=\"sandbox\"\n-          TOOLCHAIN=\"i386\"\n-    - name: \"test/py sandbox with clang\"\n-      env:\n-        - TEST_PY_BD=\"sandbox\"\n-          OVERRIDE=\"-O clang-10\"\n-    - name: \"test/py sandbox_spl\"\n-      env:\n-        - TEST_PY_BD=\"sandbox_spl\"\n-          TEST_PY_TEST_SPEC=\"test_ofplatdata or test_handoff\"\n-          TOOLCHAIN=\"i386\"\n-          TEST_PY_TOOLS=\"yes\"\n-    - name: \"test/py sandbox_flattree\"\n-      env:\n-        - TEST_PY_BD=\"sandbox_flattree\"\n-          TOOLCHAIN=\"i386\"\n-    - name: \"test/py evb-ast2500\"\n-      env:\n-        - TEST_PY_BD=\"evb-ast2500\"\n-          TEST_PY_ID=\"--id qemu\"\n-          QEMU_TARGET=\"arm-softmmu\"\n-    - name: \"test/py vexpress_ca15_tc2\"\n-      env:\n-        - TEST_PY_BD=\"vexpress_ca15_tc2\"\n-          TEST_PY_ID=\"--id qemu\"\n-          QEMU_TARGET=\"arm-softmmu\"\n-    - name: \"test/py vexpress_ca9x4\"\n-      env:\n-        - TEST_PY_BD=\"vexpress_ca9x4\"\n-          TEST_PY_ID=\"--id qemu\"\n-          QEMU_TARGET=\"arm-softmmu\"\n-    - name: \"test/py integratorcp_cm926ejs\"\n-      env:\n-        - TEST_PY_BD=\"integratorcp_cm926ejs\"\n-          TEST_PY_TEST_SPEC=\"not sleep\"\n-          TEST_PY_ID=\"--id qemu\"\n-          QEMU_TARGET=\"arm-softmmu\"\n-    - name: \"test/py qemu_arm\"\n-      env:\n-        - TEST_PY_BD=\"qemu_arm\"\n-          TEST_PY_TEST_SPEC=\"not sleep\"\n-          QEMU_TARGET=\"arm-softmmu\"\n-    - name: \"test/py qemu_arm64\"\n-      env:\n-        - TEST_PY_BD=\"qemu_arm64\"\n-          TEST_PY_TEST_SPEC=\"not sleep\"\n-          QEMU_TARGET=\"aarch64-softmmu\"\n-    - name: \"test/py qemu_mips\"\n-      env:\n-        - TEST_PY_BD=\"qemu_mips\"\n-          TEST_PY_TEST_SPEC=\"not sleep\"\n-          QEMU_TARGET=\"mips-softmmu\"\n-          TOOLCHAIN=\"mips\"\n-    - name: \"test/py qemu_mipsel\"\n-      env:\n-        - TEST_PY_BD=\"qemu_mipsel\"\n-          TEST_PY_TEST_SPEC=\"not sleep\"\n-          QEMU_TARGET=\"mipsel-softmmu\"\n-          TOOLCHAIN=\"mips\"\n-    - name: \"test/py qemu_mips64\"\n-      env:\n-        - TEST_PY_BD=\"qemu_mips64\"\n-          TEST_PY_TEST_SPEC=\"not sleep\"\n-          QEMU_TARGET=\"mips64-softmmu\"\n-          TOOLCHAIN=\"mips\"\n-    - name: \"test/py qemu_mips64el\"\n-      env:\n-        - TEST_PY_BD=\"qemu_mips64el\"\n-          TEST_PY_TEST_SPEC=\"not sleep\"\n-          QEMU_TARGET=\"mips64el-softmmu\"\n-          TOOLCHAIN=\"mips\"\n-    - name: \"test/py qemu-malta\"\n-      env:\n-        - TEST_PY_BD=\"malta\"\n-          TEST_PY_TEST_SPEC=\"not sleep and not efi\"\n-          TEST_PY_ID=\"--id qemu\"\n-          QEMU_TARGET=\"mips-softmmu\"\n-          TOOLCHAIN=\"mips\"\n-    - name: \"test/py qemu-maltael\"\n-      env:\n-        - TEST_PY_BD=\"maltael\"\n-          TEST_PY_TEST_SPEC=\"not sleep and not efi\"\n-          TEST_PY_ID=\"--id qemu\"\n-          QEMU_TARGET=\"mipsel-softmmu\"\n-          TOOLCHAIN=\"mips\"\n-    - name: \"test/py qemu-malta64\"\n-      env:\n-        - TEST_PY_BD=\"malta64\"\n-          TEST_PY_TEST_SPEC=\"not sleep and not efi\"\n-          TEST_PY_ID=\"--id qemu\"\n-          QEMU_TARGET=\"mips64-softmmu\"\n-          TOOLCHAIN=\"mips\"\n-    - name: \"test/py qemu-malta64el\"\n-      env:\n-        - TEST_PY_BD=\"malta64el\"\n-          TEST_PY_TEST_SPEC=\"not sleep and not efi\"\n-          TEST_PY_ID=\"--id qemu\"\n-          QEMU_TARGET=\"mips64el-softmmu\"\n-          TOOLCHAIN=\"mips\"\n-    - name: \"test/py qemu-ppce500\"\n-      env:\n-        - TEST_PY_BD=\"qemu-ppce500\"\n-          TEST_PY_TEST_SPEC=\"not sleep\"\n-          QEMU_TARGET=\"ppc-softmmu\"\n-          TOOLCHAIN=\"powerpc\"\n-    - name: \"test/py qemu-riscv32\"\n-      env:\n-        - TEST_PY_BD=\"qemu-riscv32\"\n-          TEST_PY_TEST_SPEC=\"not sleep\"\n-          QEMU_TARGET=\"riscv32-softmmu\"\n-          TOOLCHAIN=\"riscv\"\n-    - name: \"test/py qemu-riscv64\"\n-      env:\n-        - TEST_PY_BD=\"qemu-riscv64\"\n-          TEST_PY_TEST_SPEC=\"not sleep\"\n-          QEMU_TARGET=\"riscv64-softmmu\"\n-          TOOLCHAIN=\"riscv\"\n-    - name: \"test/py qemu-riscv32_spl\"\n-      env:\n-        - TEST_PY_BD=\"qemu-riscv32_spl\"\n-          TEST_PY_TEST_SPEC=\"not sleep\"\n-          QEMU_TARGET=\"riscv32-softmmu\"\n-          TOOLCHAIN=\"riscv\"\n-    - name: \"test/py qemu-riscv64_spl\"\n-      env:\n-        - TEST_PY_BD=\"qemu-riscv64_spl\"\n-          TEST_PY_TEST_SPEC=\"not sleep\"\n-          QEMU_TARGET=\"riscv64-softmmu\"\n-          TOOLCHAIN=\"riscv\"\n-    - name: \"test/py qemu-x86\"\n-      env:\n-        - TEST_PY_BD=\"qemu-x86\"\n-          TEST_PY_TEST_SPEC=\"not sleep\"\n-          QEMU_TARGET=\"i386-softmmu\"\n-          TOOLCHAIN=\"i386\"\n-          BUILD_ROM=\"yes\"\n-    - name: \"test/py qemu-x86_64\"\n-      env:\n-        - TEST_PY_BD=\"qemu-x86_64\"\n-          TEST_PY_TEST_SPEC=\"not sleep\"\n-          QEMU_TARGET=\"x86_64-softmmu\"\n-          TOOLCHAIN=\"i386\"\n-          BUILD_ROM=\"yes\"\n-    - name: \"test/py r2dplus_i82557c\"\n-      env:\n-        - TEST_PY_BD=\"r2dplus\"\n-          TEST_PY_ID=\"--id i82557c_qemu\"\n-          QEMU_TARGET=\"sh4-softmmu\"\n-          BUILDMAN=\"sh -x arm\"\n-          TOOLCHAIN=\"sh\"\n-    - name: \"test/py r2dplus_pcnet\"\n-      env:\n-        - TEST_PY_BD=\"r2dplus\"\n-          TEST_PY_ID=\"--id pcnet_qemu\"\n-          QEMU_TARGET=\"sh4-softmmu\"\n-          BUILDMAN=\"sh -x arm\"\n-          TOOLCHAIN=\"sh\"\n-    - name: \"test/py r2dplus_rtl8139\"\n-      env:\n-        - TEST_PY_BD=\"r2dplus\"\n-          TEST_PY_ID=\"--id rtl8139_qemu\"\n-          QEMU_TARGET=\"sh4-softmmu\"\n-          BUILDMAN=\"sh -x arm\"\n-          TOOLCHAIN=\"sh\"\n-    - name: \"test/py r2dplus_tulip\"\n-      env:\n-        - TEST_PY_BD=\"r2dplus\"\n-          TEST_PY_ID=\"--id tulip_qemu\"\n-          QEMU_TARGET=\"sh4-softmmu\"\n-          BUILDMAN=\"sh -x arm\"\n-          TOOLCHAIN=\"sh\"\n-    - name: \"test/py xilinx_zynq_virt\"\n-      env:\n-        - TEST_PY_BD=\"xilinx_zynq_virt\"\n-          TEST_PY_TEST_SPEC=\"not sleep\"\n-          QEMU_TARGET=\"arm-softmmu\"\n-          TEST_PY_ID=\"--id qemu\"\n-    - name: \"test/py xilinx_versal_virt\"\n-      env:\n-        - TEST_PY_BD=\"xilinx_versal_virt\"\n-          TEST_PY_TEST_SPEC=\"not sleep\"\n-          QEMU_TARGET=\"aarch64-softmmu\"\n-          TEST_PY_ID=\"--id qemu\"\n-    - name: \"test/py xtfpga\"\n-      env:\n-        - TEST_PY_BD=\"xtfpga\"\n-          TEST_PY_TEST_SPEC=\"not sleep\"\n-          QEMU_TARGET=\"xtensa-softmmu\"\n-          TEST_PY_ID=\"--id qemu\"\n-          TOOLCHAIN=\"xtensa-dc233c-elf\"\n-\n-# TODO make it perfect ;-r\ndiff --git a/Kconfig b/Kconfig\nindex 883e3f7..6dc20ed 100644\n--- a/Kconfig\n+++ b/Kconfig\n@@ -196,11 +196,11 @@ config SYS_MALLOC_F_LEN\n \thex \"Size of malloc() pool before relocation\"\n \tdepends on SYS_MALLOC_F\n \tdefault 0x1000 if AM33XX\n-\tdefault 0x2800 if SANDBOX\n+\tdefault 0x4000 if SANDBOX\n \tdefault 0x2000 if (ARCH_IMX8 || ARCH_IMX8M || ARCH_MX7 || \\\n \t\t\t   ARCH_MX7ULP || ARCH_MX6 || ARCH_MX5 || \\\n \t\t\t   ARCH_LS1012A || ARCH_LS1021A || ARCH_LS1043A || \\\n-\t\t\t   ARCH_LS1046A || ARCH_QEMU)\n+\t\t\t   ARCH_LS1046A || ARCH_QEMU || ARCH_SUNXI || ARCH_OWL)\n \tdefault 0x400\n \thelp\n \t  Before relocation, memory is very limited on many platforms. Still,\n@@ -422,345 +422,15 @@ config SYS_SRAM_SIZE\n \tdefault 0x10000 if TARGET_TRICORDER\n \tdefault 0x0\n \n-endmenu\t\t# General setup\n-\n-menu \"Boot images\"\n-\n-config ANDROID_BOOT_IMAGE\n-\tbool \"Enable support for Android Boot Images\"\n-\tdefault y if FASTBOOT\n-\thelp\n-\t  This enables support for booting images which use the Android\n-\t  image format header.\n-\n-config FIT\n-\tbool \"Support Flattened Image Tree\"\n-\tselect MD5\n-\tselect SHA1\n-\thelp\n-\t  This option allows you to boot the new uImage structure,\n-\t  Flattened Image Tree.  FIT is formally a FDT, which can include\n-\t  images of various types (kernel, FDT blob, ramdisk, etc.)\n-\t  in a single blob.  To boot this new uImage structure,\n-\t  pass the address of the blob to the \"bootm\" command.\n-\t  FIT is very flexible, supporting compression, multiple images,\n-\t  multiple configurations, verification through hashing and also\n-\t  verified boot (secure boot using RSA).\n-\n-if FIT\n-\n-config FIT_EXTERNAL_OFFSET\n-\thex \"FIT external data offset\"\n-\tdefault 0x0\n-\thelp\n-\t  This specifies a data offset in fit image.\n-\t  The offset is from data payload offset to the beginning of\n-\t  fit image header. When specifies a offset, specific data\n-\t  could be put in the hole between data payload and fit image\n-\t  header, such as CSF data on i.MX platform.\n-\n-config FIT_ENABLE_SHA256_SUPPORT\n-\tbool \"Support SHA256 checksum of FIT image contents\"\n-\tdefault y\n-\tselect SHA256\n-\thelp\n-\t  Enable this to support SHA256 checksum of FIT image contents. A\n-\t  SHA256 checksum is a 256-bit (32-byte) hash value used to check that\n-\t  the image contents have not been corrupted.\n-\n-config FIT_ENABLE_SHA384_SUPPORT\n-\tbool \"Support SHA384 checksum of FIT image contents\"\n-\tdefault n\n-\tselect SHA384\n+config EXAMPLES\n+\tbool \"Compile API examples\"\n+\tdepends on !SANDBOX\n+\tdefault y if ARCH_QEMU\n \thelp\n-\t  Enable this to support SHA384 checksum of FIT image contents. A\n-\t  SHA384 checksum is a 384-bit (48-byte) hash value used to check that\n-\t  the image contents have not been corrupted. Use this for the highest\n-\t  security.\n+\t  U-Boot provides an API for standalone applications. Examples are\n+\t  provided in directory examples/.\n \n-config FIT_ENABLE_SHA512_SUPPORT\n-\tbool \"Support SHA512 checksum of FIT image contents\"\n-\tdefault n\n-\tselect SHA512\n-\thelp\n-\t  Enable this to support SHA512 checksum of FIT image contents. A\n-\t  SHA512 checksum is a 512-bit (64-byte) hash value used to check that\n-\t  the image contents have not been corrupted.\n-\n-config FIT_SIGNATURE\n-\tbool \"Enable signature verification of FIT uImages\"\n-\tdepends on DM\n-\tselect HASH\n-\tselect RSA\n-\tselect RSA_VERIFY\n-\tselect IMAGE_SIGN_INFO\n-\thelp\n-\t  This option enables signature verification of FIT uImages,\n-\t  using a hash signed and verified using RSA. If\n-\t  CONFIG_SHA_PROG_HW_ACCEL is defined, i.e support for progressive\n-\t  hashing is available using hardware, then the RSA library will use\n-\t  it. See doc/uImage.FIT/signature.txt for more details.\n-\n-\t  WARNING: When relying on signed FIT images with a required signature\n-\t  check the legacy image format is disabled by default, so that\n-\t  unsigned images cannot be loaded. If a board needs the legacy image\n-\t  format support in this case, enable it using\n-\t  CONFIG_LEGACY_IMAGE_FORMAT.\n-\n-config FIT_SIGNATURE_MAX_SIZE\n-\thex \"Max size of signed FIT structures\"\n-\tdepends on FIT_SIGNATURE\n-\tdefault 0x10000000\n-\thelp\n-\t  This option sets a max size in bytes for verified FIT uImages.\n-\t  A sane value of 256MB protects corrupted DTB structures from overlapping\n-\t  device memory. Assure this size does not extend past expected storage\n-\t  space.\n-\n-config FIT_ENABLE_RSASSA_PSS_SUPPORT\n-\tbool \"Support rsassa-pss signature scheme of FIT image contents\"\n-\tdepends on FIT_SIGNATURE\n-\tdefault n\n-\thelp\n-\t  Enable this to support the pss padding algorithm as described\n-\t  in the rfc8017 (https://tools.ietf.org/html/rfc8017).\n-\n-config FIT_CIPHER\n-\tbool \"Enable ciphering data in a FIT uImages\"\n-\tdepends on DM\n-\tselect AES\n-\thelp\n-\t  Enable the feature of data ciphering/unciphering in the tool mkimage\n-\t  and in the u-boot support of the FIT image.\n-\n-config FIT_VERBOSE\n-\tbool \"Show verbose messages when FIT images fail\"\n-\thelp\n-\t  Generally a system will have valid FIT images so debug messages\n-\t  are a waste of code space. If you are debugging your images then\n-\t  you can enable this option to get more verbose information about\n-\t  failures.\n-\n-config FIT_BEST_MATCH\n-\tbool \"Select the best match for the kernel device tree\"\n-\thelp\n-\t  When no configuration is explicitly selected, default to the\n-\t  one whose fdt's compatibility field best matches that of\n-\t  U-Boot itself. A match is considered \"best\" if it matches the\n-\t  most specific compatibility entry of U-Boot's fdt's root node.\n-\t  The order of entries in the configuration's fdt is ignored.\n-\n-config FIT_IMAGE_POST_PROCESS\n-\tbool \"Enable post-processing of FIT artifacts after loading by U-Boot\"\n-\tdepends on TI_SECURE_DEVICE\n-\thelp\n-\t  Allows doing any sort of manipulation to blobs after they got extracted\n-\t  from FIT images like stripping off headers or modifying the size of the\n-\t  blob, verification, authentication, decryption etc. in a platform or\n-\t  board specific way. In order to use this feature a platform or board-\n-\t  specific implementation of board_fit_image_post_process() must be\n-\t  provided. Also, anything done during this post-processing step would\n-\t  need to be comprehended in how the images were prepared before being\n-\t  injected into the FIT creation (i.e. the blobs would have been pre-\n-\t  processed before being added to the FIT image).\n-\n-if SPL\n-\n-config SPL_FIT\n-\tbool \"Support Flattened Image Tree within SPL\"\n-\tdepends on SPL\n-\tselect SPL_OF_LIBFDT\n-\n-config SPL_FIT_PRINT\n-\tbool \"Support FIT printing within SPL\"\n-\tdepends on SPL_FIT\n-\thelp\n-\t  Support printing the content of the fitImage in a verbose manner in SPL.\n-\n-config SPL_FIT_SIGNATURE\n-\tbool \"Enable signature verification of FIT firmware within SPL\"\n-\tdepends on SPL_DM\n-\tselect SPL_FIT\n-\tselect SPL_CRYPTO_SUPPORT\n-\tselect SPL_HASH_SUPPORT\n-\tselect SPL_RSA\n-\tselect SPL_RSA_VERIFY\n-\tselect SPL_IMAGE_SIGN_INFO\n-\n-config SPL_LOAD_FIT\n-\tbool \"Enable SPL loading U-Boot as a FIT (basic fitImage features)\"\n-\tselect SPL_FIT\n-\thelp\n-\t  Normally with the SPL framework a legacy image is generated as part\n-\t  of the build. This contains U-Boot along with information as to\n-\t  where it should be loaded. This option instead enables generation\n-\t  of a FIT (Flat Image Tree) which provides more flexibility. In\n-\t  particular it can handle selecting from multiple device tree\n-\t  and passing the correct one to U-Boot.\n-\n-config SPL_LOAD_FIT_ADDRESS\n-\thex \"load address of fit image\"\n-\tdepends on SPL_LOAD_FIT\n-\tdefault 0x0\n-\thelp\n-\t  Specify the load address of the fit image that will be loaded\n-\t  by SPL.\n-\n-config SPL_LOAD_FIT_APPLY_OVERLAY\n-\tbool \"Enable SPL applying DT overlays from FIT\"\n-\tdepends on SPL_LOAD_FIT\n-\tselect OF_LIBFDT_OVERLAY\n-\thelp\n-\t  The device tree is loaded from the FIT image. Allow the SPL is to\n-\t  also load device-tree overlays from the FIT image an apply them\n-\t  over the device tree.\n-\n-config SPL_LOAD_FIT_APPLY_OVERLAY_BUF_SZ\n-\tdepends on SPL_LOAD_FIT_APPLY_OVERLAY\n-\tdefault 0x10000\n-\thex \"size of temporary buffer used to load the overlays\"\n-\thelp\n-\t  The size of the area where the overlays will be loaded and\n-\t  uncompress. Must be at least as large as biggest overlay\n-\t  (uncompressed)\n-\n-config SPL_LOAD_FIT_FULL\n-\tbool \"Enable SPL loading U-Boot as a FIT (full fitImage features)\"\n-\tselect SPL_FIT\n-\thelp\n-\t  Normally with the SPL framework a legacy image is generated as part\n-\t  of the build. This contains U-Boot along with information as to\n-\t  where it should be loaded. This option instead enables generation\n-\t  of a FIT (Flat Image Tree) which provides more flexibility. In\n-\t  particular it can handle selecting from multiple device tree\n-\t  and passing the correct one to U-Boot.\n-\n-config SPL_FIT_IMAGE_POST_PROCESS\n-\tbool \"Enable post-processing of FIT artifacts after loading by the SPL\"\n-\tdepends on SPL_LOAD_FIT\n-\thelp\n-\t  Allows doing any sort of manipulation to blobs after they got extracted\n-\t  from the U-Boot FIT image like stripping off headers or modifying the\n-\t  size of the blob, verification, authentication, decryption etc. in a\n-\t  platform or board specific way. In order to use this feature a platform\n-\t  or board-specific implementation of board_fit_image_post_process() must\n-\t  be provided. Also, anything done during this post-processing step would\n-\t  need to be comprehended in how the images were prepared before being\n-\t  injected into the FIT creation (i.e. the blobs would have been pre-\n-\t  processed before being added to the FIT image).\n-\n-config SPL_FIT_SOURCE\n-\tstring \".its source file for U-Boot FIT image\"\n-\tdepends on SPL_FIT\n-\thelp\n-\t  Specifies a (platform specific) FIT source file to generate the\n-\t  U-Boot FIT image. This could specify further image to load and/or\n-\t  execute.\n-\n-config USE_SPL_FIT_GENERATOR\n-\tbool \"Use a script to generate the .its script\"\n-\tdefault y if SPL_FIT\n-\n-config SPL_FIT_GENERATOR\n-\tstring \".its file generator script for U-Boot FIT image\"\n-\tdepends on USE_SPL_FIT_GENERATOR\n-\tdefault \"board/sunxi/mksunxi_fit_atf.sh\" if SPL_LOAD_FIT && ARCH_SUNXI\n-\tdefault \"arch/arm/mach-rockchip/make_fit_atf.py\" if SPL_LOAD_FIT && ARCH_ROCKCHIP\n-\tdefault \"arch/arm/mach-zynqmp/mkimage_fit_atf.sh\" if SPL_LOAD_FIT && ARCH_ZYNQMP\n-\tdefault \"arch/riscv/lib/mkimage_fit_opensbi.sh\" if SPL_LOAD_FIT && RISCV\n-\thelp\n-\t  Specifies a (platform specific) script file to generate the FIT\n-\t  source file used to build the U-Boot FIT image file. This gets\n-\t  passed a list of supported device tree file stub names to\n-\t  include in the generated image.\n-\n-endif # SPL\n-\n-endif # FIT\n-\n-config LEGACY_IMAGE_FORMAT\n-\tbool \"Enable support for the legacy image format\"\n-\tdefault y if !FIT_SIGNATURE\n-\thelp\n-\t  This option enables the legacy image format. It is enabled by\n-\t  default for backward compatibility, unless FIT_SIGNATURE is\n-\t  set where it is disabled so that unsigned images cannot be\n-\t  loaded. If a board needs the legacy image format support in this\n-\t  case, enable it here.\n-\n-config OF_BOARD_SETUP\n-\tbool \"Set up board-specific details in device tree before boot\"\n-\tdepends on OF_LIBFDT\n-\thelp\n-\t  This causes U-Boot to call ft_board_setup() before booting into\n-\t  the Operating System. This function can set up various\n-\t  board-specific information in the device tree for use by the OS.\n-\t  The device tree is then passed to the OS.\n-\n-config OF_SYSTEM_SETUP\n-\tbool \"Set up system-specific details in device tree before boot\"\n-\tdepends on OF_LIBFDT\n-\thelp\n-\t  This causes U-Boot to call ft_system_setup() before booting into\n-\t  the Operating System. This function can set up various\n-\t  system-specific information in the device tree for use by the OS.\n-\t  The device tree is then passed to the OS.\n-\n-config OF_STDOUT_VIA_ALIAS\n-\tbool \"Update the device-tree stdout alias from U-Boot\"\n-\tdepends on OF_LIBFDT\n-\thelp\n-\t  This uses U-Boot's serial alias from the aliases node to update\n-\t  the device tree passed to the OS. The \"linux,stdout-path\" property\n-\t  in the chosen node is set to point to the correct serial node.\n-\t  This option currently references CONFIG_CONS_INDEX, which is\n-\t  incorrect when used with device tree as this option does not\n-\t  exist / should not be used.\n-\n-config SYS_EXTRA_OPTIONS\n-\tstring \"Extra Options (DEPRECATED)\"\n-\thelp\n-\t  The old configuration infrastructure (= mkconfig + boards.cfg)\n-\t  provided the extra options field. If you have something like\n-\t  \"HAS_BAR,BAZ=64\", the optional options\n-\t    #define CONFIG_HAS\n-\t    #define CONFIG_BAZ\t64\n-\t  will be defined in include/config.h.\n-\t  This option was prepared for the smooth migration from the old\n-\t  configuration to Kconfig. Since this option will be removed sometime,\n-\t  new boards should not use this option.\n-\n-config HAVE_SYS_TEXT_BASE\n-\tbool\n-\tdepends on !NIOS2 && !XTENSA\n-\tdepends on !EFI_APP\n-\tdefault y\n-\n-config SYS_TEXT_BASE\n-\tdepends on HAVE_SYS_TEXT_BASE\n-\tdefault 0x80800000 if ARCH_OMAP2PLUS || ARCH_K3\n-\tdefault 0x4a000000 if ARCH_SUNXI && !MACH_SUN9I && !MACH_SUN8I_V3S\n-\tdefault 0x2a000000 if ARCH_SUNXI && MACH_SUN9I\n-\tdefault 0x42e00000 if ARCH_SUNXI && MACH_SUN8I_V3S\n-\thex \"Text Base\"\n-\thelp\n-\t  The address in memory that U-Boot will be running from, initially.\n-\n-config SYS_CLK_FREQ\n-\tdepends on ARC || ARCH_SUNXI || MPC83xx\n-\tint \"CPU clock frequency\"\n-\thelp\n-\t  TODO: Move CONFIG_SYS_CLK_FREQ for all the architecture\n-\n-config ARCH_FIXUP_FDT_MEMORY\n-\tbool \"Enable arch_fixup_memory_banks() call\"\n-\tdefault y\n-\thelp\n-\t  Enable FDT memory map syncup before OS boot. This feature can be\n-\t  used for booting OS with different memory setup where the part of\n-\t  the memory location should be used for different purpose.\n-\n-endmenu\t\t# Boot images\n+endmenu\t\t# General setup\n \n source \"api/Kconfig\"\n \n@@ -783,3 +453,5 @@ source \"fs/Kconfig\"\n source \"lib/Kconfig\"\n \n source \"test/Kconfig\"\n+\n+source \"tools/Kconfig\"\ndiff --git a/MAINTAINERS b/MAINTAINERS\nindex 7e46470..52d7307 100644\n--- a/MAINTAINERS\n+++ b/MAINTAINERS\n@@ -195,6 +195,7 @@ F:\tdrivers/watchdog/cortina_wdt.c\n F:\tdrivers/serial/serial_cortina.c\n F:\tdrivers/led/led_cortina.c\n F:\tdrivers/mmc/ca_dw_mmc.c\n+F:\tdrivers/spi/ca_sflash.c\n F:\tdrivers/i2c/i2c-cortina.c\n F:\tdrivers/i2c/i2c-cortina.h\n \n@@ -237,6 +238,13 @@ M:\tLuka Kovacic <luka.kovacic@sartura.hr>\n M:\tLuka Perkov <luka.perkov@sartura.hr>\n S:\tMaintained\n F:\tarch/arm/mach-ipq40xx/\n+F:\tinclude/dt-bindings/clock/qcom,ipq4019-gcc.h\n+F:\tinclude/dt-bindings/reset/qcom,ipq4019-reset.h\n+F:\tdrivers/reset/reset-ipq4019.c\n+F:\tdrivers/phy/phy-qcom-ipq4019-usb.c\n+F:\tdrivers/spi/spi-qup.c\n+F:\tdrivers/net/mdio-ipq4019.c\n+F:\tdrivers/rng/msm_rng.c\n \n ARM MARVELL KIRKWOOD ARMADA-XP ARMADA-38X ARMADA-37XX ARMADA-7K/8K\n M:\tStefan Roese <sr@denx.de>\n@@ -262,6 +270,7 @@ F:\tarch/arm/include/asm/arch-pxa/\n ARM MEDIATEK\n M:\tRyder Lee <ryder.lee@mediatek.com>\n M:\tWeijie Gao <weijie.gao@mediatek.com>\n+M:\tChunfeng Yun <chunfeng.yun@mediatek.com>\n R:\tGSS_MTK_Uboot_upstream <GSS_MTK_Uboot_upstream@mediatek.com>\n S:\tMaintained\n F:\tarch/arm/mach-mediatek/\n@@ -278,6 +287,8 @@ F:\tdrivers/power/domain/mtk-power-domain.c\n F:\tdrivers/ram/mediatek/\n F:\tdrivers/spi/mtk_snfi_spi.c\n F:\tdrivers/timer/mtk_timer.c\n+F:\tdrivers/usb/host/xhci-mtk.c\n+F:\tdrivers/usb/mtu3/\n F:\tdrivers/watchdog/mtk_wdt.c\n F:\tdrivers/net/mtk_eth.c\n F:\tdrivers/reset/reset-mediatek.c\n@@ -291,7 +302,9 @@ S:\tMaintained\n T:\tgit https://gitlab.denx.de/u-boot/custodians/u-boot-atmel.git\n F:\tarch/arm/mach-at91/\n F:\tboard/atmel/\n+F:\tdrivers/cpu/at91_cpu.c\n F:\tdrivers/misc/microchip_flexcom.c\n+F:\tdrivers/timer/mchp-pit64b-timer.c\n \n ARM NEXELL S5P4418\n M:\tStefan Bosch <stefan_b@posteo.net>\n@@ -373,7 +386,7 @@ F:\tdrivers/smem/msm_smem.c\n F:\tdrivers/usb/host/ehci-msm.c\n \n ARM STI\n-M:\tPatrice Chotard <patrice.chotard@st.com>\n+M:\tPatrice Chotard <patrice.chotard@foss.st.com>\n S:\tMaintained\n T:\tgit https://gitlab.denx.de/u-boot/custodians/u-boot-stm.git\n F:\tarch/arm/mach-sti/\n@@ -399,8 +412,8 @@ F:\tarch/arm/cpu/arm926ejs/spear/\n F:\tarch/arm/include/asm/arch-spear/\n \n ARM STM STM32MP\n-M:\tPatrick Delaunay <patrick.delaunay@st.com>\n-M:\tPatrice Chotard <patrice.chotard@st.com>\n+M:\tPatrick Delaunay <patrick.delaunay@foss.st.com>\n+M:\tPatrice Chotard <patrice.chotard@foss.st.com>\n L:\tuboot-stm32@st-md-mailman.stormreply.com (moderated for non-subscribers)\n T:\tgit https://gitlab.denx.de/u-boot/custodians/u-boot-stm.git\n S:\tMaintained\n@@ -424,6 +437,7 @@ F:\tdrivers/power/regulator/stpmic1.c\n F:\tdrivers/ram/stm32mp1/\n F:\tdrivers/remoteproc/stm32_copro.c\n F:\tdrivers/reset/stm32-reset.c\n+F:\tdrivers/rng/stm32mp1_rng.c\n F:\tdrivers/rtc/stm32_rtc.c\n F:\tdrivers/serial/serial_stm32.*\n F:\tdrivers/spi/stm32_qspi.c\n@@ -437,6 +451,8 @@ F:\tinclude/dt-bindings/pinctrl/stm32-pinfunc.h\n F:\tinclude/dt-bindings/reset/stm32mp1-resets.h\n F:\tinclude/stm32_rcc.h\n F:\ttools/stm32image.c\n+N:\tstm\n+N:\tstm32\n \n \n ARM STM STV0991\n@@ -447,7 +463,7 @@ F:\tarch/arm/include/asm/arch-stv0991/\n \n ARM SUNXI\n M:\tJagan Teki <jagan@amarulasolutions.com>\n-M:\tMaxime Ripard <mripard@kernel.org>\n+M:\tAndre Przywara <andre.przywara@arm.com>\n S:\tMaintained\n T:\tgit https://gitlab.denx.de/u-boot/custodians/u-boot-sunxi.git\n F:\tarch/arm/cpu/armv7/sunxi/\n@@ -531,6 +547,7 @@ M:\tMichal Simek <monstr@monstr.eu>\n S:\tMaintained\n T:\tgit https://gitlab.denx.de/u-boot/custodians/u-boot-microblaze.git\n F:\tarch/arm/mach-zynq/\n+F:\tdoc/board/xilinx/\n F:\tdrivers/clk/clk_zynq.c\n F:\tdrivers/fpga/zynqpl.c\n F:\tdrivers/gpio/zynq_gpio.c\n@@ -599,6 +616,8 @@ F:\ttools/binman/\n \n BTRFS\n M:\tMarek Behun <marek.behun@nic.cz>\n+R:\tQu Wenruo <wqu@suse.com>\n+L:\tlinux-btrfs@vger.kernel.org\n S:\tMaintained\n F:\tcmd/btrfs.c\n F:\tfs/btrfs/\n@@ -661,6 +680,8 @@ S:\tMaintained\n T:\tgit https://gitlab.denx.de/u-boot/custodians/u-boot-efi.git\n F:\tdoc/api/efi.rst\n F:\tdoc/uefi/*\n+F:\tdoc/usage/bootefi.rst\n+F:\tdrivers/rtc/emul_rtc.c\n F:\tinclude/capitalization.h\n F:\tinclude/charset.h\n F:\tinclude/cp1250.h\n@@ -677,6 +698,7 @@ F:\ttest/unicode_ut.c\n F:\tcmd/bootefi.c\n F:\tcmd/efidebug.c\n F:\tcmd/nvedit_efi.c\n+F:\ttools/efivar.py\n F:\ttools/file2include.c\n \n EFI VARIABLES VIA OP-TEE\n@@ -739,6 +761,8 @@ T:\tgit https://gitlab.denx.de/u-boot/u-boot.git\n F:\tcommon/log*\n F:\tcmd/log.c\n F:\tdoc/develop/logging.rst\n+F:\tinclude/log.h\n+F:\tlib/getopt.c\n F:\ttest/log/\n F:\ttest/py/tests/test_log.py\n \n@@ -779,6 +803,7 @@ F:\tdrivers/watchdog/cortina_wdt.c\n F:\tdrivers/serial/serial_cortina.c\n F:\tdrivers/led/led_cortina.c\n F:\tdrivers/mmc/ca_dw_mmc.c\n+F:\tdrivers/spi/ca_sflash.c\n F:\tdrivers/i2c/i2c-cortina.c\n F:\tdrivers/i2c/i2c-cortina.h\n \n@@ -921,13 +946,17 @@ S:\tMaintained\n T:\tgit https://gitlab.denx.de/u-boot/custodians/u-boot-riscv.git\n F:\tarch/riscv/\n F:\tcmd/riscv/\n+F:\tdrivers/timer/andes_plmt_timer.c\n+F:\tdrivers/timer/sifive_clint_timer.c\n F:\ttools/prelink-riscv.c\n \n RISC-V KENDRYTE\n M:\tSean Anderson <seanga2@gmail.com>\n S:\tMaintained\n F:\tdoc/device-tree-bindings/mfd/kendryte,k210-sysctl.txt\n+F:\tdoc/device-tree-bindings/pinctrl/kendryte,k210-fpioa.txt\n F:\tdrivers/clk/kendryte/\n+F:\tdrivers/pinctrl/kendryte/\n F:\tinclude/kendryte/\n \n RNG\n@@ -951,6 +980,8 @@ SANDBOX\n M:\tSimon Glass <sjg@chromium.org>\n S:\tMaintained\n F:\tarch/sandbox/\n+F:\tdoc/arch/sandbox.rst\n+F:\tinclude/dt-bindings/*/sandbox*.h\n \n SH\n M:\tMarek Vasut <marek.vasut+renesas@gmail.com>\n@@ -1005,6 +1036,10 @@ F:\tarch/arm/dts/ns3-board.dts\n F:\tarch/arm/dts/ns3.dtsi\n F:\tarch/arm/cpu/armv8/bcmns3\n F:\tarch/arm/include/asm/arch-bcmns3/\n+F:\tcmd/broadcom/Makefile\n+F:\tcmd/broadcom/chimp_boot.c\n+F:\tcmd/broadcom/nitro_image_load.c\n+F:\tcmd/broadcom/chimp_handshake.c\n \n TDA19988 HDMI ENCODER\n M:\tLiviu Dudau <liviu.dudau@foss.arm.com>\ndiff --git a/Makefile b/Makefile\nindex d4736bb..b4f1cbc 100644\n--- a/Makefile\n+++ b/Makefile\n@@ -1,7 +1,7 @@\n # SPDX-License-Identifier: GPL-2.0+\n \n-VERSION = 2020\n-PATCHLEVEL = 10\n+VERSION = 2021\n+PATCHLEVEL = 01\n SUBLEVEL =\n EXTRAVERSION =\n NAME =\n@@ -795,6 +795,7 @@ libs-y += drivers/usb/eth/\n libs-$(CONFIG_USB_GADGET) += drivers/usb/gadget/\n libs-$(CONFIG_USB_GADGET) += drivers/usb/gadget/udc/\n libs-y += drivers/usb/host/\n+libs-y += drivers/usb/mtu3/\n libs-y += drivers/usb/musb/\n libs-y += drivers/usb/musb-new/\n libs-y += drivers/usb/phy/\n@@ -806,7 +807,7 @@ libs-$(CONFIG_API) += api/\n ifdef CONFIG_POST\n libs-y += post/\n endif\n-libs-$(CONFIG_UNIT_TEST) += test/ test/dm/\n+libs-$(CONFIG_UNIT_TEST) += test/\n libs-$(CONFIG_UT_ENV) += test/env/\n libs-$(CONFIG_UT_OPTEE) += test/optee/\n libs-$(CONFIG_UT_OVERLAY) += test/overlay/\n@@ -859,13 +860,13 @@ else\n BOARD_SIZE_CHECK =\n endif\n \n-ifneq ($(CONFIG_SPL_SIZE_LIMIT),0)\n+ifneq ($(CONFIG_SPL_SIZE_LIMIT),0x0)\n SPL_SIZE_CHECK = @$(call size_check,$@,$$(tools/spl_size_limit))\n else\n SPL_SIZE_CHECK =\n endif\n \n-ifneq ($(CONFIG_TPL_SIZE_LIMIT),0)\n+ifneq ($(CONFIG_TPL_SIZE_LIMIT),0x0)\n TPL_SIZE_CHECK = @$(call size_check,$@,$(CONFIG_TPL_SIZE_LIMIT))\n else\n TPL_SIZE_CHECK =\n@@ -884,7 +885,7 @@ cmd_static_rela = \\\n \ttools/relocate-rela $(3) $(4) $$start $$end\n else\n quiet_cmd_static_rela =\n-cmd_static_rela =\n+cmd_static_rela = true\n endif\n \n # Always append INPUTS so that arch config.mk's can add custom ones\n@@ -923,11 +924,6 @@ INPUTS-$(CONFIG_REMAKE_ELF) += u-boot.elf\n INPUTS-$(CONFIG_EFI_APP) += u-boot-app.efi\n INPUTS-$(CONFIG_EFI_STUB) += u-boot-payload.efi\n \n-# Build a combined spl + u-boot image for sunxi\n-ifeq ($(CONFIG_ARCH_SUNXI)$(CONFIG_ARM64)$(CONFIG_SPL),yyy)\n-INPUTS-y += u-boot-sunxi-with-spl.bin\n-endif\n-\n # Generate this input file for binman\n ifeq ($(CONFIG_SPL),)\n INPUTS-$(CONFIG_ARCH_MEDIATEK) += u-boot-mtk.bin\n@@ -1024,13 +1020,9 @@ PHONY += inputs\n inputs: $(INPUTS-y)\n \n all: .binman_stamp inputs\n-# Hack for sunxi which doesn't have a proper binman definition for\n-# 64-bit boards\n-ifneq ($(CONFIG_ARCH_SUNXI)$(CONFIG_ARM64),yy)\n ifeq ($(CONFIG_BINMAN),y)\n \t$(call if_changed,binman)\n endif\n-endif\n \n # Timestamp file to make sure that binman always runs\n .binman_stamp: FORCE\n@@ -1317,9 +1309,13 @@ init_sp_bss_offset_check: u-boot.dtb FORCE\n \tfi\n endif\n \n+shell_cmd = { $(call echo-cmd,$(1)) $(cmd_$(1)); }\n+\n+quiet_cmd_objcopy_uboot = OBJCOPY $@\n+cmd_objcopy_uboot = $(cmd_objcopy) && $(call shell_cmd,static_rela,$<,$@,$(CONFIG_SYS_TEXT_BASE)) || rm -f $@\n+\n u-boot-nodtb.bin: u-boot FORCE\n-\t$(call if_changed,objcopy)\n-\t$(call cmd,static_rela,$<,$@,$(CONFIG_SYS_TEXT_BASE))\n+\t$(call if_changed,objcopy_uboot)\n \t$(BOARD_SIZE_CHECK)\n \n u-boot.ldr:\tu-boot\n@@ -1330,13 +1326,17 @@ u-boot.ldr:\tu-boot\n # binman\n # ---------------------------------------------------------------------------\n # Use 'make BINMAN_DEBUG=1' to enable debugging\n+default_dt := $(if $(DEVICE_TREE),$(DEVICE_TREE),$(CONFIG_DEFAULT_DEVICE_TREE))\n quiet_cmd_binman = BINMAN  $@\n cmd_binman = $(srctree)/tools/binman/binman $(if $(BINMAN_DEBUG),-D) \\\n                 --toolpath $(objtree)/tools \\\n \t\t$(if $(BINMAN_VERBOSE),-v$(BINMAN_VERBOSE)) \\\n-\t\tbuild -u -d u-boot.dtb -O . \\\n-\t\t$(if $(BUILD_ROM),,-m --allow-missing) \\\n+\t\tbuild -u -d u-boot.dtb -O . -m --allow-missing \\\n \t\t-I . -I $(srctree) -I $(srctree)/board/$(BOARDDIR) \\\n+\t\t-I arch/$(ARCH)/dts -a of-list=$(CONFIG_OF_LIST) \\\n+\t\t-a atf-bl31-path=${BL31} \\\n+\t\t-a default-dt=$(default_dt) \\\n+\t\t-a scp-path=$(SCP) \\\n \t\t$(BINMAN_$(@F))\n \n OBJCOPYFLAGS_u-boot.ldr.hex := -I binary -O ihex\n@@ -1446,11 +1446,13 @@ else\n MKIMAGEFLAGS_u-boot.itb = -E\n endif\n \n+ifdef U_BOOT_ITS\n u-boot.itb: u-boot-nodtb.bin \\\n \t\t$(if $(CONFIG_OF_SEPARATE)$(CONFIG_OF_EMBED)$(CONFIG_OF_HOSTFILE),dts/dt.dtb) \\\n \t\t$(U_BOOT_ITS) FORCE\n \t$(call if_changed,mkfitimage)\n \t$(BOARD_SIZE_CHECK)\n+endif\n \n u-boot-spl.kwb: u-boot.img spl/u-boot-spl.bin FORCE\n \t$(call if_changed,mkimage)\n@@ -1580,21 +1582,30 @@ u-boot.spr: spl/u-boot-spl.img u-boot.img FORCE\n \t$(call if_changed,pad_cat)\n \n ifneq ($(CONFIG_ARCH_SOCFPGA),)\n+quiet_cmd_gensplx4 = GENSPLX4 $@\n+cmd_gensplx4 = cat\tspl/u-boot-spl.sfp spl/u-boot-spl.sfp\t\\\n+\t\t\tspl/u-boot-spl.sfp spl/u-boot-spl.sfp > $@ || rm -f $@\n+spl/u-boot-splx4.sfp: spl/u-boot-spl.sfp FORCE\n+\t$(call if_changed,gensplx4)\n+\n quiet_cmd_socboot = SOCBOOT $@\n-cmd_socboot = cat\tspl/u-boot-spl.sfp spl/u-boot-spl.sfp\t\\\n-\t\t\tspl/u-boot-spl.sfp spl/u-boot-spl.sfp\t\\\n-\t\t\tu-boot.img > $@ || rm -f $@\n-u-boot-with-spl.sfp: spl/u-boot-spl.sfp u-boot.img FORCE\n+cmd_socboot = cat\tspl/u-boot-splx4.sfp u-boot.img > $@ || rm -f $@\n+u-boot-with-spl.sfp: spl/u-boot-splx4.sfp u-boot.img FORCE\n \t$(call if_changed,socboot)\n \n-quiet_cmd_socnandboot = SOCNANDBOOT $@\n-cmd_socnandboot =  dd if=/dev/zero of=spl/u-boot-spl.pad bs=64 count=1024 ; \\\n+quiet_cmd_gensplpadx4 = GENSPLPADX4 $@\n+cmd_gensplpadx4 =  dd if=/dev/zero of=spl/u-boot-spl.pad bs=64 count=1024 ; \\\n \t\t   cat\tspl/u-boot-spl.sfp spl/u-boot-spl.pad \\\n \t\t\tspl/u-boot-spl.sfp spl/u-boot-spl.pad \\\n \t\t\tspl/u-boot-spl.sfp spl/u-boot-spl.pad \\\n-\t\t\tspl/u-boot-spl.sfp spl/u-boot-spl.pad \\\n-\t\t\tu-boot.img > $@ || rm -f $@ spl/u-boot-spl.pad\n-u-boot-with-nand-spl.sfp: spl/u-boot-spl.sfp u-boot.img FORCE\n+\t\t\tspl/u-boot-spl.sfp spl/u-boot-spl.pad > $@ || \\\n+\t\t\trm -f $@ spl/u-boot-spl.pad\n+u-boot-spl-padx4.sfp: spl/u-boot-spl.sfp FORCE\n+\t$(call if_changed,gensplpadx4)\n+\n+quiet_cmd_socnandboot = SOCNANDBOOT $@\n+cmd_socnandboot = cat\tu-boot-spl-padx4.sfp u-boot.img > $@ || rm -f $@\n+u-boot-with-nand-spl.sfp: u-boot-spl-padx4.sfp u-boot.img FORCE\n \t$(call if_changed,socnandboot)\n \n endif\n@@ -1626,13 +1637,6 @@ u-boot-x86-reset16.bin: u-boot FORCE\n \n endif # CONFIG_X86\n \n-ifneq ($(CONFIG_ARCH_SUNXI),)\n-ifeq ($(CONFIG_ARM64),y)\n-u-boot-sunxi-with-spl.bin: spl/sunxi-spl.bin u-boot.itb FORCE\n-\t$(call if_changed,cat)\n-endif\n-endif\n-\n OBJCOPYFLAGS_u-boot-app.efi := $(OBJCOPYFLAGS_EFI)\n u-boot-app.efi: u-boot FORCE\n \t$(call if_changed,zobjcopy)\n@@ -1866,6 +1870,7 @@ define filechk_timestamp.h\n \t\t\tLC_ALL=C $${DATE} -u -d \"$${SOURCE_DATE}\" +'#define U_BOOT_TZ \"%z\"'; \\\n \t\t\tLC_ALL=C $${DATE} -u -d \"$${SOURCE_DATE}\" +'#define U_BOOT_DMI_DATE \"%m/%d/%Y\"'; \\\n \t\t\tLC_ALL=C $${DATE} -u -d \"$${SOURCE_DATE}\" +'#define U_BOOT_BUILD_DATE 0x%Y%m%d'; \\\n+\t\t\tLC_ALL=C $${DATE} -u -d \"$${SOURCE_DATE}\" +'#define U_BOOT_EPOCH %s'; \\\n \t\telse \\\n \t\t\treturn 42; \\\n \t\tfi; \\\n@@ -1875,6 +1880,7 @@ define filechk_timestamp.h\n \t\tLC_ALL=C date +'#define U_BOOT_TZ \"%z\"'; \\\n \t\tLC_ALL=C date +'#define U_BOOT_DMI_DATE \"%m/%d/%Y\"'; \\\n \t\tLC_ALL=C date +'#define U_BOOT_BUILD_DATE 0x%Y%m%d'; \\\n+\t\tLC_ALL=C date +'#define U_BOOT_EPOCH %s'; \\\n \tfi)\n endef\n \ndiff --git a/README b/README\nindex b23fcc1..7b73a1c 100644\n--- a/README\n+++ b/README\n@@ -51,31 +51,28 @@ In case you have questions about, problems with or contributions for\n U-Boot, you should send a message to the U-Boot mailing list at\n <u-boot@lists.denx.de>. There is also an archive of previous traffic\n on the mailing list - please search the archive before asking FAQ's.\n-Please see http://lists.denx.de/pipermail/u-boot and\n-http://dir.gmane.org/gmane.comp.boot-loaders.u-boot\n-\n+Please see https://lists.denx.de/pipermail/u-boot and\n+https://marc.info/?l=u-boot\n \n Where to get source code:\n =========================\n \n The U-Boot source code is maintained in the Git repository at\n-git://www.denx.de/git/u-boot.git ; you can browse it online at\n-http://www.denx.de/cgi-bin/gitweb.cgi?p=u-boot.git;a=summary\n+https://gitlab.denx.de/u-boot/u-boot.git ; you can browse it online at\n+https://gitlab.denx.de/u-boot/u-boot\n \n-The \"snapshot\" links on this page allow you to download tarballs of\n+The \"Tags\" links on this page allow you to download tarballs of\n any version you might be interested in. Official releases are also\n-available for FTP download from the ftp://ftp.denx.de/pub/u-boot/\n-directory.\n-\n-Pre-built (and tested) images are available from\n-ftp://ftp.denx.de/pub/u-boot/images/\n+available from the DENX file server through HTTPS or FTP.\n+https://ftp.denx.de/pub/u-boot/\n+ftp://ftp.denx.de/pub/u-boot/\n \n \n Where we come from:\n ===================\n \n - start from 8xxrom sources\n-- create PPCBoot project (http://sourceforge.net/projects/ppcboot)\n+- create PPCBoot project (https://sourceforge.net/projects/ppcboot)\n - clean up code\n - make it easier to add custom boards\n - make it possible to add other [PowerPC] CPUs\n@@ -84,10 +81,10 @@ Where we come from:\n   * S-Record download\n   * network boot\n   * ATA disk / SCSI ... boot\n-- create ARMBoot project (http://sourceforge.net/projects/armboot)\n+- create ARMBoot project (https://sourceforge.net/projects/armboot)\n - add other CPU families (starting with ARM)\n-- create U-Boot project (http://sourceforge.net/projects/u-boot)\n-- current project page: see http://www.denx.de/wiki/U-Boot\n+- create U-Boot project (https://sourceforge.net/projects/u-boot)\n+- current project page: see https://www.denx.de/wiki/U-Boot\n \n \n Names and Spelling:\n@@ -139,12 +136,12 @@ Directory Hierarchy:\n   /mips\t\t\tFiles generic to MIPS architecture\n   /nds32\t\tFiles generic to NDS32 architecture\n   /nios2\t\tFiles generic to Altera NIOS2 architecture\n-  /openrisc\t\tFiles generic to OpenRISC architecture\n   /powerpc\t\tFiles generic to PowerPC architecture\n   /riscv\t\tFiles generic to RISC-V architecture\n   /sandbox\t\tFiles generic to HW-independent \"sandbox\"\n   /sh\t\t\tFiles generic to SH architecture\n   /x86\t\t\tFiles generic to x86 architecture\n+  /xtensa\t\tFiles generic to Xtensa architecture\n /api\t\t\tMachine/arch independent API for external apps\n /board\t\t\tBoard dependent files\n /cmd\t\t\tU-Boot commands functions\n@@ -154,6 +151,7 @@ Directory Hierarchy:\n /doc\t\t\tDocumentation (don't expect too much)\n /drivers\t\tCommonly used device drivers\n /dts\t\t\tContains Makefile for building internal U-Boot fdt.\n+/env\t\t\tEnvironment files\n /examples\t\tExample code for standalone applications, etc.\n /fs\t\t\tFilesystem code (cramfs, ext2, jffs2, etc.)\n /include\t\tHeader Files\n@@ -212,7 +210,7 @@ board. This allows feature development which is not board- or architecture-\n specific to be undertaken on a native platform. The sandbox is also used to\n run some of U-Boot's tests.\n \n-See doc/arch/index.rst for more details.\n+See doc/arch/sandbox.rst for more details.\n \n \n Board Initialisation Flow:\n@@ -608,7 +606,7 @@ The following options need to be configured:\n \t\tThis setting is mandatory for all boards that have only one\n \t\tmachine type and must be used to specify the machine type\n \t\tnumber as it appears in the ARM machine registry\n-\t\t(see http://www.arm.linux.org.uk/developer/machines/).\n+\t\t(see https://www.arm.linux.org.uk/developer/machines/).\n \t\tOnly boards that have multiple machine types supported\n \t\tin a single configuration file and the machine type is\n \t\truntime discoverable, do not have to use this setting.\n@@ -620,7 +618,7 @@ The following options need to be configured:\n \t\tserverip, gatewayip, hostname, othbootargs.\n \t\tIt loads the vxWorks image pointed bootfile.\n \n-\t\tNote: If a \"bootargs\" environment is defined, it will overwride\n+\t\tNote: If a \"bootargs\" environment is defined, it will override\n \t\tthe defaults discussed just above.\n \n - Cache Configuration:\n@@ -1250,18 +1248,6 @@ The following options need to be configured:\n \t\tEnables an 'i2c edid' command which can read EDID\n \t\tinformation over I2C from an attached LCD display.\n \n-- Gzip compressed BMP image support: CONFIG_VIDEO_BMP_GZIP\n-\n-\t\tIf this option is set, additionally to standard BMP\n-\t\timages, gzipped BMP images can be displayed via the\n-\t\tsplashscreen support or the bmp command.\n-\n-- Run length encoded BMP image (RLE8) support: CONFIG_VIDEO_BMP_RLE8\n-\n-\t\tIf this option is set, 8-bit RLE compressed BMP images\n-\t\tcan be displayed via the splashscreen support or the\n-\t\tbmp command.\n-\n - MII/PHY support:\n \t\tCONFIG_PHY_CLOCK_FREQ (ppc4xx)\n \n@@ -3033,7 +3019,7 @@ Building U-Boot has been tested in several native build environments\n and in many different cross environments. Of course we cannot support\n all possibly existing versions of cross development tools in all\n (potentially obsolete) versions. In case of tool chain problems we\n-recommend to use the ELDK (see http://www.denx.de/wiki/DULG/ELDK)\n+recommend to use the ELDK (see https://www.denx.de/wiki/DULG/ELDK)\n which is extensively used to build and test U-Boot.\n \n If you are not using a native environment, it is assumed that you\n@@ -3425,6 +3411,10 @@ List of environment variables (most likely not complete):\n   mempos\t- Index position of the last match found by the 'ms' command,\n \t\t  in units of the size (.b, .w, .l) of the search\n \n+  zbootbase\t- (x86 only) Base address of the bzImage 'setup' block\n+\n+  zbootaddr\t- (x86 only) Address of the loaded bzImage, typically\n+\t\t  BZIMAGE_LOAD_ADDR which is 0x100000\n \n The following image location variables contain the location of images\n used in booting. The \"Image\" column gives the role of the image and is\n@@ -3842,16 +3832,8 @@ when your kernel is intended to use an initial ramdisk:\n \tLoad Address: 0x00000000\n \tEntry Point:  0x00000000\n \n-The \"dumpimage\" is a tool to disassemble images built by mkimage. Its \"-i\"\n-option performs the converse operation of the mkimage's second form (the \"-d\"\n-option). Given an image built by mkimage, the dumpimage extracts a \"data file\"\n-from the image:\n-\n-\ttools/dumpimage -i image -T type -p position data_file\n-\t  -i ==> extract from the 'image' a specific 'data_file'\n-\t  -T ==> set image type to 'type'\n-\t  -p ==> 'position' (starting at 0) of the 'data_file' inside the 'image'\n-\n+The \"dumpimage\" tool can be used to disassemble or list the contents of images\n+built by mkimage. See dumpimage's help output (-h) for details.\n \n Installing a Linux Image:\n -------------------------\n@@ -4183,7 +4165,7 @@ consider minicom to be broken, and recommend not to use it. Under\n Unix, I recommend to use C-Kermit for general purpose use (and\n especially for kermit binary protocol download (\"loadb\" command), and\n use \"cu\" for S-Record download (\"loads\" command).  See\n-http://www.denx.de/wiki/view/DULG/SystemSetup#Section_4.3.\n+https://www.denx.de/wiki/view/DULG/SystemSetup#Section_4.3.\n for help with kermit.\n \n \n@@ -4351,7 +4333,7 @@ On ARM, the following registers are used:\n     Note: on ARM, only R_ARM_RELATIVE relocations are supported.\n \n On Nios II, the ABI is documented here:\n-\thttp://www.altera.com/literature/hb/nios2/n2cpu_nii51016.pdf\n+\thttps://www.altera.com/literature/hb/nios2/n2cpu_nii51016.pdf\n \n     ==> U-Boot will use gp to hold a pointer to the global data\n \n@@ -4502,7 +4484,7 @@ int main(int argc, char *argv[])\n \n \twhile (learning) {\n \t\tRead the README file in the top level directory;\n-\t\tRead http://www.denx.de/twiki/bin/view/DULG/Manual;\n+\t\tRead https://www.denx.de/wiki/bin/view/DULG/Manual;\n \t\tRead applicable doc/README.*;\n \t\tRead the source, Luke;\n \t\t/* find . -name \"*.[chS]\" | xargs grep -i <keyword> */\n@@ -4583,7 +4565,7 @@ Since the number of patches for U-Boot is growing, we need to\n establish some rules. Submissions which do not conform to these rules\n may be rejected, even when they contain important and valuable stuff.\n \n-Please see http://www.denx.de/wiki/U-Boot/Patches for details.\n+Please see https://www.denx.de/wiki/U-Boot/Patches for details.\n \n Patches shall be sent to the u-boot mailing list <u-boot@lists.denx.de>;\n see https://lists.denx.de/listinfo/u-boot\ndiff --git a/api/api.c b/api/api.c\nindex c7f5db7..493b77f 100644\n--- a/api/api.c\n+++ b/api/api.c\n@@ -57,7 +57,7 @@ static int API_getc(va_list ap)\n \tif ((c = (int *)va_arg(ap, uintptr_t)) == NULL)\n \t\treturn API_EINVAL;\n \n-\t*c = getc();\n+\t*c = getchar();\n \treturn 0;\n }\n \ndiff --git a/api/api_platform-mips.c b/api/api_platform-mips.c\nindex 51cd328..e150966 100644\n--- a/api/api_platform-mips.c\n+++ b/api/api_platform-mips.c\n@@ -24,8 +24,7 @@ DECLARE_GLOBAL_DATA_PTR;\n int platform_sys_info(struct sys_info *si)\n {\n \n-\tplatform_set_mr(si, gd->bd->bi_memstart,\n-\t\t\tgd->bd->bi_memsize, MR_ATTR_DRAM);\n+\tplatform_set_mr(si, gd->ram_base, gd->ram_size, MR_ATTR_DRAM);\n \n \treturn 1;\n }\ndiff --git a/api/api_platform-powerpc.c b/api/api_platform-powerpc.c\nindex 15930cf..847a4a3 100644\n--- a/api/api_platform-powerpc.c\n+++ b/api/api_platform-powerpc.c\n@@ -42,7 +42,7 @@ int platform_sys_info(struct sys_info *si)\n \tsi->bar = 0;\n #endif\n \n-\tplatform_set_mr(si, gd->bd->bi_memstart, gd->bd->bi_memsize, MR_ATTR_DRAM);\n+\tplatform_set_mr(si, gd->ram_base, gd->ram_size, MR_ATTR_DRAM);\n \tplatform_set_mr(si, gd->bd->bi_flashstart, gd->bd->bi_flashsize, MR_ATTR_FLASH);\n \tplatform_set_mr(si, gd->bd->bi_sramstart, gd->bd->bi_sramsize, MR_ATTR_SRAM);\n \ndiff --git a/arch/Kconfig b/arch/Kconfig\nindex 683e384..3aa99e0 100644\n--- a/arch/Kconfig\n+++ b/arch/Kconfig\n@@ -4,6 +4,9 @@ config CREATE_ARCH_SYMLINK\n config HAVE_ARCH_IOREMAP\n \tbool\n \n+config NEEDS_MANUAL_RELOC\n+\tbool\n+\n choice\n \tprompt \"Architecture select\"\n \tdefault SANDBOX\n@@ -26,12 +29,14 @@ config ARM\n config M68K\n \tbool \"M68000 architecture\"\n \tselect HAVE_PRIVATE_LIBGCC\n+\tselect NEEDS_MANUAL_RELOC\n \tselect SYS_BOOT_GET_CMDLINE\n \tselect SYS_BOOT_GET_KBD\n \tselect SUPPORT_OF_CONTROL\n \n config MICROBLAZE\n \tbool \"MicroBlaze architecture\"\n+\tselect NEEDS_MANUAL_RELOC\n \tselect SUPPORT_OF_CONTROL\n \timply CMD_IRQ\n \n@@ -87,6 +92,7 @@ config SANDBOX\n \tbool \"Sandbox\"\n \tselect BOARD_LATE_INIT\n \tselect BZIP2\n+\tselect CMD_POWEROFF\n \tselect DM\n \tselect DM_GPIO\n \tselect DM_I2C\n@@ -102,7 +108,7 @@ config SANDBOX\n \tselect PCI_ENDPOINT\n \tselect SPI\n \tselect SUPPORT_OF_CONTROL\n-\tselect SYSRESET_CMD_POWEROFF if CMD_POWEROFF\n+\tselect SYSRESET_CMD_POWEROFF\n \timply BITREVERSE\n \tselect BLOBLIST\n \timply CMD_DM\n@@ -193,6 +199,8 @@ config X86\n \timply RTC_MC146818\n \timply IRQ\n \timply ACPIGEN if !QEMU\n+\timply SYSINFO if GENERATE_SMBIOS_TABLE\n+\timply SYSINFO_SMBIOS if GENERATE_SMBIOS_TABLE\n \n \t# Thing to enable for when SPL/TPL are enabled: SPL\n \timply SPL_DM\ndiff --git a/arch/arc/dts/axs10x_mb.dtsi b/arch/arc/dts/axs10x_mb.dtsi\nindex 33b0593..d4ff4f7 100644\n--- a/arch/arc/dts/axs10x_mb.dtsi\n+++ b/arch/arc/dts/axs10x_mb.dtsi\n@@ -90,14 +90,15 @@\n \t\t};\n \n \t\tspi0: spi@0 {\n-\t\t\tcompatible = \"snps,dw-apb-ssi\";\n+\t\t\tcompatible = \"snps,axs10x-spi\", \"snps,dw-apb-ssi\";\n \t\t\treg = <0x0 0x100>;\n \t\t\t#address-cells = <1>;\n \t\t\t#size-cells = <0>;\n \t\t\tspi-max-frequency = <4000000>;\n \t\t\tclocks = <&apbclk>;\n \t\t\tclock-names = \"spi_clk\";\n-\t\t\tcs-gpio = <&cs_gpio 0>;\n+\t\t\tnum-cs = <1>;\n+\t\t\tcs-gpios = <&cs_gpio 0>;\n \t\t\tspi_flash@0 {\n \t\t\t\tcompatible = \"jedec,spi-nor\";\n \t\t\t\treg = <0>;\ndiff --git a/arch/arc/dts/hsdk-common.dtsi b/arch/arc/dts/hsdk-common.dtsi\nindex 9aa10e4..3fc82e5 100644\n--- a/arch/arc/dts/hsdk-common.dtsi\n+++ b/arch/arc/dts/hsdk-common.dtsi\n@@ -128,14 +128,15 @@\n \t};\n \n \tspi0: spi@f0020000 {\n-\t\tcompatible = \"snps,dw-apb-ssi\";\n+\t\tcompatible = \"snps,hsdk-spi\", \"snps,dw-apb-ssi\";\n \t\treg = <0xf0020000 0x1000>;\n \t\t#address-cells = <1>;\n \t\t#size-cells = <0>;\n \t\tspi-max-frequency = <4000000>;\n \t\tclocks = <&cgu_clk CLK_SYS_SPI_REF>;\n \t\tclock-names = \"spi_clk\";\n-\t\tcs-gpio = <&cs_gpio 0>;\n+\t\tnum-cs = <1>;\n+\t\tcs-gpios = <&cs_gpio 0>;\n \t\tspi_flash@0 {\n \t\t\tcompatible = \"jedec,spi-nor\";\n \t\t\treg = <0>;\ndiff --git a/arch/arm/Kconfig b/arch/arm/Kconfig\nindex 80702c2..fbe9087 100644\n--- a/arch/arm/Kconfig\n+++ b/arch/arm/Kconfig\n@@ -12,17 +12,18 @@ config ARM64\n if ARM64\n config POSITION_INDEPENDENT\n \tbool \"Generate position-independent pre-relocation code\"\n-\tselect INIT_SP_RELATIVE\n \thelp\n \t  U-Boot expects to be linked to a specific hard-coded address, and to\n \t  be loaded to and run from that address. This option lifts that\n-\t  restriction, thus allowing the code to be loaded to and executed\n-\t  from almost any address. This logic relies on the relocation\n+\t  restriction, thus allowing the code to be loaded to and executed from\n+\t  almost any 4K aligned address. This logic relies on the relocation\n \t  information that is embedded in the binary to support U-Boot\n \t  relocating itself to the top-of-RAM later during execution.\n \n config INIT_SP_RELATIVE\n \tbool \"Specify the early stack pointer relative to the .bss section\"\n+\tdefault n if ARCH_QEMU\n+\tdefault y if POSITION_INDEPENDENT\n \thelp\n \t  U-Boot typically uses a hard-coded value for the stack pointer\n \t  before relocation. Enable this option to instead calculate the\n@@ -76,7 +77,7 @@ config GIC_V3_ITS\n \n config STATIC_RELA\n \tbool\n-\tdefault y if ARM64 && !POSITION_INDEPENDENT\n+\tdefault y if ARM64\n \n config DMA_ADDR_T_64BIT\n \tbool\n@@ -767,8 +768,11 @@ config ARCH_IPQ40XX\n \tselect DM\n \tselect DM_GPIO\n \tselect DM_SERIAL\n+\tselect DM_RESET\n+\tselect MSM_SMEM\n \tselect PINCTRL\n \tselect CLK\n+\tselect SMEM\n \tselect OF_CONTROL\n \timply CMD_DM\n \n@@ -929,20 +933,20 @@ config ARCH_OWL\n \n config ARCH_QEMU\n \tbool \"QEMU Virtual Platform\"\n-\tselect ARCH_SUPPORT_TFABOOT\n \tselect DM\n \tselect DM_SERIAL\n \tselect OF_CONTROL\n \tselect PL01X_SERIAL\n \timply CMD_DM\n+\timply DM_RNG\n \timply DM_RTC\n \timply RTC_PL031\n \n config ARCH_RMOBILE\n \tbool \"Renesas ARM SoCs\"\n-\tselect BOARD_EARLY_INIT_F if !RZA1\n \tselect DM\n \tselect DM_SERIAL\n+\timply BOARD_EARLY_INIT_F\n \timply CMD_DM\n \timply FAT_WRITE\n \timply SYS_THUMB_BUILD\n@@ -991,7 +995,7 @@ config ARCH_SOCFPGA\n \tselect SYS_THUMB_BUILD if TARGET_SOCFPGA_GEN5 || TARGET_SOCFPGA_ARRIA10\n \tselect SYSRESET\n \tselect SYSRESET_SOCFPGA if TARGET_SOCFPGA_GEN5 || TARGET_SOCFPGA_ARRIA10\n-\tselect SYSRESET_SOCFPGA_S10 if TARGET_SOCFPGA_STRATIX10\n+\tselect SYSRESET_SOCFPGA_SOC64 if TARGET_SOCFPGA_STRATIX10 || TARGET_SOCFPGA_AGILEX\n \timply CMD_DM\n \timply CMD_MTDPARTS\n \timply CRC32_VERIFY\n@@ -1152,7 +1156,8 @@ config ARCH_ZYNQMP\n \tselect OF_CONTROL\n \tselect SPL_BOARD_INIT if SPL\n \tselect SPL_CLK if SPL\n-\tselect SPL_DM_SPI if SPI\n+\tselect SPL_DM if SPL\n+\tselect SPL_DM_SPI if SPI && SPL_DM\n \tselect SPL_DM_SPI_FLASH if SPL_DM_SPI\n \tselect SPL_DM_MAILBOX if SPL\n \tselect SPL_FIRMWARE if SPL\n@@ -1321,6 +1326,18 @@ config TARGET_LX2160AQDS\n \t  is a high-performance development platform that supports the\n \t  QorIQ LX2160A/LX2120A/LX2080A Layerscape Architecture processor.\n \n+config TARGET_LX2162AQDS\n+\tbool \"Support lx2162aqds\"\n+\tselect ARCH_LX2162A\n+\tselect ARCH_MISC_INIT\n+\tselect ARM64\n+\tselect ARMV8_MULTIENTRY\n+\tselect ARCH_SUPPORT_TFABOOT\n+\tselect BOARD_LATE_INIT\n+\thelp\n+\t  Support for NXP LX2162AQDS platform.\n+\t  The lx2162aqds support is based on LX2160A Layerscape Architecture processor.\n+\n config TARGET_HIKEY\n \tbool \"Support HiKey 96boards Consumer Edition Platform\"\n \tselect ARM64\n@@ -1615,6 +1632,16 @@ config TARGET_LS1046AFRWY\n \t  development platform that supports the QorIQ LS1046A\n \t  Layerscape Architecture processor.\n \n+config TARGET_SL28\n+\tbool \"Support sl28\"\n+\tselect ARCH_LS1028A\n+\tselect ARM64\n+\tselect ARMV8_MULTIENTRY\n+\tselect SUPPORT_SPL\n+\tselect BINMAN\n+\thelp\n+\t  Support for Kontron SMARC-sAL28 board.\n+\n config TARGET_COLIBRI_PXA270\n \tbool \"Support colibri_pxa270\"\n \tselect CPU_PXA\n@@ -1706,7 +1733,7 @@ config ARCH_STM32MP\n config ARCH_ROCKCHIP\n \tbool \"Support Rockchip SoCs\"\n \tselect BLK\n-\tselect BINMAN if !ARM64\n+\tselect BINMAN if SPL_OPTEE\n \tselect DM\n \tselect DM_GPIO\n \tselect DM_I2C\n@@ -1739,6 +1766,7 @@ config ARCH_ROCKCHIP\n \n config ARCH_OCTEONTX\n \tbool \"Support OcteonTX SoCs\"\n+\tselect CLK\n \tselect DM\n \tselect ARM64\n \tselect OF_CONTROL\n@@ -1748,6 +1776,7 @@ config ARCH_OCTEONTX\n \n config ARCH_OCTEONTX2\n \tbool \"Support OcteonTX2 SoCs\"\n+\tselect CLK\n \tselect DM\n \tselect ARM64\n \tselect OF_CONTROL\n@@ -1797,8 +1826,13 @@ config TFABOOT\n \tdepends on ARCH_SUPPORT_TFABOOT\n \tdefault n\n \thelp\n-\t  Enabling this will make a U-Boot binary that is capable of being\n-\t  booted via TF-A (Trusted Firmware for Cortex-A).\n+\t  Some platforms support the setup of secure registers (for instance\n+\t  for CPU errata handling) or provide secure services like PSCI.\n+\t  Those services could also be provided by other firmware parts\n+\t  like TF-A (Trusted Firmware for Cortex-A), in which case U-Boot\n+\t  does not need to (and cannot) execute this code.\n+\t  Enabling this option will make a U-Boot binary that is relying\n+\t  on other firmware layers to provide secure functionality.\n \n config TI_SECURE_DEVICE\n \tbool \"HS Device Type Support\"\n@@ -1986,6 +2020,7 @@ source \"board/hisilicon/hikey/Kconfig\"\n source \"board/hisilicon/hikey960/Kconfig\"\n source \"board/hisilicon/poplar/Kconfig\"\n source \"board/isee/igep003x/Kconfig\"\n+source \"board/kontron/sl28/Kconfig\"\n source \"board/myir/mys_6ulx/Kconfig\"\n source \"board/spear/spear300/Kconfig\"\n source \"board/spear/spear310/Kconfig\"\n@@ -1997,10 +2032,6 @@ source \"board/tcl/sl50/Kconfig\"\n source \"board/toradex/colibri_pxa270/Kconfig\"\n source \"board/variscite/dart_6ul/Kconfig\"\n source \"board/vscom/baltos/Kconfig\"\n-source \"board/xilinx/Kconfig\"\n-source \"board/xilinx/zynq/Kconfig\"\n-source \"board/xilinx/zynqmp/Kconfig\"\n-source \"board/xilinx/versal/Kconfig\"\n source \"board/phytium/durian/Kconfig\"\n source \"board/xen/xenguest_arm64/Kconfig\"\n \ndiff --git a/arch/arm/cpu/armv7/ls102xa/Kconfig b/arch/arm/cpu/armv7/ls102xa/Kconfig\nindex 937989b..747059b 100644\n--- a/arch/arm/cpu/armv7/ls102xa/Kconfig\n+++ b/arch/arm/cpu/armv7/ls102xa/Kconfig\n@@ -5,11 +5,11 @@ config ARCH_LS1021A\n \tselect SYS_FSL_ERRATUM_A008378\n \tselect SYS_FSL_ERRATUM_A008407\n \tselect SYS_FSL_ERRATUM_A008850\n-\tselect SYS_FSL_ERRATUM_A008997\n-\tselect SYS_FSL_ERRATUM_A009007\n-\tselect SYS_FSL_ERRATUM_A009008\n+\tselect SYS_FSL_ERRATUM_A008997 if USB\n+\tselect SYS_FSL_ERRATUM_A009007 if USB\n+\tselect SYS_FSL_ERRATUM_A009008 if USB\n \tselect SYS_FSL_ERRATUM_A009663\n-\tselect SYS_FSL_ERRATUM_A009798\n+\tselect SYS_FSL_ERRATUM_A009798 if USB\n \tselect SYS_FSL_ERRATUM_A009942\n \tselect SYS_FSL_ERRATUM_A010315\n \tselect SYS_FSL_HAS_CCI400\ndiff --git a/arch/arm/cpu/armv8/Kconfig b/arch/arm/cpu/armv8/Kconfig\nindex 3655990..f247441 100644\n--- a/arch/arm/cpu/armv8/Kconfig\n+++ b/arch/arm/cpu/armv8/Kconfig\n@@ -115,7 +115,7 @@ config PSCI_RESET\n \t\t   !TARGET_LS1046ARDB && !TARGET_LS1046AQDS && \\\n \t\t   !TARGET_LS1046AFRWY && \\\n \t\t   !TARGET_LS2081ARDB && !TARGET_LX2160ARDB && \\\n-\t\t   !TARGET_LX2160AQDS && \\\n+\t\t   !TARGET_LX2160AQDS && !TARGET_LX2162AQDS && \\\n \t\t   !ARCH_UNIPHIER && !TARGET_S32V234EVB\n \thelp\n \t  Most armv8 systems have PSCI support enabled in EL3, either through\ndiff --git a/arch/arm/cpu/armv8/fsl-layerscape/Kconfig b/arch/arm/cpu/armv8/fsl-layerscape/Kconfig\nindex be51b7d..4d46587 100644\n--- a/arch/arm/cpu/armv8/fsl-layerscape/Kconfig\n+++ b/arch/arm/cpu/armv8/fsl-layerscape/Kconfig\n@@ -208,6 +208,35 @@ config ARCH_LS2080A\n \timply DISTRO_DEFAULTS\n \timply PANIC_HANG\n \n+config ARCH_LX2162A\n+\tbool\n+\tselect ARMV8_SET_SMPEN\n+\tselect FSL_LSCH3\n+\tselect NXP_LSCH3_2\n+\tselect SYS_HAS_SERDES\n+\tselect SYS_FSL_SRDS_1\n+\tselect SYS_FSL_SRDS_2\n+\tselect SYS_FSL_DDR\n+\tselect SYS_FSL_DDR_LE\n+\tselect SYS_FSL_DDR_VER_50\n+\tselect SYS_FSL_EC1\n+\tselect SYS_FSL_EC2\n+\tselect SYS_FSL_ERRATUM_A050106\n+\tselect SYS_FSL_HAS_RGMII\n+\tselect SYS_FSL_HAS_SEC\n+\tselect SYS_FSL_HAS_CCN508\n+\tselect SYS_FSL_HAS_DDR4\n+\tselect SYS_FSL_SEC_COMPAT_5\n+\tselect SYS_FSL_SEC_LE\n+\tselect ARCH_EARLY_INIT_R\n+\tselect BOARD_EARLY_INIT_F\n+\tselect SYS_I2C_MXC\n+\tselect RESV_RAM if GIC_V3_ITS\n+\timply DISTRO_DEFAULTS\n+\timply PANIC_HANG\n+\timply SCSI\n+\timply SCSI_AHCI\n+\n config ARCH_LX2160A\n \tbool\n \tselect ARMV8_SET_SMPEN\n@@ -345,7 +374,7 @@ config SYS_FSL_ERRATUM_A050106\n \thelp\n \t  USB3.0 Receiver needs to enable fixed equalization\n \t  for each of PHY instances in an SOC. This is similar\n-\t  to erratum A-009007, but this one is for LX2160A,\n+\t  to erratum A-009007, but this one is for LX2160A and LX2162A,\n \t  and the register value is different.\n \n config SYS_FSL_ERRATUM_A010315\n@@ -362,6 +391,7 @@ config MAX_CPUS\n \tdefault 16 if ARCH_LS2080A\n \tdefault 8 if ARCH_LS1088A\n \tdefault 16 if ARCH_LX2160A\n+\tdefault 16 if ARCH_LX2162A\n \tdefault 1\n \thelp\n \t  Set this number to the maximum number of possible CPUs in the SoC.\n@@ -491,6 +521,7 @@ config SYS_FSL_DUART_CLK_DIV\n \tint \"DUART clock divider\"\n \tdefault 1 if ARCH_LS1043A\n \tdefault 4 if ARCH_LX2160A\n+\tdefault 4 if ARCH_LX2162A\n \tdefault 2\n \thelp\n \t  This is the divider that is used to derive DUART clock from Platform\n@@ -502,6 +533,7 @@ config SYS_FSL_I2C_CLK_DIV\n \tdefault 4 if ARCH_LS1012A\n \tdefault 4 if ARCH_LS1028A\n \tdefault 8 if ARCH_LX2160A\n+\tdefault 8 if ARCH_LX2162A\n \tdefault 8 if ARCH_LS1088A\n \tdefault 2\n \thelp\n@@ -514,6 +546,7 @@ config SYS_FSL_IFC_CLK_DIV\n \tdefault 4 if ARCH_LS1012A\n \tdefault 4 if ARCH_LS1028A\n \tdefault 8 if ARCH_LX2160A\n+\tdefault 8 if ARCH_LX2162A\n \tdefault 8 if ARCH_LS1088A\n \tdefault 2\n \thelp\n@@ -560,14 +593,14 @@ config SYS_FSL_EC1\n \tbool\n \thelp\n \t  Ethernet controller 1, this is connected to\n-\t  MAC17 for LX2160A or to MAC3 for other SoCs\n+\t  MAC17 for LX2160A and LX2162A or to MAC3 for other SoCs\n \t  Provides DPAA2 capabilities\n \n config SYS_FSL_EC2\n \tbool\n \thelp\n \t  Ethernet controller 2, this is connected to\n-\t  MAC18 for LX2160A or to MAC4 for other SoCs\n+\t  MAC18 for LX2160A and LX2162A or to MAC4 for other SoCs\n \t  Provides DPAA2 capabilities\n \n config SYS_FSL_ERRATUM_A008336\ndiff --git a/arch/arm/cpu/armv8/fsl-layerscape/Makefile b/arch/arm/cpu/armv8/fsl-layerscape/Makefile\nindex 9ecb372..598c36e 100644\n--- a/arch/arm/cpu/armv8/fsl-layerscape/Makefile\n+++ b/arch/arm/cpu/armv8/fsl-layerscape/Makefile\n@@ -27,6 +27,11 @@ obj-$(CONFIG_SYS_HAS_SERDES) += lx2160a_serdes.o\n obj-y += icid.o lx2160_ids.o\n endif\n \n+ifneq ($(CONFIG_ARCH_LX2162A),)\n+obj-$(CONFIG_SYS_HAS_SERDES) += lx2160a_serdes.o\n+obj-y += icid.o lx2160_ids.o\n+endif\n+\n ifneq ($(CONFIG_ARCH_LS2080A),)\n obj-$(CONFIG_SYS_HAS_SERDES) += ls2080a_serdes.o\n obj-y += icid.o ls2088_ids.o\ndiff --git a/arch/arm/cpu/armv8/fsl-layerscape/cpu.c b/arch/arm/cpu/armv8/fsl-layerscape/cpu.c\nindex e610528..1a5d26b 100644\n--- a/arch/arm/cpu/armv8/fsl-layerscape/cpu.c\n+++ b/arch/arm/cpu/armv8/fsl-layerscape/cpu.c\n@@ -79,6 +79,9 @@ static struct cpu_type cpu_type_list[] = {\n \tCPU_TYPE_ENTRY(LX2160A, LX2160A, 16),\n \tCPU_TYPE_ENTRY(LX2120A, LX2120A, 12),\n \tCPU_TYPE_ENTRY(LX2080A, LX2080A, 8),\n+\tCPU_TYPE_ENTRY(LX2162A, LX2162A, 16),\n+\tCPU_TYPE_ENTRY(LX2122A, LX2122A, 12),\n+\tCPU_TYPE_ENTRY(LX2082A, LX2082A, 8),\n };\n \n #define EARLY_PGTABLE_SIZE 0x5000\n@@ -403,7 +406,7 @@ void cpu_name(char *name)\n \tfor (i = 0; i < ARRAY_SIZE(cpu_type_list); i++)\n \t\tif ((cpu_type_list[i].soc_ver & SVR_WO_E) == ver) {\n \t\t\tstrcpy(name, cpu_type_list[i].name);\n-#ifdef CONFIG_ARCH_LX2160A\n+#if defined(CONFIG_ARCH_LX2160A) || defined(CONFIG_ARCH_LX2162A)\n \t\t\tif (IS_C_PROCESSOR(svr))\n \t\t\t\tstrcat(name, \"C\");\n #endif\n@@ -1147,15 +1150,15 @@ int arch_early_init_r(void)\n \t * EC*_PMUX(rgmii) bits in RCW.\n \t * e.g. dpmac 17 and 18 in LX2160A can be configured as SGMII from\n \t * serdes bits and as RGMII via EC1_PMUX/EC2_PMUX bits\n-\t * Now if a dpmac is enabled by serdes bits then it takes precedence\n-\t * over EC*_PMUX bits. i.e. in LX2160A if we select serdes protocol\n-\t * that configures dpmac17 as SGMII and set the EC1_PMUX as RGMII,\n-\t * then the dpmac is SGMII and not RGMII.\n+\t * Now if a dpmac is enabled as RGMII through ECx_PMUX then it takes\n+\t * precedence over SerDes protocol. i.e. in LX2160A if we select serdes\n+\t * protocol that configures dpmac17 as SGMII and set the EC1_PMUX as\n+\t * RGMII, then the dpmac is RGMII and not SGMII.\n \t *\n-\t * Therefore, move the fsl_rgmii_init after fsl_serdes_init. in\n-\t * fsl_rgmii_init function of SOC, we will check if the dpmac is enabled\n-\t * or not? if it is (fsl_serdes_init has already enabled the dpmac),\n-\t * then don't enable it.\n+\t * Therefore, even thought fsl_rgmii_init is after fsl_serdes_init\n+\t * function of SOC, the dpmac will be enabled as RGMII even if it was\n+\t * also enabled before as SGMII. If ECx_PMUX is not configured for\n+\t * RGMII, DPMAC will remain configured as SGMII from fsl_serdes_init().\n \t */\n \tfsl_rgmii_init();\n #endif\n@@ -1229,7 +1232,7 @@ __efi_runtime_data u32 __iomem *rstcr = (u32 *)CONFIG_SYS_FSL_RST_ADDR;\n \n void __efi_runtime reset_cpu(ulong addr)\n {\n-#ifdef CONFIG_ARCH_LX2160A\n+#if defined(CONFIG_ARCH_LX2160A) || defined(CONFIG_ARCH_LX2162A)\n \t/* clear the RST_REQ_MSK and SW_RST_REQ */\n \tout_le32(rstcr, 0x0);\n \ndiff --git a/arch/arm/cpu/armv8/fsl-layerscape/doc/README.pci_iommu_extra b/arch/arm/cpu/armv8/fsl-layerscape/doc/README.pci_iommu_extra\nnew file mode 100644\nindex 0000000..43db4d8\n--- /dev/null\n+++ b/arch/arm/cpu/armv8/fsl-layerscape/doc/README.pci_iommu_extra\n@@ -0,0 +1,67 @@\n+#\n+# Copyright 2020 NXP\n+#\n+# SPDX-License-Identifier:      GPL-2.0+\n+#\n+\n+Specifying extra IOMMU mappings for PCI controllers\n+\n+This feature can be enabled through the PCI_IOMMU_EXTRA_MAPPINGS Kconfig option.\n+\n+The \"pci_iommu_extra\" env var or \"pci-iommu-extra\" device tree property (to be\n+used for example in more static scenarios such as hardwired PCI endpoints that\n+get initialized later in the system setup) allows two things:\n+ - for a SRIOV capable PCI EP identified by its B.D.F specify the maximum number\n+   of VFs that will ever be created for it\n+ - for hot-plug case, specify the B.D.F with which the device will show up on\n+   the PCI bus\n+\n+The env var consists of a list of <bdf>,<action> pairs for a certain pci bus\n+identified by its controller's base register address, as defined in the \"reg\"\n+property in the device tree.\n+\n+pci_iommu_extra = pci@<addr1>,<bdf>,<action>,<bdf>,<action>,\n+\t\t  pci@<addr2>,<bdf>,<action>,<bdf>,<action>,...\n+\n+where:\n+ <addr> is the base register address of the pci controller for which the\n+        subsequent <bdf>,<action> pairs apply\n+ <bdf> identifies to which B.D.F the action applies to\n+ <action> can be:\n+    - \"vfs=<number>\" to specify that for the PCI EP identified previously by\n+      the <bdf> to include mappings for <number> of VFs.\n+      The variant \"noari_vfs=<number>\" is available to disable taking ARI into\n+      account.\n+    - \"hp\" to specify that on this <bdf> there will be a hot-plugged device so\n+      it needs a mapping\n+The device tree property must be placed under the correct pci controller node\n+and only the bdf and action pairs need to be specified, like this:\n+\n+pci-iommu-extra = \"<bdf>,<action>,<bdf>,<action>,...\";\n+\n+Note: the env var has priority over the device tree property.\n+\n+For example, given this configuration on bus 6:\n+\n+=> pci 6\n+Scanning PCI devices on bus 6\n+BusDevFun  VendorId   DeviceId   Device Class       Sub-Class\n+_____________________________________________________________\n+06.00.00   0x8086     0x1572     Network controller      0x00\n+06.00.01   0x8086     0x1572     Network controller      0x00\n+\n+The following u-boot env var will create iommu mappings for 3 VFs for each PF:\n+\n+=> setenv pci_iommu_extra pci@0x3800000,6.0.0,vfs=3,6.0.1,vfs=3\n+\n+For the device tree case, this would be specified like this:\n+\n+pci-iommu-extra = \"6.0.0,vfs=3,6.0.1,vfs=3\";\n+\n+To add an iommu mapping for a hot-plugged device, please see following example:\n+\n+=> setenv pci_iommu_extra pci@0x3800000,2.16.0,hp\n+\n+For the device tree case, this would be specified like this:\n+\n+pci-iommu-extra = \"2.16.0,hp\";\ndiff --git a/arch/arm/cpu/armv8/fsl-layerscape/doc/README.soc b/arch/arm/cpu/armv8/fsl-layerscape/doc/README.soc\nindex ad55573..f33d05d 100644\n--- a/arch/arm/cpu/armv8/fsl-layerscape/doc/README.soc\n+++ b/arch/arm/cpu/armv8/fsl-layerscape/doc/README.soc\n@@ -9,6 +9,7 @@ SoC overview\n \t7. LS2081A\n \t8. LX2160A\n \t9. LS1028A\n+\t10. LX2162A\n \n LS1043A\n ---------\n@@ -379,3 +380,58 @@ The LS1028A SoC includes the following function and features:\n   - Layerscape Trust Architecture\n   - Service Processor (SP) provides pre-boot initialization and secure-boot\n     capabilities\n+\n+LX2162A\n+--------\n+The QorIQ LX2162A processor is built on the Layerscape architecture\n+combining sixteen ARM A72 processor cores with advanced, high-performance\n+datapath acceleration and network, peripheral interfaces required for\n+networking, wireless infrastructure, storage, and general-purpose embedded\n+applications.\n+\n+LX2162A is compliant with the Layerscape Chassis Generation 3.2.\n+\n+The LX2162A SoC includes the following function and features:\n+  Sixteen 32-bit / 64-bit ARM v8 A72 CPUs\n+  Cache Coherent Interconnect Fabric (CCN508)\n+  One 64-bit 2.9GT/s DDR4 SDRAM memory controllers with ECC.\n+  Data path acceleration architecture (DPAA2)\n+  12 Serdes lanes at up to 25 GHz\n+  Ethernet interfaces\n+  Support for 10G-SXGMII (aka USXGMII).\n+  Support for SGMII (and 1000Base-KX)\n+  Support for XFI (and 10GBase-KR)\n+  Support for CAUI2 (50G) and 25G-AUI(25G).\n+  Support for XLAUI (and 40GBase-KR4) for 40G.\n+  Support for two RGMII parallel interfaces.\n+  Energy efficient Ethernet support (802.3az)\n+  IEEE 1588 support.\n+  High-speed peripheral interfaces\n+\tOne PCIe Gen 3.0 8-lane controllers supporting SR-IOV,\n+\tTwo PCIe Gen 3.0 4-lane controllers.\n+\tFour serial ATA (SATA 3.0) controllers.\n+\tOne USB 3.0 controllers with integrated PHY\n+\tTwo Enhanced secure digital host controllers\n+\tTwo Controller Area Network (CAN) modules\n+\tFlexible Serial peripheral interface (FlexSPI) controller.\n+\tThree Serial peripheral interface (SPI) controllers.\n+\tEight I2C Controllers.\n+\tFour PL011 UARTs supporting two 4-pin UART ports or four 2-pin UART ports.\n+\tGeneral Purpose IO (GPIO)\n+  Support for hardware virtualization and partitioning (ARM MMU-500)\n+  Support for GIC (ARM GIC-500)\n+  QorIQ platform Trust Architecture 3.0\n+  One Secure WatchDog timer and one Non-Secure Watchdog timer.\n+  ARM Generic Timer\n+  Two Flextimers\n+  Debug supporting run control, data acquisition, high-speed trace,\n+  performance/event monitoring\n+  Thermal Monitor Unit (TMU) with +/- 2C accuracy\n+  Support for Voltage ID (VID) for yield improvement\n+\n+LX2162A SoC has 2 more similar SoC personalities\n+1)LX2122A, few difference w.r.t. LX2162A:\n+       a) Twelve 64-bit ARM v8 Cortex-A72 CPUs\n+\n+2)LX2082A, few difference w.r.t. LX2162A:\n+       a) Eight 64-bit ARM v8 Cortex-A72 CPUs\ndiff --git a/arch/arm/cpu/armv8/fsl-layerscape/fdt.c b/arch/arm/cpu/armv8/fsl-layerscape/fdt.c\nindex 7400b2c..3a04dce 100644\n--- a/arch/arm/cpu/armv8/fsl-layerscape/fdt.c\n+++ b/arch/arm/cpu/armv8/fsl-layerscape/fdt.c\n@@ -400,10 +400,12 @@ void fdt_fixup_remove_jr(void *blob)\n \n \twhile (jr_node != -FDT_ERR_NOTFOUND) {\n \t\treg = (fdt32_t *)fdt_getprop(blob, jr_node, \"reg\", &len);\n-\t\tjr_offset = fdt_read_number(reg, addr_cells);\n-\t\tif (jr_offset == used_jr) {\n-\t\t\tfdt_del_node(blob, jr_node);\n-\t\t\tbreak;\n+\t\tif (reg) {\n+\t\t\tjr_offset = fdt_read_number(reg, addr_cells);\n+\t\t\tif (jr_offset == used_jr) {\n+\t\t\t\tfdt_del_node(blob, jr_node);\n+\t\t\t\tbreak;\n+\t\t\t}\n \t\t}\n \t\tjr_node = fdt_node_offset_by_compatible(blob, jr_node,\n \t\t\t\t\t\t\t\"fsl,sec-v4.0-job-ring\");\n@@ -437,13 +439,52 @@ __weak void fdt_fixup_ecam(void *blob)\n }\n #endif\n \n+/*\n+ * If it is a non-E part the crypto is disabled on the following SoCs:\n+ *  - LS1043A\n+ *  - LS1088A\n+ *  - LS2080A\n+ *  - LS2088A\n+ * and their personalities.\n+ *\n+ * On all other SoCs just the export-controlled ciphers are disabled, that\n+ * means that the following is still working:\n+ *  - hashing (using MDHA - message digest hash accelerator)\n+ *  - random number generation (using RNG4)\n+ *  - cyclic redundancy checking (using CRCA)\n+ *  - runtime integrity checker (RTIC)\n+ *\n+ * The linux driver will figure out what is available and what is not.\n+ * Therefore, we just remove the crypto node on the SoCs which have no crypto\n+ * support at all.\n+ */\n+static bool crypto_is_disabled(unsigned int svr)\n+{\n+\tif (IS_E_PROCESSOR(svr))\n+\t\treturn false;\n+\n+\tif (IS_SVR_DEV(svr, SVR_DEV(SVR_LS1043A)))\n+\t\treturn true;\n+\n+\tif (IS_SVR_DEV(svr, SVR_DEV(SVR_LS1088A)))\n+\t\treturn true;\n+\n+\tif (IS_SVR_DEV(svr, SVR_DEV(SVR_LS2080A)))\n+\t\treturn true;\n+\n+\tif (IS_SVR_DEV(svr, SVR_DEV(SVR_LS2088A)))\n+\t\treturn true;\n+\n+\treturn false;\n+}\n+\n void ft_cpu_setup(void *blob, struct bd_info *bd)\n {\n \tstruct ccsr_gur __iomem *gur = (void *)(CONFIG_SYS_FSL_GUTS_ADDR);\n \tunsigned int svr = gur_in32(&gur->svr);\n \n \t/* delete crypto node if not on an E-processor */\n-\tif (!IS_E_PROCESSOR(svr))\n+\tif (crypto_is_disabled(svr))\n \t\tfdt_fixup_crypto_node(blob, 0);\n #if CONFIG_SYS_FSL_SEC_COMPAT >= 4\n \telse {\ndiff --git a/arch/arm/cpu/armv8/fsl-layerscape/fsl_lsch3_serdes.c b/arch/arm/cpu/armv8/fsl-layerscape/fsl_lsch3_serdes.c\nindex aa6fd6b..fad7a93 100644\n--- a/arch/arm/cpu/armv8/fsl-layerscape/fsl_lsch3_serdes.c\n+++ b/arch/arm/cpu/armv8/fsl-layerscape/fsl_lsch3_serdes.c\n@@ -1,6 +1,6 @@\n // SPDX-License-Identifier: GPL-2.0+\n /*\n- * Copyright 2016-2018 NXP\n+ * Copyright 2016-2018, 2020 NXP\n  * Copyright 2014-2015 Freescale Semiconductor, Inc.\n  */\n \n@@ -26,7 +26,7 @@ static u8 serdes3_prtcl_map[SERDES_PRCTL_COUNT];\n #endif\n \n #if defined(CONFIG_FSL_MC_ENET) && !defined(CONFIG_SPL_BUILD)\n-#ifdef CONFIG_ARCH_LX2160A\n+#if defined(CONFIG_ARCH_LX2160A) || defined(CONFIG_ARCH_LX2162A)\n int xfi_dpmac[XFI14 + 1];\n int sgmii_dpmac[SGMII18 + 1];\n int a25gaui_dpmac[_25GE10 + 1];\n@@ -159,7 +159,7 @@ void serdes_init(u32 sd, u32 sd_addr, u32 rcwsr, u32 sd_prctl_mask,\n \t\telse {\n \t\t\tserdes_prtcl_map[lane_prtcl] = 1;\n #if defined(CONFIG_FSL_MC_ENET) && !defined(CONFIG_SPL_BUILD)\n-#ifdef CONFIG_ARCH_LX2160A\n+#if defined(CONFIG_ARCH_LX2160A) || defined(CONFIG_ARCH_LX2162A)\n \t\t\tif (lane_prtcl >= XFI1 && lane_prtcl <= XFI14)\n \t\t\t\twriop_init_dpmac(sd, xfi_dpmac[lane_prtcl],\n \t\t\t\t\t\t (int)lane_prtcl);\n@@ -552,7 +552,7 @@ void fsl_serdes_init(void)\n #if defined(CONFIG_FSL_MC_ENET) && !defined(CONFIG_SPL_BUILD)\n \tint i , j;\n \n-#ifdef CONFIG_ARCH_LX2160A\n+#if defined(CONFIG_ARCH_LX2160A) || defined(CONFIG_ARCH_LX2162A)\n \tfor (i = XFI1, j = 1; i <= XFI14; i++, j++)\n \t\txfi_dpmac[i] = j;\n \ndiff --git a/arch/arm/cpu/armv8/fsl-layerscape/fsl_lsch3_speed.c b/arch/arm/cpu/armv8/fsl-layerscape/fsl_lsch3_speed.c\nindex 7f8178f..bf153c7 100644\n--- a/arch/arm/cpu/armv8/fsl-layerscape/fsl_lsch3_speed.c\n+++ b/arch/arm/cpu/armv8/fsl-layerscape/fsl_lsch3_speed.c\n@@ -1,7 +1,7 @@\n // SPDX-License-Identifier: GPL-2.0+\n /*\n  * Copyright 2014-2015, Freescale Semiconductor, Inc.\n- * Copyright 2019 NXP Semiconductors\n+ * Copyright 2019-2020 NXP\n  *\n  * Derived from arch/power/cpu/mpc85xx/speed.c\n  */\n@@ -180,7 +180,7 @@ int get_clocks(void)\n #ifdef CONFIG_FSL_ESDHC\n #if defined(CONFIG_ARCH_LS1028A) || defined(CONFIG_ARCH_LS1088A)\n \tclock = sys_info.freq_cga_m2;\n-#elif defined(CONFIG_ARCH_LX2160A) || defined(CONFIG_ARCH_LS2080A)\n+#elif defined(CONFIG_ARCH_LX2160A) || defined(CONFIG_ARCH_LS2080A) || defined(CONFIG_ARCH_LX2162A)\n \tclock = sys_info.freq_systembus;\n #endif\n \tgd->arch.sdhc_per_clk = clock / CONFIG_SYS_FSL_SDHC_CLK_DIV;\ndiff --git a/arch/arm/cpu/armv8/fsl-layerscape/lx2160a_serdes.c b/arch/arm/cpu/armv8/fsl-layerscape/lx2160a_serdes.c\nindex a04a370..5941d90 100644\n--- a/arch/arm/cpu/armv8/fsl-layerscape/lx2160a_serdes.c\n+++ b/arch/arm/cpu/armv8/fsl-layerscape/lx2160a_serdes.c\n@@ -1,6 +1,6 @@\n // SPDX-License-Identifier: GPL-2.0+\n /*\n- * Copyright 2018 NXP\n+ * Copyright 2018, 2020 NXP\n  */\n \n #include <common.h>\n@@ -11,6 +11,22 @@ struct serdes_config {\n \tu8 lanes[SRDS_MAX_LANES];\n };\n \n+#if defined(CONFIG_ARCH_LX2162A)\n+static struct serdes_config serdes1_cfg_tbl[] = {\n+\t/* SerDes 1 */\n+\t{0x01, {PCIE1, PCIE1, PCIE1, PCIE1 } },\n+\t{0x02, {SGMII6, SGMII5, SGMII4, SGMII3 } },\n+\t{0x03, {XFI6, XFI5, XFI4, XFI3 } },\n+\t{0x09, {SGMII6, SGMII5, SGMII4, PCIE1 } },\n+\t{0x0B, {SGMII6, SGMII5, PCIE1, PCIE1 } },\n+\t{0x0F, {_50GE2, _50GE2, _50GE1, _50GE1 } },\n+\t{0x10, {_25GE6, _25GE5, _50GE1, _50GE1 } },\n+\t{0x11, {_25GE6, _25GE5, _25GE4, _25GE3 } },\n+\t{0x12, {_25GE6, _25GE5, XFI4, XFI3 } },\n+\t{0x14, {_40GE1, _40GE1, _40GE1, _40GE1 } },\n+\t{}\n+};\n+#else\n static struct serdes_config serdes1_cfg_tbl[] = {\n \t/* SerDes 1 */\n \t{0x01, {PCIE2, PCIE2, PCIE2, PCIE2, PCIE1, PCIE1, PCIE1, PCIE1 } },\n@@ -48,6 +64,7 @@ static struct serdes_config serdes1_cfg_tbl[] = {\n \t{0x16, {XFI10, XFI9, PCIE2, PCIE2, XFI6, XFI5, XFI4, XFI3 } },\n \t{}\n };\n+#endif\n \n static struct serdes_config serdes2_cfg_tbl[] = {\n \t/* SerDes 2 */\ndiff --git a/arch/arm/cpu/armv8/fsl-layerscape/soc.c b/arch/arm/cpu/armv8/fsl-layerscape/soc.c\nindex 87fb321..7553b5b 100644\n--- a/arch/arm/cpu/armv8/fsl-layerscape/soc.c\n+++ b/arch/arm/cpu/armv8/fsl-layerscape/soc.c\n@@ -1,7 +1,7 @@\n // SPDX-License-Identifier: GPL-2.0+\n /*\n  * Copyright 2014-2015 Freescale Semiconductor\n- * Copyright 2019 NXP\n+ * Copyright 2019-2020 NXP\n  */\n \n #include <common.h>\n@@ -33,12 +33,10 @@\n #include <fsl_validate.h>\n #endif\n #include <fsl_immap.h>\n-#ifdef CONFIG_TFABOOT\n-#include <env_internal.h>\n-#endif\n #include <dm.h>\n+#include <dm/device_compat.h>\n #include <linux/err.h>\n-#if defined(CONFIG_TFABOOT) || defined(CONFIG_GIC_V3_ITS)\n+#ifdef CONFIG_GIC_V3_ITS\n DECLARE_GLOBAL_DATA_PTR;\n #endif\n \n@@ -56,7 +54,7 @@ int ls_gic_rd_tables_init(void *blob)\n \n \tlpi_base.start = addr;\n \tlpi_base.end = addr + size - 1;\n-\tret = fdtdec_add_reserved_memory(blob, \"lpi_rd_table\", &lpi_base, NULL);\n+\tret = fdtdec_add_reserved_memory(blob, \"lpi_rd_table\", &lpi_base, NULL, false);\n \tif (ret) {\n \t\tdebug(\"%s: failed to add reserved memory\\n\", __func__);\n \t\treturn ret;\n@@ -185,7 +183,8 @@ static void erratum_a008997(void)\n \tout_be16((phy) + SCFG_USB_PHY_RX_OVRD_IN_HI, USB_PHY_RX_EQ_VAL_4)\n \n #elif defined(CONFIG_ARCH_LS2080A) || defined(CONFIG_ARCH_LS1088A) || \\\n-\tdefined(CONFIG_ARCH_LS1028A) || defined(CONFIG_ARCH_LX2160A)\n+\tdefined(CONFIG_ARCH_LS1028A) || defined(CONFIG_ARCH_LX2160A) || \\\n+\tdefined(CONFIG_ARCH_LX2162A)\n \n #define PROGRAM_USB_PHY_RX_OVRD_IN_HI(phy)\t\\\n \tout_le16((phy) + DCSR_USB_PHY_RX_OVRD_IN_HI, USB_PHY_RX_EQ_VAL_1); \\\n@@ -221,7 +220,7 @@ static void erratum_a009007(void)\n #if defined(CONFIG_FSL_LSCH3)\n static void erratum_a050106(void)\n {\n-#if defined(CONFIG_ARCH_LX2160A)\n+#if defined(CONFIG_ARCH_LX2160A) || defined(CONFIG_ARCH_LX2162A)\n \tvoid __iomem *dcsr = (void __iomem *)DCSR_BASE;\n \n \tPROGRAM_USB_PHY_RX_OVRD_IN_HI(dcsr + DCSR_USB_PHY1);\n@@ -391,7 +390,8 @@ void fsl_lsch3_early_init_f(void)\n #endif\n \n #if defined(CONFIG_ARCH_LS1088A) || defined(CONFIG_ARCH_LS1028A) || \\\n-\tdefined(CONFIG_ARCH_LS2080A) || defined(CONFIG_ARCH_LX2160A)\n+\tdefined(CONFIG_ARCH_LS2080A) || defined(CONFIG_ARCH_LX2160A) || \\\n+\tdefined(CONFIG_ARCH_LX2162A)\n \tset_icids();\n #endif\n }\n@@ -953,28 +953,12 @@ int board_late_init(void)\n #endif\n #ifdef CONFIG_TFABOOT\n \t/*\n-\t * check if gd->env_addr is default_environment; then setenv bootcmd\n-\t * and mcinitcmd.\n-\t */\n-#ifdef CONFIG_SYS_RELOC_GD_ENV_ADDR\n-\tif (gd->env_addr == (ulong)&default_environment[0]) {\n-#else\n-\tif (gd->env_addr + gd->reloc_off == (ulong)&default_environment[0]) {\n-#endif\n-\t\tfsl_setenv_bootcmd();\n-\t\tfsl_setenv_mcinitcmd();\n-\t}\n-\n-\t/*\n-\t * If the boot mode is secure, default environment is not present then\n-\t * setenv command needs to be run by default\n+\t * Set bootcmd and mcinitcmd if they don't exist in the environment.\n \t */\n-#ifdef CONFIG_CHAIN_OF_TRUST\n-\tif ((fsl_check_boot_mode_secure() == 1)) {\n+\tif (!env_get(\"bootcmd\"))\n \t\tfsl_setenv_bootcmd();\n+\tif (!env_get(\"mcinitcmd\"))\n \t\tfsl_setenv_mcinitcmd();\n-\t}\n-#endif\n #endif\n #ifdef CONFIG_QSPI_AHB_INIT\n \tqspi_ahb_init();\ndiff --git a/arch/arm/cpu/armv8/start.S b/arch/arm/cpu/armv8/start.S\nindex 002698b..6624491 100644\n--- a/arch/arm/cpu/armv8/start.S\n+++ b/arch/arm/cpu/armv8/start.S\n@@ -59,6 +59,23 @@ reset:\n save_boot_params_ret:\n \n #if CONFIG_POSITION_INDEPENDENT\n+\t/* Verify that we're 4K aligned.  */\n+\tadr\tx0, _start\n+\tands\tx0, x0, #0xfff\n+\tb.eq\t1f\n+0:\n+\t/*\n+\t * FATAL, can't continue.\n+\t * U-Boot needs to be loaded at a 4K aligned address.\n+\t *\n+\t * We use ADRP and ADD to load some symbol addresses during startup.\n+\t * The ADD uses an absolute (non pc-relative) lo12 relocation\n+\t * thus requiring 4K alignment.\n+\t */\n+\twfi\n+\tb\t0b\n+1:\n+\n \t/*\n \t * Fix .rela.dyn relocations. This allows U-Boot to be loaded to and\n \t * executed at a different address than it was linked at.\n@@ -66,9 +83,12 @@ save_boot_params_ret:\n pie_fixup:\n \tadr\tx0, _start\t\t/* x0 <- Runtime value of _start */\n \tldr\tx1, _TEXT_BASE\t\t/* x1 <- Linked value of _start */\n-\tsub\tx9, x0, x1\t\t/* x9 <- Run-vs-link offset */\n-\tadr\tx2, __rel_dyn_start\t/* x2 <- Runtime &__rel_dyn_start */\n-\tadr\tx3, __rel_dyn_end\t/* x3 <- Runtime &__rel_dyn_end */\n+\tsubs\tx9, x0, x1\t\t/* x9 <- Run-vs-link offset */\n+\tbeq\tpie_fixup_done\n+\tadrp    x2, __rel_dyn_start     /* x2 <- Runtime &__rel_dyn_start */\n+\tadd     x2, x2, #:lo12:__rel_dyn_start\n+\tadrp    x3, __rel_dyn_end       /* x3 <- Runtime &__rel_dyn_end */\n+\tadd     x3, x3, #:lo12:__rel_dyn_end\n pie_fix_loop:\n \tldp\tx0, x1, [x2], #16\t/* (x0, x1) <- (Link location, fixup) */\n \tldr\tx4, [x2], #8\t\t/* x4 <- addend */\ndiff --git a/arch/arm/dts/Makefile b/arch/arm/dts/Makefile\nindex f8f5294..fd47e40 100644\n--- a/arch/arm/dts/Makefile\n+++ b/arch/arm/dts/Makefile\n@@ -72,6 +72,8 @@ dtb-$(CONFIG_MACH_S700) += \\\n dtb-$(CONFIG_ROCKCHIP_PX30) += \\\n \tpx30-evb.dtb \\\n \tpx30-firefly.dtb \\\n+\tpx30-px30-core-ctouch2.dtb \\\n+\tpx30-px30-core-edimm2.2.dtb \\\n \trk3326-odroid-go2.dtb\n \n dtb-$(CONFIG_ROCKCHIP_RK3036) += \\\n@@ -218,6 +220,7 @@ dtb-$(CONFIG_ARCH_MVEBU) +=\t\t\t\\\n \tarmada-8040-clearfog-gt-8k.dtb\t\t\\\n \tarmada-8040-db.dtb\t\t\t\\\n \tarmada-8040-mcbin.dtb\t\t\t\\\n+\tarmada-8040-puzzle-m801.dtb\t\t\\\n \tarmada-xp-crs305-1g-4s.dtb\t\t\\\n \tarmada-xp-crs305-1g-4s-bit.dtb\t\t\\\n \tarmada-xp-crs326-24g-2s.dtb\t\t\\\n@@ -277,6 +280,7 @@ dtb-$(CONFIG_ARCH_ZYNQ) += \\\n \tzynq-zc770-xm013.dtb \\\n \tzynq-zed.dtb \\\n \tzynq-zturn.dtb \\\n+\tzynq-zturn-v5.dtb \\\n \tzynq-zybo.dtb \\\n \tzynq-zybo-z7.dtb\n dtb-$(CONFIG_ARCH_ZYNQMP) += \\\n@@ -345,7 +349,8 @@ dtb-$(CONFIG_AM33XX) += \\\n \tam335x-sl50.dtb \\\n \tam335x-base0033.dtb \\\n \tam335x-guardian.dtb \\\n-\tam335x-wega-rdk.dtb\n+\tam335x-wega-rdk.dtb \\\n+\tam335x-regor-rdk.dtb\n dtb-$(CONFIG_AM43XX) += am437x-gp-evm.dtb am437x-sk-evm.dtb\t\\\n \tam43x-epos-evm.dtb \\\n \tam437x-idk-evm.dtb \\\n@@ -409,7 +414,11 @@ dtb-$(CONFIG_FSL_LSCH3) += fsl-ls2080a-qds.dtb \\\n \tfsl-lx2160a-qds-19-x-x.dtb \\\n \tfsl-lx2160a-qds-19-11-x.dtb \\\n \tfsl-lx2160a-qds-20-x-x.dtb \\\n-\tfsl-lx2160a-qds-20-11-x.dtb\n+\tfsl-lx2160a-qds-20-11-x.dtb \\\n+\tfsl-lx2162a-qds.dtb\\\n+\tfsl-lx2162a-qds-17-x.dtb\\\n+\tfsl-lx2162a-qds-18-x.dtb\\\n+\tfsl-lx2162a-qds-20-x.dtb\n dtb-$(CONFIG_FSL_LSCH2) += fsl-ls1043a-qds-duart.dtb \\\n \tfsl-ls1043a-qds-lpuart.dtb \\\n \tfsl-ls1043a-rdb.dtb \\\n@@ -422,6 +431,9 @@ dtb-$(CONFIG_FSL_LSCH2) += fsl-ls1043a-qds-duart.dtb \\\n \tfsl-ls1012a-2g5rdb.dtb \\\n \tfsl-ls1012a-frdm.dtb \\\n \tfsl-ls1012a-frwy.dtb\n+dtb-$(CONFIG_TARGET_SL28) += fsl-ls1028a-kontron-sl28.dtb \\\n+\tfsl-ls1028a-kontron-sl28-var3.dtb \\\n+\tfsl-ls1028a-kontron-sl28-var4.dtb \\\n \n dtb-$(CONFIG_TARGET_DRAGONBOARD410C) += dragonboard410c.dtb\n dtb-$(CONFIG_TARGET_DRAGONBOARD820C) += dragonboard820c.dtb\n@@ -608,6 +620,10 @@ dtb-$(CONFIG_MACH_SUN50I) += \\\n \tsun50i-a64-pine64-plus.dtb \\\n \tsun50i-a64-pine64.dtb \\\n \tsun50i-a64-pinebook.dtb \\\n+\tsun50i-a64-pinephone-1.0.dtb \\\n+\tsun50i-a64-pinephone-1.1.dtb \\\n+\tsun50i-a64-pinephone-1.2.dtb \\\n+\tsun50i-a64-pinetab.dtb \\\n \tsun50i-a64-sopine-baseboard.dtb \\\n \tsun50i-a64-teres-i.dtb\n dtb-$(CONFIG_MACH_SUN9I) += \\\n@@ -630,14 +646,8 @@ dtb-$(CONFIG_MX53) += imx53-cx9020.dtb \\\n \n ifneq ($(CONFIG_MX6DL)$(CONFIG_MX6QDL)$(CONFIG_MX6S),)\n dtb-y += \\\n-\timx6dl-aristainetos2_4.dtb \\\n-\timx6dl-aristainetos2_7.dtb \\\n-\timx6dl-aristainetos2b_4.dtb \\\n-\timx6dl-aristainetos2b_7.dtb \\\n-\timx6dl-aristainetos2b_csl_4.dtb \\\n-\timx6dl-aristainetos2b_csl_7.dtb \\\n-\timx6dl-aristainetos2c_4.dtb \\\n \timx6dl-aristainetos2c_7.dtb \\\n+\timx6dl-aristainetos2c_cslb_7.dtb \\\n \timx6dl-brppt2.dtb \\\n \timx6dl-cubox-i.dtb \\\n \timx6dl-cubox-i-emmc-som-v15.dtb \\\n@@ -755,6 +765,7 @@ dtb-$(CONFIG_ARCH_IMX8) += \\\n \timx8qm-rom7720-a1.dtb \\\n \tfsl-imx8qxp-ai_ml.dtb \\\n \tfsl-imx8qxp-colibri.dtb \\\n+\tfsl-imx8qxp-apalis.dtb \\\n \tfsl-imx8qxp-mek.dtb \\\n \timx8-deneb.dtb \\\n \timx8-giedi.dtb\n@@ -762,6 +773,7 @@ dtb-$(CONFIG_ARCH_IMX8) += \\\n dtb-$(CONFIG_ARCH_IMX8M) += \\\n \timx8mm-evk.dtb \\\n \timx8mm-verdin.dtb \\\n+\tphycore-imx8mm.dtb \\\n \timx8mn-ddr4-evk.dtb \\\n \timx8mq-evk.dtb \\\n \timx8mm-beacon-kit.dtb \\\n@@ -938,7 +950,7 @@ dtb-$(CONFIG_ARCH_BCM6858) += \\\n \n dtb-$(CONFIG_TARGET_BCMNS3) += ns3-board.dtb\n \n-dtb-$(CONFIG_ARCH_ASPEED) += ast2500-evb.dtb\n+dtb-$(CONFIG_ASPEED_AST2500) += ast2500-evb.dtb\n \n dtb-$(CONFIG_ARCH_STI) += stih410-b2260.dtb\n \n@@ -951,6 +963,7 @@ dtb-$(CONFIG_STM32MP15x) += \\\n \tstm32mp157c-odyssey.dtb \\\n \tstm32mp15xx-dhcom-drc02.dtb \\\n \tstm32mp15xx-dhcom-pdk2.dtb \\\n+\tstm32mp15xx-dhcom-picoitx.dtb \\\n \tstm32mp15xx-dhcor-avenger96.dtb\n \n dtb-$(CONFIG_SOC_K3_AM6) += k3-am654-base-board.dtb k3-am654-r5-base-board.dtb\n@@ -975,6 +988,7 @@ dtb-$(CONFIG_TARGET_GE_BX50V3) += \\\n \timx6q-b650v3.dtb \\\n \timx6q-b450v3.dtb\n \n+dtb-$(CONFIG_TARGET_GE_B1X5V2) += imx6dl-b1x5v2.dtb\n dtb-$(CONFIG_TARGET_MX53PPD) += imx53-ppd.dtb\n \n dtb-$(CONFIG_TARGET_VEXPRESS_CA5X2) += vexpress-v2p-ca5s.dtb\ndiff --git a/arch/arm/dts/am335x-icev2.dts b/arch/arm/dts/am335x-icev2.dts\nindex 37484cb..2a1b3a5 100644\n--- a/arch/arm/dts/am335x-icev2.dts\n+++ b/arch/arm/dts/am335x-icev2.dts\n@@ -436,3 +436,53 @@\n \t\treg = <3>;\n \t};\n };\n+\n+&spi0 {\n+\tstatus = \"okay\";\n+\tpinctrl-names = \"default\";\n+\tpinctrl-0 = <&spi0_pins_default>;\n+\n+\tsn65hvs882@1 {\n+\t\tcompatible = \"pisosr-gpio\";\n+\t\tgpio-controller;\n+\t\t#gpio-cells = <2>;\n+\n+\t\tload-gpios = <&gpio3 18 GPIO_ACTIVE_LOW>;\n+\n+\t\treg = <1>;\n+\t\tspi-max-frequency = <1000000>;\n+\t\tspi-cpol;\n+\t};\n+\n+\tspi_nor: flash@0 {\n+\t\t#address-cells = <1>;\n+\t\t#size-cells = <1>;\n+\t\tcompatible = \"winbond,w25q64\", \"jedec,spi-nor\";\n+\t\tspi-max-frequency = <80000000>;\n+\t\tm25p,fast-read;\n+\t\treg = <0>;\n+\n+\t\tpartition@0 {\n+\t\t\tlabel = \"u-boot-spl\";\n+\t\t\treg = <0x0 0x80000>;\n+\t\t\tread-only;\n+\t\t};\n+\n+\t\tpartition@1 {\n+\t\t\tlabel = \"u-boot\";\n+\t\t\treg = <0x80000 0x100000>;\n+\t\t\tread-only;\n+\t\t};\n+\n+\t\tpartition@2 {\n+\t\t\tlabel = \"u-boot-env\";\n+\t\t\treg = <0x180000 0x20000>;\n+\t\t\tread-only;\n+\t\t};\n+\n+\t\tpartition@3 {\n+\t\t\tlabel = \"misc\";\n+\t\t\treg = <0x1A0000 0x660000>;\n+\t\t};\n+\t};\n+};\ndiff --git a/arch/arm/dts/am335x-regor-rdk-u-boot.dtsi b/arch/arm/dts/am335x-regor-rdk-u-boot.dtsi\nnew file mode 100644\nindex 0000000..1ddd715\n--- /dev/null\n+++ b/arch/arm/dts/am335x-regor-rdk-u-boot.dtsi\n@@ -0,0 +1,31 @@\n+// SPDX-License-Identifier: GPL-2.0\n+/*\n+ * Copyright (C) 2020 Linumiz\n+ */\n+\n+/ {\n+\tchosen {\n+\t\t#address-cells = <1>;\n+\t\t#size-cells = <1>;\n+\n+\t\tbootargs = \"console=ttyO0,115200 earlyprintk\";\n+\t\tstdout-path = &uart0;\n+\t};\n+\n+\tocp {\n+\t\tu-boot,dm-pre-reloc;\n+\t};\n+};\n+\n+&i2c0 {\n+\tu-boot,dm-pre-reloc;\n+};\n+\n+&uart0 {\n+\tu-boot,dm-pre-reloc;\n+};\n+\n+&mmc1 {\n+\tu-boot,dm-pre-reloc;\n+\tcd-gpios = <&gpio0 6 GPIO_ACTIVE_LOW>;\n+};\ndiff --git a/arch/arm/dts/am335x-regor-rdk.dts b/arch/arm/dts/am335x-regor-rdk.dts\nnew file mode 100644\nindex 0000000..66a1360\n--- /dev/null\n+++ b/arch/arm/dts/am335x-regor-rdk.dts\n@@ -0,0 +1,24 @@\n+// SPDX-License-Identifier: GPL-2.0\n+/*\n+ * Copyright (C) 2019 Phytec Messtechnik GmbH\n+ * Author: Teresa Remmet <t.remmet@phytec.de>\n+ *\n+ */\n+\n+/dts-v1/;\n+\n+#include \"am335x-phycore-som.dtsi\"\n+#include \"am335x-regor.dtsi\"\n+\n+/* SoM */\n+&gpmc {\n+\tstatus = \"okay\";\n+};\n+\n+&i2c_eeprom {\n+\tstatus = \"okay\";\n+};\n+\n+&serial_flash {\n+\tstatus = \"okay\";\n+};\ndiff --git a/arch/arm/dts/am335x-regor.dtsi b/arch/arm/dts/am335x-regor.dtsi\nnew file mode 100644\nindex 0000000..86b3f07\n--- /dev/null\n+++ b/arch/arm/dts/am335x-regor.dtsi\n@@ -0,0 +1,202 @@\n+// SPDX-License-Identifier: GPL-2.0\n+/*\n+ * Copyright (C) 2019 Phytec Messtechnik GmbH\n+ * Author: Teresa Remmet <t.remmet@phytec.de>\n+ *\n+ */\n+\n+/ {\n+\tmodel = \"Phytec AM335x phyBOARD-REGOR\";\n+\tcompatible = \"phytec,am335x-regor\", \"phytec,am335x-phycore-som\", \"ti,am33xx\";\n+\n+\tvcc3v3: fixedregulator@1 {\n+\t\tcompatible = \"regulator-fixed\";\n+\t\tregulator-name = \"vcc3v3\";\n+\t\tregulator-min-microvolt = <3300000>;\n+\t\tregulator-max-microvolt = <3300000>;\n+\t\tregulator-boot-on;\n+\t};\n+\n+\t/* User IO */\n+\tuser_leds: user_leds {\n+\t\tcompatible = \"gpio-leds\";\n+\t\tpinctrl-names = \"default\";\n+\t\tpinctrl-0 = <&user_leds_pins>;\n+\n+\t\trun_stop-led {\n+\t\t\tgpios = <&gpio2 22 GPIO_ACTIVE_HIGH>;\n+\t\t\tlinux,default-trigger = \"gpio\";\n+\t\t\tdefault-state = \"off\";\n+\t\t};\n+\n+\t\terror-led {\n+\t\t\tgpios = <&gpio3 15 GPIO_ACTIVE_HIGH>;\n+\t\t\tlinux,default-trigger = \"gpio\";\n+\t\t\tdefault-state = \"off\";\n+\t\t};\n+\t};\n+};\n+\n+/* User Leds */\n+&am33xx_pinmux {\n+\tuser_leds_pins: pinmux_user_leds {\n+\t\tpinctrl-single,pins = <\n+\t\t\tAM33XX_IOPAD(0x8E0, PIN_OUTPUT_PULLDOWN | MUX_MODE7)\t/* lcd_hsync.gpio2_22 */\n+\t\t\tAM33XX_IOPAD(0x994, PIN_OUTPUT_PULLDOWN | MUX_MODE7)\t/* mcasp0_fsx.gpio3_15 */\n+\t\t>;\n+\t};\n+};\n+\n+/* CAN Busses */\n+&am33xx_pinmux {\n+\tdcan1_pins: pinmux_dcan1 {\n+\t\tpinctrl-single,pins = <\n+\t\t\tAM33XX_IOPAD(0x968, PIN_OUTPUT_PULLUP | MUX_MODE2)\t/* uart0_ctsn.d_can1_tx */\n+\t\t\tAM33XX_IOPAD(0x96C, PIN_INPUT_PULLUP | MUX_MODE2)\t/* uart0_rtsn.d_can1_rx */\n+\t\t>;\n+\t};\n+};\n+\n+&dcan1 {\n+\tpinctrl-names = \"default\";\n+\tpinctrl-0 = <&dcan1_pins>;\n+\tstatus = \"okay\";\n+};\n+\n+/* Ethernet */\n+&am33xx_pinmux {\n+\tethernet1_pins: pinmux_ethernet1 {\n+\t\tpinctrl-single,pins = <\n+\t\t\tAM33XX_IOPAD(0x840, PIN_OUTPUT | MUX_MODE1)\t\t/* gpmc_a0.mii2_txen */\n+\t\t\tAM33XX_IOPAD(0x844, PIN_INPUT_PULLDOWN | MUX_MODE1)\t/* gpmc_a1.mii2_rxdv */\n+\t\t\tAM33XX_IOPAD(0x848, PIN_OUTPUT | MUX_MODE1)\t\t/* gpmc_a2.mii2_txd3 */\n+\t\t\tAM33XX_IOPAD(0x84C, PIN_OUTPUT | MUX_MODE1)\t\t/* gpmc_a3.mii2_txd2 */\n+\t\t\tAM33XX_IOPAD(0x850, PIN_OUTPUT | MUX_MODE1)\t\t/* gpmc_a4.mii2_txd1 */\n+\t\t\tAM33XX_IOPAD(0x854, PIN_OUTPUT | MUX_MODE1)\t\t/* gpmc_a5.mii2_txd0 */\n+\t\t\tAM33XX_IOPAD(0x858, PIN_INPUT_PULLDOWN | MUX_MODE1)\t/* gpmc_a6.mii2_txclk */\n+\t\t\tAM33XX_IOPAD(0x85C, PIN_INPUT_PULLDOWN | MUX_MODE1)\t/* gpmc_a7.mii2_rxclk */\n+\t\t\tAM33XX_IOPAD(0x860, PIN_INPUT_PULLDOWN | MUX_MODE1)\t/* gpmc_a8.mii2_rxd3 */\n+\t\t\tAM33XX_IOPAD(0x864, PIN_INPUT_PULLDOWN | MUX_MODE1)\t /* gpmc_a9.mii2_rxd2 */\n+\t\t\tAM33XX_IOPAD(0x868, PIN_INPUT_PULLDOWN | MUX_MODE1)\t/* gpmc_a10.mii2_rxd1 */\n+\t\t\tAM33XX_IOPAD(0x86C, PIN_INPUT_PULLDOWN | MUX_MODE1)\t/* gpmc_a11.mii2_rxd0 */\n+\t\t\tAM33XX_IOPAD(0x874, PIN_INPUT_PULLDOWN | MUX_MODE1)\t/* gpmc_wpn.mii2_rxerr */\n+\t\t\tAM33XX_IOPAD(0x878, PIN_INPUT_PULLDOWN | MUX_MODE1)\t/* gpmc_ben1.mii2_col */\n+\t\t>;\n+\t};\n+};\n+\n+&cpsw_emac1 {\n+\tphy-handle = <&phy1>;\n+\tphy-mode = \"mii\";\n+\tdual_emac_res_vlan = <2>;\n+};\n+\n+&davinci_mdio {\n+\tphy1: ethernet-phy@1 {\n+\t\treg = <1>;\n+\t};\n+};\n+\n+&mac {\n+\tslaves = <2>;\n+\tpinctrl-names = \"default\";\n+\tpinctrl-0 = <&ethernet0_pins &ethernet1_pins>;\n+\tdual_emac = <1>;\n+};\n+\n+/* GPIOs */\n+&am33xx_pinmux {\n+\tpinctrl-names = \"default\";\n+\tpinctrl-0 = <&user_gpios_pins>;\n+\n+\tuser_gpios_pins: pinmux_user_gpios {\n+\t\tpinctrl-single,pins = <\n+\t\t\t/* DIGIN 1-4 */\n+\t\t\tAM33XX_IOPAD(0x82C, PIN_INPUT | MUX_MODE7)\t\t/* gpmc_ad11.gpio0_27 */\n+\t\t\tAM33XX_IOPAD(0x828, PIN_INPUT | MUX_MODE7)\t\t/* gpmc_ad10.gpio0_26 */\n+\t\t\tAM33XX_IOPAD(0x824, PIN_INPUT | MUX_MODE7)\t\t/* gpmc_ad9.gpio0_23 */\n+\t\t\tAM33XX_IOPAD(0x820, PIN_INPUT | MUX_MODE7)\t\t/* gpmc_ad8.gpio0_22 */\n+\t\t\t/* DIGOUT 1-4 */\n+\t\t\tAM33XX_IOPAD(0x83C, PIN_OUTPUT | MUX_MODE7)\t\t/* gpmc_ad15.gpio1_15 */\n+\t\t\tAM33XX_IOPAD(0x838, PIN_OUTPUT | MUX_MODE7)\t\t/* gpmc_ad14.gpio1_14 */\n+\t\t\tAM33XX_IOPAD(0x834, PIN_OUTPUT | MUX_MODE7)\t\t/* gpmc_ad13.gpio1_13 */\n+\t\t\tAM33XX_IOPAD(0x830, PIN_OUTPUT | MUX_MODE7)\t\t/* gpmc_ad12.gpio1_12 */\n+\t\t>;\n+\t};\n+};\n+\n+/* MMC */\n+&am33xx_pinmux {\n+\tmmc1_pins: pinmux_mmc1 {\n+\t\tpinctrl-single,pins = <\n+\t\t\tAM33XX_IOPAD(0x8F0, PIN_INPUT_PULLUP | MUX_MODE0)\n+\t\t\tAM33XX_IOPAD(0x8F4, PIN_INPUT_PULLUP | MUX_MODE0)\n+\t\t\tAM33XX_IOPAD(0x8F8, PIN_INPUT_PULLUP | MUX_MODE0)\n+\t\t\tAM33XX_IOPAD(0x8FC, PIN_INPUT_PULLUP | MUX_MODE0)\n+\t\t\tAM33XX_IOPAD(0x900, PIN_INPUT_PULLUP | MUX_MODE0)\n+\t\t\tAM33XX_IOPAD(0x904, PIN_INPUT_PULLUP | MUX_MODE0)\n+\t\t\tAM33XX_IOPAD(0x960, PIN_INPUT_PULLUP | MUX_MODE7)\t/* spi0_cs1.mmc0_sdcd */\n+\t\t>;\n+\t};\n+};\n+\n+&mmc1 {\n+\tvmmc-supply = <&vcc3v3>;\n+\tbus-width = <4>;\n+\tpinctrl-names = \"default\";\n+\tpinctrl-0 = <&mmc1_pins>;\n+\tcd-gpios = <&gpio0 6 GPIO_ACTIVE_LOW>;\n+\tstatus = \"okay\";\n+};\n+\n+/* RTC */\n+&i2c_rtc {\n+\tstatus = \"okay\";\n+};\n+\n+/* UARTs */\n+&am33xx_pinmux {\n+\tuart0_pins: pinmux_uart0 {\n+\t\tpinctrl-single,pins = <\n+\t\t\tAM33XX_IOPAD(0x970, PIN_INPUT_PULLUP | MUX_MODE0)\n+\t\t\tAM33XX_IOPAD(0x974, PIN_OUTPUT_PULLDOWN | MUX_MODE0)\n+\t\t>;\n+\t};\n+\n+\tuart2_pins: pinmux_uart2 {\n+\t\tpinctrl-single,pins = <\n+\t\t\tAM33XX_IOPAD(0x92C, PIN_INPUT_PULLUP | MUX_MODE1)\t/* mii1_tx_clk.uart2_rxd */\n+\t\t\tAM33XX_IOPAD(0x930, PIN_OUTPUT_PULLDOWN | MUX_MODE1)\t/* mii1_rx_clk.uart2_txd */\n+\t\t>;\n+\t};\n+};\n+\n+&uart0 {\n+\tpinctrl-names = \"default\";\n+\tpinctrl-0 = <&uart0_pins>;\n+\tstatus = \"okay\";\n+};\n+\n+&uart2 {\n+\tpinctrl-names = \"default\";\n+\tpinctrl-0 = <&uart2_pins>;\n+\tstatus = \"okay\";\n+};\n+\n+/* RS485 - UART1 */\n+&am33xx_pinmux {\n+\tuart1_rs485_pins: pinmux_uart1_rs485_pins {\n+\t\tpinctrl-single,pins = <\n+\t\t\tAM33XX_IOPAD(0x980, PIN_INPUT_PULLUP | MUX_MODE0)\n+\t\t\tAM33XX_IOPAD(0x984, PIN_OUTPUT_PULLDOWN | MUX_MODE0)\n+\t\t\tAM33XX_IOPAD(0x97C, PIN_OUTPUT_PULLUP | MUX_MODE0)\n+\t\t>;\n+\t};\n+};\n+\n+&uart1 {\n+\tpinctrl-names = \"default\";\n+\tpinctrl-0 = <&uart1_rs485_pins>;\n+\tstatus = \"okay\";\n+\tlinux,rs485-enabled-at-boot-time;\n+};\ndiff --git a/arch/arm/dts/armada-3720-espressobin.dts b/arch/arm/dts/armada-3720-espressobin.dts\nindex 4534f5f..96a4b3d 100644\n--- a/arch/arm/dts/armada-3720-espressobin.dts\n+++ b/arch/arm/dts/armada-3720-espressobin.dts\n@@ -50,8 +50,8 @@\n #include \"armada-372x.dtsi\"\n \n / {\n-\tmodel = \"Marvell Armada 3720 Community Board ESPRESSOBin\";\n-\tcompatible = \"marvell,armada-3720-espressobin\", \"marvell,armada3720\", \"marvell,armada3710\";\n+\tmodel = \"Globalscale Marvell ESPRESSOBin Board\";\n+\tcompatible = \"globalscale,espressobin\", \"marvell,armada3720\", \"marvell,armada3710\";\n \n \tchosen {\n \t\tstdout-path = \"serial0:115200n8\";\n@@ -130,6 +130,28 @@\n \tstatus = \"okay\";\n };\n \n+/* U11 */\n+&sdhci1 {\n+\tnon-removable;\n+\tbus-width = <8>;\n+\tmmc-ddr-1_8v;\n+\tmmc-hs400-1_8v;\n+\tmarvell,xenon-emmc;\n+\tmarvell,xenon-tun-count = <9>;\n+\tmarvell,pad-type = \"fixed-1-8v\";\n+\n+\tpinctrl-names = \"default\";\n+\tpinctrl-0 = <&mmc_pins>;\n+\tstatus = \"okay\";\n+\n+\t#address-cells = <1>;\n+\t#size-cells = <0>;\n+\tmmccard: mmccard@0 {\n+\t\tcompatible = \"mmc-card\";\n+\t\treg = <0>;\n+\t};\n+};\n+\n &spi0 {\n \tstatus = \"okay\";\n \tpinctrl-names = \"default\";\ndiff --git a/arch/arm/dts/armada-3720-uDPU-u-boot.dtsi b/arch/arm/dts/armada-3720-uDPU-u-boot.dtsi\nindex ef178bd..fdad90a 100644\n--- a/arch/arm/dts/armada-3720-uDPU-u-boot.dtsi\n+++ b/arch/arm/dts/armada-3720-uDPU-u-boot.dtsi\n@@ -1,5 +1,25 @@\n // SPDX-License-Identifier: GPL-2.0+\n \n+/ {\n+\tsmbios {\n+\t\tcompatible = \"u-boot,sysinfo-smbios\";\n+\n+\t\tsmbios {\n+\t\t\tsystem {\n+\t\t\t\tproduct = \"uDPU\";\n+\t\t\t};\n+\n+\t\t\tbaseboard {\n+\t\t\t\tproduct = \"uDPU\";\n+\t\t\t};\n+\n+\t\t\tchassis {\n+\t\t\t\tproduct = \"uDPU\";\n+\t\t\t};\n+\t\t};\n+\t};\n+};\n+\n &spi0 {\n \tu-boot,dm-pre-reloc;\n \ndiff --git a/arch/arm/dts/armada-8040-puzzle-m801.dts b/arch/arm/dts/armada-8040-puzzle-m801.dts\nnew file mode 100644\nindex 0000000..58edb5b\n--- /dev/null\n+++ b/arch/arm/dts/armada-8040-puzzle-m801.dts\n@@ -0,0 +1,389 @@\n+// SPDX-License-Identifier: GPL-2.0\n+/*\n+ * Copyright (C) 2016 Marvell International Ltd.\n+ * Copyright (C) 2020 Sartura Ltd.\n+ */\n+\n+#include \"armada-8040.dtsi\" /* include SoC device tree */\n+\n+/ {\n+\tmodel = \"iEi-Puzzle-M801\";\n+\tcompatible = \"marvell,armada8040-puzzle-m801\",\n+\t\t     \"marvell,armada8040\";\n+\n+\tchosen {\n+\t\tstdout-path = \"serial0:115200n8\";\n+\t};\n+\n+\taliases {\n+\t\ti2c0 = &i2c0;\n+\t\ti2c1 = &cpm_i2c0;\n+\t\ti2c2 = &cpm_i2c1;\n+\t\ti2c3 = &i2c_switch;\n+\t\tspi0 = &spi0;\n+\t\tgpio0 = &ap_gpio0;\n+\t\tgpio1 = &cpm_gpio0;\n+\t\tgpio2 = &cpm_gpio1;\n+\t\tgpio3 = &sfpplus_gpio;\n+\t};\n+\n+\tmemory@00000000 {\n+\t\tdevice_type = \"memory\";\n+\t\treg = <0x0 0x0 0x0 0x80000000>;\n+\t};\n+\n+\tsimple-bus {\n+\t\tcompatible = \"simple-bus\";\n+\t\t#address-cells = <1>;\n+\t\t#size-cells = <0>;\n+\n+\t\treg_usb3h0_vbus: usb3-vbus0 {\n+\t\t\tcompatible = \"regulator-fixed\";\n+\t\t\tpinctrl-names = \"default\";\n+\t\t\tpinctrl-0 = <&cpm_xhci_vbus_pins>;\n+\t\t\tregulator-name = \"reg-usb3h0-vbus\";\n+\t\t\tregulator-min-microvolt = <5000000>;\n+\t\t\tregulator-max-microvolt = <5000000>;\n+\t\t\tstartup-delay-us = <500000>;\n+\t\t\tenable-active-high;\n+\t\t\tregulator-always-on;\n+\t\t\tregulator-boot-on;\n+\t\t\tgpio = <&cpm_gpio1 15 GPIO_ACTIVE_HIGH>; /* GPIO[47] */\n+\t\t};\n+\t};\n+};\n+\n+&i2c0 {\n+\tstatus = \"okay\";\n+\tclock-frequency = <100000>;\n+\n+\trtc@32 {\n+\t\tcompatible = \"epson,rx8010\";\n+\t\treg = <0x32>;\n+\t};\n+};\n+\n+&uart0 {\n+\tstatus = \"okay\";\n+};\n+\n+&ap_pinctl {\n+\t/*\n+\t * MPP Bus:\n+\t * AP SPI0 [0-3]\n+\t * AP I2C [4-5]\n+\t * AP GPIO [6]\n+\t * AP UART 1 RX/TX [7-8]\n+\t * AP GPIO [9-10]\n+\t * AP GPIO [12]\n+\t * UART0 [11,19]\n+\t */\n+\t\t  /* 0 1 2 3 4 5 6 7 8 9 */\n+\tpin-func = < 3 3 3 3 3 3 3 3 3 0\n+\t\t     0 3 0 0 0 0 0 0 0 3 >;\n+};\n+\n+&cpm_pinctl {\n+\t/*\n+\t * MPP Bus:\n+\t * [0-31] = 0xff: Keep default CP0_shared_pins:\n+\t * [11] CLKOUT_MPP_11 (out)\n+\t * [23] LINK_RD_IN_CP2CP (in)\n+\t * [25] CLKOUT_MPP_25 (out)\n+\t * [29] AVS_FB_IN_CP2CP (in)\n+\t * [32,34] SMI\n+\t * [33]    MSS power down\n+\t * [35-38] CP0 I2C1 and I2C0\n+\t * [39] MSS CKE Enable\n+\t * [40,41] CP0 UART1 TX/RX\n+\t * [42,43] XSMI (controls two 10G phys)\n+\t * [47] USB VBUS EN\n+\t * [48] FAN PWM\n+\t * [49] 10G port 1 interrupt\n+\t * [50] 10G port 0 interrupt\n+\t * [51] 2.5G SFP TX fault\n+\t * [52] PCIe reset out\n+\t * [53] 2.5G SFP mode\n+\t * [54] 2.5G SFP LOS\n+\t * [55] Micro SD card detect\n+\t * [56-61] Micro SD\n+\t * [62] CP1 SFI SFP FAULT\n+\t */\n+\t\t/*   0    1    2    3    4    5    6    7    8    9 */\n+\tpin-func = < 0xff 0xff 0xff 0xff 0xff 0xff 0xff 0xff 0xff 0xff\n+\t\t     0xff 0xff 0xff 0xff 0xff 0xff 0xff 0xff 0xff 0xff\n+\t\t     0xff 0xff 0xff 0xff 0xff 0xff 0xff 0xff 0xff 0xff\n+\t\t     0xff 0    7    0xa  7    2    2    2    2    0xa\n+\t\t     7    7    8    8    0    0    0    0    0    0\n+\t\t     0    0    0    0    0    0    0xe  0xe  0xe  0xe\n+\t\t     0xe  0xe  0 >;\n+\n+\tcpm_xhci_vbus_pins: cpm-xhci-vbus-pins {\n+\t\tmarvell,pins = < 47 >;\n+\t\tmarvell,function = <0>;\n+\t};\n+\n+\tcpm_pcie_reset_pins: cpm-pcie-reset-pins {\n+\t\tmarvell,pins = < 52 >;\n+\t\tmarvell,function = <0>;\n+\t};\n+};\n+\n+&cpm_sdhci0 {\n+\tpinctrl-names = \"default\";\n+\tpinctrl-0 = <&cpm_sdhci_pins>;\n+\tbus-width= <4>;\n+\tstatus = \"okay\";\n+};\n+\n+&cpm_pcie0 {\n+\tnum-lanes = <1>;\n+\tpinctrl-names = \"default\";\n+\tpinctrl-0 = <&cpm_pcie_reset_pins>;\n+\tmarvell,reset-gpio = <&cpm_gpio1 20 GPIO_ACTIVE_LOW>; /* GPIO[52] */\n+\tstatus = \"okay\";\n+};\n+\n+&cpm_i2c0 {\n+\tpinctrl-names = \"default\";\n+\tpinctrl-0 = <&cpm_i2c0_pins>;\n+\tstatus = \"okay\";\n+\tclock-frequency = <100000>;\n+\n+\tsfpplus_gpio: gpio@21 {\n+\t\tcompatible = \"nxp,pca9555\";\n+\t\treg = <0x21>;\n+\t\tgpio-controller;\n+\t\t#gpio-cells = <2>;\n+\t};\n+};\n+\n+&cpm_i2c1 {\n+\tpinctrl-names = \"default\";\n+\tpinctrl-0 = <&cpm_i2c1_pins>;\n+\tstatus = \"okay\";\n+\tclock-frequency = <100000>;\n+\n+\ti2c_switch: i2c-switch@70 {\n+\t\tcompatible = \"nxp,pca9544\";\n+\t\t#address-cells = <1>;\n+\t\t#size-cells = <0>;\n+\t\treg = <0x70>;\n+\t};\n+};\n+\n+&cpm_sata0 {\n+\tstatus = \"okay\";\n+};\n+\n+&cpm_ethernet {\n+\tpinctrl-names = \"default\";\n+\tstatus = \"okay\";\n+};\n+\n+&cpm_mdio {\n+\tstatus = \"okay\";\n+\tcpm_ge_phy0: ethernet-phy@1 {\n+\t\treg = <0>;\n+\t};\n+\n+\tcpm_ge_phy1: ethernet-phy@2 {\n+\t\treg = <1>;\n+\t};\n+};\n+\n+&cpm_eth0 {\n+\tstatus = \"okay\";\n+\tphy-mode = \"sfi\";\n+};\n+\n+&cpm_eth1 {\n+\tstatus = \"okay\";\n+\tphy-mode = \"sgmii\";\n+\tphy = <&cpm_ge_phy0>;\n+};\n+\n+&cpm_eth2 {\n+\tstatus = \"okay\";\n+\tphy-mode = \"sgmii\";\n+\tphy = <&cpm_ge_phy1>;\n+};\n+\n+&cpm_comphy {\n+\t/*\n+\t * CP0 Serdes Configuration:\n+\t * Lane 0: PCIe0 (x1)\n+\t * Lane 1: SGMII2\n+\t * Lane 2: SATA0\n+\t * Lane 3: SGMII1\n+\t * Lane 4: SFI (10G)\n+\t * Lane 5: SATA1\n+\t */\n+\tphy0 {\n+\t\tphy-type = <PHY_TYPE_PEX0>;\n+\t};\n+\tphy1 {\n+\t\tphy-type = <PHY_TYPE_SGMII2>;\n+\t\tphy-speed = <PHY_SPEED_1_25G>;\n+\t};\n+\tphy2 {\n+\t\tphy-type = <PHY_TYPE_SATA0>;\n+\t};\n+\tphy3 {\n+\t\tphy-type = <PHY_TYPE_SGMII1>;\n+\t\tphy-speed = <PHY_SPEED_1_25G>;\n+\t};\n+\tphy4 {\n+\t\tphy-type = <PHY_TYPE_SFI>;\n+\t};\n+\tphy5 {\n+\t\tphy-type = <PHY_TYPE_SATA1>;\n+\t};\n+};\n+\n+&cps_mdio {\n+\tstatus = \"okay\";\n+\tcps_ge_phy0: ethernet-phy@3 {\n+\t\treg = <1>;\n+\t};\n+\n+\tcps_ge_phy1: ethernet-phy@4 {\n+\t\treg = <0>;\n+\t};\n+};\n+\n+&cps_pcie0 {\n+\tnum-lanes = <2>;\n+\tpinctrl-names = \"default\";\n+\tstatus = \"okay\";\n+};\n+\n+&cps_usb3_0 {\n+\tvbus-supply = <&reg_usb3h0_vbus>;\n+\tstatus = \"okay\";\n+};\n+\n+&cps_utmi0 {\n+\tstatus = \"okay\";\n+};\n+\n+&cps_ethernet {\n+\tstatus = \"okay\";\n+};\n+\n+&cps_eth0 {\n+\tstatus = \"okay\";\n+\tphy-mode = \"sfi\";\n+};\n+\n+&cps_eth1 {\n+\tstatus = \"okay\";\n+\tphy = <&cps_ge_phy0>;\n+\tphy-mode = \"sgmii\";\n+};\n+\n+&cps_eth2 {\n+\tstatus = \"okay\";\n+\tphy = <&cps_ge_phy1>;\n+\tphy-mode = \"sgmii\";\n+};\n+\n+&cps_pinctl {\n+\t/*\n+\t * MPP Bus:\n+\t * [0-5] TDM\n+\t * [6,7] CP1_UART 0\n+\t * [8]   CP1 10G SFP LOS\n+\t * [9]   CP1 10G PHY RESET\n+\t * [10]  CP1 10G SFP TX Disable\n+\t * [11]  CP1 10G SFP Mode\n+\t * [12]  SPI1 CS1n\n+\t * [13]  SPI1 MISO (TDM and SPI ROM shared)\n+\t * [14]  SPI1 CS0n\n+\t * [15]  SPI1 MOSI (TDM and SPI ROM shared)\n+\t * [16]  SPI1 CLK (TDM and SPI ROM shared)\n+\t * [24]  CP1 2.5G SFP TX Disable\n+\t * [26]  CP0 10G SFP TX Fault\n+\t * [27]  CP0 10G SFP Mode\n+\t * [28]  CP0 10G SFP LOS\n+\t * [29]  CP0 10G SFP TX Disable\n+\t * [30]  USB Over current indication\n+\t * [31]  10G Port 0 phy reset\n+\t * [32-62] = 0xff: Keep default CP1_shared_pins:\n+\t */\n+\t\t/*   0    1    2    3    4    5    6    7    8    9 */\n+\tpin-func = < 0x4  0x4  0x4  0x4  0x4  0x4  0x8  0x8  0x0  0x0\n+\t\t     0x0  0x0  0x3  0x3  0x3  0x3  0x3  0xff 0xff 0xff\n+\t\t     0xff 0xff 0xff 0xff 0x0  0xff 0x0  0x0  0x0 0x0\n+\t\t     0x0  0x0  0xff 0xff 0xff 0xff 0xff 0xff 0xff 0xff\n+\t\t     0xff 0xff 0xff 0xff 0xff 0xff 0xff 0xff 0xff 0xff\n+\t\t     0xff 0xff 0xff 0xff 0xff 0xff 0xff 0xff 0xff 0xff\n+\t\t     0xff 0xff 0xff>;\n+};\n+\n+&spi0 {\n+\tstatus = \"okay\";\n+\n+\tspi-flash@0 {\n+\t\t#address-cells = <1>;\n+\t\t#size-cells = <1>;\n+\t\tcompatible = \"jedec,spi-nor\";\n+\t\treg = <0>;\n+\t\tspi-max-frequency = <10000000>;\n+\n+\t\tpartitions {\n+\t\t\tcompatible = \"fixed-partitions\";\n+\t\t\t#address-cells = <1>;\n+\t\t\t#size-cells = <1>;\n+\n+\t\t\tpartition@u-boot {\n+\t\t\t\treg = <0x00000000 0x001f0000>;\n+\t\t\t\tlabel = \"u-boot\";\n+\t\t\t};\n+\t\t\tpartition@u-boot-env {\n+\t\t\t\treg = <0x001f0000 0x00010000>;\n+\t\t\t\tlabel = \"u-boot-env\";\n+\t\t\t};\n+\t\t\tpartition@ubi1 {\n+\t\t\t\treg = <0x00200000 0x03f00000>;\n+\t\t\t\tlabel = \"ubi1\";\n+\t\t\t};\n+\t\t\tpartition@ubi2 {\n+\t\t\t\treg = <0x04100000 0x03f00000>;\n+\t\t\t\tlabel = \"ubi2\";\n+\t\t\t};\n+\t\t};\n+\t};\n+};\n+\n+&cps_comphy {\n+\t/*\n+\t * CP1 Serdes Configuration:\n+\t * Lane 0: PCIe0 (x2)\n+\t * Lane 1: PCIe0 (x2)\n+\t * Lane 2: USB HOST 0\n+\t * Lane 3: SGMII1\n+\t * Lane 4: SFI (10G)\n+\t * Lane 5: SGMII2\n+\t */\n+\tphy0 {\n+\t\tphy-type = <PHY_TYPE_PEX0>;\n+\t};\n+\tphy1 {\n+\t\tphy-type = <PHY_TYPE_PEX0>;\n+\t};\n+\tphy2 {\n+\t\tphy-type = <PHY_TYPE_USB3_HOST0>;\n+\t};\n+\tphy3 {\n+\t\tphy-type = <PHY_TYPE_SGMII1>;\n+\t\tphy-speed = <PHY_SPEED_1_25G>;\n+\t};\n+\tphy4 {\n+\t\tphy-type = <PHY_TYPE_SFI>;\n+\t};\n+\tphy5 {\n+\t\tphy-type = <PHY_TYPE_SGMII2>;\n+\t\tphy-speed = <PHY_SPEED_1_25G>;\n+\t};\n+};\ndiff --git a/arch/arm/dts/armada-cp110-master.dtsi b/arch/arm/dts/armada-cp110-master.dtsi\nindex cd5c974..7d0d31d 100644\n--- a/arch/arm/dts/armada-cp110-master.dtsi\n+++ b/arch/arm/dts/armada-cp110-master.dtsi\n@@ -285,15 +285,18 @@\n \t\t\t};\n \n \t\t\tcpm_nand: nand@720000 {\n-\t\t\t\tcompatible = \"marvell,mvebu-pxa3xx-nand\";\n-\t\t\t\treg = <0x720000 0x100>;\n+\t\t\t\tcompatible = \"marvell,armada-8k-nand-controller\",\n+\t\t\t\t\t\"marvell,armada370-nand-controller\";\n+\t\t\t\treg = <0x720000 0x54>;\n \t\t\t\t#address-cells = <1>;\n-\n-\t\t\t\tclocks = <&cpm_syscon0 1 2>;\n+\t\t\t\t#size-cells = <0>;\n+\t\t\t\tinterrupts = <GIC_SPI 115 IRQ_TYPE_LEVEL_HIGH>;\n+\t\t\t\tclock-names = \"core\", \"reg\";\n+\t\t\t\tclocks = <&cpm_syscon0 1 2>,\n+\t\t\t\t\t <&cpm_syscon0 1 17>;\n+\t\t\t\tmarvell,system-controller = <&cpm_syscon0>;\n \t\t\t\tnand-enable-arbiter;\n \t\t\t\tnum-cs = <1>;\n-\t\t\t\tnand-ecc-strength = <4>;\n-\t\t\t\tnand-ecc-step-size = <512>;\n \t\t\t\tstatus = \"disabled\";\n \t\t\t};\n \ndiff --git a/arch/arm/dts/armada-cp110-slave.dtsi b/arch/arm/dts/armada-cp110-slave.dtsi\nindex b426a4e..6cf2177 100644\n--- a/arch/arm/dts/armada-cp110-slave.dtsi\n+++ b/arch/arm/dts/armada-cp110-slave.dtsi\n@@ -267,6 +267,22 @@\n \t\t\t\tutmi-port = <UTMI_PHY_TO_USB3_HOST0>;\n \t\t\t\tstatus = \"disabled\";\n \t\t\t};\n+\n+\t\t\tcps_nand: nand@720000 {\n+\t\t\t\tcompatible = \"marvell,armada-8k-nand-controller\",\n+\t\t\t\t\t\"marvell,armada370-nand-controller\";\n+\t\t\t\treg = <0x720000 0x54>;\n+\t\t\t\t#address-cells = <1>;\n+\t\t\t\t#size-cells = <0>;\n+\t\t\t\tinterrupts = <GIC_SPI 115 IRQ_TYPE_LEVEL_HIGH>;\n+\t\t\t\tclock-names = \"core\", \"reg\";\n+\t\t\t\tclocks = <&cps_syscon0 1 2>,\n+\t\t\t\t\t <&cps_syscon0 1 17>;\n+\t\t\t\tmarvell,system-controller = <&cps_syscon0>;\n+\t\t\t\tnand-enable-arbiter;\n+\t\t\t\tnum-cs = <1>;\n+\t\t\t\tstatus = \"disabled\";\n+\t\t\t};\n \t\t};\n \n \t\tcps_pcie0: pcie@f4600000 {\ndiff --git a/arch/arm/dts/armada-xp-gp-u-boot.dtsi b/arch/arm/dts/armada-xp-gp-u-boot.dtsi\nnew file mode 100644\nindex 0000000..2422856\n--- /dev/null\n+++ b/arch/arm/dts/armada-xp-gp-u-boot.dtsi\n@@ -0,0 +1,19 @@\n+// SPDX-License-Identifier: GPL-2.0+\n+\n+/ {\n+\tsoc {\n+\t\tinternal-regs {\n+\t\t\tserial@12000 {\n+\t\t\t\tu-boot,dm-pre-reloc;\n+\t\t\t};\n+\t\t};\n+\t};\n+};\n+\n+&spi0 {\n+\tu-boot,dm-pre-reloc;\n+\n+\tspi-flash@0 {\n+\t\tu-boot,dm-pre-reloc;\n+\t};\n+};\ndiff --git a/arch/arm/dts/armada-xp-gp.dts b/arch/arm/dts/armada-xp-gp.dts\nindex 1139e94..d46475f 100644\n--- a/arch/arm/dts/armada-xp-gp.dts\n+++ b/arch/arm/dts/armada-xp-gp.dts\n@@ -31,6 +31,10 @@\n \t\tstdout-path = \"serial0:115200n8\";\n \t};\n \n+\taliases {\n+\t\tspi0 = &spi0;\n+\t};\n+\n \tmemory@0 {\n \t\tdevice_type = \"memory\";\n \t\t/*\ndiff --git a/arch/arm/dts/armv7-m.dtsi b/arch/arm/dts/armv7-m.dtsi\nindex 31349da..26f5443 100644\n--- a/arch/arm/dts/armv7-m.dtsi\n+++ b/arch/arm/dts/armv7-m.dtsi\n@@ -1,5 +1,4 @@\n-#include \"skeleton.dtsi\"\n-\n+// SPDX-License-Identifier: GPL-2.0\n / {\n \tnvic: interrupt-controller@e000e100  {\n \t\tcompatible = \"arm,armv7m-nvic\";\n@@ -22,4 +21,3 @@\n \t\tranges;\n \t};\n };\n-\ndiff --git a/arch/arm/dts/ast2500-u-boot.dtsi b/arch/arm/dts/ast2500-u-boot.dtsi\nindex 8ac4215..ea60e4c 100644\n--- a/arch/arm/dts/ast2500-u-boot.dtsi\n+++ b/arch/arm/dts/ast2500-u-boot.dtsi\n@@ -1,4 +1,5 @@\n-#include <dt-bindings/clock/ast2500-scu.h>\n+// SPDX-License-Identifier: GPL-2.0\n+#include <dt-bindings/clock/aspeed-clock.h>\n #include <dt-bindings/reset/ast2500-reset.h>\n \n #include \"ast2500.dtsi\"\n@@ -15,7 +16,6 @@\n \trst: reset-controller {\n \t\tu-boot,dm-pre-reloc;\n \t\tcompatible = \"aspeed,ast2500-reset\";\n-\t\taspeed,wdt = <&wdt1>;\n \t\t#reset-cells = <1>;\n \t};\n \n@@ -25,8 +25,8 @@\n \t\treg = <0x1e6e0000 0x174\n \t\t\t0x1e6e0200 0x1d4 >;\n \t\t#reset-cells = <1>;\n-\t\tclocks = <&scu PLL_MPLL>;\n-\t\tresets = <&rst AST_RESET_SDRAM>;\n+\t\tclocks = <&scu ASPEED_CLK_MPLL>;\n+\t\tresets = <&rst ASPEED_RESET_SDRAM>;\n \t};\n \n \tahb {\n@@ -39,16 +39,16 @@\n \t\t\t\tcompatible = \"aspeed,ast2500-sdhci\";\n \t\t\t\treg = <0x1e740100>;\n \t\t\t\t#reset-cells = <1>;\n-\t\t\t\tclocks = <&scu BCLK_SDCLK>;\n-\t\t\t\tresets = <&rst AST_RESET_SDIO>;\n+\t\t\t\tclocks = <&scu ASPEED_CLK_SDIO>;\n+\t\t\t\tresets = <&rst ASPEED_RESET_SDIO>;\n \t\t\t};\n \n \t\t\tsdhci1: sdhci@1e740200 {\n \t\t\t\tcompatible = \"aspeed,ast2500-sdhci\";\n \t\t\t\treg = <0x1e740200>;\n \t\t\t\t#reset-cells = <1>;\n-\t\t\t\tclocks = <&scu BCLK_SDCLK>;\n-\t\t\t\tresets = <&rst AST_RESET_SDIO>;\n+\t\t\t\tclocks = <&scu ASPEED_CLK_SDIO>;\n+\t\t\t\tresets = <&rst ASPEED_RESET_SDIO>;\n \t\t\t};\n \t\t};\n \n@@ -56,23 +56,23 @@\n };\n \n &uart1 {\n-\tclocks = <&scu PCLK_UART1>;\n+\tclocks = <&scu ASPEED_CLK_GATE_UART1CLK>;\n };\n \n &uart2 {\n-\tclocks = <&scu PCLK_UART2>;\n+\tclocks = <&scu ASPEED_CLK_GATE_UART2CLK>;\n };\n \n &uart3 {\n-\tclocks = <&scu PCLK_UART3>;\n+\tclocks = <&scu ASPEED_CLK_GATE_UART3CLK>;\n };\n \n &uart4 {\n-\tclocks = <&scu PCLK_UART4>;\n+\tclocks = <&scu ASPEED_CLK_GATE_UART4CLK>;\n };\n \n &uart5 {\n-\tclocks = <&scu PCLK_UART5>;\n+\tclocks = <&scu ASPEED_CLK_GATE_UART5CLK>;\n };\n \n &timer {\n@@ -80,9 +80,9 @@\n };\n \n &mac0 {\n-\tclocks = <&scu PCLK_MAC1>, <&scu PLL_D2PLL>;\n+\tclocks = <&scu ASPEED_CLK_GATE_MAC1CLK>, <&scu ASPEED_CLK_D2PLL>;\n };\n \n &mac1 {\n-\tclocks = <&scu PCLK_MAC2>, <&scu PLL_D2PLL>;\n+\tclocks = <&scu ASPEED_CLK_GATE_MAC1CLK>, <&scu ASPEED_CLK_D2PLL>;\n };\ndiff --git a/arch/arm/dts/at91-sama5d2_icp.dts b/arch/arm/dts/at91-sama5d2_icp.dts\nindex cae8748..f81fa60 100644\n--- a/arch/arm/dts/at91-sama5d2_icp.dts\n+++ b/arch/arm/dts/at91-sama5d2_icp.dts\n@@ -53,19 +53,19 @@\n \t\t\t\tstatus = \"okay\";\n \n \t\t\t\teeprom@50 {\n-\t\t\t\t\tcompatible = \"atmel,24c32\";\n+\t\t\t\t\tcompatible = \"microchip,24aa02e48\";\n \t\t\t\t\treg = <0x50>;\n \t\t\t\t\tpagesize = <16>;\n \t\t\t\t};\n \n \t\t\t\teeprom@52 {\n-\t\t\t\t\tcompatible = \"atmel,24c32\";\n+\t\t\t\t\tcompatible = \"microchip,24aa02e48\";\n \t\t\t\t\treg = <0x52>;\n \t\t\t\t\tpagesize = <16>;\n \t\t\t\t};\n \n \t\t\t\teeprom@53 {\n-\t\t\t\t\tcompatible = \"atmel,24c32\";\n+\t\t\t\t\tcompatible = \"microchip,24aa02e48\";\n \t\t\t\t\treg = <0x53>;\n \t\t\t\t\tpagesize = <16>;\n \t\t\t\t};\ndiff --git a/arch/arm/dts/at91-vinco.dts b/arch/arm/dts/at91-vinco.dts\nindex 0ecb64e..bf17b0a 100644\n--- a/arch/arm/dts/at91-vinco.dts\n+++ b/arch/arm/dts/at91-vinco.dts\n@@ -128,7 +128,7 @@\n \t\t\ti2c2: i2c@f8024000 {\n \t\t\t\tstatus = \"okay\";\n \n-\t\t\t\trtc1: rtc@64 {\n+\t\t\t\trtc1: rtc@32 {\n \t\t\t\t\tcompatible = \"epson,rx8900\";\n \t\t\t\t\treg = <0x32>;\n \t\t\t\t};\ndiff --git a/arch/arm/dts/at91sam9260ek.dts b/arch/arm/dts/at91sam9260ek.dts\nindex 67a2660..47606cb 100644\n--- a/arch/arm/dts/at91sam9260ek.dts\n+++ b/arch/arm/dts/at91sam9260ek.dts\n@@ -116,7 +116,7 @@\n \n \t\t\tspi0: spi@fffc8000 {\n \t\t\t\tcs-gpios = <0>, <&pioC 11 0>, <0>, <0>;\n-\t\t\t\tmtd_dataflash@0 {\n+\t\t\t\tmtd_dataflash@1 {\n \t\t\t\t\tcompatible = \"atmel,at45\", \"atmel,dataflash\";\n \t\t\t\t\tspi-max-frequency = <15000000>;\n \t\t\t\t\treg = <1>;\ndiff --git a/arch/arm/dts/at91sam9261ek.dts b/arch/arm/dts/at91sam9261ek.dts\nindex 55bd51f..92fbdad 100644\n--- a/arch/arm/dts/at91sam9261ek.dts\n+++ b/arch/arm/dts/at91sam9261ek.dts\n@@ -121,7 +121,7 @@\n \t\t\t\t\tspi-max-frequency = <15000000>;\n \t\t\t\t};\n \n-\t\t\t\ttsc2046@0 {\n+\t\t\t\ttsc2046@2 {\n \t\t\t\t\treg = <2>;\n \t\t\t\t\tcompatible = \"ti,ads7843\";\n \t\t\t\t\tinterrupts-extended = <&pioC 2 IRQ_TYPE_EDGE_BOTH>;\ndiff --git a/arch/arm/dts/at91sam9g20-taurus.dts b/arch/arm/dts/at91sam9g20-taurus.dts\nindex c00c5a8..ca98273 100644\n--- a/arch/arm/dts/at91sam9g20-taurus.dts\n+++ b/arch/arm/dts/at91sam9g20-taurus.dts\n@@ -76,7 +76,7 @@\n \n &spi0 {\n \tcs-gpios = <0>, <&pioC 11 0>, <0>, <0>;\n-\tmtd_dataflash@0 {\n+\tmtd_dataflash@1 {\n \t\tcompatible = \"atmel,at45\", \"atmel,dataflash\";\n \t\tspi-max-frequency = <50000000>;\n \t\treg = <1>;\ndiff --git a/arch/arm/dts/at91sam9g20ek_common.dtsi b/arch/arm/dts/at91sam9g20ek_common.dtsi\nindex 9db245e..7195454 100644\n--- a/arch/arm/dts/at91sam9g20ek_common.dtsi\n+++ b/arch/arm/dts/at91sam9g20ek_common.dtsi\n@@ -97,7 +97,7 @@\n \n \t\t\tspi0: spi@fffc8000 {\n \t\t\t\tcs-gpios = <0>, <&pioC 11 0>, <0>, <0>;\n-\t\t\t\tmtd_dataflash@0 {\n+\t\t\t\tmtd_dataflash@1 {\n \t\t\t\t\tcompatible = \"atmel,at45\", \"atmel,dataflash\";\n \t\t\t\t\tspi-max-frequency = <15000000>;\n \t\t\t\t\treg = <1>;\ndiff --git a/arch/arm/dts/at91sam9g25ek.dts b/arch/arm/dts/at91sam9g25ek.dts\nindex 91a7177..31fecc2 100644\n--- a/arch/arm/dts/at91sam9g25ek.dts\n+++ b/arch/arm/dts/at91sam9g25ek.dts\n@@ -25,7 +25,7 @@\n \t\t\t};\n \n \t\t\ti2c0: i2c@f8010000 {\n-\t\t\t\tov2640: camera@0x30 {\n+\t\t\t\tov2640: camera@30 {\n \t\t\t\t\tcompatible = \"ovti,ov2640\";\n \t\t\t\t\treg = <0x30>;\n \t\t\t\t\tpinctrl-names = \"default\";\ndiff --git a/arch/arm/dts/at91sam9g45-gurnard.dts b/arch/arm/dts/at91sam9g45-gurnard.dts\nindex 75c1e99..2bc55f0 100644\n--- a/arch/arm/dts/at91sam9g45-gurnard.dts\n+++ b/arch/arm/dts/at91sam9g45-gurnard.dts\n@@ -115,7 +115,7 @@\n \n \t\t\tspi0: spi@fffa4000 {\n \t\t\t\tcs-gpios = <0>, <&pioC 11 0>, <0>, <0>;\n-\t\t\t\tmtd_dataflash@0 {\n+\t\t\t\tmtd_dataflash@1 {\n \t\t\t\t\tcompatible = \"atmel,at45\", \"atmel,dataflash\";\n \t\t\t\t\tspi-max-frequency = <50000000>;\n \t\t\t\t\treg = <1>;\ndiff --git a/arch/arm/dts/axp803.dtsi b/arch/arm/dts/axp803.dtsi\nindex e5eae8b..10e9186 100644\n--- a/arch/arm/dts/axp803.dtsi\n+++ b/arch/arm/dts/axp803.dtsi\n@@ -1,44 +1,5 @@\n-/*\n- * Copyright 2017 Icenowy Zheng <icenowy@aosc.xyz>\n- *\n- * This file is dual-licensed: you can use it either under the terms\n- * of the GPL or the X11 license, at your option. Note that this dual\n- * licensing only applies to this file, and not this project as a\n- * whole.\n- *\n- *  a) This file is free software; you can redistribute it and/or\n- *     modify it under the terms of the GNU General Public License as\n- *     published by the Free Software Foundation; either version 2 of the\n- *     License, or (at your option) any later version.\n- *\n- *     This file is distributed in the hope that it will be useful,\n- *     but WITHOUT ANY WARRANTY; without even the implied warranty of\n- *     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\n- *     GNU General Public License for more details.\n- *\n- * Or, alternatively,\n- *\n- *  b) Permission is hereby granted, free of charge, to any person\n- *     obtaining a copy of this software and associated documentation\n- *     files (the \"Software\"), to deal in the Software without\n- *     restriction, including without limitation the rights to use,\n- *     copy, modify, merge, publish, distribute, sublicense, and/or\n- *     sell copies of the Software, and to permit persons to whom the\n- *     Software is furnished to do so, subject to the following\n- *     conditions:\n- *\n- *     The above copyright notice and this permission notice shall be\n- *     included in all copies or substantial portions of the Software.\n- *\n- *     THE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND,\n- *     EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES\n- *     OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND\n- *     NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT\n- *     HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,\n- *     WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING\n- *     FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR\n- *     OTHER DEALINGS IN THE SOFTWARE.\n- */\n+// SPDX-License-Identifier: (GPL-2.0+ OR MIT)\n+// Copyright 2017 Icenowy Zheng <icenowy@aosc.xyz>\n \n /*\n  * AXP803 Integrated Power Management Chip\n@@ -49,6 +10,39 @@\n \tinterrupt-controller;\n \t#interrupt-cells = <1>;\n \n+\tac_power_supply: ac-power-supply {\n+\t\tcompatible = \"x-powers,axp803-ac-power-supply\",\n+\t\t\t     \"x-powers,axp813-ac-power-supply\";\n+\t\tstatus = \"disabled\";\n+\t};\n+\n+\taxp_adc: adc {\n+\t\tcompatible = \"x-powers,axp803-adc\", \"x-powers,axp813-adc\";\n+\t\t#io-channel-cells = <1>;\n+\t};\n+\n+\taxp_gpio: gpio {\n+\t\tcompatible = \"x-powers,axp803-gpio\", \"x-powers,axp813-gpio\";\n+\t\tgpio-controller;\n+\t\t#gpio-cells = <2>;\n+\n+\t\tgpio0_ldo: gpio0-ldo {\n+\t\t\tpins = \"GPIO0\";\n+\t\t\tfunction = \"ldo\";\n+\t\t};\n+\n+\t\tgpio1_ldo: gpio1-ldo {\n+\t\t\tpins = \"GPIO1\";\n+\t\t\tfunction = \"ldo\";\n+\t\t};\n+\t};\n+\n+\tbattery_power_supply: battery-power-supply {\n+\t\tcompatible = \"x-powers,axp803-battery-power-supply\",\n+\t\t\t     \"x-powers,axp813-battery-power-supply\";\n+\t\tstatus = \"disabled\";\n+\t};\n+\n \tregulators {\n \t\t/* Default work frequency for buck regulators */\n \t\tx-powers,dcdc-freq = <3000>;\n@@ -152,4 +146,10 @@\n \t\t\tstatus = \"disabled\";\n \t\t};\n \t};\n+\n+\tusb_power_supply: usb-power-supply {\n+\t\tcompatible = \"x-powers,axp803-usb-power-supply\",\n+\t\t\t     \"x-powers,axp813-usb-power-supply\";\n+\t\tstatus = \"disabled\";\n+\t};\n };\ndiff --git a/arch/arm/dts/fsl-imx8qm-mek-u-boot.dtsi b/arch/arm/dts/fsl-imx8qm-mek-u-boot.dtsi\nindex 80d6475..9e0d264 100644\n--- a/arch/arm/dts/fsl-imx8qm-mek-u-boot.dtsi\n+++ b/arch/arm/dts/fsl-imx8qm-mek-u-boot.dtsi\n@@ -118,8 +118,11 @@\n \n &usdhc1 {\n \tu-boot,dm-spl;\n+\tmmc-hs400-1_8v;\n };\n \n &usdhc2 {\n \tu-boot,dm-spl;\n+\tsd-uhs-sdr104;\n+\tsd-uhs-ddr50;\n };\n",
+ "diff_truncated": true
+}

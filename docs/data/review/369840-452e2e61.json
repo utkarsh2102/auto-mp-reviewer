@@ -1,0 +1,27 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~ubuntu-core-dev/livecd-rootfs/+git/livecd-rootfs/+merge/369840",
+ "id": "369840",
+ "title": "core-include-dmsetup → ubuntu/xenial",
+ "source_branch": "core-include-dmsetup",
+ "target_branch": "ubuntu/xenial",
+ "revision": "927f5735b5d34c751d55d75548474126d4fbb62e",
+ "base_revision": "313fd0af9b9d8205e3792eac8fa3dbf69ed1e537",
+ "description": null,
+ "commit_message": null,
+ "diffstat": {
+  "live-build/auto/config": [
+   1,
+   0
+  ],
+  "debian/changelog": [
+   6,
+   0
+  ]
+ },
+ "files": 2,
+ "added_lines": 7,
+ "removed_lines": 0,
+ "diff": "diff --git a/debian/changelog b/debian/changelog\nindex 6047920..b7a3a2d 100644\n--- a/debian/changelog\n+++ b/debian/changelog\n@@ -1,3 +1,9 @@\n+livecd-rootfs (2.408.51) UNRELEASED; urgency=medium\n+\n+  * Add dmsetup to the core and core16 snaps.  LP: #1835846.\n+\n+ -- Steve Langasek <steve.langasek@ubuntu.com>  Mon, 08 Jul 2019 16:39:24 -0700\n+\n livecd-rootfs (2.408.50) xenial; urgency=medium\n \n   * Actually, do not depend on snapd on powerpc as well.  Snaps are not\ndiff --git a/live-build/auto/config b/live-build/auto/config\nindex 840f31c..ebea521 100755\n--- a/live-build/auto/config\n+++ b/live-build/auto/config\n@@ -467,6 +467,7 @@ case $PROJECT in\n \t\t\t# no Task: header yet\n \t\t\tadd_package install snapd\n \t\t\tadd_package install ubuntu-core-snapd-units\n+\t\t\tadd_package install dmsetup\n \n \t\t\t# no minimal as we want to be really minimal\n \t\t\t#add_task install minimal\n",
+ "diff_truncated": false
+}

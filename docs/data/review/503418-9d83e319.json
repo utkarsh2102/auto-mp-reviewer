@@ -1,0 +1,27 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~bamf0/ubuntu/+source/fwupd/+git/fwupd/+merge/503418",
+ "id": "503418",
+ "title": "This merge proposal will fix an issue where fwupd is unable to write firmware updates on TPM FDE systems when only the default image is provided.",
+ "source_branch": "noble-sru-lp2147129-fail-to-notify-snapd",
+ "target_branch": "ubuntu/noble-devel",
+ "revision": "314588377416a9703c42d2d9c69afc73ea949128",
+ "base_revision": "00b1755a4c734f8e9ddbf2336ff2d40e3f2cce3e",
+ "description": "This merge proposal will fix an issue where fwupd is unable to write firmware updates on TPM FDE systems when only the default image is provided. \n\nPPA: https://launchpad.net/~bamf0/+archive/ubuntu/fwupd-lp2147129-fail-to-notify-snapd/+packages",
+ "commit_message": null,
+ "diffstat": {
+  "debian/changelog": [
+   9,
+   0
+  ],
+  "debian/patches/db-update-snapd-bad-request.patch": [
+   15,
+   20
+  ]
+ },
+ "files": 2,
+ "added_lines": 24,
+ "removed_lines": 20,
+ "diff": "diff --git a/debian/changelog b/debian/changelog\nindex 8d525c3..a4cf44b 100644\n--- a/debian/changelog\n+++ b/debian/changelog\n@@ -1,3 +1,12 @@\n+fwupd (2.0.20-1ubuntu2~24.04.3) noble; urgency=medium\n+\n+  * Fix backported db update patch (LP: #2147129):\n+    - d/p/db-update-snapd-bad-request.patch: Change the image length condition\n+      to equal 0 instead of 1. If the default image only was used, the image\n+      length would be 0, which was not handled correctly.\n+\n+ -- Simon Johnsson <simon.johnsson@canonical.com>  Fri, 03 Jul 2026 10:01:22 +0200\n+\n fwupd (2.0.20-1ubuntu2~24.04.2) noble; urgency=medium\n \n   * Drop fwupdmgr-fde-verify-recovery-key.patch (LP: #2156480)\ndiff --git a/debian/patches/db-update-snapd-bad-request.patch b/debian/patches/db-update-snapd-bad-request.patch\nindex ebb0ae0..de7514f 100644\n--- a/debian/patches/db-update-snapd-bad-request.patch\n+++ b/debian/patches/db-update-snapd-bad-request.patch\n@@ -11,9 +11,9 @@ Applied-Upstream: https://github.com/fwupd/fwupd/commit/703e2fd69efdbe95d601175c\n Reviewed-By: Simon Johnsson <simon.johnsson@canonical.com>\n Last-Update: 2026-02-05\n \n---- fwupd-2.0.19.orig/plugins/snapd-uefi/fu-snapd-uefi-plugin.c\n-+++ fwupd-2.0.19/plugins/snapd-uefi/fu-snapd-uefi-plugin.c\n-@@ -248,28 +248,65 @@ fu_snapd_uefi_plugin_composite_peek_firm\n+--- a/plugins/snapd-uefi/fu-snapd-uefi-plugin.c\n++++ b/plugins/snapd-uefi/fu-snapd-uefi-plugin.c\n+@@ -248,28 +248,59 @@ fu_snapd_uefi_plugin_composite_peek_firm\n  \tgsize bufsz = 0;\n  \tconst gchar *key_database;\n  \tconst guint8 *buf;\n@@ -30,8 +30,18 @@ Last-Update: 2026-02-05\n -\t/* get default image */\n -\tfw = fu_firmware_get_bytes(firmware, error);\n -\tif (fw == NULL)\n+-\t\treturn FALSE;\n+-\tbuf = g_bytes_get_data(fw, &bufsz);\n+-\tb64data = g_base64_encode(buf, bufsz);\n+-\tmsg = g_strdup_printf(\"{\"\n+-\t\t\t      \"\\\"action\\\":\\\"efi-secureboot-update-db-prepare\\\",\"\n+-\t\t\t      \"\\\"key-database\\\":\\\"%s\\\",\"\n+-\t\t\t      \"\\\"payload\\\":\\\"%s\\\"\"\n+-\t\t\t      \"}\",\n+-\t\t\t      key_database,\n+-\t\t\t      b64data);\n +\timages = fu_firmware_get_images(firmware);\n-+\tif (images->len == 1) {\n++\tif (images->len == 0) {\n +\t\tg_autoptr(GBytes) fw = NULL;\n +\t\tg_autofree gchar *b64data = NULL;\n +\t\t/* get default image */\n@@ -47,7 +57,7 @@ Last-Update: 2026-02-05\n +\t\t\t\t      \"}\",\n +\t\t\t\t      key_database,\n +\t\t\t\t      b64data);\n-+\t} else if (images->len > 1) {\n++\t} else {\n +\t\tg_autofree gchar *payloads_msg = NULL;\n +\n +\t\tfor (guint i = 0; i < images->len; i++) {\n@@ -74,21 +84,6 @@ Last-Update: 2026-02-05\n +\t\t\t\t      \"}\",\n +\t\t\t\t      key_database,\n +\t\t\t\t      payloads_msg);\n-+\t} else {\n-+\t\tg_set_error(error,\n-+\t\t\t    FWUPD_ERROR,\n-+\t\t\t    FWUPD_ERROR_INTERNAL,\n-+\t\t\t    \"no images in firmware\");\n- \t\treturn FALSE;\n--\tbuf = g_bytes_get_data(fw, &bufsz);\n--\tb64data = g_base64_encode(buf, bufsz);\n--\tmsg = g_strdup_printf(\"{\"\n--\t\t\t      \"\\\"action\\\":\\\"efi-secureboot-update-db-prepare\\\",\"\n--\t\t\t      \"\\\"key-database\\\":\\\"%s\\\",\"\n--\t\t\t      \"\\\"payload\\\":\\\"%s\\\"\"\n--\t\t\t      \"}\",\n--\t\t\t      key_database,\n--\t\t\t      b64data);\n +\t}\n  \n  \t/* Notify of an upcoming update to the DBX. A successful call shall initiate a\n",
+ "diff_truncated": false
+}

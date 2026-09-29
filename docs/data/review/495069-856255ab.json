@@ -1,0 +1,47 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~gjolly/livecd-rootfs/+git/livecd-rootfs/+merge/495069",
+ "id": "495069",
+ "title": "ubuntu-cpc: use systemd-repart to build disk image",
+ "source_branch": "repart_and_types",
+ "target_branch": "ubuntu/master",
+ "revision": "d0aea241b202341e0fd1cae0c06fc558e9b92b74",
+ "base_revision": "92471dcb76e015adfd1ba8c33f4cd99cf363151f",
+ "description": null,
+ "commit_message": "ubuntu-cpc: use systemd-repart to build disk image",
+ "diffstat": {
+  "debian/control": [
+   1,
+   0
+  ],
+  "live-build/functions": [
+   5,
+   5
+  ],
+  "live-build/ubuntu-cpc/hooks.d/base/disk-image-uefi.binary": [
+   20,
+   45
+  ],
+  "live-build/ubuntu-cpc/hooks.d/base/repart.d/05-bios.conf": [
+   4,
+   0
+  ],
+  "live-build/ubuntu-cpc/hooks.d/base/repart.d/10-esp.conf": [
+   6,
+   0
+  ],
+  "live-build/ubuntu-cpc/hooks.d/base/repart.d/20-boot.conf": [
+   6,
+   0
+  ],
+  "live-build/ubuntu-cpc/hooks.d/base/repart.d/30-root.conf": [
+   5,
+   0
+  ]
+ },
+ "files": 7,
+ "added_lines": 47,
+ "removed_lines": 50,
+ "diff": "diff --git a/debian/control b/debian/control\nindex a823432..e1e5835 100644\n--- a/debian/control\n+++ b/debian/control\n@@ -48,6 +48,7 @@ Depends: ${misc:Depends},\n          xorriso [!i386],\n          xz-utils,\n          zerofree,\n+         systemd-repart,\n          zstd\n Breaks: ubuntu-defaults-builder (<< 0.32)\n Description: construction script for the livecd rootfs\ndiff --git a/live-build/functions b/live-build/functions\nindex 84ad5f4..5b04e26 100644\n--- a/live-build/functions\n+++ b/live-build/functions\n@@ -96,6 +96,7 @@ mount_image() {\n         exit 1\n     fi\n \n+    udevadm wait \"$loop_device\"\n     # Find the rootfs location\n     if [ \"${rootpart}\" -ge 0 ]; then\n         echo \"Using specified root partition '${rootpart}' to locate rootfs.\" >&2\n@@ -268,10 +269,9 @@ get_device_partition_by_type_uuid() {\n     local type_uuid=\"$1\"\n     local block_device=\"$2\"\n \n-    udevadm lock --device=\"${block_device}\" \\\n-        lsblk -o PATH,PARTTYPE -nr \"${block_device}\" | \\\n-            awk -v type_uuid=\"${type_uuid}\" \\\n-                '$2 == type_uuid { print $1; exit 0 }'\n+    lsblk -o PATH,PARTTYPE -nr \"${block_device}\" | \\\n+        awk -v type_uuid=\"${type_uuid}\" \\\n+            '$2 == type_uuid { print $1; exit 0 }'\n }\n \n get_esp_device_path() {\n@@ -331,7 +331,7 @@ get_root_partition_device_path() {\n     fi\n \n     # Fallback to partition 1 for rootfs\n-    echo \"Failed to find root partition with GPT type UUID on ${block_device}\" >&2\n+    echo \"Found to find root partition with GPT type UUID on ${block_device}\" >&2\n     echo \"Falling back to partition 1 for rootfs\" >&2\n     echo \"${block_device}p1\"\n }\ndiff --git a/live-build/ubuntu-cpc/hooks.d/base/disk-image-uefi.binary b/live-build/ubuntu-cpc/hooks.d/base/disk-image-uefi.binary\nindex 5637bca..1069ebf 100755\n--- a/live-build/ubuntu-cpc/hooks.d/base/disk-image-uefi.binary\n+++ b/live-build/ubuntu-cpc/hooks.d/base/disk-image-uefi.binary\n@@ -32,47 +32,26 @@ esac\n . config/functions\n \n create_partitions() {\n-    disk_image=\"$1\"\n-    sgdisk \"${disk_image}\" --zap-all\n-    case $ARCH in\n-        arm64|armhf)\n-            sgdisk \"${disk_image}\" \\\n-                   --new=15:0:204800 \\\n-                   --typecode=15:ef00 \\\n-                   --new=13::1G \\\n-                   --typecode=13:ea00 \\\n-                   --new=1: \\\n-                   --change-name=1:\"$FS_LABEL\" \\\n-                   --typecode=1:\"$(gpt_root_partition_uuid $ARCH)\"\n-            ;;\n-        riscv64)\n-            sgdisk \"${disk_image}\" \\\n-                   --set-alignment=2 \\\n-                   --new=13::1G \\\n-                   --typecode=13:ea00 \\\n-                   --new=15::+106M \\\n-                   --typecode=15:ef00 \\\n-                   --new=1:: \\\n-                   --change-name=1:\"$FS_LABEL\" \\\n-                   --typecode=1:\"$(gpt_root_partition_uuid $ARCH)\" \\\n-                   --attributes=1:set:2\n-            ;;\n-        amd64)\n-            sgdisk \"${disk_image}\" \\\n-                   --new=13::1G \\\n-                   --typecode=13:ea00 \\\n-                   --new=14::+4M \\\n-                   --new=15::+106M \\\n-                   --new=1::\n-            sgdisk \"${disk_image}\" \\\n-                   --change-name=1:\"$FS_LABEL\" \\\n-                   -t 14:ef02 \\\n-                   -t 15:ef00 \\\n-                   -t 1:\"$(gpt_root_partition_uuid $ARCH)\"\n-            ;;\n-    esac\n-    sgdisk \"${disk_image}\" \\\n-        --print\n+    local disk_image=\"$1\"\n+    local bios_partition_type=\"21686148-6449-6e6f-744e-656564454649\"\n+    local repart_d=$(dirname $(readlink -f ${0}))/repart.d\n+\n+    if [ \"$ARCH\" = \"amd64\" ]; then\n+        systemd-repart \\\n+          --dry-run=no \\\n+          --empty=allow \\\n+          --size=auto \\\n+          --definitions=\"$repart_d\" \\\n+          \"${disk_image}\"\n+    else\n+        systemd-repart \\\n+          --dry-run=no \\\n+          --empty=allow \\\n+          --size=auto \\\n+          --exclude-partitions=\"$bios_partition_type\" \\\n+          --definitions=\"$repart_d\" \\\n+          \"${disk_image}\"\n+    fi\n }\n \n create_and_mount_boot_partitions() {\n@@ -80,9 +59,6 @@ create_and_mount_boot_partitions() {\n     boot_dev=\"$(get_boot_partition_device_path ${loop_device})\"\n     mountpoint=\"$1\"\n \n-    mkfs.vfat -F 32 -n UEFI \"${uefi_dev}\"\n-    mkfs.ext4 -L BOOT \"${boot_dev}\"\n-\n     # copying what was on the rootfs to the new boot partition\n     mount \"${boot_dev}\" \"${mountpoint}\"/mnt\n     mv \"${mountpoint}\"/boot/* \"${mountpoint}\"/mnt\n@@ -204,7 +180,6 @@ create_partitions \"${disk_image}\"\n mount_image \"${disk_image}\" -1\n \n # Copy the chroot in to the disk\n-make_ext4_partition \"${rootfs_dev_mapper}\"\n mkdir mountpoint\n mount \"${rootfs_dev_mapper}\" mountpoint\n cp -a chroot/* mountpoint/\ndiff --git a/live-build/ubuntu-cpc/hooks.d/base/repart.d/05-bios.conf b/live-build/ubuntu-cpc/hooks.d/base/repart.d/05-bios.conf\nnew file mode 100644\nindex 0000000..c6f41a0\n--- /dev/null\n+++ b/live-build/ubuntu-cpc/hooks.d/base/repart.d/05-bios.conf\n@@ -0,0 +1,4 @@\n+[Partition]\n+Type=21686148-6449-6e6f-744e-656564454649\n+SizeMinBytes=1M\n+SizeMaxBytes=1M\ndiff --git a/live-build/ubuntu-cpc/hooks.d/base/repart.d/10-esp.conf b/live-build/ubuntu-cpc/hooks.d/base/repart.d/10-esp.conf\nnew file mode 100644\nindex 0000000..cc36583\n--- /dev/null\n+++ b/live-build/ubuntu-cpc/hooks.d/base/repart.d/10-esp.conf\n@@ -0,0 +1,6 @@\n+[Partition]\n+Type=esp\n+Label=UEFI\n+Format=vfat\n+SizeMinBytes=106M\n+SizeMaxBytes=106M\ndiff --git a/live-build/ubuntu-cpc/hooks.d/base/repart.d/20-boot.conf b/live-build/ubuntu-cpc/hooks.d/base/repart.d/20-boot.conf\nnew file mode 100644\nindex 0000000..ff7eb4c\n--- /dev/null\n+++ b/live-build/ubuntu-cpc/hooks.d/base/repart.d/20-boot.conf\n@@ -0,0 +1,6 @@\n+[Partition]\n+Type=xbootldr\n+Label=BOOT\n+Format=ext4\n+SizeMinBytes=1G\n+SizeMaxBytes=1G\ndiff --git a/live-build/ubuntu-cpc/hooks.d/base/repart.d/30-root.conf b/live-build/ubuntu-cpc/hooks.d/base/repart.d/30-root.conf\nnew file mode 100644\nindex 0000000..982a007\n--- /dev/null\n+++ b/live-build/ubuntu-cpc/hooks.d/base/repart.d/30-root.conf\n@@ -0,0 +1,5 @@\n+[Partition]\n+Type=root\n+Label=cloudimg-rootfs\n+Format=ext4\n+SizeMinBytes=2G\n",
+ "diff_truncated": false
+}

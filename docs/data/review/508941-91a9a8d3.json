@@ -1,0 +1,27 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~lvoytek/ubuntu-archive-tools/+git/ubuntu-archive-tools/+merge/508941",
+ "id": "508941",
+ "title": "Similar to JJ's merge - https://code.launchpad.net/~jj/ubuntu-archive-tools/+git/ubuntu-archive-tools/+merge/508635 avoid crashes due to missing arches in nbs-report and checkrdepends",
+ "source_branch": "nbs-arch-fixes",
+ "target_branch": "main",
+ "revision": "28b10850bdebd625833333e1da7146b2b8740e30",
+ "base_revision": "77fd943290d6d3a25bc7dcc403302772debda34f",
+ "description": "Similar to JJ's merge - https://code.launchpad.net/~jj/ubuntu-archive-tools/+git/ubuntu-archive-tools/+merge/508635 avoid crashes due to missing arches in nbs-report and checkrdepends",
+ "commit_message": null,
+ "diffstat": {
+  "checkrdepends": [
+   14,
+   8
+  ],
+  "nbs-report": [
+   4,
+   1
+  ]
+ },
+ "files": 2,
+ "added_lines": 18,
+ "removed_lines": 9,
+ "diff": "diff --git a/checkrdepends b/checkrdepends\nindex d38bc11..06176d3 100755\n--- a/checkrdepends\n+++ b/checkrdepends\n@@ -244,9 +244,12 @@ def search(opts, pkgs):\n             for comp in components:\n                 comp_base = '%s/%s' % (pocket_base, comp)\n                 for arch in arches:\n-                    provides |= read_provides(debs,\n-                                              '%s/binary-%s/Packages.gz' %\n-                                              (comp_base, arch))\n+                    try:\n+                        provides |= read_provides(\n+                            debs,\n+                            '%s/binary-%s/Packages.gz' % (comp_base, arch))\n+                    except IOError:\n+                        continue\n             ignores = debs = sorted(provides | set(debs))\n \n         # Now we have the source<->binary mapping, we can read Packages\n@@ -274,11 +277,14 @@ def search(opts, pkgs):\n                 # binary dependencies\n                 for arch in arches:\n                     if arch not in packages[comp]:\n-                        packages[comp][arch] = \\\n-                            read_packages(debs,\n-                                          '%s/binary-%s/Packages.gz' %\n-                                          (comp_base, arch),\n-                                          sources[comp], ignores)\n+                        try:\n+                            packages[comp][arch] = \\\n+                                read_packages(debs,\n+                                              '%s/binary-%s/Packages.gz' %\n+                                              (comp_base, arch),\n+                                              sources[comp], ignores)\n+                        except IOError:\n+                            continue\n                     if arch not in packages[di_comp]:\n                         packages[di_comp][arch] = \\\n                             read_packages(debs,\ndiff --git a/nbs-report b/nbs-report\nindex a16074b..d79fd72 100755\n--- a/nbs-report\n+++ b/nbs-report\n@@ -83,7 +83,10 @@ def _pkg_removable(options, pkg, nbs, checked_v):\n                   (options.archive_base, options.suite, nbs[pkg][rdep][0],\n                    ptype, file)\n             if key not in packages:\n-                packages[key] = read_tag_file(key, rdep)\n+                try:\n+                    packages[key] = read_tag_file(key, rdep)\n+                except IOError:\n+                    continue\n             stanzas = packages[key]\n             for stanza in stanzas:\n                 if 'binary' in ptype:\n",
+ "diff_truncated": false
+}

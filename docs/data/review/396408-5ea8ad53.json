@@ -1,0 +1,39 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~halves/ubuntu/+source/gnupg2/+git/gnupg2/+merge/396408",
+ "id": "396408",
+ "title": "lp1910432-bionic → ubuntu/bionic-devel",
+ "source_branch": "lp1910432-bionic",
+ "target_branch": "ubuntu/bionic-devel",
+ "revision": "3ca8cc3956b2210ac3bb7073fc55204ce1059eea",
+ "base_revision": "9e3bd0cc1f32617dac40ebc868f665ee719401b7",
+ "description": null,
+ "commit_message": null,
+ "diffstat": {
+  "debian/patches/series": [
+   1,
+   0
+  ],
+  "debian/tests/simple-tests": [
+   34,
+   0
+  ],
+  "debian/changelog": [
+   10,
+   0
+  ],
+  "debian/patches/dirmngr-handle-EAFNOSUPPORT-at-connect_server.patch": [
+   57,
+   0
+  ],
+  "debian/tests/control": [
+   3,
+   3
+  ]
+ },
+ "files": 5,
+ "added_lines": 105,
+ "removed_lines": 3,
+ "diff": "diff --git a/debian/changelog b/debian/changelog\nindex 20d6236..8d7cf34 100644\n--- a/debian/changelog\n+++ b/debian/changelog\n@@ -1,3 +1,13 @@\n+gnupg2 (2.2.4-1ubuntu1.4) bionic; urgency=medium\n+\n+  * d/p/dirmngr-handle-EAFNOSUPPORT-at-connect_server.patch:\n+    - Fix IPv6 connectivity for dirmngr (LP: #1910432)\n+  * Fix autopkgtests (LP: #1825186)\n+    - add d/t/simple-tests from devel branch\n+    - remove broken gpgv-win32 test from d/t/control\n+\n+ -- Heitor Alves de Siqueira <halves@canonical.com>  Sat, 16 Jan 2021 14:47:37 +0000\n+\n gnupg2 (2.2.4-1ubuntu1.3) bionic-security; urgency=medium\n \n   * SECURITY UPDATE: signature collisions via insecure SHA-1 algorithm\ndiff --git a/debian/patches/dirmngr-handle-EAFNOSUPPORT-at-connect_server.patch b/debian/patches/dirmngr-handle-EAFNOSUPPORT-at-connect_server.patch\nnew file mode 100644\nindex 0000000..542de92\n--- /dev/null\n+++ b/debian/patches/dirmngr-handle-EAFNOSUPPORT-at-connect_server.patch\n@@ -0,0 +1,57 @@\n+From ca937cf390662b830d4fc5d295e69b24b1778050 Mon Sep 17 00:00:00 2001\n+From: NIIBE Yutaka <gniibe@fsij.org>\n+Date: Mon, 13 Jul 2020 10:00:58 +0900\n+Subject: [PATCH] dirmngr: Handle EAFNOSUPPORT at connect_server.\n+\n+* dirmngr/http.c (connect_server): Skip server with EAFNOSUPPORT.\n+\n+--\n+\n+GnuPG-bug-id: 4977\n+Signed-off-by: NIIBE Yutaka <gniibe@fsij.org>\n+\n+Origin: backport, https://git.gnupg.org/cgi-bin/gitweb.cgi?p=gnupg.git;a=commit;h=109d16e8f644\n+Bug-Ubuntu: https://bugs.launchpad.net/bugs/1910432\n+---\n+\n+Index: gnupg2/dirmngr/http.c\n+===================================================================\n+--- gnupg2.orig/dirmngr/http.c\n++++ gnupg2/dirmngr/http.c\n+@@ -2844,6 +2844,8 @@ connect_server (const char *server, unsi\n+   int hostfound = 0;\n+   int anyhostaddr = 0;\n+   int srv, connected;\n++  int ignore_v4 = (flags & HTTP_FLAG_IGNORE_IPv4);\n++  int ignore_v6 = (flags & HTTP_FLAG_IGNORE_IPv6);\n+   gpg_error_t last_err = 0;\n+   struct srventry *serverlist = NULL;\n+\n+@@ -2930,9 +2932,9 @@ connect_server (const char *server, unsi\n+\n+       for (ai = aibuf; ai && !connected; ai = ai->next)\n+         {\n+-          if (ai->family == AF_INET && (flags & HTTP_FLAG_IGNORE_IPv4))\n++          if (ai->family == AF_INET && ignore_v4)\n+             continue;\n+-          if (ai->family == AF_INET6 && (flags & HTTP_FLAG_IGNORE_IPv6))\n++          if (ai->family == AF_INET6 && ignore_v6)\n+             continue;\n+\n+           if (sock != ASSUAN_INVALID_FD)\n+@@ -2940,6 +2942,15 @@ connect_server (const char *server, unsi\n+           sock = my_sock_new_for_addr (ai->addr, ai->socktype, ai->protocol);\n+           if (sock == ASSUAN_INVALID_FD)\n+             {\n++              if (errno == EAFNOSUPPORT)\n++                {\n++                  if (ai->family == AF_INET)\n++                    ignore_v4 = 1;\n++                  if (ai->family == AF_INET6)\n++                    ignore_v6 = 1;\n++                  continue;\n++                }\n++\n+               err = gpg_err_make (default_errsource,\n+                                   gpg_err_code_from_syserror ());\n+               log_error (\"error creating socket: %s\\n\", gpg_strerror (err));\ndiff --git a/debian/patches/series b/debian/patches/series\nindex dec69a1..df5d462 100644\n--- a/debian/patches/series\n+++ b/debian/patches/series\n@@ -39,3 +39,4 @@ CVE-2019-14855-1.patch\n CVE-2019-14855-2.patch\n CVE-2019-14855-3.patch\n CVE-2019-14855-4.patch\n+dirmngr-handle-EAFNOSUPPORT-at-connect_server.patch\ndiff --git a/debian/tests/control b/debian/tests/control\nindex 9178821..bf8c081 100644\n--- a/debian/tests/control\n+++ b/debian/tests/control\n@@ -1,3 +1,3 @@\n-Tests: gpgv-win32\n-Depends: gpgv-win32, gnupg2, gpgv2\n-Restrictions: needs-root, allow-stderr\n+Tests: simple-tests\n+Depends: gnupg2, gpgv2\n+Restrictions: allow-stderr\ndiff --git a/debian/tests/gpgv-win32 b/debian/tests/gpgv-win32\nold mode 100755\nnew mode 100644\ndiff --git a/debian/tests/simple-tests b/debian/tests/simple-tests\nnew file mode 100755\nindex 0000000..97d4ab4\n--- /dev/null\n+++ b/debian/tests/simple-tests\n@@ -0,0 +1,34 @@\n+#!/bin/sh\n+\n+set -e\n+set -x\n+\n+DIR=$(mktemp -d)\n+GPG_HOME=$DIR/gnupg\n+gpg=\"gpg --homedir $GPG_HOME\"\n+\n+mkdir $GPG_HOME\n+chmod 700 $GPG_HOME\n+\n+#trap \"cd $HOME && rm -rf $DIR\" EXIT\n+\n+cd $DIR\n+\n+cat > key-batch << EOF\n+Key-Type: default\n+Subkey-Type: default\n+Name-Real: test case\n+Name-Email: example@example.com\n+Expire-Date: 0\n+%no-protection\n+%commit\n+EOF\n+\n+$gpg --batch --generate-key key-batch\n+$gpg -abs < $GPG_HOME/pubring.kbx > pubring.kbx.asc\n+$gpg --verify pubring.kbx.asc $GPG_HOME/pubring.kbx\n+gpgv --keyring $GPG_HOME/pubring.kbx pubring.kbx.asc $GPG_HOME/pubring.kbx\n+\n+# Encrypt\n+$gpg -e -r example@example.com < $GPG_HOME/pubring.kbx > pubring.kbx.gpg\n+$gpg -d -r example@example.com < pubring.kbx.gpg > pubring.kbx.gpg.dec\n",
+ "diff_truncated": false
+}

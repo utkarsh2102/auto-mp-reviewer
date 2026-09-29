@@ -1,0 +1,31 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~levihackerman-102/ubuntu/+source/golang-1.24/+git/golang-1.24/+merge/509829",
+ "id": "509829",
+ "title": "Backport golang-1.24 1.24.13-2 (resolute) to this release.",
+ "source_branch": "noble-bp",
+ "target_branch": "ubuntu/devel",
+ "revision": "2c2766008e28173e83aacc80f45e97a80abb7a73",
+ "base_revision": "4ec3f9f6527e85711f775ba19b1447a1a25f5fb9",
+ "description": "Backport golang-1.24 1.24.13-2 (resolute) to this release.\n\nFixes 22 CVEs plus the crypto/x509 fix in 1.24.9. SRU bug: LP: #2164608.\n\nChangelog entry on top of ubuntu/devel (1.24.13-2) plus the standard\nUbuntu maintainer switch in debian/control{,.in}, matching the previous\ngolang-1.24 backport (LP: #2103780).",
+ "commit_message": null,
+ "diffstat": {
+  "debian/changelog": [
+   6,
+   0
+  ],
+  "debian/control": [
+   2,
+   1
+  ],
+  "debian/control.in": [
+   2,
+   1
+  ]
+ },
+ "files": 3,
+ "added_lines": 10,
+ "removed_lines": 2,
+ "diff": "diff --git a/debian/changelog b/debian/changelog\nindex d100d6b..73b717b 100644\n--- a/debian/changelog\n+++ b/debian/changelog\n@@ -1,3 +1,9 @@\n+golang-1.24 (1.24.13-2~24.04.1) noble; urgency=medium\n+\n+  * Backport to Noble (LP: #2164608)\n+\n+ -- Anshul Singh <anshul.singh@canonical.com>  Thu, 20 Aug 2026 11:04:39 +0530\n+\n golang-1.24 (1.24.13-2) unstable; urgency=medium\n \n   * Team upload.\ndiff --git a/debian/control b/debian/control\nindex c27a455..5f441bd 100644\n--- a/debian/control\n+++ b/debian/control\n@@ -3,7 +3,8 @@\n #\n \n Source: golang-1.24\n-Maintainer: Debian Go Compiler Team <team+go-compiler@tracker.debian.org>\n+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>\n+XSBC-Original-Maintainer: Debian Go Compiler Team <team+go-compiler@tracker.debian.org>\n Uploaders: Michael Stapelberg <stapelberg@debian.org>,\n            Paul Tagliamonte <paultag@debian.org>,\n            Tianon Gravi <tianon@debian.org>,\ndiff --git a/debian/control.in b/debian/control.in\nindex 4a74fe9..c5538b6 100644\n--- a/debian/control.in\n+++ b/debian/control.in\n@@ -1,5 +1,6 @@\n Source: golang-X.Y\n-Maintainer: Debian Go Compiler Team <team+go-compiler@tracker.debian.org>\n+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>\n+XSBC-Original-Maintainer: Debian Go Compiler Team <team+go-compiler@tracker.debian.org>\n Uploaders: Michael Stapelberg <stapelberg@debian.org>,\n            Paul Tagliamonte <paultag@debian.org>,\n            Tianon Gravi <tianon@debian.org>,\n",
+ "diff_truncated": false
+}

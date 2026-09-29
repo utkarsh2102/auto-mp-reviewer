@@ -1,0 +1,23 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~juliank/britney/+git/britney2-ubuntu/+merge/463049",
+ "id": "463049",
+ "title": "consult-queued → master",
+ "source_branch": "consult-queued",
+ "target_branch": "master",
+ "revision": "92e0e3c7e884dc79c7b0cd2aadd67467656bcaac",
+ "base_revision": "b2436f7ad5d6c4e919732deedb6cb9390267b03f",
+ "description": null,
+ "commit_message": null,
+ "diffstat": {
+  "britney2/policies/autopkgtest.py": [
+   23,
+   1
+  ]
+ },
+ "files": 1,
+ "added_lines": 23,
+ "removed_lines": 1,
+ "diff": "diff --git a/britney2/policies/autopkgtest.py b/britney2/policies/autopkgtest.py\nindex ac001c3..28d8b4f 100644\n--- a/britney2/policies/autopkgtest.py\n+++ b/britney2/policies/autopkgtest.py\n@@ -167,6 +167,9 @@ class AutopkgtestPolicy(BasePolicy):\n             else:\n                 self.logger.info(\"Ignoring ADT_ARCHES %s as it is not in architectures list\", arch)\n \n+        with urlopen(\"https://autopkgtest.ubuntu.com/queued.json\") as url:\n+            self.queued = json.load(url)\n+\n     def fetch_db(self):\n         f = None\n         try:\n@@ -1209,13 +1212,32 @@ class AutopkgtestPolicy(BasePolicy):\n \n         self.request_test_if_not_queued(src, arch, trigger, full_triggers, huge=huge)\n \n+    def test_in_queued(self, src, arch, trigger):\n+        \"\"\"Check if the test is in the queued.json from autopkgtest.ubuntu.com.\"\"\"\n+        for queue in self.queued[\"queues\"]:\n+            if queue not in [\"ubuntu\", \"huge\"]:\n+                continue\n+\n+            for request in self.queued[\"queues\"][queue][self.options.series][arch][\"requests\"]:\n+                package, args = request.split(None, 1)\n+                if package != src:\n+                    continue\n+\n+                args = json.loads(args)\n+                if trigger not in args[\"triggers\"]:\n+                    continue\n+\n+                return True\n+\n+        return False\n+\n     def request_test_if_not_queued(self, src, arch, trigger, full_triggers=[], huge=False):\n         if not full_triggers:\n             full_triggers = [trigger]\n \n         # Don't re-request if it's already pending\n         arch_list = self.pending_tests.setdefault(trigger, {}).setdefault(src, [])\n-        if arch in arch_list:\n+        if arch in arch_list or self.test_in_queued(src, arch, trigger):\n             self.logger.info('Test %s/%s for %s is already pending, not queueing', src, arch, trigger)\n         else:\n             self.logger.info('Requesting %s autopkgtest on %s to verify %s', src, arch, trigger)\n",
+ "diff_truncated": false
+}

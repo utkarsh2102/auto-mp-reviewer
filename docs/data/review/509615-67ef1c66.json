@@ -1,0 +1,27 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~levihackerman-102/ubuntu/+source/os-prober/+git/os-prober/+merge/509615",
+ "id": "509615",
+ "title": "Merge from Debian unstable (LP: #2163660)",
+ "source_branch": "merge-1.85-ubuntu1",
+ "target_branch": "ubuntu/devel",
+ "revision": "718ffa5e4d93aa12671b7c65c6e4711b0f5ebb9c",
+ "base_revision": "a0e43b6c55c4abe850ff336f288da8b20e38159b",
+ "description": "Merge os-prober 1.85 from Debian unstable into stonking.\n\nRemaining changes (unchanged delta):\n - Ignore logger socket-errors (LP #1826294)\n - Replace newns by unshare --mount from util-linux\n - Mount btrfs subvolume @ when present\n - Return list of Windows partitions for WINOSDATA\n - Fix 50mounted-tests for grub-probe recognition\n\nDebian 1.85 only adds an LC_ALL=C fix for the EFI grep; no overlap with our delta.\n\nPPA: https://launchpad.net/~levihackerman-102/+archive/ubuntu/os-prober-merge\n",
+ "commit_message": "Merge from Debian unstable (LP: #2163660)",
+ "diffstat": {
+  "common.sh": [
+   1,
+   1
+  ],
+  "debian/changelog": [
+   37,
+   0
+  ]
+ },
+ "files": 2,
+ "added_lines": 38,
+ "removed_lines": 1,
+ "diff": "diff --git a/common.sh b/common.sh\nindex 25958d2..9bc3858 100644\n--- a/common.sh\n+++ b/common.sh\n@@ -107,7 +107,7 @@ item_in_dir () {\n \tfi\n \t[ -d \"$2\" ] || return 1\n \t# find files with any case\n-\tls -1 \"$2\" | grep $q -i \"^$1$\"\n+\tLC_ALL=C ls -1 \"$2\" | grep $q -i \"^$1$\"\n }\n \n # We can't always tell the filesystem type up front, but if we have the\ndiff --git a/debian/changelog b/debian/changelog\nindex 1231927..c8f85b4 100644\n--- a/debian/changelog\n+++ b/debian/changelog\n@@ -1,6 +1,39 @@\n+<<<<<<< debian/changelog\n os-prober (1.84ubuntu1) resolute; urgency=medium\n \n   * Merge with Debian unstable. Remaining changes:\n+=======\n+os-prober (1.85ubuntu1) stonking; urgency=medium\n+\n+  * Merge with Debian unstable (LP: #2163660). Remaining changes:\n+    - Ignore logger socket-errors (LP #1826294).\n+      This works around apparmor denials.\n+    - Replace newns by unshare --mount from util-linux.\n+      This makes os-prober run in a private mount namespace, as it was initially\n+      intended.\n+    - Mount btrfs subvolume @ when present for accessing a btrfs formatted\n+      rootfs.\n+    - Return list of Windows partitions for WINOSDATA instead of only those\n+      containing the bootrecord. Add Windows10 detection.\n+    - Fix 50mounted-tests for grub-probe recognition.\n+      This fixes an issue where 50mounted-tests broke if grub-probe does not\n+      recognize a filesystem.\n+\n+ -- Anshul Singh <anshul.singh@canonical.com>  Mon, 17 Aug 2026 21:39:39 +0900\n+\n+os-prober (1.85) unstable; urgency=medium\n+\n+  * Team upload\n+\n+  * Make sure, that the grep call for finding /boot/efi/EFI is locale-\n+    independent (add \"LC_ALL=C\"). Closes: #1142788.\n+\n+ -- Holger Wansing <hwansing@mailbox.org>  Thu, 30 Jul 2026 14:26:34 +0200\n+\n+os-prober (1.84ubuntu1) resolute; urgency=medium\n+\n+  * Merge with Debian unstable (LP: #2163660). Remaining changes:\n+>>>>>>> debian/changelog\n     - Ignore logger socket-errors (LP #1826294).\n       This works around apparmor denials.\n     - Replace newns by unshare --mount from util-linux.\n@@ -56,7 +89,11 @@ os-prober (1.83) unstable; urgency=medium\n \n os-prober (1.82ubuntu1) oracular; urgency=medium\n \n+<<<<<<< debian/changelog\n   * Merge with Debian unstable. Remaining changes:\n+=======\n+  * Merge with Debian unstable (LP: #2163660). Remaining changes:\n+>>>>>>> debian/changelog\n     - Stop building the udeb on request.\n     - When called with WINOSDATA, return the list of Windows partitions\n       containing the system instead of only listing these containing the\n",
+ "diff_truncated": false
+}

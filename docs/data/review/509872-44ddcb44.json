@@ -1,0 +1,35 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~sinapahlavan/ubuntu/+source/quota/+git/quota/+merge/509872",
+ "id": "509872",
+ "title": "Cherry-picked nodev_fstype() fix from upstream quota 4.10 (commit",
+ "source_branch": "quota-sru-lp2152171-tmpfs-resolute",
+ "target_branch": "ubuntu/resolute-devel",
+ "revision": "e7df17a99dae9092c884e583cd1a84b528b852af",
+ "base_revision": "736902c9013c24423f0f5019bbb8d617015b0506",
+ "description": "Cherry-picked nodev_fstype() fix from upstream quota 4.10 (commit\n00534e79856c) to fix spurious \"Cannot stat() mounted device tmpfs\"\nerrors during mount scanning on Ubuntu 26.04.\n\nWhen quota tools scan mounted filesystems, they try to stat() the device\nname from /proc/mounts. For tmpfs, the device name is the literal string\n\"tmpfs\" which is not a path, causing stat() to fail with ENOENT. The fix\nintroduces nodev_fstype() which groups tmpfs together with NFS as\nfilesystems without a real block device, skipping the stat(devname) call\nfor these filesystem types.\n\nOnly the mount-scanning portion of the upstream commit is cherry-picked.\nThe tmpfs quota operation support (quotactl_fd machinery) is not included\nas it is new functionality beyond the scope of this SRU.\n\nLaunchpad bug: https://bugs.launchpad.net/ubuntu/resolute/+source/quota/+bug/2152171\n\nPPA: ppa:sinapahlavan/quota-sru-2152171\n\nSteps to test:\n\n  # 1. Launch a 26.04 VM\n  lxc launch ubuntu:26.04 quota-test --vm\n  lxc shell quota-test\n\n  # 2. Set up ext4 with quota\n  apt install quota\n  dd if=/dev/zero of=/quota-test.img bs=1M count=512\n  losetup /dev/loop10 /quota-test.img\n  mkfs.ext4 -O quota /dev/loop10\n  mkdir /data && mount -o usrquota,grpquota /dev/loop10 /data/\n\n  # 3. Before fix - confirm errors are present\n  repquota /data\n  # Expected: \"Cannot stat() mounted device tmpfs: No such file or directory\"\n\n  # 4. Install from `proposed`\n  Enable resolute-proposed and upgrade:\n  echo \"deb http://archive.ubuntu.com/ubuntu resolute-proposed main\" | sudo tee /etc/apt/sources.list.d/proposed.list\n  apt update && apt install quota\n\n  # 5. After fix - confirm errors are gone\n  repquota /data\n  # Expected: clean output, no tmpfs errors\n\n  setquota -u root 100000 200000 0 0 /data\n  repquota /data\n  # Expected: quota limits shown correctly with no errors\n\nNote: quotacheck is not required for kernel-based ext4 quotas (enabled\nvia mkfs.ext4 -O quota). The kernel maintains quota accounting directly\nin filesystem metadata.\n\nPlease tag and sponsor.",
+ "commit_message": null,
+ "diffstat": {
+  "debian/changelog": [
+   9,
+   0
+  ],
+  "debian/control": [
+   2,
+   1
+  ],
+  "debian/patches/quotasys.patch": [
+   58,
+   0
+  ],
+  "debian/patches/series": [
+   1,
+   0
+  ]
+ },
+ "files": 4,
+ "added_lines": 70,
+ "removed_lines": 1,
+ "diff": "diff --git a/debian/changelog b/debian/changelog\nindex d18331c..8a8bc6d 100644\n--- a/debian/changelog\n+++ b/debian/changelog\n@@ -1,3 +1,12 @@\n+quota (4.09-1ubuntu0.1) resolute; urgency=medium\n+\n+  * d/p/quotasys.patch: Treat tmpfs as a no-device filesystem to fix\n+    spurious \"Cannot stat() mounted device tmpfs\" errors during mount\n+    scanning. Cherry-picked from upstream quota 4.10\n+    (00534e79856c). (LP: #2152171)\n+\n+ -- Sina Pahlavan <sina.pahlavan@canonical.com>  Wed, 19 Aug 2026 14:48:06 -0400\n+\n quota (4.09-1build1) resolute; urgency=medium\n \n   * No-change mass rebuild for Ubuntu 26.04 (LP: #2132257)\ndiff --git a/debian/control b/debian/control\nindex badce5b..7156255 100644\n--- a/debian/control\n+++ b/debian/control\n@@ -1,7 +1,8 @@\n Source: quota\n Section: admin\n Priority: optional\n-Maintainer: Michael Meskes <meskes@debian.org>\n+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>\n+XSBC-Original-Maintainer: Michael Meskes <meskes@debian.org>\n Build-Depends: debhelper-compat (= 13), gettext, libwrap0-dev,\n \t       libext2fs-dev, po-debconf (>= 0.5.0), libldap2-dev,\n \t       quilt (>= 0.46-7), libnl-3-dev, libnl-genl-3-dev, libdbus-1-dev,\ndiff --git a/debian/patches/quotasys.patch b/debian/patches/quotasys.patch\nnew file mode 100644\nindex 0000000..7f33739\n--- /dev/null\n+++ b/debian/patches/quotasys.patch\n@@ -0,0 +1,58 @@\n+Description: Treat tmpfs as a no-device filesystem to fix spurious stat() errors\n+Origin: backport, https://sourceforge.net/p/linuxquota/code/ci/00534e79856c8ce385ea1fdcdc2dcb32b1ed5de6/\n+Author: Carlos Maiolino <cem@kernel.org>\n+Bug-Ubuntu: https://bugs.launchpad.net/ubuntu/resolute/+source/quota/+bug/2152171\n+Last-Update: 2026-08-19\n+---\n+Index: quota/mntopt.h\n+===================================================================\n+--- quota.orig/mntopt.h\t2026-09-21 17:15:31.000000000 -0400\n++++ quota/mntopt.h\t2026-09-21 17:15:31.096413533 -0400\n+@@ -22,6 +22,7 @@\n+ #define MNTTYPE_MPFS\t\t\"mpfs\"  /* EMC Celerra MPFS filesystem */\n+ #define MNTTYPE_OCFS2\t\t\"ocfs2\"\t/* Oracle Cluster filesystem */\n+ #define MNTTYPE_GFS2\t\t\"gfs2\"\t/* Red Hat Global filesystem 2 */\n++#define MNTTYPE_TMPFS\t\t\"tmpfs\"\t/* tmpfs filesystem */\n+ \n+ #ifndef MNTTYPE_NFS\n+ #define MNTTYPE_NFS\t\"nfs\"\t\t/* Network file system.  */\n+Index: quota/quotasys.c\n+===================================================================\n+--- quota.orig/quotasys.c\t2026-09-21 17:15:31.000000000 -0400\n++++ quota/quotasys.c\t2026-09-21 17:16:04.847049014 -0400\n+@@ -73,6 +73,14 @@\n+ }\n+ \n+ /*\n++ *\tCheck whether the filesystem is not using block device as a backing\n++ */\n++int nodev_fstype(char *type)\n++{\n++\treturn !strcmp(type, MNTTYPE_TMPFS) || nfs_fstype(type);\n++}\n++\n++/*\n+  *\tConvert type of quota to written representation\n+  */\n+ char *type2name(int type)\n+@@ -1353,7 +1361,7 @@\n+ \t\t\tcontinue;\n+ \t\t}\n+ \n+-\t\tif (!nfs_fstype(mnt->mnt_type)) {\n++\t\tif (!nodev_fstype(mnt->mnt_type)) {\n+ \t\t\tif (stat(devname, &st) < 0) {\t/* Can't stat mounted device? */\n+ \t\t\t\terrstr(_(\"Cannot stat() mounted device %s: %s\\n\"), devname, strerror(errno));\n+ \t\t\t\tfree((char *)devname);\n+@@ -1367,8 +1375,9 @@\n+ \t\t\tdev = st.st_rdev;\n+ \t\t\tfor (i = 0; i < mnt_entries_cnt && mnt_entries[i].me_dev != dev; i++);\n+ \t\t}\n+-\t\t/* Cope with network filesystems or new mountpoint */\n+-\t\tif (nfs_fstype(mnt->mnt_type) || i == mnt_entries_cnt) {\n++\n++\t\t/* Cope with filesystems without a block device or new mountpoint */\n++\t\tif (nodev_fstype(mnt->mnt_type) || i == mnt_entries_cnt) {\n+ \t\t\tif (stat(mnt->mnt_dir, &st) < 0) {\t/* Can't stat mountpoint? We have better ignore it... */\n+ \t\t\t\terrstr(_(\"Cannot stat() mountpoint %s: %s\\n\"), mnt->mnt_dir, strerror(errno));\n+ \t\t\t\tfree((char *)devname);\ndiff --git a/debian/patches/series b/debian/patches/series\nindex 86fdc76..53fc45a 100644\n--- a/debian/patches/series\n+++ b/debian/patches/series\n@@ -1,2 +1,3 @@\n+quotasys.patch\n editor.diff\n \n",
+ "diff_truncated": false
+}

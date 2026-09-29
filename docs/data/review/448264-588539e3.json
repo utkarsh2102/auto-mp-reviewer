@@ -1,0 +1,31 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~anthonywong/ubuntu/+source/update-manager/+git/update-manager/+merge/448264",
+ "id": "448264",
+ "title": "Resubmit against main branch",
+ "source_branch": "i18n-2",
+ "target_branch": "ubuntu/devel",
+ "revision": "5354369cdd78b410a3aa87a5336c59970496e4a8",
+ "base_revision": "50f78b8568c49be8773a55a09639e71a9b89bd88",
+ "description": "The \"out of disk space\" error message could be hard to be localized since parameters can't be reordered.",
+ "commit_message": "Resubmit against main branch",
+ "diffstat": {
+  "UpdateManager/UpdatesAvailable.py": [
+   42,
+   0
+  ],
+  "po/update-manager.pot": [
+   9,
+   0
+  ],
+  ".bzrignore": [
+   11,
+   0
+  ]
+ },
+ "files": 3,
+ "added_lines": 62,
+ "removed_lines": 0,
+ "diff": "diff --git a/.bzrignore b/.bzrignore\nnew file mode 100644\nindex 0000000..981119f\n--- /dev/null\n+++ b/.bzrignore\n@@ -0,0 +1,11 @@\n+__pycache__\n+debian/*.debhelper*\n+debian/*.substvars\n+debian/files\n+debian/python-update-manager\n+debian/python3-update-manager\n+debian/tmp\n+debian/update-manager\n+debian/update-manager-core\n+debian/update-manager-kde\n+debian/update-manager-text\ndiff --git a/UpdateManager/UpdatesAvailable.py b/UpdateManager/UpdatesAvailable.py\nindex e081e1f..1bc15be 100644\n--- a/UpdateManager/UpdatesAvailable.py\n+++ b/UpdateManager/UpdatesAvailable.py\n@@ -897,8 +897,13 @@ class UpdatesAvailable(InternalDialog):\n         # print(\"on_button_install_clicked\")\n         err_sum = _(\"Not enough free disk space\")\n         err_msg = _(\n+<<<<<<< UpdateManager/UpdatesAvailable.py\n             \"The upgrade needs a total of %s free space on disk '%s'. \"\n             \"Please free at least an additional %s of disk space on '%s'. %s\"\n+=======\n+            \"The upgrade needs a total of %(size_total)s free space on disk '%(dir)s'. \"\n+            \"Please free at least an additional %(size_needed)s of disk space on '%(dir)s'. %(remedy)s\"\n+>>>>>>> UpdateManager/UpdatesAvailable.py\n         )\n         # specific ways to resolve lack of free space\n         remedy_archivedir = _(\n@@ -927,6 +932,7 @@ class UpdatesAvailable(InternalDialog):\n                 if err_long != \"\":\n                     err_long += \" \"\n                 if req.dir == archivedir:\n+<<<<<<< UpdateManager/UpdatesAvailable.py\n                     err_long += err_msg % (\n                         req.size_total,\n                         req.dir,\n@@ -966,6 +972,42 @@ class UpdatesAvailable(InternalDialog):\n                         req.dir,\n                         remedy_usr,\n                     )\n+=======\n+                    err_long += err_msg % {\n+                        \"size_total\": req.size_total,\n+                        \"dir\": req.dir,\n+                        \"size_needed\": req.size_needed,\n+                        \"remedy\": remedy_archivedir,\n+                    }\n+                elif req.dir == \"/boot\":\n+                    err_long += err_msg % {\n+                        \"size_total\": req.size_total,\n+                        \"dir\": req.dir,\n+                        \"size_needed\": req.size_needed,\n+                        \"remedy\": remedy_boot,\n+                    }\n+                elif req.dir == \"/\":\n+                    err_long += err_msg % {\n+                        \"size_total\": req.size_total,\n+                        \"dir\": req.dir,\n+                        \"size_needed\": req.size_needed,\n+                        \"remedy\": remedy_root,\n+                    }\n+                elif req.dir == \"/tmp\":\n+                    err_long += err_msg % {\n+                        \"size_total\": req.size_total,\n+                        \"dir\": req.dir,\n+                        \"size_needed\": req.size_needed,\n+                        \"remedy\": remedy_tmp,\n+                    }\n+                elif req.dir == \"/usr\":\n+                    err_long += err_msg % {\n+                        \"size_total\": req.size_total,\n+                        \"dir\": req.dir,\n+                        \"size_needed\": req.size_needed,\n+                        \"remedy\": remedy_usr,\n+                    }\n+>>>>>>> UpdateManager/UpdatesAvailable.py\n             self.window_main.start_error(False, err_sum, err_long)\n             return\n         except SystemError:\ndiff --git a/po/update-manager.pot b/po/update-manager.pot\nindex a3d5c06..5c02c2a 100644\n--- a/po/update-manager.pot\n+++ b/po/update-manager.pot\n@@ -336,11 +336,20 @@ msgstr \"\"\n msgid \"Not enough free disk space\"\n msgstr \"\"\n \n+<<<<<<< po/update-manager.pot\n #: ../UpdateManager/UpdatesAvailable.py:831\n #, python-format\n msgid \"\"\n \"The upgrade needs a total of %s free space on disk '%s'. Please free at \"\n \"least an additional %s of disk space on '%s'. %s\"\n+=======\n+#: ../UpdateManager/UpdatesAvailable.py:900\n+#, python-format\n+msgid \"\"\n++\"The upgrade needs a total of %(size_total)s free space on disk '%(dir)s'. \"\n++\"Please free at least an additional %(size_needed)s of disk space on \"\n++\"'%(dir)s'. %(remedy)s\"\n+>>>>>>> po/update-manager.pot\n msgstr \"\"\n \n #. specific ways to resolve lack of free space\n",
+ "diff_truncated": false
+}

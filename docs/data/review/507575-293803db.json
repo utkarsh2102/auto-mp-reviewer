@@ -1,0 +1,39 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~sharkcnnnnnn/ubuntu/+source/grub2/+git/grub2/+merge/507575",
+ "id": "507575",
+ "title": "Fixes a regression introduced by the grub-common.service to",
+ "source_branch": "fix-grub2-common-service-ordering",
+ "target_branch": "ubuntu/devel",
+ "revision": "1f686be8fa1483eb7ab4d4a969086c7ad5cb6271",
+ "base_revision": "1238072f75d5a01b7da6b8c76a855bf453567645",
+ "description": "Fixes a regression introduced by the grub-common.service to\ngrub2-common.service rename.\n\nProblem:\ngrub-initrd-fallback.service and grub2-common.service both invoke\ngrub-editenv. The fallback service still orders itself after the removed\ngrub-common.service, so systemd can run both services concurrently. This can\nproduce \"invalid environment block\" errors and leave the system degraded.\n\nFix:\n* Add an Ubuntu quilt patch ordering grub-initrd-fallback.service after\n  grub2-common.service.\n* Add a DEP-8 test verifying that both units are installed and that the\n  ordering dependency references the active service name.\n\nValidation:\n* The complete quilt patch stack applies and unapplies successfully.\n* The generated unit contains After=grub2-common.service.\n* systemd-analyze verify, git diff --check, and shell syntax checks pass.\n* A full binary package build and DEP-8 execution have not been run.\n\nRelated: LP: #1919121 and the previous ordering fix LP: #1910815.\n\nSponsorship requested.",
+ "commit_message": null,
+ "diffstat": {
+  "debian/changelog": [
+   10,
+   0
+  ],
+  "debian/patches/series": [
+   1,
+   0
+  ],
+  "debian/patches/ubuntu-fix-grubenv-service-ordering.patch": [
+   26,
+   0
+  ],
+  "debian/tests/control": [
+   3,
+   0
+  ],
+  "debian/tests/systemd-service-ordering": [
+   11,
+   0
+  ]
+ },
+ "files": 5,
+ "added_lines": 51,
+ "removed_lines": 0,
+ "diff": "diff --git a/debian/changelog b/debian/changelog\nindex 89d9563..fbfd625 100644\n--- a/debian/changelog\n+++ b/debian/changelog\n@@ -1,3 +1,13 @@\n+grub2 (2.14-2ubuntu3) UNRELEASED; urgency=medium\n+\n+  * d/p/ubuntu-fix-grubenv-service-ordering.patch: Order\n+    grub-initrd-fallback.service after grub2-common.service to prevent\n+    concurrent grub-editenv updates. (LP: #1919121)\n+  * d/tests/systemd-service-ordering: Verify that both units are installed\n+    and the ordering dependency references the active service name.\n+\n+ -- qixuan cao <caoqixuannimama@gmail.com>  Tue, 30 Jun 2026 17:09:55 +0800\n+\n grub2 (2.14-2ubuntu2) resolute; urgency=medium\n \n   * Handle const generic returns, fixes glibc 2.43 FTBFS (LP: #2142892)\ndiff --git a/debian/patches/series b/debian/patches/series\nindex be3f1c9..b3df139 100644\n--- a/debian/patches/series\n+++ b/debian/patches/series\n@@ -87,6 +87,7 @@ ubuntu-speed-zsys-history.patch\n ubuntu-dont-verify-loopback-images.patch\n ubuntu-recovery-dis_ucode_ldr.patch\n ubuntu-add-initrd-less-boot-messages.patch\n+ubuntu-fix-grubenv-service-ordering.patch\n rhboot-f34-make-exit-take-a-return-code.patch\n rhboot-f34-dont-use-int-for-efi-status.patch\n suse-grub.texi-add-net_bootp6-document.patch\ndiff --git a/debian/patches/ubuntu-fix-grubenv-service-ordering.patch b/debian/patches/ubuntu-fix-grubenv-service-ordering.patch\nnew file mode 100644\nindex 0000000..d059b33\n--- /dev/null\n+++ b/debian/patches/ubuntu-fix-grubenv-service-ordering.patch\n@@ -0,0 +1,26 @@\n+From: qixuan cao <caoqixuannimama@gmail.com>\n+Date: Tue, 30 Jun 2026 17:09:55 +0800\n+Subject: UBUNTU: serialize GRUB environment updates\n+\n+grub-initrd-fallback.service retained an ordering dependency on the removed\n+grub-common.service after its replacement was renamed to\n+grub2-common.service. Order the fallback service after the active service so\n+their grub-editenv invocations cannot race while updating grubenv.\n+\n+Bug-Ubuntu: https://bugs.launchpad.net/bugs/1919121\n+Forwarded: not-needed\n+---\n+ grub-initrd-fallback.service | 2 +-\n+ 1 file changed, 1 insertion(+), 1 deletion(-)\n+\n+diff --git a/grub-initrd-fallback.service b/grub-initrd-fallback.service\n+index 59d1a62..4aab7f1 100644\n+--- a/grub-initrd-fallback.service\n++++ b/grub-initrd-fallback.service\n+@@ -2,5 +2,5 @@\n+ Description=GRUB failed boot detection\n+ After=local-fs.target\n+-After=grub-common.service\n++After=grub2-common.service\n+ After=sleep.target\n+ ConditionPathExists=/boot/grub/grub.cfg\ndiff --git a/debian/tests/control b/debian/tests/control\nnew file mode 100644\nindex 0000000..b19d011\n--- /dev/null\n+++ b/debian/tests/control\n@@ -0,0 +1,3 @@\n+Tests: systemd-service-ordering\n+Depends: grub2-common, systemd\n+Restrictions: superficial\ndiff --git a/debian/tests/systemd-service-ordering b/debian/tests/systemd-service-ordering\nnew file mode 100755\nindex 0000000..55f5004\n--- /dev/null\n+++ b/debian/tests/systemd-service-ordering\n@@ -0,0 +1,11 @@\n+#!/bin/sh\n+\n+set -eu\n+\n+unit_dir=/usr/lib/systemd/system\n+fallback_unit=\"$unit_dir/grub-initrd-fallback.service\"\n+common_unit=\"$unit_dir/grub2-common.service\"\n+\n+test -f \"$fallback_unit\"\n+test -f \"$common_unit\"\n+grep -Fxq 'After=grub2-common.service' \"$fallback_unit\"\n",
+ "diff_truncated": false
+}

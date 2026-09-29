@@ -1,0 +1,1619 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~kajiya/ubuntu/+source/google-osconfig-agent/+git/google-osconfig-agent/+merge/493723",
+ "id": "493723",
+ "title": "Update upstream source from tag 'upstream/20250701.00'",
+ "source_branch": "ubuntu/update-questing-devel-20250701.00",
+ "target_branch": "ubuntu/questing-devel",
+ "revision": "63799cbd9d758f0a544670ce7c30fca6f73bf7fc",
+ "base_revision": "d927023167ed7d4819e6e3318237123da2c6ac6d",
+ "description": "Tested by building the pkg [0] and then building a GCE cloud image using the PPA so the pkg would be there on boot. This image then passed our internal CPC validation (CTF) and Google's (CIT) [1]\n\n[0]: https://launchpad.net/~kajiya/+archive/ubuntu/kajiya-google-osconfig-agent/+packages?field.name_filter=&field.status_filter=published&field.series_filter=questing\n[1]: https://github.com/GoogleCloudPlatform/cloud-image-tests",
+ "commit_message": "Update upstream source from tag 'upstream/20250701.00'",
+ "diffstat": {
+  ".gitignore": [
+   1,
+   0
+  ],
+  "agentconfig/agentconfig.go": [
+   38,
+   0
+  ],
+  "agentendpoint/agentendpoint.go": [
+   9,
+   2
+  ],
+  "agentendpoint/inventory.go": [
+   1,
+   1
+  ],
+  "debian/changelog": [
+   11,
+   0
+  ],
+  "debian/control": [
+   1,
+   1
+  ],
+  "debian/extra/vendor/cel.dev/expr/.gitattributes": [
+   2,
+   0
+  ],
+  "debian/extra/vendor/cel.dev/expr/.gitignore": [
+   2,
+   0
+  ],
+  "debian/extra/vendor/cloud.google.com/go/.gitignore": [
+   12,
+   0
+  ],
+  "debian/extra/vendor/deps.dev/api/v3/api.pb.go": [
+   5477,
+   0
+  ],
+  "debian/extra/vendor/deps.dev/api/v3/api.proto": [
+   855,
+   0
+  ],
+  "debian/extra/vendor/deps.dev/api/v3/api_grpc.pb.go": [
+   454,
+   0
+  ],
+  "debian/extra/vendor/deps.dev/api/v3/regen.sh": [
+   31,
+   0
+  ],
+  "debian/extra/vendor/deps.dev/util/maven/dependency.go": [
+   197,
+   0
+  ],
+  "debian/extra/vendor/deps.dev/util/maven/metadata.go": [
+   54,
+   0
+  ],
+  "debian/extra/vendor/deps.dev/util/maven/profile.go": [
+   213,
+   0
+  ],
+  "debian/extra/vendor/deps.dev/util/maven/project.go": [
+   308,
+   0
+  ],
+  "debian/extra/vendor/deps.dev/util/maven/properties.go": [
+   103,
+   0
+  ],
+  "debian/extra/vendor/deps.dev/util/maven/string.go": [
+   167,
+   0
+  ],
+  "debian/extra/vendor/deps.dev/util/pypi/LICENSE": [
+   202,
+   0
+  ],
+  "debian/extra/vendor/deps.dev/util/pypi/metadata.go": [
+   259,
+   0
+  ],
+  "debian/extra/vendor/deps.dev/util/pypi/sdist.go": [
+   195,
+   0
+  ],
+  "debian/extra/vendor/deps.dev/util/pypi/wheel.go": [
+   187,
+   0
+  ],
+  "debian/extra/vendor/deps.dev/util/resolve/LICENSE": [
+   202,
+   0
+  ],
+  "debian/extra/vendor/deps.dev/util/resolve/api.go": [
+   382,
+   0
+  ],
+  "debian/extra/vendor/deps.dev/util/resolve/client.go": [
+   152,
+   0
+  ],
+  "debian/extra/vendor/deps.dev/util/resolve/dep/key.go": [
+   107,
+   0
+  ],
+  "debian/extra/vendor/deps.dev/util/resolve/dep/stringer.go": [
+   51,
+   0
+  ],
+  "debian/extra/vendor/deps.dev/util/resolve/dep/type.go": [
+   106,
+   0
+  ],
+  "debian/extra/vendor/deps.dev/util/resolve/graph.go": [
+   477,
+   0
+  ],
+  "debian/extra/vendor/deps.dev/util/resolve/internal/attr/set.go": [
+   126,
+   0
+  ],
+  "debian/extra/vendor/deps.dev/util/resolve/match.go": [
+   213,
+   0
+  ],
+  "debian/extra/vendor/deps.dev/util/resolve/maven.go": [
+   289,
+   0
+  ],
+  "debian/extra/vendor/deps.dev/util/resolve/maven/resolve.go": [
+   641,
+   0
+  ],
+  "debian/extra/vendor/deps.dev/util/resolve/resolve.go": [
+   171,
+   0
+  ],
+  "debian/extra/vendor/deps.dev/util/resolve/system_string.go": [
+   52,
+   0
+  ],
+  "debian/extra/vendor/deps.dev/util/resolve/version/key.go": [
+   111,
+   0
+  ],
+  "debian/extra/vendor/deps.dev/util/resolve/version/stringer.go": [
+   50,
+   0
+  ],
+  "debian/extra/vendor/deps.dev/util/resolve/version/version.go": [
+   118,
+   0
+  ],
+  "debian/extra/vendor/deps.dev/util/semver/LICENSE": [
+   202,
+   0
+  ],
+  "debian/extra/vendor/deps.dev/util/semver/README.md": [
+   34,
+   0
+  ],
+  "debian/extra/vendor/deps.dev/util/semver/constraint.go": [
+   565,
+   0
+  ],
+  "debian/extra/vendor/deps.dev/util/semver/diff.go": [
+   86,
+   0
+  ],
+  "debian/extra/vendor/deps.dev/util/semver/diff_string.go": [
+   29,
+   0
+  ],
+  "debian/extra/vendor/deps.dev/util/semver/extension.go": [
+   92,
+   0
+  ],
+  "debian/extra/vendor/deps.dev/util/semver/interval.go": [
+   364,
+   0
+  ],
+  "debian/extra/vendor/deps.dev/util/semver/lex.go": [
+   126,
+   0
+  ],
+  "debian/extra/vendor/deps.dev/util/semver/match.go": [
+   112,
+   0
+  ],
+  "debian/extra/vendor/deps.dev/util/semver/maven.go": [
+   421,
+   0
+  ],
+  "debian/extra/vendor/deps.dev/util/semver/pep440.go": [
+   641,
+   0
+  ],
+  "debian/extra/vendor/deps.dev/util/semver/rubygems.go": [
+   268,
+   0
+  ],
+  "debian/extra/vendor/deps.dev/util/semver/set.go": [
+   346,
+   0
+  ],
+  "debian/extra/vendor/deps.dev/util/semver/span.go": [
+   229,
+   0
+  ],
+  "debian/extra/vendor/deps.dev/util/semver/system_string.go": [
+   31,
+   0
+  ],
+  "debian/extra/vendor/deps.dev/util/semver/token.go": [
+   278,
+   0
+  ],
+  "debian/extra/vendor/deps.dev/util/semver/toktype_string.go": [
+   42,
+   0
+  ],
+  "debian/extra/vendor/deps.dev/util/semver/version.go": [
+   1125,
+   0
+  ],
+  "debian/extra/vendor/github.com/AdaLogics/go-fuzz-headers/LICENSE": [
+   201,
+   0
+  ],
+  "debian/extra/vendor/github.com/AdaLogics/go-fuzz-headers/README.md": [
+   93,
+   0
+  ],
+  "debian/extra/vendor/github.com/AdaLogics/go-fuzz-headers/consumer.go": [
+   914,
+   0
+  ],
+  "debian/extra/vendor/github.com/AdaLogics/go-fuzz-headers/funcs.go": [
+   62,
+   0
+  ],
+  "debian/extra/vendor/github.com/AdaLogics/go-fuzz-headers/sql.go": [
+   556,
+   0
+  ],
+  "debian/extra/vendor/github.com/AdamKorcz/go-118-fuzz-build/LICENSE": [
+   201,
+   0
+  ],
+  "debian/extra/vendor/github.com/AdamKorcz/go-118-fuzz-build/testing/f.go": [
+   207,
+   0
+  ],
+  "debian/extra/vendor/github.com/AdamKorcz/go-118-fuzz-build/testing/t.go": [
+   129,
+   0
+  ],
+  "debian/extra/vendor/github.com/AdamKorcz/go-118-fuzz-build/testing/unsupported_funcs.go": [
+   42,
+   0
+  ],
+  "debian/extra/vendor/github.com/BurntSushi/toml/.gitignore": [
+   2,
+   0
+  ],
+  "debian/extra/vendor/github.com/BurntSushi/toml/COPYING": [
+   21,
+   0
+  ],
+  "debian/extra/vendor/github.com/BurntSushi/toml/README.md": [
+   120,
+   0
+  ],
+  "debian/extra/vendor/github.com/BurntSushi/toml/decode.go": [
+   602,
+   0
+  ],
+  "debian/extra/vendor/github.com/BurntSushi/toml/decode_go116.go": [
+   19,
+   0
+  ],
+  "debian/extra/vendor/github.com/BurntSushi/toml/deprecated.go": [
+   29,
+   0
+  ],
+  "debian/extra/vendor/github.com/BurntSushi/toml/doc.go": [
+   11,
+   0
+  ],
+  "debian/extra/vendor/github.com/BurntSushi/toml/encode.go": [
+   759,
+   0
+  ],
+  "debian/extra/vendor/github.com/BurntSushi/toml/error.go": [
+   279,
+   0
+  ],
+  "debian/extra/vendor/github.com/BurntSushi/toml/internal/tz.go": [
+   36,
+   0
+  ],
+  "debian/extra/vendor/github.com/BurntSushi/toml/lex.go": [
+   1283,
+   0
+  ],
+  "debian/extra/vendor/github.com/BurntSushi/toml/meta.go": [
+   121,
+   0
+  ],
+  "debian/extra/vendor/github.com/BurntSushi/toml/parse.go": [
+   811,
+   0
+  ],
+  "debian/extra/vendor/github.com/BurntSushi/toml/type_fields.go": [
+   242,
+   0
+  ],
+  "debian/extra/vendor/github.com/BurntSushi/toml/type_toml.go": [
+   70,
+   0
+  ],
+  "debian/extra/vendor/github.com/CycloneDX/cyclonedx-go/.gitignore": [
+   24,
+   0
+  ],
+  "debian/extra/vendor/github.com/CycloneDX/cyclonedx-go/.gitpod.yml": [
+   9,
+   0
+  ],
+  "debian/extra/vendor/github.com/CycloneDX/cyclonedx-go/.golangci.yml": [
+   7,
+   0
+  ],
+  "debian/extra/vendor/github.com/CycloneDX/cyclonedx-go/.goreleaser.yml": [
+   44,
+   0
+  ],
+  "debian/extra/vendor/github.com/CycloneDX/cyclonedx-go/.licenserc.yml": [
+   39,
+   0
+  ],
+  "debian/extra/vendor/github.com/CycloneDX/cyclonedx-go/CODEOWNERS": [
+   1,
+   0
+  ],
+  "debian/extra/vendor/github.com/CycloneDX/cyclonedx-go/Dockerfile.gitpod": [
+   18,
+   0
+  ],
+  "debian/extra/vendor/github.com/CycloneDX/cyclonedx-go/LICENSE": [
+   201,
+   0
+  ],
+  "debian/extra/vendor/github.com/CycloneDX/cyclonedx-go/Makefile": [
+   22,
+   0
+  ],
+  "debian/extra/vendor/github.com/CycloneDX/cyclonedx-go/NOTICE": [
+   5,
+   0
+  ],
+  "debian/extra/vendor/github.com/CycloneDX/cyclonedx-go/README.md": [
+   61,
+   0
+  ],
+  "debian/extra/vendor/github.com/CycloneDX/cyclonedx-go/convert.go": [
+   682,
+   0
+  ],
+  "debian/extra/vendor/github.com/CycloneDX/cyclonedx-go/copy.go": [
+   43,
+   0
+  ],
+  "debian/extra/vendor/github.com/CycloneDX/cyclonedx-go/cyclonedx.go": [
+   1618,
+   0
+  ],
+  "debian/extra/vendor/github.com/CycloneDX/cyclonedx-go/cyclonedx_json.go": [
+   198,
+   0
+  ],
+  "debian/extra/vendor/github.com/CycloneDX/cyclonedx-go/cyclonedx_string.go": [
+   50,
+   0
+  ],
+  "debian/extra/vendor/github.com/CycloneDX/cyclonedx-go/cyclonedx_xml.go": [
+   417,
+   0
+  ],
+  "debian/extra/vendor/github.com/CycloneDX/cyclonedx-go/decode.go": [
+   69,
+   0
+  ],
+  "debian/extra/vendor/github.com/CycloneDX/cyclonedx-go/encode.go": [
+   132,
+   0
+  ],
+  "debian/extra/vendor/github.com/CycloneDX/cyclonedx-go/link.go": [
+   148,
+   0
+  ],
+  "debian/extra/vendor/github.com/Microsoft/go-winio/.gitattributes": [
+   1,
+   0
+  ],
+  "debian/extra/vendor/github.com/Microsoft/go-winio/.gitignore": [
+   10,
+   0
+  ],
+  "debian/extra/vendor/github.com/Microsoft/go-winio/.golangci.yml": [
+   147,
+   0
+  ],
+  "debian/extra/vendor/github.com/Microsoft/go-winio/CODEOWNERS": [
+   1,
+   0
+  ],
+  "debian/extra/vendor/github.com/Microsoft/go-winio/LICENSE": [
+   22,
+   0
+  ],
+  "debian/extra/vendor/github.com/Microsoft/go-winio/README.md": [
+   89,
+   0
+  ],
+  "debian/extra/vendor/github.com/Microsoft/go-winio/SECURITY.md": [
+   41,
+   0
+  ],
+  "debian/extra/vendor/github.com/Microsoft/go-winio/backup.go": [
+   287,
+   0
+  ],
+  "debian/extra/vendor/github.com/Microsoft/go-winio/backuptar/doc.go": [
+   3,
+   0
+  ],
+  "debian/extra/vendor/github.com/Microsoft/go-winio/backuptar/strconv.go": [
+   70,
+   0
+  ],
+  "debian/extra/vendor/github.com/Microsoft/go-winio/backuptar/tar.go": [
+   508,
+   0
+  ],
+  "debian/extra/vendor/github.com/Microsoft/go-winio/doc.go": [
+   22,
+   0
+  ],
+  "debian/extra/vendor/github.com/Microsoft/go-winio/ea.go": [
+   137,
+   0
+  ],
+  "debian/extra/vendor/github.com/Microsoft/go-winio/file.go": [
+   320,
+   0
+  ],
+  "debian/extra/vendor/github.com/Microsoft/go-winio/fileinfo.go": [
+   106,
+   0
+  ],
+  "debian/extra/vendor/github.com/Microsoft/go-winio/hvsock.go": [
+   582,
+   0
+  ],
+  "debian/extra/vendor/github.com/Microsoft/go-winio/internal/fs/doc.go": [
+   2,
+   0
+  ],
+  "debian/extra/vendor/github.com/Microsoft/go-winio/internal/fs/fs.go": [
+   262,
+   0
+  ],
+  "debian/extra/vendor/github.com/Microsoft/go-winio/internal/fs/security.go": [
+   12,
+   0
+  ],
+  "debian/extra/vendor/github.com/Microsoft/go-winio/internal/fs/zsyscall_windows.go": [
+   61,
+   0
+  ],
+  "debian/extra/vendor/github.com/Microsoft/go-winio/internal/socket/rawaddr.go": [
+   20,
+   0
+  ],
+  "debian/extra/vendor/github.com/Microsoft/go-winio/internal/socket/socket.go": [
+   177,
+   0
+  ],
+  "debian/extra/vendor/github.com/Microsoft/go-winio/internal/socket/zsyscall_windows.go": [
+   69,
+   0
+  ],
+  "debian/extra/vendor/github.com/Microsoft/go-winio/internal/stringbuffer/wstring.go": [
+   132,
+   0
+  ],
+  "debian/extra/vendor/github.com/Microsoft/go-winio/pipe.go": [
+   586,
+   0
+  ],
+  "debian/extra/vendor/github.com/Microsoft/go-winio/pkg/bindfilter/bind_filter.go": [
+   307,
+   0
+  ],
+  "debian/extra/vendor/github.com/Microsoft/go-winio/pkg/bindfilter/zsyscall_windows.go": [
+   113,
+   0
+  ],
+  "debian/extra/vendor/github.com/Microsoft/go-winio/pkg/guid/guid.go": [
+   232,
+   0
+  ],
+  "debian/extra/vendor/github.com/Microsoft/go-winio/pkg/guid/guid_nonwindows.go": [
+   16,
+   0
+  ],
+  "debian/extra/vendor/github.com/Microsoft/go-winio/pkg/guid/guid_windows.go": [
+   13,
+   0
+  ],
+  "debian/extra/vendor/github.com/Microsoft/go-winio/pkg/guid/variant_string.go": [
+   27,
+   0
+  ],
+  "debian/extra/vendor/github.com/Microsoft/go-winio/privilege.go": [
+   196,
+   0
+  ],
+  "debian/extra/vendor/github.com/Microsoft/go-winio/reparse.go": [
+   131,
+   0
+  ],
+  "debian/extra/vendor/github.com/Microsoft/go-winio/sd.go": [
+   133,
+   0
+  ],
+  "debian/extra/vendor/github.com/Microsoft/go-winio/syscall.go": [
+   5,
+   0
+  ],
+  "debian/extra/vendor/github.com/Microsoft/go-winio/vhd/vhd.go": [
+   377,
+   0
+  ],
+  "debian/extra/vendor/github.com/Microsoft/go-winio/vhd/zvhd_windows.go": [
+   105,
+   0
+  ],
+  "debian/extra/vendor/github.com/Microsoft/go-winio/zsyscall_windows.go": [
+   378,
+   0
+  ],
+  "debian/extra/vendor/github.com/Microsoft/hcsshim/.gitattributes": [
+   3,
+   0
+  ],
+  "debian/extra/vendor/github.com/Microsoft/hcsshim/.gitignore": [
+   53,
+   0
+  ],
+  "debian/extra/vendor/github.com/Microsoft/hcsshim/.golangci.yml": [
+   148,
+   0
+  ],
+  "debian/extra/vendor/github.com/Microsoft/hcsshim/CODEOWNERS": [
+   1,
+   0
+  ],
+  "debian/extra/vendor/github.com/Microsoft/hcsshim/LICENSE": [
+   21,
+   0
+  ],
+  "debian/extra/vendor/github.com/Microsoft/hcsshim/Makefile": [
+   111,
+   0
+  ],
+  "debian/extra/vendor/github.com/Microsoft/hcsshim/Protobuild.toml": [
+   52,
+   0
+  ],
+  "debian/extra/vendor/github.com/Microsoft/hcsshim/README.md": [
+   102,
+   0
+  ],
+  "debian/extra/vendor/github.com/Microsoft/hcsshim/SECURITY.md": [
+   41,
+   0
+  ],
+  "debian/extra/vendor/github.com/Microsoft/hcsshim/computestorage/attach.go": [
+   40,
+   0
+  ],
+  "debian/extra/vendor/github.com/Microsoft/hcsshim/computestorage/destroy.go": [
+   28,
+   0
+  ],
+  "debian/extra/vendor/github.com/Microsoft/hcsshim/computestorage/detach.go": [
+   28,
+   0
+  ],
+  "debian/extra/vendor/github.com/Microsoft/hcsshim/computestorage/export.go": [
+   48,
+   0
+  ],
+  "debian/extra/vendor/github.com/Microsoft/hcsshim/computestorage/format.go": [
+   32,
+   0
+  ],
+  "debian/extra/vendor/github.com/Microsoft/hcsshim/computestorage/helpers.go": [
+   197,
+   0
+  ],
+  "debian/extra/vendor/github.com/Microsoft/hcsshim/computestorage/import.go": [
+   43,
+   0
+  ],
+  "debian/extra/vendor/github.com/Microsoft/hcsshim/computestorage/initialize.go": [
+   40,
+   0
+  ],
+  "debian/extra/vendor/github.com/Microsoft/hcsshim/computestorage/mount.go": [
+   28,
+   0
+  ],
+  "debian/extra/vendor/github.com/Microsoft/hcsshim/computestorage/setup.go": [
+   80,
+   0
+  ],
+  "debian/extra/vendor/github.com/Microsoft/hcsshim/computestorage/storage.go": [
+   53,
+   0
+  ],
+  "debian/extra/vendor/github.com/Microsoft/hcsshim/computestorage/zsyscall_windows.go": [
+   329,
+   0
+  ],
+  "debian/extra/vendor/github.com/Microsoft/hcsshim/container.go": [
+   225,
+   0
+  ],
+  "debian/extra/vendor/github.com/Microsoft/hcsshim/errors.go": [
+   250,
+   0
+  ],
+  "debian/extra/vendor/github.com/Microsoft/hcsshim/hcsshim.go": [
+   30,
+   0
+  ],
+  "debian/extra/vendor/github.com/Microsoft/hcsshim/hnsendpoint.go": [
+   120,
+   0
+  ],
+  "debian/extra/vendor/github.com/Microsoft/hcsshim/hnsglobals.go": [
+   18,
+   0
+  ],
+  "debian/extra/vendor/github.com/Microsoft/hcsshim/hnsnetwork.go": [
+   38,
+   0
+  ],
+  "debian/extra/vendor/github.com/Microsoft/hcsshim/hnspolicy.go": [
+   60,
+   0
+  ],
+  "debian/extra/vendor/github.com/Microsoft/hcsshim/hnspolicylist.go": [
+   49,
+   0
+  ],
+  "debian/extra/vendor/github.com/Microsoft/hcsshim/hnssupport.go": [
+   15,
+   0
+  ],
+  "debian/extra/vendor/github.com/Microsoft/hcsshim/interface.go": [
+   116,
+   0
+  ],
+  "debian/extra/vendor/github.com/Microsoft/hcsshim/internal/cow/cow.go": [
+   99,
+   0
+  ],
+  "debian/extra/vendor/github.com/Microsoft/hcsshim/internal/hcs/callback.go": [
+   163,
+   0
+  ],
+  "debian/extra/vendor/github.com/Microsoft/hcsshim/internal/hcs/doc.go": [
+   1,
+   0
+  ],
+  "debian/extra/vendor/github.com/Microsoft/hcsshim/internal/hcs/errors.go": [
+   336,
+   0
+  ],
+  "debian/extra/vendor/github.com/Microsoft/hcsshim/internal/hcs/process.go": [
+   611,
+   0
+  ],
+  "debian/extra/vendor/github.com/Microsoft/hcsshim/internal/hcs/schema1/schema1.go": [
+   252,
+   0
+  ],
+  "debian/extra/vendor/github.com/Microsoft/hcsshim/internal/hcs/schema2/attachment.go": [
+   36,
+   0
+  ],
+  "debian/extra/vendor/github.com/Microsoft/hcsshim/internal/hcs/schema2/battery.go": [
+   13,
+   0
+  ],
+  "debian/extra/vendor/github.com/Microsoft/hcsshim/internal/hcs/schema2/cache_query_stats_response.go": [
+   18,
+   0
+  ],
+  "debian/extra/vendor/github.com/Microsoft/hcsshim/internal/hcs/schema2/chipset.go": [
+   27,
+   0
+  ],
+  "debian/extra/vendor/github.com/Microsoft/hcsshim/internal/hcs/schema2/close_handle.go": [
+   14,
+   0
+  ],
+  "debian/extra/vendor/github.com/Microsoft/hcsshim/internal/hcs/schema2/com_port.go": [
+   17,
+   0
+  ],
+  "debian/extra/vendor/github.com/Microsoft/hcsshim/internal/hcs/schema2/compute_system.go": [
+   26,
+   0
+  ],
+  "debian/extra/vendor/github.com/Microsoft/hcsshim/internal/hcs/schema2/configuration.go": [
+   72,
+   0
+  ],
+  "debian/extra/vendor/github.com/Microsoft/hcsshim/internal/hcs/schema2/console_size.go": [
+   16,
+   0
+  ],
+  "debian/extra/vendor/github.com/Microsoft/hcsshim/internal/hcs/schema2/container.go": [
+   36,
+   0
+  ],
+  "debian/extra/vendor/github.com/Microsoft/hcsshim/internal/hcs/schema2/container_credential_guard_add_instance_request.go": [
+   16,
+   0
+  ],
+  "debian/extra/vendor/github.com/Microsoft/hcsshim/internal/hcs/schema2/container_credential_guard_hv_socket_service_config.go": [
+   15,
+   0
+  ],
+  "debian/extra/vendor/github.com/Microsoft/hcsshim/internal/hcs/schema2/container_credential_guard_instance.go": [
+   16,
+   0
+  ],
+  "debian/extra/vendor/github.com/Microsoft/hcsshim/internal/hcs/schema2/container_credential_guard_modify_operation.go": [
+   17,
+   0
+  ],
+  "debian/extra/vendor/github.com/Microsoft/hcsshim/internal/hcs/schema2/container_credential_guard_operation_request.go": [
+   15,
+   0
+  ],
+  "debian/extra/vendor/github.com/Microsoft/hcsshim/internal/hcs/schema2/container_credential_guard_remove_instance_request.go": [
+   14,
+   0
+  ],
+  "debian/extra/vendor/github.com/Microsoft/hcsshim/internal/hcs/schema2/container_credential_guard_state.go": [
+   25,
+   0
+  ],
+  "debian/extra/vendor/github.com/Microsoft/hcsshim/internal/hcs/schema2/container_credential_guard_system_info.go": [
+   14,
+   0
+  ],
+  "debian/extra/vendor/github.com/Microsoft/hcsshim/internal/hcs/schema2/container_memory_information.go": [
+   25,
+   0
+  ],
+  "debian/extra/vendor/github.com/Microsoft/hcsshim/internal/hcs/schema2/cpu_group.go": [
+   15,
+   0
+  ],
+  "debian/extra/vendor/github.com/Microsoft/hcsshim/internal/hcs/schema2/cpu_group_affinity.go": [
+   15,
+   0
+  ],
+  "debian/extra/vendor/github.com/Microsoft/hcsshim/internal/hcs/schema2/cpu_group_config.go": [
+   18,
+   0
+  ],
+  "debian/extra/vendor/github.com/Microsoft/hcsshim/internal/hcs/schema2/cpu_group_configurations.go": [
+   15,
+   0
+  ],
+  "debian/extra/vendor/github.com/Microsoft/hcsshim/internal/hcs/schema2/cpu_group_operations.go": [
+   18,
+   0
+  ],
+  "debian/extra/vendor/github.com/Microsoft/hcsshim/internal/hcs/schema2/cpu_group_property.go": [
+   23,
+   0
+  ],
+  "debian/extra/vendor/github.com/Microsoft/hcsshim/internal/hcs/schema2/create_group_operation.go": [
+   17,
+   0
+  ],
+  "debian/extra/vendor/github.com/Microsoft/hcsshim/internal/hcs/schema2/debug_options.go": [
+   22,
+   0
+  ],
+  "debian/extra/vendor/github.com/Microsoft/hcsshim/internal/hcs/schema2/delete_group_operation.go": [
+   15,
+   0
+  ],
+  "debian/extra/vendor/github.com/Microsoft/hcsshim/internal/hcs/schema2/device.go": [
+   27,
+   0
+  ],
+  "debian/extra/vendor/github.com/Microsoft/hcsshim/internal/hcs/schema2/devices.go": [
+   46,
+   0
+  ],
+  "debian/extra/vendor/github.com/Microsoft/hcsshim/internal/hcs/schema2/enhanced_mode_video.go": [
+   14,
+   0
+  ],
+  "debian/extra/vendor/github.com/Microsoft/hcsshim/internal/hcs/schema2/flexible_io_device.go": [
+   18,
+   0
+  ],
+  "debian/extra/vendor/github.com/Microsoft/hcsshim/internal/hcs/schema2/guest_connection.go": [
+   19,
+   0
+  ],
+  "debian/extra/vendor/github.com/Microsoft/hcsshim/internal/hcs/schema2/guest_connection_info.go": [
+   21,
+   0
+  ],
+  "debian/extra/vendor/github.com/Microsoft/hcsshim/internal/hcs/schema2/guest_crash_reporting.go": [
+   14,
+   0
+  ],
+  "debian/extra/vendor/github.com/Microsoft/hcsshim/internal/hcs/schema2/guest_os.go": [
+   14,
+   0
+  ],
+  "debian/extra/vendor/github.com/Microsoft/hcsshim/internal/hcs/schema2/guest_state.go": [
+   25,
+   0
+  ],
+  "debian/extra/vendor/github.com/Microsoft/hcsshim/internal/hcs/schema2/host_processor_modify_request.go": [
+   16,
+   0
+  ],
+  "debian/extra/vendor/github.com/Microsoft/hcsshim/internal/hcs/schema2/hosted_system.go": [
+   16,
+   0
+  ],
+  "debian/extra/vendor/github.com/Microsoft/hcsshim/internal/hcs/schema2/hv_socket.go": [
+   16,
+   0
+  ],
+  "debian/extra/vendor/github.com/Microsoft/hcsshim/internal/hcs/schema2/hv_socket_2.go": [
+   15,
+   0
+  ],
+  "debian/extra/vendor/github.com/Microsoft/hcsshim/internal/hcs/schema2/hv_socket_address.go": [
+   17,
+   0
+  ],
+  "debian/extra/vendor/github.com/Microsoft/hcsshim/internal/hcs/schema2/hv_socket_service_config.go": [
+   28,
+   0
+  ],
+  "debian/extra/vendor/github.com/Microsoft/hcsshim/internal/hcs/schema2/hv_socket_system_config.go": [
+   22,
+   0
+  ],
+  "debian/extra/vendor/github.com/Microsoft/hcsshim/internal/hcs/schema2/interrupt_moderation_mode.go": [
+   42,
+   0
+  ],
+  "debian/extra/vendor/github.com/Microsoft/hcsshim/internal/hcs/schema2/iov_settings.go": [
+   22,
+   0
+  ],
+  "debian/extra/vendor/github.com/Microsoft/hcsshim/internal/hcs/schema2/isolation_settings.go": [
+   21,
+   0
+  ],
+  "debian/extra/vendor/github.com/Microsoft/hcsshim/internal/hcs/schema2/keyboard.go": [
+   13,
+   0
+  ],
+  "debian/extra/vendor/github.com/Microsoft/hcsshim/internal/hcs/schema2/layer.go": [
+   21,
+   0
+  ],
+  "debian/extra/vendor/github.com/Microsoft/hcsshim/internal/hcs/schema2/linux_kernel_direct.go": [
+   18,
+   0
+  ],
+  "debian/extra/vendor/github.com/Microsoft/hcsshim/internal/hcs/schema2/logical_processor.go": [
+   18,
+   0
+  ],
+  "debian/extra/vendor/github.com/Microsoft/hcsshim/internal/hcs/schema2/mapped_directory.go": [
+   20,
+   0
+  ],
+  "debian/extra/vendor/github.com/Microsoft/hcsshim/internal/hcs/schema2/mapped_pipe.go": [
+   18,
+   0
+  ],
+  "debian/extra/vendor/github.com/Microsoft/hcsshim/internal/hcs/schema2/memory.go": [
+   14,
+   0
+  ],
+  "debian/extra/vendor/github.com/Microsoft/hcsshim/internal/hcs/schema2/memory_2.go": [
+   49,
+   0
+  ],
+  "debian/extra/vendor/github.com/Microsoft/hcsshim/internal/hcs/schema2/memory_information_for_vm.go": [
+   18,
+   0
+  ],
+  "debian/extra/vendor/github.com/Microsoft/hcsshim/internal/hcs/schema2/memory_stats.go": [
+   19,
+   0
+  ],
+  "debian/extra/vendor/github.com/Microsoft/hcsshim/internal/hcs/schema2/model_container_definition_device.go": [
+   14,
+   0
+  ],
+  "debian/extra/vendor/github.com/Microsoft/hcsshim/internal/hcs/schema2/model_device_category.go": [
+   15,
+   0
+  ],
+  "debian/extra/vendor/github.com/Microsoft/hcsshim/internal/hcs/schema2/model_device_extension.go": [
+   15,
+   0
+  ],
+  "debian/extra/vendor/github.com/Microsoft/hcsshim/internal/hcs/schema2/model_device_instance.go": [
+   17,
+   0
+  ],
+  "debian/extra/vendor/github.com/Microsoft/hcsshim/internal/hcs/schema2/model_device_namespace.go": [
+   16,
+   0
+  ],
+  "debian/extra/vendor/github.com/Microsoft/hcsshim/internal/hcs/schema2/model_interface_class.go": [
+   16,
+   0
+  ],
+  "debian/extra/vendor/github.com/Microsoft/hcsshim/internal/hcs/schema2/model_namespace.go": [
+   15,
+   0
+  ],
+  "debian/extra/vendor/github.com/Microsoft/hcsshim/internal/hcs/schema2/model_object_directory.go": [
+   18,
+   0
+  ],
+  "debian/extra/vendor/github.com/Microsoft/hcsshim/internal/hcs/schema2/model_object_namespace.go": [
+   16,
+   0
+  ],
+  "debian/extra/vendor/github.com/Microsoft/hcsshim/internal/hcs/schema2/model_object_symlink.go": [
+   18,
+   0
+  ],
+  "debian/extra/vendor/github.com/Microsoft/hcsshim/internal/hcs/schema2/modification_request.go": [
+   15,
+   0
+  ],
+  "debian/extra/vendor/github.com/Microsoft/hcsshim/internal/hcs/schema2/modify_setting_request.go": [
+   22,
+   0
+  ],
+  "debian/extra/vendor/github.com/Microsoft/hcsshim/internal/hcs/schema2/mouse.go": [
+   13,
+   0
+  ],
+  "debian/extra/vendor/github.com/Microsoft/hcsshim/internal/hcs/schema2/network_adapter.go": [
+   17,
+   0
+  ],
+  "debian/extra/vendor/github.com/Microsoft/hcsshim/internal/hcs/schema2/networking.go": [
+   23,
+   0
+  ],
+  "debian/extra/vendor/github.com/Microsoft/hcsshim/internal/hcs/schema2/pause_notification.go": [
+   15,
+   0
+  ],
+  "debian/extra/vendor/github.com/Microsoft/hcsshim/internal/hcs/schema2/pause_options.go": [
+   17,
+   0
+  ],
+  "debian/extra/vendor/github.com/Microsoft/hcsshim/internal/hcs/schema2/plan9.go": [
+   14,
+   0
+  ],
+  "debian/extra/vendor/github.com/Microsoft/hcsshim/internal/hcs/schema2/plan9_share.go": [
+   34,
+   0
+  ],
+  "debian/extra/vendor/github.com/Microsoft/hcsshim/internal/hcs/schema2/process_details.go": [
+   33,
+   0
+  ],
+  "debian/extra/vendor/github.com/Microsoft/hcsshim/internal/hcs/schema2/process_modify_request.go": [
+   19,
+   0
+  ],
+  "debian/extra/vendor/github.com/Microsoft/hcsshim/internal/hcs/schema2/process_parameters.go": [
+   46,
+   0
+  ],
+  "debian/extra/vendor/github.com/Microsoft/hcsshim/internal/hcs/schema2/process_status.go": [
+   21,
+   0
+  ],
+  "debian/extra/vendor/github.com/Microsoft/hcsshim/internal/hcs/schema2/processor.go": [
+   18,
+   0
+  ],
+  "debian/extra/vendor/github.com/Microsoft/hcsshim/internal/hcs/schema2/processor_2.go": [
+   23,
+   0
+  ],
+  "debian/extra/vendor/github.com/Microsoft/hcsshim/internal/hcs/schema2/processor_stats.go": [
+   19,
+   0
+  ],
+  "debian/extra/vendor/github.com/Microsoft/hcsshim/internal/hcs/schema2/processor_topology.go": [
+   15,
+   0
+  ],
+  "debian/extra/vendor/github.com/Microsoft/hcsshim/internal/hcs/schema2/properties.go": [
+   54,
+   0
+  ],
+  "debian/extra/vendor/github.com/Microsoft/hcsshim/internal/hcs/schema2/property_query.go": [
+   15,
+   0
+  ],
+  "debian/extra/vendor/github.com/Microsoft/hcsshim/internal/hcs/schema2/property_type.go": [
+   26,
+   0
+  ],
+  "debian/extra/vendor/github.com/Microsoft/hcsshim/internal/hcs/schema2/rdp_connection_options.go": [
+   16,
+   0
+  ],
+  "debian/extra/vendor/github.com/Microsoft/hcsshim/internal/hcs/schema2/registry_changes.go": [
+   16,
+   0
+  ],
+  "debian/extra/vendor/github.com/Microsoft/hcsshim/internal/hcs/schema2/registry_key.go": [
+   18,
+   0
+  ],
+  "debian/extra/vendor/github.com/Microsoft/hcsshim/internal/hcs/schema2/registry_value.go": [
+   30,
+   0
+  ],
+  "debian/extra/vendor/github.com/Microsoft/hcsshim/internal/hcs/schema2/restore_state.go": [
+   19,
+   0
+  ],
+  "debian/extra/vendor/github.com/Microsoft/hcsshim/internal/hcs/schema2/save_options.go": [
+   19,
+   0
+  ],
+  "debian/extra/vendor/github.com/Microsoft/hcsshim/internal/hcs/schema2/scsi.go": [
+   16,
+   0
+  ],
+  "debian/extra/vendor/github.com/Microsoft/hcsshim/internal/hcs/schema2/security_settings.go": [
+   16,
+   0
+  ],
+  "debian/extra/vendor/github.com/Microsoft/hcsshim/internal/hcs/schema2/service_properties.go": [
+   18,
+   0
+  ],
+  "debian/extra/vendor/github.com/Microsoft/hcsshim/internal/hcs/schema2/shared_memory_configuration.go": [
+   14,
+   0
+  ],
+  "debian/extra/vendor/github.com/Microsoft/hcsshim/internal/hcs/schema2/shared_memory_region.go": [
+   22,
+   0
+  ],
+  "debian/extra/vendor/github.com/Microsoft/hcsshim/internal/hcs/schema2/shared_memory_region_info.go": [
+   16,
+   0
+  ],
+  "debian/extra/vendor/github.com/Microsoft/hcsshim/internal/hcs/schema2/silo_properties.go": [
+   17,
+   0
+  ],
+  "debian/extra/vendor/github.com/Microsoft/hcsshim/internal/hcs/schema2/statistics.go": [
+   29,
+   0
+  ],
+  "debian/extra/vendor/github.com/Microsoft/hcsshim/internal/hcs/schema2/storage.go": [
+   21,
+   0
+  ],
+  "debian/extra/vendor/github.com/Microsoft/hcsshim/internal/hcs/schema2/storage_qo_s.go": [
+   16,
+   0
+  ],
+  "debian/extra/vendor/github.com/Microsoft/hcsshim/internal/hcs/schema2/storage_stats.go": [
+   21,
+   0
+  ],
+  "debian/extra/vendor/github.com/Microsoft/hcsshim/internal/hcs/schema2/system_time.go": [
+   28,
+   0
+  ],
+  "debian/extra/vendor/github.com/Microsoft/hcsshim/internal/hcs/schema2/time_zone_information.go": [
+   26,
+   0
+  ],
+  "debian/extra/vendor/github.com/Microsoft/hcsshim/internal/hcs/schema2/topology.go": [
+   16,
+   0
+  ],
+  "debian/extra/vendor/github.com/Microsoft/hcsshim/internal/hcs/schema2/uefi.go": [
+   22,
+   0
+  ],
+  "debian/extra/vendor/github.com/Microsoft/hcsshim/internal/hcs/schema2/uefi_boot_entry.go": [
+   22,
+   0
+  ],
+  "debian/extra/vendor/github.com/Microsoft/hcsshim/internal/hcs/schema2/version.go": [
+   16,
+   0
+  ],
+  "debian/extra/vendor/github.com/Microsoft/hcsshim/internal/hcs/schema2/video_monitor.go": [
+   18,
+   0
+  ],
+  "debian/extra/vendor/github.com/Microsoft/hcsshim/internal/hcs/schema2/virtual_machine.go": [
+   36,
+   0
+  ],
+  "debian/extra/vendor/github.com/Microsoft/hcsshim/internal/hcs/schema2/virtual_node_info.go": [
+   20,
+   0
+  ],
+  "debian/extra/vendor/github.com/Microsoft/hcsshim/internal/hcs/schema2/virtual_p_mem_controller.go": [
+   20,
+   0
+  ],
+  "debian/extra/vendor/github.com/Microsoft/hcsshim/internal/hcs/schema2/virtual_p_mem_device.go": [
+   18,
+   0
+  ],
+  "debian/extra/vendor/github.com/Microsoft/hcsshim/internal/hcs/schema2/virtual_p_mem_mapping.go": [
+   15,
+   0
+  ],
+  "debian/extra/vendor/github.com/Microsoft/hcsshim/internal/hcs/schema2/virtual_pci_device.go": [
+   16,
+   0
+  ],
+  "debian/extra/vendor/github.com/Microsoft/hcsshim/internal/hcs/schema2/virtual_pci_function.go": [
+   18,
+   0
+  ],
+  "debian/extra/vendor/github.com/Microsoft/hcsshim/internal/hcs/schema2/virtual_smb.go": [
+   16,
+   0
+  ],
+  "debian/extra/vendor/github.com/Microsoft/hcsshim/internal/hcs/schema2/virtual_smb_share.go": [
+   20,
+   0
+  ],
+  "debian/extra/vendor/github.com/Microsoft/hcsshim/internal/hcs/schema2/virtual_smb_share_options.go": [
+   62,
+   0
+  ],
+  "debian/extra/vendor/github.com/Microsoft/hcsshim/internal/hcs/schema2/vm_memory.go": [
+   26,
+   0
+  ],
+  "debian/extra/vendor/github.com/Microsoft/hcsshim/internal/hcs/schema2/vm_processor_limits.go": [
+   22,
+   0
+  ],
+  "debian/extra/vendor/github.com/Microsoft/hcsshim/internal/hcs/schema2/windows_crash_reporting.go": [
+   16,
+   0
+  ],
+  "debian/extra/vendor/github.com/Microsoft/hcsshim/internal/hcs/service.go": [
+   51,
+   0
+  ],
+  "debian/extra/vendor/github.com/Microsoft/hcsshim/internal/hcs/system.go": [
+   853,
+   0
+  ],
+  "debian/extra/vendor/github.com/Microsoft/hcsshim/internal/hcs/utils.go": [
+   64,
+   0
+  ],
+  "debian/extra/vendor/github.com/Microsoft/hcsshim/internal/hcs/waithelper.go": [
+   82,
+   0
+  ],
+  "debian/extra/vendor/github.com/Microsoft/hcsshim/internal/hcserror/doc.go": [
+   1,
+   0
+  ],
+  "debian/extra/vendor/github.com/Microsoft/hcsshim/internal/hcserror/hcserror.go": [
+   52,
+   0
+  ],
+  "debian/extra/vendor/github.com/Microsoft/hcsshim/internal/hns/doc.go": [
+   1,
+   0
+  ],
+  "debian/extra/vendor/github.com/Microsoft/hcsshim/internal/hns/hns.go": [
+   23,
+   0
+  ],
+  "debian/extra/vendor/github.com/Microsoft/hcsshim/internal/hns/hnsendpoint.go": [
+   361,
+   0
+  ],
+  "debian/extra/vendor/github.com/Microsoft/hcsshim/internal/hns/hnsfuncs.go": [
+   51,
+   0
+  ],
+  "debian/extra/vendor/github.com/Microsoft/hcsshim/internal/hns/hnsglobals.go": [
+   30,
+   0
+  ],
+  "debian/extra/vendor/github.com/Microsoft/hcsshim/internal/hns/hnsnetwork.go": [
+   144,
+   0
+  ],
+  "debian/extra/vendor/github.com/Microsoft/hcsshim/internal/hns/hnspolicy.go": [
+   111,
+   0
+  ],
+  "debian/extra/vendor/github.com/Microsoft/hcsshim/internal/hns/hnspolicylist.go": [
+   203,
+   0
+  ],
+  "debian/extra/vendor/github.com/Microsoft/hcsshim/internal/hns/hnssupport.go": [
+   51,
+   0
+  ],
+  "debian/extra/vendor/github.com/Microsoft/hcsshim/internal/hns/namespace.go": [
+   113,
+   0
+  ],
+  "debian/extra/vendor/github.com/Microsoft/hcsshim/internal/hns/zsyscall_windows.go": [
+   77,
+   0
+  ],
+  "debian/extra/vendor/github.com/Microsoft/hcsshim/internal/interop/doc.go": [
+   1,
+   0
+  ],
+  "debian/extra/vendor/github.com/Microsoft/hcsshim/internal/interop/interop.go": [
+   25,
+   0
+  ],
+  "debian/extra/vendor/github.com/Microsoft/hcsshim/internal/interop/zsyscall_windows.go": [
+   48,
+   0
+  ],
+  "debian/extra/vendor/github.com/Microsoft/hcsshim/internal/jobobject/doc.go": [
+   8,
+   0
+  ],
+  "debian/extra/vendor/github.com/Microsoft/hcsshim/internal/jobobject/iocp.go": [
+   113,
+   0
+  ],
+  "debian/extra/vendor/github.com/Microsoft/hcsshim/internal/jobobject/jobobject.go": [
+   669,
+   0
+  ],
+  "debian/extra/vendor/github.com/Microsoft/hcsshim/internal/jobobject/limits.go": [
+   317,
+   0
+  ],
+  "debian/extra/vendor/github.com/Microsoft/hcsshim/internal/log/context.go": [
+   118,
+   0
+  ],
+  "debian/extra/vendor/github.com/Microsoft/hcsshim/internal/log/format.go": [
+   87,
+   0
+  ],
+  "debian/extra/vendor/github.com/Microsoft/hcsshim/internal/log/hook.go": [
+   173,
+   0
+  ],
+  "debian/extra/vendor/github.com/Microsoft/hcsshim/internal/log/scrub.go": [
+   184,
+   0
+  ],
+  "debian/extra/vendor/github.com/Microsoft/hcsshim/internal/logfields/fields.go": [
+   61,
+   0
+  ],
+  "debian/extra/vendor/github.com/Microsoft/hcsshim/internal/longpath/longpath.go": [
+   24,
+   0
+  ],
+  "debian/extra/vendor/github.com/Microsoft/hcsshim/internal/memory/pool.go": [
+   316,
+   0
+  ],
+  "debian/extra/vendor/github.com/Microsoft/hcsshim/internal/memory/types.go": [
+   28,
+   0
+  ],
+  "debian/extra/vendor/github.com/Microsoft/hcsshim/internal/mergemaps/merge.go": [
+   52,
+   0
+  ],
+  "debian/extra/vendor/github.com/Microsoft/hcsshim/internal/oc/errors.go": [
+   69,
+   0
+  ],
+  "debian/extra/vendor/github.com/Microsoft/hcsshim/internal/oc/exporter.go": [
+   86,
+   0
+  ],
+  "debian/extra/vendor/github.com/Microsoft/hcsshim/internal/oc/span.go": [
+   58,
+   0
+  ],
+  "debian/extra/vendor/github.com/Microsoft/hcsshim/internal/protocol/guestrequest/types.go": [
+   56,
+   0
+  ],
+  "debian/extra/vendor/github.com/Microsoft/hcsshim/internal/queue/mq.go": [
+   92,
+   0
+  ],
+  "debian/extra/vendor/github.com/Microsoft/hcsshim/internal/safefile/do.go": [
+   1,
+   0
+  ],
+  "debian/extra/vendor/github.com/Microsoft/hcsshim/internal/safefile/safeopen.go": [
+   403,
+   0
+  ],
+  "debian/extra/vendor/github.com/Microsoft/hcsshim/internal/security/grantvmgroupaccess.go": [
+   186,
+   0
+  ],
+  "debian/extra/vendor/github.com/Microsoft/hcsshim/internal/security/syscall_windows.go": [
+   7,
+   0
+  ],
+  "debian/extra/vendor/github.com/Microsoft/hcsshim/internal/security/zsyscall_windows.go": [
+   69,
+   0
+  ],
+  "debian/extra/vendor/github.com/Microsoft/hcsshim/internal/timeout/timeout.go": [
+   74,
+   0
+  ],
+  "debian/extra/vendor/github.com/Microsoft/hcsshim/internal/vmcompute/doc.go": [
+   1,
+   0
+  ],
+  "debian/extra/vendor/github.com/Microsoft/hcsshim/internal/vmcompute/vmcompute.go": [
+   637,
+   0
+  ],
+  "debian/extra/vendor/github.com/Microsoft/hcsshim/internal/vmcompute/zsyscall_windows.go": [
+   607,
+   0
+  ],
+  "debian/extra/vendor/github.com/Microsoft/hcsshim/internal/wclayer/activatelayer.go": [
+   29,
+   0
+  ],
+  "debian/extra/vendor/github.com/Microsoft/hcsshim/internal/wclayer/baselayerreader.go": [
+   216,
+   0
+  ],
+  "debian/extra/vendor/github.com/Microsoft/hcsshim/internal/wclayer/baselayerwriter.go": [
+   183,
+   0
+  ],
+  "debian/extra/vendor/github.com/Microsoft/hcsshim/internal/wclayer/converttobaselayer.go": [
+   158,
+   0
+  ],
+  "debian/extra/vendor/github.com/Microsoft/hcsshim/internal/wclayer/createlayer.go": [
+   29,
+   0
+  ],
+  "debian/extra/vendor/github.com/Microsoft/hcsshim/internal/wclayer/createscratchlayer.go": [
+   36,
+   0
+  ],
+  "debian/extra/vendor/github.com/Microsoft/hcsshim/internal/wclayer/deactivatelayer.go": [
+   26,
+   0
+  ],
+  "debian/extra/vendor/github.com/Microsoft/hcsshim/internal/wclayer/destroylayer.go": [
+   27,
+   0
+  ],
+  "debian/extra/vendor/github.com/Microsoft/hcsshim/internal/wclayer/doc.go": [
+   4,
+   0
+  ],
+  "debian/extra/vendor/github.com/Microsoft/hcsshim/internal/wclayer/expandscratchsize.go": [
+   142,
+   0
+  ],
+  "debian/extra/vendor/github.com/Microsoft/hcsshim/internal/wclayer/exportlayer.go": [
+   107,
+   0
+  ],
+  "debian/extra/vendor/github.com/Microsoft/hcsshim/internal/wclayer/getlayermountpath.go": [
+   52,
+   0
+  ],
+  "debian/extra/vendor/github.com/Microsoft/hcsshim/internal/wclayer/getsharedbaseimages.go": [
+   31,
+   0
+  ],
+  "debian/extra/vendor/github.com/Microsoft/hcsshim/internal/wclayer/grantvmaccess.go": [
+   28,
+   0
+  ],
+  "debian/extra/vendor/github.com/Microsoft/hcsshim/internal/wclayer/importlayer.go": [
+   167,
+   0
+  ],
+  "debian/extra/vendor/github.com/Microsoft/hcsshim/internal/wclayer/layerexists.go": [
+   30,
+   0
+  ],
+  "debian/extra/vendor/github.com/Microsoft/hcsshim/internal/wclayer/layerid.go": [
+   24,
+   0
+  ],
+  "debian/extra/vendor/github.com/Microsoft/hcsshim/internal/wclayer/layerutils.go": [
+   103,
+   0
+  ],
+  "debian/extra/vendor/github.com/Microsoft/hcsshim/internal/wclayer/legacy.go": [
+   823,
+   0
+  ],
+  "debian/extra/vendor/github.com/Microsoft/hcsshim/internal/wclayer/nametoguid.go": [
+   31,
+   0
+  ],
+  "debian/extra/vendor/github.com/Microsoft/hcsshim/internal/wclayer/preparelayer.go": [
+   46,
+   0
+  ],
+  "debian/extra/vendor/github.com/Microsoft/hcsshim/internal/wclayer/processimage.go": [
+   43,
+   0
+  ],
+  "debian/extra/vendor/github.com/Microsoft/hcsshim/internal/wclayer/unpreparelayer.go": [
+   27,
+   0
+  ],
+  "debian/extra/vendor/github.com/Microsoft/hcsshim/internal/wclayer/wclayer.go": [
+   34,
+   0
+  ],
+  "debian/extra/vendor/github.com/Microsoft/hcsshim/internal/wclayer/zsyscall_windows.go": [
+   575,
+   0
+  ],
+  "debian/extra/vendor/github.com/Microsoft/hcsshim/internal/winapi/bindflt.go": [
+   19,
+   0
+  ],
+  "debian/extra/vendor/github.com/Microsoft/hcsshim/internal/winapi/console.go": [
+   46,
+   0
+  ],
+  "debian/extra/vendor/github.com/Microsoft/hcsshim/internal/winapi/devices.go": [
+   15,
+   0
+  ],
+  "debian/extra/vendor/github.com/Microsoft/hcsshim/internal/winapi/doc.go": [
+   3,
+   0
+  ],
+  "debian/extra/vendor/github.com/Microsoft/hcsshim/internal/winapi/elevation.go": [
+   11,
+   0
+  ],
+  "debian/extra/vendor/github.com/Microsoft/hcsshim/internal/winapi/errors.go": [
+   17,
+   0
+  ],
+  "debian/extra/vendor/github.com/Microsoft/hcsshim/internal/winapi/filesystem.go": [
+   115,
+   0
+  ],
+  "debian/extra/vendor/github.com/Microsoft/hcsshim/internal/winapi/jobobject.go": [
+   222,
+   0
+  ],
+  "debian/extra/vendor/github.com/Microsoft/hcsshim/internal/winapi/logon.go": [
+   30,
+   0
+  ],
+  "debian/extra/vendor/github.com/Microsoft/hcsshim/internal/winapi/memory.go": [
+   4,
+   0
+  ],
+  "debian/extra/vendor/github.com/Microsoft/hcsshim/internal/winapi/net.go": [
+   3,
+   0
+  ],
+  "debian/extra/vendor/github.com/Microsoft/hcsshim/internal/winapi/ofreg.go": [
+   5,
+   0
+  ],
+  "debian/extra/vendor/github.com/Microsoft/hcsshim/internal/winapi/path.go": [
+   12,
+   0
+  ],
+  "debian/extra/vendor/github.com/Microsoft/hcsshim/internal/winapi/process.go": [
+   61,
+   0
+  ],
+  "debian/extra/vendor/github.com/Microsoft/hcsshim/internal/winapi/processor.go": [
+   7,
+   0
+  ],
+  "debian/extra/vendor/github.com/Microsoft/hcsshim/internal/winapi/system.go": [
+   55,
+   0
+  ],
+  "debian/extra/vendor/github.com/Microsoft/hcsshim/internal/winapi/thread.go": [
+   13,
+   0
+  ],
+  "debian/extra/vendor/github.com/Microsoft/hcsshim/internal/winapi/user.go": [
+   194,
+   0
+  ],
+  "debian/extra/vendor/github.com/Microsoft/hcsshim/internal/winapi/utils.go": [
+   82,
+   0
+  ],
+  "debian/extra/vendor/github.com/Microsoft/hcsshim/internal/winapi/winapi.go": [
+   3,
+   0
+  ],
+  "debian/extra/vendor/github.com/Microsoft/hcsshim/internal/winapi/zsyscall_windows.go": [
+   412,
+   0
+  ],
+  "debian/extra/vendor/github.com/Microsoft/hcsshim/layer.go": [
+   112,
+   0
+  ],
+  "debian/extra/vendor/github.com/Microsoft/hcsshim/osversion/osversion_windows.go": [
+   59,
+   0
+  ],
+  "debian/extra/vendor/github.com/Microsoft/hcsshim/osversion/platform_compat_windows.go": [
+   35,
+   0
+  ],
+  "debian/extra/vendor/github.com/Microsoft/hcsshim/osversion/windowsbuilds.go": [
+   84,
+   0
+  ],
+  "debian/extra/vendor/github.com/Microsoft/hcsshim/pkg/ociwclayer/doc.go": [
+   3,
+   0
+  ],
+  "debian/extra/vendor/github.com/Microsoft/hcsshim/pkg/ociwclayer/export.go": [
+   109,
+   0
+  ],
+  "debian/extra/vendor/github.com/Microsoft/hcsshim/pkg/ociwclayer/import.go": [
+   150,
+   0
+  ]
+ },
+ "files": 2620,
+ "added_lines": 876333,
+ "removed_lines": 8731,
+ "diff": "diff --git a/.gitignore b/.gitignore\nnew file mode 100644\nindex 0000000..abccd71\n--- /dev/null\n+++ b/.gitignore\n@@ -0,0 +1 @@\n+/osconfig\ndiff --git a/agentconfig/agentconfig.go b/agentconfig/agentconfig.go\nindex 694cfb1..0df954a 100644\n--- a/agentconfig/agentconfig.go\n+++ b/agentconfig/agentconfig.go\n@@ -131,7 +131,9 @@ type config struct {\n \ttaskNotificationEnabled bool\n \tguestPoliciesEnabled    bool\n \tosInventoryEnabled      bool\n+\tscalibrLinuxEnabled     bool\n \tguestAttributesEnabled  bool\n+\ttraceGetInventory       bool\n }\n \n func (c *config) parseFeatures(features string, enabled bool) {\n@@ -219,6 +221,8 @@ type attributesJSON struct {\n \tOSConfigEnabled       string       `json:\"enable-osconfig\"`\n \tDisabledFeatures      string       `json:\"osconfig-disabled-features\"`\n \tEnableGuestAttributes string       `json:\"enable-guest-attributes\"`\n+\tTraceGetInventory     string       `json:\"trace-get-inventory\"`\n+\tScalibrLinuxEnabled   string       `json:\"enable-scalibr-linux\"`\n }\n \n func createConfigFromMetadata(md metadataJSON) *config {\n@@ -349,11 +353,24 @@ func createConfigFromMetadata(md metadataJSON) *config {\n \t\tc.debugEnabled = true\n \t}\n \n+\tsetScalibrEnablement(md, c)\n \tsetSVCEndpoint(md, c)\n+\tsetTraceGetInventory(md, c)\n \n \treturn c\n }\n \n+func setScalibrEnablement(md metadataJSON, c *config) {\n+\tprojectSetting := md.Project.Attributes.ScalibrLinuxEnabled\n+\tinstanceSetting := md.Instance.Attributes.ScalibrLinuxEnabled\n+\tif projectSetting != \"\" {\n+\t\tc.scalibrLinuxEnabled = parseBool(projectSetting)\n+\t}\n+\tif instanceSetting != \"\" {\n+\t\tc.scalibrLinuxEnabled = parseBool(instanceSetting)\n+\t}\n+}\n+\n func setSVCEndpoint(md metadataJSON, c *config) {\n \tswitch {\n \tcase *endpoint != prodEndpoint:\n@@ -374,6 +391,17 @@ func setSVCEndpoint(md metadataJSON, c *config) {\n \tc.svcEndpoint = strings.ReplaceAll(c.svcEndpoint, \"{zone}\", zone)\n }\n \n+func setTraceGetInventory(md metadataJSON, c *config) {\n+\tprojectSetting := md.Project.Attributes.TraceGetInventory\n+\tinstanceSetting := md.Instance.Attributes.TraceGetInventory\n+\tif projectSetting != \"\" {\n+\t\tc.traceGetInventory = parseBool(projectSetting)\n+\t}\n+\tif instanceSetting != \"\" {\n+\t\tc.traceGetInventory = parseBool(instanceSetting)\n+\t}\n+}\n+\n func formatMetadataError(err error) error {\n \tif urlErr, ok := err.(*url.Error); ok {\n \t\tif _, ok := urlErr.Err.(*net.DNSError); ok {\n@@ -535,11 +563,21 @@ func DisableLocalLogging() bool {\n \treturn *disableLocalLogging\n }\n \n+// ScalibrLinuxEnabled answers whether scalibr or legacy inventory extractors should be used.\n+func ScalibrLinuxEnabled() bool {\n+\treturn getAgentConfig().scalibrLinuxEnabled\n+}\n+\n // SvcEndpoint is the OS Config service endpoint.\n func SvcEndpoint() string {\n \treturn getAgentConfig().svcEndpoint\n }\n \n+// TraceGetInventory turns on memory tracing while gathering inventory.\n+func TraceGetInventory() bool {\n+\treturn getAgentConfig().traceGetInventory\n+}\n+\n // ZypperRepoDir is the location of the zypper repo files.\n func ZypperRepoDir() string {\n \treturn zypperRepoDir\ndiff --git a/agentendpoint/agentendpoint.go b/agentendpoint/agentendpoint.go\nindex b95f32a..cb18b9f 100644\n--- a/agentendpoint/agentendpoint.go\n+++ b/agentendpoint/agentendpoint.go\n@@ -27,6 +27,7 @@ import (\n \tagentendpoint \"cloud.google.com/go/osconfig/agentendpoint/apiv1\"\n \t\"github.com/GoogleCloudPlatform/osconfig/agentconfig\"\n \t\"github.com/GoogleCloudPlatform/osconfig/clog\"\n+\t\"github.com/GoogleCloudPlatform/osconfig/inventory\"\n \t\"github.com/GoogleCloudPlatform/osconfig/osinfo\"\n \t\"github.com/GoogleCloudPlatform/osconfig/retryutil\"\n \t\"github.com/GoogleCloudPlatform/osconfig/tasker\"\n@@ -58,6 +59,8 @@ type Client struct {\n \tnoti   chan struct{}\n \tclosed bool\n \tmx     sync.Mutex\n+\n+\tinventoryProvider inventory.Provider\n }\n \n // NewClient a new agentendpoint Client.\n@@ -83,7 +86,11 @@ func NewClient(ctx context.Context) (*Client, error) {\n \t\treturn nil, err\n \t}\n \n-\treturn &Client{raw: c, noti: make(chan struct{}, 1)}, nil\n+\treturn &Client{\n+\t\traw:               c,\n+\t\tnoti:              make(chan struct{}, 1),\n+\t\tinventoryProvider: inventory.NewProvider(),\n+\t}, nil\n }\n \n // Close cancels WaitForTaskNotification and closes the underlying ClientConn.\n@@ -109,7 +116,7 @@ func (c *Client) RegisterAgent(ctx context.Context) error {\n \t\treturn err\n \t}\n \n-\toi := &osinfo.OSInfo{}\n+\toi := osinfo.OSInfo{}\n \tif agentconfig.OSInventoryEnabled() {\n \t\toi, err = osinfo.Get()\n \t\tif err != nil {\ndiff --git a/agentendpoint/inventory.go b/agentendpoint/inventory.go\nindex 78a2fed..3337005 100644\n--- a/agentendpoint/inventory.go\n+++ b/agentendpoint/inventory.go\n@@ -31,7 +31,7 @@ const (\n \n // ReportInventory writes inventory to guest attributes and reports it to agent endpoint.\n func (c *Client) ReportInventory(ctx context.Context) {\n-\tstate := inventory.Get(ctx)\n+\tstate := c.inventoryProvider.Get(ctx)\n \n \tif agentconfig.GuestAttributesEnabled() && !agentconfig.DisableInventoryWrite() {\n \t\tclog.Infof(ctx, \"Writing inventory to guest attributes\")\ndiff --git a/debian/changelog b/debian/changelog\nindex 58e703c..c99564a 100644\n--- a/debian/changelog\n+++ b/debian/changelog\n@@ -1,3 +1,14 @@\n+google-osconfig-agent (20250701.00-0ubuntu1) questing; urgency=medium\n+\n+  * [FFe] New version for upstream tag 20250701.00 (LP: #2126660)\n+    * Bump golang version to 1.24\n+      * Goland re-downloading and re-vendoring\n+    * Removed the additional `install` lines in d/rules as they are already\n+      implemented in d/install (and it's just confusing).\n+    * Edited d/watch again to avail of more pagination in the repo\n+\n+ -- Chloé 'kajiya' Smith <chloe.smith@canonical.com>  Tue, 30 Sep 2025 22:08:21 +0100\n+\n google-osconfig-agent (20250416.02-0ubuntu1) questing; urgency=medium\n \n   * New upstream version for upstream tag 20250416.02. (LP: #2113875)\ndiff --git a/debian/control b/debian/control\nindex f3339da..18e8271 100644\n--- a/debian/control\n+++ b/debian/control\n@@ -6,7 +6,7 @@ Testsuite: autopkgtest-pkg-go\n Priority: optional\n Build-Depends: debhelper-compat (= 12),\n                dh-golang,\n-               golang-any\n+               golang-1.24\n Standards-Version: 4.5.0\n Vcs-Browser: https://code.launchpad.net/~ubuntu-core-dev/+git/google-osconfig-agent\n Vcs-Git: https://git.launchpad.net/~ubuntu-core-dev/+git/google-osconfig-agent -b ubuntu/master\ndiff --git a/debian/extra/vendor/cel.dev/expr/.gitattributes b/debian/extra/vendor/cel.dev/expr/.gitattributes\nnew file mode 100644\nindex 0000000..3de1ec2\n--- /dev/null\n+++ b/debian/extra/vendor/cel.dev/expr/.gitattributes\n@@ -0,0 +1,2 @@\n+*.pb.go linguist-generated=true\n+*.pb.go -diff -merge\ndiff --git a/debian/extra/vendor/cel.dev/expr/.gitignore b/debian/extra/vendor/cel.dev/expr/.gitignore\nnew file mode 100644\nindex 0000000..0d4fed2\n--- /dev/null\n+++ b/debian/extra/vendor/cel.dev/expr/.gitignore\n@@ -0,0 +1,2 @@\n+bazel-*\n+MODULE.bazel.lock\ndiff --git a/debian/extra/vendor/cloud.google.com/go/.gitignore b/debian/extra/vendor/cloud.google.com/go/.gitignore\nnew file mode 100644\nindex 0000000..cc7e53b\n--- /dev/null\n+++ b/debian/extra/vendor/cloud.google.com/go/.gitignore\n@@ -0,0 +1,12 @@\n+# Editors\n+.idea\n+.vscode\n+*.swp\n+.history\n+\n+# Test files\n+*.test\n+coverage.txt\n+\n+# Other\n+.DS_Store\ndiff --git a/debian/extra/vendor/github.com/census-instrumentation/opencensus-proto/LICENSE b/debian/extra/vendor/deps.dev/api/v3/LICENSE\nsimilarity index 100%\nrename from debian/extra/vendor/github.com/census-instrumentation/opencensus-proto/LICENSE\nrename to debian/extra/vendor/deps.dev/api/v3/LICENSE\ndiff --git a/debian/extra/vendor/deps.dev/api/v3/api.pb.go b/debian/extra/vendor/deps.dev/api/v3/api.pb.go\nnew file mode 100644\nindex 0000000..e6520ec\n--- /dev/null\n+++ b/debian/extra/vendor/deps.dev/api/v3/api.pb.go\n@@ -0,0 +1,5477 @@\n+// Copyright 2024 Google LLC\n+//\n+// Licensed under the Apache License, Version 2.0 (the \"License\");\n+// you may not use this file except in compliance with the License.\n+// You may obtain a copy of the License at\n+//\n+//     http://www.apache.org/licenses/LICENSE-2.0\n+//\n+// Unless required by applicable law or agreed to in writing, software\n+// distributed under the License is distributed on an \"AS IS\" BASIS,\n+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\n+// See the License for the specific language governing permissions and\n+// limitations under the License.\n+\n+// Code generated by protoc-gen-go. DO NOT EDIT.\n+// versions:\n+// \tprotoc-gen-go v1.32.0\n+// \tprotoc        v5.26.1\n+// source: api.proto\n+\n+package v3\n+\n+import (\n+\t_ \"google.golang.org/genproto/googleapis/api/annotations\"\n+\tprotoreflect \"google.golang.org/protobuf/reflect/protoreflect\"\n+\tprotoimpl \"google.golang.org/protobuf/runtime/protoimpl\"\n+\ttimestamppb \"google.golang.org/protobuf/types/known/timestamppb\"\n+\treflect \"reflect\"\n+\tsync \"sync\"\n+)\n+\n+const (\n+\t// Verify that this generated code is sufficiently up-to-date.\n+\t_ = protoimpl.EnforceVersion(20 - protoimpl.MinVersion)\n+\t// Verify that runtime/protoimpl is sufficiently up-to-date.\n+\t_ = protoimpl.EnforceVersion(protoimpl.MaxVersion - 20)\n+)\n+\n+// System identifies a package management system.\n+type System int32\n+\n+const (\n+\tSystem_SYSTEM_UNSPECIFIED System = 0\n+\tSystem_GO                 System = 1\n+\tSystem_NPM                System = 3\n+\tSystem_CARGO              System = 4\n+\tSystem_MAVEN              System = 6\n+\tSystem_PYPI               System = 7\n+\tSystem_NUGET              System = 8\n+)\n+\n+// Enum value maps for System.\n+var (\n+\tSystem_name = map[int32]string{\n+\t\t0: \"SYSTEM_UNSPECIFIED\",\n+\t\t1: \"GO\",\n+\t\t3: \"NPM\",\n+\t\t4: \"CARGO\",\n+\t\t6: \"MAVEN\",\n+\t\t7: \"PYPI\",\n+\t\t8: \"NUGET\",\n+\t}\n+\tSystem_value = map[string]int32{\n+\t\t\"SYSTEM_UNSPECIFIED\": 0,\n+\t\t\"GO\":                 1,\n+\t\t\"NPM\":                3,\n+\t\t\"CARGO\":              4,\n+\t\t\"MAVEN\":              6,\n+\t\t\"PYPI\":               7,\n+\t\t\"NUGET\":              8,\n+\t}\n+)\n+\n+func (x System) Enum() *System {\n+\tp := new(System)\n+\t*p = x\n+\treturn p\n+}\n+\n+func (x System) String() string {\n+\treturn protoimpl.X.EnumStringOf(x.Descriptor(), protoreflect.EnumNumber(x))\n+}\n+\n+func (System) Descriptor() protoreflect.EnumDescriptor {\n+\treturn file_api_proto_enumTypes[0].Descriptor()\n+}\n+\n+func (System) Type() protoreflect.EnumType {\n+\treturn &file_api_proto_enumTypes[0]\n+}\n+\n+func (x System) Number() protoreflect.EnumNumber {\n+\treturn protoreflect.EnumNumber(x)\n+}\n+\n+// Deprecated: Use System.Descriptor instead.\n+func (System) EnumDescriptor() ([]byte, []int) {\n+\treturn file_api_proto_rawDescGZIP(), []int{0}\n+}\n+\n+// HashType identifies a function used to produce a hash.\n+type HashType int32\n+\n+const (\n+\tHashType_HASH_TYPE_UNSPECIFIED HashType = 0\n+\tHashType_MD5                   HashType = 1\n+\tHashType_SHA1                  HashType = 2\n+\tHashType_SHA256                HashType = 3\n+\tHashType_SHA512                HashType = 4\n+)\n+\n+// Enum value maps for HashType.\n+var (\n+\tHashType_name = map[int32]string{\n+\t\t0: \"HASH_TYPE_UNSPECIFIED\",\n+\t\t1: \"MD5\",\n+\t\t2: \"SHA1\",\n+\t\t3: \"SHA256\",\n+\t\t4: \"SHA512\",\n+\t}\n+\tHashType_value = map[string]int32{\n+\t\t\"HASH_TYPE_UNSPECIFIED\": 0,\n+\t\t\"MD5\":                   1,\n+\t\t\"SHA1\":                  2,\n+\t\t\"SHA256\":                3,\n+\t\t\"SHA512\":                4,\n+\t}\n+)\n+\n+func (x HashType) Enum() *HashType {\n+\tp := new(HashType)\n+\t*p = x\n+\treturn p\n+}\n+\n+func (x HashType) String() string {\n+\treturn protoimpl.X.EnumStringOf(x.Descriptor(), protoreflect.EnumNumber(x))\n+}\n+\n+func (HashType) Descriptor() protoreflect.EnumDescriptor {\n+\treturn file_api_proto_enumTypes[1].Descriptor()\n+}\n+\n+func (HashType) Type() protoreflect.EnumType {\n+\treturn &file_api_proto_enumTypes[1]\n+}\n+\n+func (x HashType) Number() protoreflect.EnumNumber {\n+\treturn protoreflect.EnumNumber(x)\n+}\n+\n+// Deprecated: Use HashType.Descriptor instead.\n+func (HashType) EnumDescriptor() ([]byte, []int) {\n+\treturn file_api_proto_rawDescGZIP(), []int{1}\n+}\n+\n+// DependencyRelation describes the relation of a node within a dependency\n+// graph.\n+type DependencyRelation int32\n+\n+const (\n+\tDependencyRelation_DEPENDENCY_RELATION_UNSPECIFIED DependencyRelation = 0\n+\tDependencyRelation_SELF                            DependencyRelation = 1\n+\tDependencyRelation_DIRECT                          DependencyRelation = 2\n+\tDependencyRelation_INDIRECT                        DependencyRelation = 3\n+)\n+\n+// Enum value maps for DependencyRelation.\n+var (\n+\tDependencyRelation_name = map[int32]string{\n+\t\t0: \"DEPENDENCY_RELATION_UNSPECIFIED\",\n+\t\t1: \"SELF\",\n+\t\t2: \"DIRECT\",\n+\t\t3: \"INDIRECT\",\n+\t}\n+\tDependencyRelation_value = map[string]int32{\n+\t\t\"DEPENDENCY_RELATION_UNSPECIFIED\": 0,\n+\t\t\"SELF\":                            1,\n+\t\t\"DIRECT\":                          2,\n+\t\t\"INDIRECT\":                        3,\n+\t}\n+)\n+\n+func (x DependencyRelation) Enum() *DependencyRelation {\n+\tp := new(DependencyRelation)\n+\t*p = x\n+\treturn p\n+}\n+\n+func (x DependencyRelation) String() string {\n+\treturn protoimpl.X.EnumStringOf(x.Descriptor(), protoreflect.EnumNumber(x))\n+}\n+\n+func (DependencyRelation) Descriptor() protoreflect.EnumDescriptor {\n+\treturn file_api_proto_enumTypes[2].Descriptor()\n+}\n+\n+func (DependencyRelation) Type() protoreflect.EnumType {\n+\treturn &file_api_proto_enumTypes[2]\n+}\n+\n+func (x DependencyRelation) Number() protoreflect.EnumNumber {\n+\treturn protoreflect.EnumNumber(x)\n+}\n+\n+// Deprecated: Use DependencyRelation.Descriptor instead.\n+func (DependencyRelation) EnumDescriptor() ([]byte, []int) {\n+\treturn file_api_proto_rawDescGZIP(), []int{2}\n+}\n+\n+// ProjectRelationType specifies a relationship between a project and a package version.\n+type ProjectRelationType int32\n+\n+const (\n+\tProjectRelationType_UNKNOWN_PROJECT_RELATION_TYPE ProjectRelationType = 0\n+\t// This project is this package version's source code repository.\n+\tProjectRelationType_SOURCE_REPO ProjectRelationType = 1\n+\t// This project is the package version's issue tracker.\n+\tProjectRelationType_ISSUE_TRACKER ProjectRelationType = 2\n+)\n+\n+// Enum value maps for ProjectRelationType.\n+var (\n+\tProjectRelationType_name = map[int32]string{\n+\t\t0: \"UNKNOWN_PROJECT_RELATION_TYPE\",\n+\t\t1: \"SOURCE_REPO\",\n+\t\t2: \"ISSUE_TRACKER\",\n+\t}\n+\tProjectRelationType_value = map[string]int32{\n+\t\t\"UNKNOWN_PROJECT_RELATION_TYPE\": 0,\n+\t\t\"SOURCE_REPO\":                   1,\n+\t\t\"ISSUE_TRACKER\":                 2,\n+\t}\n+)\n+\n+func (x ProjectRelationType) Enum() *ProjectRelationType {\n+\tp := new(ProjectRelationType)\n+\t*p = x\n+\treturn p\n+}\n+\n+func (x ProjectRelationType) String() string {\n+\treturn protoimpl.X.EnumStringOf(x.Descriptor(), protoreflect.EnumNumber(x))\n+}\n+\n+func (ProjectRelationType) Descriptor() protoreflect.EnumDescriptor {\n+\treturn file_api_proto_enumTypes[3].Descriptor()\n+}\n+\n+func (ProjectRelationType) Type() protoreflect.EnumType {\n+\treturn &file_api_proto_enumTypes[3]\n+}\n+\n+func (x ProjectRelationType) Number() protoreflect.EnumNumber {\n+\treturn protoreflect.EnumNumber(x)\n+}\n+\n+// Deprecated: Use ProjectRelationType.Descriptor instead.\n+func (ProjectRelationType) EnumDescriptor() ([]byte, []int) {\n+\treturn file_api_proto_rawDescGZIP(), []int{3}\n+}\n+\n+// How the mapping between project and package version was discovered.\n+type ProjectRelationProvenance int32\n+\n+const (\n+\tProjectRelationProvenance_UNKNOWN_PROJECT_RELATION_PROVENANCE ProjectRelationProvenance = 0\n+\t// There is a SLSA attestation that links this package version to this project.\n+\tProjectRelationProvenance_SLSA_ATTESTATION ProjectRelationProvenance = 1\n+\t// This project contains the package version (Go specific).\n+\tProjectRelationProvenance_GO_ORIGIN ProjectRelationProvenance = 2\n+\t// There is a [PyPI Publish\n+\t// attestation](https://docs.pypi.org/attestations/publish/v1/) that links\n+\t// this package version to this project.\n+\tProjectRelationProvenance_PYPI_PUBLISH_ATTESTATION ProjectRelationProvenance = 3\n+\t// The package version's metadata contains an unverified link to this project.\n+\tProjectRelationProvenance_UNVERIFIED_METADATA ProjectRelationProvenance = 10\n+)\n+\n+// Enum value maps for ProjectRelationProvenance.\n+var (\n+\tProjectRelationProvenance_name = map[int32]string{\n+\t\t0:  \"UNKNOWN_PROJECT_RELATION_PROVENANCE\",\n+\t\t1:  \"SLSA_ATTESTATION\",\n+\t\t2:  \"GO_ORIGIN\",\n+\t\t3:  \"PYPI_PUBLISH_ATTESTATION\",\n+\t\t10: \"UNVERIFIED_METADATA\",\n+\t}\n+\tProjectRelationProvenance_value = map[string]int32{\n+\t\t\"UNKNOWN_PROJECT_RELATION_PROVENANCE\": 0,\n+\t\t\"SLSA_ATTESTATION\":                    1,\n+\t\t\"GO_ORIGIN\":                           2,\n+\t\t\"PYPI_PUBLISH_ATTESTATION\":            3,\n+\t\t\"UNVERIFIED_METADATA\":                 10,\n+\t}\n+)\n+\n+func (x ProjectRelationProvenance) Enum() *ProjectRelationProvenance {\n+\tp := new(ProjectRelationProvenance)\n+\t*p = x\n+\treturn p\n+}\n+\n+func (x ProjectRelationProvenance) String() string {\n+\treturn protoimpl.X.EnumStringOf(x.Descriptor(), protoreflect.EnumNumber(x))\n+}\n+\n+func (ProjectRelationProvenance) Descriptor() protoreflect.EnumDescriptor {\n+\treturn file_api_proto_enumTypes[4].Descriptor()\n+}\n+\n+func (ProjectRelationProvenance) Type() protoreflect.EnumType {\n+\treturn &file_api_proto_enumTypes[4]\n+}\n+\n+func (x ProjectRelationProvenance) Number() protoreflect.EnumNumber {\n+\treturn protoreflect.EnumNumber(x)\n+}\n+\n+// Deprecated: Use ProjectRelationProvenance.Descriptor instead.\n+func (ProjectRelationProvenance) EnumDescriptor() ([]byte, []int) {\n+\treturn file_api_proto_rawDescGZIP(), []int{4}\n+}\n+\n+// PackageKey identifies a package by name.\n+type PackageKey struct {\n+\tstate         protoimpl.MessageState\n+\tsizeCache     protoimpl.SizeCache\n+\tunknownFields protoimpl.UnknownFields\n+\n+\t// The package management system containing the package.\n+\tSystem System `protobuf:\"varint,1,opt,name=system,proto3,enum=deps_dev.v3.System\" json:\"system,omitempty\"`\n+\t// The name of the package.\n+\tName string `protobuf:\"bytes,2,opt,name=name,proto3\" json:\"name,omitempty\"`\n+}\n+\n+func (x *PackageKey) Reset() {\n+\t*x = PackageKey{}\n+\tif protoimpl.UnsafeEnabled {\n+\t\tmi := &file_api_proto_msgTypes[0]\n+\t\tms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))\n+\t\tms.StoreMessageInfo(mi)\n+\t}\n+}\n+\n+func (x *PackageKey) String() string {\n+\treturn protoimpl.X.MessageStringOf(x)\n+}\n+\n+func (*PackageKey) ProtoMessage() {}\n+\n+func (x *PackageKey) ProtoReflect() protoreflect.Message {\n+\tmi := &file_api_proto_msgTypes[0]\n+\tif protoimpl.UnsafeEnabled && x != nil {\n+\t\tms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))\n+\t\tif ms.LoadMessageInfo() == nil {\n+\t\t\tms.StoreMessageInfo(mi)\n+\t\t}\n+\t\treturn ms\n+\t}\n+\treturn mi.MessageOf(x)\n+}\n+\n+// Deprecated: Use PackageKey.ProtoReflect.Descriptor instead.\n+func (*PackageKey) Descriptor() ([]byte, []int) {\n+\treturn file_api_proto_rawDescGZIP(), []int{0}\n+}\n+\n+func (x *PackageKey) GetSystem() System {\n+\tif x != nil {\n+\t\treturn x.System\n+\t}\n+\treturn System_SYSTEM_UNSPECIFIED\n+}\n+\n+func (x *PackageKey) GetName() string {\n+\tif x != nil {\n+\t\treturn x.Name\n+\t}\n+\treturn \"\"\n+}\n+\n+// VersionKey identifies a package version by name.\n+type VersionKey struct {\n+\tstate         protoimpl.MessageState\n+\tsizeCache     protoimpl.SizeCache\n+\tunknownFields protoimpl.UnknownFields\n+\n+\t// The package management system containing the package.\n+\tSystem System `protobuf:\"varint,1,opt,name=system,proto3,enum=deps_dev.v3.System\" json:\"system,omitempty\"`\n+\t// The name of the package.\n+\tName string `protobuf:\"bytes,2,opt,name=name,proto3\" json:\"name,omitempty\"`\n+\t// The version of the package.\n+\tVersion string `protobuf:\"bytes,3,opt,name=version,proto3\" json:\"version,omitempty\"`\n+}\n+\n+func (x *VersionKey) Reset() {\n+\t*x = VersionKey{}\n+\tif protoimpl.UnsafeEnabled {\n+\t\tmi := &file_api_proto_msgTypes[1]\n+\t\tms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))\n+\t\tms.StoreMessageInfo(mi)\n+\t}\n+}\n+\n+func (x *VersionKey) String() string {\n+\treturn protoimpl.X.MessageStringOf(x)\n+}\n+\n+func (*VersionKey) ProtoMessage() {}\n+\n+func (x *VersionKey) ProtoReflect() protoreflect.Message {\n+\tmi := &file_api_proto_msgTypes[1]\n+\tif protoimpl.UnsafeEnabled && x != nil {\n+\t\tms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))\n+\t\tif ms.LoadMessageInfo() == nil {\n+\t\t\tms.StoreMessageInfo(mi)\n+\t\t}\n+\t\treturn ms\n+\t}\n+\treturn mi.MessageOf(x)\n+}\n+\n+// Deprecated: Use VersionKey.ProtoReflect.Descriptor instead.\n+func (*VersionKey) Descriptor() ([]byte, []int) {\n+\treturn file_api_proto_rawDescGZIP(), []int{1}\n+}\n+\n+func (x *VersionKey) GetSystem() System {\n+\tif x != nil {\n+\t\treturn x.System\n+\t}\n+\treturn System_SYSTEM_UNSPECIFIED\n+}\n+\n+func (x *VersionKey) GetName() string {\n+\tif x != nil {\n+\t\treturn x.Name\n+\t}\n+\treturn \"\"\n+}\n+\n+func (x *VersionKey) GetVersion() string {\n+\tif x != nil {\n+\t\treturn x.Version\n+\t}\n+\treturn \"\"\n+}\n+\n+// ProjectKey identifies a project.\n+type ProjectKey struct {\n+\tstate         protoimpl.MessageState\n+\tsizeCache     protoimpl.SizeCache\n+\tunknownFields protoimpl.UnknownFields\n+\n+\t// A project identifier of the form `github.com/user/repo`,\n+\t// `gitlab.com/user/repo`, or `bitbucket.org/user/repo`.\n+\tId string `protobuf:\"bytes,1,opt,name=id,proto3\" json:\"id,omitempty\"`\n+}\n+\n+func (x *ProjectKey) Reset() {\n+\t*x = ProjectKey{}\n+\tif protoimpl.UnsafeEnabled {\n+\t\tmi := &file_api_proto_msgTypes[2]\n+\t\tms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))\n+\t\tms.StoreMessageInfo(mi)\n+\t}\n+}\n+\n+func (x *ProjectKey) String() string {\n+\treturn protoimpl.X.MessageStringOf(x)\n+}\n+\n+func (*ProjectKey) ProtoMessage() {}\n+\n+func (x *ProjectKey) ProtoReflect() protoreflect.Message {\n+\tmi := &file_api_proto_msgTypes[2]\n+\tif protoimpl.UnsafeEnabled && x != nil {\n+\t\tms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))\n+\t\tif ms.LoadMessageInfo() == nil {\n+\t\t\tms.StoreMessageInfo(mi)\n+\t\t}\n+\t\treturn ms\n+\t}\n+\treturn mi.MessageOf(x)\n+}\n+\n+// Deprecated: Use ProjectKey.ProtoReflect.Descriptor instead.\n+func (*ProjectKey) Descriptor() ([]byte, []int) {\n+\treturn file_api_proto_rawDescGZIP(), []int{2}\n+}\n+\n+func (x *ProjectKey) GetId() string {\n+\tif x != nil {\n+\t\treturn x.Id\n+\t}\n+\treturn \"\"\n+}\n+\n+// AdvisoryKey identifies a security advisory.\n+type AdvisoryKey struct {\n+\tstate         protoimpl.MessageState\n+\tsizeCache     protoimpl.SizeCache\n+\tunknownFields protoimpl.UnknownFields\n+\n+\t// The OSV identifier for the security advisory.\n+\tId string `protobuf:\"bytes,1,opt,name=id,proto3\" json:\"id,omitempty\"`\n+}\n+\n+func (x *AdvisoryKey) Reset() {\n+\t*x = AdvisoryKey{}\n+\tif protoimpl.UnsafeEnabled {\n+\t\tmi := &file_api_proto_msgTypes[3]\n+\t\tms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))\n+\t\tms.StoreMessageInfo(mi)\n+\t}\n+}\n+\n+func (x *AdvisoryKey) String() string {\n+\treturn protoimpl.X.MessageStringOf(x)\n+}\n+\n+func (*AdvisoryKey) ProtoMessage() {}\n+\n+func (x *AdvisoryKey) ProtoReflect() protoreflect.Message {\n+\tmi := &file_api_proto_msgTypes[3]\n+\tif protoimpl.UnsafeEnabled && x != nil {\n+\t\tms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))\n+\t\tif ms.LoadMessageInfo() == nil {\n+\t\t\tms.StoreMessageInfo(mi)\n+\t\t}\n+\t\treturn ms\n+\t}\n+\treturn mi.MessageOf(x)\n+}\n+\n+// Deprecated: Use AdvisoryKey.ProtoReflect.Descriptor instead.\n+func (*AdvisoryKey) Descriptor() ([]byte, []int) {\n+\treturn file_api_proto_rawDescGZIP(), []int{3}\n+}\n+\n+func (x *AdvisoryKey) GetId() string {\n+\tif x != nil {\n+\t\treturn x.Id\n+\t}\n+\treturn \"\"\n+}\n+\n+// Hash represents the output of a hash function. These messages are used to\n+// identify package version artifacts by content hash.\n+type Hash struct {\n+\tstate         protoimpl.MessageState\n+\tsizeCache     protoimpl.SizeCache\n+\tunknownFields protoimpl.UnknownFields\n+\n+\t// The function used to produce this hash.\n+\tType HashType `protobuf:\"varint,1,opt,name=type,proto3,enum=deps_dev.v3.HashType\" json:\"type,omitempty\"`\n+\t// A hash value.\n+\tValue []byte `protobuf:\"bytes,2,opt,name=value,proto3\" json:\"value,omitempty\"`\n+}\n+\n+func (x *Hash) Reset() {\n+\t*x = Hash{}\n+\tif protoimpl.UnsafeEnabled {\n+\t\tmi := &file_api_proto_msgTypes[4]\n+\t\tms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))\n+\t\tms.StoreMessageInfo(mi)\n+\t}\n+}\n+\n+func (x *Hash) String() string {\n+\treturn protoimpl.X.MessageStringOf(x)\n+}\n+\n+func (*Hash) ProtoMessage() {}\n+\n+func (x *Hash) ProtoReflect() protoreflect.Message {\n+\tmi := &file_api_proto_msgTypes[4]\n+\tif protoimpl.UnsafeEnabled && x != nil {\n+\t\tms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))\n+\t\tif ms.LoadMessageInfo() == nil {\n+\t\t\tms.StoreMessageInfo(mi)\n+\t\t}\n+\t\treturn ms\n+\t}\n+\treturn mi.MessageOf(x)\n+}\n+\n+// Deprecated: Use Hash.ProtoReflect.Descriptor instead.\n+func (*Hash) Descriptor() ([]byte, []int) {\n+\treturn file_api_proto_rawDescGZIP(), []int{4}\n+}\n+\n+func (x *Hash) GetType() HashType {\n+\tif x != nil {\n+\t\treturn x.Type\n+\t}\n+\treturn HashType_HASH_TYPE_UNSPECIFIED\n+}\n+\n+func (x *Hash) GetValue() []byte {\n+\tif x != nil {\n+\t\treturn x.Value\n+\t}\n+\treturn nil\n+}\n+\n+// Link represents a link declared by or derived from package version metadata,\n+// to an external web resource such as a homepage or source code repository.\n+type Link struct {\n+\tstate         protoimpl.MessageState\n+\tsizeCache     protoimpl.SizeCache\n+\tunknownFields protoimpl.UnknownFields\n+\n+\t// A label describing the resource that the link points to.\n+\tLabel string `protobuf:\"bytes,1,opt,name=label,proto3\" json:\"label,omitempty\"`\n+\t// The URL of the link.\n+\tUrl string `protobuf:\"bytes,2,opt,name=url,proto3\" json:\"url,omitempty\"`\n+}\n+\n+func (x *Link) Reset() {\n+\t*x = Link{}\n+\tif protoimpl.UnsafeEnabled {\n+\t\tmi := &file_api_proto_msgTypes[5]\n+\t\tms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))\n+\t\tms.StoreMessageInfo(mi)\n+\t}\n+}\n+\n+func (x *Link) String() string {\n+\treturn protoimpl.X.MessageStringOf(x)\n+}\n+\n+func (*Link) ProtoMessage() {}\n+\n+func (x *Link) ProtoReflect() protoreflect.Message {\n+\tmi := &file_api_proto_msgTypes[5]\n+\tif protoimpl.UnsafeEnabled && x != nil {\n+\t\tms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))\n+\t\tif ms.LoadMessageInfo() == nil {\n+\t\t\tms.StoreMessageInfo(mi)\n+\t\t}\n+\t\treturn ms\n+\t}\n+\treturn mi.MessageOf(x)\n+}\n+\n+// Deprecated: Use Link.ProtoReflect.Descriptor instead.\n+func (*Link) Descriptor() ([]byte, []int) {\n+\treturn file_api_proto_rawDescGZIP(), []int{5}\n+}\n+\n+func (x *Link) GetLabel() string {\n+\tif x != nil {\n+\t\treturn x.Label\n+\t}\n+\treturn \"\"\n+}\n+\n+func (x *Link) GetUrl() string {\n+\tif x != nil {\n+\t\treturn x.Url\n+\t}\n+\treturn \"\"\n+}\n+\n+// SLSAProvenance contains provenance information extracted from a SLSA\n+// provenance statement.\n+type SLSAProvenance struct {\n+\tstate         protoimpl.MessageState\n+\tsizeCache     protoimpl.SizeCache\n+\tunknownFields protoimpl.UnknownFields\n+\n+\t// The source code repository used to build the version.\n+\tSourceRepository string `protobuf:\"bytes,1,opt,name=source_repository,json=sourceRepository,proto3\" json:\"source_repository,omitempty\"`\n+\t// The commit of the source code repository the version was built from.\n+\tCommit string `protobuf:\"bytes,2,opt,name=commit,proto3\" json:\"commit,omitempty\"`\n+\t// The URL of the provenance statement if there is one.\n+\tUrl string `protobuf:\"bytes,3,opt,name=url,proto3\" json:\"url,omitempty\"`\n+\t// The Sigstore bundle containing this attestation was verified using the\n+\t// [sigstore-go](https://github.com/sigstore/sigstore-go) library.\n+\tVerified bool `protobuf:\"varint,4,opt,name=verified,proto3\" json:\"verified,omitempty\"`\n+}\n+\n+func (x *SLSAProvenance) Reset() {\n+\t*x = SLSAProvenance{}\n+\tif protoimpl.UnsafeEnabled {\n+\t\tmi := &file_api_proto_msgTypes[6]\n+\t\tms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))\n+\t\tms.StoreMessageInfo(mi)\n+\t}\n+}\n+\n+func (x *SLSAProvenance) String() string {\n+\treturn protoimpl.X.MessageStringOf(x)\n+}\n+\n+func (*SLSAProvenance) ProtoMessage() {}\n+\n+func (x *SLSAProvenance) ProtoReflect() protoreflect.Message {\n+\tmi := &file_api_proto_msgTypes[6]\n+\tif protoimpl.UnsafeEnabled && x != nil {\n+\t\tms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))\n+\t\tif ms.LoadMessageInfo() == nil {\n+\t\t\tms.StoreMessageInfo(mi)\n+\t\t}\n+\t\treturn ms\n+\t}\n+\treturn mi.MessageOf(x)\n+}\n+\n+// Deprecated: Use SLSAProvenance.ProtoReflect.Descriptor instead.\n+func (*SLSAProvenance) Descriptor() ([]byte, []int) {\n+\treturn file_api_proto_rawDescGZIP(), []int{6}\n+}\n+\n+func (x *SLSAProvenance) GetSourceRepository() string {\n+\tif x != nil {\n+\t\treturn x.SourceRepository\n+\t}\n+\treturn \"\"\n+}\n+\n+func (x *SLSAProvenance) GetCommit() string {\n+\tif x != nil {\n+\t\treturn x.Commit\n+\t}\n+\treturn \"\"\n+}\n+\n+func (x *SLSAProvenance) GetUrl() string {\n+\tif x != nil {\n+\t\treturn x.Url\n+\t}\n+\treturn \"\"\n+}\n+\n+func (x *SLSAProvenance) GetVerified() bool {\n+\tif x != nil {\n+\t\treturn x.Verified\n+\t}\n+\treturn false\n+}\n+\n+// Attestation represents a generic attestation. Fields are populated based\n+// on 'type'.\n+type Attestation struct {\n+\tstate         protoimpl.MessageState\n+\tsizeCache     protoimpl.SizeCache\n+\tunknownFields protoimpl.UnknownFields\n+\n+\t// The type of attestation.\n+\t// One of https://slsa.dev/provenance/v0.2, https://slsa.dev/provenance/v1,\n+\t// https://docs.pypi.org/attestations/publish/v1.\n+\tType string `protobuf:\"bytes,1,opt,name=type,proto3\" json:\"type,omitempty\"`\n+\t// The URL of the attestation if there is one.\n+\tUrl string `protobuf:\"bytes,2,opt,name=url,proto3\" json:\"url,omitempty\"`\n+\t// The attestation has been cryptographically verified by deps.dev.\n+\t// For attestations distributed in a Sigstore bundle, this field indicates\n+\t// the bundle was verified using the\n+\t// [sigstore-go](https://github.com/sigstore/sigstore-go) library.\n+\tVerified bool `protobuf:\"varint,3,opt,name=verified,proto3\" json:\"verified,omitempty\"`\n+\t// Only set if type is https://slsa.dev/provenance/v0.2,\n+\t// https://slsa.dev/provenance/v1,\n+\t// https://docs.pypi.org/attestations/publish/v1.\n+\t// The source code repository used to build the version.\n+\tSourceRepository string `protobuf:\"bytes,4,opt,name=source_repository,json=sourceRepository,proto3\" json:\"source_repository,omitempty\"`\n+\t// The commit of the source code repository the version was built from.\n+\tCommit string `protobuf:\"bytes,5,opt,name=commit,proto3\" json:\"commit,omitempty\"`\n+}\n+\n+func (x *Attestation) Reset() {\n+\t*x = Attestation{}\n+\tif protoimpl.UnsafeEnabled {\n+\t\tmi := &file_api_proto_msgTypes[7]\n+\t\tms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))\n+\t\tms.StoreMessageInfo(mi)\n+\t}\n+}\n+\n+func (x *Attestation) String() string {\n+\treturn protoimpl.X.MessageStringOf(x)\n+}\n+\n+func (*Attestation) ProtoMessage() {}\n+\n+func (x *Attestation) ProtoReflect() protoreflect.Message {\n+\tmi := &file_api_proto_msgTypes[7]\n+\tif protoimpl.UnsafeEnabled && x != nil {\n+\t\tms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))\n+\t\tif ms.LoadMessageInfo() == nil {\n+\t\t\tms.StoreMessageInfo(mi)\n+\t\t}\n+\t\treturn ms\n+\t}\n+\treturn mi.MessageOf(x)\n+}\n+\n+// Deprecated: Use Attestation.ProtoReflect.Descriptor instead.\n+func (*Attestation) Descriptor() ([]byte, []int) {\n+\treturn file_api_proto_rawDescGZIP(), []int{7}\n+}\n+\n+func (x *Attestation) GetType() string {\n+\tif x != nil {\n+\t\treturn x.Type\n+\t}\n+\treturn \"\"\n+}\n+\n+func (x *Attestation) GetUrl() string {\n+\tif x != nil {\n+\t\treturn x.Url\n+\t}\n+\treturn \"\"\n+}\n+\n+func (x *Attestation) GetVerified() bool {\n+\tif x != nil {\n+\t\treturn x.Verified\n+\t}\n+\treturn false\n+}\n+\n+func (x *Attestation) GetSourceRepository() string {\n+\tif x != nil {\n+\t\treturn x.SourceRepository\n+\t}\n+\treturn \"\"\n+}\n+\n+func (x *Attestation) GetCommit() string {\n+\tif x != nil {\n+\t\treturn x.Commit\n+\t}\n+\treturn \"\"\n+}\n+\n+// GetPackageRequest identifies a package for which to return information.\n+type GetPackageRequest struct {\n+\tstate         protoimpl.MessageState\n+\tsizeCache     protoimpl.SizeCache\n+\tunknownFields protoimpl.UnknownFields\n+\n+\tPackageKey *PackageKey `protobuf:\"bytes,1,opt,name=package_key,json=packageKey,proto3\" json:\"package_key,omitempty\"`\n+}\n+\n+func (x *GetPackageRequest) Reset() {\n+\t*x = GetPackageRequest{}\n+\tif protoimpl.UnsafeEnabled {\n+\t\tmi := &file_api_proto_msgTypes[8]\n+\t\tms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))\n+\t\tms.StoreMessageInfo(mi)\n+\t}\n+}\n+\n+func (x *GetPackageRequest) String() string {\n+\treturn protoimpl.X.MessageStringOf(x)\n+}\n+\n+func (*GetPackageRequest) ProtoMessage() {}\n+\n+func (x *GetPackageRequest) ProtoReflect() protoreflect.Message {\n+\tmi := &file_api_proto_msgTypes[8]\n+\tif protoimpl.UnsafeEnabled && x != nil {\n+\t\tms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))\n+\t\tif ms.LoadMessageInfo() == nil {\n+\t\t\tms.StoreMessageInfo(mi)\n+\t\t}\n+\t\treturn ms\n+\t}\n+\treturn mi.MessageOf(x)\n+}\n+\n+// Deprecated: Use GetPackageRequest.ProtoReflect.Descriptor instead.\n+func (*GetPackageRequest) Descriptor() ([]byte, []int) {\n+\treturn file_api_proto_rawDescGZIP(), []int{8}\n+}\n+\n+func (x *GetPackageRequest) GetPackageKey() *PackageKey {\n+\tif x != nil {\n+\t\treturn x.PackageKey\n+\t}\n+\treturn nil\n+}\n+\n+// Package holds information about a package, including a list of its available\n+// versions, with the default version marked if known.\n+type Package struct {\n+\tstate         protoimpl.MessageState\n+\tsizeCache     protoimpl.SizeCache\n+\tunknownFields protoimpl.UnknownFields\n+\n+\t// The name of the package. Note that it may differ from the name in the\n+\t// request, due to canonicalization.\n+\tPackageKey *PackageKey `protobuf:\"bytes,1,opt,name=package_key,json=packageKey,proto3\" json:\"package_key,omitempty\"`\n+\t// The available versions of the package.\n+\tVersions []*Package_Version `protobuf:\"bytes,2,rep,name=versions,proto3\" json:\"versions,omitempty\"`\n+}\n+\n+func (x *Package) Reset() {\n+\t*x = Package{}\n+\tif protoimpl.UnsafeEnabled {\n+\t\tmi := &file_api_proto_msgTypes[9]\n+\t\tms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))\n+\t\tms.StoreMessageInfo(mi)\n+\t}\n+}\n+\n+func (x *Package) String() string {\n+\treturn protoimpl.X.MessageStringOf(x)\n+}\n+\n+func (*Package) ProtoMessage() {}\n+\n+func (x *Package) ProtoReflect() protoreflect.Message {\n+\tmi := &file_api_proto_msgTypes[9]\n+\tif protoimpl.UnsafeEnabled && x != nil {\n+\t\tms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))\n+\t\tif ms.LoadMessageInfo() == nil {\n+\t\t\tms.StoreMessageInfo(mi)\n+\t\t}\n+\t\treturn ms\n+\t}\n+\treturn mi.MessageOf(x)\n+}\n+\n+// Deprecated: Use Package.ProtoReflect.Descriptor instead.\n+func (*Package) Descriptor() ([]byte, []int) {\n+\treturn file_api_proto_rawDescGZIP(), []int{9}\n+}\n+\n+func (x *Package) GetPackageKey() *PackageKey {\n+\tif x != nil {\n+\t\treturn x.PackageKey\n+\t}\n+\treturn nil\n+}\n+\n+func (x *Package) GetVersions() []*Package_Version {\n+\tif x != nil {\n+\t\treturn x.Versions\n+\t}\n+\treturn nil\n+}\n+\n+// GetVersionRequest identifies a package version for which to return information.\n+type GetVersionRequest struct {\n+\tstate         protoimpl.MessageState\n+\tsizeCache     protoimpl.SizeCache\n+\tunknownFields protoimpl.UnknownFields\n+\n+\tVersionKey *VersionKey `protobuf:\"bytes,1,opt,name=version_key,json=versionKey,proto3\" json:\"version_key,omitempty\"`\n+}\n+\n+func (x *GetVersionRequest) Reset() {\n+\t*x = GetVersionRequest{}\n+\tif protoimpl.UnsafeEnabled {\n+\t\tmi := &file_api_proto_msgTypes[10]\n+\t\tms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))\n+\t\tms.StoreMessageInfo(mi)\n+\t}\n+}\n+\n+func (x *GetVersionRequest) String() string {\n+\treturn protoimpl.X.MessageStringOf(x)\n+}\n+\n+func (*GetVersionRequest) ProtoMessage() {}\n+\n+func (x *GetVersionRequest) ProtoReflect() protoreflect.Message {\n+\tmi := &file_api_proto_msgTypes[10]\n+\tif protoimpl.UnsafeEnabled && x != nil {\n+\t\tms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))\n+\t\tif ms.LoadMessageInfo() == nil {\n+\t\t\tms.StoreMessageInfo(mi)\n+\t\t}\n+\t\treturn ms\n+\t}\n+\treturn mi.MessageOf(x)\n+}\n+\n+// Deprecated: Use GetVersionRequest.ProtoReflect.Descriptor instead.\n+func (*GetVersionRequest) Descriptor() ([]byte, []int) {\n+\treturn file_api_proto_rawDescGZIP(), []int{10}\n+}\n+\n+func (x *GetVersionRequest) GetVersionKey() *VersionKey {\n+\tif x != nil {\n+\t\treturn x.VersionKey\n+\t}\n+\treturn nil\n+}\n+\n+// Version holds information about a package version.\n+type Version struct {\n+\tstate         protoimpl.MessageState\n+\tsizeCache     protoimpl.SizeCache\n+\tunknownFields protoimpl.UnknownFields\n+\n+\t// The name of the package version. Note that the package and version name\n+\t// may differ from names specified in requests, if applicable, due to\n+\t// canonicalization.\n+\tVersionKey *VersionKey `protobuf:\"bytes,1,opt,name=version_key,json=versionKey,proto3\" json:\"version_key,omitempty\"`\n+\t// The time when this package version was published, if available, as\n+\t// reported by the package management authority.\n+\tPublishedAt *timestamppb.Timestamp `protobuf:\"bytes,6,opt,name=published_at,json=publishedAt,proto3\" json:\"published_at,omitempty\"`\n+\t// If true, this is the default version of the package: the version that is\n+\t// installed when no version is specified. The precise meaning of this is\n+\t// system-specific, but it is commonly the version with the greatest version\n+\t// number, ignoring pre-release versions.\n+\tIsDefault bool `protobuf:\"varint,2,opt,name=is_default,json=isDefault,proto3\" json:\"is_default,omitempty\"`\n+\t// The licenses governing the use of this package version.\n+\t//\n+\t// We identify licenses as\n+\t// [SPDX 2.1](https://spdx.dev/spdx-specification-21-web-version/)\n+\t// expressions. When there is no associated SPDX identifier, we identify a\n+\t// license as \"non-standard\". When we are unable to obtain license\n+\t// information, this field is empty. When more than one license is listed,\n+\t// their relationship is unspecified.\n+\t//\n+\t// For Cargo, Maven, npm, NuGet, and PyPI, license information is read from\n+\t// the package metadata. For Go, license information is determined using the\n+\t// [licensecheck](https://github.com/google/licensecheck) package.\n+\t//\n+\t// License information is not intended to be legal advice, and you should\n+\t// independently verify the license or terms of any software for your own\n+\t// needs.\n+\tLicenses []string `protobuf:\"bytes,3,rep,name=licenses,proto3\" json:\"licenses,omitempty\"`\n+\t// Security advisories known to affect this package version directly. Further\n+\t// information can be requested using the Advisory method.\n+\t//\n+\t// Note that this field does not include advisories that affect dependencies\n+\t// of this package version.\n+\tAdvisoryKeys []*AdvisoryKey `protobuf:\"bytes,4,rep,name=advisory_keys,json=advisoryKeys,proto3\" json:\"advisory_keys,omitempty\"`\n+\t// Links declared by or derived from package version metadata, to external\n+\t// web resources such as a homepage or source code repository. Note that\n+\t// these links are not verified for correctness.\n+\tLinks []*Link `protobuf:\"bytes,5,rep,name=links,proto3\" json:\"links,omitempty\"`\n+\t// SLSA provenance information for this package version. Extracted from a\n+\t// SLSA provenance attestation. This is only populated for npm package\n+\t// versions. See the 'attestations' field for more attestations (including\n+\t// SLSA provenance) for all systems.\n+\tSlsaProvenances []*SLSAProvenance `protobuf:\"bytes,7,rep,name=slsa_provenances,json=slsaProvenances,proto3\" json:\"slsa_provenances,omitempty\"`\n+\t// Attestations for this package version.\n+\tAttestations []*Attestation `protobuf:\"bytes,14,rep,name=attestations,proto3\" json:\"attestations,omitempty\"`\n+\t// URLs for the package management registries this package version is\n+\t// available from.\n+\t// Only set for systems that use a central repository for package\n+\t// distribution: Cargo, Maven, npm, NuGet, and PyPI.\n+\tRegistries []string `protobuf:\"bytes,8,rep,name=registries,proto3\" json:\"registries,omitempty\"`\n+\t// Projects that are related to this package version.\n+\tRelatedProjects []*Version_Project `protobuf:\"bytes,10,rep,name=related_projects,json=relatedProjects,proto3\" json:\"related_projects,omitempty\"`\n+}\n+\n+func (x *Version) Reset() {\n+\t*x = Version{}\n+\tif protoimpl.UnsafeEnabled {\n+\t\tmi := &file_api_proto_msgTypes[11]\n+\t\tms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))\n+\t\tms.StoreMessageInfo(mi)\n+\t}\n+}\n+\n+func (x *Version) String() string {\n+\treturn protoimpl.X.MessageStringOf(x)\n+}\n+\n+func (*Version) ProtoMessage() {}\n+\n+func (x *Version) ProtoReflect() protoreflect.Message {\n+\tmi := &file_api_proto_msgTypes[11]\n+\tif protoimpl.UnsafeEnabled && x != nil {\n+\t\tms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))\n+\t\tif ms.LoadMessageInfo() == nil {\n+\t\t\tms.StoreMessageInfo(mi)\n+\t\t}\n+\t\treturn ms\n+\t}\n+\treturn mi.MessageOf(x)\n+}\n+\n+// Deprecated: Use Version.ProtoReflect.Descriptor instead.\n+func (*Version) Descriptor() ([]byte, []int) {\n+\treturn file_api_proto_rawDescGZIP(), []int{11}\n+}\n+\n+func (x *Version) GetVersionKey() *VersionKey {\n+\tif x != nil {\n+\t\treturn x.VersionKey\n+\t}\n+\treturn nil\n+}\n+\n+func (x *Version) GetPublishedAt() *timestamppb.Timestamp {\n+\tif x != nil {\n+\t\treturn x.PublishedAt\n+\t}\n+\treturn nil\n+}\n+\n+func (x *Version) GetIsDefault() bool {\n+\tif x != nil {\n+\t\treturn x.IsDefault\n+\t}\n+\treturn false\n+}\n+\n+func (x *Version) GetLicenses() []string {\n+\tif x != nil {\n+\t\treturn x.Licenses\n+\t}\n+\treturn nil\n+}\n+\n+func (x *Version) GetAdvisoryKeys() []*AdvisoryKey {\n+\tif x != nil {\n+\t\treturn x.AdvisoryKeys\n+\t}\n+\treturn nil\n+}\n+\n+func (x *Version) GetLinks() []*Link {\n+\tif x != nil {\n+\t\treturn x.Links\n+\t}\n+\treturn nil\n+}\n+\n+func (x *Version) GetSlsaProvenances() []*SLSAProvenance {\n+\tif x != nil {\n+\t\treturn x.SlsaProvenances\n+\t}\n+\treturn nil\n+}\n+\n+func (x *Version) GetAttestations() []*Attestation {\n+\tif x != nil {\n+\t\treturn x.Attestations\n+\t}\n+\treturn nil\n+}\n+\n+func (x *Version) GetRegistries() []string {\n+\tif x != nil {\n+\t\treturn x.Registries\n+\t}\n+\treturn nil\n+}\n+\n+func (x *Version) GetRelatedProjects() []*Version_Project {\n+\tif x != nil {\n+\t\treturn x.RelatedProjects\n+\t}\n+\treturn nil\n+}\n+\n+// GetRequirementsRequest identifies a version for which to return\n+// requirements.\n+type GetRequirementsRequest struct {\n+\tstate         protoimpl.MessageState\n+\tsizeCache     protoimpl.SizeCache\n+\tunknownFields protoimpl.UnknownFields\n+\n+\tVersionKey *VersionKey `protobuf:\"bytes,1,opt,name=version_key,json=versionKey,proto3\" json:\"version_key,omitempty\"`\n+}\n+\n+func (x *GetRequirementsRequest) Reset() {\n+\t*x = GetRequirementsRequest{}\n+\tif protoimpl.UnsafeEnabled {\n+\t\tmi := &file_api_proto_msgTypes[12]\n+\t\tms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))\n+\t\tms.StoreMessageInfo(mi)\n+\t}\n+}\n+\n+func (x *GetRequirementsRequest) String() string {\n+\treturn protoimpl.X.MessageStringOf(x)\n+}\n+\n+func (*GetRequirementsRequest) ProtoMessage() {}\n+\n+func (x *GetRequirementsRequest) ProtoReflect() protoreflect.Message {\n+\tmi := &file_api_proto_msgTypes[12]\n+\tif protoimpl.UnsafeEnabled && x != nil {\n+\t\tms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))\n+\t\tif ms.LoadMessageInfo() == nil {\n+\t\t\tms.StoreMessageInfo(mi)\n+\t\t}\n+\t\treturn ms\n+\t}\n+\treturn mi.MessageOf(x)\n+}\n+\n+// Deprecated: Use GetRequirementsRequest.ProtoReflect.Descriptor instead.\n+func (*GetRequirementsRequest) Descriptor() ([]byte, []int) {\n+\treturn file_api_proto_rawDescGZIP(), []int{12}\n+}\n+\n+func (x *GetRequirementsRequest) GetVersionKey() *VersionKey {\n+\tif x != nil {\n+\t\treturn x.VersionKey\n+\t}\n+\treturn nil\n+}\n+\n+// Requirements contains a system-specific representation of the requirements\n+// specified by a package version. Only one of its fields will be set.\n+type Requirements struct {\n+\tstate         protoimpl.MessageState\n+\tsizeCache     protoimpl.SizeCache\n+\tunknownFields protoimpl.UnknownFields\n+\n+\t// The NuGet-specific representation of the version's requirements.\n+\t//\n+\t// Note that the term \"dependency\" is used here to mean \"a single unresolved\n+\t// requirement\" to be consistent with how the term is used in the NuGet\n+\t// ecosystem. This is different to how it is used elsewhere in the deps.dev\n+\t// API.\n+\tNuget *Requirements_NuGet `protobuf:\"bytes,1,opt,name=nuget,proto3\" json:\"nuget,omitempty\"`\n+\t// The npm-specific representation of the version's requirements.\n+\t//\n+\t// Note that the term \"dependency\" is used here to mean \"a single unresolved\n+\t// requirement\" to be consistent with how the term is used in the npm\n+\t// ecosystem. This is different to how it is used elsewhere in the deps.dev\n+\t// API.\n+\tNpm *Requirements_NPM `protobuf:\"bytes,2,opt,name=npm,proto3\" json:\"npm,omitempty\"`\n+\t// The Maven-specific representation of the version's requirements.\n+\t//\n+\t// Note that the term \"dependency\" is used here to mean \"a single unresolved\n+\t// requirement\" to be consistent with how the term is used in the Maven\n+\t// ecosystem. This is different to how it is used elsewhere in the deps.dev\n+\t// API.\n+\t//\n+\t// This data is as it is declared in a version POM file. The data in parent\n+\t// POMs are not merged.\n+\t// Any string field may contain references to properties, and the properties\n+\t// are not interpolated.\n+\tMaven *Requirements_Maven `protobuf:\"bytes,3,opt,name=maven,proto3\" json:\"maven,omitempty\"`\n+}\n+\n+func (x *Requirements) Reset() {\n+\t*x = Requirements{}\n+\tif protoimpl.UnsafeEnabled {\n+\t\tmi := &file_api_proto_msgTypes[13]\n+\t\tms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))\n+\t\tms.StoreMessageInfo(mi)\n+\t}\n+}\n+\n+func (x *Requirements) String() string {\n+\treturn protoimpl.X.MessageStringOf(x)\n+}\n+\n+func (*Requirements) ProtoMessage() {}\n+\n+func (x *Requirements) ProtoReflect() protoreflect.Message {\n+\tmi := &file_api_proto_msgTypes[13]\n+\tif protoimpl.UnsafeEnabled && x != nil {\n+\t\tms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))\n+\t\tif ms.LoadMessageInfo() == nil {\n+\t\t\tms.StoreMessageInfo(mi)\n+\t\t}\n+\t\treturn ms\n+\t}\n+\treturn mi.MessageOf(x)\n+}\n+\n+// Deprecated: Use Requirements.ProtoReflect.Descriptor instead.\n+func (*Requirements) Descriptor() ([]byte, []int) {\n+\treturn file_api_proto_rawDescGZIP(), []int{13}\n+}\n+\n+func (x *Requirements) GetNuget() *Requirements_NuGet {\n+\tif x != nil {\n+\t\treturn x.Nuget\n+\t}\n+\treturn nil\n+}\n+\n+func (x *Requirements) GetNpm() *Requirements_NPM {\n+\tif x != nil {\n+\t\treturn x.Npm\n+\t}\n+\treturn nil\n+}\n+\n+func (x *Requirements) GetMaven() *Requirements_Maven {\n+\tif x != nil {\n+\t\treturn x.Maven\n+\t}\n+\treturn nil\n+}\n+\n+// GetDependenciesRequest identifies a package version for which to return\n+// dependencies.\n+type GetDependenciesRequest struct {\n+\tstate         protoimpl.MessageState\n+\tsizeCache     protoimpl.SizeCache\n+\tunknownFields protoimpl.UnknownFields\n+\n+\tVersionKey *VersionKey `protobuf:\"bytes,1,opt,name=version_key,json=versionKey,proto3\" json:\"version_key,omitempty\"`\n+}\n+\n+func (x *GetDependenciesRequest) Reset() {\n+\t*x = GetDependenciesRequest{}\n+\tif protoimpl.UnsafeEnabled {\n+\t\tmi := &file_api_proto_msgTypes[14]\n+\t\tms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))\n+\t\tms.StoreMessageInfo(mi)\n+\t}\n+}\n+\n+func (x *GetDependenciesRequest) String() string {\n+\treturn protoimpl.X.MessageStringOf(x)\n+}\n+\n+func (*GetDependenciesRequest) ProtoMessage() {}\n+\n+func (x *GetDependenciesRequest) ProtoReflect() protoreflect.Message {\n+\tmi := &file_api_proto_msgTypes[14]\n+\tif protoimpl.UnsafeEnabled && x != nil {\n+\t\tms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))\n+\t\tif ms.LoadMessageInfo() == nil {\n+\t\t\tms.StoreMessageInfo(mi)\n+\t\t}\n+\t\treturn ms\n+\t}\n+\treturn mi.MessageOf(x)\n+}\n+\n+// Deprecated: Use GetDependenciesRequest.ProtoReflect.Descriptor instead.\n+func (*GetDependenciesRequest) Descriptor() ([]byte, []int) {\n+\treturn file_api_proto_rawDescGZIP(), []int{14}\n+}\n+\n+func (x *GetDependenciesRequest) GetVersionKey() *VersionKey {\n+\tif x != nil {\n+\t\treturn x.VersionKey\n+\t}\n+\treturn nil\n+}\n+\n+// Dependencies holds a resolved dependency graph for a package version.\n+//\n+// The dependency graph should be similar to one produced by installing the\n+// package version on a generic 64-bit Linux system, with no other dependencies\n+// present. The precise meaning of this varies from system to system.\n+type Dependencies struct {\n+\tstate         protoimpl.MessageState\n+\tsizeCache     protoimpl.SizeCache\n+\tunknownFields protoimpl.UnknownFields\n+\n+\t// The nodes of the dependency graph. The first node is the root of the graph.\n+\tNodes []*Dependencies_Node `protobuf:\"bytes,1,rep,name=nodes,proto3\" json:\"nodes,omitempty\"`\n+\t// The edges of the dependency graph.\n+\tEdges []*Dependencies_Edge `protobuf:\"bytes,2,rep,name=edges,proto3\" json:\"edges,omitempty\"`\n+\t// Any error associated with the dependency graph that is not specific to a\n+\t// node. An error here may imply the graph as a whole is incorrect.\n+\t// This error message has no defined format and is intended for human\n+\t// consumption.\n+\tError string `protobuf:\"bytes,3,opt,name=error,proto3\" json:\"error,omitempty\"`\n+}\n+\n+func (x *Dependencies) Reset() {\n+\t*x = Dependencies{}\n+\tif protoimpl.UnsafeEnabled {\n+\t\tmi := &file_api_proto_msgTypes[15]\n+\t\tms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))\n+\t\tms.StoreMessageInfo(mi)\n+\t}\n+}\n+\n+func (x *Dependencies) String() string {\n+\treturn protoimpl.X.MessageStringOf(x)\n+}\n+\n+func (*Dependencies) ProtoMessage() {}\n+\n+func (x *Dependencies) ProtoReflect() protoreflect.Message {\n+\tmi := &file_api_proto_msgTypes[15]\n+\tif protoimpl.UnsafeEnabled && x != nil {\n+\t\tms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))\n+\t\tif ms.LoadMessageInfo() == nil {\n+\t\t\tms.StoreMessageInfo(mi)\n+\t\t}\n+\t\treturn ms\n+\t}\n+\treturn mi.MessageOf(x)\n+}\n+\n+// Deprecated: Use Dependencies.ProtoReflect.Descriptor instead.\n+func (*Dependencies) Descriptor() ([]byte, []int) {\n+\treturn file_api_proto_rawDescGZIP(), []int{15}\n+}\n+\n+func (x *Dependencies) GetNodes() []*Dependencies_Node {\n+\tif x != nil {\n+\t\treturn x.Nodes\n+\t}\n+\treturn nil\n+}\n+\n+func (x *Dependencies) GetEdges() []*Dependencies_Edge {\n+\tif x != nil {\n+\t\treturn x.Edges\n+\t}\n+\treturn nil\n+}\n+\n+func (x *Dependencies) GetError() string {\n+\tif x != nil {\n+\t\treturn x.Error\n+\t}\n+\treturn \"\"\n+}\n+\n+// GetProjectRequest identifies a project for which to return information.\n+type GetProjectRequest struct {\n+\tstate         protoimpl.MessageState\n+\tsizeCache     protoimpl.SizeCache\n+\tunknownFields protoimpl.UnknownFields\n+\n+\tProjectKey *ProjectKey `protobuf:\"bytes,1,opt,name=project_key,json=projectKey,proto3\" json:\"project_key,omitempty\"`\n+}\n+\n+func (x *GetProjectRequest) Reset() {\n+\t*x = GetProjectRequest{}\n+\tif protoimpl.UnsafeEnabled {\n+\t\tmi := &file_api_proto_msgTypes[16]\n+\t\tms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))\n+\t\tms.StoreMessageInfo(mi)\n+\t}\n+}\n+\n+func (x *GetProjectRequest) String() string {\n+\treturn protoimpl.X.MessageStringOf(x)\n+}\n+\n+func (*GetProjectRequest) ProtoMessage() {}\n+\n+func (x *GetProjectRequest) ProtoReflect() protoreflect.Message {\n+\tmi := &file_api_proto_msgTypes[16]\n+\tif protoimpl.UnsafeEnabled && x != nil {\n+\t\tms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))\n+\t\tif ms.LoadMessageInfo() == nil {\n+\t\t\tms.StoreMessageInfo(mi)\n+\t\t}\n+\t\treturn ms\n+\t}\n+\treturn mi.MessageOf(x)\n+}\n+\n+// Deprecated: Use GetProjectRequest.ProtoReflect.Descriptor instead.\n+func (*GetProjectRequest) Descriptor() ([]byte, []int) {\n+\treturn file_api_proto_rawDescGZIP(), []int{16}\n+}\n+\n+func (x *GetProjectRequest) GetProjectKey() *ProjectKey {\n+\tif x != nil {\n+\t\treturn x.ProjectKey\n+\t}\n+\treturn nil\n+}\n+\n+// Project holds information about a project hosted by GitHub, GitLab, or\n+// Bitbucket.\n+type Project struct {\n+\tstate         protoimpl.MessageState\n+\tsizeCache     protoimpl.SizeCache\n+\tunknownFields protoimpl.UnknownFields\n+\n+\t// The identifier for the project. Note that this may differ from the\n+\t// identifier in the request, due to canonicalization.\n+\tProjectKey *ProjectKey `protobuf:\"bytes,1,opt,name=project_key,json=projectKey,proto3\" json:\"project_key,omitempty\"`\n+\t// The number of open issues reported by the project host.\n+\t// Only available for GitHub and GitLab.\n+\tOpenIssuesCount int32 `protobuf:\"varint,2,opt,name=open_issues_count,json=openIssuesCount,proto3\" json:\"open_issues_count,omitempty\"`\n+\t// The number of stars reported by the project host.\n+\t// Only available for GitHub and GitLab.\n+\tStarsCount int32 `protobuf:\"varint,3,opt,name=stars_count,json=starsCount,proto3\" json:\"stars_count,omitempty\"`\n+\t// The number of forks reported by the project host.\n+\t// Only available for GitHub and GitLab.\n+\tForksCount int32 `protobuf:\"varint,4,opt,name=forks_count,json=forksCount,proto3\" json:\"forks_count,omitempty\"`\n+\t// The license reported by the project host.\n+\tLicense string `protobuf:\"bytes,5,opt,name=license,proto3\" json:\"license,omitempty\"`\n+\t// The description reported by the project host.\n+\tDescription string `protobuf:\"bytes,6,opt,name=description,proto3\" json:\"description,omitempty\"`\n+\t// The homepage reported by the project host.\n+\tHomepage string `protobuf:\"bytes,7,opt,name=homepage,proto3\" json:\"homepage,omitempty\"`\n+\t// An [OpenSSF Scorecard](https://github.com/ossf/scorecard) for the project,\n+\t// if one is available.\n+\tScorecard *Project_Scorecard `protobuf:\"bytes,8,opt,name=scorecard,proto3\" json:\"scorecard,omitempty\"`\n+\t// Details of this project's testing by the\n+\t// [OSS-Fuzz service](https://google.github.io/oss-fuzz/).\n+\t// Only set if the project is tested by OSS-Fuzz.\n+\tOssFuzz *Project_OSSFuzzDetails `protobuf:\"bytes,9,opt,name=oss_fuzz,json=ossFuzz,proto3\" json:\"oss_fuzz,omitempty\"`\n+}\n+\n+func (x *Project) Reset() {\n+\t*x = Project{}\n+\tif protoimpl.UnsafeEnabled {\n+\t\tmi := &file_api_proto_msgTypes[17]\n+\t\tms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))\n+\t\tms.StoreMessageInfo(mi)\n+\t}\n+}\n+\n+func (x *Project) String() string {\n+\treturn protoimpl.X.MessageStringOf(x)\n+}\n+\n+func (*Project) ProtoMessage() {}\n+\n+func (x *Project) ProtoReflect() protoreflect.Message {\n+\tmi := &file_api_proto_msgTypes[17]\n+\tif protoimpl.UnsafeEnabled && x != nil {\n+\t\tms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))\n+\t\tif ms.LoadMessageInfo() == nil {\n+\t\t\tms.StoreMessageInfo(mi)\n+\t\t}\n+\t\treturn ms\n+\t}\n+\treturn mi.MessageOf(x)\n+}\n+\n+// Deprecated: Use Project.ProtoReflect.Descriptor instead.\n+func (*Project) Descriptor() ([]byte, []int) {\n+\treturn file_api_proto_rawDescGZIP(), []int{17}\n+}\n+\n+func (x *Project) GetProjectKey() *ProjectKey {\n+\tif x != nil {\n+\t\treturn x.ProjectKey\n+\t}\n+\treturn nil\n+}\n+\n+func (x *Project) GetOpenIssuesCount() int32 {\n+\tif x != nil {\n+\t\treturn x.OpenIssuesCount\n+\t}\n+\treturn 0\n+}\n+\n+func (x *Project) GetStarsCount() int32 {\n+\tif x != nil {\n+\t\treturn x.StarsCount\n+\t}\n+\treturn 0\n+}\n+\n+func (x *Project) GetForksCount() int32 {\n+\tif x != nil {\n+\t\treturn x.ForksCount\n+\t}\n+\treturn 0\n+}\n+\n+func (x *Project) GetLicense() string {\n+\tif x != nil {\n+\t\treturn x.License\n+\t}\n+\treturn \"\"\n+}\n+\n+func (x *Project) GetDescription() string {\n+\tif x != nil {\n+\t\treturn x.Description\n+\t}\n+\treturn \"\"\n+}\n+\n+func (x *Project) GetHomepage() string {\n+\tif x != nil {\n+\t\treturn x.Homepage\n+\t}\n+\treturn \"\"\n+}\n+\n+func (x *Project) GetScorecard() *Project_Scorecard {\n+\tif x != nil {\n+\t\treturn x.Scorecard\n+\t}\n+\treturn nil\n+}\n+\n+func (x *Project) GetOssFuzz() *Project_OSSFuzzDetails {\n+\tif x != nil {\n+\t\treturn x.OssFuzz\n+\t}\n+\treturn nil\n+}\n+\n+type GetProjectPackageVersionsRequest struct {\n+\tstate         protoimpl.MessageState\n+\tsizeCache     protoimpl.SizeCache\n+\tunknownFields protoimpl.UnknownFields\n+\n+\tProjectKey *ProjectKey `protobuf:\"bytes,1,opt,name=project_key,json=projectKey,proto3\" json:\"project_key,omitempty\"`\n+}\n+\n+func (x *GetProjectPackageVersionsRequest) Reset() {\n+\t*x = GetProjectPackageVersionsRequest{}\n+\tif protoimpl.UnsafeEnabled {\n+\t\tmi := &file_api_proto_msgTypes[18]\n+\t\tms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))\n+\t\tms.StoreMessageInfo(mi)\n+\t}\n+}\n+\n+func (x *GetProjectPackageVersionsRequest) String() string {\n+\treturn protoimpl.X.MessageStringOf(x)\n+}\n+\n+func (*GetProjectPackageVersionsRequest) ProtoMessage() {}\n+\n+func (x *GetProjectPackageVersionsRequest) ProtoReflect() protoreflect.Message {\n+\tmi := &file_api_proto_msgTypes[18]\n+\tif protoimpl.UnsafeEnabled && x != nil {\n+\t\tms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))\n+\t\tif ms.LoadMessageInfo() == nil {\n+\t\t\tms.StoreMessageInfo(mi)\n+\t\t}\n+\t\treturn ms\n+\t}\n+\treturn mi.MessageOf(x)\n+}\n+\n+// Deprecated: Use GetProjectPackageVersionsRequest.ProtoReflect.Descriptor instead.\n+func (*GetProjectPackageVersionsRequest) Descriptor() ([]byte, []int) {\n+\treturn file_api_proto_rawDescGZIP(), []int{18}\n+}\n+\n+func (x *GetProjectPackageVersionsRequest) GetProjectKey() *ProjectKey {\n+\tif x != nil {\n+\t\treturn x.ProjectKey\n+\t}\n+\treturn nil\n+}\n+\n+type ProjectPackageVersions struct {\n+\tstate         protoimpl.MessageState\n+\tsizeCache     protoimpl.SizeCache\n+\tunknownFields protoimpl.UnknownFields\n+\n+\t// The versions that were built from the source code contained in this\n+\t// project.\n+\tVersions []*ProjectPackageVersions_Version `protobuf:\"bytes,1,rep,name=versions,proto3\" json:\"versions,omitempty\"`\n+}\n+\n+func (x *ProjectPackageVersions) Reset() {\n+\t*x = ProjectPackageVersions{}\n+\tif protoimpl.UnsafeEnabled {\n+\t\tmi := &file_api_proto_msgTypes[19]\n+\t\tms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))\n+\t\tms.StoreMessageInfo(mi)\n+\t}\n+}\n+\n+func (x *ProjectPackageVersions) String() string {\n+\treturn protoimpl.X.MessageStringOf(x)\n+}\n+\n+func (*ProjectPackageVersions) ProtoMessage() {}\n+\n+func (x *ProjectPackageVersions) ProtoReflect() protoreflect.Message {\n+\tmi := &file_api_proto_msgTypes[19]\n+\tif protoimpl.UnsafeEnabled && x != nil {\n+\t\tms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))\n+\t\tif ms.LoadMessageInfo() == nil {\n+\t\t\tms.StoreMessageInfo(mi)\n+\t\t}\n+\t\treturn ms\n+\t}\n+\treturn mi.MessageOf(x)\n+}\n+\n+// Deprecated: Use ProjectPackageVersions.ProtoReflect.Descriptor instead.\n+func (*ProjectPackageVersions) Descriptor() ([]byte, []int) {\n+\treturn file_api_proto_rawDescGZIP(), []int{19}\n+}\n+\n+func (x *ProjectPackageVersions) GetVersions() []*ProjectPackageVersions_Version {\n+\tif x != nil {\n+\t\treturn x.Versions\n+\t}\n+\treturn nil\n+}\n+\n+// GetAdvisoryRequest identifies a security advisory for which to return\n+// information.\n+type GetAdvisoryRequest struct {\n+\tstate         protoimpl.MessageState\n+\tsizeCache     protoimpl.SizeCache\n+\tunknownFields protoimpl.UnknownFields\n+\n+\tAdvisoryKey *AdvisoryKey `protobuf:\"bytes,1,opt,name=advisory_key,json=advisoryKey,proto3\" json:\"advisory_key,omitempty\"`\n+}\n+\n+func (x *GetAdvisoryRequest) Reset() {\n+\t*x = GetAdvisoryRequest{}\n+\tif protoimpl.UnsafeEnabled {\n+\t\tmi := &file_api_proto_msgTypes[20]\n+\t\tms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))\n+\t\tms.StoreMessageInfo(mi)\n+\t}\n+}\n+\n+func (x *GetAdvisoryRequest) String() string {\n+\treturn protoimpl.X.MessageStringOf(x)\n+}\n+\n+func (*GetAdvisoryRequest) ProtoMessage() {}\n+\n+func (x *GetAdvisoryRequest) ProtoReflect() protoreflect.Message {\n+\tmi := &file_api_proto_msgTypes[20]\n+\tif protoimpl.UnsafeEnabled && x != nil {\n+\t\tms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))\n+\t\tif ms.LoadMessageInfo() == nil {\n+\t\t\tms.StoreMessageInfo(mi)\n+\t\t}\n+\t\treturn ms\n+\t}\n+\treturn mi.MessageOf(x)\n+}\n+\n+// Deprecated: Use GetAdvisoryRequest.ProtoReflect.Descriptor instead.\n+func (*GetAdvisoryRequest) Descriptor() ([]byte, []int) {\n+\treturn file_api_proto_rawDescGZIP(), []int{20}\n+}\n+\n+func (x *GetAdvisoryRequest) GetAdvisoryKey() *AdvisoryKey {\n+\tif x != nil {\n+\t\treturn x.AdvisoryKey\n+\t}\n+\treturn nil\n+}\n+\n+// Advisory holds information about a security advisory hosted by OSV.\n+type Advisory struct {\n+\tstate         protoimpl.MessageState\n+\tsizeCache     protoimpl.SizeCache\n+\tunknownFields protoimpl.UnknownFields\n+\n+\t// The identifier for the security advisory. Note that this may differ from\n+\t// the identifier in the request, due to canonicalization.\n+\tAdvisoryKey *AdvisoryKey `protobuf:\"bytes,1,opt,name=advisory_key,json=advisoryKey,proto3\" json:\"advisory_key,omitempty\"`\n+\t// The URL of the security advisory.\n+\tUrl string `protobuf:\"bytes,2,opt,name=url,proto3\" json:\"url,omitempty\"`\n+\t// A brief human-readable description.\n+\tTitle string `protobuf:\"bytes,3,opt,name=title,proto3\" json:\"title,omitempty\"`\n+\t// Other identifiers used for the advisory, including CVEs.\n+\tAliases []string `protobuf:\"bytes,4,rep,name=aliases,proto3\" json:\"aliases,omitempty\"`\n+\t// The severity of the advisory as a CVSS v3 score in the range [0,10].\n+\t// A higher score represents greater severity.\n+\tCvss3Score float32 `protobuf:\"fixed32,5,opt,name=cvss3_score,json=cvss3Score,proto3\" json:\"cvss3_score,omitempty\"`\n+\t// The severity of the advisory as a CVSS v3 vector string.\n+\tCvss3Vector string `protobuf:\"bytes,6,opt,name=cvss3_vector,json=cvss3Vector,proto3\" json:\"cvss3_vector,omitempty\"`\n+}\n+\n+func (x *Advisory) Reset() {\n+\t*x = Advisory{}\n+\tif protoimpl.UnsafeEnabled {\n+\t\tmi := &file_api_proto_msgTypes[21]\n+\t\tms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))\n+\t\tms.StoreMessageInfo(mi)\n+\t}\n+}\n+\n+func (x *Advisory) String() string {\n+\treturn protoimpl.X.MessageStringOf(x)\n+}\n+\n+func (*Advisory) ProtoMessage() {}\n+\n+func (x *Advisory) ProtoReflect() protoreflect.Message {\n+\tmi := &file_api_proto_msgTypes[21]\n+\tif protoimpl.UnsafeEnabled && x != nil {\n+\t\tms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))\n+\t\tif ms.LoadMessageInfo() == nil {\n+\t\t\tms.StoreMessageInfo(mi)\n+\t\t}\n+\t\treturn ms\n+\t}\n+\treturn mi.MessageOf(x)\n+}\n+\n+// Deprecated: Use Advisory.ProtoReflect.Descriptor instead.\n+func (*Advisory) Descriptor() ([]byte, []int) {\n+\treturn file_api_proto_rawDescGZIP(), []int{21}\n+}\n+\n+func (x *Advisory) GetAdvisoryKey() *AdvisoryKey {\n+\tif x != nil {\n+\t\treturn x.AdvisoryKey\n+\t}\n+\treturn nil\n+}\n+\n+func (x *Advisory) GetUrl() string {\n+\tif x != nil {\n+\t\treturn x.Url\n+\t}\n+\treturn \"\"\n+}\n+\n+func (x *Advisory) GetTitle() string {\n+\tif x != nil {\n+\t\treturn x.Title\n+\t}\n+\treturn \"\"\n+}\n+\n+func (x *Advisory) GetAliases() []string {\n+\tif x != nil {\n+\t\treturn x.Aliases\n+\t}\n+\treturn nil\n+}\n+\n+func (x *Advisory) GetCvss3Score() float32 {\n+\tif x != nil {\n+\t\treturn x.Cvss3Score\n+\t}\n+\treturn 0\n+}\n+\n+func (x *Advisory) GetCvss3Vector() string {\n+\tif x != nil {\n+\t\treturn x.Cvss3Vector\n+\t}\n+\treturn \"\"\n+}\n+\n+// QueryRequest identifies package versions for which to return information.\n+// At least one of its fields must be set, and both fields may be set to narrow\n+// the results.\n+type QueryRequest struct {\n+\tstate         protoimpl.MessageState\n+\tsizeCache     protoimpl.SizeCache\n+\tunknownFields protoimpl.UnknownFields\n+\n+\t// A content hash for an artifact associated with a package version, such as a\n+\t// JAR file. Currently supported for npm, Cargo, Maven, and NuGet. Note that\n+\t// hashes and package versions have a many-to-many relationship.\n+\tHash *Hash `protobuf:\"bytes,1,opt,name=hash,proto3\" json:\"hash,omitempty\"`\n+\t// The name of the package version.\n+\tVersionKey *VersionKey `protobuf:\"bytes,2,opt,name=version_key,json=versionKey,proto3\" json:\"version_key,omitempty\"`\n+}\n+\n+func (x *QueryRequest) Reset() {\n+\t*x = QueryRequest{}\n+\tif protoimpl.UnsafeEnabled {\n+\t\tmi := &file_api_proto_msgTypes[22]\n+\t\tms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))\n+\t\tms.StoreMessageInfo(mi)\n+\t}\n+}\n+\n+func (x *QueryRequest) String() string {\n+\treturn protoimpl.X.MessageStringOf(x)\n+}\n+\n+func (*QueryRequest) ProtoMessage() {}\n+\n+func (x *QueryRequest) ProtoReflect() protoreflect.Message {\n+\tmi := &file_api_proto_msgTypes[22]\n+\tif protoimpl.UnsafeEnabled && x != nil {\n+\t\tms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))\n+\t\tif ms.LoadMessageInfo() == nil {\n+\t\t\tms.StoreMessageInfo(mi)\n+\t\t}\n+\t\treturn ms\n+\t}\n+\treturn mi.MessageOf(x)\n+}\n+\n+// Deprecated: Use QueryRequest.ProtoReflect.Descriptor instead.\n+func (*QueryRequest) Descriptor() ([]byte, []int) {\n+\treturn file_api_proto_rawDescGZIP(), []int{22}\n+}\n+\n+func (x *QueryRequest) GetHash() *Hash {\n+\tif x != nil {\n+\t\treturn x.Hash\n+\t}\n+\treturn nil\n+}\n+\n+func (x *QueryRequest) GetVersionKey() *VersionKey {\n+\tif x != nil {\n+\t\treturn x.VersionKey\n+\t}\n+\treturn nil\n+}\n+\n+// QueryResult holds information about package versions matching the query.\n+type QueryResult struct {\n+\tstate         protoimpl.MessageState\n+\tsizeCache     protoimpl.SizeCache\n+\tunknownFields protoimpl.UnknownFields\n+\n+\t// Results matching the query. At most 1000 results are returned.\n+\tResults []*QueryResult_Result `protobuf:\"bytes,1,rep,name=results,proto3\" json:\"results,omitempty\"`\n+}\n+\n+func (x *QueryResult) Reset() {\n+\t*x = QueryResult{}\n+\tif protoimpl.UnsafeEnabled {\n+\t\tmi := &file_api_proto_msgTypes[23]\n+\t\tms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))\n+\t\tms.StoreMessageInfo(mi)\n+\t}\n+}\n+\n+func (x *QueryResult) String() string {\n+\treturn protoimpl.X.MessageStringOf(x)\n+}\n+\n+func (*QueryResult) ProtoMessage() {}\n+\n+func (x *QueryResult) ProtoReflect() protoreflect.Message {\n+\tmi := &file_api_proto_msgTypes[23]\n+\tif protoimpl.UnsafeEnabled && x != nil {\n+\t\tms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))\n+\t\tif ms.LoadMessageInfo() == nil {\n+\t\t\tms.StoreMessageInfo(mi)\n+\t\t}\n+\t\treturn ms\n+\t}\n+\treturn mi.MessageOf(x)\n+}\n+\n+// Deprecated: Use QueryResult.ProtoReflect.Descriptor instead.\n+func (*QueryResult) Descriptor() ([]byte, []int) {\n+\treturn file_api_proto_rawDescGZIP(), []int{23}\n+}\n+\n+func (x *QueryResult) GetResults() []*QueryResult_Result {\n+\tif x != nil {\n+\t\treturn x.Results\n+\t}\n+\treturn nil\n+}\n+\n+type Package_Version struct {\n+\tstate         protoimpl.MessageState\n+\tsizeCache     protoimpl.SizeCache\n+\tunknownFields protoimpl.UnknownFields\n+\n+\t// The name of the version. Note that the package name may differ from the\n+\t// name in the request, due to canonicalization.\n+\tVersionKey *VersionKey `protobuf:\"bytes,1,opt,name=version_key,json=versionKey,proto3\" json:\"version_key,omitempty\"`\n+\t// The time when this package version was published, if available, as\n+\t// reported by the package management authority.\n+\tPublishedAt *timestamppb.Timestamp `protobuf:\"bytes,3,opt,name=published_at,json=publishedAt,proto3\" json:\"published_at,omitempty\"`\n+\t// If true, this is the default version of the package: the version that is\n+\t// installed when no version is specified. The precise meaning of this is\n+\t// system-specific, but it is commonly the version with the greatest\n+\t// version number, ignoring pre-release versions.\n+\tIsDefault bool `protobuf:\"varint,2,opt,name=is_default,json=isDefault,proto3\" json:\"is_default,omitempty\"`\n+}\n+\n+func (x *Package_Version) Reset() {\n+\t*x = Package_Version{}\n+\tif protoimpl.UnsafeEnabled {\n+\t\tmi := &file_api_proto_msgTypes[24]\n+\t\tms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))\n+\t\tms.StoreMessageInfo(mi)\n+\t}\n+}\n+\n+func (x *Package_Version) String() string {\n+\treturn protoimpl.X.MessageStringOf(x)\n+}\n+\n+func (*Package_Version) ProtoMessage() {}\n+\n+func (x *Package_Version) ProtoReflect() protoreflect.Message {\n+\tmi := &file_api_proto_msgTypes[24]\n+\tif protoimpl.UnsafeEnabled && x != nil {\n+\t\tms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))\n+\t\tif ms.LoadMessageInfo() == nil {\n+\t\t\tms.StoreMessageInfo(mi)\n+\t\t}\n+\t\treturn ms\n+\t}\n+\treturn mi.MessageOf(x)\n+}\n+\n+// Deprecated: Use Package_Version.ProtoReflect.Descriptor instead.\n+func (*Package_Version) Descriptor() ([]byte, []int) {\n+\treturn file_api_proto_rawDescGZIP(), []int{9, 0}\n+}\n+\n+func (x *Package_Version) GetVersionKey() *VersionKey {\n+\tif x != nil {\n+\t\treturn x.VersionKey\n+\t}\n+\treturn nil\n+}\n+\n+func (x *Package_Version) GetPublishedAt() *timestamppb.Timestamp {\n+\tif x != nil {\n+\t\treturn x.PublishedAt\n+\t}\n+\treturn nil\n+}\n+\n+func (x *Package_Version) GetIsDefault() bool {\n+\tif x != nil {\n+\t\treturn x.IsDefault\n+\t}\n+\treturn false\n+}\n+\n+type Version_Project struct {\n+\tstate         protoimpl.MessageState\n+\tsizeCache     protoimpl.SizeCache\n+\tunknownFields protoimpl.UnknownFields\n+\n+\t// The identifier for the project.\n+\tProjectKey *ProjectKey `protobuf:\"bytes,1,opt,name=project_key,json=projectKey,proto3\" json:\"project_key,omitempty\"`\n+\t// How the mapping between project and package version was discovered.\n+\tRelationProvenance ProjectRelationProvenance `protobuf:\"varint,2,opt,name=relation_provenance,json=relationProvenance,proto3,enum=deps_dev.v3.ProjectRelationProvenance\" json:\"relation_provenance,omitempty\"`\n+\t// What the relationship between the project and the package version is.\n+\tRelationType ProjectRelationType `protobuf:\"varint,3,opt,name=relation_type,json=relationType,proto3,enum=deps_dev.v3.ProjectRelationType\" json:\"relation_type,omitempty\"`\n+}\n+\n+func (x *Version_Project) Reset() {\n+\t*x = Version_Project{}\n+\tif protoimpl.UnsafeEnabled {\n+\t\tmi := &file_api_proto_msgTypes[25]\n+\t\tms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))\n+\t\tms.StoreMessageInfo(mi)\n+\t}\n+}\n+\n+func (x *Version_Project) String() string {\n+\treturn protoimpl.X.MessageStringOf(x)\n+}\n+\n+func (*Version_Project) ProtoMessage() {}\n+\n+func (x *Version_Project) ProtoReflect() protoreflect.Message {\n+\tmi := &file_api_proto_msgTypes[25]\n+\tif protoimpl.UnsafeEnabled && x != nil {\n+\t\tms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))\n+\t\tif ms.LoadMessageInfo() == nil {\n+\t\t\tms.StoreMessageInfo(mi)\n+\t\t}\n+\t\treturn ms\n+\t}\n+\treturn mi.MessageOf(x)\n+}\n+\n+// Deprecated: Use Version_Project.ProtoReflect.Descriptor instead.\n+func (*Version_Project) Descriptor() ([]byte, []int) {\n+\treturn file_api_proto_rawDescGZIP(), []int{11, 0}\n+}\n+\n+func (x *Version_Project) GetProjectKey() *ProjectKey {\n+\tif x != nil {\n+\t\treturn x.ProjectKey\n+\t}\n+\treturn nil\n+}\n+\n+func (x *Version_Project) GetRelationProvenance() ProjectRelationProvenance {\n+\tif x != nil {\n+\t\treturn x.RelationProvenance\n+\t}\n+\treturn ProjectRelationProvenance_UNKNOWN_PROJECT_RELATION_PROVENANCE\n+}\n+\n+func (x *Version_Project) GetRelationType() ProjectRelationType {\n+\tif x != nil {\n+\t\treturn x.RelationType\n+\t}\n+\treturn ProjectRelationType_UNKNOWN_PROJECT_RELATION_TYPE\n+}\n+\n+type Requirements_NuGet struct {\n+\tstate         protoimpl.MessageState\n+\tsizeCache     protoimpl.SizeCache\n+\tunknownFields protoimpl.UnknownFields\n+\n+\t// The requirements grouped by target framework.\n+\tDependencyGroups []*Requirements_NuGet_DependencyGroup `protobuf:\"bytes,1,rep,name=dependency_groups,json=dependencyGroups,proto3\" json:\"dependency_groups,omitempty\"`\n+}\n+\n+func (x *Requirements_NuGet) Reset() {\n+\t*x = Requirements_NuGet{}\n+\tif protoimpl.UnsafeEnabled {\n+\t\tmi := &file_api_proto_msgTypes[26]\n+\t\tms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))\n+\t\tms.StoreMessageInfo(mi)\n+\t}\n+}\n+\n+func (x *Requirements_NuGet) String() string {\n+\treturn protoimpl.X.MessageStringOf(x)\n+}\n+\n+func (*Requirements_NuGet) ProtoMessage() {}\n+\n+func (x *Requirements_NuGet) ProtoReflect() protoreflect.Message {\n+\tmi := &file_api_proto_msgTypes[26]\n+\tif protoimpl.UnsafeEnabled && x != nil {\n+\t\tms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))\n+\t\tif ms.LoadMessageInfo() == nil {\n+\t\t\tms.StoreMessageInfo(mi)\n+\t\t}\n+\t\treturn ms\n+\t}\n+\treturn mi.MessageOf(x)\n+}\n+\n+// Deprecated: Use Requirements_NuGet.ProtoReflect.Descriptor instead.\n+func (*Requirements_NuGet) Descriptor() ([]byte, []int) {\n+\treturn file_api_proto_rawDescGZIP(), []int{13, 0}\n+}\n+\n+func (x *Requirements_NuGet) GetDependencyGroups() []*Requirements_NuGet_DependencyGroup {\n+\tif x != nil {\n+\t\treturn x.DependencyGroups\n+\t}\n+\treturn nil\n+}\n+\n+type Requirements_NPM struct {\n+\tstate         protoimpl.MessageState\n+\tsizeCache     protoimpl.SizeCache\n+\tunknownFields protoimpl.UnknownFields\n+\n+\t// The dependency-related fields declared in the requested package version's\n+\t// package.json.\n+\tDependencies *Requirements_NPM_Dependencies `protobuf:\"bytes,1,opt,name=dependencies,proto3\" json:\"dependencies,omitempty\"`\n+\t// Contents of any additional package.json files found inside the\n+\t// \"node_modules\" folder of the version's tarball, including nested\n+\t// \"node_modules\".\n+\tBundled []*Requirements_NPM_Bundle `protobuf:\"bytes,2,rep,name=bundled,proto3\" json:\"bundled,omitempty\"`\n+}\n+\n+func (x *Requirements_NPM) Reset() {\n+\t*x = Requirements_NPM{}\n+\tif protoimpl.UnsafeEnabled {\n+\t\tmi := &file_api_proto_msgTypes[27]\n+\t\tms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))\n+\t\tms.StoreMessageInfo(mi)\n+\t}\n+}\n+\n+func (x *Requirements_NPM) String() string {\n+\treturn protoimpl.X.MessageStringOf(x)\n+}\n+\n+func (*Requirements_NPM) ProtoMessage() {}\n+\n+func (x *Requirements_NPM) ProtoReflect() protoreflect.Message {\n+\tmi := &file_api_proto_msgTypes[27]\n+\tif protoimpl.UnsafeEnabled && x != nil {\n+\t\tms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))\n+\t\tif ms.LoadMessageInfo() == nil {\n+\t\t\tms.StoreMessageInfo(mi)\n+\t\t}\n+\t\treturn ms\n+\t}\n+\treturn mi.MessageOf(x)\n+}\n+\n+// Deprecated: Use Requirements_NPM.ProtoReflect.Descriptor instead.\n+func (*Requirements_NPM) Descriptor() ([]byte, []int) {\n+\treturn file_api_proto_rawDescGZIP(), []int{13, 1}\n+}\n+\n+func (x *Requirements_NPM) GetDependencies() *Requirements_NPM_Dependencies {\n+\tif x != nil {\n+\t\treturn x.Dependencies\n+\t}\n+\treturn nil\n+}\n+\n+func (x *Requirements_NPM) GetBundled() []*Requirements_NPM_Bundle {\n+\tif x != nil {\n+\t\treturn x.Bundled\n+\t}\n+\treturn nil\n+}\n+\n+type Requirements_Maven struct {\n+\tstate         protoimpl.MessageState\n+\tsizeCache     protoimpl.SizeCache\n+\tunknownFields protoimpl.UnknownFields\n+\n+\t// The direct parent of a package version.\n+\tParent *VersionKey `protobuf:\"bytes,1,opt,name=parent,proto3\" json:\"parent,omitempty\"`\n+\t// The list of dependencies.\n+\tDependencies []*Requirements_Maven_Dependency `protobuf:\"bytes,2,rep,name=dependencies,proto3\" json:\"dependencies,omitempty\"`\n+\t// The list of dependency management.\n+\t// The format is the same as dependencies.\n+\tDependencyManagement []*Requirements_Maven_Dependency `protobuf:\"bytes,3,rep,name=dependency_management,json=dependencyManagement,proto3\" json:\"dependency_management,omitempty\"`\n+\t// The list of properties, used to resolve placeholders.\n+\tProperties []*Requirements_Maven_Property `protobuf:\"bytes,4,rep,name=properties,proto3\" json:\"properties,omitempty\"`\n+\t// The list of repositories.\n+\tRepositories []*Requirements_Maven_Repository `protobuf:\"bytes,5,rep,name=repositories,proto3\" json:\"repositories,omitempty\"`\n+\t// The list of profiles.\n+\tProfiles []*Requirements_Maven_Profile `protobuf:\"bytes,6,rep,name=profiles,proto3\" json:\"profiles,omitempty\"`\n+}\n+\n+func (x *Requirements_Maven) Reset() {\n+\t*x = Requirements_Maven{}\n+\tif protoimpl.UnsafeEnabled {\n+\t\tmi := &file_api_proto_msgTypes[28]\n+\t\tms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))\n+\t\tms.StoreMessageInfo(mi)\n+\t}\n+}\n+\n+func (x *Requirements_Maven) String() string {\n+\treturn protoimpl.X.MessageStringOf(x)\n+}\n+\n+func (*Requirements_Maven) ProtoMessage() {}\n+\n+func (x *Requirements_Maven) ProtoReflect() protoreflect.Message {\n+\tmi := &file_api_proto_msgTypes[28]\n+\tif protoimpl.UnsafeEnabled && x != nil {\n+\t\tms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))\n+\t\tif ms.LoadMessageInfo() == nil {\n+\t\t\tms.StoreMessageInfo(mi)\n+\t\t}\n+\t\treturn ms\n+\t}\n+\treturn mi.MessageOf(x)\n+}\n+\n+// Deprecated: Use Requirements_Maven.ProtoReflect.Descriptor instead.\n+func (*Requirements_Maven) Descriptor() ([]byte, []int) {\n+\treturn file_api_proto_rawDescGZIP(), []int{13, 2}\n+}\n+\n+func (x *Requirements_Maven) GetParent() *VersionKey {\n+\tif x != nil {\n+\t\treturn x.Parent\n+\t}\n+\treturn nil\n+}\n+\n+func (x *Requirements_Maven) GetDependencies() []*Requirements_Maven_Dependency {\n+\tif x != nil {\n+\t\treturn x.Dependencies\n+\t}\n+\treturn nil\n+}\n+\n+func (x *Requirements_Maven) GetDependencyManagement() []*Requirements_Maven_Dependency {\n+\tif x != nil {\n+\t\treturn x.DependencyManagement\n+\t}\n+\treturn nil\n+}\n+\n+func (x *Requirements_Maven) GetProperties() []*Requirements_Maven_Property {\n+\tif x != nil {\n+\t\treturn x.Properties\n+\t}\n+\treturn nil\n+}\n+\n+func (x *Requirements_Maven) GetRepositories() []*Requirements_Maven_Repository {\n+\tif x != nil {\n+\t\treturn x.Repositories\n+\t}\n+\treturn nil\n+}\n+\n+func (x *Requirements_Maven) GetProfiles() []*Requirements_Maven_Profile {\n+\tif x != nil {\n+\t\treturn x.Profiles\n+\t}\n+\treturn nil\n+}\n+\n+type Requirements_NuGet_DependencyGroup struct {\n+\tstate         protoimpl.MessageState\n+\tsizeCache     protoimpl.SizeCache\n+\tunknownFields protoimpl.UnknownFields\n+\n+\t// The target framework that this dependency group is for.\n+\tTargetFramework string `protobuf:\"bytes,1,opt,name=target_framework,json=targetFramework,proto3\" json:\"target_framework,omitempty\"`\n+\t// The requirements belonging to this dependency group.\n+\tDependencies []*Requirements_NuGet_DependencyGroup_Dependency `protobuf:\"bytes,2,rep,name=dependencies,proto3\" json:\"dependencies,omitempty\"`\n+}\n+\n+func (x *Requirements_NuGet_DependencyGroup) Reset() {\n+\t*x = Requirements_NuGet_DependencyGroup{}\n+\tif protoimpl.UnsafeEnabled {\n+\t\tmi := &file_api_proto_msgTypes[29]\n+\t\tms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))\n+\t\tms.StoreMessageInfo(mi)\n+\t}\n+}\n+\n+func (x *Requirements_NuGet_DependencyGroup) String() string {\n+\treturn protoimpl.X.MessageStringOf(x)\n+}\n+\n+func (*Requirements_NuGet_DependencyGroup) ProtoMessage() {}\n+\n+func (x *Requirements_NuGet_DependencyGroup) ProtoReflect() protoreflect.Message {\n+\tmi := &file_api_proto_msgTypes[29]\n+\tif protoimpl.UnsafeEnabled && x != nil {\n+\t\tms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))\n+\t\tif ms.LoadMessageInfo() == nil {\n+\t\t\tms.StoreMessageInfo(mi)\n+\t\t}\n+\t\treturn ms\n+\t}\n+\treturn mi.MessageOf(x)\n+}\n+\n+// Deprecated: Use Requirements_NuGet_DependencyGroup.ProtoReflect.Descriptor instead.\n+func (*Requirements_NuGet_DependencyGroup) Descriptor() ([]byte, []int) {\n+\treturn file_api_proto_rawDescGZIP(), []int{13, 0, 0}\n+}\n+\n+func (x *Requirements_NuGet_DependencyGroup) GetTargetFramework() string {\n+\tif x != nil {\n+\t\treturn x.TargetFramework\n+\t}\n+\treturn \"\"\n+}\n+\n+func (x *Requirements_NuGet_DependencyGroup) GetDependencies() []*Requirements_NuGet_DependencyGroup_Dependency {\n+\tif x != nil {\n+\t\treturn x.Dependencies\n+\t}\n+\treturn nil\n+}\n+\n+type Requirements_NuGet_DependencyGroup_Dependency struct {\n+\tstate         protoimpl.MessageState\n+\tsizeCache     protoimpl.SizeCache\n+\tunknownFields protoimpl.UnknownFields\n+\n+\t// The name of the package.\n+\tName string `protobuf:\"bytes,1,opt,name=name,proto3\" json:\"name,omitempty\"`\n+\t// The requirement on the package.\n+\tRequirement string `protobuf:\"bytes,2,opt,name=requirement,proto3\" json:\"requirement,omitempty\"`\n+}\n+\n+func (x *Requirements_NuGet_DependencyGroup_Dependency) Reset() {\n+\t*x = Requirements_NuGet_DependencyGroup_Dependency{}\n+\tif protoimpl.UnsafeEnabled {\n+\t\tmi := &file_api_proto_msgTypes[30]\n+\t\tms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))\n+\t\tms.StoreMessageInfo(mi)\n+\t}\n+}\n+\n+func (x *Requirements_NuGet_DependencyGroup_Dependency) String() string {\n+\treturn protoimpl.X.MessageStringOf(x)\n+}\n+\n+func (*Requirements_NuGet_DependencyGroup_Dependency) ProtoMessage() {}\n+\n+func (x *Requirements_NuGet_DependencyGroup_Dependency) ProtoReflect() protoreflect.Message {\n+\tmi := &file_api_proto_msgTypes[30]\n+\tif protoimpl.UnsafeEnabled && x != nil {\n+\t\tms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))\n+\t\tif ms.LoadMessageInfo() == nil {\n+\t\t\tms.StoreMessageInfo(mi)\n+\t\t}\n+\t\treturn ms\n+\t}\n+\treturn mi.MessageOf(x)\n+}\n+\n+// Deprecated: Use Requirements_NuGet_DependencyGroup_Dependency.ProtoReflect.Descriptor instead.\n+func (*Requirements_NuGet_DependencyGroup_Dependency) Descriptor() ([]byte, []int) {\n+\treturn file_api_proto_rawDescGZIP(), []int{13, 0, 0, 0}\n+}\n+\n+func (x *Requirements_NuGet_DependencyGroup_Dependency) GetName() string {\n+\tif x != nil {\n+\t\treturn x.Name\n+\t}\n+\treturn \"\"\n+}\n+\n+func (x *Requirements_NuGet_DependencyGroup_Dependency) GetRequirement() string {\n+\tif x != nil {\n+\t\treturn x.Requirement\n+\t}\n+\treturn \"\"\n+}\n+\n+type Requirements_NPM_Dependencies struct {\n+\tstate         protoimpl.MessageState\n+\tsizeCache     protoimpl.SizeCache\n+\tunknownFields protoimpl.UnknownFields\n+\n+\t// The \"dependencies\" field of a package.json, represented as a list of\n+\t// name, requirement pairs.\n+\tDependencies []*Requirements_NPM_Dependencies_Dependency `protobuf:\"bytes,1,rep,name=dependencies,proto3\" json:\"dependencies,omitempty\"`\n+\t// The \"devDependencies\" field of a package.json. The format is the\n+\t// same as \"dependencies\".\n+\tDevDependencies []*Requirements_NPM_Dependencies_Dependency `protobuf:\"bytes,2,rep,name=dev_dependencies,json=devDependencies,proto3\" json:\"dev_dependencies,omitempty\"`\n+\t// The \"optionalDependencies\" field of a package.json. The format is\n+\t// the same as \"dependencies\".\n+\tOptionalDependencies []*Requirements_NPM_Dependencies_Dependency `protobuf:\"bytes,3,rep,name=optional_dependencies,json=optionalDependencies,proto3\" json:\"optional_dependencies,omitempty\"`\n+\t// The \"peerDependencies\" field of a package.json. The format is the\n+\t// same as \"dependencies\".\n+\tPeerDependencies []*Requirements_NPM_Dependencies_Dependency `protobuf:\"bytes,4,rep,name=peer_dependencies,json=peerDependencies,proto3\" json:\"peer_dependencies,omitempty\"`\n+\t// The \"bundleDependencies\" field of a package.json: a list of package\n+\t// names. In the package.json this may also just be the boolean value\n+\t// \"true\", in which case this field will contain the names of all the\n+\t// dependencies from the \"dependencies\" field.\n+\tBundleDependencies []string `protobuf:\"bytes,5,rep,name=bundle_dependencies,json=bundleDependencies,proto3\" json:\"bundle_dependencies,omitempty\"`\n+}\n+\n+func (x *Requirements_NPM_Dependencies) Reset() {\n+\t*x = Requirements_NPM_Dependencies{}\n+\tif protoimpl.UnsafeEnabled {\n+\t\tmi := &file_api_proto_msgTypes[31]\n+\t\tms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))\n+\t\tms.StoreMessageInfo(mi)\n+\t}\n+}\n+\n+func (x *Requirements_NPM_Dependencies) String() string {\n+\treturn protoimpl.X.MessageStringOf(x)\n+}\n+\n+func (*Requirements_NPM_Dependencies) ProtoMessage() {}\n+\n+func (x *Requirements_NPM_Dependencies) ProtoReflect() protoreflect.Message {\n+\tmi := &file_api_proto_msgTypes[31]\n+\tif protoimpl.UnsafeEnabled && x != nil {\n+\t\tms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))\n+\t\tif ms.LoadMessageInfo() == nil {\n+\t\t\tms.StoreMessageInfo(mi)\n+\t\t}\n+\t\treturn ms\n+\t}\n+\treturn mi.MessageOf(x)\n+}\n+\n+// Deprecated: Use Requirements_NPM_Dependencies.ProtoReflect.Descriptor instead.\n+func (*Requirements_NPM_Dependencies) Descriptor() ([]byte, []int) {\n+\treturn file_api_proto_rawDescGZIP(), []int{13, 1, 0}\n+}\n+\n+func (x *Requirements_NPM_Dependencies) GetDependencies() []*Requirements_NPM_Dependencies_Dependency {\n+\tif x != nil {\n+\t\treturn x.Dependencies\n+\t}\n+\treturn nil\n+}\n+\n+func (x *Requirements_NPM_Dependencies) GetDevDependencies() []*Requirements_NPM_Dependencies_Dependency {\n+\tif x != nil {\n+\t\treturn x.DevDependencies\n+\t}\n+\treturn nil\n+}\n+\n+func (x *Requirements_NPM_Dependencies) GetOptionalDependencies() []*Requirements_NPM_Dependencies_Dependency {\n+\tif x != nil {\n+\t\treturn x.OptionalDependencies\n+\t}\n+\treturn nil\n+}\n+\n+func (x *Requirements_NPM_Dependencies) GetPeerDependencies() []*Requirements_NPM_Dependencies_Dependency {\n+\tif x != nil {\n+\t\treturn x.PeerDependencies\n+\t}\n+\treturn nil\n+}\n+\n+func (x *Requirements_NPM_Dependencies) GetBundleDependencies() []string {\n+\tif x != nil {\n+\t\treturn x.BundleDependencies\n+\t}\n+\treturn nil\n+}\n+\n+type Requirements_NPM_Bundle struct {\n+\tstate         protoimpl.MessageState\n+\tsizeCache     protoimpl.SizeCache\n+\tunknownFields protoimpl.UnknownFields\n+\n+\t// The path inside the tarball where this dependency was found.\n+\tPath string `protobuf:\"bytes,1,opt,name=path,proto3\" json:\"path,omitempty\"`\n+\t// The name of the bundled package, as declared inside the bundled\n+\t// package.json.\n+\tName string `protobuf:\"bytes,2,opt,name=name,proto3\" json:\"name,omitempty\"`\n+\t// The version of this package, as declared inside the bundled\n+\t// package.json.\n+\tVersion string `protobuf:\"bytes,3,opt,name=version,proto3\" json:\"version,omitempty\"`\n+\t// The dependency-related fields from the bundled package.json.\n+\tDependencies *Requirements_NPM_Dependencies `protobuf:\"bytes,4,opt,name=dependencies,proto3\" json:\"dependencies,omitempty\"`\n+}\n+\n+func (x *Requirements_NPM_Bundle) Reset() {\n+\t*x = Requirements_NPM_Bundle{}\n+\tif protoimpl.UnsafeEnabled {\n+\t\tmi := &file_api_proto_msgTypes[32]\n+\t\tms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))\n+\t\tms.StoreMessageInfo(mi)\n+\t}\n+}\n+\n+func (x *Requirements_NPM_Bundle) String() string {\n+\treturn protoimpl.X.MessageStringOf(x)\n+}\n+\n+func (*Requirements_NPM_Bundle) ProtoMessage() {}\n+\n+func (x *Requirements_NPM_Bundle) ProtoReflect() protoreflect.Message {\n+\tmi := &file_api_proto_msgTypes[32]\n+\tif protoimpl.UnsafeEnabled && x != nil {\n+\t\tms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))\n+\t\tif ms.LoadMessageInfo() == nil {\n+\t\t\tms.StoreMessageInfo(mi)\n+\t\t}\n+\t\treturn ms\n+\t}\n+\treturn mi.MessageOf(x)\n+}\n+\n+// Deprecated: Use Requirements_NPM_Bundle.ProtoReflect.Descriptor instead.\n+func (*Requirements_NPM_Bundle) Descriptor() ([]byte, []int) {\n+\treturn file_api_proto_rawDescGZIP(), []int{13, 1, 1}\n+}\n+\n+func (x *Requirements_NPM_Bundle) GetPath() string {\n+\tif x != nil {\n+\t\treturn x.Path\n+\t}\n+\treturn \"\"\n+}\n+\n+func (x *Requirements_NPM_Bundle) GetName() string {\n+\tif x != nil {\n+\t\treturn x.Name\n+\t}\n+\treturn \"\"\n+}\n+\n+func (x *Requirements_NPM_Bundle) GetVersion() string {\n+\tif x != nil {\n+\t\treturn x.Version\n+\t}\n+\treturn \"\"\n+}\n+\n+func (x *Requirements_NPM_Bundle) GetDependencies() *Requirements_NPM_Dependencies {\n+\tif x != nil {\n+\t\treturn x.Dependencies\n+\t}\n+\treturn nil\n+}\n+\n+type Requirements_NPM_Dependencies_Dependency struct {\n+\tstate         protoimpl.MessageState\n+\tsizeCache     protoimpl.SizeCache\n+\tunknownFields protoimpl.UnknownFields\n+\n+\t// The name of the package, the key in the original object.\n+\tName string `protobuf:\"bytes,1,opt,name=name,proto3\" json:\"name,omitempty\"`\n+\t// The requirement, the corresponding value from the original object.\n+\tRequirement string `protobuf:\"bytes,2,opt,name=requirement,proto3\" json:\"requirement,omitempty\"`\n+}\n+\n+func (x *Requirements_NPM_Dependencies_Dependency) Reset() {\n+\t*x = Requirements_NPM_Dependencies_Dependency{}\n+\tif protoimpl.UnsafeEnabled {\n+\t\tmi := &file_api_proto_msgTypes[33]\n+\t\tms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))\n+\t\tms.StoreMessageInfo(mi)\n+\t}\n+}\n+\n+func (x *Requirements_NPM_Dependencies_Dependency) String() string {\n+\treturn protoimpl.X.MessageStringOf(x)\n+}\n+\n+func (*Requirements_NPM_Dependencies_Dependency) ProtoMessage() {}\n+\n+func (x *Requirements_NPM_Dependencies_Dependency) ProtoReflect() protoreflect.Message {\n+\tmi := &file_api_proto_msgTypes[33]\n+\tif protoimpl.UnsafeEnabled && x != nil {\n+\t\tms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))\n+\t\tif ms.LoadMessageInfo() == nil {\n+\t\t\tms.StoreMessageInfo(mi)\n+\t\t}\n+\t\treturn ms\n+\t}\n+\treturn mi.MessageOf(x)\n+}\n+\n+// Deprecated: Use Requirements_NPM_Dependencies_Dependency.ProtoReflect.Descriptor instead.\n+func (*Requirements_NPM_Dependencies_Dependency) Descriptor() ([]byte, []int) {\n+\treturn file_api_proto_rawDescGZIP(), []int{13, 1, 0, 0}\n+}\n+\n+func (x *Requirements_NPM_Dependencies_Dependency) GetName() string {\n+\tif x != nil {\n+\t\treturn x.Name\n+\t}\n+\treturn \"\"\n+}\n+\n+func (x *Requirements_NPM_Dependencies_Dependency) GetRequirement() string {\n+\tif x != nil {\n+\t\treturn x.Requirement\n+\t}\n+\treturn \"\"\n+}\n+\n+type Requirements_Maven_Dependency struct {\n+\tstate         protoimpl.MessageState\n+\tsizeCache     protoimpl.SizeCache\n+\tunknownFields protoimpl.UnknownFields\n+\n+\t// The name of the package.\n+\tName string `protobuf:\"bytes,1,opt,name=name,proto3\" json:\"name,omitempty\"`\n+\t// The version requirement of the dependency.\n+\tVersion string `protobuf:\"bytes,2,opt,name=version,proto3\" json:\"version,omitempty\"`\n+\t// The classifier of the dependency, which distinguishes artifacts that\n+\t// differ in content.\n+\tClassifier string `protobuf:\"bytes,3,opt,name=classifier,proto3\" json:\"classifier,omitempty\"`\n+\t// The type of the dependency, defaults to jar.\n+\tType string `protobuf:\"bytes,4,opt,name=type,proto3\" json:\"type,omitempty\"`\n+\t// The scope of the dependency, specifies how to limit the transitivity\n+\t// of a dependency.\n+\tScope string `protobuf:\"bytes,5,opt,name=scope,proto3\" json:\"scope,omitempty\"`\n+\t// Whether the dependency is optional or not.\n+\tOptional string `protobuf:\"bytes,6,opt,name=optional,proto3\" json:\"optional,omitempty\"`\n+\t// The dependencies to be excluded, in the form of a list of package\n+\t// names.\n+\t// Exclusions may contain wildcards in both groupID and artifactID.\n+\tExclusions []string `protobuf:\"bytes,7,rep,name=exclusions,proto3\" json:\"exclusions,omitempty\"`\n+}\n+\n+func (x *Requirements_Maven_Dependency) Reset() {\n+\t*x = Requirements_Maven_Dependency{}\n+\tif protoimpl.UnsafeEnabled {\n+\t\tmi := &file_api_proto_msgTypes[34]\n+\t\tms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))\n+\t\tms.StoreMessageInfo(mi)\n+\t}\n+}\n+\n+func (x *Requirements_Maven_Dependency) String() string {\n+\treturn protoimpl.X.MessageStringOf(x)\n+}\n+\n+func (*Requirements_Maven_Dependency) ProtoMessage() {}\n+\n+func (x *Requirements_Maven_Dependency) ProtoReflect() protoreflect.Message {\n+\tmi := &file_api_proto_msgTypes[34]\n+\tif protoimpl.UnsafeEnabled && x != nil {\n+\t\tms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))\n+\t\tif ms.LoadMessageInfo() == nil {\n+\t\t\tms.StoreMessageInfo(mi)\n+\t\t}\n+\t\treturn ms\n+\t}\n+\treturn mi.MessageOf(x)\n+}\n+\n+// Deprecated: Use Requirements_Maven_Dependency.ProtoReflect.Descriptor instead.\n+func (*Requirements_Maven_Dependency) Descriptor() ([]byte, []int) {\n+\treturn file_api_proto_rawDescGZIP(), []int{13, 2, 0}\n+}\n+\n+func (x *Requirements_Maven_Dependency) GetName() string {\n+\tif x != nil {\n+\t\treturn x.Name\n+\t}\n+\treturn \"\"\n+}\n+\n+func (x *Requirements_Maven_Dependency) GetVersion() string {\n+\tif x != nil {\n+\t\treturn x.Version\n+\t}\n+\treturn \"\"\n+}\n+\n+func (x *Requirements_Maven_Dependency) GetClassifier() string {\n+\tif x != nil {\n+\t\treturn x.Classifier\n+\t}\n+\treturn \"\"\n+}\n+\n+func (x *Requirements_Maven_Dependency) GetType() string {\n+\tif x != nil {\n+\t\treturn x.Type\n+\t}\n+\treturn \"\"\n+}\n+\n+func (x *Requirements_Maven_Dependency) GetScope() string {\n+\tif x != nil {\n+\t\treturn x.Scope\n+\t}\n+\treturn \"\"\n+}\n+\n+func (x *Requirements_Maven_Dependency) GetOptional() string {\n+\tif x != nil {\n+\t\treturn x.Optional\n+\t}\n+\treturn \"\"\n+}\n+\n+func (x *Requirements_Maven_Dependency) GetExclusions() []string {\n+\tif x != nil {\n+\t\treturn x.Exclusions\n+\t}\n+\treturn nil\n+}\n+\n+type Requirements_Maven_Property struct {\n+\tstate         protoimpl.MessageState\n+\tsizeCache     protoimpl.SizeCache\n+\tunknownFields protoimpl.UnknownFields\n+\n+\t// The name of the property.\n+\tName string `protobuf:\"bytes,1,opt,name=name,proto3\" json:\"name,omitempty\"`\n+\t// The value of the property.\n+\tValue string `protobuf:\"bytes,2,opt,name=value,proto3\" json:\"value,omitempty\"`\n+}\n+\n+func (x *Requirements_Maven_Property) Reset() {\n+\t*x = Requirements_Maven_Property{}\n+\tif protoimpl.UnsafeEnabled {\n+\t\tmi := &file_api_proto_msgTypes[35]\n+\t\tms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))\n+\t\tms.StoreMessageInfo(mi)\n+\t}\n+}\n+\n+func (x *Requirements_Maven_Property) String() string {\n+\treturn protoimpl.X.MessageStringOf(x)\n+}\n+\n+func (*Requirements_Maven_Property) ProtoMessage() {}\n+\n+func (x *Requirements_Maven_Property) ProtoReflect() protoreflect.Message {\n+\tmi := &file_api_proto_msgTypes[35]\n+\tif protoimpl.UnsafeEnabled && x != nil {\n+\t\tms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))\n+\t\tif ms.LoadMessageInfo() == nil {\n+\t\t\tms.StoreMessageInfo(mi)\n+\t\t}\n+\t\treturn ms\n+\t}\n+\treturn mi.MessageOf(x)\n+}\n+\n+// Deprecated: Use Requirements_Maven_Property.ProtoReflect.Descriptor instead.\n+func (*Requirements_Maven_Property) Descriptor() ([]byte, []int) {\n+\treturn file_api_proto_rawDescGZIP(), []int{13, 2, 1}\n+}\n+\n+func (x *Requirements_Maven_Property) GetName() string {\n+\tif x != nil {\n+\t\treturn x.Name\n+\t}\n+\treturn \"\"\n+}\n+\n+func (x *Requirements_Maven_Property) GetValue() string {\n+\tif x != nil {\n+\t\treturn x.Value\n+\t}\n+\treturn \"\"\n+}\n+\n+type Requirements_Maven_Repository struct {\n+\tstate         protoimpl.MessageState\n+\tsizeCache     protoimpl.SizeCache\n+\tunknownFields protoimpl.UnknownFields\n+\n+\t// The ID of the repository.\n+\tId string `protobuf:\"bytes,1,opt,name=id,proto3\" json:\"id,omitempty\"`\n+\t// The URL of the repository.\n+\tUrl string `protobuf:\"bytes,2,opt,name=url,proto3\" json:\"url,omitempty\"`\n+\t// Whether the description of the repository follows a common layout.\n+\tLayout string `protobuf:\"bytes,3,opt,name=layout,proto3\" json:\"layout,omitempty\"`\n+\t// Whether the repository is enabled for release downloads.\n+\tReleasesEnabled string `protobuf:\"bytes,4,opt,name=releases_enabled,json=releasesEnabled,proto3\" json:\"releases_enabled,omitempty\"`\n+\t// Whether the repository is enabled for snapshot downloads.\n+\tSnapshotsEnabled string `protobuf:\"bytes,5,opt,name=snapshots_enabled,json=snapshotsEnabled,proto3\" json:\"snapshots_enabled,omitempty\"`\n+}\n+\n+func (x *Requirements_Maven_Repository) Reset() {\n+\t*x = Requirements_Maven_Repository{}\n+\tif protoimpl.UnsafeEnabled {\n+\t\tmi := &file_api_proto_msgTypes[36]\n+\t\tms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))\n+\t\tms.StoreMessageInfo(mi)\n+\t}\n+}\n+\n+func (x *Requirements_Maven_Repository) String() string {\n+\treturn protoimpl.X.MessageStringOf(x)\n+}\n+\n+func (*Requirements_Maven_Repository) ProtoMessage() {}\n+\n+func (x *Requirements_Maven_Repository) ProtoReflect() protoreflect.Message {\n+\tmi := &file_api_proto_msgTypes[36]\n+\tif protoimpl.UnsafeEnabled && x != nil {\n+\t\tms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))\n+\t\tif ms.LoadMessageInfo() == nil {\n+\t\t\tms.StoreMessageInfo(mi)\n+\t\t}\n+\t\treturn ms\n+\t}\n+\treturn mi.MessageOf(x)\n+}\n+\n+// Deprecated: Use Requirements_Maven_Repository.ProtoReflect.Descriptor instead.\n+func (*Requirements_Maven_Repository) Descriptor() ([]byte, []int) {\n+\treturn file_api_proto_rawDescGZIP(), []int{13, 2, 2}\n+}\n+\n+func (x *Requirements_Maven_Repository) GetId() string {\n+\tif x != nil {\n+\t\treturn x.Id\n+\t}\n+\treturn \"\"\n+}\n+\n+func (x *Requirements_Maven_Repository) GetUrl() string {\n+\tif x != nil {\n+\t\treturn x.Url\n+\t}\n+\treturn \"\"\n+}\n+\n+func (x *Requirements_Maven_Repository) GetLayout() string {\n+\tif x != nil {\n+\t\treturn x.Layout\n+\t}\n+\treturn \"\"\n+}\n+\n+func (x *Requirements_Maven_Repository) GetReleasesEnabled() string {\n+\tif x != nil {\n+\t\treturn x.ReleasesEnabled\n+\t}\n+\treturn \"\"\n+}\n+\n+func (x *Requirements_Maven_Repository) GetSnapshotsEnabled() string {\n+\tif x != nil {\n+\t\treturn x.SnapshotsEnabled\n+\t}\n+\treturn \"\"\n+}\n+\n+type Requirements_Maven_Profile struct {\n+\tstate         protoimpl.MessageState\n+\tsizeCache     protoimpl.SizeCache\n+\tunknownFields protoimpl.UnknownFields\n+\n+\t// The ID of the profile.\n+\tId string `protobuf:\"bytes,1,opt,name=id,proto3\" json:\"id,omitempty\"`\n+\t// The activation requirement of the profile.\n+\tActivation *Requirements_Maven_Profile_Activation `protobuf:\"bytes,2,opt,name=activation,proto3\" json:\"activation,omitempty\"`\n+\t// The dependencies specified in the profile.\n+\tDependencies []*Requirements_Maven_Dependency `protobuf:\"bytes,3,rep,name=dependencies,proto3\" json:\"dependencies,omitempty\"`\n+\t// The dependency management specified in the profile.\n+\tDependencyManagement []*Requirements_Maven_Dependency `protobuf:\"bytes,4,rep,name=dependency_management,json=dependencyManagement,proto3\" json:\"dependency_management,omitempty\"`\n+\t// The properties specified in the profile.\n+\tProperties []*Requirements_Maven_Property `protobuf:\"bytes,5,rep,name=properties,proto3\" json:\"properties,omitempty\"`\n+\t// The repositories specified in the profile.\n+\tRepositories []*Requirements_Maven_Repository `protobuf:\"bytes,6,rep,name=repositories,proto3\" json:\"repositories,omitempty\"`\n+}\n+\n+func (x *Requirements_Maven_Profile) Reset() {\n+\t*x = Requirements_Maven_Profile{}\n+\tif protoimpl.UnsafeEnabled {\n+\t\tmi := &file_api_proto_msgTypes[37]\n+\t\tms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))\n+\t\tms.StoreMessageInfo(mi)\n+\t}\n+}\n+\n+func (x *Requirements_Maven_Profile) String() string {\n+\treturn protoimpl.X.MessageStringOf(x)\n+}\n+\n+func (*Requirements_Maven_Profile) ProtoMessage() {}\n+\n+func (x *Requirements_Maven_Profile) ProtoReflect() protoreflect.Message {\n+\tmi := &file_api_proto_msgTypes[37]\n+\tif protoimpl.UnsafeEnabled && x != nil {\n+\t\tms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))\n+\t\tif ms.LoadMessageInfo() == nil {\n+\t\t\tms.StoreMessageInfo(mi)\n+\t\t}\n+\t\treturn ms\n+\t}\n+\treturn mi.MessageOf(x)\n+}\n+\n+// Deprecated: Use Requirements_Maven_Profile.ProtoReflect.Descriptor instead.\n+func (*Requirements_Maven_Profile) Descriptor() ([]byte, []int) {\n+\treturn file_api_proto_rawDescGZIP(), []int{13, 2, 3}\n+}\n+\n+func (x *Requirements_Maven_Profile) GetId() string {\n+\tif x != nil {\n+\t\treturn x.Id\n+\t}\n+\treturn \"\"\n+}\n+\n+func (x *Requirements_Maven_Profile) GetActivation() *Requirements_Maven_Profile_Activation {\n+\tif x != nil {\n+\t\treturn x.Activation\n+\t}\n+\treturn nil\n+}\n+\n+func (x *Requirements_Maven_Profile) GetDependencies() []*Requirements_Maven_Dependency {\n+\tif x != nil {\n+\t\treturn x.Dependencies\n+\t}\n+\treturn nil\n+}\n+\n+func (x *Requirements_Maven_Profile) GetDependencyManagement() []*Requirements_Maven_Dependency {\n+\tif x != nil {\n+\t\treturn x.DependencyManagement\n+\t}\n+\treturn nil\n+}\n+\n+func (x *Requirements_Maven_Profile) GetProperties() []*Requirements_Maven_Property {\n+\tif x != nil {\n+\t\treturn x.Properties\n+\t}\n+\treturn nil\n+}\n+\n+func (x *Requirements_Maven_Profile) GetRepositories() []*Requirements_Maven_Repository {\n+\tif x != nil {\n+\t\treturn x.Repositories\n+\t}\n+\treturn nil\n+}\n+\n+type Requirements_Maven_Profile_Activation struct {\n+\tstate         protoimpl.MessageState\n+\tsizeCache     protoimpl.SizeCache\n+\tunknownFields protoimpl.UnknownFields\n+\n+\t// Whether the profile is active by default.\n+\tActiveByDefault string `protobuf:\"bytes,1,opt,name=active_by_default,json=activeByDefault,proto3\" json:\"active_by_default,omitempty\"`\n+\t// The JDK requirement of the activation.\n+\tJdk *Requirements_Maven_Profile_Activation_JDK `protobuf:\"bytes,2,opt,name=jdk,proto3\" json:\"jdk,omitempty\"`\n+\t// The operating system requirement of the activation.\n+\tOs *Requirements_Maven_Profile_Activation_OS `protobuf:\"bytes,3,opt,name=os,proto3\" json:\"os,omitempty\"`\n+\t// The property requirement of the activation.\n+\tProperty *Requirements_Maven_Profile_Activation_Property `protobuf:\"bytes,4,opt,name=property,proto3\" json:\"property,omitempty\"`\n+\t// The file requirement of the activation.\n+\tFile *Requirements_Maven_Profile_Activation_File `protobuf:\"bytes,5,opt,name=file,proto3\" json:\"file,omitempty\"`\n+}\n+\n+func (x *Requirements_Maven_Profile_Activation) Reset() {\n+\t*x = Requirements_Maven_Profile_Activation{}\n+\tif protoimpl.UnsafeEnabled {\n+\t\tmi := &file_api_proto_msgTypes[38]\n+\t\tms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))\n+\t\tms.StoreMessageInfo(mi)\n+\t}\n+}\n+\n+func (x *Requirements_Maven_Profile_Activation) String() string {\n+\treturn protoimpl.X.MessageStringOf(x)\n+}\n+\n+func (*Requirements_Maven_Profile_Activation) ProtoMessage() {}\n+\n+func (x *Requirements_Maven_Profile_Activation) ProtoReflect() protoreflect.Message {\n+\tmi := &file_api_proto_msgTypes[38]\n+\tif protoimpl.UnsafeEnabled && x != nil {\n+\t\tms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))\n+\t\tif ms.LoadMessageInfo() == nil {\n+\t\t\tms.StoreMessageInfo(mi)\n+\t\t}\n+\t\treturn ms\n+\t}\n+\treturn mi.MessageOf(x)\n+}\n+\n+// Deprecated: Use Requirements_Maven_Profile_Activation.ProtoReflect.Descriptor instead.\n+func (*Requirements_Maven_Profile_Activation) Descriptor() ([]byte, []int) {\n+\treturn file_api_proto_rawDescGZIP(), []int{13, 2, 3, 0}\n+}\n+\n+func (x *Requirements_Maven_Profile_Activation) GetActiveByDefault() string {\n+\tif x != nil {\n+\t\treturn x.ActiveByDefault\n+\t}\n+\treturn \"\"\n+}\n+\n+func (x *Requirements_Maven_Profile_Activation) GetJdk() *Requirements_Maven_Profile_Activation_JDK {\n+\tif x != nil {\n+\t\treturn x.Jdk\n+\t}\n+\treturn nil\n+}\n+\n+func (x *Requirements_Maven_Profile_Activation) GetOs() *Requirements_Maven_Profile_Activation_OS {\n+\tif x != nil {\n+\t\treturn x.Os\n+\t}\n+\treturn nil\n+}\n+\n+func (x *Requirements_Maven_Profile_Activation) GetProperty() *Requirements_Maven_Profile_Activation_Property {\n+\tif x != nil {\n+\t\treturn x.Property\n+\t}\n+\treturn nil\n+}\n+\n+func (x *Requirements_Maven_Profile_Activation) GetFile() *Requirements_Maven_Profile_Activation_File {\n+\tif x != nil {\n+\t\treturn x.File\n+\t}\n+\treturn nil\n+}\n+\n+type Requirements_Maven_Profile_Activation_JDK struct {\n+\tstate         protoimpl.MessageState\n+\tsizeCache     protoimpl.SizeCache\n+\tunknownFields protoimpl.UnknownFields\n+\n+\t// The JDK requirement to activate the profile.\n+\tJdk string `protobuf:\"bytes,1,opt,name=jdk,proto3\" json:\"jdk,omitempty\"`\n+}\n+\n+func (x *Requirements_Maven_Profile_Activation_JDK) Reset() {\n+\t*x = Requirements_Maven_Profile_Activation_JDK{}\n+\tif protoimpl.UnsafeEnabled {\n+\t\tmi := &file_api_proto_msgTypes[39]\n+\t\tms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))\n+\t\tms.StoreMessageInfo(mi)\n+\t}\n+}\n+\n+func (x *Requirements_Maven_Profile_Activation_JDK) String() string {\n+\treturn protoimpl.X.MessageStringOf(x)\n+}\n+\n+func (*Requirements_Maven_Profile_Activation_JDK) ProtoMessage() {}\n+\n+func (x *Requirements_Maven_Profile_Activation_JDK) ProtoReflect() protoreflect.Message {\n+\tmi := &file_api_proto_msgTypes[39]\n+\tif protoimpl.UnsafeEnabled && x != nil {\n+\t\tms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))\n+\t\tif ms.LoadMessageInfo() == nil {\n+\t\t\tms.StoreMessageInfo(mi)\n+\t\t}\n+\t\treturn ms\n+\t}\n+\treturn mi.MessageOf(x)\n+}\n+\n+// Deprecated: Use Requirements_Maven_Profile_Activation_JDK.ProtoReflect.Descriptor instead.\n+func (*Requirements_Maven_Profile_Activation_JDK) Descriptor() ([]byte, []int) {\n+\treturn file_api_proto_rawDescGZIP(), []int{13, 2, 3, 0, 0}\n+}\n+\n+func (x *Requirements_Maven_Profile_Activation_JDK) GetJdk() string {\n+\tif x != nil {\n+\t\treturn x.Jdk\n+\t}\n+\treturn \"\"\n+}\n+\n+type Requirements_Maven_Profile_Activation_OS struct {\n+\tstate         protoimpl.MessageState\n+\tsizeCache     protoimpl.SizeCache\n+\tunknownFields protoimpl.UnknownFields\n+\n+\t// The name of the operating system.\n+\tName string `protobuf:\"bytes,1,opt,name=name,proto3\" json:\"name,omitempty\"`\n+\t// The family of the operating system.\n+\tFamily string `protobuf:\"bytes,2,opt,name=family,proto3\" json:\"family,omitempty\"`\n+\t// The CPU architecture of the operating system,\n+\tArch string `protobuf:\"bytes,3,opt,name=arch,proto3\" json:\"arch,omitempty\"`\n+\t// The version of the operating system.\n+\tVersion string `protobuf:\"bytes,4,opt,name=version,proto3\" json:\"version,omitempty\"`\n+}\n+\n+func (x *Requirements_Maven_Profile_Activation_OS) Reset() {\n+\t*x = Requirements_Maven_Profile_Activation_OS{}\n+\tif protoimpl.UnsafeEnabled {\n+\t\tmi := &file_api_proto_msgTypes[40]\n+\t\tms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))\n+\t\tms.StoreMessageInfo(mi)\n+\t}\n+}\n+\n+func (x *Requirements_Maven_Profile_Activation_OS) String() string {\n+\treturn protoimpl.X.MessageStringOf(x)\n+}\n+\n+func (*Requirements_Maven_Profile_Activation_OS) ProtoMessage() {}\n+\n+func (x *Requirements_Maven_Profile_Activation_OS) ProtoReflect() protoreflect.Message {\n+\tmi := &file_api_proto_msgTypes[40]\n+\tif protoimpl.UnsafeEnabled && x != nil {\n+\t\tms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))\n+\t\tif ms.LoadMessageInfo() == nil {\n+\t\t\tms.StoreMessageInfo(mi)\n+\t\t}\n+\t\treturn ms\n+\t}\n+\treturn mi.MessageOf(x)\n+}\n+\n+// Deprecated: Use Requirements_Maven_Profile_Activation_OS.ProtoReflect.Descriptor instead.\n+func (*Requirements_Maven_Profile_Activation_OS) Descriptor() ([]byte, []int) {\n+\treturn file_api_proto_rawDescGZIP(), []int{13, 2, 3, 0, 1}\n+}\n+\n+func (x *Requirements_Maven_Profile_Activation_OS) GetName() string {\n+\tif x != nil {\n+\t\treturn x.Name\n+\t}\n+\treturn \"\"\n+}\n+\n+func (x *Requirements_Maven_Profile_Activation_OS) GetFamily() string {\n+\tif x != nil {\n+\t\treturn x.Family\n+\t}\n+\treturn \"\"\n+}\n+\n+func (x *Requirements_Maven_Profile_Activation_OS) GetArch() string {\n+\tif x != nil {\n+\t\treturn x.Arch\n+\t}\n+\treturn \"\"\n+}\n+\n+func (x *Requirements_Maven_Profile_Activation_OS) GetVersion() string {\n+\tif x != nil {\n+\t\treturn x.Version\n+\t}\n+\treturn \"\"\n+}\n+\n+type Requirements_Maven_Profile_Activation_Property struct {\n+\tstate         protoimpl.MessageState\n+\tsizeCache     protoimpl.SizeCache\n+\tunknownFields protoimpl.UnknownFields\n+\n+\t// The property requirement to activate the profile.\n+\t// This can be a system property or CLI user property.\n+\tProperty *Requirements_Maven_Property `protobuf:\"bytes,1,opt,name=property,proto3\" json:\"property,omitempty\"`\n+}\n+\n+func (x *Requirements_Maven_Profile_Activation_Property) Reset() {\n+\t*x = Requirements_Maven_Profile_Activation_Property{}\n+\tif protoimpl.UnsafeEnabled {\n+\t\tmi := &file_api_proto_msgTypes[41]\n+\t\tms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))\n+\t\tms.StoreMessageInfo(mi)\n+\t}\n+}\n+\n+func (x *Requirements_Maven_Profile_Activation_Property) String() string {\n+\treturn protoimpl.X.MessageStringOf(x)\n+}\n+\n+func (*Requirements_Maven_Profile_Activation_Property) ProtoMessage() {}\n+\n+func (x *Requirements_Maven_Profile_Activation_Property) ProtoReflect() protoreflect.Message {\n+\tmi := &file_api_proto_msgTypes[41]\n+\tif protoimpl.UnsafeEnabled && x != nil {\n+\t\tms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))\n+\t\tif ms.LoadMessageInfo() == nil {\n+\t\t\tms.StoreMessageInfo(mi)\n+\t\t}\n+\t\treturn ms\n+\t}\n+\treturn mi.MessageOf(x)\n+}\n+\n+// Deprecated: Use Requirements_Maven_Profile_Activation_Property.ProtoReflect.Descriptor instead.\n+func (*Requirements_Maven_Profile_Activation_Property) Descriptor() ([]byte, []int) {\n+\treturn file_api_proto_rawDescGZIP(), []int{13, 2, 3, 0, 2}\n+}\n+\n+func (x *Requirements_Maven_Profile_Activation_Property) GetProperty() *Requirements_Maven_Property {\n+\tif x != nil {\n+\t\treturn x.Property\n+\t}\n+\treturn nil\n+}\n+\n+type Requirements_Maven_Profile_Activation_File struct {\n+\tstate         protoimpl.MessageState\n+\tsizeCache     protoimpl.SizeCache\n+\tunknownFields protoimpl.UnknownFields\n+\n+\t// The name of the file that its existence activates the profile.\n+\tExists string `protobuf:\"bytes,1,opt,name=exists,proto3\" json:\"exists,omitempty\"`\n+\t// The name of the file, activate the profile if the file is missing.\n+\tMissing string `protobuf:\"bytes,2,opt,name=missing,proto3\" json:\"missing,omitempty\"`\n+}\n+\n+func (x *Requirements_Maven_Profile_Activation_File) Reset() {\n+\t*x = Requirements_Maven_Profile_Activation_File{}\n+\tif protoimpl.UnsafeEnabled {\n+\t\tmi := &file_api_proto_msgTypes[42]\n+\t\tms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))\n+\t\tms.StoreMessageInfo(mi)\n+\t}\n+}\n+\n+func (x *Requirements_Maven_Profile_Activation_File) String() string {\n+\treturn protoimpl.X.MessageStringOf(x)\n+}\n+\n+func (*Requirements_Maven_Profile_Activation_File) ProtoMessage() {}\n+\n+func (x *Requirements_Maven_Profile_Activation_File) ProtoReflect() protoreflect.Message {\n+\tmi := &file_api_proto_msgTypes[42]\n+\tif protoimpl.UnsafeEnabled && x != nil {\n+\t\tms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))\n+\t\tif ms.LoadMessageInfo() == nil {\n+\t\t\tms.StoreMessageInfo(mi)\n+\t\t}\n+\t\treturn ms\n+\t}\n+\treturn mi.MessageOf(x)\n+}\n+\n+// Deprecated: Use Requirements_Maven_Profile_Activation_File.ProtoReflect.Descriptor instead.\n+func (*Requirements_Maven_Profile_Activation_File) Descriptor() ([]byte, []int) {\n+\treturn file_api_proto_rawDescGZIP(), []int{13, 2, 3, 0, 3}\n+}\n+\n+func (x *Requirements_Maven_Profile_Activation_File) GetExists() string {\n+\tif x != nil {\n+\t\treturn x.Exists\n+\t}\n+\treturn \"\"\n+}\n+\n+func (x *Requirements_Maven_Profile_Activation_File) GetMissing() string {\n+\tif x != nil {\n+\t\treturn x.Missing\n+\t}\n+\treturn \"\"\n+}\n+\n+// Node represents a node in a resolved dependency graph.\n+type Dependencies_Node struct {\n+\tstate         protoimpl.MessageState\n+\tsizeCache     protoimpl.SizeCache\n+\tunknownFields protoimpl.UnknownFields\n+\n+\t// The package version represented by this node. Note that the package and\n+\t// version name may differ from the names in the request, if provided, due\n+\t// to canonicalization.\n+\t//\n+\t// In some systems, a graph may contain multiple nodes for the same package\n+\t// version.\n+\tVersionKey *VersionKey `protobuf:\"bytes,1,opt,name=version_key,json=versionKey,proto3\" json:\"version_key,omitempty\"`\n+\t// If true, this is a bundled dependency.\n+\t//\n+\t// For bundled dependencies, the package name in the version key encodes\n+\t// how the dependency is bundled. As an example, a bundled dependency with\n+\t// a name like \"a>1.2.3>b>c\" is part of the dependency graph of package \"a\"\n+\t// at version \"1.2.3\", and has the local name \"c\". It may or may not be the\n+\t// same as a package with the global name \"c\".\n+\tBundled bool `protobuf:\"varint,2,opt,name=bundled,proto3\" json:\"bundled,omitempty\"`\n+\t// Whether this node represents a direct or indirect dependency within this\n+\t// dependency graph. Note that it's possible for a dependency to be both\n+\t// direct and indirect; if so, it is marked as direct.\n+\tRelation DependencyRelation `protobuf:\"varint,4,opt,name=relation,proto3,enum=deps_dev.v3.DependencyRelation\" json:\"relation,omitempty\"`\n+\t// Errors associated with this node of the graph, such as an unresolved\n+\t// dependency requirement. An error on a node may imply the graph as a\n+\t// whole is incorrect. These error messages have no defined format and are\n+\t// intended for human consumption.\n+\tErrors []string `protobuf:\"bytes,3,rep,name=errors,proto3\" json:\"errors,omitempty\"`\n+}\n+\n+func (x *Dependencies_Node) Reset() {\n+\t*x = Dependencies_Node{}\n+\tif protoimpl.UnsafeEnabled {\n+\t\tmi := &file_api_proto_msgTypes[43]\n+\t\tms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))\n+\t\tms.StoreMessageInfo(mi)\n+\t}\n+}\n+\n+func (x *Dependencies_Node) String() string {\n+\treturn protoimpl.X.MessageStringOf(x)\n+}\n+\n+func (*Dependencies_Node) ProtoMessage() {}\n+\n+func (x *Dependencies_Node) ProtoReflect() protoreflect.Message {\n+\tmi := &file_api_proto_msgTypes[43]\n+\tif protoimpl.UnsafeEnabled && x != nil {\n+\t\tms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))\n+\t\tif ms.LoadMessageInfo() == nil {\n+\t\t\tms.StoreMessageInfo(mi)\n+\t\t}\n+\t\treturn ms\n+\t}\n+\treturn mi.MessageOf(x)\n+}\n+\n+// Deprecated: Use Dependencies_Node.ProtoReflect.Descriptor instead.\n+func (*Dependencies_Node) Descriptor() ([]byte, []int) {\n+\treturn file_api_proto_rawDescGZIP(), []int{15, 0}\n+}\n+\n+func (x *Dependencies_Node) GetVersionKey() *VersionKey {\n+\tif x != nil {\n+\t\treturn x.VersionKey\n+\t}\n+\treturn nil\n+}\n+\n+func (x *Dependencies_Node) GetBundled() bool {\n+\tif x != nil {\n+\t\treturn x.Bundled\n+\t}\n+\treturn false\n+}\n+\n+func (x *Dependencies_Node) GetRelation() DependencyRelation {\n+\tif x != nil {\n+\t\treturn x.Relation\n+\t}\n+\treturn DependencyRelation_DEPENDENCY_RELATION_UNSPECIFIED\n+}\n+\n+func (x *Dependencies_Node) GetErrors() []string {\n+\tif x != nil {\n+\t\treturn x.Errors\n+\t}\n+\treturn nil\n+}\n+\n+// Edge represents a directed edge in a resolved dependency graph: a\n+// dependency relation between two nodes.\n+type Dependencies_Edge struct {\n+\tstate         protoimpl.MessageState\n+\tsizeCache     protoimpl.SizeCache\n+\tunknownFields protoimpl.UnknownFields\n+\n+\t// The node declaring the dependency, specified as an index into the list of\n+\t// nodes.\n+\tFromNode uint32 `protobuf:\"varint,1,opt,name=from_node,json=fromNode,proto3\" json:\"from_node,omitempty\"`\n+\t// The node resolving the dependency, specified as an index into the list of\n+\t// nodes.\n+\tToNode uint32 `protobuf:\"varint,2,opt,name=to_node,json=toNode,proto3\" json:\"to_node,omitempty\"`\n+\t// The requirement resolved by this edge, as declared by the \"from\" node.\n+\t// The meaning of this field is system-specific. As an example, in npm, the\n+\t// requirement \"^1.0.0\" may be resolved by the version \"1.2.3\".\n+\tRequirement string `protobuf:\"bytes,3,opt,name=requirement,proto3\" json:\"requirement,omitempty\"`\n+}\n+\n+func (x *Dependencies_Edge) Reset() {\n+\t*x = Dependencies_Edge{}\n+\tif protoimpl.UnsafeEnabled {\n+\t\tmi := &file_api_proto_msgTypes[44]\n+\t\tms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))\n+\t\tms.StoreMessageInfo(mi)\n+\t}\n+}\n+\n+func (x *Dependencies_Edge) String() string {\n+\treturn protoimpl.X.MessageStringOf(x)\n+}\n+\n+func (*Dependencies_Edge) ProtoMessage() {}\n+\n+func (x *Dependencies_Edge) ProtoReflect() protoreflect.Message {\n+\tmi := &file_api_proto_msgTypes[44]\n+\tif protoimpl.UnsafeEnabled && x != nil {\n+\t\tms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))\n+\t\tif ms.LoadMessageInfo() == nil {\n+\t\t\tms.StoreMessageInfo(mi)\n+\t\t}\n+\t\treturn ms\n+\t}\n+\treturn mi.MessageOf(x)\n+}\n+\n+// Deprecated: Use Dependencies_Edge.ProtoReflect.Descriptor instead.\n+func (*Dependencies_Edge) Descriptor() ([]byte, []int) {\n+\treturn file_api_proto_rawDescGZIP(), []int{15, 1}\n+}\n+\n+func (x *Dependencies_Edge) GetFromNode() uint32 {\n+\tif x != nil {\n+\t\treturn x.FromNode\n+\t}\n+\treturn 0\n+}\n+\n+func (x *Dependencies_Edge) GetToNode() uint32 {\n+\tif x != nil {\n+\t\treturn x.ToNode\n+\t}\n+\treturn 0\n+}\n+\n+func (x *Dependencies_Edge) GetRequirement() string {\n+\tif x != nil {\n+\t\treturn x.Requirement\n+\t}\n+\treturn \"\"\n+}\n+\n+type Project_Scorecard struct {\n+\tstate         protoimpl.MessageState\n+\tsizeCache     protoimpl.SizeCache\n+\tunknownFields protoimpl.UnknownFields\n+\n+\t// The date at which the scorecard was produced.\n+\t// The time portion of this field is midnight UTC.\n+\tDate *timestamppb.Timestamp `protobuf:\"bytes,1,opt,name=date,proto3\" json:\"date,omitempty\"`\n+\t// The source code repository and commit the scorecard was produced from.\n+\tRepository *Project_Scorecard_Repository `protobuf:\"bytes,2,opt,name=repository,proto3\" json:\"repository,omitempty\"`\n+\t// The version and commit of the Scorecard program used to produce the\n+\t// scorecard.\n+\tScorecard *Project_Scorecard_ScorecardDetails `protobuf:\"bytes,3,opt,name=scorecard,proto3\" json:\"scorecard,omitempty\"`\n+\t// The results of the\n+\t// [Scorecard Checks](https://github.com/ossf/scorecard#scorecard-checks)\n+\t// performed on the project.\n+\tChecks []*Project_Scorecard_Check `protobuf:\"bytes,4,rep,name=checks,proto3\" json:\"checks,omitempty\"`\n+\t// A weighted average score in the range [0,10]. A higher score is better.\n+\tOverallScore float32 `protobuf:\"fixed32,5,opt,name=overall_score,json=overallScore,proto3\" json:\"overall_score,omitempty\"`\n+\t// Additional metadata associated with the scorecard.\n+\tMetadata []string `protobuf:\"bytes,6,rep,name=metadata,proto3\" json:\"metadata,omitempty\"`\n+}\n+\n+func (x *Project_Scorecard) Reset() {\n+\t*x = Project_Scorecard{}\n+\tif protoimpl.UnsafeEnabled {\n+\t\tmi := &file_api_proto_msgTypes[45]\n+\t\tms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))\n+\t\tms.StoreMessageInfo(mi)\n+\t}\n+}\n+\n+func (x *Project_Scorecard) String() string {\n+\treturn protoimpl.X.MessageStringOf(x)\n+}\n+\n+func (*Project_Scorecard) ProtoMessage() {}\n+\n+func (x *Project_Scorecard) ProtoReflect() protoreflect.Message {\n+\tmi := &file_api_proto_msgTypes[45]\n+\tif protoimpl.UnsafeEnabled && x != nil {\n+\t\tms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))\n+\t\tif ms.LoadMessageInfo() == nil {\n+\t\t\tms.StoreMessageInfo(mi)\n+\t\t}\n+\t\treturn ms\n+\t}\n+\treturn mi.MessageOf(x)\n+}\n+\n+// Deprecated: Use Project_Scorecard.ProtoReflect.Descriptor instead.\n+func (*Project_Scorecard) Descriptor() ([]byte, []int) {\n+\treturn file_api_proto_rawDescGZIP(), []int{17, 0}\n+}\n+\n+func (x *Project_Scorecard) GetDate() *timestamppb.Timestamp {\n+\tif x != nil {\n+\t\treturn x.Date\n+\t}\n+\treturn nil\n+}\n+\n+func (x *Project_Scorecard) GetRepository() *Project_Scorecard_Repository {\n+\tif x != nil {\n+\t\treturn x.Repository\n+\t}\n+\treturn nil\n+}\n+\n+func (x *Project_Scorecard) GetScorecard() *Project_Scorecard_ScorecardDetails {\n+\tif x != nil {\n+\t\treturn x.Scorecard\n+\t}\n+\treturn nil\n+}\n+\n+func (x *Project_Scorecard) GetChecks() []*Project_Scorecard_Check {\n+\tif x != nil {\n+\t\treturn x.Checks\n+\t}\n+\treturn nil\n+}\n+\n+func (x *Project_Scorecard) GetOverallScore() float32 {\n+\tif x != nil {\n+\t\treturn x.OverallScore\n+\t}\n+\treturn 0\n+}\n+\n+func (x *Project_Scorecard) GetMetadata() []string {\n+\tif x != nil {\n+\t\treturn x.Metadata\n+\t}\n+\treturn nil\n+}\n+\n+type Project_OSSFuzzDetails struct {\n+\tstate         protoimpl.MessageState\n+\tsizeCache     protoimpl.SizeCache\n+\tunknownFields protoimpl.UnknownFields\n+\n+\t// The total number of lines of code in the project.\n+\tLineCount int32 `protobuf:\"varint,1,opt,name=line_count,json=lineCount,proto3\" json:\"line_count,omitempty\"`\n+\t// The number of lines of code covered by fuzzing.\n+\tLineCoverCount int32 `protobuf:\"varint,2,opt,name=line_cover_count,json=lineCoverCount,proto3\" json:\"line_cover_count,omitempty\"`\n+\t// The date the fuzz test that produced the coverage information was run\n+\t// against this project.\n+\t// The time portion of this field is midnight UTC.\n+\tDate *timestamppb.Timestamp `protobuf:\"bytes,3,opt,name=date,proto3\" json:\"date,omitempty\"`\n+\t// The URL containing the configuration for the project in the\n+\t// OSS-Fuzz repository.\n+\tConfigUrl string `protobuf:\"bytes,4,opt,name=config_url,json=configUrl,proto3\" json:\"config_url,omitempty\"`\n+}\n+\n+func (x *Project_OSSFuzzDetails) Reset() {\n+\t*x = Project_OSSFuzzDetails{}\n+\tif protoimpl.UnsafeEnabled {\n+\t\tmi := &file_api_proto_msgTypes[46]\n+\t\tms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))\n+\t\tms.StoreMessageInfo(mi)\n+\t}\n+}\n+\n+func (x *Project_OSSFuzzDetails) String() string {\n+\treturn protoimpl.X.MessageStringOf(x)\n+}\n+\n+func (*Project_OSSFuzzDetails) ProtoMessage() {}\n+\n+func (x *Project_OSSFuzzDetails) ProtoReflect() protoreflect.Message {\n+\tmi := &file_api_proto_msgTypes[46]\n+\tif protoimpl.UnsafeEnabled && x != nil {\n+\t\tms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))\n+\t\tif ms.LoadMessageInfo() == nil {\n+\t\t\tms.StoreMessageInfo(mi)\n+\t\t}\n+\t\treturn ms\n+\t}\n+\treturn mi.MessageOf(x)\n+}\n+\n+// Deprecated: Use Project_OSSFuzzDetails.ProtoReflect.Descriptor instead.\n+func (*Project_OSSFuzzDetails) Descriptor() ([]byte, []int) {\n+\treturn file_api_proto_rawDescGZIP(), []int{17, 1}\n+}\n+\n+func (x *Project_OSSFuzzDetails) GetLineCount() int32 {\n+\tif x != nil {\n+\t\treturn x.LineCount\n+\t}\n+\treturn 0\n+}\n+\n+func (x *Project_OSSFuzzDetails) GetLineCoverCount() int32 {\n+\tif x != nil {\n+\t\treturn x.LineCoverCount\n+\t}\n+\treturn 0\n+}\n+\n+func (x *Project_OSSFuzzDetails) GetDate() *timestamppb.Timestamp {\n+\tif x != nil {\n+\t\treturn x.Date\n+\t}\n+\treturn nil\n+}\n+\n+func (x *Project_OSSFuzzDetails) GetConfigUrl() string {\n+\tif x != nil {\n+\t\treturn x.ConfigUrl\n+\t}\n+\treturn \"\"\n+}\n+\n+type Project_Scorecard_Repository struct {\n+\tstate         protoimpl.MessageState\n+\tsizeCache     protoimpl.SizeCache\n+\tunknownFields protoimpl.UnknownFields\n+\n+\t// The source code repository the scorecard was produced from.\n+\tName string `protobuf:\"bytes,1,opt,name=name,proto3\" json:\"name,omitempty\"`\n+\t// The source code commit the scorecard was produced from.\n+\tCommit string `protobuf:\"bytes,2,opt,name=commit,proto3\" json:\"commit,omitempty\"`\n+}\n+\n+func (x *Project_Scorecard_Repository) Reset() {\n+\t*x = Project_Scorecard_Repository{}\n+\tif protoimpl.UnsafeEnabled {\n+\t\tmi := &file_api_proto_msgTypes[47]\n+\t\tms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))\n+\t\tms.StoreMessageInfo(mi)\n+\t}\n+}\n+\n+func (x *Project_Scorecard_Repository) String() string {\n+\treturn protoimpl.X.MessageStringOf(x)\n+}\n+\n+func (*Project_Scorecard_Repository) ProtoMessage() {}\n+\n+func (x *Project_Scorecard_Repository) ProtoReflect() protoreflect.Message {\n+\tmi := &file_api_proto_msgTypes[47]\n+\tif protoimpl.UnsafeEnabled && x != nil {\n+\t\tms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))\n+\t\tif ms.LoadMessageInfo() == nil {\n+\t\t\tms.StoreMessageInfo(mi)\n+\t\t}\n+\t\treturn ms\n+\t}\n+\treturn mi.MessageOf(x)\n+}\n+\n+// Deprecated: Use Project_Scorecard_Repository.ProtoReflect.Descriptor instead.\n+func (*Project_Scorecard_Repository) Descriptor() ([]byte, []int) {\n+\treturn file_api_proto_rawDescGZIP(), []int{17, 0, 0}\n+}\n+\n+func (x *Project_Scorecard_Repository) GetName() string {\n+\tif x != nil {\n+\t\treturn x.Name\n+\t}\n+\treturn \"\"\n+}\n+\n+func (x *Project_Scorecard_Repository) GetCommit() string {\n+\tif x != nil {\n+\t\treturn x.Commit\n+\t}\n+\treturn \"\"\n+}\n+\n+type Project_Scorecard_ScorecardDetails struct {\n+\tstate         protoimpl.MessageState\n+\tsizeCache     protoimpl.SizeCache\n+\tunknownFields protoimpl.UnknownFields\n+\n+\t// The version of the Scorecard program used to produce the scorecard.\n+\tVersion string `protobuf:\"bytes,1,opt,name=version,proto3\" json:\"version,omitempty\"`\n+\t// The commit of the Scorecard program used to produce the scorecard.\n+\tCommit string `protobuf:\"bytes,2,opt,name=commit,proto3\" json:\"commit,omitempty\"`\n+}\n+\n+func (x *Project_Scorecard_ScorecardDetails) Reset() {\n+\t*x = Project_Scorecard_ScorecardDetails{}\n+\tif protoimpl.UnsafeEnabled {\n+\t\tmi := &file_api_proto_msgTypes[48]\n+\t\tms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))\n+\t\tms.StoreMessageInfo(mi)\n+\t}\n+}\n+\n+func (x *Project_Scorecard_ScorecardDetails) String() string {\n+\treturn protoimpl.X.MessageStringOf(x)\n+}\n+\n+func (*Project_Scorecard_ScorecardDetails) ProtoMessage() {}\n+\n+func (x *Project_Scorecard_ScorecardDetails) ProtoReflect() protoreflect.Message {\n+\tmi := &file_api_proto_msgTypes[48]\n+\tif protoimpl.UnsafeEnabled && x != nil {\n+\t\tms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))\n+\t\tif ms.LoadMessageInfo() == nil {\n+\t\t\tms.StoreMessageInfo(mi)\n+\t\t}\n+\t\treturn ms\n+\t}\n+\treturn mi.MessageOf(x)\n+}\n+\n+// Deprecated: Use Project_Scorecard_ScorecardDetails.ProtoReflect.Descriptor instead.\n+func (*Project_Scorecard_ScorecardDetails) Descriptor() ([]byte, []int) {\n+\treturn file_api_proto_rawDescGZIP(), []int{17, 0, 1}\n+}\n+\n+func (x *Project_Scorecard_ScorecardDetails) GetVersion() string {\n+\tif x != nil {\n+\t\treturn x.Version\n+\t}\n+\treturn \"\"\n+}\n+\n+func (x *Project_Scorecard_ScorecardDetails) GetCommit() string {\n+\tif x != nil {\n+\t\treturn x.Commit\n+\t}\n+\treturn \"\"\n+}\n+\n+type Project_Scorecard_Check struct {\n+\tstate         protoimpl.MessageState\n+\tsizeCache     protoimpl.SizeCache\n+\tunknownFields protoimpl.UnknownFields\n+\n+\t// The name of the check.\n+\tName string `protobuf:\"bytes,1,opt,name=name,proto3\" json:\"name,omitempty\"`\n+\t// Human-readable documentation for the check.\n+\tDocumentation *Project_Scorecard_Check_Documentation `protobuf:\"bytes,2,opt,name=documentation,proto3\" json:\"documentation,omitempty\"`\n+\t// A score in the range [0,10]. A higher score is better.\n+\t// A negative score indicates that the check did not run successfully.\n+\tScore int32 `protobuf:\"varint,3,opt,name=score,proto3\" json:\"score,omitempty\"`\n+\t// The reason for the score.\n+\tReason string `protobuf:\"bytes,4,opt,name=reason,proto3\" json:\"reason,omitempty\"`\n+\t// Further details regarding the check.\n+\tDetails []string `protobuf:\"bytes,5,rep,name=details,proto3\" json:\"details,omitempty\"`\n+}\n+\n+func (x *Project_Scorecard_Check) Reset() {\n+\t*x = Project_Scorecard_Check{}\n+\tif protoimpl.UnsafeEnabled {\n+\t\tmi := &file_api_proto_msgTypes[49]\n+\t\tms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))\n+\t\tms.StoreMessageInfo(mi)\n+\t}\n+}\n+\n+func (x *Project_Scorecard_Check) String() string {\n+\treturn protoimpl.X.MessageStringOf(x)\n+}\n+\n+func (*Project_Scorecard_Check) ProtoMessage() {}\n+\n+func (x *Project_Scorecard_Check) ProtoReflect() protoreflect.Message {\n+\tmi := &file_api_proto_msgTypes[49]\n+\tif protoimpl.UnsafeEnabled && x != nil {\n+\t\tms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))\n+\t\tif ms.LoadMessageInfo() == nil {\n+\t\t\tms.StoreMessageInfo(mi)\n+\t\t}\n+\t\treturn ms\n+\t}\n+\treturn mi.MessageOf(x)\n+}\n+\n+// Deprecated: Use Project_Scorecard_Check.ProtoReflect.Descriptor instead.\n+func (*Project_Scorecard_Check) Descriptor() ([]byte, []int) {\n+\treturn file_api_proto_rawDescGZIP(), []int{17, 0, 2}\n+}\n+\n+func (x *Project_Scorecard_Check) GetName() string {\n+\tif x != nil {\n+\t\treturn x.Name\n+\t}\n+\treturn \"\"\n+}\n+\n+func (x *Project_Scorecard_Check) GetDocumentation() *Project_Scorecard_Check_Documentation {\n+\tif x != nil {\n+\t\treturn x.Documentation\n+\t}\n+\treturn nil\n+}\n+\n+func (x *Project_Scorecard_Check) GetScore() int32 {\n+\tif x != nil {\n+\t\treturn x.Score\n+\t}\n+\treturn 0\n+}\n+\n+func (x *Project_Scorecard_Check) GetReason() string {\n+\tif x != nil {\n+\t\treturn x.Reason\n+\t}\n+\treturn \"\"\n+}\n+\n+func (x *Project_Scorecard_Check) GetDetails() []string {\n+\tif x != nil {\n+\t\treturn x.Details\n+\t}\n+\treturn nil\n+}\n+\n+type Project_Scorecard_Check_Documentation struct {\n+\tstate         protoimpl.MessageState\n+\tsizeCache     protoimpl.SizeCache\n+\tunknownFields protoimpl.UnknownFields\n+\n+\t// A short description of the check.\n+\tShortDescription string `protobuf:\"bytes,1,opt,name=short_description,json=shortDescription,proto3\" json:\"short_description,omitempty\"`\n+\t// A link to more details about the check.\n+\tUrl string `protobuf:\"bytes,2,opt,name=url,proto3\" json:\"url,omitempty\"`\n+}\n+\n+func (x *Project_Scorecard_Check_Documentation) Reset() {\n+\t*x = Project_Scorecard_Check_Documentation{}\n+\tif protoimpl.UnsafeEnabled {\n+\t\tmi := &file_api_proto_msgTypes[50]\n+\t\tms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))\n+\t\tms.StoreMessageInfo(mi)\n+\t}\n+}\n+\n+func (x *Project_Scorecard_Check_Documentation) String() string {\n+\treturn protoimpl.X.MessageStringOf(x)\n+}\n+\n+func (*Project_Scorecard_Check_Documentation) ProtoMessage() {}\n+\n+func (x *Project_Scorecard_Check_Documentation) ProtoReflect() protoreflect.Message {\n+\tmi := &file_api_proto_msgTypes[50]\n+\tif protoimpl.UnsafeEnabled && x != nil {\n+\t\tms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))\n+\t\tif ms.LoadMessageInfo() == nil {\n+\t\t\tms.StoreMessageInfo(mi)\n+\t\t}\n+\t\treturn ms\n+\t}\n+\treturn mi.MessageOf(x)\n+}\n+\n+// Deprecated: Use Project_Scorecard_Check_Documentation.ProtoReflect.Descriptor instead.\n+func (*Project_Scorecard_Check_Documentation) Descriptor() ([]byte, []int) {\n+\treturn file_api_proto_rawDescGZIP(), []int{17, 0, 2, 0}\n+}\n+\n+func (x *Project_Scorecard_Check_Documentation) GetShortDescription() string {\n+\tif x != nil {\n+\t\treturn x.ShortDescription\n+\t}\n+\treturn \"\"\n+}\n+\n+func (x *Project_Scorecard_Check_Documentation) GetUrl() string {\n+\tif x != nil {\n+\t\treturn x.Url\n+\t}\n+\treturn \"\"\n+}\n+\n+type ProjectPackageVersions_Version struct {\n+\tstate         protoimpl.MessageState\n+\tsizeCache     protoimpl.SizeCache\n+\tunknownFields protoimpl.UnknownFields\n+\n+\t// The identifier for the version.\n+\tVersionKey *VersionKey `protobuf:\"bytes,1,opt,name=version_key,json=versionKey,proto3\" json:\"version_key,omitempty\"`\n+\t// The SLSA provenance statements that link the version to the project. This\n+\t// is only populated for npm package versions. See the 'attestations' field\n+\t// for more attestations (including SLSA provenance) for all systems.\n+\tSlsaProvenances []*SLSAProvenance `protobuf:\"bytes,2,rep,name=slsa_provenances,json=slsaProvenances,proto3\" json:\"slsa_provenances,omitempty\"`\n+\t// Attestations that link the version to the project.\n+\tAttestations []*Attestation `protobuf:\"bytes,5,rep,name=attestations,proto3\" json:\"attestations,omitempty\"`\n+\t// What the relationship between the project and the package version is.\n+\tRelationType ProjectRelationType `protobuf:\"varint,3,opt,name=relation_type,json=relationType,proto3,enum=deps_dev.v3.ProjectRelationType\" json:\"relation_type,omitempty\"`\n+\t// How the mapping between project and package version was discovered.\n+\tRelationProvenance ProjectRelationProvenance `protobuf:\"varint,4,opt,name=relation_provenance,json=relationProvenance,proto3,enum=deps_dev.v3.ProjectRelationProvenance\" json:\"relation_provenance,omitempty\"`\n+}\n+\n+func (x *ProjectPackageVersions_Version) Reset() {\n+\t*x = ProjectPackageVersions_Version{}\n+\tif protoimpl.UnsafeEnabled {\n+\t\tmi := &file_api_proto_msgTypes[51]\n+\t\tms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))\n+\t\tms.StoreMessageInfo(mi)\n+\t}\n+}\n+\n+func (x *ProjectPackageVersions_Version) String() string {\n+\treturn protoimpl.X.MessageStringOf(x)\n+}\n+\n+func (*ProjectPackageVersions_Version) ProtoMessage() {}\n+\n+func (x *ProjectPackageVersions_Version) ProtoReflect() protoreflect.Message {\n+\tmi := &file_api_proto_msgTypes[51]\n+\tif protoimpl.UnsafeEnabled && x != nil {\n+\t\tms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))\n+\t\tif ms.LoadMessageInfo() == nil {\n+\t\t\tms.StoreMessageInfo(mi)\n+\t\t}\n+\t\treturn ms\n+\t}\n+\treturn mi.MessageOf(x)\n+}\n+\n+// Deprecated: Use ProjectPackageVersions_Version.ProtoReflect.Descriptor instead.\n+func (*ProjectPackageVersions_Version) Descriptor() ([]byte, []int) {\n+\treturn file_api_proto_rawDescGZIP(), []int{19, 0}\n+}\n+\n+func (x *ProjectPackageVersions_Version) GetVersionKey() *VersionKey {\n+\tif x != nil {\n+\t\treturn x.VersionKey\n+\t}\n+\treturn nil\n+}\n+\n+func (x *ProjectPackageVersions_Version) GetSlsaProvenances() []*SLSAProvenance {\n+\tif x != nil {\n+\t\treturn x.SlsaProvenances\n+\t}\n+\treturn nil\n+}\n+\n+func (x *ProjectPackageVersions_Version) GetAttestations() []*Attestation {\n+\tif x != nil {\n+\t\treturn x.Attestations\n+\t}\n+\treturn nil\n+}\n+\n+func (x *ProjectPackageVersions_Version) GetRelationType() ProjectRelationType {\n+\tif x != nil {\n+\t\treturn x.RelationType\n+\t}\n+\treturn ProjectRelationType_UNKNOWN_PROJECT_RELATION_TYPE\n+}\n+\n+func (x *ProjectPackageVersions_Version) GetRelationProvenance() ProjectRelationProvenance {\n+\tif x != nil {\n+\t\treturn x.RelationProvenance\n+\t}\n+\treturn ProjectRelationProvenance_UNKNOWN_PROJECT_RELATION_PROVENANCE\n+}\n+\n+type QueryResult_Result struct {\n+\tstate         protoimpl.MessageState\n+\tsizeCache     protoimpl.SizeCache\n+\tunknownFields protoimpl.UnknownFields\n+\n+\tVersion *Version `protobuf:\"bytes,1,opt,name=version,proto3\" json:\"version,omitempty\"`\n+}\n+\n+func (x *QueryResult_Result) Reset() {\n+\t*x = QueryResult_Result{}\n+\tif protoimpl.UnsafeEnabled {\n+\t\tmi := &file_api_proto_msgTypes[52]\n+\t\tms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))\n+\t\tms.StoreMessageInfo(mi)\n+\t}\n+}\n+\n+func (x *QueryResult_Result) String() string {\n+\treturn protoimpl.X.MessageStringOf(x)\n+}\n+\n+func (*QueryResult_Result) ProtoMessage() {}\n+\n+func (x *QueryResult_Result) ProtoReflect() protoreflect.Message {\n+\tmi := &file_api_proto_msgTypes[52]\n+\tif protoimpl.UnsafeEnabled && x != nil {\n+\t\tms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))\n+\t\tif ms.LoadMessageInfo() == nil {\n+\t\t\tms.StoreMessageInfo(mi)\n+\t\t}\n+\t\treturn ms\n+\t}\n+\treturn mi.MessageOf(x)\n+}\n+\n+// Deprecated: Use QueryResult_Result.ProtoReflect.Descriptor instead.\n+func (*QueryResult_Result) Descriptor() ([]byte, []int) {\n+\treturn file_api_proto_rawDescGZIP(), []int{23, 0}\n+}\n+\n+func (x *QueryResult_Result) GetVersion() *Version {\n+\tif x != nil {\n+\t\treturn x.Version\n+\t}\n+\treturn nil\n+}\n+\n+var File_api_proto protoreflect.FileDescriptor\n+\n+var file_api_proto_rawDesc = []byte{\n+\t0x0a, 0x09, 0x61, 0x70, 0x69, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x12, 0x0b, 0x64, 0x65, 0x70,\n+\t0x73, 0x5f, 0x64, 0x65, 0x76, 0x2e, 0x76, 0x33, 0x1a, 0x1c, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65,\n+\t0x2f, 0x61, 0x70, 0x69, 0x2f, 0x61, 0x6e, 0x6e, 0x6f, 0x74, 0x61, 0x74, 0x69, 0x6f, 0x6e, 0x73,\n+\t0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x1a, 0x1f, 0x67, 0x6f, 0x6f, 0x67, 0x6c, 0x65, 0x2f, 0x70,\n+\t0x72, 0x6f, 0x74, 0x6f, 0x62, 0x75, 0x66, 0x2f, 0x74, 0x69, 0x6d, 0x65, 0x73, 0x74, 0x61, 0x6d,\n+\t0x70, 0x2e, 0x70, 0x72, 0x6f, 0x74, 0x6f, 0x22, 0x4d, 0x0a, 0x0a, 0x50, 0x61, 0x63, 0x6b, 0x61,\n+\t0x67, 0x65, 0x4b, 0x65, 0x79, 0x12, 0x2b, 0x0a, 0x06, 0x73, 0x79, 0x73, 0x74, 0x65, 0x6d, 0x18,\n+\t0x01, 0x20, 0x01, 0x28, 0x0e, 0x32, 0x13, 0x2e, 0x64, 0x65, 0x70, 0x73, 0x5f, 0x64, 0x65, 0x76,\n+\t0x2e, 0x76, 0x33, 0x2e, 0x53, 0x79, 0x73, 0x74, 0x65, 0x6d, 0x52, 0x06, 0x73, 0x79, 0x73, 0x74,\n+\t0x65, 0x6d, 0x12, 0x12, 0x0a, 0x04, 0x6e, 0x61, 0x6d, 0x65, 0x18, 0x02, 0x20, 0x01, 0x28, 0x09,\n+\t0x52, 0x04, 0x6e, 0x61, 0x6d, 0x65, 0x22, 0x67, 0x0a, 0x0a, 0x56, 0x65, 0x72, 0x73, 0x69, 0x6f,\n+\t0x6e, 0x4b, 0x65, 0x79, 0x12, 0x2b, 0x0a, 0x06, 0x73, 0x79, 0x73, 0x74, 0x65, 0x6d, 0x18, 0x01,\n+\t0x20, 0x01, 0x28, 0x0e, 0x32, 0x13, 0x2e, 0x64, 0x65, 0x70, 0x73, 0x5f, 0x64, 0x65, 0x76, 0x2e,\n+\t0x76, 0x33, 0x2e, 0x53, 0x79, 0x73, 0x74, 0x65, 0x6d, 0x52, 0x06, 0x73, 0x79, 0x73, 0x74, 0x65,\n+\t0x6d, 0x12, 0x12, 0x0a, 0x04, 0x6e, 0x61, 0x6d, 0x65, 0x18, 0x02, 0x20, 0x01, 0x28, 0x09, 0x52,\n+\t0x04, 0x6e, 0x61, 0x6d, 0x65, 0x12, 0x18, 0x0a, 0x07, 0x76, 0x65, 0x72, 0x73, 0x69, 0x6f, 0x6e,\n+\t0x18, 0x03, 0x20, 0x01, 0x28, 0x09, 0x52, 0x07, 0x76, 0x65, 0x72, 0x73, 0x69, 0x6f, 0x6e, 0x22,\n+\t0x1c, 0x0a, 0x0a, 0x50, 0x72, 0x6f, 0x6a, 0x65, 0x63, 0x74, 0x4b, 0x65, 0x79, 0x12, 0x0e, 0x0a,\n+\t0x02, 0x69, 0x64, 0x18, 0x01, 0x20, 0x01, 0x28, 0x09, 0x52, 0x02, 0x69, 0x64, 0x22, 0x1d, 0x0a,\n",
+ "diff_truncated": true
+}

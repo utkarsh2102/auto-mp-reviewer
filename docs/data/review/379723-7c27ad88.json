@@ -1,0 +1,31 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~lihow731/ubuntu/+source/live-build/+git/live-build/+merge/379723",
+ "id": "379723",
+ "title": "Add GENISOIMAGE_OPTIONS_EXTRA",
+ "source_branch": "ubuntu/focal",
+ "target_branch": "applied/ubuntu/focal-devel",
+ "revision": "34cd9a06d7e44bb77d4fd2318134b2dbe37cd709",
+ "base_revision": "9d36b576b77184718256787be83e0edb9f8489bc",
+ "description": "When we want to build a uefi bootable image, the mkisoimage needs extra options.\nBut, in live-build 3, the option of mkisoimage is fixed and can not be customized.",
+ "commit_message": "Add GENISOIMAGE_OPTIONS_EXTRA\n    \nMake the genisoimage option more flexible.\n\nLP: 1864426",
+ "diffstat": {
+  "scripts/build/lb_config": [
+   1,
+   0
+  ],
+  "scripts/build/lb_binary_iso": [
+   1,
+   1
+  ],
+  "debian/changelog": [
+   7,
+   0
+  ]
+ },
+ "files": 3,
+ "added_lines": 9,
+ "removed_lines": 1,
+ "diff": "diff --git a/debian/changelog b/debian/changelog\nindex c604dbd..f4f78cc 100644\n--- a/debian/changelog\n+++ b/debian/changelog\n@@ -1,3 +1,10 @@\n+live-build (3.0~a57-1ubuntu39) focal; urgency=medium\n+\n+  * Add GENISOIMAGE_OPTIONS_EXTRA\n+    Make the genisoimage option more flexible.\n+\n+ -- Li-Hao Liao (Leon Liao) <leon.liao@canonical.com>  Mon, 24 Feb 2020 17:56:42 +0800\n+\n live-build (3.0~a57-1ubuntu38) eoan; urgency=medium\n \n   * Stop setting LB_INITRAMFS_COMPRESSION default, and instead fallback to\ndiff --git a/scripts/build/lb_binary_iso b/scripts/build/lb_binary_iso\nindex d466656..1f6dc8a 100755\n--- a/scripts/build/lb_binary_iso\n+++ b/scripts/build/lb_binary_iso\n@@ -193,7 +193,7 @@ fi\n \n cat >> binary.sh << EOF\n \n-genisoimage ${GENISOIMAGE_OPTIONS} -o ${IMAGE} binary\n+genisoimage ${GENISOIMAGE_OPTIONS} ${GENISOIMAGE_OPTIONS_EXTRA} -o ${IMAGE} binary\n EOF\n \n if [ \"${LB_BINARY_IMAGES}\" = \"iso-hybrid\" ]\ndiff --git a/scripts/build/lb_config b/scripts/build/lb_config\nindex ebfa47d..eaeca12 100755\n--- a/scripts/build/lb_config\n+++ b/scripts/build/lb_config\n@@ -1107,6 +1107,7 @@ APT_OPTIONS=\"${APT_OPTIONS}\"\n APTITUDE_OPTIONS=\"${APTITUDE_OPTIONS}\"\n GZIP_OPTIONS=\"${GZIP_OPTIONS}\"\n ISOHYBRID_OPTIONS=\"${ISOHYBRID_OPTIONS}\"\n+GENISOIMAGE_OPTIONS_EXTRA=\"${GENISOIMAGE_OPTIONS_EXTRA}\"\n EOF\n \n # Creating lb_bootstrap_* configuration\n",
+ "diff_truncated": false
+}

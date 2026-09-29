@@ -1,0 +1,23 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~dipietro-salvatore/ubuntu/+source/nginx/+git/nginx/+merge/434825",
+ "id": "434825",
+ "title": "Add GCC atomic support (-moutline-atomics) for arm64",
+ "source_branch": "arm64-moutline-atomics",
+ "target_branch": "ubuntu/focal-security",
+ "revision": "83267510ca72b49a214be198bf4d8baddf028318",
+ "base_revision": "adcc4089a7df5bb3a98629acdb7aa4769f2b6087",
+ "description": "Add \"-moutline-atomics\" cflag for arm64 architecture since it is not active by default on GCC 9. Without this flag, the CPU doesn't use atomics instructions resulting in poor performance and CPU saturation. With this change, NGINX does not produce STREX failing operations anymore (observable with perf tool).",
+ "commit_message": "Add GCC atomic support (-moutline-atomics) for arm64",
+ "diffstat": {
+  "debian/rules": [
+   2,
+   0
+  ]
+ },
+ "files": 1,
+ "added_lines": 2,
+ "removed_lines": 0,
+ "diff": "diff --git a/debian/rules b/debian/rules\nindex 655a7e5..3c72c18 100755\n--- a/debian/rules\n+++ b/debian/rules\n@@ -35,6 +35,8 @@ $(foreach flavour,$(FLAVOURS),$(eval BUILDDIR_$(flavour) = $(CURDIR)/debian/buil\n DEB_BUILD_ARCH ?=$(shell dpkg-architecture -qDEB_BUILD_ARCH)\n ifeq ($(DEB_BUILD_ARCH),sparc)\n \tdebian_cflags += -m32 -mcpu=ultrasparc\n+else ifeq ($(DEB_BUILD_ARCH),arm64)\n+\tdebian_cflags += -moutline-atomics\n endif\n \n ifneq (,$(filter parallel=%,$(DEB_BUILD_OPTIONS)))\n",
+ "diff_truncated": false
+}

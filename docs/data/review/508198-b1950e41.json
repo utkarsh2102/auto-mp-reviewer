@@ -1,0 +1,31 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~tchavadar/ubuntu/+source/llvm-toolchain-22/+git/llvm-toolchain-22/+merge/508198",
+ "id": "508198",
+ "title": "PPA: https://launchpad.net/~tchavadar/+archive/ubuntu/llvm-toolchain-22-amdgpu-fix",
+ "source_branch": "ubuntu/devel",
+ "target_branch": "ubuntu/devel",
+ "revision": "46a3685e21f8601ca149b3f5e00ea8dfdc11c8bf",
+ "base_revision": "fd8b6bb0978f969cadd9d13f5c143164bc93fedb",
+ "description": "PPA: https://launchpad.net/~tchavadar/+archive/ubuntu/llvm-toolchain-22-amdgpu-fix\nAutopkgtest: https://autopkgtest.ubuntu.com/user/tchavadar/ppa/llvm-toolchain-22-amdgpu-fix\nBugs: LP: #2160428",
+ "commit_message": null,
+ "diffstat": {
+  "debian/changelog": [
+   18,
+   0
+  ],
+  "debian/patches/amdgpu-fix-simulated-trap-continuation-block.diff": [
+   67,
+   0
+  ],
+  "debian/patches/series": [
+   1,
+   0
+  ]
+ },
+ "files": 3,
+ "added_lines": 86,
+ "removed_lines": 0,
+ "diff": "diff --git a/debian/changelog b/debian/changelog\nindex 24864dc..3a49c16 100644\n--- a/debian/changelog\n+++ b/debian/changelog\n@@ -1,3 +1,21 @@\n+llvm-toolchain-22 (1:22.1.6-1ubuntu3) stonking; urgency=medium\n+\n+  * d/p/amdgpu-fix-simulated-trap-continuation-block.diff: cherry-pick\n+    llvm/llvm-project@9429a1e809fd (PR #174774,\n+    \"[AMDGPU] Fix insertSimulatedTrap to return correct continuation block\")\n+    Fixes a codegen crash on gfx1100/gfx1101/gfx1102 (RDNA3 desktop:\n+    RX 7900/7800/7700/7600) where clang aborts with\n+    \"fatal error: error in backend: Unsupported instruction : <MCInst NNNN ...>\"\n+    from the AMDGPU AsmPrinter whenever a kernel contains a block that ends in\n+    llvm.trap() with no successors — an unlowered pseudo reaches the MC layer.\n+    Notably affects pytorch-rocm 2.12's Loss.hip (FTBFS). Reported upstream as\n+    llvm/llvm-project#208912. Fix landed on main branch on 2026-01-21 (LLVM 23);\n+    release/22.x was cut 8 days before and never received it. This cherry-pick\n+    lets 22.1.x carry the fix without waiting for a 22.1.9 or 22.2.0 point\n+    release upstream. (LP: #2160428)\n+\n+ -- Talha Can Havadar <talha.can.havadar@canonical.com>  Sat, 11 Jul 2026 18:17:56 +0200\n+\n llvm-toolchain-22 (1:22.1.6-1ubuntu2) stonking; urgency=medium\n \n   * No-change rebuild for abseil soname.\ndiff --git a/debian/patches/amdgpu-fix-simulated-trap-continuation-block.diff b/debian/patches/amdgpu-fix-simulated-trap-continuation-block.diff\nnew file mode 100644\nindex 0000000..d139e11\n--- /dev/null\n+++ b/debian/patches/amdgpu-fix-simulated-trap-continuation-block.diff\n@@ -0,0 +1,67 @@\n+Description: [AMDGPU] Fix insertSimulatedTrap to return correct continuation block\n+ Backport of llvm/llvm-project@9429a1e809fd (PR #174774).\n+ .\n+ `insertSimulatedTrap` was returning `HaltLoopBB` when the trap was in a block\n+ with no successors and was the last instruction. Since `HaltLoopBB` gets\n+ appended to the end of the function, `FinalizeISel` would jump there and skip\n+ any intermediate blocks, leaving their pseudos unexpanded. Those unexpanded\n+ pseudos then reach the MC layer, which has no encoding for them, producing:\n+ .\n+     LLVM ERROR: Unsupported instruction : <MCInst NNNN ...>\n+ .\n+ The failure is deterministic on gfx1100/gfx1101/gfx1102 (RDNA3 desktop:\n+ RX 7900/7800/7700/7600) for any HIP TU that contains an amdgpu_kernel whose\n+ CFG matches the fix precondition. PyTorch 2.12's\n+ aten/src/ATen/native/hip/Loss.hip (NLL loss backward) is one such TU and\n+ FTBFSes on ROCm 7.2 without this fix.\n+ .\n+ Fix by returning `MBB.getNextNode()` unconditionally:\n+   - After splitAt(): getNextNode() returns the split-off block (ContBB)\n+   - No split, MBB in middle: getNextNode() returns the next original block\n+   - No split, MBB was last: getNextNode() returns HaltLoopBB (just pushed)\n+ .\n+ Since we always push_back(HaltLoopBB) before returning, getNextNode() can\n+ never be nullptr: if MBB was the last block, HaltLoopBB is now after it.\n+From: Talha Can Havadar <havadartalha@gmail.com>\n+Author: Prasoon Mishra <Prasoon.Mishra@amd.com>\n+Origin: upstream, https://github.com/llvm/llvm-project/commit/9429a1e809fd\n+Bug: https://github.com/llvm/llvm-project/issues/208912\n+Applied-Upstream: https://github.com/llvm/llvm-project/pull/174774\n+Last-Update: 2026-07-11\n+\n+Index: llvm-toolchain-22/llvm/lib/Target/AMDGPU/SIInstrInfo.cpp\n+===================================================================\n+--- llvm-toolchain-22.orig/llvm/lib/Target/AMDGPU/SIInstrInfo.cpp\n++++ llvm-toolchain-22/llvm/lib/Target/AMDGPU/SIInstrInfo.cpp\n+@@ -1970,21 +1970,15 @@ MachineBasicBlock *SIInstrInfo::insertSi\n+   constexpr unsigned ECQueueWaveAbort = 0x400;\n+ \n+   MachineBasicBlock *TrapBB = &MBB;\n+-  MachineBasicBlock *ContBB = &MBB;\n+   MachineBasicBlock *HaltLoopBB = MF->CreateMachineBasicBlock();\n+ \n+   if (!MBB.succ_empty() || std::next(MI.getIterator()) != MBB.end()) {\n+-    ContBB = MBB.splitAt(MI, /*UpdateLiveIns=*/false);\n++    MBB.splitAt(MI, /*UpdateLiveIns=*/false);\n+     TrapBB = MF->CreateMachineBasicBlock();\n+     BuildMI(MBB, MI, DL, get(AMDGPU::S_CBRANCH_EXECNZ)).addMBB(TrapBB);\n+     MF->push_back(TrapBB);\n+     MBB.addSuccessor(TrapBB);\n+-  } else {\n+-    // Since we're adding HaltLoopBB and modifying the CFG, we must return a\n+-    // different block to signal the change.\n+-    ContBB = HaltLoopBB;\n+   }\n+-\n+   // Start with a `s_trap 2`, if we're in PRIV=1 and we need the workaround this\n+   // will be a nop.\n+   BuildMI(*TrapBB, TrapBB->end(), DL, get(AMDGPU::S_TRAP))\n+@@ -2020,7 +2014,7 @@ MachineBasicBlock *SIInstrInfo::insertSi\n+   MF->push_back(HaltLoopBB);\n+   HaltLoopBB->addSuccessor(HaltLoopBB);\n+ \n+-  return ContBB;\n++  return MBB.getNextNode();\n+ }\n+ \n+ unsigned SIInstrInfo::getNumWaitStates(const MachineInstr &MI) {\ndiff --git a/debian/patches/series b/debian/patches/series\nindex 5c770cc..d76444f 100644\n--- a/debian/patches/series\n+++ b/debian/patches/series\n@@ -143,3 +143,4 @@ ubuntu-stonking.diff\n \n # only apply this patch for Ubuntu 25.10 or newer\n ubuntu-clang-use-RVA23U64-profile.patch\n+amdgpu-fix-simulated-trap-continuation-block.diff\n",
+ "diff_truncated": false
+}

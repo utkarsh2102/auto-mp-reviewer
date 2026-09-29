@@ -1,0 +1,31 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~vpa1977/ubuntu/+source/cryptsetup/+git/cryptsetup/+merge/434021",
+ "id": "434021",
+ "title": "This merge proposal enables cryptsetup-lvm test for cryptsetup package.",
+ "source_branch": "lp1983522-cryptroot-lvm",
+ "target_branch": "ubuntu/devel",
+ "revision": "3005ffcda05fc02497a62d9e07c4e94ed59c3e40",
+ "base_revision": "fa9ef6cf7a075ff3a57a44e7bf239ee3d893dfb1",
+ "description": "This merge proposal enables cryptsetup-lvm test for cryptsetup package.\nThe test did wait indefinitely for select() to return when trying to flush the console.\n\n  * Fix cryptroot-lvm autopkgtest on Ubuntu. (LP: #1983522)\n    - debian/tests/control: enable cryptroot-lvm\n    - debian/tests/utils/mock.pm: return from consume() function if select()\n      times out or fails\n\nPlease tag and sponsor\n\nPPA: ppa:vpa1977/cryptsetup-review-comments\n\nSteps to test:\n\nThe test should be passing in CI now:\n\nhttps://autopkgtest.ubuntu.com/request.cgi/?release=lunar&arch=amd64&package=cryptsetup&ppa=vpa1977%2Fcryptsetup-review-comments&trigger=cryptsetup%2F2%3A2.5.0-6ubuntu3~ppa1",
+ "commit_message": null,
+ "diffstat": {
+  "debian/tests/utils/mock.pm": [
+   2,
+   2
+  ],
+  "debian/changelog": [
+   9,
+   0
+  ],
+  "debian/tests/control": [
+   1,
+   3
+  ]
+ },
+ "files": 3,
+ "added_lines": 12,
+ "removed_lines": 5,
+ "diff": "diff --git a/debian/changelog b/debian/changelog\nindex 946f04c..9660ba4 100644\n--- a/debian/changelog\n+++ b/debian/changelog\n@@ -1,3 +1,12 @@\n+cryptsetup (2:2.5.0-6ubuntu3~ppa1) lunar; urgency=medium\n+\n+  * Fix cryptroot-lvm autopkgtest on Ubuntu. (LP: #1983522)\n+    - debian/tests/control: enable cryptroot-lvm\n+    - debian/tests/utils/mock.pm: return from consume() function if select()\n+      times out or fails\n+\n+ -- Vladimir Petko <vladimir.petko@canonical.com>  Fri, 02 Dec 2022 15:53:42 +1300\n+\n cryptsetup (2:2.5.0-6ubuntu2) lunar; urgency=medium\n \n   * Fix cryptroot-* autopkgtests on Ubuntu. (LP: #1983522)\ndiff --git a/debian/tests/control b/debian/tests/control\nindex 729d905..0b7e9be 100644\n--- a/debian/tests/control\n+++ b/debian/tests/control\n@@ -56,9 +56,7 @@ Tests: initramfs-hook\n Depends: cryptsetup-initramfs, e2fsprogs, zstd\n Restrictions: allow-stderr, needs-root, isolation-machine\n \n-# cryptroot-lvm test is disabled - it hangs in CI\n-#Tests: cryptroot-lvm, cryptroot-legacy\n-Tests: cryptroot-legacy\n+Tests: cryptroot-lvm, cryptroot-legacy\n # Only dependencies required to set the VM here are listed here;\n # cryptsetup is not listed since we only install it in the VM.\n Depends: cryptsetup-bin,\ndiff --git a/debian/tests/utils/mock.pm b/debian/tests/utils/mock.pm\nindex d412d12..2425d87 100644\n--- a/debian/tests/utils/mock.pm\n+++ b/debian/tests/utils/mock.pm\n@@ -106,8 +106,8 @@ sub consume($) {\n \n     while(unpack(\"b*\", $RBITS) != 0) {\n         my $rout = $RBITS;\n-        while (select($rout, undef, undef, undef) == -1) {\n-            die \"select: $!\" unless $! == EINTR; # try again immediately if select(2) was interrupted\n+        if (select($rout, undef, undef, 1) == -1) {\n+            return;\n         }\n         read_data($rout);\n         if (length($$buffer) == 0) {\n",
+ "diff_truncated": false
+}

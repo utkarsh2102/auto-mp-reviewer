@@ -1,0 +1,47 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~pushkarnk/ubuntu/+source/openjdk-17/+git/openjdk-17/+merge/484600",
+ "id": "484600",
+ "title": "ubuntu/devel → ubuntu/devel",
+ "source_branch": "ubuntu/devel",
+ "target_branch": "ubuntu/devel",
+ "revision": "dfec9c585d0916bf4e8acb55cb9dd62b54b86f66",
+ "base_revision": "002b596d5e8098f87868df0a5133991d0640a79b",
+ "description": null,
+ "commit_message": null,
+ "diffstat": {
+  "debian/changelog": [
+   16,
+   0
+  ],
+  "debian/control": [
+   2,
+   1
+  ],
+  "debian/control.in": [
+   2,
+   1
+  ],
+  "debian/rules": [
+   2,
+   2
+  ],
+  "debian/tests/jtreg-autopkgtest.in": [
+   7,
+   1
+  ],
+  "debian/tests/jtreg-autopkgtest.sh": [
+   7,
+   1
+  ],
+  "debian/watch": [
+   1,
+   1
+  ]
+ },
+ "files": 7,
+ "added_lines": 37,
+ "removed_lines": 7,
+ "diff": "diff --git a/debian/changelog b/debian/changelog\nindex 9bdad29..86e3bfe 100644\n--- a/debian/changelog\n+++ b/debian/changelog\n@@ -1,3 +1,19 @@\n+openjdk-17 (17.0.15+6~us1-0ubuntu1) plucky; urgency=medium\n+\n+  * OpenJDK 17.0.15 release, build 6. Release notes:\n+    https://mail.openjdk.org/pipermail/jdk-updates-dev/2025-April/043307.html\n+\n+    - CVEs:\n+      + CVE-2025-21587\n+      + CVE-2025-30691\n+      + CVE-2025-30698\n+\n+  [ Matthias Klose ]\n+  * Honour DEB_BUILD_OPTIONS=parallel=N while running jtreg tests (Helmut\n+    Grohne). Addresses: #1095920.\n+\n+ -- Pushkar Kulkarni <pushkar.kulkarni@canonical.com>  Thu, 17 Apr 2025 11:54:53 +0530\n+\n openjdk-17 (17.0.15~5ea-1) unstable; urgency=medium\n \n   * OpenJDK 17.0.14 early access, build 5.\ndiff --git a/debian/control b/debian/control\nindex 81dca5a..67fddca 100644\n--- a/debian/control\n+++ b/debian/control\n@@ -1,7 +1,8 @@\n Source: openjdk-17\n Section: java\n Priority: optional\n-Maintainer: OpenJDK Team <openjdk-17@packages.debian.org>\n+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>\n+XSBC-Original-Maintainer: OpenJDK Team <openjdk-17@packages.debian.org>\n Uploaders: Matthias Klose <doko@ubuntu.com>\n Build-Depends: debhelper (>= 11),\n   m4, lsb-release, zip, unzip,\ndiff --git a/debian/control.in b/debian/control.in\nindex 5d635ac..8c8aa6f 100644\n--- a/debian/control.in\n+++ b/debian/control.in\n@@ -1,7 +1,8 @@\n Source: @basename@\n Section: java\n Priority: optional\n-Maintainer: OpenJDK Team <openjdk-17@packages.debian.org>\n+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>\n+XSBC-Original-Maintainer: OpenJDK Team <openjdk-17@packages.debian.org>\n Uploaders: Matthias Klose <doko@ubuntu.com>\n Build-Depends: @bd_debhelper@\n   m4, lsb-release, zip, unzip,\ndiff --git a/debian/rules b/debian/rules\nindex a840290..e49ee62 100755\n--- a/debian/rules\n+++ b/debian/rules\n@@ -83,7 +83,7 @@ else\n endif\n \n is_upstream_release = yes\n-is_upstream_release =\n+#is_upstream_release =\n \n srcdir\t\t= .\n builddir\t= build\n@@ -1997,7 +1997,7 @@ endif\n \tdh_builddeb -a $(nodemo) $(nojrez) #$(bd_options)\n \n git_project\t\t= jdk17u\n-git_tag\t\t\t= jdk-17.0.15+5\n+git_tag\t\t\t= jdk-17.0.15+6\n package_version\t\t= $(subst jdk-,,$(git_tag))\n package_version\t\t= $(shell echo $(PKGVERSION) | sed 's/-[^-][^-]*$$//')\n ifneq ($(is_upstream_release),yes)\ndiff --git a/debian/tests/jtreg-autopkgtest.in b/debian/tests/jtreg-autopkgtest.in\nindex 41194c9..040649e 100755\n--- a/debian/tests/jtreg-autopkgtest.in\n+++ b/debian/tests/jtreg-autopkgtest.in\n@@ -30,7 +30,13 @@ if [[ \"armel\" == *\"${host_arch}\"* ]]; then\n   jt_options+=\" -Xmx256M\"\n fi\n if dpkg --compare-versions ${jtreg_version} ge 4.2; then\n-  jt_options+=\" -conc:auto\"\n+  njobs=auto\n+  for opt in ${DEB_BUILD_OPTIONS:-}; do\n+    if test \"${opt#parallel=}\" != \"$opt\"; then\n+      njobs=\"${opt#parallel=}\"\n+    fi\n+  done\n+  jt_options+=\" -conc:$njobs\"\n fi\n \n # check java binary\ndiff --git a/debian/tests/jtreg-autopkgtest.sh b/debian/tests/jtreg-autopkgtest.sh\nindex ebba4c4..e7cfc1a 100755\n--- a/debian/tests/jtreg-autopkgtest.sh\n+++ b/debian/tests/jtreg-autopkgtest.sh\n@@ -30,7 +30,13 @@ if [[ \"armel\" == *\"${host_arch}\"* ]]; then\n   jt_options+=\" -Xmx256M\"\n fi\n if dpkg --compare-versions ${jtreg_version} ge 4.2; then\n-  jt_options+=\" -conc:auto\"\n+  njobs=auto\n+  for opt in ${DEB_BUILD_OPTIONS:-}; do\n+    if test \"${opt#parallel=}\" != \"$opt\"; then\n+      njobs=\"${opt#parallel=}\"\n+    fi\n+  done\n+  jt_options+=\" -conc:$njobs\"\n fi\n \n # check java binary\ndiff --git a/debian/watch b/debian/watch\nindex 4b533d1..cca2c0d 100644\n--- a/debian/watch\n+++ b/debian/watch\n@@ -1,6 +1,6 @@\n version=4\n opts=\\\n-repack,repacksuffix=ea,oversionmangle=s/\\+(\\d+)/\\~$1/,dversionmangle=s/\\~(\\d*)ea$/\\+$1/,\\\n+repack,\\\n compression=xz, \\\n     https://github.com/openjdk/jdk17u/tags \\\n     (?:.*?/)?jdk-(17[\\+\\.\\d]*)\\.tar\\.gz\n",
+ "diff_truncated": false
+}

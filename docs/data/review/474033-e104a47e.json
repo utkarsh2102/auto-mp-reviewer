@@ -1,0 +1,39 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~r41k0u/ubuntu/+source/nbd/+git/nbd/+merge/474033",
+ "id": "474033",
+ "title": "* Fix nbd autopkgtests to make the initrd-boot autopkgtest more robust and",
+ "source_branch": "fix-initrd-boot-test",
+ "target_branch": "ubuntu/devel",
+ "revision": "52e99b695201bafd0baf631da48a9d12ce9accd1",
+ "base_revision": "80e9137eef0dcc16f6f659bb7529c0b80e5fe1cf",
+ "description": null,
+ "commit_message": "* Fix nbd autopkgtests to make the initrd-boot autopkgtest more robust and\n  remove the flaky tag (LP: #2054480)\n  - d/t/control: remove flaky for initrd-boot, allow-root for initrd-boot test\n  - d/t/initrd-boot: make initrd-boot pass on all architectures\n    + Allocate swap space to not run out of memory\n    + Changes for s390x and ppc64el (LP: #2078255)\n      - Change file permissions for home and System.map\n      - Add custom apparmor config to allow unshare to run with --keep-caps\n      - Disable vga in debvm-run to avoid failing on ppc64el\n      - Disable early failure as debvm-waitssh might fail on some\n        architectures even when the test might pass",
+ "diffstat": {
+  "debian/changelog": [
+   15,
+   0
+  ],
+  "debian/control": [
+   2,
+   1
+  ],
+  "debian/files": [
+   1,
+   0
+  ],
+  "debian/tests/control": [
+   1,
+   1
+  ],
+  "debian/tests/initrd-boot": [
+   31,
+   13
+  ]
+ },
+ "files": 5,
+ "added_lines": 50,
+ "removed_lines": 15,
+ "diff": "diff --git a/debian/changelog b/debian/changelog\nindex 7cb1e2a..3f17282 100644\n--- a/debian/changelog\n+++ b/debian/changelog\n@@ -1,3 +1,18 @@\n+nbd (1:3.26.1-6ubuntu1) plucky; urgency=medium\n+\n+  * Fix nbd autopkgtests to make the initrd-boot autopkgtest more robust and\n+    remove the flaky tag (LP: #2054480)\n+    - d/t/control: remove flaky for initrd-boot, allow-root for initrd-boot test\n+    - d/t/initrd-boot: make initrd-boot pass on all architectures\n+      + Allocate swap space to not run out of memory (except armhf where it isn't\n+        possible)\n+      + Changes for s390x and ppc64el (LP: #2078255)\n+        - Disable vga in debvm-run to avoid failing on ppc64el\n+        - Disable early failure as debvm-waitssh might fail on some\n+          architectures even when the test might pass\n+\n+ -- Pragyansh Chaturvedi <pragyansh.chaturvedi@canonical.com>  Thu, 23 Jan 2025 01:26:43 +0530\n+\n nbd (1:3.26.1-6) unstable; urgency=medium\n \n   [ Michael Biebl ]\ndiff --git a/debian/control b/debian/control\nindex 526e07d..0af8062 100644\n--- a/debian/control\n+++ b/debian/control\n@@ -1,7 +1,8 @@\n Source: nbd\n Section: admin\n Priority: optional\n-Maintainer: Wouter Verhelst <wouter@debian.org>\n+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>\n+XSBC-Original-Maintainer: Wouter Verhelst <wouter@debian.org>\n Build-Depends:\n  debhelper-compat (= 13),\n  libglib2.0-dev (>= 2.26.0),\ndiff --git a/debian/files b/debian/files\nnew file mode 100644\nindex 0000000..96100d5\n--- /dev/null\n+++ b/debian/files\n@@ -0,0 +1 @@\n+nbd_3.26.1-6ubuntu1_source.buildinfo admin optional\ndiff --git a/debian/tests/control b/debian/tests/control\nindex c4f9fc0..5b2008e 100644\n--- a/debian/tests/control\n+++ b/debian/tests/control\n@@ -12,4 +12,4 @@ Depends:\n  e2fsprogs,\n  uidmap,\n  awk,\n-Restrictions: needs-sudo, allow-stderr, flaky\n+Restrictions: needs-root, allow-stderr\ndiff --git a/debian/tests/initrd-boot b/debian/tests/initrd-boot\nindex e11ad71..490cfe8 100644\n--- a/debian/tests/initrd-boot\n+++ b/debian/tests/initrd-boot\n@@ -26,6 +26,19 @@ ssh-keygen -q -t rsa -f \"$TMPDIR\"/id_rsa -N \"\"\n # the SSH key we generated, and include the nbd-client package. We use a hook\n # to ensure our apt sources-and-preferences match the new VM's\n IMAGE=\"$TMPDIR\"/nbd.img\n+\n+# Check if the architecture is armhf, and only attempt to enable swap if it's not\n+if ! [ $(uname -m) = \"armv7l\" ]; then\n+    # Allocate some swap\n+    fallocate -l 2G /swapfile\n+    chmod 600 /swapfile\n+    mkswap /swapfile\n+    swapon /swapfile\n+else\n+    echo \"Skipping swap activation on armhf architecture\"\n+fi\n+\n+# If this fails locally, allocate more space to /tmp\n debvm-create \\\n     --output=\"$IMAGE\" \\\n     --release=\"\" \\\n@@ -47,26 +60,31 @@ cat > \"$TMPDIR\"/myvm.conf << EOF\n [myvm]\n exportname = $IMAGE\n EOF\n-sudo cp \"$TMPDIR\"/myvm.conf /etc/nbd-server/conf.d/\n-sudo chown nbd:nbd \"$IMAGE\"\n-sudo systemctl restart nbd-server.service\n+cp \"$TMPDIR\"/myvm.conf /etc/nbd-server/conf.d/\n+chown nbd:nbd \"$IMAGE\"\n+systemctl restart nbd-server.service\n \n # Start a VM from the template, skipping the root device and cmdline\n # definitions. This will use the kernel and initrd from the template (extracted\n # via debugfs), but not the image itself. The rootfs will come from the nbd\n # server (at least, that's what we hope!)\n-timeout -k 120s 900s debvm-run \\\n-    --image=\"$IMAGE\" \\\n-    --sshport=8022 \\\n-    --skip=root \\\n-    --append=\"nbdroot=10.0.2.2/myvm root=/dev/nbd0\" \\\n-    </dev/null >\"$OUTDIR\"/debvm.log 2>&1 &\n-\n-# show the log and kill qemu in case the script exits first\n-trap 'cat --show-nonprinting \"$OUTDIR/debvm.log\"' EXIT\n+(\n+    timeout -k 120s 1800s debvm-run \\\n+        --image=\"$IMAGE\" \\\n+        --sshport=8022 \\\n+        --skip=root \\\n+        --append=\"nbdroot=10.0.2.2/myvm root=/dev/nbd0\" \\\n+        -- -vga none\n+) </dev/null >\"$OUTDIR\"/debvm.log 2>&1 &\n \n # the default of 60 seconds can be too slow for salsaci\n-debvm-waitssh -t 600 8022\n+# debvm-waitssh sometimes fails even when the ssh server is up\n+# so keeping the timeout here lower than debvm-run\n+# Also, on some architectures (ppc64el on noble), debvm-waitssh\n+# times out even when an ssh-server is up. So if the timeout\n+# should not be considered a failure, as a genuine failure\n+# would eventually fail in later steps\n+debvm-waitssh -t 1200 8022 || true\n \n # the default ssh command does not store known hosts and even ignores host keys\n # it identifies itself with the rsa key generated above\n",
+ "diff_truncated": false
+}

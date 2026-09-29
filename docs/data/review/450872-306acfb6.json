@@ -1,0 +1,23 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~waveform/livecd-rootfs/+git/livecd-rootfs/+merge/450872",
+ "id": "450872",
+ "title": "pi-tidy-1 → ubuntu/master",
+ "source_branch": "pi-tidy-1",
+ "target_branch": "ubuntu/master",
+ "revision": "45f862eed1f12a6da679c8f9d954c60931450d25",
+ "base_revision": "6776fb763b32b985ea95b1808297e48f9e1b2fed",
+ "description": null,
+ "commit_message": null,
+ "diffstat": {
+  "live-build/auto/config": [
+   2,
+   4
+  ]
+ },
+ "files": 1,
+ "added_lines": 2,
+ "removed_lines": 4,
+ "diff": "diff --git a/live-build/auto/config b/live-build/auto/config\nindex b6f6155..c8fa14b 100755\n--- a/live-build/auto/config\n+++ b/live-build/auto/config\n@@ -449,10 +449,8 @@ case $IMAGEFORMAT in\n \t\t\t\tMODEL=pc-amd64 ;;\n \t\t\tarm64+snapdragon)\n \t\t\t\tMODEL=dragonboard ;;\n-\t\t\tarm64+raspi)\n-\t\t\t\tMODEL=pi-arm64 ;;\n-\t\t\tarm64+raspi3)\n-\t\t\t\tMODEL=pi3-arm64 ;;\n+\t\t\tarm*+raspi)\n+\t\t\t\tMODEL=\"pi-${ARCH}\" ;;\n \t\t\tarm64+tegra)\n \t\t\t\tMODEL=tegra ;;\n \t\t\tarm64+tegra-igx)\n",
+ "diff_truncated": false
+}

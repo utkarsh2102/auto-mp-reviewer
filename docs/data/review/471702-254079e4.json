@@ -1,0 +1,27 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~xypron/livecd-rootfs/+git/livecd-rootfs/+merge/471702",
+ "id": "471702",
+ "title": "riscv_size → ubuntu/jammy",
+ "source_branch": "riscv_size",
+ "target_branch": "ubuntu/jammy",
+ "revision": "5ec64abb569b29cae63a850ea2e9db88bd42ede6",
+ "base_revision": "fd817a8775f29a3738af794b6148ec975572bd65",
+ "description": null,
+ "commit_message": null,
+ "diffstat": {
+  "debian/changelog": [
+   6,
+   0
+  ],
+  "live-build/ubuntu-cpc/hooks.d/base/disk-image-uefi.binary": [
+   1,
+   1
+  ]
+ },
+ "files": 2,
+ "added_lines": 7,
+ "removed_lines": 1,
+ "diff": "diff --git a/debian/changelog b/debian/changelog\nindex 48009f6..9956064 100644\n--- a/debian/changelog\n+++ b/debian/changelog\n@@ -1,3 +1,9 @@\n+livecd-rootfs (2.765.46ubuntu1) UNRELEASED; urgency=medium\n+\n+  * riscv64: increase image size to 6 GiB (LP: #2077517)\n+\n+ -- Heinrich Schuchardt <heinrich.schuchardt@canonical.com>  Wed, 21 Aug 2024 08:47:21 +0000\n+\n livecd-rootfs (2.765.46) jammy; urgency=medium\n \n   * Add 6.8 kernel apparmor features' preseeds. (LP: #2074204)\ndiff --git a/live-build/ubuntu-cpc/hooks.d/base/disk-image-uefi.binary b/live-build/ubuntu-cpc/hooks.d/base/disk-image-uefi.binary\nindex 76e67ef..50545b1 100755\n--- a/live-build/ubuntu-cpc/hooks.d/base/disk-image-uefi.binary\n+++ b/live-build/ubuntu-cpc/hooks.d/base/disk-image-uefi.binary\n@@ -33,7 +33,7 @@ fi\n fi\n \n if [ \"$ARCH\" = \"riscv64\" ]; then\n-    IMAGE_SIZE=4831838208 # bump to 4.5G (4608*1024**2); initrd creation fails with \"No space left\" with 3.5G\n+    IMAGE_SIZE=6442450944 # bump to 6 GiB (6*1024**3); initrd creation fails with \"No space left\" with 4.5 GiB\n fi\n \n . config/binary\n",
+ "diff_truncated": false
+}

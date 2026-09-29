@@ -1,0 +1,31 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~ahasenack/ubuntu/+source/sssd/+git/sssd/+merge/511931",
+ "id": "511931",
+ "title": "Fix the linked bug. Same patch as for stonking.",
+ "source_branch": "resolute-sssd-fix-child-zombie",
+ "target_branch": "ubuntu/resolute-devel",
+ "revision": "cf54ae41594406baef53c0ed59d5e6e14413096e",
+ "base_revision": "b66e15a5803d5ea3f121fd457bb270d26c41bcd4",
+ "description": "Fix the linked bug. Same patch as for stonking.\n\nSRU template filled in, with a test case as well.\n\nPPA: https://launchpad.net/~ahasenack/+archive/ubuntu/sssd-zombie/+packages\nDEP8: TBD\n\n",
+ "commit_message": null,
+ "diffstat": {
+  "debian/changelog": [
+   7,
+   0
+  ],
+  "debian/patches/fix-ldap-child-zombie.patch": [
+   45,
+   0
+  ],
+  "debian/patches/series": [
+   1,
+   0
+  ]
+ },
+ "files": 3,
+ "added_lines": 53,
+ "removed_lines": 0,
+ "diff": "diff --git a/debian/changelog b/debian/changelog\nindex ae81256..35de938 100644\n--- a/debian/changelog\n+++ b/debian/changelog\n@@ -1,3 +1,10 @@\n+sssd (2.12.0-1ubuntu5.5) resolute; urgency=medium\n+\n+  * d/p/fix-ldap-child-zombie.patch: fix zombie ldap_child process\n+    (LP: #2164856)\n+\n+ -- Andreas Hasenack <andreas.hasenack@canonical.com>  Wed, 23 Sep 2026 16:31:07 -0300\n+\n sssd (2.12.0-1ubuntu5.4) resolute-security; urgency=medium\n \n   * SECURITY UPDATE: Denial of Service\ndiff --git a/debian/patches/fix-ldap-child-zombie.patch b/debian/patches/fix-ldap-child-zombie.patch\nnew file mode 100644\nindex 0000000..0162732\n--- /dev/null\n+++ b/debian/patches/fix-ldap-child-zombie.patch\n@@ -0,0 +1,45 @@\n+From 404d166a6a56630933e05b29254de7558b17c79c Mon Sep 17 00:00:00 2001\n+From: Gleb Popov <6yearold@gmail.com>\n+Date: Sat, 21 Feb 2026 20:34:18 +0300\n+Subject: [PATCH] sdap_select_principal_from_keytab_sync: waitpid()\n+ synchronously\n+\n+Without this change the ldap_child process started by this function ends up\n+in the <defunct> state. kernel trace hints that the process isn't fully\n+finished by the time waitpid is called:\n+\n+ 13126 sssd_be  CALL  wait4(13127,0,0x1<WNOHANG>,0)\n+ 13126 sssd_be  RET   wait4 0\n+waitpid(ldap_child) failed, process might be leaking\n+\n+According to man waitpid(3), the function returns 0 when passed WNOHANG and\n+there is no child process that can be reported as exited. Omitting WNOHANG\n+fixes the issue.\n+\n+Reviewed-by: Alexey Tikhonov <atikhono@redhat.com>\n+Reviewed-by: Iker Pedrosa <ipedrosa@redhat.com>\n+\n+Bug-Ubuntu: https://bugs.launchpad.net/ubuntu/+source/sssd/+bug/2164856\n+Origin: upstream, https://github.com/SSSD/sssd/commit/404d166a6a56630933e05b29254de7558b17c79c\n+Last-Update: 2026-09-22\n+---\n+ src/providers/ldap/sdap_child_helpers.c | 6 +++---\n+ 1 file changed, 3 insertions(+), 3 deletions(-)\n+\n+diff --git a/src/providers/ldap/sdap_child_helpers.c b/src/providers/ldap/sdap_child_helpers.c\n+index 05885f975fc..4e74095ed0c 100644\n+--- a/src/providers/ldap/sdap_child_helpers.c\n++++ b/src/providers/ldap/sdap_child_helpers.c\n+@@ -264,9 +264,9 @@ errno_t sdap_select_principal_from_keytab_sync(TALLOC_CTX *mem_ctx,\n+ \n+     FD_CLOSE(io->read_from_child_fd);\n+ \n+-    if (waitpid(io->pid, NULL, WNOHANG) != io->pid) {\n+-        DEBUG(SSSDBG_MINOR_FAILURE, \"waitpid(ldap_child) failed, \"\n+-              \"process might be leaking\\n\");\n++    if (waitpid(io->pid, NULL, 0) != io->pid) {\n++        DEBUG(SSSDBG_CRIT_FAILURE, \"waitpid(ldap_child) failed: [%d][%s]\\n\",\n++              errno, strerror(errno));\n+     }\n+ \n+     ret = parse_select_principal_response(mem_ctx, response, len,\ndiff --git a/debian/patches/series b/debian/patches/series\nindex 6080ce2..0e64fa9 100644\n--- a/debian/patches/series\n+++ b/debian/patches/series\n@@ -3,3 +3,4 @@ default-to-socket-activated-services.diff\n CVE-2026-6245.patch\n lp2162577-fix-use-after-free-during-p11-child-processing.patch\n CVE-2026-68743.patch\n+fix-ldap-child-zombie.patch\n",
+ "diff_truncated": false
+}

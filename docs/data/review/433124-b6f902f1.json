@@ -1,0 +1,27 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~michal-maloszewski99/ubuntu/+source/logwatch/+git/logwatch/+merge/433124",
+ "id": "433124",
+ "title": "logwatch-focal-v2 → ubuntu/focal-devel",
+ "source_branch": "logwatch-focal-v2",
+ "target_branch": "ubuntu/focal-devel",
+ "revision": "f0f79c4436b76feee719ea8c1b6cd1be980bd94c",
+ "base_revision": "62ac7f79be4d329164718a82905e6bfa59b5635f",
+ "description": null,
+ "commit_message": null,
+ "diffstat": {
+  "debian/patches/focal-logwatch-fix-lp1890748.patch": [
+   26,
+   0
+  ],
+  "debian/patches/series": [
+   4,
+   0
+  ]
+ },
+ "files": 2,
+ "added_lines": 30,
+ "removed_lines": 0,
+ "diff": "diff --git a/debian/patches/focal-logwatch-fix-lp1890748.patch b/debian/patches/focal-logwatch-fix-lp1890748.patch\nnew file mode 100644\nindex 0000000..dff8b11\n--- /dev/null\n+++ b/debian/patches/focal-logwatch-fix-lp1890748.patch\n@@ -0,0 +1,26 @@\n+Description: Fix logwatch to display network statistics\n+ Fix logwatch to display network statistics properly and\n+ add if statement to use ip addr preferentially.\n+Bug-Ubuntu: https://bugs.launchpad.net/ubuntu/+source/logwatch/+bug/1890748\n+Forwarded: no\n+X-Not-Forwarded-Reason: The change is only needed for focal.\n+Last-Update: 2022-10-03\n+---\n+This patch header follows DEP-3: http://dep.debian.net/deps/dep3/\n+--- a/scripts/services/zz-network\n++++ b/scripts/services/zz-network\n+@@ -350,7 +350,13 @@\n+ \n+ \tmy $cmd_to_show_int=\"\";\n+ \n+-        $cmd_to_show_int=\"$pathto_ifconfig -a\";\n++        if ( -f $pathto_ip) {\n++\t$cmd_to_show_int=$pathto_ip.\" a\";\n++\t}\n++\telse\n++\t{\n++\t$cmd_to_show_int=\"$pathto_ifconfig -a\";\n++\t}\n+ \n+         open(NET, \"$cmd_to_show_int |\")  || die \"can't use $cmd_to_show_int: $!\";\n+         while (<NET>)\ndiff --git a/debian/patches/series b/debian/patches/series\nindex 3c4d5b1..ed760af 100644\n--- a/debian/patches/series\n+++ b/debian/patches/series\n@@ -1,4 +1,8 @@\n+<<<<<<< debian/patches/series\n focal-logwatch-ifconfig-fix.patch\n+=======\n+focal-logwatch-fix-lp1890748.patch\n+>>>>>>> debian/patches/series\n 0001-00-debspecific-disable-su-reporting-in-secure.diff.patch\n 0002-logfiles-vsftpd.conf-Use-custom-pattern-for-applystd.patch\n 0003-Ignore-ecryptfs-automounting-messages-in-cron.patch\n",
+ "diff_truncated": false
+}

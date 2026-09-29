@@ -1,0 +1,31 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~mwhudson/ubuntu/+source/live-build/+git/live-build/+merge/503764",
+ "id": "503764",
+ "title": "live-build (3.0~a57-1ubuntu54) UNRELEASED; urgency=medium",
+ "source_branch": "ubuntu/resolute-proposed",
+ "target_branch": "ubuntu/resolute-proposed",
+ "revision": "fafd4133f11d1b77914c833dd63e148518c717fb",
+ "base_revision": "7d821a78dd8691c6b629603faa12035debbe005f",
+ "description": null,
+ "commit_message": " live-build (3.0~a57-1ubuntu54) UNRELEASED; urgency=medium\n .\n   * Make the default mirror for arm64 be archive.ubuntu.com.\n",
+ "diffstat": {
+  "debian/changelog": [
+   6,
+   0
+  ],
+  "debian/patches/arm64-on-achive.patch": [
+   63,
+   0
+  ],
+  "debian/patches/series": [
+   1,
+   0
+  ]
+ },
+ "files": 3,
+ "added_lines": 70,
+ "removed_lines": 0,
+ "diff": "diff --git a/debian/changelog b/debian/changelog\nindex 7946249..7d6f7a8 100644\n--- a/debian/changelog\n+++ b/debian/changelog\n@@ -1,3 +1,9 @@\n+live-build (3.0~a57-1ubuntu54) UNRELEASED; urgency=medium\n+\n+  * Make the default mirror for arm64 be archive.ubuntu.com.\n+\n+ -- Michael Hudson-Doyle <michael.hudson@ubuntu.com>  Thu, 16 Apr 2026 09:21:31 +1200\n+\n live-build (3.0~a57-1ubuntu53) resolute; urgency=medium\n \n   * Add a --bootstrap-arch argument to lb config, to be used for variant\ndiff --git a/debian/patches/arm64-on-achive.patch b/debian/patches/arm64-on-achive.patch\nnew file mode 100644\nindex 0000000..0eedf44\n--- /dev/null\n+++ b/debian/patches/arm64-on-achive.patch\n@@ -0,0 +1,63 @@\n+Description: arm64 is on archive.ubuntu.com now\n+Author: Michael Hudson-Doyle <michael.hudson@ubunut.com>\n+Origin: vendor\n+Forwarded: no\n+Last-Update: 2026-04-16\n+---\n+This patch header follows DEP-3: http://dep.debian.net/deps/dep3/\n+--- a/functions/defaults.sh\n++++ b/functions/defaults.sh\n+@@ -405,7 +405,7 @@\n+ \n+ \t\tubuntu|kubuntu)\n+ \t\t\tcase \"${LB_ARCHITECTURES}\" in\n+-\t\t\t\tamd64|i386)\n++\t\t\t\tamd64|arm64|i386)\n+ \t\t\t\t\tLB_MIRROR_BOOTSTRAP=\"${LB_MIRROR_BOOTSTRAP:-http://archive.ubuntu.com/ubuntu/}\"\n+ \t\t\t\t\t;;\n+ \n+@@ -440,7 +440,7 @@\n+ \n+ \t\tubuntu|kubuntu)\n+ \t\t\tcase \"${LB_ARCHITECTURES}\" in\n+-\t\t\t\tamd64|i386)\n++\t\t\t\tamd64|arm64|i386)\n+ \t\t\t\t\tLB_MIRROR_CHROOT_SECURITY=\"${LB_MIRROR_CHROOT_SECURITY:-http://security.ubuntu.com/ubuntu/}\"\n+ \t\t\t\t\t;;\n+ \n+@@ -462,7 +462,7 @@\n+ \n+ \t\tubuntu|kubuntu)\n+ \t\t\tcase \"${LB_ARCHITECTURES}\" in\n+-\t\t\t\tamd64|i386)\n++\t\t\t\tamd64|arm64|i386)\n+ \t\t\t\t\tLB_MIRROR_CHROOT_VOLATILE=\"${LB_MIRROR_CHROOT_VOLATILE:-http://archive.ubuntu.com/ubuntu/}\"\n+ \t\t\t\t\t;;\n+ \n+@@ -516,7 +516,7 @@\n+ \n+ \t\tubuntu|kubuntu)\n+ \t\t\tcase \"${LB_ARCHITECTURES}\" in\n+-\t\t\t\tamd64|i386)\n++\t\t\t\tamd64|arm64|i386)\n+ \t\t\t\t\tLB_MIRROR_BINARY=\"${LB_MIRROR_BINARY:-http://archive.ubuntu.com/ubuntu/}\"\n+ \t\t\t\t;;\n+ \n+@@ -548,7 +548,7 @@\n+ \n+ \t\tubuntu|kubuntu)\n+ \t\t\tcase \"${LB_ARCHITECTURES}\" in\n+-\t\t\t\tamd64|i386)\n++\t\t\t\tamd64|arm64|i386)\n+ \t\t\t\t\tLB_MIRROR_BINARY_SECURITY=\"${LB_MIRROR_BINARY_SECURITY:-http://security.ubuntu.com/ubuntu/}\"\n+ \t\t\t\t\t;;\n+ \n+@@ -575,7 +575,7 @@\n+ \n+ \t\tubuntu|kubuntu)\n+ \t\t\tcase \"${LB_ARCHITECTURES}\" in\n+-\t\t\t\tamd64|i386)\n++\t\t\t\tamd64|arm64|i386)\n+ \t\t\t\t\tLB_MIRROR_BINARY_VOLATILE=\"${LB_MIRROR_BINARY_VOLATILE:-http://archive.ubuntu.com/ubuntu/}\"\n+ \t\t\t\t\t;;\n+ \ndiff --git a/debian/patches/series b/debian/patches/series\nindex 45b03b7..4b3f2ce 100644\n--- a/debian/patches/series\n+++ b/debian/patches/series\n@@ -50,3 +50,4 @@ lp-2033308-backup-and-restore-packaged-preferences.patch\n no-apt-key.patch\n ubuntu-no-chmod-broken-symlink.patch\n add-bootstrap-arch-arg.patch\n+arm64-on-achive.patch\n",
+ "diff_truncated": false
+}

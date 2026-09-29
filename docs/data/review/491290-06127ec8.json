@@ -1,0 +1,27 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~tobhe/ubuntu/+source/ubuntu-x1e-settings/+git/ubuntu-x1e-settings/+merge/491290",
+ "id": "491290",
+ "title": "This makes the installation of the meta package a little less fragile since we won't have to add each machine individually. Instead we match on a modalias string that clearly identifies an Qualcomm X1E SOC.",
+ "source_branch": "questing-next",
+ "target_branch": "ubuntu/devel",
+ "revision": "8220fe81ce78a350cf73dc1b51dcad94123eb01f",
+ "base_revision": "4d59eaf29da7bc66a4044e12cd067f615528d2c1",
+ "description": "This makes the installation of the meta package a little less fragile since we won't have to add each machine individually. Instead we match on a modalias string that clearly identifies an Qualcomm X1E SOC.\n\nThe package might need another update later to remove the flash-kernel dependency once kernels are built with stubble.",
+ "commit_message": null,
+ "diffstat": {
+  "debian/changelog": [
+   6,
+   0
+  ],
+  "debian/hwe-qcom-x1e-meta.modaliases": [
+   1,
+   13
+  ]
+ },
+ "files": 2,
+ "added_lines": 7,
+ "removed_lines": 13,
+ "diff": "diff --git a/debian/changelog b/debian/changelog\nindex e4d2506..be4cf9e 100644\n--- a/debian/changelog\n+++ b/debian/changelog\n@@ -1,3 +1,9 @@\n+ubuntu-x1e-settings (28) questing; urgency=medium\n+\n+  * Relax modalias rule, match on x1e80100-cpucp-mbox\n+\n+ -- Tobias Heider <tobias.heider@canonical.com>  Fri, 22 Aug 2025 14:13:56 +0200\n+\n ubuntu-x1e-settings (27) questing; urgency=medium\n \n   [ Aleksandrs Vinarskis ]\ndiff --git a/debian/hwe-qcom-x1e-meta.modaliases b/debian/hwe-qcom-x1e-meta.modaliases\nindex 419c756..4b35ca8 100644\n--- a/debian/hwe-qcom-x1e-meta.modaliases\n+++ b/debian/hwe-qcom-x1e-meta.modaliases\n@@ -1,13 +1 @@\n-alias dmi:*:svnAcer:pnSwiftSF14-11* hwe-qcom-x1e-meta\n-alias dmi:*:svnASUSTeKCOMPUTERINC.:pnASUSVivobookS15* hwe-qcom-x1e-meta\n-alias dmi:*:svnASUSTeKCOMPUTERINC.:pnASUSZenbookA14* hwe-qcom-x1e-meta\n-alias dmi:*:svnDellInc.:pnInspiron14Plus7441* hwe-qcom-x1e-meta\n-alias dmi:*:svnDellInc.:pnLatitude7455* hwe-qcom-x1e-meta\n-alias dmi:*:svnDellInc.:pnXPS139345* hwe-qcom-x1e-meta\n-alias dmi:*:svnHP:pnHPOmniBookXLaptop14* hwe-qcom-x1e-meta\n-alias dmi:*:svnLENOVO:*:pvrThinkPadT14sGen6* hwe-qcom-x1e-meta\n-alias dmi:*:svnLENOVO:*:pvrYogaSlim714Q8X9* hwe-qcom-x1e-meta\n-alias dmi:*:svnMicrosoftCorporation:pnMicrosoftSurfaceLaptop,7thEdition* hwe-qcom-x1e-meta\n-alias dmi:*:svnMicrosoftCorporation:pnMicrosoftSurfaceLaptop,11thEdition* hwe-qcom-x1e-meta\n-alias dmi:*:svnSAMSUNGELECTRONICS*:pnGalaxyBook4Edge* hwe-qcom-x1e-meta\n-alias dmi:*:svnQualcomm:pnCRD* hwe-qcom-x1e-meta\n+alias of:*mailbox*qcom*x1e80100-cpucp-mbox hwe-qcom-x1e-meta\n",
+ "diff_truncated": false
+}

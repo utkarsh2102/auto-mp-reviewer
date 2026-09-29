@@ -1,0 +1,31 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~xypron/ubuntu/+source/livecd-rootfs/+git/livecd-rootfs/+merge/508015",
+ "id": "508015",
+ "title": "noble-no-earlycon-sbi → ubuntu/noble-devel",
+ "source_branch": "noble-no-earlycon-sbi",
+ "target_branch": "ubuntu/noble-devel",
+ "revision": "6e8ebb8ef2367bc5064359d584a85ceda865fa79",
+ "base_revision": "8c7042a0ad26c94d6cf10568a034d15dd300f2b3",
+ "description": null,
+ "commit_message": null,
+ "diffstat": {
+  "debian/changelog": [
+   6,
+   0
+  ],
+  "live-build/ubuntu-cpc/hooks.d/base/riscv64/grub/10_cmdline.cfg": [
+   1,
+   1
+  ],
+  "live-build/ubuntu-cpc/hooks.d/base/riscv64/u-boot-menu/10_cmdline.conf": [
+   1,
+   1
+  ]
+ },
+ "files": 3,
+ "added_lines": 8,
+ "removed_lines": 2,
+ "diff": "diff --git a/debian/changelog b/debian/changelog\nindex ca95ae3..957d563 100644\n--- a/debian/changelog\n+++ b/debian/changelog\n@@ -1,3 +1,9 @@\n+livecd-rootfs (24.04.98) noble; urgency=medium\n+\n+  * riscv64: don't use earlycon=sbi (LP: #2160092)\n+\n+ -- Heinrich Schuchardt <heinrich.schuchardt@canonical.com>  Sat, 04 Jul 2026 11:44:24 +0200\n+\n livecd-rootfs (24.04.97) noble; urgency=medium\n \n   * Build ubuntu-server with multipath-tools-boot installed, so that the\ndiff --git a/live-build/ubuntu-cpc/hooks.d/base/riscv64/grub/10_cmdline.cfg b/live-build/ubuntu-cpc/hooks.d/base/riscv64/grub/10_cmdline.cfg\nindex 39cd1e1..c8cf57d 100644\n--- a/live-build/ubuntu-cpc/hooks.d/base/riscv64/grub/10_cmdline.cfg\n+++ b/live-build/ubuntu-cpc/hooks.d/base/riscv64/grub/10_cmdline.cfg\n@@ -1,4 +1,4 @@\n # Booting on many riscv64 systems is slow. Let the user view progress.\n # For minimum output use\n # GRUB_CMDLINE_LINUX_DEFAULT=\"quiet\"\n-GRUB_CMDLINE_LINUX_DEFAULT=\"efi=debug earlycon=sbi\"\n+GRUB_CMDLINE_LINUX_DEFAULT=\"efi=debug earlycon\"\ndiff --git a/live-build/ubuntu-cpc/hooks.d/base/riscv64/u-boot-menu/10_cmdline.conf b/live-build/ubuntu-cpc/hooks.d/base/riscv64/u-boot-menu/10_cmdline.conf\nindex 231c2c2..380be66 100644\n--- a/live-build/ubuntu-cpc/hooks.d/base/riscv64/u-boot-menu/10_cmdline.conf\n+++ b/live-build/ubuntu-cpc/hooks.d/base/riscv64/u-boot-menu/10_cmdline.conf\n@@ -1 +1 @@\n-U_BOOT_PARAMETERS=\"ro efi=debug earlycon=sbi\"\n+U_BOOT_PARAMETERS=\"ro efi=debug earlycon\"\n",
+ "diff_truncated": false
+}

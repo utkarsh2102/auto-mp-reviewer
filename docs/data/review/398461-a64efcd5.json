@@ -1,0 +1,23 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~gjolly/livecd-rootfs/+git/livecd-rootfs/+merge/398461",
+ "id": "398461",
+ "title": "mount a fresh devmpfs filesystem instead of rbind host /dev",
+ "source_branch": "no_rbind_devtmpfs",
+ "target_branch": "ubuntu/master",
+ "revision": "0584a542a01062ec2fcd12f81d79b70a83b9ad35",
+ "base_revision": "87454604ec38c0b9513d5284bee10f7835ca81ae",
+ "description": "I am still trying to find ways to test this change. I ran a build on VM locally and on Launchpad. Both builds succeeded. However, those builds were only targeting kvm (I will try to test with more targets) and I didn't run tests against those images (however made sure images were booting correctly).\nPlease advise me on testing plan. What should I run to be confident that this change is safe? ",
+ "commit_message": "mount a fresh devmpfs filesystem instead of rbind host /dev\n\nBecause -rbind is used to mount `chroot/dev`, the host machine gets\nimpacted by the build process. Indeed, every mount/unmount of anything\nunder `chroot/dev` would also unmount the devices from the host system.\n\nAlso this makes the build fails in case any `/dev/pts` device is opened\n(eg ssh connection or any terminal open).\n\nThis patch addresses this issue by mounting a fresh devtmpfs on\n`chroot/dev` instead of using the host's one.",
+ "diffstat": {
+  "live-build/functions": [
+   1,
+   1
+  ]
+ },
+ "files": 1,
+ "added_lines": 1,
+ "removed_lines": 1,
+ "diff": "diff --git a/live-build/functions b/live-build/functions\nindex ffeeeae..9660b81 100644\n--- a/live-build/functions\n+++ b/live-build/functions\n@@ -131,7 +131,7 @@ setup_mountpoint() {\n         chown root:kmem /dev/mem\n     fi\n \n-    mount --rbind /dev \"$mountpoint/dev\"\n+    mount dev-live -t devtmpfs \"$mountpoint/dev\"\n     mount proc-live -t proc \"$mountpoint/proc\"\n     mount sysfs-live -t sysfs \"$mountpoint/sys\"\n     mount securityfs -t securityfs \"$mountpoint/sys/kernel/security\"\n",
+ "diff_truncated": false
+}

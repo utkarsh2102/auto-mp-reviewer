@@ -1,0 +1,47 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~slyon/ubuntu/+source/ubuntu-meta/+git/ubuntu-meta/+merge/414791",
+ "id": "414791",
+ "title": "systemd-oomd is now available in Jammy as of systemd 249.9-0ubuntu2 and can be activated by installing the corresponding package. sd-oomd works best if some swap space is available, to I'm suggesting to only enable it in desktop systems for now.",
+ "source_branch": "slyon/sd-oomd",
+ "target_branch": "ubuntu/devel",
+ "revision": "4e3ba7e740bd252bac2341ae3508ba982d447eb0",
+ "base_revision": "c846724c7d249e0ff6d3a38a6a91468794e910eb",
+ "description": "systemd-oomd is now available in Jammy as of systemd 249.9-0ubuntu2 and can be activated by installing the corresponding package. sd-oomd works best if some swap space is available, to I'm suggesting to only enable it in desktop systems for now.",
+ "commit_message": null,
+ "diffstat": {
+  "desktop-recommends-ppc64el": [
+   1,
+   0
+  ],
+  "desktop-recommends-amd64": [
+   1,
+   0
+  ],
+  "desktop-recommends-armhf": [
+   1,
+   0
+  ],
+  "debian/changelog": [
+   6,
+   0
+  ],
+  "desktop-recommends-arm64": [
+   1,
+   0
+  ],
+  "desktop-recommends-s390x": [
+   1,
+   0
+  ],
+  "desktop-recommends-riscv64": [
+   1,
+   0
+  ]
+ },
+ "files": 7,
+ "added_lines": 12,
+ "removed_lines": 0,
+ "diff": "diff --git a/debian/changelog b/debian/changelog\nindex 6159fdf..138a342 100644\n--- a/debian/changelog\n+++ b/debian/changelog\n@@ -1,3 +1,9 @@\n+ubuntu-meta (1.475) jammy; urgency=medium\n+\n+  * Added systemd-oomd to desktop-recommends\n+\n+ -- Lukas Märdian <slyon@ubuntu.com>  Mon, 31 Jan 2022 11:48:11 +0100\n+\n ubuntu-meta (1.474) jammy; urgency=medium\n \n   * Refreshed dependencies\ndiff --git a/desktop-recommends-amd64 b/desktop-recommends-amd64\nindex f587f06..3ec85c2 100644\n--- a/desktop-recommends-amd64\n+++ b/desktop-recommends-amd64\n@@ -117,6 +117,7 @@ simple-scan\n snapd\n speech-dispatcher\n system-config-printer\n+systemd-oomd\n thunderbird\n thunderbird-gnome-support\n totem\ndiff --git a/desktop-recommends-arm64 b/desktop-recommends-arm64\nindex 9f113ae..fc9092d 100644\n--- a/desktop-recommends-arm64\n+++ b/desktop-recommends-arm64\n@@ -115,6 +115,7 @@ simple-scan\n snapd\n speech-dispatcher\n system-config-printer\n+systemd-oomd\n thunderbird\n thunderbird-gnome-support\n totem\ndiff --git a/desktop-recommends-armhf b/desktop-recommends-armhf\nindex 9f113ae..fc9092d 100644\n--- a/desktop-recommends-armhf\n+++ b/desktop-recommends-armhf\n@@ -115,6 +115,7 @@ simple-scan\n snapd\n speech-dispatcher\n system-config-printer\n+systemd-oomd\n thunderbird\n thunderbird-gnome-support\n totem\ndiff --git a/desktop-recommends-ppc64el b/desktop-recommends-ppc64el\nindex 3686bb2..b37bf0d 100644\n--- a/desktop-recommends-ppc64el\n+++ b/desktop-recommends-ppc64el\n@@ -114,6 +114,7 @@ simple-scan\n snapd\n speech-dispatcher\n system-config-printer\n+systemd-oomd\n thunderbird\n thunderbird-gnome-support\n totem\ndiff --git a/desktop-recommends-riscv64 b/desktop-recommends-riscv64\nindex f7ec575..469493c 100644\n--- a/desktop-recommends-riscv64\n+++ b/desktop-recommends-riscv64\n@@ -109,6 +109,7 @@ simple-scan\n snapd\n speech-dispatcher\n system-config-printer\n+systemd-oomd\n totem\n transmission-gtk\n ubuntu-docs\ndiff --git a/desktop-recommends-s390x b/desktop-recommends-s390x\nindex 3686bb2..b37bf0d 100644\n--- a/desktop-recommends-s390x\n+++ b/desktop-recommends-s390x\n@@ -114,6 +114,7 @@ simple-scan\n snapd\n speech-dispatcher\n system-config-printer\n+systemd-oomd\n thunderbird\n thunderbird-gnome-support\n totem\n",
+ "diff_truncated": false
+}

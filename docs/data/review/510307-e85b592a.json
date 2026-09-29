@@ -1,0 +1,31 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~bamf0/ubuntu/+source/rust-coreutils/+git/rust-coreutils/+merge/510307",
+ "id": "510307",
+ "title": "This merge proposal will fix an issue with cp that made it incorrectly rewrite the permissions of its source target, resulting in behaviors such as the setuid bit being missing.",
+ "source_branch": "stonking-lp2165041-missing-setuid-bit",
+ "target_branch": "ubuntu/devel",
+ "revision": "af68ae61243b9115180950098ca90d1700030604",
+ "base_revision": "2997450f9bb954c64b50a0b1fba5b717e8f88946",
+ "description": "This merge proposal will fix an issue with cp that made it incorrectly rewrite the permissions of its source target, resulting in behaviors such as the setuid bit being missing.\n\nPPA: https://launchpad.net/~bamf0/+archive/ubuntu/rust-coreutils-lp2165041-missing-setuid-bit",
+ "commit_message": null,
+ "diffstat": {
+  "debian/changelog": [
+   8,
+   0
+  ],
+  "debian/patches/cp-fix-symlink-target-permissions.patch": [
+   71,
+   0
+  ],
+  "debian/patches/series": [
+   1,
+   0
+  ]
+ },
+ "files": 3,
+ "added_lines": 80,
+ "removed_lines": 0,
+ "diff": "diff --git a/debian/changelog b/debian/changelog\nindex a0ff86d..91890d3 100644\n--- a/debian/changelog\n+++ b/debian/changelog\n@@ -1,3 +1,11 @@\n+rust-coreutils (0.10.0-1ubuntu2) stonking; urgency=medium\n+\n+  * d/p/cp-fix-symlink-target-permissions.patch: Fix an issue where cp\n+    would alter the permissions of the source file, such as stripping the\n+    setuid bit (LP: #2165041)\n+\n+ -- Simon Johnsson <simon.johnsson@canonical.com>  Wed, 26 Aug 2026 16:29:49 +0200\n+\n rust-coreutils (0.10.0-1ubuntu1) stonking; urgency=medium\n \n   [ Simon Johnsson ]\ndiff --git a/debian/patches/cp-fix-symlink-target-permissions.patch b/debian/patches/cp-fix-symlink-target-permissions.patch\nnew file mode 100644\nindex 0000000..1534390\n--- /dev/null\n+++ b/debian/patches/cp-fix-symlink-target-permissions.patch\n@@ -0,0 +1,71 @@\n+From ab34a45c1981af9a65b712a5ecae2eb43b962979 Mon Sep 17 00:00:00 2001\n+From: Angadi Yashaswini <angadi@digiscrypt.com>\n+Date: Tue, 21 Jul 2026 20:40:44 +0530\n+Subject: [PATCH] cp: decide the final chmod from the current destination state\n+\n+Drop the stale pre-copy dest_is_symlink from the guard and check\n+dest.is_symlink() alone, as this line did before #6190. Besides not\n+chmodding through a freshly copied symlink, this also applies the\n+mode when --remove-destination replaces a symlink with a regular\n+file, matching GNU cp.\n+\n+Origin: backport, https://github.com/uutils/coreutils/commit/ab34a45c1981af9a65b712a5ecae2eb43b962979.patch\n+Bug: https://github.com/uutils/coreutils/issues/12191\n+Bug-Ubuntu: https://bugs.launchpad.net/ubuntu/+source/rust-coreutils/+bug/2165041\n+---\n+ src/uu/cp/src/cp.rs      | 12 ++++++------\n+ tests/by-util/test_cp.rs | 26 ++++++++++++++++++++++++++\n+ 2 files changed, 32 insertions(+), 6 deletions(-)\n+\n+--- a/src/uu/cp/src/cp.rs\n++++ b/src/uu/cp/src/cp.rs\n+@@ -2682,8 +2682,12 @@ fn copy_file(\n+         print_verbose_output(options.parents, progress_bar, source, dest)?;\n+     }\n+ \n+-    // TODO: implement something similar to gnu's lchown\n+-    if !dest_is_symlink {\n++    // Check the destination as it is now, not as it was before the copy:\n++    // copying a symlink without dereferencing recreates it as a symlink here,\n++    // and chmod() would follow it and change the mode of the link target,\n++    // which can live outside the copied tree. Conversely, --remove-destination\n++    // replaces a symlink with a regular file that still needs its mode set.\n++    if !dest.is_symlink() {\n+         // Here, to match GNU semantics, we quietly ignore an error\n+         // if a user does not have the correct ownership to modify\n+         // the permissions of a file.\n+--- a/tests/by-util/test_cp.rs\n++++ b/tests/by-util/test_cp.rs\n+@@ -926,6 +926,32 @@ fn test_cp_arg_symlink() {\n+     assert!(at.is_symlink(TEST_HELLO_WORLD_DEST));\n+ }\n+ \n++// With --remove-destination onto a symlink, cp removes the link and creates a\n++// fresh regular file, so the final chmod must not be skipped based on the\n++// destination's pre-copy symlink state. GNU cp gives the new file the source\n++// mode masked by the umask (664 & ~022 = 644 here); skipping the chmod leaves\n++// it at the restrictive 0o600 creation mode (or at the raw cloned source mode\n++// on filesystems that copy via clonefile).\n++#[test]\n++#[cfg(unix)]\n++fn test_cp_remove_destination_symlink_applies_mode() {\n++    let (at, mut ucmd) = at_and_ucmd!();\n++\n++    at.touch(\"src\");\n++    at.set_mode(\"src\", 0o664);\n++    at.touch(\"target\");\n++    at.symlink_file(\"target\", \"dst\");\n++\n++    ucmd.umask(0o022)\n++        .arg(\"--remove-destination\")\n++        .arg(\"src\")\n++        .arg(\"dst\")\n++        .succeeds();\n++\n++    assert!(!at.is_symlink(\"dst\"));\n++    assert_eq!(at.metadata(\"dst\").permissions().mode() & 0o777, 0o644);\n++}\n++\n+ #[test]\n+ fn test_cp_arg_no_clobber() {\n+     let (at, mut ucmd) = at_and_ucmd!();\ndiff --git a/debian/patches/series b/debian/patches/series\nindex 43fe24f..04f0ac2 100644\n--- a/debian/patches/series\n+++ b/debian/patches/series\n@@ -18,3 +18,4 @@ require-utility-to-be-invoked-at-matching-path.patch\n dd-ensure-full-writes.patch\n rustix-use-libc-backend.patch\n df-statfs-fallback.patch\n+cp-fix-symlink-target-permissions.patch\n",
+ "diff_truncated": false
+}

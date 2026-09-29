@@ -1,0 +1,35 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~mitchdz/ubuntu/+source/multipath-tools/+git/multipath-tools/+merge/469963",
+ "id": "469963",
+ "title": "PPA - https://launchpad.net/~mitchdz/+archive/ubuntu/mpath-dmsetup",
+ "source_branch": "mitch/revert-dmsetup-downgrade",
+ "target_branch": "ubuntu/devel",
+ "revision": "18498e64c640224cc8d71f755c5ea53cef6759ef",
+ "base_revision": "843b8a69098f72a28a851da1ecdd3aeef850b600",
+ "description": "PPA - https://launchpad.net/~mitchdz/+archive/ubuntu/mpath-dmsetup\n\nThis reverts the downgrade for dmsetup. This was in-place because lvm2 was not updated in our archives, so we decided to keep the delta that debian dropped. This change removes that delta, bringing us in-line with Debian.\n\nThis is functionally the same as https://salsa.debian.org/linux-blocks-team/multipath-tools/-/commit/902a13b2c628d2cfde74cb78fd1ba4425af3d7d4\n\nCurrently the autopkgtest results look like:\n\n  - multipath-tools/0.9.9-1ubuntu2~oracular1\n    + ✅ multipath-tools on oracular for amd64   @ 23.07.24 15:47:57\n      • Log: https://autopkgtest.ubuntu.com/results/autopkgtest-oracular-mitchdz-mpath-dmsetup/oracular/amd64/m/multipath-tools/20240723_154757_b385a@/log.gz\n    + ❌ multipath-tools on oracular for arm64   @ 23.07.24 16:35:02\n      • Log: https://autopkgtest.ubuntu.com/results/autopkgtest-oracular-mitchdz-mpath-dmsetup/oracular/arm64/m/multipath-tools/20240723_163502_1c5ee@/log.gz\n      • Status: FAIL\n      • kpartx-file-loopback      PASS   🟩\n      • tgtbasedmpaths            FAIL   🟥\n      • initramfs                 FAIL   🟥\n    + ⛔ multipath-tools on oracular for armhf   @ 23.07.24 15:31:04\n      • Log: https://autopkgtest.ubuntu.com/results/autopkgtest-oracular-mitchdz-mpath-dmsetup/oracular/armhf/m/multipath-tools/20240723_153104_4f51b@/log.gz\n      • Status: BAD\n      • testbed                   BAD    ⛔\n    + ❌ multipath-tools on oracular for i386    @ 23.07.24 15:26:15\n      • Log: https://autopkgtest.ubuntu.com/results/autopkgtest-oracular-mitchdz-mpath-dmsetup/oracular/i386/m/multipath-tools/20240723_152615_cfa60@/log.gz\n      • Status: FAIL\n      • initramfs                 SKIP   🟧\n      • kpartx-file-loopback      PASS   🟩\n      • tgtbasedmpaths            FAIL   🟥\n      • tgtbasedmpaths            FAIL   🟥\n    + ✅ multipath-tools on oracular for ppc64el @ 23.07.24 15:32:27\n      • Log: https://autopkgtest.ubuntu.com/results/autopkgtest-oracular-mitchdz-mpath-dmsetup/oracular/ppc64el/m/multipath-tools/20240723_153227_47f14@/log.gz\n    + ✅ multipath-tools on oracular for s390x   @ 23.07.24 15:30:19\n      • Log: https://autopkgtest.ubuntu.com/results/autopkgtest-oracular-mitchdz-mpath-dmsetup/oracular/s390x/m/multipath-tools/20240723_153019_f9581@/log.gz\n\ni386 is expected failure.\n\narm64/armhf is failing because the LP builders for arm64/armhf are not working right now. I am proposing this MP anyways because lvm2 is blocked due to this change, and it is bringing the package in-line with debian, therefore the risk is lower.",
+ "commit_message": null,
+ "diffstat": {
+  "debian/changelog": [
+   10,
+   0
+  ],
+  "debian/control": [
+   2,
+   1
+  ],
+  "dev/null": [
+   0,
+   27
+  ],
+  "debian/patches/series": [
+   0,
+   1
+  ]
+ },
+ "files": 4,
+ "added_lines": 12,
+ "removed_lines": 29,
+ "diff": "diff --git a/debian/changelog b/debian/changelog\nindex 93412d9..d71a7cb 100644\n--- a/debian/changelog\n+++ b/debian/changelog\n@@ -1,3 +1,13 @@\n+multipath-tools (0.9.9-1ubuntu2) oracular; urgency=medium\n+\n+  * Revert dmsetup downgrade (LP: #2073622).\n+    - d/control: require dmsetup (>= 2:1.02.196-1~)\n+    - remove d/p/0002-11-dm-mpath.in-fix-DM_UDEV_RULES_VSN-check.patch\n+    - This was needed originally due to lvm2 package being older, but due to the\n+      package upgrade, these changes can be dropped.\n+\n+ -- Mitchell Dzurick <mitchell.dzurick@canonical.com>  Tue, 23 Jul 2024 06:41:53 -0700\n+\n multipath-tools (0.9.9-1ubuntu1) oracular; urgency=medium\n \n   * Merge with Debian unstable (LP: #2068645). Remaining changes:\ndiff --git a/debian/control b/debian/control\nindex 4bd2e06..0af2bc4 100644\n--- a/debian/control\n+++ b/debian/control\n@@ -49,7 +49,8 @@ Description: maintain multipath block device access\n Package: kpartx\n Architecture: linux-any\n Depends:\n- dmsetup,\n+# need dmsetup >= 2:1.02.196-1 to get non-broken DM_UDEV_RULES_VSN in their udev rules\n+ dmsetup (>= 2:1.02.196-1~),\n  udev,\n  ${misc:Depends},\n  ${shlibs:Depends},\ndiff --git a/debian/patches/0002-11-dm-mpath.in-fix-DM_UDEV_RULES_VSN-check.patch b/debian/patches/0002-11-dm-mpath.in-fix-DM_UDEV_RULES_VSN-check.patch\ndeleted file mode 100644\nindex aa60053..0000000\n--- a/debian/patches/0002-11-dm-mpath.in-fix-DM_UDEV_RULES_VSN-check.patch\n+++ /dev/null\n@@ -1,27 +0,0 @@\n-From: Mitchell Dzurick <mitchell.dzurick@canonical.com>\n-Date: Thu, 27 Jun 2024 17:34:14 -0700\n-Subject: 11-dm-mpath.in: fix DM_UDEV_RULES_VSN-check\n-\n-Debian requires version 2:1.02.196-1~ of dmsetup to allow a patch to\n-drop. In Noble we only have dmsetup_1.02.185-3ubuntu2 which is not new\n-enough.\n-\n-This patch is safe to add back in, but for the next release it's safe to\n-assume the dmsetup version will be high enough to drop these changes.\n-\n-Bug-Debian: https://bugs.debian.org/886938\n-Forwarded: not-needed\n-Origin: vendor\n----\n- multipath/11-dm-mpath.rules.in | 2 +-\n- 1 file changed, 1 insertion(+), 1 deletion(-)\n-\n---- a/multipath/11-dm-mpath.rules.in\n-+++ b/multipath/11-dm-mpath.rules.in\n-@@ -1,5 +1,5 @@\n- ACTION!=\"add|change\", GOTO=\"mpath_end\"\n--ENV{DM_UDEV_RULES_VSN}!=\"?*\", GOTO=\"mpath_end\"\n-+ENV{DM_UDEV_RULES}!=\"?*\", GOTO=\"mpath_end\"\n- ENV{DM_UUID}!=\"mpath-?*\", GOTO=\"mpath_end\"\n- \n- IMPORT{db}=\"MPATH_DEVICE_READY\"\ndiff --git a/debian/patches/series b/debian/patches/series\nindex 52755cb..7fa8fe1 100644\n--- a/debian/patches/series\n+++ b/debian/patches/series\n@@ -1,5 +1,4 @@\n enable-find-multipaths.patch\n 0001-Update-build-flags.patch\n-0002-11-dm-mpath.in-fix-DM_UDEV_RULES_VSN-check.patch\n 0003-kpartx-rules-use-Debian-specific-partx-path.patch\n 0004-Debian-specific-priority-of-udev-rules.patch\n",
+ "diff_truncated": false
+}

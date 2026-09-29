@@ -1,0 +1,39 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~cnihelton/ubuntu/+source/ubuntu-meta/+git/ubuntu-meta/+merge/497611",
+ "id": "497611",
+ "title": "ubuntu-meta (1.481.5) jammy; urgency=medium",
+ "source_branch": "jammy-pro-service",
+ "target_branch": "ubuntu/jammy-devel",
+ "revision": "a0f8b03014a133a3ed50331f2d2c5e89e177108c",
+ "base_revision": "ea6d7bf23353b452821ec016d360143b719c6a96",
+ "description": "This completes the work to make the images of Jammy compatible with Noble (and later) for the WSL platform, by including the 'wsl-pro-service' package into the recommended list of packages for the image, done by './update'ing the 'ubuntu-meta' source package to reflect the inclusion of 'wsl-pro-service' package into the jammy seeed. That allows focal images to be managed with Ubuntu Pro for WSL from the first boot.",
+ "commit_message": "ubuntu-meta (1.481.5) jammy; urgency=medium\n\n  * Refreshed dependencies\n  * Added wsl-pro-service to wsl-recommends [amd64 arm64] (LP: #2136341)\n\n",
+ "diffstat": {
+  "debian/changelog": [
+   7,
+   0
+  ],
+  "debootstrap-version": [
+   1,
+   1
+  ],
+  "update.cfg": [
+   1,
+   0
+  ],
+  "wsl-recommends-amd64": [
+   1,
+   0
+  ],
+  "wsl-recommends-arm64": [
+   1,
+   0
+  ]
+ },
+ "files": 5,
+ "added_lines": 11,
+ "removed_lines": 1,
+ "diff": "diff --git a/debian/changelog b/debian/changelog\nindex 0192ef2..be86343 100644\n--- a/debian/changelog\n+++ b/debian/changelog\n@@ -1,3 +1,10 @@\n+ubuntu-meta (1.481.5) jammy; urgency=medium\n+\n+  * Refreshed dependencies\n+  * Added wsl-pro-service to wsl-recommends [amd64 arm64] (LP: #2136341)\n+\n+ -- Carlos Nihelton <cnihelton@ubuntu.com>  Tue, 16 Dec 2025 10:38:12 -0300\n+\n ubuntu-meta (1.481.4) jammy; urgency=medium\n \n   * Refreshed dependencies (LP: #2080223)\ndiff --git a/debootstrap-version b/debootstrap-version\nindex deb5731..4a063f1 100644\n--- a/debootstrap-version\n+++ b/debootstrap-version\n@@ -1 +1 @@\n-1.0.134ubuntu1\n+1.0.141\ndiff --git a/update.cfg b/update.cfg\nindex 6bf0d7f..cb765ea 100644\n--- a/update.cfg\n+++ b/update.cfg\n@@ -14,6 +14,7 @@ archive_base/ppc64el: %(archive_base/ports)s\n archive_base/riscv64: %(archive_base/ports)s\n archive_base/s390x: %(archive_base/ports)s\n components: main restricted\n+dists: jammy jammy-updates\n \n [jammy/vcs]\n seed_base: https://git.launchpad.net/~ubuntu-core-dev/ubuntu-seeds/+git/\ndiff --git a/wsl-recommends-amd64 b/wsl-recommends-amd64\nindex 9b77ca0..80185a5 100644\n--- a/wsl-recommends-amd64\n+++ b/wsl-recommends-amd64\n@@ -12,3 +12,4 @@ show-motd\n snapd\n unattended-upgrades\n update-manager-core\n+wsl-pro-service\ndiff --git a/wsl-recommends-arm64 b/wsl-recommends-arm64\nindex 9b77ca0..80185a5 100644\n--- a/wsl-recommends-arm64\n+++ b/wsl-recommends-arm64\n@@ -12,3 +12,4 @@ show-motd\n snapd\n unattended-upgrades\n update-manager-core\n+wsl-pro-service\n",
+ "diff_truncated": false
+}

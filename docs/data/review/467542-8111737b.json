@@ -1,0 +1,27 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~enr0n/ubuntu/+source/init-system-helpers/+git/init-system-helpers/+merge/467542",
+ "id": "467542",
+ "title": "Do not PreDepends: systemd-sysv on i386. In an effort to reduce the i386 build for systemd, we have a goal of only shipping the library packages. If we were to do that without first dropping this PreDepends, then i386 build chroots would be broken by an unsatisfied dependency.",
+ "source_branch": "i386-drop-systemd-sysv-PreDepends",
+ "target_branch": "ubuntu/devel",
+ "revision": "28bdd05e8b8bf28248f4e659e925fb8c9bfdd7f1",
+ "base_revision": "87f818f1e0408006c65b886f102fcf3ceba71246",
+ "description": "Do not PreDepends: systemd-sysv on i386. In an effort to reduce the i386 build for systemd, we have a goal of only shipping the library packages. If we were to do that without first dropping this PreDepends, then i386 build chroots would be broken by an unsatisfied dependency.",
+ "commit_message": null,
+ "diffstat": {
+  "debian/changelog": [
+   8,
+   0
+  ],
+  "debian/control": [
+   1,
+   1
+  ]
+ },
+ "files": 2,
+ "added_lines": 9,
+ "removed_lines": 1,
+ "diff": "diff --git a/debian/changelog b/debian/changelog\nindex ae0cea5..5f7a07a 100644\n--- a/debian/changelog\n+++ b/debian/changelog\n@@ -1,3 +1,11 @@\n+init-system-helpers (1.66ubuntu2) oracular; urgency=medium\n+\n+  * debian/control: do not PreDepends: systemd-sysv on i386\n+    This will allow src:systemd to build fewer packages on i386, i.e. only\n+    build the library packages.\n+\n+ -- Nick Rosbrook <enr0n@ubuntu.com>  Fri, 14 Jun 2024 11:01:55 -0400\n+\n init-system-helpers (1.66ubuntu1) noble; urgency=medium\n \n   * Merge from Debian unstable.  Remaining changes:\ndiff --git a/debian/control b/debian/control\nindex f321676..bc43313 100644\n--- a/debian/control\n+++ b/debian/control\n@@ -46,7 +46,7 @@ Priority: important\n XB-Important: yes\n Protected: yes\n Multi-Arch: foreign\n-Pre-Depends: systemd-sysv [linux-any] ${alt:sysvinit},\n+Pre-Depends: systemd-sysv [!i386] ${alt:sysvinit},\n Depends: ${misc:Depends},\n Description: metapackage ensuring an init system is installed\n  This package is a metapackage which allows you to select from the available\n",
+ "diff_truncated": false
+}

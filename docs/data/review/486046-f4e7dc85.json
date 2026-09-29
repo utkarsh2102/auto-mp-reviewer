@@ -1,0 +1,35 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~hectorcao/ubuntu/+source/libvirt/+git/libvirt/+merge/486046",
+ "id": "486046",
+ "title": "lp2106791/jammy → ubuntu/jammy-devel",
+ "source_branch": "lp2106791/jammy",
+ "target_branch": "ubuntu/jammy-devel",
+ "revision": "3e1906c106f38adbbcf50547c85a9815f5c15c53",
+ "base_revision": "7d76ef47fb4eecaf63de02bd227702ffa6bc04a1",
+ "description": null,
+ "commit_message": null,
+ "diffstat": {
+  "debian/changelog": [
+   8,
+   0
+  ],
+  "debian/libvirt0.postinst": [
+   34,
+   0
+  ],
+  "debian/local/modules-load.conf": [
+   1,
+   0
+  ],
+  "debian/rules": [
+   8,
+   0
+  ]
+ },
+ "files": 4,
+ "added_lines": 51,
+ "removed_lines": 0,
+ "diff": "diff --git a/debian/changelog b/debian/changelog\nindex db91292..abf386c 100644\n--- a/debian/changelog\n+++ b/debian/changelog\n@@ -1,3 +1,11 @@\n+libvirt (8.0.0-1ubuntu7.12) jammy; urgency=medium\n+\n+  * d/rules,d/libvirt0.postinst: Request msr module to be loaded\n+    The module msr is needed by libvirt to read MSR registers\n+    and detect some CPU features. (LP: #2106791)\n+\n+ -- Hector Cao <hector.cao@canonical.com>  Fri, 23 May 2025 15:01:29 +0200\n+\n libvirt (8.0.0-1ubuntu7.11) jammy; urgency=medium\n \n   * d/p/u/lp-2077336-drop-tpm-tis-arch-validation-*.patch: Drop tpm-tis\ndiff --git a/debian/libvirt0.postinst b/debian/libvirt0.postinst\nnew file mode 100644\nindex 0000000..1b190ab\n--- /dev/null\n+++ b/debian/libvirt0.postinst\n@@ -0,0 +1,34 @@\n+#!/bin/sh\n+\n+set -e\n+\n+# summary of how this script can be called:\n+#        * <postinst> `configure' <most-recently-configured-version>\n+#        * <old-postinst> `abort-upgrade' <new version>\n+#        * <conflictor's-postinst> `abort-remove' `in-favour' <package>\n+#          <new-version>\n+#        * <postinst> `abort-remove'\n+#        * <deconfigured's-postinst> `abort-deconfigure' `in-favour'\n+#          <failed-install-package> <version> `removing'\n+#          <conflicting-package> <version>\n+# for details, see https://www.debian.org/doc/debian-policy/ or\n+# the debian-policy package\n+\n+case \"$1\" in\n+    configure)\n+        # Load msr kernel module (LP: #2106791)\n+        modprobe msr || true\n+    ;;\n+\n+    abort-upgrade|abort-remove|abort-deconfigure)\n+    ;;\n+\n+    *)\n+        echo \"postinst called with unknown argument \\`$1'\" >&2\n+        exit 1\n+    ;;\n+esac\n+\n+#DEBHELPER#\n+\n+exit 0\ndiff --git a/debian/local/modules-load.conf b/debian/local/modules-load.conf\nnew file mode 100644\nindex 0000000..3e5ee7f\n--- /dev/null\n+++ b/debian/local/modules-load.conf\n@@ -0,0 +1 @@\n+msr\ndiff --git a/debian/rules b/debian/rules\nindex 64690a1..08ac629 100755\n--- a/debian/rules\n+++ b/debian/rules\n@@ -244,6 +244,14 @@ execute_after_dh_auto_install:\n \tmkdir -p debian/tmp/etc/profile.d\n \tcp -f debian/libvirt-uri.sh debian/tmp/etc/profile.d/\n \n+ifneq ($(filter $(DEB_HOST_ARCH),amd64 i386),)\n+\t# Add msr module to be loaded at boot\n+  # Since the msr read functionality is in libvirt0, we install the modules-load.d file\n+  # as part of the libvirt0 binary package\n+\tmkdir -p debian/libvirt0/usr/lib/modules-load.d/\n+\tinstall -D -m 644 debian/local/modules-load.conf debian/libvirt0/usr/lib/modules-load.d/libvirt.conf\n+endif\n+\n \t# Copy the release notes where dh_installdocs can find them\n \tcp NEWS.rst \\\n \t   $(DEB_DESTDIR)/usr/share/doc/libvirt/NEWS\n",
+ "diff_truncated": false
+}

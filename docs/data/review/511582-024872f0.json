@@ -1,0 +1,31 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~hectorcao/ubuntu/+source/openssh/+git/openssh/+merge/511582",
+ "id": "511582",
+ "title": "PPA: https://launchpad.net/~hectorcao/+archive/ubuntu/lp2166842",
+ "source_branch": "lp2166842-stonking",
+ "target_branch": "ubuntu/devel",
+ "revision": "68ec8b95d99473c16cb1fb5de67e016094752bbf",
+ "base_revision": "e1038fb6abbc4c436521bc07d56397beff70bd13",
+ "description": "PPA: https://launchpad.net/~hectorcao/+archive/ubuntu/lp2166842",
+ "commit_message": null,
+ "diffstat": {
+  "debian/changelog": [
+   8,
+   0
+  ],
+  "debian/patches/lp-2166842-fix-access-denied-with-force-commands-only.patch": [
+   49,
+   0
+  ],
+  "debian/patches/series": [
+   1,
+   0
+  ]
+ },
+ "files": 3,
+ "added_lines": 58,
+ "removed_lines": 0,
+ "diff": "diff --git a/debian/changelog b/debian/changelog\nindex 2eec7b9..23dc4ed 100644\n--- a/debian/changelog\n+++ b/debian/changelog\n@@ -1,3 +1,11 @@\n+openssh (1:10.5p1-1ubuntu3) stonking; urgency=medium\n+\n+  * Fix access denied with forced-commands-only for root login\n+    d/p/lp-2166842-fix-access-denied-with-force-commands-only.patch\n+    (LP: #2166842)\n+\n+ -- Hector Cao <hector.cao@canonical.com>  Fri, 18 Sep 2026 09:06:54 +0200\n+\n openssh (1:10.5p1-1ubuntu2) stonking; urgency=medium\n \n   * d/p/lp-2150273-openssh-pam-upn: Fix PAM user mismatch with\ndiff --git a/debian/patches/lp-2166842-fix-access-denied-with-force-commands-only.patch b/debian/patches/lp-2166842-fix-access-denied-with-force-commands-only.patch\nnew file mode 100644\nindex 0000000..d3fccc6\n--- /dev/null\n+++ b/debian/patches/lp-2166842-fix-access-denied-with-force-commands-only.patch\n@@ -0,0 +1,49 @@\n+From 7053d49af0f48a80698c6736958abe92ee21ac69 Mon Sep 17 00:00:00 2001\n+From: Viktor Pashaiev <w.paszajew@gmail.com>\n+Date: Wed, 16 Sep 2026 08:45:55 +0200\n+Subject: [PATCH] auth-options: only serialise placeholder strings when option\n+ is non-NULL in untrusted mode\n+\n+When authenticating in untrusted mode, sshauthopt_serialise() unconditionally\n+serialised \"true\" for force_command and \"yes\" for cert_principals regardless\n+of whether the option was actually set.\n+\n+This caused the unprivileged child process to deserialise force_command as\n+a valid non-NULL string even when no forced-command was configured on the\n+key. Under configurations like PermitRootLogin=forced-commands-only + UsePAM=yes,\n+the child considered root login accepted for forced-command and proceeded with\n+PAM account management (MONITOR_REQ_PAM_ACCOUNT / msg 102). The privileged\n+monitor rejected the root login because its actual force_command was NULL,\n+causing a fatal assertion:\n+\"fatal: monitor_child_preauth: unexpected authentication from 102\"\n+\n+Fix this by only serialising \"true\" or \"yes\" if the corresponding option field\n+is non-NULL.\n+\n+Bug-Ubuntu: https://bugs.launchpad.net/ubuntu/+source/openssh/+bug/2166842\n+Forwarded: https://github.com/openssh/openssh-portable/pull/712\n+---\n+ auth-options.c | 6 ++++--\n+ 1 file changed, 4 insertions(+), 2 deletions(-)\n+\n+diff --git a/auth-options.c b/auth-options.c\n+index 4bbddd7ba..381f64739 100644\n+--- a/auth-options.c\n++++ b/auth-options.c\n+@@ -823,9 +823,11 @@ sshauthopt_serialise(const struct sshauthopt *opts, struct sshbuf *m,\n+ \n+ \t/* String options; these may be NULL */\n+ \tif ((r = serialise_nullable_string(m,\n+-\t    untrusted ? \"yes\" : opts->cert_principals)) != 0 ||\n++\t    (untrusted && opts->cert_principals != NULL) ?\n++\t    \"yes\" : opts->cert_principals)) != 0 ||\n+ \t    (r = serialise_nullable_string(m,\n+-\t    untrusted ? \"true\" : opts->force_command)) != 0 ||\n++\t    (untrusted && opts->force_command != NULL) ?\n++\t    \"true\" : opts->force_command)) != 0 ||\n+ \t    (r = serialise_nullable_string(m,\n+ \t    untrusted ? NULL : opts->required_from_host_cert)) != 0 ||\n+ \t    (r = serialise_nullable_string(m,\n+-- \n+2.43.0\n+\ndiff --git a/debian/patches/series b/debian/patches/series\nindex cf2a8b2..208a826 100644\n--- a/debian/patches/series\n+++ b/debian/patches/series\n@@ -25,3 +25,4 @@ sshd-socket-generator.patch\n test-set-UsePAM-no-on-some-tests.patch\n test-workaround-dd-broken-pipe.patch\n lp-2150273-openssh-pam-upn.patch\n+lp-2166842-fix-access-denied-with-force-commands-only.patch\n",
+ "diff_truncated": false
+}

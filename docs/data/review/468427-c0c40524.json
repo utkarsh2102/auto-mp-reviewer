@@ -1,0 +1,27 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~danilogondolfo/ubuntu/+source/netplan.io/+git/netplan.io/+merge/468427",
+ "id": "468427",
+ "title": "mantic_generator_postinst → ubuntu/mantic-devel",
+ "source_branch": "mantic_generator_postinst",
+ "target_branch": "ubuntu/mantic-devel",
+ "revision": "c0c719139fe908c8f4a070e44532da0ecee40a28",
+ "base_revision": "2b221d4837d9bb986bb131fa847380ef5d484ac2",
+ "description": null,
+ "commit_message": null,
+ "diffstat": {
+  "debian/changelog": [
+   8,
+   0
+  ],
+  "debian/netplan-generator.postinst": [
+   5,
+   1
+  ]
+ },
+ "files": 2,
+ "added_lines": 13,
+ "removed_lines": 1,
+ "diff": "diff --git a/debian/changelog b/debian/changelog\nindex d0785e2..1c12f58 100644\n--- a/debian/changelog\n+++ b/debian/changelog\n@@ -1,3 +1,11 @@\n+netplan.io (0.107-5ubuntu0.4) mantic; urgency=medium\n+\n+  * debian/netplan-generator.postinst:\n+    Don't call the generator if no networkd configuration file exists.\n+    (LP: #2071333)\n+\n+ -- Danilo Egea Gondolfo <danilo.egea.gondolfo@canonical.com>  Fri, 28 Jun 2024 10:40:14 +0100\n+\n netplan.io (0.107-5ubuntu0.3) mantic-security; urgency=medium\n \n   * SECURITY UPDATE: weak permissions on secret files, command injection\ndiff --git a/debian/netplan-generator.postinst b/debian/netplan-generator.postinst\nindex 1758dff..f805c24 100644\n--- a/debian/netplan-generator.postinst\n+++ b/debian/netplan-generator.postinst\n@@ -3,8 +3,12 @@\n set -e\n \n # Calling the generator after installation to mitigate CVE-2022-4968\n+# We avoid calling the generator if the system doesn't have networkd files to be fixed (LP: #2071333)\n if [ \"$1\" = configure ]; then\n-    /usr/libexec/netplan/generate 2>/dev/null || echo \"WARNING: Netplan could not re-generate network configuration. Please run 'netplan generate' to see details.\"\n+    FILES=$(find /run/systemd/network/ -type f -regex \".*-netplan.*\\.\\(network\\|netdev\\)\" 2>/dev/null || true)\n+    if [ -n \"${FILES}\" ]; then\n+        /usr/libexec/netplan/generate 2>/dev/null || echo \"WARNING: Netplan could not re-generate network configuration. Please run 'netplan generate' to see details.\"\n+    fi\n fi\n \n #DEBHELPER#\n",
+ "diff_truncated": false
+}

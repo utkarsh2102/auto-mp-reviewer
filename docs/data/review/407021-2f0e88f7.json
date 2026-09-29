@@ -1,0 +1,27 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~paride/ubuntu/+source/postfix/+git/postfix/+merge/407021",
+ "id": "407021",
+ "title": "Focal SRU for LP: #1906970, same as https://code.launchpad.net/~paride/ubuntu/+source/postfix/+git/postfix/+merge/406805 but done against Focal.",
+ "source_branch": "lp1906970-focal",
+ "target_branch": "ubuntu/focal-devel",
+ "revision": "4f7a0878a299e33f184b8676cfdb477755ca2708",
+ "base_revision": "9ce4102b8c34f13c77d67fe9543ffc6bf11caa3f",
+ "description": null,
+ "commit_message": "Focal SRU for LP: #1906970, same as https://code.launchpad.net/~paride/ubuntu/+source/postfix/+git/postfix/+merge/406805 but done against Focal.\n\nTest PPA: https://launchpad.net/~paride/+archive/ubuntu/postfix-lp1906970\n\nTest case: see [Test Plan] in the SRU bug description.\n\nAutopkgtest summary (virt-server: lxd):\n\npostfix              PASS",
+ "diffstat": {
+  "debian/postfix.postinst": [
+   1,
+   1
+  ],
+  "debian/changelog": [
+   7,
+   0
+  ]
+ },
+ "files": 2,
+ "added_lines": 8,
+ "removed_lines": 1,
+ "diff": "diff --git a/debian/changelog b/debian/changelog\nindex ad23036..395f459 100644\n--- a/debian/changelog\n+++ b/debian/changelog\n@@ -1,3 +1,10 @@\n+postfix (3.4.13-0ubuntu1.1) focal; urgency=medium\n+\n+  * d/postfix.postinst: tolerate search domain with a leading dot\n+    (LP: #1906970)\n+\n+ -- Paride Legovini <paride@ubuntu.com>  Thu, 12 Aug 2021 14:26:09 +0200\n+\n postfix (3.4.13-0ubuntu1) focal; urgency=medium\n \n   * New upstream release: 3.4.13\ndiff --git a/debian/postfix.postinst b/debian/postfix.postinst\nindex dc28f3c..9ba7eac 100644\n--- a/debian/postfix.postinst\n+++ b/debian/postfix.postinst\n@@ -49,7 +49,7 @@ myfqdn() {\n \tif [ $myhostname = ${myhostname%.*} ]; then\n \t    if [ -f /etc/resolv.conf ]; then\n \t\t# The resolver uses the last one found, and ignores the rest\n-\t\tmydom=$(sed -n 's/^search[[:space:]]*\\([^[:space:]]*\\).*/\\1/p;s/^domain[[:space:]]*\\([^[:space:]]*\\).*/\\1/p' /etc/resolv.conf | tail -1)\n+\t\tmydom=$(sed -n 's/^search[[:space:]]*\\.*\\([^[:space:]]*\\).*/\\1/p;s/^domain[[:space:]]*\\.*\\([^[:space:]]*\\).*/\\1/p' /etc/resolv.conf | tail -1)\n \t\tmyhostname=\"$myhostname${mydom:+.$mydom}\"\n \t    else\n \t\tmyhostname=\"$myhostname.UNKNOWN\"\n",
+ "diff_truncated": false
+}

@@ -1,0 +1,27 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~jefferyto/ubuntu/+source/grub2/+git/grub2/+merge/444580",
+ "id": "444580",
+ "title": "lp1475620 → ubuntu/devel",
+ "source_branch": "lp1475620",
+ "target_branch": "ubuntu/devel",
+ "revision": "35fa29f05e3a9877334764f314361e33a41d965a",
+ "base_revision": "c2d9ca0a1bb2c8faaa2aa8f9be4cafd5ca1b8b48",
+ "description": null,
+ "commit_message": null,
+ "diffstat": {
+  "debian/grub-common.service": [
+   2,
+   2
+  ],
+  "debian/changelog": [
+   4,
+   0
+  ]
+ },
+ "files": 2,
+ "added_lines": 6,
+ "removed_lines": 2,
+ "diff": "diff --git a/debian/changelog b/debian/changelog\nindex 9e90c5a..52f094d 100644\n--- a/debian/changelog\n+++ b/debian/changelog\n@@ -1,5 +1,9 @@\n grub2 (2.06-2ubuntu18) mantic; urgency=medium\n \n+  [ Jeffery To ]\n+  * grub-common.service: Fix service run before actual system sleep (LP:\n+    #1475620)\n+\n   * Cherry-pick \"RISC-V: Handle R_RISCV_CALL_PLT reloc\" (LP: #2022379)\n   * Drop i386 from grub-efi-amd64* (LP: #2020907)\n   * Turn depends on grub-efi-amd64/arm64 unversioned\ndiff --git a/debian/grub-common.service b/debian/grub-common.service\nindex fcf5474..9172f1a 100644\n--- a/debian/grub-common.service\n+++ b/debian/grub-common.service\n@@ -1,6 +1,6 @@\n [Unit]\n Description=Record successful boot for GRUB\n-After=sleep.target\n+After=hibernate.target hybrid-sleep.target suspend-then-hibernate.target\n ConditionPathExists=/boot/grub/grub.cfg\n \n [Service]\n@@ -12,4 +12,4 @@ ExecStartPost=/bin/sh -c 'if grub-editenv /boot/grub/grubenv list | grep -q init\n StandardOutput=kmsg\n \n [Install]\n-WantedBy=multi-user.target sleep.target\n+WantedBy=multi-user.target hibernate.target hybrid-sleep.target suspend-then-hibernate.target\n",
+ "diff_truncated": false
+}

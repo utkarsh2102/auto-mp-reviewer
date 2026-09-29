@@ -1,0 +1,1619 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~mirespace/ubuntu/+source/walinuxagent/+git/walinuxagent/+merge/501071",
+ "id": "501071",
+ "title": "This is an upgrade (MRE) for WALinuxagent to version 2.15.0.1.",
+ "source_branch": "jammy-sru-2.15-lp2141533",
+ "target_branch": "ubuntu/jammy-devel",
+ "revision": "3dbad621bde2d2ffa8b0c90ef1571f6b33b5eb6f",
+ "base_revision": "2c76c99e7ff9d5b57d34cbdeb63c2cb6bd872df1",
+ "description": "This is an upgrade (MRE) for WALinuxagent to version 2.15.0.1.\n\npackage is available at:\n\nhttps://launchpad.net/~mirespace/+archive/ubuntu/azure\nppa:mirespace/azure\n\n\nFor reference: version 2.11.1.4 was in -proposed and later demoted by Azure squad's manager to jump to waagent instead. Because that work was in ubuntu/jammy-devel, I used it as a starting point, dropping commits that don't apply now due to the new version 2.15.0.1 already contains them. For that reason in the commit history you can see two \"New upstream version commits\" but only one changelog, on top of the only one published in the archive on updates. \n\nThe review of that pacakage is at https://code.launchpad.net/~mirespace/ubuntu/+source/walinuxagent/+git/walinuxagent/+merge/469956\n\n\nThis is the changelog diff between Resolute and Jammy, picking only the changes that affect Jammy to make the new upstream version workable:\n\ndiff --git a/debian/changelog b/debian/changelog\nindex d4e5ba28..e1aa047d 100644\n--- a/debian/changelog\n+++ b/debian/changelog\n@@ -1,28 +1,16 @@\n-walinuxagent (2.15.0.1-0ubuntu1) resolute; urgency=medium\n+walinuxagent (2.15.0.1-0ubuntu1~22.04.1) jammy; urgency=medium\n \n   * New upstream release (LP: #2141533):\n     - Full list of changes is available at:\n       https://github.com/Azure/WALinuxAgent/releases/tag/v2.15.0.1\n     - Remove patches:\n-      + d/p/update_dhcp_client_ubuntu_supported_versions.patch: Merged\n-        upstream (#3159) and released in version pre-v2.13.0.0.\n-      + d/p/fix_escape_sequence_warning.patch: The code to which most\n-        of this patch applies has been refactored (#3221), and the\n-        prefix “r” has also been added for expressions (#3084),\n-        which means that this patch is no longer necessary. This was\n-        released in version 2.12.0.0.\n-      + d/p/complete_exception_info_on_test.patch: Merged upstream\n-        (#3149) and released in version pre-v2.13.0.0.\n-      + d/p/embed-distutils-to-azurelinuxagent.patch: Merged upstream\n-        (#3063) and released in version pre-v2.13.0.0.\n-      + d/p/run-unit-test-with-pytest-python3_10.patch: Merged\n-        upstream (#3081) and released in version pre-v2.13.0.0.\n-      + d/p/update-test-certificate-data.patch: Merged upstream\n-        (#3166) and released in version pre-v2.13.0.0.\n-      + d/p/use-legacycrypt-for-python3_13.patch: Merged upstream\n-        (#3070) and released in version pre-v2.13.0.0.\n+      + d/p/fix-udev-rules-for-azure.patch: Merged upstream (#1954)\n+        and released in version 2.2.52.\n     - Refresh patches:\n-      + d/p/disable_udev_overrides.patch.\n+      + d/p/disable_import_test.patch: adapt to changes introduced in\n+        v2.2.45 (#1633) while respecting the same behavior.\n+      + d/p/disable_udev_overrides.patch: Refresh patch for making it\n+        DEP-3 compliant.\n \n   * Switch the password hashing fallback from python3-crypt-r to\n     python3-passlib, and drop the use of the Python3-crypt-r package,\n@@ -34,164 +22,40 @@ walinuxagent (2.15.0.1-0ubuntu1) resolute; urgency=medium\n       test dependencies to pull in passlib instead of crypt-r/legacycrypt.\n     + d/control: Add build and runtime dependency on python3-passlib.\n \n+  * Using now pytest for running the test suite (LP: #1800499)\n+    (LP: #2063046) as recommended by upstream:\n+    - d/control: Add python3-pytest as b-d.\n+    - d/rules: Run test with pytest over the non-sudo tests.\n+\n   * d/p/fix-some-tests-due-to-python3_14-changes.patch: 'fork' is needed when\n     the parent process sets mocks because Python 3.14 changed the default start\n     method of multiprocessing.Process.\n \n   * d/rules:\n-    + Remove deselection of no longer existing tests test_get_password_hash\n-      on that path.\n     + Deselect tests which uses VMAccessForLinux extension because it is not\n       yet fully enabled in the agent and the related new feature is still in\n       development.\n     + Ignore all test that require root privileges to run.\n \n+  * d/control:\n+    - iproute2 needed as b-d  by test_get_nic_state.\n+    - iptables needed as b-d  by\n+      test_it_should_setup_persistent_firewall_rules_on_startup\n+\n+  * d/docs: Remove Changelog entry, as this file was removed on\n+    upstream (#2179).\n+\n   * d/tests/control: run tests that require sudo and are\n     thereby ignored at build time.\n \n-  * DEP-17 compliance (LP: #2139222):\n-    - d/rules: Avoid /lib aliased-location error on lintian, making it\n-      compliant with DEP-17.\n-    - d/install: Update to be DEP-17 usrmerge compliant.\n-\n   * Included changes from waagent Debian unstable:\n-    [ Bastian Blank ]\n-    - d/control: Fix missing Pre-Depends.\n \n     [ Noah Meyerhans ]\n     - d/p/re-work-flaky-tests.patch: Not depending in ls output.\n \n- -- Miriam España Acebal <email address hidden>  Mon, 12 Jan 2026 16:29:09 +0100\n\n\n(TBU)\n\nAutopkgtest results:\n- walinuxagent: jammy/walinuxagent/2.15.0.1-0ubuntu1~22.04.1+ppa1 [amd64]\n    + ✅ walinuxagent on jammy for amd64   @ 26.02.26 21:33:46\n      • Log: https://autopkgtest.ubuntu.com/results/autopkgtest-jammy-mirespace-azure/jammy/amd64/w/walinuxagent/20260226_213346_62744@/log.gz\n    + ✅ walinuxagent on jammy for amd64   @ 26.02.26 21:35:31\n      • Log: https://autopkgtest.ubuntu.com/results/autopkgtest-jammy-mirespace-azure/jammy/amd64/w/walinuxagent/20260226_213531_22ce5@/log.gz\n  - walinuxagent: jammy/walinuxagent/2.15.0.1-0ubuntu1~22.04.1+ppa1 [arm64]\n    + ✅ walinuxagent on jammy for arm64   @ 26.02.26 21:34:23\n      • Log: https://autopkgtest.ubuntu.com/results/autopkgtest-jammy-mirespace-azure/jammy/arm64/w/walinuxagent/20260226_213423_1377c@/log.gz\n    + ✅ walinuxagent on jammy for arm64   @ 26.02.26 21:36:09\n      • Log: https://autopkgtest.ubuntu.com/results/autopkgtest-jammy-mirespace-azure/jammy/arm64/w/walinuxagent/20260226_213609_de4c6@/log.gz\n\n\ne2e tests:\n\nTests designed to cover changes in old releases: (WIP)",
+ "commit_message": null,
+ "diffstat": {
+  ".github/PULL_REQUEST_TEMPLATE.md": [
+   13,
+   8
+  ],
+  ".github/workflows/ci_pr.yml": [
+   133,
+   109
+  ],
+  "README.md": [
+   19,
+   3
+  ],
+  "azurelinuxagent/agent.py": [
+   103,
+   60
+  ],
+  "azurelinuxagent/common/agent_supported_feature.py": [
+   3,
+   2
+  ],
+  "azurelinuxagent/common/conf.py": [
+   70,
+   24
+  ],
+  "azurelinuxagent/common/dhcp.py": [
+   10,
+   3
+  ],
+  "azurelinuxagent/common/errorstate.py": [
+   4,
+   3
+  ],
+  "azurelinuxagent/common/event.py": [
+   133,
+   51
+  ],
+  "azurelinuxagent/common/future.py": [
+   28,
+   1
+  ],
+  "azurelinuxagent/common/logger.py": [
+   14,
+   12
+  ],
+  "azurelinuxagent/common/osutil/alpine.py": [
+   3,
+   2
+  ],
+  "azurelinuxagent/common/osutil/chainguard.py": [
+   110,
+   0
+  ],
+  "azurelinuxagent/common/osutil/default.py": [
+   54,
+   221
+  ],
+  "azurelinuxagent/common/osutil/factory.py": [
+   19,
+   17
+  ],
+  "azurelinuxagent/common/osutil/freebsd.py": [
+   5,
+   4
+  ],
+  "azurelinuxagent/common/osutil/gaia.py": [
+   2,
+   3
+  ],
+  "azurelinuxagent/common/osutil/nsbsd.py": [
+   0,
+   24
+  ],
+  "azurelinuxagent/common/osutil/openbsd.py": [
+   3,
+   3
+  ],
+  "azurelinuxagent/common/osutil/openwrt.py": [
+   8,
+   7
+  ],
+  "azurelinuxagent/common/osutil/redhat.py": [
+   25,
+   1
+  ],
+  "azurelinuxagent/common/osutil/systemd.py": [
+   48,
+   1
+  ],
+  "azurelinuxagent/common/protocol/extensions_goal_state.py": [
+   20,
+   8
+  ],
+  "azurelinuxagent/common/protocol/extensions_goal_state_from_extensions_config.py": [
+   54,
+   20
+  ],
+  "azurelinuxagent/common/protocol/extensions_goal_state_from_vm_settings.py": [
+   41,
+   7
+  ],
+  "azurelinuxagent/common/protocol/goal_state.py": [
+   152,
+   125
+  ],
+  "azurelinuxagent/common/protocol/healthservice.py": [
+   1,
+   1
+  ],
+  "azurelinuxagent/common/protocol/hostplugin.py": [
+   35,
+   34
+  ],
+  "azurelinuxagent/common/protocol/imds.py": [
+   4,
+   7
+  ],
+  "azurelinuxagent/common/protocol/metadata_server_migration_util.py": [
+   116,
+   17
+  ],
+  "azurelinuxagent/common/protocol/restapi.py": [
+   4,
+   24
+  ],
+  "azurelinuxagent/common/protocol/util.py": [
+   14,
+   8
+  ],
+  "azurelinuxagent/common/protocol/wire.py": [
+   101,
+   42
+  ],
+  "azurelinuxagent/common/singletonperthread.py": [
+   3,
+   2
+  ],
+  "azurelinuxagent/common/telemetryevent.py": [
+   1,
+   1
+  ],
+  "azurelinuxagent/common/utils/archive.py": [
+   9,
+   2
+  ],
+  "azurelinuxagent/common/utils/cryptutil.py": [
+   17,
+   14
+  ],
+  "azurelinuxagent/common/utils/distro_version.py": [
+   115,
+   0
+  ],
+  "azurelinuxagent/common/utils/flexible_version.py": [
+   7,
+   6
+  ],
+  "azurelinuxagent/common/utils/networkutil.py": [
+   0,
+   177
+  ],
+  "azurelinuxagent/common/utils/restutil.py": [
+   22,
+   15
+  ],
+  "azurelinuxagent/common/utils/textutil.py": [
+   42,
+   40
+  ],
+  "azurelinuxagent/common/utils/timeutil.py": [
+   12,
+   31
+  ],
+  "azurelinuxagent/common/version.py": [
+   11,
+   8
+  ],
+  "azurelinuxagent/daemon/main.py": [
+   3,
+   3
+  ],
+  "azurelinuxagent/daemon/resourcedisk/default.py": [
+   1,
+   1
+  ],
+  "azurelinuxagent/ga/agent_update_handler.py": [
+   70,
+   66
+  ],
+  "azurelinuxagent/ga/cgroupapi.py": [
+   637,
+   175
+  ],
+  "azurelinuxagent/ga/cgroupconfigurator.py": [
+   424,
+   482
+  ],
+  "azurelinuxagent/ga/cgroupcontroller.py": [
+   50,
+   250
+  ],
+  "azurelinuxagent/ga/cgroupstelemetry.py": [
+   27,
+   28
+  ],
+  "azurelinuxagent/ga/collect_logs.py": [
+   90,
+   48
+  ],
+  "azurelinuxagent/ga/collect_telemetry_events.py": [
+   73,
+   20
+  ],
+  "azurelinuxagent/ga/cpucontroller.py": [
+   308,
+   0
+  ],
+  "azurelinuxagent/ga/env.py": [
+   39,
+   81
+  ],
+  "azurelinuxagent/ga/extensionprocessutil.py": [
+   10,
+   18
+  ],
+  "azurelinuxagent/ga/exthandlers.py": [
+   336,
+   102
+  ],
+  "azurelinuxagent/ga/firewall_manager.py": [
+   540,
+   0
+  ],
+  "azurelinuxagent/ga/ga_version_updater.py": [
+   2,
+   1
+  ],
+  "azurelinuxagent/ga/guestagent.py": [
+   75,
+   6
+  ],
+  "azurelinuxagent/ga/logcollector.py": [
+   62,
+   39
+  ],
+  "azurelinuxagent/ga/memorycontroller.py": [
+   223,
+   0
+  ],
+  "azurelinuxagent/ga/monitor.py": [
+   12,
+   13
+  ],
+  "azurelinuxagent/ga/periodic_operation.py": [
+   8,
+   8
+  ],
+  "azurelinuxagent/ga/persist_firewall_rules.py": [
+   101,
+   83
+  ],
+  "azurelinuxagent/ga/policy/__init__.py": [
+   15,
+   0
+  ],
+  "azurelinuxagent/ga/policy/policy_engine.py": [
+   316,
+   0
+  ],
+  "azurelinuxagent/ga/remoteaccess.py": [
+   3,
+   3
+  ],
+  "azurelinuxagent/ga/rsm_version_updater.py": [
+   15,
+   4
+  ],
+  "azurelinuxagent/ga/self_update_version_updater.py": [
+   43,
+   30
+  ],
+  "azurelinuxagent/ga/send_telemetry_events.py": [
+   7,
+   7
+  ],
+  "azurelinuxagent/ga/signature_validation_util.py": [
+   324,
+   0
+  ],
+  "azurelinuxagent/ga/signing_certificate_util.py": [
+   93,
+   0
+  ],
+  "azurelinuxagent/ga/update.py": [
+   151,
+   159
+  ],
+  "azurelinuxagent/pa/deprovision/default.py": [
+   2,
+   1
+  ],
+  "azurelinuxagent/pa/deprovision/factory.py": [
+   2,
+   2
+  ],
+  "azurelinuxagent/pa/provision/cloudinit.py": [
+   3,
+   4
+  ],
+  "azurelinuxagent/pa/provision/default.py": [
+   2,
+   2
+  ],
+  "azurelinuxagent/pa/rdma/centos.py": [
+   3,
+   3
+  ],
+  "azurelinuxagent/pa/rdma/factory.py": [
+   2,
+   3
+  ],
+  "azurelinuxagent/pa/rdma/rdma.py": [
+   7,
+   7
+  ],
+  "azurelinuxagent/pa/rdma/suse.py": [
+   2,
+   2
+  ],
+  "azurelinuxagent/pa/rdma/ubuntu.py": [
+   5,
+   5
+  ],
+  "dev/null": [
+   0,
+   209
+  ],
+  "ci/nosetests.sh": [
+   4,
+   4
+  ],
+  "ci/pylintrc": [
+   42,
+   0
+  ],
+  "ci/pytest.ini": [
+   3,
+   0
+  ],
+  "ci/pytest.sh": [
+   19,
+   0
+  ],
+  "config/alpine/waagent.conf": [
+   6,
+   3
+  ],
+  "config/chainguard/waagent.conf": [
+   134,
+   0
+  ],
+  "debian/changelog": [
+   53,
+   0
+  ],
+  "debian/control": [
+   2,
+   0
+  ],
+  "debian/patches/disable_udev_overrides.patch": [
+   8,
+   0
+  ],
+  "debian/patches/fix-some-tests-due-to-python3_14-changes.patch": [
+   181,
+   0
+  ],
+  "debian/patches/re-work-flaky-tests.patch": [
+   42,
+   0
+  ],
+  "debian/patches/series": [
+   6,
+   0
+  ],
+  "debian/patches/switching-crypt_r-passlib-python3_13.patch": [
+   138,
+   0
+  ],
+  "debian/rules": [
+   4,
+   0
+  ],
+  "debian/tests/control": [
+   3,
+   0
+  ],
+  "doc/man/waagent.1": [
+   117,
+   0
+  ],
+  "init/chainguard/90-waagent.preset": [
+   1,
+   0
+  ],
+  "init/chainguard/waagent.service": [
+   17,
+   0
+  ],
+  "init/openrc/waagent": [
+   11,
+   0
+  ],
+  "requirements.txt": [
+   2,
+   1
+  ],
+  "setup.py": [
+   48,
+   10
+  ],
+  "test-requirements.txt": [
+   5,
+   2
+  ],
+  "tests/common/dhcp/test_dhcp.py": [
+   41,
+   0
+  ],
+  "tests/common/osutil/test_default.py": [
+   10,
+   329
+  ],
+  "tests/common/osutil/test_factory.py": [
+   1,
+   1
+  ],
+  "tests/common/protocol/test_extensions_goal_state_from_extensions_config.py": [
+   28,
+   2
+  ],
+  "tests/common/protocol/test_extensions_goal_state_from_vm_settings.py": [
+   29,
+   0
+  ],
+  "tests/common/protocol/test_goal_state.py": [
+   274,
+   76
+  ],
+  "tests/common/protocol/test_hostplugin.py": [
+   24,
+   25
+  ],
+  "tests/common/protocol/test_imds.py": [
+   71,
+   84
+  ],
+  "tests/common/protocol/test_metadata_server_migration_util.py": [
+   13,
+   18
+  ],
+  "tests/common/protocol/test_protocol_util.py": [
+   36,
+   18
+  ],
+  "tests/common/protocol/test_wire.py": [
+   48,
+   16
+  ],
+  "tests/common/test_errorstate.py": [
+   10,
+   9
+  ],
+  "tests/common/test_event.py": [
+   122,
+   69
+  ],
+  "tests/common/test_logger.py": [
+   54,
+   12
+  ],
+  "tests/common/test_singletonperthread.py": [
+   11,
+   11
+  ],
+  "tests/common/test_telemetryevent.py": [
+   15,
+   15
+  ],
+  "tests/common/utils/test_archive.py": [
+   7,
+   36
+  ],
+  "tests/common/utils/test_distro_version.py": [
+   128,
+   0
+  ],
+  "tests/common/utils/test_extension_process_util.py": [
+   14,
+   30
+  ],
+  "tests/common/utils/test_file_util.py": [
+   2,
+   2
+  ],
+  "tests/common/utils/test_flexible_version.py": [
+   1,
+   1
+  ],
+  "tests/common/utils/test_network_util.py": [
+   0,
+   35
+  ],
+  "tests/common/utils/test_rest_util.py": [
+   17,
+   62
+  ],
+  "tests/common/utils/test_text_util.py": [
+   0,
+   44
+  ],
+  "tests/data/cgroups/cgroup.procs": [
+   3,
+   0
+  ],
+  "tests/data/cgroups/hybrid/sys_fs_cgroup_cgroup.controllers": [
+   0,
+   0
+  ],
+  "tests/data/cgroups/proc_self_cgroup_azure_slice": [
+   13,
+   0
+  ],
+  "tests/data/cgroups/v2/cpu.stat": [
+   9,
+   0
+  ],
+  "tests/data/cgroups/v2/cpu.stat_t0": [
+   9,
+   0
+  ],
+  "tests/data/cgroups/v2/cpu.stat_t1": [
+   9,
+   0
+  ],
+  "tests/data/cgroups/v2/cpu.stat_t2": [
+   9,
+   0
+  ],
+  "tests/data/cgroups/v2/memory.events": [
+   6,
+   0
+  ],
+  "tests/data/cgroups/v2/memory.events_missing": [
+   5,
+   0
+  ],
+  "tests/data/cgroups/v2/memory.peak": [
+   1,
+   0
+  ],
+  "tests/data/cgroups/v2/memory.stat": [
+   53,
+   0
+  ],
+  "tests/data/cgroups/v2/memory.stat_missing": [
+   51,
+   0
+  ],
+  "tests/data/cgroups/v2/memory.swap.current": [
+   1,
+   0
+  ],
+  "tests/data/cgroups/v2/proc_pid_cgroup": [
+   1,
+   0
+  ],
+  "tests/data/cgroups/v2/proc_self_cgroup": [
+   1,
+   0
+  ],
+  "tests/data/cgroups/v2/proc_uptime_t0": [
+   1,
+   0
+  ],
+  "tests/data/cgroups/v2/proc_uptime_t1": [
+   1,
+   0
+  ],
+  "tests/data/cgroups/v2/proc_uptime_t2": [
+   1,
+   0
+  ],
+  "tests/data/cgroups/v2/sys_fs_cgroup_cgroup.subtree_control": [
+   1,
+   0
+  ],
+  "tests/data/cgroups/v2/sys_fs_cgroup_cgroup.subtree_control_empty": [
+   0,
+   0
+  ],
+  "tests/data/distro_versions.txt": [
+   1501,
+   0
+  ],
+  "tests/data/events/event_with_sas_token.tld": [
+   38,
+   0
+  ],
+  "tests/data/events/extension_events/sas_files/1591905410.json": [
+   22,
+   0
+  ],
+  "tests/data/ext/handler_manifest/manifest_boolean_fields_false.json": [
+   15,
+   0
+  ],
+  "tests/data/ext/handler_manifest/manifest_boolean_fields_invalid.json": [
+   15,
+   0
+  ],
+  "tests/data/ext/handler_manifest/manifest_boolean_fields_strings.json": [
+   15,
+   0
+  ],
+  "tests/data/ext/handler_manifest/manifest_no_optional_fields.json": [
+   12,
+   0
+  ],
+  "tests/data/ext/handler_manifest/valid_manifest.json": [
+   15,
+   0
+  ],
+  "tests/data/ext/sample_ext-1.3.0/python.sh": [
+   1,
+   1
+  ],
+  "tests/data/hibernate/TransportCert.pem": [
+   19,
+   0
+  ],
+  "tests/data/hibernate/TransportPrivate.pem": [
+   28,
+   0
+  ],
+  "tests/data/hibernate/goal_state_1/Certificates.json": [
+   10,
+   0
+  ],
+  "tests/data/hibernate/goal_state_1/Certificates.xml": [
+   85,
+   0
+  ],
+  "tests/data/hibernate/goal_state_1/ExtensionsConfig.xml": [
+   67,
+   0
+  ],
+  "tests/data/hibernate/goal_state_1/GoalState.xml": [
+   30,
+   0
+  ],
+  "tests/data/hibernate/goal_state_1/HostingEnvironmentConfig.xml": [
+   8,
+   0
+  ],
+  "tests/data/hibernate/goal_state_1/SharedConfig.xml": [
+   10,
+   0
+  ],
+  "tests/data/hibernate/goal_state_1/VmSettings.json": [
+   91,
+   0
+  ],
+  "tests/data/hibernate/goal_state_2/Certificates.json": [
+   10,
+   0
+  ],
+  "tests/data/hibernate/goal_state_2/Certificates.xml": [
+   85,
+   0
+  ],
+  "tests/data/hibernate/goal_state_2/ExtensionsConfig.xml": [
+   63,
+   0
+  ],
+  "tests/data/hibernate/goal_state_2/GoalState.xml": [
+   30,
+   0
+  ],
+  "tests/data/hibernate/goal_state_2/HostingEnvironmentConfig.xml": [
+   8,
+   0
+  ],
+  "tests/data/hibernate/goal_state_2/SharedConfig.xml": [
+   10,
+   0
+  ],
+  "tests/data/hibernate/goal_state_2/VmSettings.json": [
+   90,
+   0
+  ],
+  "tests/data/hibernate/goal_state_3/VmSettings.json": [
+   91,
+   0
+  ],
+  "tests/data/hostgaplugin/ext_conf-agent_family_version.xml": [
+   4,
+   2
+  ],
+  "tests/data/hostgaplugin/ext_conf-rsm_version_properties_false.xml": [
+   2,
+   2
+  ],
+  "tests/data/hostgaplugin/ext_conf.xml": [
+   2,
+   2
+  ],
+  "tests/data/hostgaplugin/vm_settings-agent_family_version.json": [
+   4,
+   2
+  ],
+  "tests/data/hostgaplugin/vm_settings-difference_in_required_features.json": [
+   2,
+   2
+  ],
+  "tests/data/hostgaplugin/vm_settings-out-of-sync.json": [
+   1,
+   1
+  ],
+  "tests/data/hostgaplugin/vm_settings-redact.json": [
+   1,
+   0
+  ],
+  "tests/data/hostgaplugin/vm_settings-redact_formatted.json": [
+   93,
+   0
+  ],
+  "tests/data/hostgaplugin/vm_settings-requested_version_properties_false.json": [
+   2,
+   2
+  ],
+  "tests/data/hostgaplugin/vm_settings-supported_hgap_version_for_signature.json": [
+   87,
+   0
+  ],
+  "tests/data/hostgaplugin/vm_settings-unsupported_hgap_version_for_signature.json": [
+   66,
+   0
+  ],
+  "tests/data/hostgaplugin/vm_settings.json": [
+   4,
+   3
+  ],
+  "tests/data/init/12-CPUQuota.conf": [
+   2,
+   0
+  ],
+  "tests/data/signing/incorrect_microsoft_root_cert.pem": [
+   15,
+   0
+  ],
+  "tests/data/signing/invalid_signature.txt": [
+   1,
+   0
+  ],
+  "tests/data/signing/vm_access_signature.txt": [
+   1,
+   0
+  ],
+  "tests/data/tenant_certificate_rotation/Certificates-incarnation-3.xml": [
+   85,
+   0
+  ],
+  "tests/data/tenant_certificate_rotation/Certificates-incarnation-4.xml": [
+   85,
+   0
+  ],
+  "tests/data/tenant_certificate_rotation/ExtensionsConfig-incarnation-3.xml": [
+   38,
+   0
+  ],
+  "tests/data/tenant_certificate_rotation/ExtensionsConfig-incarnation-4.xml": [
+   38,
+   0
+  ],
+  "tests/data/tenant_certificate_rotation/GoalState-incarnation-3.xml": [
+   27,
+   0
+  ],
+  "tests/data/tenant_certificate_rotation/GoalState-incarnation-4.xml": [
+   30,
+   0
+  ],
+  "tests/data/tenant_certificate_rotation/TransportCert.pem": [
+   19,
+   0
+  ],
+  "tests/data/tenant_certificate_rotation/TransportPrivate.pem": [
+   28,
+   0
+  ],
+  "tests/data/tenant_certificate_rotation/VmSettings-etag-10016425637754081485.json": [
+   80,
+   0
+  ],
+  "tests/data/tenant_certificate_rotation/VmSettings-etag-5410594052969431317.json": [
+   64,
+   0
+  ],
+  "tests/data/test_waagent.conf": [
+   2,
+   0
+  ],
+  "tests/data/wire/certs.xml": [
+   79,
+   79
+  ],
+  "tests/data/wire/certs_no_format_specified.xml": [
+   80,
+   80
+  ],
+  "tests/data/wire/ext_conf-no_encoded_signature.xml": [
+   28,
+   0
+  ],
+  "tests/data/wire/ext_conf-no_gs_metadata.xml": [
+   1,
+   1
+  ],
+  "tests/data/wire/ext_conf-vm_access_with_invalid_signature.xml": [
+   27,
+   0
+  ],
+  "tests/data/wire/ext_conf-vm_access_with_signature.xml": [
+   27,
+   0
+  ],
+  "tests/data/wire/ext_conf.xml": [
+   2,
+   2
+  ],
+  "tests/data/wire/ext_conf_additional_locations.xml": [
+   1,
+   1
+  ],
+  "tests/data/wire/ext_conf_autoupgrade.xml": [
+   1,
+   1
+  ],
+  "tests/data/wire/ext_conf_autoupgrade_internalversion.xml": [
+   1,
+   1
+  ],
+  "tests/data/wire/ext_conf_dependencies_with_empty_settings.xml": [
+   1,
+   1
+  ],
+  "tests/data/wire/ext_conf_downgrade_rsm_version.xml": [
+   35,
+   0
+  ],
+  "tests/data/wire/ext_conf_in_vm_artifacts_profile.xml": [
+   1,
+   1
+  ],
+  "tests/data/wire/ext_conf_in_vm_empty_artifacts_profile.xml": [
+   1,
+   1
+  ],
+  "tests/data/wire/ext_conf_in_vm_metadata.xml": [
+   1,
+   1
+  ],
+  "tests/data/wire/ext_conf_internalversion.xml": [
+   1,
+   1
+  ],
+  "tests/data/wire/ext_conf_invalid_and_valid_handlers.xml": [
+   3,
+   3
+  ],
+  "tests/data/wire/ext_conf_invalid_vm_metadata.xml": [
+   1,
+   1
+  ],
+  "tests/data/wire/ext_conf_multiple_extensions.xml": [
+   4,
+   4
+  ],
+  "tests/data/wire/ext_conf_no_public.xml": [
+   1,
+   1
+  ],
+  "tests/data/wire/ext_conf_redact.xml": [
+   76,
+   0
+  ],
+  "tests/data/wire/ext_conf_required_features.xml": [
+   1,
+   1
+  ],
+  "tests/data/wire/ext_conf_rsm_version.xml": [
+   1,
+   1
+  ],
+  "tests/data/wire/ext_conf_sequencing.xml": [
+   2,
+   2
+  ],
+  "tests/data/wire/ext_conf_settings_case_mismatch.xml": [
+   5,
+   5
+  ],
+  "tests/data/wire/ext_conf_upgradeguid.xml": [
+   1,
+   1
+  ],
+  "tests/data/wire/ext_conf_version_missing_in_agent_family.xml": [
+   1,
+   1
+  ],
+  "tests/data/wire/ext_conf_version_missing_in_manifest.xml": [
+   3,
+   3
+  ],
+  "tests/data/wire/ext_conf_version_not_from_rsm.xml": [
+   1,
+   1
+  ],
+  "tests/data/wire/ext_conf_vm_not_enabled_for_rsm_upgrades.xml": [
+   1,
+   1
+  ],
+  "tests/data/wire/invalid_config/ext_conf_multiple_depends_on_for_single_handler.xml": [
+   3,
+   3
+  ],
+  "tests/data/wire/invalid_config/ext_conf_multiple_runtime_settings_same_plugin.xml": [
+   2,
+   2
+  ],
+  "tests/data/wire/invalid_config/ext_conf_multiple_settings_for_same_handler.xml": [
+   2,
+   2
+  ],
+  "tests/data/wire/invalid_config/ext_conf_plugin_settings_version_mismatch.xml": [
+   2,
+   2
+  ],
+  "tests/data/wire/invalid_config/ext_conf_single_and_multi_config_settings_same_plugin.xml": [
+   2,
+   2
+  ],
+  "tests/data/wire/manifest_vm_access.xml": [
+   11,
+   0
+  ],
+  "tests/data/wire/trans_cert": [
+   17,
+   17
+  ],
+  "tests/data/wire/trans_prv": [
+   26,
+   26
+  ],
+  "tests/data/wire/trans_pub": [
+   7,
+   7
+  ],
+  "tests/ga/test_agent_update_handler.py": [
+   200,
+   31
+  ],
+  "tests/ga/test_cgroupapi.py": [
+   581,
+   87
+  ],
+  "tests/ga/test_cgroupconfigurator.py": [
+   461,
+   326
+  ],
+  "tests/ga/test_cgroupconfigurator_sudo.py": [
+   155,
+   0
+  ],
+  "tests/ga/test_cgroupcontroller.py": [
+   55,
+   0
+  ],
+  "tests/ga/test_cgroupstelemetry.py": [
+   116,
+   96
+  ],
+  "tests/ga/test_collect_logs.py": [
+   242,
+   60
+  ],
+  "tests/ga/test_collect_telemetry_events.py": [
+   26,
+   9
+  ],
+  "tests/ga/test_cpucontroller.py": [
+   317,
+   0
+  ],
+  "tests/ga/test_env.py": [
+   31,
+   1
+  ],
+  "tests/ga/test_extension.py": [
+   884,
+   19
+  ],
+  "tests/ga/test_exthandlers.py": [
+   1,
+   1
+  ],
+  "tests/ga/test_exthandlers_download_extension.py": [
+   7,
+   8
+  ],
+  "tests/ga/test_exthandlers_exthandlerinstance.py": [
+   1,
+   1
+  ],
+  "tests/ga/test_firewall_manager.py": [
+   264,
+   0
+  ],
+  "tests/ga/test_logcollector.py": [
+   63,
+   28
+  ],
+  "tests/ga/test_memorycontroller.py": [
+   124,
+   0
+  ],
+  "tests/ga/test_monitor.py": [
+   9,
+   7
+  ],
+  "tests/ga/test_multi_config_extension.py": [
+   104,
+   16
+  ],
+  "tests/ga/test_periodic_operation.py": [
+   2,
+   1
+  ],
+  "tests/ga/test_persist_firewall_rules.py": [
+   66,
+   110
+  ],
+  "tests/ga/test_policy_engine.py": [
+   539,
+   0
+  ],
+  "tests/ga/test_remoteaccess_handler.py": [
+   22,
+   22
+  ],
+  "tests/ga/test_report_status.py": [
+   34,
+   0
+  ],
+  "tests/ga/test_send_telemetry_events.py": [
+   9,
+   11
+  ],
+  "tests/ga/test_signature_validation.py": [
+   344,
+   0
+  ],
+  "tests/ga/test_signature_validation_sudo.py": [
+   81,
+   0
+  ],
+  "tests/ga/test_update.py": [
+   373,
+   296
+  ],
+  "tests/lib/cgroups_tools.py": [
+   0,
+   14
+  ],
+  "tests/lib/event_logger_tools.py": [
+   1,
+   1
+  ],
+  "tests/lib/miscellaneous_tools.py": [
+   3,
+   3
+  ],
+  "tests/lib/mock_cgroup_environment.py": [
+   144,
+   36
+  ],
+  "tests/lib/mock_command.py": [
+   8,
+   2
+  ],
+  "tests/lib/mock_environment.py": [
+   12,
+   1
+  ],
+  "tests/lib/mock_firewall_command.py": [
+   349,
+   0
+  ],
+  "tests/lib/mock_wire_protocol.py": [
+   9,
+   3
+  ],
+  "tests/lib/tools.py": [
+   8,
+   29
+  ],
+  "tests/lib/wire_protocol_data.py": [
+   27,
+   9
+  ],
+  "tests/pa/test_provision.py": [
+   1,
+   3
+  ],
+  "tests/python_eol/Dockerfile": [
+   76,
+   0
+  ],
+  "tests/python_eol/README": [
+   7,
+   0
+  ],
+  "tests/python_eol/execute_tests.sh": [
+   62,
+   0
+  ],
+  "tests/python_eol/patch_python_venv.sh": [
+   71,
+   0
+  ],
+  "tests/python_eol/pipeline.yml": [
+   63,
+   0
+  ],
+  "tests/test_agent.py": [
+   246,
+   48
+  ],
+  "tests_e2e/GuestAgentDcrTestExtension/GuestAgentDcrTest.py": [
+   9,
+   2
+  ],
+  "tests_e2e/orchestrator/docker/Dockerfile": [
+   6,
+   2
+  ],
+  "tests_e2e/orchestrator/lib/agent_junit.py": [
+   2,
+   11
+  ],
+  "tests_e2e/orchestrator/lib/agent_test_loader.py": [
+   35,
+   22
+  ],
+  "tests_e2e/orchestrator/lib/agent_test_suite.py": [
+   121,
+   111
+  ],
+  "tests_e2e/orchestrator/lib/agent_test_suite_combinator.py": [
+   102,
+   132
+  ],
+  "tests_e2e/orchestrator/lib/update_arm_template_hook.py": [
+   2,
+   1
+  ],
+  "tests_e2e/orchestrator/runbook.yml": [
+   45,
+   6
+  ],
+  "tests_e2e/orchestrator/scripts/agent-service": [
+   7,
+   0
+  ],
+  "tests_e2e/orchestrator/scripts/check-agent-log.py": [
+   1,
+   1
+  ],
+  "tests_e2e/orchestrator/scripts/download-pypy": [
+   32,
+   0
+  ],
+  "tests_e2e/orchestrator/scripts/install-agent": [
+   37,
+   16
+  ],
+  "tests_e2e/orchestrator/scripts/install-tools": [
+   25,
+   11
+  ],
+  "tests_e2e/orchestrator/scripts/remove-waagent-conf": [
+   37,
+   0
+  ],
+  "tests_e2e/orchestrator/scripts/update-waagent-conf": [
+   27,
+   8
+  ],
+  "tests_e2e/pipeline/pipeline-cleanup.yml": [
+   3,
+   1
+  ],
+  "tests_e2e/pipeline/pipeline.yml": [
+   19,
+   14
+  ],
+  "tests_e2e/pipeline/scripts/collect_artifacts.sh": [
+   1,
+   1
+  ],
+  "tests_e2e/pipeline/scripts/execute_tests.sh": [
+   36,
+   21
+  ],
+  "tests_e2e/test_suites/agent_cgroups.yml": [
+   6,
+   2
+  ],
+  "tests_e2e/test_suites/agent_firewall.yml": [
+   1,
+   1
+  ],
+  "tests_e2e/test_suites/agent_persist_firewall.yml": [
+   1,
+   1
+  ],
+  "tests_e2e/test_suites/agent_publish.yml": [
+   8,
+   2
+  ],
+  "tests_e2e/test_suites/agent_removal.yml": [
+   54,
+   0
+  ],
+  "tests_e2e/test_suites/agent_update.yml": [
+   6,
+   1
+  ],
+  "tests_e2e/test_suites/agent_wait_for_cloud_init.yml": [
+   2,
+   3
+  ],
+  "tests_e2e/test_suites/ext_cgroups.yml": [
+   5,
+   1
+  ],
+  "tests_e2e/test_suites/ext_policy.yml": [
+   8,
+   0
+  ],
+  "tests_e2e/test_suites/ext_policy_with_dependencies.yml": [
+   12,
+   0
+  ],
+  "tests_e2e/test_suites/ext_sequencing.yml": [
+   4,
+   1
+  ],
+  "tests_e2e/test_suites/ext_signature_validation.yml": [
+   14,
+   0
+  ],
+  "tests_e2e/test_suites/ext_update.yml": [
+   7,
+   0
+  ],
+  "tests_e2e/test_suites/fips.yml": [
+   23,
+   9
+  ],
+  "tests_e2e/test_suites/hibernation.yml": [
+   13,
+   0
+  ],
+  "tests_e2e/test_suites/images.yml": [
+   149,
+   18
+  ],
+  "tests_e2e/test_suites/initial_agent_update.yml": [
+   14,
+   0
+  ],
+  "tests_e2e/test_suites/keyvault_certificates.yml": [
+   7,
+   1
+  ],
+  "tests_e2e/test_suites/log_collector.yml": [
+   8,
+   0
+  ],
+  "tests_e2e/test_suites/multi_config_ext.yml": [
+   3,
+   0
+  ],
+  "tests_e2e/test_suites/pass.yml": [
+   1,
+   1
+  ],
+  "tests_e2e/test_suites/sleep.yml": [
+   4,
+   0
+  ],
+  "tests_e2e/tests/agent_bvt/extension_operations.py": [
+   2,
+   0
+  ],
+  "tests_e2e/tests/agent_cgroups/agent_cgroups_process_check.py": [
+   77,
+   0
+  ],
+  "tests_e2e/tests/agent_ext_workflow/extension_workflow.py": [
+   33,
+   31
+  ],
+  "tests_e2e/tests/agent_firewall/agent_firewall.py": [
+   35,
+   3
+  ],
+  "tests_e2e/tests/agent_not_provisioned/agent_not_provisioned.py": [
+   3,
+   2
+  ],
+  "tests_e2e/tests/agent_persist_firewall/agent_persist_firewall.py": [
+   42,
+   18
+  ],
+  "tests_e2e/tests/agent_publish/agent_publish.py": [
+   109,
+   30
+  ],
+  "tests_e2e/tests/agent_publish/rollback.py": [
+   96,
+   0
+  ],
+  "tests_e2e/tests/agent_removal/agent_removal.py": [
+   50,
+   0
+  ],
+  "tests_e2e/tests/agent_status/agent_status.py": [
+   4,
+   2
+  ],
+  "tests_e2e/tests/agent_update/rsm_update.py": [
+   8,
+   70
+  ],
+  "tests_e2e/tests/agent_update/self_update.py": [
+   2,
+   3
+  ],
+  "tests_e2e/tests/agent_wait_for_cloud_init/add_cloud_init_script.py": [
+   3,
+   3
+  ],
+  "tests_e2e/tests/ext_cgroups/install_extensions.py": [
+   1,
+   14
+  ],
+  "tests_e2e/tests/ext_policy/ext_policy.py": [
+   454,
+   0
+  ],
+  "tests_e2e/tests/ext_policy/ext_policy_with_dependencies.py": [
+   342,
+   0
+  ],
+  "tests_e2e/tests/ext_policy/policy_dependencies_cases.py": [
+   213,
+   0
+  ],
+  "tests_e2e/tests/ext_sequencing/ext_seq_test_cases.py": [
+   1,
+   0
+  ],
+  "tests_e2e/tests/ext_sequencing/ext_sequencing.py": [
+   51,
+   17
+  ],
+  "tests_e2e/tests/ext_signature_validation/ext_signature_validation.py": [
+   254,
+   0
+  ],
+  "tests_e2e/tests/ext_telemetry_pipeline/ext_telemetry_pipeline.py": [
+   1,
+   1
+  ],
+  "tests_e2e/tests/ext_update/ext_update_failure.py": [
+   130,
+   0
+  ],
+  "tests_e2e/tests/extensions_disabled/extensions_disabled.py": [
+   16,
+   6
+  ],
+  "tests_e2e/tests/fips/fips.py": [
+   232,
+   27
+  ],
+  "tests_e2e/tests/hibernation/hibernation.py": [
+   224,
+   0
+  ],
+  "tests_e2e/tests/initial_agent_update/initial_agent_update.py": [
+   82,
+   0
+  ],
+  "tests_e2e/tests/initial_agent_update/latest_agent_version.py": [
+   69,
+   0
+  ],
+  "tests_e2e/tests/keyvault_certificates/keyvault_certificates.py": [
+   30,
+   15
+  ],
+  "tests_e2e/tests/lib/agent_log.py": [
+   184,
+   69
+  ],
+  "tests_e2e/tests/lib/agent_setup_helpers.py": [
+   39,
+   0
+  ],
+  "tests_e2e/tests/lib/agent_test.py": [
+   5,
+   1
+  ],
+  "tests_e2e/tests/lib/agent_test_context.py": [
+   53,
+   1
+  ],
+  "tests_e2e/tests/lib/agent_update_helpers.py": [
+   113,
+   0
+  ],
+  "tests_e2e/tests/lib/cgroup_helpers.py": [
+   96,
+   30
+  ],
+  "tests_e2e/tests/lib/firewall_manager.py": [
+   336,
+   0
+  ],
+  "tests_e2e/tests/lib/network_security_rule.py": [
+   38,
+   21
+  ],
+  "tests_e2e/tests/lib/resource_group_client.py": [
+   6,
+   0
+  ],
+  "tests_e2e/tests/lib/retry.py": [
+   4,
+   2
+  ],
+  "tests_e2e/tests/lib/shell.py": [
+   11,
+   4
+  ],
+  "tests_e2e/tests/lib/ssh_client.py": [
+   12,
+   2
+  ],
+  "tests_e2e/tests/lib/update_arm_template.py": [
+   12,
+   7
+  ],
+  "tests_e2e/tests/lib/virtual_machine_client.py": [
+   114,
+   34
+  ],
+  "tests_e2e/tests/lib/virtual_machine_extension_client.py": [
+   4,
+   0
+  ],
+  "tests_e2e/tests/lib/virtual_machine_runcommand_client.py": [
+   130,
+   0
+  ],
+  "tests_e2e/tests/lib/vm_extension_identifier.py": [
+   11,
+   4
+  ],
+  "tests_e2e/tests/log_collector/log_collector.py": [
+   91,
+   0
+  ],
+  "tests_e2e/tests/multi_config_ext/multi_config_ext.py": [
+   15,
+   11
+  ],
+  "tests_e2e/tests/no_outbound_connections/check_no_outbound_connections.py": [
+   35,
+   1
+  ],
+  "tests_e2e/tests/publish_hostname/publish_hostname.py": [
+   29,
+   10
+  ],
+  "tests_e2e/tests/recover_network_interface/recover_network_interface.py": [
+   49,
+   9
+  ],
+  "tests_e2e/tests/samples/sleep_test.py": [
+   36,
+   0
+  ],
+  "tests_e2e/tests/scripts/agent_cgroups-check_cgroups_agent.py": [
+   54,
+   26
+  ],
+  "tests_e2e/tests/scripts/agent_cgroups_process_check-cgroups_not_enabled.py": [
+   61,
+   0
+  ],
+  "tests_e2e/tests/scripts/agent_cgroups_process_check-unknown_process_check.py": [
+   97,
+   0
+  ],
+  "tests_e2e/tests/scripts/agent_cpu_quota-check_agent_cpu_quota.py": [
+   26,
+   44
+  ],
+  "tests_e2e/tests/scripts/agent_cpu_quota-start_service.py": [
+   4,
+   4
+  ],
+  "tests_e2e/tests/scripts/agent_ext_policy-verify_operation_disallowed.py": [
+   64,
+   0
+  ],
+  "tests_e2e/tests/scripts/agent_ext_policy-verify_operation_success.py": [
+   118,
+   0
+  ],
+  "tests_e2e/tests/scripts/agent_ext_workflow-assert_operation_sequence.py": [
+   12,
+   5
+  ],
+  "tests_e2e/tests/scripts/agent_ext_workflow-validate_no_lag_between_agent_start_and_gs_processing.py": [
+   1,
+   2
+  ],
+  "tests_e2e/tests/scripts/agent_firewall-verify_all_firewall_rules.py": [
+   276,
+   324
+  ],
+  "tests_e2e/tests/scripts/agent_persist_firewall-access_wireserver": [
+   68,
+   30
+  ],
+  "tests_e2e/tests/scripts/agent_persist_firewall-check_connectivity.py": [
+   30,
+   0
+  ],
+  "tests_e2e/tests/scripts/agent_persist_firewall-test_setup": [
+   24,
+   3
+  ],
+  "tests_e2e/tests/scripts/agent_persist_firewall-verify_firewall_rules_on_boot.py": [
+   21,
+   10
+  ],
+  "tests_e2e/tests/scripts/agent_persist_firewall-verify_firewalld_rules_readded.py": [
+   22,
+   136
+  ],
+  "tests_e2e/tests/scripts/agent_persist_firewall-verify_persist_firewall_service_running.py": [
+   10,
+   10
+  ],
+  "tests_e2e/tests/scripts/agent_publish-check_update.py": [
+   12,
+   8
+  ],
+  "tests_e2e/tests/scripts/agent_publish-get_agent_log_record_timestamp.py": [
+   2,
+   3
+  ],
+  "tests_e2e/tests/scripts/agent_removal-verify_manifest_versions.py": [
+   85,
+   0
+  ],
+  "tests_e2e/tests/scripts/agent_update-get_latest_version_from_manifest.py": [
+   9,
+   4
+  ],
+  "tests_e2e/tests/scripts/agent_update-self_update_test_setup": [
+   7,
+   4
+  ]
+ },
+ "files": 410,
+ "added_lines": 24092,
+ "removed_lines": 7030,
+ "diff": "diff --git a/.github/PULL_REQUEST_TEMPLATE.md b/.github/PULL_REQUEST_TEMPLATE.md\nindex fdcc07c..2d8d8d0 100644\n--- a/.github/PULL_REQUEST_TEMPLATE.md\n+++ b/.github/PULL_REQUEST_TEMPLATE.md\n@@ -1,21 +1,26 @@\n <!-- DO NOT DELETE THIS TEMPLATE -->\n-\n+<!--\n+Please add an informative description that covers that changes made by the pull request.\n+-->\n ## Description\n \n Issue # <!-- if any -->\n+---\n <!--\n-Please add an informative description that covers that changes made by the pull request. \n This checklist is used to make sure that common issues in a pull request are addressed.\n This will expedite the process of getting your pull request merged and avoid extra work on your part to fix issues discovered during the review process.\n -->\n-\n----\n-\n ### PR information\n-- [ ] The title of the PR is clear and informative.\n-- [ ] There are a small number of commits, each of which has an informative message. This means that previously merged commits do not appear in the history of the PR. For information on cleaning up the commits in your pull request, [see this page](https://github.com/Azure/azure-powershell/blob/master/documentation/development-docs/cleaning-up-commits.md).\n+- [ ] Ensure development PR is based on the `develop` branch.\n - [ ] If applicable, the PR references the bug/issue that it fixes in the description.\n - [ ] New Unit tests were added for the changes made\n \n ### Quality of Code and Contribution Guidelines\n-- [ ] I have read the [contribution guidelines](https://github.com/Azure/WALinuxAgent/blob/master/.github/CONTRIBUTING.md).\n\\ No newline at end of file\n+- [ ] I have read the [contribution guidelines](https://github.com/Azure/WALinuxAgent/blob/master/.github/CONTRIBUTING.md).\n+---\n+<!--\n+This checklist is used to track contributions from distro maintainers.\n+-->\n+### Distro maintenance information, if applicable\n+- [ ] This is a contribution from a distro maintainer\n+- [ ] The changes in this PR have been taken as a downstream patch (Note: it is not recommended to patch the agent without upstream review and approval)\ndiff --git a/.github/workflows/ci_pr.yml b/.github/workflows/ci_pr.yml\nindex 84b3ab6..2cb2e46 100644\n--- a/.github/workflows/ci_pr.yml\n+++ b/.github/workflows/ci_pr.yml\n@@ -8,138 +8,162 @@ on:\n   workflow_dispatch:\n \n jobs:\n-  test-python-2_6-and-3_4-versions:\n-    \n-    strategy:\n-      fail-fast: false\n-      matrix:\n-        include:\n-          - python-version: 2.6\n-          - python-version: 3.4\n-\n+  execute-tests:\n     name: \"Python ${{ matrix.python-version }} Unit Tests\"\n-    runs-on: ubuntu-20.04\n-    container:\n-      image: ubuntu:16.04\n-      volumes:\n-        - /home/waagent:/home/waagent\n-    defaults:\n-      run:\n-        shell: bash -l {0}\n-\n-    env:\n-      NOSEOPTS: \"--verbose\"\n-\n-    steps:\n-    - uses: actions/checkout@v3\n-\n-    - name: Install Python ${{ matrix.python-version }}\n-      run: |\n-        apt-get update\n-        apt-get install -y curl bzip2 sudo python3\n-        curl https://dcrdata.blob.core.windows.net/python/python-${{ matrix.python-version }}.tar.bz2 -o python-${{ matrix.python-version }}.tar.bz2\n-        sudo tar xjvf python-${{ matrix.python-version }}.tar.bz2 --directory /\n-\n-    - name: Test with nosetests\n-      run: |\n-        if [[ ${{ matrix.python-version }} == 2.6 ]]; then\n-          source /home/waagent/virtualenv/python2.6.9/bin/activate\n-        else\n-          source /home/waagent/virtualenv/python3.4.8/bin/activate\n-        fi\n-        ./ci/nosetests.sh\n-        exit $?\n-\n-  test-python-2_7:\n-\n-    strategy:\n-      fail-fast: false\n-\n-    name: \"Python 2.7 Unit Tests\"\n-    runs-on: ubuntu-20.04\n-    defaults:\n-      run:\n-        shell: bash -l {0}\n-\n-    env:\n-      NOSEOPTS: \"--verbose\"\n-\n-    steps:\n-    - uses: actions/checkout@v3\n-\n-    - name: Install Python 2.7\n-      run: |\n-        apt-get update\n-        apt-get install -y curl bzip2 sudo\n-        curl https://dcrdata.blob.core.windows.net/python/python-2.7.tar.bz2 -o python-2.7.tar.bz2\n-        sudo tar xjvf python-2.7.tar.bz2 --directory /\n-\n-    - name: Test with nosetests\n-      run: |\n-        source /home/waagent/virtualenv/python2.7.16/bin/activate\n-        ./ci/nosetests.sh\n-        exit $?\n-\n-  test-current-python-versions:\n-\n+    runs-on: ubuntu-24.04\n     strategy:\n       fail-fast: false\n       matrix:\n         include:\n-          - python-version: 3.5\n-            PYLINTOPTS: \"--rcfile=ci/3.6.pylintrc --ignore=tests_e2e,makepkg.py\"\n-\n-          - python-version: 3.6\n-            PYLINTOPTS: \"--rcfile=ci/3.6.pylintrc --ignore=tests_e2e\"\n-\n-          - python-version: 3.7\n-            PYLINTOPTS: \"--rcfile=ci/3.6.pylintrc --ignore=tests_e2e\"\n-\n-          - python-version: 3.8\n-            PYLINTOPTS: \"--rcfile=ci/3.6.pylintrc --ignore=tests_e2e\"\n-\n-          - python-version: 3.9\n-            PYLINTOPTS: \"--rcfile=ci/3.6.pylintrc\"\n+          #\n+          # Some of the Python versions we test are not supported by the setup-python Github Action. For those versions, we use a\n+          # pre-built virtual environment.\n+          #\n+          - python-version: \"2.6\"\n+            use_virtual_environment: true\n+          - python-version: \"2.7\"\n+            use_virtual_environment: true\n+          - python-version: \"3.4\"\n+            use_virtual_environment: true\n+          - python-version: \"3.5\"\n+            use_virtual_environment: true\n+          - python-version: \"3.6\"\n+            use_virtual_environment: true\n+          - python-version: \"3.7\"\n+            use_virtual_environment: true\n+          - python-version: \"3.8\"\n+          - python-version: \"3.9\"\n             additional-nose-opts: \"--with-coverage --cover-erase --cover-inclusive --cover-branches --cover-package=azurelinuxagent\"\n-\n-    name: \"Python ${{ matrix.python-version }} Unit Tests\"\n-    runs-on: ubuntu-20.04\n-\n-    env:\n-      PYLINTOPTS: ${{ matrix.PYLINTOPTS }}\n-      PYLINTFILES: \"azurelinuxagent setup.py makepkg.py tests tests_e2e\"\n-      NOSEOPTS: \"--with-timer ${{ matrix.additional-nose-opts }}\"\n-      PYTHON_VERSION: ${{ matrix.python-version }}\n+          - python-version: \"3.10\"\n+          - python-version: \"3.11\"\n+          - python-version: \"3.12\"\n \n     steps:\n-\n-    - name: Checkout WALinuxAgent repo\n+    - name: Checkout WALinuxAgent\n       uses: actions/checkout@v3\n-\n+    #\n+    # We either install Python and the test dependencies, or download a pre-built virtual environment, depending on the\n+    # use_virtual_environment flag.\n+    #\n     - name: Setup Python ${{ matrix.python-version }}\n+      if: (!matrix.use_virtual_environment)\n       uses: actions/setup-python@v4\n       with:\n         python-version: ${{ matrix.python-version }}\n \n     - name: Install dependencies\n+      if: (!matrix.use_virtual_environment)\n       id: install-dependencies\n       run: |\n         sudo env \"PATH=$PATH\" python -m pip install --upgrade pip\n         sudo env \"PATH=$PATH\" pip install -r requirements.txt\n         sudo env \"PATH=$PATH\" pip install -r test-requirements.txt\n+        sudo env \"PATH=$PATH\" pip install --upgrade pylint\n \n-    - name: Run pylint\n+    - name: Setup Python ${{ matrix.python-version }} Virtual Environment\n+      if: matrix.use_virtual_environment\n+      id: install-venv\n+      run: |\n+        sudo apt-get update\n+        sudo apt-get install -y curl bzip2 sudo\n+        curl -sSf --retry 5 -o /tmp/python-${{ matrix.python-version }}.tar.bz2 https://dcrdata.blob.core.windows.net/python/python-${{ matrix.python-version }}.tar.bz2\n+        sudo tar xjf /tmp/python-${{ matrix.python-version }}.tar.bz2 --directory /\n+        #\n+        # The virtual environments have dependencies on old versions of OpenSSL (e.g 1.0/1.1) which are not available on Ubuntu 24. We use this script to patch the environments.\n+        #\n+        if [[ \"${{ matrix.use_virtual_environment}}\" == \"true\" ]]; then\n+          sudo ./tests/python_eol/patch_python_venv.sh \"${{ matrix.python-version }}\"\n+        fi\n+\n+    #\n+    # Execute the tests\n+    #\n+    - name: Execute Unit Tests\n       run: |\n-        pylint $PYLINTOPTS --jobs=0 $PYLINTFILES\n+        if [[ \"${{ matrix.python-version }}\" =~ ^3\\.[1-9][0-9]+$ ]]; then\n+          #\n+          # Use pytest\n+          #\n+          ./ci/pytest.sh\n+        else\n+          #\n+          # Use nosetests\n+          #\n+          if [[ \"${{ matrix.use_virtual_environment}}\" == \"true\" ]]; then # the pytest version on the venvs does not support the --with-timer option\n+            export NOSEOPTS=\"--verbose ${{ matrix.additional-nose-opts }}\"\n+          else\n+            export NOSEOPTS=\"--verbose --with-timer ${{ matrix.additional-nose-opts }}\"\n+          fi\n+\n+          #\n+          # If using a venv, activate it.\n+          #\n+          if [[ \"${{ matrix.use_virtual_environment}}\" == \"true\"  ]]; then\n+            source /home/waagent/virtualenv/python${{ matrix.python-version }}/bin/activate\n+          fi\n+        \n+          ./ci/nosetests.sh\n+        fi\n \n-    - name: Test with nosetests\n-      if: success() || (failure() && steps.install-dependencies.outcome == 'success')\n+    #\n+    # Execute pylint even when the tests fail (but only if the dependencies were installed successfully)\n+    #\n+    # The virtual environments for 2.6, 2.7, and 3.4 do not include pylint, so we skip those Python versions.\n+    #\n+    - name: Run pylint\n+      if: (!contains(fromJSON('[\"2.6\", \"2.7\", \"3.4\"]'),  matrix.python-version) && (success() || (failure() && steps.install-dependencies.outcome == 'success')))\n       run: |\n-        ./ci/nosetests.sh\n-        exit $?\n+        #\n+        # If using a venv, activate it.\n+        #\n+        if [[ \"${{ matrix.use_virtual_environment}}\" == \"true\"  ]]; then\n+              source /home/waagent/virtualenv/python${{ matrix.python-version }}/bin/activate\n+        fi\n+\n+        #\n+        # List of files/directories to be checked by pylint.\n+        # The end-to-end tests run only on Python 3.9 and we lint them only on that version.\n+        #\n+        PYLINT_FILES=\"azurelinuxagent setup.py makepkg.py tests\"\n+        if [[ \"${{ matrix.python-version }}\" == \"3.9\" ]]; then\n+          PYLINT_FILES=\"$PYLINT_FILES tests_e2e\"\n+        fi\n+\n+        #\n+        # Command-line options for pylint.\n+        # * \"unused-private-member\" is not implemented on 3.5 and will produce \"E0012: Bad option value 'unused-private-member' (bad-option-value)\"\n+        #   so we suppress \"bad-option-value\".\n+        # * 3.9 will produce \"no-member\" for several properties/methods that are added to the mocks used by the unit tests (e.g\n+        #   \"E1101: Instance of 'WireProtocol' has no 'aggregate_status' member\") so we suppress that warning.\n+        # * On 3.9 pylint crashes when parsing azurelinuxagent/daemon/main.py (see https://github.com/pylint-dev/pylint/issues/9473), so we ignore it.\n+        # * 'no-self-use' (\"R0201: Method could be a function\") was moved to an optional extension on 3.8 and is no longer used by default. It needs\n+        #    to be suppressed for previous versions (3.0-3.7), though.\n+        # * 'contextmanager-generator-missing-cleanup' are false positives if yield is used inside an if-else block for contextmanager generator functions.\n+        #   (https://pylint.readthedocs.io/en/latest/user_guide/messages/warning/contextmanager-generator-missing-cleanup.html).\n+        #   This is not implemented on versions (3.0-3.7) Bad option value 'contextmanager-generator-missing-cleanup' (bad-option-value)\n+        # * >= 3.9 will produce \"too-many-positional-arguments\" for several methods that are having more than 5 args, so we suppress that warning.\n+        #  (R0917: Too many positional arguments (8/5) (too-many-positional-arguments))\n+        PYLINT_OPTIONS=\"--rcfile=ci/pylintrc --jobs=0\"\n+        if [[ \"${{ matrix.python-version }}\" == \"3.9\" ]]; then\n+          PYLINT_OPTIONS=\"$PYLINT_OPTIONS --disable=no-member,too-many-positional-arguments --ignore=main.py\"\n+        fi\n+        if [[ \"${{ matrix.python-version }}\" =~ ^3\\.(10|11|12)$ ]]; then\n+          PYLINT_OPTIONS=\"$PYLINT_OPTIONS --disable=too-many-positional-arguments\"\n+        fi\n+        if [[ \"${{ matrix.python-version }}\" =~ ^3\\.[0-7]$ ]]; then\n+          PYLINT_OPTIONS=\"$PYLINT_OPTIONS --disable=no-self-use,bad-option-value\"\n+        fi\n+\n+        echo \"PYLINT_OPTIONS: $PYLINT_OPTIONS\"\n+        echo \"PYLINT_FILES: $PYLINT_FILES\"\n+\n+        pylint $PYLINT_OPTIONS $PYLINT_FILES\n \n-    - name: Compile Coverage\n-      if: matrix.python-version == 3.9\n+    #\n+    # Lastly, compile code coverage\n+    #\n+    - name: Compile Code Coverage\n+      if: matrix.python-version == '3.9'\n       run: |\n         echo looking for coverage files :\n         ls -alh | grep -i coverage\n@@ -147,8 +171,8 @@ jobs:\n         sudo env \"PATH=$PATH\" coverage xml\n         sudo env \"PATH=$PATH\" coverage report\n \n-    - name: Upload Coverage\n-      if: matrix.python-version == 3.9\n+    - name: Upload Code Coverage\n+      if: matrix.python-version ==  '3.9'\n       uses: codecov/codecov-action@v3\n       with:\n         file: ./coverage.xml\ndiff --git a/README.md b/README.md\nindex 5a5b126..0c836ae 100644\n--- a/README.md\n+++ b/README.md\n@@ -3,8 +3,8 @@\n \n ## Linux distributions support\n \n-Our daily automation tests most of the [Linux distributions supported by Azure](https://docs.microsoft.com/en-us/azure/virtual-machines/linux/endorsed-distros); the Agent can be\n-used on other distributions as well, but development, testing and support for those are done by the open source community.\n+The list of distros we officially support is maintained at: [Linux distributions supported by Azure](https://docs.microsoft.com/en-us/azure/virtual-machines/linux/endorsed-distros). Our daily automation tests most of these distributions. The Agent can be\n+used on other distributions as well, but development, testing and support for those are done by the open source community. This repo contains community-driven support for some distributions which are not officially supported by Azure.\n \n Testing is done using the develop branch, which can be unstable. For a stable build please use the master branch instead.\n \n@@ -100,7 +100,7 @@ Waagent depends on some system packages in order to function properly:\n * Filesystem utilities: sfdisk, fdisk, mkfs, parted\n * Password tools: chpasswd, sudo\n * Text processing tools: sed, grep\n-* Network tools: ip-route\n+* Network tools: ip-route, iptables\n \n ## Installation\n \n@@ -568,6 +568,13 @@ OpenSSL commands. This signals OpenSSL to use any installed FIPS-compliant libra\n Note that the agent itself has no FIPS-specific code. _If no FIPS-compliant certificates are\n installed, then enabling this option will cause all OpenSSL commands to fail._\n \n+#### __OS.EnableFirewall__\n+\n+_Type: Boolean_  \n+_Default: n (set to 'y' in waagent.conf)_\n+\n+Creates firewall rules to allow communication with the VM Host only by the Agent.  \n+\n #### __OS.MonitorDhcpClientRestartPeriod__\n \n _Type: Integer_\n@@ -646,6 +653,15 @@ _Default: customscript,runcommand_\n \n The list of extensions which will be excluded from cgroups limits. This should be comma separated. \n \n+#### __Protocol.EndpointDiscovery__\n+\n+_Type: String_  \n+_Default: dhcp_\n+\n+Determines how the agent will discover the [WireServer endpoint](https://learn.microsoft.com/en-us/azure/virtual-network/what-is-ip-address-168-63-129-16). \n+Agent will use DHCP by default to discover the WireServer endpoint, but if this setting is 'static' the agent will use the known WireServer address (168.63.129.16).\n+Possible options are \"dhcp\" (default) or \"static\".\n+\n ### Telemetry\n \n WALinuxAgent collects usage data and sends it to Microsoft to help improve our products and services. The data collected is used to track service health and\ndiff --git a/azurelinuxagent/agent.py b/azurelinuxagent/agent.py\nindex 2811e21..13a3b2f 100644\n--- a/azurelinuxagent/agent.py\n+++ b/azurelinuxagent/agent.py\n@@ -23,24 +23,30 @@ Module agent\n \n from __future__ import print_function\n \n+import json\n import os\n import re\n import subprocess\n import sys\n import threading\n+import time\n+\n+from azurelinuxagent.common.exception import CGroupsException\n from azurelinuxagent.ga import logcollector, cgroupconfigurator\n-from azurelinuxagent.ga.cgroup import AGENT_LOG_COLLECTOR, CpuCgroup, MemoryCgroup\n-from azurelinuxagent.ga.cgroupapi import SystemdCgroupsApi\n+from azurelinuxagent.ga.cgroupcontroller import AGENT_LOG_COLLECTOR\n+from azurelinuxagent.ga.cpucontroller import _CpuController\n+from azurelinuxagent.ga.cgroupapi import create_cgroup_api, InvalidCgroupMountpointException\n+from azurelinuxagent.ga.firewall_manager import FirewallManager\n \n import azurelinuxagent.common.conf as conf\n import azurelinuxagent.common.event as event\n import azurelinuxagent.common.logger as logger\n+from azurelinuxagent.common.event import WALAEventOperation\n from azurelinuxagent.common.future import ustr\n from azurelinuxagent.ga.logcollector import LogCollector, OUTPUT_RESULTS_FILE_PATH\n from azurelinuxagent.common.osutil import get_osutil\n from azurelinuxagent.common.utils import fileutil, textutil\n from azurelinuxagent.common.utils.flexible_version import FlexibleVersion\n-from azurelinuxagent.common.utils.networkutil import AddFirewallRules\n from azurelinuxagent.common.version import AGENT_NAME, AGENT_LONG_VERSION, AGENT_VERSION, \\\n     DISTRO_NAME, DISTRO_VERSION, \\\n     PY_VERSION_MAJOR, PY_VERSION_MINOR, \\\n@@ -131,7 +137,7 @@ class Agent(object):\n         \"\"\"\n         set_daemon_version(AGENT_VERSION)\n         logger.set_prefix(\"Daemon\")\n-        threading.current_thread().setName(\"Daemon\")\n+        threading.current_thread().name = \"Daemon\"\n         child_args = None \\\n             if self.conf_file_path is None \\\n                 else \"-configuration-path:{0}\".format(self.conf_file_path)\n@@ -171,7 +177,7 @@ class Agent(object):\n         Run the update and extension handler\n         \"\"\"\n         logger.set_prefix(\"ExtHandler\")\n-        threading.current_thread().setName(\"ExtHandler\")\n+        threading.current_thread().name = \"ExtHandler\"\n \n         #\n         # Agents < 2.2.53 used to echo the log to the console. Since the extension handler could have been started by\n@@ -204,44 +210,87 @@ class Agent(object):\n         else:\n             logger.info(\"Running log collector mode normal\")\n \n+        LogCollector.initialize_telemetry()\n+\n         # Check the cgroups unit\n         log_collector_monitor = None\n-        cgroups_api = SystemdCgroupsApi()\n-        cpu_cgroup_path, memory_cgroup_path = cgroups_api.get_process_cgroup_paths(\"self\")\n+        tracked_controllers = []\n         if CollectLogsHandler.is_enabled_monitor_cgroups_check():\n-            cpu_slice_matches = (cgroupconfigurator.LOGCOLLECTOR_SLICE in cpu_cgroup_path)\n-            memory_slice_matches = (cgroupconfigurator.LOGCOLLECTOR_SLICE in memory_cgroup_path)\n-\n-            if not cpu_slice_matches or not memory_slice_matches:\n-                logger.info(\"The Log Collector process is not in the proper cgroups:\")\n-                if not cpu_slice_matches:\n-                    logger.info(\"\\tunexpected cpu slice\")\n-                if not memory_slice_matches:\n-                    logger.info(\"\\tunexpected memory slice\")\n-\n+            try:\n+                cgroup_api = create_cgroup_api()\n+                logger.info(\"Using cgroup {0} for resource enforcement and monitoring\".format(cgroup_api.get_cgroup_version()))\n+            except InvalidCgroupMountpointException as e:\n+                event.warn(WALAEventOperation.LogCollection, \"The agent does not support cgroups if the default systemd mountpoint is not being used: {0}\", ustr(e))\n+                sys.exit(logcollector.INVALID_CGROUPS_ERRCODE)\n+            except CGroupsException as e:\n+                event.warn(WALAEventOperation.LogCollection, \"Unable to determine which cgroup version to use: {0}\", ustr(e))\n                 sys.exit(logcollector.INVALID_CGROUPS_ERRCODE)\n \n-        def initialize_cgroups_tracking(cpu_cgroup_path, memory_cgroup_path):\n-            cpu_cgroup = CpuCgroup(AGENT_LOG_COLLECTOR, cpu_cgroup_path)\n-            msg = \"Started tracking cpu cgroup {0}\".format(cpu_cgroup)\n-            logger.info(msg)\n-            cpu_cgroup.initialize_cpu_usage()\n-            memory_cgroup = MemoryCgroup(AGENT_LOG_COLLECTOR, memory_cgroup_path)\n-            msg = \"Started tracking memory cgroup {0}\".format(memory_cgroup)\n-            logger.info(msg)\n-            return [cpu_cgroup, memory_cgroup]\n-\n+            def _validate_log_collector_cgroup_slice():\n+                \"\"\"\n+                Validates that the log collector process is running in the expected cgroup slice.\n+\n+                It is expected that after invoking the log collector, there may be a delay in populating cgroup information in systemd.\n+                Hence, multiple retries have been added. If it still fails, the function logs a warning event\n+                and exits the process with the appropriate error code.\n+\n+                If multiple log collector runs fail with the same error, we disable the log collector until the service is restarted.\n+                \"\"\"\n+                retry_count = 0\n+                while True:\n+                    try:\n+                        log_collector_cgroup = cgroup_api.get_process_cgroup(process_id=\"self\", cgroup_name=AGENT_LOG_COLLECTOR)\n+                        if not log_collector_cgroup.check_in_expected_slice(cgroupconfigurator.LOGCOLLECTOR_SLICE):\n+                            raise CGroupsException(\"The Log Collector process is not in the proper cgroup. Expected slice: {0}\".format(cgroupconfigurator.LOGCOLLECTOR_SLICE))\n+                        return log_collector_cgroup\n+                    except CGroupsException as e:\n+                        retry_count += 1\n+                        if retry_count >= logcollector.LOG_COLLECTOR_CGROUP_PATH_VALIDATION_MAX_RETRIES:\n+                            event.warn(WALAEventOperation.LogCollection, ustr(e))\n+                            sys.exit(logcollector.UNEXPECTED_CGROUP_PATH_ERRCODE)\n+\n+                        logger.info(\"Check cgroup in expected slice failed: retrying in {0} secs [Attempt {1}/{2}]\".format(logcollector.LOG_COLLECTOR_CGROUP_PATH_VALIDATION_RETRY_DELAY, retry_count, logcollector.LOG_COLLECTOR_CGROUP_PATH_VALIDATION_MAX_RETRIES))\n+                        time.sleep(logcollector.LOG_COLLECTOR_CGROUP_PATH_VALIDATION_RETRY_DELAY)\n+\n+            log_collector_cgroup = _validate_log_collector_cgroup_slice()\n+\n+            tracked_controllers = log_collector_cgroup.get_controllers()\n+            for controller in tracked_controllers:\n+                logger.info(\"{0} controller for cgroup: {1}\".format(controller.get_controller_type(), controller))\n+            if len(tracked_controllers) != len(log_collector_cgroup.get_supported_controller_names()):\n+                event.warn(WALAEventOperation.LogCollection, \"At least one required controller is missing. The following controllers are required for the log collector to run: {0}\", log_collector_cgroup.get_supported_controller_names())\n+                sys.exit(logcollector.INVALID_CGROUPS_ERRCODE)\n+                \n         try:\n             log_collector = LogCollector(is_full_mode)\n-            # Running log collector resource(CPU, Memory) monitoring only if agent starts the log collector.\n+            # Running log collector resource monitoring only if agent starts the log collector.\n             # If Log collector start by any other means, then it will not be monitored.\n             if CollectLogsHandler.is_enabled_monitor_cgroups_check():\n-                tracked_cgroups = initialize_cgroups_tracking(cpu_cgroup_path, memory_cgroup_path)\n-                log_collector_monitor = get_log_collector_monitor_handler(tracked_cgroups)\n+                for controller in tracked_controllers:\n+                    if isinstance(controller, _CpuController):\n+                        controller.initialize_cpu_usage()\n+                        controller.track_throttle_time(True)\n+                        break\n+                log_collector_monitor = get_log_collector_monitor_handler(tracked_controllers)\n                 log_collector_monitor.run()\n-            archive = log_collector.collect_logs_and_get_archive()\n+\n+            archive, total_uncompressed_size = log_collector.collect_logs_and_get_archive()\n             logger.info(\"Log collection successfully completed. Archive can be found at {0} \"\n                   \"and detailed log output can be found at {1}\".format(archive, OUTPUT_RESULTS_FILE_PATH))\n+\n+            if log_collector_monitor is not None:\n+                log_collector_monitor.stop()\n+                try:\n+                    metrics_summary = log_collector_monitor.get_max_recorded_metrics()\n+                    metrics_summary['Total Uncompressed File Size (B)'] = total_uncompressed_size\n+                    msg = json.dumps(metrics_summary)\n+                    logger.info(msg)\n+                    event.add_event(op=event.WALAEventOperation.LogCollection, message=msg, log_event=False)\n+                except Exception as e:\n+                    msg = \"An error occurred while reporting log collector resource usage summary: {0}\".format(ustr(e))\n+                    logger.warn(msg)\n+                    event.add_event(op=event.WALAEventOperation.LogCollection, is_success=False, message=msg, log_event=False)\n+\n         except Exception as e:\n             logger.error(\"Log collection completed unsuccessfully. Error: {0}\".format(ustr(e)))\n             logger.info(\"Detailed log output can be found at {0}\".format(OUTPUT_RESULTS_FILE_PATH))\n@@ -251,15 +300,16 @@ class Agent(object):\n                 log_collector_monitor.stop()\n \n     @staticmethod\n-    def setup_firewall(firewall_metadata):\n-\n-        print(\"Setting up firewall for the WALinux Agent with args: {0}\".format(firewall_metadata))\n+    def setup_firewall(endpoint):\n+        logger.set_prefix(\"Firewall\")\n+        threading.current_thread().name = \"Firewall\"\n+        event.info(event.WALAEventOperation.Firewall, \"Setting up firewall after boot. Endpoint: {0}\", ustr(endpoint))\n         try:\n-            AddFirewallRules.add_iptables_rules(firewall_metadata['wait'], firewall_metadata['dst_ip'],\n-                                                firewall_metadata['uid'])\n-            print(\"Successfully set the firewall rules\")\n+            firewall_manager = FirewallManager.create(endpoint)\n+            firewall_manager.setup()\n+            event.info(event.WALAEventOperation.Firewall, \"Successfully set the firewall rules\")\n         except Exception as error:\n-            print(\"Unable to add firewall rules. Error: {0}\".format(ustr(error)))\n+            event.error(event.WALAEventOperation.Firewall, \"Unable to add firewall rules. Error: {0}\", ustr(error))\n             sys.exit(1)\n \n \n@@ -272,7 +322,7 @@ def main(args=None):\n         args = []\n     if len(args) <= 0:\n         args = sys.argv[1:]\n-    command, force, verbose, debug, conf_file_path, log_collector_full_mode, firewall_metadata = parse_args(args)\n+    command, force, verbose, debug, conf_file_path, log_collector_full_mode, firewall_endpoint = parse_args(args)\n     if command == AgentCommands.Version:\n         version()\n     elif command == AgentCommands.Help:\n@@ -299,7 +349,7 @@ def main(args=None):\n             elif command == AgentCommands.CollectLogs:\n                 agent.collect_logs(log_collector_full_mode)\n             elif command == AgentCommands.SetupFirewall:\n-                agent.setup_firewall(firewall_metadata)\n+                agent.setup_firewall(firewall_endpoint)\n         except Exception as e:\n             logger.error(u\"Failed to run '{0}': {1}\",\n                          command,\n@@ -316,11 +366,7 @@ def parse_args(sys_args):\n     debug = False\n     conf_file_path = None\n     log_collector_full_mode = False\n-    firewall_metadata = {\n-        \"dst_ip\": None,\n-        \"uid\": None,\n-        \"wait\": \"\"\n-    }\n+    endpoint = None\n \n     regex_cmd_format = \"^([-/]*){0}\"\n \n@@ -328,7 +374,7 @@ def parse_args(sys_args):\n         if arg == \"\":\n             # Don't parse an empty parameter\n             continue\n-        m = re.match(\"^(?:[-/]*)configuration-path:([\\w/\\.\\-_]+)\", arg)  # pylint: disable=W1401\n+        m = re.match(r\"^(?:[-/]*)configuration-path:([\\w/\\.\\-_]+)\", arg)\n         if not m is None:\n             conf_file_path = m.group(1)\n             if not os.path.exists(conf_file_path):\n@@ -364,20 +410,17 @@ def parse_args(sys_args):\n             cmd = AgentCommands.CollectLogs\n         elif re.match(regex_cmd_format.format(\"full\"), arg):\n             log_collector_full_mode = True\n-        elif re.match(regex_cmd_format.format(AgentCommands.SetupFirewall), arg):\n-            cmd = AgentCommands.SetupFirewall\n-        elif re.match(regex_cmd_format.format(\"dst_ip=(?P<dst_ip>[\\\\d.]{7,})\"), arg):\n-            firewall_metadata['dst_ip'] = re.match(regex_cmd_format.format(\"dst_ip=(?P<dst_ip>[\\\\d.]{7,})\"), arg).group(\n-                'dst_ip')\n-        elif re.match(regex_cmd_format.format(\"uid=(?P<uid>[\\\\d]+)\"), arg):\n-            firewall_metadata['uid'] = re.match(regex_cmd_format.format(\"uid=(?P<uid>[\\\\d]+)\"), arg).group('uid')\n-        elif re.match(regex_cmd_format.format(\"(w|wait)$\"), arg):\n-            firewall_metadata['wait'] = \"-w\"\n         else:\n-            cmd = AgentCommands.Help\n-            break\n+            regex_cmd = regex_cmd_format.format(\"{0}=(?P<endpoint>[\\\\d.]{{7,}})\".format(AgentCommands.SetupFirewall))\n+            match = re.match(regex_cmd, arg)\n+            if match is not None:\n+                cmd = AgentCommands.SetupFirewall\n+                endpoint = match.group('endpoint')\n+            else:\n+                cmd = AgentCommands.Help\n+                break\n \n-    return cmd, force, verbose, debug, conf_file_path, log_collector_full_mode, firewall_metadata\n+    return cmd, force, verbose, debug, conf_file_path, log_collector_full_mode, endpoint\n \n \n def version():\n@@ -397,11 +440,11 @@ def usage():\n     \"\"\"\n     Return agent usage message\n     \"\"\"\n-    s  = \"\\n\"\n+    s = \"\\n\"\n     s += (\"usage: {0} [-verbose] [-force] [-help] \"\n            \"-configuration-path:<path to configuration file>\" \n            \"-deprovision[+user]|-register-service|-version|-daemon|-start|\"\n-           \"-run-exthandlers|-show-configuration|-collect-logs [-full]|-setup-firewall [-dst_ip=<IP> -uid=<UID> [-w/--wait]]\"\n+           \"-run-exthandlers|-show-configuration|-collect-logs [-full]|-setup-firewall=<IP>]\"\n            \"\").format(sys.argv[0])\n     s += \"\\n\"\n     return s\ndiff --git a/azurelinuxagent/common/agent_supported_feature.py b/azurelinuxagent/common/agent_supported_feature.py\nindex 694c636..f22a72e 100644\n--- a/azurelinuxagent/common/agent_supported_feature.py\n+++ b/azurelinuxagent/common/agent_supported_feature.py\n@@ -77,14 +77,15 @@ class _ETPFeature(AgentSupportedFeature):\n class _GAVersioningGovernanceFeature(AgentSupportedFeature):\n     \"\"\"\n     CRP would drive the RSM update if agent reports that it does support RSM upgrades with this flag otherwise CRP fallback to largest version.\n-    Agent doesn't report supported feature flag if auto update is disabled or old version of agent running that doesn't understand GA versioning.\n+    Agent doesn't report supported feature flag if auto update is disabled or old version of agent running that doesn't understand GA versioning\n+    or if explicitly support for versioning is disabled in agent\n \n     Note: Especially Windows need this flag to report to CRP that GA doesn't support the updates. So linux adopted same flag to have a common solution.\n     \"\"\"\n \n     __NAME = SupportedFeatureNames.GAVersioningGovernance\n     __VERSION = \"1.0\"\n-    __SUPPORTED = conf.get_auto_update_to_latest_version()\n+    __SUPPORTED = conf.get_auto_update_to_latest_version() and conf.get_enable_ga_versioning()\n \n     def __init__(self):\n         super(_GAVersioningGovernanceFeature, self).__init__(name=self.__NAME,\ndiff --git a/azurelinuxagent/common/conf.py b/azurelinuxagent/common/conf.py\nindex 6662285..2504e06 100644\n--- a/azurelinuxagent/common/conf.py\n+++ b/azurelinuxagent/common/conf.py\n@@ -35,7 +35,7 @@ class ConfigurationProvider(object):\n     \"\"\"\n \n     def __init__(self):\n-        self.values = dict()\n+        self.values = {}\n \n     def load(self, content):\n         if not content:\n@@ -146,7 +146,10 @@ __SWITCH_OPTIONS__ = {\n     \"Debug.CgroupDisableOnQuotaCheckFailure\": True,\n     \"Debug.EnableAgentMemoryUsageCheck\": False,\n     \"Debug.EnableFastTrack\": True,\n-    \"Debug.EnableGAVersioning\": True\n+    \"Debug.EnableGAVersioning\": True,\n+    \"Debug.EnableCgroupV2ResourceLimiting\": False,\n+    \"Debug.EnableExtensionPolicy\": False,\n+    \"Debug.EnableSignatureValidation\": False\n }\n \n \n@@ -169,8 +172,8 @@ __STRING_OPTIONS__ = {\n     \"ResourceDisk.MountOptions\": None,\n     \"ResourceDisk.Filesystem\": \"ext3\",\n     \"AutoUpdate.GAFamily\": \"Prod\",\n-    \"Debug.CgroupMonitorExpiryTime\": \"2022-03-31\",\n-    \"Debug.CgroupMonitorExtensionName\": \"Microsoft.Azure.Monitor.AzureMonitorLinuxAgent\",\n+    \"Policy.PolicyFilePath\": \"/etc/waagent_policy.json\",\n+    \"Protocol.EndpointDiscovery\": \"dhcp\"\n }\n \n \n@@ -200,7 +203,8 @@ __INTEGER_OPTIONS__ = {\n     \"Debug.EtpCollectionPeriod\": 300,\n     \"Debug.AutoUpdateHotfixFrequency\": 14400,\n     \"Debug.AutoUpdateNormalFrequency\": 86400,\n-    \"Debug.FirewallRulesLogPeriod\": 86400\n+    \"Debug.FirewallRulesLogPeriod\": 86400,\n+    \"Debug.LogCollectorInitialDelay\": 5 * 60\n }\n \n \n@@ -314,6 +318,10 @@ def get_agent_log_file():\n     return \"/var/log/waagent.log\"\n \n \n+def get_policy_file_path(conf=__conf__):\n+    return conf.get(\"Policy.PolicyFilePath\", \"/etc/waagent_policy.json\")\n+\n+\n def get_fips_enabled(conf=__conf__):\n     return conf.get_switch(\"OS.EnableFIPS\", False)\n \n@@ -541,6 +549,19 @@ def get_auto_update_to_latest_version(conf=__conf__):\n     return conf.get_switch(\"AutoUpdate.UpdateToLatestVersion\", default)\n \n \n+def get_protocol_endpoint_discovery(conf=__conf__):\n+    return conf.get(\"Protocol.EndpointDiscovery\", \"dhcp\")\n+\n+\n+def get_dhcp_discovery_enabled(conf=__conf__):\n+    \"\"\"\n+    Determines how the agent will discover the wireserver endpoint.\n+    If set to 'dhcp', the agent will use DHCP to get the wireserver endpoint.\n+    Otherwise, the agent will use the known wireserver endpoint (168.63.129.16).\n+    \"\"\"\n+    return get_protocol_endpoint_discovery(conf) == \"dhcp\"\n+\n+\n def get_cgroup_check_period(conf=__conf__):\n     \"\"\"\n     How often to perform checks on cgroups (are the processes in the cgroups as expected,\n@@ -614,24 +635,6 @@ def get_enable_agent_memory_usage_check(conf=__conf__):\n     return conf.get_switch(\"Debug.EnableAgentMemoryUsageCheck\", False)\n \n \n-def get_cgroup_monitor_expiry_time(conf=__conf__):\n-    \"\"\"\n-    cgroups monitoring for pilot extensions disabled after expiry time\n-\n-    NOTE: This option is experimental and may be removed in later versions of the Agent.\n-    \"\"\"\n-    return conf.get(\"Debug.CgroupMonitorExpiryTime\", \"2022-03-31\")\n-\n-\n-def get_cgroup_monitor_extension_name (conf=__conf__):\n-    \"\"\"\n-    cgroups monitoring extension name\n-\n-    NOTE: This option is experimental and may be removed in later versions of the Agent.\n-    \"\"\"\n-    return conf.get(\"Debug.CgroupMonitorExtensionName\", \"Microsoft.Azure.Monitor.AzureMonitorLinuxAgent\")\n-\n-\n def get_enable_fast_track(conf=__conf__):\n     \"\"\"\n     If True, the agent use FastTrack when retrieving goal states\n@@ -670,7 +673,7 @@ def get_enable_ga_versioning(conf=__conf__):\n     If True, the agent looks for rsm updates(checking requested version in GS) otherwise it will fall back to self-update and finds the highest version from PIR.\n     NOTE: This option is experimental and may be removed in later versions of the Agent.\n     \"\"\"\n-    return conf.get_switch(\"Debug.EnableGAVersioning\", False)\n+    return conf.get_switch(\"Debug.EnableGAVersioning\", True)\n \n \n def get_firewall_rules_log_period(conf=__conf__):\n@@ -680,3 +683,46 @@ def get_firewall_rules_log_period(conf=__conf__):\n     NOTE: This option is experimental and may be removed in later versions of the Agent.\n     \"\"\"\n     return conf.get_int(\"Debug.FirewallRulesLogPeriod\", 86400)\n+\n+  \n+def get_extension_policy_enabled(conf=__conf__):\n+    \"\"\"\n+    Determine whether extension policy is enabled. If true, policy will be enforced before installing any extensions.\n+    NOTE: This option is experimental and may be removed in later versions of the Agent.\n+    \"\"\"\n+    return conf.get_switch(\"Debug.EnableExtensionPolicy\", False)\n+\n+  \n+def get_enable_cgroup_v2_resource_limiting(conf=__conf__):\n+    \"\"\"\n+    If True, the agent will enable resource monitoring and enforcement for the log collector on machines using cgroup v2.\n+    NOTE: This option is experimental and may be removed in later versions of the Agent.\n+    \"\"\"\n+    return conf.get_switch(\"Debug.EnableCgroupV2ResourceLimiting\", True)\n+\n+\n+def get_log_collector_initial_delay(conf=__conf__):\n+    \"\"\"\n+    Determine the initial delay at service start before the first periodic log collection.\n+\n+    NOTE: This option is experimental and may be removed in later versions of the Agent.\n+    \"\"\"\n+    return conf.get_int(\"Debug.LogCollectorInitialDelay\", 5 * 60)\n+\n+  \n+def get_signature_validation_enabled(conf=__conf__):\n+    \"\"\"\n+    Determine whether signature validation is enabled. If true, package signature will be validated before\n+    installing any signed extensions.\n+    NOTE: This option is experimental and may be removed in later versions of the Agent.\n+    \"\"\"\n+    return conf.get_switch(\"Debug.EnableSignatureValidation\", False)\n+\n+  \n+def get_enable_rsm_downgrade(conf=__conf__):\n+    \"\"\"\n+    If False, the agent will not downgrade to a lower version when a lower version is requested in the goal state.\n+\n+    Todo: Flag will be removed once we have a fix for rsm downgrade scenario.\n+    \"\"\"\n+    return conf.get_switch(\"Debug.EnableRsmDowngrade\", False)\ndiff --git a/azurelinuxagent/common/dhcp.py b/azurelinuxagent/common/dhcp.py\nindex 3db58d3..c88c951 100644\n--- a/azurelinuxagent/common/dhcp.py\n+++ b/azurelinuxagent/common/dhcp.py\n@@ -20,6 +20,7 @@ import socket\n import time\n \n import azurelinuxagent.common.logger as logger\n+from azurelinuxagent.common import conf\n from azurelinuxagent.common.exception import DhcpError\n from azurelinuxagent.common.osutil import get_osutil\n from azurelinuxagent.common.utils.restutil import KNOWN_WIRESERVER_IP\n@@ -151,9 +152,15 @@ class DhcpHandler(object):\n         \"\"\"\n         Check if DHCP is available\n         \"\"\"\n-        dhcp_available =  self.osutil.is_dhcp_available()\n-        if not dhcp_available:\n-            logger.info(\"send_dhcp_req: DHCP not available\")\n+        dhcp_available = self.osutil.is_dhcp_available()\n+        # If user has DHCP disabled for their VM then the dhcp request will fail. The user can configure the agent to\n+        # use the known wire server ip instead.\n+        use_dhcp = conf.get_dhcp_discovery_enabled()\n+        if not dhcp_available or not use_dhcp:\n+            if not use_dhcp:\n+                logger.info(\"send_dhcp_req: DHCP usage for endpoint discovery is disabled (Protocol.EndpointDiscovery={0}). Will use known wireserver endpoint.\".format(conf.get_protocol_endpoint_discovery()))\n+            elif not dhcp_available:\n+                logger.info(\"send_dhcp_req: DHCP not available\")\n             self.endpoint = KNOWN_WIRESERVER_IP\n             return\n \ndiff --git a/azurelinuxagent/common/errorstate.py b/azurelinuxagent/common/errorstate.py\nindex 052db07..68b86a9 100644\n--- a/azurelinuxagent/common/errorstate.py\n+++ b/azurelinuxagent/common/errorstate.py\n@@ -1,4 +1,5 @@\n from datetime import datetime, timedelta\n+from azurelinuxagent.common.future import UTC\n \n ERROR_STATE_DELTA_DEFAULT = timedelta(minutes=15)\n ERROR_STATE_DELTA_INSTALL = timedelta(minutes=5)\n@@ -14,7 +15,7 @@ class ErrorState(object):\n \n     def incr(self):\n         if self.count == 0:\n-            self.timestamp = datetime.utcnow()\n+            self.timestamp = datetime.now(UTC)\n \n         self.count += 1\n \n@@ -26,7 +27,7 @@ class ErrorState(object):\n         if self.timestamp is None:\n             return False\n \n-        delta = datetime.utcnow() - self.timestamp\n+        delta = datetime.now(UTC) - self.timestamp\n         if delta >= self.min_timedelta:\n             return True\n \n@@ -37,7 +38,7 @@ class ErrorState(object):\n         if self.timestamp is None:\n             return 'unknown'\n \n-        delta = round((datetime.utcnow() - self.timestamp).seconds / 60.0, 2)\n+        delta = round((datetime.now(UTC) - self.timestamp).seconds / 60.0, 2)\n         if delta < 60:\n             return '{0} min'.format(delta)\n \ndiff --git a/azurelinuxagent/common/event.py b/azurelinuxagent/common/event.py\nindex 41238f9..27c4ead 100644\n--- a/azurelinuxagent/common/event.py\n+++ b/azurelinuxagent/common/event.py\n@@ -30,13 +30,14 @@ import azurelinuxagent.common.conf as conf\n import azurelinuxagent.common.logger as logger\n from azurelinuxagent.common.AgentGlobals import AgentGlobals\n from azurelinuxagent.common.exception import EventError, OSUtilError\n-from azurelinuxagent.common.future import ustr\n+from azurelinuxagent.common.future import ustr, UTC\n from azurelinuxagent.common.datacontract import get_properties, set_properties\n from azurelinuxagent.common.osutil import get_osutil\n from azurelinuxagent.common.telemetryevent import TelemetryEventParam, TelemetryEvent, CommonTelemetryEventSchema, \\\n     GuestAgentGenericLogsSchema, GuestAgentExtensionEventsSchema, GuestAgentPerfCounterEventsSchema\n-from azurelinuxagent.common.utils import fileutil, textutil\n-from azurelinuxagent.common.utils.textutil import parse_doc, findall, find, getattrib, str_to_encoded_ustr\n+from azurelinuxagent.common.utils import fileutil, textutil, timeutil\n+from azurelinuxagent.common.utils.textutil import parse_doc, findall, find, getattrib, str_to_encoded_ustr, \\\n+    redact_sas_token\n from azurelinuxagent.common.version import CURRENT_VERSION, CURRENT_AGENT, AGENT_NAME, DISTRO_NAME, DISTRO_VERSION, DISTRO_CODE_NAME, AGENT_EXECUTION_MODE\n from azurelinuxagent.common.protocol.imds import get_imds_client\n \n@@ -67,7 +68,7 @@ def send_logs_to_telemetry():\n \n class WALAEventOperation:\n     ActivateResourceDisk = \"ActivateResourceDisk\"\n-    AgentBlacklisted = \"AgentBlacklisted\"\n+    AgentDisabled = \"AgentDisabled\"\n     AgentEnabled = \"AgentEnabled\"\n     AgentMemory = \"AgentMemory\"\n     AgentUpgrade = \"AgentUpgrade\"\n@@ -86,11 +87,15 @@ class WALAEventOperation:\n     Downgrade = \"Downgrade\"\n     Download = \"Download\"\n     Enable = \"Enable\"\n+    ExtensionHandlerManifest = \"ExtensionHandlerManifest\"\n+    ExtensionPolicy = \"ExtensionPolicy\"\n     ExtensionProcessing = \"ExtensionProcessing\"\n+    ExtensionResourceGovernance = \"ExtensionResourceGovernance\"\n     ExtensionTelemetryEventProcessing = \"ExtensionTelemetryEventProcessing\"\n     FetchGoalState = \"FetchGoalState\"\n     Firewall = \"Firewall\"\n     GoalState = \"GoalState\"\n+    GoalStateCertificates = \"GoalStateCertificates\"\n     GoalStateUnsupportedFeatures = \"GoalStateUnsupportedFeatures\"\n     HealthCheck = \"HealthCheck\"\n     HealthObservation = \"HealthObservation\"\n@@ -109,11 +114,12 @@ class WALAEventOperation:\n     NoExec = \"NoExec\"\n     OSInfo = \"OSInfo\"\n     OpenSsl = \"OpenSsl\"\n-    Partition = \"Partition\"\n     PersistFirewallRules = \"PersistFirewallRules\"\n+    Policy = \"Policy\"\n     ProvisionAfterExtensions = \"ProvisionAfterExtensions\"\n     PluginSettingsVersionMismatch = \"PluginSettingsVersionMismatch\"\n     InvalidExtensionConfig = \"InvalidExtensionConfig\"\n+    ProtocolEndpoint = \"ProtocolEndpoint\"\n     Provision = \"Provision\"\n     ProvisionGuestAgent = \"ProvisionGuestAgent\"\n     RemoteAccessHandling = \"RemoteAccessHandling\"\n@@ -121,9 +127,14 @@ class WALAEventOperation:\n     ReportEventUnicodeErrors = \"ReportEventUnicodeErrors\"\n     ReportStatus = \"ReportStatus\"\n     ReportStatusExtended = \"ReportStatusExtended\"\n+    RequestedStateDisabled = \"RequestedStateDisabled\"\n+    RequestedVersionMismatch = \"RequestedVersionMismatch\"\n     ResetFirewall = \"ResetFirewall\"\n     Restart = \"Restart\"\n-    SequenceNumberMismatch = \"SequenceNumberMismatch\"\n+    SignatureValidation = \"SignatureValidation\"\n+    ExtensionSigned = \"ExtensionSigned\"\n+    PackageSignatureResult = \"PackageSignatureResult\"\n+    PackageSigningInfoResult = \"PackageSigningInfoResult\"\n     SetCGroupsLimits = \"SetCGroupsLimits\"\n     SkipUpdate = \"SkipUpdate\"\n     StatusProcessing = \"StatusProcessing\"\n@@ -210,13 +221,9 @@ def parse_json_event(data_str):\n \n def parse_event(data_str):\n     try:\n-        try:\n-            return parse_json_event(data_str)\n-        except ValueError:\n-            return parse_xml_event(data_str)\n-    except Exception as e:\n-        raise EventError(\"Error parsing event: {0}\".format(ustr(e)))\n-\n+        return parse_json_event(data_str)\n+    except ValueError:\n+        return parse_xml_event(data_str)\n \n def parse_xml_param(param_node):\n     name = getattrib(param_node, \"Name\")\n@@ -247,6 +254,15 @@ def parse_xml_event(data_str):\n         raise ValueError(ustr(e))\n \n \n+def redact_event_msg(event):\n+    \"\"\"\n+    Redact the message in the event if it contains SAS tokens.\n+    \"\"\"\n+    for param in event.parameters:\n+        if param.name == GuestAgentExtensionEventsSchema.Message:\n+            param.value = redact_sas_token(param.value)\n+\n+\n def _encode_message(op, message):\n     \"\"\"\n     Gzip and base64 encode a message based on the operation.\n@@ -283,7 +299,7 @@ def _encode_message(op, message):\n \n \n def _log_event(name, op, message, duration, is_success=True):\n-    global _EVENT_MSG  # pylint: disable=W0603\n+    global _EVENT_MSG  # pylint: disable=W0602, W0603\n \n     if not is_success:\n         logger.error(_EVENT_MSG, name, op, message, duration)\n@@ -328,10 +344,10 @@ class CollectOrReportEventDebugInfo(object):\n         report_dropped_events_error(self.__unicode_error_count, self.__unicode_errors, self.__unicode_error_event)\n \n     @staticmethod\n-    def _update_errors_and_get_count(error_count, errors, error):\n+    def _update_errors_and_get_count(error_count, errors, error_msg):\n         error_count += 1\n         if len(errors) < CollectOrReportEventDebugInfo.__MAX_ERRORS_TO_REPORT:\n-            errors.add(\"{0}: {1}\".format(ustr(error), traceback.format_exc()))\n+            errors.add(\"{0}: {1}\".format(ustr(error_msg), traceback.format_exc()))\n         return error_count\n \n     def update_unicode_error(self, unicode_err):\n@@ -341,11 +357,15 @@ class CollectOrReportEventDebugInfo(object):\n     def update_op_error(self, op_err):\n         self.__op_error_count = self._update_errors_and_get_count(self.__op_error_count, self.__op_errors, op_err)\n \n+    def get_error_count(self):\n+        return self.__op_error_count + self.__unicode_error_count\n+\n \n class EventLogger(object):\n     def __init__(self):\n         self.event_dir = None\n         self.periodic_events = {}\n+        self.protocol = None\n \n         #\n         # All events should have these parameters.\n@@ -429,7 +449,7 @@ class EventLogger(object):\n             logger.warn(\"Failed to get VM info from goal state; will be missing from telemetry: {0}\", ustr(e))\n \n         try:\n-            imds_client = get_imds_client(protocol.get_endpoint())\n+            imds_client = get_imds_client()\n             imds_info = imds_client.get_compute()\n             parameters[CommonTelemetryEventSchema.Location].value = imds_info.location\n             parameters[CommonTelemetryEventSchema.SubscriptionId].value = imds_info.subscriptionId\n@@ -479,7 +499,7 @@ class EventLogger(object):\n \n     def is_period_elapsed(self, delta, h):\n         return h not in self.periodic_events or \\\n-            (self.periodic_events[h] + delta) <= datetime.now()\n+            (self.periodic_events[h] + delta) <= datetime.now(UTC)\n \n     def add_periodic(self, delta, name, op=WALAEventOperation.Unknown, is_success=True, duration=0,\n                      version=str(CURRENT_VERSION), message=\"\", log_event=True, force=False):\n@@ -488,10 +508,13 @@ class EventLogger(object):\n         if force or self.is_period_elapsed(delta, h):\n             self.add_event(name, op=op, is_success=is_success, duration=duration,\n                            version=version, message=message, log_event=log_event)\n-            self.periodic_events[h] = datetime.now()\n+            self.periodic_events[h] = datetime.now(UTC)\n \n     def add_event(self, name, op=WALAEventOperation.Unknown, is_success=True, duration=0, version=str(CURRENT_VERSION),\n-                  message=\"\", log_event=True):\n+                  message=\"\", log_event=True, flush=False):\n+        \"\"\"\n+        :param flush: Flush the event immediately to the wire server\n+        \"\"\"\n \n         if (not is_success) and log_event:\n             _log_event(name, op, message, duration, is_success=is_success)\n@@ -503,29 +526,20 @@ class EventLogger(object):\n         event.parameters.append(TelemetryEventParam(GuestAgentExtensionEventsSchema.OperationSuccess, bool(is_success)))\n         event.parameters.append(TelemetryEventParam(GuestAgentExtensionEventsSchema.Message, str_to_encoded_ustr(message)))\n         event.parameters.append(TelemetryEventParam(GuestAgentExtensionEventsSchema.Duration, int(duration)))\n-        self.add_common_event_parameters(event, datetime.utcnow())\n+        self.add_common_event_parameters(event, datetime.now(UTC))\n \n-        data = get_properties(event)\n-\n-        try:\n-            self.save_event(json.dumps(data))\n-        except EventError as e:\n-            logger.periodic_error(logger.EVERY_FIFTEEN_MINUTES, \"[PERIODIC] {0}\".format(ustr(e)))\n+        self.report_or_save_event(event, flush)\n \n     def add_log_event(self, level, message):\n         event = TelemetryEvent(TELEMETRY_LOG_EVENT_ID, TELEMETRY_LOG_PROVIDER_ID)\n         event.parameters.append(TelemetryEventParam(GuestAgentGenericLogsSchema.EventName, WALAEventOperation.Log))\n         event.parameters.append(TelemetryEventParam(GuestAgentGenericLogsSchema.CapabilityUsed, logger.LogLevel.STRINGS[level]))\n         event.parameters.append(TelemetryEventParam(GuestAgentGenericLogsSchema.Context1, str_to_encoded_ustr(self._clean_up_message(message))))\n-        event.parameters.append(TelemetryEventParam(GuestAgentGenericLogsSchema.Context2, datetime.utcnow().strftime(logger.Logger.LogTimeFormatInUTC)))\n+        event.parameters.append(TelemetryEventParam(GuestAgentGenericLogsSchema.Context2, timeutil.create_utc_timestamp(datetime.now(UTC))))\n         event.parameters.append(TelemetryEventParam(GuestAgentGenericLogsSchema.Context3, ''))\n-        self.add_common_event_parameters(event, datetime.utcnow())\n+        self.add_common_event_parameters(event, datetime.now(UTC))\n \n-        data = get_properties(event)\n-        try:\n-            self.save_event(json.dumps(data))\n-        except EventError:\n-            pass\n+        self.report_or_save_event(event)\n \n     def add_metric(self, category, counter, instance, value, log_event=False):\n         \"\"\"\n@@ -546,13 +560,30 @@ class EventLogger(object):\n         event.parameters.append(TelemetryEventParam(GuestAgentPerfCounterEventsSchema.Counter, str_to_encoded_ustr(counter)))\n         event.parameters.append(TelemetryEventParam(GuestAgentPerfCounterEventsSchema.Instance, str_to_encoded_ustr(instance)))\n         event.parameters.append(TelemetryEventParam(GuestAgentPerfCounterEventsSchema.Value, float(value)))\n-        self.add_common_event_parameters(event, datetime.utcnow())\n+        self.add_common_event_parameters(event, datetime.now(UTC))\n+\n+        self.report_or_save_event(event)\n+\n+    def report_or_save_event(self, event, flush=False):\n+        \"\"\"\n+        Flush the event to wireserver if flush to set to true, else\n+        save it disk if we fail to send or not required to flush immediately.\n+        TODO: pickup as many events as possible and send them in one go.\n+        \"\"\"\n+        # redact message before save it to disk\n+        redact_event_msg(event)\n+\n+        report_success = False\n+        if flush and self.protocol is not None:\n+            report_success = self.protocol.report_event([event], flush)\n+\n+        if not report_success:\n+            try:\n+                data = get_properties(event)\n+                self.save_event(json.dumps(data))\n+            except EventError as e:\n+                logger.periodic_error(logger.EVERY_FIFTEEN_MINUTES, \"[PERIODIC] {0}\".format(ustr(e)))\n \n-        data = get_properties(event)\n-        try:\n-            self.save_event(json.dumps(data))\n-        except EventError as e:\n-            logger.periodic_error(logger.EVERY_FIFTEEN_MINUTES, \"[PERIODIC] {0}\".format(ustr(e)))\n \n     @staticmethod\n     def _clean_up_message(message):\n@@ -602,10 +633,10 @@ class EventLogger(object):\n         \"\"\"\n         common_params = [TelemetryEventParam(CommonTelemetryEventSchema.GAVersion, CURRENT_AGENT),\n                          TelemetryEventParam(CommonTelemetryEventSchema.ContainerId, AgentGlobals.get_container_id()),\n-                         TelemetryEventParam(CommonTelemetryEventSchema.OpcodeName, event_timestamp.strftime(logger.Logger.LogTimeFormatInUTC)),\n+                         TelemetryEventParam(CommonTelemetryEventSchema.OpcodeName, timeutil.create_utc_timestamp(event_timestamp)),\n                          TelemetryEventParam(CommonTelemetryEventSchema.EventTid, threading.current_thread().ident),\n                          TelemetryEventParam(CommonTelemetryEventSchema.EventPid, os.getpid()),\n-                         TelemetryEventParam(CommonTelemetryEventSchema.TaskName, threading.current_thread().getName())]\n+                         TelemetryEventParam(CommonTelemetryEventSchema.TaskName, threading.current_thread().name)]\n \n         if event.eventId == TELEMETRY_EVENT_EVENT_ID and event.providerId == TELEMETRY_EVENT_PROVIDER_ID:\n             # Currently only the GuestAgentExtensionEvents has these columns, the other tables dont have them so skipping\n@@ -624,7 +655,7 @@ def get_event_logger():\n \n \n def elapsed_milliseconds(utc_start):\n-    now = datetime.utcnow()\n+    now = datetime.now(UTC)\n     if now < utc_start:\n         return 0\n \n@@ -633,13 +664,16 @@ def elapsed_milliseconds(utc_start):\n                     (d.microseconds / 1000.0))\n \n \n-def report_event(op, is_success=True, message='', log_event=True):\n+def report_event(op, is_success=True, message='', log_event=True, flush=False):\n+    \"\"\"\n+    :param flush: if true, flush the event immediately to the wire server\n+    \"\"\"\n     add_event(AGENT_NAME,\n               version=str(CURRENT_VERSION),\n               is_success=is_success,\n               message=message,\n               op=op,\n-              log_event=log_event)\n+              log_event=log_event, flush=flush)\n \n \n def report_periodic(delta, op, is_success=True, message=''):\n@@ -672,12 +706,17 @@ def report_metric(category, counter, instance, value, log_event=False, reporter=\n                                                      \"{0}/{1} [{2}] = {3}\".format(category, counter, instance, value))\n \n \n-def initialize_event_logger_vminfo_common_parameters(protocol, reporter=__event_logger__):\n+def initialize_event_logger_vminfo_common_parameters_and_protocol(protocol, reporter=__event_logger__):\n+    # Initialize protocal for event logger to directly send events to wireserver\n+    reporter.protocol = protocol\n     reporter.initialize_vminfo_common_parameters(protocol)\n \n \n def add_event(name=AGENT_NAME, op=WALAEventOperation.Unknown, is_success=True, duration=0, version=str(CURRENT_VERSION),\n-              message=\"\", log_event=True, reporter=__event_logger__):\n+              message=\"\", log_event=True, flush=False, reporter=__event_logger__):\n+    \"\"\"\n+    :param flush: if true, flush the event immediately to the wire server\n+    \"\"\"\n     if reporter.event_dir is None:\n         logger.warn(\"Cannot add event -- Event reporter is not initialized.\")\n         _log_event(name, op, message, duration, is_success=is_success)\n@@ -687,8 +726,51 @@ def add_event(name=AGENT_NAME, op=WALAEventOperation.Unknown, is_success=True, d\n         mark_event_status(name, version, op, is_success)\n         reporter.add_event(name, op=op, is_success=is_success, duration=duration, version=str(version),\n                            message=message,\n-                           log_event=log_event)\n+                           log_event=log_event, flush=flush)\n+\n+\n+def info(op, fmt, *args):\n+    \"\"\"\n+     Creates a telemetry event and logs the message as INFO.\n+    \"\"\"\n+    logger.info(fmt, *args)\n+    add_event(op=op, message=fmt.format(*args), is_success=True)\n+\n+\n+def warn(op, fmt, *args):\n+    \"\"\"\n+    Creates a telemetry event and logs the message as WARNING.\n+    \"\"\"\n+    logger.warn(fmt, *args)\n+    add_event(op=op, message=\"[WARNING] \" + fmt.format(*args), is_success=False, log_event=False)\n+\n+\n+def error(op, fmt, *args):\n+    \"\"\"\n+    Creates a telemetry event and logs the message as ERROR.\n+    \"\"\"\n+    logger.error(fmt, *args)\n+    add_event(op=op, message=fmt.format(*args), is_success=False, log_event=False)\n+\n+\n+class LogEvent(object):\n+    \"\"\"\n+    Helper class that allows the use of info()/warn()/error() using a specific instance of a logger.\n+    \"\"\"\n+    def __init__(self, logger_):\n+        self._logger = logger_\n+\n+    def info(self, op, fmt, *args):\n+        self._logger.info(fmt, *args)\n+        add_event(op=op, message=fmt.format(*args), is_success=True)\n+\n+    def warn(self, op, fmt, *args):\n+        self._logger.warn(fmt, *args)\n+        add_event(op=op, message=\"[WARNING] \" + fmt.format(*args), is_success=False, log_event=False)\n \n+    def error(self, op, fmt, *args):\n+        self._logger.error(fmt, *args)\n+        add_event(op=op, message=fmt.format(*args), is_success=False, log_event=False)\n \n def add_log_event(level, message, forced=False, reporter=__event_logger__):\n     \"\"\"\n@@ -696,7 +778,7 @@ def add_log_event(level, message, forced=False, reporter=__event_logger__):\n     :param message: Message\n     :param forced: Force write the event even if send_logs_to_telemetry() is disabled\n         (NOTE: Remove this flag once send_logs_to_telemetry() is enabled for all events)\n-    :param reporter:\n+    :param reporter: The EventLogger instance to which metric events should be sent\n     :return:\n     \"\"\"\n     if reporter.event_dir is None:\n@@ -747,9 +829,9 @@ def dump_unhandled_err(name):\n         last_type = getattr(sys, 'last_type')\n         last_value = getattr(sys, 'last_value')\n         last_traceback = getattr(sys, 'last_traceback')\n-        error = traceback.format_exception(last_type, last_value,\n+        trace = traceback.format_exception(last_type, last_value,\n                                            last_traceback)\n-        message = \"\".join(error)\n+        message = \"\".join(trace)\n         add_event(name, is_success=False, message=message,\n                   op=WALAEventOperation.UnhandledError)\n \ndiff --git a/azurelinuxagent/common/future.py b/azurelinuxagent/common/future.py\nindex be28ba9..442ba2f 100644\n--- a/azurelinuxagent/common/future.py\n+++ b/azurelinuxagent/common/future.py\n@@ -1,4 +1,5 @@\n import contextlib\n+import datetime\n import platform\n import sys\n import os\n@@ -61,7 +62,6 @@ elif sys.version_info[0] == 2:\n     range = xrange\n     int = long\n \n-\n     if sys.version_info[1] >= 7:\n         from collections import OrderedDict  # For Py 2.7+\n     else:\n@@ -70,6 +70,33 @@ else:\n     raise ImportError(\"Unknown python version: {0}\".format(sys.version_info))\n \n \n+#\n+# datetime.utcnow triggers a DeprecationWarning on 3.12 and will be removed in a future version.\n+#\n+# To work around this, we use timezone.utc on 3.5-3.10 (it was introduced on 3.2, but currently we test from 3.5), and\n+# datetime.UTC (introduced on Python 3.11) for >= 3.11.\n+#\n+if sys.version_info[0] > 3 or sys.version_info[0] == 3 and sys.version_info[1] >= 11:\n+    # E1101: Module 'datetime' has no 'UTC' member (no-member)\n+    UTC = datetime.UTC  # pylint: disable=E1101\n+elif sys.version_info[0] == 3 and sys.version_info[1] >= 5:\n+    UTC = datetime.timezone.utc\n+else:\n+    from datetime import tzinfo, timedelta\n+\n+    class _UTC(tzinfo):\n+        def utcoffset(self, dt):\n+            return timedelta(0)\n+        def tzname(self, dt):\n+            return \"UTC\"\n+        def dst(self, dt):\n+            return timedelta(0)\n+\n+    UTC = _UTC()\n+\n+datetime_max_utc = datetime.datetime.max.replace(tzinfo=UTC)\n+datetime_min_utc = datetime.datetime.min.replace(tzinfo=UTC)\n+\n def get_linux_distribution(get_full_name, supported_dists):\n     \"\"\"Abstract platform.linux_distribution() call which is deprecated as of\n        Python 3.5 and removed in Python 3.7\"\"\"\ndiff --git a/azurelinuxagent/common/logger.py b/azurelinuxagent/common/logger.py\nindex 3d0dc61..3732fe9 100644\n--- a/azurelinuxagent/common/logger.py\n+++ b/azurelinuxagent/common/logger.py\n@@ -19,9 +19,11 @@ Log utils\n \"\"\"\n import sys\n from datetime import datetime, timedelta\n-from threading import currentThread\n+from threading import current_thread\n \n-from azurelinuxagent.common.future import ustr\n+from azurelinuxagent.common.future import ustr, UTC\n+from azurelinuxagent.common.utils import timeutil\n+from azurelinuxagent.common.utils.textutil import redact_sas_token\n \n EVERY_DAY = timedelta(days=1)\n EVERY_HALF_DAY = timedelta(hours=12)\n@@ -36,10 +38,6 @@ class Logger(object):\n     \"\"\"\n     Logger class\n     \"\"\"\n-\n-    # This format is based on ISO-8601, Z represents UTC (Zero offset)\n-    LogTimeFormatInUTC = u'%Y-%m-%dT%H:%M:%S.%fZ'\n-\n     def __init__(self, logger=None, prefix=None):\n         self.appenders = []\n         self.logger = self if logger is None else logger\n@@ -55,13 +53,13 @@ class Logger(object):\n \n     def _is_period_elapsed(self, delta, h):\n         return h not in self.logger.periodic_messages or \\\n-            (self.logger.periodic_messages[h] + delta) <= datetime.now()\n+            (self.logger.periodic_messages[h] + delta) <= datetime.now(UTC)\n \n     def _periodic(self, delta, log_level_op, msg_format, *args):\n         h = hash(msg_format)\n         if self._is_period_elapsed(delta, h):\n             log_level_op(msg_format, *args)\n-            self.logger.periodic_messages[h] = datetime.now()\n+            self.logger.periodic_messages[h] = datetime.now(UTC)\n \n     def periodic_info(self, delta, msg_format, *args):\n         self._periodic(delta, self.info, msg_format, *args)\n@@ -135,13 +133,17 @@ class Logger(object):\n             msg = msg_format.format(*args)\n         else:\n             msg = msg_format\n-        time = datetime.utcnow().strftime(Logger.LogTimeFormatInUTC)\n+\n+        # redact the sas token from the message before logging\n+        redacted_msg = redact_sas_token(msg)\n+\n+        time = timeutil.create_utc_timestamp(datetime.now(UTC))\n         level_str = LogLevel.STRINGS[level]\n-        thread_name = currentThread().getName()\n+        thread_name = current_thread().name\n         if self.prefix is not None:\n-            log_item = u\"{0} {1} {2} {3} {4}\\n\".format(time, level_str, thread_name, self.prefix, msg)\n+            log_item = u\"{0} {1} {2} {3} {4}\\n\".format(time, level_str, thread_name, self.prefix, redacted_msg)\n         else:\n-            log_item = u\"{0} {1} {2} {3}\\n\".format(time, level_str, thread_name, msg)\n+            log_item = u\"{0} {1} {2} {3}\\n\".format(time, level_str, thread_name, redacted_msg)\n \n         log_item = ustr(log_item.encode('ascii', \"backslashreplace\"), \n                         encoding=\"ascii\")\ndiff --git a/azurelinuxagent/common/osutil/alpine.py b/azurelinuxagent/common/osutil/alpine.py\nindex a9c73c9..6241017 100644\n--- a/azurelinuxagent/common/osutil/alpine.py\n+++ b/azurelinuxagent/common/osutil/alpine.py\n@@ -32,11 +32,12 @@ class AlpineOSUtil(DefaultOSUtil):\n         return True\n \n     def get_dhcp_pid(self):\n-        return self._get_dhcp_pid([\"pidof\", \"dhcpcd\"])\n+        return sorted(self._get_dhcp_pid([\"pidof\", \"dhcpcd\"]))\n \n+    # TODO: We really should get the pid from `dhcpcd --printpidfile`\n     def restart_if(self, ifname, retries=None, wait=None):\n         logger.info('restarting {} (sort of, actually SIGHUPing dhcpcd)'.format(ifname))\n-        pid = self.get_dhcp_pid()\n+        pid = self.get_dhcp_pid()[0]\n         if pid != None:\n             ret = shellutil.run_get_output('kill -HUP {}'.format(pid))  # pylint: disable=W0612\n \ndiff --git a/azurelinuxagent/common/osutil/chainguard.py b/azurelinuxagent/common/osutil/chainguard.py\nnew file mode 100644\nindex 0000000..1bdb91b\n--- /dev/null\n+++ b/azurelinuxagent/common/osutil/chainguard.py\n@@ -0,0 +1,110 @@\n+# Microsoft Azure Linux Agent\n+#\n+# Copyright 2018 Microsoft Corporation\n+# Copyright 2025 Chainguard Inc\n+#\n+# Licensed under the Apache License, Version 2.0 (the \"License\");\n+# you may not use this file except in compliance with the License.\n+# You may obtain a copy of the License at\n+#\n+#     http://www.apache.org/licenses/LICENSE-2.0\n+#\n+# Unless required by applicable law or agreed to in writing, software\n+# distributed under the License is distributed on an \"AS IS\" BASIS,\n+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\n+# See the License for the specific language governing permissions and\n+# limitations under the License.\n+#\n+# Requires Python 2.6+ and Openssl 1.0+\n+#\n+import time\n+import glob\n+import textwrap\n+import azurelinuxagent.common.logger as logger\n+import azurelinuxagent.common.utils.shellutil as shellutil\n+from azurelinuxagent.common.osutil.default import DefaultOSUtil\n+\n+class ChainguardOSUtil(DefaultOSUtil):\n+\n+    def __init__(self):\n+        super(ChainguardOSUtil, self).__init__()\n+        self.agent_conf_file_path = '/etc/waagent.conf'\n+        self.jit_enabled = True\n+        self.__name__ = 'Chainguard'\n+        self.service_name = self.get_service_name()\n+\n+    @staticmethod\n+    def get_agent_bin_path():\n+        return \"/usr/bin\"\n+\n+    @staticmethod\n+    def get_systemd_unit_file_install_path():\n+        return \"/usr/lib/systemd/system\"\n+\n+    def restart_if(self, ifname, retries=3, wait=5):\n+        \"\"\"\n+        Restart systemd-networkd\n+        \"\"\"\n+        retry_limit=retries+1\n+        for attempt in range(1, retry_limit):\n+            try:\n+                shellutil.run_command([\"systemctl\", \"restart\", \"systemd-networkd\"])\n+\n+            except shellutil.CommandError as cmd_err:\n+                logger.warn(\"failed to restart systemd-networkd: return code {1}\".format(cmd_err.returncode))\n+                if attempt < retry_limit:\n+                    logger.info(\"retrying in {0} seconds\".format(wait))\n+                    time.sleep(wait)\n+                else:\n+                    logger.warn(\"exceeded restart retries\")\n+\n+    def is_dhcp_available(self):\n+        return True\n+\n+    def is_dhcp_enabled(self):\n+        return shellutil.run(\"systemctl is-enabled systemd-networkd\", chk_err=False) == \"enabled\"\n+\n+    def get_dhcp_pid(self):\n+        return self._get_dhcp_pid([\"pidof\", \"systemd-networkd\"])\n+\n+    def start_network(self):\n+        return shellutil.run(\"systemctl start systemd-networkd\", chk_err=False)\n+\n+    def stop_network(self):\n+        return shellutil.run(\"systemctl stop systemd-networkd\", chk_err=False)\n+\n+    def start_dhcp_service(self):\n+        return self.start_network()\n+\n+    def stop_dhcp_service(self):\n+        return self.stop_network()\n+\n+    def start_agent_service(self):\n+        return shellutil.run(\"systemctl start {0}\".format(self.service_name), chk_err=False)\n+\n+    def stop_agent_service(self):\n+        return shellutil.run(\"systemctl stop {0}\".format(self.service_name), chk_err=False)\n+\n+    def get_dhcp_lease_endpoint(self):\n+        pathglob = \"/run/systemd/netif/leases/*\"\n+        logger.info(\"looking for leases in path [{0}]\".format(pathglob))\n+        endpoint = None\n+        for lease_file in glob.glob(pathglob):\n+            try:\n+                with open(lease_file) as f:\n+                    lease = f.read()\n+                for line in lease.splitlines():\n+                    if line.startswith(\"OPTION_245\"):\n+                        option_245 = line.split(\"=\")[1]\n+                        options = [int(i, 16) for i in textwrap.wrap(option_245, 2)]\n+                        endpoint = \"{0}.{1}.{2}.{3}\".format(*options)\n+                        logger.info(\"found endpoint [{0}]\".format(endpoint))\n+            except Exception as e:\n+                logger.info(\n+                    \"Failed to parse {0}: {1}\".format(lease_file, str(e))\n+                )\n+        if endpoint is not None:\n+            logger.info(\"cached endpoint found [{0}]\".format(endpoint))\n+        else:\n+            logger.info(\"cached endpoint not found\")\n+        return endpoint\ndiff --git a/azurelinuxagent/common/osutil/default.py b/azurelinuxagent/common/osutil/default.py\nindex f763d5f..a8830ff 100644\n--- a/azurelinuxagent/common/osutil/default.py\n+++ b/azurelinuxagent/common/osutil/default.py\n@@ -16,6 +16,7 @@\n # Requires Python 2.6+ and Openssl 1.0+\n #\n \n+import array\n import base64\n import datetime\n import errno\n@@ -26,15 +27,45 @@ import multiprocessing\n import os\n import platform\n import pwd\n+import random\n import re\n import shutil\n import socket\n+import string\n import struct\n import sys\n import time\n+import warnings\n from pwd import getpwall\n \n-import array\n+from azurelinuxagent.common.exception import OSUtilError\n+\n+#\n+# The 'crypt' package was removed in Python 3.13.\n+#\n+# To work around this, WALinuxAgent 2.12 and 2.13 added a dependency on legacycrypt and imported crypt from there. From 2.14,\n+# we instead get crypt from the crypt-r package. The code below needs to handle the case where the self-update WALinuxAgent\n+# is running on a machine where the pre-installed WALinuxAgent is 2.12/2.13 (and crypt may be coming from legacycrypt).\n+#\n+# We first try importing from crypt, which may have been installed from the crypt or crypt-r packages, then try\n+# importing from legacy crypt, then fallback to a dummy function that raises an exception when invoked. The Provisioning Agent\n+# and JIT requests use the crypt function, so those features would fail if none of the required dependencies are installed.\n+#\n+try:\n+    with warnings.catch_warnings():\n+        warnings.filterwarnings(\"ignore\", category=DeprecationWarning)\n+        from crypt import crypt  # pylint: disable=deprecated-module\n+except ImportError:\n+    __CRYPT_IMPORTED__ = False\n+    if sys.version_info[0] == 3 and sys.version_info[1] >= 13 or sys.version_info[0] > 3:\n+        try:\n+            from legacycrypt import crypt\n+            __CRYPT_IMPORTED__ = True\n+        except ImportError:\n+            pass\n+    if not __CRYPT_IMPORTED__:\n+        def crypt(password, salt):\n+            raise OSUtilError(\"This feature requires one of the 'crypt', 'legacycrypt' or 'crypt-r' Python packages to be installed.\")\n \n from azurelinuxagent.common import conf\n from azurelinuxagent.common import logger\n@@ -42,11 +73,9 @@ from azurelinuxagent.common.utils import fileutil\n from azurelinuxagent.common.utils import shellutil\n from azurelinuxagent.common.utils import textutil\n \n-from azurelinuxagent.common.exception import OSUtilError\n-from azurelinuxagent.common.future import ustr, array_to_bytes\n+from azurelinuxagent.common.future import ustr, array_to_bytes, UTC\n from azurelinuxagent.common.utils.cryptutil import CryptUtil\n-from azurelinuxagent.common.utils.flexible_version import FlexibleVersion\n-from azurelinuxagent.common.utils.networkutil import RouteEntry, NetworkInterfaceCard, AddFirewallRules\n+from azurelinuxagent.common.utils.networkutil import RouteEntry, NetworkInterfaceCard\n from azurelinuxagent.common.utils.shellutil import CommandError\n \n __RULES_FILES__ = [\"/lib/udev/rules.d/75-persistent-net-generator.rules\",\n@@ -58,60 +87,9 @@ for all distros. Each concrete distro classes could overwrite default behavior\n if needed.\n \"\"\"\n \n-_IPTABLES_VERSION_PATTERN = re.compile(\"^[^\\d\\.]*([\\d\\.]+).*$\")  # pylint: disable=W1401\n-_IPTABLES_LOCKING_VERSION = FlexibleVersion('1.4.21')\n-\n-\n-def _add_wait(wait, command):\n-    \"\"\"\n-    If 'wait' is True, adds the wait option (-w) to the given iptables command line\n-    \"\"\"\n-    if wait:\n-        command.insert(1, \"-w\")\n-    return command\n-\n-\n-def get_iptables_version_command():\n-    return [\"iptables\", \"--version\"]\n-\n-\n-def get_firewall_list_command(wait):\n-    return _add_wait(wait, [\"iptables\", \"-t\", \"security\", \"-L\", \"-nxv\"])\n-\n-\n-def get_firewall_packets_command(wait):\n-    return _add_wait(wait, [\"iptables\", \"-t\", \"security\", \"-L\", \"OUTPUT\", \"--zero\", \"OUTPUT\", \"-nxv\"])\n-\n-\n-# Precisely delete the rules created by the agent.\n-# this rule was used <= 2.2.25.  This rule helped to validate our change, and determine impact.\n-def get_firewall_delete_conntrack_accept_command(wait, destination):\n-    return _add_wait(wait,\n-                     [\"iptables\", \"-t\", \"security\", AddFirewallRules.DELETE_COMMAND, \"OUTPUT\", \"-d\", destination, \"-p\", \"tcp\", \"-m\", \"conntrack\",\n-                      \"--ctstate\", \"INVALID,NEW\", \"-j\", \"ACCEPT\"])\n-\n-\n-def get_delete_accept_tcp_rule(wait, destination):\n-    return AddFirewallRules.get_accept_tcp_rule(AddFirewallRules.DELETE_COMMAND, destination, wait=wait)\n-\n-\n-def get_firewall_delete_owner_accept_command(wait, destination, owner_uid):\n-    return _add_wait(wait, [\"iptables\", \"-t\", \"security\", AddFirewallRules.DELETE_COMMAND, \"OUTPUT\", \"-d\", destination, \"-p\", \"tcp\", \"-m\", \"owner\",\n-                            \"--uid-owner\", str(owner_uid), \"-j\", \"ACCEPT\"])\n-\n-\n-def get_firewall_delete_conntrack_drop_command(wait, destination):\n-    return _add_wait(wait,\n-                     [\"iptables\", \"-t\", \"security\", AddFirewallRules.DELETE_COMMAND, \"OUTPUT\", \"-d\", destination, \"-p\", \"tcp\", \"-m\", \"conntrack\",\n-                      \"--ctstate\", \"INVALID,NEW\", \"-j\", \"DROP\"])\n-\n-\n-PACKET_PATTERN = \"^\\s*(\\d+)\\s+(\\d+)\\s+DROP\\s+.*{0}[^\\d]*$\"  # pylint: disable=W1401\n ALL_CPUS_REGEX = re.compile('^cpu .*')\n ALL_MEMS_REGEX = re.compile('^Mem.*')\n \n-_enable_firewall = True\n-\n DMIDECODE_CMD = 'dmidecode --string system-uuid'\n PRODUCT_ID_FILE = '/sys/class/dmi/id/product_uuid'\n UUID_PATTERN = re.compile(\n@@ -123,7 +101,7 @@ IOCTL_SIOCGIFFLAGS = 0x8913\n IOCTL_SIOCGIFHWADDR = 0x8927\n IFNAMSIZ = 16\n \n-IP_COMMAND_OUTPUT = re.compile('^\\d+:\\s+(\\w+):\\s+(.*)$')  # pylint: disable=W1401\n+IP_COMMAND_OUTPUT = re.compile(r'^\\d+:\\s+([\\w@]+):\\s+(.*)$')\n \n STORAGE_DEVICE_PATH = '/sys/bus/vmbus/devices/'\n GEN2_DEVICE_ID = 'f8b3781a-1e82-4818-a1c3-63d806ec15bb'\n@@ -145,6 +123,10 @@ class DefaultOSUtil(object):\n     def get_systemd_unit_file_install_path():\n         return \"/lib/systemd/system\"\n \n+    @classmethod\n+    def get_network_setup_service_install_path(cls):\n+        return cls.get_systemd_unit_file_install_path()\n+\n     @staticmethod\n     def get_agent_bin_path():\n         return \"/usr/sbin\"\n@@ -157,165 +139,6 @@ class DefaultOSUtil(object):\n             logger.warn(\"Unable to determine cpu architecture: {0}\", ustr(e))\n             return \"unknown\"\n \n-    def get_firewall_dropped_packets(self, dst_ip=None):\n-        # If a previous attempt failed, do not retry\n-        global _enable_firewall  # pylint: disable=W0603\n-        if not _enable_firewall:\n-            return 0\n-\n-        try:\n-            wait = self.get_firewall_will_wait()\n-\n-            try:\n-                output = shellutil.run_command(get_firewall_packets_command(wait))\n-\n-                pattern = re.compile(PACKET_PATTERN.format(dst_ip))\n-                for line in output.split('\\n'):\n-                    m = pattern.match(line)\n-                    if m is not None:\n-                        return int(m.group(1))\n-\n-            except Exception as e:\n-                if isinstance(e, CommandError) and (e.returncode == 3 or e.returncode == 4):  # pylint: disable=E1101\n-                    # Transient error that we ignore returncode 3. This code fires every loop\n-                    # of the daemon (60m), so we will get the value eventually.\n-                    # ignore returncode 4 as temporary fix (RULE_REPLACE failed (Invalid argument))\n-                    return 0\n-                logger.warn(\"Failed to get firewall packets: {0}\", ustr(e))\n-                return -1\n-\n-            return 0\n-\n-        except Exception as e:\n-            _enable_firewall = False\n-            logger.warn(\"Unable to retrieve firewall packets dropped\"\n-                        \"{0}\".format(ustr(e)))\n-            return -1\n-\n-    def get_firewall_will_wait(self):\n-        # Determine if iptables will serialize access\n-        try:\n-            output = shellutil.run_command(get_iptables_version_command())\n-        except Exception as e:\n-            msg = \"Unable to determine version of iptables: {0}\".format(ustr(e))\n-            logger.warn(msg)\n-            raise Exception(msg)\n-\n-        m = _IPTABLES_VERSION_PATTERN.match(output)\n-        if m is None:\n-            msg = \"iptables did not return version information: {0}\".format(output)\n-            logger.warn(msg)\n-            raise Exception(msg)\n-\n-        wait = \"-w\" \\\n-            if FlexibleVersion(m.group(1)) >= _IPTABLES_LOCKING_VERSION \\\n-            else \"\"\n-        return wait\n-\n-    def _delete_rule(self, rule):\n-        \"\"\"\n-        Continually execute the delete operation until the return\n-        code is non-zero or the limit has been reached.\n-        \"\"\"\n-        for i in range(1, 100):  # pylint: disable=W0612\n-            try:\n-                rc = shellutil.run_command(rule)  # pylint: disable=W0612\n-            except CommandError as e:\n-                if e.returncode == 1:\n-                    return\n-                if e.returncode == 2:\n-                    raise Exception(\"invalid firewall deletion rule '{0}'\".format(rule))\n-\n-    def remove_firewall(self, dst_ip, uid, wait):\n-        # If a previous attempt failed, do not retry\n-        global _enable_firewall  # pylint: disable=W0603\n-        if not _enable_firewall:\n-            return False\n-\n-        try:\n-            # This rule was <= 2.2.25 only, and may still exist on some VMs.  Until 2.2.25\n-            # has aged out, keep this cleanup in place.\n-            self._delete_rule(get_firewall_delete_conntrack_accept_command(wait, dst_ip))\n-\n-            self._delete_rule(get_delete_accept_tcp_rule(wait, dst_ip))\n-            self._delete_rule(get_firewall_delete_owner_accept_command(wait, dst_ip, uid))\n-            self._delete_rule(get_firewall_delete_conntrack_drop_command(wait, dst_ip))\n-\n-            return True\n-\n-        except Exception as e:\n-            _enable_firewall = False\n-            logger.info(\"Unable to remove firewall -- \"\n-                        \"no further attempts will be made: \"\n-                        \"{0}\".format(ustr(e)))\n-            return False\n-\n-    def remove_legacy_firewall_rule(self, dst_ip):\n-        # This function removes the legacy firewall rule that was added <= 2.2.25.\n-        # Not adding the global _enable_firewall check here as this will only be called once per service start and\n-        # we dont want the state of this call to affect other iptable calls.\n-        try:\n-            wait = self.get_firewall_will_wait()\n-\n-            # This rule was <= 2.2.25 only, and may still exist on some VMs.  Until 2.2.25\n-            # has aged out, keep this cleanup in place.\n-            self._delete_rule(get_firewall_delete_conntrack_accept_command(wait, dst_ip))\n-        except Exception as error:\n-            logger.info(\n-                \"Unable to remove legacy firewall rule, won't try removing it again. Error: {0}\".format(ustr(error)))\n-\n-    def enable_firewall(self, dst_ip, uid):\n-        \"\"\"\n-        It checks if every iptable rule exists and add them if not present. It returns a tuple(enable firewall success status, missing rules array)\n-        enable firewall success status: Returns True if every firewall rule exists otherwise False\n-        missing rules: array with names of the missing rules (\"ACCEPT DNS\", \"ACCEPT\", \"DROP\")\n-        \"\"\"\n-        # If a previous attempt failed, do not retry\n-        global _enable_firewall  # pylint: disable=W0603\n-        if not _enable_firewall:\n-            return False, []\n-\n-        missing_rules = []\n-\n-        try:\n-            wait = self.get_firewall_will_wait()\n-\n-            # check every iptable rule and delete others if any rule is missing\n-            #   and append every iptable rule to the end of the chain.\n-            try:\n-                missing_rules.extend(AddFirewallRules.get_missing_iptables_rules(wait, dst_ip, uid))\n-                if len(missing_rules) > 0:\n-                    self.remove_firewall(dst_ip, uid, wait)\n-                    AddFirewallRules.add_iptables_rules(wait, dst_ip, uid)\n-            except CommandError as e:\n-                if e.returncode == 2:\n-                    self.remove_firewall(dst_ip, uid, wait)\n-                    msg = \"please upgrade iptables to a version that supports the -C option\"\n-                    logger.warn(msg)\n-                    raise\n-            except Exception as error:\n-                logger.warn(ustr(error))\n-                raise\n-\n-            return True, missing_rules\n-\n-        except Exception as e:\n-            _enable_firewall = False\n-            logger.info(\"Unable to establish firewall -- \"\n-                        \"no further attempts will be made: \"\n-                        \"{0}\".format(ustr(e)))\n-            return False, missing_rules\n-\n-    def get_firewall_list(self, wait=None):\n-        try:\n-            if wait is None:\n-                wait = self.get_firewall_will_wait()\n-            output = shellutil.run_command(get_firewall_list_command(wait))\n-            return output\n-        except Exception as e:\n-            logger.warn(\"Listing firewall rules failed: {0}\".format(ustr(e)))\n-            return \"\"\n-\n     @staticmethod\n     def _correct_instance_id(instance_id):\n         \"\"\"\n@@ -433,11 +256,21 @@ class DefaultOSUtil(object):\n         if self.is_sys_user(username):\n             raise OSUtilError((\"User {0} is a system user, \"\n                                \"will not set password.\").format(username))\n-        passwd_hash = textutil.gen_password_hash(password, crypt_id, salt_len)\n+        passwd_hash = DefaultOSUtil.gen_password_hash(password, crypt_id, salt_len)\n \n         self._run_command_raising_OSUtilError([\"usermod\", \"-p\", passwd_hash, username],\n                                               err_msg=\"Failed to set password for {0}\".format(username))\n \n+    @staticmethod\n+    def gen_password_hash(password, crypt_id, salt_len):\n+        collection = string.ascii_letters + string.digits\n+        salt = ''.join(random.choice(collection) for _ in range(salt_len))\n+        salt = \"${0}${1}\".format(crypt_id, salt)\n+        if sys.version_info[0] == 2:\n+            # if python 2.*, encode to type 'str' to prevent Unicode Encode Error from crypt.crypt\n+            password = password.encode('utf-8')\n+        return crypt(password, salt)\n+\n     def get_users(self):\n         return getpwall()\n \n@@ -536,7 +369,7 @@ class DefaultOSUtil(object):\n                 raise OSUtilError(\"Bad public key: {0}\".format(value))\n             if not value.endswith(\"\\n\"):\n                 value += \"\\n\"\n-            fileutil.write_file(path, value)\n+            fileutil.write_file(path, value, append=True)\n         elif thumbprint is not None:\n             lib_dir = conf.get_lib_dir()\n             crt_path = os.path.join(lib_dir, thumbprint + '.crt')\n@@ -1037,8 +870,8 @@ class DefaultOSUtil(object):\n                         else:\n                             try:\n                                 expire_string = line.split(\" \", 4)[-1].strip(\";\")\n-                                expire_date = datetime.datetime.strptime(expire_string, FORMAT_DATETIME)\n-                                if expire_date > datetime.datetime.utcnow():\n+                                expire_date = datetime.datetime.strptime(expire_string, FORMAT_DATETIME).replace(tzinfo=UTC)\n+                                if expire_date > datetime.datetime.now(UTC):\n                                     expired = False\n                             except:  # pylint: disable=W0702\n                                 logger.error(\"could not parse expiry token '{0}'\".format(line))\n@@ -1138,7 +971,7 @@ class DefaultOSUtil(object):\n         Add specified route \n         \"\"\"\n         try:\n-            cmd = [\"ip\", \"route\", \"add\", net, \"via\", gateway]\n+            cmd = [\"ip\", \"route\", \"add\", str(net), \"via\", gateway]\n             return shellutil.run_command(cmd)\n         except CommandError:\n             return \"\"\ndiff --git a/azurelinuxagent/common/osutil/factory.py b/azurelinuxagent/common/osutil/factory.py\nindex e2f15af..60975b9 100644\n--- a/azurelinuxagent/common/osutil/factory.py\n+++ b/azurelinuxagent/common/osutil/factory.py\n@@ -16,15 +16,15 @@\n #\n \n \n-from distutils.version import LooseVersion as Version  # pylint: disable=no-name-in-module, import-error\n-\n import azurelinuxagent.common.logger as logger\n from azurelinuxagent.common.version import DISTRO_NAME, DISTRO_CODE_NAME, DISTRO_VERSION, DISTRO_FULL_NAME\n+from azurelinuxagent.common.utils.distro_version import DistroVersion\n from .alpine import AlpineOSUtil\n from .arch import ArchUtil\n from .bigip import BigIpOSUtil\n from .clearlinux import ClearLinuxUtil\n from .coreos import CoreOSUtil\n+from .chainguard import ChainguardOSUtil\n from .debian import DebianOSBaseUtil, DebianOSModernUtil\n from .default import DefaultOSUtil\n from .devuan import DevuanOSUtil\n@@ -66,39 +66,42 @@ def _get_osutil(distro_name, distro_code_name, distro_version, distro_full_name)\n         return ClearLinuxUtil()\n \n     if distro_name == \"ubuntu\":\n-        ubuntu_version = Version(distro_version)\n-        if ubuntu_version in [Version(\"12.04\"), Version(\"12.10\")]:\n+        ubuntu_version = DistroVersion(distro_version)\n+        if ubuntu_version in [DistroVersion(\"12.04\"), DistroVersion(\"12.10\")]:\n             return Ubuntu12OSUtil()\n-        if ubuntu_version in [Version(\"14.04\"), Version(\"14.10\")]:\n+        if ubuntu_version in [DistroVersion(\"14.04\"), DistroVersion(\"14.10\")]:\n             return Ubuntu14OSUtil()\n-        if ubuntu_version in [Version('16.04'), Version('16.10'), Version('17.04')]:\n+        if ubuntu_version in [DistroVersion('16.04'), DistroVersion('16.10'), DistroVersion('17.04')]:\n             return Ubuntu16OSUtil()\n-        if Version('18.04') <= ubuntu_version <= Version('24.04'):\n+        if DistroVersion('18.04') <= ubuntu_version <= DistroVersion('24.04'):\n             return Ubuntu18OSUtil()\n         if distro_full_name == \"Snappy Ubuntu Core\":\n             return UbuntuSnappyOSUtil()\n \n         return UbuntuOSUtil()\n \n-    if distro_name == \"alpine\":\n+    if distro_name in (\"alpine\", \"alpaquita\"):\n         return AlpineOSUtil()\n \n+    if distro_name == \"chainguard\":\n+        return ChainguardOSUtil()\n+\n     if distro_name == \"kali\":\n         return DebianOSBaseUtil()\n \n     if distro_name in (\"flatcar\", \"coreos\") or distro_code_name in (\"flatcar\", \"coreos\"):\n         return CoreOSUtil()\n \n-    if distro_name in (\"suse\", \"sle_hpc\", \"sles\", \"opensuse\"):\n+    if distro_name in (\"suse\", \"sle-micro\", \"sle_hpc\", \"sles\", \"opensuse\"):\n         if distro_full_name == 'SUSE Linux Enterprise Server' \\\n-                and Version(distro_version) < Version('12') \\\n-                or distro_full_name == 'openSUSE' and Version(distro_version) < Version('13.2'):\n+                and DistroVersion(distro_version) < DistroVersion('12') \\\n+                or distro_full_name == 'openSUSE' and DistroVersion(distro_version) < DistroVersion('13.2'):\n             return SUSE11OSUtil()\n \n         return SUSEOSUtil()\n \n     if distro_name == \"debian\":\n-        if \"sid\" in distro_version or Version(distro_version) > Version(\"7\"):\n+        if \"sid\" in distro_version or DistroVersion(distro_version) > DistroVersion(\"7\"):\n             return DebianOSModernUtil()\n \n         return DebianOSBaseUtil()\n@@ -109,16 +112,15 @@ def _get_osutil(distro_name, distro_code_name, distro_version, distro_full_name)\n     # to distinguish between debian and devuan. The new distro.linux_distribution module\n     # is able to distinguish between the two.\n \n-    if distro_name == \"devuan\" and Version(distro_version) >= Version(\"4\"):\n+    if distro_name == \"devuan\" and DistroVersion(distro_version) >= DistroVersion(\"4\"):\n         return DevuanOSUtil()\n         \n-\n     if distro_name in (\"redhat\", \"rhel\", \"centos\", \"oracle\", \"almalinux\",\n                        \"cloudlinux\", \"rocky\"):\n-        if Version(distro_version) < Version(\"7\"):\n+        if DistroVersion(distro_version) < DistroVersion(\"7\"):\n             return Redhat6xOSUtil()\n \n-        if Version(distro_version) >= Version(\"8.6\"):\n+        if DistroVersion(distro_version) >= DistroVersion(\"8.6\"):\n             return RedhatOSModernUtil()\n \n         return RedhatOSUtil()\n@@ -144,7 +146,7 @@ def _get_osutil(distro_name, distro_code_name, distro_version, distro_full_name)\n     if distro_name == \"iosxe\":\n         return IosxeOSUtil()\n \n-    if distro_name == \"mariner\":\n+    if distro_name in [\"mariner\", \"azurelinux\"]:\n         return MarinerOSUtil()\n \n     if distro_name == \"nsbsd\":\ndiff --git a/azurelinuxagent/common/osutil/freebsd.py b/azurelinuxagent/common/osutil/freebsd.py\nindex f8ee6db..0fcb0e5 100644\n--- a/azurelinuxagent/common/osutil/freebsd.py\n+++ b/azurelinuxagent/common/osutil/freebsd.py\n@@ -32,6 +32,7 @@ class FreeBSDOSUtil(DefaultOSUtil):\n \n     def __init__(self):\n         super(FreeBSDOSUtil, self).__init__()\n+        self.agent_conf_file_path = '/usr/local/etc/waagent.conf'\n         self._scsi_disks_timeout_set = False\n         self.jit_enabled = True\n \n@@ -77,7 +78,7 @@ class FreeBSDOSUtil(DefaultOSUtil):\n         if self.is_sys_user(username):\n             raise OSUtilError((\"User {0} is a system user, \"\n                                \"will not set password.\").format(username))\n-        passwd_hash = textutil.gen_password_hash(password, crypt_id, salt_len)\n+        passwd_hash = DefaultOSUtil.gen_password_hash(password, crypt_id, salt_len)\n         self._run_command_raising_OSUtilError(['pw', 'usermod', username, '-H', '0'], cmd_input=passwd_hash,\n                                               err_msg=\"Failed to set password for {0}\".format(username))\n \n@@ -150,7 +151,7 @@ class FreeBSDOSUtil(DefaultOSUtil):\n             route_header_line = output_lines.index(\"Internet:\") + 1\n             # Parse the file structure and left justify the routes\n             route_start_line = route_header_line + 1\n-            route_line_length = max([len(line) for line in output_lines[route_header_line:]])\n+            route_line_length = max(len(line) for line in output_lines[route_header_line:])\n             netstat_route_list = [line.ljust(route_line_length) for line in output_lines[route_start_line:]]\n             # Parse the headers\n             _route_headers = output_lines[route_header_line].split()\n@@ -551,7 +552,7 @@ class FreeBSDOSUtil(DefaultOSUtil):\n         err, output = shellutil.run_get_output(cmd_search_blkvsc)\n         if err == 0:\n             output = output.rstrip()\n-            cmd_search_dev = \"camcontrol devlist | grep {0} | awk -F \\( '{{print $2}}'|sed -e 's/.*(//'| sed -e 's/).*//'\".format(output)  # pylint: disable=W1401\n+            cmd_search_dev = \"camcontrol devlist | grep {0} | awk -F \\\\( '{{print $2}}'|sed -e 's/.*(//'| sed -e 's/).*//'\".format(output)\n             err, output = shellutil.run_get_output(cmd_search_dev)\n             if err == 0:\n                 for possible in output.rstrip().split(','):\n@@ -562,7 +563,7 @@ class FreeBSDOSUtil(DefaultOSUtil):\n         err, output = shellutil.run_get_output(cmd_search_storvsc)\n         if err == 0:\n             output = output.rstrip()\n-            cmd_search_dev = \"camcontrol devlist | grep {0} | awk -F \\( '{{print $2}}'|sed -e 's/.*(//'| sed -e 's/).*//'\".format(output)  # pylint: disable=W1401\n+            cmd_search_dev = \"camcontrol devlist | grep {0} | awk -F \\\\( '{{print $2}}'|sed -e 's/.*(//'| sed -e 's/).*//'\".format(output)\n             err, output = shellutil.run_get_output(cmd_search_dev)\n             if err == 0:\n                 for possible in output.rstrip().split(','):\ndiff --git a/azurelinuxagent/common/osutil/gaia.py b/azurelinuxagent/common/osutil/gaia.py\nindex 849d5d1..e11f482 100644\n--- a/azurelinuxagent/common/osutil/gaia.py\n+++ b/azurelinuxagent/common/osutil/gaia.py\n@@ -29,7 +29,6 @@ from azurelinuxagent.common.osutil.default import DefaultOSUtil\n from azurelinuxagent.common.utils.cryptutil import CryptUtil\n import azurelinuxagent.common.utils.fileutil as fileutil\n import azurelinuxagent.common.utils.shellutil as shellutil\n-import azurelinuxagent.common.utils.textutil as textutil\n \n \n class GaiaOSUtil(DefaultOSUtil):\n@@ -64,7 +63,7 @@ class GaiaOSUtil(DefaultOSUtil):\n \n     def chpasswd(self, username, password, crypt_id=6, salt_len=10):\n         logger.info('chpasswd')\n-        passwd_hash = textutil.gen_password_hash(password, crypt_id, salt_len)\n+        passwd_hash = DefaultOSUtil.gen_password_hash(password, crypt_id, salt_len)\n         ret, out = self._run_clish(\n             'set user admin password-hash ' + passwd_hash)\n         if ret != 0:\n@@ -179,7 +178,7 @@ class GaiaOSUtil(DefaultOSUtil):\n         return socket.inet_ntoa(struct.pack(\"!I\", addr))\n \n     def _get_prefix(self, mask):\n-        return str(sum([bin(int(x)).count('1') for x in mask.split('.')]))\n+        return str(sum(bin(int(x)).count('1') for x in mask.split('.')))\n \n     def route_add(self, net, mask, gateway):\n         logger.info('route_add {0} {1} {2}', net, mask, gateway)\ndiff --git a/azurelinuxagent/common/osutil/nsbsd.py b/azurelinuxagent/common/osutil/nsbsd.py\nindex 00723aa..e4ead3a 100644\n--- a/azurelinuxagent/common/osutil/nsbsd.py\n+++ b/azurelinuxagent/common/osutil/nsbsd.py\n@@ -136,27 +136,3 @@ class NSBSDOSUtil(FreeBSDOSUtil):\n     def set_dhcp_hostname(self, hostname):\n         # already done by the dhcp client\n         pass\n-\n-    def get_firewall_dropped_packets(self, dst_ip=None):\n-        # disable iptables methods\n-        return 0\n-\n-    def get_firewall_will_wait(self):\n-        # disable iptables methods\n-        return \"\"\n-\n-    def _delete_rule(self, rule):\n-        # disable iptables methods\n-        return\n-\n-    def remove_firewall(self, dst_ip=None, uid=None, wait=\"\"):\n-        # disable iptables methods\n-        return True\n-\n-    def enable_firewall(self, dst_ip=None, uid=None):\n-        # disable iptables methods\n-        return True, True\n-\n-    def get_firewall_list(self, wait=\"\"):\n-        # disable iptables methods\n-        return \"\"\ndiff --git a/azurelinuxagent/common/osutil/openbsd.py b/azurelinuxagent/common/osutil/openbsd.py\nindex 0a80fc9..8c9a77d 100644\n--- a/azurelinuxagent/common/osutil/openbsd.py\n+++ b/azurelinuxagent/common/osutil/openbsd.py\n@@ -23,6 +23,7 @@ import time\n import glob\n import datetime\n \n+from azurelinuxagent.common.future import UTC\n import azurelinuxagent.common.utils.fileutil as fileutil\n import azurelinuxagent.common.utils.shellutil as shellutil\n import azurelinuxagent.common.logger as logger\n@@ -190,9 +191,8 @@ class OpenBSDOSUtil(DefaultOSUtil):\n                             try:\n                                 expire_string = line.split(\n                                     \" \", 4)[-1].strip(\";\")\n-                                expire_date = datetime.datetime.strptime(\n-                                    expire_string, FORMAT_DATETIME)\n-                                if expire_date > datetime.datetime.utcnow():\n+                                expire_date = datetime.datetime.strptime(expire_string, FORMAT_DATETIME).replace(tzinfo=UTC)\n+                                if expire_date > datetime.datetime.now(UTC):\n                                     expired = False\n                             except ValueError:\n                                 logger.error(\"could not parse expiry token \"\ndiff --git a/azurelinuxagent/common/osutil/openwrt.py b/azurelinuxagent/common/osutil/openwrt.py\nindex d99f032..81e352e 100644\n--- a/azurelinuxagent/common/osutil/openwrt.py\n+++ b/azurelinuxagent/common/osutil/openwrt.py\n@@ -25,15 +25,16 @@ import azurelinuxagent.common.utils.fileutil as fileutil\n from azurelinuxagent.common.osutil.default import DefaultOSUtil\n from azurelinuxagent.common.utils.networkutil import NetworkInterfaceCard\n \n-class OpenWRTOSUtil(DefaultOSUtil):\n \n+class OpenWRTOSUtil(DefaultOSUtil):\n     def __init__(self):\n         super(OpenWRTOSUtil, self).__init__()\n         self.agent_conf_file_path = '/etc/waagent.conf'\n         self.dhclient_name = 'udhcpc'\n-        self.ip_command_output = re.compile('^\\d+:\\s+(\\w+):\\s+(.*)$')  # pylint: disable=W1401\n         self.jit_enabled = True\n-        \n+\n+    _ip_command_output = re.compile(r'^\\d+:\\s+(\\w+):\\s+(.*)$')\n+\n     def eject_dvd(self, chk_err=True):\n         logger.warn('eject is not supported on OpenWRT')\n \n@@ -79,18 +80,18 @@ class OpenWRTOSUtil(DefaultOSUtil):\n             return {}\n \n         for entry in output.splitlines():\n-            result = self.ip_command_output.match(entry)\n+            result = OpenWRTOSUtil._ip_command_output.match(entry)\n             if result:\n                 name = result.group(1)\n                 state[name] = NetworkInterfaceCard(name, result.group(2))\n \n-\n         self._update_nic_state(state, \"ip -o -f inet address\", NetworkInterfaceCard.add_ipv4, \"an IPv4 address\")\n         self._update_nic_state(state, \"ip -o -f inet6 address\", NetworkInterfaceCard.add_ipv6, \"an IPv6 address\")\n \n         return state\n \n-    def _update_nic_state(self, state, ip_command, handler, description):\n+    @staticmethod\n+    def _update_nic_state(state, ip_command, handler, description):\n         \"\"\"\n         Update the state of NICs based on the output of a specified ip subcommand.\n \n@@ -104,7 +105,7 @@ class OpenWRTOSUtil(DefaultOSUtil):\n             return\n \n         for entry in output.splitlines():\n-            result = self.ip_command_output.match(entry)\n+            result = OpenWRTOSUtil._ip_command_output.match(entry)\n             if result:\n                 interface_name = result.group(1)\n                 if interface_name in state:\ndiff --git a/azurelinuxagent/common/osutil/redhat.py b/azurelinuxagent/common/osutil/redhat.py\nindex a9a1034..e59ee47 100644\n--- a/azurelinuxagent/common/osutil/redhat.py\n+++ b/azurelinuxagent/common/osutil/redhat.py\n@@ -103,6 +103,18 @@ class RedhatOSUtil(Redhat6xOSUtil):\n     def get_systemd_unit_file_install_path():\n         return \"/usr/lib/systemd/system\"\n \n+    @classmethod\n+    def get_network_setup_service_install_path(cls):\n+        \"\"\"\n+        In image mode, /usr is readonly, so the\n+        waagent-network-setup.service is written in /etc/systemd/system.\n+        In non-image mode, the default location is /usr/lib/systemd/system.\n+        \"\"\"\n+        if os.path.exists('/run/ostree-booted'):\n+            return \"/etc/systemd/system\"\n+        else:\n+            return cls.get_systemd_unit_file_install_path()\n+\n     def set_hostname(self, hostname):\n         \"\"\"\n         Unlike redhat 6.x, redhat 7.x will set hostname via hostnamectl\n@@ -245,6 +257,18 @@ class RedhatOSModernUtil(RedhatOSUtil):\n     def __init__(self):  # pylint: disable=W0235\n         super(RedhatOSModernUtil, self).__init__()\n \n+    def restart_ssh_service(self):\n+        return shellutil.run(\"systemctl condrestart sshd\", chk_err=False)\n+\n+    def stop_agent_service(self):\n+        return shellutil.run(\"systemctl stop {0}\".format(self.service_name), chk_err=False)\n+\n+    def start_agent_service(self):\n+        return shellutil.run(\"systemctl start {0}\".format(self.service_name), chk_err=False)\n+\n+    def restart_network_manager(self):\n+        shellutil.run(\"systemctl restart NetworkManager\")\n+\n     def restart_if(self, ifname, retries=3, wait=5):\n         \"\"\"\n         Restart an interface by bouncing the link. systemd-networkd observes\n@@ -270,5 +294,5 @@ class RedhatOSModernUtil(RedhatOSUtil):\n         # RedhatOSUtil was updated to conditionally run NetworkManager restart in response to a race condition between\n         # NetworkManager restart and the agent restarting the network interface during publish_hostname. Keeping the\n         # NetworkManager restart in RedhatOSModernUtil because the issue was not reproduced on these versions.\n-        shellutil.run(\"service NetworkManager restart\")\n+        self.restart_network_manager()\n         DefaultOSUtil.publish_hostname(self, hostname)\ndiff --git a/azurelinuxagent/common/osutil/systemd.py b/azurelinuxagent/common/osutil/systemd.py\nindex 9f1e604..a70294b 100644\n--- a/azurelinuxagent/common/osutil/systemd.py\n+++ b/azurelinuxagent/common/osutil/systemd.py\n@@ -43,7 +43,13 @@ def get_version():\n     #    systemd 245 (245.4-4ubuntu3)\n     #    +PAM +AUDIT +SELINUX +IMA +APPARMOR +SMACK +SYSVINIT +UTMP etc\n     #\n-    return shellutil.run_command(['systemctl', '--version'])\n+    # return fist line systemd 245 (245.4-4ubuntu3)\n+    try:\n+        output = shellutil.run_command(['systemctl', '--version'])\n+        version = output.split('\\n')[0]\n+        return version\n+    except Exception:\n+        return \"unknown\"\n \n \n def get_unit_file_install_path():\n@@ -84,3 +90,44 @@ def get_unit_property(unit_name, property_name):\n         raise ValueError(\"Can't find property {0} of {1}\".format(property_name, unit_name))\n     return match.group('value')\n \n+\n+def set_unit_run_time_property(unit_name, property_name, value):\n+    \"\"\"\n+    Set a property of a unit at runtime\n+\n+    Note: --runtime settings only apply until the next reboot\n+    \"\"\"\n+    try:\n+        # Ex: systemctl set-property foobar.service CPUWeight=200 --runtime\n+        shellutil.run_command([\"systemctl\", \"set-property\", unit_name, \"{0}={1}\".format(property_name, value), \"--runtime\"])\n+    except shellutil.CommandError as e:\n+        raise ValueError(\"Can't set property {0} of {1}: {2}\".format(property_name, unit_name, e))\n+\n+\n+def set_unit_run_time_properties(unit_name, property_names, values):\n+    \"\"\"\n+    Set multiple properties of a unit at runtime\n+\n+    Note: --runtime settings only apply until the next reboot\n+    \"\"\"\n+    if len(property_names) != len(values):\n+        raise ValueError(\"The number of property names:{0} and values:{1} must be the same\".format(property_names, values))\n+\n+    properties = [\"{0}={1}\".format(name, value) for name, value in zip(property_names, values)]\n+\n+    try:\n+        # Ex: systemctl set-property foobar.service CPUWeight=200 MemoryMax=2G IPAccounting=yes --runtime\n+        shellutil.run_command([\"systemctl\", \"set-property\", unit_name] + properties + [\"--runtime\"])\n+    except shellutil.CommandError as e:\n+        raise ValueError(\"Can't set properties {0} of {1}: {2}\".format(properties, unit_name, e))\n+\n+\n+def is_unit_loaded(unit_name):\n+    \"\"\"\n+    Determine if a unit is loaded\n+    \"\"\"\n+    try:\n+        value = get_unit_property(unit_name, \"LoadState\")\n+        return value.lower() == \"loaded\"\n+    except shellutil.CommandError:\n+        return False\n\\ No newline at end of file\ndiff --git a/azurelinuxagent/common/protocol/extensions_goal_state.py b/azurelinuxagent/common/protocol/extensions_goal_state.py\nindex 337cff1..8eeadea 100644\n--- a/azurelinuxagent/common/protocol/extensions_goal_state.py\n+++ b/azurelinuxagent/common/protocol/extensions_goal_state.py\n@@ -20,7 +20,8 @@ import datetime\n from azurelinuxagent.common import logger\n from azurelinuxagent.common.AgentGlobals import AgentGlobals\n from azurelinuxagent.common.exception import AgentError\n-from azurelinuxagent.common.utils import textutil\n+from azurelinuxagent.common.future import datetime_min_utc\n+from azurelinuxagent.common.utils import textutil, timeutil\n \n \n class GoalStateChannel(object):\n@@ -153,16 +154,16 @@ class ExtensionsGoalState(object):\n         Takes 'ticks', a string indicating the number of ticks since midnight 0001-01-01 00:00:00, and\n         returns a UTC timestamp  (every tick is 1/10000000 of a second).\n         \"\"\"\n-        minimum = datetime.datetime(1900, 1, 1, 0, 0)  # min value accepted by datetime.strftime()\n-        as_date_time = minimum\n+        as_date_time = None\n         if ticks_string not in (None, \"\"):\n             try:\n-                as_date_time = datetime.datetime.min + datetime.timedelta(seconds=float(ticks_string) / 10 ** 7)\n+                as_date_time = datetime_min_utc + datetime.timedelta(seconds=float(ticks_string) / 10 ** 7)\n             except Exception as exception:\n-                logger.verbose(\"Can't parse ticks: {0}\", textutil.format_exception(exception))\n-        as_date_time = max(as_date_time, minimum)\n+                logger.info(\"Can't parse ticks: {0}\", textutil.format_exception(exception))\n+        if as_date_time is None:\n+            as_date_time = datetime_min_utc\n \n-        return as_date_time.strftime(logger.Logger.LogTimeFormatInUTC)\n+        return timeutil.create_utc_timestamp(as_date_time)\n \n     @staticmethod\n     def _string_to_id(id_string):\n@@ -174,6 +175,14 @@ class ExtensionsGoalState(object):\n             return AgentGlobals.GUID_ZERO\n         return id_string\n \n+    def supports_encoded_signature(self):\n+        \"\"\"\n+        Returns boolean indicating if the goal state API supports the 'encoded_signature' property.\n+        - ExtensionsConfig goal states should always return True.\n+        - VmSettings goal states should check the HGAP version.\n+        \"\"\"\n+        raise NotImplementedError()\n+\n \n class EmptyExtensionsGoalState(ExtensionsGoalState):\n     def __init__(self, incarnation):\n@@ -203,7 +212,7 @@ class EmptyExtensionsGoalState(ExtensionsGoalState):\n \n     @property\n     def created_on_timestamp(self):\n-        return datetime.datetime.min\n+        return datetime_min_utc\n \n     @property\n     def channel(self):\n@@ -242,3 +251,6 @@ class EmptyExtensionsGoalState(ExtensionsGoalState):\n \n     def get_redacted_text(self):\n         return ''\n+\n+    def supports_encoded_signature(self):\n+        return False\ndiff --git a/azurelinuxagent/common/protocol/extensions_goal_state_from_extensions_config.py b/azurelinuxagent/common/protocol/extensions_goal_state_from_extensions_config.py\nindex 2b98819..1a42ece 100644\n--- a/azurelinuxagent/common/protocol/extensions_goal_state_from_extensions_config.py\n+++ b/azurelinuxagent/common/protocol/extensions_goal_state_from_extensions_config.py\n@@ -22,11 +22,11 @@ from collections import defaultdict\n from azurelinuxagent.common import logger\n from azurelinuxagent.common.event import add_event, WALAEventOperation\n from azurelinuxagent.common.exception import ExtensionsConfigError\n-from azurelinuxagent.common.future import ustr\n+from azurelinuxagent.common.future import ustr, urlparse\n from azurelinuxagent.common.protocol.extensions_goal_state import ExtensionsGoalState, GoalStateChannel, GoalStateSource\n from azurelinuxagent.common.protocol.restapi import ExtensionSettings, Extension, VMAgentFamily, ExtensionState, InVMGoalStateMetaData\n-from azurelinuxagent.common.utils.textutil import parse_doc, parse_json, findall, find, findtext, getattrib, gettext, format_exception, \\\n-    is_str_none_or_whitespace, is_str_empty\n+from azurelinuxagent.common.utils.textutil import parse_doc, parse_json, findall, find, findtext, getattrib, gettext, \\\n+    format_exception, is_str_none_or_whitespace, is_str_empty, gettextxml\n \n \n class ExtensionsGoalStateFromExtensionsConfig(ExtensionsGoalState):\n@@ -38,6 +38,8 @@ class ExtensionsGoalStateFromExtensionsConfig(ExtensionsGoalState):\n         self._text = xml_text\n         self._status_upload_blob = None\n         self._status_upload_blob_type = None\n+        self._status_upload_blob_xml_node = None\n+        self._artifacts_profile_blob_xml_node = None\n         self._required_features = []\n         self._on_hold = False\n         self._activity_id = None\n@@ -61,12 +63,14 @@ class ExtensionsGoalStateFromExtensionsConfig(ExtensionsGoalState):\n         for ga_family in ga_families:\n             name = findtext(ga_family, \"Name\")\n             version = findtext(ga_family, \"Version\")\n+            from_version = findtext(ga_family, \"FromVersion\")\n             is_version_from_rsm = findtext(ga_family, \"IsVersionFromRSM\")\n             is_vm_enabled_for_rsm_upgrades = findtext(ga_family, \"IsVMEnabledForRSMUpgrades\")\n             uris_list = find(ga_family, \"Uris\")\n             uris = findall(uris_list, \"Uri\")\n             family = VMAgentFamily(name)\n             family.version = version\n+            family.from_version = from_version\n             if is_version_from_rsm is not None:  # checking None because converting string to lowercase\n                 family.is_version_from_rsm = is_version_from_rsm.lower() == \"true\"\n             if is_vm_enabled_for_rsm_upgrades is not None:  # checking None because converting string to lowercase\n@@ -81,13 +85,13 @@ class ExtensionsGoalStateFromExtensionsConfig(ExtensionsGoalState):\n         if required_features_list is not None:\n             self._parse_required_features(required_features_list)\n \n-        self._status_upload_blob = findtext(xml_doc, \"StatusUploadBlob\")\n-\n-        status_upload_node = find(xml_doc, \"StatusUploadBlob\")\n-        self._status_upload_blob_type = getattrib(status_upload_node, \"statusBlobType\")\n+        self._status_upload_blob_xml_node = find(xml_doc, \"StatusUploadBlob\")\n+        self._status_upload_blob = gettext(self._status_upload_blob_xml_node)\n+        self._status_upload_blob_type = getattrib(self._status_upload_blob_xml_node, \"statusBlobType\")\n         logger.verbose(\"Extension config shows status blob type as [{0}]\", self._status_upload_blob_type)\n \n-        self._on_hold = ExtensionsGoalStateFromExtensionsConfig._fetch_extensions_on_hold(xml_doc, wire_client)\n+        self._artifacts_profile_blob_xml_node = find(xml_doc, \"InVMArtifactsProfileBlob\")\n+        self._on_hold = ExtensionsGoalStateFromExtensionsConfig._fetch_extensions_on_hold(self._artifacts_profile_blob_xml_node, wire_client)\n \n         in_vm_gs_metadata = InVMGoalStateMetaData(find(xml_doc, \"InVMGoalStateMetaData\"))\n         self._activity_id = self._string_to_id(in_vm_gs_metadata.activity_id)\n@@ -95,7 +99,7 @@ class ExtensionsGoalStateFromExtensionsConfig(ExtensionsGoalState):\n         self._created_on_timestamp = self._ticks_to_utc_timestamp(in_vm_gs_metadata.created_on_ticks)\n \n     @staticmethod\n-    def _fetch_extensions_on_hold(xml_doc, wire_client):\n+    def _fetch_extensions_on_hold(artifacts_profile_blob_xml_node, wire_client):\n         def log_info(message):\n             logger.info(message)\n             add_event(op=WALAEventOperation.ArtifactsProfileBlob, message=message, is_success=True, log_event=False)\n@@ -104,7 +108,7 @@ class ExtensionsGoalStateFromExtensionsConfig(ExtensionsGoalState):\n             logger.warn(message)\n             add_event(op=WALAEventOperation.ArtifactsProfileBlob, message=message, is_success=False, log_event=False)\n \n-        artifacts_profile_blob = findtext(xml_doc, \"InVMArtifactsProfileBlob\")\n+        artifacts_profile_blob = gettext(artifacts_profile_blob_xml_node)\n         if is_str_none_or_whitespace(artifacts_profile_blob):\n             log_info(\"ExtensionsConfig does not include a InVMArtifactsProfileBlob; will assume the VM is not on hold\")\n             return False\n@@ -187,12 +191,30 @@ class ExtensionsGoalStateFromExtensionsConfig(ExtensionsGoalState):\n         return self._extensions\n \n     def get_redacted_text(self):\n-        text = self._text\n-        for ext_handler in self._extensions:\n-            for extension in ext_handler.settings:\n-                if extension.protectedSettings is not None:\n-                    text = text.replace(extension.protectedSettings, \"*** REDACTED ***\")\n-        return text\n+        def redact_url(unredacted, xml_node, name):\n+            text_xml = gettextxml(xml_node)  # Note that we need to redact the raw XML text (which may contain escape sequences)\n+            if text_xml is None:\n+                return unredacted\n+            parsed = urlparse(text_xml)\n+            redacted = unredacted.replace(parsed.query, \"***REDACTED***\")\n+            if redacted == unredacted:\n+                raise Exception('Could not redact {0}'.format(name))\n+            return redacted\n+\n+        try:\n+            text = self._text\n+            text = redact_url(text, self._status_upload_blob_xml_node, \"StatusUploadBlob\")\n+            text = redact_url(text, self._artifacts_profile_blob_xml_node, \"InVMArtifactsProfileBlob\")\n+            for ext_handler in self._extensions:\n+                for extension in ext_handler.settings:\n+                    if extension.protectedSettings is not None:\n+                        original = text\n+                        text = text.replace(extension.protectedSettings, \"***REDACTED***\")\n+                        if text == original:\n+                            return 'Could not redact protectedSettings for {0}'.format(extension.name)\n+            return text\n+        except Exception as e:\n+            return \"Error redacting text: {0}\".format(e)\n \n     def _parse_required_features(self, required_features_list):\n         for required_feature in findall(required_features_list, \"RequiredFeature\"):\n@@ -205,8 +227,8 @@ class ExtensionsGoalStateFromExtensionsConfig(ExtensionsGoalState):\n         Sample ExtensionConfig Plugin and PluginSettings:\n \n         <Plugins>\n-          <Plugin name=\"Microsoft.CPlat.Core.NullSeqB\" version=\"2.0.1\" location=\"https://zrdfepirv2cbn04prdstr01a.blob.core.windows.net/f72653efd9e349ed9842c8b99e4c1712/Microsoft.CPlat.Core_NullSeqB_useast2euap_manifest.xml\" state=\"enabled\" autoUpgrade=\"false\" failoverlocation=\"https://zrdfepirv2cbz06prdstr01a.blob.core.windows.net/f72653efd9e349ed9842c8b99e4c1712/Microsoft.CPlat.Core_NullSeqB_useast2euap_manifest.xml\" runAsStartupTask=\"false\" isJson=\"true\" useExactVersion=\"true\" />\n-          <Plugin name=\"Microsoft.CPlat.Core.NullSeqA\" version=\"2.0.1\" location=\"https://zrdfepirv2cbn04prdstr01a.blob.core.windows.net/f72653efd9e349ed9842c8b99e4c1712/Microsoft.CPlat.Core_NullSeqA_useast2euap_manifest.xml\" state=\"enabled\" autoUpgrade=\"false\" failoverlocation=\"https://zrdfepirv2cbn06prdstr01a.blob.core.windows.net/f72653efd9e349ed9842c8b99e4c1712/Microsoft.CPlat.Core_NullSeqA_useast2euap_manifest.xml\" runAsStartupTask=\"false\" isJson=\"true\" useExactVersion=\"true\" />\n+          <Plugin name=\"Microsoft.CPlat.Core.NullSeqB\" version=\"2.0.1\" location=\"https://zrdfepirv2cbn04prdstr01a.blob.core.windows.net/f72653efd9e349ed9842c8b99e4c1712/Microsoft.CPlat.Core_NullSeqB_useast2euap_manifest.xml\" state=\"enabled\" autoUpgrade=\"false\" failoverlocation=\"https://zrdfepirv2cbz06prdstr01a.blob.core.windows.net/f72653efd9e349ed9842c8b99e4c1712/Microsoft.CPlat.Core_NullSeqB_useast2euap_manifest.xml\" runAsStartupTask=\"false\" isJson=\"true\" useExactVersion=\"true\"/>\n+          <Plugin name=\"Microsoft.CPlat.Core.NullSeqA\" version=\"2.0.1\" location=\"https://zrdfepirv2cbn04prdstr01a.blob.core.windows.net/f72653efd9e349ed9842c8b99e4c1712/Microsoft.CPlat.Core_NullSeqA_useast2euap_manifest.xml\" state=\"enabled\" autoUpgrade=\"false\" failoverlocation=\"https://zrdfepirv2cbn06prdstr01a.blob.core.windows.net/f72653efd9e349ed9842c8b99e4c1712/Microsoft.CPlat.Core_NullSeqA_useast2euap_manifest.xml\" runAsStartupTask=\"false\" isJson=\"true\" useExactVersion=\"true\" encodedSignature=\"MII...\" />\n         </Plugins>\n         <PluginSettings>\n           <Plugin name=\"Microsoft.CPlat.Core.NullSeqA\" version=\"2.0.1\">\n@@ -260,13 +282,14 @@ class ExtensionsGoalStateFromExtensionsConfig(ExtensionsGoalState):\n         Sample config:\n \n         <Plugins>\n-          <Plugin name=\"Microsoft.CPlat.Core.NullSeqB\" version=\"2.0.1\" location=\"https://zrdfepirv2cbn04prdstr01a.blob.core.windows.net/f72653efd9e349ed9842c8b99e4c1712/Microsoft.CPlat.Core_NullSeqB_useast2euap_manifest.xml\" state=\"enabled\" autoUpgrade=\"false\" failoverlocation=\"https://zrdfepirv2cbz06prdstr01a.blob.core.windows.net/f72653efd9e349ed9842c8b99e4c1712/Microsoft.CPlat.Core_NullSeqB_useast2euap_manifest.xml\" runAsStartupTask=\"false\" isJson=\"true\" useExactVersion=\"true\"><Plugin name=\"Microsoft.Azure.Extensions.CustomScript\" version=\"1.0\" location=\"https://rdfecurrentuswestcache.blob.core.test-cint.azure-test.net/0e53c53ef0be4178bacb0a1fecf12a74/Microsoft.Azure.Extensions_CustomScript_usstagesc_manifest.xml\" state=\"enabled\" autoUpgrade=\"false\" failoverlocation=\"https://rdfecurrentuswestcache2.blob.core.test-cint.azure-test.net/0e53c53ef0be4178bacb0a1fecf12a74/Microsoft.Azure.Extensions_CustomScript_usstagesc_manifest.xml\" runAsStartupTask=\"false\" isJson=\"true\" useExactVersion=\"true\">\n+          <Plugin name=\"Microsoft.CPlat.Core.NullSeqB\" version=\"2.0.1\" location=\"https://zrdfepirv2cbn04prdstr01a.blob.core.windows.net/f72653efd9e349ed9842c8b99e4c1712/Microsoft.CPlat.Core_NullSeqB_useast2euap_manifest.xml\" state=\"enabled\" autoUpgrade=\"false\" failoverlocation=\"https://zrdfepirv2cbz06prdstr01a.blob.core.windows.net/f72653efd9e349ed9842c8b99e4c1712/Microsoft.CPlat.Core_NullSeqB_useast2euap_manifest.xml\" runAsStartupTask=\"false\" isJson=\"true\" useExactVersion=\"true\">\n+          <Plugin name=\"Microsoft.Azure.Extensions.CustomScript\" version=\"1.0\" location=\"https://rdfecurrentuswestcache.blob.core.test-cint.azure-test.net/0e53c53ef0be4178bacb0a1fecf12a74/Microsoft.Azure.Extensions_CustomScript_usstagesc_manifest.xml\" state=\"enabled\" autoUpgrade=\"false\" failoverlocation=\"https://rdfecurrentuswestcache2.blob.core.test-cint.azure-test.net/0e53c53ef0be4178bacb0a1fecf12a74/Microsoft.Azure.Extensions_CustomScript_usstagesc_manifest.xml\" runAsStartupTask=\"false\" isJson=\"true\" useExactVersion=\"true\">\n             <additionalLocations>\n               <additionalLocation>https://rdfecurrentuswestcache3.blob.core.test-cint.azure-test.net/0e53c53ef0be4178bacb0a1fecf12a74/Microsoft.Azure.Extensions_CustomScript_usstagesc_manifest.xml</additionalLocation>\n               <additionalLocation>https://rdfecurrentuswestcache4.blob.core.test-cint.azure-test.net/0e53c53ef0be4178bacb0a1fecf12a74/Microsoft.Azure.Extensions_CustomScript_usstagesc_manifest.xml</additionalLocation>\n             </additionalLocations>\n           </Plugin>\n-          <Plugin name=\"Microsoft.CPlat.Core.NullSeqA\" version=\"2.0.1\" location=\"https://zrdfepirv2cbn04prdstr01a.blob.core.windows.net/f72653efd9e349ed9842c8b99e4c1712/Microsoft.CPlat.Core_NullSeqA_useast2euap_manifest.xml\" state=\"enabled\" autoUpgrade=\"false\" failoverlocation=\"https://zrdfepirv2cbn06prdstr01a.blob.core.windows.net/f72653efd9e349ed9842c8b99e4c1712/Microsoft.CPlat.Core_NullSeqA_useast2euap_manifest.xml\" runAsStartupTask=\"false\" isJson=\"true\" useExactVersion=\"true\" />\n+          <Plugin name=\"Microsoft.CPlat.Core.NullSeqA\" version=\"2.0.1\" location=\"https://zrdfepirv2cbn04prdstr01a.blob.core.windows.net/f72653efd9e349ed9842c8b99e4c1712/Microsoft.CPlat.Core_NullSeqA_useast2euap_manifest.xml\" state=\"enabled\" autoUpgrade=\"false\" failoverlocation=\"https://zrdfepirv2cbn06prdstr01a.blob.core.windows.net/f72653efd9e349ed9842c8b99e4c1712/Microsoft.CPlat.Core_NullSeqA_useast2euap_manifest.xml\" runAsStartupTask=\"false\" isJson=\"true\" useExactVersion=\"true\" encodedSignature=\"MIIn...\" />\n         </Plugins>\n \n \n@@ -294,6 +317,11 @@ class ExtensionsGoalStateFromExtensionsConfig(ExtensionsGoalState):\n         if extension.state in (None, \"\"):\n             raise ExtensionsConfigError(\"Received empty Extensions.Plugins.Plugin.state, failing Handler\")\n \n+        # The 'encodedSignature' property is optional. If absent, it may mean the ExtensionsConfig API does not support\n+        # it, or the extension is not signed. In either case, we set extension.encoded_signature to an empty string.\n+        # Note that getattrib returns an empty string already if an attribute does not exist in a node.\n+        extension.encoded_signature = getattrib(plugin, \"encodedSignature\")\n+\n         def getattrib_wrapped_in_list(node, attr_name):\n             attr = getattrib(node, attr_name)\n             return [attr] if attr not in (None, \"\") else []\n@@ -545,6 +573,12 @@ class ExtensionsGoalStateFromExtensionsConfig(ExtensionsGoalState):\n             extension_settings.certificateThumbprint = thumbprint\n             extension.settings.append(extension_settings)\n \n+    def supports_encoded_signature(self):\n+        \"\"\"\n+        Returns bool indicating if the ExtensionsConfig API supports the 'encoded_signature' extension property. Should always return True.\n+        \"\"\"\n+        return True\n+\n \n # Do not extend this class\n class _InVMArtifactsProfile(object):\ndiff --git a/azurelinuxagent/common/protocol/extensions_goal_state_from_vm_settings.py b/azurelinuxagent/common/protocol/extensions_goal_state_from_vm_settings.py\nindex 041dded..ef31349 100644\n--- a/azurelinuxagent/common/protocol/extensions_goal_state_from_vm_settings.py\n+++ b/azurelinuxagent/common/protocol/extensions_goal_state_from_vm_settings.py\n@@ -15,23 +15,22 @@\n # limitations under the License.\n #\n # Requires Python 2.6+ and Openssl 1.0+\n-import datetime\n import json\n-import re\n import sys\n \n from azurelinuxagent.common import logger\n from azurelinuxagent.common.AgentGlobals import AgentGlobals\n from azurelinuxagent.common.event import WALAEventOperation, add_event\n-from azurelinuxagent.common.future import ustr\n+from azurelinuxagent.common.future import ustr, urlparse, datetime_min_utc\n from azurelinuxagent.common.protocol.extensions_goal_state import ExtensionsGoalState, GoalStateChannel, VmSettingsParseError\n from azurelinuxagent.common.protocol.restapi import VMAgentFamily, Extension, ExtensionRequestedState, ExtensionSettings\n+from azurelinuxagent.common.utils import timeutil\n from azurelinuxagent.common.utils.flexible_version import FlexibleVersion\n \n+# The 'encodedSignature' property is only supported on newer versions of HGAP.\n+_MIN_HGAP_VERSION_FOR_EXT_SIGNATURE = FlexibleVersion(\"1.0.8.159\")\n \n class ExtensionsGoalStateFromVmSettings(ExtensionsGoalState):\n-    _MINIMUM_TIMESTAMP = datetime.datetime(1900, 1, 1, 0, 0)  # min value accepted by datetime.strftime()\n-\n     def __init__(self, etag, json_text, correlation_id):\n         super(ExtensionsGoalStateFromVmSettings, self).__init__()\n         self._id = \"etag_{0}\".format(etag)\n@@ -43,7 +42,7 @@ class ExtensionsGoalStateFromVmSettings(ExtensionsGoalState):\n         self._schema_version = FlexibleVersion('0.0.0.0')\n         self._activity_id = AgentGlobals.GUID_ZERO\n         self._correlation_id = AgentGlobals.GUID_ZERO\n-        self._created_on_timestamp = self._MINIMUM_TIMESTAMP\n+        self._created_on_timestamp = timeutil.create_utc_timestamp(datetime_min_utc)\n         self._source = None\n         self._status_upload_blob = None\n         self._status_upload_blob_type = None\n@@ -143,7 +142,27 @@ class ExtensionsGoalStateFromVmSettings(ExtensionsGoalState):\n         return self._extensions\n \n     def get_redacted_text(self):\n-        return re.sub(r'(\"protectedSettings\"\\s*:\\s*)\"[^\"]+\"', r'\\1\"*** REDACTED ***\"', self._text)\n+        try:\n+            text = self._text\n+\n+            if self.status_upload_blob is not None:\n+                parsed = urlparse(self.status_upload_blob)\n+                original = text\n+                text = text.replace(parsed.query, \"***REDACTED***\")\n+                if text == original:\n+                    raise Exception('Could not redact the status upload blob')\n+\n+            for ext_handler in self._extensions:\n+                for extension in ext_handler.settings:\n+                    if extension.protectedSettings is not None:\n+                        original = text\n+                        text = text.replace(extension.protectedSettings, \"***REDACTED***\")\n+                        if text == original:\n+                            return 'Could not redact protectedSettings for {0}'.format(extension.name)\n+\n+            return text\n+        except Exception as e:\n+            return \"Error redacting text: {0}\".format(e)\n \n     def _parse_vm_settings(self, json_text):\n         vm_settings = _CaseFoldedDict.from_dict(json.loads(json_text))\n@@ -243,6 +262,7 @@ class ExtensionsGoalStateFromVmSettings(ExtensionsGoalState):\n         #         {\n         #             \"name\": \"Prod\",\n         #             \"version\": \"9.9.9.9\",\n+        #             \"from_version\": \"9.9.9.9\",\n         #             \"isVersionFromRSM\": true,\n         #             \"isVMEnabledForRSMUpgrades\": true,\n         #             \"uris\": [\n@@ -269,6 +289,7 @@ class ExtensionsGoalStateFromVmSettings(ExtensionsGoalState):\n         for family in families:\n             name = family[\"name\"]\n             version = family.get(\"version\")\n+            from_version = family.get(\"fromVersion\")\n             is_version_from_rsm = family.get(\"isVersionFromRSM\")\n             is_vm_enabled_for_rsm_upgrades = family.get(\"isVMEnabledForRSMUpgrades\")\n             uris = family.get(\"uris\")\n@@ -276,6 +297,7 @@ class ExtensionsGoalStateFromVmSettings(ExtensionsGoalState):\n                 uris = []\n             agent_family = VMAgentFamily(name)\n             agent_family.version = version\n+            agent_family.from_version = from_version\n             agent_family.is_version_from_rsm = is_version_from_rsm\n             agent_family.is_vm_enabled_for_rsm_upgrades = is_vm_enabled_for_rsm_upgrades\n             for u in uris:\n@@ -296,6 +318,7 @@ class ExtensionsGoalStateFromVmSettings(ExtensionsGoalState):\n         #             \"runAsStartupTask\": false,\n         #             \"isJson\": true,\n         #             \"useExactVersion\": true,\n+        #             \"encodedSignature\": \"MIIn...\",\n         #             \"settingsSeqNo\": 0,\n         #             \"settings\": [\n         #                 {\n@@ -361,6 +384,11 @@ class ExtensionsGoalStateFromVmSettings(ExtensionsGoalState):\n                 extension.name = extension_gs['name']\n                 extension.version = extension_gs['version']\n                 extension.state = extension_gs['state']\n+                # The 'encodedSignature' property is optional. If absent, it may mean the VmSettings API does not support\n+                # it, or the extension is not signed. In either case, we set extension.encoded_signature to an empty string.\n+                encoded_signature = extension_gs.get('encodedSignature')\n+                extension.encoded_signature = \"\" if encoded_signature is None else encoded_signature\n+\n                 if extension.state not in ExtensionRequestedState.All:\n                     raise Exception('Invalid extension state: {0} ({1})'.format(extension.state, extension.name))\n                 is_multi_config = extension_gs.get('isMultiConfig')\n@@ -534,6 +562,12 @@ class ExtensionsGoalStateFromVmSettings(ExtensionsGoalState):\n                     raise Exception(\"Dependency '{0}' does not correspond to any of the settings in the extension (settings: {1})\".format(dependency[\"name\"], settings_by_name.keys()))\n                 settings.dependencyLevel = dependency[\"dependencyLevel\"]\n \n+    def supports_encoded_signature(self):\n+        \"\"\"\n+        Returns True if the HGAP version supports the 'encoded_signature' extension property.\n+        \"\"\"\n+        return self._host_ga_plugin_version >= _MIN_HGAP_VERSION_FOR_EXT_SIGNATURE\n+\n \n #\n # TODO: The current implementation of the vmSettings API uses inconsistent cases on the names of the json items it returns.\n",
+ "diff_truncated": true
+}

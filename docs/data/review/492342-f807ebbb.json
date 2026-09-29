@@ -1,0 +1,23 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~akasurde/ubuntu/+source/rust-sudo-rs/+git/rust-sudo-rs/+merge/492342",
+ "id": "492342",
+ "title": "Display the sudoers filename in the error message",
+ "source_branch": "invalid_config",
+ "target_branch": "ubuntu/devel",
+ "revision": "e161cf8fa5d32fef30b5ae34cb4140061e8d5f12",
+ "base_revision": "a3c5f75faf6e3a5d05bf1fc3172293b32705ba06",
+ "description": "When the sudoers filename is missing or unavailable, then print the path name in the error message",
+ "commit_message": "Display the sudoers filename in the error message",
+ "diffstat": {
+  "src/sudo/pipeline.rs": [
+   1,
+   1
+  ]
+ },
+ "files": 1,
+ "added_lines": 1,
+ "removed_lines": 1,
+ "diff": "diff --git a/src/sudo/pipeline.rs b/src/sudo/pipeline.rs\nindex 954a87b..d65514f 100644\n--- a/src/sudo/pipeline.rs\n+++ b/src/sudo/pipeline.rs\n@@ -30,7 +30,7 @@ fn read_sudoers() -> Result<Sudoers, Error> {\n     let sudoers_path = &super::candidate_sudoers_file();\n \n     let (sudoers, syntax_errors) =\n-        Sudoers::open(sudoers_path).map_err(|e| Error::Configuration(format!(\"{e}\")))?;\n+        Sudoers::open(sudoers_path).map_err(|e| Error::Configuration(format!(\"{sudoers_path:?}: {e}\")))?;\n \n     for crate::sudoers::Error {\n         source,\n",
+ "diff_truncated": false
+}

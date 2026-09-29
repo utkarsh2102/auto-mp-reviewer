@@ -1,0 +1,23 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~paride/britney/+git/britney2-ubuntu/+merge/511394",
+ "id": "511394",
+ "title": "i386-keyerror-fix → master",
+ "source_branch": "i386-keyerror-fix",
+ "target_branch": "master",
+ "revision": "f749c2a0ff9378b7f674d821662366539c87d450",
+ "base_revision": "afb3a6962e615908fa6c83b299ca7625c37bd212",
+ "description": null,
+ "commit_message": null,
+ "diffstat": {
+  "britney2/policies/autopkgtest.py": [
+   2,
+   1
+  ]
+ },
+ "files": 1,
+ "added_lines": 2,
+ "removed_lines": 1,
+ "diff": "diff --git a/britney2/policies/autopkgtest.py b/britney2/policies/autopkgtest.py\nindex 2c33af2..b3499b1 100644\n--- a/britney2/policies/autopkgtest.py\n+++ b/britney2/policies/autopkgtest.py\n@@ -752,7 +752,8 @@ class AutopkgtestPolicy(BasePolicy):\n             if arch == \"i386\":\n                 all_binaries_arch_all = True\n                 for pkg_id in srcinfo.binaries:\n-                    if binaries_info[pkg_id.package_name].architecture != 'all':\n+                    binary = binaries_info.get(pkg_id.package_name)\n+                    if binary is None or binary.architecture != 'all':\n                         all_binaries_arch_all = False\n                         break\n                 if all_binaries_arch_all:\n",
+ "diff_truncated": false
+}

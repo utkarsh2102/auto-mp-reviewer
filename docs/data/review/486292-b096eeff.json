@@ -1,0 +1,27 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~ural/ubuntu-release-tools/+git/templates/+merge/486292",
+ "id": "486292",
+ "title": "esm-switch-announce → main",
+ "source_branch": "esm-switch-announce",
+ "target_branch": "main",
+ "revision": "9971a9d367bf726465f6a468d0c6ae8ef52f9444",
+ "base_revision": "e1f1888afed239ee2744db1a5f6871f7f3cdaca1",
+ "description": null,
+ "commit_message": null,
+ "diffstat": {
+  "announcements/esm-switch-reached": [
+   23,
+   0
+  ],
+  "announcements/esm-switch-reminder": [
+   2,
+   2
+  ]
+ },
+ "files": 2,
+ "added_lines": 25,
+ "removed_lines": 2,
+ "diff": "diff --git a/announcements/esm-switch-reached b/announcements/esm-switch-reached\nnew file mode 100644\nindex 0000000..a2ce922\n--- /dev/null\n+++ b/announcements/esm-switch-reached\n@@ -0,0 +1,23 @@\n+To: ubuntu-announce@lists.ubuntu.com, ubuntu-security-announce@lists.ubuntu.com\n+Subject: Extended Security Maintenance for Ubuntu <VERSION> (<FULL NAME>) began\n+on <ESM SWITCH DATE>\n+\n+This is a follow-up to the Extended Support warning sent one month ago\n+to confirm that as of <ESM SWITCH DATE>, Ubuntu <VERSION> LTS standard support\n+has ended.  No more package updates are planned to be accepted to the\n+primary archive of Ubuntu <VERSION> LTS.\n+\n+Remember that if you can't upgrade to <NEXT LTS VERSION> LTS or later immediately,\n+Canonical provides Extended Security Maintenance for Ubuntu <VERSION> LTS\n+to users with Ubuntu Pro. You can find more info about Ubuntu Pro\n+here:\n+\n+   https://ubuntu.com/blog/<NAME WITH HYPHENS>-end-of-standard-support\n+   https://ubuntu.com/esm\n+\n+\n+The original Extended Support warning follows, with upgrade instructions:\n+\n+<ESM SWITCH REMINDER MAIL>\n+\n+On behalf of the Ubuntu Release team,\ndiff --git a/announcements/esm-switch-reminder b/announcements/esm-switch-reminder\nindex bed1164..4edb8d0 100644\n--- a/announcements/esm-switch-reminder\n+++ b/announcements/esm-switch-reminder\n@@ -1,4 +1,4 @@\n-To: ubuntu-announce@lists.ubuntu.com\n+To: ubuntu-announce@lists.ubuntu.com, ubuntu-security-announce@lists.ubuntu.com\n Subject: Extended Security Maintenance for Ubuntu <VERSION> (<FULL NAME>) begins\n  <ESM SWITCH DATE>\n \n@@ -29,7 +29,7 @@ here:\n Canonical provides Extended Security Maintenance for Ubuntu <VERSION> LTS to\n customers through Ubuntu Pro. Further information can be found here:\n \n-\thttps://ubuntu.com/blog/<VERSION WITH HYPHENS>-end-of-standard-support\n+\thttps://ubuntu.com/blog/<NAME WITH HYPHENS>-end-of-standard-support\n \thttps://www.ubuntu.com/esm\n \n Since its launch in October 2004, Ubuntu has become one of the most highly\n",
+ "diff_truncated": false
+}

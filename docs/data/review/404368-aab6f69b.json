@@ -1,0 +1,27 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~ycheng-twn/ubuntu/+source/ubiquity/+git/ubiquity/+merge/404368",
+ "id": "404368",
+ "title": "add pre-install hookdir for oem-config mode, minimal change to ubiquity",
+ "source_branch": "0002_oem-pre-install-hook",
+ "target_branch": "ubuntu/impish-devel",
+ "revision": "e734737106f3fd9332c56e80b6cca2c6482c7350",
+ "base_revision": "95ccf9125b730a99e82959d21c51d4b7d638cca2",
+ "description": null,
+ "commit_message": "add pre-install hookdir for oem-config mode, minimal change to ubiquity\nfor install automation in hwe development phase.\n\nThis works well with dell-recovery and the other recovery that we currently used in oem project.\n",
+ "diffstat": {
+  "debian/changelog": [
+   7,
+   0
+  ],
+  "bin/ubiquity": [
+   6,
+   4
+  ]
+ },
+ "files": 2,
+ "added_lines": 13,
+ "removed_lines": 4,
+ "diff": "diff --git a/bin/ubiquity b/bin/ubiquity\nindex 9308bf6..ea0e5ac 100755\n--- a/bin/ubiquity\n+++ b/bin/ubiquity\n@@ -465,9 +465,8 @@ def acquire_lock():\n             sys.exit(1)\n \n \n-def run_oem_hooks():\n-    \"\"\"Run hook scripts from /usr/lib/oem-config/post-install.\"\"\"\n-    hookdir = '/usr/lib/oem-config/post-install'\n+def run_oem_hooks(hookdir):\n+    \"\"\"Run hook scripts from hookdir.\"\"\"\n \n     if os.path.isdir(hookdir):\n         # Exclude hooks containing '.', so that *.dpkg-* et al are avoided.\n@@ -646,13 +645,16 @@ def main(oem_config):\n     if oem_config and not options.query:\n         disable_autologin()\n \n+    if oem_config:\n+        run_oem_hooks(\"/usr/lib/oem-config/pre-install\")\n+\n     if args:\n         install(args[0], query=options.query)\n     else:\n         install(query=options.query)\n \n     if oem_config:\n-        run_oem_hooks()\n+        run_oem_hooks(\"/usr/lib/oem-config/post-install\")\n     im_switch.kill_im()\n \n \ndiff --git a/debian/changelog b/debian/changelog\nindex 96772f9..a022a11 100644\n--- a/debian/changelog\n+++ b/debian/changelog\n@@ -1,3 +1,10 @@\n+ubiquity (21.10.2) UNRELEASED; urgency=medium\n+\n+  * add pre-install hookdir for oem-config mode, minimal change to ubiquity\n+    for install automation in hwe development phase. (LP: #1932231)\n+\n+ -- Yuan-Chen Cheng <yc.cheng@canonical.com>  Fri, 18 Jun 2021 16:39:32 +0800\n+\n ubiquity (21.10.1) impish; urgency=medium\n \n   * choose-mirror: hirsute -> impish\n",
+ "diff_truncated": false
+}

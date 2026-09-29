@@ -1,0 +1,23 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~nadzeya/ubuntu/+source/rust-coreutils/+git/rust-coreutils/+merge/489212",
+ "id": "489212",
+ "title": "This MP removed additional files from the vendored folder, like tests, benchmarks, examples, Markdown and PNG files. This is a recent change in the cargo-vendor-filterer that now makes it possible.",
+ "source_branch": "remove-unnecessary-vendored-content",
+ "target_branch": "ubuntu/devel",
+ "revision": "5b1dae4e034c07c7dcacec6830fa0a416591ff47",
+ "base_revision": "f5bde655e8343900d6fb49f6316a196a7fa71499",
+ "description": "This MP removed additional files from the vendored folder, like tests, benchmarks, examples, Markdown and PNG files. This is a recent change in the cargo-vendor-filterer that now makes it possible.",
+ "commit_message": null,
+ "diffstat": {
+  "debian/rules": [
+   12,
+   3
+  ]
+ },
+ "files": 1,
+ "added_lines": 12,
+ "removed_lines": 3,
+ "diff": "diff --git a/debian/rules b/debian/rules\nindex cb5766c..ed0e569 100755\n--- a/debian/rules\n+++ b/debian/rules\n@@ -35,11 +35,20 @@ vendor-deps-cargo:\n \t# to have occurred already.\n \t# If you have to modify the path here, don't forget to change the README.source doc\n \t# as well.\n-\tenv -i PATH=$(PATH) cargo-vendor-filterer --all-features  --tier 2  --platform '*-*-linux-gnu' --platform '*-*-linux-gnueabi' $(CARGO_VENDOR_DIR)\n+\tenv -i PATH=$(PATH) cargo-vendor-filterer \\\n+\t\t--all-features \\\n+\t\t--tier 2 \\\n+\t\t--platform '*-*-linux-gnu' \\\n+\t\t--platform '*-*-linux-gnueabi' \\\n+\t\t--exclude-crate-path=\"*#tests\" \\\n+\t\t--exclude-crate-path=\"*#**/*.md\" \\\n+\t\t--exclude-crate-path=\"*#**/*.png\" \\\n+\t\t--exclude-crate-path=\"*#testdata\" \\\n+\t\t--exclude-crate-path=\"*#benches\" \\\n+\t\t--exclude-crate-path=\"*#examples\" \\\n+\t\t$(CARGO_VENDOR_DIR)\n \n vendor-deps: vendor-deps-cargo\n-\trm -r \\\n-\t\t$(CARGO_VENDOR_DIR)/*/tests\n \t# Remove the checksum files to allow us to patch the crates to remove extraneous dependencies\n \tfor crate in $(CARGO_VENDOR_DIR)/*; do \\\n \t\tsed -i 's/^{\"files\":.*\"package\":\"\\([a-z0-9]\\+\\)\"}$$/{\"files\":{},\"package\":\"\\1\"}/' $$crate/.cargo-checksum.json; \\\n",
+ "diff_truncated": false
+}
