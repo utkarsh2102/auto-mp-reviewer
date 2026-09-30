@@ -5,19 +5,19 @@
  "title": "emacs-jabber-i386 → devel",
  "source_branch": "emacs-jabber-i386",
  "target_branch": "devel",
- "revision": "d86a11d2f94230be30473174b4be3f90a5295324",
+ "revision": "69ae5d14b1996eebd202c731a212c7dcefcf16f6",
  "base_revision": "9f1cdaaa80affcffb533ce65b4c72da067ea1d7b",
  "description": null,
  "commit_message": null,
  "diffstat": {
   "ubuntu-release": [
-   15,
+   16,
    0
   ]
  },
  "files": 1,
- "added_lines": 15,
+ "added_lines": 16,
  "removed_lines": 0,
- "diff": "diff --git a/ubuntu-release b/ubuntu-release\nindex 70553b8..7fee912 100644\n--- a/ubuntu-release\n+++ b/ubuntu-release\n@@ -89,3 +89,18 @@ force-skiptest livecd-rootfs/26.10.15\n # possibly regress s390x-only. all other arch's already passed tests.\n force-skiptest ibus/1.5.34-1ubuntu3\n force-skiptest gnome-shell/51.0-2ubuntu2\n+\n+# changed from arch all to any and not built on i386 (lp: #2168912)\n+force-badtest emacs-jabber/0.13.1-1/i386\n+\n+# librust-tree-sitter-*-dev:i386 is not installable (partial i386 arch).\n+# Debian dropped skip-not-installable from debian/tests/control, turning the\n+# previous skip into a failure.\n+force-badtest tree-sitter-bash/0.25.1-3/i386\n+force-badtest tree-sitter-go/0.25.0+ds-2/i386\n+force-badtest tree-sitter-ini/1.4.0-3/i386\n+force-badtest tree-sitter-json/0.24.8-3/i386\n+force-badtest tree-sitter-php/0.24.2-2/i386\n+force-badtest tree-sitter-powershell/0.25.10-3/i386\n+force-badtest tree-sitter-verilog/1.0.3-4/i386\n+force-badtest tree-sitter-yaml/0.7.2-3/i386\n",
+ "diff": "diff --git a/ubuntu-release b/ubuntu-release\nindex 70553b8..177fefb 100644\n--- a/ubuntu-release\n+++ b/ubuntu-release\n@@ -89,3 +89,19 @@ force-skiptest livecd-rootfs/26.10.15\n # possibly regress s390x-only. all other arch's already passed tests.\n force-skiptest ibus/1.5.34-1ubuntu3\n force-skiptest gnome-shell/51.0-2ubuntu2\n+\n+# changed from arch all to any and not built on i386 (lp: #2168912)\n+force-badtest emacs-jabber/0.13.1-1/i386\n+\n+# librust-tree-sitter-*-dev:i386 is not installable (partial i386 arch).\n+# Debian dropped skip-not-installable from debian/tests/control, turning the\n+# previous skip into a failure.\n+force-badtest tree-sitter-bash/0.25.1-3/i386\n+force-badtest tree-sitter-go/0.25.0+ds-2/i386\n+force-badtest tree-sitter-ini/1.4.0-3/i386\n+force-badtest tree-sitter-json/0.24.8-3/i386\n+force-badtest tree-sitter-php/0.24.2-2/i386\n+force-badtest tree-sitter-powershell/0.25.10-3/i386\n+force-badtest tree-sitter-verilog/1.0.3-4/i386\n+force-badtest tree-sitter-yaml/0.7.2-3/i386\n+force-badtest tree-sitter-vim/0.8.1-2/i386\n",
  "diff_truncated": false
 }
