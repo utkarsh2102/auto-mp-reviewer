@@ -5,8 +5,8 @@
  "title": "Desktop images are now a thing for riscv64 as well.",
  "source_branch": "riscv64-plymouth",
  "target_branch": "ubuntu/master",
- "revision": "d02202c725bf7b1c919204624096278fe4bf70b7",
- "base_revision": "726b60cd1a80356b708f2dd9155daf5a19d637f4",
+ "revision": "be616cd9fdd8acd6fa5876867e716a602ed10caf",
+ "base_revision": "a87f6b5124a9ccc406d066b83b5c64a6fcc0f960",
  "description": "Desktop images are now a thing for riscv64 as well.\nThose needs special kernel parameters for plymouth. Append them here.\nAlso add \"ignore-serial-consoles\" as those are common for riscv64 boards and do not interact well with plymouth.",
  "commit_message": null,
  "diffstat": {
@@ -15,13 +15,13 @@
    0
   ],
   "live-build/isobuilder/boot/riscv64.py": [
-   6,
-   2
+   7,
+   6
   ]
  },
  "files": 2,
- "added_lines": 13,
- "removed_lines": 2,
- "diff": "diff --git a/debian/changelog b/debian/changelog\nindex ea01278..0169f2f 100644\n--- a/debian/changelog\n+++ b/debian/changelog\n@@ -1,3 +1,10 @@\n+livecd-rootfs (26.10.16) stonking; urgency=medium\n+\n+  * riscv64: append \"quiet splash plymouth.ignore-serial-consoles\"\n+    to non-server isos kernel command-line (LP: #2168989)\n+\n+ -- Valentin Haudiquet <valentin.haudiquet@canonical.com>  Wed, 30 Sep 2026 11:11:35 +0200\n+\n livecd-rootfs (26.10.15) stonking; urgency=medium\n \n   * Remove -v from the losetup calls because util-linux 2.42 has removed this\ndiff --git a/live-build/isobuilder/boot/riscv64.py b/live-build/isobuilder/boot/riscv64.py\nindex 2aaea21..3173a6c 100644\n--- a/live-build/isobuilder/boot/riscv64.py\n+++ b/live-build/isobuilder/boot/riscv64.py\n@@ -118,11 +118,15 @@ class RISCV64BootConfigurator(GrubBootConfigurator):\n         \"\"\"Generate grub.cfg for RISC-V64.\"\"\"\n         result = self.grub_header(include_loadfont=False)\n \n+        kernel_params = \"efi=debug sysctl.kernel.watchdog_thresh=60 \"\n+        if self.project != \"ubuntu-server\":\n+            kernel_params += \"quiet splash plymouth.ignore-serial-consoles \"\n+\n         # Main menu entry\n         result += f\"\"\"\\\n menuentry \"Try or Install {self.humanproject}\" {{\n     set gfxpayload=keep\n-    linux  /casper/vmlinux efi=debug sysctl.kernel.watchdog_thresh=60 ---\n+    linux  /casper/vmlinux {kernel_params}---\n     initrd /casper/initrd\n }}\n \"\"\"\n@@ -131,7 +135,7 @@ menuentry \"Try or Install {self.humanproject}\" {{\n         result += self.hwe_menu_entry(\n             \"vmlinux\",\n             \"---\",\n-            extra_params=\"efi=debug sysctl.kernel.watchdog_thresh=60 \",\n+            extra_params=kernel_params,\n         )\n \n         return result\n",
+ "added_lines": 14,
+ "removed_lines": 6,
+ "diff": "diff --git a/debian/changelog b/debian/changelog\nindex 35cd4d5..60614bf 100644\n--- a/debian/changelog\n+++ b/debian/changelog\n@@ -1,3 +1,10 @@\n+livecd-rootfs (26.10.17) stonking; urgency=medium\n+\n+  * riscv64: append \"quiet splash plymouth.ignore-serial-consoles\"\n+    to non-server isos kernel command-line (LP: #2168989)\n+\n+ -- Valentin Haudiquet <valentin.haudiquet@canonical.com>  Wed, 30 Sep 2026 11:11:35 +0200\n+\n livecd-rootfs (26.10.16) stonking; urgency=medium\n \n   * ubuntu-cpc: bump arm64 generic non-cloud image to 4.5G.\ndiff --git a/live-build/isobuilder/boot/riscv64.py b/live-build/isobuilder/boot/riscv64.py\nindex 2aaea21..b89fa1b 100644\n--- a/live-build/isobuilder/boot/riscv64.py\n+++ b/live-build/isobuilder/boot/riscv64.py\n@@ -118,21 +118,22 @@ class RISCV64BootConfigurator(GrubBootConfigurator):\n         \"\"\"Generate grub.cfg for RISC-V64.\"\"\"\n         result = self.grub_header(include_loadfont=False)\n \n+        params = [\"efi=debug\", \"sysctl.kernel.watchdog_thresh=60\"]\n+        if self.project != \"ubuntu-server\":\n+            params += [\"quiet\", \"splash\", \"plymouth.ignore-serial-consoles\"]\n+        kernel_params = \" \".join(params)\n+\n         # Main menu entry\n         result += f\"\"\"\\\n menuentry \"Try or Install {self.humanproject}\" {{\n     set gfxpayload=keep\n-    linux  /casper/vmlinux efi=debug sysctl.kernel.watchdog_thresh=60 ---\n+    linux  /casper/vmlinux {kernel_params} ---\n     initrd /casper/initrd\n }}\n \"\"\"\n \n         # HWE kernel option if available\n-        result += self.hwe_menu_entry(\n-            \"vmlinux\",\n-            \"---\",\n-            extra_params=\"efi=debug sysctl.kernel.watchdog_thresh=60 \",\n-        )\n+        result += self.hwe_menu_entry(\"vmlinux\", f\"{kernel_params} ---\")\n \n         return result\n \n",
  "diff_truncated": false
 }

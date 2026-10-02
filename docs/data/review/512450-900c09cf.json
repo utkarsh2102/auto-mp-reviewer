@@ -1,0 +1,23 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~chris-bainbridge/livecd-rootfs/+git/livecd-rootfs/+merge/512450",
+ "id": "512450",
+ "title": "fix/ubuntu-desktop-installer-shutdown → ubuntu/master",
+ "source_branch": "fix/ubuntu-desktop-installer-shutdown",
+ "target_branch": "ubuntu/master",
+ "revision": "52a3c2ee8c890a376118968e5747fbc0eadfc0f1",
+ "base_revision": "a87f6b5124a9ccc406d066b83b5c64a6fcc0f960",
+ "description": null,
+ "commit_message": null,
+ "diffstat": {
+  "live-build/ubuntu/includes.chroot.minimal.standard.live/usr/lib/systemd/user/ubuntu-desktop-installer.service": [
+   3,
+   2
+  ]
+ },
+ "files": 1,
+ "added_lines": 3,
+ "removed_lines": 2,
+ "diff": "diff --git a/live-build/ubuntu/includes.chroot.minimal.standard.live/usr/lib/systemd/user/ubuntu-desktop-installer.service b/live-build/ubuntu/includes.chroot.minimal.standard.live/usr/lib/systemd/user/ubuntu-desktop-installer.service\nindex 51d7394..3a7bfd2 100644\n--- a/live-build/ubuntu/includes.chroot.minimal.standard.live/usr/lib/systemd/user/ubuntu-desktop-installer.service\n+++ b/live-build/ubuntu/includes.chroot.minimal.standard.live/usr/lib/systemd/user/ubuntu-desktop-installer.service\n@@ -9,9 +9,10 @@ After=graphical-session.target\n Conflicts=gnome-session@gnome-login.target\n \n [Service]\n-Type=oneshot\n+Type=simple\n # Make sure that the system was seeded to access the snap\n ExecStartPre=/usr/bin/snap wait system seed.loaded\n ExecStart=/snap/bin/ubuntu-desktop-bootstrap --try-or-install\n-ExecStopPost=sh -c \"gsettings set org.gnome.shell.extensions.dash-to-dock dock-fixed true; gsettings set org.gnome.shell.extensions.dash-to-dock intellihide true; gnome-extensions enable ding@rastersoft.com\"\n+ExecStop=/usr/bin/systemctl --user stop 'snap.ubuntu-desktop-bootstrap.ubuntu-desktop-bootstrap-*.scope'\n+ExecStopPost=sh -c \"if [ \\\"$$SERVICE_RESULT\\\" = exit-code ] && [ \\\"$$EXIT_STATUS\\\" = 143 ]; then exit 0; fi; gsettings set org.gnome.shell.extensions.dash-to-dock dock-fixed true; gsettings set org.gnome.shell.extensions.dash-to-dock intellihide true; gnome-extensions enable ding@rastersoft.com\"\n Restart=no\n",
+ "diff_truncated": false
+}

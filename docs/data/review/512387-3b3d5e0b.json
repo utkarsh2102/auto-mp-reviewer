@@ -1,0 +1,27 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~amrelsh/livecd-rootfs/+git/livecd-rootfs/+merge/512387",
+ "id": "512387",
+ "title": "$WORK/config/iso-ids/disk-info now contains amd64v3",
+ "source_branch": "amd64v3_disk_info",
+ "target_branch": "ubuntu/master",
+ "revision": "2925069671dc0648d1a262fba8ea95ac09e107dd",
+ "base_revision": "a87f6b5124a9ccc406d066b83b5c64a6fcc0f960",
+ "description": "$WORK/config/iso-ids/disk-info now contains amd64v3",
+ "commit_message": null,
+ "diffstat": {
+  "debian/changelog": [
+   7,
+   0
+  ],
+  "live-build/auto/config": [
+   1,
+   1
+  ]
+ },
+ "files": 2,
+ "added_lines": 8,
+ "removed_lines": 1,
+ "diff": "diff --git a/debian/changelog b/debian/changelog\nindex 35cd4d5..8b07518 100644\n--- a/debian/changelog\n+++ b/debian/changelog\n@@ -1,3 +1,10 @@\n+livecd-rootfs (26.10.17) stonking; urgency=medium\n+\n+  * ubuntu: use ARCH_VARIANT for the ISO's .disk/info and volume ID\n+    (LP: #2169089).\n+\n+ -- Amr Elsheshtawy <amr.elsheshtawy@canonical.com>  Thu, 01 Oct 2026 03:17:59 +0300\n+\n livecd-rootfs (26.10.16) stonking; urgency=medium\n \n   * ubuntu-cpc: bump arm64 generic non-cloud image to 4.5G.\ndiff --git a/live-build/auto/config b/live-build/auto/config\nindex ca33ead..f7d0bb2 100755\n--- a/live-build/auto/config\n+++ b/live-build/auto/config\n@@ -1750,7 +1750,7 @@ fi\n if [ \"${MAKE_ISO}\" = \"yes\" ]; then\n \t${LIVECD_ROOTFS_ROOT}/live-build/gen-iso-ids \\\n \t\t--project $PROJECT ${SUBPROJECT:+--subproject $SUBPROJECT} \\\n-\t\t--arch $ARCH ${SUBARCH:+--subarch $SUBARCH} ${NOW+--serial $NOW} \\\n+\t\t--arch ${ARCH_VARIANT:-$ARCH} ${SUBARCH:+--subarch $SUBARCH} ${NOW+--serial $NOW} \\\n \t\t${BUILD_TYPE:+--build-type $BUILD_TYPE} \\\n \t\t--output-dir config/iso-ids/\n fi\n",
+ "diff_truncated": false
+}

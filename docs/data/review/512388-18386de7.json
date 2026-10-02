@@ -1,0 +1,31 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~hectorcao/ubuntu/+source/libvirt/+git/libvirt/+merge/512388",
+ "id": "512388",
+ "title": "PPA: https://launchpad.net/~hectorcao/+archive/ubuntu/lp2168017",
+ "source_branch": "lp2168017-resolute",
+ "target_branch": "ubuntu/resolute-devel",
+ "revision": "c60119e80f88029feede21952e24b5e4f249273e",
+ "base_revision": "a0d9a946d14b9a0de7ca01399067394dbb0269b2",
+ "description": "PPA: https://launchpad.net/~hectorcao/+archive/ubuntu/lp2168017",
+ "commit_message": null,
+ "diffstat": {
+  "debian/changelog": [
+   8,
+   0
+  ],
+  "debian/patches/series": [
+   1,
+   0
+  ],
+  "debian/patches/ubuntu/lp2168017-node_device_udev-Don-t-hold-the-object-lock.patch": [
+   97,
+   0
+  ]
+ },
+ "files": 3,
+ "added_lines": 106,
+ "removed_lines": 0,
+ "diff": "diff --git a/debian/changelog b/debian/changelog\nindex c99b071..642dffc 100644\n--- a/debian/changelog\n+++ b/debian/changelog\n@@ -1,3 +1,11 @@\n+libvirt (12.0.0-1ubuntu5.6) resolute; urgency=medium\n+\n+  * Fix race condition for node_device_udev causing libvirt hang at shutdown\n+    + d/p/u/lp2168017-node_device_udev-Don-t-hold-the-object-lock.patch\n+    (LP: #2168017)\n+\n+ -- Hector Cao <hector.cao@canonical.com>  Thu, 01 Oct 2026 10:31:51 +0200\n+\n libvirt (12.0.0-1ubuntu5.5) resolute-security; urgency=medium\n \n   * SECURITY UPDATE: integer overflow in NodeGetFreePages RPC handler\ndiff --git a/debian/patches/series b/debian/patches/series\nindex bbbc48e..488b1f7 100644\n--- a/debian/patches/series\n+++ b/debian/patches/series\n@@ -40,3 +40,4 @@ CVE-2026-63622.patch\n CVE-2026-63623.patch\n CVE-2026-18917.patch\n CVE-2026-77159.patch\n+ubuntu/lp2168017-node_device_udev-Don-t-hold-the-object-lock.patch\ndiff --git a/debian/patches/ubuntu/lp2168017-node_device_udev-Don-t-hold-the-object-lock.patch b/debian/patches/ubuntu/lp2168017-node_device_udev-Don-t-hold-the-object-lock.patch\nnew file mode 100644\nindex 0000000..d2020e0\n--- /dev/null\n+++ b/debian/patches/ubuntu/lp2168017-node_device_udev-Don-t-hold-the-object-lock.patch\n@@ -0,0 +1,97 @@\n+From 0c053ffd2c44ef0820886ab79c1f812775b2cd15 Mon Sep 17 00:00:00 2001\n+From: Hector Cao <hector.cao@canonical.com>\n+Date: Tue, 22 Sep 2026 18:27:08 +0800\n+Subject: [PATCH] node_device_udev: Don't hold the object lock while joining\n+ the udev thread\n+\n+From: Yifan Li <yifan2.li@intel.com>\n+\n+We found libvirt has a race condition bug and it causes systemd\n+timeout during system shutdown. This issue does not exist on\n+libvirt 10.0.0 with Ubuntu 24.04 but found in Ubuntu 26.04 which\n+uses libvirt 12.0.0.\n+\n+nodeStateShutdownWait() joins the udev event thread while holding\n+@priv's object lock:\n+\n+    VIR_WITH_OBJECT_LOCK_GUARD(priv) {\n+        if (priv->udevThread)\n+            virThreadJoin(priv->udevThread);\n+    }\n+\n+but udevEventHandleThread() needs that same lock to make progress. Its\n+only clean exit path is\n+\n+    VIR_WITH_OBJECT_LOCK_GUARD(priv) {\n+        while (!priv->udevDataReady && !priv->udevThreadQuit) {\n+            if (virCondWait(&priv->udevThreadCond, &priv->parent.lock))\n+                ...\n+        }\n+        if (priv->udevThreadQuit)\n+            return;\n+\n+so the thread has to re-acquire the lock - either on return from\n+virCondWait() or to re-enter the guard at the top of its loop - before\n+it can observe @priv->udevThreadQuit and return.\n+\n+nodeStateShutdownPrepare() sets udevThreadQuit, signals the condition\n+and drops the lock. Which thread grabs the lock next then decides the\n+outcome:\n+\n+  - the udev thread wins: it sees udevThreadQuit, returns, and the\n+    subsequent join completes immediately.\n+  - nodeStateShutdownWait() wins: it takes the lock and blocks in\n+    virThreadJoin(), so the udev thread can never re-acquire the lock,\n+    never observes udevThreadQuit and never returns. Both threads are\n+    then stuck for good.\n+\n+Holding the lock across the join serves no purpose - udevThreadQuit has\n+already been published by nodeStateShutdownPrepare(), @priv->udevThread\n+is only assigned in nodeStateInitialize() and released by\n+udevEventDataDispose(), and the udev thread holds a reference to @priv.\n+Join outside the lock guard instead, which also restores the ordering\n+nodeStateCleanup() used before commit e89d39f5b8f3 (\"node_device_udev:\n+Introduce and use `stateShutdownPrepare` and `stateShutdownWait`\"):\n+signal under the lock, release it, then join.\n+\n+Fixes: e89d39f5b8f30f0b3284ed2bd71cee1a8a3d707d\n+Signed-off-by: Yifan Li <yifan2.li@intel.com>\n+Signed-off-by: Jianfeng Gao <jianfeng.gao@intel.com>\n+Signed-off-by: Lili Li <lili.li@intel.com>\n+Reviewed-by: Michal Privoznik <mprivozn@redhat.com>\n+\n+Bug-Ubuntu: https://bugs.launchpad.net/ubuntu/+bug/2168017\n+Origin: upstream, https://gitlab.com/libvirt/libvirt/-/commit/0c053ffd2c44ef0820886ab79c1f812775b2cd15\n+---\n+ src/node_device/node_device_udev.c | 15 +++++++++++----\n+ 1 file changed, 11 insertions(+), 4 deletions(-)\n+\n+diff --git a/src/node_device/node_device_udev.c b/src/node_device/node_device_udev.c\n+index 104433fb88..ac9be10382 100644\n+--- a/src/node_device/node_device_udev.c\n++++ b/src/node_device/node_device_udev.c\n+@@ -2482,10 +2482,17 @@ nodeStateShutdownWait(void)\n+     if (!priv)\n+         return 0;\n+ \n+-    VIR_WITH_OBJECT_LOCK_GUARD(priv) {\n+-        if (priv->udevThread)\n+-            virThreadJoin(priv->udevThread);\n+-    }\n++    /* Do not hold @priv's lock while joining the udev thread.\n++     * udevEventHandleThread() must acquire that very lock in order to\n++     * observe @priv->udevThreadQuit - already set by\n++     * nodeStateShutdownPrepare() - and return. Joining while holding the\n++     * lock therefore deadlocks the two threads against each other.\n++     *\n++     * @priv->udevThread is only ever assigned in nodeStateInitialize() and\n++     * released by udevEventDataDispose(), and the udev thread holds a\n++     * reference to @priv, so accessing it here without the lock is safe. */\n++    if (priv->udevThread)\n++        virThreadJoin(priv->udevThread);\n+ \n+     if (priv->workerPool)\n+         virThreadPoolDrain(priv->workerPool);\n+-- \n+2.43.0\n+\n",
+ "diff_truncated": false
+}
