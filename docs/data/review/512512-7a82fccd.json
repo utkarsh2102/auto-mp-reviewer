@@ -1,0 +1,27 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~lvoytek/ubuntu/+source/rabbitmq-server/+git/rabbitmq-server/+merge/512512",
+ "id": "512512",
+ "title": "Reboot the SRU process for the rabbitmq port fix series, starting with simplifying the fix in resolute",
+ "source_branch": "lp2168867-simplify-port-check-resolute",
+ "target_branch": "ubuntu/resolute-devel",
+ "revision": "c40405a28635f04a97fb667e4e883500cd1e5f03",
+ "base_revision": "bdd156dd63727b2685c868c86b1b46addf0010d5",
+ "description": "Reboot the SRU process for the rabbitmq port fix series, starting with simplifying the fix in resolute\n\nPPA: https://launchpad.net/~lvoytek/+archive/ubuntu/rabbitmq-server-fixes",
+ "commit_message": null,
+ "diffstat": {
+  "debian/changelog": [
+   7,
+   0
+  ],
+  "debian/rabbitmq-server.postinst": [
+   3,
+   12
+  ]
+ },
+ "files": 2,
+ "added_lines": 10,
+ "removed_lines": 12,
+ "diff": "diff --git a/debian/changelog b/debian/changelog\nindex 48ad18d..f636a6f 100644\n--- a/debian/changelog\n+++ b/debian/changelog\n@@ -1,3 +1,10 @@\n+rabbitmq-server (4.0.5-10ubuntu5.1) resolute; urgency=medium\n+\n+  * d/rabbitmq-server.postinst: Simplify check for active rabbitmq service by\n+    only running service rabbitmq-server status (LP: #2168867).\n+\n+ -- Lena Voytek <lena.voytek@canonical.com>  Fri, 02 Oct 2026 09:45:11 -0400\n+\n rabbitmq-server (4.0.5-10ubuntu5) resolute; urgency=medium\n \n   * d/rabbitmq-server.postinst: Fix port warning message displaying\ndiff --git a/debian/rabbitmq-server.postinst b/debian/rabbitmq-server.postinst\nindex 218892c..a12f57e 100644\n--- a/debian/rabbitmq-server.postinst\n+++ b/debian/rabbitmq-server.postinst\n@@ -33,18 +33,9 @@ if [ \"$1\" = \"configure\" ] || [ \"$1\" = \"reconfigure\" ] ; then\n \n     # Check if MQ server port is already taken by another package.\n     # If so, warn the user\n-    if ss -ltn | grep -q ':5672 '; then\n-        if [ \"\"$(ps --no-headers -o comm 1) = \"systemd\" ] ; then\n-            if ! systemctl is-active --quiet rabbitmq-server.service; then\n-                echo \"WARNING: port 5672 is already in use by another application.\"\n-                echo \"RabbitMQ server will not be started automatically.\"\n-            fi\n-        else\n-            if ! service rabbitmq-server status >/dev/null 2>&1; then\n-                echo \"WARNING: port 5672 is already in use by another application.\"\n-                echo \"RabbitMQ server will not be started automatically.\"\n-            fi\n-        fi\n+    if ss -ltn | grep -q ':5672 ' && ! service rabbitmq-server status >/dev/null 2>&1; then\n+        echo \"WARNING: port 5672 is already in use by another application.\"\n+        echo \"RabbitMQ server will not be started automatically.\"\n     fi\n \n \t# We generate the erlang cookie by ourselves, just to make sure we don't\n",
+ "diff_truncated": false
+}

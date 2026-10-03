@@ -1,0 +1,23 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~esteban-vazquez/ubuntu-images/+git/ubuntu-images-1/+merge/512548",
+ "id": "512548",
+ "title": "Seed core22 for lxd",
+ "source_branch": "jammy",
+ "target_branch": "jammy",
+ "revision": "c4f07f1cc8a9d76cb2c1ed8c646b2d9899cb97e5",
+ "base_revision": "857728a7bd25c5e0e262333ff4776cb6a8d814be",
+ "description": null,
+ "commit_message": "Seed core22 for lxd",
+ "diffstat": {
+  "ubuntu-server-tegra-jetson.yaml": [
+   2,
+   1
+  ]
+ },
+ "files": 1,
+ "added_lines": 2,
+ "removed_lines": 1,
+ "diff": "diff --git a/ubuntu-server-tegra-jetson.yaml b/ubuntu-server-tegra-jetson.yaml\nindex 8adef06..d6ddccb 100644\n--- a/ubuntu-server-tegra-jetson.yaml\n+++ b/ubuntu-server-tegra-jetson.yaml\n@@ -54,8 +54,9 @@ customization:\n   extra-snaps:\n     - name: snapd\n     # FIXME ubuntu-image fails in prepare_image if this isn't listed: cannot\n-    # add snap \"lxd\" without also adding its base \"core20\" explicitly\n+    # add snap \"lxd\" without also adding its base \"core20/core22\" explicitly\n     - name: core20\n+    - name: core22\n   extra-packages:\n     # FIXME using extra-packages as a workaround for missing bits to make the\n     # system bootable and has the right platform specific packages installed;\n",
+ "diff_truncated": false
+}

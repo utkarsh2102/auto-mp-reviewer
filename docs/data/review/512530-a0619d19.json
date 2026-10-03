@@ -1,0 +1,31 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~graysonwolf/ubuntu/+source/pcs/+git/pcs/+merge/512530",
+ "id": "512530",
+ "title": "PPA: https://launchpad.net/~graysonwolf/+archive/ubuntu/pcs-noble-a41908d0/+packages",
+ "source_branch": "lp-2168936-n",
+ "target_branch": "ubuntu/noble-devel",
+ "revision": "d0655d6a9121abf2754513e967c4e685ea6fa141",
+ "base_revision": "b25acd282ace88bc9ba4804e364e6fa7285eb9ae",
+ "description": "PPA: https://launchpad.net/~graysonwolf/+archive/ubuntu/pcs-noble-a41908d0/+packages\nDEP8: pending",
+ "commit_message": null,
+ "diffstat": {
+  "debian/changelog": [
+   7,
+   0
+  ],
+  "debian/patches/lp2168936-line-wrapping.patch": [
+   53,
+   0
+  ],
+  "debian/patches/series": [
+   1,
+   0
+  ]
+ },
+ "files": 3,
+ "added_lines": 61,
+ "removed_lines": 0,
+ "diff": "diff --git a/debian/changelog b/debian/changelog\nindex 8715a94..5363c2d 100644\n--- a/debian/changelog\n+++ b/debian/changelog\n@@ -1,3 +1,10 @@\n+pcs (0.11.7-1ubuntu2) noble; urgency=medium\n+\n+  * Fix stdout line wrapping in contexts where it should not\n+    (LP: #2168936)\n+\n+ -- Grayson Wolf <grayson.wolf@canonical.com>  Fri, 02 Oct 2026 13:51:49 -0400\n+\n pcs (0.11.7-1ubuntu1) noble; urgency=medium\n \n   * Merge with Debian unstable (LP: #2040410). Remaining changes:\ndiff --git a/debian/patches/lp2168936-line-wrapping.patch b/debian/patches/lp2168936-line-wrapping.patch\nnew file mode 100644\nindex 0000000..8b27d3c\n--- /dev/null\n+++ b/debian/patches/lp2168936-line-wrapping.patch\n@@ -0,0 +1,53 @@\n+From bd3bc07b8a9b9daabaaff20ad658e649c94fd8f1 Mon Sep 17 00:00:00 2001\n+From: Tomas Jelinek <tojeline@redhat.com>\n+Date: Thu, 16 May 2024 10:36:23 +0200\n+Subject: [PATCH] fix stdout wrapping to terminal width\n+Origin: upstream https://github.com/ClusterLabs/pcs/commit/bd3bc07b8a9b9daabaaff20ad658e649c94fd8f1\n+Bug-Ubuntu: https://bugs.launchpad.net/ubuntu/+source/docker.io/+bug/2168936\n+---\n+ CHANGELOG.md             | 3 +++\n+ pcs/cli/common/output.py | 8 +++++---\n+ 2 files changed, 8 insertions(+), 3 deletions(-)\n+\n+diff --git a/CHANGELOG.md b/CHANGELOG.md\n+index d79946280..ff7cfe5ec 100644\n+--- a/CHANGELOG.md\n++++ b/CHANGELOG.md\n+@@ -36,6 +36,8 @@\n+   booth site address parameter is needed ([rhbz#2232143])\n+ - When moving or banning a resource in a bundle, pcs now errors out instead of\n+   creating a move / ban constraint which does nothing ([RHEL-7744])\n++- Do not wrap pcs output to terminal width if pcs's stdout is redirected\n++  ([RHEL-36514])\n+ \n+ ### Changed\n+ - When exporting constraints in form of pcs commands, constraints containing\n+@@ -67,6 +69,7 @@\n+ [rhbz#2232143]: https://bugzilla.redhat.com/show_bug.cgi?id=2232143\n+ [rhbz#2234717]: https://bugzilla.redhat.com/show_bug.cgi?id=2234717\n+ [RHEL-7744]: https://issues.redhat.com/browse/RHEL-7744\n++[RHEL-36514]: https://issues.redhat.com/browse/RHEL-36514\n+ \n+ \n+ ## [0.11.6] - 2023-06-20\n+ \n+diff --git a/pcs/cli/common/output.py b/pcs/cli/common/output.py\n+index 179f7c03f..9dc0e1621 100644\n+--- a/pcs/cli/common/output.py\n++++ b/pcs/cli/common/output.py\n+@@ -56,9 +56,11 @@ def format_wrap_for_terminal(\n+     trim -- number which will be substracted from terminal size. Can be used in\n+         cases lines will be indented later by this number of spaces.\n+     \"\"\"\n+-    if (sys.stdout is not None and sys.stdout.isatty()) or (\n+-        sys.stderr is not None and sys.stderr.isatty()\n+-    ):\n++    # This function is used for stdout only - we don't care about wrapping\n++    # error messages and debug info. So it checks stdout and not stderr.\n++    # Checking stderr would enable wrapping in case of 'pcs ... | grep ...'\n++    # (stderr is connected to a terminal), which we don't want. (RHEL-36514)\n++    if sys.stdout is not None and sys.stdout.isatty():\n+         return format_wrap(\n+             text,\n+             # minimal line length is 40\n+\ndiff --git a/debian/patches/series b/debian/patches/series\nindex 70776a7..a639b94 100644\n--- a/debian/patches/series\n+++ b/debian/patches/series\n@@ -1,2 +1,3 @@\n fix-clean-target.patch\n 0001-Do-not-depend-on-backports.patch\n+lp2168936-line-wrapping.patch\n",
+ "diff_truncated": false
+}
