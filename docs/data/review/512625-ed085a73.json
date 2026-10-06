@@ -1,0 +1,23 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~graysonwolf/autopkgtest-cloud/+git/autopkgtest-cloud/+merge/512625",
+ "id": "512625",
+ "title": "Adds PCS to the VM packages, see linked bug",
+ "source_branch": "main",
+ "target_branch": "main",
+ "revision": "6d70cd37ec33b164b2275e6e97571c35856dbd9f",
+ "base_revision": "a2791b5958ec6bd33d06cab471dedb874293b885",
+ "description": "Adds PCS to the VM packages, see linked bug",
+ "commit_message": null,
+ "diffstat": {
+  "vm_packages": [
+   1,
+   0
+  ]
+ },
+ "files": 1,
+ "added_lines": 1,
+ "removed_lines": 0,
+ "diff": "diff --git a/vm_packages b/vm_packages\nindex 2a080ae..2e1c829 100644\n--- a/vm_packages\n+++ b/vm_packages\n@@ -143,6 +143,7 @@ openvpn-auth-ldap\n openvswitch\n osk-sdl\n ovn\n+pcs\n perftest\n podman\n podman-compose\n",
+ "diff_truncated": false
+}
