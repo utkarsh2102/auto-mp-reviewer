@@ -1,0 +1,35 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~hectorcao/ubuntu/+source/resource-agents/+git/resource-agents/+merge/512670",
+ "id": "512670",
+ "title": "lp2169706-noble → ubuntu/noble-devel",
+ "source_branch": "lp2169706-noble",
+ "target_branch": "ubuntu/noble-devel",
+ "revision": "b6d85eca4b8cbacb3c50b4e4c6f43c1fae695d79",
+ "base_revision": "ae1647a17dc037ea73fe930c64ed300b3a7d3ad1",
+ "description": null,
+ "commit_message": null,
+ "diffstat": {
+  "debian/changelog": [
+   8,
+   0
+  ],
+  "debian/tests/control": [
+   1,
+   1
+  ],
+  "debian/tests/run-ocft": [
+   25,
+   0
+  ],
+  "debian/tests/setup_kernel": [
+   42,
+   0
+  ]
+ },
+ "files": 4,
+ "added_lines": 76,
+ "removed_lines": 1,
+ "diff": "diff --git a/debian/changelog b/debian/changelog\nindex 72969d7..41556d0 100644\n--- a/debian/changelog\n+++ b/debian/changelog\n@@ -1,3 +1,11 @@\n+resource-agents (1:4.13.0-1ubuntu4.3) noble; urgency=medium\n+\n+  * d/t/{control,run-ocft,setup_kernel}: switch to generic kernel for\n+    ovft test with iscsi when iscsi_target_mod is not found\n+    (LP: #2169706)\n+\n+ -- Hector Cao <hector.cao@canonical.com>  Tue, 06 Oct 2026 15:51:29 +0200\n+\n resource-agents (1:4.13.0-1ubuntu4.2) noble; urgency=medium\n \n   * d/p/stop-fsidd-nfs-{1,2}.patch: Stop the fsidd daemon before stopping\ndiff --git a/debian/tests/control b/debian/tests/control\nindex 2bfad48..a58a4f4 100644\n--- a/debian/tests/control\n+++ b/debian/tests/control\n@@ -54,4 +54,4 @@ Restrictions: needs-root, isolation-machine\n \n Test-Command: debian/tests/run-ocft iscsi\n Depends: resource-agents-base, open-iscsi, targetcli-fb, openssl\n-Restrictions: needs-root, isolation-machine\n+Restrictions: needs-root, isolation-machine, needs-reboot, allow-stderr\ndiff --git a/debian/tests/run-ocft b/debian/tests/run-ocft\nindex f820fce..a90196c 100755\n--- a/debian/tests/run-ocft\n+++ b/debian/tests/run-ocft\n@@ -2,8 +2,33 @@\n \n set -e\n \n+setup_iscsi () {\n+  modprobe iscsi_target_mod && return 0\n+  if ! test -x /tmp/autopkgtest-reboot; then\n+    echo \"iSCSI setup requires autopkgtest reboot support\" >&2\n+    return 1\n+  fi\n+  # skip if kernel setup was already done and we are at the reboot\n+  if test \"${AUTOPKGTEST_REBOOT_MARK:-}\" = generic-kernel; then\n+    echo \"Generic kernel was not booted after reboot\" >&2\n+    return 1\n+  fi\n+  if bash \"$(dirname \"$0\")/setup_kernel\"; then\n+    /tmp/autopkgtest-reboot generic-kernel\n+  fi\n+  return 0\n+}\n+\n AGENT=$1\n \n+# iscsi test needs iscsi_target_mod kernel module that might not be available\n+# in the current kernel\n+case \"$AGENT\" in\n+  iscsi)\n+    setup_iscsi 2>&1 || echo \"Warning: iSCSI setup failed; continuing with the current kernel\"\n+    ;;\n+esac\n+\n cleanup () {\n   ocft clean $AGENT\n }\ndiff --git a/debian/tests/setup_kernel b/debian/tests/setup_kernel\nnew file mode 100755\nindex 0000000..0bdd2c5\n--- /dev/null\n+++ b/debian/tests/setup_kernel\n@@ -0,0 +1,42 @@\n+#!/bin/bash\n+\n+is_non_generic_kernel () {\n+  case \"$(uname -r)\" in\n+    *-generic) return 1 ;;\n+    *) return 0 ;;\n+  esac\n+}\n+\n+# grub: switch to kernel version\n+grub_switch_kernel() {\n+    KERNELVER=$1\n+    MID=$(awk '/Advanced options for Ubuntu/{print $(NF-1)}' /boot/grub/grub.cfg | cut -d\\' -f2)\n+    KID=$(awk \"/with Linux $KERNELVER/\"'{print $(NF-1)}' /boot/grub/grub.cfg | cut -d\\' -f2 | head -n1)\n+    cat > /etc/default/grub.d/99-ocft-tests-kernel.cfg <<EOF\n+GRUB_DEFAULT=saved\n+GRUB_SAVEDEFAULT=true\n+EOF\n+    grub-editenv /boot/grub/grubenv set saved_entry=\"${MID}>${KID}\"\n+    update-grub\n+}\n+\n+setup_kernel () {\n+  # skip if not ubuntu\n+  ( . /etc/os-release; test \"$ID\" = ubuntu ) || return 2\n+  is_non_generic_kernel || return 2\n+\n+  apt-get update || return 1\n+  DEBIAN_FRONTEND=noninteractive apt-get install -y linux-generic || return 1\n+  kernel_image=$(find -L /boot -maxdepth 1 -type f -name 'vmlinuz-*-generic' -printf '%f\\n' |\n+    sort -V | tail -n 1)\n+  if test -z \"$kernel_image\"; then\n+    echo \"No generic kernel image found in /boot\" >&2\n+    return 1\n+  fi\n+  kernel_version=${kernel_image#vmlinuz-}\n+\n+  grub_switch_kernel \"$kernel_version\" || return 1\n+  return 0\n+}\n+\n+setup_kernel\n\\ No newline at end of file\n",
+ "diff_truncated": false
+}

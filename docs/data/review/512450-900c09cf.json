@@ -5,19 +5,23 @@
  "title": "fix/ubuntu-desktop-installer-shutdown → ubuntu/master",
  "source_branch": "fix/ubuntu-desktop-installer-shutdown",
  "target_branch": "ubuntu/master",
- "revision": "52a3c2ee8c890a376118968e5747fbc0eadfc0f1",
- "base_revision": "a87f6b5124a9ccc406d066b83b5c64a6fcc0f960",
+ "revision": "266b4a72c04c408b2c3593f8464ca166d7786638",
+ "base_revision": "6eeb4a57f332dd06fff6f95d28143597bdd9c7b0",
  "description": null,
  "commit_message": null,
  "diffstat": {
+  "debian/changelog": [
+   7,
+   0
+  ],
   "live-build/ubuntu/includes.chroot.minimal.standard.live/usr/lib/systemd/user/ubuntu-desktop-installer.service": [
-   3,
-   2
+   5,
+   4
   ]
  },
- "files": 1,
- "added_lines": 3,
- "removed_lines": 2,
- "diff": "diff --git a/live-build/ubuntu/includes.chroot.minimal.standard.live/usr/lib/systemd/user/ubuntu-desktop-installer.service b/live-build/ubuntu/includes.chroot.minimal.standard.live/usr/lib/systemd/user/ubuntu-desktop-installer.service\nindex 51d7394..3a7bfd2 100644\n--- a/live-build/ubuntu/includes.chroot.minimal.standard.live/usr/lib/systemd/user/ubuntu-desktop-installer.service\n+++ b/live-build/ubuntu/includes.chroot.minimal.standard.live/usr/lib/systemd/user/ubuntu-desktop-installer.service\n@@ -9,9 +9,10 @@ After=graphical-session.target\n Conflicts=gnome-session@gnome-login.target\n \n [Service]\n-Type=oneshot\n+Type=simple\n # Make sure that the system was seeded to access the snap\n ExecStartPre=/usr/bin/snap wait system seed.loaded\n ExecStart=/snap/bin/ubuntu-desktop-bootstrap --try-or-install\n-ExecStopPost=sh -c \"gsettings set org.gnome.shell.extensions.dash-to-dock dock-fixed true; gsettings set org.gnome.shell.extensions.dash-to-dock intellihide true; gnome-extensions enable ding@rastersoft.com\"\n+ExecStop=/usr/bin/systemctl --user stop 'snap.ubuntu-desktop-bootstrap.ubuntu-desktop-bootstrap-*.scope'\n+ExecStopPost=sh -c \"if [ \\\"$$SERVICE_RESULT\\\" = exit-code ] && [ \\\"$$EXIT_STATUS\\\" = 143 ]; then exit 0; fi; gsettings set org.gnome.shell.extensions.dash-to-dock dock-fixed true; gsettings set org.gnome.shell.extensions.dash-to-dock intellihide true; gnome-extensions enable ding@rastersoft.com\"\n Restart=no\n",
+ "files": 2,
+ "added_lines": 12,
+ "removed_lines": 4,
+ "diff": "diff --git a/debian/changelog b/debian/changelog\nindex c6f72ee..e5a4360 100644\n--- a/debian/changelog\n+++ b/debian/changelog\n@@ -1,3 +1,10 @@\n+livecd-rootfs (26.10.20) stonking; urgency=medium\n+\n+  * Stop the live-session installer Snap scope during shutdown and skip\n+    settings restoration after SIGTERM.\n+\n+ -- Chris Bainbridge <chris.bainbridge@canonical.com>  Tue, 06 Oct 2026 11:50:08 +0100\n+\n livecd-rootfs (26.10.19) stonking; urgency=medium\n \n   [ Valentin Haudiquet ]\ndiff --git a/live-build/ubuntu/includes.chroot.minimal.standard.live/usr/lib/systemd/user/ubuntu-desktop-installer.service b/live-build/ubuntu/includes.chroot.minimal.standard.live/usr/lib/systemd/user/ubuntu-desktop-installer.service\nindex 51d7394..a8c391d 100644\n--- a/live-build/ubuntu/includes.chroot.minimal.standard.live/usr/lib/systemd/user/ubuntu-desktop-installer.service\n+++ b/live-build/ubuntu/includes.chroot.minimal.standard.live/usr/lib/systemd/user/ubuntu-desktop-installer.service\n@@ -4,14 +4,15 @@\n Description=Ubuntu Desktop Installer\n PartOf=graphical-session.target\n After=graphical-session.target\n+Before=snap.ubuntu-desktop-bootstrap.ubuntu-desktop-bootstrap-installer.service\n+BindsTo=snap.ubuntu-desktop-bootstrap.ubuntu-desktop-bootstrap-installer.service\n \n # Never run in GDM\n Conflicts=gnome-session@gnome-login.target\n \n [Service]\n Type=oneshot\n-# Make sure that the system was seeded to access the snap\n-ExecStartPre=/usr/bin/snap wait system seed.loaded\n-ExecStart=/snap/bin/ubuntu-desktop-bootstrap --try-or-install\n-ExecStopPost=sh -c \"gsettings set org.gnome.shell.extensions.dash-to-dock dock-fixed true; gsettings set org.gnome.shell.extensions.dash-to-dock intellihide true; gnome-extensions enable ding@rastersoft.com\"\n+RemainAfterExit=yes\n+ExecStart=/usr/bin/true\n+ExecStopPost=sh -c \"if systemctl --user list-jobs --no-legend --no-pager graphical-session.target | grep -qE '[[:space:]]stop[[:space:]]'; then exit 0; fi; gsettings set org.gnome.shell.extensions.dash-to-dock dock-fixed true; gsettings set org.gnome.shell.extensions.dash-to-dock intellihide true; gnome-extensions enable ding@rastersoft.com\"\n Restart=no\n",
  "diff_truncated": false
 }

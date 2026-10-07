@@ -1,0 +1,731 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~lvoytek/ubuntu/+source/openvpn/+git/openvpn/+merge/512707",
+ "id": "512707",
+ "title": "Update resolute to 2.7.7",
+ "source_branch": "backport-2.7.7-resolute",
+ "target_branch": "ubuntu/resolute-devel",
+ "revision": "eee2eddb9ea2cac9471243b8860f450c4cd10f94",
+ "base_revision": "f82729c675ee89163792ab02faf402546bf793c7",
+ "description": "Update resolute to 2.7.7\n\nPPA: https://launchpad.net/~lvoytek/+archive/ubuntu/openvpn-mres\n\nTests: pending (resolute autopkgtest giving bad testbed currently)",
+ "commit_message": null,
+ "diffstat": {
+  "CMakeLists.txt": [
+   14,
+   3
+  ],
+  "ChangeLog": [
+   277,
+   0
+  ],
+  "Changes.rst": [
+   546,
+   5
+  ],
+  "Makefile.in": [
+   44,
+   25
+  ],
+  "README": [
+   1,
+   1
+  ],
+  "aclocal.m4": [
+   300,
+   133
+  ],
+  "compile": [
+   29,
+   13
+  ],
+  "config.guess": [
+   86,
+   25
+  ],
+  "config.h.cmake.in": [
+   3,
+   3
+  ],
+  "config.h.in": [
+   46,
+   42
+  ],
+  "config.sub": [
+   703,
+   239
+  ],
+  "configure": [
+   2979,
+   1681
+  ],
+  "configure.ac": [
+   2,
+   20
+  ],
+  "contrib/vcpkg-ports/pkcs11-helper/portfile.cmake": [
+   25,
+   25
+  ],
+  "contrib/vcpkg-ports/pkcs11-helper/vcpkg.json": [
+   9,
+   5
+  ],
+  "debian/changelog": [
+   58,
+   0
+  ],
+  "dev/null": [
+   0,
+   203
+  ],
+  "debian/patches/series": [
+   0,
+   11
+  ],
+  "depcomp": [
+   10,
+   9
+  ],
+  "distro/Makefile.in": [
+   17,
+   5
+  ],
+  "distro/dns-scripts/Makefile.in": [
+   21,
+   10
+  ],
+  "distro/dns-scripts/haikuos_file-dns-updown.sh": [
+   2,
+   2
+  ],
+  "distro/dns-scripts/macos-dns-updown.sh": [
+   2,
+   2
+  ],
+  "distro/dns-scripts/openresolv-dns-updown.sh": [
+   3,
+   3
+  ],
+  "distro/dns-scripts/resolvconf_file-dns-updown.sh": [
+   2,
+   2
+  ],
+  "distro/dns-scripts/systemd-dns-updown.sh": [
+   1,
+   1
+  ],
+  "distro/systemd/Makefile.in": [
+   21,
+   10
+  ],
+  "distro/systemd/openvpn-client@.service.in": [
+   1,
+   1
+  ],
+  "distro/systemd/openvpn-server@.service.in": [
+   1,
+   1
+  ],
+  "doc/Makefile.in": [
+   21,
+   10
+  ],
+  "doc/doxygen/Makefile.in": [
+   18,
+   6
+  ],
+  "doc/doxygen/doc_eventloop.h": [
+   1,
+   2
+  ],
+  "doc/doxygen/doc_tunnel_state.h": [
+   10,
+   12
+  ],
+  "doc/man-sections/advanced-options.rst": [
+   5,
+   2
+  ],
+  "doc/man-sections/client-options.rst": [
+   54,
+   8
+  ],
+  "doc/man-sections/examples.rst": [
+   4,
+   0
+  ],
+  "doc/man-sections/generic-options.rst": [
+   8,
+   29
+  ],
+  "doc/man-sections/link-options.rst": [
+   19,
+   12
+  ],
+  "doc/man-sections/script-options.rst": [
+   13,
+   5
+  ],
+  "doc/man-sections/server-options.rst": [
+   9,
+   2
+  ],
+  "doc/man-sections/vpn-network-options.rst": [
+   4,
+   0
+  ],
+  "doc/man-sections/windows-options.rst": [
+   6,
+   6
+  ],
+  "doc/management-notes.txt": [
+   39,
+   0
+  ],
+  "doc/openvpn-examples.5": [
+   10,
+   6
+  ],
+  "doc/openvpn-examples.5.html": [
+   8,
+   4
+  ],
+  "doc/openvpn.8": [
+   170,
+   101
+  ],
+  "doc/openvpn.8.html": [
+   119,
+   70
+  ],
+  "include/Makefile.in": [
+   22,
+   11
+  ],
+  "include/openvpn-msg.h": [
+   1,
+   1
+  ],
+  "include/openvpn-plugin.h": [
+   1,
+   1
+  ],
+  "install-sh": [
+   9,
+   9
+  ],
+  "ltmain.sh": [
+   437,
+   349
+  ],
+  "m4/libtool.m4": [
+   253,
+   192
+  ],
+  "m4/ltoptions.m4": [
+   68,
+   38
+  ],
+  "m4/ltsugar.m4": [
+   1,
+   1
+  ],
+  "m4/ltversion.m4": [
+   6,
+   6
+  ],
+  "m4/lt~obsolete.m4": [
+   1,
+   1
+  ],
+  "missing": [
+   50,
+   29
+  ],
+  "sample/Makefile.in": [
+   18,
+   6
+  ],
+  "sample/sample-config-files/client.conf": [
+   2,
+   0
+  ],
+  "sample/sample-config-files/server.conf": [
+   2,
+   0
+  ],
+  "sample/sample-plugins/Makefile": [
+   77,
+   65
+  ],
+  "sample/sample-plugins/Makefile.in": [
+   17,
+   5
+  ],
+  "src/Makefile.in": [
+   17,
+   5
+  ],
+  "src/compat/Makefile.in": [
+   23,
+   13
+  ],
+  "src/openvpn/Makefile.in": [
+   23,
+   16
+  ],
+  "src/openvpn/auth_token.c": [
+   27,
+   9
+  ],
+  "src/openvpn/auth_token.h": [
+   2,
+   5
+  ],
+  "src/openvpn/buffer.c": [
+   11,
+   0
+  ],
+  "src/openvpn/buffer.h": [
+   23,
+   0
+  ],
+  "src/openvpn/clinat.c": [
+   17,
+   1
+  ],
+  "src/openvpn/crypto.c": [
+   7,
+   6
+  ],
+  "src/openvpn/crypto.h": [
+   7,
+   2
+  ],
+  "src/openvpn/crypto_epoch.c": [
+   4,
+   3
+  ],
+  "src/openvpn/crypto_mbedtls.c": [
+   5,
+   5
+  ],
+  "src/openvpn/crypto_mbedtls.h": [
+   0,
+   1
+  ],
+  "src/openvpn/crypto_mbedtls_legacy.c": [
+   5,
+   5
+  ],
+  "src/openvpn/crypto_openssl.c": [
+   12,
+   7
+  ],
+  "src/openvpn/cryptoapi.c": [
+   3,
+   1
+  ],
+  "src/openvpn/dco.c": [
+   25,
+   8
+  ],
+  "src/openvpn/dco_freebsd.c": [
+   8,
+   6
+  ],
+  "src/openvpn/dco_linux.c": [
+   5,
+   2
+  ],
+  "src/openvpn/dhcp.c": [
+   3,
+   1
+  ],
+  "src/openvpn/dns.c": [
+   14,
+   16
+  ],
+  "src/openvpn/env_set.c": [
+   1,
+   1
+  ],
+  "src/openvpn/forward.c": [
+   11,
+   41
+  ],
+  "src/openvpn/forward.h": [
+   16,
+   1
+  ],
+  "src/openvpn/helper.c": [
+   8,
+   19
+  ],
+  "src/openvpn/init.c": [
+   4,
+   12
+  ],
+  "src/openvpn/manage.c": [
+   126,
+   8
+  ],
+  "src/openvpn/manage.h": [
+   3,
+   1
+  ],
+  "src/openvpn/mbedtls_compat.h": [
+   13,
+   0
+  ],
+  "src/openvpn/misc.c": [
+   25,
+   21
+  ],
+  "src/openvpn/misc.h": [
+   5,
+   0
+  ],
+  "src/openvpn/mtu.c": [
+   8,
+   0
+  ],
+  "src/openvpn/mtu.h": [
+   5,
+   0
+  ],
+  "src/openvpn/mudp.c": [
+   24,
+   57
+  ],
+  "src/openvpn/mudp.h": [
+   1,
+   3
+  ],
+  "src/openvpn/multi.c": [
+   3,
+   3
+  ],
+  "src/openvpn/multi.h": [
+   3,
+   6
+  ],
+  "src/openvpn/multi_io.c": [
+   46,
+   2
+  ],
+  "src/openvpn/multi_io.h": [
+   0,
+   1
+  ],
+  "src/openvpn/networking_sitnl.c": [
+   46,
+   18
+  ],
+  "src/openvpn/ntlm.c": [
+   2,
+   2
+  ],
+  "src/openvpn/openssl_compat.h": [
+   11,
+   17
+  ],
+  "src/openvpn/openvpn.c": [
+   1,
+   1
+  ],
+  "src/openvpn/options.c": [
+   112,
+   47
+  ],
+  "src/openvpn/options.h": [
+   4,
+   2
+  ],
+  "src/openvpn/pkcs11_mbedtls.c": [
+   16,
+   0
+  ],
+  "src/openvpn/platform.c": [
+   3,
+   4
+  ],
+  "src/openvpn/proto.c": [
+   1,
+   1
+  ],
+  "src/openvpn/proxy.c": [
+   4,
+   5
+  ],
+  "src/openvpn/reliable.c": [
+   47,
+   3
+  ],
+  "src/openvpn/reliable.h": [
+   40,
+   18
+  ],
+  "src/openvpn/socket.c": [
+   88,
+   85
+  ],
+  "src/openvpn/socket.h": [
+   38,
+   12
+  ],
+  "src/openvpn/socks.c": [
+   3,
+   4
+  ],
+  "src/openvpn/ssl.c": [
+   146,
+   69
+  ],
+  "src/openvpn/ssl.h": [
+   2,
+   2
+  ],
+  "src/openvpn/ssl_common.h": [
+   1,
+   1
+  ],
+  "src/openvpn/ssl_mbedtls.c": [
+   6,
+   0
+  ],
+  "src/openvpn/ssl_ncp.c": [
+   1,
+   1
+  ],
+  "src/openvpn/ssl_openssl.c": [
+   103,
+   33
+  ],
+  "src/openvpn/ssl_openssl.h": [
+   1,
+   0
+  ],
+  "src/openvpn/ssl_pkt.c": [
+   3,
+   5
+  ],
+  "src/openvpn/ssl_pkt.h": [
+   1,
+   3
+  ],
+  "src/openvpn/ssl_verify.c": [
+   27,
+   16
+  ],
+  "src/openvpn/ssl_verify_mbedtls.c": [
+   131,
+   18
+  ],
+  "src/openvpn/ssl_verify_openssl.c": [
+   77,
+   71
+  ],
+  "src/openvpn/tls_crypt.c": [
+   28,
+   21
+  ],
+  "src/openvpn/tls_crypt.h": [
+   1,
+   5
+  ],
+  "src/openvpn/tun.c": [
+   5,
+   8
+  ],
+  "src/openvpn/win32-util.c": [
+   94,
+   0
+  ],
+  "src/openvpn/win32-util.h": [
+   16,
+   4
+  ],
+  "src/openvpn/win32.c": [
+   105,
+   60
+  ],
+  "src/openvpn/win32.h": [
+   6,
+   0
+  ],
+  "src/openvpnmsica/Makefile.in": [
+   30,
+   21
+  ],
+  "src/openvpnmsica/msiex.c": [
+   1,
+   1
+  ],
+  "src/openvpnmsica/openvpnmsica.c": [
+   1,
+   1
+  ],
+  "src/openvpnserv/Makefile.in": [
+   28,
+   21
+  ],
+  "src/openvpnserv/interactive.c": [
+   279,
+   152
+  ],
+  "src/openvpnserv/validate.c": [
+   21,
+   3
+  ],
+  "src/openvpnserv/validate.h": [
+   0,
+   1
+  ],
+  "src/plugins/Makefile.in": [
+   17,
+   5
+  ],
+  "src/plugins/auth-pam/Makefile.in": [
+   26,
+   17
+  ],
+  "src/plugins/auth-pam/utils.c": [
+   1,
+   2
+  ],
+  "src/plugins/down-root/Makefile.in": [
+   26,
+   17
+  ],
+  "src/tapctl/Makefile.in": [
+   23,
+   16
+  ],
+  "src/tapctl/tap.c": [
+   18,
+   13
+  ],
+  "test-driver": [
+   13,
+   6
+  ],
+  "tests/Makefile.in": [
+   77,
+   40
+  ],
+  "tests/t_client.rc-sample": [
+   7,
+   2
+  ],
+  "tests/t_client.sh.in": [
+   14,
+   14
+  ],
+  "tests/unit_tests/Makefile.in": [
+   16,
+   4
+  ],
+  "tests/unit_tests/example_test/Makefile.in": [
+   68,
+   31
+  ],
+  "tests/unit_tests/openvpn/Makefile.in": [
+   76,
+   39
+  ],
+  "tests/unit_tests/openvpn/cert_data.h": [
+   35,
+   35
+  ],
+  "tests/unit_tests/openvpn/mock_get_random.c": [
+   1,
+   1
+  ],
+  "tests/unit_tests/openvpn/test_argv.c": [
+   57,
+   0
+  ],
+  "tests/unit_tests/openvpn/test_auth_token.c": [
+   82,
+   17
+  ],
+  "tests/unit_tests/openvpn/test_buffer.c": [
+   11,
+   0
+  ],
+  "tests/unit_tests/openvpn/test_crypto.c": [
+   1,
+   11
+  ],
+  "tests/unit_tests/openvpn/test_cryptoapi.c": [
+   4,
+   4
+  ],
+  "tests/unit_tests/openvpn/test_dhcp.c": [
+   18,
+   0
+  ],
+  "tests/unit_tests/openvpn/test_misc.c": [
+   49,
+   16
+  ],
+  "tests/unit_tests/openvpn/test_ncp.c": [
+   1,
+   3
+  ],
+  "tests/unit_tests/openvpn/test_options_parse.c": [
+   0,
+   1
+  ],
+  "tests/unit_tests/openvpn/test_packet_id.c": [
+   49,
+   1
+  ],
+  "tests/unit_tests/openvpn/test_pkcs11.c": [
+   4,
+   4
+  ],
+  "tests/unit_tests/openvpn/test_pkt.c": [
+   1,
+   11
+  ],
+  "tests/unit_tests/openvpn/test_ssl.c": [
+   137,
+   1
+  ],
+  "tests/unit_tests/openvpn/test_tls_crypt.c": [
+   189,
+   12
+  ],
+  "tests/unit_tests/openvpn/test_user_pass.c": [
+   11,
+   0
+  ],
+  "tests/unit_tests/openvpnserv/Makefile.in": [
+   16,
+   4
+  ],
+  "tests/unit_tests/plugins/Makefile.in": [
+   16,
+   4
+  ],
+  "tests/unit_tests/plugins/auth-pam/Makefile.am": [
+   2,
+   0
+  ],
+  "tests/unit_tests/plugins/auth-pam/Makefile.in": [
+   73,
+   36
+  ],
+  "version.m4": [
+   2,
+   2
+  ]
+ },
+ "files": 178,
+ "added_lines": 9900,
+ "removed_lines": 4862,
+ "diff": "diff --git a/CMakeLists.txt b/CMakeLists.txt\nindex e25ecae..c92d9ea 100644\n--- a/CMakeLists.txt\n+++ b/CMakeLists.txt\n@@ -112,7 +112,7 @@ if (MSVC)\n         add_link_options(\"$<$<CONFIG:Release>:/CETCOMPAT>\")\n     endif()\n else ()\n-    add_compile_options(-Wall -Wuninitialized)\n+    add_compile_options(-Wall)\n     check_and_add_compiler_flag(-Wno-stringop-truncation NoStringOpTruncation)\n     check_and_add_compiler_flag(-Wstrict-prototypes StrictPrototypes)\n     check_and_add_compiler_flag(-Wold-style-definition OldStyleDefinition)\n@@ -141,6 +141,10 @@ set(OPENVPN_VERSION_MINOR ${PRODUCT_VERSION_MINOR})\n set(OPENVPN_VERSION_PATCH ${PRODUCT_VERSION_PATCH})\n set(OPENVPN_VERSION_RESOURCE ${PRODUCT_VERSION_RESOURCE})\n \n+set(TAP_WIN_COMPONENT_ID \"${PRODUCT_TAP_WIN_COMPONENT_ID}\")\n+set(TAP_WIN_MIN_MAJOR ${PRODUCT_TAP_WIN_MIN_MAJOR})\n+set(TAP_WIN_MIN_MINOR ${PRODUCT_TAP_WIN_MIN_MINOR})\n+\n set(CMAKE_C_STANDARD 11)\n \n # Set the various defines for config.h.cmake.in\n@@ -379,12 +383,20 @@ if (BUILD_TESTING)\n     find_package(cmocka CONFIG)\n     if (TARGET cmocka::cmocka)\n         set(CMOCKA_LIBRARIES cmocka::cmocka)\n+        get_target_property(CMOCKA_INCLUDE_DIRS cmocka::cmocka INTERFACE_INCLUDE_DIRECTORIES)\n     else ()\n         pkg_search_module(cmocka cmocka REQUIRED IMPORTED_TARGET)\n         set(CMOCKA_LIBRARIES PkgConfig::cmocka)\n+        set(CMOCKA_INCLUDE_DIRS ${cmocka_INCLUDE_DIRS})\n     endif ()\n-    set(CMAKE_REQUIRED_LIBRARIES ${CMOCKA_LIBRARIES})\n+    # cmocka_version.h exists since cmocka 2.0; its absence selects the\n+    # cmocka 1.x compat shims in test_common.h. Detecting a header only needs\n+    # the include path - do NOT add cmocka to CMAKE_REQUIRED_LIBRARIES, as that\n+    # makes check_include_files link the shared library, which can fail in the\n+    # probe for unrelated reasons and wrongly mis-detect cmocka 2.x as < 2.0.\n+    set(CMAKE_REQUIRED_INCLUDES ${CMOCKA_INCLUDE_DIRS})\n     check_include_files(cmocka_version.h HAVE_CMOCKA_VERSION_H)\n+    unset(CMAKE_REQUIRED_INCLUDES)\n endif ()\n \n configure_file(config.h.cmake.in config.h)\n@@ -807,7 +819,6 @@ if (BUILD_TESTING)\n \n     target_sources(test_mbuf PRIVATE\n         tests/unit_tests/openvpn/mock_get_random.c\n-        src/openvpn/buffer.c\n         src/openvpn/mbuf.c\n         )\n \ndiff --git a/ChangeLog b/ChangeLog\nindex aff3519..e946e7f 100644\n--- a/ChangeLog\n+++ b/ChangeLog\n@@ -1,6 +1,283 @@\n OpenVPN ChangeLog\n Copyright (C) 2002-2026 OpenVPN Inc <sales@openvpn.net>\n \n+2026.09.03 -- Version 2.7.7\n+\n+Antonio Quartulli (3):\n+      clinat: do not adjust UDP checksum if zero\n+      multi: don't let stale-routes-check delete permanent routes\n+      networking_sitnl: validate netlink replies against the request\n+\n+Arne Schwabe (7):\n+      Remove local get_random in test_misc.c\n+      Make test_misc compile with -Werror again.\n+      Reenable xmit_hold when using p2p tcp-server and tls-server\n+      Reduce number of future epoch keys from 16 to 4\n+      Move check_session_buf_not_used method into the method that free the buffer\n+      Avoid unbounded reliable TLS timeout\n+      Ignore acks for packets that cannot be outstanding\n+\n+Frank Lichtenheld (7):\n+      t_client.rc-sample: Add missing documentation for FPING_ARGS_x\n+      t_client.sh.in: Use printf instead of echo -e\n+      ssl: Do not queue control ciphertext while a packet is still queued\n+      win32-util.h: Fix includes\n+      t_client.sh.in: Do not try to guess the absolute path to LOGDIR\n+      .clang-format: Convert deprecated setting KeepEmptyLinesAtTheStartOfBlocks\n+      mbedtls: Work-around bug in mbedtls 4.1.0 and 4.2.0\n+\n+Gert Doering (1):\n+      OpenVPN Release 2.7.7\n+\n+Gleb Pesin (1):\n+      OpenSSL: avoid resetting the HMAC key on every packet\n+\n+Heiko Hund (7):\n+      openvpnserv: fix log lines format string\n+      openvpnserv: don't allow '/' in config paths\n+      openvpnserv: harden CheckConfigPath() a bit more\n+      openvpnserv: pass correct NRPT domains size\n+      openvpnserv: fix off-by-one input validation\n+      win: don't use NULL DACL with system objects\n+      tapctl: prevent binary planting with netsh\n+\n+Lev Stipakov (2):\n+      win32: quote arguments that cmd.exe would reinterpret\n+      win32: unit-test the CreateProcess() command line quoting\n+\n+Max Fillinger (1):\n+      Fix format string specifier for size_t\n+\n+Nexory (1):\n+      dhcp: Fix off-by-one in write_dhcp_search_str() temp buffer guard\n+\n+Razvan Cojocaru (1):\n+      doc: Update doxygen references to removed tunnel_server_{udp, tcp}()\n+\n+\n+2026.08.05 -- Version 2.7.6\n+\n+Antonio Quartulli (2):\n+      Enable TCP_NODELAY by default and push it to clients\n+      options: make 'tun' the default for '--dev'\n+\n+Arne Schwabe (1):\n+      Correctly calculate packet id size when epoch packet format is in use\n+\n+Frank Lichtenheld (5):\n+      test_tls_crypt: Fix issue with temp file name on big endian systems\n+      ssl_pkt: Fix doxygen warning about read_control_auth\n+      t_client.sh.in: Do not run resolvectl if systemd is not running\n+      test_tls_crypt: Fix test failure on Windows\n+      ssl: Ignore hard reset packets with a non-zero packet id\n+\n+Heiko Hund (2):\n+      mingw: avoid C99 \"hh\" scanf length modifier\n+      interactive: forbid \"--setenv opt\" in startup data\n+\n+Lev Stipakov (1):\n+      CMake: detect cmocka_version.h via include path, not by linking\n+\n+Marco Baffo (1):\n+      options: limit ping and keepalive values to one day\n+\n+Max Fillinger (2):\n+      Make --x509-username-field work with Mbed TLS\n+      Remove --providers from --help output for Mbed TLS\n+\n+Ralf Lici (1):\n+      dco: make key state desync recoverable\n+\n+rootvector2 (1):\n+      proto: correct 802.1Q length check in is_ipv_X\n+\n+\n+2026.07.01 -- Version 2.7.5\n+\n+Antonio Quartulli (2):\n+      mudp: send HMAC reset reply synchronously\n+      options: fix use-after-free of DNS options on client connect\n+\n+Arne Schwabe (5):\n+      Ensure pushed tun-mtu is no lower than TUN_MTU_MIN\n+      Make get_random return int64 instead of long\n+      Clean up metadata handling in tls_crypt_v2_extract_client_key\n+      Ensure we only get the session from valid tokens for external-auth\n+      Ensure tls-crypt keys are not setup twice\n+\n+Frank Lichtenheld (7):\n+      dco_freebsd: Add check_malloc_return after realloc\n+      Fix some msg() calls with wrong number of arguments in Windows-only code\n+      openvpnserv: Address some uninitVariable warnings from cppcheck\n+      openvpnserv: Fix memory leak when loading DLLs\n+      renovate: Fix typo in regex manager\n+      GHA: Maintenance update June 2026\n+      GHA: Switch to using VS 2026\n+\n+Gert Doering (2):\n+      Fix 1-byte buffer overrun on NTLMv2 proxy responses.\n+      OpenVPN Release 2.7.5\n+\n+Gianmarco De Gregori (2):\n+      Fix: port-share and multi-socket interaction\n+      Multisocket: use event engine rwflags for UDP I/O\n+\n+Heiko Hund (1):\n+      openvpnserv: rework ConvertItfDnsDomains and tests\n+\n+Lev Stipakov (3):\n+      socket: assert buffer length before reading prepended sockaddr family\n+      win32: fix plugin trusted-dir check prefix bypass\n+      openvpnserv: fix DNS SearchList state pollution on (dis)connect\n+\n+Marco Baffo (1):\n+      dco_linux: allow passing KEEPALIVE_TIMEOUT without KEEPALIVE_INTERVAL\n+\n+Max Fillinger (3):\n+      Null-terminate tls-crypt client keys when testing\n+      Fix tls_wrap_reneg use after free\n+      Fix ack_write_buf use after free\n+\n+Ralf Lici (1):\n+      dco.c: fix argument order in dco_install_key() log string\n+\n+Sami Rusani (2):\n+      Document --preresolve option\n+      doc: clarify that --float only applies to UDP\n+\n+Selva Nair (1):\n+      DNS server documentation update\n+\n+saddamr3e (1):\n+      dns: Fix memory leak in dns_server_addr_parse\n+\n+\n+2026.04.30 -- Version 2.7.4\n+\n+Frank Lichtenheld (4):\n+      configure: Remove --enable-strict\n+      GHA: Maintenance Update April 2026\n+      GHA: Add caching for vcpkg builds\n+      dns-scripts: Fix dnssec values in comments and Copyright statement format\n+\n+Luis Cruz (1):\n+      Fix pkgcs11 vcpkg port installing debug files on release builds\n+\n+Max Fillinger (1):\n+      Mbed TLS: Error out if we have no valid tls-groups\n+\n+Selva Nair (1):\n+      dns: minimalist fix for dnssec setting\n+\n+\n+2026.04.27 -- Version 2.7.3\n+\n+Selva Nair (1):\n+      Fixup: prompting password from management\n+\n+\n+2026.04.22 -- Version 2.7.2\n+\n+Arne Schwabe (9):\n+      Use ASN1_BIT_STRING_get_bit to check for netscape certificate usage\n+      Rename key* to privkey* in cert_data.h\n+      Add unit test for printing various details of certificates\n+      OpenSSL 4.0: Make X509 objects const\n+      Do not access internals of ASN1_INTEGER to print hex of serial\n+      Try to emphasise the transition from old ovpn-dco to new ovpn module\n+      OpenSSL 4.0: Use X509_check_certificate_times instead of X509_cmp_time\n+      GHA: Add OpenSSL 4.0 build\n+      Ensure that buffer of freed session are not used\n+\n+David Benjamin (1):\n+      ssl_openssl: Fix some CRL mixups\n+\n+Frank Lichtenheld (3):\n+      doc: Remove some explanations for pre-2.3 configurations\n+      openvpnmsica: Fix setting of iTicks in schedule_adapter_delete\n+      win: Fix nrpt_dnssec flag handling\n+\n+Greg Cox (1):\n+      Update --learn-address man page with ipv6 information\n+\n+Luca Boccassi (1):\n+      management: add base64 multi-line input for passwords\n+\n+Luis Cruz (1):\n+      build: Use info fetched from version.m4\n+\n+Selva Nair (4):\n+      Log when writing username/password to TLS buffer fails\n+      Add unit tests for 'auth-user-pass username-only'\n+      verify_x509_name: Improve the error message on failure\n+      Inlined credentials: read missing password from management interface\n+\n+Steffan Karger (1):\n+      tls-crypt-v2: Avoid interpreting opcode as part of WKc\n+\n+\n+2026.03.31 -- Version 2.7.1\n+\n+Antonio Quartulli (1):\n+      options: drop useless init_gc param for init_options()\n+\n+Arne Schwabe (12):\n+      Change stream_buf_read_setup_dowork parameter to struct steam_buf\n+      DCO Linux: Fix setting DCO ifmode failing on big endian archs\n+      Merge stream_buf_get_next and stream_buf_set_next\n+      AWS-LC: Add missing return and cast in ssl_tls1_PRF\n+      GHA: Install aws-lc under /opt/aws-lc\n+      Show version and double check we use the right TLS library in Github Actions\n+      Remove unnecessary OpenSSL init and cleanup commands in unit tests\n+      GHA: Cache built crypto libraries\n+      Use openssl_err_t typedef to deal with difference between TLS libraries\n+      Do not support tls_ctx_set_cert_profile on AWS-LC\n+      Use const specifices in extract_x509_field_ssl\n+      Increase default size of internal hash maps to 4 * --max-clients\n+\n+Frank Lichtenheld (7):\n+      clang-format: Add missing InsertBraces: true\n+      auth-pam: fix discards 'const' qualifier from pointer target type\n+      GHA: Maintenance update February 2026\n+      buffer: Add checked_snprintf function and use it in the code\n+      vcpkg-ports: Review pkcs11-helper port\n+      systemd: Change LimitNPROC to TasksMax and increase limit\n+      ssl_verify_openssl: Clean up extract_x509_extension\n+\n+Gert Doering (4):\n+      port-share: log incoming connections at verb 3 only\n+      rework all occurrences of 'M_ERR | M_ERRNO'\n+      configure.ac: adjust to native inotify support for FreeBSD 15+\n+      dco_freebsd: use AF_LOCAL sockets for ioctl() communication with DCO driver\n+\n+Gianmarco De Gregori (1):\n+      socket: restore per-connection lport override over global default\n+\n+Haixiao Yan (1):\n+      tests: skip test execution when cross-compiling\n+\n+Heiko Hund (2):\n+      doc: improve Windows-specific options section\n+      doc: fix typo with --ingore-unknown-option\n+\n+Max Fillinger (1):\n+      Avoid unbounded allocations in pkcs11_mbedtls.c\n+\n+Ralf Lici (1):\n+      doc: fix client-nat syntax and examples\n+\n+Rudi Heitbaum (3):\n+      dns: fix discards 'const' qualifier from pointer target type\n+      ntlm: fix discards 'const' qualifier from pointer target type\n+      ssl_verify_openssl: use official ASN1_STRING_ API\n+\n+Selva Nair (4):\n+      Fixup version command on management interface\n+      Document management client versions\n+      Use USER_PASS_LEN for private key password buffer size\n+      Add an optional username-only flag for auth-user-pass\n+\n+\n 2026.02.11 -- Version 2.7.0\n \n Frank Lichtenheld (3):\ndiff --git a/Changes.rst b/Changes.rst\nindex 7de5f10..213f1dc 100644\n--- a/Changes.rst\n+++ b/Changes.rst\n@@ -1,3 +1,543 @@\n+Overview of changes in 2.7.7\n+============================\n+Security fixes\n+--------------\n+- reliability layer: Avoid unbounded reliable TLS timeout (CVE-2026-84732)\n+\n+- reliability layer: Ignore acks for packets that cannot be outstanding\n+  (CVE-2026-84732)\n+\n+  (both reliability layer bugs found by Mark Bregman <mark.bregman@fox-it.com>,\n+   tracked in Github: OpenVPN/openvpn-private-issues#161)\n+\n+- Windows: fix ``CreateProcess()`` command line quoting for characters that\n+  are special to ``cmd.exe`` and where a combination of validation script\n+  plus rogue CA could lead to misbehavior (CVE-2026-84256)\n+\n+  (Bug found by Clouditera Security <security@clouditera.com>, tracked\n+   in Github: OpenVPN/openvpn-private-issues#159)\n+\n+- Windows: fix ``tapctl`` to always call ``netsh.exe`` with full path\n+  (as we do elsewhere) (CVE-2026-84226)\n+\n+  (Bug found by BreachX Zero Day Labs, using Typhon AI Mil v2, tracked\n+   in Github: OpenVPN/openvpn-private-issues#164)\n+\n+- Windows: don't use NULL DACL with system objects, namely the\n+  ``--service`` exit event and the ``netsh.exe`` guard semaphore.  The\n+  old approach was prone to a local DoS where one user could interfere\n+  with other users' openvpn processes by blocking the netsh semaphore\n+  or sending events.  This only affects setups not using the iservice,\n+  or using the automatic service to start/stop openvpn (CVE-2026-82312).\n+\n+  (Bug found by DEBRAJ BASAK <https://in.linkedin.com/in/debrajbasak>,\n+   tracked in Github: OpenVPN/openvpn-private-issues#167)\n+\n+- Linux Netlink: validate netlink replies against the request\n+\n+  (Suggested by Joshua Rogers <contact@joshua.hu> as a security improvement,\n+   tracked in Github: OpenVPN/openvpn-private-issues#9)\n+\n+- Windows: fix off-by-one on input validation in openvpnserv\n+  (discovered while fixing CVE-2026-78221)\n+\n+- Windows: openvpnserv: pass correct NRPT domains size - when IDN domains\n+  with UTF8 encoding were involved, a buffer overread could be achieved\n+  (CVE-2026-78221).\n+\n+  (Bug found by BreachX Zero Day Labs, using Typhon AI Mil v2,\n+   in Github: OpenVPN/openvpn-private-issues#162)\n+\n+- Windows: harden CheckConfigPath() a bit more\n+  (another improvement while working on CVE-2026-78043)\n+\n+- Windows: openvpnserv: don't allow '/' in config paths\n+  (the APIs windows uses for path validation do not handle '/' as path\n+   separator, while the file open APIs do, so this could be used to\n+   circumvent our config path validation, leading to openvpn.exe\n+   starting a user-controlled config file even if administatively not\n+   allowed.  CVE-2026-78043)\n+\n+  (Bug found by BreachX Zero Day Labs, using Typhon AI Mil v2,\n+   in Github: OpenVPN/openvpn-private-issues#162)\n+\n+- Windows: dhcp: Fix off-by-one in write_dhcp_search_str() temp buffer guard\n+  (suitable DHCP options could lead to a single-byte overflow of a temp\n+   buffer, CVE-2026-81738)\n+\n+  (Bug found by Andre Kropp (Nexory) and ChinhNguyen, tracked\n+   in Github: OpenVPN/openvpn-private-issues#165)\n+\n+Bugfixes\n+--------\n+- work around a pubkey-handling bug in mbedTLS 4.1.0 and 4.2.0\n+  (supposedly fixed in 4.3.0)\n+\n+- multi: don't let stale-routes-check delete permanent routes\n+  (the ``--stale-routes-check`` did not delete dynamic cached routes,\n+   but also routes installed by ``--iroute`` and ``--ifconfig-push``\n+   - fix by introducing route flags and restraining the check on them)\n+  (Github: #1063)\n+\n+- Windows: openvpnserv: fix log lines format string\n+  interface names with international characters printed in some error\n+  messages need to be converted from UTF8 to UCS16 first.\n+\n+- clinat: do not adjust UDP checksum if zero (as per RFC768)\n+  (Github: #1037)\n+\n+- OpenSSL: avoid resetting the HMAC key on every packet\n+  (Github: #1088)\n+\n+- fix format string specifier for size_t (%zu)\n+\n+- ssl: Do not queue control ciphertext while a packet is still queued\n+  (fixes problems in TCP p2p handshake when both sides try to handshake\n+   at the same time)\n+  (Github: #1089)\n+\n+- Reenable xmit_hold when using p2p tcp-server and tls-server\n+  (in TCP server mode, the server is not expected to initiate the TLS\n+   handshake - bug introduced by the multisocket code, checking the\n+   wrong variable for socket protocol)\n+  (Github: #1089)\n+\n+- fix test_misc compile issues with -Werror\n+\n+User-visible Changes\n+--------------------\n+- when using EPOCH data channel format, reduce number of future keys\n+  from 16 to 4 (calculation was wrong, 4 spare keys are sufficient\n+  for 100+ Gbit/s links, less log spam in userland and less resources\n+  used in in-kernel implementations)\n+\n+Building/Testing improvements\n+-----------------------------\n+- clang-format: Convert deprecated setting KeepEmptyLinesAtTheStartOfBlocks\n+\n+- t_client.sh: various improvements\n+\n+Documentation improvements\n+--------------------------\n+- doc: Update doxygen references to removed tunnel_server_{udp, tcp}()\n+  (those functions do not exist in 2.7+ anymore)\n+\n+\n+Overview of changes in 2.7.6\n+============================\n+Security fixes\n+--------------\n+- openvpnserv (windows): better scrutinize command line passed in\n+  from the control socket to openvpn.  This would lead to circumventing\n+  admin restrictions on allowed openvpn config directories (but never\n+  to \"read files the user has no permissions for\")  (CVE-2026-63649)\n+\n+  (Bug found by 章鱼哥 (www.aipyaipy.com), tracked\n+   in Github: OpenVPN/openvpn-private-issues#142)\n+\n+- dco: make key state desync recoverable\n+\n+  This was reported as a \"with suitable timing, a key-update de-sync between\n+  OpenVPN and the kernel could trigger an ASSERT()\", and was initially\n+  handled as security report.  It turned out to be not exploitable, but the\n+  state machine was not very robust and so the opportunity was used to\n+  improve the code.\n+\n+  (Bug found by 章鱼哥 (www.aipyaipy.com), tracked\n+   in Github: OpenVPN/openvpn-private-issues#143)\n+\n+- make ``--x509-username-field`` work with mbedTLS.\n+\n+  In very particular setups, together with a CA creating matching certificates,\n+  this could lead to unintentionally permitting a certificate that should\n+  not have.  This is why this was considered a (low-prio) security bug and a\n+  CVE ID was assigned  (CVE-2026-63650)\n+\n+  (Bug found by 章鱼哥 (www.aipyaipy.com), tracked\n+   in Github: OpenVPN/openvpn-private-issues#144)\n+\n+Bugfixes\n+--------\n+- refuse incoming HARD RESET packets with a sequence ID != 0\n+  (this is basically making an OpenVPN server ignore and log a\n+   \"should never happen\" client-side misbehaviour, which could lead to\n+   TLS handshake establishment failures in p2p TLS setups)\n+\n+- correctly calculate packet id size if epoch packet format is in use\n+  - this was off by 4, for connections openvpn 2.7+ to openvpn 2.7+,\n+  exceeding \"mssfix mtu\" headroom by those 4 bytes\n+  (Github: OpenVPN/openvpn#1074)\n+\n+- correct minimum packet length check for 802.1q tagged packets\n+  (Github: OpenVPN/openvpn#1044).\n+\n+  This was also reported (twice) as a security bug, as technically\n+  OpenVPN with ``--client-nat`` would read and write up to 4 bytes\n+  \"after the end of the packet\" - but due to the OpenVPN packet buffer\n+  layouts, which are always full-frame-sized this is fully safe and has\n+  no adverse consequences.\n+\n+User-visible Changes\n+--------------------\n+- if ``--dev`` is not specified, default to ``--dev tun`` - so for the\n+  tun case, this option can now be left out of the openvpn config.\n+\n+- ``--ping`` and ``--keepalive`` settings are now limited to 24 hours\n+  maximum - the primary reason for that is to avoid lots of extra code\n+  in the DCO kernel to handle arbitrarily large values without overflowing\n+  32 bit integers.  24h is considered much higher than any reasonable use.\n+\n+- The ``TCP_NODELAY`` socket flag is now \"always on\". The ``--tcp-nodelay``\n+  option is kept, because setting it on a p2mp server also enables pushing\n+  of ``socket-flags TCP_NODELAY`` to clients, which might not have this\n+  code change yet.\n+\n+- Remove ``--providers`` from ``--help`` output on mbedTLS builds.\n+\n+Building/Testing improvements\n+-----------------------------\n+- no longer use C99 ``hh`` scanf() length modifier, as it's not portable\n+  across all MinGW variants.\n+\n+- fix test_tls_crypt test failures on Windows.\n+\n+- t_client.sh: do not run resolvectl to query DNS settings if systemd is\n+  not running (= do not pollute log files with nonsensical errors).\n+\n+- CMake builds: detect cmocka_version.h via include path, not by linking\n+\n+- test_tls_crypt: Fix issue with temp file name on big endian systems\n+  (encountered trying to build 2.7.5 on Fedora s390x build instances).\n+\n+Documentation improvements\n+--------------------------\n+- ssl_pkt: Fix doxygen warning about read_control_auth\n+\n+\n+Overview of changes in 2.7.5\n+============================\n+Security fixes\n+--------------\n+- openvpnserv (windows): fix DNS SearchList state pollution on (dis)connect.\n+  specific combinations of ``--dns`` config entries plus local DNS config\n+  could lead to corruption of pre-openvpn DNS config (CVE-2026-13379)\n+\n+  (Bug found by 章鱼哥 (www.aipyaipy.com), tracked\n+   in Github: OpenVPN/openvpn-private-issues#123)\n+\n+- Fix use-after-free bug in ack_write_buf(), triggerable by a well-timed\n+  sequence of control channel + authentication packets (CVE-2026-12996)\n+\n+  (Bug found by multiple researchers:\n+     章鱼哥 (www.aipyaipy.com)\n+     Haiyang Huang <huanghaiyang83@gmail.com>\n+     Haruki Oyama (Waseda University)\n+   tracked in Github: OpenVPN/openvpn-private-issues#121, #131, #132)\n+\n+- Fix use-after-free bug in tls_wrap_reneg(), triggerable by suitable\n+  sequence of dynamic tls-crypt control-channel packets (CVE-2026-13117)\n+\n+  (Bug found by multiple researchers:\n+     Trace37 Labs (https://github.com/trace37labs)\n+     Haiyang Huang <huanghaiyang83@gmail.com>\n+   tracked in Github: OpenVPN/openvpn-private-issues#119, #131)\n+\n+- Fix server crash on reception of suitably malformed auth-token, if\n+  ``--auth-gen-token external-auth`` is active (CVE-2026-13122)\n+\n+  (Bug found by Haiyang Huang <huanghaiyang83@gmail.com>, tracked in\n+   Github: OpenVPN/openvpn-private-issues#118)\n+\n+- Fix memory-leak in tls-crypt-v2 client key handling that could lead\n+  to out-of-memory situations and subsequent server crashes (CVE-2026-12932)\n+\n+  (Bug found by Valton Tahiri <valton.taa@gmail.com>, tracked in\n+   Github: OpenVPN/openvpn-private-issues#133)\n+\n+- Fix possible 1-byte buffer overrun on NTLMv2 proxy responses.\n+  (CVE-2026-11771)\n+\n+  (Bug found by Tristan Madani (@TristanInSec), tracked in\n+   Github: OpenVPN/openvpn-private-issues#116)\n+\n+- Fix another memory leak on reception of suitable tls-crypt-v2 packets\n+  that could lead to an out of memory situation and server crash\n+  (CVE-2026-13698)\n+\n+  (Bug found by Max Fillinger <maximilian.fillinger@sentyron.com>, tracked\n+   in Github: OpenVPN/openvpn-private-issues#137.  Overlaps with a report\n+   from Valton Tahiri <valton.taa@gmail.com> in #138 that we believe to\n+   be fixed by this bugfix as well)\n+\n+Bugfixes\n+--------\n+- Windows: fix plugin trusted-dir check prefix bypass\n+  (this fixes a bug in the path checking logic we do on Windows for\n+   \"is loading a plugin from this path allowed?\", but since we could\n+   not find a way to exploit this unless starting with admin privs or\n+   a social engineering attack, not classified as a security fix)\n+\n+- Windows: openvpnserv: rework ConvertItfDnsDomains and tests\n+  (this fixes a buffer overread that is not exploitable and as such\n+   not classified as security fix)\n+\n+- options: fix use-after-free of DNS options on client connect\n+  (using suitable ``--dns`` or ``--dhcp-option DNS`` options in a server\n+   config - not pushed, but applying to the server itself - triggers a\n+   double free() and use-after-free condition, possibly crashing the\n+   server)  (Github: openvpn/OpenVPN#1060)\n+\n+- dns: Fix memory leak in dns_server_addr_parse, if too many server\n+  addresses are configured (Github: OpenVPN/openvpn#1055)\n+\n+- improve multi-socket event handling further - multiple open UDP sockets\n+  with concurrent traffic could lead to inefficient processing, and the\n+  old code was also very hard to follow.\n+\n+  (This was initially triggered by a report from Joshua Rogers using ZeroPath,\n+   but turned out to be \"just bad code\" not a security vulnerability)\n+\n+- Null-terminate tls-crypt client keys when testing - non-exploitable\n+  strlen() on a buffer that is not null-terminated\n+\n+- mudp: send HMAC reset reply synchronously\n+  this fixes a bug where multiple incoming tls-crypt-v2 RESET packets\n+  on different sockets could end up overwriting each other's control\n+  structures, leading to initial handshake packets (HMAC reset reply)\n+  being sent to the wrong client IP, or on a non-suitable socket\n+  (\"v4 packet on a v6 socket\").  Since the overall flow here is stateless\n+  by nature, do not artificially create state by creating elaborate\n+  queues, just send-or-drop.\n+\n+- fix port-share and multi-socket interaction - port-share needs TCP\n+  listeners, but the check was wrong.  So \"as long as any of the listening\n+  sockets is TCP, port-share can be used\" (Github: OpenVPN/openvpn#1027)\n+\n+- Ensure pushed tun-mtu is no lower than TUN_MTU_MIN - this fixes a bug\n+  where a server can push a suitable combination of options and make the\n+  client ASSERT().\n+\n+  (Reported as security issue by Haiyang Huang <huanghaiyang83@gmail.com>,\n+   but it was decided that the server always has means to make the client\n+   \"not function properly\", and it can not be exploited beyond that)\n+\n+- Windows: socket: assert buffer length before reading prepended sockaddr\n+  family - a misbehaviour in the windows DCO driver could trigger an\n+  overread in the userland client.  No such bug exists, which this was\n+  not treated as a security vulnerability\n+\n+  (tracked in Github: OpenVPN/openvpn-private-issues#105)\n+\n+- Windows: openvpnserv: Fix memory leak when loading DLLs\n+  (identified by cppcheck, non-exploitable)\n+\n+- Windows: openvpnserv: Address some uninitVariable warnings from cppcheck\n+  (identified by cppcheck)\n+\n+- Windows: Fix some msg() calls with wrong number of arguments in\n+  Windows-only code (in error-handling paths, so not normally visited)\n+  (identified by cppcheck)\n+\n+- dco_freebsd: Add check_malloc_return after realloc\n+  (identified by cppcheck)\n+\n+- dco_linux: fix debug logging of \"epoch\" and \"dco_keys_installed\" values\n+\n+\n+Building improvements\n+---------------------\n+- Github actions: change windows builds to using Visual Studio 2026\n+\n+- Github actions: June 2026 updates (vcpkg, aws-lc, libressl)\n+\n+- renovate: fix typo in regex manager\n+\n+\n+User-visible Changes\n+--------------------\n+- Make get_random return int64 instead of long - this is a no-op on 64bit\n+  platforms, but will create consistency in temp file names created on\n+  32bit and 64bit platforms (= user visible change on 32bit platforms).\n+\n+- dco_linux: allow passing KEEPALIVE_TIMEOUT without KEEPALIVE_INTERVAL\n+\n+\n+Documentation improvements\n+--------------------------\n+- improve documentation for ``--float`` (Github: OpenVPN/openvpn#358)\n+\n+- add documentation for ``--preresolve`` (Github: OpenVPN/openvpn#532)\n+\n+- impove documentation around DNS config (Github: OpenVPN/openvpn#937)\n+\n+\n+Overview of changes in 2.7.4\n+============================\n+Bugfixes\n+--------\n+- using ``--dns server ...`` style configs on Windows with win-dco would\n+  lead to erroneously enabling \"DnsSecValidationRequired : True\", possibly\n+  breaking VPN DNS resolution.  Pushing ``--dns server ... dnssec no``\n+  can be used as a workaround until clients can be updated.\n+  (Github: OpenVPN/openvpn#1024)\n+\n+- correct comments in the ``--dns-up-down`` platform scripts relating to\n+  ``dns_server_..._dnssec`` values.\n+\n+- Fix release-only build of pkcs11-helper vcpkg port, do not try to\n+  install files from debug build.\n+\n+Building improvements\n+---------------------\n+- update Github Action rules, bring back vcpkg caching\n+\n+- ``--enable-strict`` and ``--enable-strict-options`` configure flags have\n+  been removed (because they did not actually do anything anymore)\n+\n+User-visible Changes\n+--------------------\n+- mbedtls-builds will now provide a proper error message if a\n+  ``tls-group`` statement with no valid groups is encountered\n+  (used to run into SSL handshake failure later on).\n+\n+\n+Overview of changes in 2.7.3\n+============================\n+Bugfixes\n+--------\n+- in combination with ``--management-query-passwords``, setups using\n+  ``--auth-user-pass file`` or inline ``auth-user-pass`` would no longer\n+  use the configured passwords and prompt on the management interface\n+  instead (OpenVPN GUI would then provide an empty user/password prompt)\n+  (Github: OpenVPN/openpvn#1021).\n+\n+Overview of changes in 2.7.2\n+============================\n+Security fixes\n+--------------\n+- fix race condition in TLS handshake that could lead to leaking of\n+  packet data from a previous handshake under specific circumstances\n+  (CVE-2026-40215)\n+\n+  (Bug found by XlabAI Team of Tencent Xuanwu Lab (xlabai@tencent.com))\n+\n+- fix server ASSERT() on receiving a suitably malformed packet with\n+  a valid tls-crypt-v2 key (CVE-2026-35058)\n+\n+  (Bug found by XlabAI Team of Tencent Xuanwu Lab (xlabai@tencent.com)\n+   and independently by Emma Reuter of Cisco ASIG (TALOS-2026-2381))\n+\n+Bugfixes\n+--------\n+- when using a config file with inlined username and no password,\n+  fix prompting for the password from management interface.\n+\n+- Windows: fix DNSSEC flag handling - this got never applied due to\n+  a bad comparison being always false.\n+\n+- Windows: fix deinstallation progress bar on adapter deletion.\n+\n+New features\n+------------\n+- management interface: permit input of very long passwords in\n+  base64-encoded multiline format.  Signal support to management\n+  clients via \"management version 6\".\n+\n+Documentation\n+-------------\n+- improve documentation and error messages related to old and new\n+  Linux DCO modules\n+\n+- remove some references to pre-2.3 OpenVPN\n+\n+- improve manpage for ``--learn-address`` config\n+\n+User-visible Changes\n+--------------------\n+- improve error messages on ``--verify-x509-name`` failures\n+\n+- improve error logging when overlong username or passwords can not\n+  be written to TLS buffer\n+\n+Long-term code maintenance\n+--------------------------\n+- fully support OpenSSL 4.0 now, without \"deprecated API\" warnings\n+  (multiple small changes to adapt to 3.5 -> 4.0 API changes)\n+\n+- add unit tests for certificate detail printing\n+\n+- add unit tests for \"empty password on inline credentials\" handling\n+\n+\n+Overview of changes in 2.7.1\n+============================\n+Bugfixes\n+--------\n+- Fix usage of ``--lport`` inside a ``<connection>`` block - this got\n+  broken with the multi-socket patchset (GH OpenVPN/openvpn#995)\n+\n+- Do not try to run auto-pam unit test when cross-compiling.\n+\n+- Do not break private-key passphrases of length >= 64\n+  (GH OpenVPN/openvpn#993)\n+\n+- Fix obscure ASSERT() crash on TCP connects with TAP and no ip config.\n+\n+- Make DCO work on FreeBSD systems that have no IPv4 support in kernel\n+  (FreeBSD PR 286263)\n+\n+- Make DCO work on Linux on big endian systems (namely, MIPS and PowerPC)\n+  (GH OpenVPN/ovpn-dco#96)\n+\n+New features\n+------------\n+- Add a new ``username-only`` flag argument to ``--auth-user-pass`` which\n+  will now make OpenVPN only query for username and send a dummy password\n+  to the server.  This is only useful if auth schemes are used on the\n+  server side that will do some sort of external challenge base on username,\n+  and not password authentication.  See discussion in GH OpenVPN/openvpn#501\n+  (starting Jan 30, 2024).\n+\n+- Increase default sizing of internal hash maps to ``4 * --max-clients``.\n+  The default used to be ``256`` with a ``--max-clients`` default of\n+  1024 - this is bad for performance, while the memory savings are\n+  minimal.  On a very memory constrained system, reduce ``--max-clients``.\n+\n+Long-term code maintenance\n+--------------------------\n+- Work on OpenSSL 4.0 API support, reducing use of ASN1_STRING members.\n+\n+- Remove obsolete OpenSSL 1.0.x support code from unit tests.\n+\n+- Improve documentation of management client versioning, replace magic\n+  numbers in the code with an enum type.\n+\n+- Fixup responses to management interface ``version`` command (for >= 4).\n+\n+- Make ``--enable-async-push`` work on FreeBSD 15 (which has native\n+  inotify support, and consequently no libinotify.pc anymore)\n+\n+- Adjust some code parts to new \"const\" handling on string function\n+  returns (ISO C23, as implemented by glibc 2.43 and newer).\n+\n+- Remove erroneous usage of ``M_ERR | M_ERRNO`` throughout the code.\n+\n+\n+User-visible Changes\n+--------------------\n+- When compiled with the AWS-LC SSL library, using ``--tls-cert-profile``\n+  will now print a run-time warning - the library does not support it,\n+  so it would silently do nothing.\n+\n+- Systemd unit files: change LimitNPROC to TasksMax and increase limit\n+  (GH: OpenVPN/openvpn#929)\n+\n+- Documentation improvements.\n+\n+- port-share: log incoming connections at ``verb 3``, not on ``error``\n+  level anymore (GH: OpenVPN/openvpn#976).\n+\n+\n Overview of changes in 2.7\n ==========================\n New features\n@@ -50,11 +590,12 @@ Windows automatic service now runs as an unpriviledged user\n     are not readable for ``NT SERVICE\\OpenVPNService``.\n \n Support for new version of Linux DCO module\n-    OpenVPN DCO module is moving upstream and being merged into the\n-    main Linux kernel. For this process some API changes were required.\n-    OpenVPN 2.7 will only support the new API. The new module is called\n-    ``ovpn``. Out-of-tree builds for older kernels are available. Please\n-    see the release announcements for futher information.\n+    The OpenVPN DCO module has been merged into the Linux kernel as of\n+    6.16.  This required some API changes and OpenVPN 2.7 only supports\n+    the new API. The new module is called ``ovpn``. Out-of-tree builds\n+    for older kernels are available from\n+    https://github.com/OpenVPN/ovpn-backports. Please\n+    see the release announcements for further information.\n \n Support for server mode in win-dco driver\n     On Windows the win-dco driver can now be used in server setups.\ndiff --git a/Makefile.in b/Makefile.in\nindex 949e36d..da98629 100644\n--- a/Makefile.in\n+++ b/Makefile.in\n@@ -1,7 +1,7 @@\n-# Makefile.in generated by automake 1.16.5 from Makefile.am.\n+# Makefile.in generated by automake 1.18.1 from Makefile.am.\n # @configure_input@\n \n-# Copyright (C) 1994-2021 Free Software Foundation, Inc.\n+# Copyright (C) 1994-2025 Free Software Foundation, Inc.\n \n # This Makefile.in is free software; the Free Software Foundation\n # gives unlimited permission to copy and/or distribute it,\n@@ -94,6 +94,8 @@ am__make_running_with_option = \\\n   test $$has_opt = yes\n am__make_dryrun = (target_option=n; $(am__make_running_with_option))\n am__make_keepgoing = (target_option=k; $(am__make_running_with_option))\n+am__rm_f = rm -f $(am__rm_f_notfound)\n+am__rm_rf = rm -rf $(am__rm_f_notfound)\n pkgdatadir = $(datadir)/@PACKAGE@\n pkgincludedir = $(includedir)/@PACKAGE@\n pkglibdir = $(libdir)/@PACKAGE@\n@@ -180,10 +182,9 @@ am__base_list = \\\n   sed '$$!N;$$!N;$$!N;$$!N;$$!N;$$!N;$$!N;s/\\n/ /g' | \\\n   sed '$$!N;$$!N;$$!N;$$!N;s/\\n/ /g'\n am__uninstall_files_from_dir = { \\\n-  test -z \"$$files\" \\\n-    || { test ! -d \"$$dir\" && test ! -f \"$$dir\" && test ! -r \"$$dir\"; } \\\n-    || { echo \" ( cd '$$dir' && rm -f\" $$files \")\"; \\\n-         $(am__cd) \"$$dir\" && rm -f $$files; }; \\\n+  { test ! -d \"$$dir\" && test ! -f \"$$dir\" && test ! -r \"$$dir\"; } \\\n+  || { echo \" ( cd '$$dir' && rm -f\" $$files \")\"; \\\n+       $(am__cd) \"$$dir\" && echo $$files | $(am__xargs_n) 40 $(am__rm_f); }; \\\n   }\n am__installdirs = \"$(DESTDIR)$(docdir)\"\n DATA = $(dist_doc_DATA) $(dist_noinst_DATA)\n@@ -222,8 +223,8 @@ distdir = $(PACKAGE)-$(VERSION)\n top_distdir = $(distdir)\n am__remove_distdir = \\\n   if test -d \"$(distdir)\"; then \\\n-    find \"$(distdir)\" -type d ! -perm -200 -exec chmod u+w {} ';' \\\n-      && rm -rf \"$(distdir)\" \\\n+    find \"$(distdir)\" -type d ! -perm -700 -exec chmod u+rwx {} ';' \\\n+      ; rm -rf \"$(distdir)\" \\\n       || { sleep 5 && rm -rf \"$(distdir)\"; }; \\\n   else :; fi\n am__post_remove_distdir = $(am__remove_distdir)\n@@ -253,14 +254,16 @@ am__relativize = \\\n   done; \\\n   reldir=\"$$dir2\"\n DIST_ARCHIVES = $(distdir).tar.gz\n-GZIP_ENV = --best\n+GZIP_ENV = -9\n DIST_TARGETS = dist-gzip\n # Exists only to be overridden by the user if desired.\n AM_DISTCHECK_DVI_TARGET = dvi\n distuninstallcheck_listfiles = find . -type f -print\n am__distuninstallcheck_listfiles = $(distuninstallcheck_listfiles) \\\n   | sed 's|^\\./|$(prefix)/|' | grep -v '$(infodir)/dir$$'\n-distcleancheck_listfiles = find . -type f -print\n+distcleancheck_listfiles = \\\n+  find . \\( -type f -a \\! \\\n+            \\( -name .nfs* -o -name .smb* -o -name .__afs* \\) \\) -print\n ACLOCAL = @ACLOCAL@\n AMTAR = @AMTAR@\n AM_DEFAULT_VERBOSITY = @AM_DEFAULT_VERBOSITY@\n@@ -417,8 +420,10 @@ ac_ct_WINDMC = @ac_ct_WINDMC@\n am__include = @am__include@\n am__leading_dot = @am__leading_dot@\n am__quote = @am__quote@\n+am__rm_f_notfound = @am__rm_f_notfound@\n am__tar = @am__tar@\n am__untar = @am__untar@\n+am__xargs_n = @am__xargs_n@\n bindir = @bindir@\n build = @build@\n build_alias = @build_alias@\n@@ -555,12 +560,12 @@ config.h: stamp-h1\n \t@test -f $@ || $(MAKE) $(AM_MAKEFLAGS) stamp-h1\n \n stamp-h1: $(srcdir)/config.h.in $(top_builddir)/config.status\n-\t@rm -f stamp-h1\n-\tcd $(top_builddir) && $(SHELL) ./config.status config.h\n+\t$(AM_V_at)rm -f stamp-h1\n+\t$(AM_V_GEN)cd $(top_builddir) && $(SHELL) ./config.status config.h\n $(srcdir)/config.h.in:  $(am__configure_deps) \n-\t($(am__cd) $(top_srcdir) && $(AUTOHEADER))\n-\trm -f stamp-h1\n-\ttouch $@\n+\t$(AM_V_GEN)($(am__cd) $(top_srcdir) && $(AUTOHEADER))\n+\t$(AM_V_at)rm -f stamp-h1\n+\t$(AM_V_at)touch $@\n \n distclean-hdr:\n \t-rm -f config.h stamp-h1\n@@ -700,12 +705,13 @@ cscopelist-am: $(am__tagged_files)\n distclean-tags:\n \t-rm -f TAGS ID GTAGS GRTAGS GSYMS GPATH tags\n \t-rm -f cscope.out cscope.in.out cscope.po.out cscope.files\n+\n distdir: $(BUILT_SOURCES)\n \t$(MAKE) $(AM_MAKEFLAGS) distdir-am\n \n distdir-am: $(DISTFILES)\n \t$(am__remove_distdir)\n-\ttest -d \"$(distdir)\" || mkdir \"$(distdir)\"\n+\t$(AM_V_at)$(MKDIR_P) \"$(distdir)\"\n \t@srcdirstrip=`echo \"$(srcdir)\" | sed 's/[].[^$$\\\\*]/\\\\\\\\&/g'`; \\\n \ttopsrcdirstrip=`echo \"$(top_srcdir)\" | sed 's/[].[^$$\\\\*]/\\\\\\\\&/g'`; \\\n \tlist='$(DISTFILES)'; \\\n@@ -775,6 +781,10 @@ dist-bzip2: distdir\n \ttardir=$(distdir) && $(am__tar) | BZIP2=$${BZIP2--9} bzip2 -c >$(distdir).tar.bz2\n \t$(am__post_remove_distdir)\n \n+dist-bzip3: distdir\n+\ttardir=$(distdir) && $(am__tar) | bzip3 -c >$(distdir).tar.bz3\n+\t$(am__post_remove_distdir)\n+\n dist-lzip: distdir\n \ttardir=$(distdir) && $(am__tar) | lzip -c $${LZIP_OPT--9} >$(distdir).tar.lz\n \t$(am__post_remove_distdir)\n@@ -816,9 +826,11 @@ dist dist-all:\n distcheck: dist\n \tcase '$(DIST_ARCHIVES)' in \\\n \t*.tar.gz*) \\\n-\t  eval GZIP= gzip $(GZIP_ENV) -dc $(distdir).tar.gz | $(am__untar) ;;\\\n+\t  eval GZIP= gzip -dc $(distdir).tar.gz | $(am__untar) ;;\\\n \t*.tar.bz2*) \\\n \t  bzip2 -dc $(distdir).tar.bz2 | $(am__untar) ;;\\\n+\t*.tar.bz3*) \\\n+\t  bzip3 -dc $(distdir).tar.bz3 | $(am__untar) ;;\\\n \t*.tar.lz*) \\\n \t  lzip -dc $(distdir).tar.lz | $(am__untar) ;;\\\n \t*.tar.xz*) \\\n@@ -826,7 +838,7 @@ distcheck: dist\n \t*.tar.Z*) \\\n \t  uncompress -c $(distdir).tar.Z | $(am__untar) ;;\\\n \t*.shar.gz*) \\\n-\t  eval GZIP= gzip $(GZIP_ENV) -dc $(distdir).shar.gz | unshar ;;\\\n+\t  eval GZIP= gzip -dc $(distdir).shar.gz | unshar ;;\\\n \t*.zip*) \\\n \t  unzip $(distdir).zip ;;\\\n \t*.tar.zst*) \\\n@@ -930,17 +942,17 @@ install-strip:\n mostlyclean-generic:\n \n clean-generic:\n-\t-test -z \"$(CLEANFILES)\" || rm -f $(CLEANFILES)\n+\t-$(am__rm_f) $(CLEANFILES)\n \n distclean-generic:\n-\t-test -z \"$(CONFIG_CLEAN_FILES)\" || rm -f $(CONFIG_CLEAN_FILES)\n-\t-test . = \"$(srcdir)\" || test -z \"$(CONFIG_CLEAN_VPATH_FILES)\" || rm -f $(CONFIG_CLEAN_VPATH_FILES)\n+\t-$(am__rm_f) $(CONFIG_CLEAN_FILES)\n+\t-test . = \"$(srcdir)\" || $(am__rm_f) $(CONFIG_CLEAN_VPATH_FILES)\n \n maintainer-clean-generic:\n \t@echo \"This command is intended for maintainers to use\"\n \t@echo \"it deletes files that may require special tools to rebuild.\"\n-\t-test -z \"$(BUILT_SOURCES)\" || rm -f $(BUILT_SOURCES)\n-\t-test -z \"$(MAINTAINERCLEANFILES)\" || rm -f $(MAINTAINERCLEANFILES)\n+\t-$(am__rm_f) $(BUILT_SOURCES)\n+\t-$(am__rm_f) $(MAINTAINERCLEANFILES)\n clean: clean-recursive\n \n clean-am: clean-generic clean-libtool mostlyclean-am\n@@ -1017,8 +1029,8 @@ uninstall-am: uninstall-dist_docDATA\n .PHONY: $(am__recursive_targets) CTAGS GTAGS TAGS all all-am \\\n \tam--refresh check check-am clean clean-cscope clean-generic \\\n \tclean-libtool cscope cscopelist-am ctags ctags-am dist \\\n-\tdist-all dist-bzip2 dist-gzip dist-lzip dist-shar dist-tarZ \\\n-\tdist-xz dist-zip dist-zstd distcheck distclean \\\n+\tdist-all dist-bzip2 dist-bzip3 dist-gzip dist-lzip dist-shar \\\n+\tdist-tarZ dist-xz dist-zip dist-zstd distcheck distclean \\\n \tdistclean-generic distclean-hdr distclean-libtool \\\n \tdistclean-tags distcleancheck distdir distuninstallcheck dvi \\\n \tdvi-am html html-am info info-am install install-am \\\n@@ -1057,3 +1069,10 @@ doxygen:\n # Tell versions [3.59,3.63) of GNU make to not export all variables.\n # Otherwise a system limit (for SysV at least) may be exceeded.\n .NOEXPORT:\n+\n+# Tell GNU make to disable its built-in pattern rules.\n+%:: %,v\n+%:: RCS/%,v\n+%:: RCS/%\n+%:: s.%\n+%:: SCCS/s.%\ndiff --git a/README b/README\nindex bee1b25..700413f 100644\n--- a/README\n+++ b/README\n@@ -1,6 +1,6 @@\n OpenVPN -- A Secure tunneling daemon\n \n-Copyright (C) 2002-2022 OpenVPN Inc. This program is free software;\n+Copyright (C) 2002-2026 OpenVPN Inc. This program is free software;\n you can redistribute it and/or modify\n it under the terms of the GNU General Public License version 2\n as published by the Free Software Foundation.\ndiff --git a/aclocal.m4 b/aclocal.m4\nindex 78c3950..d075c7e 100644\n--- a/aclocal.m4\n+++ b/aclocal.m4\n@@ -1,6 +1,6 @@\n-# generated automatically by aclocal 1.16.5 -*- Autoconf -*-\n+# generated automatically by aclocal 1.18.1 -*- Autoconf -*-\n \n-# Copyright (C) 1996-2021 Free Software Foundation, Inc.\n+# Copyright (C) 1996-2025 Free Software Foundation, Inc.\n \n # This file is free software; the Free Software Foundation\n # gives unlimited permission to copy and/or distribute it,\n@@ -14,13 +14,13 @@\n m4_ifndef([AC_CONFIG_MACRO_DIRS], [m4_defun([_AM_CONFIG_MACRO_DIRS], [])m4_defun([AC_CONFIG_MACRO_DIRS], [_AM_CONFIG_MACRO_DIRS($@)])])\n m4_ifndef([AC_AUTOCONF_VERSION],\n   [m4_copy([m4_PACKAGE_VERSION], [AC_AUTOCONF_VERSION])])dnl\n-m4_if(m4_defn([AC_AUTOCONF_VERSION]), [2.71],,\n-[m4_warning([this file was generated for autoconf 2.71.\n+m4_if(m4_defn([AC_AUTOCONF_VERSION]), [2.72],,\n+[m4_warning([this file was generated for autoconf 2.72.\n You have another version of autoconf.  It may work, but is not guaranteed to.\n If you have problems, you may need to regenerate the build system entirely.\n To do so, use the procedure documented by the package, typically 'autoreconf'.])])\n \n-# Copyright (C) 2002-2021 Free Software Foundation, Inc.\n+# Copyright (C) 2002-2025 Free Software Foundation, Inc.\n #\n # This file is free software; the Free Software Foundation\n # gives unlimited permission to copy and/or distribute it,\n@@ -32,10 +32,10 @@ To do so, use the procedure documented by the package, typically 'autoreconf'.])\n # generated from the m4 files accompanying Automake X.Y.\n # (This private macro should not be called outside this file.)\n AC_DEFUN([AM_AUTOMAKE_VERSION],\n-[am__api_version='1.16'\n+[am__api_version='1.18'\n dnl Some users find AM_AUTOMAKE_VERSION and mistake it for a way to\n dnl require some minimum version.  Point them to the right macro.\n-m4_if([$1], [1.16.5], [],\n+m4_if([$1], [1.18.1], [],\n       [AC_FATAL([Do not call $0, use AM_INIT_AUTOMAKE([$1]).])])dnl\n ])\n \n@@ -51,14 +51,14 @@ m4_define([_AM_AUTOCONF_VERSION], [])\n # Call AM_AUTOMAKE_VERSION and AM_AUTOMAKE_VERSION so they can be traced.\n # This function is AC_REQUIREd by AM_INIT_AUTOMAKE.\n AC_DEFUN([AM_SET_CURRENT_AUTOMAKE_VERSION],\n-[AM_AUTOMAKE_VERSION([1.16.5])dnl\n+[AM_AUTOMAKE_VERSION([1.18.1])dnl\n m4_ifndef([AC_AUTOCONF_VERSION],\n   [m4_copy([m4_PACKAGE_VERSION], [AC_AUTOCONF_VERSION])])dnl\n _AM_AUTOCONF_VERSION(m4_defn([AC_AUTOCONF_VERSION]))])\n \n # AM_AUX_DIR_EXPAND                                         -*- Autoconf -*-\n \n-# Copyright (C) 2001-2021 Free Software Foundation, Inc.\n+# Copyright (C) 2001-2025 Free Software Foundation, Inc.\n #\n # This file is free software; the Free Software Foundation\n # gives unlimited permission to copy and/or distribute it,\n@@ -110,7 +110,7 @@ am_aux_dir=`cd \"$ac_aux_dir\" && pwd`\n \n # AM_CONDITIONAL                                            -*- Autoconf -*-\n \n-# Copyright (C) 1997-2021 Free Software Foundation, Inc.\n+# Copyright (C) 1997-2025 Free Software Foundation, Inc.\n #\n # This file is free software; the Free Software Foundation\n # gives unlimited permission to copy and/or distribute it,\n@@ -141,7 +141,7 @@ AC_CONFIG_COMMANDS_PRE(\n Usually this means the macro was only invoked conditionally.]])\n fi])])\n \n-# Copyright (C) 1999-2021 Free Software Foundation, Inc.\n+# Copyright (C) 1999-2025 Free Software Foundation, Inc.\n #\n # This file is free software; the Free Software Foundation\n # gives unlimited permission to copy and/or distribute it,\n@@ -273,7 +273,7 @@ AC_CACHE_CHECK([dependency style of $depcc],\n       # icc doesn't choke on unknown options, it will just issue warnings\n       # or remarks (even with -Werror).  So we grep stderr for any message\n       # that says an option was ignored or not supported.\n-      # When given -MP, icc 7.0 and 7.1 complain thusly:\n+      # When given -MP, icc 7.0 and 7.1 complain thus:\n       #   icc: Command line warning: ignoring option '-M'; no argument required\n       # The diagnosis changed in icc 8.0:\n       #   icc: Command line remark: option '-MP' not supported\n@@ -332,7 +332,7 @@ _AM_SUBST_NOTMAKE([am__nodep])dnl\n \n # Generate code to set up dependency tracking.              -*- Autoconf -*-\n \n-# Copyright (C) 1999-2021 Free Software Foundation, Inc.\n+# Copyright (C) 1999-2025 Free Software Foundation, Inc.\n #\n # This file is free software; the Free Software Foundation\n # gives unlimited permission to copy and/or distribute it,\n@@ -400,7 +400,7 @@ AC_DEFUN([AM_OUTPUT_DEPENDENCY_COMMANDS],\n \n # Do all the work for Automake.                             -*- Autoconf -*-\n \n-# Copyright (C) 1996-2021 Free Software Foundation, Inc.\n+# Copyright (C) 1996-2025 Free Software Foundation, Inc.\n #\n # This file is free software; the Free Software Foundation\n # gives unlimited permission to copy and/or distribute it,\n@@ -500,8 +500,9 @@ AC_REQUIRE([AC_PROG_AWK])dnl\n AC_REQUIRE([AC_PROG_MAKE_SET])dnl\n AC_REQUIRE([AM_SET_LEADING_DOT])dnl\n _AM_IF_OPTION([tar-ustar], [_AM_PROG_TAR([ustar])],\n-\t      [_AM_IF_OPTION([tar-pax], [_AM_PROG_TAR([pax])],\n-\t\t\t     [_AM_PROG_TAR([v7])])])\n+  [_AM_IF_OPTION([tar-pax], [_AM_PROG_TAR([pax])],\n+    [_AM_IF_OPTION([tar-v7], [_AM_PROG_TAR([v7])],\n+      [_AM_PROG_TAR([ustar])])])])\n _AM_IF_OPTION([no-dependencies],,\n [AC_PROVIDE_IFELSE([AC_PROG_CC],\n \t\t  [_AM_DEPENDENCIES([CC])],\n@@ -534,7 +535,7 @@ if test -z \"$CSCOPE\"; then\n fi\n AC_SUBST([CSCOPE])\n \n-AC_REQUIRE([AM_SILENT_RULES])dnl\n+AC_REQUIRE([_AM_SILENT_RULES])dnl\n dnl The testsuite driver may need to know about EXEEXT, so add the\n dnl 'am__EXEEXT' conditional if _AM_COMPILER_EXEEXT was seen.  This\n dnl macro is hooked onto _AC_COMPILER_EXEEXT early, see below.\n@@ -542,47 +543,9 @@ AC_CONFIG_COMMANDS_PRE(dnl\n [m4_provide_if([_AM_COMPILER_EXEEXT],\n   [AM_CONDITIONAL([am__EXEEXT], [test -n \"$EXEEXT\"])])])dnl\n \n-# POSIX will say in a future version that running \"rm -f\" with no argument\n-# is OK; and we want to be able to make that assumption in our Makefile\n-# recipes.  So use an aggressive probe to check that the usage we want is\n-# actually supported \"in the wild\" to an acceptable degree.\n-# See automake bug#10828.\n-# To make any issue more visible, cause the running configure to be aborted\n-# by default if the 'rm' program in use doesn't match our expectations; the\n-# user can still override this though.\n-if rm -f && rm -fr && rm -rf; then : OK; else\n-  cat >&2 <<'END'\n-Oops!\n-\n-Your 'rm' program seems unable to run without file operands specified\n-on the command line, even when the '-f' option is present.  This is contrary\n-to the behaviour of most rm programs out there, and not conforming with\n-the upcoming POSIX standard: <http://austingroupbugs.net/view.php?id=542>\n-\n-Please tell bug-automake@gnu.org about your system, including the value\n-of your $PATH and any error possibly output before this message.  This\n-can help us improve future automake versions.\n+AC_REQUIRE([_AM_PROG_RM_F])\n+AC_REQUIRE([_AM_PROG_XARGS_N])\n \n-END\n-  if test x\"$ACCEPT_INFERIOR_RM_PROGRAM\" = x\"yes\"; then\n-    echo 'Configuration will proceed anyway, since you have set the' >&2\n-    echo 'ACCEPT_INFERIOR_RM_PROGRAM variable to \"yes\"' >&2\n-    echo >&2\n-  else\n-    cat >&2 <<'END'\n-Aborting the configuration process, to ensure you take notice of the issue.\n-\n-You can download and install GNU coreutils to get an 'rm' implementation\n-that behaves properly: <https://www.gnu.org/software/coreutils/>.\n-\n-If you want to complete the configuration process using your problematic\n-'rm' anyway, export the environment variable ACCEPT_INFERIOR_RM_PROGRAM\n-to \"yes\", and re-run configure.\n-\n-END\n-    AC_MSG_ERROR([Your 'rm' program is bad, sorry.])\n-  fi\n-fi\n dnl The trailing newline in this macro's definition is deliberate, for\n dnl backward compatibility and to allow trailing 'dnl'-style comments\n dnl after the AM_INIT_AUTOMAKE invocation. See automake bug#16841.\n@@ -615,7 +578,7 @@ for _am_header in $config_headers :; do\n done\n echo \"timestamp for $_am_arg\" >`AS_DIRNAME([\"$_am_arg\"])`/stamp-h[]$_am_stamp_count])\n \n-# Copyright (C) 2001-2021 Free Software Foundation, Inc.\n+# Copyright (C) 2001-2025 Free Software Foundation, Inc.\n #\n # This file is free software; the Free Software Foundation\n # gives unlimited permission to copy and/or distribute it,\n@@ -636,7 +599,7 @@ if test x\"${install_sh+set}\" != xset; then\n fi\n AC_SUBST([install_sh])])\n \n-# Copyright (C) 2003-2021 Free Software Foundation, Inc.\n+# Copyright (C) 2003-2025 Free Software Foundation, Inc.\n #\n # This file is free software; the Free Software Foundation\n # gives unlimited permission to copy and/or distribute it,\n@@ -657,7 +620,7 @@ AC_SUBST([am__leading_dot])])\n \n # Check to see how 'make' treats includes.\t            -*- Autoconf -*-\n \n-# Copyright (C) 2001-2021 Free Software Foundation, Inc.\n+# Copyright (C) 2001-2025 Free Software Foundation, Inc.\n #\n # This file is free software; the Free Software Foundation\n # gives unlimited permission to copy and/or distribute it,\n@@ -700,7 +663,7 @@ AC_SUBST([am__quote])])\n \n # Fake the existence of programs that GNU maintainers use.  -*- Autoconf -*-\n \n-# Copyright (C) 1997-2021 Free Software Foundation, Inc.\n+# Copyright (C) 1997-2025 Free Software Foundation, Inc.\n #\n # This file is free software; the Free Software Foundation\n # gives unlimited permission to copy and/or distribute it,\n@@ -734,7 +697,7 @@ fi\n \n # Helper functions for option handling.                     -*- Autoconf -*-\n \n-# Copyright (C) 2001-2021 Free Software Foundation, Inc.\n+# Copyright (C) 2001-2025 Free Software Foundation, Inc.\n #\n # This file is free software; the Free Software Foundation\n # gives unlimited permission to copy and/or distribute it,\n@@ -763,7 +726,7 @@ AC_DEFUN([_AM_SET_OPTIONS],\n AC_DEFUN([_AM_IF_OPTION],\n [m4_ifset(_AM_MANGLE_OPTION([$1]), [$2], [$3])])\n \n-# Copyright (C) 1999-2021 Free Software Foundation, Inc.\n+# Copyright (C) 1999-2025 Free Software Foundation, Inc.\n #\n # This file is free software; the Free Software Foundation\n # gives unlimited permission to copy and/or distribute it,\n@@ -795,7 +758,10 @@ AC_CACHE_CHECK(\n       break\n     fi\n   done\n-  rm -f core conftest*\n+  # aligned with autoconf, so not including core; see bug#72225.\n+  rm -f -r a.out a.exe b.out conftest.$ac_ext conftest.$ac_objext \\\n+    conftest.dSYM conftest1.$ac_ext conftest1.$ac_objext conftest1.dSYM \\\n+    conftest2.$ac_ext conftest2.$ac_objext conftest2.dSYM\n   unset am_i])\n if test \"$am_cv_prog_cc_c_o\" != yes; then\n    # Losing compiler, so override with the script.\n@@ -810,7 +776,23 @@ AC_LANG_POP([C])])\n # For backward compatibility.\n AC_DEFUN_ONCE([AM_PROG_CC_C_O], [AC_REQUIRE([AC_PROG_CC])])\n \n-# Copyright (C) 2001-2021 Free Software Foundation, Inc.\n+# Copyright (C) 2022-2025 Free Software Foundation, Inc.\n+#\n+# This file is free software; the Free Software Foundation\n+# gives unlimited permission to copy and/or distribute it,\n+# with or without modifications, as long as this notice is preserved.\n+\n+# _AM_PROG_RM_F\n+# ---------------\n+# Check whether 'rm -f' without any arguments works.\n+# https://bugs.gnu.org/10828\n+AC_DEFUN([_AM_PROG_RM_F],\n+[am__rm_f_notfound=\n+AS_IF([(rm -f && rm -fr && rm -rf) 2>/dev/null], [], [am__rm_f_notfound='\"\"'])\n+AC_SUBST(am__rm_f_notfound)\n+])\n+\n+# Copyright (C) 2001-2025 Free Software Foundation, Inc.\n #\n # This file is free software; the Free Software Foundation\n # gives unlimited permission to copy and/or distribute it,\n@@ -829,26 +811,181 @@ AC_DEFUN([AM_RUN_LOG],\n \n # Check to make sure that the build environment is sane.    -*- Autoconf -*-\n \n-# Copyright (C) 1996-2021 Free Software Foundation, Inc.\n+# Copyright (C) 1996-2025 Free Software Foundation, Inc.\n #\n # This file is free software; the Free Software Foundation\n # gives unlimited permission to copy and/or distribute it,\n # with or without modifications, as long as this notice is preserved.\n \n+# _AM_SLEEP_FRACTIONAL_SECONDS\n+# ----------------------------\n+AC_DEFUN([_AM_SLEEP_FRACTIONAL_SECONDS], [dnl\n+AC_CACHE_CHECK([whether sleep supports fractional seconds],\n+               am_cv_sleep_fractional_seconds, [dnl\n+AS_IF([sleep 0.001 2>/dev/null], [am_cv_sleep_fractional_seconds=yes],\n+                                 [am_cv_sleep_fractional_seconds=no])\n+])])\n+\n+# _AM_FILESYSTEM_TIMESTAMP_RESOLUTION\n+# -----------------------------------\n+# Determine the filesystem's resolution for file modification\n+# timestamps.  The coarsest we know of is FAT, with a resolution\n+# of only two seconds, even with the most recent \"exFAT\" extensions.\n+# The finest (e.g. ext4 with large inodes, XFS, ZFS) is one\n+# nanosecond, matching clock_gettime.  However, it is probably not\n+# possible to delay execution of a shell script for less than one\n+# millisecond, due to process creation overhead and scheduling\n+# granularity, so we don't check for anything finer than that. (See below.)\n+AC_DEFUN([_AM_FILESYSTEM_TIMESTAMP_RESOLUTION], [dnl\n+AC_REQUIRE([_AM_SLEEP_FRACTIONAL_SECONDS])\n+AC_CACHE_CHECK([filesystem timestamp resolution],\n+               am_cv_filesystem_timestamp_resolution, [dnl\n+# Default to the worst case.\n+am_cv_filesystem_timestamp_resolution=2\n+\n+# Only try to go finer than 1 sec if sleep can do it.\n+# Don't try 1 sec, because if 0.01 sec and 0.1 sec don't work,\n+# - 1 sec is not much of a win compared to 2 sec, and\n+# - it takes 2 seconds to perform the test whether 1 sec works.\n+# \n+# Instead, just use the default 2s on platforms that have 1s resolution,\n+# accept the extra 1s delay when using $sleep in the Automake tests, in\n+# exchange for not incurring the 2s delay for running the test for all\n+# packages.\n+#\n+am_try_resolutions=\n+if test \"$am_cv_sleep_fractional_seconds\" = yes; then\n+  # Even a millisecond often causes a bunch of false positives,\n+  # so just try a hundredth of a second. The time saved between .001 and\n+  # .01 is not terribly consequential.\n+  am_try_resolutions=\"0.01 0.1 $am_try_resolutions\"\n+fi\n+\n+# In order to catch current-generation FAT out, we must *modify* files\n+# that already exist; the *creation* timestamp is finer.  Use names\n+# that make ls -t sort them differently when they have equal\n+# timestamps than when they have distinct timestamps, keeping\n+# in mind that ls -t prints the *newest* file first.\n+rm -f conftest.ts?\n+: > conftest.ts1\n+: > conftest.ts2\n+: > conftest.ts3\n+\n+# Make sure ls -t actually works.  Do 'set' in a subshell so we don't\n+# clobber the current shell's arguments. (Outer-level square brackets\n+# are removed by m4; they're present so that m4 does not expand\n+# <dollar><star>; be careful, easy to get confused.)\n+if (\n+     set X `[ls -t conftest.ts[12]]` &&\n+     {\n+       test \"$[]*\" != \"X conftest.ts1 conftest.ts2\" ||\n+       test \"$[]*\" != \"X conftest.ts2 conftest.ts1\";\n+     }\n+); then :; else\n+  # If neither matched, then we have a broken ls.  This can happen\n+  # if, for instance, CONFIG_SHELL is bash and it inherits a\n+  # broken ls alias from the environment.  This has actually\n+  # happened.  Such a system could not be considered \"sane\".\n+  _AS_ECHO_UNQUOTED(\n+    [\"Bad output from ls -t: \\\"`[ls -t conftest.ts[12]]`\\\"\"],\n+    [AS_MESSAGE_LOG_FD])\n+  AC_MSG_FAILURE([ls -t produces unexpected output.\n+Make sure there is not a broken ls alias in your environment.])\n+fi\n+\n+for am_try_res in $am_try_resolutions; do\n+  # Any one fine-grained sleep might happen to cross the boundary\n+  # between two values of a coarser actual resolution, but if we do\n+  # two fine-grained sleeps in a row, at least one of them will fall\n+  # entirely within a coarse interval.\n+  echo alpha > conftest.ts1\n+  sleep $am_try_res\n+  echo beta > conftest.ts2\n+  sleep $am_try_res\n+  echo gamma > conftest.ts3\n+\n+  # We assume that 'ls -t' will make use of high-resolution\n+  # timestamps if the operating system supports them at all.\n+  if (set X `ls -t conftest.ts?` &&\n+      test \"$[]2\" = conftest.ts3 &&\n+      test \"$[]3\" = conftest.ts2 &&\n+      test \"$[]4\" = conftest.ts1); then\n+    #\n+    # Ok, ls -t worked. If we're at a resolution of 1 second, we're done,\n+    # because we don't need to test make.\n+    make_ok=true\n+    if test $am_try_res != 1; then\n+      # But if we've succeeded so far with a subsecond resolution, we\n+      # have one more thing to check: make. It can happen that\n+      # everything else supports the subsecond mtimes, but make doesn't;\n+      # notably on macOS, which ships make 3.81 from 2006 (the last one\n+      # released under GPLv2). https://bugs.gnu.org/68808\n+      # \n+      # We test $MAKE if it is defined in the environment, else \"make\".\n+      # It might get overridden later, but our hope is that in practice\n+      # it does not matter: it is the system \"make\" which is (by far)\n+      # the most likely to be broken, whereas if the user overrides it,\n+      # probably they did so with a better, or at least not worse, make.\n+      # https://lists.gnu.org/archive/html/automake/2024-06/msg00051.html\n+      #\n+      # Create a Makefile (real tab character here):\n+      rm -f conftest.mk\n+      echo 'conftest.ts1: conftest.ts2' >conftest.mk\n+      echo '\ttouch conftest.ts2' >>conftest.mk\n+      #\n+      # Now, running\n+      #   touch conftest.ts1; touch conftest.ts2; make\n+      # should touch ts1 because ts2 is newer. This could happen by luck,\n+      # but most often, it will fail if make's support is insufficient. So\n+      # test for several consecutive successes.\n+      #\n+      # (We reuse conftest.ts[12] because we still want to modify existing\n+      # files, not create new ones, per above.)\n+      n=0\n+      make=${MAKE-make}\n+      until test $n -eq 3; do\n+        echo one > conftest.ts1\n+        sleep $am_try_res\n+        echo two > conftest.ts2 # ts2 should now be newer than ts1\n+        if $make -f conftest.mk | grep 'up to date' >/dev/null; then\n+          make_ok=false\n+          break # out of $n loop\n+        fi\n+        n=`expr $n + 1`\n+      done\n+    fi\n+    #\n+    if $make_ok; then\n+      # Everything we know to check worked out, so call this resolution good.\n+      am_cv_filesystem_timestamp_resolution=$am_try_res\n+      break # out of $am_try_res loop\n+    fi\n+    # Otherwise, we'll go on to check the next resolution.\n+  fi\n+done\n+rm -f conftest.ts?\n+# (end _am_filesystem_timestamp_resolution)\n+])])\n+\n # AM_SANITY_CHECK\n # ---------------\n AC_DEFUN([AM_SANITY_CHECK],\n-[AC_MSG_CHECKING([whether build environment is sane])\n+[AC_REQUIRE([_AM_FILESYSTEM_TIMESTAMP_RESOLUTION])\n+# This check should not be cached, as it may vary across builds of\n+# different projects.\n+AC_MSG_CHECKING([whether build environment is sane])\n # Reject unsafe characters in $srcdir or the absolute working directory\n # name.  Accept space and tab only in the latter.\n am_lf='\n '\n case `pwd` in\n   *[[\\\\\\\"\\#\\$\\&\\'\\`$am_lf]]*)\n+    AC_MSG_RESULT([no])\n     AC_MSG_ERROR([unsafe absolute working directory name]);;\n esac\n case $srcdir in\n   *[[\\\\\\\"\\#\\$\\&\\'\\`$am_lf\\ \\\t]]*)\n+    AC_MSG_RESULT([no])\n     AC_MSG_ERROR([unsafe srcdir value: '$srcdir']);;\n esac\n \n@@ -857,49 +994,40 @@ esac\n # symlink; some systems play weird games with the mod time of symlinks\n # (eg FreeBSD returns the mod time of the symlink's containing\n # directory).\n-if (\n-   am_has_slept=no\n-   for am_try in 1 2; do\n-     echo \"timestamp, slept: $am_has_slept\" > conftest.file\n-     set X `ls -Lt \"$srcdir/configure\" conftest.file 2> /dev/null`\n-     if test \"$[*]\" = \"X\"; then\n-\t# -L didn't work.\n-\tset X `ls -t \"$srcdir/configure\" conftest.file`\n-     fi\n-     if test \"$[*]\" != \"X $srcdir/configure conftest.file\" \\\n-\t&& test \"$[*]\" != \"X conftest.file $srcdir/configure\"; then\n-\n-\t# If neither matched, then we have a broken ls.  This can happen\n-\t# if, for instance, CONFIG_SHELL is bash and it inherits a\n-\t# broken ls alias from the environment.  This has actually\n-\t# happened.  Such a system could not be considered \"sane\".\n-\tAC_MSG_ERROR([ls -t appears to fail.  Make sure there is not a broken\n-  alias in your environment])\n-     fi\n-     if test \"$[2]\" = conftest.file || test $am_try -eq 2; then\n-       break\n-     fi\n-     # Just in case.\n-     sleep 1\n-     am_has_slept=yes\n-   done\n-   test \"$[2]\" = conftest.file\n-   )\n-then\n-   # Ok.\n-   :\n-else\n-   AC_MSG_ERROR([newly created file is older than distributed files!\n+am_build_env_is_sane=no\n+am_has_slept=no\n+rm -f conftest.file\n+for am_try in 1 2; do\n+  echo \"timestamp, slept: $am_has_slept\" > conftest.file\n+  if (\n+    set X `ls -Lt \"$srcdir/configure\" conftest.file 2> /dev/null`\n+    if test \"$[]*\" = \"X\"; then\n+      # -L didn't work.\n+      set X `ls -t \"$srcdir/configure\" conftest.file`\n+    fi\n+    test \"$[]2\" = conftest.file\n+  ); then\n+    am_build_env_is_sane=yes\n+    break\n+  fi\n+  # Just in case.\n+  sleep \"$am_cv_filesystem_timestamp_resolution\"\n+  am_has_slept=yes\n+done\n+\n+AC_MSG_RESULT([$am_build_env_is_sane])\n+if test \"$am_build_env_is_sane\" = no; then\n+  AC_MSG_ERROR([newly created file is older than distributed files!\n Check your system clock])\n fi\n-AC_MSG_RESULT([yes])\n+\n # If we didn't sleep, we still need to ensure time stamps of config.status and\n # generated files are strictly newer.\n am_sleep_pid=\n-if grep 'slept: no' conftest.file >/dev/null 2>&1; then\n-  ( sleep 1 ) &\n+AS_IF([test -e conftest.file || grep 'slept: no' conftest.file >/dev/null 2>&1],, [dnl\n+  ( sleep \"$am_cv_filesystem_timestamp_resolution\" ) &\n   am_sleep_pid=$!\n-fi\n+])\n AC_CONFIG_COMMANDS_PRE(\n   [AC_MSG_CHECKING([that generated files are newer than configure])\n    if test -n \"$am_sleep_pid\"; then\n@@ -910,18 +1038,18 @@ AC_CONFIG_COMMANDS_PRE(\n rm -f conftest.file\n ])\n \n-# Copyright (C) 2009-2021 Free Software Foundation, Inc.\n+# Copyright (C) 2009-2025 Free Software Foundation, Inc.\n #\n # This file is free software; the Free Software Foundation\n # gives unlimited permission to copy and/or distribute it,\n # with or without modifications, as long as this notice is preserved.\n \n-# AM_SILENT_RULES([DEFAULT])\n-# --------------------------\n-# Enable less verbose build rules; with the default set to DEFAULT\n-# (\"yes\" being less verbose, \"no\" or empty being verbose).\n-AC_DEFUN([AM_SILENT_RULES],\n-[AC_ARG_ENABLE([silent-rules], [dnl\n+# _AM_SILENT_RULES\n+# ----------------\n+# Enable less verbose build rules support.\n+AC_DEFUN([_AM_SILENT_RULES],\n+[AM_DEFAULT_VERBOSITY=1\n+AC_ARG_ENABLE([silent-rules], [dnl\n AS_HELP_STRING(\n   [--enable-silent-rules],\n   [less verbose build output (undo: \"make V=1\")])\n@@ -929,11 +1057,6 @@ AS_HELP_STRING(\n   [--disable-silent-rules],\n   [verbose build output (undo: \"make V=0\")])dnl\n ])\n-case $enable_silent_rules in @%:@ (((\n-  yes) AM_DEFAULT_VERBOSITY=0;;\n-   no) AM_DEFAULT_VERBOSITY=1;;\n-    *) AM_DEFAULT_VERBOSITY=m4_if([$1], [yes], [0], [1]);;\n-esac\n dnl\n dnl A few 'make' implementations (e.g., NonStop OS and NextStep)\n dnl do not support nested variable expansions.\n@@ -952,14 +1075,6 @@ am__doit:\n else\n   am_cv_make_support_nested_variables=no\n fi])\n-if test $am_cv_make_support_nested_variables = yes; then\n-  dnl Using '$V' instead of '$(V)' breaks IRIX make.\n-  AM_V='$(V)'\n-  AM_DEFAULT_V='$(AM_DEFAULT_VERBOSITY)'\n-else\n-  AM_V=$AM_DEFAULT_VERBOSITY\n-  AM_DEFAULT_V=$AM_DEFAULT_VERBOSITY\n-fi\n AC_SUBST([AM_V])dnl\n AM_SUBST_NOTMAKE([AM_V])dnl\n AC_SUBST([AM_DEFAULT_V])dnl\n@@ -968,9 +1083,37 @@ AC_SUBST([AM_DEFAULT_VERBOSITY])dnl\n AM_BACKSLASH='\\'\n AC_SUBST([AM_BACKSLASH])dnl\n _AM_SUBST_NOTMAKE([AM_BACKSLASH])dnl\n+dnl Delay evaluation of AM_DEFAULT_VERBOSITY to the end to allow multiple calls\n+dnl to AM_SILENT_RULES to change the default value.\n+AC_CONFIG_COMMANDS_PRE([dnl\n+case $enable_silent_rules in @%:@ (((\n+  yes) AM_DEFAULT_VERBOSITY=0;;\n+   no) AM_DEFAULT_VERBOSITY=1;;\n+esac\n+if test $am_cv_make_support_nested_variables = yes; then\n+  dnl Using '$V' instead of '$(V)' breaks IRIX make.\n+  AM_V='$(V)'\n+  AM_DEFAULT_V='$(AM_DEFAULT_VERBOSITY)'\n+else\n+  AM_V=$AM_DEFAULT_VERBOSITY\n+  AM_DEFAULT_V=$AM_DEFAULT_VERBOSITY\n+fi\n+])dnl\n+])\n+\n+# AM_SILENT_RULES([DEFAULT])\n+# --------------------------\n+# Set the default verbosity level to DEFAULT (\"yes\" being less verbose, \"no\" or\n+# empty being verbose).\n+AC_DEFUN([AM_SILENT_RULES],\n+[AC_REQUIRE([_AM_SILENT_RULES])\n+AM_DEFAULT_VERBOSITY=m4_if([$1], [yes], [0], [1])m4_newline\n+dnl We intentionally force a newline after the assignment, since a) nothing\n+dnl good can come of more text following, and b) that was the behavior\n+dnl before 1.17. See https://bugs.gnu.org/72267.\n ])\n \n-# Copyright (C) 2001-2021 Free Software Foundation, Inc.\n+# Copyright (C) 2001-2025 Free Software Foundation, Inc.\n #\n # This file is free software; the Free Software Foundation\n # gives unlimited permission to copy and/or distribute it,\n@@ -998,7 +1141,7 @@ fi\n INSTALL_STRIP_PROGRAM=\"\\$(install_sh) -c -s\"\n AC_SUBST([INSTALL_STRIP_PROGRAM])])\n \n-# Copyright (C) 2006-2021 Free Software Foundation, Inc.\n+# Copyright (C) 2006-2025 Free Software Foundation, Inc.\n #\n # This file is free software; the Free Software Foundation\n # gives unlimited permission to copy and/or distribute it,\n@@ -1017,7 +1160,7 @@ AC_DEFUN([AM_SUBST_NOTMAKE], [_AM_SUBST_NOTMAKE($@)])\n \n # Check how to create a tarball.                            -*- Autoconf -*-\n \n-# Copyright (C) 2004-2021 Free Software Foundation, Inc.\n+# Copyright (C) 2004-2025 Free Software Foundation, Inc.\n #\n # This file is free software; the Free Software Foundation\n # gives unlimited permission to copy and/or distribute it,\n@@ -1063,15 +1206,19 @@ m4_if([$1], [v7],\n       am_uid=`id -u || echo unknown`\n       am_gid=`id -g || echo unknown`\n       AC_MSG_CHECKING([whether UID '$am_uid' is supported by ustar format])\n-      if test $am_uid -le $am_max_uid; then\n-         AC_MSG_RESULT([yes])\n+      if test x$am_uid = xunknown; then\n+        AC_MSG_WARN([ancient id detected; assuming current UID is ok, but dist-ustar might not work])\n+      elif test $am_uid -le $am_max_uid; then\n+        AC_MSG_RESULT([yes])\n       else\n-         AC_MSG_RESULT([no])\n-         _am_tools=none\n+        AC_MSG_RESULT([no])\n+        _am_tools=none\n       fi\n       AC_MSG_CHECKING([whether GID '$am_gid' is supported by ustar format])\n-      if test $am_gid -le $am_max_gid; then\n-         AC_MSG_RESULT([yes])\n+      if test x$gm_gid = xunknown; then\n+        AC_MSG_WARN([ancient id detected; assuming current GID is ok, but dist-ustar might not work])\n+      elif test $am_gid -le $am_max_gid; then\n+        AC_MSG_RESULT([yes])\n       else\n         AC_MSG_RESULT([no])\n         _am_tools=none\n@@ -1148,6 +1295,26 @@ AC_SUBST([am__tar])\n AC_SUBST([am__untar])\n ]) # _AM_PROG_TAR\n \n+# Copyright (C) 2022-2025 Free Software Foundation, Inc.\n+#\n+# This file is free software; the Free Software Foundation\n+# gives unlimited permission to copy and/or distribute it,\n+# with or without modifications, as long as this notice is preserved.\n+\n+# _AM_PROG_XARGS_N\n+# ----------------\n+# Check whether 'xargs -n' works.  It should work everywhere, so the fallback\n+# is not optimized at all as we never expect to use it.\n+AC_DEFUN([_AM_PROG_XARGS_N],\n+[AC_CACHE_CHECK([xargs -n works], am_cv_xargs_n_works, [dnl\n+AS_IF([test \"`echo 1 2 3 | xargs -n2 echo`\" = \"1 2\n+3\"], [am_cv_xargs_n_works=yes], [am_cv_xargs_n_works=no])])\n+AS_IF([test \"$am_cv_xargs_n_works\" = yes], [am__xargs_n='xargs -n'], [dnl\n+  am__xargs_n='am__xargs_n () { shift; sed \"s/ /\\\\n/g\" | while read am__xargs_n_arg; do \"$@\" \"$am__xargs_n_arg\"; done; }'\n+])dnl\n+AC_SUBST(am__xargs_n)\n+])\n+\n m4_include([m4/ax_socklen_t.m4])\n m4_include([m4/libtool.m4])\n m4_include([m4/ltoptions.m4])\ndiff --git a/compile b/compile\nindex df363c8..02ff093 100755\n--- a/compile\n+++ b/compile\n@@ -1,9 +1,9 @@\n #! /bin/sh\n # Wrapper for compilers which do not understand '-c -o'.\n \n-scriptversion=2018-03-07.03; # UTC\n+scriptversion=2025-06-18.21; # UTC\n \n-# Copyright (C) 1999-2021 Free Software Foundation, Inc.\n+# Copyright (C) 1999-2025 Free Software Foundation, Inc.\n # Written by Tom Tromey <tromey@cygnus.com>.\n #\n # This program is free software; you can redistribute it and/or modify\n@@ -37,11 +37,11 @@ IFS=\" \"\"\t$nl\"\n \n file_conv=\n \n-# func_file_conv build_file lazy\n+# func_file_conv build_file unneeded_conversions\n # Convert a $build file to $host form and store it in $file\n # Currently only supports Windows hosts. If the determined conversion\n-# type is listed in (the comma separated) LAZY, no conversion will\n-# take place.\n+# type is listed in (the comma separated) UNNEEDED_CONVERSIONS, no\n+# conversion will take place.\n func_file_conv ()\n {\n   file=$1\n@@ -51,9 +51,20 @@ func_file_conv ()\n \t# lazily determine how to convert abs files\n \tcase `uname -s` in\n \t  MINGW*)\n-\t    file_conv=mingw\n+\t    if test -n \"$MSYSTEM\" && (cygpath --version) >/dev/null 2>&1; then\n+\t      # MSYS2 environment.\n+\t      file_conv=cygwin\n+\t    else\n+\t      # Original MinGW environment.\n+\t      file_conv=mingw\n+\t    fi\n \t    ;;\n-\t  CYGWIN* | MSYS*)\n+\t  MSYS*)\n+\t    # Old MSYS environment, or MSYS2 with 32-bit MSYS2 shell.\n+\t    file_conv=cygwin\n+\t    ;;\n+\t  CYGWIN*)\n+\t    # Cygwin environment.\n \t    file_conv=cygwin\n \t    ;;\n \t  *)\n@@ -63,12 +74,14 @@ func_file_conv ()\n       fi\n       case $file_conv/,$2, in\n \t*,$file_conv,*)\n+\t  # This is the optimization mentioned above:\n+\t  # If UNNEEDED_CONVERSIONS contains $file_conv, don't convert.\n \t  ;;\n \tmingw/*)\n \t  file=`cmd //C echo \"$file \" | sed -e 's/\"\\(.*\\) \" *$/\\1/'`\n \t  ;;\n-\tcygwin/* | msys/*)\n-\t  file=`cygpath -m \"$file\" || echo \"$file\"`\n+\tcygwin/*)\n+\t  file=`cygpath -w \"$file\" || echo \"$file\"`\n \t  ;;\n \twine/*)\n \t  file=`winepath -w \"$file\" || echo \"$file\"`\n@@ -143,7 +156,7 @@ func_cl_wrapper ()\n \t  # configure might choose to run compile as 'compile cc -o foo foo.c'.\n \t  eat=1\n \t  case $2 in\n-\t    *.o | *.[oO][bB][jJ])\n+\t    *.o | *.lo | *.[oO][bB][jJ])\n \t      func_file_conv \"$2\"\n \t      set x \"$@\" -Fo\"$file\"\n \t      shift\n@@ -248,14 +261,17 @@ If you are trying to build a whole package this is not the\n right script to run: please start by reading the file 'INSTALL'.\n \n Report bugs to <bug-automake@gnu.org>.\n+GNU Automake home page: <https://www.gnu.org/software/automake/>.\n+General help using GNU software: <https://www.gnu.org/gethelp/>.\n EOF\n     exit $?\n     ;;\n   -v | --v*)\n-    echo \"compile $scriptversion\"\n+    echo \"compile (GNU Automake) $scriptversion\"\n     exit $?\n     ;;\n   cl | *[/\\\\]cl | cl.exe | *[/\\\\]cl.exe | \\\n+  clang-cl | *[/\\\\]clang-cl | clang-cl.exe | *[/\\\\]clang-cl.exe | \\\n   icl | *[/\\\\]icl | icl.exe | *[/\\\\]icl.exe )\n     func_cl_wrapper \"$@\"      # Doesn't return...\n     ;;\n@@ -340,9 +356,9 @@ exit $ret\n # Local Variables:\n # mode: shell-script\n # sh-indentation: 2\n-# eval: (add-hook 'before-save-hook 'time-stamp)\n+# eval: (add-hook 'before-save-hook 'time-stamp nil t)\n # time-stamp-start: \"scriptversion=\"\n-# time-stamp-format: \"%:y-%02m-%02d.%02H\"\n+# time-stamp-format: \"%Y-%02m-%02d.%02H\"\n # time-stamp-time-zone: \"UTC0\"\n # time-stamp-end: \"; # UTC\"\n # End:\ndiff --git a/config.guess b/config.guess\nindex 7f76b62..48a6846 100755\n--- a/config.guess\n+++ b/config.guess\n@@ -1,10 +1,10 @@\n #! /bin/sh\n # Attempt to guess a canonical system name.\n-#   Copyright 1992-2022 Free Software Foundation, Inc.\n+#   Copyright 1992-2024 Free Software Foundation, Inc.\n \n # shellcheck disable=SC2006,SC2268 # see below for rationale\n \n-timestamp='2022-01-09'\n+timestamp='2024-07-27'\n \n # This file is free software; you can redistribute it and/or modify it\n # under the terms of the GNU General Public License as published by\n@@ -47,7 +47,7 @@ me=`echo \"$0\" | sed -e 's,.*/,,'`\n usage=\"\\\n Usage: $0 [OPTION]\n \n-Output the configuration name of the system \\`$me' is run on.\n+Output the configuration name of the system '$me' is run on.\n \n Options:\n   -h, --help         print this help, then exit\n@@ -60,13 +60,13 @@ version=\"\\\n GNU config.guess ($timestamp)\n \n Originally written by Per Bothner.\n-Copyright 1992-2022 Free Software Foundation, Inc.\n+Copyright 1992-2024 Free Software Foundation, Inc.\n \n This is free software; see the source for copying conditions.  There is NO\n warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.\"\n \n help=\"\n-Try \\`$me --help' for more information.\"\n+Try '$me --help' for more information.\"\n \n # Parse command line\n while test $# -gt 0 ; do\n@@ -102,8 +102,8 @@ GUESS=\n # temporary files to be created and, as you can see below, it is a\n # headache to deal with in a portable fashion.\n \n-# Historically, `CC_FOR_BUILD' used to be named `HOST_CC'. We still\n-# use `HOST_CC' if defined, but it is deprecated.\n+# Historically, 'CC_FOR_BUILD' used to be named 'HOST_CC'. We still\n+# use 'HOST_CC' if defined, but it is deprecated.\n \n # Portable tmp directory creation inspired by the Autoconf team.\n \n@@ -123,7 +123,7 @@ set_cc_for_build() {\n     dummy=$tmp/dummy\n     case ${CC_FOR_BUILD-},${HOST_CC-},${CC-} in\n \t,,)    echo \"int x;\" > \"$dummy.c\"\n-\t       for driver in cc gcc c89 c99 ; do\n+\t       for driver in cc gcc c17 c99 c89 ; do\n \t\t   if ($driver -c -o \"$dummy.o\" \"$dummy.c\") >/dev/null 2>&1 ; then\n \t\t       CC_FOR_BUILD=$driver\n \t\t       break\n@@ -155,6 +155,9 @@ Linux|GNU|GNU/*)\n \n \tset_cc_for_build\n \tcat <<-EOF > \"$dummy.c\"\n+\t#if defined(__ANDROID__)\n+\tLIBC=android\n+\t#else\n \t#include <features.h>\n \t#if defined(__UCLIBC__)\n \tLIBC=uclibc\n@@ -162,6 +165,8 @@ Linux|GNU|GNU/*)\n \tLIBC=dietlibc\n \t#elif defined(__GLIBC__)\n \tLIBC=gnu\n+\t#elif defined(__LLVM_LIBC__)\n+\tLIBC=llvm\n \t#else\n \t#include <stdarg.h>\n \t/* First heuristic to detect musl libc.  */\n@@ -169,6 +174,7 @@ Linux|GNU|GNU/*)\n \tLIBC=musl\n \t#endif\n \t#endif\n+\t#endif\n \tEOF\n \tcc_set_libc=`$CC_FOR_BUILD -E \"$dummy.c\" 2>/dev/null | grep '^LIBC' | sed 's, ,,g'`\n \teval \"$cc_set_libc\"\n@@ -459,7 +465,7 @@ case $UNAME_MACHINE:$UNAME_SYSTEM:$UNAME_RELEASE:$UNAME_VERSION in\n \t\tUNAME_RELEASE=`uname -v`\n \t\t;;\n \tesac\n-\t# Japanese Language versions have a version number like `4.1.3-JL'.\n+\t# Japanese Language versions have a version number like '4.1.3-JL'.\n \tSUN_REL=`echo \"$UNAME_RELEASE\" | sed -e 's/-/_/'`\n \tGUESS=sparc-sun-sunos$SUN_REL\n \t;;\n@@ -628,7 +634,8 @@ EOF\n \t\tsed 's/^\t\t//' << EOF > \"$dummy.c\"\n \t\t#include <sys/systemcfg.h>\n \n-\t\tmain()\n+\t\tint\n+\t\tmain ()\n \t\t\t{\n \t\t\tif (!__power_pc())\n \t\t\t\texit(1);\n@@ -712,7 +719,8 @@ EOF\n \t\t#include <stdlib.h>\n \t\t#include <unistd.h>\n \n-\t\tint main ()\n+\t\tint\n+\t\tmain ()\n \t\t{\n \t\t#if defined(_SC_KERNEL_BITS)\n \t\t    long bits = sysconf(_SC_KERNEL_BITS);\n@@ -904,7 +912,7 @@ EOF\n \tfi\n \t;;\n     *:FreeBSD:*:*)\n-\tUNAME_PROCESSOR=`/usr/bin/uname -p`\n+\tUNAME_PROCESSOR=`uname -p`\n \tcase $UNAME_PROCESSOR in\n \t    amd64)\n \t\tUNAME_PROCESSOR=x86_64 ;;\n@@ -966,11 +974,37 @@ EOF\n \tGNU_REL=`echo \"$UNAME_RELEASE\" | sed -e 's/[-(].*//'`\n \tGUESS=$UNAME_MACHINE-unknown-$GNU_SYS$GNU_REL-$LIBC\n \t;;\n+    x86_64:[Mm]anagarm:*:*|i?86:[Mm]anagarm:*:*)\n+\tGUESS=\"$UNAME_MACHINE-pc-managarm-mlibc\"\n+\t;;\n+    *:[Mm]anagarm:*:*)\n+\tGUESS=\"$UNAME_MACHINE-unknown-managarm-mlibc\"\n+\t;;\n     *:Minix:*:*)\n \tGUESS=$UNAME_MACHINE-unknown-minix\n \t;;\n     aarch64:Linux:*:*)\n-\tGUESS=$UNAME_MACHINE-unknown-linux-$LIBC\n+\tset_cc_for_build\n+\tCPU=$UNAME_MACHINE\n+\tLIBCABI=$LIBC\n+\tif test \"$CC_FOR_BUILD\" != no_compiler_found; then\n+\t    ABI=64\n+\t    sed 's/^\t    //' << EOF > \"$dummy.c\"\n+\t    #ifdef __ARM_EABI__\n+\t    #ifdef __ARM_PCS_VFP\n+\t    ABI=eabihf\n+\t    #else\n+\t    ABI=eabi\n+\t    #endif\n+\t    #endif\n+EOF\n+\t    cc_set_abi=`$CC_FOR_BUILD -E \"$dummy.c\" 2>/dev/null | grep '^ABI' | sed 's, ,,g'`\n+\t    eval \"$cc_set_abi\"\n+\t    case $ABI in\n+\t\teabi | eabihf) CPU=armv8l; LIBCABI=$LIBC$ABI ;;\n+\t    esac\n+\tfi\n+\tGUESS=$CPU-unknown-linux-$LIBCABI\n \t;;\n     aarch64_be:Linux:*:*)\n \tUNAME_MACHINE=aarch64_be\n@@ -1036,7 +1070,16 @@ EOF\n     k1om:Linux:*:*)\n \tGUESS=$UNAME_MACHINE-unknown-linux-$LIBC\n \t;;\n-    loongarch32:Linux:*:* | loongarch64:Linux:*:* | loongarchx32:Linux:*:*)\n+    kvx:Linux:*:*)\n+\tGUESS=$UNAME_MACHINE-unknown-linux-$LIBC\n+\t;;\n+    kvx:cos:*:*)\n+\tGUESS=$UNAME_MACHINE-unknown-cos\n+\t;;\n+    kvx:mbr:*:*)\n+\tGUESS=$UNAME_MACHINE-unknown-mbr\n+\t;;\n+    loongarch32:Linux:*:* | loongarch64:Linux:*:*)\n \tGUESS=$UNAME_MACHINE-unknown-linux-$LIBC\n \t;;\n     m32r*:Linux:*:*)\n@@ -1151,16 +1194,27 @@ EOF\n \t;;\n     x86_64:Linux:*:*)\n \tset_cc_for_build\n+\tCPU=$UNAME_MACHINE\n \tLIBCABI=$LIBC\n \tif test \"$CC_FOR_BUILD\" != no_compiler_found; then\n-\t    if (echo '#ifdef __ILP32__'; echo IS_X32; echo '#endif') | \\\n-\t\t(CCOPTS=\"\" $CC_FOR_BUILD -E - 2>/dev/null) | \\\n-\t\tgrep IS_X32 >/dev/null\n-\t    then\n-\t\tLIBCABI=${LIBC}x32\n-\t    fi\n+\t    ABI=64\n+\t    sed 's/^\t    //' << EOF > \"$dummy.c\"\n+\t    #ifdef __i386__\n+\t    ABI=x86\n+\t    #else\n+\t    #ifdef __ILP32__\n+\t    ABI=x32\n+\t    #endif\n+\t    #endif\n+EOF\n+\t    cc_set_abi=`$CC_FOR_BUILD -E \"$dummy.c\" 2>/dev/null | grep '^ABI' | sed 's, ,,g'`\n+\t    eval \"$cc_set_abi\"\n+\t    case $ABI in\n+\t\tx86) CPU=i686 ;;\n+\t\tx32) LIBCABI=${LIBC}x32 ;;\n+\t    esac\n \tfi\n-\tGUESS=$UNAME_MACHINE-pc-linux-$LIBCABI\n+\tGUESS=$CPU-pc-linux-$LIBCABI\n \t;;\n     xtensa*:Linux:*:*)\n \tGUESS=$UNAME_MACHINE-unknown-linux-$LIBC\n@@ -1180,7 +1234,7 @@ EOF\n \tGUESS=$UNAME_MACHINE-pc-sysv4.2uw$UNAME_VERSION\n \t;;\n     i*86:OS/2:*:*)\n-\t# If we were able to find `uname', then EMX Unix compatibility\n+\t# If we were able to find 'uname', then EMX Unix compatibility\n \t# is probably installed.\n \tGUESS=$UNAME_MACHINE-pc-os2-emx\n \t;;\n@@ -1321,7 +1375,7 @@ EOF\n \t\tGUESS=ns32k-sni-sysv\n \tfi\n \t;;\n-    PENTIUM:*:4.0*:*)\t# Unisys `ClearPath HMP IX 4000' SVR4/MP effort\n+    PENTIUM:*:4.0*:*)\t# Unisys 'ClearPath HMP IX 4000' SVR4/MP effort\n \t\t\t# says <Richard.M.Bartel@ccMail.Census.GOV>\n \tGUESS=i586-unisys-sysv4\n \t;;\n@@ -1367,8 +1421,11 @@ EOF\n     BePC:Haiku:*:*)\t# Haiku running on Intel PC compatible.\n \tGUESS=i586-pc-haiku\n \t;;\n-    x86_64:Haiku:*:*)\n-\tGUESS=x86_64-unknown-haiku\n+    ppc:Haiku:*:*)\t# Haiku running on Apple PowerPC\n+\tGUESS=powerpc-apple-haiku\n+\t;;\n+    *:Haiku:*:*)\t# Haiku modern gcc (not bound by BeOS compat)\n+\tGUESS=$UNAME_MACHINE-unknown-haiku\n \t;;\n     SX-4:SUPER-UX:*:*)\n \tGUESS=sx4-nec-superux$UNAME_RELEASE\n@@ -1540,6 +1597,9 @@ EOF\n     *:Unleashed:*:*)\n \tGUESS=$UNAME_MACHINE-unknown-unleashed$UNAME_RELEASE\n \t;;\n+    *:Ironclad:*:*)\n+\tGUESS=$UNAME_MACHINE-unknown-ironclad\n+\t;;\n esac\n \n # Do we have a guess based on uname results?\n@@ -1563,6 +1623,7 @@ cat > \"$dummy.c\" <<EOF\n #endif\n #endif\n #endif\n+int\n main ()\n {\n #if defined (sony)\ndiff --git a/config.h.cmake.in b/config.h.cmake.in\nindex ddf6174..648720a 100644\n--- a/config.h.cmake.in\n+++ b/config.h.cmake.in\n@@ -369,13 +369,13 @@\n #undef SYSTEMD_ASK_PASSWORD_PATH\n \n /* The tap-windows id */\n-#define TAP_WIN_COMPONENT_ID \"tap0901\"\n+#define TAP_WIN_COMPONENT_ID \"@TAP_WIN_COMPONENT_ID@\"\n \n /* The tap-windows version number is required for OpenVPN */\n-#define TAP_WIN_MIN_MAJOR 9\n+#define TAP_WIN_MIN_MAJOR @TAP_WIN_MIN_MAJOR@\n \n /* The tap-windows version number is required for OpenVPN */\n-#define TAP_WIN_MIN_MINOR 9\n+#define TAP_WIN_MIN_MINOR @TAP_WIN_MIN_MINOR@\n \n /* Are we running on Mac OS X? */\n #cmakedefine TARGET_DARWIN\ndiff --git a/config.h.in b/config.h.in\nindex 92f8639..ad74a1c 100644\n--- a/config.h.in\n+++ b/config.h.in\n@@ -87,16 +87,16 @@\n /* Define to 1 if you have the <arpa/inet.h> header file. */\n #undef HAVE_ARPA_INET_H\n \n-/* Define to 1 if you have the `basename' function. */\n+/* Define to 1 if you have the 'basename' function. */\n #undef HAVE_BASENAME\n \n-/* Define to 1 if you have the `chdir' function. */\n+/* Define to 1 if you have the 'chdir' function. */\n #undef HAVE_CHDIR\n \n-/* Define to 1 if you have the `chroot' function. */\n+/* Define to 1 if you have the 'chroot' function. */\n #undef HAVE_CHROOT\n \n-/* Define to 1 if you have the `chsize' function. */\n+/* Define to 1 if you have the 'chsize' function. */\n #undef HAVE_CHSIZE\n \n /* Define to 1 if you have the <cmocka_version.h> header file. */\n@@ -108,10 +108,10 @@\n /* extra version available in config-version.h */\n #undef HAVE_CONFIG_VERSION_H\n \n-/* Define to 1 if you have the `daemon' function. */\n+/* Define to 1 if you have the 'daemon' function. */\n #undef HAVE_DAEMON\n \n-/* Define to 1 if you have the `dirname' function. */\n+/* Define to 1 if you have the 'dirname' function. */\n #undef HAVE_DIRNAME\n \n /* Define to 1 if you have the <dlfcn.h> header file. */\n@@ -120,52 +120,52 @@\n /* Define to 1 if you have the <dmalloc.h> header file. */\n #undef HAVE_DMALLOC_H\n \n-/* Define to 1 if you have the `dup' function. */\n+/* Define to 1 if you have the 'dup' function. */\n #undef HAVE_DUP\n \n-/* Define to 1 if you have the `dup2' function. */\n+/* Define to 1 if you have the 'dup2' function. */\n #undef HAVE_DUP2\n \n-/* Define to 1 if you have the `ENGINE_load_builtin_engines' function. */\n+/* Define to 1 if you have the 'ENGINE_load_builtin_engines' function. */\n #undef HAVE_ENGINE_LOAD_BUILTIN_ENGINES\n \n-/* Define to 1 if you have the `ENGINE_register_all_complete' function. */\n+/* Define to 1 if you have the 'ENGINE_register_all_complete' function. */\n #undef HAVE_ENGINE_REGISTER_ALL_COMPLETE\n \n-/* Define to 1 if you have the `epoll_create' function. */\n+/* Define to 1 if you have the 'epoll_create' function. */\n #undef HAVE_EPOLL_CREATE\n \n /* Define to 1 if you have the <err.h> header file. */\n #undef HAVE_ERR_H\n \n-/* Define to 1 if you have the `execve' function. */\n+/* Define to 1 if you have the 'execve' function. */\n #undef HAVE_EXECVE\n \n /* Define to 1 if you have the <fcntl.h> header file. */\n #undef HAVE_FCNTL_H\n \n-/* Define to 1 if you have the `flock' function. */\n+/* Define to 1 if you have the 'flock' function. */\n #undef HAVE_FLOCK\n \n-/* Define to 1 if you have the `fork' function. */\n+/* Define to 1 if you have the 'fork' function. */\n #undef HAVE_FORK\n \n-/* Define to 1 if you have the `ftruncate' function. */\n+/* Define to 1 if you have the 'ftruncate' function. */\n #undef HAVE_FTRUNCATE\n \n-/* Define to 1 if you have the `getgrnam' function. */\n+/* Define to 1 if you have the 'getgrnam' function. */\n #undef HAVE_GETGRNAM\n \n-/* Define to 1 if you have the `getpeereid' function. */\n+/* Define to 1 if you have the 'getpeereid' function. */\n #undef HAVE_GETPEEREID\n \n-/* Define to 1 if you have the `getpwnam' function. */\n+/* Define to 1 if you have the 'getpwnam' function. */\n #undef HAVE_GETPWNAM\n \n-/* Define to 1 if you have the `getrlimit' function. */\n+/* Define to 1 if you have the 'getrlimit' function. */\n #undef HAVE_GETRLIMIT\n \n-/* Define to 1 if you have the `gettimeofday' function. */\n+/* Define to 1 if you have the 'gettimeofday' function. */\n #undef HAVE_GETTIMEOFDAY\n \n /* Define to 1 if you have the <grp.h> header file. */\n@@ -189,10 +189,10 @@\n /* Define to 1 if you have the <libgen.h> header file. */\n #undef HAVE_LIBGEN_H\n \n-/* Define to 1 if you have the `lz4' library (-llz4). */\n+/* Define to 1 if you have the 'lz4' library (-llz4). */\n #undef HAVE_LIBLZ4\n \n-/* Define to 1 if you have the `wolfssl' library (-lwolfssl). */\n+/* Define to 1 if you have the 'wolfssl' library (-lwolfssl). */\n #undef HAVE_LIBWOLFSSL\n \n /* Define to 1 if you have the <linux/if_tun.h> header file. */\n@@ -210,7 +210,7 @@\n /* Define to 1 if you have the <minix/config.h> header file. */\n #undef HAVE_MINIX_CONFIG_H\n \n-/* Define to 1 if you have the `mlockall' function. */\n+/* Define to 1 if you have the 'mlockall' function. */\n #undef HAVE_MLOCKALL\n \n /* struct msghdr needed for extended socket error support */\n@@ -240,10 +240,10 @@\n /* Define to 1 if you have the <net/tun/if_tun.h> header file. */\n #undef HAVE_NET_TUN_IF_TUN_H\n \n-/* Define to 1 if you have the `nice' function. */\n+/* Define to 1 if you have the 'nice' function. */\n #undef HAVE_NICE\n \n-/* Define to 1 if you have the `openlog' function. */\n+/* Define to 1 if you have the 'openlog' function. */\n #undef HAVE_OPENLOG\n \n /* OpenSSL engine support available */\n@@ -258,7 +258,7 @@\n /* Define to 1 if you have the <pwd.h> header file. */\n #undef HAVE_PWD_H\n \n-/* Define to 1 if you have the `recvmsg' function. */\n+/* Define to 1 if you have the 'recvmsg' function. */\n #undef HAVE_RECVMSG\n \n /* Define to 1 if you have the <resolv.h> header file. */\n@@ -267,22 +267,22 @@\n /* sa_family_t, needed to hold AF_* info */\n #undef HAVE_SA_FAMILY_T\n \n-/* Define to 1 if you have the `sendmsg' function. */\n+/* Define to 1 if you have the 'sendmsg' function. */\n #undef HAVE_SENDMSG\n \n-/* Define to 1 if you have the `setgid' function. */\n+/* Define to 1 if you have the 'setgid' function. */\n #undef HAVE_SETGID\n \n-/* Define to 1 if you have the `setgroups' function. */\n+/* Define to 1 if you have the 'setgroups' function. */\n #undef HAVE_SETGROUPS\n \n-/* Define to 1 if you have the `setsid' function. */\n+/* Define to 1 if you have the 'setsid' function. */\n #undef HAVE_SETSID\n \n-/* Define to 1 if you have the `setuid' function. */\n+/* Define to 1 if you have the 'setuid' function. */\n #undef HAVE_SETUID\n \n-/* Define to 1 if you have the `SSL_CTX_new' function. */\n+/* Define to 1 if you have the 'SSL_CTX_new' function. */\n #undef HAVE_SSL_CTX_NEW\n \n /* Define to 1 if you have the <stdint.h> header file. */\n@@ -303,10 +303,10 @@\n /* Define to 1 if you have the <stropts.h> header file. */\n #undef HAVE_STROPTS_H\n \n-/* Define to 1 if you have the `strsep' function. */\n+/* Define to 1 if you have the 'strsep' function. */\n #undef HAVE_STRSEP\n \n-/* Define to 1 if you have the `syslog' function. */\n+/* Define to 1 if you have the 'syslog' function. */\n #undef HAVE_SYSLOG\n \n /* Define to 1 if you have the <syslog.h> header file. */\n@@ -366,7 +366,7 @@\n /* Define to 1 if you have the <valgrind/memcheck.h> header file. */\n #undef HAVE_VALGRIND_MEMCHECK_H\n \n-/* Define to 1 if you have the `vfork' function. */\n+/* Define to 1 if you have the 'vfork' function. */\n #undef HAVE_VFORK\n \n /* Define to 1 if you have the <vfork.h> header file. */\n@@ -375,10 +375,10 @@\n /* Define to 1 if you have the <wchar.h> header file. */\n #undef HAVE_WCHAR_H\n \n-/* Define to 1 if `fork' works. */\n+/* Define to 1 if 'fork' works. */\n #undef HAVE_WORKING_FORK\n \n-/* Define to 1 if `vfork' works. */\n+/* Define to 1 if 'vfork' works. */\n #undef HAVE_WORKING_VFORK\n \n /* Path to ifconfig tool */\n@@ -438,7 +438,7 @@\n /* Path to softhsm2-util */\n #undef SOFTHSM2_UTIL_PATH\n \n-/* Define to 1 if all of the C90 standard headers exist (not just the ones\n+/* Define to 1 if all of the C89 standard headers exist (not just the ones\n    required in a freestanding environment). This macro is provided for\n    backward compatibility; new code need not use it. */\n #undef STDC_HEADERS\n@@ -494,7 +494,7 @@\n /* dlopen libpam */\n #undef USE_PAM_DLOPEN\n \n-/* Enable extensions on AIX 3, Interix.  */\n+/* Enable extensions on AIX, Interix, z/OS.  */\n #ifndef _ALL_SOURCE\n # undef _ALL_SOURCE\n #endif\n@@ -555,11 +555,15 @@\n #ifndef __STDC_WANT_IEC_60559_DFP_EXT__\n # undef __STDC_WANT_IEC_60559_DFP_EXT__\n #endif\n+/* Enable extensions specified by C23 Annex F.  */\n+#ifndef __STDC_WANT_IEC_60559_EXT__\n+# undef __STDC_WANT_IEC_60559_EXT__\n+#endif\n /* Enable extensions specified by ISO/IEC TS 18661-4:2015.  */\n #ifndef __STDC_WANT_IEC_60559_FUNCS_EXT__\n # undef __STDC_WANT_IEC_60559_FUNCS_EXT__\n #endif\n-/* Enable extensions specified by ISO/IEC TS 18661-3:2015.  */\n+/* Enable extensions specified by C23 Annex H and ISO/IEC TS 18661-3:2015.  */\n #ifndef __STDC_WANT_IEC_60559_TYPES_EXT__\n # undef __STDC_WANT_IEC_60559_TYPES_EXT__\n #endif\n@@ -591,7 +595,7 @@\n /* Use custom user_settings.h file for wolfSSL library */\n #undef WOLFSSL_USER_SETTINGS\n \n-/* Define to `__inline__' or `__inline' if that's what the C compiler\n+/* Define to '__inline__' or '__inline' if that's what the C compiler\n    calls it, or to nothing if 'inline' is not supported under any name.  */\n #ifndef __cplusplus\n #undef inline\n@@ -603,5 +607,5 @@\n /* type to use in place of socklen_t if not defined */\n #undef socklen_t\n \n-/* Define as `fork' if `vfork' does not work. */\n+/* Define as 'fork' if 'vfork' does not work. */\n #undef vfork\ndiff --git a/config.sub b/config.sub\nindex dba16e8..4aaae46 100755\n--- a/config.sub\n+++ b/config.sub\n@@ -1,10 +1,10 @@\n #! /bin/sh\n # Configuration validation subroutine script.\n-#   Copyright 1992-2022 Free Software Foundation, Inc.\n+#   Copyright 1992-2024 Free Software Foundation, Inc.\n \n-# shellcheck disable=SC2006,SC2268 # see below for rationale\n+# shellcheck disable=SC2006,SC2268,SC2162 # see below for rationale\n \n-timestamp='2022-01-03'\n+timestamp='2024-05-27'\n \n # This file is free software; you can redistribute it and/or modify it\n # under the terms of the GNU General Public License as published by\n@@ -76,13 +76,13 @@ Report bugs and patches to <config-patches@gnu.org>.\"\n version=\"\\\n GNU config.sub ($timestamp)\n \n-Copyright 1992-2022 Free Software Foundation, Inc.\n+Copyright 1992-2024 Free Software Foundation, Inc.\n \n This is free software; see the source for copying conditions.  There is NO\n warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.\"\n \n help=\"\n-Try \\`$me --help' for more information.\"\n+Try '$me --help' for more information.\"\n \n # Parse command line\n while test $# -gt 0 ; do\n@@ -120,7 +120,6 @@ case $# in\n esac\n \n # Split fields of configuration type\n-# shellcheck disable=SC2162\n saved_IFS=$IFS\n IFS=\"-\" read field1 field2 field3 field4 <<EOF\n $1\n@@ -130,7 +129,7 @@ IFS=$saved_IFS\n # Separate into logical components for further validation\n case $1 in\n \t*-*-*-*-*)\n-\t\techo Invalid configuration \\`\"$1\"\\': more than four components >&2\n+\t\techo \"Invalid configuration '$1': more than four components\" >&2\n \t\texit 1\n \t\t;;\n \t*-*-*-*)\n@@ -142,10 +141,21 @@ case $1 in\n \t\t# parts\n \t\tmaybe_os=$field2-$field3\n \t\tcase $maybe_os in\n-\t\t\tnto-qnx* | linux-* | uclinux-uclibc* \\\n-\t\t\t| uclinux-gnu* | kfreebsd*-gnu* | knetbsd*-gnu* | netbsd*-gnu* \\\n-\t\t\t| netbsd*-eabi* | kopensolaris*-gnu* | cloudabi*-eabi* \\\n-\t\t\t| storm-chaos* | os2-emx* | rtmk-nova*)\n+\t\t\t  cloudabi*-eabi* \\\n+\t\t\t| kfreebsd*-gnu* \\\n+\t\t\t| knetbsd*-gnu* \\\n+\t\t\t| kopensolaris*-gnu* \\\n+\t\t\t| linux-* \\\n+\t\t\t| managarm-* \\\n+\t\t\t| netbsd*-eabi* \\\n+\t\t\t| netbsd*-gnu* \\\n+\t\t\t| nto-qnx* \\\n+\t\t\t| os2-emx* \\\n+\t\t\t| rtmk-nova* \\\n+\t\t\t| storm-chaos* \\\n+\t\t\t| uclinux-gnu* \\\n+\t\t\t| uclinux-uclibc* \\\n+\t\t\t| windows-* )\n \t\t\t\tbasic_machine=$field1\n \t\t\t\tbasic_os=$maybe_os\n \t\t\t\t;;\n@@ -160,8 +170,12 @@ case $1 in\n \t\tesac\n \t\t;;\n \t*-*)\n-\t\t# A lone config we happen to match not fitting any pattern\n \t\tcase $field1-$field2 in\n+\t\t\t# Shorthands that happen to contain a single dash\n+\t\t\tconvex-c[12] | convex-c3[248])\n+\t\t\t\tbasic_machine=$field2-convex\n+\t\t\t\tbasic_os=\n+\t\t\t\t;;\n \t\t\tdecstation-3100)\n \t\t\t\tbasic_machine=mips-dec\n \t\t\t\tbasic_os=\n@@ -169,28 +183,88 @@ case $1 in\n \t\t\t*-*)\n \t\t\t\t# Second component is usually, but not always the OS\n \t\t\t\tcase $field2 in\n-\t\t\t\t\t# Prevent following clause from handling this valid os\n+\t\t\t\t\t# Do not treat sunos as a manufacturer\n \t\t\t\t\tsun*os*)\n \t\t\t\t\t\tbasic_machine=$field1\n \t\t\t\t\t\tbasic_os=$field2\n \t\t\t\t\t\t;;\n-\t\t\t\t\tzephyr*)\n-\t\t\t\t\t\tbasic_machine=$field1-unknown\n-\t\t\t\t\t\tbasic_os=$field2\n-\t\t\t\t\t\t;;\n \t\t\t\t\t# Manufacturers\n-\t\t\t\t\tdec* | mips* | sequent* | encore* | pc533* | sgi* | sony* \\\n-\t\t\t\t\t| att* | 7300* | 3300* | delta* | motorola* | sun[234]* \\\n-\t\t\t\t\t| unicom* | ibm* | next | hp | isi* | apollo | altos* \\\n-\t\t\t\t\t| convergent* | ncr* | news | 32* | 3600* | 3100* \\\n-\t\t\t\t\t| hitachi* | c[123]* | convex* | sun | crds | omron* | dg \\\n-\t\t\t\t\t| ultra | tti* | harris | dolphin | highlevel | gould \\\n-\t\t\t\t\t| cbm | ns | masscomp | apple | axis | knuth | cray \\\n-\t\t\t\t\t| microblaze* | sim | cisco \\\n-\t\t\t\t\t| oki | wec | wrs | winbond)\n+\t\t\t\t\t  3100* \\\n+\t\t\t\t\t| 32* \\\n+\t\t\t\t\t| 3300* \\\n+\t\t\t\t\t| 3600* \\\n+\t\t\t\t\t| 7300* \\\n+\t\t\t\t\t| acorn \\\n+\t\t\t\t\t| altos* \\\n+\t\t\t\t\t| apollo \\\n+\t\t\t\t\t| apple \\\n+\t\t\t\t\t| atari \\\n+\t\t\t\t\t| att* \\\n+\t\t\t\t\t| axis \\\n+\t\t\t\t\t| be \\\n+\t\t\t\t\t| bull \\\n+\t\t\t\t\t| cbm \\\n+\t\t\t\t\t| ccur \\\n+\t\t\t\t\t| cisco \\\n+\t\t\t\t\t| commodore \\\n+\t\t\t\t\t| convergent* \\\n+\t\t\t\t\t| convex* \\\n+\t\t\t\t\t| cray \\\n+\t\t\t\t\t| crds \\\n+\t\t\t\t\t| dec* \\\n+\t\t\t\t\t| delta* \\\n+\t\t\t\t\t| dg \\\n+\t\t\t\t\t| digital \\\n+\t\t\t\t\t| dolphin \\\n+\t\t\t\t\t| encore* \\\n+\t\t\t\t\t| gould \\\n+\t\t\t\t\t| harris \\\n+\t\t\t\t\t| highlevel \\\n+\t\t\t\t\t| hitachi* \\\n+\t\t\t\t\t| hp \\\n+\t\t\t\t\t| ibm* \\\n+\t\t\t\t\t| intergraph \\\n+\t\t\t\t\t| isi* \\\n+\t\t\t\t\t| knuth \\\n+\t\t\t\t\t| masscomp \\\n+\t\t\t\t\t| microblaze* \\\n+\t\t\t\t\t| mips* \\\n+\t\t\t\t\t| motorola* \\\n+\t\t\t\t\t| ncr* \\\n+\t\t\t\t\t| news \\\n+\t\t\t\t\t| next \\\n+\t\t\t\t\t| ns \\\n+\t\t\t\t\t| oki \\\n+\t\t\t\t\t| omron* \\\n+\t\t\t\t\t| pc533* \\\n+\t\t\t\t\t| rebel \\\n+\t\t\t\t\t| rom68k \\\n+\t\t\t\t\t| rombug \\\n+\t\t\t\t\t| semi \\\n+\t\t\t\t\t| sequent* \\\n+\t\t\t\t\t| siemens \\\n+\t\t\t\t\t| sgi* \\\n+\t\t\t\t\t| siemens \\\n+\t\t\t\t\t| sim \\\n+\t\t\t\t\t| sni \\\n+\t\t\t\t\t| sony* \\\n+\t\t\t\t\t| stratus \\\n+\t\t\t\t\t| sun \\\n+\t\t\t\t\t| sun[234]* \\\n+\t\t\t\t\t| tektronix \\\n+\t\t\t\t\t| tti* \\\n+\t\t\t\t\t| ultra \\\n+\t\t\t\t\t| unicom* \\\n+\t\t\t\t\t| wec \\\n+\t\t\t\t\t| winbond \\\n+\t\t\t\t\t| wrs)\n \t\t\t\t\t\tbasic_machine=$field1-$field2\n \t\t\t\t\t\tbasic_os=\n \t\t\t\t\t\t;;\n+\t\t\t\t\tzephyr*)\n+\t\t\t\t\t\tbasic_machine=$field1-unknown\n+\t\t\t\t\t\tbasic_os=$field2\n+\t\t\t\t\t\t;;\n \t\t\t\t\t*)\n \t\t\t\t\t\tbasic_machine=$field1\n \t\t\t\t\t\tbasic_os=$field2\n@@ -271,26 +345,6 @@ case $1 in\n \t\t\t\tbasic_machine=arm-unknown\n \t\t\t\tbasic_os=cegcc\n \t\t\t\t;;\n-\t\t\tconvex-c1)\n-\t\t\t\tbasic_machine=c1-convex\n-\t\t\t\tbasic_os=bsd\n-\t\t\t\t;;\n-\t\t\tconvex-c2)\n-\t\t\t\tbasic_machine=c2-convex\n-\t\t\t\tbasic_os=bsd\n-\t\t\t\t;;\n-\t\t\tconvex-c32)\n-\t\t\t\tbasic_machine=c32-convex\n-\t\t\t\tbasic_os=bsd\n-\t\t\t\t;;\n-\t\t\tconvex-c34)\n-\t\t\t\tbasic_machine=c34-convex\n-\t\t\t\tbasic_os=bsd\n-\t\t\t\t;;\n-\t\t\tconvex-c38)\n-\t\t\t\tbasic_machine=c38-convex\n-\t\t\t\tbasic_os=bsd\n-\t\t\t\t;;\n \t\t\tcray)\n \t\t\t\tbasic_machine=j90-cray\n \t\t\t\tbasic_os=unicos\n@@ -713,15 +767,26 @@ case $basic_machine in\n \t\tvendor=dec\n \t\tbasic_os=tops20\n \t\t;;\n-\tdelta | 3300 | motorola-3300 | motorola-delta \\\n-\t      | 3300-motorola | delta-motorola)\n+\tdelta | 3300 | delta-motorola | 3300-motorola | motorola-delta | motorola-3300)\n \t\tcpu=m68k\n \t\tvendor=motorola\n \t\t;;\n-\tdpx2*)\n+\t# This used to be dpx2*, but that gets the RS6000-based\n+\t# DPX/20 and the x86-based DPX/2-100 wrong.  See\n+\t# https://oldskool.silicium.org/stations/bull_dpx20.htm\n+\t# https://www.feb-patrimoine.com/english/bull_dpx2.htm\n+\t# https://www.feb-patrimoine.com/english/unix_and_bull.htm\n+\tdpx2 | dpx2[23]00 | dpx2[23]xx)\n \t\tcpu=m68k\n \t\tvendor=bull\n-\t\tbasic_os=sysv3\n+\t\t;;\n+\tdpx2100 | dpx21xx)\n+\t\tcpu=i386\n+\t\tvendor=bull\n+\t\t;;\n+\tdpx20)\n+\t\tcpu=rs6000\n+\t\tvendor=bull\n \t\t;;\n \tencore | umax | mmax)\n \t\tcpu=ns32k\n@@ -836,18 +901,6 @@ case $basic_machine in\n \tnext | m*-next)\n \t\tcpu=m68k\n \t\tvendor=next\n-\t\tcase $basic_os in\n-\t\t    openstep*)\n-\t\t        ;;\n-\t\t    nextstep*)\n-\t\t\t;;\n-\t\t    ns2*)\n-\t\t      basic_os=nextstep2\n-\t\t\t;;\n-\t\t    *)\n-\t\t      basic_os=nextstep3\n-\t\t\t;;\n-\t\tesac\n \t\t;;\n \tnp1)\n \t\tcpu=np1\n@@ -936,14 +989,13 @@ case $basic_machine in\n \t\t;;\n \n \t*-*)\n-\t\t# shellcheck disable=SC2162\n \t\tsaved_IFS=$IFS\n \t\tIFS=\"-\" read cpu vendor <<EOF\n $basic_machine\n EOF\n \t\tIFS=$saved_IFS\n \t\t;;\n-\t# We use `pc' rather than `unknown'\n+\t# We use 'pc' rather than 'unknown'\n \t# because (1) that's what they normally are, and\n \t# (2) the word \"unknown\" tends to confuse beginning users.\n \ti*86 | x86_64)\n@@ -971,15 +1023,19 @@ unset -v basic_machine\n \n # Decode basic machines in the full and proper CPU-Company form.\n case $cpu-$vendor in\n-\t# Here we handle the default manufacturer of certain CPU types in canonical form. It is in\n-\t# some cases the only manufacturer, in others, it is the most popular.\n+\t# Here we handle the default manufacturer of certain CPU types in canonical form.\n+\t# It is in some cases the only manufacturer, in others, it is the most popular.\n+\tc[12]-convex | c[12]-unknown | c3[248]-convex | c3[248]-unknown)\n+\t\tvendor=convex\n+\t\tbasic_os=${basic_os:-bsd}\n+\t\t;;\n \tcraynv-unknown)\n \t\tvendor=cray\n \t\tbasic_os=${basic_os:-unicosmp}\n \t\t;;\n \tc90-unknown | c90-cray)\n \t\tvendor=cray\n-\t\tbasic_os=${Basic_os:-unicos}\n+\t\tbasic_os=${basic_os:-unicos}\n \t\t;;\n \tfx80-unknown)\n \t\tvendor=alliant\n@@ -1025,11 +1081,29 @@ case $cpu-$vendor in\n \t\tvendor=alt\n \t\tbasic_os=${basic_os:-linux-gnueabihf}\n \t\t;;\n-\tdpx20-unknown | dpx20-bull)\n-\t\tcpu=rs6000\n-\t\tvendor=bull\n+\n+\t# Normalized CPU+vendor pairs that imply an OS, if not otherwise specified\n+\tm68k-isi)\n+\t\tbasic_os=${basic_os:-sysv}\n+\t\t;;\n+\tm68k-sony)\n+\t\tbasic_os=${basic_os:-newsos}\n+\t\t;;\n+\tm68k-tektronix)\n+\t\tbasic_os=${basic_os:-bsd}\n+\t\t;;\n+\tm88k-harris)\n+\t\tbasic_os=${basic_os:-sysv3}\n+\t\t;;\n+\ti386-bull | m68k-bull)\n+\t\tbasic_os=${basic_os:-sysv3}\n+\t\t;;\n+\trs6000-bull)\n \t\tbasic_os=${basic_os:-bosx}\n \t\t;;\n+\tmips-sni)\n+\t\tbasic_os=${basic_os:-sysv4}\n+\t\t;;\n \n \t# Here we normalize CPU types irrespective of the vendor\n \tamd64-*)\n@@ -1037,7 +1111,7 @@ case $cpu-$vendor in\n \t\t;;\n \tblackfin-*)\n \t\tcpu=bfin\n-\t\tbasic_os=linux\n+\t\tbasic_os=${basic_os:-linux}\n \t\t;;\n \tc54x-*)\n \t\tcpu=tic54x\n@@ -1060,7 +1134,7 @@ case $cpu-$vendor in\n \t\t;;\n \tm68knommu-*)\n \t\tcpu=m68k\n-\t\tbasic_os=linux\n+\t\tbasic_os=${basic_os:-linux}\n \t\t;;\n \tm9s12z-* | m68hcs12z-* | hcs12z-* | s12z-*)\n \t\tcpu=s12z\n@@ -1070,12 +1144,12 @@ case $cpu-$vendor in\n \t\t;;\n \tparisc-*)\n \t\tcpu=hppa\n-\t\tbasic_os=linux\n+\t\tbasic_os=${basic_os:-linux}\n \t\t;;\n \tpentium-* | p5-* | k5-* | k6-* | nexgen-* | viac3-*)\n \t\tcpu=i586\n \t\t;;\n-\tpentiumpro-* | p6-* | 6x86-* | athlon-* | athalon_*-*)\n+\tpentiumpro-* | p6-* | 6x86-* | athlon-* | athlon_*-*)\n \t\tcpu=i686\n \t\t;;\n \tpentiumii-* | pentium2-* | pentiumiii-* | pentium3-*)\n@@ -1084,9 +1158,6 @@ case $cpu-$vendor in\n \tpentium4-*)\n \t\tcpu=i786\n \t\t;;\n-\tpc98-*)\n-\t\tcpu=i386\n-\t\t;;\n \tppc-* | ppcbe-*)\n \t\tcpu=powerpc\n \t\t;;\n@@ -1120,9 +1191,6 @@ case $cpu-$vendor in\n \ttx39el-*)\n \t\tcpu=mipstx39el\n \t\t;;\n-\tx64-*)\n-\t\tcpu=x86_64\n-\t\t;;\n \txscale-* | xscalee[bl]-*)\n \t\tcpu=`echo \"$cpu\" | sed 's/^xscale/arm/'`\n \t\t;;\n@@ -1178,114 +1246,231 @@ case $cpu-$vendor in\n \t\t# Recognize the canonical CPU types that are allowed with any\n \t\t# company name.\n \t\tcase $cpu in\n-\t\t\t1750a | 580 \\\n+\t\t\t  1750a \\\n+\t\t\t| 580 \\\n+\t\t\t| [cjt]90 \\\n \t\t\t| a29k \\\n-\t\t\t| aarch64 | aarch64_be \\\n+\t\t\t| aarch64 \\\n+\t\t\t| aarch64_be \\\n+\t\t\t| aarch64c \\\n \t\t\t| abacus \\\n-\t\t\t| alpha | alphaev[4-8] | alphaev56 | alphaev6[78] \\\n-\t\t\t| alpha64 | alpha64ev[4-8] | alpha64ev56 | alpha64ev6[78] \\\n-\t\t\t| alphapca5[67] | alpha64pca5[67] \\\n+\t\t\t| alpha \\\n+\t\t\t| alpha64 \\\n+\t\t\t| alpha64ev56 \\\n+\t\t\t| alpha64ev6[78] \\\n+\t\t\t| alpha64ev[4-8] \\\n+\t\t\t| alpha64pca5[67] \\\n+\t\t\t| alphaev56 \\\n+\t\t\t| alphaev6[78] \\\n+\t\t\t| alphaev[4-8] \\\n+\t\t\t| alphapca5[67] \\\n \t\t\t| am33_2.0 \\\n \t\t\t| amdgcn \\\n-\t\t\t| arc | arceb | arc32 | arc64 \\\n-\t\t\t| arm | arm[lb]e | arme[lb] | armv* \\\n-\t\t\t| avr | avr32 \\\n+\t\t\t| arc \\\n+\t\t\t| arc32 \\\n+\t\t\t| arc64 \\\n+\t\t\t| arceb \\\n+\t\t\t| arm \\\n+\t\t\t| arm64e \\\n+\t\t\t| arm64ec \\\n+\t\t\t| arm[lb]e \\\n+\t\t\t| arme[lb] \\\n+\t\t\t| armv* \\\n \t\t\t| asmjs \\\n+\t\t\t| avr \\\n+\t\t\t| avr32 \\\n \t\t\t| ba \\\n-\t\t\t| be32 | be64 \\\n-\t\t\t| bfin | bpf | bs2000 \\\n-\t\t\t| c[123]* | c30 | [cjt]90 | c4x \\\n-\t\t\t| c8051 | clipper | craynv | csky | cydra \\\n-\t\t\t| d10v | d30v | dlx | dsp16xx \\\n-\t\t\t| e2k | elxsi | epiphany \\\n-\t\t\t| f30[01] | f700 | fido | fr30 | frv | ft32 | fx80 \\\n-\t\t\t| h8300 | h8500 \\\n-\t\t\t| hppa | hppa1.[01] | hppa2.0 | hppa2.0[nw] | hppa64 \\\n+\t\t\t| be32 \\\n+\t\t\t| be64 \\\n+\t\t\t| bfin \\\n+\t\t\t| bpf \\\n+\t\t\t| bs2000 \\\n+\t\t\t| c30 \\\n+\t\t\t| c4x \\\n+\t\t\t| c8051 \\\n+\t\t\t| c[123]* \\\n+\t\t\t| clipper \\\n+\t\t\t| craynv \\\n+\t\t\t| csky \\\n+\t\t\t| cydra \\\n+\t\t\t| d10v \\\n+\t\t\t| d30v \\\n+\t\t\t| dlx \\\n+\t\t\t| dsp16xx \\\n+\t\t\t| e2k \\\n+\t\t\t| elxsi \\\n+\t\t\t| epiphany \\\n+\t\t\t| f30[01] \\\n+\t\t\t| f700 \\\n+\t\t\t| fido \\\n+\t\t\t| fr30 \\\n+\t\t\t| frv \\\n+\t\t\t| ft32 \\\n+\t\t\t| fx80 \\\n+\t\t\t| h8300 \\\n+\t\t\t| h8500 \\\n \t\t\t| hexagon \\\n-\t\t\t| i370 | i*86 | i860 | i960 | ia16 | ia64 \\\n-\t\t\t| ip2k | iq2000 \\\n+\t\t\t| hppa \\\n+\t\t\t| hppa1.[01] \\\n+\t\t\t| hppa2.0 \\\n+\t\t\t| hppa2.0[nw] \\\n+\t\t\t| hppa64 \\\n+\t\t\t| i*86 \\\n+\t\t\t| i370 \\\n+\t\t\t| i860 \\\n+\t\t\t| i960 \\\n+\t\t\t| ia16 \\\n+\t\t\t| ia64 \\\n+\t\t\t| ip2k \\\n+\t\t\t| iq2000 \\\n+\t\t\t| javascript \\\n \t\t\t| k1om \\\n-\t\t\t| le32 | le64 \\\n+\t\t\t| kvx \\\n+\t\t\t| le32 \\\n+\t\t\t| le64 \\\n \t\t\t| lm32 \\\n-\t\t\t| loongarch32 | loongarch64 | loongarchx32 \\\n-\t\t\t| m32c | m32r | m32rle \\\n-\t\t\t| m5200 | m68000 | m680[012346]0 | m68360 | m683?2 | m68k \\\n-\t\t\t| m6811 | m68hc11 | m6812 | m68hc12 | m68hcs12x \\\n-\t\t\t| m88110 | m88k | maxq | mb | mcore | mep | metag \\\n-\t\t\t| microblaze | microblazeel \\\n-\t\t\t| mips | mipsbe | mipseb | mipsel | mipsle \\\n-\t\t\t| mips16 \\\n-\t\t\t| mips64 | mips64eb | mips64el \\\n-\t\t\t| mips64octeon | mips64octeonel \\\n-\t\t\t| mips64orion | mips64orionel \\\n-\t\t\t| mips64r5900 | mips64r5900el \\\n-\t\t\t| mips64vr | mips64vrel \\\n-\t\t\t| mips64vr4100 | mips64vr4100el \\\n-\t\t\t| mips64vr4300 | mips64vr4300el \\\n-\t\t\t| mips64vr5000 | mips64vr5000el \\\n-\t\t\t| mips64vr5900 | mips64vr5900el \\\n-\t\t\t| mipsisa32 | mipsisa32el \\\n-\t\t\t| mipsisa32r2 | mipsisa32r2el \\\n-\t\t\t| mipsisa32r3 | mipsisa32r3el \\\n-\t\t\t| mipsisa32r5 | mipsisa32r5el \\\n-\t\t\t| mipsisa32r6 | mipsisa32r6el \\\n-\t\t\t| mipsisa64 | mipsisa64el \\\n-\t\t\t| mipsisa64r2 | mipsisa64r2el \\\n-\t\t\t| mipsisa64r3 | mipsisa64r3el \\\n-\t\t\t| mipsisa64r5 | mipsisa64r5el \\\n-\t\t\t| mipsisa64r6 | mipsisa64r6el \\\n-\t\t\t| mipsisa64sb1 | mipsisa64sb1el \\\n-\t\t\t| mipsisa64sr71k | mipsisa64sr71kel \\\n-\t\t\t| mipsr5900 | mipsr5900el \\\n-\t\t\t| mipstx39 | mipstx39el \\\n+\t\t\t| loongarch32 \\\n+\t\t\t| loongarch64 \\\n+\t\t\t| m32c \\\n+\t\t\t| m32r \\\n+\t\t\t| m32rle \\\n+\t\t\t| m5200 \\\n+\t\t\t| m68000 \\\n+\t\t\t| m680[012346]0 \\\n+\t\t\t| m6811 \\\n+\t\t\t| m6812 \\\n+\t\t\t| m68360 \\\n+\t\t\t| m683?2 \\\n+\t\t\t| m68hc11 \\\n+\t\t\t| m68hc12 \\\n+\t\t\t| m68hcs12x \\\n+\t\t\t| m68k \\\n+\t\t\t| m88110 \\\n+\t\t\t| m88k \\\n+\t\t\t| maxq \\\n+\t\t\t| mb \\\n+\t\t\t| mcore \\\n+\t\t\t| mep \\\n+\t\t\t| metag \\\n+\t\t\t| microblaze \\\n+\t\t\t| microblazeel \\\n+\t\t\t| mips* \\\n \t\t\t| mmix \\\n-\t\t\t| mn10200 | mn10300 \\\n+\t\t\t| mn10200 \\\n+\t\t\t| mn10300 \\\n \t\t\t| moxie \\\n-\t\t\t| mt \\\n \t\t\t| msp430 \\\n-\t\t\t| nds32 | nds32le | nds32be \\\n+\t\t\t| mt \\\n+\t\t\t| nanomips* \\\n+\t\t\t| nds32 \\\n+\t\t\t| nds32be \\\n+\t\t\t| nds32le \\\n \t\t\t| nfp \\\n-\t\t\t| nios | nios2 | nios2eb | nios2el \\\n-\t\t\t| none | np1 | ns16k | ns32k | nvptx \\\n+\t\t\t| nios \\\n+\t\t\t| nios2 \\\n+\t\t\t| nios2eb \\\n+\t\t\t| nios2el \\\n+\t\t\t| none \\\n+\t\t\t| np1 \\\n+\t\t\t| ns16k \\\n+\t\t\t| ns32k \\\n+\t\t\t| nvptx \\\n \t\t\t| open8 \\\n \t\t\t| or1k* \\\n \t\t\t| or32 \\\n \t\t\t| orion \\\n+\t\t\t| pdp10 \\\n+\t\t\t| pdp11 \\\n \t\t\t| picochip \\\n-\t\t\t| pdp10 | pdp11 | pj | pjl | pn | power \\\n-\t\t\t| powerpc | powerpc64 | powerpc64le | powerpcle | powerpcspe \\\n+\t\t\t| pj \\\n+\t\t\t| pjl \\\n+\t\t\t| pn \\\n+\t\t\t| power \\\n+\t\t\t| powerpc \\\n+\t\t\t| powerpc64 \\\n+\t\t\t| powerpc64le \\\n+\t\t\t| powerpcle \\\n+\t\t\t| powerpcspe \\\n \t\t\t| pru \\\n \t\t\t| pyramid \\\n-\t\t\t| riscv | riscv32 | riscv32be | riscv64 | riscv64be \\\n-\t\t\t| rl78 | romp | rs6000 | rx \\\n-\t\t\t| s390 | s390x \\\n+\t\t\t| riscv \\\n+\t\t\t| riscv32 \\\n+\t\t\t| riscv32be \\\n+\t\t\t| riscv64 \\\n+\t\t\t| riscv64be \\\n+\t\t\t| rl78 \\\n+\t\t\t| romp \\\n+\t\t\t| rs6000 \\\n+\t\t\t| rx \\\n+\t\t\t| s390 \\\n+\t\t\t| s390x \\\n \t\t\t| score \\\n-\t\t\t| sh | shl \\\n-\t\t\t| sh[1234] | sh[24]a | sh[24]ae[lb] | sh[23]e | she[lb] | sh[lb]e \\\n-\t\t\t| sh[1234]e[lb] |  sh[12345][lb]e | sh[23]ele | sh64 | sh64le \\\n-\t\t\t| sparc | sparc64 | sparc64b | sparc64v | sparc86x | sparclet \\\n+\t\t\t| sh \\\n+\t\t\t| sh64 \\\n+\t\t\t| sh64le \\\n+\t\t\t| sh[12345][lb]e \\\n+\t\t\t| sh[1234] \\\n+\t\t\t| sh[1234]e[lb] \\\n+\t\t\t| sh[23]e \\\n+\t\t\t| sh[23]ele \\\n+\t\t\t| sh[24]a \\\n+\t\t\t| sh[24]ae[lb] \\\n+\t\t\t| sh[lb]e \\\n+\t\t\t| she[lb] \\\n+\t\t\t| shl \\\n+\t\t\t| sparc \\\n+\t\t\t| sparc64 \\\n+\t\t\t| sparc64b \\\n+\t\t\t| sparc64v \\\n+\t\t\t| sparc86x \\\n+\t\t\t| sparclet \\\n \t\t\t| sparclite \\\n-\t\t\t| sparcv8 | sparcv9 | sparcv9b | sparcv9v | sv1 | sx* \\\n+\t\t\t| sparcv8 \\\n+\t\t\t| sparcv9 \\\n+\t\t\t| sparcv9b \\\n+\t\t\t| sparcv9v \\\n \t\t\t| spu \\\n+\t\t\t| sv1 \\\n+\t\t\t| sx* \\\n \t\t\t| tahoe \\\n \t\t\t| thumbv7* \\\n-\t\t\t| tic30 | tic4x | tic54x | tic55x | tic6x | tic80 \\\n+\t\t\t| tic30 \\\n+\t\t\t| tic4x \\\n+\t\t\t| tic54x \\\n+\t\t\t| tic55x \\\n+\t\t\t| tic6x \\\n+\t\t\t| tic80 \\\n \t\t\t| tron \\\n \t\t\t| ubicom32 \\\n-\t\t\t| v70 | v850 | v850e | v850e1 | v850es | v850e2 | v850e2v3 \\\n+\t\t\t| v70 \\\n+\t\t\t| v810 \\\n+\t\t\t| v850 \\\n+\t\t\t| v850e \\\n+\t\t\t| v850e1 \\\n+\t\t\t| v850e2 \\\n+\t\t\t| v850e2v3 \\\n+\t\t\t| v850es \\\n \t\t\t| vax \\\n+\t\t\t| vc4 \\\n \t\t\t| visium \\\n \t\t\t| w65 \\\n-\t\t\t| wasm32 | wasm64 \\\n+\t\t\t| wasm32 \\\n+\t\t\t| wasm64 \\\n \t\t\t| we32k \\\n-\t\t\t| x86 | x86_64 | xc16x | xgate | xps100 \\\n-\t\t\t| xstormy16 | xtensa* \\\n+\t\t\t| x86 \\\n+\t\t\t| x86_64 \\\n+\t\t\t| xc16x \\\n+\t\t\t| xgate \\\n+\t\t\t| xps100 \\\n+\t\t\t| xstormy16 \\\n+\t\t\t| xtensa* \\\n \t\t\t| ymp \\\n-\t\t\t| z8k | z80)\n+\t\t\t| z80 \\\n+\t\t\t| z8k)\n \t\t\t\t;;\n \n \t\t\t*)\n-\t\t\t\techo Invalid configuration \\`\"$1\"\\': machine \\`\"$cpu-$vendor\"\\' not recognized 1>&2\n+\t\t\t\techo \"Invalid configuration '$1': machine '$cpu-$vendor' not recognized\" 1>&2\n \t\t\t\texit 1\n \t\t\t\t;;\n \t\tesac\n@@ -1306,11 +1491,12 @@ esac\n \n # Decode manufacturer-specific aliases for certain operating systems.\n \n-if test x$basic_os != x\n+if test x\"$basic_os\" != x\n then\n \n # First recognize some ad-hoc cases, or perhaps split kernel-os, or else just\n # set os.\n+obj=\n case $basic_os in\n \tgnu/linux*)\n \t\tkernel=linux\n@@ -1325,7 +1511,6 @@ case $basic_os in\n \t\tos=`echo \"$basic_os\" | sed -e 's|nto-qnx|qnx|'`\n \t\t;;\n \t*-*)\n-\t\t# shellcheck disable=SC2162\n \t\tsaved_IFS=$IFS\n \t\tIFS=\"-\" read kernel os <<EOF\n $basic_os\n@@ -1341,6 +1526,10 @@ EOF\n \t\tkernel=linux\n \t\tos=`echo \"$basic_os\" | sed -e 's|linux|gnu|'`\n \t\t;;\n+\tmanagarm*)\n+\t\tkernel=managarm\n+\t\tos=`echo \"$basic_os\" | sed -e 's|managarm|mlibc|'`\n+\t\t;;\n \t*)\n \t\tkernel=\n \t\tos=$basic_os\n@@ -1368,6 +1557,23 @@ case $os in\n \tunixware*)\n \t\tos=sysv4.2uw\n \t\t;;\n+\t# The marketing names for NeXT's operating systems were\n+\t# NeXTSTEP, NeXTSTEP 2, OpenSTEP 3, OpenSTEP 4.  'openstep' is\n+\t# mapped to 'openstep3', but 'openstep1' and 'openstep2' are\n+\t# mapped to 'nextstep' and 'nextstep2', consistent with the\n+\t# treatment of SunOS/Solaris.\n+\tns | ns1 | nextstep | nextstep1 | openstep1)\n+\t\tos=nextstep\n+\t\t;;\n+\tns2 | nextstep2 | openstep2)\n+\t\tos=nextstep2\n+\t\t;;\n+\tns3 | nextstep3 | openstep | openstep3)\n+\t\tos=openstep3\n+\t\t;;\n+\tns4 | nextstep4 | openstep4)\n+\t\tos=openstep4\n+\t\t;;\n \t# es1800 is here to avoid being matched by es* (a different OS)\n \tes1800*)\n \t\tos=ose\n@@ -1438,6 +1644,7 @@ case $os in\n \t\t;;\n \tutek*)\n \t\tos=bsd\n+\t\tvendor=`echo \"$vendor\" | sed -e 's|^unknown$|tektronix|'`\n \t\t;;\n \tdynix*)\n \t\tos=bsd\n@@ -1454,21 +1661,25 @@ case $os in\n \t386bsd)\n \t\tos=bsd\n \t\t;;\n-\tctix* | uts*)\n+\tctix*)\n \t\tos=sysv\n+\t\tvendor=`echo \"$vendor\" | sed -e 's|^unknown$|convergent|'`\n \t\t;;\n-\tnova*)\n-\t\tos=rtmk-nova\n+\tuts*)\n+\t\tos=sysv\n \t\t;;\n-\tns2)\n-\t\tos=nextstep2\n+\tnova*)\n+\t\tkernel=rtmk\n+\t\tos=nova\n \t\t;;\n \t# Preserve the version number of sinix5.\n \tsinix5.*)\n \t\tos=`echo \"$os\" | sed -e 's|sinix|sysv|'`\n+\t\tvendor=`echo \"$vendor\" | sed -e 's|^unknown$|sni|'`\n \t\t;;\n \tsinix*)\n \t\tos=sysv4\n+\t\tvendor=`echo \"$vendor\" | sed -e 's|^unknown$|sni|'`\n \t\t;;\n \ttpf*)\n \t\tos=tpf\n@@ -1506,10 +1717,16 @@ case $os in\n \t\t\tos=eabi\n \t\t\t;;\n \t\t    *)\n-\t\t\tos=elf\n+\t\t\tos=\n+\t\t\tobj=elf\n \t\t\t;;\n \t\tesac\n \t\t;;\n+\taout* | coff* | elf* | pe*)\n+\t\t# These are machine code file formats, not OSes\n+\t\tobj=$os\n+\t\tos=\n+\t\t;;\n \t*)\n \t\t# No normalization, but not necessarily accepted, that comes below.\n \t\t;;\n@@ -1528,12 +1745,15 @@ else\n # system, and we'll never get to this point.\n \n kernel=\n+obj=\n case $cpu-$vendor in\n \tscore-*)\n-\t\tos=elf\n+\t\tos=\n+\t\tobj=elf\n \t\t;;\n \tspu-*)\n-\t\tos=elf\n+\t\tos=\n+\t\tobj=elf\n \t\t;;\n \t*-acorn)\n \t\tos=riscix1.2\n@@ -1543,28 +1763,35 @@ case $cpu-$vendor in\n \t\tos=gnu\n \t\t;;\n \tarm*-semi)\n-\t\tos=aout\n+\t\tos=\n+\t\tobj=aout\n \t\t;;\n \tc4x-* | tic4x-*)\n-\t\tos=coff\n+\t\tos=\n+\t\tobj=coff\n \t\t;;\n \tc8051-*)\n-\t\tos=elf\n+\t\tos=\n+\t\tobj=elf\n \t\t;;\n \tclipper-intergraph)\n \t\tos=clix\n \t\t;;\n \thexagon-*)\n-\t\tos=elf\n+\t\tos=\n+\t\tobj=elf\n \t\t;;\n \ttic54x-*)\n-\t\tos=coff\n+\t\tos=\n+\t\tobj=coff\n \t\t;;\n \ttic55x-*)\n-\t\tos=coff\n+\t\tos=\n+\t\tobj=coff\n \t\t;;\n \ttic6x-*)\n-\t\tos=coff\n+\t\tos=\n+\t\tobj=coff\n \t\t;;\n \t# This must come before the *-dec entry.\n \tpdp10-*)\n@@ -1586,28 +1813,43 @@ case $cpu-$vendor in\n \t\tos=sunos3\n \t\t;;\n \tm68*-cisco)\n-\t\tos=aout\n+\t\tos=\n+\t\tobj=aout\n \t\t;;\n \tmep-*)\n-\t\tos=elf\n+\t\tos=\n+\t\tobj=elf\n+\t\t;;\n+\t# The -sgi and -siemens entries must be before the mips- entry\n+\t# or we get the wrong os.\n+\t*-sgi)\n+\t\tos=irix\n+\t\t;;\n+\t*-siemens)\n+\t\tos=sysv4\n \t\t;;\n \tmips*-cisco)\n-\t\tos=elf\n+\t\tos=\n+\t\tobj=elf\n \t\t;;\n-\tmips*-*)\n-\t\tos=elf\n+\tmips*-*|nanomips*-*)\n+\t\tos=\n+\t\tobj=elf\n \t\t;;\n \tor32-*)\n-\t\tos=coff\n+\t\tos=\n+\t\tobj=coff\n \t\t;;\n-\t*-tti)\t# must be before sparc entry or we get the wrong os.\n+\t# This must be before the sparc-* entry or we get the wrong os.\n+\t*-tti)\n \t\tos=sysv3\n \t\t;;\n \tsparc-* | *-sun)\n \t\tos=sunos4.1.1\n \t\t;;\n \tpru-*)\n-\t\tos=elf\n+\t\tos=\n+\t\tobj=elf\n \t\t;;\n \t*-be)\n \t\tos=beos\n@@ -1631,7 +1873,7 @@ case $cpu-$vendor in\n \t\tos=hpux\n \t\t;;\n \t*-hitachi)\n-\t\tos=hiux\n+\t\tos=hiuxwe2\n \t\t;;\n \ti860-* | *-att | *-ncr | *-altos | *-motorola | *-convergent)\n \t\tos=sysv\n@@ -1675,12 +1917,6 @@ case $cpu-$vendor in\n \t*-encore)\n \t\tos=bsd\n \t\t;;\n-\t*-sgi)\n-\t\tos=irix\n-\t\t;;\n-\t*-siemens)\n-\t\tos=sysv4\n-\t\t;;\n \t*-masscomp)\n \t\tos=rtu\n \t\t;;\n@@ -1688,10 +1924,12 @@ case $cpu-$vendor in\n \t\tos=uxpv\n \t\t;;\n \t*-rom68k)\n-\t\tos=coff\n+\t\tos=\n+\t\tobj=coff\n \t\t;;\n \t*-*bug)\n-\t\tos=coff\n+\t\tos=\n+\t\tobj=coff\n \t\t;;\n \t*-apple)\n \t\tos=macos\n@@ -1709,10 +1947,11 @@ esac\n \n fi\n \n-# Now, validate our (potentially fixed-up) OS.\n+# Now, validate our (potentially fixed-up) individual pieces (OS, OBJ).\n+\n case $os in\n \t# Sometimes we do \"kernel-libc\", so those need to count as OSes.\n-\tmusl* | newlib* | relibc* | uclibc*)\n+\tllvm* | musl* | newlib* | relibc* | uclibc*)\n \t\t;;\n \t# Likewise for \"kernel-abi\"\n \teabi* | gnueabi*)\n@@ -1720,83 +1959,308 @@ case $os in\n \t# VxWorks passes extra cpu info in the 4th filed.\n \tsimlinux | simwindows | spe)\n \t\t;;\n+\t# See `case $cpu-$os` validation below\n+\tghcjs)\n+\t\t;;\n \t# Now accept the basic system types.\n-\t# The portable systems comes first.\n \t# Each alternative MUST end in a * to match a version number.\n-\tgnu* | android* | bsd* | mach* | minix* | genix* | ultrix* | irix* \\\n-\t     | *vms* | esix* | aix* | cnk* | sunos | sunos[34]* \\\n-\t     | hpux* | unos* | osf* | luna* | dgux* | auroraux* | solaris* \\\n-\t     | sym* |  plan9* | psp* | sim* | xray* | os68k* | v88r* \\\n-\t     | hiux* | abug | nacl* | netware* | windows* \\\n-\t     | os9* | macos* | osx* | ios* \\\n-\t     | mpw* | magic* | mmixware* | mon960* | lnews* \\\n-\t     | amigaos* | amigados* | msdos* | newsos* | unicos* | aof* \\\n-\t     | aos* | aros* | cloudabi* | sortix* | twizzler* \\\n-\t     | nindy* | vxsim* | vxworks* | ebmon* | hms* | mvs* \\\n-\t     | clix* | riscos* | uniplus* | iris* | isc* | rtu* | xenix* \\\n-\t     | mirbsd* | netbsd* | dicos* | openedition* | ose* \\\n-\t     | bitrig* | openbsd* | secbsd* | solidbsd* | libertybsd* | os108* \\\n-\t     | ekkobsd* | freebsd* | riscix* | lynxos* | os400* \\\n-\t     | bosx* | nextstep* | cxux* | aout* | elf* | oabi* \\\n-\t     | ptx* | coff* | ecoff* | winnt* | domain* | vsta* \\\n-\t     | udi* | lites* | ieee* | go32* | aux* | hcos* \\\n-\t     | chorusrdb* | cegcc* | glidix* | serenity* \\\n-\t     | cygwin* | msys* | pe* | moss* | proelf* | rtems* \\\n-\t     | midipix* | mingw32* | mingw64* | mint* \\\n-\t     | uxpv* | beos* | mpeix* | udk* | moxiebox* \\\n-\t     | interix* | uwin* | mks* | rhapsody* | darwin* \\\n-\t     | openstep* | oskit* | conix* | pw32* | nonstopux* \\\n-\t     | storm-chaos* | tops10* | tenex* | tops20* | its* \\\n-\t     | os2* | vos* | palmos* | uclinux* | nucleus* | morphos* \\\n-\t     | scout* | superux* | sysv* | rtmk* | tpf* | windiss* \\\n-\t     | powermax* | dnix* | nx6 | nx7 | sei* | dragonfly* \\\n-\t     | skyos* | haiku* | rdos* | toppers* | drops* | es* \\\n-\t     | onefs* | tirtos* | phoenix* | fuchsia* | redox* | bme* \\\n-\t     | midnightbsd* | amdhsa* | unleashed* | emscripten* | wasi* \\\n-\t     | nsk* | powerunix* | genode* | zvmoe* | qnx* | emx* | zephyr* \\\n-\t     | fiwix* )\n+\t  abug \\\n+\t| aix* \\\n+\t| amdhsa* \\\n+\t| amigados* \\\n+\t| amigaos* \\\n+\t| android* \\\n+\t| aof* \\\n+\t| aos* \\\n+\t| aros* \\\n+\t| atheos* \\\n+\t| auroraux* \\\n+\t| aux* \\\n+\t| beos* \\\n+\t| bitrig* \\\n+\t| bme* \\\n+\t| bosx* \\\n+\t| bsd* \\\n+\t| cegcc* \\\n+\t| chorusos* \\\n+\t| chorusrdb* \\\n+\t| clix* \\\n+\t| cloudabi* \\\n+\t| cnk* \\\n+\t| conix* \\\n+\t| cos* \\\n+\t| cxux* \\\n+\t| cygwin* \\\n+\t| darwin* \\\n+\t| dgux* \\\n+\t| dicos* \\\n+\t| dnix* \\\n+\t| domain* \\\n+\t| dragonfly* \\\n+\t| drops* \\\n+\t| ebmon* \\\n+\t| ecoff* \\\n+\t| ekkobsd* \\\n+\t| emscripten* \\\n+\t| emx* \\\n+\t| es* \\\n+\t| fiwix* \\\n+\t| freebsd* \\\n+\t| fuchsia* \\\n+\t| genix* \\\n+\t| genode* \\\n+\t| glidix* \\\n+\t| gnu* \\\n+\t| go32* \\\n+\t| haiku* \\\n+\t| hcos* \\\n+\t| hiux* \\\n+\t| hms* \\\n+\t| hpux* \\\n+\t| ieee* \\\n+\t| interix* \\\n+\t| ios* \\\n+\t| iris* \\\n+\t| irix* \\\n+\t| ironclad* \\\n+\t| isc* \\\n+\t| its* \\\n+\t| l4re* \\\n+\t| libertybsd* \\\n+\t| lites* \\\n+\t| lnews* \\\n+\t| luna* \\\n+\t| lynxos* \\\n+\t| mach* \\\n+\t| macos* \\\n+\t| magic* \\\n+\t| mbr* \\\n+\t| midipix* \\\n+\t| midnightbsd* \\\n+\t| mingw32* \\\n+\t| mingw64* \\\n+\t| minix* \\\n+\t| mint* \\\n+\t| mirbsd* \\\n+\t| mks* \\\n+\t| mlibc* \\\n+\t| mmixware* \\\n+\t| mon960* \\\n+\t| morphos* \\\n+\t| moss* \\\n+\t| moxiebox* \\\n+\t| mpeix* \\\n+\t| mpw* \\\n+\t| msdos* \\\n+\t| msys* \\\n+\t| mvs* \\\n+\t| nacl* \\\n+\t| netbsd* \\\n+\t| netware* \\\n+\t| newsos* \\\n+\t| nextstep* \\\n+\t| nindy* \\\n+\t| nonstopux* \\\n+\t| nova* \\\n+\t| nsk* \\\n+\t| nucleus* \\\n+\t| nx6 \\\n+\t| nx7 \\\n+\t| oabi* \\\n+\t| ohos* \\\n+\t| onefs* \\\n+\t| openbsd* \\\n+\t| openedition* \\\n+\t| openstep* \\\n+\t| os108* \\\n+\t| os2* \\\n+\t| os400* \\\n+\t| os68k* \\\n+\t| os9* \\\n+\t| ose* \\\n+\t| osf* \\\n+\t| oskit* \\\n+\t| osx* \\\n+\t| palmos* \\\n+\t| phoenix* \\\n+\t| plan9* \\\n+\t| powermax* \\\n+\t| powerunix* \\\n+\t| proelf* \\\n+\t| psos* \\\n+\t| psp* \\\n+\t| ptx* \\\n+\t| pw32* \\\n+\t| qnx* \\\n+\t| rdos* \\\n+\t| redox* \\\n+\t| rhapsody* \\\n+\t| riscix* \\\n+\t| riscos* \\\n+\t| rtems* \\\n+\t| rtmk* \\\n+\t| rtu* \\\n+\t| scout* \\\n+\t| secbsd* \\\n+\t| sei* \\\n+\t| serenity* \\\n+\t| sim* \\\n+\t| skyos* \\\n+\t| solaris* \\\n+\t| solidbsd* \\\n+\t| sortix* \\\n+\t| storm-chaos* \\\n+\t| sunos \\\n+\t| sunos[34]* \\\n+\t| superux* \\\n+\t| syllable* \\\n+\t| sym* \\\n+\t| sysv* \\\n+\t| tenex* \\\n+\t| tirtos* \\\n+\t| toppers* \\\n+\t| tops10* \\\n+\t| tops20* \\\n+\t| tpf* \\\n+\t| tvos* \\\n+\t| twizzler* \\\n+\t| uclinux* \\\n+\t| udi* \\\n+\t| udk* \\\n+\t| ultrix* \\\n+\t| unicos* \\\n+\t| uniplus* \\\n+\t| unleashed* \\\n+\t| unos* \\\n+\t| uwin* \\\n+\t| uxpv* \\\n+\t| v88r* \\\n+\t|*vms* \\\n+\t| vos* \\\n+\t| vsta* \\\n+\t| vxsim* \\\n+\t| vxworks* \\\n+\t| wasi* \\\n+\t| watchos* \\\n+\t| wince* \\\n+\t| windiss* \\\n+\t| windows* \\\n+\t| winnt* \\\n+\t| xenix* \\\n+\t| xray* \\\n+\t| zephyr* \\\n+\t| zvmoe* )\n \t\t;;\n \t# This one is extra strict with allowed versions\n \tsco3.2v2 | sco3.2v[4-9]* | sco5v6*)\n \t\t# Don't forget version if it is 3.2v4 or newer.\n \t\t;;\n+\t# This refers to builds using the UEFI calling convention\n+\t# (which depends on the architecture) and PE file format.\n+\t# Note that this is both a different calling convention and\n+\t# different file format than that of GNU-EFI\n+\t# (x86_64-w64-mingw32).\n+\tuefi)\n+\t\t;;\n \tnone)\n \t\t;;\n+\tkernel* | msvc* )\n+\t\t# Restricted further below\n+\t\t;;\n+\t'')\n+\t\tif test x\"$obj\" = x\n+\t\tthen\n+\t\t\techo \"Invalid configuration '$1': Blank OS only allowed with explicit machine code file format\" 1>&2\n+\t\tfi\n+\t\t;;\n+\t*)\n+\t\techo \"Invalid configuration '$1': OS '$os' not recognized\" 1>&2\n+\t\texit 1\n+\t\t;;\n+esac\n+\n+case $obj in\n+\taout* | coff* | elf* | pe*)\n+\t\t;;\n+\t'')\n+\t\t# empty is fine\n+\t\t;;\n \t*)\n-\t\techo Invalid configuration \\`\"$1\"\\': OS \\`\"$os\"\\' not recognized 1>&2\n+\t\techo \"Invalid configuration '$1': Machine code format '$obj' not recognized\" 1>&2\n+\t\texit 1\n+\t\t;;\n+esac\n+\n+# Here we handle the constraint that a (synthetic) cpu and os are\n+# valid only in combination with each other and nowhere else.\n+case $cpu-$os in\n+\t# The \"javascript-unknown-ghcjs\" triple is used by GHC; we\n+\t# accept it here in order to tolerate that, but reject any\n+\t# variations.\n+\tjavascript-ghcjs)\n+\t\t;;\n+\tjavascript-* | *-ghcjs)\n+\t\techo \"Invalid configuration '$1': cpu '$cpu' is not valid with os '$os$obj'\" 1>&2\n \t\texit 1\n \t\t;;\n esac\n \n # As a final step for OS-related things, validate the OS-kernel combination\n # (given a valid OS), if there is a kernel.\n-case $kernel-$os in\n-\tlinux-gnu* | linux-dietlibc* | linux-android* | linux-newlib* \\\n-\t\t   | linux-musl* | linux-relibc* | linux-uclibc* )\n+case $kernel-$os-$obj in\n+\tlinux-gnu*- | linux-android*- | linux-dietlibc*- | linux-llvm*- \\\n+\t\t    | linux-mlibc*- | linux-musl*- | linux-newlib*- \\\n+\t\t    | linux-relibc*- | linux-uclibc*- | linux-ohos*- )\n+\t\t;;\n+\tuclinux-uclibc*- | uclinux-gnu*- )\n+\t\t;;\n+\tmanagarm-mlibc*- | managarm-kernel*- )\n \t\t;;\n-\tuclinux-uclibc* )\n+\twindows*-msvc*-)\n \t\t;;\n-\t-dietlibc* | -newlib* | -musl* | -relibc* | -uclibc* )\n+\t-dietlibc*- | -llvm*- | -mlibc*- | -musl*- | -newlib*- | -relibc*- \\\n+\t\t    | -uclibc*- )\n \t\t# These are just libc implementations, not actual OSes, and thus\n \t\t# require a kernel.\n-\t\techo \"Invalid configuration \\`$1': libc \\`$os' needs explicit kernel.\" 1>&2\n+\t\techo \"Invalid configuration '$1': libc '$os' needs explicit kernel.\" 1>&2\n \t\texit 1\n \t\t;;\n-\tkfreebsd*-gnu* | kopensolaris*-gnu*)\n+\t-kernel*- )\n+\t\techo \"Invalid configuration '$1': '$os' needs explicit kernel.\" 1>&2\n+\t\texit 1\n \t\t;;\n-\tvxworks-simlinux | vxworks-simwindows | vxworks-spe)\n+\t*-kernel*- )\n+\t\techo \"Invalid configuration '$1': '$kernel' does not support '$os'.\" 1>&2\n+\t\texit 1\n \t\t;;\n-\tnto-qnx*)\n+\t*-msvc*- )\n+\t\techo \"Invalid configuration '$1': '$os' needs 'windows'.\" 1>&2\n+\t\texit 1\n \t\t;;\n-\tos2-emx)\n+\tkfreebsd*-gnu*- | knetbsd*-gnu*- | netbsd*-gnu*- | kopensolaris*-gnu*-)\n+\t\t;;\n+\tvxworks-simlinux- | vxworks-simwindows- | vxworks-spe-)\n+\t\t;;\n+\tnto-qnx*-)\n \t\t;;\n-\t*-eabi* | *-gnueabi*)\n+\tos2-emx-)\n \t\t;;\n-\t-*)\n+\trtmk-nova-)\n+\t\t;;\n+\t*-eabi*- | *-gnueabi*-)\n+\t\t;;\n+\tnone--*)\n+\t\t# None (no kernel, i.e. freestanding / bare metal),\n+\t\t# can be paired with an machine code file format\n+\t\t;;\n+\t-*-)\n \t\t# Blank kernel with real OS is always fine.\n \t\t;;\n-\t*-*)\n-\t\techo \"Invalid configuration \\`$1': Kernel \\`$kernel' not known to work with OS \\`$os'.\" 1>&2\n+\t--*)\n+\t\t# Blank kernel and OS with real machine code file format is always fine.\n+\t\t;;\n+\t*-*-*)\n+\t\techo \"Invalid configuration '$1': Kernel '$kernel' not known to work with OS '$os'.\" 1>&2\n \t\texit 1\n \t\t;;\n esac\n@@ -1809,7 +2273,7 @@ case $vendor in\n \t\t\t*-riscix*)\n \t\t\t\tvendor=acorn\n \t\t\t\t;;\n-\t\t\t*-sunos*)\n+\t\t\t*-sunos* | *-solaris*)\n \t\t\t\tvendor=sun\n \t\t\t\t;;\n \t\t\t*-cnk* | *-aix*)\n@@ -1879,7 +2343,7 @@ case $vendor in\n \t\t;;\n esac\n \n-echo \"$cpu-$vendor-${kernel:+$kernel-}$os\"\n+echo \"$cpu-$vendor${kernel:+-$kernel}${os:+-$os}${obj:+-$obj}\"\n exit\n \n # Local variables:\n",
+ "diff_truncated": true
+}
