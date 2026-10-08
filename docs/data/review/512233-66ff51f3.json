@@ -5,23 +5,23 @@
  "title": "db: accept xilinx kernel flavor for VCK190 (LP: #2168842)",
  "source_branch": "sinan/vck190-xilinx-flavor",
  "target_branch": "ubuntu/devel",
- "revision": "98d2c8378ce2f5711435bc53bb19eea5e26b5338",
+ "revision": "370c9eeb2f6816cbf541979713f6abae090addd0",
  "base_revision": "64af700b28753062679974b784eeee26f61e2908",
  "description": "Accept the xilinx kernel flavor for Xilinx Versal VCK190 (LP: #2168842).\n\nThe VCK190 db entry only accepts xilinx-zynqmp, but on noble and later the linux-xilinx-zynqmp meta package pulls the plain xilinx flavor (e.g. 6.8.0-1036-xilinx), so flash-kernel skips the FIT image and boot script install on kernel updates. This widens the match to \"xilinx xilinx-zynqmp\", matching the Kria entries.\n\nTested on a VCK190 with the noble server image from xlnx-image-definitions (boots to login with an equivalent /etc/flash-kernel/db override). Test build for noble: ppa:sinan-k/xlnx-flash-kernel.\n\nSRU MPs for resolute and noble will follow once this is approved.",
  "commit_message": "db: accept xilinx kernel flavor for VCK190 (LP: #2168842)",
  "diffstat": {
   "db/all.db": [
-   1,
-   1
+   2,
+   2
   ],
   "debian/changelog": [
-   7,
+   14,
    0
   ]
  },
  "files": 2,
- "added_lines": 8,
- "removed_lines": 1,
- "diff": "diff --git a/db/all.db b/db/all.db\nindex c7b9d2a..d5007b7 100644\n--- a/db/all.db\n+++ b/db/all.db\n@@ -2513,7 +2513,7 @@ U-Boot-Script-Name: bootscr.sunxi\n Required-Packages: u-boot-tools\n \n Machine: Xilinx Versal vck190*\n-Kernel-Flavors: xilinx-zynqmp\n+Kernel-Flavors: xilinx xilinx-zynqmp\n Method: generic\n Boot-Script-Path: /boot/firmware/boot.scr.uimg\n U-Boot-Script-Name: bootscr.zynqmp\ndiff --git a/debian/changelog b/debian/changelog\nindex 090b968..69e3926 100644\n--- a/debian/changelog\n+++ b/debian/changelog\n@@ -1,3 +1,10 @@\n+flash-kernel (3.110ubuntu5) stonking; urgency=medium\n+\n+  * db/all.db: Accept the xilinx kernel flavor for Xilinx Versal VCK190\n+    (LP: #2168842)\n+\n+ -- Sinan KARAKAYA <sinan.karakaya@canonical.com>  Tue, 29 Sep 2026 12:32:24 +0200\n+\n flash-kernel (3.110ubuntu4) stonking; urgency=medium\n \n   * db/all.db: Add entry for SpacemiT K3 CoM260 IFX (LP: #2158717)\n",
+ "added_lines": 16,
+ "removed_lines": 2,
+ "diff": "diff --git a/db/all.db b/db/all.db\nindex c7b9d2a..46f406e 100644\n--- a/db/all.db\n+++ b/db/all.db\n@@ -2513,7 +2513,7 @@ U-Boot-Script-Name: bootscr.sunxi\n Required-Packages: u-boot-tools\n \n Machine: Xilinx Versal vck190*\n-Kernel-Flavors: xilinx-zynqmp\n+Kernel-Flavors: xilinx xilinx-zynqmp\n Method: generic\n Boot-Script-Path: /boot/firmware/boot.scr.uimg\n U-Boot-Script-Name: bootscr.zynqmp\n@@ -2598,7 +2598,7 @@ Machine: ZynqMP *K24*\n Machine: ZynqMP *KD240*\n Machine: ZynqMP *KR260*\n Machine: ZynqMP *KV260*\n-Kernel-Flavors: xilinx xilinx-zynqmp\n+Kernel-Flavors: xilinx xilinx-zynqmp amd-embedded\n Method: generic\n Boot-Script-Path: /boot/firmware/boot.scr.uimg\n U-Boot-Script-Name: bootscr.zynqmp.kria\ndiff --git a/debian/changelog b/debian/changelog\nindex 090b968..83fb4c6 100644\n--- a/debian/changelog\n+++ b/debian/changelog\n@@ -1,3 +1,17 @@\n+flash-kernel (3.110ubuntu6) stonking; urgency=medium\n+\n+  * db/all.db: Accept the amd-embedded kernel flavor for Kria boards\n+    (LP: #2168842)\n+\n+ -- Sinan KARAKAYA <sinan.karakaya@canonical.com>  Wed, 07 Oct 2026 14:05:00 +0200\n+\n+flash-kernel (3.110ubuntu5) stonking; urgency=medium\n+\n+  * db/all.db: Accept the xilinx kernel flavor for Xilinx Versal VCK190\n+    (LP: #2168842)\n+\n+ -- Sinan KARAKAYA <sinan.karakaya@canonical.com>  Tue, 29 Sep 2026 12:32:24 +0200\n+\n flash-kernel (3.110ubuntu4) stonking; urgency=medium\n \n   * db/all.db: Add entry for SpacemiT K3 CoM260 IFX (LP: #2158717)\n",
  "diff_truncated": false
 }

@@ -1,0 +1,27 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~graysonwolf/ubuntu/+source/quota/+git/quota/+merge/512776",
+ "id": "512776",
+ "title": "PPA: https://launchpad.net/~graysonwolf/+archive/ubuntu/quota-stonking-48a8a33d/+packages",
+ "source_branch": "lp2169852-s",
+ "target_branch": "ubuntu/devel",
+ "revision": "b3b0cf71001196e19e9df8662c4b7782825ff055",
+ "base_revision": "b88d23c907a3f49bdb3f383abccda66f6dcbef39",
+ "description": "PPA: https://launchpad.net/~graysonwolf/+archive/ubuntu/quota-stonking-48a8a33d/+packages\nDEP8: none for this package",
+ "commit_message": null,
+ "diffstat": {
+  "debian/changelog": [
+   6,
+   0
+  ],
+  "debian/control": [
+   3,
+   2
+  ]
+ },
+ "files": 2,
+ "added_lines": 9,
+ "removed_lines": 2,
+ "diff": "diff --git a/debian/changelog b/debian/changelog\nindex 5789162..fa484cd 100644\n--- a/debian/changelog\n+++ b/debian/changelog\n@@ -1,3 +1,9 @@\n+quota (4.11-1ubuntu1) stonking; urgency=medium\n+\n+  * d/control: Add rpcsvc-proto to Build-Depends (LP: #2169852)\n+\n+ -- Grayson Wolf <grayson.wolf@canonical.com>  Wed, 07 Oct 2026 16:10:14 -0400\n+\n quota (4.11-1) unstable; urgency=medium\n \n   * Simplified rules file\ndiff --git a/debian/control b/debian/control\nindex 8ef0e30..a94894c 100644\n--- a/debian/control\n+++ b/debian/control\n@@ -1,10 +1,11 @@\n Source: quota\n Section: admin\n-Maintainer: Michael Meskes <meskes@debian.org>\n+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>\n+XSBC-Original-Maintainer: Michael Meskes <meskes@debian.org>\n Build-Depends: debhelper-compat (= 13), gettext, libwrap0-dev,\n \t       libext2fs-dev, po-debconf (>= 0.5.0), libldap2-dev,\n \t       libnl-3-dev, libnl-genl-3-dev, libdbus-1-dev,\n-\t       libtirpc-dev\n+\t       libtirpc-dev, rpcsvc-proto\n Standards-Version: 4.7.4\n Homepage: http://sourceforge.net/projects/linuxquota\n Vcs-Browser: https://salsa.debian.org/meskes/quota\n",
+ "diff_truncated": false
+}
