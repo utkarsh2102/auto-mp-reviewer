@@ -1,0 +1,31 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~aglinserer/ubuntu/+source/fwupd/+git/fwupd/+merge/512810",
+ "id": "512810",
+ "title": "Add the quirks for pixart touchpads so they are handled correctly by the plugin",
+ "source_branch": "stonking/quirks-only-sru",
+ "target_branch": "ubuntu/stonking-devel",
+ "revision": "ebe3a5aec03501524c1ba56ac2183644608077a9",
+ "base_revision": "58c6edb7711a8fb3f50f744b21762c5c039ab9fd",
+ "description": "Add the quirks for pixart touchpads so they are handled correctly by the plugin",
+ "commit_message": null,
+ "diffstat": {
+  "debian/changelog": [
+   7,
+   0
+  ],
+  "debian/patches/pixart-tp-Add-PID-4F01-4F02-4F0D-4F0E.patch": [
+   42,
+   0
+  ],
+  "debian/patches/series": [
+   1,
+   0
+  ]
+ },
+ "files": 3,
+ "added_lines": 50,
+ "removed_lines": 0,
+ "diff": "diff --git a/debian/changelog b/debian/changelog\nindex 33c30d7..0945356 100644\n--- a/debian/changelog\n+++ b/debian/changelog\n@@ -1,3 +1,10 @@\n+fwupd (2.1.6-3ubuntu2.1) stonking; urgency=medium\n+\n+  * d/p/pixart-tp-Add-PID-4F01-4F02-4F0D-4F0E.patch (LP: #2169954)\n+    Add patch to allow touchpads to be visible to fwupd\n+\n+ -- Andreas Glinserer <andreas.glinserer@canonical.com>  Wed, 07 Oct 2026 16:36:26 +0200\n+\n fwupd (2.1.6-3ubuntu2) stonking; urgency=medium\n \n   * Drop delayed activation shutdown flow (LP: #2169304)\ndiff --git a/debian/patches/pixart-tp-Add-PID-4F01-4F02-4F0D-4F0E.patch b/debian/patches/pixart-tp-Add-PID-4F01-4F02-4F0D-4F0E.patch\nnew file mode 100644\nindex 0000000..622faa4\n--- /dev/null\n+++ b/debian/patches/pixart-tp-Add-PID-4F01-4F02-4F0D-4F0E.patch\n@@ -0,0 +1,42 @@\n+From: harris_tai <harris_tai@pixart.com>\n+Date: Thu, 27 Aug 2026 18:38:23 +0800\n+Subject: pixart-tp: Add PID 4F01, 4F02, 4F0D, 4F0E\n+\n+Add quirks to correctly detect pixart touchpads in new devices.\n+\n+Origin: upstream, https://github.com/fwupd/fwupd/commit/ec8e62c0a\n+Forwarded: not-needed\n+Applied-Upstream: 2.1.8\n+Bug-Ubuntu: https://bugs.launchpad.net/ubuntu/+source/fwupd/+bug/2169954\n+---\n+ plugins/pixart-tp/pixart-tp.quirk | 14 ++++++++++++++\n+ 1 file changed, 14 insertions(+)\n+\n+diff --git a/plugins/pixart-tp/pixart-tp.quirk b/plugins/pixart-tp/pixart-tp.quirk\n+index e6b85f3..7914253 100644\n+--- a/plugins/pixart-tp/pixart-tp.quirk\n++++ b/plugins/pixart-tp/pixart-tp.quirk\n+@@ -17,9 +17,23 @@ Plugin = pixart_tp\n+ [HIDRAW\\VEN_093A&DEV_3317]\n+ Plugin = pixart_tp\n+ \n++[HIDRAW\\VEN_093A&DEV_4F01]\n++Plugin = pixart_tp\n++\n++[HIDRAW\\VEN_093A&DEV_4F02]\n++Plugin = pixart_tp\n++\n+ [HIDRAW\\VEN_093A&DEV_4F07]\n+ Plugin = pixart_tp\n+ PixartTpHasHaptic = true\n+ \n++[HIDRAW\\VEN_093A&DEV_4F0D]\n++Plugin = pixart_tp\n++PixartTpHasHaptic = true\n++\n++[HIDRAW\\VEN_093A&DEV_4F0E]\n++Plugin = pixart_tp\n++PixartTpHasHaptic = true\n++\n+ [PIXARTTP\\PARTID_0274]\n+ PixartTpSramSelect = 0x08\ndiff --git a/debian/patches/series b/debian/patches/series\nindex 26ed24c..7719448 100644\n--- a/debian/patches/series\n+++ b/debian/patches/series\n@@ -2,3 +2,4 @@ flaky-p2p.patch\n 0001-Fix-the-seal-self-tests-when-building-on-a-tmpfs.patch\n fwupdmgr-fde-verify-snapd-recovery-key.patch\n 0001-Remove-fwupd.shutdown-delayed-activation.patch\n+pixart-tp-Add-PID-4F01-4F02-4F0D-4F0E.patch\n",
+ "diff_truncated": false
+}

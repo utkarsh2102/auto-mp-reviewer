@@ -1,0 +1,35 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~ruancomelli/ubuntu/+source/rustc-1.97/+git/rustc-1.97/+merge/512829",
+ "id": "512829",
+ "title": "Fix autopkgtests for rustc-1.97 (LP #2166416 [1]).",
+ "source_branch": "lp2166416",
+ "target_branch": "ubuntu/devel",
+ "revision": "13a9b78278e2ae51d7a7a5c0f9b33057c5d51353",
+ "base_revision": "276da5a31272425908c275edc4b6bc9c38959c96",
+ "description": "Fix autopkgtests for rustc-1.97 (LP #2166416 [1]).\n\nThis package builds successfully in a PPA [2], and the build-wasi autopkgtest that previously failed [3] now succeeds as build-wasm [4].\n\nThis MP also disables rustc's self-build autopkgtest since its results are flaky on autopkgtest infrastructure. This is a well-known issue (LP #2144934).\n\n[1]: https://bugs.launchpad.net/ubuntu/+source/rustc-1.97/+bug/2166416\n[2]: https://launchpad.net/~ruancomelli/+archive/ubuntu/fix-lp2166416/+sourcepub/18820205/+listing-archive-extra\n[3]: https://autopkgtest.ubuntu.com/results/autopkgtest-stonking/stonking/amd64/r/rustc-1.97/20260826_135421_6571e@/log.gz\n[4]: https://autopkgtest.ubuntu.com/results/autopkgtest-stonking-ruancomelli-fix-lp2166416/stonking/amd64/r/rustc-1.97/20261007_132004_1aefe@/log.gz",
+ "commit_message": null,
+ "diffstat": {
+  "debian/changelog": [
+   9,
+   0
+  ],
+  "debian/tests/build-wasm": [
+   14,
+   2
+  ],
+  "dev/null": [
+   0,
+   16
+  ],
+  "debian/tests/control": [
+   6,
+   9
+  ]
+ },
+ "files": 4,
+ "added_lines": 29,
+ "removed_lines": 27,
+ "diff": "diff --git a/debian/changelog b/debian/changelog\nindex 4f092e4..4df5f1e 100644\n--- a/debian/changelog\n+++ b/debian/changelog\n@@ -1,3 +1,12 @@\n+rustc-1.97 (1.97.1+dfsg-0ubuntu2) stonking; urgency=medium\n+\n+  * d/tests: consolidate build-wasi and build-wasm-unknown into build-wasm,\n+    pointing the wasm targets' linkers at the versioned wasm-ld-22\n+    (LP: #2166416)\n+  * d/tests: disable flaky selfbuild autopkgtest (LP: #2144934)\n+\n+ -- Ruan Comelli <ruan.comelli@canonical.com>  Tue, 06 Oct 2026 11:59:59 -0300\n+\n rustc-1.97 (1.97.1+dfsg-0ubuntu1) stonking; urgency=medium\n \n   * New upstream version 1.97.1 (LP: #2160247)\ndiff --git a/debian/tests/build-wasi b/debian/tests/build-wasm\nsimilarity index 80%\nrename from debian/tests/build-wasi\nrename to debian/tests/build-wasm\nindex 5951a09..b19b0fa 100755\n--- a/debian/tests/build-wasi\n+++ b/debian/tests/build-wasm\n@@ -1,4 +1,5 @@\n #!/bin/bash\n+# Test building each of the wasm targets.\n set -euox pipefail\n \n RUST_VERSION=$(dpkg-parsechangelog -SVersion | sed -re 's/([^.]+)\\.([^.]+)\\..*/\\1.\\2/')\n@@ -34,9 +35,20 @@ replace-with = \"vendored-sources\"\n directory = \"vendor\"\n EOF\n \n-# Build both wasi targets\n+# wasm32-unknown-unknown and wasm32-wasip1 use `rust-lld` as their default\n+# linker, which is not guaranteed to be installed under that name, so use\n+# the versioned LLVM wasm linker instead.\n+wasm_ld=/usr/bin/wasm-ld-22\n+export CARGO_TARGET_WASM32_UNKNOWN_UNKNOWN_LINKER=\"$wasm_ld\"\n+export CARGO_TARGET_WASM32_WASIP1_LINKER=\"$wasm_ld\"\n+\n+# wasm32-wasip2 uses wasm-component-ld as its outer linker, which in turn by default\n+# searches PATH for `wasm-ld` or `rust-lld`. Neither unversioned name is guaranteed\n+# to be installed, so pass the versioned wasm linker explicitly.\n+export CARGO_TARGET_WASM32_WASIP2_RUSTFLAGS=\"-C link-arg=--wasm-ld-path=$wasm_ld\"\n+\n rc=0\n-for target in wasm32-wasip1 wasm32-wasip2; do\n+for target in wasm32-unknown-unknown wasm32-wasip1 wasm32-wasip2; do\n     if ! ${CARGO} build --target \"$target\"; then\n         echo \"$target build failed\" >&2\n         rc=1\ndiff --git a/debian/tests/build-wasm-unknown b/debian/tests/build-wasm-unknown\ndeleted file mode 100755\nindex e677003..0000000\n--- a/debian/tests/build-wasm-unknown\n+++ /dev/null\n@@ -1,16 +0,0 @@\n-#!/bin/bash\n-set -euox pipefail\n-\n-RUST_VERSION=$(dpkg-parsechangelog -SVersion | sed -re 's/([^.]+)\\.([^.]+)\\..*/\\1.\\2/')\n-\n-# Set RUSTC so that `cargo` knows which rustc to use\n-export RUSTC=/usr/lib/rust-${RUST_VERSION}/bin/rustc\n-CARGO=/usr/lib/rust-${RUST_VERSION}/bin/cargo\n-\n-tmpdir=$(mktemp -d)\n-cd \"$tmpdir\"\n-\n-${CARGO} new --lib hello\n-cd hello\n-\n-${CARGO} build --target wasm32-unknown-unknown\ndiff --git a/debian/tests/control b/debian/tests/control\nindex d008e8d..c58f963 100644\n--- a/debian/tests/control\n+++ b/debian/tests/control\n@@ -1,22 +1,19 @@\n-Test-Command: ./debian/rules build RUST_TEST_SELFBUILD=1\n-Depends: @, @builddeps@\n-Restrictions: rw-build-tree, allow-stderr\n+# Disabled due to excessive resource usage (LP: #2144934)\n+# Test-Command: ./debian/rules build RUST_TEST_SELFBUILD=1\n+# Depends: @, @builddeps@\n+# Restrictions: rw-build-tree, allow-stderr\n # Other arches work but are flaky due to memory limitations.\n # Additionally, the test doesn't test for anything arch-specific.\n-Architecture: amd64\n+# Architecture: amd64\n \n Tests: create-and-build-crate\n Restrictions: allow-stderr\n Depends: @\n \n-Tests: build-wasi\n+Tests: build-wasm\n Restrictions: allow-stderr\n Depends: @, lld-22\n \n-Tests: build-wasm-unknown\n-Restrictions: allow-stderr\n-Depends: @\n-\n Tests: versioned-cargo-wrapper\n Depends: @, cargo\n \n",
+ "diff_truncated": false
+}

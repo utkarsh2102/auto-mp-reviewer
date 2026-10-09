@@ -1,0 +1,27 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~zgrigoryan/ubuntu/+source/unattended-upgrades/+git/unattended-upgrades/+merge/512796",
+ "id": "512796",
+ "title": "Clarify mail notification requirements",
+ "source_branch": "fix-mail-documentation-devel",
+ "target_branch": "ubuntu/devel",
+ "revision": "7339c987b3180c6c6b6c711b892ef086b90f984d",
+ "base_revision": "905a25e324f2a81242efa1e4534cf6139d9524ba",
+ "description": null,
+ "commit_message": "Clarify mail notification requirements \nDocument support for /usr/bin/mail or /usr/sbin/sendmail and update the diagnostic wording. LP: #2169494",
+ "diffstat": {
+  "data/50unattended-upgrades.Ubuntu": [
+   3,
+   2
+  ],
+  "unattended-upgrade": [
+   3,
+   2
+  ]
+ },
+ "files": 2,
+ "added_lines": 6,
+ "removed_lines": 4,
+ "diff": "diff --git a/data/50unattended-upgrades.Ubuntu b/data/50unattended-upgrades.Ubuntu\nindex 49c4daf..b3b4910 100644\n--- a/data/50unattended-upgrades.Ubuntu\n+++ b/data/50unattended-upgrades.Ubuntu\n@@ -68,8 +68,9 @@ Unattended-Upgrade::DevRelease \"auto\";\n \n // Send email to this address for problems or packages upgrades\n // If empty or unset then no email is sent, make sure that you\n-// have a working mail setup on your system. A package that provides\n-// 'mailx' must be installed. E.g. \"user@example.com\"\n+// have a working mail setup on your system. A package providing\n+// /usr/bin/mail or /usr/sbin/sendmail must be installed.\n+// E.g. \"user@example.com\"\n //Unattended-Upgrade::Mail \"\";\n \n // Set this value to one of:\ndiff --git a/unattended-upgrade b/unattended-upgrade\nindex 583b297..24a9fcf 100755\n--- a/unattended-upgrade\n+++ b/unattended-upgrade\n@@ -1676,7 +1676,8 @@ def send_summary_mail(pkgs,                 # type: List[str]\n     if not os.path.exists(MAIL_BINARY) and not os.path.exists(SENDMAIL_BINARY):\n         logging.error(_(\"No /usr/bin/mail or /usr/sbin/sendmail, \"\n                         \"can not send mail. \"\n-                        \"You probably want to install the mailx package.\"))\n+                        \"Install and configure a package providing \"\n+                        \"/usr/bin/mail or /usr/sbin/sendmail.\"))\n         return\n \n     # The admin may well wish to get a mail report regardless of what was done.\n@@ -1763,7 +1764,7 @@ def send_summary_mail(pkgs,                 # type: List[str]\n     else:\n         raise AssertionError(\n             \"This should never be reached as we previously validated that we \"\n-            \"either have sendmail or mailx. Maybe they've been removed in \"\n+            \"either have sendmail or mail. Maybe they've been removed in \"\n             \"this right moment?\")\n     logging.debug(\"mail returned: %s\", ret)\n \n",
+ "diff_truncated": false
+}
