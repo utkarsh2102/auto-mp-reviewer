@@ -1,0 +1,31 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~hectorcao/ubuntu/+source/edk2/+git/edk2/+merge/512898",
+ "id": "512898",
+ "title": "PPA: https://launchpad.net/~hectorcao/+archive/ubuntu/lp2169887",
+ "source_branch": "lp2169887-resolute",
+ "target_branch": "ubuntu/resolute-devel",
+ "revision": "b545dfdb01cf30e9b70c3bd9463fef9ecbaaf832",
+ "base_revision": "800a42cb9d85957e62dcca20bff243afc744bed5",
+ "description": "PPA: https://launchpad.net/~hectorcao/+archive/ubuntu/lp2169887",
+ "commit_message": null,
+ "diffstat": {
+  "debian/changelog": [
+   10,
+   0
+  ],
+  "debian/ovmf-amdsev.install": [
+   1,
+   1
+  ],
+  "debian/ovmf-inteltdx.install": [
+   1,
+   1
+  ]
+ },
+ "files": 3,
+ "added_lines": 12,
+ "removed_lines": 2,
+ "diff": "diff --git a/debian/changelog b/debian/changelog\nindex 400d47a..edb89d2 100644\n--- a/debian/changelog\n+++ b/debian/changelog\n@@ -1,3 +1,13 @@\n+edk2 (2025.11-3ubuntu7.4) resolute; urgency=medium\n+\n+  * Prefer generic firmware for regular guests instead\n+    using amdsev or inteltdx:\n+    - d/descriptors/*: rename amdsev and inteltdx descriptor files.\n+    - d/{ovmf-amdsev,ovmf-inteltdx}.install: update install files.\n+    (LP: #2169887).\n+\n+ -- Hector Cao <hector.cao@canonical.com>  Thu, 08 Oct 2026 14:58:05 +0200\n+\n edk2 (2025.11-3ubuntu7.3) resolute-security; urgency=medium\n \n   * SECURITY UPDATE: Out-of-bounds Write\ndiff --git a/debian/descriptors/60-edk2-x86_64-amdsev.json b/debian/descriptors/61-edk2-x86_64-amdsev.json\nsimilarity index 100%\nrename from debian/descriptors/60-edk2-x86_64-amdsev.json\nrename to debian/descriptors/61-edk2-x86_64-amdsev.json\ndiff --git a/debian/descriptors/60-edk2-x86_64-inteltdx.json b/debian/descriptors/61-edk2-x86_64-inteltdx.json\nsimilarity index 100%\nrename from debian/descriptors/60-edk2-x86_64-inteltdx.json\nrename to debian/descriptors/61-edk2-x86_64-inteltdx.json\ndiff --git a/debian/ovmf-amdsev.install b/debian/ovmf-amdsev.install\nindex 24bc01e..92e912a 100644\n--- a/debian/ovmf-amdsev.install\n+++ b/debian/ovmf-amdsev.install\n@@ -1,2 +1,2 @@\n /usr/share/ovmf/OVMF.amdsev.fd\n-/usr/share/qemu/firmware/60-edk2-x86_64-amdsev.json\n+/usr/share/qemu/firmware/61-edk2-x86_64-amdsev.json\ndiff --git a/debian/ovmf-inteltdx.install b/debian/ovmf-inteltdx.install\nindex fdb6fbd..afb09ef 100644\n--- a/debian/ovmf-inteltdx.install\n+++ b/debian/ovmf-inteltdx.install\n@@ -1,2 +1,2 @@\n /usr/share/ovmf/OVMF.inteltdx.ms.fd\n-/usr/share/qemu/firmware/60-edk2-x86_64-inteltdx.json\n+/usr/share/qemu/firmware/61-edk2-x86_64-inteltdx.json\n",
+ "diff_truncated": false
+}

@@ -1,0 +1,27 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~zhhuabj/ubuntu/+source/resource-agents/+git/resource-agents/+merge/512879",
+ "id": "512879",
+ "title": "d/t/run-ocft: skip iscsi test gracefully when kernel lacks iscsi_target_mod (LP: #2170272)",
+ "source_branch": "jammy-iscsi-target-missing",
+ "target_branch": "ubuntu/jammy-devel",
+ "revision": "f0d747b053ecc27fe75905ed9fdfb56c06430bb3",
+ "base_revision": "6f751b0586ab6a602a26c6a3d29d518df470c354",
+ "description": "d/t/run-ocft: skip iscsi test gracefully when kernel lacks iscsi_target_mod (LP: #2170272)",
+ "commit_message": "d/t/run-ocft: skip iscsi test gracefully when kernel lacks iscsi_target_mod (LP: #2170272)",
+ "diffstat": {
+  "debian/changelog": [
+   7,
+   0
+  ],
+  "debian/tests/run-ocft": [
+   10,
+   0
+  ]
+ },
+ "files": 2,
+ "added_lines": 17,
+ "removed_lines": 0,
+ "diff": "diff --git a/debian/changelog b/debian/changelog\nindex c208018..2ccb979 100644\n--- a/debian/changelog\n+++ b/debian/changelog\n@@ -1,3 +1,10 @@\n+resource-agents (1:4.7.0-1ubuntu7.5) jammy; urgency=medium\n+\n+  * d/t/run-ocft: skip iscsi test gracefully when kernel lacks\n+    iscsi_target_mod (LP: #2170272)\n+\n+ -- Zhang Hua <joshua.zhang@canonical.com>  Fri, 09 Oct 2026 12:00:04 +0800\n+\n resource-agents (1:4.7.0-1ubuntu7.4) jammy; urgency=medium\n \n   * d/p/docker-29-cli.patch: fix image existence check for docker >= 29\ndiff --git a/debian/tests/run-ocft b/debian/tests/run-ocft\nindex f820fce..8242f3c 100755\n--- a/debian/tests/run-ocft\n+++ b/debian/tests/run-ocft\n@@ -4,6 +4,16 @@ set -e\n \n AGENT=$1\n \n+if [ \"$AGENT\" = \"iscsi\" ]; then\n+  # The iscsi agent test relies on targetcli and the kernel LIO iSCSI target subsystem.\n+  # If the running kernel lacks iscsi_target_mod (e.g. linux-image-kvm where CONFIG_ISCSI_TARGET is not set),\n+  # skip the test gracefully.\n+  if ! modprobe -q iscsi_target_mod 2>/dev/null; then\n+    echo \"SKIP: iscsi_target_mod module is not available in running kernel $(uname -r)\"\n+    exit 0\n+  fi\n+fi\n+\n cleanup () {\n   ocft clean $AGENT\n }\n",
+ "diff_truncated": false
+}
