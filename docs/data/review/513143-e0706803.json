@@ -1,0 +1,31 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~puida/ubuntu/+source/rust-ntpd/+git/rust-ntpd/+merge/513143",
+ "id": "513143",
+ "title": "lp2162124-resolute → ubuntu/resolute-devel",
+ "source_branch": "lp2162124-resolute",
+ "target_branch": "ubuntu/resolute-devel",
+ "revision": "5ad336640763f4a707d18644c7de28b36fa4dd10",
+ "base_revision": "dc056dc8ccee07c2ae430e21a0d0a17388be5048",
+ "description": null,
+ "commit_message": null,
+ "diffstat": {
+  "debian/changelog": [
+   6,
+   0
+  ],
+  "debian/control": [
+   2,
+   1
+  ],
+  "debian/ntpd-rs.service": [
+   1,
+   1
+  ]
+ },
+ "files": 3,
+ "added_lines": 9,
+ "removed_lines": 2,
+ "diff": "diff --git a/debian/changelog b/debian/changelog\nindex 2ef75ae..0c21a6d 100644\n--- a/debian/changelog\n+++ b/debian/changelog\n@@ -1,3 +1,9 @@\n+rust-ntpd (1.7.1-1ubuntu0.1) resolute; urgency=medium\n+\n+  * d/ntpd-rs.service: Add CAP_NET_BIND_SERVICE capability (LP: #2162124)\n+\n+ -- Guilherme Puida Moreira <guilherme.moreira@canonical.com>  Wed, 14 Oct 2026 14:57:08 -0300\n+\n rust-ntpd (1.7.1-1) unstable; urgency=medium\n \n   * Team upload.\ndiff --git a/debian/control b/debian/control\nindex 1ccf1bb..c48b00e 100644\n--- a/debian/control\n+++ b/debian/control\n@@ -33,7 +33,8 @@ Build-Depends-Arch: cargo:native,\n  librust-tracing-subscriber-0.3+ansi-dev,\n  librust-tracing-subscriber-0.3+fmt-dev,\n  librust-tracing-subscriber-0.3+std-dev\n-Maintainer: Debian Rust Maintainers <pkg-rust-maintainers@alioth-lists.debian.net>\n+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>\n+XSBC-Original-Maintainer: Debian Rust Maintainers <pkg-rust-maintainers@alioth-lists.debian.net>\n Uploaders:\n  Sylvestre Ledru <sylvestre@debian.org>\n Standards-Version: 4.7.2\ndiff --git a/debian/ntpd-rs.service b/debian/ntpd-rs.service\nindex 542a864..ff9678d 100644\n--- a/debian/ntpd-rs.service\n+++ b/debian/ntpd-rs.service\n@@ -14,7 +14,7 @@ Environment=\"RUST_LOG=info\"\n RuntimeDirectory=ntpd-rs\n User=ntpd-rs\n Group=ntpd-rs\n-AmbientCapabilities=CAP_SYS_TIME\n+AmbientCapabilities=CAP_SYS_TIME CAP_NET_BIND_SERVICE\n \n [Install]\n WantedBy=multi-user.target\n",
+ "diff_truncated": false
+}
