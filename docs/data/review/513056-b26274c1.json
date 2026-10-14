@@ -1,0 +1,23 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~paride/britney/+git/britney1-ubuntu/+merge/513056",
+ "id": "513056",
+ "title": "update-excuses-best-effort → main",
+ "source_branch": "update-excuses-best-effort",
+ "target_branch": "main",
+ "revision": "f53b4d073cefd5c3d4e81d1348a4e7e1a2a25dd8",
+ "base_revision": "1cf1e7434d4a0464624c545cd709d677e294a106",
+ "description": null,
+ "commit_message": null,
+ "diffstat": {
+  "britney": [
+   15,
+   3
+  ]
+ },
+ "files": 1,
+ "added_lines": 15,
+ "removed_lines": 3,
+ "diff": "diff --git a/britney b/britney\nindex 5dff55c..f1bda8a 100755\n--- a/britney\n+++ b/britney\n@@ -179,7 +179,14 @@ if option bugs_b2; then\n fi\n \n excuse_bugs() {\n-  tagged_bugs $1 update-excuse ExcuseBugs\n+  # Excuse bugs only add links, so a failed refresh must not stop migration.\n+  local ret\n+  if tagged_bugs \"$1\" update-excuse ExcuseBugs; then\n+    return 0\n+  else\n+    ret=$?\n+    echo \"WARNING: EXCUSE BUGS fetch failed (exit status $ret); continuing with existing ExcuseBugs data.\" >&2\n+  fi\n }\n \n blocks () {\n@@ -187,7 +194,7 @@ blocks () {\n }\n \n tagged_bugs () {\n-  local tag_template tags output_file\n+  local tag_template tags output_file ret\n   tag_template=$2\n   output_file=$3\n   [ \"$DISTRIBUTION\" = ubuntu ] || return 0\n@@ -256,7 +263,12 @@ for task in tasks:\n               (os.path.basename(target.self_link), bug.id,\n                calendar.timegm(date.timetuple())))\n print(\"\\n\".join(sorted(blocks)))\n-' \"$LP_SERVICE\" \"$DISTRIBUTION\" \"$tags\" \"$SERIES\" >\"$1/$SERIES-proposed/$output_file.new\"\n+' \"$LP_SERVICE\" \"$DISTRIBUTION\" \"$tags\" \"$SERIES\" >\"$1/$SERIES-proposed/$output_file.new\" || {\n+    # Remove incomplete output and leave any existing ExcuseBugs data untouched.\n+    ret=$?\n+    rm -f \"$1/$SERIES-proposed/$output_file.new\"\n+    return \"$ret\"\n+  }\n   mv \"$1/$SERIES-proposed/$output_file.new\" \"$1/$SERIES-proposed/$output_file\"\n }\n if option blocks; then\n",
+ "diff_truncated": false
+}
