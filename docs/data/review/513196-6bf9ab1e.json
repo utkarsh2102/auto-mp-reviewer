@@ -1,0 +1,27 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~hectorcao/ubuntu/+source/cloud-initramfs-tools/+git/cloud-initramfs-tools/+merge/513196",
+ "id": "513196",
+ "title": "lp2170858-stonking → ubuntu/stonking-devel",
+ "source_branch": "lp2170858-stonking",
+ "target_branch": "ubuntu/stonking-devel",
+ "revision": "d44319df74f55a1bbac9005babe79cb6bab19aad",
+ "base_revision": "8a29e92b543e19bc1b80114eed25112b32e42be3",
+ "description": null,
+ "commit_message": null,
+ "diffstat": {
+  "debian/changelog": [
+   7,
+   0
+  ],
+  "debian/tests/control": [
+   3,
+   3
+  ]
+ },
+ "files": 2,
+ "added_lines": 10,
+ "removed_lines": 3,
+ "diff": "diff --git a/debian/changelog b/debian/changelog\nindex d3e4951..3ab1f00 100644\n--- a/debian/changelog\n+++ b/debian/changelog\n@@ -1,3 +1,10 @@\n+cloud-initramfs-tools (0.58ubuntu0.1) stonking; urgency=medium\n+\n+  * d/t/control: exclude armhf since qemu-system-arm is no longer available\n+    (LP: #2170858)\n+\n+ -- Hector Cao <hector.cao@canonical.com>  Thu, 15 Oct 2026 10:36:33 +0200\n+\n cloud-initramfs-tools (0.58ubuntu) resolute; urgency=medium\n \n   * overlayroot: support dracut overlayfs-crypt as alternative\ndiff --git a/debian/tests/control b/debian/tests/control\nindex 55f3bda..3721006 100644\n--- a/debian/tests/control\n+++ b/debian/tests/control\n@@ -1,15 +1,15 @@\n Tests: copymods-dracut\n-Architecture: !armel !i386\n+Architecture: !armel !i386 !armhf\n Restrictions: allow-stderr, needs-root\n Depends: cloud-initramfs-copymods, dracut-test (>= 110), xfsprogs\n \n Tests: overlayroot-dracut\n-Architecture: !armel !i386\n+Architecture: !armel !i386 !armhf\n Restrictions: allow-stderr, needs-root\n Depends: dracut-test (>= 110), e2fsprogs, overlayroot\n \n Tests: rooturl-dracut\n-Architecture: !armel !i386\n+Architecture: !armel !i386 !armhf\n Restrictions: allow-stderr, needs-root\n Depends: cloud-initramfs-rooturl,\n          dracut,\n",
+ "diff_truncated": false
+}

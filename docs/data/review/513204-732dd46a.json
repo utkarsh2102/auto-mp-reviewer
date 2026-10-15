@@ -1,0 +1,31 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~athos/ubuntu/+source/containerd-app/+git/containerd-app/+merge/513204",
+ "id": "513204",
+ "title": "PPA: https://launchpad.net/~athos/+archive/ubuntu/containerd-sandbox/+packages",
+ "source_branch": "ubuntu/resolute-devel",
+ "target_branch": "ubuntu/resolute-devel",
+ "revision": "8efda8d8aeb7be17ae632482822e73fbb59d4f4b",
+ "base_revision": "ecad7de01f8d653da378631e7cef51756f5135cd",
+ "description": "PPA: https://launchpad.net/~athos/+archive/ubuntu/containerd-sandbox/+packages\nDEP8: TBD",
+ "commit_message": null,
+ "diffstat": {
+  "debian/changelog": [
+   7,
+   0
+  ],
+  "debian/patches/defer-ShutdownSandbox.patch": [
+   56,
+   0
+  ],
+  "debian/patches/series": [
+   1,
+   0
+  ]
+ },
+ "files": 3,
+ "added_lines": 64,
+ "removed_lines": 0,
+ "diff": "diff --git a/debian/changelog b/debian/changelog\nindex fda6aad..8cee412 100644\n--- a/debian/changelog\n+++ b/debian/changelog\n@@ -1,3 +1,10 @@\n+containerd-app (2.2.2-0ubuntu1.2) resolute; urgency=medium\n+\n+  * d/p/defer-ShutdownSandbox.patch: Add deferred call to ShutdownSandbox to\n+    avoid leaks (LP: #2170996)\n+\n+ -- Athos Ribeiro <athos@ubuntu.com>  Thu, 15 Oct 2026 11:33:35 -0300\n+\n containerd-app (2.2.2-0ubuntu1.1) resolute-security; urgency=high\n \n   * SECURITY UPDATE: HTTP/2 SETTINGS frame infinite loop (vendored\ndiff --git a/debian/patches/defer-ShutdownSandbox.patch b/debian/patches/defer-ShutdownSandbox.patch\nnew file mode 100644\nindex 0000000..dd043c6\n--- /dev/null\n+++ b/debian/patches/defer-ShutdownSandbox.patch\n@@ -0,0 +1,56 @@\n+From ba7605ee7eb74493c464018055b43f0fed5e9289 Mon Sep 17 00:00:00 2001\n+From: lauralorenz <lauralorenz@google.com>\n+Date: Mon, 11 May 2026 20:36:39 +0000\n+Subject: [PATCH] Add deferred call to ShutdownSandbox to avoid leaks\n+\n+Between starting the sandbox and adding it to the\n+sandbox store, there are opportunities for failures\n+including in any NRI RunPodSandbox prehooks. This defer\n+is added to that period so if they fail, this function\n+will try to clean it up itself. If the sandbox is\n+already added to the persistent store, it will not attempt\n+to stop the sandbox as it can now be recognized by other\n+components from the CRI store. ShutdownSandbox is used\n+instead of StopSandbox as it both stops it and cleans up\n+all its directories.\n+\n+Signed-off-by: lauralorenz <lauralorenz@google.com>\n+\n+Origin: https://github.com/containerd/containerd/commit/ba7605ee7eb74493c464018055b43f0fed5e9289.patch\n+Last-Update: 2026-10-15\n+Bug-Ubuntu: https://bugs.launchpad.net/ubuntu/+source/containerd-app/+bug/2170996\n+Bug: https://github.com/containerd/containerd/issues/13355\n+---\n+ internal/cri/server/sandbox_run.go | 12 ++++++++++++\n+ 1 file changed, 12 insertions(+)\n+\n+diff --git a/internal/cri/server/sandbox_run.go b/internal/cri/server/sandbox_run.go\n+index 3142efb7252ac..4bae4b475b17c 100644\n+--- a/internal/cri/server/sandbox_run.go\n++++ b/internal/cri/server/sandbox_run.go\n+@@ -293,6 +293,16 @@ func (c *criService) RunPodSandbox(ctx context.Context, r *runtime.RunPodSandbox\n+ \t\treturn nil, fmt.Errorf(\"failed to start sandbox %q: %w\", id, err)\n+ \t}\n+ \n++\t// Shutdown the sandbox if we fail before adding it to store.\n++\trollbackSandbox := true\n++\tdefer func() {\n++\t\tif retErr != nil && rollbackSandbox {\n++\t\t\tdeferCtx, deferCancel := util.DeferContext()\n++\t\t\tdefer deferCancel()\n++\t\t\tcleanupErr = c.sandboxService.ShutdownSandbox(deferCtx, sandbox.Sandboxer, id)\n++\t\t}\n++\t}()\n++\n+ \tif ctrl.Address != \"\" {\n+ \t\tsandbox.Endpoint = sandboxstore.Endpoint{\n+ \t\t\tVersion: ctrl.Version,\n+@@ -349,6 +359,8 @@ func (c *criService) RunPodSandbox(ctx context.Context, r *runtime.RunPodSandbox\n+ \tif err := c.sandboxStore.Add(sandbox); err != nil {\n+ \t\treturn nil, fmt.Errorf(\"failed to add sandbox %+v into store: %w\", sandbox, err)\n+ \t}\n++\t// We no longer need to stop sandbox with a cleanup defer since it is in the store.\n++\trollbackSandbox = false\n+ \n+ \t// Send CONTAINER_CREATED event with both ContainerId and SandboxId equal to SandboxId.\n+ \t// Note that this has to be done after sandboxStore.Add() because we need to get\ndiff --git a/debian/patches/series b/debian/patches/series\nindex 9ce52c3..e847f40 100644\n--- a/debian/patches/series\n+++ b/debian/patches/series\n@@ -7,3 +7,4 @@ CVE-2026-53492.patch\n CVE-2026-53489.patch\n CVE-2026-47262.patch\n CVE-2026-33814.patch\n+defer-ShutdownSandbox.patch\n",
+ "diff_truncated": false
+}
