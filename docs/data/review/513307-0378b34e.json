@@ -1,0 +1,23 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~seb128/ubuntu-archive-tools/+git/ubuntu-archive-tools/+merge/513307",
+ "id": "513307",
+ "title": "process-removals-remove-bug-reference → main",
+ "source_branch": "process-removals-remove-bug-reference",
+ "target_branch": "main",
+ "revision": "6da76e53b47b8b37a682d66750ac450060c6423b",
+ "base_revision": "7082b3131cd4d04fee5a7b376193c986163f1751",
+ "description": null,
+ "commit_message": null,
+ "diffstat": {
+  "process-removals": [
+   27,
+   0
+  ]
+ },
+ "files": 1,
+ "added_lines": 27,
+ "removed_lines": 0,
+ "diff": "diff --git a/process-removals b/process-removals\nindex e0c704a..09d534c 100755\n--- a/process-removals\n+++ b/process-removals\n@@ -58,6 +58,7 @@ CONSUMER_KEY = \"process-removals\"\n \n \n Debian = None\n+RemovalRequests = None\n \n \n def parse_removals_file(options, removals_file):\n@@ -192,6 +193,30 @@ def show_reverse_depends(options, package):\n             print()\n \n \n+def read_removal_requests(options):\n+    \"\"\"Collect open Ubuntu bugs tagged \"remove\", by source package.\"\"\"\n+    global RemovalRequests\n+    RemovalRequests = {}\n+\n+    logging.debug(\"Reading removal requests\")\n+    for task in options.distribution.searchTasks(tags=[\"remove\"]):\n+        base, _, package = task.target_link.rpartition(\"/+source/\")\n+        if base.endswith(\"/ubuntu\") and package:\n+            RemovalRequests.setdefault(package, []).append(task)\n+\n+\n+def show_removal_requests(package):\n+    \"\"\"Show open removal request bugs for a source package.\"\"\"\n+    tasks = RemovalRequests.get(package)\n+    if not tasks:\n+        return\n+    print(\"Removal requests:\")\n+    for task in tasks:\n+        print(\"\\t%s [%s]\" % (task.title, task.status))\n+        print(\"\\t%s\" % task.web_link)\n+    print()\n+\n+\n non_meta_re = re.compile(r'^[a-zA-Z0-9+,./:=@_-]+$')\n \n \n@@ -271,6 +296,7 @@ def do_removal(me, options, removal):\n \n         subprocess.call(['seeded-in-ubuntu', package])\n         show_reverse_depends(options, package)\n+        show_removal_requests(package)\n         for spph in spphs:\n             if options.no_action:\n                 print(\"remove-package -s %s%s -e %s -m %s %s\" % (\n@@ -418,6 +444,7 @@ def main():\n     options.version = None\n \n     read_sources()\n+    read_removal_requests(options)\n \n     if options.filename:\n         removals_file = open(options.filename, \"rb\")\n",
+ "diff_truncated": false
+}
