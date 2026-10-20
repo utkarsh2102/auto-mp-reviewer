@@ -1,0 +1,23 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~seb128/ubuntu-archive-tools/+git/ubuntu-archive-tools/+merge/513363",
+ "id": "513363",
+ "title": "queue-column-width → main",
+ "source_branch": "queue-column-width",
+ "target_branch": "main",
+ "revision": "717bf9095cbcbd5ef155dd2ed7c779dc4345efdd",
+ "base_revision": "7082b3131cd4d04fee5a7b376193c986163f1751",
+ "description": null,
+ "commit_message": null,
+ "diffstat": {
+  "queue": [
+   27,
+   14
+  ]
+ },
+ "files": 1,
+ "added_lines": 27,
+ "removed_lines": 14,
+ "diff": "diff --git a/queue b/queue\nindex 9bca9c8..19351ae 100755\n--- a/queue\n+++ b/queue\n@@ -120,10 +120,19 @@ def queue_items(options, args):\n     return items\n \n \n-#XXX cprov 2006-09-19: We need to use template engine instead of hardcoded\n-# format variables.\n-HEAD = \"-\" * 9 + \"|----|\" + \"-\" * 22 + \"|\" + \"-\" * 22 + \"|\" + \"-\" * 15\n-FOOT_MARGIN = \" \" * (9 + 6 + 1 + 22 + 1 + 22 + 2)\n+# Minimum widths of the name and version columns in \"info\" listings; they\n+# grow to fit the longest value so that nothing is truncated.\n+NAME_WIDTH = 20\n+VERSION_WIDTH = 20\n+\n+\n+def make_head(name_width, version_width):\n+    return (\"-\" * 9 + \"|----|\" + \"-\" * (name_width + 2) + \"|\" +\n+            \"-\" * (version_width + 2) + \"|\" + \"-\" * 15)\n+\n+\n+def make_foot_margin(name_width, version_width):\n+    return \" \" * (9 + 6 + 1 + name_width + 2 + 1 + version_width + 2 + 2)\n \n \n def make_tag(item):\n@@ -167,12 +176,11 @@ def approximate_age(time):\n         return \"%d weeks\" % weeks\n \n \n-def show_item_main(item):\n+def show_item_main(item, name_width=NAME_WIDTH, version_width=VERSION_WIDTH):\n     tag = make_tag(item)\n-    # TODO truncation sucks\n     print(\"%8d | %s | %s | %s | %s\" %\n-          (item.id, tag, item.display_name.ljust(20)[:20],\n-           item.display_version.ljust(20)[:20],\n+          (item.id, tag, item.display_name.ljust(name_width),\n+           item.display_version.ljust(version_width),\n            approximate_age(item.date_created)))\n \n \n@@ -198,8 +206,8 @@ def show_binary(binary):\n                   binary[\"section\"], binary[\"priority\"]))\n \n \n-def show_item(item):\n-    show_item_main(item)\n+def show_item(item, name_width=NAME_WIDTH, version_width=VERSION_WIDTH):\n+    show_item_main(item, name_width, version_width)\n     if item.contains_copy or item.contains_source:\n         show_source(item)\n     if item.contains_build:\n@@ -217,14 +225,19 @@ def display_name(item):\n def info(options, args):\n     \"\"\"Show information on queue items.\"\"\"\n     items = queue_items(options, args)\n+    name_width = max(\n+        [NAME_WIDTH] + [len(item.display_name) for item in items])\n+    version_width = max(\n+        [VERSION_WIDTH] + [len(item.display_version) for item in items])\n+    head = make_head(name_width, version_width)\n     print(\"Listing %s/%s (%s) %s\" %\n           (options.distribution.name, options.suite, options.queue,\n            len(items)))\n-    print(HEAD)\n+    print(head)\n     for item in items:\n-        show_item(item)\n-    print(HEAD)\n-    print(FOOT_MARGIN + str(len(items)))\n+        show_item(item, name_width, version_width)\n+    print(head)\n+    print(make_foot_margin(name_width, version_width) + str(len(items)))\n     return 0\n \n \n",
+ "diff_truncated": false
+}

@@ -1,0 +1,23 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~seb128/ubuntu-archive-tools/+git/ubuntu-archive-tools/+merge/513372",
+ "id": "513372",
+ "title": "process-removals-depcheck → main",
+ "source_branch": "process-removals-depcheck",
+ "target_branch": "main",
+ "revision": "8375e606aefd86d4740d7c8429771f1e0d9ccac6",
+ "base_revision": "7082b3131cd4d04fee5a7b376193c986163f1751",
+ "description": null,
+ "commit_message": null,
+ "diffstat": {
+  "process-removals": [
+   37,
+   3
+  ]
+ },
+ "files": 1,
+ "added_lines": 37,
+ "removed_lines": 3,
+ "diff": "diff --git a/process-removals b/process-removals\nindex 09d534c..b92723b 100755\n--- a/process-removals\n+++ b/process-removals\n@@ -174,12 +174,17 @@ def show_reverse_depends(options, package):\n \n     This is mostly done by calling reverse-depends, but with some tweaks to\n     make the output easier to read in context.\n+\n+    Returns False if any reverse-depends query failed, in which case the\n+    absence of output must not be taken to mean there are no reverse\n+    dependencies.\n     \"\"\"\n     series_name = options.series.name\n     commands = (\n         [\"reverse-depends\", \"-r\", series_name, \"src:%s\" % package],\n         [\"reverse-depends\", \"-r\", series_name, \"-a\", \"source\", \"src:%s\" % package],\n     )\n+    ok = True\n     for command in commands:\n         subp = subprocess.Popen(command, stdout=subprocess.PIPE)\n         line = None\n@@ -191,6 +196,9 @@ def show_reverse_depends(options, package):\n                 print(line)\n         if line:\n             print()\n+        if subp.returncode != 0:\n+            ok = False\n+    return ok\n \n \n def read_removal_requests(options):\n@@ -228,6 +236,7 @@ def shell_escape(arg):\n \n \n seen_sources = set()\n+skipped_sources = []\n \n \n def do_removal(me, options, removal):\n@@ -295,7 +304,26 @@ def do_removal(me, options, removal):\n         reason = \"(From Debian) \" + removal[\"reason\"] + bugs\n \n         subprocess.call(['seeded-in-ubuntu', package])\n-        show_reverse_depends(options, package)\n+        # Never offer removal without a successful reverse-depends query.\n+        while not show_reverse_depends(options, package):\n+            logging.error(\n+                \"%s: reverse-depends query failed; reverse dependencies \"\n+                \"unknown.\", package)\n+            if options.no_action:\n+                answer = \"skip\"\n+            else:\n+                from ubuntutools.question import Question\n+                answer = Question(\n+                    [\"retry\", \"skip\", \"quit\"], show_help=False).ask(\n+                    \"reverse-depends failed for %s: retry, skip or quit\"\n+                    % package, \"retry\")\n+            if answer == \"skip\":\n+                skipped_sources.append(package)\n+                break\n+            if answer == \"quit\":\n+                sys.exit(1)\n+        if package in skipped_sources:\n+            continue\n         show_removal_requests(package)\n         for spph in spphs:\n             if options.no_action:\n@@ -450,8 +478,14 @@ def main():\n         removals_file = open(options.filename, \"rb\")\n     else:\n         removals_file = fetch_removals_file(options)\n-    parse_removals_file(options, removals_file)\n-    removals_file.close()\n+    try:\n+        parse_removals_file(options, removals_file)\n+    finally:\n+        removals_file.close()\n+        if skipped_sources:\n+            print(\"Skipped (reverse-depends query failed), check manually:\")\n+            for package in skipped_sources:\n+                print(\"\\t%s\" % package)\n \n \n if __name__ == '__main__':\n",
+ "diff_truncated": false
+}

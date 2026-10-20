@@ -1,0 +1,23 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~enr0n/britney/+git/hints-ubuntu/+merge/513360",
+ "id": "513360",
+ "title": "resolute → resolute",
+ "source_branch": "resolute",
+ "target_branch": "resolute",
+ "revision": "0c2be77bb875ea22a40c5fbd4c56a761a7a23f7c",
+ "base_revision": "f396d0659070e245494190013921022bec99158e",
+ "description": null,
+ "commit_message": null,
+ "diffstat": {
+  "ubuntu-sru": [
+   4,
+   0
+  ]
+ },
+ "files": 1,
+ "added_lines": 4,
+ "removed_lines": 0,
+ "diff": "diff --git a/ubuntu-sru b/ubuntu-sru\nindex 1e0124a..8dec634 100644\n--- a/ubuntu-sru\n+++ b/ubuntu-sru\n@@ -1,2 +1,6 @@\n # very flaky (LP: #2167615)\n force-badtest borgbackup2/2.0.0b20-5/s390x\n+\n+# s390x infra is currently broken and cannot run vm tests\n+# See e.g. https://autopkgtest.ubuntu.com/results/autopkgtest-resolute/resolute/s390x/s/snapd/20261019_154359_235a7@/log.gz\n+force-badtest snapd/2.77.1+ubuntu26.04.2/s390x\n",
+ "diff_truncated": false
+}

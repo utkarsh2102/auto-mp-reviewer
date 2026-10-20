@@ -1,0 +1,23 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~paride/britney/+git/britney2-ubuntu/+merge/513357",
+ "id": "513357",
+ "title": "re-enable-s390x → master",
+ "source_branch": "re-enable-s390x",
+ "target_branch": "master",
+ "revision": "c50c4e52c09c8293526b0b5c25ef636951b680c5",
+ "base_revision": "c38d399508e1e6cbd9c9a7fa1ed2f1a34ee93f7a",
+ "description": null,
+ "commit_message": null,
+ "diffstat": {
+  "britney2/policies/autopkgtest.py": [
+   0,
+   9
+  ]
+ },
+ "files": 1,
+ "added_lines": 0,
+ "removed_lines": 9,
+ "diff": "diff --git a/britney2/policies/autopkgtest.py b/britney2/policies/autopkgtest.py\nindex 9208629..0e5b50d 100644\n--- a/britney2/policies/autopkgtest.py\n+++ b/britney2/policies/autopkgtest.py\n@@ -853,15 +853,6 @@ class AutopkgtestPolicy(BasePolicy):\n                                     pass\n                             break\n \n-        # Run only selected s390x tests.\n-        if arch == \"s390x\":\n-            # Only tests s390x packages in main, due to current infrastructure issues\n-            tests = [\n-                (src, version)\n-                for (src, version) in tests\n-                if src in sources_info and sources_info[src].component == UbuntuComponent.MAIN\n-            ]\n-\n         # Run only selected riscv64 tests.\n         if arch == \"riscv64\":\n             if self.options.series in [\"focal\", \"jammy\"]:\n",
+ "diff_truncated": false
+}

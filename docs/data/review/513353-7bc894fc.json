@@ -1,0 +1,23 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~blkerby/autopkgtest-cloud/+git/autopkgtest-package-configs/+merge/513353",
+ "id": "513353",
+ "title": "As with previous Rust versions, the rustc-1.98 self-build autopkgtest tends to run out of memory. Adding it to big_packages should allow it to succeed reliably.",
+ "source_branch": "add-rustc-1.98",
+ "target_branch": "main",
+ "revision": "10a21236691cdfdab0ff7ebcf0d84dd8808c5340",
+ "base_revision": "89f5ddc0fc0d091285f0f9eb7c06fda87c98a2b0",
+ "description": "As with previous Rust versions, the rustc-1.98 self-build autopkgtest tends to run out of memory. Adding it to big_packages should allow it to succeed reliably.",
+ "commit_message": null,
+ "diffstat": {
+  "big_packages": [
+   1,
+   0
+  ]
+ },
+ "files": 1,
+ "added_lines": 1,
+ "removed_lines": 0,
+ "diff": "diff --git a/big_packages b/big_packages\nindex 05b9dc4..0991365 100644\n--- a/big_packages\n+++ b/big_packages\n@@ -195,6 +195,7 @@ rustc-1.92\n rustc-1.93\n rustc-1.94\n rustc-1.95\n+rustc-1.98\n rust-ahash\n rust-axum/ppc64el\n rust-cargo-c/ppc64el\n",
+ "diff_truncated": false
+}
