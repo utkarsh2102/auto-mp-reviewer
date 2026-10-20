@@ -1,0 +1,31 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~seb128/ubuntu-archive-tools/+git/ubuntu-archive-tools/+merge/513448",
+ "id": "513448",
+ "title": "fix-invalid-escape-sequences → main",
+ "source_branch": "fix-invalid-escape-sequences",
+ "target_branch": "main",
+ "revision": "5f852ecf5c5984121422b871393dff67a28b3298",
+ "base_revision": "0a10fff66b71769e648bd5220d641266d6b1917d",
+ "description": null,
+ "commit_message": null,
+ "diffstat": {
+  "kernel_workflow.py": [
+   1,
+   1
+  ],
+  "new_review.py": [
+   1,
+   1
+  ],
+  "queuediff": [
+   4,
+   4
+  ]
+ },
+ "files": 3,
+ "added_lines": 6,
+ "removed_lines": 6,
+ "diff": "diff --git a/kernel_workflow.py b/kernel_workflow.py\nindex 264aac2..ed7e5fb 100644\n--- a/kernel_workflow.py\n+++ b/kernel_workflow.py\n@@ -45,7 +45,7 @@ def process_sru_bug(lp, bugnum, task_callback, source_callback, context=None):\n     \"\"\"\n     package_re = re.compile(\n         (r'^%subuntu/(?P<release>[0-9a-z.-]+)/'\n-         + '\\+source/(?P<package>[a-z0-9.-]+)$') % str(lp._root_uri))\n+         r'\\+source/(?P<package>[a-z0-9.-]+)$') % str(lp._root_uri))\n     workflow_re = re.compile(\n         r'^%skernel-sru-workflow/(?P<subtask>.*)' % str(lp._root_uri))\n     prep_re = re.compile(r'prepare-package(?P<subpackage>.*)')\ndiff --git a/new_review.py b/new_review.py\nindex 23c82ad..f75460f 100755\n--- a/new_review.py\n+++ b/new_review.py\n@@ -707,7 +707,7 @@ class ReviewRequestKernel(ReviewRequest):\n                 compatibility = []\n                 if len(ucs_srcs) == 0:\n                     # Go find main...\n-                    main_version_re = re.compile(\"(.*)\\+[0-9]\")\n+                    main_version_re = re.compile(r\"(.*)\\+[0-9]\")\n                     main_name = self.ks_source.lookup_package(type=\"main\").name\n                     for package in self.package_group.packages:\n                         if not package.signing:\ndiff --git a/queuediff b/queuediff\nindex 67cebca..9d73aa6 100755\n--- a/queuediff\n+++ b/queuediff\n@@ -98,11 +98,11 @@ def from_queue(sourcepkg, release):\n     '''\n     oops_re = re.compile('class=\"oopsid\">(OOPS[a-zA-Z0-9-]+)<')\n     changes_re = re.compile(\n-        'href=\"(http://launchpadlibrarian.net/\\d+/%s_[^\"]+_source.changes)\"' %\n+        r'href=\"(http://launchpadlibrarian.net/\\d+/%s_[^\"]+_source.changes)\"' %\n         re.escape(quote(sourcepkg)))\n     debdiff_re = re.compile(\n-        'href=\"(http://launchpadlibrarian.net/'\n-        '\\d+/%s_[^\"_]+_[^_\"]+\\.diff\\.gz)\">\\s*diff from' %\n+        r'href=\"(http://launchpadlibrarian.net/'\n+        r'\\d+/%s_[^\"_]+_[^_\"]+\\.diff\\.gz)\">\\s*diff from' %\n         re.escape(quote(sourcepkg)))\n \n     queue_html = urlopen(queue_url % release).read()\n@@ -141,7 +141,7 @@ def from_ppa(sourcepkg, release, user, ppaname):\n         'href=\"(https://launchpad.net/[^ \"]+/%s_[^\"]+_source.changes)\"' %\n         re.escape(quote(sourcepkg)))\n     sourcepub_re = re.compile(\n-        'href=\"(\\+sourcepub/\\d+/\\+listing-archive-extra)\"')\n+        r'href=\"(\\+sourcepub/\\d+/\\+listing-archive-extra)\"')\n     #debdiff_re = re.compile(\n     #    'href=\"(https://launchpad.net/.[^ \"]+.diff.gz)\">diff from')\n \n",
+ "diff_truncated": false
+}

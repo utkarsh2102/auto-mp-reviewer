@@ -1,0 +1,35 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~hectorcao/ubuntu/+source/python-debian/+git/python-debian/+merge/513409",
+ "id": "513409",
+ "title": "lp2171509-noble → ubuntu/noble-devel",
+ "source_branch": "lp2171509-noble",
+ "target_branch": "ubuntu/noble-devel",
+ "revision": "1d0168bea0e7de379764a73326f82737af506578",
+ "base_revision": "e92f643d3de1e5d4ea790d1b21e9b6a7a468e787",
+ "description": null,
+ "commit_message": null,
+ "diffstat": {
+  "debian/changelog": [
+   7,
+   0
+  ],
+  "debian/patches/lp2171509-Handle-non-UTF-8-data-from-gpgv-signature-checking.patch": [
+   33,
+   0
+  ],
+  "debian/patches/series": [
+   1,
+   0
+  ],
+  "lib/debian/deb822.py": [
+   2,
+   2
+  ]
+ },
+ "files": 4,
+ "added_lines": 43,
+ "removed_lines": 2,
+ "diff": "diff --git a/debian/changelog b/debian/changelog\nindex 04341b3..3af16c6 100644\n--- a/debian/changelog\n+++ b/debian/changelog\n@@ -1,3 +1,10 @@\n+python-debian (0.1.49ubuntu2.1) noble; urgency=medium\n+\n+  * Handle non-UTF-8 data from gpgv signature checking\n+    (LP: #2171509)\n+\n+ -- Hector Cao <hector.cao@canonical.com>  Tue, 20 Oct 2026 15:20:30 +0200\n+\n python-debian (0.1.49ubuntu2) lunar; urgency=medium\n \n   * Make Python version PEP440 compliant (LP: #1991606)\ndiff --git a/debian/patches/lp2171509-Handle-non-UTF-8-data-from-gpgv-signature-checking.patch b/debian/patches/lp2171509-Handle-non-UTF-8-data-from-gpgv-signature-checking.patch\nnew file mode 100644\nindex 0000000..8fffb24\n--- /dev/null\n+++ b/debian/patches/lp2171509-Handle-non-UTF-8-data-from-gpgv-signature-checking.patch\n@@ -0,0 +1,33 @@\n+From 81e40b03fa63bc6b4d5aebece0e295468818ba45 Mon Sep 17 00:00:00 2001\n+From: Stuart Prescott <stuart@debian.org>\n+Date: Sun, 9 Mar 2025 23:58:54 +1100\n+Subject: [PATCH] Handle non-UTF-8 data from gpgv signature checking\n+\n+With thanks to Gianfranco Costamagna for the suggested fix.\n+\n+Closes: #1095835, #1087991\n+\n+Bug-Ubuntu: https://bugs.launchpad.net/ubuntu/+bug/2171509\n+Origin: upstream, https://salsa.debian.org/python-debian-team/python-debian/-/commit/01d2f7c2d4a77731aa640b710ae1002cf20da280\n+---\n+ lib/debian/deb822.py | 4 ++--\n+ 1 file changed, 2 insertions(+), 2 deletions(-)\n+\n+diff --git a/lib/debian/deb822.py b/lib/debian/deb822.py\n+index 7a0f890..c322fb5 100644\n+--- a/lib/debian/deb822.py\n++++ b/lib/debian/deb822.py\n+@@ -1371,8 +1371,8 @@ class GpgInfo(_BaseGpgInfo):\n+                 inp = cls._get_full_bytes(sequence)\n+             out, err = p.communicate(inp)\n+ \n+-        return cls.from_output(out.decode('utf-8'),\n+-                               err.decode('utf-8'))\n++        return cls.from_output(out.decode('unicode-escape'),\n++                               err.decode('unicode-escape'))\n+ \n+     @staticmethod\n+     def _get_full_bytes(sequence):\n+-- \n+2.43.0\n+\ndiff --git a/debian/patches/series b/debian/patches/series\nnew file mode 100644\nindex 0000000..73dec91\n--- /dev/null\n+++ b/debian/patches/series\n@@ -0,0 +1 @@\n+lp2171509-Handle-non-UTF-8-data-from-gpgv-signature-checking.patch\ndiff --git a/lib/debian/deb822.py b/lib/debian/deb822.py\nindex 7a0f890..c322fb5 100644\n--- a/lib/debian/deb822.py\n+++ b/lib/debian/deb822.py\n@@ -1371,8 +1371,8 @@ class GpgInfo(_BaseGpgInfo):\n                 inp = cls._get_full_bytes(sequence)\n             out, err = p.communicate(inp)\n \n-        return cls.from_output(out.decode('utf-8'),\n-                               err.decode('utf-8'))\n+        return cls.from_output(out.decode('unicode-escape'),\n+                               err.decode('unicode-escape'))\n \n     @staticmethod\n     def _get_full_bytes(sequence):\n",
+ "diff_truncated": false
+}
