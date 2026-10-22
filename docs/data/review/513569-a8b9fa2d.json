@@ -1,0 +1,39 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~paride/ubuntu-cdimage/+git/ubuntu-cdimage/+merge/513569",
+ "id": "513569",
+ "title": "open-tenacious → main",
+ "source_branch": "open-tenacious",
+ "target_branch": "main",
+ "revision": "84f4af19da610c656843605e724a1e457cdaf28c",
+ "base_revision": "fd589a7205a91eacacd60d979b636bd31da6871b",
+ "description": null,
+ "commit_message": null,
+ "diffstat": {
+  "bin/daily-checks": [
+   9,
+   1
+  ],
+  "etc/config": [
+   1,
+   1
+  ],
+  "etc/crontab": [
+   24,
+   24
+  ],
+  "lib/cdimage/config.py": [
+   1,
+   0
+  ],
+  "lib/cdimage/tests/test_tree.py": [
+   1,
+   1
+  ]
+ },
+ "files": 5,
+ "added_lines": 36,
+ "removed_lines": 27,
+ "diff": "diff --git a/bin/daily-checks b/bin/daily-checks\nindex 9de0cb7..0063245 100755\n--- a/bin/daily-checks\n+++ b/bin/daily-checks\n@@ -266,7 +266,15 @@ def main():\n         \"ubuntucinnamon\",\n     )\n     if not options.series:\n-        options.series = (\"bionic\", \"focal\", \"jammy\", \"noble\", \"resolute\", \"stonking\")\n+        options.series = (\n+            \"bionic\",\n+            \"focal\",\n+            \"jammy\",\n+            \"noble\",\n+            \"resolute\",\n+            \"stonking\",\n+            \"tenacious\",\n+        )\n \n     for project in projects:\n         for series in options.series:\ndiff --git a/etc/config b/etc/config\nindex ae9a5f8..6babf76 100644\n--- a/etc/config\n+++ b/etc/config\n@@ -13,7 +13,7 @@ PROJECT=\"${PROJECT:-ubuntu}\"\n CAPPROJECT=\"${CAPPROJECT:-Ubuntu}\"\n IMAGE_FORMAT=${IMAGE_FORMAT:-iso}\n export IMAGE_FORMAT\n-DIST=\"${DIST:-stonking}\"\n+DIST=\"${DIST:-tenacious}\"\n \n case $DIST in\n \tbionic|focal|jammy|noble|resolute)\ndiff --git a/etc/crontab b/etc/crontab\nindex 357ee51..ba410f4 100644\n--- a/etc/crontab\n+++ b/etc/crontab\n@@ -108,28 +108,28 @@ PATH=/srv/cdimage.ubuntu.com/bin:/usr/sbin:/usr/bin:/sbin:/bin\n 42 4 * * *  DIST=resolute PROPOSED=0 for-project ubuntu-base cron.daily-live --live\n \n \n-## stonking daily builds\n-#41 8 * * *  for-project ubuntu-mini-iso cron.daily-live --live\n-#24 4 * * *  for-project ubuntu cron.daily-live --live; SUBPROJECT=desktop-preinstalled for-project ubuntu cron.daily-preinstalled --live\n-#41 6 * * *  for-project kubuntu cron.daily-live --live\n-#40 0 * * *  for-project xubuntu cron.daily-live --live; SUBPROJECT=minimal for-project xubuntu cron.daily-minimal --live\n-#41 0 * * *  for-project edubuntu cron.daily-live --live; for-project edubuntu cron.daily-preinstalled --live\n-#10 2 * * *  for-project ubuntu-server cron.daily-preinstalled --live; SUBPROJECT=live for-project ubuntu-server cron.daily-live --live\n-#27 16 * * * for-project ubuntustudio cron.daily-live --live\n-#39 13 * * * for-project lubuntu cron.daily-live --live\n-#24 20 * * * for-project ubuntukylin cron.daily-live --live\n-#10 13 * * * for-project ubuntu-budgie cron.daily-live --live\n-#36 1 * * *  for-project ubuntu-mate cron.daily-live --live\n-#10 11 * * * for-project ubuntu-unity cron.daily-live --live\n-#24 11 * * * for-project ubuntucinnamon cron.daily-live --live\n-#21 01 * * * for-project ubuntu-wsl cron.daily-live --live\n-## The daily ubuntu-base images are used by core-next, so we can't build it\n-## with proposed enabled.\n-#42 3 * * *  PROPOSED=0 for-project ubuntu-base cron.daily-live --live\n-## daily-dangerous devel desktop build\n-## This is a live desktop image with all snaps from edge, for quicker testing\n-## of things like snapd, prompting client, the desktop installer, etc\n-#24 1 * * *  CHANNEL=edge for-project ubuntu cron.daily-dangerous --live\n+# tenacious daily builds\n+41 8 * * *  for-project ubuntu-mini-iso cron.daily-live --live\n+24 4 * * *  for-project ubuntu cron.daily-live --live; SUBPROJECT=desktop-preinstalled for-project ubuntu cron.daily-preinstalled --live\n+41 6 * * *  for-project kubuntu cron.daily-live --live\n+40 0 * * *  for-project xubuntu cron.daily-live --live; SUBPROJECT=minimal for-project xubuntu cron.daily-minimal --live\n+41 0 * * *  for-project edubuntu cron.daily-live --live; for-project edubuntu cron.daily-preinstalled --live\n+10 2 * * *  for-project ubuntu-server cron.daily-preinstalled --live; SUBPROJECT=live for-project ubuntu-server cron.daily-live --live\n+27 16 * * * for-project ubuntustudio cron.daily-live --live\n+39 13 * * * for-project lubuntu cron.daily-live --live\n+24 20 * * * for-project ubuntukylin cron.daily-live --live\n+10 13 * * * for-project ubuntu-budgie cron.daily-live --live\n+36 1 * * *  for-project ubuntu-mate cron.daily-live --live\n+10 11 * * * for-project ubuntu-unity cron.daily-live --live\n+24 11 * * * for-project ubuntucinnamon cron.daily-live --live\n+21 01 * * * for-project ubuntu-wsl cron.daily-live --live\n+# The daily ubuntu-base images are used by core-next, so we can't build it\n+# with proposed enabled.\n+42 3 * * *  PROPOSED=0 for-project ubuntu-base cron.daily-live --live\n+# daily-dangerous devel desktop build\n+# This is a live desktop image with all snaps from edge, for quicker testing\n+# of things like snapd, prompting client, the desktop installer, etc\n+24 1 * * *  CHANNEL=edge for-project ubuntu cron.daily-dangerous --live\n \n # we only are building core-installer and core-desktop for devel\n 05 7 * * *  for-project ubuntu-core-installer cron.daily-live --live; for-project ubuntu-core-desktop cron.daily-live --live\n@@ -143,12 +143,12 @@ PATH=/srv/cdimage.ubuntu.com/bin:/usr/sbin:/usr/bin:/sbin:/bin\n */5 * * * *\trebuild-requests -b -q jammy iso\n */5 * * * *\trebuild-requests -b -q noble iso\n */5 * * * *\trebuild-requests -b -q resolute iso\n-*/5 * * * *\trebuild-requests -b -q stonking iso\n+*/5 * * * *\trebuild-requests -b -q tenacious iso\n */5 * * * *\trebuild-requests -b -q 20 iso\n */5 * * * *\trebuild-requests -b -q 22 iso\n */5 * * * *\trebuild-requests --use-test-observer -b -q noble iso\n */5 * * * *\trebuild-requests --use-test-observer -b -q resolute iso\n-*/5 * * * *\trebuild-requests --use-test-observer -b -q stonking iso\n+*/5 * * * *\trebuild-requests --use-test-observer -b -q tenacious iso\n \n # Daily simplestreams generation for releases.ubuntu.com\n 42 23 * * *\tregenerate-streams official\ndiff --git a/lib/cdimage/config.py b/lib/cdimage/config.py\nindex e3457fc..c73d4ef 100644\n--- a/lib/cdimage/config.py\n+++ b/lib/cdimage/config.py\n@@ -325,6 +325,7 @@ all_series.extend(\n             _build_type=\"Release\",\n         ),\n         Series(\"stonking\", \"26.10\", \"Stonking Stingray\"),\n+        Series(\"tenacious\", \"27.04\", \"Tenacious T-Rex\"),\n     ]\n )\n \ndiff --git a/lib/cdimage/tests/test_tree.py b/lib/cdimage/tests/test_tree.py\nindex 0285b73..2f3dad7 100644\n--- a/lib/cdimage/tests/test_tree.py\n+++ b/lib/cdimage/tests/test_tree.py\n@@ -193,7 +193,7 @@ class TestTree(TestCase):\n             with open(\n                 os.path.join(publish_base, \"20130321\", \".marked_good\"), \"r\"\n             ) as marked_good:\n-                self.assertEqual(\"stonking-desktop-amd64.iso\\n\", marked_good.read())\n+                self.assertEqual(\"tenacious-desktop-amd64.iso\\n\", marked_good.read())\n \n             publish_current = os.path.join(publish_base, \"current\")\n             self.assertTrue(os.path.islink(publish_current))\n",
+ "diff_truncated": false
+}

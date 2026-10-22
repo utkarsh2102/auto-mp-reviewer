@@ -1,0 +1,35 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~graysonwolf/ubuntu/+source/libslirp/+git/libslirp/+merge/513572",
+ "id": "513572",
+ "title": "PPA: https://launchpad.net/~graysonwolf/+archive/ubuntu/libslirp-tenacious-b98fc978",
+ "source_branch": "merge-tenacious",
+ "target_branch": "debian/sid",
+ "revision": "2a6ed063c7f9276eb9d057feff7d525c799bc0ae",
+ "base_revision": "c8e87e7ea315955b7b0c01fa3ebfda947a53ca19",
+ "description": "PPA: https://launchpad.net/~graysonwolf/+archive/ubuntu/libslirp-tenacious-b98fc978\nDEP8: None for this package",
+ "commit_message": null,
+ "diffstat": {
+  "debian/changelog": [
+   53,
+   0
+  ],
+  "debian/control": [
+   2,
+   1
+  ],
+  "debian/libslirp-dev.install": [
+   1,
+   0
+  ],
+  "debian/rules": [
+   3,
+   0
+  ]
+ },
+ "files": 4,
+ "added_lines": 59,
+ "removed_lines": 1,
+ "diff": "diff --git a/debian/changelog b/debian/changelog\nindex 4f5f14c..36a1991 100644\n--- a/debian/changelog\n+++ b/debian/changelog\n@@ -1,3 +1,12 @@\n+libslirp (4.9.5-1ubuntu1) tenacious; urgency=medium\n+\n+  * Merge with Debian unstable. (LP: #2171135)\n+  * Remaining changes:\n+    - d/rules, d/libslirp-dev.install: ship static library in the libslirp-dev\n+      binary package. (LP #2029431)\n+\n+ -- Grayson Wolf <grayson.wolf@canonical.com>  Thu, 22 Oct 2026 14:04:35 -0400\n+\n libslirp (4.9.5-1) unstable; urgency=medium\n \n   * new upstream release (Closes: #1148836, CVE-2026-95508):\n@@ -17,6 +26,15 @@ libslirp (4.9.4-1) unstable; urgency=medium\n \n  -- Michael Tokarev <mjt@tls.msk.ru>  Wed, 26 Aug 2026 10:41:12 +0300\n \n+libslirp (4.9.3-1ubuntu1) stonking; urgency=medium\n+\n+  * Merge with Debian unstable. (LP: #2155169)\n+  * Remaining changes:\n+    - d/rules, d/libslirp-dev.install: ship static library in the libslirp-dev\n+      binary package. (LP #2029431)\n+\n+ -- Grayson Wolf <grayson.wolf@canonical.com>  Fri, 05 Jun 2026 15:24:51 -0400\n+\n libslirp (4.9.3-1) unstable; urgency=medium\n \n   * new upstream release, fixing regression\n@@ -30,12 +48,28 @@ libslirp (4.9.2-1) unstable; urgency=medium\n \n  -- Michael Tokarev <mjt@tls.msk.ru>  Sat, 23 May 2026 23:37:48 +0300\n \n+libslirp (4.9.1-1ubuntu1) resolute; urgency=medium\n+\n+  * Merge with Debian unstable (LP: #2125998). Remaining changes:\n+    - d/rules, d/libslirp-dev.install: ship static library in the libslirp-dev\n+      binary package. (LP #2029431)\n+\n+ -- Hector Cao <hector.cao@canonical.com>  Mon, 24 Nov 2025 15:49:29 +0100\n+\n libslirp (4.9.1-1) unstable; urgency=medium\n \n   * new upstream release\n \n  -- Michael Tokarev <mjt@tls.msk.ru>  Tue, 09 Sep 2025 22:50:03 +0300\n \n+libslirp (4.8.0-1ubuntu1) oracular; urgency=medium\n+\n+  * Merge with Debian unstable (LP: #2064421). Remaining changes:\n+    - d/rules, d/libslirp-dev.install: ship static library in the libslirp-dev\n+      binary package. (LP #2029431)\n+\n+ -- Christian Ehrhardt <christian.ehrhardt@canonical.com>  Thu, 27 Jun 2024 08:38:05 +0200\n+\n libslirp (4.8.0-1) unstable; urgency=medium\n \n   [ Michael Tokarev ]\n@@ -56,6 +90,25 @@ libslirp (4.8.0-1) unstable; urgency=medium\n \n  -- Michael Tokarev <mjt@tls.msk.ru>  Sun, 16 Jun 2024 18:17:55 +0300\n \n+libslirp (4.7.0-1ubuntu3) noble; urgency=medium\n+\n+  * No-change rebuild for CVE-2024-3094\n+\n+ -- Steve Langasek <steve.langasek@ubuntu.com>  Sun, 31 Mar 2024 19:37:44 +0000\n+\n+libslirp (4.7.0-1ubuntu2) noble; urgency=medium\n+\n+  * No-change rebuild against libglib2.0-0t64\n+\n+ -- Steve Langasek <steve.langasek@ubuntu.com>  Fri, 08 Mar 2024 05:29:38 +0000\n+\n+libslirp (4.7.0-1ubuntu1) mantic; urgency=medium\n+\n+  * d/rules, d/libslirp-dev.install: ship static library in the libslirp-dev\n+    binary package. (LP: #2029431)\n+\n+ -- Athos Ribeiro <athos.ribeiro@canonical.com>  Wed, 16 Aug 2023 14:36:41 -0300\n+\n libslirp (4.7.0-1) unstable; urgency=medium\n \n   * new upstream release\ndiff --git a/debian/control b/debian/control\nindex 54a9b32..0bf5dae 100644\n--- a/debian/control\n+++ b/debian/control\n@@ -1,7 +1,8 @@\n Source: libslirp\n Section: net\n Priority: optional\n-Maintainer: Debian QEMU Team <pkg-qemu-devel@lists.alioth.debian.org>\n+Maintainer: Ubuntu Developers <ubuntu-devel-discuss@lists.ubuntu.com>\n+XSBC-Original-Maintainer: Debian QEMU Team <pkg-qemu-devel@lists.alioth.debian.org>\n Uploaders: Michael Tokarev <mjt@tls.msk.ru>\n Build-Depends: debhelper-compat (= 13), libglib2.0-dev, meson, ninja-build\n Standards-Version: 4.7.0\ndiff --git a/debian/libslirp-dev.install b/debian/libslirp-dev.install\nindex aa09df2..4ea7660 100644\n--- a/debian/libslirp-dev.install\n+++ b/debian/libslirp-dev.install\n@@ -1,3 +1,4 @@\n usr/include/slirp\n usr/lib/*/pkgconfig/slirp.pc\n usr/lib/*/libslirp.so\n+usr/lib/*/libslirp.a\ndiff --git a/debian/rules b/debian/rules\nindex 00ef6ea..917a65f 100755\n--- a/debian/rules\n+++ b/debian/rules\n@@ -4,3 +4,6 @@ export DPKG_GENSYMBOLS_CHECK_LEVEL=4\n \n build-arch build-indep build clean install-indep install-arch install binary-arch binary-indep binary: %:\n \tdh $@ --buildsystem=meson+ninja\n+\n+override_dh_auto_configure:\n+\tdh_auto_configure -- --default-library=both\n",
+ "diff_truncated": false
+}

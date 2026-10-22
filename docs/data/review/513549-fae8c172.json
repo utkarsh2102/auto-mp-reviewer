@@ -1,0 +1,27 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~hectorcao/ubuntu/+source/nbd/+git/nbd/+merge/513549",
+ "id": "513549",
+ "title": "PPA: https://launchpad.net/~hectorcao/+archive/ubuntu/lp2163156",
+ "source_branch": "lp2163156-resolute",
+ "target_branch": "ubuntu/resolute-devel",
+ "revision": "e82969ad09dc9b97b2eef450cdf7a4bf7c25d4eb",
+ "base_revision": "3d9908418b1190c167c8f6de1b31343c198de6d9",
+ "description": "PPA: https://launchpad.net/~hectorcao/+archive/ubuntu/lp2163156",
+ "commit_message": null,
+ "diffstat": {
+  "debian/changelog": [
+   7,
+   0
+  ],
+  "debian/tests/initrd-boot": [
+   4,
+   4
+  ]
+ },
+ "files": 2,
+ "added_lines": 11,
+ "removed_lines": 4,
+ "diff": "diff --git a/debian/changelog b/debian/changelog\nindex f2effd5..30f7308 100644\n--- a/debian/changelog\n+++ b/debian/changelog\n@@ -1,3 +1,10 @@\n+nbd (1:3.26.1-6.1ubuntu2.1) resolute; urgency=medium\n+\n+  * d/t/initrd-boot: only attempt to create and activate a swapfile\n+    if not running in a container (LP: #2163156)\n+\n+ -- Hector Cao <hector.cao@canonical.com>  Thu, 22 Oct 2026 13:07:31 +0200\n+\n nbd (1:3.26.1-6.1ubuntu2) resolute; urgency=medium\n \n   * No-change mass rebuild for Ubuntu 26.04 (LP: #2132257)\ndiff --git a/debian/tests/initrd-boot b/debian/tests/initrd-boot\nindex 490cfe8..93de26b 100644\n--- a/debian/tests/initrd-boot\n+++ b/debian/tests/initrd-boot\n@@ -27,15 +27,15 @@ ssh-keygen -q -t rsa -f \"$TMPDIR\"/id_rsa -N \"\"\n # to ensure our apt sources-and-preferences match the new VM's\n IMAGE=\"$TMPDIR\"/nbd.img\n \n-# Check if the architecture is armhf, and only attempt to enable swap if it's not\n-if ! [ $(uname -m) = \"armv7l\" ]; then\n+\n+if systemd-detect-virt --container > /dev/null; then\n+    echo \"Skipping swap activation on LXC/LXD container\"\n+else\n     # Allocate some swap\n     fallocate -l 2G /swapfile\n     chmod 600 /swapfile\n     mkswap /swapfile\n     swapon /swapfile\n-else\n-    echo \"Skipping swap activation on armhf architecture\"\n fi\n \n # If this fails locally, allocate more space to /tmp\n",
+ "diff_truncated": false
+}
