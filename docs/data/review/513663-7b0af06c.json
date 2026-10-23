@@ -1,0 +1,23 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~bdrung/ubuntu-release-tools/+git/templates/+merge/513663",
+ "id": "513663",
+ "title": "apport → main",
+ "source_branch": "apport",
+ "target_branch": "main",
+ "revision": "ed5dc55068d5792e84f29d7516d71300f1242830",
+ "base_revision": "5668f99eb8515a39596b1e7d9fa9c4a6ca313725",
+ "description": null,
+ "commit_message": null,
+ "diffstat": {
+  "jira-milestones/devel-release/final-release.yaml": [
+   0,
+   2
+  ]
+ },
+ "files": 1,
+ "added_lines": 0,
+ "removed_lines": 2,
+ "diff": "diff --git a/jira-milestones/devel-release/final-release.yaml b/jira-milestones/devel-release/final-release.yaml\nindex 144f9f5..e38a78c 100644\n--- a/jira-milestones/devel-release/final-release.yaml\n+++ b/jira-milestones/devel-release/final-release.yaml\n@@ -42,8 +42,6 @@ timelines:\n       The release upgrade process should install any snaps which are seeded in the release being upgraded to. Check that the deb2snap.json file contained in ubuntu-release-upgrader has the same snaps as the seeds.\n - timeline: -9\n   tasks:\n-    - task: \"Disable apport uploads to Launchpad ('problem_types': ['Bug', 'Package'], in /etc/apport/crashdb.conf)\"\n-      description: You can reach out to Benjamin Drung if in doubt.\n     - task: Check to see if python-apt AND ubuntu-release-upgrader has been uploaded recently\n       description: If not, upload a new version after running pre-build.sh as that generates the updated lists of mirrors.\n       WARNING: double-check in `ubuntu-release-upgrader` that `Prompt=` (in `/etc/update-manager/release-upgrades`) has the right configuration for that series (`normal` or `lts`)\n",
+ "diff_truncated": false
+}
