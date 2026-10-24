@@ -1,0 +1,31 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~lgp171188/ubuntu/+source/openssl/+git/openssl/+merge/513695",
+ "id": "513695",
+ "title": "openssl-sru-bug-2158304-revert-engine-key-detection → ubuntu/noble-devel",
+ "source_branch": "openssl-sru-bug-2158304-revert-engine-key-detection",
+ "target_branch": "ubuntu/noble-devel",
+ "revision": "a56cb1b1f47fe16e1ac696b202c7eabeee57cc8b",
+ "base_revision": "04a97c27c3aeccc17304ce06a0ead3eddbe93e84",
+ "description": null,
+ "commit_message": null,
+ "diffstat": {
+  "debian/changelog": [
+   9,
+   0
+  ],
+  "debian/patches/revert-engine-legacy-key-detection.patch": [
+   65,
+   0
+  ],
+  "debian/patches/series": [
+   1,
+   0
+  ]
+ },
+ "files": 3,
+ "added_lines": 75,
+ "removed_lines": 0,
+ "diff": "diff --git a/debian/changelog b/debian/changelog\nindex c11b415..409354c 100644\n--- a/debian/changelog\n+++ b/debian/changelog\n@@ -1,3 +1,12 @@\n+openssl (3.0.13-0ubuntu3.17) noble; urgency=medium\n+\n+  * Fix use-after-free when signing via the OpenSSL PKCS#11 engine\n+    (LP: #2158304)\n+    - d/p/revert-engine-legacy-key-detection.patch: backport the upstream\n+      revert of 2b74e75, which upstream released in 3.0.14.\n+\n+ -- Guruprasad Lakshmi Narayanan <guruprasad.ln@canonical.com>  Fri, 23 Oct 2026 18:20:53 -0500\n+\n openssl (3.0.13-0ubuntu3.16) noble-security; urgency=medium\n \n   * SECURITY UPDATE: Excessive Memory Allocation in Relative CRLDP Processing\ndiff --git a/debian/patches/revert-engine-legacy-key-detection.patch b/debian/patches/revert-engine-legacy-key-detection.patch\nnew file mode 100644\nindex 0000000..d09e361\n--- /dev/null\n+++ b/debian/patches/revert-engine-legacy-key-detection.patch\n@@ -0,0 +1,65 @@\n+Description: Revert \"Improved detection of engine-provided private classic keys\"\n+ The reverted change forces a get1/set1 round-trip on the key returned by\n+ ENGINE_load_private_key(), which clears the key's pmeth_engine. The OpenSSL\n+ PKCS#11 engine then gets NULL back from RSA_get_ex_data() and segfaults on\n+ its RSA_sign path (LP: #2158304). Upstream reverted it for 3.0.14 as having\n+ caused more problems than it solved; noble's 3.0.13 is the only supported\n+ Ubuntu series still carrying it. Removing it here fixes the segfault at the\n+ source, so libp11 can drop its process-global ENGINE_set_default_string()\n+ workaround, which regressed unrelated provider-path RSA (LP: #2163152).\n+Origin: backport, https://github.com/openssl/openssl/commit/ad6cbe4b7f57a783a66a7ae883ea0d35ef5f82b6\n+Bug: https://github.com/openssl/openssl/issues/22945\n+Bug-Ubuntu: https://bugs.launchpad.net/ubuntu/+source/openssl/+bug/2158304\n+Applied-Upstream: 3.0.14\n+Last-Update: 2026-10-24\n+--- a/crypto/engine/eng_pkey.c\n++++ b/crypto/engine/eng_pkey.c\n+@@ -79,48 +79,6 @@\n+         ERR_raise(ERR_LIB_ENGINE, ENGINE_R_FAILED_LOADING_PRIVATE_KEY);\n+         return NULL;\n+     }\n+-    /* We enforce check for legacy key */\n+-    switch (EVP_PKEY_get_id(pkey)) {\n+-    case EVP_PKEY_RSA:\n+-        {\n+-        RSA *rsa = EVP_PKEY_get1_RSA(pkey);\n+-        EVP_PKEY_set1_RSA(pkey, rsa);\n+-        RSA_free(rsa);\n+-        }\n+-        break;\n+-#  ifndef OPENSSL_NO_EC\n+-    case EVP_PKEY_SM2:\n+-    case EVP_PKEY_EC:\n+-        {\n+-        EC_KEY *ec = EVP_PKEY_get1_EC_KEY(pkey);\n+-        EVP_PKEY_set1_EC_KEY(pkey, ec);\n+-        EC_KEY_free(ec);\n+-        }\n+-        break;\n+-#  endif\n+-#  ifndef OPENSSL_NO_DSA\n+-    case EVP_PKEY_DSA:\n+-        {\n+-        DSA *dsa = EVP_PKEY_get1_DSA(pkey);\n+-        EVP_PKEY_set1_DSA(pkey, dsa);\n+-        DSA_free(dsa);\n+-        }\n+-        break;\n+-#endif\n+-#  ifndef OPENSSL_NO_DH\n+-    case EVP_PKEY_DH:\n+-        {\n+-        DH *dh = EVP_PKEY_get1_DH(pkey);\n+-        EVP_PKEY_set1_DH(pkey, dh);\n+-        DH_free(dh);\n+-        }\n+-        break;\n+-#endif\n+-    default:\n+-        /*Do nothing */\n+-        break;\n+-    }\n+-\n+     return pkey;\n+ }\n+ \ndiff --git a/debian/patches/series b/debian/patches/series\nindex 5c6d234..83191d0 100644\n--- a/debian/patches/series\n+++ b/debian/patches/series\n@@ -84,3 +84,4 @@ CVE-2026-75805-2.patch\n CVE-2026-75806.patch\n CVE-2026-77696.patch\n CVE-2026-84782.patch\n+revert-engine-legacy-key-detection.patch\n",
+ "diff_truncated": false
+}
