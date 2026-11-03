@@ -1,0 +1,27 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~walles/ubuntu/+source/powermgmt-base/+git/powermgmt-base/+merge/513978",
+ "id": "513978",
+ "title": "on_ac_power reports AC power on battery when the battery isn't named",
+ "source_branch": "lp-not-bat-battery",
+ "target_branch": "ubuntu/devel",
+ "revision": "ad1dac2928d7ad7bd7111b4776f93d6b9fb5ab09",
+ "base_revision": "aaf47b1c158e787437e5a5737c6508fbe28cc62e",
+ "description": "on_ac_power reports AC power on battery when the battery isn't named\nBAT<n>, e.g. macsmc-battery on Apple T2 Macs (LP: #2172719).\n\nThis counts every power supply of type Battery as a battery, instead\nof only those named BAT<n>, but still skips batteries of peripherals\nlike mice (scope Device). systemd-ac-power also goes by type and scope,\nnot name:\nhttps://github.com/systemd/systemd/blob/main/src/shared/battery-util.c\n\nTesting: I ran on_ac_power against fake sysfs trees (script attached to\nthe bug). Exit codes before / after:\n\n  macsmc-ac offline + macsmc-battery            0 / 1  (the bug)\n  LP #1980991: Type-C sink offline, no battery  0 / 0\n  same + hidpp_battery_0 (scope Device)         0 / 0\n  other cases (AC/BAT0, plugged in)             unchanged\n\nOn the MacBook itself, unplugged: 0 before, 1 after.\n\nDebian 1.39 has no name check, so nothing to forward; the check is only\nin the Ubuntu delta and in its proposed forward, salsa !4.\n",
+ "commit_message": null,
+ "diffstat": {
+  "debian/changelog": [
+   6,
+   0
+  ],
+  "on_ac_power": [
+   3,
+   2
+  ]
+ },
+ "files": 2,
+ "added_lines": 9,
+ "removed_lines": 2,
+ "diff": "diff --git a/debian/changelog b/debian/changelog\nindex 362c71e..287da28 100644\n--- a/debian/changelog\n+++ b/debian/changelog\n@@ -1,3 +1,9 @@\n+powermgmt-base (1.39ubuntu2) tenacious; urgency=medium\n+\n+  * on_ac_power: detect batteries not named BAT<n> (LP: #2172719)\n+\n+ -- Johan Walles <johan.walles@gmail.com>  Sun, 01 Nov 2026 16:36:37 +0100\n+\n powermgmt-base (1.39ubuntu1) stonking; urgency=medium\n \n   * Merge with Debian unstable (LP: #2161446). Remaining changes:\ndiff --git a/on_ac_power b/on_ac_power\nindex 88db2df..c03f79b 100755\n--- a/on_ac_power\n+++ b/on_ac_power\n@@ -57,8 +57,9 @@ if [ -d /sys/class/power_supply/ ]; then\n     for FN in /sys/class/power_supply/*; do\n \tif test -d \"${FN}\" && test -r \"${FN}/type\"; then\n \t    type=\"$(cat \"${FN}/type\")\"\n-\t    # check if the device has a battery\n-\t    if echo \"$FN\" | grep -qE '/BAT[0-9]+$' && [ \"$type\" = \"Battery\" ]; then\n+\t    # check if the device has a battery, not counting peripherals\n+\t    if [ \"$type\" = \"Battery\" ] &&\n+\t       [ \"$(cat \"${FN}/scope\" 2>/dev/null)\" != \"Device\" ]; then\n \t\tHAS_BATTERY=yes\n \t    fi\n \t    # check if it's a typec and it's power role if it is.\n",
+ "diff_truncated": false
+}
