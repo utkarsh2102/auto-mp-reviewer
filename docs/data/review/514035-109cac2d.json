@@ -5,7 +5,7 @@
  "title": "PPA: https://launchpad.net/~graysonwolf/+archive/ubuntu/openssh-merges-tenacious/",
  "source_branch": "merge-tenacious",
  "target_branch": "debian/sid",
- "revision": "821160c5411c319519190d9dadb062dcc0c30314",
+ "revision": "f27bd9f5f0e929d54c7d51f364e0a390dc70b98f",
  "base_revision": "efcac7b57bff07cea977dbfbd80a324ba0d28c4f",
  "description": "PPA: https://launchpad.net/~graysonwolf/+archive/ubuntu/openssh-merges-tenacious/\nDEP8: green on the architectures for which both openssh and openssh-gssapi published quickly, since they have to be together always for tests to pass/the packages to migrate",
  "commit_message": null,

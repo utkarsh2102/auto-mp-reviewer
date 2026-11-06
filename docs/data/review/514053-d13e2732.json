@@ -1,0 +1,31 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~antoinelassagne/livecd-rootfs/+git/livecd-rootfs/+merge/514053",
+ "id": "514053",
+ "title": "snap-system-arm64 → ubuntu/master",
+ "source_branch": "snap-system-arm64",
+ "target_branch": "ubuntu/master",
+ "revision": "216264c94381adf2ac56b24e18073c7f36f89a6a",
+ "base_revision": "6eeb4a57f332dd06fff6f95d28143597bdd9c7b0",
+ "description": null,
+ "commit_message": null,
+ "diffstat": {
+  "debian/changelog": [
+   7,
+   0
+  ],
+  "live-build/auto/config": [
+   2,
+   1
+  ],
+  "live-build/ubuntu/hooks/030-ubuntu-live-system-seed.binary": [
+   2,
+   2
+  ]
+ },
+ "files": 3,
+ "added_lines": 11,
+ "removed_lines": 3,
+ "diff": "diff --git a/debian/changelog b/debian/changelog\nindex c6f72ee..f22c6b2 100644\n--- a/debian/changelog\n+++ b/debian/changelog\n@@ -1,3 +1,10 @@\n+livecd-rootfs (27.04.1) UNRELEASED; urgency=medium\n+\n+  * Enable enhanced secureboot on ARM64. This will include the snap system\n+  in the image, which relies on a snap kernel model and gadget to be available\n+\n+ -- Antoine Lassagne <antoine.lassagne@canonical.com>  Wed, 04 Nov 2026 09:31:09 +0100\n+\n livecd-rootfs (26.10.19) stonking; urgency=medium\n \n   [ Valentin Haudiquet ]\ndiff --git a/live-build/auto/config b/live-build/auto/config\nindex f7d0bb2..3d7448e 100755\n--- a/live-build/auto/config\n+++ b/live-build/auto/config\n@@ -884,8 +884,9 @@ case $PROJECT in\n \n \t\t\t\t# Enchanced secureboot stuff\n \t\t\t\tcase \"$ARCH\" in\n-\t\t\t\t    amd64)\n+\t\t\t\t    amd64|arm64)\n \t\t\t\t\t# the enhanced-secureboot layer, contains all packages for the enhanced secureboot install\n+\t\t\t\t\t# this will trigger the 030-ubuntu-live-system-seed.binary hook\n \t\t\t\t\tadd_package minimal.enhanced-secureboot cryptsetup boot-managed-by-snapd\n \t\t\t\t\tadd_package minimal.standard.enhanced-secureboot cryptsetup boot-managed-by-snapd\n \t\t\t\t\tderive_language_layers minimal.enhanced-secureboot desktop-minimal desktop-default-languages \"$seeded_langs\"\ndiff --git a/live-build/ubuntu/hooks/030-ubuntu-live-system-seed.binary b/live-build/ubuntu/hooks/030-ubuntu-live-system-seed.binary\nindex 00ac57b..2576448 100644\n--- a/live-build/ubuntu/hooks/030-ubuntu-live-system-seed.binary\n+++ b/live-build/ubuntu/hooks/030-ubuntu-live-system-seed.binary\n@@ -150,8 +150,8 @@ echo 'Checked out canonical-models revision' \"$(git -C \"${canonical_models_tree}\n \n model_version=$(release_ver | sed 's/\\.//')\n \n-dangerous_model=\"${canonical_models_tree}\"/ubuntu-classic-\"${model_version}\"-amd64-dangerous.model\n-stable_model=\"${canonical_models_tree}\"/ubuntu-classic-\"${model_version}\"-amd64.model\n+dangerous_model=\"${canonical_models_tree}\"/ubuntu-classic-\"${model_version}\"-\"${ARCH}\"-dangerous.model\n+stable_model=\"${canonical_models_tree}\"/ubuntu-classic-\"${model_version}\"-\"${ARCH}\".model\n \n prepare_args=()\n \n",
+ "diff_truncated": false
+}
