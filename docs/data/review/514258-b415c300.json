@@ -1,0 +1,31 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~puida/ubuntu/+source/tmux/+git/tmux/+merge/514258",
+ "id": "514258",
+ "title": "lp2172659-resolute → ubuntu/resolute-devel",
+ "source_branch": "lp2172659-resolute",
+ "target_branch": "ubuntu/resolute-devel",
+ "revision": "3af8167da6fc51b29103412642b1d03e6f0b6a4f",
+ "base_revision": "02517e3c08c439854ac7742a04ff830d2d0aba17",
+ "description": null,
+ "commit_message": null,
+ "diffstat": {
+  "debian/changelog": [
+   7,
+   0
+  ],
+  "debian/patches/lp2172659-do-not-check-control-subscriptions.patch": [
+   29,
+   0
+  ],
+  "debian/patches/series": [
+   1,
+   0
+  ]
+ },
+ "files": 3,
+ "added_lines": 37,
+ "removed_lines": 0,
+ "diff": "diff --git a/debian/changelog b/debian/changelog\nindex bc3a5bd..d92fb88 100644\n--- a/debian/changelog\n+++ b/debian/changelog\n@@ -1,3 +1,10 @@\n+tmux (3.6a-2ubuntu0.3) resolute; urgency=medium\n+\n+  * d/p/lp2172659-do-not-check-control-subscriptions.patch: Fix server crash\n+    when control client session is destroyed. (LP: #2172659)\n+\n+ -- Guilherme Puida Moreira <guilherme.moreira@canonical.com>  Fri, 06 Nov 2026 10:26:01 -0300\n+\n tmux (3.6a-2ubuntu0.2) resolute; urgency=medium\n \n   * d/p/lp2169164-uninitialized-notify.patch: Don't notify clients if not\ndiff --git a/debian/patches/lp2172659-do-not-check-control-subscriptions.patch b/debian/patches/lp2172659-do-not-check-control-subscriptions.patch\nnew file mode 100644\nindex 0000000..0d648fa\n--- /dev/null\n+++ b/debian/patches/lp2172659-do-not-check-control-subscriptions.patch\n@@ -0,0 +1,29 @@\n+From: nicm <nicm>\n+Date: Mon, 9 Mar 2026 14:33:55 +0000\n+Subject: Do not check control subscriptions when client has no session\n+\n+If a control client's session is destroyed and no replacement is\n+available, c->session becomes NULL. The subscription timer fires\n+every second and multiple paths dereference c->session without a\n+NULL check, crashing the server.\n+\n+Origin: backport, https://github.com/tmux/tmux/commit/881bec958e2fd9093ed2c8fd8f934196f6afa7da\n+Bug-Ubuntu: https://bugs.launchpad.net/ubuntu/+source/tmux/+bug/2172659\n+---\n+ control.c | 3 +++\n+ 1 file changed, 3 insertions(+)\n+\n+diff --git a/control.c b/control.c\n+index 79097fc..086a2bf 100644\n+--- a/control.c\n++++ b/control.c\n+@@ -1047,6 +1047,9 @@ control_check_subs_timer(__unused int fd, __unused short events, void *data)\n+ \tlog_debug(\"%s: timer fired\", __func__);\n+ \tevtimer_add(&cs->subs_timer, &tv);\n+ \n++\tif (c->session == NULL)\n++\t\treturn;\n++\n+ \tRB_FOREACH_SAFE(csub, control_subs, &cs->subs, csub1) {\n+ \t\tswitch (csub->type) {\n+ \t\tcase CONTROL_SUB_SESSION:\ndiff --git a/debian/patches/series b/debian/patches/series\nindex 7be0244..43a23b9 100644\n--- a/debian/patches/series\n+++ b/debian/patches/series\n@@ -2,3 +2,4 @@ platform-quirks.diff\n \n CVE-2026-11623.patch\n lp2169164-uninitialized-notify.patch\n+lp2172659-do-not-check-control-subscriptions.patch\n",
+ "diff_truncated": false
+}
