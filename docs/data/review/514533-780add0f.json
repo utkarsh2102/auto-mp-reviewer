@@ -1,0 +1,31 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~kajiya/ubuntu/+source/google-guest-agent/+git/google-guest-agent/+merge/514533",
+ "id": "514533",
+ "title": "Disable the on-demand plugin channel by default",
+ "source_branch": "ubuntu/tenacious-disable-on-demand-plugins",
+ "target_branch": "ubuntu/tenacious-devel",
+ "revision": "25591ebf5f908ae6eaeee71dfb77f54ab6f5932a",
+ "base_revision": "891e3846ef49e626d5583f460b92db0c48232aa0",
+ "description": null,
+ "commit_message": "Disable the on-demand plugin channel by default",
+ "diffstat": {
+  "debian/changelog": [
+   17,
+   0
+  ],
+  "debian/patches/0007-disable-on-demand-plugins-by-default.patch": [
+   39,
+   0
+  ],
+  "debian/patches/series": [
+   1,
+   0
+  ]
+ },
+ "files": 3,
+ "added_lines": 57,
+ "removed_lines": 0,
+ "diff": "diff --git a/debian/changelog b/debian/changelog\nindex 890964b..a2d1e25 100644\n--- a/debian/changelog\n+++ b/debian/changelog\n@@ -1,3 +1,20 @@\n+google-guest-agent (20260819.00+~20260819.00-0ubuntu2) tenacious; urgency=medium\n+\n+  * New d/p/0007-disable-on-demand-plugins-by-default.patch\n+    * Set `on_demand_plugins` to `false` in the compiled-in\n+      configuration defaults so an install from the archive does\n+      _not_ enable the on-demand (\"dynamic\") plugin channel by\n+      itself (LP: #2164943)\n+    * This channel lets the agent fetch a plugin archive from a\n+      (GCE control-plane supplied) URL and execute it as root, but\n+      those binaries never pass through the Ubuntu archive so they\n+      get no community review and no CVE tracking\n+    * The feature isn't removed here just now defaulted to off/false. Setting\n+      `on_demand_plugins = true` under `[Core]` in\n+      `/etc/default/instance_configs.cfg` restores the upstream behaviour\n+\n+ -- Chloé 'kajiya' Smith <chloe.smith@canonical.com>  Thu, 12 Nov 2026 16:45:27 +0000\n+\n google-guest-agent (20260819.00+~20260819.00-0ubuntu1) stonking; urgency=medium\n \n   * New upstream release for 20260819.00 (LP: #2164943)\ndiff --git a/debian/patches/0007-disable-on-demand-plugins-by-default.patch b/debian/patches/0007-disable-on-demand-plugins-by-default.patch\nnew file mode 100644\nindex 0000000..a2c63e4\n--- /dev/null\n+++ b/debian/patches/0007-disable-on-demand-plugins-by-default.patch\n@@ -0,0 +1,39 @@\n+Description: Disable on-demand (\"dynamic\") plugins by default in the archive build\n+ The plugin manager's on-demand plugin channel lets the agent receive\n+ `CONFIGURE_PLUGIN_STATES` messages over ACS, fetch a plugin archive from a\n+ control-plane supplied URL, unpack it under `/var/lib/google-guest-agent` and\n+ execute it (as root). However these plugin binaries never pass through the Ubuntu\n+ archive and therefore receive no community review or CVE tracking.\n+ This patch \"flips\" the compiled in default to false so that a plain old\n+ `apt install google-guest-agent` leaves the channel off and doesn't\n+ remove the feature (it still remains a one line opt-in). Enabling it again\n+ is unaffected by this patch as configuration is merged per-key over the\n+ compiled defaults from (in ascending order of precedence):\n+ `/etc/default/instance_configs.cfg`, `.distro` and finally `.template`. Setting:\n+   [Core]\n+   on_demand_plugins = true\n+ in any of those files will restore it back to the upstream behaviour. Canonical's\n+ published Ubuntu GCE images set this at image build time.\n+\n+ (A note for anyone adding an image-level override) write\n+ /etc/default/instance_configs.cfg and _not_ `.distro`. `.distro` has\n+ _higher_ precedence than a user's own `instance_configs.cfg` so enabling\n+ the channel there would silently override a users who later tries to turn\n+ back off.\n+Author: Chloé 'kajiya' Smith <chloe.smith@canonical.com>\n+Forwarded: not-needed\n+Bug-Ubuntu: https://bugs.launchpad.net/ubuntu/+source/google-guest-agent/+bug/2164943\n+Last-Update: 2026-11-12\n+---\n+This patch header follows DEP-3: http://dep.debian.net/deps/dep3/\n+--- a/google-guest-agent/internal/cfg/cfg.go\n++++ b/google-guest-agent/internal/cfg/cfg.go\n+@@ -64,7 +64,7 @@ cloud_logging_enabled = true\n+ log_level = 3\n+ log_verbosity = 0\n+ log_file =\n+-on_demand_plugins = true\n++on_demand_plugins = false\n+ acs_client = true\n+ enable_local_plugins = true\n+ \ndiff --git a/debian/patches/series b/debian/patches/series\nindex 535d52a..be27c65 100644\n--- a/debian/patches/series\n+++ b/debian/patches/series\n@@ -3,3 +3,4 @@ fix-startup-script-ordering.patch\n 0004-order-shutdown-scripts-after-snapd.patch\n 0005-make-service-directive-explicit.patch\n 0006-add-after-cloud-config-service.patch\n+0007-disable-on-demand-plugins-by-default.patch\n",
+ "diff_truncated": false
+}
