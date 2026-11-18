@@ -1,0 +1,23 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~smb374/ubuntu-archive-tools/+git/ubuntu-archive-tools/+merge/514629",
+ "id": "514629",
+ "title": "oem-metapackage-mir-check: accept DMI modaliases for Dell and HP",
+ "source_branch": "oem-mir-check-dmi-modaliases",
+ "target_branch": "main",
+ "revision": "dec2ea47ddcbea466aff6dd0b7418d2eb3d848da",
+ "base_revision": "200b1522a52e249136ea9ed136230399c5f28da6",
+ "description": "oem-metapackage-mir-check: accept DMI modaliases for Dell and HP\n\npkg-oem-meta (canonical/oem-scripts) now generates DMI modaliases for Dell and HP\nplatforms in addition to the PCI ones:\n\n  alias dmi:bvnDellInc.:*:svnDellInc.:*:sku<XXXX>:* meta oem-somerville-...\n  alias dmi:*:svnHP:*:rvnHP:rn<XXXX>:* meta oem-stella-...\n\nThis updates the oem-metapackage-mir-check to accept the changes in OEM metas.",
+ "commit_message": null,
+ "diffstat": {
+  "oem-metapackage-mir-check": [
+   2,
+   2
+  ]
+ },
+ "files": 1,
+ "added_lines": 2,
+ "removed_lines": 2,
+ "diff": "diff --git a/oem-metapackage-mir-check b/oem-metapackage-mir-check\nindex 436aedf..0c7e2f5 100755\n--- a/oem-metapackage-mir-check\n+++ b/oem-metapackage-mir-check\n@@ -122,11 +122,11 @@ EOF\n \n case $OEM in\n \tsomerville)\n-\t\tunmatched=$(grep -v 'pci:\\*sv00001028sd0000....bc0Csc05\\*' \\\n+\t\tunmatched=$(grep -Ev 'dmi:bvnDellInc\\.:\\*:svnDellInc\\.:\\*:sku.{4}:\\*|pci:\\*sv00001028sd0000.{4}bc0Csc05\\*' \\\n \t\t\t\t${NEWMETA}-*/debian/modaliases || true)\n \t\t;;\n \tstella)\n-\t\tunmatched=$(grep -v 'pci:\\*sv0000103Csd0000....bc0Csc05\\*' \\\n+\t\tunmatched=$(grep -Ev 'dmi:\\*:svnHP:\\*:rvnHP:rn.{4}:\\*|pci:\\*sv0000103Csd0000.{4}bc0Csc05\\*' \\\n \t\t\t\t${NEWMETA}-*/debian/modaliases || true)\n \t\t;;\n \tsutton)\n",
+ "diff_truncated": false
+}

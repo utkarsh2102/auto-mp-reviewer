@@ -1,0 +1,35 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~xypron/ubuntu/+source/qemu/+git/qemu/+merge/514711",
+ "id": "514711",
+ "title": "This MR enable using the RISC-V advanced package architecture (AIA) on KVM.",
+ "source_branch": "lp2174362",
+ "target_branch": "ubuntu/devel",
+ "revision": "0eb261d5bc86428a0c2c167b5ceaba9b665b7c1e",
+ "base_revision": "6147b08d4ecc49511de699e9f8da34b67b3cdcd6",
+ "description": "This MR enable using the RISC-V advanced package architecture (AIA) on KVM.\n\nInstead of backporting a numerous patches the number of interrupt lines is limited to 63 which is the guaranteed minimum and which matches available hardware.\n\nA further patch is added to avoid undefined behavior when reading the AIA configuration.",
+ "commit_message": null,
+ "diffstat": {
+  "debian/changelog": [
+   9,
+   0
+  ],
+  "debian/patches/series": [
+   4,
+   0
+  ],
+  "debian/patches/ubuntu/lp2174362/hw-riscv-virt-Reduce-the-number-of-aia-interrupts.patch": [
+   48,
+   0
+  ],
+  "debian/patches/ubuntu/lp2174362/target-riscv-kvm-aia-mode-is-an-uint32_t.patch": [
+   50,
+   0
+  ]
+ },
+ "files": 4,
+ "added_lines": 111,
+ "removed_lines": 0,
+ "diff": "diff --git a/debian/changelog b/debian/changelog\nindex ad6cdc9..64ec0f5 100644\n--- a/debian/changelog\n+++ b/debian/changelog\n@@ -1,3 +1,12 @@\n+qemu (1:11.0.3+ds-2ubuntu4) tenacious; urgency=medium\n+\n+  * Fix RISC-V KVM VMs with advanced interrupt architecture on real\n+    hardware (LP: #2174362)\n+    + d/p/u/lp2174362/hw-riscv-virt-Reduce-the-number-of-aia-interrupts.patch\n+    + d/p/u/lp2174362/target-riscv-kvm-aia-mode-is-an-uint32_t.patch\n+\n+ -- Heinrich Schuchardt <heinrich.schuchardt@canonical.com>  Tue, 17 Nov 2026 08:15:25 +0100\n+\n qemu (1:11.0.3+ds-2ubuntu3) tenacious; urgency=medium\n \n   * Avoid guest crash with 'Cannot allocate memory' when reaching the\ndiff --git a/debian/patches/series b/debian/patches/series\nindex 68d60f0..efc4318 100644\n--- a/debian/patches/series\n+++ b/debian/patches/series\n@@ -40,3 +40,7 @@ ubuntu/target-riscv-kvm-add-KVM-support-for-Zicbop-extensio.patch\n #lp2168803\n ubuntu/lp2168803/0001-trim-sysctl-max-map-count-newline.patch\n ubuntu/lp2168803/0002-reduce-default-idle-pool.patch\n+\n+#lp2174362\n+ubuntu/lp2174362/target-riscv-kvm-aia-mode-is-an-uint32_t.patch\n+ubuntu/lp2174362/hw-riscv-virt-Reduce-the-number-of-aia-interrupts.patch\ndiff --git a/debian/patches/ubuntu/lp2174362/hw-riscv-virt-Reduce-the-number-of-aia-interrupts.patch b/debian/patches/ubuntu/lp2174362/hw-riscv-virt-Reduce-the-number-of-aia-interrupts.patch\nnew file mode 100644\nindex 0000000..64a8ae2\n--- /dev/null\n+++ b/debian/patches/ubuntu/lp2174362/hw-riscv-virt-Reduce-the-number-of-aia-interrupts.patch\n@@ -0,0 +1,48 @@\n+From 840406c541d4c75fcd11eb563889eb22a792f36f Mon Sep 17 00:00:00 2001\n+From: Heinrich Schuchardt <heinrich.schuchardt@canonical.com>\n+Date: Mon, 16 Nov 2026 16:40:42 +0000\n+Subject: [PATCH 1/1] hw/riscv/virt: Reduce the number of aia interrupts\n+\n+Currently running QEMU with KVM on RISC-V hardware fails with an error\n+\n+    qemu-system-riscv64: KVM AIA: failed to set number of input irq lines\n+\n+The guaranteed number of interrupts for the RISC-V advanced interrupt\n+architecture is 63.\n+\n+Instead of backporting all the patches needed to actually measure the\n+number of available interrupts just assume the guaranteed minimum.\n+\n+Link: https://lore.kernel.org/all/20260928-spacemit-k3-v1-0-8c57d0596b87@butz.st/\n+Signed-off-by: Heinrich Schuchardt <heinrich.schuchardt@canonical.com>\n+Bug-Ubuntu: https://bugs.launchpad.net/ubuntu/+source/qemu/+bug/2174362\n+Forwarded: no, upstream is working to a full solution\n+---\n+ include/hw/riscv/virt.h | 8 ++++----\n+ 1 file changed, 4 insertions(+), 4 deletions(-)\n+\n+diff --git a/include/hw/riscv/virt.h b/include/hw/riscv/virt.h\n+index 18a2a323a3..8cce710802 100644\n+--- a/include/hw/riscv/virt.h\n++++ b/include/hw/riscv/virt.h\n+@@ -97,13 +97,13 @@ enum {\n+     VIRTIO_COUNT = 8,\n+     PCIE_IRQ = 0x20, /* 32 to 35 */\n+     IOMMU_SYS_IRQ = 0x24, /* 36-39 */\n+-    VIRT_PLATFORM_BUS_IRQ = 64, /* 64 to 95 */\n++    VIRT_PLATFORM_BUS_IRQ = 0x2e, /* 40 to 63 */\n+ };\n+ \n+-#define VIRT_PLATFORM_BUS_NUM_IRQS 32\n++#define VIRT_PLATFORM_BUS_NUM_IRQS 16\n+ \n+-#define VIRT_IRQCHIP_NUM_MSIS 255\n+-#define VIRT_IRQCHIP_NUM_SOURCES 96\n++#define VIRT_IRQCHIP_NUM_MSIS 63\n++#define VIRT_IRQCHIP_NUM_SOURCES 63\n+ #define VIRT_IRQCHIP_NUM_PRIO_BITS 3\n+ #define VIRT_IRQCHIP_MAX_GUESTS_BITS 3\n+ #define VIRT_IRQCHIP_MAX_GUESTS ((1U << VIRT_IRQCHIP_MAX_GUESTS_BITS) - 1U)\n+-- \n+2.55.0\n+\ndiff --git a/debian/patches/ubuntu/lp2174362/target-riscv-kvm-aia-mode-is-an-uint32_t.patch b/debian/patches/ubuntu/lp2174362/target-riscv-kvm-aia-mode-is-an-uint32_t.patch\nnew file mode 100644\nindex 0000000..dfd5ff8\n--- /dev/null\n+++ b/debian/patches/ubuntu/lp2174362/target-riscv-kvm-aia-mode-is-an-uint32_t.patch\n@@ -0,0 +1,50 @@\n+From: Heinrich Schuchardt <heinrich.schuchardt@canonical.com>\n+Date: Mon, 16 Nov 2026 13:19:32 +0000\n+Subject: [PATCH 1/1] target/riscv/kvm: aia mode is an uint32_t\n+\n+In Linux' struct kvm_aia the field mode is defined as u32.\n+Calling kvm_device_access() only copies these 32bits to the first four\n+bytes indicated by the address passed.\n+\n+Trying to read the mode into uint64_t default_aia_mode will only initialize\n+the leading four bytes and leave the rest of the variable as a random value\n+from the stack.\n+\n+* Change the definition of aia_mode and default_aia_mode to match the\n+  variable type in the kernel.\n+* Adjust the signature of kvm_aia_mode_str().\n+\n+Signed-off-by: Heinrich Schuchardt <heinrich.schuchardt@canonical.com>\n+Forwarded: yes, https://lore.kernel.org/qemu-riscv/20261116135102.32508-1-heinrich.schuchardt@canonical.com/T/#u\n+---\n+ target/riscv/kvm/kvm-cpu.c | 6 +++---\n+ 1 file changed, 3 insertions(+), 3 deletions(-)\n+\n+diff --git a/target/riscv/kvm/kvm-cpu.c b/target/riscv/kvm/kvm-cpu.c\n+index 5beb602338..b92f961979 100644\n+--- a/target/riscv/kvm/kvm-cpu.c\n++++ b/target/riscv/kvm/kvm-cpu.c\n+@@ -1884,9 +1884,9 @@ void kvm_riscv_set_irq(RISCVCPU *cpu, int irq, int level)\n+     }\n+ }\n+ \n+-static int aia_mode;\n++static uint32_t aia_mode;\n+ \n+-static const char *kvm_aia_mode_str(uint64_t mode)\n++static const char *kvm_aia_mode_str(uint32_t mode)\n+ {\n+     switch (mode) {\n+     case KVM_DEV_RISCV_AIA_MODE_EMUL:\n+@@ -1937,7 +1937,7 @@ void kvm_riscv_aia_create(MachineState *machine, uint64_t group_shift,\n+ {\n+     int ret, i;\n+     int aia_fd = -1;\n+-    uint64_t default_aia_mode;\n++    uint32_t default_aia_mode;\n+     uint64_t socket_count = riscv_socket_count(machine);\n+     uint64_t max_hart_per_socket = 0;\n+     uint64_t socket, base_hart, hart_count, socket_imsic_base, imsic_addr;\n+-- \n+2.55.0\n+\n",
+ "diff_truncated": false
+}
