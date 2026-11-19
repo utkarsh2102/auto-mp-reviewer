@@ -1,0 +1,27 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~jj/ubuntu/+source/sssd/+git/sssd/+merge/514805",
+ "id": "514805",
+ "title": "fix for bug 2174433",
+ "source_branch": "lp2174433-fix-logrotate",
+ "target_branch": "ubuntu/devel",
+ "revision": "136186c8a61b4def1605eef497ad40e2cb2b18a4",
+ "base_revision": "222c7acb4797fb6169d7c6d97073ecf6cdeb07ea",
+ "description": "fix for bug 2174433",
+ "commit_message": null,
+ "diffstat": {
+  "debian/changelog": [
+   7,
+   0
+  ],
+  "debian/sssd-common.logrotate": [
+   3,
+   1
+  ]
+ },
+ "files": 2,
+ "added_lines": 10,
+ "removed_lines": 1,
+ "diff": "diff --git a/debian/changelog b/debian/changelog\nindex e184914..7a2bed0 100644\n--- a/debian/changelog\n+++ b/debian/changelog\n@@ -1,3 +1,10 @@\n+sssd (2.12.0-4ubuntu5) tenacious; urgency=medium\n+\n+  * d/sssd-common.logrotate: signal all SSSD services after log rotation so\n+    socket-activated responders reopen their logs (LP: #2174433)\n+\n+ -- Jonas Jelten <jj@ubuntu.com>  Wed, 18 Nov 2026 15:50:31 +0100\n+\n sssd (2.12.0-4ubuntu4) stonking; urgency=medium\n \n   [ Maizi Liao ]\ndiff --git a/debian/sssd-common.logrotate b/debian/sssd-common.logrotate\nindex f305c87..8a58798 100644\n--- a/debian/sssd-common.logrotate\n+++ b/debian/sssd-common.logrotate\n@@ -5,7 +5,9 @@\n \tnotifempty\n \tcompress\n \tdelaycompress\n+\tsharedscripts\n+\tsu sssd sssd\n \tpostrotate\n-\t\tkill -HUP `cat /var/run/sssd.pid` > /dev/null 2>&1 || true\n+\t\tsystemctl kill --signal=HUP --kill-whom=all 'sssd*.service' || true\n \tendscript\n }\n",
+ "diff_truncated": false
+}
