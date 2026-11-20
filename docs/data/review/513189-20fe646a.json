@@ -5,8 +5,8 @@
  "title": "Update jammy to 9.18.50",
  "source_branch": "backport-9.18.50-jammy",
  "target_branch": "ubuntu/jammy-devel",
- "revision": "14f4d28a284cb41875eedf905fa7bf22791f13c2",
- "base_revision": "96a2d03177d2c7f07b2c0e45d79d9c02f3e6f462",
+ "revision": "149acb1e8436ff77e73d91719de0910bf0f96d3f",
+ "base_revision": "3d8558ca7c42c6a5c618bb874a174863c4654c04",
  "description": "Update jammy to 9.18.50\n\nPPA: https://launchpad.net/~lvoytek/+archive/ubuntu/bind9-mre\n\nTests passing locally, other than dyndb-ldap for now which is expected as a bind-dyndb-ldap upload is needed after bind9 is accepted and published in proposed to get it to work again",
  "commit_message": null,
  "diffstat": {
