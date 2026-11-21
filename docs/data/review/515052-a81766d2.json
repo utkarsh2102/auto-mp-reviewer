@@ -1,0 +1,31 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~skran/ubuntu/+source/upki/+git/upki/+merge/515052",
+ "id": "515052",
+ "title": "fix/upki-self-signed-certs → ubuntu/devel",
+ "source_branch": "fix/upki-self-signed-certs",
+ "target_branch": "ubuntu/devel",
+ "revision": "bc48e443de8ed32ac7cf310caa4c105630359fa0",
+ "base_revision": "11dcc6679de861f658fc637d98f5ed57bfb23988",
+ "description": null,
+ "commit_message": null,
+ "diffstat": {
+  "debian/changelog": [
+   7,
+   0
+  ],
+  "debian/patches/series": [
+   1,
+   0
+  ],
+  "debian/patches/upki-openssl-no-issuer.patch": [
+   32,
+   0
+  ]
+ },
+ "files": 3,
+ "added_lines": 40,
+ "removed_lines": 0,
+ "diff": "diff --git a/debian/changelog b/debian/changelog\nindex c7c3689..df4f8ca 100644\n--- a/debian/changelog\n+++ b/debian/changelog\n@@ -1,3 +1,10 @@\n+upki (1.0.0~beta.3+repack-0ubuntu3) tenacious; urgency=medium\n+\n+  * upki-openssl: Allow explicitly trusted single-certificate chains.\n+      Fixes LP #2175135.\n+\n+ -- Shiva Kiran Koninty <shiva.koninty@canonical.com>  Fri, 20 Nov 2026 13:45:50 +0530\n+\n upki (1.0.0~beta.3+repack-0ubuntu2) stonking; urgency=medium\n \n   * Fix overflow on 32-bit architecture\ndiff --git a/debian/patches/series b/debian/patches/series\nindex 2f29da4..c52d442 100644\n--- a/debian/patches/series\n+++ b/debian/patches/series\n@@ -4,3 +4,4 @@ release-lto.patch\n upki-openssl-empty-store.patch\n refuse-fetch-as-root.patch\n revocation-32-bit-overflow.patch\n+upki-openssl-no-issuer.patch\ndiff --git a/debian/patches/upki-openssl-no-issuer.patch b/debian/patches/upki-openssl-no-issuer.patch\nnew file mode 100644\nindex 0000000..a0e2522\n--- /dev/null\n+++ b/debian/patches/upki-openssl-no-issuer.patch\n@@ -0,0 +1,32 @@\n+From: Shiva Kiran Koninty <shiva.koninty@canonical.com>\n+Date: Fri, 20 Nov 2026 11:14:15 +0530\n+Subject: upki-openssl: Do not fail when the chain has no issuer\n+\n+upki looks for the issuer of the leaf among the certificates after it, so a\n+single-certificate chain (a self-signed certificate errors out, even though\n+OpenSSL had already accepted the chain (preverify_ok).\n+\n+This causes curl to not connect to servers having trusted self-signed\n+certificates.\n+\n+Soft-fail in that case, as the issuer is the leaf itself.\n+\n+---\n+ upki-openssl/src/lib.rs | 6 ++++++\n+ 1 file changed, 6 insertions(+)\n+\n+--- a/upki-openssl/src/lib.rs\n++++ b/upki-openssl/src/lib.rs\n+@@ -151,6 +151,12 @@ pub unsafe extern \"C\" fn upki_openssl_ve\n+             preverify_ok = 0;\n+         }\n+         upki_result::UPKI_ERR_REVOCATION_FILE_READ | upki_result::UPKI_REVOCATION_NOT_COVERED | upki_result::UPKI_REVOCATION_NOT_REVOKED => {}\n++        // The issuer is looked up among the certificates after the leaf, so\n++        // single-certificate chains (such as trusted self-signed certs) fail\n++        // with `NO_ISSUER`. OpenSSL has already accepted the chain\n++        // (`preverify_ok`) and there is no issuer to look up in the revocation\n++        // data, so soft-fail.\n++        upki_result::UPKI_ERR_REVOCATION_NO_ISSUER => {}\n+         _e => {\n+             x509_ctx.set_error(X509_V_ERR_APPLICATION_VERIFICATION);\n+             preverify_ok = 0;\n",
+ "diff_truncated": false
+}
