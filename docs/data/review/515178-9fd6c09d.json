@@ -1,0 +1,27 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~hectorcao/ubuntu/+source/edk2/+git/edk2/+merge/515178",
+ "id": "515178",
+ "title": "PPA: https://launchpad.net/~hectorcao/+archive/ubuntu/lp2175663",
+ "source_branch": "lp2175663-stonking",
+ "target_branch": "ubuntu/stonking-devel",
+ "revision": "e6f072da036e25c899ae174ab6783e0c8ac2d75f",
+ "base_revision": "cf27995b2f6683e8c931611fecc5e048ec9f66c0",
+ "description": "PPA: https://launchpad.net/~hectorcao/+archive/ubuntu/lp2175663",
+ "commit_message": null,
+ "diffstat": {
+  "debian/changelog": [
+   7,
+   0
+  ],
+  "debian/tests/control": [
+   2,
+   0
+  ]
+ },
+ "files": 2,
+ "added_lines": 9,
+ "removed_lines": 0,
+ "diff": "diff --git a/debian/changelog b/debian/changelog\nindex 24dc493..40864aa 100644\n--- a/debian/changelog\n+++ b/debian/changelog\n@@ -1,3 +1,10 @@\n+edk2 (2026.05-2ubuntu3.1) stonking; urgency=medium\n+\n+  * d/t/control: add dpkg-dev as dep of some tests\n+    (LP: #2175663)\n+\n+ -- Hector Cao <hector.cao@canonical.com>  Tue, 24 Nov 2026 00:11:13 +0100\n+\n edk2 (2026.05-2ubuntu3) stonking; urgency=medium\n \n   * Prefer generic firmware for regular guests instead\ndiff --git a/debian/tests/control b/debian/tests/control\nindex eb41ade..7c5f49a 100644\n--- a/debian/tests/control\n+++ b/debian/tests/control\n@@ -2,6 +2,7 @@ Test-Command: PYTHONPATH=./debian/python python3 debian/tests/shell.py\n Restrictions:\n  allow-stderr,\n Depends:\n+ dpkg-dev,\n  dosfstools [amd64 arm64],\n  grub-efi-amd64-signed [amd64],\n  grub-efi-arm64-signed [arm64],\n@@ -25,6 +26,7 @@ Depends:\n Test-Command: PYTHONPATH=./debian/python python3 debian/tests/secvar_update.py\n Restrictions: allow-stderr\n Depends:\n+ dpkg-dev,\n  ovmf [amd64],\n  python3-pexpect,\n  python3-virt-firmware,\n",
+ "diff_truncated": false
+}
