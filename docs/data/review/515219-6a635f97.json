@@ -1,0 +1,31 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~hectorcao/ubuntu/+source/edk2/+git/edk2/+merge/515219",
+ "id": "515219",
+ "title": "PPA: https://launchpad.net/~hectorcao/+archive/ubuntu/lp2175541",
+ "source_branch": "lp2175541-resolute",
+ "target_branch": "ubuntu/resolute-devel",
+ "revision": "452019c6d95b0a4fa47563ba4e4309441ebffd9e",
+ "base_revision": "b545dfdb01cf30e9b70c3bd9463fef9ecbaaf832",
+ "description": "PPA: https://launchpad.net/~hectorcao/+archive/ubuntu/lp2175541",
+ "commit_message": null,
+ "diffstat": {
+  "debian/changelog": [
+   8,
+   0
+  ],
+  "debian/patches/lp2175541-OvmfPkg-PlatformInitLib-reserve-igvm-parameter-area.patch": [
+   95,
+   0
+  ],
+  "debian/patches/series": [
+   1,
+   0
+  ]
+ },
+ "files": 3,
+ "added_lines": 104,
+ "removed_lines": 0,
+ "diff": "diff --git a/debian/changelog b/debian/changelog\nindex edb89d2..7897d5a 100644\n--- a/debian/changelog\n+++ b/debian/changelog\n@@ -1,3 +1,11 @@\n+edk2 (2025.11-3ubuntu7.5) resolute; urgency=medium\n+\n+  * Fix OVMF hang on guest reboot when the guest left data in the IGVM\n+    parameter page (LP: #2175541)\n+    - d/p/lp2175541-OvmfPkg-PlatformInitLib-reserve-igvm-parameter-area.patch\n+\n+ -- Hector Cao <hector.cao@canonical.com>  Tue, 24 Nov 2026 13:18:12 +0100\n+\n edk2 (2025.11-3ubuntu7.4) resolute; urgency=medium\n \n   * Prefer generic firmware for regular guests instead\ndiff --git a/debian/patches/lp2175541-OvmfPkg-PlatformInitLib-reserve-igvm-parameter-area.patch b/debian/patches/lp2175541-OvmfPkg-PlatformInitLib-reserve-igvm-parameter-area.patch\nnew file mode 100644\nindex 0000000..d6449f4\n--- /dev/null\n+++ b/debian/patches/lp2175541-OvmfPkg-PlatformInitLib-reserve-igvm-parameter-area.patch\n@@ -0,0 +1,95 @@\n+From e4f99a85545f41ef7ae23cd939484d69a84b6176 Mon Sep 17 00:00:00 2001\n+From: Gerd Hoffmann <kraxel@redhat.com>\n+Date: Fri, 5 Dec 2025 13:59:18 +0100\n+Subject: [PATCH] OvmfPkg/PlatformInitLib: reserve igvm parameter area\n+\n+Bug-Ubuntu: https://launchpad.net/bugs/2175541\n+Origin: upstream, https://github.com/tianocore/edk2/commit/e4f99a85545f41ef7ae23cd939484d69a84b6176\n+Applied-Upstream: edk2-stable202602, https://github.com/tianocore/edk2/commit/e4f99a85545f41ef7ae23cd939484d69a84b6176\n+\n+Signed-off-by: Gerd Hoffmann <kraxel@redhat.com>\n+---\n+ OvmfPkg/Include/Library/PlatformInitLib.h     |  6 +++++\n+ OvmfPkg/Library/PlatformInitLib/Igvm.c        | 27 +++++++++++++++++++\n+ OvmfPkg/Library/PlatformInitLib/MemDetect.c   |  2 ++\n+ .../PlatformInitLib/PlatformInitLib.inf       |  1 +\n+ 4 files changed, 36 insertions(+)\n+\n+diff --git a/OvmfPkg/Include/Library/PlatformInitLib.h b/OvmfPkg/Include/Library/PlatformInitLib.h\n+index 469c49b6285e..884e381928a0 100644\n+--- a/OvmfPkg/Include/Library/PlatformInitLib.h\n++++ b/OvmfPkg/Include/Library/PlatformInitLib.h\n+@@ -321,4 +321,10 @@ PlatformIgvmVpCount (\n+   VOID\r\n+   );\r\n+ \r\n++VOID\r\n++EFIAPI\r\n++PlatformIgvmParamReserve (\r\n++  VOID\r\n++  );\r\n++\r\n+ #endif // PLATFORM_INIT_LIB_H_\r\n+diff --git a/OvmfPkg/Library/PlatformInitLib/Igvm.c b/OvmfPkg/Library/PlatformInitLib/Igvm.c\n+index 1b0d9a9b851a..dd5a94ef38f6 100644\n+--- a/OvmfPkg/Library/PlatformInitLib/Igvm.c\n++++ b/OvmfPkg/Library/PlatformInitLib/Igvm.c\n+@@ -75,6 +75,33 @@ PlatformIgvmMemoryMapFind (\n+   return Map;\r\n+ }\r\n+ \r\n++VOID\r\n++EFIAPI\r\n++PlatformIgvmParamReserve (\r\n++  VOID\r\n++  )\r\n++{\r\n++  UINT64  Base;\r\n++  UINT64  Size;\r\n++\r\n++  Base = FixedPcdGet64 (PcdOvmfIgvmParamBase);\r\n++  Size = FixedPcdGet64 (PcdOvmfIgvmParamSize);\r\n++\r\n++  if (Base && Size) {\r\n++    //\r\n++    // Reserve igvm parameter area as runtime data, to make sure the OS isn't\r\n++    // going to use it, otherwise we can get corrupted IGVM parameters after\r\n++    // guest reboot.\r\n++    //\r\n++    DEBUG ((DEBUG_INFO, \"%a: 0x%x +0x%x\\n\", __func__, Base, Size));\r\n++    BuildMemoryAllocationHob (\r\n++      Base,\r\n++      Size,\r\n++      EfiRuntimeServicesData\r\n++      );\r\n++  }\r\n++}\r\n++\r\n+ BOOLEAN\r\n+ EFIAPI\r\n+ PlatformIgvmMemoryMapCheck (\r\n+diff --git a/OvmfPkg/Library/PlatformInitLib/MemDetect.c b/OvmfPkg/Library/PlatformInitLib/MemDetect.c\n+index 81fa60ade507..937e2b77a553 100644\n+--- a/OvmfPkg/Library/PlatformInitLib/MemDetect.c\n++++ b/OvmfPkg/Library/PlatformInitLib/MemDetect.c\n+@@ -1240,6 +1240,8 @@ PlatformQemuInitializeRam (\n+ \r\n+   DEBUG ((DEBUG_INFO, \"%a called\\n\", __func__));\r\n+ \r\n++  PlatformIgvmParamReserve ();\r\n++\r\n+   //\r\n+   // Determine total memory size available\r\n+   //\r\n+diff --git a/OvmfPkg/Library/PlatformInitLib/PlatformInitLib.inf b/OvmfPkg/Library/PlatformInitLib/PlatformInitLib.inf\n+index a02959c2cdbe..9df218c65c7a 100644\n+--- a/OvmfPkg/Library/PlatformInitLib/PlatformInitLib.inf\n++++ b/OvmfPkg/Library/PlatformInitLib/PlatformInitLib.inf\n+@@ -113,6 +113,7 @@\n+   gUefiOvmfPkgTokenSpaceGuid.PcdOvmfEarlyMemDebugLogSize\r\n+ \r\n+   gUefiOvmfPkgTokenSpaceGuid.PcdOvmfIgvmParamBase\r\n++  gUefiOvmfPkgTokenSpaceGuid.PcdOvmfIgvmParamSize\r\n+   gUefiOvmfPkgTokenSpaceGuid.PcdOvmfIgvmHobBase\r\n+   gUefiOvmfPkgTokenSpaceGuid.PcdOvmfIgvmHobSize\r\n+ \r\ndiff --git a/debian/patches/series b/debian/patches/series\nindex 88dc237..9f8d260 100644\n--- a/debian/patches/series\n+++ b/debian/patches/series\n@@ -9,3 +9,4 @@ CVE-2026-63072.patch\n CVE-2026-63076.patch\n CVE-2026-54874.patch\n CVE-2026-75803_1.patch\n+lp2175541-OvmfPkg-PlatformInitLib-reserve-igvm-parameter-area.patch\n",
+ "diff_truncated": false
+}

@@ -1,0 +1,31 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~hectorcao/ubuntu/+source/openssh/+git/openssh/+merge/515223",
+ "id": "515223",
+ "title": "PPA: https://launchpad.net/~hectorcao/+archive/ubuntu/lp2166842",
+ "source_branch": "lp2166842-tenacious",
+ "target_branch": "ubuntu/devel",
+ "revision": "bfd0a00daf8bbb4cb352a211409e11730eb34753",
+ "base_revision": "ce626d6e67507fcf62333af651e9d424a54eaca8",
+ "description": "PPA: https://launchpad.net/~hectorcao/+archive/ubuntu/lp2166842",
+ "commit_message": null,
+ "diffstat": {
+  "debian/changelog": [
+   8,
+   0
+  ],
+  "debian/patches/lp2166842-avoid-spurious-disconnect-if-connecting-as-.patch": [
+   52,
+   0
+  ],
+  "debian/patches/series": [
+   1,
+   0
+  ]
+ },
+ "files": 3,
+ "added_lines": 61,
+ "removed_lines": 0,
+ "diff": "diff --git a/debian/changelog b/debian/changelog\nindex cec4336..f9e3ab2 100644\n--- a/debian/changelog\n+++ b/debian/changelog\n@@ -1,3 +1,11 @@\n+openssh (1:10.6p2-1ubuntu2) tenacious; urgency=medium\n+\n+  * Fix access denied with forced-commands-only for root login\n+    d/p/lp2166842-avoid-spurious-disconnect-if-connecting-as-.patch\n+    (LP: #2166842)\n+\n+ -- Hector Cao <hector.cao@canonical.com>  Tue, 17 Nov 2026 15:06:09 +0100\n+\n openssh (1:10.6p2-1ubuntu1) tenacious; urgency=medium\n \n   * Merge with Debian unstable. (LP: #2171147)\ndiff --git a/debian/patches/lp2166842-avoid-spurious-disconnect-if-connecting-as-.patch b/debian/patches/lp2166842-avoid-spurious-disconnect-if-connecting-as-.patch\nnew file mode 100644\nindex 0000000..83e8236\n--- /dev/null\n+++ b/debian/patches/lp2166842-avoid-spurious-disconnect-if-connecting-as-.patch\n@@ -0,0 +1,52 @@\n+From 9ca942330f1829e0c0e2fd4d96ed5a06449af156 Mon Sep 17 00:00:00 2001\n+From: \"djm@openbsd.org\" <djm@openbsd.org>\n+Date: Fri, 30 Oct 2026 00:58:02 +0000\n+Subject: [PATCH] upstream: avoid spurious disconnect if connecting as root\n+ with\n+\n+`PermitRootLogin forced-commands-only` enabled and a authorized_keys entry\n+_without_ a `command=` option before a key _with_ this option.\n+\n+Anthropic ANT-2026-29SEM083\n+\n+OpenBSD-Commit-ID: ea9c2afc636e120f68a0b70087afb1d5ecc1f9e0\n+\n+Bug-Ubuntu: https://bugs.launchpad.net/ubuntu/+source/openssh/+bug/2166842\n+Origin: upstream, https://github.com/openssh/openssh-portable/commit/9ca942330f1829e0c0e2fd4d96ed5a06449af156\n+---\n+ auth-options.c | 12 +++++++++---\n+ 1 file changed, 9 insertions(+), 3 deletions(-)\n+\n+diff --git a/auth-options.c b/auth-options.c\n+index 4bbddd7ba..81fa4f68e 100644\n+--- a/auth-options.c\n++++ b/auth-options.c\n+@@ -1,4 +1,4 @@\n+-/* $OpenBSD: auth-options.c,v 1.103 2026/09/16 00:33:44 djm Exp $ */\n++/* $OpenBSD: auth-options.c,v 1.104 2026/10/30 00:58:02 djm Exp $ */\n+ /*\n+  * Copyright (c) 2018 Damien Miller <djm@mindrot.org>\n+  *\n+@@ -821,11 +821,17 @@ sshauthopt_serialise(const struct sshauthopt *opts, struct sshbuf *m,\n+ \t    0 : (u_int)opts->force_tun_device)) != 0)\n+ \t\treturn r;\n+ \n+-\t/* String options; these may be NULL */\n++\t/*\n++\t * String options; these may be NULL. In untrusted mode the\n++\t * contents of the forced command are hidden, but its presence\n++\t * must be preserved as PermitRootLogin=forced-commands-only\n++\t * depends on it.\n++\t */\n+ \tif ((r = serialise_nullable_string(m,\n+ \t    untrusted ? \"yes\" : opts->cert_principals)) != 0 ||\n+ \t    (r = serialise_nullable_string(m,\n+-\t    untrusted ? \"true\" : opts->force_command)) != 0 ||\n++\t    (untrusted && opts->force_command != NULL) ?\n++\t    \"true\" : opts->force_command)) != 0 ||\n+ \t    (r = serialise_nullable_string(m,\n+ \t    untrusted ? NULL : opts->required_from_host_cert)) != 0 ||\n+ \t    (r = serialise_nullable_string(m,\n+-- \n+2.53.0\n+\ndiff --git a/debian/patches/series b/debian/patches/series\nindex 0104dc1..733ec3f 100644\n--- a/debian/patches/series\n+++ b/debian/patches/series\n@@ -27,3 +27,4 @@ test-set-UsePAM-no-on-some-tests.patch\n test-workaround-dd-broken-pipe.patch\n lp-2150273-openssh-pam-upn.patch\n CVE-2026-106553-3.patch\n+lp2166842-avoid-spurious-disconnect-if-connecting-as-.patch\n",
+ "diff_truncated": false
+}
