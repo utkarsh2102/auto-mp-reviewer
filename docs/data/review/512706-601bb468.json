@@ -5,8 +5,8 @@
  "title": "Update to 2.6.23 in noble",
  "source_branch": "backport-2.6.23-noble",
  "target_branch": "ubuntu/noble-devel",
- "revision": "3415f7b3b3c39280d27bf094770b50ed7c64015b",
- "base_revision": "2cfc7b0f0a9cff7cc124ac0b68d734d1fcfcda84",
+ "revision": "f21cb30ded77805ce3d89e63b6069f78a640a776",
+ "base_revision": "654ae5ba431e065d71725e99b1f870c4a950779f",
  "description": "Update to 2.6.23 in noble\n\nPPA: https://launchpad.net/~lvoytek/+archive/ubuntu/openvpn-mres\n\nTests: passing",
  "commit_message": null,
  "diffstat": {
