@@ -1,0 +1,23 @@
+{
+ "schema_version": 1,
+ "url": "https://code.launchpad.net/~finnrg/ubuntu-archive-tools/+git/ubuntu-archive-tools/+merge/515421",
+ "id": "515421",
+ "title": "edit-acl: Pass series to newPocketUploader",
+ "source_branch": "fix/series-scoped-pocket-upload-acls",
+ "target_branch": "main",
+ "revision": "139c14ecb4e9ca47be35e20e627e3472bee7f487",
+ "base_revision": "081e9982ad266e048a0765317f4992f17e2bb4aa",
+ "description": "The \"--series requires a package set or pocket for ACL changes\" check was added since otherwise a command of the type \"edit-acl -S <series> -p <person> -c <component> add\" (or -s <source>) would silently drop series and add archive wide permissions. That can be added on the LP API side if we ever need to restrict component or package specific upload rights to a series.",
+ "commit_message": "edit-acl: Pass series to newPocketUploader",
+ "diffstat": {
+  "edit-acl": [
+   18,
+   16
+  ]
+ },
+ "files": 1,
+ "added_lines": 18,
+ "removed_lines": 16,
+ "diff": "diff --git a/edit-acl b/edit-acl\nindex 4d0ec29..49cc483 100755\n--- a/edit-acl\n+++ b/edit-acl\n@@ -75,6 +75,8 @@ def print_perms(perms, series=None):\n             desc.append(\"pocket '%s'\" % perm.pocket)\n             if perm.distro_series_name is not None:\n                 desc[-1] += \" in %s\" % perm.distro_series_name\n+            else:\n+                desc[-1] += \" in all series\"\n         print(\"%s for %s: %s\" % (perm.permission, persons[perm.person_link],\n                                  ', '.join(desc)))\n \n@@ -352,16 +354,16 @@ def do_add(args):\n         return\n \n     if args.pocket:\n-        admin_kwargs = {}\n+        pocket_kwargs = {}\n         if args.series:\n-            admin_kwargs[\"distroseries\"] = args.series\n+            pocket_kwargs[\"distroseries\"] = args.series\n         for person in people:\n             if not args.acl_type or args.acl_type == 'upload':\n                 perm = args.archive.newPocketUploader(\n-                    person=person, pocket=args.pocket)\n+                    person=person, pocket=args.pocket, **pocket_kwargs)\n             else:\n                 perm = args.archive.newPocketQueueAdmin(\n-                    person=person, pocket=args.pocket, **admin_kwargs)\n+                    person=person, pocket=args.pocket, **pocket_kwargs)\n             print(\"Added:\")\n             print_perms([perm])\n         return\n@@ -451,24 +453,20 @@ def do_delete(args):\n         return\n \n     if args.pocket:\n-        admin_kwargs = {}\n+        pocket_kwargs = {}\n+        scope = args.pocket\n         if args.series:\n-            admin_kwargs[\"distroseries\"] = args.series\n+            pocket_kwargs[\"distroseries\"] = args.series\n+            scope = \"%s/%s\" % (args.pocket, args.series.name)\n         for lp_person in lp_people:\n             if not args.acl_type or args.acl_type == 'upload':\n                 args.archive.deletePocketUploader(\n-                    person=lp_person, pocket=args.pocket)\n-                print(\"Deleted %s/%s\" % (lp_person.name, args.pocket))\n+                    person=lp_person, pocket=args.pocket, **pocket_kwargs)\n+                print(\"Deleted %s/%s\" % (lp_person.name, scope))\n             else:\n                 args.archive.deletePocketQueueAdmin(\n-                    person=lp_person, pocket=args.pocket, **admin_kwargs)\n-                if args.series:\n-                    print(\n-                        \"Deleted %s/%s/%s (admin)\" %\n-                        (lp_person.name, args.pocket, args.series.name))\n-                else:\n-                    print(\"Deleted %s/%s (admin)\" %\n-                          (lp_person.name, args.pocket))\n+                    person=lp_person, pocket=args.pocket, **pocket_kwargs)\n+                print(\"Deleted %s/%s (admin)\" % (lp_person.name, scope))\n         return\n \n \n@@ -718,6 +716,10 @@ if __name__ == '__main__':\n         parser.error(\"ACL type admin not allowed for package sets\")\n     if args.acl_type == 'admin' and args.source:\n         parser.error(\"ACL type admin not allowed for source packages\")\n+    if (args.action in ('add', 'delete', 'remove') and args.series and\n+            not args.packageset and not args.pocket):\n+        parser.error(\n+            \"--series requires a package set or pocket for ACL changes\")\n     if args.pocket:\n         args.pocket = args.pocket.title()\n \n",
+ "diff_truncated": false
+}
